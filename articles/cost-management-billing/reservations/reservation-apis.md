@@ -5,15 +5,16 @@ author: yashesvi
 ms.reviewer: yashesvi
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c2e590f011c92df6aa942e8e1fc799023f15750f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237583"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682639"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -63,7 +64,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 サービス プラン:
 - [仮想マシン](../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
 -  [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json)
-- [SQL Database](../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json)
+- [SQL Database](../../azure-sql/database/reserved-capacity-overview.md?toc=/azure/billing/TOC.json)
 
 ソフトウェア プラン:
 - [SUSE Linux ソフトウェア](../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json)

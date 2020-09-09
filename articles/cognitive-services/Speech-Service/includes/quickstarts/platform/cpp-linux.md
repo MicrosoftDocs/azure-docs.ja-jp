@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 973a50833d92fd9b68aae084fc6b4cbb3afe7160
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 099c835ae2047538c882414660f699341af60b8b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980156"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673256"
 ---
 このガイドでは、Linux 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します
 
@@ -23,7 +23,7 @@ ms.locfileid: "82980156"
 
 ## <a name="system-requirements"></a>システム要件
 
-Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8)
+Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8)
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
 
-   * RHEL または CentOS 8 の場合:
+   * RHEL または CentOS の場合:
 
      ```sh
      sudo yum update
@@ -56,7 +56,8 @@ Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8)
      ```
 
 > [!NOTE]
-> RHEL または CentOS 8 の場合、[Linux 用 OpenSSL の構成方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
+> - RHEL または CentOS 7 の場合、「[Speech SDK 用に RHEL/CentOS 7 を構成する](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)」の手順に従います。
+> - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 [!INCLUDE [linux-install-sdk](linux-install-sdk.md)]
 

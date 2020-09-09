@@ -1,18 +1,19 @@
 ---
 title: Azure Files のデプロイの計画 | Microsoft Docs
-description: Azure Files のデプロイを計画するときの考慮事項について説明します。
+description: Azure Files デプロイの計画について理解します。 Azure File Sync を使用し、Azure ファイル共有を直接マウントするか、オンプレミスでキャッシュできます。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: references_regions
+ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856902"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705913"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -36,7 +37,7 @@ Azure ファイル共有をストレージ アカウントにデプロイする�
 
 ## <a name="identity"></a>ID
 Azure ファイル共有にアクセスするには、ファイル共有のユーザーを認証し、共有へのアクセスを承認する必要があります。 これは、ファイル共有にアクセスするユーザーの ID に基づいて行われます。 Azure Files は、次の 3 つの主な ID プロバイダーと統合されています。
-- **オンプレミス Active Directory Domain Services (AD DS、またはオンプレミス AD DS)** (プレビュー):Azure ストレージ アカウントは、Windows Server ファイル サーバーや NAS デバイスと同様に、顧客所有の Active Directory Domain Services ドメインに参加させることができます。 ドメイン コントローラーは、Azure VM や、別のクラウド プロバイダーの VM としてもオンプレミスにデプロイできます。Azure Files は、ドメイン コントローラーがホストされている場所に依存しません。 ストレージ アカウントがドメインに参加すると、エンド ユーザーは、PC にサインインしたユーザー アカウントを使用してファイル共有をマウントできます。 AD ベースの認証では、Kerberos 認証プロトコルが使用されます。
+- **オンプレミス Active Directory Domain Services (AD DS、またはオンプレミス AD DS)** :Azure ストレージ アカウントは、Windows Server ファイル サーバーや NAS デバイスと同様に、顧客所有の Active Directory Domain Services ドメインに参加させることができます。 ドメイン コントローラーは、Azure VM や、別のクラウド プロバイダーの VM としてもオンプレミスにデプロイできます。Azure Files は、ドメイン コントローラーがホストされている場所に依存しません。 ストレージ アカウントがドメインに参加すると、エンド ユーザーは、PC にサインインしたユーザー アカウントを使用してファイル共有をマウントできます。 AD ベースの認証では、Kerberos 認証プロトコルが使用されます。
 - **Azure Active Directory Domain Services (Azure AD DS)** :Azure AD DS では、Azure リソースに使用できる Microsoft が管理するドメイン コントローラーが提供されます。 Azure AD DS ドメインにストレージ アカウントを参加させることで、顧客所有の Active Directory ドメインに参加させる場合と同様の利点が得られます。 このデプロイ オプションは、AD ベースのアクセス許可を必要とするアプリケーションのリフトアンドシフト シナリオに最も役立ちます。 Azure AD DS では AD ベースの認証が提供されるため、このオプションでも Kerberos 認証プロトコルが使用されます。
 - **Azure ストレージ アカウント キー**:Azure ファイル共有は、Azure ストレージ アカウント キーを使用してマウントすることもできます。 この方法でファイル共有をマウントするために、ストレージ アカウント名がユーザー名として使用され、ストレージ アカウント キーがパスワードとして使用されます。 ストレージ アカウント キーを使用して Azure ファイル共有をマウントすることは、実質的には管理者の操作です。これは、マウントされたファイル共有には、ACL がある場合でも、共有上のすべてのファイルとフォルダーに対する完全なアクセス許可が付与されるためです。 ストレージ アカウント キーを使用して SMB 経由でマウントする場合は、NTLMv2 認証プロトコルが使用されます。
 
@@ -76,10 +77,34 @@ Azure ストレージ アカウントでの転送中の暗号化を無効にす�
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
+## <a name="data-protection"></a>データ保護
+Azure Files には、データがバックアップされて回復可能であり、セキュリティの脅威から保護されることを保証するための、多層化された方法が用意されています。
+
+### <a name="soft-delete"></a>論理的な削除
+ファイル共有の論理的な削除 (プレビュー) は、ファイル共有が誤って削除された場合に回復できるようにするストレージ アカウント レベルの設定です。 ファイル共有が削除された場合、完全に消去されるのではなく、論理的に削除された状態に移行します。 論理的に削除されたデータが完全に削除され、復旧できなくなるまでの時間を構成することができます。この保有期間中はいつでも共有の削除を取り消すことができます。 
+
+ほとんどのファイル共有に対しては、論理的な削除を有効にすることをお勧めします。 共有の削除が一般的かつ望まれているワークフローでは、保持期間を非常に短く設定するか、または論理的な削除をまったく有効にしないことを決定することができます。
+
+論理的な削除の詳細については、[データの誤削除の防止](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)に関する記事を参照してください。
+
+### <a name="backup"></a>バックアップ
+[共有スナップショット](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)を利用して、Azure ファイル共有をバックアップすることができます。これは、特定の時点の共有の読み取り専用のコピーです。 スナップショットは増分であり、以前のスナップショット以降に変更されたデータだけが含まれます。 ファイル共有ごとに最大 200 のスナップショットを保持し、最大 10 年間保存できます。 これらのスナップショットを取得するには、Azure portal、PowerShell、またはコマンドライン インターフェイス (CLI) を使用して手動で行うか、または [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) を使用することができます。 スナップショットはファイル共有内に格納されます。つまり、ファイル共有を削除すると、スナップショットも削除されます。 スナップショット バックアップを誤削除から保護するために、共有に対して論理的な削除が有効になっていることを確認します。
+
+[Azure ファイル共有の Azure Backup ](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)によって、スナップショットのスケジュール設定と保持期間が処理されます。 三世代 (GFS: grandfather-father-son) 機能は、日次、週次、月次、年次のスナップショットを取得できることを意味し、それぞれに個別の保持期間が設けられています。 また、Azure Backup によって論理的な削除の有効化が調整され、その中のいずれかのファイル共有がバックアップに構成されると、すぐにストレージ アカウント上で削除のロックが行われます。 最後に、顧客が自身のバックアップ資産の統合されたビューを利用できるように、Azure Backup には、特定の主な監視機能およびアラート機能が用意されています。
+
+Azure portal 上で、Azure Backup を使用して、項目レベルおよび共有レベルの両方の復元を実行できます。 必要な作業は、復元ポイント (特定のスナップショット)、特定のファイルまたはディレクトリ (該当する場合)、復元先の場所 (元の場所または別の場所) を選択することだけです。 バックアップ サービスによって、スナップショット データのコピーが処理され、ポータル上に復元の進行状況が表示されます。
+
+バックアップの詳細については、「[Azure ファイル共有のバックアップについて](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)」を参照してください。
+
+### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection for Azure Files (プレビュー)
+Advanced Threat Protection (ATP) for Azure Storage には、ストレージ アカウントへの通常とは異なるアクセス試行など、ストレージ アカウント上で異常なアクティビティが検出されたときにアラートを提示するセキュリティ インテリジェンスの追加レイヤーが用意されています。 また、ATP によってマルウェアのハッシュ評価分析も実行され、既知のマルウェアに関するアラート通知が行われます。 Azure Security Center を使用して、サブスクリプションまたはストレージ アカウント レベルで ATP を構成できます。 
+
+詳細については、[Advanced Threat Protection for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) に関するページを参照してください。
+
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-一般に、Azure Files の機能とその他のサービスとの相互運用性は Premium ファイル共有と Standard ファイル共有で同じですが、重要な違いがいくつかあります。
+一般に、Azure Files の機能とその他のサービスとの相互運用性は Premium ファイル共有と Standard ファイル共有 (トランザクションの最適化、ホットとクールのファイル共有を含む) で同じですが、重要な違いがいくつかあります。
 - **課金モデル**
     - Premium ファイル共有は、プロビジョニングされた課金モデルを使用して課金されます。これは、実際に要求するストレージの量ではなく、プロビジョニングするストレージの量に対して料金を支払うことを意味します。 
     - Standard ファイル共有は従量課金制モデルを使用して課金されます。これには、実際に消費しているストレージの量に対するストレージの基本コストと、共有の使用方法に基づく追加のトランザクション コストが含まれます。 Standard ファイル共有では、Azure ファイル共有の使用 (読み取り、書き込み、マウント) 量が増えると、課金が増加します。
@@ -160,17 +185,12 @@ Premium ファイル共有は、最大 3 倍の IOPS をバーストできます
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>移行
-多くの場合、組織に対して新しいファイル共有を確立するのではなく、既存のファイル共有をオンプレミスのファイル サーバーまたは NAS デバイスから Azure Files に移行します。 ファイル共有への移行を行うために、Microsoft とサード パーティの両方で提供されるツールは多数ありますが、これらは大きく 2 つのカテゴリに分けられます。
+多くの場合、組織に対して新しいファイル共有を確立するのではなく、既存のファイル共有をオンプレミスのファイル サーバーまたは NAS デバイスから Azure Files に移行します。 移行を成功させるには、シナリオに適した移行戦略とツールを選択することが重要です。 
 
-- **ACL やタイムスタンプなどのファイル システム属性を保持するツール**:
-    - **[Azure File Sync](storage-sync-files-planning.md)** :Azure File Sync は、Azure ファイル共有にデータを取り込む方法として使用できます。これは、目的のエンド デプロイでオンプレミスの存在を維持しない場合でも同様です。 Azure File Sync は、既存の Windows Server 2012 R2、Windows Server 2016、Windows Server 2019 デプロイの所定の場所にインストールできます。 取り込みメカニズムとして Azure File Sync を使用する利点は、エンド ユーザーが所定の場所で既存のファイル共有を引き続き使用できることです。Azure ファイル共有への切り替えは、バックグラウンドでのすべてのデータのアップロードが完了した後に発生する可能性があります。
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** :Robocopy は、Windows および Windows Server に付属する、よく知られているコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。
-
-- **ファイル システム属性を保持しないツール**:
-    - **Data Box**: Data Box では、物理的にデータを Azure に配布するためのオフライン データ転送メカニズムが提供されます。 この方法は、スループットの向上と帯域幅の節約を目的に設計されていますが、現在、タイムスタンプや ACL などのファイル システム属性はサポートされていません。
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** :AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。
+[移行の概要に関する記事](storage-files-migration-overview.md)に、基本についての説明と、シナリオに適した移行ガイドを紹介する表が含まれています。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 * [Azure Files のデプロイ方法](storage-files-deployment-guide.md)
 * [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)
+* [シナリオに適した移行ガイドを見つけるには、移行の概要に関する記事をご覧ください。](storage-files-migration-overview.md)

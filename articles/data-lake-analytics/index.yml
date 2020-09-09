@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: ed785cb383381902e488acbe182446eaa977824a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 5dadcad164a309a7251a1e4627cf1e78f6e927d4
+  ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73825805"
+  ms.lasthandoff: 07/31/2020
+  ms.locfileid: "87475721"
 landingContent:
 - title: Data Lake Analytics について
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Azure Data Lake Analytics とは
       url: data-lake-analytics-overview.md
+    - text: Data Lake Analytics の新機能
+      url: data-lake-analytics-whats-new.md
   - linkListType: quickstart
     links:
     - text: Azure portal で U-SQL ジョブを作成する

@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a078455b7630046a83a9ae1c896d0fc44bf8efad
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203968"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132896"
 ---
 この cURL ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
@@ -77,9 +75,11 @@ ms.locfileid: "82203968"
     }
     ```
 
-    検索語句は満たしていないもののフィルターの条件は満たしているような質問と回答のセットがあったとしても、それは返されません。 代わりに一般的な回答 `No good match found in KB.` が返されます。
+    検索語句は満たしていないもののフィルターの条件は満たしているような質問と回答のペアがあったとしても、それは返されません。 代わりに一般的な回答 `No good match found in KB.` が返されます。
 
 ## <a name="use-debug-query-property"></a>デバッグ クエリ プロパティを使用する
+> [!NOTE]
+>すべての依存関係に Debug プロパティの使用をお勧めするわけではありません。 このプロパティは、トラブルシューティングで製品チームを支援するために追加されました。
 
 デバッグ情報により、返された回答がどのように決定されたかを理解できます。 これは役に立ちますが、必須ではありません。 デバッグ情報を含む回答を生成するには、`debug` プロパティを追加します。
 

@@ -4,15 +4,15 @@ description: SQL API への 1 対多のリレーションシップの複雑な�
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75898659"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023144"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>1 対多のリレーショナル データを Azure Cosmos DB SQL API アカウントに移行する
 
@@ -25,7 +25,7 @@ ms.locfileid: "75898659"
 SQL データベースに、Orders と OrderDetails という 2 つのテーブルがあると仮定します。
 
 
-![注文の詳細](./media/migrate-relational-to-cosmos-sql-api/orders.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="注文の詳細" border="false" :::
 
 移行中に、この 1 対多のリレーションシップを 1 つの JSON ドキュメントに結合します。 これを行うには、次のように "FOR JSON" を使用して T-SQL クエリを作成できます。
 
@@ -48,8 +48,7 @@ FROM Orders o;
 
 このクエリの結果は次のようになります。 
 
-![注文の詳細](./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png#lightbox)
-
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="注文の詳細" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 理想的には、単一の Azure Data Factory (ADF) コピー アクティビティを使用してソースとして SQL データのクエリを実行し、出力を適切な JSON オブジェクトとして Azure Cosmos DB シンクに直接書き込みます。 現時点では、1 つのコピー アクティビティで必要な JSON 変換を実行することはできません。 上記のクエリの結果を Azure Cosmos DB SQL API コンテナーにコピーしようとすると、OrderDetails フィールドが、予期される JSON 配列ではなく、ドキュメントの文字列プロパティとして表示されます。
 
@@ -91,31 +90,31 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-![ADF コピー](./media/migrate-relational-to-cosmos-sql-api/adf1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF コピー":::
 
 
 SqlJsonToBlobText コピー アクティビティのシンクでは、"区切りテキスト" を選択し、動的に生成された一意のファイル名 (たとえば、'@concat(pipeline().RunId,'.json') を使用して Azure Blob Storage 内の特定のフォルダーを指定します。
 このテキスト ファイルは実際には "区切られて" おらず、コンマを使用して個別の列に解析するのではなく、二重引用符 (") を保持したいため、"列区切り記号"をタブ ("\t")、つまりデータに出現しない別の文字に設定し、"引用符文字" を "引用符文字なし" に設定します。
 
-![ADF コピー](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF コピー":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>コピー アクティビティ #2: BlobJsonToCosmos
 
 次に、最初のアクティビティによって作成されたテキスト ファイルを Azure Blob Storage で検索する 2 番目のコピー アクティビティを追加して、ADF パイプラインを変更します。 これは、テキスト ファイルで見つかった JSON 行ごとに 1 つのドキュメントとして Cosmos DB シンクに挿入する "JSON" ソースとして処理されます。
 
-![ADF コピー](./media/migrate-relational-to-cosmos-sql-api/adf3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF コピー":::
 
 また、必要に応じて、各実行の前に /Orders/ フォルダーに残っている以前のすべてのファイルを削除するように、パイプラインに "削除" アクティビティを追加します。 これで、ADF パイプラインは以下のようになっているはずです。
 
-![ADF コピー](./media/migrate-relational-to-cosmos-sql-api/adf4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF コピー":::
 
 上記のパイプラインをトリガーすると、中間 Azure Blob Storage の場所に、1 行に 1 つの JSON オブジェクトを含むファイルが作成されます。
 
-![ADF コピー](./media/migrate-relational-to-cosmos-sql-api/adf5.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF コピー":::
 
 また、Cosmos DB コレクションに挿入された OrderDetails が適切に埋め込まれた Orders ドキュメントも表示されます。
 
-![ADF コピー](./media/migrate-relational-to-cosmos-sql-api/adf6.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF コピー":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -128,7 +127,7 @@ SqlJsonToBlobText コピー アクティビティのシンクでは、"区切り
 
 まず、必要な [SQL コネクタ](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)と [Azure Cosmos DB コネクタ](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) ライブラリを作成して、Azure Databricks クラスターに接続します。 クラスターを再起動して、ライブラリが読み込まれていることを確認します。
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
 
 次に、Scala と Python の 2 つのサンプルを紹介します。 
 
@@ -151,7 +150,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
 
 次に、Cosmos DB データベースとコレクションに接続します。
 
@@ -208,7 +207,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
 
 
 ### <a name="python"></a>Python
@@ -338,7 +337,7 @@ pool.map(writeOrder, orderids)
 ```
 どちらの方法でも、最終的には、Cosmos DB コレクション内の各注文ドキュメント内に埋め込まれた OrderDetails を適切に保存する必要があります。
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Cosmos DB のデータ モデリング](https://docs.microsoft.com/azure/cosmos-db/modeling-data)について確認する

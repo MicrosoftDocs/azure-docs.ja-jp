@@ -2,16 +2,17 @@
 title: 接続プールを説明するための Java サンプル
 description: この記事では、接続プールを説明するための Java サンプルの一覧を示します。
 author: ambhatna
+ms.custom: devx-track-java
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 78b936b21aeeed1db69ac52b2c21e3c41708f62d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b108dc8a04825826d7e0887d8fd5884b122827f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72599745"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314698"
 ---
 # <a name="java-sample-to-illustrate-connection-pooling"></a>接続プールを説明するための Java サンプル
 
@@ -83,7 +84,7 @@ public class MySQLConnectionPool {
         // For Azure Database for MySQL, if there is no action on one connection for some
         // time, the connection is lost. By this, make sure the connection is
         // active. Otherwise reconnect it.
-        makeAvailable(conn);
+        conn = makeAvailable(conn);
         return conn;
     }
 
@@ -140,12 +141,7 @@ public class MySQLConnectionPool {
      */
     private Connection createNewConnection() throws SQLException {
         Connection conn = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(databaseUrl, userName, password);
-        } catch (ClassNotFoundException cnfe) {
-            throw new SQLException(cnfe);
-        }
+        conn = DriverManager.getConnection(databaseUrl, userName, password);
         return conn;
     }
 

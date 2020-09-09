@@ -1,16 +1,16 @@
 ---
 title: 概念 - ID とアクセス
-description: Azure VMware Solution (AVS) の ID とアクセスの概念について説明します
+description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739967"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750592"
 ---
-# <a name="azure-vmware-solution-avs-identity-concepts"></a>Azure VMware Solution (AVS) の ID の概念
+# <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
 vCenter サーバーと NSX-T Manager は、プライベート クラウドのデプロイ時にプロビジョニングされます。 vCenter は仮想マシンのワークロードを管理するために使用し、NSX-T Manager はプライベート クラウドのソフトウェア定義ネットワークを拡張するために使用します。
 

@@ -1,72 +1,57 @@
 ---
 title: 仮想ハブの有効なルートを表示する:Azure Virtual WAN | Microsoft Docs
-description: Azure Virtual WAN で仮想ハブの有効なルートを表示する
+description: Azure Virtual WAN の仮想ハブの有効なルートを表示する方法
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73511212"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762268"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>仮想ハブの有効なルートを表示する
+# <a name="view-virtual-hub-effective-routes"></a>仮想ハブの有効なルートを表示する
 
-Azure portal の Virtual WAN ハブのすべてのルートを表示できます。 ルートを表示するには、仮想ハブに移動し、 **[ルーティング] -> [有効なルートの表示]** を選択します。
+Azure portal で Virtual WAN ハブのすべてのルートを表示できます。 この記事では、有効なルートを表示する手順について説明します。 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
-## <a name="understanding-routes"></a><a name="understand"></a>ルートについて
+## <a name="select-connections-or-route-tables"></a><a name="routing"></a>接続またはルート テーブルを選択する
 
-次の例は、Virtual WAN のルーティングがどのように表示されるかを理解するのに役立ちます。
+1. 仮想ハブに移動し、 **[ルーティング]** を選択します。 [ルーティング] ページで、 **[有効なルート]** を選択します。
+1. ドロップダウンから、 **[ルート テーブル]** を選択できます。 [ルート テーブル] オプションが表示されない場合は、この仮想ハブにカスタムまたは既定のルート テーブルが設定されていません。
 
-この例では、3 つのハブを持つ Virtual WAN を使用します。 最初のハブは米国東部リージョン、2 番目のハブは西ヨーロッパ リージョン、3 番目のハブは米国西部リージョンにあります。 Virtual WAN では、すべてのハブが相互接続されます。 この例では、米国東部と西ヨーロッパのハブが、オンプレミスのブランチ (スポーク) と Azure 仮想ネットワーク (スポーク) に接続されていることを前提としています。
+## <a name="view-output"></a><a name="output"></a>出力を表示する
 
-ネットワーク仮想アプライアンス (10.4.0.6) を備えた Azure VNet スポーク (10.4.0.0/16) は、さらに VNet (10.5.0.0/16) とピアリングされます。 ハブ ルート テーブルの詳細については、この記事の後半の[追加情報](#abouthubroute)を参照してください。
+ページの出力には、次のフィールドが表示されます。
 
-この例では、西ヨーロッパのブランチ 1 が米国東部ハブと西ヨーロッパ ハブに接続されていることも想定しています。 米国東部のブランチ 2 は、ExpressRoute 回線によって米国東部ハブと接続されています。
+* **プレフィックス**: 現在のエンティティに認識されるアドレス プレフィックス (仮想ハブ ルーターから学習)
+* **次ホップの種類**: 仮想ネットワーク接続、VPN_S2S_Gateway、ExpressRoute ゲートウェイ、リモート ハブ、または Azure Firewall のいずれかです。
+* **次ホップ**:これは次のホップのリソース ID へのリンクです。あるいはこれは単純に、現在のハブを意味するオンリンクを示します。
+* **配信元**:ルーティング ソースのリソース ID。
+* **AS パス**: BGP 属性の AS (自律システム) パスは、パスにアタッチされているプレフィックスのアドバタイズ元の場所に到達するために走査する必要があるすべての AS 番号が一覧表示されます。
 
-![ダイアグラム](./media/effective-routes-virtual-hub/diagram.png)
+### <a name="example"></a><a name="example"></a>例
 
-## <a name="view-effective-routes"></a><a name="view"></a>有効なルートの表示
-
-ポータルで [有効なルートの表示] を選択すると、米国東部ハブの[ハブ ルート テーブル](#routetable)に表示される出力が生成されます。
-
-これを整理すると、最初の行は VPN の*次ホップの種類*接続 ("次ホップ" VPN Gateway Instance0 IP 10.1.0.6、Instance1 IP 10.1.0.7) により、米国東部ハブが 10.20.1.0/24 (ブランチ 1) のルートを学習したことを意味します。 *ルートの発信元*はリソース ID を指します。 *AS パス*はブランチ 1 の AS パスを示します。
-
-### <a name="hub-route-table"></a><a name="routetable"></a>ハブ ルート テーブル
+次の例の表に示す値は、仮想ハブの接続またはルート テーブルが、10.2.0.0/24 (分岐プレフィックス) というルートを学習したことを示しています。 また、**VPN の次ホップの種類**としての VPN_S2S_Gateway、**次ホップ**としての VPN Gateway リソース ID によって、ルートが学習されています。 **ルートの発信元**は、発信元の VPN ゲートウェイ、ルート テーブル、または接続のリソース ID を指します。 **AS パス**は、分岐の AS パスを示します。
 
 AS パスを表示するには、テーブルの下部にあるスクロールバーを使用します。
 
 | **プレフィックス** |  **次ホップの種類** | **次ホップ** |  **ルートの発信元** |**AS パス** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
-|10.4.0.0/16|仮想ネットワーク接続| On-link |  |  |
-|10.5.0.0/16| IP アドレス| 10.4.0.6|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|0.0.0.0/0| IP アドレス| `<Azure Firewall IP>` |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|10.22.1.0/16| リモート ハブ|10.8.0.6, 10.8.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_| 4848-22000 |
-|10.9.0.0/16| リモート ハブ|  On-link |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/westhub_1| |
+| 10.2.0.0/24| VPN_S2S_Gateway |/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw|/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
->[!NOTE]
-> この例のトポロジで、米国東部と西ヨーロッパのハブが相互に通信していない場合、学習したルート (10.9.0.0/16) は存在しません。 ハブは、直接接続されているネットワークのみをアドバタイズします。
->
+**考慮事項:**
 
-## <a name="additional-information"></a><a name="additional"></a>追加情報
+* **[Get Effective Routes]\(有効なルートを取得\)** に 0.0.0.0/0 と表示されている場合は、ルートがルート テーブルのいずれかに存在することを意味します。 ただし、このルートがインターネット用に設定されている場合は、接続時に追加のフラグ **"enableInternetSecurity": true** が必要となります。 接続時に "enableInternetSecurity" フラグが "false" になっている場合、VM NIC の有効なルートとしてルートが示されません。
 
-### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>ハブ ルート テーブルについて
+* 仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続の編集時に、Azure Virtual WAN ポータルに **[Propagate Default Route]\(既定のルートを伝達する\)** フィールドが表示されます。 このフィールドは **enableInternetSecurity** フラグを示します。このフラグは、ExpressRoute 接続と VPN 接続の場合は常に既定で "false" になりますが、仮想ネットワーク接続の場合は "true" になります。
 
-仮想ハブのルートを作成して、そのルートを仮想ハブのルート テーブルに適用することができます。 仮想ハブのルート テーブルには、複数のルートを適用できます。 これにより、IP アドレス (通常はスポーク VNet のネットワーク仮想アプライアンス (NVA)) を使用して、送信先 VNet のルートを設定できます。 NVA の詳細については、「[仮想ハブから NVA にトラフィックをルーティングする](virtual-wan-route-table-portal.md)」を参照してください。
-
-### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>既定のルート (0.0.0.0/0) について
-
-仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 ハブ VNet、ExpressRoute、および VPN 接続では、"EnableInternetSecurity" は既定で常に false です。
-
-既定のルートの起点は Virtual WAN ハブ内にありません。 Virtual WAN ハブにファイアウォールをデプロイした結果としてハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートは伝達されます。
+* VM NIC 上で有効なルートを表示しているとき、次のホップが "仮想ネットワーク ゲートウェイ" であれば、それは、仮想 WAN ハブに接続されているスポークに VM があるとき、仮想ハブ ルーターを意味します。
 
 ## <a name="next-steps"></a>次のステップ
 
-Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
+* Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
+* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

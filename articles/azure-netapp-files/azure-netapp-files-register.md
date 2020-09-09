@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files に登録する | Microsoft Docs
-description: Azure NetApp Files に使用して使用する方法について説明します。
+description: 順番待ちリクエストを送信し、Azure NetApp Files 用に Azure リソース プロバイダーを登録することによって、Azure NetApp Files に登録する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/06/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234111"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512926"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
 
@@ -30,7 +30,7 @@ ms.locfileid: "79234111"
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>サービスにアクセスするための順番待ちリクエストを送信する
 
-1. [Azure NetApp Files の順番待ち送信ページ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)から、Azure NetApp Files サービスにアクセスするための順番待ちリクエストを送信します。 
+1. [Azure NetApp Files の順番待ち送信ページ](https://aka.ms/azurenetappfiles)から、Azure NetApp Files サービスにアクセスするための順番待ちリクエストを送信します。 
 
     順番待ちにサインアップしても、すぐにサービスにアクセスできるとは限りません。 
 
@@ -52,16 +52,22 @@ ms.locfileid: "79234111"
 
 2. お客様の Azure アカウントにサブスクリプションが複数ある場合は、Azure NetApp Files のホワイトリストに登録されているものを選択します。
     
-        az account set --subscription <subscriptionId>
+    ```azurepowershell
+    az account set --subscription <subscriptionId>
+    ```
 
 3. Azure Cloud Shell コンソールで次のコマンドを入力して、お客様のサブスクリプションがホワイトリストに登録されていることを確認します。
     
-        az feature list | grep NetApp
+    ```azurepowershell
+    az feature list | grep NetApp
+    ```
 
    コマンドの出力は次のようになります。
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
-       "name": "Microsoft.NetApp/ANFGA" 
+    ```output
+    "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+    "name": "Microsoft.NetApp/ANFGA" 
+    ```
        
    `<SubID>` がお客様のサブスクリプション ID です。
 
@@ -69,21 +75,27 @@ ms.locfileid: "79234111"
 
 4. Azure Cloud Shell コンソールで次のコマンドを入力して、Azure リソース プロバイダーを登録します。 
     
-        az provider register --namespace Microsoft.NetApp --wait
+    ```azurepowershell
+    az provider register --namespace Microsoft.NetApp --wait
+    ```
 
    `--wait` パラメーターで、登録が完了するまで待機するようコンソールに指示します。 登録プロセスは、完了するまでに時間がかかることがあります。
 
 5. Azure Cloud Shell コンソールで次のコマンドを入力して、Azure リソース プロバイダーが登録されたことを確認します。 
     
-        az provider show --namespace Microsoft.NetApp
+    ```azurepowershell
+    az provider show --namespace Microsoft.NetApp
+    ```
 
    コマンドの出力は次のようになります。
    
-        {
-        "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
-        "namespace": "Microsoft.NetApp", 
-        "registrationState": "Registered", 
-        "resourceTypes": […. 
+    ```output
+    {
+     "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
+     "namespace": "Microsoft.NetApp", 
+     "registrationState": "Registered", 
+     "resourceTypes": […. 
+    ```
 
    `<SubID>` がお客様のサブスクリプション ID です。  `state` パラメーターの値は `Registered` を示しています。
 

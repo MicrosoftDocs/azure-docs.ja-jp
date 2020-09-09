@@ -5,22 +5,22 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.topic: conceptual
-ms.date: 04/21/2020
+ms.topic: how-to
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: c859176857f64559b9a2994c9cfc2d4ec5f61e57
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691076"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923876"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、PowerShell を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
-[Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
+[リファレンス](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0) | [Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -81,22 +81,22 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
-ファイル システムは、ファイルのコンテナーとして機能します。 `New-AzDatalakeGen2FileSystem` コマンドレットを使用して、ファイル システムを作成できます。 
+コンテナーは、ご使用のファイルのファイル システムとして機能します。 `New-AzStorageContainer` コマンドレットを使用して、ファイル システムを作成できます。 
 
-この例では、`my-file-system` という名前のファイル システムを作成します。
+この例では、`my-file-system` という名前のコンテナーを作成します。
 
 ```powershell
 $filesystemName = "my-file-system"
-New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
+New-AzStorageContainer -Context $ctx -Name $filesystemName
 ```
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
 `New-AzDataLakeGen2Item` コマンドレットを使用して、ディレクトリ参照を作成します。 
 
-この例では、`my-directory` という名前のディレクトリをファイル システムに追加します。
+この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-ファイル システムの内容を一覧表示するには、コマンドの `-Path` パラメーターを省略します。
+コンテナーの内容を一覧表示するには、コマンドの `-Path` パラメーターを省略します。
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする
 
@@ -261,7 +261,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 ## <a name="manage-access-permissions"></a>アクセス許可を管理する
 
-ファイル システム、ディレクトリ、ファイルのアクセス許可を取得、設定、更新できます。 これらのアクセス許可は、アクセス制御リスト (ACL) でキャプチャされます。
+ディレクトリとファイルのアクセス許可を取得、設定、更新できます。 これらのアクセス許可は、アクセス制御リスト (ACL) でキャプチャされます。
 
 > [!NOTE]
 > Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)」を参照してください。
@@ -270,7 +270,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 `Get-AzDataLakeGen2Item` コマンドレットを使用して、ディレクトリまたはファイルの ACL を取得します。
 
-この例では、**ファイル システム**の ACL を取得して、その ACL をコンソールに出力します。
+この例では、**コンテナー**のルート ディレクトリの ACL を取得し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -297,7 +297,7 @@ $file.ACL
 
 次の画像は、ディレクトリの ACL を取得した後の出力を示しています。
 
-![ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
+![ディレクトリの ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
 
 この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可があります。 所有グループには、読み取りと実行のアクセス許可のみがあります。 アクセス制御リストの詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)」を参照してください。
 
@@ -305,7 +305,7 @@ $file.ACL
 
 `set-AzDataLakeGen2ItemAclObject` コマンドレットを使用して、所有ユーザー、所有グループ、またはその他のユーザーの ACL を作成します。 その後、`Update-AzDataLakeGen2Item` コマンドレットを使用して ACL をコミットします。
 
-この例では、所有ユーザー、所有グループ、またはその他のユーザーの**ファイル システム**に ACL を設定し、その ACL をコンソールに出力します。
+この例では、所有ユーザー、所有グループ、またはその他のユーザーの**コンテナー**のルート ディレクトリに ACL を設定し、その ACL をコンソールに出力します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -344,31 +344,9 @@ $file.ACL
 
 次の画像は、ファイルの ACL を設定した後の出力を示しています。
 
-![ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
+![ファイルの ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
 
 この例では、所有ユーザーと所有グループには、読み取りと書き込みのアクセス許可のみがあります。 他のすべてのユーザーには、書き込みと実行のアクセス許可があります。 アクセス制御リストの詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)」を参照してください。
-
-
-### <a name="set-acls-on-all-items-in-a-file-system"></a>ファイル システム内のすべての項目に対して ACL を設定する
-
-`Get-AzDataLakeGen2Item` パラメーターと `-Recurse` パラメーターを `Update-AzDataLakeGen2Item` コマンドレットと共に使用すると、ファイル システム内のディレクトリとファイルに対して ACL を再帰的に設定できます。 
-
-```powershell
-$filesystemName = "my-file-system"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-
-$Token = $Null
-do
-{
-     $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
-     if($items.Length -le 0) { Break;}
-     $items | Update-AzDataLakeGen2Item -Acl $acl
-     $Token = $items[$items.Count -1].ContinuationToken;
-}
-While ($Token -ne $Null) 
-```
 
 ### <a name="add-or-update-an-acl-entry"></a>ACL エントリを追加または更新する
 
@@ -405,7 +383,11 @@ foreach ($a in $aclnew)
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
 ```
 
-<a id="gen1-gen2-map" />
+### <a name="set-an-acl-recursively-preview"></a>ACL を再帰的に設定する (プレビュー)
+
+また、親ディレクトリの既存の子項目に対して ACL を再帰的に追加、更新、および削除することができます。それぞれの子項目に対してこれらの変更を個別に行う必要はありません。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する](recursive-access-control-lists.md)」を参照してください。
+
+<a id="gen1-gen2-map"></a>
 
 ## <a name="gen1-to-gen2-mapping"></a>Gen1 から Gen2 へのマッピング
 

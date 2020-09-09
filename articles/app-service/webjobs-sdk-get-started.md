@@ -3,21 +3,22 @@ title: WebJobs SDK の概要
 description: イベント ドリブンのバックグラウンド処理のための WebJobs SDK の概要。 Azure サービスとサード パーティのサービス内のデータにアクセスする方法を説明します。
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743614"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959059"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
 この記事では、Visual Studio 2019 を使用し、Azure WebJobs SDK プロジェクトを作成し、それをローカルで実行し、[Azure App Service](overview.md) にデプロイする方法について説明します。 バージョン 3.x の WebJobs SDK は、.NET Core と .NET Framework の両方のコンソール アプリをサポートしています。 WebJobs SDK の使用方法については、「[イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法](webjobs-sdk-how-to.md)」を参照してください。
 
-この記事では、.NET Core コンソール アプリとして Webjobs をデプロイする方法を示します。 .NET Framework コンソール アプリケーションとして Webjobs をデプロイするには、「[.NET Framework コンソール アプリとしての WebJobs](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)」を参照してください。 .NET Framework だけをサポートする WebJobs SDK バージョン 2.x に興味がある場合、「[Visual Studio を使用して WebJobs を開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
+この記事では、.NET Core コンソール アプリとして Webjobs をデプロイする方法を示します。 .NET Framework コンソール アプリケーションとして Webjobs をデプロイするには、「[.NET Framework コンソール アプリとしての WebJobs](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)」を参照してください。 .NET Framework だけをサポートする WebJobs SDK バージョン 2.x に興味がある場合、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -183,7 +184,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
    `QueueTrigger` 属性は、`queue` と呼ばれる Azure Storage キューに新しいメッセージが書き込まれたときに、この関数を呼び出すようランタイムに通知します。 キュー メッセージの内容は、`message` パラメーター内のメソッド コードに提供されます。 メソッドの本文では、トリガー データを処理します。 この例では、コードはメッセージをログに記録するだけです。
 
-   `message` パラメーターは文字列である必要はありません。 JSON オブジェクト、バイト配列、または [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) オブジェクトにバインドすることもできます。 [キュー トリガーの使用方法](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage)に関するページをご覧ください。 バインドの種類 (キュー、BLOB、テーブルなど) ごとに、バインドできる異なる種類のパラメーター セットがあります。
+   `message` パラメーターは文字列である必要はありません。 JSON オブジェクト、バイト配列、または [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) オブジェクトにバインドすることもできます。 [キュー トリガーの使用方法](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage)に関するページをご覧ください。 バインドの種類 (キュー、BLOB、テーブルなど) ごとに、バインドできる異なる種類のパラメーター セットがあります。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -279,7 +280,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    `ProcessQueueMessage` 関数で `QueueTrigger` 属性を使用したので、WeJobs SDK ランタイムは起動時にキュー メッセージをリッスンします。 "*キュー*" という名前のキューで新しいキュー メッセージを検索し、関数を呼び出します。
 
-   [キュー ポーリング指数バックオフ](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)により、ランタイムがメッセージを検索して関数を呼び出すのに 2 分ほどかかる場合があります。 [開発モード](webjobs-sdk-how-to.md#host-development-settings)で実行すると、この待機時間を短縮できます。
+   [キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)により、ランタイムがメッセージを検索して関数を呼び出すのに 2 分ほどかかる場合があります。 [開発モード](webjobs-sdk-how-to.md#host-development-settings)で実行すると、この待機時間を短縮できます。
 
    コンソール出力は次のようになります。
 
@@ -310,7 +311,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>App Service アプリと Application Insights のインスタンスの作成
 
-1. 使用できる App Service アプリがまだない場合は、[作成](app-service-web-get-started-dotnet-framework.md)します。 アプリを作成するときに、接続されている Application Insights リソースも作成できます。 これを行うと、アプリ内で自動的に `APPINSIGHTS_INSTRUMENTATIONKEY` が設定されます。
+1. 使用できる App Service アプリがまだない場合は、[作成](quickstart-dotnet-framework.md)します。 アプリを作成するときに、接続されている Application Insights リソースも作成できます。 これを行うと、アプリ内で自動的に `APPINSIGHTS_INSTRUMENTATIONKEY` が設定されます。
 
 1. 使用できる Application Insights リソースがまだない場合は、[作成](../azure-monitor/app/create-new-resource.md )します。 **[アプリケーションの種類]** を **[全般]** に設定し、「**インストルメンテーション キーをコピー**」の後のセクションをスキップします。
 
@@ -430,7 +431,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Azure にデプロイする
 
-デプロイ中、関数を実行するアプリ サービス インスタンスを作成します。 .NET Core コンソール アプリを Azure で App Service に発行すると、WebJobs として自動的に実行されます。 発行に関する詳細については、「[Visual Studio を使用して WebJobs を開発してデプロイする](webjobs-dotnet-deploy-vs.md)」を参照してください。
+デプロイ中、関数を実行するアプリ サービス インスタンスを作成します。 .NET Core コンソール アプリを Azure で App Service に発行すると、Web ジョブとして自動的に実行されます。 発行に関する詳細については、「[Visual Studio を使用して Web ジョブを開発してデプロイする](webjobs-dotnet-deploy-vs.md)」を参照してください。
 
 [!INCLUDE [webjobs-publish-net-core](../../includes/webjobs-publish-net-core.md)]
 
@@ -443,7 +444,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 1. **[キュー]** ページを更新すると、Azure で実行されている関数によって処理されたため、新しいメッセージが表示されなくなります。
 
    > [!TIP]
-   > Azure でテストするときに、[開発モード](webjobs-sdk-how-to.md#host-development-settings)を使用して、キュー トリガー関数がすぐに呼び出されることを確認し、[キュー ポーリング指数バックオフ](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)による遅延を回避します。
+   > Azure でテストするときに、[開発モード](webjobs-sdk-how-to.md#host-development-settings)を使用して、キュー トリガー関数がすぐに呼び出されることを確認し、[キュー ポーリング指数バックオフ](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#polling-algorithm)による遅延を回避します。
 
 ### <a name="view-logs-in-application-insights"></a>Application Insights のログの表示
 
@@ -453,7 +454,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. "*Hello Azure!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します
 
-   WebJobs で実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* " テキストが含まれます。
+   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* " テキストが含まれます。
 
 ## <a name="add-an-input-binding"></a>入力バインディングの追加
 

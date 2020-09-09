@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078193"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps での実行状態の監視、トリガー履歴の確認、アラートの設定
 
@@ -71,7 +71,7 @@ ms.locfileid: "82732004"
 
    ![実行の各ステップの詳細を確認する](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   たとえば、その実行の**関連付け ID** プロパティを取得できます。これは、[Logic Apps 用の REST API](https://docs.microsoft.com/rest/api/logic) を使用する際に必要になる場合があります。
+   たとえば、その実行の**関連付け ID** プロパティを取得できます。これは、[Logic Apps 用の REST API](/rest/api/logic) を使用する際に必要になる場合があります。
 
 1. 特定のステップに関する詳細情報を取得するには、次のいずれかのオプションを選択します。
 
@@ -138,7 +138,7 @@ ms.locfileid: "82732004"
 
 ## <a name="set-up-monitoring-alerts"></a>監視アラートを設定する
 
-ロジック アプリの特定のメトリックまたはしきい値の超過に基づいてアラートを発生させるには、[Azure Monitor のアラート](../azure-monitor/platform/alerts-overview.md)を設定します。 [Azure のメトリック](../monitoring-and-diagnostics/monitoring-overview-metrics.md)について確認してください。 [Azure Monitor](../log-analytics/log-analytics-overview.md) を使用せずにアラートを設定するには、次の手順を実行します。
+ロジック アプリの特定のメトリックまたはしきい値の超過に基づいてアラートを発生させるには、[Azure Monitor のアラート](../azure-monitor/platform/alerts-overview.md)を設定します。 [Azure のメトリック](../azure-monitor/platform/data-platform.md)について確認してください。 [Azure Monitor](../azure-monitor/log-query/log-query-overview.md) を使用せずにアラートを設定するには、次の手順を実行します。
 
 1. ロジック アプリのメニューで、 **[監視]** にある **[アラート]**  >  **[新しいアラート ルール]** を選択します。
 

@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure Security Code Analysis タスク カスタマイズ ガイド
 description: この記事では、Microsoft Security Code Analysis 拡張機能のすべてのタスクをカスタマイズするための YAML 構成オプションについて説明します。
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 11/29/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb18f93be62feb5f9fff02fc020f04899ec40a38
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367259"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>ビルド タスクをカスタマイズするための YAML 構成オプション
 
@@ -44,7 +44,7 @@ ms.locfileid: "82594221"
 | **InputType**      | **Type**     | **適用条件**            | **必須** | **既定値**             | **オプション (候補リスト)**                                   | **説明**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | InputType | pickList | 常時 | True | Basic | Basic、CommandLine | 
-| 引数 | string | InputType = CommandLine | True |  |  | 実行する標準の Binskim コマンド ライン引数。 出力パスが削除され、置き換えられます。<br>このツールのコマンド ライン引数の詳細を確認するには、[引数] フィールドに「**help**」と入力し、ビルド タスクを実行してください。
+| 引数 | string | InputType = CommandLine | True |  |  | 実行する標準の BinSkim コマンド ライン引数。 出力パスが削除され、置き換えられます。<br>このツールのコマンド ライン引数の詳細を確認するには、[引数] フィールドに「**help**」と入力し、ビルド タスクを実行してください。
 | 機能 | pickList | InputType = Basic | True | analyze | analyze、dump、exportConfig、exportRules | 
 | AnalyzeTarget | filePath | InputType = Basic && Function = analyze | True | $(Build.ArtifactStagingDirectory)\*.dll;<br>$(Build.ArtifactStagingDirectory)\*.exe |  | 分析対象として、特定のファイルまたはディレクトリの指定子を入力するか、1 つ以上のバイナリに解決されるフィルター パターンの指定子を入力します。指定子は複数入力することもできます。 (';' 区切りの一覧)
 | AnalyzeSymPath | string | InputType = Basic && Function = analyze | False |  |  | ターゲットのシンボル ファイルのパス。
@@ -78,36 +78,13 @@ ms.locfileid: "82594221"
 | fileScanReadBufferSize | string | 常時 | False |  |  | コンテンツの読み取り中のバッファー サイズ (バイト単位)。 既定値は 524288 です。<br/>コマンド ラインに ``-Co FileScanReadBufferSize=<Value>`` を追加します。
 | maxFileScanReadBytes | string | 常時 | False |  |  | コンテンツの分析中に指定したファイルから読み取る最大バイト数。 既定値は 104,857,600 です。<br/>コマンド ラインに ``-Co MaxFileScanReadBytes=<Value>`` を追加します。
 
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft Security Risk Detection タスク
-
-| **InputType**      | **Type**     | **適用条件**            | **必須** | **既定値**             | **オプション (候補リスト)**                                   | **説明**                                                                                                                                                                                                                                                                           |
-|------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ServiceEndpointName | connectedService:Generic | 常時 | True |  |  | MSRD インスタンス URL (オンボード済み) および REST API アクセス トークン (アカウント設定ページから生成され、アカウントへの完全なアクセスが許可されるもの) が格納される VSTS プロジェクトの事前構成済みサービス エンドポイントの名前 (ジェネリック型)。
-| AccountId | string | 常時 | True |  |  | アカウントを識別する GUID。 アカウントの URL から取得できます。
-| BinariesURL | string | 常時 | True |  |  | ファジー マシンでバイナリのダウンロードに使用されるセミコロン区切りの URL 一覧。 URL が公開されていることを確認してください。
-| SeedsURL | string | 常時 | False |  |  | ファジー マシンでシードのダウンロードに使用されるセミコロン区切りの URL 一覧。 URL が公開されていることを確認してください。
-| OSPlatformType | pickList | 常時 | True | Windows | Linux、Windows | ファジー ジョブを実行するマシンの OS プラットフォームの種類。
-| WindowsEdition | string | OSPlatformType = Windows | True | Server 2008 R2 |  | ファジー テスト ジョブが実行されるマシンの OS エディション。
-| LinuxEdition | string | OSPlatformType = Linux | True | Redhat |  | ファジー テスト ジョブが実行されるマシンの OS エディション。
-| PreSubmissionCommand | string | 常時 | False |  |  | ファジー テスト ジョブの送信前にテスト対象プログラムとその依存関係をインストールするためにテスト マシン上で実行する必要があるスクリプト。
-| SeedDirectory | string | 常時 | True |  |  | シードが格納されるファジー テスト マシン上のディレクトリのパス。 詳細については、「[シード ファイル ディレクトリ](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/03-choose-seed-files#seed-file-directory)」を参照してください。
-| SeedExtension | string | 常時 | True |  |  | シードのファイル拡張子。
-| TestDriverExecutable | string | 常時 | True |  |  | ファジー テスト マシン上のターゲット実行可能ファイルのパス。 詳細については、「[EPE の完全なパス](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/02-choose-exe#full-path-to-the-epe)」を参照してください。
-| TestDriverExeType | pickList | 常時 | True | x86 | amd64、x86 | ターゲット実行可能ファイルのアーキテクチャです。
-| TestDriverParameters | string | 常時 | True | "%testfile%" |  | テスト対象の実行可能ファイルに渡されるコマンドライン引数。 **"%testfile%"** という記号 (二重引用符を含む) は、テスト ドライバーで解析することになるターゲット ファイルの完全なパスに自動的に置き換えられることに注意してください (必須)。 詳細については、「[コマンドライン引数](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/02-choose-exe#command-line-arguments)」を参照してください。
-| ClosesItself | boolean | 常時 | True | true |  | 完了時にテスト ドライバーが自動的に終了する場合はオンにします (たとえば、テスト ドライバーで入力ファイルの解析後にすぐに終了する場合など)。テスト ドライバーを強制的に終了する必要がある場合はオフにします (たとえば、テスト ドライバーが、入力の解析後もメイン ウィンドウを開いたままにする GUI アプリケーションの場合など)。 詳細については、「[自動終了](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/05-scope-exe-lifetime#self-termination)」を参照してください。
-| MaxDurationInSeconds | string | 常時 | True | 5 |  | テスト ドライバーの最大継続時間 (秒)。 ターゲット プログラムが入力ファイルを解析するのに必要であると考えられる最大推定時間を指定します。 この推定の精度が高いほど、ファジー テストの実行効率が上がります。 詳細については、「[予想される実行時間の最大値](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/05-scope-exe-lifetime#maximum-expected-execution-duration)」を参照してください。
-| CanRunRepeat | boolean | 常時 | True | true |  | 永続化 (または共有) されたグローバルな状態に依存することなくテスト ドライバーを繰り返し実行できる場合は、チェック ボックスをオンにします。 詳細については、「[最初からの実行](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/04-describe-exe-characteristics#runs-from-scratch)」を参照してください。
-| CanTestDriverBeRenamed | boolean | 常時 | True | false |  | テスト ドライバー実行可能ファイルがその名前を変更しても正しく動作する場合は、チェック ボックスをオンにします。 詳細については、「[名前の変更と並列化](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/04-describe-exe-characteristics#can-be-renamed-and-parallelized)」を参照してください。
-| SingleOsProcess | boolean | 常時 | True | false |  | テスト ドライバーが単一の OS プロセスで動作する場合はチェック ボックスをオンにします。テスト ドライバーによって追加のプロセスが生成される場合は、チェック ボックスをオフにします。 詳細については、「[単一プロセス](https://docs.microsoft.com/security-risk-detection/how-to/submit-windows-fuzzing-job/04-describe-exe-characteristics#single-process)」を参照してください。
-
 ## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers タスク
 
 | **InputType**      | **Type**     | **適用条件**            | **必須** | **既定値**             | **オプション (候補リスト)**                                   | **説明**                                                                                                                                                                                                                                                                                                                   |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | userProvideBuildInfo | pickList | 常時 | True | 自動 | auto、msBuildInfo | Roslyn 分析用の MSBuild バージョン、MSBuild アーキテクチャ、およびビルド コマンド ラインを指定するユーザー向けのオプション。 **Auto** が選択されている場合、このタスクによって、同じパイプラインの (ビルドの) 以前の **MSBuild**、**VSBuild**、 **.NET Core** タスクからビルド情報が取得されます。
 | msBuildVersion | pickList | userProvideBuildInfo == msBuildInfo | True | 16.0 | 15.0、16.0 | MSBuild のバージョン。
-| msBuildArchitecture | pickList | userProvideBuildInfo == msBuildInfo | True | x86 | DotNetCore、x64、x86 | MSBuild アーキテクチャ。 注:ビルド コマンドラインから **dotnet.exe build** を呼び出す場合は、 **[Via .Net Core]\(.NET Core 経由\)** オプションを選択します。
+| msBuildArchitecture | pickList | userProvideBuildInfo == msBuildInfo | True | x86 | DotNetCore、x64、x86 | MSBuild アーキテクチャ。 注:ビルド コマンドラインから **dotnet.exe build** を呼び出す場合は、 **[Via .NET Core]\(.NET Core 経由\)** オプションを選択します。
 | msBuildCommandline | string | userProvideBuildInfo == msBuildInfo | True |  |  | ソリューションまたはプロジェクトをコンパイルするための完全なビルド コマンドライン。<br/><br/>注:このコマンドラインは、**MSBuild.exe** または **dotnet.exe** の完全なパスで始める必要があります。<br/>コマンドは、作業ディレクトリとして $(Build.SourcesDirectory) を使用して実行されます。
 | rulesetName | pickList | 常時 | False | 推奨 | Custom、None、Recommended、Required | 使用する名前付きルールセット。<br/><br/>`Ruleset Configured In Your Visual Studio Project File(s)` を選択した場合は、VS プロジェクト ファイルで事前に構成されたルールセットが使用されます。 `Custom` を選択した場合は、カスタム ルールセットのパス オプションを設定できます。
 | rulesetVersion | pickList | rulesetName == Required OR rulesetName == Recommended | False | 最新 | 8.0、8.1、8.2、Latest、LatestPreRelease | 選択した SDL ルールセットのバージョン。
@@ -148,7 +125,6 @@ ms.locfileid: "82594221"
 | AntiMalware | boolean | AllTools = false | True | true |  | マルウェア対策ビルド タスクによって生成された結果を発行します。
 | BinSkim | boolean | AllTools = false | True | true |  | BinSkim ビルド タスクによって生成された結果を発行します。
 | CredScan | boolean | AllTools = false | True | true |  | Credential Scanner ビルド タスクによって生成された結果を発行します。
-| MSRD | boolean | AllTools = false | True | true |  | MSRD ビルド タスクによって開始された MSRD ジョブのジョブ情報とジョブの url を発行します。 MSRD ジョブは長時間実行され、個別のレポートが提供されます。
 | RoslynAnalyzers | boolean | AllTools = false | True | false |  | Roslyn アナライザー ビルド タスクによって生成された結果を発行します。
 | TSLint | boolean | AllTools = false | True | true |  | TSLint ビルド タスクによって生成された結果を発行します。 レポートでは、JSON 形式の TSLint ログのみがサポートされていることに注意してください。 別の形式を選択した場合は、それに応じて TSLint ビルド タスクを更新してください。
 | ToolLogsNotFoundAction | picklist | 常時 | True | Standard | Error、None、Standard、Warning | 選択したツール (または [All Tools]\(すべてのツール\) がオンの場合はすべてのツール) のログが見つからない場合 (つまりツールが実行されなかった場合) に実行するアクション。<br/><br/>**オプション:**<br/>**None:** メッセージをアクセス可能な詳細な出力ストリームに書き込むには、VSTS 変数 **system.debug** を **true** に設定する必要があります。<br/>**Standard:** (既定値) ツールのログが見つからなかったことを示す標準出力メッセージを書き込みます。<br/>**警告:** ツールのログが見つからなかったことを示す黄色の警告メッセージを書き込みます。これは、ビルドの概要ページに警告として表示されます。<br/>**エラー:** 赤色のエラー メッセージを書き込み、例外をスローして、ビルドを中断します。 個々のツールを選択し、どのツールが実行されたかを確認するには、このオプションを使用します。
@@ -164,7 +140,6 @@ ms.locfileid: "82594221"
 | BinSkim | boolean | AllTools = false | True | false |  | BinSkim ビルド タスクによって生成されたレポート結果。
 | BinSkimBreakOn | pickList | AllTools = true OR BinSkim = true | True | エラー | Error、WarningAbove | 報告する結果のレベル。
 | CredScan | boolean | AllTools = false | True | false |  | Credential Scanner ビルド タスクによって生成された結果を報告します。
-| MSRD | boolean | AllTools = false | True | false |  | MSRD ビルド タスクによって開始された MSRD ジョブのジョブ情報とジョブの url を報告します。 MSRD ジョブは長時間実行され、個別のレポートが提供されます。
 | RoslynAnalyzers | boolean | AllTools = false | True | false |  | Roslyn Analyzer ビルド タスクによって生成された結果を報告します。
 | RoslynAnalyzersBreakOn | pickList | AllTools = true OR RoslynAnalyzers = true | True | エラー | Error、WarningAbove | 報告する結果のレベル。
 | TSLint | boolean | AllTools = false | True | false |  | TSLint ビルド タスクによって生成された結果を報告します。 レポートでは、JSON 形式の TSLint ログのみがサポートされていることに注意してください。 別の形式を選択した場合は、それに応じて TSLint ビルド タスクを更新してください。

@@ -4,21 +4,21 @@ description: Azure で実行されている仮想マシンのメンテナンス�
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77916084"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028587"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell を使用した計画メンテナンスの処理
 
 **この記事は、Linux と Windows の両方を実行する仮想マシンに適用されます。**
 
-Azure PowerShell を使用して、VM の[メンテナンス](maintenance-notifications.md)の予定を確認できます。 計画メンテナンスに関する情報は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
+Azure PowerShell を使用して、VM の[メンテナンス](maintenance-notifications.md)の予定を確認できます。 計画メンテナンスに関する情報は、[Get-AzVM](/powershell/module/az.compute/get-azvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
   
 計画メンテナンスがある場合にのみ、メンテナンス情報が返されます。 VM に影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 
@@ -40,7 +40,7 @@ MaintenanceRedeployStatus では、次のプロパティが返されます。
 
 
 
-また、VM を指定しないで [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を実行すると、リソース グループ内のすべての VM のメンテナンス状態を取得することもできます。
+また、VM を指定しないで [Get-AzVM](/powershell/module/az.compute/get-azvm) を実行すると、リソース グループ内のすべての VM のメンテナンス状態を取得することもできます。
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status

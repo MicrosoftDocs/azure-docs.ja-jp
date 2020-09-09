@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512981"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -27,11 +27,11 @@ ms.locfileid: "79233787"
 
 1. Azure Portal 上部のナビゲーションの **[Cloud Shell]** ボタンをクリックします
 
-   ![](media/quickstart-powershell/shell-icon.png)
+   ![Azure portal から Azure Cloud Shell を起動する方法を示すスクリーンショット。](media/quickstart-powershell/shell-icon.png)
 
 2. ドロップダウンで PowerShell 環境を選ぶと、Azure ドライブ `(Azure:)` になります
 
-   ![](media/quickstart-powershell/environment-ps.png)
+   ![Azure Cloud Shell 用の PowerShell 環境を選択する方法を示すスクリーンショット。](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>PowerShell コマンドを実行する
 

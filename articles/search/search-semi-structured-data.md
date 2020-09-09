@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: ce3b3839319de38020b968ff8db1ee6713b29c47
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 06/23/2020
+ms.openlocfilehash: 8a615dc02b78993a18a86def9d8f496ba0bba922
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78269976"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929705"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>チュートリアル:Azure Storage に格納されている JSON BLOB のインデックスを REST で作成する
 
 Azure Cognitive Search は、半構造化データの読み取り方法を解している[インデクサー](search-indexer-overview.md)を使用して、Azure Blob Storage に格納されている JSON のドキュメントや配列のインデックスを作成することができます。 半構造化データには、データ内のコンテンツを区別するタグやマーキングが含まれます。 このデータは、非構造化データ (全体にインデックスを付ける必要がある) と正式に構造化されたデータ (フィールドごとにインデックス付け可能な、リレーショナル データベース スキーマなどのデータ モデルに準拠) を折衷するものです。
 
-このチュートリアルでは、Postman と [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して次のタスクを実行します。
+このチュートリアルでは、Postman と [Search REST API](/rest/api/searchservice/) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * Azure BLOB コンテナー用に Azure Cognitive Search データ ソースを構成する
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure ストレージ](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure ストレージ](../storage/common/storage-account-create.md)
 + [Postman デスクトップ アプリ](https://www.getpostman.com/)
 + [作成](search-create-service-portal.md)または[既存の検索サービスの用意](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[BLOB]** サービスをクリックします。
 
-1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。
+1. [BLOB コンテナーを作成](../storage/blobs/storage-quickstart-blobs-portal.md)してサンプル データを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
 1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。
 
@@ -112,13 +112,13 @@ Postman を開始し、HTTP 要求を設定します。 このツールに慣れ
 
   ![Postman の要求 URL とヘッダー](media/search-get-started-postman/postman-url.png "Postman の要求 URL とヘッダー")
 
-URI では API バージョンを指定する必要があり、各呼び出しで **201 Created** が返される必要があります。 JSON 配列の使用を目的として一般公開が開始されている API バージョンは、`2019-05-06` です。
+URI では API バージョンを指定する必要があり、各呼び出しで **201 Created** が返される必要があります。 JSON 配列の使用を目的として一般公開が開始されている API バージョンは、`2020-06-30` です。
 
 ## <a name="3---create-a-data-source"></a>3 - データ ソースを作成する
 
-[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) では、インデックス作成の対象データを指定する Azure Cognitive Search オブジェクトが作成されます。
+[データ ソースの作成 API](/rest/api/searchservice/create-data-source) では、インデックス作成の対象データを指定する Azure Cognitive Search オブジェクトが作成されます。
 
-1. この呼び出しのエンドポイントを `https://[service name].search.windows.net/datasources?api-version=2019-05-06` に設定します。 `[service name]` を検索サービスの名前に置き換えます。 
+1. この呼び出しのエンドポイントを `https://[service name].search.windows.net/datasources?api-version=2020-06-30` に設定します。 `[service name]` を検索サービスの名前に置き換えます。 
 
 1. 次の JSON を要求本文にコピーします。
 
@@ -159,9 +159,9 @@ URI では API バージョンを指定する必要があり、各呼び出し�
 
 ## <a name="4---create-an-index"></a>4 - インデックスを作成する
     
-2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-index) であり、検索可能なすべてのデータを格納する Azure Cognitive Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
+2 つ目の呼び出しは[インデックスの作成 API](/rest/api/searchservice/create-index) であり、検索可能なすべてのデータを格納する Azure Cognitive Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
 
-1. この呼び出しのエンドポイントを `https://[service name].search.windows.net/indexes?api-version=2019-05-06` に設定します。 `[service name]` を検索サービスの名前に置き換えます。
+1. この呼び出しのエンドポイントを `https://[service name].search.windows.net/indexes?api-version=2020-06-30` に設定します。 `[service name]` を検索サービスの名前に置き換えます。
 
 1. 次の JSON を要求本文にコピーします。
 
@@ -234,9 +234,9 @@ URI では API バージョンを指定する必要があり、各呼び出し�
 
 ## <a name="5---create-and-run-an-indexer"></a>5 - インデクサーを作成して実行する
 
-インデクサーはデータ ソースに接続してターゲットの検索インデックスにデータをインポートし、データ更新を自動化するスケジュールを必要に応じて提供します。 REST API は[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)です。
+インデクサーはデータ ソースに接続してターゲットの検索インデックスにデータをインポートし、データ更新を自動化するスケジュールを必要に応じて提供します。 REST API は[インデクサーの作成](/rest/api/searchservice/create-indexer)です。
 
-1. この呼び出しの URL を `https://[service name].search.windows.net/indexers?api-version=2019-05-06` に設定します。 `[service name]` を検索サービスの名前に置き換えます。
+1. この呼び出しの URL を `https://[service name].search.windows.net/indexers?api-version=2020-06-30` に設定します。 `[service name]` を検索サービスの名前に置き換えます。
 
 1. 次の JSON を要求本文にコピーします。
 
@@ -281,7 +281,7 @@ URI では API バージョンを指定する必要があり、各呼び出し�
 
 1. 動詞を **GET** に変更します。
 
-1. この呼び出しの URL を `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true` に設定します。 `[service name]` を検索サービスの名前に置き換えます。
+1. この呼び出しの URL を `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true` に設定します。 `[service name]` を検索サービスの名前に置き換えます。
 
 1. 要求を送信します。 これは、指定のないフルテキスト検索クエリです。インデックスで取得可能としてマークされたすべてのフィールドがドキュメント数と共に返されます。 応答は次のようになります。
 
@@ -313,7 +313,7 @@ URI では API バージョンを指定する必要があり、各呼び出し�
             . . . 
     ```
 
-1. 結果を制限してフィールドを絞り込むために、`$select` クエリ パラメーターを追加します (`https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`)。  このクエリでは 100 件のドキュメントが一致しますが、Azure Cognitive Search から結果として返されるのは、既定では 50 件のみです。
+1. 結果を制限してフィールドを絞り込むために、`$select` クエリ パラメーターを追加します (`https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true`)。  このクエリでは 100 件のドキュメントが一致しますが、Azure Cognitive Search から結果として返されるのは、既定では 50 件のみです。
 
    ![パラメーター化クエリ](media/search-semi-structured-data/lastquery.png "パラメーター化クエリ")
 
@@ -333,7 +333,7 @@ URI では API バージョンを指定する必要があり、各呼び出し�
 インデックス、インデクサー、データ ソースは、ポータルを使用して削除できます。 または、**DELETE** を使用して、各オブジェクトの URL を指定します。 次のコマンドは、インデクサーを削除します。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
 正常に削除されると、状態コード 204 が返されます。

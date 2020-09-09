@@ -4,12 +4,13 @@ description: Windows で Service Fabric Reliable Services と Reliable Actors �
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 16840eb397dad697d4f3b9f361225e98442ae39e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75466190"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016208"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows で Service Fabric Reliable Services と Reliable Actors をコンテナー化する
 
@@ -93,7 +94,7 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
    </Policies>
    ```
 
-9. コンテナーの分離モードを構成するには、「[分離モードの構成]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)」を参照してください。 Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+9. コンテナーの分離モードを構成するには、「[分離モードの構成]( ./service-fabric-get-started-containers.md#configure-isolation-mode)」を参照してください。 Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
    ```xml
    <Policies>

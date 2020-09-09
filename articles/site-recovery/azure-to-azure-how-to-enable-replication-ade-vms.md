@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408637"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135789"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -93,7 +93,7 @@ Azure portal から Disk Encryption 対応 VM のレプリケーションを有�
     - **ターゲットの場所**:ソース仮想マシンのデータがレプリケートされる場所。 Site Recovery では、選択したマシンの場所に基づいて、適切なターゲット リージョンの一覧が表示されます。 Recovery Services コンテナーと同じ場所にすることをお勧めします。
     - **ターゲット サブスクリプション**:ディザスター リカバリーに使用されるターゲット サブスクリプション。 既定では、ターゲット サブスクリプションはソース サブスクリプションと同じです。
     - **ターゲット リソース グループ**:レプリケートされたすべての仮想マシンが属するリソース グループ。 既定では、Site Recovery により、ターゲット リージョン内に新しいリソース グループが作成されます。 名前のサフィックスは "asr" です。 Azure Site Recovery によって作成されたリソース グループが既に存在する場合は、そのグループが再利用されます。 次のセクションで示すように、それをカスタマイズすることもできます。 ターゲット リソース グループの場所は、ソース仮想マシンがホストされているリージョンを除き、どの Azure リージョンでもかまいません。
-    - **ターゲット仮想ネットワーク**:既定では、Site Recovery により、ターゲット リージョン内に新しい仮想ネットワークが作成されます。 名前のサフィックスは "asr" です。 これはソース ネットワークにマップされ、今後の保護で使用されます。 ネットワーク マッピングの詳細については、[こちら](site-recovery-network-mapping-azure-to-azure.md)を参照してください。
+    - **ターゲット仮想ネットワーク**:既定では、Site Recovery により、ターゲット リージョン内に新しい仮想ネットワークが作成されます。 名前のサフィックスは "asr" です。 これはソース ネットワークにマップされ、今後の保護で使用されます。 ネットワーク マッピングの詳細については、[こちら](./azure-to-azure-network-mapping.md)を参照してください。
     - **ターゲット ストレージ アカウント (ソース VM でマネージド ディスクが使用されていない場合)** :既定では、Site Recovery によって、ソース VM ストレージと同じ構成で新しいターゲット ストレージ アカウントが作成されます。 ストレージ アカウントが既に存在する場合は、再利用されます。
     - **レプリカ マネージド ディスク (ソース VM でマネージド ディスクが使用されている場合)** :Site Recovery によってターゲット リージョン内に新しいレプリカ マネージド ディスクが作成され、ソース VM のマネージド ディスクと同じストレージ タイプ (Standard または Premium) のソース VM のマネージド ディスクがミラーリングされます。
     - **ストレージ アカウントのキャッシュ**:Site Recovery では、"*キャッシュ ストレージ*" と呼ばれる追加のストレージ アカウントがソース リージョンに必要です。 ソース VM 上の変更はすべて追跡され、キャッシュ ストレージ アカウントに送信されます。 次に、これらは、ターゲットの場所にレプリケートされます。

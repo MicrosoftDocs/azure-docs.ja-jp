@@ -3,17 +3,17 @@ title: Application Insights で Docker アプリケーションを監視する |
 description: Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669609"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324422"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights で Docker アプリケーションを監視する (非推奨)
 
 > [!NOTE]
-> このソリューションは非推奨になっています。 コンテナー監視の現状について詳しくは、[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) に関する記事を確認することをお勧めします。
+> このソリューションは非推奨になっています。 コンテナー監視の現状について詳しくは、[コンテナーに対する Azure Monitor](../insights/container-insights-overview.md) に関する記事を確認することをお勧めします。
 
 [Docker](https://www.docker.com/) コンテナーから取得したライフサイクル イベントとパフォーマンス カウンターを Application Insights でグラフ化できます。 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) イメージをホストのコンテナーにインストールすると、ホストとその他のイメージのパフォーマンス カウンターが表示されます。
 
@@ -23,15 +23,15 @@ Docker ホストで [Application Insights イメージ](https://hub.docker.com/r
 
 * ホストで実行されているすべてのコンテナーに関するライフサイクル テレメトリ (開始や停止など)。
 * すべてのコンテナーのパフォーマンス カウンター。 CPU、メモリ、ネットワークの使用状況など。
-* コンテナーで実行されているアプリに [Application Insights SDK for Java をインストールした](../../azure-monitor/app/java-get-started.md) 場合、これらのアプリのすべてのテレメトリにコンテナーとホスト マシンを識別するプロパティが追加されます。 たとえば、1 つ以上のホストで実行中のアプリのインスタンスがある場合、アプリのテレメトリをホスト別に簡単にフィルター処理できます。
+* コンテナーで実行されているアプリに [Application Insights SDK for Java をインストールした](./java-get-started.md) 場合、これらのアプリのすべてのテレメトリにコンテナーとホスト マシンを識別するプロパティが追加されます。 たとえば、1 つ以上のホストで実行中のアプリのインスタンスがある場合、アプリのテレメトリをホスト別に簡単にフィルター処理できます。
 
 ## <a name="set-up-your-application-insights-resource"></a>Application Insights リソースを設定する
 
-1. [Microsoft Azure Portal](https://azure.com) にサインインし、アプリ用の Application Insights リソースを開きます。または[新しく作成](../../azure-monitor/app/create-new-resource.md )します。 
+1. [Microsoft Azure Portal](https://azure.com) にサインインし、アプリ用の Application Insights リソースを開きます。または[新しく作成](./create-new-resource.md)します。 
    
-    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](../../azure-monitor/app/create-new-resource.md )必要があります。 テレメトリの表示と分析はこの場所で行います (アプリの種類には [General (一般)] を選択します)。
+    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](./create-new-resource.md)必要があります。 テレメトリの表示と分析はこの場所で行います (アプリの種類には [General (一般)] を選択します)。
    
-    ただし、アプリの開発者である場合は、各アプリに [Application Insights SDK を追加する](../../azure-monitor/app/java-get-started.md) ことをお勧めします。 すべてのアプリが 1 つのビジネス アプリケーションのコンポーネントである場合は、テレメトリを 1 つのリソースに送信するように構成することで、同じリソースを使用して Docker のライフサイクルとパフォーマンスのデータを表示できます。 
+    ただし、アプリの開発者である場合は、各アプリに [Application Insights SDK を追加する](./java-get-started.md) ことをお勧めします。 すべてのアプリが 1 つのビジネス アプリケーションのコンポーネントである場合は、テレメトリを 1 つのリソースに送信するように構成することで、同じリソースを使用して Docker のライフサイクルとパフォーマンスのデータを表示できます。 
    
     3 番目のシナリオは、アプリの大半は自分で開発しているが、それらのテレメトリの表示には別のリソースを使用している場合です。 その場合は、Docker データ用の別個のリソースを作成できます。
 
@@ -54,7 +54,7 @@ Docker ホストで [Application Insights イメージ](https://hub.docker.com/r
 Docker ホストごとに 1 つの Application Insights イメージが必要です。 アプリケーションが複数の Docker ホストにデプロイされている場合は、上のコマンドをすべてのホストで繰り返します。
 
 ## <a name="update-your-app"></a>アプリケーションを更新する
-アプリケーションが [Application Insights SDK for Java](../../azure-monitor/app/java-get-started.md) でインストルメント化されている場合は、次の行を、プロジェクト内の ApplicationInsights.xml ファイルの `<TelemetryInitializers>` 要素の下に追加します。
+アプリケーションが [Application Insights SDK for Java](./java-get-started.md) でインストルメント化されている場合は、次の行を、プロジェクト内の ApplicationInsights.xml ファイルの `<TelemetryInitializers>` 要素の下に追加します。
 
 ```xml
 
@@ -73,7 +73,7 @@ Docker タイルをクリックします。
 ### <a name="docker-container-events"></a>Docker コンテナーのイベント
 ![例](./media/docker/13.png)
 
-個々のイベントを調べるには、 [[検索]](../../azure-monitor/app/diagnostic-search.md)をクリックします。 検索およびフィルターを使用して必要なイベントを探します。 イベントをクリックすると詳細情報が表示されます。
+個々のイベントを調べるには、 [[検索]](./diagnostic-search.md)をクリックします。 検索およびフィルターを使用して必要なイベントを探します。 イベントをクリックすると詳細情報が表示されます。
 
 ### <a name="exceptions-by-container-name"></a>コンテナー名別の例外
 ![例](./media/docker/14.png)
@@ -90,7 +90,7 @@ AI SDK でインストルメント化されたアプリケーションから送�
 
 *アプリ自体からテレメトリを取得するにはどうすればよいですか*
 
-* Application Insights SDK をアプリにインストールします。 詳細情報: [Java Web アプリ](../../azure-monitor/app/java-get-started.md)、[Windows Web アプリ](../../azure-monitor/app/asp-net.md)。
+* Application Insights SDK をアプリにインストールします。 詳細情報: [Java Web アプリ](./java-get-started.md)、[Windows Web アプリ](./asp-net.md)。
 
 ## <a name="video"></a>ビデオ
 
@@ -98,6 +98,7 @@ AI SDK でインストルメント化されたアプリケーションから送�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Java 向けの Application Insights](../../azure-monitor/app/java-get-started.md)
-* [Node.js 向けの Application Insights](../../azure-monitor/app/nodejs.md)
-* [ASP.NET 向けの Application Insights](../../azure-monitor/app/asp-net.md)
+* [Java 向けの Application Insights](./java-get-started.md)
+* [Node.js 向けの Application Insights](./nodejs.md)
+* [ASP.NET 向けの Application Insights](./asp-net.md)
+

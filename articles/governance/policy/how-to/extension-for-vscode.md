@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code 用の Azure Policy 拡張機能
-description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Resource Manager エイリアスを検索する方法について説明します。
-ms.date: 03/07/2020
+description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Azure Resource Manager エイリアスを検索する方法について説明します。
+ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c91d39414a376b410e52c2ba60ce15ed0c5054f6
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182567"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970758"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
@@ -34,7 +34,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
 1. Visual Studio Code を開きます。
 
-1. メニュー バーから、 **[表示]** > **[拡張機能]** の順に移動します。
+1. メニュー バーから、 **[ビュー]**  >  **[拡張機能]** の順に移動します。
 
 1. 検索ボックスに「**Azure Policy**」と入力します。
 
@@ -68,7 +68,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
    - コマンド パレット
 
-     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
+     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
 
      :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="コマンド パレットからの Visual Studio Code の Azure クラウド サインイン" border="false":::
 
@@ -82,11 +82,11 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
    - コマンド パレット: 
 
-     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Azure: Select Subscriptions**」と入力します。
+     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Select Subscriptions**」と入力します。
 
    - ウィンドウのフッター
 
-     画面の下部にあるウィンドウのフッターで、**Azure: \<ご自分のアカウント\>** に一致するセグメントを選択します。
+     画面の下部にあるウィンドウのフッターで、**Azure: \<your account\>** に一致するセグメントを選択します。
 
 1. フィルター ボックスを使用して、名前でサブスクリプションをすばやく検索します。 次に、各サブスクリプションのチェックをオンまたはオフにして、Azure Policy 拡張機能によって表示されるサブスクリプションを設定します。 表示するサブスクリプションの追加または削除が完了したら、 **[OK]** を選択します。
 
@@ -99,7 +99,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 - **リソース グループ**
   - 属するリソース グループごとのすべてのリソース
 
-既定では、この拡張機能により "リソース プロバイダー" の部分が、既存のリソースおよびポリシー エイリアスを持つリソースによってフィルター処理されます。 すべてのリソース グループをフィルター処理せずに表示するには、 **[設定]** > **[拡張機能]**  >  **[Azure Policy]** でこの動作を変更します。
+既定では、この拡張機能により "リソース プロバイダー" の部分が、既存のリソースおよびポリシー エイリアスを持つリソースによってフィルター処理されます。 すべてのリソース グループをフィルター処理せずに表示するには、 **[設定]**  >  **[拡張機能]**  >  **[Azure Policy]** でこの動作を変更します。
 
 1 つのサブスクリプションに数百または数千のリソースがあるお客様は、リソースを見つけやすい検索方法を好む場合があります。 Azure Policy 拡張機能を使用すると、次の手順で特定のリソースを検索できるようになります。
 
@@ -111,7 +111,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Resources: Search Resources**」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Resources: Search Resources**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -121,11 +121,14 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
 ## <a name="discover-aliases-for-resource-properties"></a>リソース プロパティのエイリアスを検出する
 
-リソースを選択すると、検索インターフェイスを使用したか、ツリー ビューで選択したかに関係なく、リソースとその Resource Manager のプロパティ値のすべてを表す JSON ファイルが Azure Policy 拡張機能によって開かれます。
+リソースを選択すると、検索インターフェイスを使用したか、ツリー ビューで選択したかに関係なく、リソースとその Azure Resource Manager のプロパティ値のすべてを表す JSON ファイルが Azure Policy 拡張機能によって開かれます。
 
 リソースが開いたら、リソース マネージャーのプロパティ名または値の上にカーソルを合わせると、Azure Policy エイリアスが表示されます (存在する場合)。 この例では、リソースの種類は `Microsoft.Compute/virtualMachines` リソースであり、**properties.storageProfile.imageReference.offer** プロパティの上にカーソルが合わせられています。 カーソルを合わせると、一致するエイリアスが表示されます。
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy 拡張機能でカーソルを合わせてリソース マネージャーのプロパティのエイリアスを表示する" border="false":::
+
+> [!NOTE]
+> VS Code 拡張機能では、Resource Manager モードのプロパティのみが公開され、[リソースプロバイダー モード](../concepts/definition-structure.md#mode)のプロパティは表示されません。
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>ポリシーと割り当てを検索して表示する
 
@@ -139,7 +142,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Policies: Search Policies**」と入力します。
+     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Policies: Search Policies**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -151,7 +154,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
 ## <a name="sign-out"></a>サインアウトする
 
-メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
+メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
 ## <a name="next-steps"></a>次のステップ
 

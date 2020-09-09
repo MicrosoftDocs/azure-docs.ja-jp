@@ -6,18 +6,18 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427371"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494997"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>SQL プールでのストアド プロシージャの使用
+# <a name="use-stored-procedures-in-sql-pool"></a>SQL プールでのストアド プロシージャの使用
 
 ソリューション開発のための Synapse SQL プール (データ ウェアハウス) でのストアド プロシージャの実装に関するヒント。
 
@@ -27,7 +27,7 @@ SQL プールでは、SQL Server で使用される多数の T-SQL 機能がサ�
 
 ただし、SQL プールのスケールとパフォーマンスを維持するために、動作が異なる機能もあれば、サポートされていない機能もあります。
 
-## <a name="introducing-stored-procedures"></a>ストアド プロシージャの概要
+## <a name="stored-procedures-in-sql-pool"></a>SQL プールでのストアド プロシージャ
 
 ストアド プロシージャは、SQL コードをカプセル化し、データ ウェアハウスのデータの近くに格納するための優れた方法です。 ストアド プロシージャは、開発者がコードを管理しやすい単位にカプセル化して、ソリューションをモジュール化することに役立ち、コードの再利用性が大幅に促進されます。 ストアド プロシージャの柔軟性をさらに高めるために、各ストアド プロシージャはパラメーターを受け入れることもできます。
 

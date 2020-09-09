@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: efb450f4da58c73c134d9f6b6aad6193f786912d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669870"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "81415006"
 
 Marketo から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
+現在、外部 CRM と統合されている Marketo インスタンスはサポートされていません。
 
 >[!NOTE]
 >この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](https://developers.marketo.com/rest-api/)があることに注意してください。 次のようなエラーが発生することがあります。"Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Max rate limit '100' exceeded with in '20' secs (606) ('20' 秒以内の最大レート制限 '100' を超過した時間がありました (606))"、または "Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Concurrent access limit '10' reached (615) (同時アクセス制限 '10' に達しました (615))"。この場合には、サービスへの要求の数を減らすために、同時コピー アクティビティ実行を削減することを検討してください。

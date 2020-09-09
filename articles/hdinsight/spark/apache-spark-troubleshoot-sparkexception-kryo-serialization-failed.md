@@ -1,18 +1,18 @@
 ---
 title: JDBC または ODBC および Apache Thrift フレームワークの問題 - Azure HDInsight
 description: Azure HDInsight で JDBC/ODBC および Apache Thrift ソフトウェア フレームワークを使用して大規模なデータ セットをダウンロードできない
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 07/29/2019
-ms.openlocfilehash: 23693dcae2f361b88440ec88ca39fd8ed229d85a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 05/14/2020
+ms.openlocfilehash: a8dcd6ae844810213ed6706002cdb9a31de94f60
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75894255"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653583"
 ---
 # <a name="unable-to-download-large-data-sets-using-jdbcodbc-and-apache-thrift-software-framework-in-hdinsight"></a>HDInsight で JDBC/ODBC および Apache Thrift ソフトウェア フレームワークを使用して大規模なデータ セットをダウンロードできない
 
@@ -31,9 +31,12 @@ Buffer overflow. Available: 0, required: 36518. To avoid this, increase spark.kr
 
 この例外は、シリアル化プロセスで、許可されているよりも多くのバッファー領域を使用しようとした場合に発生します。 Spark 2.0.0 では、Apache Thrift ソフトウェア フレームワークを使用してデータにアクセスするときに、`org.apache.spark.serializer.KryoSerializer` クラスを使用してオブジェクトをシリアル化します。 ネットワーク経由で送信されるデータ、またはシリアル化された形式でキャッシュされるデータには、別のクラスが使用されます。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
-バッファー値 `Kryoserializer` を増やします。 `spark.kryoserializer.buffer.max` という名前のキーを追加して、`Custom spark2-thrift-sparkconf` の下の spark2 構成の `2048` に設定します。
+バッファー値 `Kryoserializer` を増やします。 `spark.kryoserializer.buffer.max` という名前のキーを追加して、`Custom spark2-thrift-sparkconf` の下の spark2 構成の `2047` に設定します。 影響を受けるすべてのコンポーネントを再起動します。
+
+> [!IMPORTANT]
+> `spark.kryoserializer.buffer.max` の値は 2048 未満でなければなりません。 小数値はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -43,4 +46,4 @@ Buffer overflow. Available: 0, required: 36518. To avoid this, increase spark.kr
 
 * [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」をご覧ください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

@@ -7,47 +7,32 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/11/2020
+ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75945818"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935757"
 ---
-# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Azure Cognitive Search に安全な接続を行うためのプライベート エンドポイントを作成する (プレビュー)
+# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
-この記事では、ポータルを使用して、パブリック IP アドレス経由ではアクセスできない新しい Azure Cognitive Search Service インスタンスを作成します。 次に、同じ仮想ネットワーク内に Azure 仮想マシンを構成し、それを使用してプライベート エンドポイント経由で検索サービスにアクセスします。
+この記事では、Azure portal を使用して、インターネット経由ではアクセスできない新しい Azure Cognitive Search Service インスタンスを作成します。 次に、同じ仮想ネットワーク内に Azure 仮想マシンを構成し、それを使用してプライベート エンドポイント経由で検索サービスにアクセスします。
+
+プライベート エンドポイントは、別サービスとして、[Azure Private Link](../private-link/private-link-overview.md) によって提供されます。 コストの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/private-link/)を参照してください。
 
 > [!Important]
-> Azure Cognitive Search のプライベート エンドポイントのサポートは、アクセスを制限されたプレビューとして、[要求に応じて](https://aka.ms/SearchPrivateLinkRequestAccess)利用できます。 このプレビュー機能は、サービス レベル アグリーメントなしで提供されています。したがってプロダクション ワークロードへの使用は推奨しません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 
->
-> プレビューへのアクセスが許可されると、Microsofto Azure portal または [Management REST API version 2019-10-06-Preview](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して、あなたの必要に応じてプライベート エンドポイントを構成できます。
->   
+> Azure Cognitive Search に対するプライベート エンドポイントのサポートは、Azure portal または [管理 REST API バージョン 2020-03-13](/rest/api/searchmanagement/) を使用して構成できます。 サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
 
-## <a name="why-use-private-endpoint-for-secure-access"></a>安全なアクセスのためにプライベート エンドポイントを使用する理由
+## <a name="why-use-a-private-endpoint-for-secure-access"></a>安全なアクセスのためにプライベート エンドポイントを使用する理由
 
-Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 Private Link をサポートするその他の PaaS サービスの一覧については、製品マニュアルの[可用性のセクション](../private-link/private-link-overview.md#availability)を参照してください。
+Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 Private Link をサポートするその他の PaaS サービスの一覧については、製品マニュアルの[可用性のセクション](../private-link/private-link-overview.md#availability)を参照してください。
 
 検索サービス向けのプライベート エンドポイントを使用すると、次のことが可能になります。
 
 - 検索サービス向けのパブリック エンドポイント上のすべての接続をブロックします。
 - 仮想ネットワークからのデータの流出をブロックし、仮想ネットワークのセキュリティを強化します。
 - [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) または プライベート ピアリングした[ExpressRoutes](../expressroute/expressroute-locations.md) を使用して、 仮想ネットワークに接続するオンプレミス ネットワーク経由で検索サービスに安全に接続します。
-
-> [!NOTE]
-> 現在、プレビューにはいくつかの制限事項があますので注意してください。
-> * **Basic** レベルの検索サービスに限って使用できます。 
-> * 米国西部 2、米国中西部、米国東部、米国中南部、オーストラリア東部、オーストラリア南東部でご利用いただけます。
-> * サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
-> * サービス エンドポイントがプライベートの場合、[検索 REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用してドキュメントをインデックスにアップロードする必要があります。
-> * Azure portal のプライベート エンドポイントのサポートオプションを表示するには、次のリンクを使用する必要があります。 https://portal.azure.com/?feature.enablePrivateEndpoints=true
-
-
-
-## <a name="request-access"></a>アクセスの要求 
-
-[[アクセスの要求]](https://aka.ms/SearchPrivateLinkRequestAccess) をクリックし、このプレビュー機能にサインアップします。 ここでのフォームでは、あなた自身、あなたの会社、および一般的なネットワーク トポロジに関する情報が要求されます。 あなたの要求がレビューされた時点で、追加の指示が記載された確認メールがあなたに届きます。
 
 ## <a name="create-the-virtual-network"></a>仮想ネットワークの作成
 
@@ -59,17 +44,13 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
     | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
-    | アドレス空間 | 「*10.1.0.0/16*」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | 場所 | **[米国西部]** 、またはあなたが使用しているリージョンを選択します。|
-    | サブネット - 名前 | 「*mySubnet*」と入力します。 |
-    | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
+    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
+    | リージョン | 目的のリージョンを選択します。 |
     |||
 
-1. 残りは既定値のままにして、 **[作成]** を選択します。
-
+1. 残りの設定については既定値を使用します。 **[確認および作成]** 、 **[作成]** の順にクリックします。
 
 ## <a name="create-a-search-service-with-a-private-endpoint"></a>プライベート エンドポイントを使用した検索サービスの作成
 
@@ -86,11 +67,11 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
     | URL | 一意の名前を入力します。 |
-    | 場所 | このプレビュー機能へのアクセスを要求するときにあなたが指定したリージョンを選択します。 |
-    | Pricing tier | **[価格レベルの変更]** を選択し、 **[Basic]** を選びます。 プレビューのためには、このレベルが必要です。 |
+    | 場所 | 目的のリージョンを選択します。 |
+    | Pricing tier | **[価格レベルの変更]** を選択し、目的のサービス レベルを選択します。 (**Free** レベルではサポートされていません。 **Basic** 以上である必要があります。) |
     |||
   
-1. **スケール** をクリックします。
+1. **[Next:スケール]** をクリックします。
 
 1. 残りは既定値のままにして、 **[次へ:ネットワーク]** を選択します。
 
@@ -105,11 +86,11 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | 場所 | **[米国西部]** を選択します。|
-    | 名前 | 「 *myPrivateEndpoint*」と入力します。  |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。  |
     | ターゲット サブリソース | 既定の **searchService** をそのまま使用します。 |
     | **ネットワーク** |  |
-    | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
-    | Subnet |  *[mySubnet]* を選択します。 |
+    | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
+    | Subnet | *[mySubnet]* を選択します。 |
     | **プライベート DNS 統合** |  |
     | プライベート DNS ゾーンとの統合  | 既定値 **[はい]** のままにします。 |
     | プライベート DNS ゾーン  | 既定値の * * (新規) privatelink.search.windows.net * * をそのまま使用します。 |
@@ -155,7 +136,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **ディスク** を選択します。
+1. **[Next:ディスク]** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -206,9 +187,9 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 このセクションでは、検索サービスへのプライベート ネットワークアクセスを確認し、プライベート エンドポイントにプライベート接続します。
 
-「検索サービスとのすべてのインタラクションには[検索 REST API](https://docs.microsoft.com/rest/api/searchservice/)が必要である」という上述の内容を再確認してください。 このプレビューでは、ポータルと .NET SDK はサポートされていません。
+検索サービス エンドポイントがプライベートの場合、一部のポータル機能が無効になります。 サービス レベル設定を表示して管理することはできますが、インデックス データやサービス内のさまざまなその他のコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
 1. 「nslookup [検索サービス名].search.windows.net」と入力します。
 
@@ -226,7 +207,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 1. サービスが完全に動作していることが確認できたら、VM からのクイックスタートは完了です。
 
-1.  *myVM* へのリモート デスクトップ接続を閉じます。 
+1. *myVM* へのリモート デスクトップ接続を閉じます。 
 
 1. パブリック エンドポイント上でサービスにアクセスできないことを確認するには、ローカル ワークステーションで Postman を開き、クイックスタートの最初のいくつかのタスクを実行します。 「リモートサーバーが存在しません」というエラー表示が出た場合には、検索サービスのプライベート エンドポイントが正常に構成されています。
 

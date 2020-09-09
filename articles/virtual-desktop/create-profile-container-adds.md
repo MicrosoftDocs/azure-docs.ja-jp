@@ -1,21 +1,19 @@
 ---
 title: Azure Files Active Directory Domain Services を使用した FSLogix プロファイル コンテナーの作成 - Azure
 description: この記事では、Azure Files と Azure Active Directory Domain Services を使用して FSLogix プロファイル コンテナーを作成する方法について説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607284"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825615"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Azure Files を使用して FSLogix プロファイル コンテナーを作成する
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure Files および Azure AD DS を使用してプロファイル コンテナーを作成する
 
 この記事では、Azure Files と Azure Active Directory Domain Services (AD DS) を使用して FSLogix プロファイル コンテナーを作成する方法について説明します。
 
@@ -41,7 +39,7 @@ ms.locfileid: "82607284"
 
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントを設定する
 
-次に、サーバー メッセージ ブロック (SMB) で Azure AD DS 認証を有効にします。 
+次に、サーバー メッセージ ブロック (SMB) で Azure AD DS 認証を有効にします。
 
 認証を有効にするには以下の手順に従ってください。
 
@@ -93,7 +91,8 @@ ms.locfileid: "82607284"
 
     これによって RDP ファイルがダウンロードされ、独自の資格情報を使用して VM にサインします。
 
-    ![[仮想マシンへの接続] ウィンドウの [RDP] タブのスクリーンショット。](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![[仮想マシンへの接続] ウィンドウの [RDP] タブのスクリーンショット。](media/rdp-tab.png)
 
 6. VM にサインインしたら、管理者としてコマンド プロンプトを実行します。
 
@@ -108,25 +107,31 @@ ms.locfileid: "82607284"
     - `<share-name>` を、以前に作成した共有の名前に置き換えます。
     - `<storage-account-key>` を、Azure からのストレージ アカウント キーに置き換えます。
 
-    次に例を示します。  
-  
+    次に例を示します。
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. 次のコマンドを実行して、Azure Files 共有への完全なアクセスをユーザーに許可します。
+8. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドを実行します。
 
      ```cmd
-     icacls <mounted-drive-letter>: /grant <user-email>:(f)
+     icacls <mounted-drive-letter>: /grant <user-email>:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-    - `<mounted-drive-letter>` を、ユーザーに使用してもらいたいドライブの文字に置き換えます。
-    - `<user-email>` を、このプロファイルを使用してセッション ホスト VM にアクセスするユーザーの UPN に置き換えます。
+    - `<mounted-drive-letter>` の部分は、ドライブのマップに使用したドライブ文字に置き換えます。
+    - `<user-email>` の部分は、共有にアクセスする必要があるユーザーか、そのユーザーが含まれる Active Directory グループの UPN に置き換えます。
 
     次に例を示します。
-     
+
      ```cmd
-     icacls y: /grant john.doe@contoso.com:(f)
+     icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
 ## <a name="create-a-profile-container"></a>プロファイル コンテナーを作成する
@@ -156,11 +161,13 @@ FSLogix プロファイル コンテナーを構成するには以下の手順�
 
 9.  **[Profiles]** を右クリックし、 **[新規]** を選択してから **[DWORD (32 ビット) 値]** を選択します。 値に「**Enabled**」という名前を付け、 **[データ]** 値を「**1**」に設定します。
 
-    ![[Profiles] キーのスクリーンショット。 REG_DWORD ファイルが強調表示され、そのデータ値は「1」に設定されています。](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![[Profiles] キーのスクリーンショット。 REG_DWORD ファイルが強調表示され、そのデータ値は「1」に設定されています。](media/dword-value.png)
 
 10. **[Profiles]** を右クリックし、 **[新規]** を選択してから **[複数行文字列値]** を選択します。 値に「**VHDLocations**」という名前を付け、Azure Files 共有の URI (`\\fsprofile.file.core.windows.net\share`) をデータ値として設定し入力します。
 
-    ![VHDLocations ファイルを示す Profiles キーのスクリーンショット。 そのデータ値には、Azure Files 共有の URI が示されています。](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![VHDLocations ファイルを示す Profiles キーのスクリーンショット。 そのデータ値には、Azure Files 共有の URI が示されています。](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>セッション ホストにユーザーを割り当てる
 
@@ -203,13 +210,13 @@ FSLogix プロファイル コンテナーを構成するには以下の手順�
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 

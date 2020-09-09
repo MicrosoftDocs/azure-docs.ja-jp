@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 02430e2dfa68ff0ce4bf116666d72a46e1120746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848857"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528832"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>クイック スタート:Java で Azure Cache for Redis を使用する
 
@@ -30,12 +30,24 @@ ms.locfileid: "83848857"
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-**[ホスト名]** と **[プライマリ]** アクセス キーの環境変数を追加します。 コードに機密情報を直接含める代わりに、これらの変数をコードから使用します。
+## <a name="setting-up-the-working-environment"></a>作業環境のセットアップ 
+
+オペレーティング システムに応じて、 **[ホスト名]** と **[プライマリ アクセス キー]** の環境変数を追加します。 コマンド プロンプトまたはターミナル ウィンドウを開き、次の値を設定します。
 
 ```CMD 
-set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
-set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+set REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
+
+```bash
+export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
+```
+
+プレースホルダーを次の値に置き換えます。
+
+- `<YOUR_HOST_NAME>`:Azure portal の Azure Cache for Redis リソースの *[プロパティ]* セクションから取得された DNS ホスト名。
+- `<YOUR_PRIMARY_ACCESS_KEY>`:Azure portal の Azure Cache for Redis リソースの *[アクセス キー]* セクションから取得されたプライマリ アクセス キー。
 
 ## <a name="create-a-new-java-app"></a>新しい Java アプリを作成する
 

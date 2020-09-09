@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 476af7dd40cd1f31d03f3bd80affac0ce10ef900
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546254"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927206"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Azure Cognitive Search の容量を調整する
 
@@ -21,7 +21,7 @@ ms.locfileid: "80546254"
 
 容量は、[選択するレベル](search-sku-tier.md)(レベルによってハードウェア特性を決定)、および予測されるワークロードに必要なレプリカとパーティションの組み合わせによって決まります。 調整のレベルとサイズによっては、容量の追加または削減に15分から数時間かかることがあります。 
 
-レプリカやパーティションの割り当てを変更する場合は、Azure Portal の使用をお勧めします。 ポータルでは、階層の上限に達しないようにするための許容される組み合わせに強制的に制限されます。 ただし、スクリプト ベースまたはコード ベースのプロビジョニング方法が必要な場合は、代わりに [Azure PowerShell](search-manage-powershell.md) または[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) を使用します。
+レプリカやパーティションの割り当てを変更する場合は、Azure Portal の使用をお勧めします。 ポータルでは、階層の上限に達しないようにするための許容される組み合わせに強制的に制限されます。 ただし、スクリプト ベースまたはコード ベースのプロビジョニング方法が必要な場合は、代わりに [Azure PowerShell](search-manage-powershell.md) または[管理 REST API](/rest/api/searchmanagement/services) を使用します。
 
 ## <a name="terminology-replicas-and-partitions"></a>用語: レプリカとパーティション
 

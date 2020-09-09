@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128836"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243241"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -43,14 +43,13 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 
 ## <a name="view-metrics-of-your-apis"></a>API のメトリックを表示する
 
-API Management はメトリックを 1 分間隔で出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 使用できるメトリックの一部の概要を次に示します。
+API Management はメトリックを 1 分間隔で出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 最も頻繁に使用される 2 つのメトリックを次に示します。 使用できるすべてのメトリックの一覧については、[サポートされているメトリック](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)に関するページを参照してください。
 
 * 容量: APIM サービスのアップグレードとダウングレードに関する判断に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 から 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
-* ゲートウェイ要求の合計: 期間中の API 要求の数。 
-* 成功したゲートウェイ要求: 304、307 および 301 よりも小さな値 (200 など) を含む成功した HTTP 応答コードを受信した API 要求の数。
-* 失敗したゲートウェイ要求: 400 および 500 よりも大きな値を含む失敗した HTTP 応答コードを受信した API 要求の数。
-* 未承認ゲートウェイ要求: 401、403、および 429 を含む HTTP 応答コードを受信した API 要求の数。
-* その他のゲートウェイ要求: 上記のカテゴリのいずれにも属していない HTTP 応答コード (たとえば 418) を受信した API 要求の数。
+* 要求: 対象の APIM サービスを通過する API トラフィックを分析するのに役立ちます。 メトリックは 1 分ごとに出力され、応答コード、場所、ホスト名、エラーなどのディメンションと共にゲートウェイ要求の数を報告します。 
+
+> [!IMPORTANT]
+> 次のメトリックは 2019 年 5 月の時点で非推奨であり、2023 年 8 月に廃止される予定です: ゲートウェイ要求の合計、成功したゲートウェイ要求、未承認ゲートウェイ要求、失敗したゲートウェイ要求、その他のゲートウェイ要求。 同等の機能を提供する要求メトリックに移行してください。
 
 ![メトリックのグラフ](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
@@ -60,9 +59,9 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. ドロップダウン リストで、関心のあるメトリックを選択します。 **Requests**など。 
-1. グラフには、API 呼び出しの合計数が表示されます。
-1. **[Requests]\(要求数\)** メトリックのディメンションを使用して、グラフをフィルター処理できます。 たとえば、 **[フィルターの追加]** をクリックし、 **[Backend Response Code]\(バックエンド応答コード\)** を選択し、値として「500」と入力します。 これで、API バックエンドで失敗した要求の数がグラフに表示されるようになりました。   
+2. ドロップダウン リストで、関心のあるメトリックを選択します。 **Requests**など。 
+3. グラフには、API 呼び出しの合計数が表示されます。
+4. **[Requests]\(要求数\)** メトリックのディメンションを使用して、グラフをフィルター処理できます。 たとえば、 **[フィルターの追加]** をクリックし、 **[Backend Response Code]\(バックエンド応答コード\)** を選択し、値として「500」と入力します。 これで、API バックエンドで失敗した要求の数がグラフに表示されるようになりました。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>許可されていない要求に対するアラート ルールをセットアップする
 
@@ -188,7 +187,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | correlationId | string | API Management によって割り当てられる一意の http 要求識別子 |
 | location | string | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
 | httpStatusCodeCategory | string | HTTP 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
-| resourceId | string | API Management リソース /SUBSCRIPTIONS/\<サブスクリプション>/RESOURCEGROUPS/\<リソース グループ>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<名前> の ID |
+| resourceId | string | API Management リソース /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> の ID |
 | properties | object | 現在の要求のプロパティ |
 | method | string | 受信要求の HTTP メソッド |
 | url | string | 受信要求の URL |

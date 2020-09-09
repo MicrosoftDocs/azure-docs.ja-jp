@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202298"
 ---
 # <a name="display-controls"></a>表示コントロール
 
@@ -34,7 +34,7 @@ ms.locfileid: "78188734"
 
  [セルフアサート技術プロファイル](self-asserted-technical-profile.md)の [Metadata](self-asserted-technical-profile.md#metadata) セクションで参照された [ContentDefinition](contentdefinitions.md) の `DataUri` をページ コントラクトのバージョン 2.0.0 以上に設定する必要があります。 次に例を示します。
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -66,7 +66,7 @@ ms.locfileid: "78188734"
 
 次の例では、既に存在するアドレスを使用して検証するメール アドレスを事前に入力します。
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -82,7 +82,7 @@ ms.locfileid: "78188734"
 
 特定の種類の表示コントロールには、特定のクレーム表示が必要です。 たとえば、種類が **VerificationControl** の表示コントロールには、**VerificationCode** が必要です。 属性 **ControlClaimType** を使用して、その必須のクレームに対して指定される DisplayClaim を指定します。 次に例を示します。
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ ms.locfileid: "78188734"
 
 次の例では、ユーザーが選択した **mfaType** クレームに基づいてメールまたは SMS でコードを送信します。
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -131,7 +131,7 @@ ms.locfileid: "78188734"
 
 次に例を示します。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

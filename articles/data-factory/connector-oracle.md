@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416826"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171265"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -76,6 +76,8 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 
 >[!TIP]
 >"ORA-01025:UPI パラメーターの値が有効範囲外です" というエラーが発生し、Oracle のバージョンが 8i である場合は、接続文字列に `WireProtocolMode=1` を追加してください。 その後、やり直してください。
+
+フェールオーバー シナリオ用の Oracle インスタンスが複数ある場合は、Oracle がリンクされたサービスを作成し、プライマリ ホスト、ポート、ユーザー名、パスワードなどを入力できます。プロパティ名 `AlternateServers`、値 `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` の "**追加接続プロパティ**" を新しく追加します。このとき、角かっこを忘れずに入力すること、区切り文字としてコロン (`:`) を使用することに注意してください。 以下の例では、代替サーバーの値により、接続フェールオーバー用の代替データベース サーバーが 2 台定義されます。`(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)`
 
 接続文字列には他にも、ケースに応じてさまざまな接続プロパティを設定できます。それらのプロパティを次に示します。
 

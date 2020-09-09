@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8dea63ef6a50597d9ad852cb9cdea4745532fed4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988398"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252914"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>グループ管理サービス アカウントでのサービスの実行
 
@@ -41,7 +41,7 @@ Windows Server のスタンドアロン クラスターで、*RunAs* ポリシ�
     Test-AdServiceAccount svc-Test$
     ```
 
-3. ユーザー プリンシパルを構成し、その[ユーザー](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas)を参照するように `RunAsPolicy` を構成します。
+3. ユーザー プリンシパルを構成し、その[ユーザー](./service-fabric-cluster-fabric-settings.md#runas)を参照するように `RunAsPolicy` を構成します。
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

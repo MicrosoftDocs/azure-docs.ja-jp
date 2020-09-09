@@ -4,16 +4,16 @@ description: Azure CLI を使用して、直接アップロードによって Az
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580235"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691345"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 
@@ -28,13 +28,13 @@ ms.locfileid: "82580235"
 
 ## <a name="getting-started"></a>作業の開始
 
-GUI を使用してディスクをアップロードする場合は、Azure Storage Explorer を使用して行うことができます。 詳細については、次を参照してください。[Azure Storage Explorer を使用して Azure マネージド ディスクを管理する](disks-use-storage-explorer-managed-disks.md)
+GUI を使用してディスクをアップロードする場合は、Azure Storage Explorer を使用します。 詳細については、次を参照してください。[Azure Storage Explorer を使用して Azure マネージド ディスクを管理する](../disks-use-storage-explorer-managed-disks.md)
 
 ご利用の VHD を Azure にアップロードするには、このアップロード プロセス用に構成された空のマネージド ディスクを作成する必要があります。 作成する前に、それらのディスクについて把握しておく必要がある追加情報があります。
 
 この種類のマネージド ディスクには、2 つの固有の状態があります。
 
-- ReadToUpload。ディスクはアップロードを受け取る準備ができていますが、[Secure Access Signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) が生成されていないことを意味します。
+- ReadToUpload。ディスクはアップロードを受け取る準備ができていますが、[Secure Access Signature](../../storage/common/storage-sas-overview.md) (SAS) が生成されていないことを意味します。
 - ActiveUpload。ディスクはアップロードを受け取る準備ができており、SAS が生成済みであることを意味します。
 
 > [!NOTE]
@@ -47,6 +47,9 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 アップロード用の空の標準 HDD を作成するには、[disk create](/cli/azure/disk#az-disk-create) コマンドレットに、 **--for-upload** パラメーターと **--upload-size-bytes** パラメーターの両方を指定します。
 
 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` をご自身で選んだ値に置き換えます。 `--upload-size-bytes` パラメーターには例の値 `34359738880` が含まれており、それを適切な値に置き換えます。
+
+> [!TIP]
+> OS ディスクを作成する場合は、--hyper-v-generation <yourGeneration> を `az disk create` に追加します。
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -101,6 +104,9 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 
 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourTargetLocationHere>` (場所の値の例: uswest2) を実際の値に置き換えたら、次のスクリプトを実行してマネージド ディスクをコピーします。
 
+> [!TIP]
+> OS ディスクを作成する場合は、--hyper-v-generation <yourGeneration> を `az disk create` に追加します。
+
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>
 sourceRG = <sourceResourceGroupHere>
@@ -126,4 +132,3 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 ## <a name="next-steps"></a>次のステップ
 
 これでマネージド ディスクに VHD が正常にアップロードされたので、ディスクを[既存の VM にデータ ディスク](add-disk.md)として接続するか、[ディスクを OS ディスクとして VM に接続](upload-vhd.md#create-the-vm)して、新しい VM を作成することができます。 
-

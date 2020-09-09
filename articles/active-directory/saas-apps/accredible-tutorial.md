@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Accredible の統合 | Microsoft Docs'
 description: Azure Active Directory と Accredible の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5be397ca14a90c333e20f0a1a42b63e0c9f0ae0e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9538e51e5dc623539909f9c9efa2ac1b86a2303b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73154149"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>チュートリアル: Azure Active Directory と Accredible の統合
 
@@ -108,11 +103,10 @@ Accredible で Azure AD シングル サインオンを構成するには、次�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    |  `https://api.accredible.com/sp/admin/accredible` |
-    | `https://api.accredible.com/sp/user/accredible` |
-    | |
+    ```http
+    https://api.accredible.com/sp/admin/accredible
+    https://api.accredible.com/sp/user/accredible
+    ```
 
     b. **[応答 URL]** ボックスに、`https://api.accredible.com/v1/saml/admin/<Unique id>/consume` のパターンを使用して URL を入力します
 

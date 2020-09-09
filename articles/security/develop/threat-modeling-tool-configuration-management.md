@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool の構成管理
 titleSuffix: Azure
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool の構成管理について説明します。 軽減策に関する情報を参照し、コード例を表示します。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 811feb26e492efeb505f43202bee484d3edfb8a5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f34a98ccbe069a5cb9e2c26a88e486b27f016fe1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658607"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540021"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -77,7 +78,7 @@ Example: var str="alert(1)"; eval(str);
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [XSS 保護フィルター](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
-| **手順** | <p>ブラウザーのクロスサイト スクリプト フィルターは、X-XSS-Protection 応答ヘッダー構成によって制御されます。 この応答ヘッダーには、次の値を設定できます。</p><ul><li>`0:` フィルターを無効にします</li><li>`1: Filter enabled` クロスサイト スクリプティング攻撃が検出された場合、攻撃を阻止するために、ブラウザーはページをサニタイズします</li><li>`1: mode=block : Filter enabled` クロスサイト スクリプティング (XSS) 攻撃が検出された場合、ブラウザーは、ページをサニタイズするのではなく、レンダリングが行われないようにします</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled` ブラウザーはページをサニタイズして、違反をレポートします。</li></ul><p>これは、任意の URI に詳細情報を送信する CSP 違反レポートを使用する Chromium 機能です。 最後の 2 つのオプションは、安全な値と見なされます。</p>|
+| **手順** | <p>ブラウザーのクロスサイト スクリプト フィルターは、X-XSS-Protection 応答ヘッダー構成によって制御されます。 この応答ヘッダーには、次の値を設定できます。</p><ul><li>`0:` フィルターを無効にします</li><li>`1: Filter enabled` クロスサイト スクリプティング攻撃が検出された場合、攻撃を阻止するために、ブラウザーはページをサニタイズします</li><li>`1: mode=block : Filter enabled`. クロスサイト スクリプティング (XSS) 攻撃が検出された場合、ブラウザーは、ページをサニタイズするのではなく、レンダリングが行われないようにします</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. ブラウザーはページをサニタイズして、違反をレポートします。</li></ul><p>これは、任意の URI に詳細情報を送信する CSP 違反レポートを使用する Chromium 機能です。 最後の 2 つのオプションは、安全な値と見なされます。</p>|
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>デプロイの前に ASP.NET アプリケーションでトレースおよびデバッグを無効にする
 
@@ -288,7 +289,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | SQL Azure、OnPrem |
 | **属性**              | 該当なし、SQL バージョン - V12 |
-| **参照**              | [Azure SQL データベース ファイアウォールを構成する方法](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[データベース エンジンにアクセスできるように Windows ファイアウォールを構成する](https://msdn.microsoft.com/library/ms175043) |
+| **参照**              | [Azure SQL Database ファイアウォールを構成する方法](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)、[データベース エンジンにアクセスできるように Windows ファイアウォールを構成する](https://msdn.microsoft.com/library/ms175043) |
 | **手順** | ファイアウォール システムは、コンピューター リソースへの不正アクセスを防ぐのに役立ちます。 ファイアウォールを経由して SQL Server データベース エンジンのインスタンスにアクセスするには、SQL Server を実行しているコンピューターで、アクセスを許可するようにファイアウォールを構成する必要があります |
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>ASP.NET Web API で CORS が有効になっている場合、信頼されたオリジンのみが許可されていることを確認する

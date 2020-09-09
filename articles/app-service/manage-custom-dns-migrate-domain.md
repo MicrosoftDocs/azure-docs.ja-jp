@@ -4,14 +4,14 @@ description: 既にライブ サイトに割り当てられているカスタム
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c51745b7760573aa3c6ae067e9a6c1cc315f8e56
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535691"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871396"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -29,7 +29,7 @@ DNS 解決のダウンタイムの心配がない場合は、[Azure App Service 
 
 ## <a name="bind-the-domain-name-preemptively"></a>ドメイン名の事前バインド
 
-カスタム ドメインを事前にバインドする場合は、DNS レコードに変更を加える前に、次に示す両方の作業を実行します。
+カスタム ドメインを事前にバインドする場合は、既存の DNS レコードに変更を加える前に、次に示す両方の作業を実行します。
 
 - ドメインの所有権を検証する
 - アプリのドメイン名を有効にする
@@ -38,54 +38,48 @@ DNS 解決のダウンタイムの心配がない場合は、[Azure App Service 
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
+### <a name="get-domain-verification-id"></a>ドメイン検証 ID を取得する
+
+「[ドメイン検証 ID を取得する](app-service-web-tutorial-custom-domain.md#get-domain-verification-id)」の手順に従って、アプリのドメイン検証 ID を取得します。
+
 ### <a name="create-domain-verification-record"></a>ドメイン確認レコードを作成する
 
-ドメインの所有権を確認するには、TXT レコードを追加します。 TXT レコードは、_awverify.&lt;subdomain>_ から _&lt;appname>.azurewebsites.net_ にマップします。 
-
-必要な TXT レコードは、移行する DNS レコードによって異なります。 例については、次の表をご覧ください (通常、`@` はルート ドメインを表します)。
+ドメインの所有権を確認するには、ドメイン確認用の TXT レコードを追加します。 TXT レコードのホスト名は、マップする DNS レコードの種類によって異なります。 次の表をご覧ください (通常、`@` はルート ドメインを表します)。
 
 | DNS レコードの例 | TXT ホスト | TXT 値 |
 | - | - | - |
-| \@ (ルート) | _awverify_ | _&lt;appname>.azurewebsites.net_ |
-| www (サブ) | _awverify.www_ | _&lt;appname>.azurewebsites.net_ |
-| \* (ワイルドカード) | _awverify.\*_ | _&lt;appname>.azurewebsites.net_ |
+| \@ (ルート) | _asuid_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| www (サブ) | _asuid.www_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \* (ワイルドカード) | _asuid_ | [アプリのドメイン検証 ID](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
 
 DNS レコードのページで、移行する DNS 名のレコード タイプを書き留めておきます。 App Service では、CNAME レコードおよび A レコードからのマッピングをサポートしています。
 
 > [!NOTE]
-> CloudFlare などの一部のプロバイダーの場合、`awverify.*` は有効なレコードではありません。 代わりに `*` だけを使用してください。
-
-> [!NOTE]
 > ワイルドカード `*` レコードでは、既存の CNAME レコードでサブドメインが検証されません。 サブドメインごとに TXT レコードを明示的に作成することが必要な場合があります。
-
 
 ### <a name="enable-the-domain-for-your-app"></a>アプリのドメインを有効にする
 
-[Azure Portal](https://portal.azure.com) で、アプリ ページの左側のナビゲーションにある **[カスタム ドメイン]** を選択します。 
+1. [Azure Portal](https://portal.azure.com) で、アプリ ページの左側のナビゲーションにある **[カスタム ドメイン]** を選択します。 
 
-![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**[カスタム ドメイン]** ページで、 **[ホスト名の追加]** の横にある **+** アイコンをクリックします。
+1. **[カスタム ドメイン]** ページで、 **[カスタム ドメインの追加]** を選択します。
 
-![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-先ほど TXT レコードを追加した完全修飾ドメイン名 (`www.contoso.com` など) を入力します。 ワイルドカードを使ったドメイン (\*.contoso.com など) の場合は、一致する任意の DNS 名を使用できます。 
+1. `contoso.com`、`www.contoso.com`、`*.contoso.com`など、作成する TXT レコードに対応する、移行したい完全修飾ドメイン名を入力します。 **[検証]** を選択します。
 
-**[検証]** を選択します。
+    **[カスタム ドメインの追加]** ボタンがアクティブになります。 
 
-**[ホスト名の追加]** ボタンがアクティブになります。 
+1. **[ホスト名レコード タイプ]** が、移行する DNS レコード タイプと一致していることを確認します。 **[ホスト名の追加]** を選択します。
 
-**[ホスト名レコード タイプ]** が、移行する DNS レコード タイプと一致していることを確認します。
+    ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-**[ホスト名の追加]** を選択します。
+    アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
 
-![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
-
-![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
-
-カスタム DNS 名が Azure アプリで有効になります。 
+    カスタム DNS 名が Azure アプリで有効になります。 
 
 ## <a name="remap-the-active-dns-name"></a>アクティブな DNS 名の再マップ
 
@@ -98,8 +92,6 @@ DNS レコードのページで、移行する DNS 名のレコード タイプ�
 CNAME レコードを再マップしている場合、このセクションは省略します。 
 
 A レコードを再マップするには、 **[カスタム ドメイン]** ページに示されている App Service アプリの外部 IP アドレスが必要です。
-
-右上隅の **[X]** をクリックして **[ホスト名の追加]** ページを閉じます。 
 
 **[カスタム ドメイン]** ページで、アプリの IP アドレスをコピーします。
 
@@ -121,7 +113,7 @@ A レコードを再マップするには、 **[カスタム ドメイン]** ペ
 
 DNS の伝播が始まるとすぐに、DNS クエリが App Service アプリの解決を開始します。
 
-## <a name="active-domain-in-azure"></a>Azure でのアクティブなドメイン
+## <a name="migrate-domain-from-another-app"></a>別のアプリからドメインを移行する
 
 Azure でのアクティブなカスタム ドメインは、サブスクリプション間または同じサブスクリプション内で移行できます。 ただし、ダウンタイムを伴わない移行にはソース アプリが必要であり、特定の時点で同じカスタム ドメインにターゲット アプリが割り当てられます。 そのため、2 つのアプリが同じ展開単位 (内部的には、Web スペースとして知られています) には展開されないようにする必要があります。 1 つのドメイン名は、展開単位ごとに 1 つのアプリにのみ割り当てできます。
 

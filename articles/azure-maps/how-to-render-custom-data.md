@@ -1,20 +1,20 @@
 ---
 title: ラスター マップ上にカスタム データをレンダリングする | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps の静的画像サービスを使用して、ラスター マップ上にカスタム データをレンダリングする方法について説明します。
-author: philmea
-ms.author: philmea
+description: ラスター マップにプッシュピン、ラベル、幾何学図形を追加する方法について説明します。 この目的のために Azure Maps で静的画像サービスを使用する方法を確認してください。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335513"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037373"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -29,7 +29,7 @@ ms.locfileid: "80335513"
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
 
-この記事の手順を完了するには、まず Azure Maps アカウントを作成し、マップのアカウント キーを取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
+この記事の手順を完了するには、まず Azure Maps アカウントを作成し、マップのアカウント キーを取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>ラベルとカスタム画像を使ってプッシュピンをレンダリングする
@@ -219,7 +219,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 
 同様に、他のスタイル修飾子を変更、追加、および削除することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 
 * [Azure Maps Get Map Image API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) のドキュメントを確認します。

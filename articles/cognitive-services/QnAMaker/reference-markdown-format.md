@@ -2,19 +2,25 @@
 title: マークダウン形式 - QnA Maker
 description: QnA Maker の回答テキストで使用できるマークダウン形式の一覧を次に示します。
 ms.topic: reference
-ms.date: 01/09/2020
-ms.openlocfilehash: 3fb7d73afdfd5ab7f1fb56a685b21538b97c8ea4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/19/2020
+ms.openlocfilehash: 38532783c38263b3f1364e30125414958eab1394
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77045403"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652757"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker の回答テキストでサポートされるマークダウン形式
 
 QnA Maker では、回答テキストがマークダウンとして格納されます。 マークダウンには、さまざまな決まりごとがあります。 回答テキストを確実に取得して正しく表示するために、このリファレンスをご利用ください。
 
-Markdown の検証については、 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** のチュートリアルをご覧ください。 チュートリアルには、コピー/貼り付けで簡単に検証するための **[Try it]\(試してみる\)** 機能があります。
+Markdown の検証については、 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** のチュートリアルをご覧ください。 チュートリアルには、コピー/貼り付けで簡単に検証するための **[Try it]\(使ってみる\)** 機能があります。
+
+## <a name="when-to-use-rich-text-editing-versus-markdown"></a>リッチテキスト編集を使用する場合と Markdown を使用する場合の比較
+
+回答の[リッチテキスト編集](How-To/edit-knowledge-base.md#add-an-editorial-qna-set)では、作成者は、書式設定ツールバーを使用して、テキストをすばやく選択し、書式設定することができます。
+
+Markdown は、CI/CD パイプラインの一部として、または[バッチ テスト](Quickstarts/batch-testing.md)のためにインポートされるナレッジ ベースを作成するために、コンテンツを自動生成する必要がある場合に適しています。
 
 ## <a name="supported-markdown-format"></a>サポートされるマークダウン形式
 
@@ -23,7 +29,7 @@ QnA Maker の回答テキストで使用できるマークダウン形式の一�
 |目的|Format|マークダウンの例|表示<br>チャット ボットの表示|
 |--|--|--|--|
 2 つの文の間の改行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![2 つの文の間の改行を書式設定する](./media/qnamaker-concepts-datasources/format-newline.png)|
-|h1 から h6 までのヘッダー。`#` の番号はヘッダーを表します。 1 `#` は h1 です。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![マークダウン ヘッダーを使用した書式設定](./media/qnamaker-concepts-datasources/format-headers.png)<br>![マークダウン ヘッダー H1 から H5 を使用した書式設定](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|h1 から h6 までのヘッダー。`#` の数はどのヘッダーかを表します。 1 `#` は h1 です。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![マークダウン ヘッダーを使用した書式設定](./media/qnamaker-concepts-datasources/format-headers.png)<br>![マークダウン ヘッダー H1 から H5 を使用した書式設定](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |斜体 |`*text*`|`How do I create a bot with *QnA Maker*?`|![斜体を使用した書式設定](./media/qnamaker-concepts-datasources/format-italics.png)|
 |強調 (太字)|`**text**`|`How do I create a bot with **QnA Maker**?`|![太字の強力なマーキングを使用した書式設定](./media/qnamaker-concepts-datasources/format-strong.png)|
 |リンクの URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL (ハイパーリンク) の書式設定](./media/qnamaker-concepts-datasources/format-url.png)|

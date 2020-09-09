@@ -8,18 +8,18 @@ author: asudbring
 manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477007"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051357"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -29,8 +29,8 @@ Azure Load Balancer で負荷分散規則を使用する場合は、Load Balance
 
 | | Standard SKU | Basic SKU |
 | --- | --- | --- |
-| [プローブの種類](#types) | TCP、HTTP、HTTPS | TCP、HTTP |
-| [プローブのダウン動作](#probedown) | すべてのプローブがダウンすると、すべての TCP フローは続行します。 | すべてのプローブがダウンすると、すべての TCP フローは終了します。 | 
+| **[プローブの種類](#types)** | TCP、HTTP、HTTPS | TCP、HTTP |
+| **[プローブのダウン動作](#probedown)** | すべてのプローブがダウンすると、すべての TCP フローは続行します。 | すべてのプローブがダウンすると、すべての TCP フローは終了します。 | 
 
 
 >[!IMPORTANT]
@@ -92,8 +92,8 @@ Azure Load Balancer で負荷分散規則を使用する場合は、Load Balance
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
-| Standard SKU |    &#9989; |   &#9989; |   &#9989; |
-| Basic SKU |   &#9989; |   &#9989; | &#10060; |
+| **Standard SKU** |    &#9989; |   &#9989; |   &#9989; |
+| **Basic SKU** |   &#9989; |   &#9989; | &#10060; |
 
 ### <a name="tcp-probe"></a><a name="tcpprobe"></a> TCP プローブ
 
@@ -263,6 +263,6 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 ## <a name="next-steps"></a>次のステップ
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
-- [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](quickstart-create-standard-load-balancer-powershell.md)
+- [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](quickstart-load-balancer-standard-public-powershell.md)
 - [正常性プローブ用の REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - [Load Balancer の Uservoice](https://aka.ms/lbuservoice) で新しい正常性プローブ機能をリクエストする

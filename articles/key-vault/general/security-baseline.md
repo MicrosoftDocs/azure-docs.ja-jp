@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7cb99ee9f52a26bd432a506ddc3ea4c9b13275b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9c4d70bcd0b991d90c68d310f94b21757fe2437
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185117"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830215"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 用の Azure セキュリティ ベースライン
 
@@ -709,7 +709,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Azure リソースのロールベースのアクセス制御 (RBAC) の概要
+Azure ロールベースのアクセス制御 (Azure RBAC) とは
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 

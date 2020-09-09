@@ -47,7 +47,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 
 Azure PHP アプリケーションで SendGrid を使用するために、特別な構成やコーディングは不要です。 SendGrid はサービスであるため、オンプレミスのアプリケーションからとまったく同じ方法で、クラウド アプリケーションからアクセスできます。
 
-## <a name="how-to-send-an-email"></a>方法: 電子メールを送信する
+## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
 
 SMTP、または SendGrid の Web API を使用して電子メールを送信できます。
 
@@ -162,7 +162,7 @@ PHP の [curl 関数][curl function] で SendGrid Web API を使用して電子�
 
 SendGrid の Web API は REST API とほとんど同じですが、実際は REST ベースの API ではありません。ほとんどの呼び出しで GET と POST の両方の動詞を区別しないで使用できるためです。
 
-## <a name="how-to-add-an-attachment"></a>方法: 添付ファイルを追加する
+## <a name="how-to-add-an-attachment"></a>方法:添付ファイルを追加する
 
 ### <a name="smtp-api"></a>SMTP API
 
@@ -297,7 +297,7 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法: フィルターを使用してフッター、追跡、および分析を有効にする
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法:フィルターを使用してフッター、追跡、および分析を有効にする
 
 SendGrid では、 *フィルター*を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
 
@@ -422,7 +422,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
 [Packaging and Deploying PHP Applications for Azure]: https://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
 [http://swiftmailer.org/download]: http://swiftmailer.org/download
 [curl function]: https://php.net/curl
-[トランザクション メール配信]: https://sendgrid.com/email-solutions
-[クラウドベースの電子メール サービス]: https://sendgrid.com/transactional-email
+[クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
+[トランザクション メール配信]: https://sendgrid.com/transactional-email
 [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
 [Composer]: https://getcomposer.org/download/

@@ -1,19 +1,19 @@
 ---
 title: Weather Services の概念 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Weather Services に適用される概念について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8ecbd50aa4490bde705b386a67b8732bb8c02c9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80333815"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132111"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
 
@@ -56,46 +56,46 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 
 | アイコン番号 |アイコン| 日 | 夜間 | Text |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | はい |  いいえ    | 晴れ|
-| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | はい |  いいえ    | 晴れ一時曇り|
-| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | はい |  いいえ    | 晴れ時々曇り|
-| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | はい |  いいえ    | 晴れたり曇ったり|
-| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | はい |  いいえ    | 薄晴れ |
-| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | はい |  いいえ    | 曇り一時晴れ|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | はい |  はい   | 曇り |
-| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | はい |  はい   | 本雲り|
-| 11           |![](./media/weather-services-concepts/fog-i.png)                       | はい |  はい   | 霧|
-| 12           |![](./media/weather-services-concepts/showers-i.png)                   | はい |  はい   | 小雨|
-| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | はい |  いいえ    | 曇り一時小雨|
-| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | はい |  いいえ    | 晴れ時々小雨|
-| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | はい |  はい   | 雷雨|
-| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | はい |  いいえ    | 曇り一時雷雨|
-| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | はい |  いいえ    | 晴れ時々雷雨|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | はい |  はい   | 雨|
-| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | はい |  はい   | にわか雨|
-| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | はい |  いいえ    | 曇り一時にわか雨|
-| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | はい |  いいえ    | 晴れ時々にわか雨|
-| 22           |![](./media/weather-services-concepts/snow-i.png)                      | はい |  はい   | 雪|
-| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | はい |  いいえ    | 曇り一時雪|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | はい |  はい   | 凍雨 |
-| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | はい |  はい   | みぞれ|
-| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | はい |  はい   | 雨氷|
-| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | はい |  はい   | 雨と雪|
-| 30           |![](./media/weather-services-concepts/hot-i.png)                       | はい |  はい   | ホット|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | はい |  はい   | アイス|
-| 32           |![](./media/weather-services-concepts/windy-i.png)                     | はい |  はい   | 強風|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | いいえ  |  はい   | Clear|
-| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | いいえ  |  はい   | 晴夜一時曇り|
-| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | いいえ  |  はい   | 晴夜時々曇り|
-| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | いいえ  |  はい   | 晴れたり曇ったり|
-| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | いいえ  |  はい   | 薄月夜|
-| 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | いいえ  |  はい   | 曇り一時晴れ|
-| 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | いいえ  |  はい   | 曇り時々小雨|
-| 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | いいえ  |  はい   | 曇り一時小雨|
-| 41           |![](./media/weather-services-concepts/partly-cloudy-tstorms-night.png)  | いいえ  |  はい   | 曇りときどき雷雨|
-| 42           |![](./media/weather-services-concepts/mostly-cloudy-tstorms-night.png)  | いいえ  |  はい   | 曇り一時雷雨|
-| 43           |![](./media/weather-services-concepts/mostly-cloudy-flurries-night.png) | いいえ  |  はい   | 曇り一時にわか雨|
-| 44           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | いいえ  |  はい   | 曇り一時雪|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | はい |  いいえ    | 晴れ|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | はい |  いいえ    | 晴れ一時曇り|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | はい |  いいえ    | 晴れ時々曇り|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | はい |  いいえ    | 晴れたり曇ったり|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | はい |  いいえ    | 薄晴れ |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | はい |  いいえ    | 曇り一時晴れ|
+| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | はい |  はい   | 曇り |
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | はい |  はい   | 本雲り|
+| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | はい |  はい   | 霧|
+| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | はい |  はい   | 小雨|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | はい |  いいえ    | 曇り一時小雨|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | はい |  いいえ    | 晴れ時々小雨|
+| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | はい |  はい   | 雷雨|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | はい |  いいえ    | 曇り一時雷雨|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | はい |  いいえ    | 晴れ時々雷雨|
+| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | はい |  はい   | 雨|
+| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | はい |  はい   | にわか雨|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | はい |  いいえ    | 曇り一時にわか雨|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | はい |  いいえ    | 晴れ時々にわか雨|
+| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | はい |  はい   | 雪|
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | はい |  いいえ    | 曇り一時雪|     
+| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | はい |  はい   | 凍雨 |
+| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | はい |  はい   | みぞれ|
+| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | はい |  はい   | 雨氷|
+| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | はい |  はい   | 雨と雪|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | はい |  はい   | ホット|
+| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | はい |  はい   | アイス|
+| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | はい |  はい   | 強風|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | いいえ  |  はい   | Clear|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | いいえ  |  はい   | 晴夜一時曇り|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | いいえ  |  はい   | 晴夜時々曇り|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | いいえ  |  はい   | 晴れたり曇ったり|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | いいえ  |  はい   | 薄月夜|
+| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | いいえ  |  はい   | 曇り一時晴れ|
+| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | いいえ  |  はい   | 曇り時々小雨|
+| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | いいえ  |  はい   | 曇り一時小雨|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | いいえ  |  はい   | 曇りときどき雷雨|
+| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | いいえ  |  はい   | 曇り一時雷雨|
+| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | いいえ  |  はい   | 曇り一時にわか雨|
+| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | いいえ  |  はい   | 曇り一時雪|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>レーダーと衛星画像のカラー スケール
@@ -108,22 +108,22 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 
 | 16 進カラー コード | 色のサンプル | 天候 |
 |----------------|--------------|-------------------|
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) | 雨 - 弱い |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) | 雨 - 中程度 |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) | 雨 - 強い |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) | 雨 - 激しい |
-| #9ec8f2        | ![](./media/weather-services-concepts/color-9ec8f2.png) | 雪 - 弱い |
-| #2a8fdb        | ![](./media/weather-services-concepts/color-2a8fdb.png) | 雪 - 中程度 |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) | 雪 - 強い |
-| #020096        | ![](./media/weather-services-concepts/color-020096.png) | 雪 - 激しい |
-| #e6a5c8        | ![](./media/weather-services-concepts/color-e6a5c8.png) | 凍雨 - 弱い |
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) | 凍雨 - 中程度 |
-| #b71691        | ![](./media/weather-services-concepts/color-b71691.png) | 凍雨 - 強い |
-| #7a1570        | ![](./media/weather-services-concepts/color-7a1570.png) | 凍雨 - 激しい |
-| #c196e6        | ![](./media/weather-services-concepts/color-c196e6.png) | 混合 - 弱い |
-| #ae6ee6        | ![](./media/weather-services-concepts/color-ae6ee6.png) | 混合 - 中程度 |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) | 混合 - 強い |
-| #6500ba        | ![](./media/weather-services-concepts/color-6500ba.png) | 混合 - 激しい |
+| #93c701        | ![雨 - 弱いの色。](./media/weather-services-concepts/color-93c701.png) | 雨 - 弱い |
+| #ffd701        | ![雨 - 中程度の色。](./media/weather-services-concepts/color-ffd701.png) | 雨 - 中程度 |
+| #f05514        | ![雨 - 強いの色。](./media/weather-services-concepts/color-f05514.png) | 雨 - 強い |
+| #dc250e        | ![雨 - 激しいの色。](./media/weather-services-concepts/color-dc250e.png) | 雨 - 激しい |
+| #9ec8f2        | ![雪 - 弱いの色。](./media/weather-services-concepts/color-9ec8f2.png) | 雪 - 弱い |
+| #2a8fdb        | ![雪 - 中程度の色。](./media/weather-services-concepts/color-2a8fdb.png) | 雪 - 中程度 |
+| #144bed        | ![雪 - 強いの色。](./media/weather-services-concepts/color-144bed.png) | 雪 - 強い |
+| #020096        | ![雪 - 激しいの色。](./media/weather-services-concepts/color-020096.png) | 雪 - 激しい |
+| #e6a5c8        | ![凍雨 - 弱いの色。](./media/weather-services-concepts/color-e6a5c8.png) | 凍雨 - 弱い |
+| #d24fa0        | ![凍雨 - 中程度の色。](./media/weather-services-concepts/color-d24fa0.png) | 凍雨 - 中程度 |
+| #b71691        | ![凍雨 - 強いの色。](./media/weather-services-concepts/color-b71691.png) | 凍雨 - 強い |
+| #7a1570        | ![凍雨 - 激しいの色。](./media/weather-services-concepts/color-7a1570.png) | 凍雨 - 激しい |
+| #c196e6        | ![混合 - 弱いの色。](./media/weather-services-concepts/color-c196e6.png) | 混合 - 弱い |
+| #ae6ee6        | ![混合 - 中程度の色。](./media/weather-services-concepts/color-ae6ee6.png) | 混合 - 中程度 |
+| #8a32d7        | ![混合 - 強いの色。](./media/weather-services-concepts/color-8a32d7.png) | 混合 - 強い |
+| #6500ba        | ![混合 - 激しいの色。](./media/weather-services-concepts/color-6500ba.png) | 混合 - 激しい |
 
 レーダー タイルで使用される色パレットの詳細を 16 進カラー コードと dBZ 値で以下に示します。 dBZ は、気象レーダーの降水強度を表します。 
 
@@ -199,18 +199,18 @@ Weather Service API の中には、応答で `iconCode` が返されるものが
 
 | 16 進カラー コード | 色のサンプル | 雲の温度 |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![](./media/weather-services-concepts/color-b5b5b5.png) | 温度 - 低 | 
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) |  |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) |  |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) |  |
-| #479702        | ![](./media/weather-services-concepts/color-479702.png) |  |
-| #72b403        | ![](./media/weather-services-concepts/color-72b403.png) |  |
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) |  |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) |  |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) |  |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) |  |
-| #ba0808        | ![](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![](./media/weather-services-concepts/color-1f1f1f.png) | 温度 - 高 |
+| #b5b5b5        | ![#b5b5b5 の色タイル。](./media/weather-services-concepts/color-b5b5b5.png) | 温度 - 低 | 
+| #d24fa0        | ![#d24fa0 の色タイル。](./media/weather-services-concepts/color-d24fa0.png) |  |
+| #8a32d7        | ![#8a32d7 の色タイル。](./media/weather-services-concepts/color-8a32d7.png) |  |
+| #144bed        | ![#144bed の色タイル。](./media/weather-services-concepts/color-144bed.png) |  |
+| #479702        | ![#479702 の色タイル。](./media/weather-services-concepts/color-479702.png) |  |
+| #72b403        | ![#72b403 の色タイル。](./media/weather-services-concepts/color-72b403.png) |  |
+| #93c701        | ![#93c701 の色タイル。](./media/weather-services-concepts/color-93c701.png) |  |
+| #ffd701        | ![#ffd701 の色タイル。](./media/weather-services-concepts/color-ffd701.png) |  |
+| #f05514        | ![#f05514 の色タイル。](./media/weather-services-concepts/color-f05514.png) |  |
+| #dc250e        | ![#dc250e の色タイル。](./media/weather-services-concepts/color-dc250e.png) |  |
+| #ba0808        | ![#ba0808 の色タイル。](./media/weather-services-concepts/color-ba0808.png) |  |
+| #1f1f1f        | ![#1f1f1f の色タイル。](./media/weather-services-concepts/color-1f1f1f.png) | 温度 - 高 |
 
 
 赤外衛星タイルの色パレットの詳細を以下に示します。

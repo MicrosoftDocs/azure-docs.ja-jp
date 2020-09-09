@@ -1,25 +1,26 @@
 ---
-title: Web サービス用の Excel アドイン
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): Web サービス用の Excel アドイン - Azure'
 description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204377"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432469"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
+
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>ブックで既存の Web サービスを使用する手順
@@ -84,4 +85,4 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 ## <a name="sharing-your-workbook"></a>ブックを共有する
 ブックを保存すると、追加した Web サービス用の API/主キーも保存されます。 このため、信頼できる個人とのみブックを共有することをお勧めします。
 
-ご質問は、次のコメント セクション、または[フォーラム](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)までお寄せください。
+ご質問は、次のコメント セクション、または[フォーラム](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)までお寄せください。

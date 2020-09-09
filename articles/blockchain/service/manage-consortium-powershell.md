@@ -2,14 +2,14 @@
 title: Azure Blockchain Service コンソーシアムのメンバーを管理する - PowerShell
 description: Azure PowerShell を使用して Azure Blockchain Service コンソーシアムのメンバーを管理する方法について説明します。
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: zeyadr
-ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77505988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211342"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する
 
@@ -64,7 +64,7 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
     ![メンバーの概要](./media/manage-consortium-powershell/member-overview.png)
 
-    *\<Member account\>* と *\<RootContract address\>* は、ポータルの値に置き換えます。
+    *\<Member account\>* と *\<RootContract address\>* をポータルの値に置き換えます。
 
 1. エンドポイント アドレスについては、 **[トランザクション ノード]** を選択して、**既定のトランザクション ノード**を選択します。 既定のノードは、ブロックチェーン メンバーと同じ名前になっています。
 1. **[接続文字列]** を選択します。

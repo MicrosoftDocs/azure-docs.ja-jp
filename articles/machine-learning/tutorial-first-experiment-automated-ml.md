@@ -9,20 +9,25 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 03/04/2020
-ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 07/10/2020
+ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047830"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-このチュートリアルでは、Azure Machine Learning の自動機械学習インターフェイスを使用して、1 行のコードも記述せずに基本的な分類モデルを作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
+このチュートリアルでは、Azure Machine Learning Studio で自動機械学習を使用して、1 行のコードも記述せずに基本的な分類モデルを作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
+
+>[!IMPORTANT]
+> Azure Machine learning Studio での自動機械学習エクスペリエンスは、プレビュー段階にあります。 特定の機能がサポートされなかったり、機能が制限されたりすることがあります。
 
 自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
+
+時系列予測の例については、「[チュートリアル: 需要予測と AutoML](tutorial-automated-ml-forecast.md)」を参照してください。
 
 このチュートリアルでは、次のタスクを実施する方法について説明します。
 
@@ -42,18 +47,18 @@ ms.locfileid: "80366527"
 
 Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、サービス内の簡単に使用できるオブジェクトに結び付けます。 
 
-ワークスペースを作成するには、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用します。
+Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用して、**Enterprise Edition** ワークスペースを作成します。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 >[!IMPORTANT] 
 > お使いの**ワークスペース**と**サブスクリプション**をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
 
-## <a name="create-and-run-the-experiment"></a>実験を作成して実行する
+## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で開始する
 
-https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合 Web インターフェイスです。 このインターフェイスは、Internet Explorer ブラウザーではサポートされていません。
+https://ml.azure.com で Azure Machine Learning Studio を使用して、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合 Web インターフェイスです。 Internet Explorer ブラウザーでは、Studio はサポートされません。
 
-1. [Azure Machine Learning](https://ml.azure.com) にサインインします。
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
 1. お使いのサブスクリプションと、作成したワークスペースを選択します。
 
@@ -65,7 +70,11 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
    ![開始ページ](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
-1. **[New automated ML run]\(新しい自動 ML の実行\)** を選択します。 
+1. **[+New automated ML run]\(+新しい自動 ML の実行\)** を選択します。 
+
+## <a name="create-and-load-dataset"></a>データセットを作成して読み込む
+
+実験を構成する前に、Azure Machine Learning データセットの形式でデータ ファイルをワークスペースにアップロードします。 そうすることで、データを実験に適した形式にすることができます。
 
 1. 新しいデータセットを作成するには、 **[+ データセットの作成]** ドロップダウンで **[From local files]\(ローカル ファイルから\)** を選択します。 
 
@@ -99,25 +108,35 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
         ![[プレビュー] タブの構成](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
-    1. **[詳細の確認]** フォームで、 **[基本情報]** および **[Settings and preview]\(設定とプレビュー\)** のフォームに入力された情報が一致していることを確認します。
+    1. **[詳細の確認]** フォームで、 **[基本情報]、[データストアとファイルの選択]** および **[Settings and preview]\(設定とプレビュー\)** のフォームに入力された情報が一致していることを確認します。
+    
     1. **[作成]** を選択して、データセットの作成を完了します。
+    
     1. リストにデータセットが表示されたら、それを選択します。
+    
     1. **[Data preview]\(データのプレビュー)** を確認して **[day_of_week]** が含まれていないことを確保してから、 **[OK]** を選択します。
 
     1. **[次へ]** を選択します。
+
+## <a name="configure-experiment-run"></a>実験の実行を構成する
+
+データを読み込んで構成したら、実験を設定できます。 このセットアップには、ご使用のコンピューティング環境のサイズの選択や予測する列の指定など、実験の設計タスクが含まれます。 
 
 1. 次のように **[Configure Run]\(構成の実行\)** フォームに入力します。
     1. この実験の名前として「`my-1st-automl-experiment`」と入力します。
 
     1. 予測するターゲット列として、 **[y]** を選択します。 この列には、クライアントが定期預金を申し込むかどうかが示されます。
+    
     1. **[Create a new compute]\(新しいコンピューティングの作成\)** を選択し、コンピューティング先を構成します。 コンピューティング先とは、トレーニング スクリプトを実行したりサービスのデプロイをホストしたりするために使用されるローカルまたはクラウド ベースのリソース環境です。 この実験では、クラウド ベースのコンピューティングを使用します。 
 
         フィールド | 説明 | チュートリアルの値
         ----|---|---
         コンピューティング名 |コンピューティング コンテキストを識別する一意名。|automl-compute
+        仮想マシンの種類&nbsp;&nbsp;| コンピューティング用の仮想マシンの種類を選択します。|CPU (中央処理装置)
         仮想マシンのサイズ&nbsp;&nbsp;| コンピューティングの仮想マシン サイズを選択します。|Standard_DS12_V2
-        最小および最大ノード ([詳細設定] 内)| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
-  
+        最小/最大ノード| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
+        スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|120 (既定値)
+        詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし
         1. **[作成]** を選択して、コンピューティング先を取得します。 
 
             **完了するまでに数分かかります。** 
@@ -126,17 +145,16 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
     1. **[次へ]** を選択します。
 
-1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、機械学習のタスクの種類として **[分類]** を選択します。
+1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、機械学習のタスクの種類と構成設定を指定して、自動 ML 実験の設定を完了します。
+    
+    1.  機械学習のタスクの種類として **[分類]** を選択します。
 
     1. **[View additional configuration settings]\(追加の構成設定を表示\)** を選択し、次のようにフィールドを設定します。 これらは、トレーニング ジョブをより細かく制御するための設定です。 設定しない場合、実験の選択とデータに基づいて既定値が適用されます。
 
-        >[!NOTE]
-        > このチュートリアルでは、メトリック スコアまたはイテレーションあたりの最大コア数のしきい値は設定しません。 また、アルゴリズムのテストをブロックしません。
-   
         追加の構成&nbsp;|説明|チュートリアル用の値&nbsp;&nbsp;
         ------|---------|---
         主要メトリック| 機械学習アルゴリズムを測定される評価メトリック。|AUC_weighted
-        自動特徴付け| 前処理が有効になります。 これには、合成的特徴を生成するための自動データ クレンジング、準備、変換が含まれます。| 有効化
+        最適なモデルの説明| 自動 ML で作成された最適なモデルの説明を自動的に表示します。| 有効化
         ブロックされたアルゴリズム | トレーニング ジョブから除外するアルゴリズム| なし
         終了条件| 条件が満たされると、トレーニング ジョブが停止します。 |トレーニング&nbsp;ジョブ時間 (時間):&nbsp;1 <br> メトリック&nbsp;スコアしきい値:&nbsp;なし
         検証 | クロス検証タイプとテストの回数を選択します。|検証タイプ:<br>&nbsp;k 分割交差検証&nbsp; <br> <br> 検証の数: 2
@@ -159,7 +177,7 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
 すべての実験モデルが終了するのを待っている間に、完了したモデルの **[アルゴリズム名]** を選択して、そのパフォーマンスの詳細を調査します。 
 
-次の例では、 **[モデルの詳細]** と **[視覚化]** のタブを移動して、選択したモデルのプロパティ、メトリック、およびパフォーマンス グラフを表示しています。 
+次の例では、 **[詳細]** と **[メトリック]** のタブを移動して、選択したモデルのプロパティ、メトリック、およびパフォーマンス グラフを表示しています。 
 
 ![イテレーションの実行の詳細](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
@@ -169,11 +187,15 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
 この実験における Web サービスへのデプロイは、定期預金の潜在顧客を特定するためのスケーラブルな反復 Web ソリューションを金融機関が持つことを意味します。 
 
-実行が完了したら、 **[Run Detail]\(実行の詳細\)** ページに戻り、 **[モデル]** タブを選択します。
+実験の実行が完了したかどうかを確認します。 これを行うには、画面の上部にある **[Run 1]\(実行 1\)** を選択して、親の実行ページに戻ります。 画面の左上に**完了**状態が表示されます。 
 
-この実験では、**VotingEnsemble** は **AUC_weighted** メトリックに基づいて最適なモデルと見なされます。  このモデルをデプロイしますが、デプロイには完了まで約 20 分かかることにご留意ください。 デプロイ プロセスには、モデルを登録したり、リソースを生成したり、Web サービス用にそれらを構成したりすることを含む、いくつかの手順が伴います。
+実験の実行が完了すると、 **[詳細]** ページに **[Best model summary]\(最適なモデルの概要\)** セクションが設定されます。 この実験では、**VotingEnsemble** は **AUC_weighted** メトリックに基づいて最適なモデルと見なされます。  
 
-1. 左下隅の **[Deploy best model]\(最適なモデルのデプロイ\)** ボタンを選択します。
+このモデルをデプロイしますが、デプロイには完了まで約 20 分かかることにご留意ください。 デプロイ プロセスには、モデルを登録したり、リソースを生成したり、Web サービス用にそれらを構成したりすることを含む、いくつかの手順が伴います。
+
+1. **[VotingEnsemble]** を選択して、モデル固有のページを開きます。
+
+1. 左上にある **[デプロイ]** ボタンを選択します。
 
 1. **[Deploy a model]\(モデルのデプロイ\)** ペインに次のように入力します。
 
@@ -189,7 +211,7 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 
 1. **[デプロイ]** を選択します。  
 
-    **[実行]** 画面の上部に成功を示す緑色のメッセージが表示され、 **[Recommended model]\(推奨モデル\)** ペインの **[Deploy status]\(デプロイ状態\)** にステータス メッセージが表示されます。 **[最新の情報に更新]** を定期的にクリックして、デプロイの状態を確認します。
+    **[実行]** 画面の上部に成功を示す緑色のメッセージが表示され、 **[モデルの概要]** ペインの **[Deploy status]\(デプロイ状態\)** にステータス メッセージが表示されます。 **[最新の情報に更新]** を定期的にクリックして、デプロイの状態を確認します。
     
 これで、予測を生成するための実稼働 Web サービスが作成されました。 
 
@@ -221,7 +243,8 @@ https://ml.azure.com の Azure Machine Learning Studio で、次の実験の設�
 > [Web サービスを使用する](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
-+ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。さらに、[特徴付け](how-to-use-automated-ml-for-ml-models.md#featurization)の詳細も参照してください。
++ 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
++ [特徴付け](how-to-configure-auto-features.md#featurization)についてさらに理解を深める。
 + [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。
 
 

@@ -1,36 +1,52 @@
 ---
-title: Azure Front Door で WAF に対するカスタム応答を構成する
-description: Web アプリケーション ファイアウォール (WAF) が要求をブロックした場合のカスタム応答コードとメッセージを構成する方法について学習します。
+title: Azure Front Door で Web アプリケーション ファイアウォール (WAF) に対するカスタム応答を構成する
+description: WAF で要求がブロックされたときのカスタムの応答コードとメッセージを構成する方法について説明します。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005601"
 ---
-# <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールに対するカスタム応答を構成する
+# <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF) に対するカスタム応答を構成する
 
-既定では、Azure Front Door を使用した Azure Web アプリケーション ファイアウォール (WAF) がルールの一致により要求をブロックした場合、403 状態コードが "**要求がブロックされています**" というメッセージと共に返されます。 この記事では、要求が WAF でブロックされた場合のカスタム応答の状態コードと応答メッセージを構成する方法について説明します。
+既定では、規則が一致したために WAF で要求がブロックされると、403 状態コードと "**要求はブロックされました**" というメッセージが返されます。 既定のメッセージには、要求の[ログ エントリ](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor)へのリンクに使用できる追跡参照文字列も含まれています。  ユース ケースの参照文字列を使用して、カスタム応答状態コードとカスタム メッセージを構成することができます。 この記事では、要求が WAF によってブロックされたときのカスタム応答ページを構成する方法について説明します。
 
-## <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
+## <a name="configure-custom-response-status-code-and-message-use-portal"></a>カスタム応答状態コードとメッセージ使用ポータルを構成する
+
+WAF ポータルの [ポリシー設定] で、カスタム応答状態コードと本文を構成できます。
+
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF ポリシーの設定":::
+
+上記の例では、応答コードを 403 のままにして、次の図に示すように簡単な "Please contact us"(お問い合わせください) メッセージを構成しました。
+
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="カスタム応答の例":::
+
+"{{azure-ref}}" によって、応答本文に一意の参照文字列が挿入されます。 この値は `FrontdoorAccessLog` および `FrontdoorWebApplicationFirewallLog` ログの TrackingReference フィールドと一致します。
+
+## <a name="configure-custom-response-status-code-and-message-use-powershell"></a>カスタム応答状態コードとメッセージ使用 PowerShell を構成する
+
+### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
+
 Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使う一連のコマンドレットが用意されています。 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>サインインのための対話型ダイアログを使用して Azure に接続する
+
 ```
 Connect-AzAccount
 Install-Module -Name Az
+
 ```
 最新バージョンの PowerShellGet がインストールされていることを確認します。 次のコマンドを実行して、PowerShell を再度開きます。
-
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
@@ -40,17 +56,17 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループを作成する
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure で、関連するリソースをリソース グループに割り当てます。 この例では、[New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) を使用してリソース グループを作成します。
+Azure で、関連するリソースをリソース グループに割り当てます。 ここでは、[New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) を使用してリソース グループを作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupWAF
 ```
 
-## <a name="create-a-new-waf-policy-with-custom-response"></a>カスタム応答が設定された新しい WAF ポリシーの作成 
+### <a name="create-a-new-waf-policy-with-custom-response"></a>カスタム応答が設定された新しい WAF ポリシーの作成 
 
-カスタム応答の状態コードが 405、メッセージが "**You are blocked**" に設定されている新しい WAF ポリシーを作成する例を次に示します。 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用します。
+[New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用して、カスタム応答の状態コードが 405、メッセージが "**You are blocked**" に設定された新しい WAF ポリシーを作成する例を次に示します
 
 ```azurepowershell
 # WAF policy setting
@@ -80,7 +96,7 @@ Update-AzFrontDoorFireWallPolicy `
 Update-AzFrontDoorFireWallPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
--CustomBlockResponseBody "<html><head><title> Forbidden</title></head><body></body></html>"
+-CustomBlockResponseBody "<html><head><title>Forbidden</title></head><body>{{azure-ref}}</body></html>"
 ```
 
 ## <a name="next-steps"></a>次のステップ

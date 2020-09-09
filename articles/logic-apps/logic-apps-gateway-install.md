@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 12/05/2019
-ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 05/15/2020
+ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673814"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386131"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -22,27 +22,26 @@ ms.locfileid: "80673814"
 * [Microsoft Power Apps オンプレミス データ ゲートウェイ](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 
-この記事では、Azure Logic Apps からオンプレミスのデータ ソースにアクセスできるように、オンプレミス データ ゲートウェイをダウンロード、インストール、設定する方法について説明します。 [データ ゲートウェイのしくみ](#gateway-cloud-service)についても、このトピックで後ほど詳しく説明します。 ゲートウェイの詳細については、「[オンプレミス データ ゲートウェイとは](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)」を参照してください。 ゲートウェイのインストール タスクと管理タスクを自動化するには、[DataGateway PowerShell コマンドレット](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)の PowerShell ギャラリーをご覧ください。
+この記事では、Azure Logic Apps からオンプレミスのデータ ソースにアクセスできるように、オンプレミス データ ゲートウェイをダウンロード、インストール、設定する方法について説明します。 [データ ゲートウェイのしくみ](#gateway-cloud-service)についても、このトピックで後ほど詳しく説明します。 ゲートウェイの詳細については、「[オンプレミス データ ゲートウェイとは](/data-integration/gateway/service-gateway-onprem)」を参照してください。 ゲートウェイのインストール タスクと管理タスクを自動化するには、[DataGateway PowerShell コマンドレット](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)の PowerShell ギャラリーをご覧ください。
 
 <a name="requirements"></a>
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure アカウントとサブスクリプション。 サブスクリプションを保持する Azure アカウントがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションを保持する Azure アカウントがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-  * お使いの Azure アカウントは、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)に属している必要があります。 ローカル コンピューター上にゲートウェイをインストールして管理するには、同じ Azure アカウントを使用する必要があります。
-
-  * ゲートウェイのインストール中に、Azure アカウントを使用してサインインします。これにより、ゲートウェイのインストールが Azure アカウントに関連付けられ、そのアカウントのみに限定されます。 その後、Azure portal で、ゲートウェイのインストールを登録して要求する Azure ゲートウェイ リソースを作成するとき、同じ Azure アカウントと Azure AD テナントを使用する必要があります。 Azure Logic Apps では、オンプレミスのトリガーとアクションにおいて、オンプレミスのデータ ソースへの接続にゲートウェイ リソースが使用されます。
+  * Azure アカウントは、`username@contoso.com` のような職場アカウントまたは学校アカウントのいずれかである必要があります。 Azure B2B (ゲスト) アカウントや個人の Microsoft アカウント (@hotmail.com や @outlook.com など) は使用できません。
 
     > [!NOTE]
-    > 1 つのゲートウェイ インストールと 1 つの Azure ゲートウェイ リソースだけを互いに関連付けることができます。 同じゲートウェイのインストールを複数の Azure アカウントまたは Azure ゲートウェイ リソースに関連付けることはできません。 ただし、1 つの Azure アカウントを、複数のゲートウェイのインストールと Azure ゲートウェイ リソースに関連付けることは可能です。 オンプレミスのトリガーまたはアクションでは、さまざまな Azure サブスクリプションから選んで、関連付けられる 1 つのゲートウェイ リソースを選択できます。
+    > Office 365 オファリングにサインアップして、仕事用メール アドレスを指定しなかった場合、アドレスは `username@domain.onmicrosoft.com` のようになります。 アカウントは Azure AD テナントに格納されます。 ほとんどの場合、Azure アカウントのユーザー プリンシパル名 (UPN) は、メール アドレスと同じです。
 
-  * `username@contoso.com` のような、職場アカウントまたは学校アカウントのどちらか (*組織*アカウントとも呼ばれる) を使用して、サインインする必要があります。 Azure B2B (ゲスト) アカウントや個人の Microsoft アカウント (@hotmail.com や @outlook.com など) は使用できません。
+    Microsoft アカウントに関連付けられている [Visual Studio Standard サブスクリプション](https://visualstudio.microsoft.com/vs/pricing/)を使用するには、まず [Azure AD テナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)か、既定のディレクトリを使用します。 ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーに Azure サブスクリプションへのアクセス権を付与します。 その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
 
-    > [!TIP]
-    > Office 365 オファリングにサインアップして、仕事用メール アドレスを指定しなかった場合、アドレスは `username@domain.onmicrosoft.com` のようになります。 アカウントは Azure Active Directory (Azure AD) のテナント内に格納されます。 ほとんどの場合、Azure AD アカウントのユーザープリンシパル名 (UPN) は、メール アドレスと同じです。
-    >
-    > Microsoft アカウントに関連付けられている [Visual Studio Standard サブスクリプション](https://visualstudio.microsoft.com/vs/pricing/)を使用するには、まず [Azure AD でテナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)か、または既定のディレクトリを使用します。 ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーに Azure サブスクリプションへのアクセス権を付与します。 その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
+  * お使いの Azure アカウントは、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)にのみ属している必要があります。 ローカル コンピューター上にゲートウェイをインストールして管理するには、同じ Azure アカウントを使用する必要があります。
+
+  * ゲートウェイをインストールするときは、Azure アカウントを使用してサインインします。これにより、ゲートウェイのインストールが Azure アカウントに関連付けられ、そのアカウントのみに限定されます。 同じゲートウェイのインストールを複数の Azure アカウントまたは Azure AD テナントに関連付けることはできません。
+
+  * その後、Azure portal で同じ Azure アカウントを使用して、ゲートウェイのインストールにリンクする Azure ゲートウェイ リソースを作成する必要があります。 1 つのゲートウェイ インストールと 1 つの Azure ゲートウェイ リソースだけを互いに関連付けることができます。 ただし、Azure アカウントは、それぞれが Azure ゲートウェイ リソースに関連付けられている複数の異なるゲートウェイ インストールにリンクできます。 これにより、ロジック アプリでは、オンプレミスのデータ ソースにアクセスできるトリガーとアクションで、このゲートウェイ リソースを使用できます。
 
 * ローカル コンピューターの要件を以下に示します。
 
@@ -68,17 +67,19 @@ ms.locfileid: "80673814"
     > [!TIP]
     > 待機時間を最小限に抑えるために、アクセス許可があることを前提として、データ ソースにできるだけ近いコンピューターまたは同じコンピューターにゲートウェイをインストールできます。
 
-  * ワイヤード (有線) ネットワーク上にある、インターネットに接続され、常に電源が入っており、スリープ状態に移行しないコンピューターにゲートウェイをインストールします。 そうしないと、ゲートウェイを実行できず、ワイヤレス ネットワーク経由ではパフォーマンスが低下する可能性もあります。
+  * ワイヤード (有線) ネットワーク上にある、インターネットに接続され、常に電源が入っており、スリープ状態に移行しないローカル コンピューターにゲートウェイをインストールします。 そうしないと、ゲートウェイを実行できず、ワイヤレス ネットワーク経由ではパフォーマンスが低下する可能性もあります。
 
   * Windows 認証を使用する予定の場合は、必ず、ご使用のデータ ソースと同じ Active Directory 環境のメンバーであるコンピューターにゲートウェイをインストールしてください。
 
   * ゲートウェイ インストール用に選択するリージョンは、後でロジック アプリ用の Azure ゲートウェイ リソースを作成するときに選択する必要がある場所と同じです。 既定では、このリージョンは、Azure アカウントを管理する Azure AD テナントと同じ場所です。 ただし、この場所はゲートウェイのインストール中に変更できます。
 
-  * ゲートウェイのインストールを最新バージョンに更新している場合は、最初に現在のゲートウェイをアンインストールすると手順がすっきりします。
+  * ゲートウェイのインストールを更新している場合は、最初に現在のゲートウェイをアンインストールすると手順がより明確になります。
+
+    ベスト プラクティスとして、サポート対象バージョンを使用していることを確認します。 Microsoft では、オンプレミス データ ゲートウェイに対して毎月新しい更新プログラムをリリースしており、現在は、オンプレミス データ ゲートウェイの最新の 6 つのリリースのみをサポートしています。 使用しているバージョンで問題が発生した場合は、最新バージョンで問題が解決されている可能性があるため、[最新バージョンへのアップグレード](https://aka.ms/on-premises-data-gateway-installer)を試してください。
 
   * ゲートウェイには、標準モードと個人用モード (Power BI にのみ適用) の 2 つのモードがあります。 同じコンピューターにおいて同じモードで複数のゲートウェイを実行することはできません。
 
-  * Azure Logic Apps では、ゲートウェイを介した読み取りおよび書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
+  * Azure Logic Apps では、ゲートウェイを介した読み取りおよび書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
 
 <a name="install-gateway"></a>
 
@@ -141,8 +142,8 @@ ms.locfileid: "80673814"
 
 オンプレミス データ ゲートウェイでは、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) に依存してクラウドへの接続が行われ、ゲートウェイに関連付けられている Azure リージョンへの対応する送信接続が確立されます。 お使いの作業環境で、インターネットにアクセスするためにそのトラフィックがプロキシまたはファイアウォールを経由する必要がある場合は、この制限によって、オンプレミス データ ゲートウェイがゲートウェイ クラウド サービスおよび Azure Service Bus に接続できない場合があります。 ゲートウェイにはいくつかの通信設定があり、これを調整できます。 詳細については、以下のトピックを参照してください。
 
-* [オンプレミス データ ゲートウェイの通信設定を調整する](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [オンプレミス データ ゲートウェイのプロキシ設定を構成する](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [オンプレミス データ ゲートウェイの通信設定を調整する](/data-integration/gateway/service-gateway-communication)
+* [オンプレミス データ ゲートウェイのプロキシ設定を構成する](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -154,7 +155,7 @@ ms.locfileid: "80673814"
 
 * プライマリ ゲートウェイでは、2017 年 11 月以降のゲートウェイ更新プログラムが実行されている必要があります。
 
-プライマリ ゲートウェイを設定したら、別のゲートウェイのインストールに進むときに、 **[既存のゲートウェイ クラスターに追加します]** を選択して、インストールした最初のゲートウェイであるプライマリ ゲートウェイを選択し、そのゲートウェイの回復キーを指定します。 詳細については、[オンプレミス データ ゲートウェイのための高可用性クラスター](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)に関するページを参照してください。
+プライマリ ゲートウェイを設定したら、別のゲートウェイのインストールに進むときに、 **[既存のゲートウェイ クラスターに追加します]** を選択して、インストールした最初のゲートウェイであるプライマリ ゲートウェイを選択し、そのゲートウェイの回復キーを指定します。 詳細については、[オンプレミス データ ゲートウェイのための高可用性クラスター](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)に関するページを参照してください。
 
 <a name="update-gateway-installation"></a>
 
@@ -162,11 +163,11 @@ ms.locfileid: "80673814"
 
 ゲートウェイの場所の変更が必要な場合、または、新しいコンピューターへのゲートウェイ インストールの移行、破損したゲートウェイの復元、既存のゲートウェイの所有権の取得を行う必要がある場合、ゲートウェイのインストール中に提供された回復キーが必要です。
 
-1. 既存のゲートウェイがあるコンピューターでゲートウェイ インストーラーを実行します。 最新のゲートウェイ インストーラーがない場合は、 [最新のゲートウェイ バージョンをダウンロードします](https://aka.ms/on-premises-data-gateway-installer)。
+> [!NOTE]
+> 元のゲートウェイ インストールがあるコンピューターでゲートウェイを復元する前に、まずそのコンピューターのゲートウェイをアンインストールする必要があります。 このアクションで、元のゲートウェイが切断されます。
+> 任意のクラウド サービスのゲートウェイ クラスターを削除した場合、そのクラスターを復元することはできません。
 
-   > [!NOTE]
-   > 元のゲートウェイ インストールがあるコンピューターでゲートウェイを復元する前に、まずそのコンピューターのゲートウェイをアンインストールする必要があります。 このアクションで、元のゲートウェイが切断されます。
-   > 任意のクラウド サービスのゲートウェイ クラスターを削除した場合、そのクラスターを復元することはできません。
+1. 既存のゲートウェイがあるコンピューターでゲートウェイ インストーラーを実行します。
 
 1. インストーラーが開いたら、ゲートウェイのインストールに使用したものと同じ Azure アカウントでサインインします。
 
@@ -184,7 +185,7 @@ ms.locfileid: "80673814"
 
 ## <a name="tenant-level-administration"></a>テナント レベルの管理
 
-Azure AD テナント内のすべてのオンプレミス データ ゲートウェイを可視化するには、そのテナントの全体管理者は、テナント管理者として [Power Platform 管理センター](https://powerplatform.microsoft.com)にサインインし、 **[データ ゲートウェイ]** オプションを選択します。 詳細については、「[オンプレミス データ ゲートウェイのテナント レベルの管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)」を参照してください。
+Azure AD テナント内のすべてのオンプレミス データ ゲートウェイを可視化するには、そのテナントの全体管理者は、テナント管理者として [Power Platform 管理センター](https://powerplatform.microsoft.com)にサインインし、 **[データ ゲートウェイ]** オプションを選択します。 詳細については、「[オンプレミス データ ゲートウェイのテナント レベルの管理](/data-integration/gateway/service-gateway-tenant-level-admin)」を参照してください。
 
 <a name="restart-gateway"></a>
 
@@ -195,7 +196,7 @@ Azure AD テナント内のすべてのオンプレミス データ ゲートウ
 > [!NOTE]
 > Windows サービス アカウントは、オンプレミスのデータ ソースへの接続に使用するアカウントとも、クラウド サービスへのサインイン時に使用する Azure アカウントとも異なります。
 
-他の Windows サービスと同じように、さまざまな方法でゲートウェイを開始および停止できます。 詳細については、「[オンプレミス データ ゲートウェイを再起動する](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart)」をご覧ください。
+他の Windows サービスと同じように、さまざまな方法でゲートウェイを開始および停止できます。 詳細については、「[オンプレミス データ ゲートウェイを再起動する](/data-integration/gateway/service-gateway-restart)」をご覧ください。
 
 <a name="gateway-cloud-service"></a>
 
@@ -259,11 +260,9 @@ Microsoft クラウド サービスでは、[Azure AD](../active-directory/funda
 
 ## <a name="faq-and-troubleshooting"></a>FAQ とトラブルシューティング
 
-詳細については、以下のトピックを参照してください。
-
-* [オンプレミス データ ゲートウェイに関する FAQ](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [オンプレミス データ ゲートウェイのトラブルシューティング](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [ゲートウェイのパフォーマンスの監視と最適化](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [オンプレミス データ ゲートウェイに関する FAQ](/data-integration/gateway/service-gateway-onprem-faq)
+* [オンプレミス データ ゲートウェイのトラブルシューティング](/data-integration/gateway/service-gateway-tshoot)
+* [ゲートウェイのパフォーマンスの監視と最適化](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>次のステップ
 

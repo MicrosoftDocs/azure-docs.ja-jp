@@ -2,23 +2,23 @@
 title: グループを削除する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用したグループの削除方法に関する手順です。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2018
 ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdba55e0655a13e65e403f5da73fcb69db5dbca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 869def6b3187e10727a170377f2635fb3652f98b
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68561908"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797595"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory を使用してグループを削除する
 Azure Active Directory (Azure AD) グループはさまざまな理由で削除されますが、通常は次のために行います。

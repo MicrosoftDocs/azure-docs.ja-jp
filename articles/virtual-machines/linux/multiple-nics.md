@@ -4,16 +4,16 @@ description: Azure CLI または Resource Manager テンプレートを使って
 author: cynthn
 ms.service: virtual-machines-linux
 ms.subservice: networking
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79231995"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836923"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>VM を作成して NIC を接続する
-VM を作成するとき、`--nics` を使用して、作成した NIC を指定します。 VM のサイズを選択する際には注意が必要です。 1 つの VM に追加できる NIC の合計数には制限があります。 詳しくは、 [Linux VM のサイズ](sizes.md)に関する記事をご覧ください。
+VM を作成するとき、`--nics` を使用して、作成した NIC を指定します。 VM のサイズを選択する際には注意が必要です。 1 つの VM に追加できる NIC の合計数には制限があります。 詳しくは、 [Linux VM のサイズ](../sizes.md)に関する記事をご覧ください。
 
 [az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
 
@@ -97,7 +97,7 @@ az vm create \
 「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for-multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
 
 ## <a name="add-a-nic-to-a-vm"></a>VM に NIC を追加する
-前の手順では、複数の NIC を含む VM を作成しました。 Azure CLI を使用して NIC を既存の VM に追加することもできます。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。 必要な場合は、[VM のサイズを変更できます](change-vm-size.md)。
+前の手順では、複数の NIC を含む VM を作成しました。 Azure CLI を使用して NIC を既存の VM に追加することもできます。 [VM のサイズ](../sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。 必要な場合は、[VM のサイズを変更できます](change-vm-size.md)。
 
 [az network nic create](/cli/azure/network/nic) を使用して別の仮想 NIC を作成します。 次の例では、バックエンドのサブネットおよび前の手順で作成されたネットワーク セキュリティ グループに接続された *myNic3* という名前の NIC を作成します。
 
@@ -167,7 +167,7 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 }
 ```
 
-詳細については、[*copy* を使用した複数のインスタンスの作成](../../resource-group-create-multiple.md)に関する記事を参照してください。 
+詳細については、[*copy* を使用した複数のインスタンスの作成](../../azure-resource-manager/templates/copy-resources.md)に関する記事を参照してください。 
 
 `copyIndex()` を使用してリソース名に数値を追加することもできます。これにより、`myNic1`、`myNic2` などを作成することができます。インデックス値を追加する例を次に示します。
 
@@ -242,6 +242,6 @@ ping bing.com -c 4 -I eth1
 ```
 
 ## <a name="next-steps"></a>次のステップ
-複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](sizes.md) を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。
+複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](../sizes.md) を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。
 
 VM をさらにセキュリティで保護するには、Just In Time VM アクセスを使用します。 この機能は、必要に応じて一定期間にわたり、SSH トラフィックに対してネットワーク セキュリティ グループ規則を開きます。 詳細については、「[Manage virtual machine access using just in time (ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する)](../../security-center/security-center-just-in-time.md)」を参照してください。

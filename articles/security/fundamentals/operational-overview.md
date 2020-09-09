@@ -1,6 +1,6 @@
 ---
 title: Azure で運用可能なセキュリティの概要 | Microsoft Docs
-description: この記事では、Azure で運用可能なセキュリティの概要について説明します。
+description: この概要では、Azure で運用可能なセキュリティについて説明します。 運用可能なセキュリティとは、資産保護サービス、コントロール、および機能を指します。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674230"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925313"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -42,7 +42,7 @@ IT 運用チームは、データセンター インフラストラクチャ、�
 
 [Azure Automation](/azure/automation/automation-intro) を使用すると、クラウド環境およびエンタープライズ環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を得られます。 これによりお客様は、管理タスクにかかる時間を短縮すると共に、タスクの信頼性を高めることができます。 また、これらのタスクは一定の頻度で自動的に実行されるようスケジュールされます。 お客様は、Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりすることができます。
 
-### <a name="backup"></a>バックアップ
+### <a name="backup"></a>Backup
 
 [Azure Backup](/azure/backup/backup-introduction-to-azure-backup) は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。
 
@@ -68,7 +68,7 @@ Azure AD には、必要な [ID 管理機能](/azure/security/security-identity-
 - [セルフサービスによるパスワード管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [セルフサービスのグループ管理](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [特権アカウント管理](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [ロールベースのアクセス制御](/azure/role-based-access-control/overview)
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](/azure/role-based-access-control/overview)
 - [アプリケーション使用状況の監視](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [高度な監査](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [セキュリティ監視とアラート](/azure/operations-management-suite/oms-security-responding-alerts)
@@ -87,7 +87,7 @@ Security Center では、仮想マシン (VM) のセキュリティ設定を可�
 - ディスク暗号化の検証。
 - ネットワークベースの攻撃。
 
-Security Center では、[ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/role-assignments-portal) が使用されます。 この RBAC により、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
+Security Center では、[Azure ロールベースのアクセス制御 (Azure RBAC)](/azure/role-based-access-control/role-assignments-portal) が使用されます。 この RBAC により、Azure 内のユーザー、グループ、およびサービスに割り当てることができる、[組み込みロール](../../role-based-access-control/built-in-roles.md)が提供されます。
 
 Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
 
@@ -187,7 +187,7 @@ Microsoft Azure などのクラウド プラットフォームでは、従来の
 - [コードとしてのインフラストラクチャ (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) は、ネットワークや仮想マシンの作成と切断の自動化と妥当性確認を有効にして、セキュリティで保護された、安定したアプリケーション ホスティング プラットフォームの提供を支援するプラクティスです。
 - [マイクロサービス](https://www.visualstudio.com/learn/what-are-microservices/) アーキテクチャを使用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 セキュリティおよび監査ソリューションの詳細については、次の記事をご覧ください。
 

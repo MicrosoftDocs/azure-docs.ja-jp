@@ -2,21 +2,21 @@
 title: Azure Disk Encryption 用のキー コンテナーの作成と構成
 description: この記事では、Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2adb158032582dff7449c7c0fc7b13419745f36c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ecbc44a3fe376d41b245c88ab11c5937f57155a9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743570"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372690"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
 
-Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/key-vault-get-started.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/secure-your-key-vault.md)」を参照してください。 
+Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/secure-your-key-vault.md)」を参照してください。 
 
 > [!WARNING]
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)](disk-encryption-key-vault-aad.md)」を参照してください。
@@ -30,7 +30,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 これらの手順は、次のクイックスタートで説明されています。
 
 - [Azure CLI を使用して Linux VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
-- [Azure PowerShell を使用して Linux VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
+- [Azure PowerShell を使用して Linux VM を作成、暗号化する](disk-encryption-powershell-quickstart.md)
 
 また、必要に応じて、キー暗号化キー (KEK) を生成またはインポートすることもできます。
 
@@ -39,7 +39,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 
 ## <a name="install-tools-and-connect-to-azure"></a>ツールをインストールし、Azure に接続する
 
-この記事の手順を完了するには、[Azure CLI](/cli/azure/)、[Azure PowerShell Az モジュール](/powershell/azure/overview)、または [Azure portal](https://portal.azure.com) のいずれかを使用します。 
+この記事の手順を完了するには、[Azure CLI](/cli/azure/)、[Azure PowerShell Az モジュール](/powershell/azure/)、または [Azure portal](https://portal.azure.com) のいずれかを使用します。 
 
 ポータルにはブラウザーからアクセスできますが、Azure CLI と Azure PowerShell ではローカル インストールが必要です。詳細については、[Linux 用の Azure Disk Encryption のインストール ツール](disk-encryption-linux.md#install-tools-and-connect-to-azure) に関するセクションを参照してください。
 

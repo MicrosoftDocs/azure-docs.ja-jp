@@ -1,90 +1,94 @@
 ---
 title: Azure SQL Edge (プレビュー) で T-SQL ストリーミング ジョブを作成する
-description: Azure SQL Edge (プレビュー) で Stream Analytics ジョブを作成する方法について説明します
+description: Azure SQL Edge (プレビュー) で Stream Analytics ジョブを作成する方法について説明します。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/27/2020
+ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595391"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321719"
 ---
-# <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) で Stream Analytics ジョブを作成する 
+# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) で Azure Stream Analytics ジョブを作成する 
 
-この記事では、Azure SQL Edge (プレビュー) で T-SQL ストリーミング ジョブを作成する方法を説明します。 SQL Edge でストリーミング ジョブを作成するには、次の手順を実行する必要があります
+この記事では、Azure SQL Edge (プレビュー) で T-SQL ストリーミング ジョブを作成する方法を説明します。 外部ストリームの入力オブジェクトと出力オブジェクトを作成してから、ストリーミング ジョブの作成の一部としてストリーミング ジョブ クエリを定義します。
 
-1. 外部ストリームの入力オブジェクトと出力オブジェクトを作成する
-2. ストリーミング ジョブの作成の一部として、ストリーミング ジョブ クエリを定義する。
+> [!NOTE]
+> Azure SQL Edge で T-SQL ストリーミング機能を有効にするには、TF 11515 を起動オプションとして有効にするか、[DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) コマンドを使用します。 mssql.conf ファイルを使用してトレース フラグを有効にする方法の詳細については、「[mssql.conf ファイルを使用して構成する](configure.md#configure-by-using-an-mssqlconf-file)」を参照してください。
 
-## <a name="configure-an-external-stream-input-and-output-object"></a>外部ストリームの入力オブジェクトと出力オブジェクトを構成する
+## <a name="configure-the-external-stream-input-and-output-objects"></a>外部ストリームの入力オブジェクトと出力オブジェクトを構成する
 
-T-SQL ストリーミングでは、SQL Server の外部データ ソース機能を使用して、ストリーミング ジョブの外部ストリームの入力と出力に関連付けるデータ ソースを定義します。 外部ストリームの入力オブジェクトまたは出力オブジェクトを作成するには、次の T-SQL コマンドが必要です。
+T-SQL ストリーミングでは、SQL Server の外部データ ソース機能を使用して、ストリーミング ジョブの外部ストリームの入力と出力に関連付けるデータ ソースを定義します。 外部ストリームの入力オブジェクトまたは出力オブジェクトを作成するには、次の T-SQL コマンドを使用します。
 
-[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
 
-[CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
 
-[CREATE EXTERNAL STREAM (Transact-SQL)](#example-create-an-external-stream-object-sql-database)
+- [CREATE EXTERNAL STREAM (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-さらに、SQL Edge (または SQL Server、Azure SQL) を出力ストリームとして使用する場合は、SQL Database にアクセスするための資格情報を定義するために、[CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) T-SQL コマンドが必要です。
+さらに、出力ストリームとして Azure SQL Edge、SQL Server、または Azure SQL Database が使用されている場合は、[CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) が必要です。 この T-SQL コマンドでは、データベースにアクセスするための資格情報を定義します。
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>サポートされている入力ストリームと出力ストリームのデータ ソース
 
 現在、Azure SQL Edge でストリーム入力および出力としてサポートされているのは、次のデータ ソースのみです。
 
-| データ ソースの種類 | 入力 | 出力 | 説明 |
+| [データ ソースの種類] | 入力 | 出力 | 説明 |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge ハブ | Y | Y | Azure IoT Edge ハブに対するストリーミング データの読み書きを行うためのデータ ソース。 Azure IoT Edge ハブの詳細については、「[IoT Edge ハブ](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)」を参照してください|
-| SQL Database | N | Y | SQL Database にストリーミング データを書き込むためのデータ ソース接続。 SQL Database には、ローカルの SQL Edge データベースまたはリモートの SQL Server や Azure SQL Database を使用できます|
-| Azure Blob Storage | N | Y | Azure ストレージ アカウントの BLOB にデータを書き込むためのデータ ソース。 |
-| Kafka | Y | N | Kafka トピックからストリーミング データを読み取るためのデータ ソース。 このアダプターは、現在、Intel/AMD バージョンの Azure SQL Edge でのみ使用でき、ARM64 バージョンの SQL Edge では使用できません。|
+| Azure IoT Edge ハブ | Y | Y | Azure IoT Edge ハブに対するストリーミング データの読み書きを行うためのデータ ソース。 詳細については、[IoT Edge ハブ](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)に関するページを参照してください。|
+| SQL Database | N | Y | SQL Database にストリーミング データを書き込むためのデータ ソース接続。 データベースは、Azure SQL Edge のローカル データベースでも、SQL Server または Azure SQL Database のリモート データベースでもかまいません。|
+| Kafka | Y | N | Kafka トピックからストリーミング データを読み取るためのデータ ソース。 現在、このアダプターは、Azure SQL Edge の Intel または AMD バージョンでのみ使用できます。 ARM64 バージョンの Azure SQL Edge では使用できません。|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>例:Azure IoT Edge ハブ用の外部ストリームの入力オブジェクトと出力オブジェクトを作成する
 
-次の例では、Edge ハブ用の外部ストリーム オブジェクトを作成します。 Azure IoT Edge ハブ用の外部ストリームの入力および出力データ ソースを作成するには、最初に SQL 用の外部ファイル形式を作成して、読み書きされるデータのレイアウトを理解する必要もあります。
+次の例では、Azure IoT Edge ハブ用の外部ストリーム オブジェクトを作成します。 Azure IoT Edge ハブ用の外部ストリームの入力および出力データ ソースを作成するには、最初に読み書きされるデータのレイアウトに対する外部ファイル形式を作成する必要もあります。
 
-1. JSON の format 型を使用して外部ファイル形式を作成します。
+1. JSON 型の外部ファイル形式を作成します。
 
     ```sql
     Create External file format InputFileFormat
-    WITH (  
+    WITH 
+    (  
        format_type = JSON,
     )
     go
     ```
 
-2. IoT Edge ハブに対する外部データ ソースを作成します。 次の T-SQL スクリプトでは、SQL Edge と同じ Docker ホストで実行されている Edge ハブへのデータ ソース接続が作成されます。
+2. Azure IoT Edge ハブに対する外部データ ソースを作成します。 次の T-SQL スクリプトでは、Azure SQL Edge と同じ Docker ホスト上で実行される IoT Edge ハブへのデータ ソース接続が作成されます。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
-    LOCATION = 'edgehub://'
+    CREATE EXTERNAL DATA SOURCE EdgeHubInput 
+    WITH 
+    (
+        LOCATION = 'edgehub://'
     )
     go
     ```
 
-3. IoT Edge ハブに対する外部ストリーム オブジェクトを作成します。 次の T-SQL スクリプトでは、Edge ハブ用のストリーム オブジェクトが作成されます。 Edge ハブのストリーム オブジェクトの場合、LOCATION パラメーターは、読み取り元または書き込み先である Edge ハブのトピックおよびチャネルの名前です。
+3. Azure IoT Edge ハブに対する外部ストリーム オブジェクトを作成します。 次の T-SQL スクリプトでは、IoT Edge ハブに対するストリーム オブジェクトが作成されます。 IoT Edge ハブのストリーム オブジェクトの場合、LOCATION パラメーターは、読み取り元または書き込み先である IoT Edge ハブのトピックおよびチャネルの名前です。
 
     ```sql
-    CREATE EXTERNAL STREAM MyTempSensors WITH (
-    DATA_SOURCE = EdgeHubInput,
-    FILE_FORMAT = InputFileFormat,
-    LOCATION = N'TemperatureSensors',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
-    )
+    CREATE EXTERNAL STREAM MyTempSensors 
+    WITH 
+    (
+        DATA_SOURCE = EdgeHubInput,
+        FILE_FORMAT = InputFileFormat,
+        LOCATION = N'TemperatureSensors',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
     go
     ```
 
-### <a name="example-create-an-external-stream-object-sql-database"></a>例:SQL Database への外部ストリーム オブジェクトを作成する
+### <a name="example-create-an-external-stream-object-to-azure-sql-database"></a>例:Azure SQL Database への外部ストリーム オブジェクトを作成する
 
-次の例では、ローカル SQL Edge データベースに対する外部ストリーム オブジェクトを作成します。 
+次の例では、Azure SQL Edge のローカル データベースに対する外部ストリーム オブジェクトを作成します。 
 
 1. データベースにマスター キーを作成します。 これは、資格情報のシークレットの暗号化に必須です。
 
@@ -92,7 +96,7 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<<Strong_Password_For_Master_Key_Encryption>>';
     ```
 
-2. SQL Server ソースにアクセスするために、データベース スコープ資格情報を作成します。 次の例では、IDENTITY = 'username' と SECRET = 'password' を使用して、外部データ ソースに対する資格情報を作成します。
+2. SQL Server ソースにアクセスするために、データベース スコープの資格情報を作成します。 次の例では、IDENTITY = username と SECRET = password を使用して、外部データ ソースに対する資格情報を作成します。
 
     ```sql
     CREATE DATABASE SCOPED CREDENTIAL SQLCredential
@@ -102,14 +106,16 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 
 3. CREATE EXTERNAL DATA SOURCE を使用して、外部データ ソースを作成します。 次に例を示します。
 
-    * LocalSQLOutput という名前の外部データ ソースを作成します
-    * 外部データ ソースを識別します (LOCATION = '<vendor>://<server>[:<port>]'). この例では、SQL Edge のローカル インスタンスを指しています。
-    * 最後に、この例では、前に作成した資格情報を使用します。
+    * *LocalSQLOutput* という名前の外部データ ソースを作成します。
+    * 外部データ ソースを識別します (LOCATION = '<vendor>://<server>[:<port>]'). この例では、Azure SQL Edge のローカル インスタンスを指しています。
+    * 前に作成した資格情報を使用します。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
-    LOCATION = 'sqlserver://tcp:.,1433'
-    ,CREDENTIAL = SQLCredential
+    CREATE EXTERNAL DATA SOURCE LocalSQLOutput 
+    WITH 
+    (
+        LOCATION = 'sqlserver://tcp:.,1433',
+        CREDENTIAL = SQLCredential
     )
     go
     ```
@@ -117,29 +123,69 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 4. 外部ストリーム オブジェクトを作成します。 次の例では、データベース *MySQLDatabase* の *dbo.TemperatureMeasurements* テーブルを指す外部ストリーム オブジェクトを作成します。
 
     ```sql
-    CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
-    DATA_SOURCE = LocalSQLOutput,
-    LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
+    CREATE EXTERNAL STREAM TemperatureMeasurements 
+    WITH 
+    (
+        DATA_SOURCE = LocalSQLOutput,
+        LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
+    ```
+
+### <a name="example-create-an-external-stream-object-for-kafka"></a>例:Kafka 用の外部ストリーム オブジェクトを作成する
+
+次の例では、Azure SQL Edge のローカル データベースに対する外部ストリーム オブジェクトを作成します。 この例では、Kafka サーバーが匿名アクセス用に構成されていることを前提としています。 
+
+1. CREATE EXTERNAL DATA SOURCE を使用して、外部データ ソースを作成します。 次に例を示します。
+
+    ```sql
+    Create EXTERNAL DATA SOURCE [KafkaInput] 
+    With
+    (
+        LOCATION = N'kafka://<kafka_bootstrap_server_name_ip>:<port_number>'
     )
+    GO
+    ```
+2. Kafka 入力用の外部ファイル形式を作成します。 次の例では、Gzip 圧縮を使用して JSON ファイル形式を作成しました。 
+
+   ```sql
+   CREATE EXTERNAL FILE FORMAT JsonGzipped  
+    WITH 
+    (  
+        FORMAT_TYPE = JSON , 
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
+    )
+   ```
+    
+3. 外部ストリーム オブジェクトを作成します。 次の例では、Kafka トピック `*TemperatureMeasurement*` を指す外部ストリーム オブジェクトを作成します。
+
+    ```sql
+    CREATE EXTERNAL STREAM TemperatureMeasurement 
+    WITH 
+    (  
+        DATA_SOURCE = KafkaInput, 
+        FILE_FORMAT = JsonGzipped,
+        LOCATION = 'TemperatureMeasurement',     
+        INPUT_OPTIONS = 'PARTITIONS: 10' 
+    ); 
     ```
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>ストリーミング ジョブとストリーミング クエリを作成する
 
-**sys.sp_create_streaming_job** システム ストアド プロシージャを使用して、ストリーミング クエリを定義し、ストリーミング ジョブを作成します。 **sp_create_streaming_job** ストアド プロシージャは 2 つのパラメーターを受け取ります
+`sys.sp_create_streaming_job` システム ストアド プロシージャを使用して、ストリーミング クエリを定義し、ストリーミング ジョブを作成します。 `sp_create_streaming_job` ストアド プロシージャは、次のパラメーターを受け取ります。
 
-- job_name - ストリーミング ジョブの名前。 ストリーミング ジョブの名前は、インスタンス全体で一意です。
-- statement - [Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)ベースのストリーミング クエリ ステートメント。
+- `job_name`:ストリーミング ジョブの名前。 ストリーミング ジョブの名前は、インスタンス全体で一意です。
+- `statement`:[Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)ベースのストリーミング クエリ ステートメント。
 
-次の例では、1 つのストリーミング クエリを使用して簡単なストリーミング ジョブを作成します。 このクエリでは、Edge ハブから入力を読み取り、データベースの *dbo.TemperatureMeasurements* に書き込みます。
+次の例では、1 つのストリーミング クエリを使用して簡単なストリーミング ジョブを作成します。 このクエリでは、IoT Edge ハブから入力を読み取り、データベースの `dbo.TemperatureMeasurements` に書き込みます。
 
 ```sql
 EXEC sys.sp_create_streaming_job @name=N'StreamingJob1',
 @statement= N'Select * INTO TemperatureMeasurements from MyEdgeHubInput'
 ```
 
-次の例では、複数の異なるクエリを含むより複雑なストリーミング ジョブを作成します。これには、組み込み AnomalyDetection_ChangePoint 関数を使用して気温データの異常を特定するクエリが含まれます。
+次の例では、複数の異なるクエリを使用して、さらに複雑なストリーミング ジョブを作成します。 これらのクエリには、組み込みの `AnomalyDetection_ChangePoint` 関数を使用して温度データの異常を特定するものが含まれます。
 
 ```sql
 EXEC sys.sp_create_streaming_job @name=N'StreamingJob2', @statement=
@@ -153,7 +199,7 @@ SELECT
 Timestamp as [Time],
 [Temperature] As [Temperature],
 GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''Score'') as ChangePointScore,
-GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly,
+GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly
 INTO TemperatureAnomalies FROM MyEdgeHubInput2;
 '
 go
@@ -161,28 +207,28 @@ go
 
 ## <a name="start-stop-drop-and-monitor-streaming-jobs"></a>ストリーミング ジョブを開始、停止、削除、監視する
 
-SQL Edge でストリーミング ジョブを開始するには、**sys.sp_start_streaming_job** ストアド プロシージャを実行します。 このストアド プロシージャでは、開始するストリーミング ジョブと同じものが入力として必要です。
+Azure SQL Edge でストリーミング ジョブを開始するには、`sys.sp_start_streaming_job` ストアド プロシージャを実行します。 このストアド プロシージャでは、開始するストリーミング ジョブの名前が入力として必要です。
 
 ```sql
 exec sys.sp_start_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-SQL Edge でストリーミング ジョブを停止するには、**sys.sp_stop_streaming_job** ストアド プロシージャを実行します。 このストアド プロシージャでは、停止するストリーミング ジョブと同じものが入力として必要です。
+ストリーミング ジョブを停止するには、`sys.sp_stop_streaming_job` ストアド プロシージャを実行します。 このストアド プロシージャでは、入力として停止するストリーミング ジョブの名前が必要です。
 
 ```sql
 exec sys.sp_stop_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-SQL Edge でストリーミング ジョブをドロップ (削除) するには、**sys.sp_drop_streaming_job** ストアド プロシージャを実行します。 このストアド プロシージャでは、削除するストリーミング ジョブと同じものが入力として必要です。
+ストリーミング ジョブをドロップ (削除) するには、`sys.sp_drop_streaming_job` ストアド プロシージャを実行します。 このストアド プロシージャでは、削除するストリーミング ジョブの名前が入力として必要です。
 
 ```sql
 exec sys.sp_drop_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-SQL Edge でストリーミング ジョブの現在の状態を取得するには、**sys.sp_get_streaming_job** ストアド プロシージャを実行します。 このストアド プロシージャでは、削除するストリーミング ジョブと同じものが入力として必要でがあり、ストリーミング ジョブの名前と現在の状態が出力されます。
+ストリーミング ジョブの現在の状態を取得するには、`sys.sp_get_streaming_job` ストアド プロシージャを実行します。 このストアド プロシージャでは、削除するストリーミング ジョブの名前が入力として必要です。 ストリーミング ジョブの名前と現在の状態が出力されます。
 
 ```sql
 exec sys.sp_get_streaming_job @name=N'StreamingJob1'
@@ -195,19 +241,19 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 )
 ```
 
-ストリーミング ジョブの状態は次のいずれかです
+ストリーミング ジョブの状態は次のいずれかです。
 
 | Status | 説明 |
 |--------| ------------|
-| 作成済み | ストリーミング ジョブは作成されましたが、まだ開始されていません |
-| 開始中 | ストリーミング ジョブは開始フェーズになっています |
-| アイドル | ストリーミング ジョブは実行中ですが、処理する入力がありません |
-| 処理中 | ストリーミング ジョブは実行中であり、入力を処理しています。 この状態は、ストリーミング ジョブが正常な状態であることを示します |
-| 低下しています | ストリーミング ジョブは実行中ですが、入力処理中に、致命的でない入出力のシリアル化または逆シリアル化エラーが発生しました。 入力ジョブは実行を続けますが、エラーが発生する入力は削除されます |
-| 停止済み | ストリーミング ジョブは停止されました |
-| 失敗 | ストリーミング ジョブは失敗しました。 これは、通常、処理中に致命的なエラーが発生したことを示します |
+| 作成済み | ストリーミング ジョブは作成されましたが、まだ開始されていません。 |
+| 開始中 | ストリーミング ジョブは開始フェーズになっています。 |
+| アイドル | ストリーミング ジョブは実行中ですが、処理する入力がありません。 |
+| 処理中 | ストリーミング ジョブは実行中であり、入力を処理しています。 この状態は、ストリーミング ジョブが正常な状態であることを示します。 |
+| 低下しています | ストリーミング ジョブは実行中ですが、入力処理の間に致命的ではないエラーが発生しました。 入力ジョブは実行を続けますが、エラーが発生する入力は削除されます。 |
+| 停止済み | ストリーミング ジョブは停止されました。 |
+| 失敗 | ストリーミング ジョブは失敗しました。 これは、通常、処理中に致命的なエラーが発生したことを示します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Edge (プレビュー) でストリーム ジョブに関連付けられたメタデータを表示する](streaming-catalog-views.md) 
 - [外部ストリームを作成する](create-external-stream-transact-sql.md)

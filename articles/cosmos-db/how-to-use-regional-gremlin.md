@@ -5,14 +5,15 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f9d46c2f5cce397c2aa6ebbcd38d7fbb5786412
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897854"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997253"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph アカウントのリージョン エンドポイント
 Azure Cosmos DB Graph データベースは[グローバルに分散](distribute-data-globally.md)されているため、アプリケーションは複数の読み取りエンドポイントを使用できます。 複数の場所で書き込みアクセスが必要なアプリケーションでは、[マルチマスター](how-to-multi-master.md)機能を有効にする必要があります。
@@ -43,7 +44,7 @@ TinkerPop Gremlin クライアントは、単一のサーバーで動作する�
 
 Azure Cosmos DB Graph アカウントのリージョンの一覧を取得するのに最も簡単な方法は、Azure portal の [概要] ブレードを使用する方法です。 この方法は、リージョンを頻繁に変更しないアプリケーションや、アプリケーションの構成を使用して一覧を更新する手段を備えるアプリケーションに有効です。
 
-![ポータルから Cosmos DB Graph アカウントのリージョンを取得する](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+:::image type="content" source="./media/how-to-use-regional-gremlin/get-end-point-portal.png " alt-text="ポータルから Cosmos DB Graph アカウントのリージョンを取得する":::
 
 次の例は、リージョンの Gremlin エンドポイントにアクセスするための一般的な原則を示しています。 アプリケーションでは、トラフィックを送信するリージョンの数と、インスタンス化される対応する Gremlin クライアントの数を考慮する必要があります。
 

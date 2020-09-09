@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201261"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -23,7 +23,7 @@ ms.locfileid: "78189771"
 
 1 つのクレーム プロバイダーには、[技術プロファイル](technicalprofiles.md)のセットが含まれます。 どのクレーム プロバイダーも、そのクレーム プロバイダーと通信するために必要なエンドポイントとプロトコルを特定する技術プロファイルを 1 つ以上持っている必要があります。 1 つのクレーム プロバイダーが複数の技術プロファイルを持つことができます。 たとえば、クレーム プロバイダーが複数のプロトコルや異なる機能を持つ多様なエンドポイントをサポートしていること、異なる保証レベルでさまざまな要求をリリースしていることが理由で、技術プロファイルが複数定義される場合があります。 あるユーザー体験では変動しやすい要求をリリースすることが許されても、別のユーザー体験ではそうでないこともあります。
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <Domain>Domain name</Domain>
@@ -57,7 +57,7 @@ ms.locfileid: "78189771"
 
 **ClaimsProvider** は、技術プロファイルがクレーム プロバイダーにどのように関係するかをまとめています。 次の例は、Azure Active Directory の技術プロファイルがある Azure Active Directory のクレーム プロバイダーを示しています。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Azure Active Directory</DisplayName>
   <TechnicalProfiles>
@@ -95,7 +95,7 @@ ms.locfileid: "78189771"
 
 次の例は、**Facebook OAUTH** 技術プロファイルがある Facebook のクレーム プロバイダーを示しています。
 
-```XML
+```xml
 <ClaimsProvider>
   <Domain>facebook.com</Domain>
   <DisplayName>Facebook</DisplayName>

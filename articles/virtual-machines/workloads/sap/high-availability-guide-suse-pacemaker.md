@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811576"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797748"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -34,14 +34,14 @@ ms.locfileid: "80811576"
 
 Azure で Pacemaker クラスターをセットアップする場合、2 つの選択肢があります。 1 つはフェンス エージェントを使う方法です。フェンス エージェントは、障害が発生したノードを Azure API で再起動させる役割を担います。もう 1 つは、SBD デバイスを使う方法です。
 
-SBD デバイスを使う場合、iSCSI ターゲット サーバーとして機能しつつ SBD デバイスを提供する仮想マシンが、少なくとも 1 つ、追加で必要となります。 ただし、これらの iSCSI ターゲット サーバーは他の Pacemaker クラスターと共有することができます。 SBD デバイスを使う利点は、フェールオーバー時間を短縮できることです。また、SBD デバイスをオンプレミスで使う限り、Pacemaker クラスターの運用方法に変更を加える必要は一切ありません。 特定の SBD デバイスが利用できなくなる状況 (たとえば、iSCSI ターゲット サーバーの OS 修正プログラムの適用時など) に備えるにあたっては、1 つの Pacemaker クラスターに対し、最大 3 つの SBD デバイスを使用できます。 Pacemaker あたり 2 つ以上の SBD デバイスを使用する場合は、複数の iSCSI ターゲット サーバーをデプロイし、各 iSCSI ターゲット サーバーから 1 つの SBD を接続するようにしてください。 SBD デバイスは、1 つまたは 3 つ使用することをお勧めします。 SBD デバイスを 2 つだけ構成し、それらのいずれかが利用できなくなった場合、Pacemaker では、クラスター ノードを自動的にフェンシングすることができません。 1 つの iSCSI ターゲット サーバーがダウンした場合にフェンシングを行えるようにするには、3 つの SBD デバイスと、3 つの iSCSI ターゲット サーバーを使用する必要があります。
+SBD デバイスを使う場合、iSCSI ターゲット サーバーとして機能しつつ SBD デバイスを提供する仮想マシンが、少なくとも 1 つ、追加で必要となります。 ただし、これらの iSCSI ターゲット サーバーは他の Pacemaker クラスターと共有することができます。 SBD デバイスを使う利点は、SBD デバイスを既にオンプレミスで使用している場合、Pacemaker クラスターの運用方法に変更を加える必要は一切ないことです。 特定の SBD デバイスが利用できなくなる状況 (たとえば、iSCSI ターゲット サーバーの OS 修正プログラムの適用時など) に備えるにあたっては、1 つの Pacemaker クラスターに対し、最大 3 つの SBD デバイスを使用できます。 Pacemaker あたり 2 つ以上の SBD デバイスを使用する場合は、複数の iSCSI ターゲット サーバーをデプロイし、各 iSCSI ターゲット サーバーから 1 つの SBD を接続するようにしてください。 SBD デバイスは、1 つまたは 3 つ使用することをお勧めします。 SBD デバイスを 2 つだけ構成し、それらのいずれかが利用できなくなった場合、Pacemaker では、クラスター ノードを自動的にフェンシングすることができません。 1 つの iSCSI ターゲット サーバーがダウンした場合にフェンシングを行えるようにするには、3 つの SBD デバイスと、3 つの iSCSI ターゲット サーバーを使用する必要があります。これは、SBD を使用しているときに最も回復性がある構成です。
 
-仮想マシンを 1 つ追加で用意することが予算的に難しい場合は、Azure Fence エージェントを使うこともできます。 その場合の欠点は、リソースの停止に失敗した場合や、クラスター ノードが互いに通信できない状態に陥った場合、フェールオーバーに 10 分から 15 分かかることです。
+Azure Fence エージェントでは、追加の仮想マシンをデプロイする必要はありません。   
 
 ![SLES における Pacemaker の概要](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合、関係する VM と SBD デバイスをホストする VM が [NVA](https://azure.microsoft.com/solutions/network-appliances/) などのその他のデバイスを通過しないようにすることが、完全なクラスター構成の全体的な信頼性に必要です。 このようにしないと、NVA の問題とメンテナンス イベントがクラスター構成全体の安定性と信頼性に負の影響を与える可能性があります。 このような障害を回避するには、Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合に、クラスター化されたノードと NVA や類似のデバイスを介した SBD デバイスなどの間のトラフィックをルーティングする、NVA のルーティング規則または[ユーザー定義のルーティング規則](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)を定義しないようにする必要があります。 
+> Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合、関係する VM と SBD デバイスをホストする VM が [NVA](https://azure.microsoft.com/solutions/network-appliances/) などのその他のデバイスを通過しないようにすることが、完全なクラスター構成の全体的な信頼性に必要です。 このようにしないと、NVA の問題とメンテナンス イベントがクラスター構成全体の安定性と信頼性に負の影響を与える可能性があります。 このような障害を回避するには、Linux Pacemaker クラスター ノードおよび SBD デバイスを計画およびデプロイする場合に、クラスター化されたノードと NVA や類似のデバイスを介した SBD デバイスなどの間のトラフィックをルーティングする、NVA のルーティング規則または[ユーザー定義のルーティング規則](../../../virtual-network/virtual-networks-udr-overview.md)を定義しないようにする必要があります。 
 >
 
 ## <a name="sbd-fencing"></a>SBD フェンス
@@ -221,17 +221,17 @@ o- / ...........................................................................
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the second iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.18:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.18:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the third iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.19:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.19:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
    iSCSI デバイスが利用可能な状態であることを確認し、デバイス名を書き留めておいてください (次の例では /dev/sde)
@@ -413,39 +413,48 @@ o- / ...........................................................................
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** フェンス エージェントをインストールします
+1. **[A]** STONITH デバイスを使用している場合は、Azure Fence エージェントに基づいて、Fence エージェント パッケージをインストールします。  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > SUSE Linux Enterprise Server for SAP 15 を使用する場合は、追加のモジュールをアクティブ化し、追加のコンポーネント (Azure Fence Agent を使用するための前提条件) をインストールする必要があることに注意してください。 SUSE のモジュールと拡張機能の詳細については、[説明されているモジュールと拡張機能](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html)のセクションを参照してください。 Azure Python SDK をインストールするには、以下の手順に従います。 
+   > クラスター ノードがフェンスされる必要がある場合に、Azure Fence エージェントの短縮されたフェールオーバー時間の恩恵を受けるには、インストールされている **fence-agents** パッケージのバージョンが **4.4.0** 以上である必要があります。 古いバージョンを実行している場合は、パッケージを更新することをお勧めします。  
 
-   以降に示した Azure Python SDK のインストール手順は、Suse Enterprise Server for SAP **15** のみを対象としています。  
 
-    - Bring-Your-Own-Subscription を使用している場合は、次の手順に従います。  
+1. **[A]** Azure Python SDK のインストール 
+   - SLES 12 SP4 または SLES 12 SP5
+   <pre><code>
+    # You may need to activate the Public cloud extention first
+    SUSEConnect -p sle-module-public-cloud/12/x86_64
+    sudo zypper install python-azure-mgmt-compute
+   </code></pre> 
 
-    <pre><code>
-    #Activate module PackageHub/15/x86_64
-    sudo SUSEConnect -p PackageHub/15/x86_64
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
-
-     - 従量課金制サブスクリプションを使用している場合は、次の手順に従います。  
-
-    <pre><code>#Activate module PackageHub/15/x86_64
-    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
+   - SLES 15 以上 
+   <pre><code>
+    # You may need to activate the Public cloud extention first. In this example the SUSEConnect command is for SLES 15 SP1
+    SUSEConnect -p sle-module-public-cloud/15.1/x86_64
+    sudo zypper install python3-azure-mgmt-compute
+   </code></pre> 
+ 
+   >[!IMPORTANT]
+   >バージョンとイメージの種類によっては、Azure Python SDK をインストールする前に、使用している OS リリースのパブリック クラウド拡張機能をアクティブにする必要がある場合があります。
+   >SUSEConnect ---list-extensions を実行して、拡張機能を確認できます。  
+   >Azure Fence エージェントでフェールオーバー時間を短縮するには、次のようにします。
+   > - SLES 12 SP4 または SLES 12 SP5 の場合、python-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする  
+   > - SLES 15 の場合、python**3**-azure-mgmt-compute パッケージのバージョン **4.6.2** 以上をインストールする 
 
 1. **[A]** ホスト名解決を設定します
 
    DNS サーバーを使用するか、すべてのノードの /etc/hosts を変更します。 この例では、/etc/hosts ファイルを使用する方法を示しています。
-   次のコマンドの IP アドレスとホスト名を置き換えます。 /etc/hosts を使用する利点は、単一障害点になる可能性もある DNS からクラスターを独立させられることです。
+   次のコマンドの IP アドレスとホスト名を置き換えます。
 
+   >[!IMPORTANT]
+   > クラスター構成でホスト名を使用する場合は、信頼できるホスト名解決が不可欠です。 名前が使用できず、クラスターのフェールオーバーの遅延につながる可能性がある場合、クラスター通信は失敗します。
+   > /etc/hosts を使用する利点は、単一障害点になる可能性もある DNS からクラスターを独立させられることです。  
+     
    <pre><code>sudo vi /etc/hosts
+
    </code></pre>
 
    次の行を /etc/hosts に挿入します。 お使いの環境に合わせて IP アドレスとホスト名を変更します   
@@ -457,7 +466,7 @@ o- / ...........................................................................
    </code></pre>
 
 1. **[1]** クラスターをインストールします
-
+- フェンスに SBD デバイスを使用している場合
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -466,6 +475,19 @@ o- / ...........................................................................
    # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
    # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
+   # Do you wish to configure an administration IP (y/n)? <b>n</b>
+   </code></pre>
+
+- フェンスに SBD デバイスを "*使用していない*" 場合
+   <pre><code>sudo ha-cluster-init -u
+   
+   # ! NTP is not configured to start at system boot.
+   # Do you want to continue anyway (y/n)? <b>y</b>
+   # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
+   # Do you wish to use SBD (y/n)? <b>n</b>
+   #WARNING: Not configuring SBD - STONITH will be disabled.
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
@@ -528,8 +550,27 @@ o- / ...........................................................................
    <pre><code>sudo service corosync restart
    </code></pre>
 
+## <a name="default-pacemaker-configuration-for-sbd"></a>SBD 用の既定の Pacemaker 構成
+
+このセクションの構成は、SBD STONITH を使用している場合にのみ適用されます。  
+
+1. **[1]** STONITH デバイスの使用を有効にし、フェンスの遅延を設定します
+
+<pre><code>sudo crm configure property stonith-timeout=144
+sudo crm configure property stonith-enabled=true
+
+# List the resources to find the name of the SBD device
+sudo crm resource list
+sudo crm resource stop stonith-sbd
+sudo crm configure delete <b>stonith-sbd</b>
+sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
+   params pcmk_delay_max="15" \
+   op monitor interval="15" timeout="15"
+</code></pre>
+
 ## <a name="create-azure-fence-agent-stonith-device"></a>Azure Fence エージェントの STONITH デバイスの作成
 
+ドキュメントのこのセクションは、Azure Fence エージェントに基づいて STONITH を使用している場合にのみ適用されます。
 STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従います。
 
 1. [https://resources.azure.com](<https://portal.azure.com>) に移動します
@@ -547,28 +588,32 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) を使って作成してください
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) または [Azure CLI](../../../role-based-access-control/custom-roles-cli.md) を使って作成してください
 
 入力ファイルには次の内容を使用します。 実際のサブスクリプションに合わせて内容を調整する必要があります。つまり、c276fc76-9cd4-44c9-99a7-4fd71546436e and e91d47c4-76f3-4271-a796-21b4ecfe3624 は、ご利用のサブスクリプションの ID に置き換えます。 ご利用のサブスクリプションが 1 つしかない場合は、AssignableScopes の 2 つ目のエントリは削除してください。
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action" 
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -591,33 +636,27 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 仮想マシンのアクセス許可を編集したあとで、クラスターの STONITH デバイスを構成できます。
 
-<pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+<pre><code>sudo crm configure property stonith-enabled=true
+crm configure property concurrent-fencing=true
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900
-sudo crm configure property stonith-enabled=true
+
 </code></pre>
 
-## <a name="default-pacemaker-configuration-for-sbd"></a>SBD 用の既定の Pacemaker 構成
+> [!IMPORTANT]
+> 監視およびフェンス操作は逆シリアル化されます。 その結果、長時間実行されている監視操作と同時フェンス イベントがある場合、既に実行されている監視操作により、クラスターのフェールオーバーに遅延は発生しません。
 
-1. **[1]** STONITH デバイスの使用を有効にし、フェンスの遅延を設定します
-
-<pre><code>sudo crm configure property stonith-timeout=144
-sudo crm configure property stonith-enabled=true
-
-# List the resources to find the name of the SBD device
-sudo crm resource list
-sudo crm resource stop stonith-sbd
-sudo crm configure delete <b>stonith-sbd</b>
-sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
-   params pcmk_delay_max="15" \
-   op monitor interval="15" timeout="15"
-</code></pre>
+> [!TIP]
+>Azure Fence Agent では、[標準 ILB を使用した VM 用のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)に関する記事で説明されているように、使用可能なソリューションと共に、パブリック エンドポイントへの送信接続が必要です。  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure のスケジュール化されたイベントの Pacemaker 構成
 
-Azure では、[スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
+Azure では、[スケジュール化されたイベント](../../linux/scheduled-events.md)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
 
 1. **[A]** **azure-events** エージェントのパッケージが既にインストールされ、最新であることを確認します。 
 

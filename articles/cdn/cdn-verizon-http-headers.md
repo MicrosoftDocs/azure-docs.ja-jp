@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
-ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343219"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの Verizon 固有 HTTP ヘッダー
 
 **Verizon の Azure CDN Premium** 製品では、HTTP 要求が配信元サーバーに送信されるとき、ポイント オブジェクト プレゼンス (POP) サーバーは、POP へのクライアント要求内に 1 つ以上の予約済みヘッダー (またはプロキシの特殊ヘッダー) を追加できます。 これらのヘッダーは、受信された標準の転送ヘッダーに追加されます。 標準の要求ヘッダーについては、[要求フィールド](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)に関するページを参照してください。
 
-これらのいずれかの予約済みヘッダーが配信元サーバーへの Azure CDN (Content Delivery Network) POP 要求内に追加されないようにする場合は、ルール エンジン内に[プロキシの特殊ヘッダー機能](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers)に関するルールを作成する必要があります。 このルールでは、削除するヘッダーをヘッダー フィールド内の既定のヘッダーのリストから除外します。 [キャッシュ応答ヘッダーのデバッグ機能](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)を有効にしている場合は、必要な `X-EC-Debug` ヘッダーを追加するようにしてください。 
+これらのいずれかの予約済みヘッダーが配信元サーバーへの Azure CDN (Content Delivery Network) POP 要求内に追加されないようにする場合は、ルール エンジン内に[プロキシの特殊ヘッダー機能](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm)に関するルールを作成する必要があります。 このルールでは、削除するヘッダーをヘッダー フィールド内の既定のヘッダーのリストから除外します。 [キャッシュ応答ヘッダーのデバッグ機能](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm)を有効にしている場合は、必要な `X-EC-Debug` ヘッダーを追加するようにしてください。 
 
 たとえば、`Via` ヘッダーを削除するには、ルールのヘッダー フィールドに *X-Forwarded-For、X-Forwarded-Proto、X-Host、X-Midgress、X-Gateway-List、X-EC-Name、Host* のヘッダーのリストを含める必要があります。 
 

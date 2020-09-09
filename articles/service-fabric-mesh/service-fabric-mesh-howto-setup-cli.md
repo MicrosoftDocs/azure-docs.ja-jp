@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229535"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248528"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 以下に、設定の方法を説明します。
@@ -44,7 +44,7 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLI (sfctl) をインストールする 
 
-[Service Fabric CLI のセットアップ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)に関するページの手順に従います。 **sfctl** モジュールは、ローカル マシン上の Service Fabric クラスターに対して、リソース モデルに基づいてアプリケーションのデプロイメントに使用できます。 
+[Service Fabric CLI のセットアップ](../service-fabric/service-fabric-cli.md)に関するページの手順に従います。 **sfctl** モジュールは、ローカル マシン上の Service Fabric クラスターに対して、リソース モデルに基づいてアプリケーションのデプロイメントに使用できます。 
 
 ## <a name="install-the-maven-cli"></a>Maven CLI をインストールする 
 

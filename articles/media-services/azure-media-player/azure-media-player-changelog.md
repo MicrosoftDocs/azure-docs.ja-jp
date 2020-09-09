@@ -5,15 +5,127 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 07/27/2020
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727599"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432664"
 ---
 # <a name="changelog"></a>変更ログ #
+
+## <a name="235-official-update-june-1-2020"></a>2.3.5 (公式更新プログラム 2020 年 6 月 1 日)
+
+### <a name="bug-fixes-235"></a>バグ修正 2.3.5
+
+- [アクセシビリティ] [オプション] ペインの Esc キー リスナーがドキュメントにアタッチされる
+- [アクセシビリティ] コントロール バーまたはオプション メニューにフォーカスがある場合にプレーヤーの UI が消えないようにする
+- 実時間の表示設定が有効になっているときに、コントロール バーに正しくない実時間が表示される
+
+### <a name="changes-235"></a>変更 2.3.5
+
+- エラー コード 0x00400005 のエラー メッセージを追加し、文書化
+
+## <a name="234-official-update-march-4-2020"></a>2.3.4 (公式更新プログラム 2020 年 3 月 4 日)
+
+### <a name="bug-fixes-234"></a>バグ修正 2.3.4
+
+- PlayReady overrideLicenseAcquistionUrl を設定できない
+- 不連続性のある一部のコンテンツを再生できない
+- [アクセシビリティ] スクリーン リーダー アラートの ID 属性値は一意である必要がある
+- [アクセシビリティ] [クローズド キャプション] 設定ダイアログ ボックス内を移動中に、フォーカスがダイアログ ボックス外に移動する
+
+### <a name="changes-234"></a>変更 2.3.4
+
+- 解読エラーの分析に役立てるために、正常なダウンロード後にコンテンツの長さをログに記録する 2.3.3 (公式更新プログラム 2019 年 11 月 12 日)
+
+### <a name="features-234"></a>機能 2.3.4
+
+- ビデオの実時間をオーバーレイとして、またコントロール バーに表示するためのサポートを追加
+
+### <a name="bug-fixes-234"></a>バグ修正 2.3.4
+
+- オーディオ トラック スイッチは動作するが、IE11 および Windows7 で次のエラーが出力される。"Object doesn't support property or method 'enabled' (オブジェクトはプロパティまたはメソッド "enabled" をサポートしません)"
+- バッファーが完全に読み込まれたときにオーディオ トラック スイッチに障害が発生する
+- ユーザーがビデオを一時停止し、オーディオ トラック間を非常に速く切り替えると、オーディオ トラック スイッチに障害が発生する
+- [アクセシビリティ] ビデオ プレーヤーのビデオ コントロールにヒントが定義されていない
+- "loadstart" を受け取るタイミングに応じて、Html5 に音量ボタンが表示されない
+- [アクセシビリティ] ポスター画像の代替テキストを設定できない
+- [アクセシビリティ] キャプション設定ダイアログボックスで [Done]\(完了\) を選択した後、アプリケーション フォーカスが失われる
+- [アクセシビリティ] "segments preview" の下の "video" に対して不適切な ARIA 属性が定義されている
+
+### <a name="changes-234"></a>変更 2.3.4
+
+- iOS および macOS Safari で HLS を再生するときに空のキャプション ラベル/トラックを削除
+- IMSC1 キャプションの 412s の数を削減
+- ライブ デバッグに役立つように、10 個の連続する空の IMSC1 キャプション応答に対する警告をコンソールに出力
+
+## <a name="232-official-update-october-9-2019"></a>2.3.2 (公式更新プログラム 2019 年 10 月 9 日)
+
+### <a name="features-232"></a>機能 2.3.2
+
+\- Chromium Edge ブラウザーの DASH 再生の PlayReady サポートを追加
+
+### <a name="bug-fixes-232"></a>バグ修正 2.3.2
+
+- ユーザーが手動で設定しない限り、現在の再生速度が再生速度メニューに表示されない
+- [アクセシビリティ] [設定] ペインが "Esc" キーで折りたたまれない
+- [アクセシビリティ] ナレーターがオンのときに AMP ショートカット キー "M" が機能しない
+
+### <a name="changes-232"></a>変更 2.3.2
+
+- E-AC3 オーディオ コーデックをサポートしないブラウザーでは、E-AC3 オーディオ トラックがオーディオ トラック メニューで非表示になる
+- E-AC3 オーディオ コーデックをサポートするブラウザーでは、E-AC3 オーディオ トラックが既定で選択される
+- オーディオ コーデックの切り替えをサポートしないブラウザーでは、選択したトラックとは異なるコーデックのオーディオ トラックが、オーディオ トラック メニューで非表示になる
+
+## <a name="231-official-update-august-12-2019"></a>2.3.1 (公式更新プログラム 2019 年 8 月 12 日)
+
+### <a name="features-231"></a>機能 2.3.1
+
+- emsg ボックスが DASH 再生で受け取られたときにイベントを通知する - ec-3 をサポートするブラウザーのオーディオ メニューに ec-3 オーディオ トラックを表示し、Chromimum ベースの Edge ブラウザーでのみオーディオ トラックを aac から ec3 に (およびその逆に) 切り替えることができるサポートを追加
+
+### <a name="bug-fixes-231"></a>バグ修正 2.3.1
+
+- ec-3 トラックを削除した後、オーディオ トラック メニューが破損する
+- 現在の時刻がビデオの再生時間よりも大きい場合がある
+- initialSpeed による再生速度の設定が機能しない
+- シーク後にプレーヤーが動かなくなることがある
+- Edge および IE で、タッチスクリーン上でページをズームした後に、シークバーを押すかカーソルを合わせても、ビデオの正しいセグメントが正確に取得されない
+- [アクセシビリティ] 再生/一時停止の Aria ラベルがビデオ プレーヤーの説明になっていない。flashSS についてのライブ セグメントが見つからないというエラーを、正しい amp エラーにマップする
+- [アクセシビリティ] 再生/一時停止に使用する Aria ロールは有効な値 (.vjs-text-track-display) に準拠している必要がある
+- [アクセシビリティ] 特定の ARIA ロールは特定の親に含まれている必要がある
+- [アクセシビリティ] ビデオ プレーヤーの再生/一時停止ボタンのヒントが定義されていない。IMSC1 キャプションは、現在のビデオ/オーディオ バッファー内でシークした後に消えることがある
+
+### <a name="changes-231"></a>変更 2.3.1
+
+- segmentDecryptError を取得するとき、プレーヤーが既にライブ エッジ上にあると、プレーヤーは次のセグメントを試す代わりにマニフェストを更新するようになる
+- 診断用のログを追加
+- iOS Safari の FairPlay サポートを含むようにドキュメントを更新
+- IMSC1 オプションの "srclang" の例を追加
+- テキスト トラックに対して padding、textPadding、boxShadow のオーバーライドを追加。
+- 単に 0x00200259 をスローするのではなく、インターネットがないためにセグメント ダウンロードが失敗したことを区別するためにエラーコード (0x0020025B) を追加
+
+## <a name="230-official-release-april-30-2019"></a>2.3.0 (公式リリース 2019 年 4 月 30 日)
+
+### <a name="features-230"></a>機能 2.3.0
+
+- DASH の IMSC1 キャプションのサポートを追加
+- DASH のビデオ専用資産のサポートを追加
+- API presentationTimeOffsetInSec を追加
+
+### <a name="bug-fixes-230"></a>バグ修正 2.3.0
+
+- AMP LowLatency ヒューリスティック プロファイルが iOS ビデオ再生の妨げとなる。一部の言語の “mute” および “unmute” の翻訳が間違っている
+- 進行状況バー スライダーの aria-valuenow 値が正しくないことがある
+- テキスト トラック表示の aria ロール値が正しくない
+
+### <a name="changes-230"></a>変更 2.3.0
+
+- ダウンロードされたメディア フラグメントのサイズをログに格納
+- IE 9 および IE 10 のサポートを除外
+- 左揃えキャプションを表示するように CEA708 サンプルを更新
+- 再生エラーの MediaError.message をログに格納
 
 ## <a name="224-official-update-february-22-2019"></a>2.2.4 (公式更新プログラム 2019 年 2 月 22 日) ##
 
@@ -31,7 +143,7 @@ ms.locfileid: "81727599"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3 (公式更新プログラム 2019 年 1 月 9 日) ##
 
-### <a name="features"></a>特徴 ###
+### <a name="features-223"></a>機能 2.2.3 ###
 
 - [機能][HLS] Safari HLS 再生用のオーディオ トラック メニューを追加
 
@@ -72,7 +184,7 @@ ms.locfileid: "81727599"
 
 ### <a name="changes"></a>[変更点] ###
 
-- [変更][ライブ キャプション] CEA キャプションの API 名を 608 から 708 に変更。 詳細については、[CEA708 キャプションの設定](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)に関するページを参照-->
+- [変更][ライブ キャプション] CEA キャプションの API 名を 608 から 708 に変更。 詳細については、[CEA708 キャプションの設定](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)に関するページを参照-->
 
 ## <a name="220-official-release"></a>2.2.0 (公式リリース) ##
 
@@ -82,7 +194,7 @@ ms.locfileid: "81727599"
 
 ### <a name="bug-fixes-220"></a>バグ修正 2.2.0 ###
 
-- [バグ修正] Flash バージョンの検出が Chrome と Edge で正常に機能しない
+- [バグ修正] Flash バージョンの検出が Chrome と Microsoft Edge で正常に機能しない
 
 ### <a name="changes-220"></a>変更 2.2.0 ###
 
@@ -414,7 +526,7 @@ ms.locfileid: "81727599"
 ### <a name="changes-170"></a>変更 1.7.0 ###
 
 - [変更][FlashSS] SWF スクリプト ("MSAdaptiveStreamingPlugin-osmf2.0.swf" および "StrobeMediaPlayback.2.0.swf") を "StrobeMediaPlayback.2.0.swf" という単一の SWF にマージ
-- [変更][FlashSS] より正確なエラー コードを取得するためにエラー コードの伝達を更新 (例: 404 は、一般エラー 0x30200000 ではなく 0x30200194 となるように変更)
+- [変更][FlashSS] より正確なエラー コードを取得するよう、エラー コードの反映を更新 (例: 404 は、一般的なエラー 0x30200000 ではなく、0x30200194 になるようになりました)
 
 ## <a name="163-official-hotfix-update"></a>1.6.3 (公式修正プログラム) ##
 
@@ -439,7 +551,7 @@ ms.locfileid: "81727599"
 
 ### <a name="bug-fixes-161"></a>バグ修正 1.6.1 ###
 
-- [バグ修正][FlashSS|Edge、IE][SilverlightSS|IE] IE または Edge で、入力などに使用される他の UI 要素のフォーカスを取得できない
+- [バグ修正][FlashSS|Edge、IE][SilverlightSS|IE] IE または Microsoft Edge で、入力などに使用される他の UI 要素のフォーカスを取得できない
 - [バグ修正] forge が定義されていないと AES 再生に失敗する
 - [バグ修正][Android][AzureHtml5JS|Chrome] 正常性チェック ループ状態になると継続的にスピナーが表示されてコンテンツが再生されない
 - [バグ修正][IE9] IE 9 で console.log() がサポートされないために例外が発生する
@@ -460,8 +572,8 @@ ms.locfileid: "81727599"
 - [バグ修正] マウスの移動でビットレート選択ボックスがリセットされ、より低いビットレートをマウス コントロールで選択するときに問題が発生する
 - [バグ修正] アプリ内で DRM チェックを実行しているときに Mac Office がクラッシュする
 - [バグ修正] CSS クラスが上書きされてしまいやすい
-- [バグ修正][Chrome] ブラウザーが Edge であることを示すユーザーエージェント文字列の ID を更新
-- [バグ修正][AzureHtml5JS] Edge (Win10) または Chrome (Mac) のツール バーにキャプション ボタンが表示されない
+- [バグ修正][Chrome] ブラウザーが Microsoft Edge であることを示すユーザーエージェント文字列の ID を更新
+- [バグ修正][AzureHtml5JS] Microsoft Edge (Win10) または Chrome (Mac) のツール バーにキャプション ボタンが表示されない
 - [バグ修正][Android][AzureHtml5JS|Chrome] ショート ビデオの endOfStream() 呼び出しで InvalidStateError 例外が発生する
 - [バグ修正][Firefox] ブラウザーの機能をチェックする際に Firefox が原因で生じる DRM 警告を削除
 - [バグ修正][Html5] プログレッシブ mp4 コンテンツで字幕またはキャプションが表示されない
@@ -577,8 +689,8 @@ ms.locfileid: "81727599"
 - [バグ修正] [AzureHtml5JS] タイムスタンプに少しの狂いがあると、MPD の更新でライブ再生が凍結する
 - [バグ修正] [AzureHtml5JS] ライブ再生のいくつかの問題を軽減
 - [バグ修正] [AzureHtml5JS] ウィンドウ サイズのヒューリスティックがオンになっていて、なおかつ、より高解像度の画面に移動したときにバッファーをフラッシュ
-- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。"*AzureHtml5JS を使用しているときに Chrome から正しく â&euro;œendedâ&euro; イベントが送信されません。基になるブラウザーに問題があります。* "
-- [バグ修正] [AzureHtml5JS] このテクノロジに関して Safari を無効化。"*これによって OSX Yosemite と AzureHtml5JS テクノロジでの再生の問題に対処します。MSE の実装に問題があります。一時的な軽減策: これらのユーザー エージェントには、テクノロジ オーダーとして â&euro;œflashSSâ&euro;、â&euro;œsilverlightSSâ&euro; を強制します*"
+- [バグ修正] [AzureHtml5JS] Chrome で ended イベントが正しく表示されるように修正。 これは既知の問題に関連します。"*AzureHtml5JS を使用しているときに Chrome から正しくイベントが送信されません。基になるブラウザーに問題があります。* "
+- [バグ修正] [AzureHtml5JS] 次の問題に対処するために、Safari でこのテクノロジを無効化。"*AzureHtml5JS テクノロジを使用した OSX Yosemite に関する再生の問題。MSE の実装に関する問題があります。一時的な軽減策: これらのユーザー エージェントのためのテクノロジとして FlashSS、SilverlightSS を適用*"
 - [バグ修正] [FlashSS] エラーの発生後に loadstart が生成される
 
 ## <a name="020-beta"></a>0.2.0 (ベータ) ##

@@ -1,6 +1,7 @@
 ---
-title: クイック スタート:アプリの Web API へのアクセス - Microsoft ID プラットフォーム | Azure
-description: このクイックスタートでは、リダイレクト URI、資格情報、または Web API にアクセスするためのアクセス許可を含めるように、Microsoft ID プラットフォームに登録されたアプリを構成します。
+title: クイック スタート:Web API にアクセスするためにアプリを構成する | Azure
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、Web API にアクセスするためのリダイレクト URI、資格情報、またはアクセス許可を含めるように、Microsoft ID プラットフォームに登録されたアプリを構成します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082324"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140804"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>クイック スタート:Web API にアクセスするためのクライアント アプリケーションの構成
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する
 
 このクイックスタートでは、アプリケーションの Web API にアクセスするためのリダイレクト URI、資格情報、またはアクセス許可を追加します。 Web または機密クライアント アプリケーションでは、認証を必要とする承認付与フローに参加するために、セキュリティで保護された資格情報を確立する必要があります。 Azure portal でサポートされている既定の認証方法は、クライアント ID と秘密鍵の組み合わせです。 このプロセス中にアプリによってアクセス トークンが取得されます。
 
@@ -27,9 +28,8 @@ Microsoft Graph API などのリソース アプリケーションによって�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 次の項目の完了: 「[クイックスタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)」を参照してください。
-* [Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](v2-permissions-and-consent.md)の確認。
-* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 次の項目の完了: 「[クイックスタート: Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)」。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portal にサインインしてアプリを選択する
 
@@ -60,7 +60,7 @@ Web API にアクセスするようにアプリケーションを構成するに
 1. アプリケーションのリダイレクト URI を 1 つ以上選択します。 カスタム リダイレクト URI を入力することもできます。 何を使えばよいかわからない場合は、ライブラリのドキュメントを参照してください。
 1. **[保存]** を選択します。
 
-リダイレクト URI には、特定の制限が適用されます。 詳細については、「[リダイレクト URI および応答 URL に関する制約と制限](https://docs.microsoft.com/azure/active-directory/develop/reply-url)」を参照してください。
+リダイレクト URI には、特定の制限が適用されます。 詳細については、「[リダイレクト URI および応答 URL に関する制約と制限](./reply-url.md)」を参照してください。
 
 > [!NOTE]
 > 新しい**認証**設定エクスペリエンスを試してみてください。このエクスペリエンスでは、対象とするプラットフォームまたはデバイスに基づいてアプリケーションの設定を構成できます。
@@ -113,7 +113,7 @@ Web API にアクセスするようにアプリケーションを構成するに
    | **モバイル アプリケーションとデスクトップ アプリケーション**  | 省略可能。 デスクトップとデバイス用のアプリを構築している場合は、 **[推奨されるリダイレクト URI]** でいずれかを選択します。<br/>省略可能。 **カスタム リダイレクト URI** を入力します。これは、Azure AD が認証要求に応答してユーザーをリダイレクトする場所として使用されます。 たとえば、対話が必要な .NET Core アプリケーションの場合、`http://localhost` を使用します。 |
 
    > [!NOTE]
-   > Active Directory フェデレーション サービス (AD FS) および Azure AD B2C では、ポート番号も指定する必要があります。  (例: `http://localhost:1234`)。 
+   > Active Directory フェデレーション サービス (AD FS) および Azure AD B2C では、ポート番号も指定する必要があります。  (例: `http://localhost:1234`)。
 
    > [!IMPORTANT]
    > 最新の Microsoft Authentication Library (MSAL) を使用していない、またはブローカーを使用していないモバイル アプリケーションでは、これらのアプリケーションのリダイレクト URI を **[デスクトップとデバイス]** で構成する必要があります。
@@ -148,7 +148,7 @@ Web アプリケーションに資格情報を追加するには、証明書を�
 
 ## <a name="add-permissions-to-access-web-apis"></a>Web API にアクセスするためのアクセス許可を追加する
 
-[Graph API のサインインとユーザー プロファイルの読み取りアクセス許可](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions)が既定で選択されています。 Web API ごとに [2 種類のアクセス許可](developer-glossary.md#permissions)から選択できます。
+[Graph API のサインインとユーザー プロファイルの読み取りアクセス許可](/graph/permissions-reference#user-permissions)が既定で選択されています。 Web API ごとに [2 種類のアクセス許可](developer-glossary.md#permissions)から選択できます。
 
 * **アプリケーションのアクセス許可**。 クライアント アプリケーションは、アプリケーション自体として (ユーザー コンテキストなしで) Web API に直接アクセスする必要があります。 この種類のアクセス許可には、管理者の同意が必要です。 このアクセス許可は、デスクトップおよびモバイルのクライアント アプリケーションでは使用できません。
 * **委任されたアクセス許可**。 クライアント アプリケーションは、サインインしているユーザーとして Web API にアクセスする必要があります。アクセスにあたっては、選択されているアクセス許可に応じて制限が適用されます。 この種類のアクセス許可は、管理者の同意が必要でない限り、ユーザーが付与できます。
@@ -200,16 +200,7 @@ Web アプリケーションに資格情報を追加するには、証明書を�
 
 ## <a name="next-steps"></a>次のステップ
 
-次の記事に進んで、Web API の公開方法を学習してください。
+このシリーズの次のクイックスタートに進んで、アプリケーションにアクセスできるアカウントの種類を構成する方法を確認してください。 たとえば、組織内のユーザーのみにアクセスを制限したり (シングルテナント)、他の Azure AD テナントのユーザーを許可したり (マルチテナント)、個人用 Microsoft アカウントを持つユーザーを許可したり (MSA) することができます。
+
 > [!div class="nextstepaction"]
-> [クイック スタート: Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)
-
-* 登録されたアプリケーションを表す 2 つの Azure AD オブジェクトと、両者間の関係については、[Application objects and service principal objects](app-objects-and-service-principals.md)\(アプリケーション オブジェクトとサービス プリンシパル オブジェクト\) を参照してください。
-
-* Azure Active Directory でアプリケーションを開発するときに使用するブランド化ガイドラインについては、[アプリケーションのブランド化ガイドライン](howto-add-branding-in-azure-ad-apps.md)を参照してください。
-
-* [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
-
-* [クイック スタート: アプリケーションでサポートされているアカウントを変更する](quickstart-modify-supported-accounts.md)
-
-* [クイック スタート: Microsoft ID プラットフォームに登録されたアプリケーションを削除する](quickstart-remove-app.md)
+> [アプリケーションによってサポートされるアカウントを変更する](quickstart-modify-supported-accounts.md)

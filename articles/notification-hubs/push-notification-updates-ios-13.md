@@ -8,12 +8,13 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df8560bec3671a9f05628ee6ed8ea95c31e9b16f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74228135"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998052"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs の更新内容 (iOS 13 関連)
 
@@ -58,7 +59,7 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-この切り替え中に役立つように、Azure Notification Hubs では、`apns-push-type` が設定されていない通知を検出すると、通知要求からプッシュの種類を推測し、値を自動的に設定するようになっています。 トークンベースの認証を使用して必要なヘッダーを設定するように Azure Notification Hubs を構成する必要があることに注意してください。詳細については、「[APNS のトークンベース (HTTP/2) 認証](notification-hubs-push-notification-http2-token-authentification.md)」を参照してください。
+この切り替え中に役立つように、Azure Notification Hubs では、`apns-push-type` が設定されていない通知を検出すると、通知要求からプッシュの種類を推測し、値を自動的に設定するようになっています。 トークンベースの認証を使用して必要なヘッダーを設定するように Azure Notification Hubs を構成する必要があることに注意してください。詳細については、「[APNS のトークンベース (HTTP/2) 認証](./notification-hubs-push-notification-http2-token-authentication.md)」を参照してください。
 
 ## <a name="apns-priority"></a>APNS の優先度
 

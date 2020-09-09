@@ -5,17 +5,17 @@ description: この記事では、Azure Log Analytics を使用して Applicatio
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88e360c5630c24dd997f72bda3fc4a480264763d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74048089"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086916"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォール (WAF) のログを調べる
 
 Application Gateway の WAF が動作するようになったら、ログを有効にして、各要求で起きていることを調べることができます。 ファイアウォールのログでは、WAF で評価、照合、ブロックされていることについての分析情報が提供されます。 Log Analytics では、ファイアウォール ログ内のデータを調べて、さらに多くの分析情報を得ることができます。 Log Analytics ワークスペースの作成について詳しくは、「[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」をご覧ください。 ログ クエリについて詳しくは、「[Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
 

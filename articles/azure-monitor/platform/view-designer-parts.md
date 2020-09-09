@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658559"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539399"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor のビュー デザイナー視覚化パーツのリファレンス ガイド
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事は、カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドです。
@@ -318,7 +318,7 @@ Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワ
 たとえば、*Location* というプロパティに、*Redmond-Building 41* や *Bellevue-Building 12* のような値が含まれるとします。 [Name & Value Separator] (名前と値区切り) に「-」(ダッシュ) を指定し、[名前] に「*City-Building*」を指定できます。 この手法で、それぞれの値が *City* と *Building* という名前の 2 つのプロパティとして解析されます。
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>クリックスルー ナビゲーション
-クリックスルー ナビゲーションには、ビュー内のヘッダーまたはリスト項目をクリックしたときに実行されるアクションを定義します。  これにより、[Log Analytics](../../azure-monitor/log-query/portals.md) 内にクエリが開かれるか、別のビューが起動されます。
+クリックスルー ナビゲーションには、ビュー内のヘッダーまたはリスト項目をクリックしたときに実行されるアクションを定義します。  これにより、[Log Analytics](../log-query/log-query-overview.md) 内にクエリが開かれるか、別のビューが起動されます。
 
 クリックスルー ナビゲーションの設定を次の表に示します。
 

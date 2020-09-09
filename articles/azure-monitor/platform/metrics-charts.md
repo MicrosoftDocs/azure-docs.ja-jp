@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509824"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079555"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの高度な機能
 
@@ -21,7 +21,7 @@ ms.locfileid: "82509824"
 
 ## <a name="metrics-in-azure"></a>Azure のメトリック
 
-[Azure Monitor におけるメトリック](data-platform-metrics.md)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 カスタム メトリックは、[カスタム イベントとメトリック用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、[Windows Azure Diagnostics (WAD) 拡張機能](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)、または [Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) を使用して、アプリケーションによって Azure に送信されます。
+[Azure Monitor におけるメトリック](data-platform-metrics.md)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 カスタム メトリックは、[カスタム イベントとメトリック用の Application Insights API](../app/api-custom-events-metrics.md)、[Windows Azure Diagnostics (WAD) 拡張機能](./diagnostics-extension-overview.md)、または [Azure Monitor REST API](./metrics-store-custom-rest-api.md) を使用して、アプリケーションによって Azure に送信されます。
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>複数のメトリックとグラフがあるビューを作成する
 
@@ -138,9 +138,6 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 
 構成したグラフの色はその後、グラフをダッシュボードにピン留めしても、そのままになります。 次のセクションでは、グラフをピン留めする方法について説明します。
 
-> [!NOTE]
-> Microsoft のリリースと発行のスケジュールの制約により、一時的処置として、グラフの線の色を変更するには、Azure portal [https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true) を開始するときに特別なパラメーター **?feature.colorpicker=true**を渡す必要があります。 この制限は間もなく解除される予定です。 
-
 ![メトリックの画像](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>ダッシュボードにグラフをピン留めする
@@ -179,5 +176,4 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 
 ## <a name="next-steps"></a>次のステップ
 
-  [カスタム KPI ダッシュボードの作成](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)に関する記事で、メトリックを使用した実用的なダッシュボードを作成するためのベスト プラクティスを確認します。
-
+  [カスタム KPI ダッシュボードの作成](../learn/tutorial-app-dashboards.md)に関する記事で、メトリックを使用した実用的なダッシュボードを作成するためのベスト プラクティスを確認します。

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476444"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480647"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストに対する信頼関係のしくみ
 
@@ -26,6 +26,10 @@ Active Directory Domain Services (AD DS) では、ドメインおよびフォレ
 AD DS と Windows 分散セキュリティ モデルによって提供されるアクセス制御メカニズムにより、ドメインおよびフォレストの信頼の操作のための環境が提供されます。 これらの信頼を適切に機能させるには、すべてのリソースまたはコンピューターに、配置先のドメイン内の DC への直接の信頼パスがある必要があります。
 
 信頼パスは、信頼されたドメイン機関への認証済みリモート プロシージャ コール (RPC) 接続を使用して、Net Logon サービスによって実装されます。 また、セキュリティで保護されたチャネルは、ドメイン間の信頼関係を通じて、他の AD DS ドメインに拡張されます。 このセキュリティで保護されたチャネルは、ユーザーとグループのセキュリティ識別子 (SID) を含む、セキュリティ情報を取得して検証するために使用されます。
+
+Azure AD DS に信頼を適用する方法の概要については、[リソース フォレストの概念と機能][create-forest-trust]に関する記事を参照してください。
+
+Azure AD DS で信頼を使用するには、[フォレストの信頼を使用するマネージド ドメインを作成][tutorial-create-advanced]します。
 
 ## <a name="trust-relationship-flows"></a>信頼関係のフロー
 
@@ -58,7 +62,7 @@ AD DS フォレスト内のすべてのドメイン信頼は、双方向の推�
 
 フォレスト内に新しいドメインを作成するたびに、新しいドメインとその親ドメインとの間に双方向の推移的な信頼関係が自動的に作成されます。 子ドメインが新しいドメインに追加された場合、信頼パスはドメイン階層を上方向に流れ、新しいドメインとその親ドメインとの間に作成された最初の信頼パスが拡張されます。 推移的な信頼関係は、形成されるドメイン ツリーを上方向に流れ、ドメイン ツリー内のすべてのドメイン間に推移的な信頼が作成されます。
 
-認証要求はこれらの信頼パスに従うため、フォレスト内のドメインからのアカウントは、フォレスト内のその他のドメインで認証できます。 適切なアクセス許可を持つアカウントでは、1 回のログオン プロセスで、フォレスト内の任意のドメインのリソースにアクセスできます。
+認証要求はこれらの信頼パスに従うため、フォレスト内のドメインからのアカウントは、フォレスト内のその他のドメインで認証できます。 適切なアクセス許可を持つアカウントでは、1 回のサインイン プロセスで、フォレスト内の任意のドメインのリソースにアクセスできます。
 
 ## <a name="forest-trusts"></a>フォレストの信頼
 
@@ -70,7 +74,7 @@ AD DS フォレスト内のすべてのドメイン信頼は、双方向の推�
 
 次の図は、1 つの組織内の 3 つの AD DS フォレスト間の 2 つの別のフォレストの信頼関係を示しています。
 
-![1 つの組織内のフォレストの信頼関係の図](./media/concepts-forest-trust/forest-trusts.png)
+![1 つの組織内のフォレストの信頼関係の図](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 この構成例では、次のようにアクセスできます。
 
@@ -128,7 +132,7 @@ Kerberos V5 認証プロトコルは、クライアントの認証および承�
 
 2. 現在のドメインと、信頼パスの次のドメインとの間に推移的な信頼関係は存在しますか?
     * そうである場合は、信頼パスの次のドメインへの参照をクライアントに送信します。
-    * そうでない場合は、ログオン拒否メッセージをクライアントに送信します。
+    * そうでない場合は、サインイン拒否メッセージをクライアントに送信します。
 
 ### <a name="ntlm-referral-processing"></a>NTLM の参照処理
 
@@ -152,7 +156,7 @@ NTLM 認証プロトコルは、クライアントの認証および承認情報
 
 フォレストの信頼が最初に確立されたときに、各フォレストではそのパートナー フォレスト内の信頼された名前空間をすべて収集し、[信頼されたドメイン オブジェクト](#trusted-domain-object)に情報を格納します。 信頼された名前空間には、ドメイン ツリー名、ユーザー プリンシパル名 (UPN) のサフィックス、サービス プリンシパル名 (SPN) のサフィックス、および他のフォレストで使用されるセキュリティ ID (SID) の名前空間が含まれます。 TDO オブジェクトはグローバル カタログにレプリケートされます。
 
-認証プロトコルがフォレストの信頼パスに従うようにするには、その前に、リソース コンピューターのサービス プリンシパル名 (SPN) を他のフォレスト内の場所に解決する必要があります。 SPN は、次のいずれかにすることができます。
+認証プロトコルがフォレストの信頼パスに従うようにするには、その前に、リソース コンピューターのサービス プリンシパル名 (SPN) を他のフォレスト内の場所に解決する必要があります。 SPN は、次のいずれかの名前にすることができます。
 
 * ホストの DNS 名。
 * ドメインの DNS 名。
@@ -162,9 +166,9 @@ NTLM 認証プロトコルは、クライアントの認証および承認情報
 
 次の図と手順では、Windows を実行しているコンピューターで、別のフォレストにあるコンピューターのリソースへのアクセスを試みるときに使用される Kerberos 認証プロセスについて詳しく説明します。
 
-![フォレストの信頼を介した Kerberos プロセスの図](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![フォレストの信頼を介した Kerberos プロセスの図](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
-1. *User1* は、*europe.tailspintoys.com* ドメインからの資格情報を使用して、*Workstation1* にログオンします。 その後、ユーザーは *usa.wingtiptoys.com* フォレストにある *FileServer1* の共有リソースへのアクセスを試みます。
+1. *User1* は、*europe.tailspintoys.com* ドメインからの資格情報を使用して、*Workstation1* にサインインします。 その後、ユーザーは *usa.wingtiptoys.com* フォレストにある *FileServer1* の共有リソースへのアクセスを試みます。
 
 2. *Workstation1* により、そのドメイン内のドメイン コントローラー (*ChildDC1*) 上の Kerberos KDC に問い合わせ、*FileServer1* SPN のサービス チケットが要求されます。
 
@@ -276,7 +280,7 @@ LSA セキュリティ サブシステムでは、オブジェクトへのアク
 
 リソース フォレストの詳細については、[Azure AD DS でのフォレストの信頼のしくみ][concepts-trust]に関するページを参照してください
 
-リソース フォレストを使用する Azure AD DS マネージド ドメインの作成を開始する場合は、[Azure AD DS マネージド ドメインの作成と構成][tutorial-create-advanced]に関するページを参照してください。 その後、[オンプレミス ドメインに対して出力方向のフォレストの信頼を作成する (プレビュー)][create-forest-trust] ことができます。
+リソース フォレストを使用するマネージド ドメインの作成を開始する場合は、[Azure AD DS マネージド ドメインの作成と構成][tutorial-create-advanced]に関するページを参照してください。 その後、[オンプレミス ドメインに対して出力方向のフォレストの信頼を作成する][create-forest-trust]ことができます。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

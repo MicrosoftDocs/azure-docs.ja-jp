@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77167010"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423458"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -26,11 +26,12 @@ Azure portal のシリアル コンソールでは、Linux 仮想マシン (VM) 
 
 シリアル コンソールは、VM と仮想マシン スケール セット インスタンスに対して同じ方法で動作します。 このドキュメントでは、特に記載のない限り、VM という記述にはすべて仮想マシン スケール セット インスタンスが暗黙的に含まれます。
 
-Windows 用シリアル コンソールのドキュメントについては、[Windows 用シリアル コンソール](../windows/serial-console.md)に関する記事を参照してください。
+シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
+
+Windows 用シリアル コンソールのドキュメントについては、[Windows 用シリアル コンソール](./serial-console-windows.md)に関する記事を参照してください。
 
 > [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
-
+> シリアル コンソールは、現在マネージド ブート診断ストレージ アカウントとの完全な互換性がありません。 シリアル コンソールを使用するには、カスタム ストレージ アカウントを使用していることを確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +39,7 @@ Windows 用シリアル コンソールのドキュメントについては、[W
 
 - シリアル コンソールを使用するアカウントには、VM の[仮想マシン共同作成者ロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)および[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です
 
-- VM または仮想マシン スケール セット インスタンスには、パスワード ベースのユーザーが必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
+- VM または仮想マシン スケール セット インスタンスには、パスワード ベースのユーザーが必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](../extensions/vmaccess.md#reset-password)機能を使用して作成することができます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
 
 - VM または仮想マシン スケール セット インスタンスでは、[ブート診断](boot-diagnostics.md)が有効になっている必要があります。
 
@@ -50,11 +51,11 @@ Windows 用シリアル コンソールのドキュメントについては、[W
 
 
 > [!NOTE]
-> シリアル コンソールを使うには、パスワードが構成されたローカル ユーザーが必要です。 SSH 公開キーだけが構成された VM または仮想マシン スケール セットは、シリアル コンソールにサインインできません。 パスワードを持つローカル ユーザーを作成するには、[VM アクセス拡張機能](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)に関する記事を参照して (Azure portal で **[パスワードのリセット]** を選択して表示することができます)、パスワードを持つローカル ユーザーを作成します。
+> シリアル コンソールを使うには、パスワードが構成されたローカル ユーザーが必要です。 SSH 公開キーだけが構成された VM または仮想マシン スケール セットは、シリアル コンソールにサインインできません。 パスワードを持つローカル ユーザーを作成するには、[VM アクセス拡張機能](../extensions/vmaccess.md)に関する記事を参照して (Azure portal で **[パスワードのリセット]** を選択して表示することができます)、パスワードを持つローカル ユーザーを作成します。
 > また、アカウントの管理者パスワードを [GRUB を使用してシングル ユーザー モードで起動](./serial-console-grub-single-user-mode.md)してリセットすることもできます。
 
 ## <a name="serial-console-linux-distribution-availability"></a>シリアル コンソールの Linux ディストリビューションの可用性
-シリアル コンソールを正常に機能させるには、シリアル ポートでコンソール メッセージを読み書きするように、ゲスト オペレーティング システムを構成する必要があります。 ほとんどの [Azure での動作保証済み Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)は、既定で構成済みのシリアル コンソールを備えています。 Azure portal の **[サポート + トラブルシューティング]** セクションの **[シリアル コンソール]** を選択すると、シリアル コンソールにアクセスできます。
+シリアル コンソールを正常に機能させるには、シリアル ポートでコンソール メッセージを読み書きするように、ゲスト オペレーティング システムを構成する必要があります。 ほとんどの [Azure での動作保証済み Linux ディストリビューション](../linux/endorsed-distros.md)は、既定で構成済みのシリアル コンソールを備えています。 Azure portal の **[サポート + トラブルシューティング]** セクションの **[シリアル コンソール]** を選択すると、シリアル コンソールにアクセスできます。
 
 > [!NOTE]
 > シリアル コンソールに何も表示されない場合、VM でそのブート診断が有効になっていることを確認してください。 多くの場合、**Enter** キーを押すと、シリアル コンソールに何も表示されない問題が解決します。
@@ -83,7 +84,7 @@ Oracle Linux        | シリアル コンソール アクセスが既定で有�
 壊れた *FSTAB* ファイル | **Enter** キーを押して続行し、テキスト エディターを使って *FSTAB* ファイルを修正します。 そのためには、シングル ユーザー モードにすることが必要な場合があります。 詳しくは、[fstab の問題の修正方法](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)に関するページのシリアル コンソールのセクション、および「[シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」をご覧ください。
 不適切なファイアウォール規則 |  SSH 接続をブロックするように iptables を構成した場合は、シリアル コンソールを使用して、SSH を必要とせずに VM と対話できます。 詳しくは、[iptables の man ページ](https://linux.die.net/man/8/iptables)をご覧ください。<br>同様に、firewalld によって SSH アクセスがブロックされている場合は、シリアル コンソールを通じて VM にアクセスし、firewalld を再構成できます。 詳しくは、[firewalld のドキュメント](https://firewalld.org/documentation/)をご覧ください。
 ファイル システムの破損/チェック | 破損したファイル システムのシリアル コンソールを使用したトラブルシューティングについて詳しくは、「[Azure の Linux VM は、ファイル システム エラーが発生したため開始できません](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck)」のシリアル コンソールのセクションをご覧ください。
-SSH 構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 シリアル コンソールは、VM にネットワーク接続がなくても機能するので、VM の SSH 構成に関係なく使用できます。 トラブルシューティング ガイドは、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)」にあります。 詳しくは、「[Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順](./detailed-troubleshoot-ssh-connection.md)」をご覧ください
+SSH 構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 シリアル コンソールは、VM にネットワーク接続がなくても機能するので、VM の SSH 構成に関係なく使用できます。 トラブルシューティング ガイドは、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](./troubleshoot-ssh-connection.md)」にあります。 詳しくは、「[Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順](./detailed-troubleshoot-ssh-connection.md)」をご覧ください
 ブートローダーの操作 | シリアル コンソール ブレードから VM を再起動して、Linux VM 上の GRUB にアクセスします。 詳細および distro 固有の情報については、「[シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」をご覧ください。
 
 ## <a name="disable-the-serial-console"></a>シリアル コンソールを無効にする
@@ -99,7 +100,7 @@ SSH 構成の問題 | シリアル コンソールにアクセスし、設定を
 やり取りされるすべてのデータがネットワーク上で暗号化されます。
 
 ### <a name="audit-logs"></a>監査ログ
-現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。
+現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](./boot-diagnostics.md)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。
 
 > [!CAUTION]
 > コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 機密情報や個人を特定できる情報を含むデータまたはコマンドを入力する場合は、シリアル コンソールがどうしても必要でない限り、SSH を使用することをお勧めします。
@@ -171,6 +172,5 @@ A. はい。 シリアル コンソールは SSH キーを必要としないの�
 * シリアル コンソール を使用して [GRUB とシングル ユーザー モードにアクセス](serial-console-grub-single-user-mode.md)します。
 * [NMI および SysRq 呼び出し](serial-console-nmi-sysrq.md)にシリアル コンソールを使用します。
 * シリアル コンソールを使用して、[さまざまなディストリビューションで GRUB を有効にする](serial-console-grub-proactive-configuration.md)方法について学習します。
-* シリアル コンソールは、[Windows VM](../windows/serial-console.md) でも使用可能です。
+* シリアル コンソールは、[Windows VM](./serial-console-windows.md) でも使用可能です。
 * ブート診断の詳細については、[こちら](boot-diagnostics.md)を参照してください。
-

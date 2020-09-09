@@ -4,14 +4,14 @@ description: この記事では、Azure portal を使用して Azure Database fo
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: fa8ead8daa202f5747c134a62fbd43bcdf2af0d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 6/30/2020
+ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369258"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115912"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバーのバックアップと復元を行う方法
 
@@ -73,7 +73,6 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 
 5. 復元が完了したら、作成した新しいサーバーを検索して、想定どおりにデータベースが復元できたかどうかを確認します。
 
-
 ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
 復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
@@ -82,18 +81,41 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MariaDB を使用できる任意のリージョンに作成できます。  
 
-1. **[データベース]**  >  **[Azure Database for MariaDB]** の順に選択します。 検索ボックスに「**MariaDB**」と入力してサービスを検索することもできます。
+1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。 **[データベース]**  >  **[Azure Database for MariaDB]** の順に選択します。
 
-   !["Azure Database for MariaDB" のオプション](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2_navigate-to-mariadb.png" alt-text="[Azure Database for MariaDB] に移動する。":::
+ 
+2. 新しいサーバーのサブスクリプション、リソース グループ、および名前を指定します。 
 
-2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
-   ![ソースの選択:バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
-
+3. **[データ ソース]** として **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧を示すドロップダウンが表示されます。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="データ ソースを選択する。":::
+    
    > [!NOTE]
    > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
    >
 
-3. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。 場所を選択したら、 **[価格レベル]** を選択できます。 既定では、復元元の既存のサーバーのパラメーターが表示されます。 これらの設定を継承するには、変更を加えずに **[OK]** をクリックします。 または、**コンピューティング世代** (選択したリージョンで使用できる場合)、**仮想コア**の数、**バックアップのリテンション期間**、および**バックアップ冗長性オプション**を変更することもできます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+4. **[バックアップ]** ドロップダウンを選択します。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="[バックアップ] ドロップダウンを選択する。":::
+
+5. 復元元のソース サーバーを選択します。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="バックアップを選択する。":::
+
+6. サーバーでは、**仮想コア**の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および**管理者資格情報**が規定値に設定されます。 **[続行]** をクリックします。 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="バックアップを続行する。":::
+
+7. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。
+
+    場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア**の数、**バックアップ保有期間**、および**バックアップ冗長オプション**を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="フォームに入力する。"::: 
+
+8. **[確認および作成]** を選択して、選択内容を確認します。 
+
+9. **[作成]** を選択して、サーバーをプロビジョニングします。 この操作には数分かかることがあります。
 
 geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 

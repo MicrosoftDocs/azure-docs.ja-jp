@@ -3,30 +3,32 @@ title: Azure Media Services v3 REST API を使用したフィルターの作成
 description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: f234c3e221c947443869d8ab472dc60ddf7317ea
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780336"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297289"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API を使用したフィルターの作成
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、アセットの既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。 
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
-このトピックでは、ビデオ オン デマンド アセットにフィルターを定義し、REST API を使用して[アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters)と[アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters)を作成する方法を示しています。 
+このトピックでは、ビデオ オン デマンド アセットにフィルターを定義し、REST API を使用して[アカウント フィルター](/rest/api/media/accountfilters)と[アセット フィルター](/rest/api/media/assetfilters)を作成する方法を示しています。 
 
 > [!NOTE]
 > [presentationTimeRange](filters-concept.md#presentationtimerange) を必ず確認してください。
@@ -97,7 +99,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 フィルターが作成されました。
 
-詳細については、「 [作成または更新](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)」を参照してください。 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)も参照してください。
+詳細については、「 [作成または更新](/rest/api/media/accountfilters/createorupdate)」を参照してください。 [フィルターに関する JSON の例](/rest/api/media/accountfilters/createorupdate#create-an-account-filter)も参照してください。
 
 ## <a name="create-asset-filters"></a>アセットフィルターの作成  
 
@@ -115,13 +117,13 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 アセット フィルターが作成されました。
 
-アセット フィルターを作成または更新する方法の詳細については、[作成または更新](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)を参照してください。 [フィルターに関する JSON の例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)も参照してください。 
+アセット フィルターを作成または更新する方法の詳細については、[作成または更新](/rest/api/media/assetfilters/createorupdate)を参照してください。 [フィルターに関する JSON の例](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)も参照してください。 
 
 ## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
 アセットまたはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー (ストリーミング エンドポイント)](dynamic-packaging-overview.md) では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
 
-REST を使用してフィルターを作成してストリーミング ロケーターに関連付けるには、[Streaming Locators - Create](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API を使用し、[要求本文](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)で `properties.filters` を指定します。
+REST を使用してフィルターを作成してストリーミング ロケーターに関連付けるには、[Streaming Locators - Create](/rest/api/media/streaminglocators/create) API を使用し、[要求本文](/rest/api/media/streaminglocators/create#request-body)で `properties.filters` を指定します。
                                 
 ## <a name="stream-using-filters"></a>フィルターを使用するストリーム
 

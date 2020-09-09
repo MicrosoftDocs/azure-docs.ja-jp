@@ -1,14 +1,15 @@
 ---
 title: Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 description: C# を使用して Azure Functions を開発する方法について説明します。
-ms.topic: reference
-ms.date: 09/12/2018
-ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.custom: devx-track-csharp
+ms.date: 07/24/2020
+ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235035"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206201"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -31,7 +32,7 @@ Functions ランタイムの各バージョンは、.NET の特定のバージ�
 | ---- | ---- |
 | Functions 3.x | .NET Core 3.1 |
 | Functions 2.x | .NET Core 2.2 |
-| Functions 1.x | .NET Framework 4.6 |
+| Functions 1.x | .NET Framework 4.7 |
 
 詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」を参照してください
 
@@ -202,6 +203,28 @@ npm を使用して Core Tools をインストールする場合、これは Vis
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+関数アプリは [ReadyToRun バイナリ](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)としてコンパイルできます。 ReadyToRun は、事前コンパイル形式であり、起動時のパフォーマンスを向上させることができます。これは、[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合に[コールドスタート](functions-scale.md#cold-start)の影響を軽減するのに役立ちます。
+
+ReadyToRun は .NET 3.0 で使用でき、[Azure Functions ランタイムのバージョン 3.0](functions-versions.md) が必要です。
+
+プロジェクトを ReadyToRun としてコンパイルするには、`<PublishReadyToRun>` および `<RuntimeIdentifier>` 要素を追加して、プロジェクト ファイルを更新します。 Windows 32 ビットの関数アプリに公開するための構成を以下に示します。
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun では現在、クロスコンパイルはサポートされていません。 デプロイ ターゲットと同じプラットフォームでアプリをビルドする必要があります。 また、関数アプリで構成されている "ビット" にご注意ください。 たとえば、Azure の関数アプリが Windows 64 ビットの場合、[ランタイム識別子](/dotnet/core/rid-catalog)として `win-x64` を使用して Windows でアプリをコンパイルする必要があります。
+
+コマンド ラインから ReadyToRun を使用してアプリをビルドすることもできます。 詳細については、「[`dotnet publish`](/dotnet/core/tools/dotnet-publish)」の `-p:PublishReadyToRun=true` オプションの説明を参照してください。
+
 ## <a name="supported-types-for-bindings"></a>バインドでサポートされる型
 
 各バインドには独自にサポートされる型があります。たとえば、BLOB トリガー属性は文字列パラメーター、POCO パラメーター、`CloudBlockBlob` パラメーター、またはサポートされるその他の複数の型のいずれかに適用できます。 [BLOB バインディングのバインド リファレンス](functions-bindings-storage-blob-trigger.md#usage)に関する記事に、サポートされるすべてのパラメーター型の一覧が示されています。 詳細については、[トリガーとバインド](functions-triggers-bindings.md)に関する記事と、[各バインドの種類に対応するバインド リファレンス ドキュメント](functions-triggers-bindings.md#next-steps)をご覧ください。
@@ -238,7 +261,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>ログ記録
 
-出力を C# のストリーミング ログにログ記録するために、[ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を含めます。 次の例のように `log` と名前を付けることをお勧めします。  
+出力を C# のストリーミング ログにログ記録するために、[ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 型の引数を含めます。 次の例のように `log` と名前を付けることをお勧めします。  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +280,7 @@ Azure Functions では `Console.Write` を使用しないでください。 詳�
 
 ## <a name="async"></a>非同期
 
-関数を[非同期](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
+関数を[非同期](/dotnet/csharp/programming-guide/concepts/async/)にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +353,7 @@ public static class EnvironmentVariablesExample
 
 アプリ設定は、ローカルでの開発中と Azure での実行中の両方で、環境変数から読み取ることができます。 ローカルでの開発時、アプリ設定は *local.settings.json* ファイルの `Values` コレクションから取得します。 ローカルと Azure の両方の環境において、`GetEnvironmentVariable("<app setting name>")` は名前付きアプリ設定の値を取得します。 たとえば、ローカルでの実行中、*local.settings.json* ファイルに `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` が含まれている場合は、"My Site Name" が返されます。
 
-[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) プロパティは、アプリ設定値を取得するための代替 API ですが、次に示すように `GetEnvironmentVariable` を使用することをお勧めします。
+[System.Configuration.ConfigurationManager.AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) プロパティは、アプリ設定値を取得するための代替 API ですが、次に示すように `GetEnvironmentVariable` を使用することをお勧めします。
 
 ## <a name="binding-at-runtime"></a>実行時のバインド
 

@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b3c6e471a8e44236baf9bfc2c8eb6c9d5526d72
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: acf3cba5046a20b99212e89b378327765d22fa23
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203458"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421639"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括削除
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 ## <a name="understand-the-csv-template"></a>CSV テンプレートについて
 
-一括アップロード CSV テンプレートをダウンロードして、Azure AD グループ メンバーを正常に一括追加できるように入力します。 CSV テンプレートは、次の例のようになります。
+一括アップロード CSV テンプレートをダウンロードして入力し、Azure AD グループ メンバーを正常に一括追加します。 CSV テンプレートは、次の例のようになります。
 
 ![アップロード用のスプレッドシートと、各行および列の目的と値を説明する吹き出し](./media/groups-bulk-remove-members/template-example.png)
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 - **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
 - **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Member object ID or user principal name [memberObjectIdOrUpn] Required` 」のように入力します。 以前のバージョンのテンプレートの中には、内容が少し異なるものがあります。 グループ メンバーシップを変更する場合は、使用する識別子として、メンバー オブジェクト ID またはユーザー プリンシパル名のいずれかを選択できます。
-- **サンプル行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
+- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 1. CSV ファイルを開き、グループから削除する各グループ メンバーの行を追加します (必要な値は、メンバー オブジェクト ID またはユーザー プリンシパル名です)。 そのうえでファイルを保存します。
 
-   ![CSV ファイルには、削除するメンバーの名前と ID が含まれている](./media/groups-bulk-remove-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV ファイルには、削除するグループ メンバーの名前と ID が含まれています":::
 
 1. **[グループ メンバーの一括削除]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択すると、CSV ファイルの検証が開始されます。
 1. ファイルの内容が検証されると、一括インポート ページに "**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
@@ -68,7 +68,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 **[一括操作の結果]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
-[![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
+[![[一括操作の結果] ページで状態を確認する](media/groups-bulk-remove-members/bulk-center.png)](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
 一括操作に含まれる各行の項目の詳細については、 **[成功数]** 、 **[失敗数]** 、 **[要求数合計]** の各列の値を選択してください。 エラーが発生した場合、その理由が表示されます。
 

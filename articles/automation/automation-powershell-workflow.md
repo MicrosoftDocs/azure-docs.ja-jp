@@ -1,31 +1,31 @@
 ---
 title: Azure Automation の PowerShell ワークフローについて
-description: この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いと、Automation Runbook に適用できる概念ついて簡単に説明します。
+description: この記事では、PowerShell ワークフローと PowerShell の違い、および Automation Runbook に適用される概念について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457537"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186004"
 ---
-# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明
+# <a name="learn-powershell-workflow-for-azure-automation"></a>Azure Automation の PowerShell ワークフローについて
 
-Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は、PowerShell ワークフローを使用して Runbook を作成するときに利用することを目的としていますが、チェックポイントを必要とする場合以外は、PowerShell を使用して Runbook を作成することをお勧めします。  PowerShell ワークフローの Runbook を作成する場合は構文の違いがいくつかあるため、効果的なワークフローを記述するにはさらに作業が必要になります。
+Azure Automation の Runbook は、Windows PowerShell ワークフロー、つまり Windows Workflow Foundation を利用する Windows PowerShell スクリプトとして実装されます。 A workflow is a sequence of programmed, connected steps that perform long-running tasks or require the coordination of multiple steps across multiple devices or managed nodes. 
 
-A workflow is a sequence of programmed, connected steps that perform long-running tasks or require the coordination of multiple steps across multiple devices or managed nodes. ワークフローが通常のスクリプトよりも優れている点としては、同時に複数のデバイスに対して操作を実行できることや、障害から自動的に復元できることなどがあります。 Windows PowerShell ワークフローは、Windows Workflow Foundation を使用した Windows PowerShell スクリプトです。 ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。
+ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。 ワークフローが通常のスクリプトよりも優れている点としては、複数のデバイスに対する操作の同時実行や、障害からの自動復元などが挙げられます。 
 
-この記事のトピックに関する詳細については、「 [Windows PowerShell ワークフローについて](https://technet.microsoft.com/library/jj134242.aspx)」をご覧ください。
+> [!NOTE]
+> PowerShell ワークフロー スクリプトは Windows PowerShell スクリプトと非常に似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。 そのため、[チェックポイント](#use-checkpoints-in-a-workflow)を使用する必要がある場合にのみ、PowerShell ワークフローを使用して Runbook を作成することをお勧めします。 
 
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+この記事のトピックに関する詳細については、「[Windows PowerShell ワークフローについて](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))」をご覧ください。
 
-## <a name="basic-structure-of-a-workflow"></a>ワークフローの基本構造
+## <a name="use-workflow-keyword"></a>ワークフロー キーワードを使用する
 
-PowerShell スクリプトを PowerShell ワークフローに変換する最初のステップは、スクリプトを `Workflow` キーワードで囲むことです。  ワークフローは、`Workflow` キーワードで始まり、中かっこで囲まれたスクリプトの本文が後に続きます。 次の構文に示すように、ワークフローの名前は `Workflow` キーワードの後に続きます。
+PowerShell スクリプトを PowerShell ワークフローに変換する最初のステップは、スクリプトを `Workflow` キーワードで囲むことです。 ワークフローは、`Workflow` キーワードで始まり、中かっこで囲まれたスクリプトの本文が後に続きます。 次の構文に示すように、ワークフローの名前は `Workflow` キーワードの後に続きます。
 
 ```powershell
 Workflow Test-Workflow
@@ -34,31 +34,31 @@ Workflow Test-Workflow
 }
 ```
 
-ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は " *.ps1*" でなければなりません。
+ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は " **.ps1**" でなければなりません。
 
 ワークフローにパラメーターを追加するには、スクリプトの場合と同様に `Param` キーワードを使用します。
 
-## <a name="code-changes"></a>コードの変更
+## <a name="learn-differences-between-powershell-workflow-code-and-powershell-script-code"></a>PowerShell ワークフロー コードと PowerShell スクリプト コードの違いについて
 
-PowerShell ワークフローのコードは PowerShell スクリプト コードとほぼ同じですが、いくつかの重要な変更点があります。  次のセクションでは、ワークフローで実行するための PowerShell スクリプトに対して行う必要がある変更について説明します。
+PowerShell ワークフローのコードは PowerShell スクリプト コードとほぼ同じですが、いくつかの重要な変更点があります。 次のセクションでは、ワークフローで実行するための PowerShell スクリプトに対して行う必要がある変更について説明します。
 
 ### <a name="activities"></a>Activities
 
-アクティビティとは、ワークフロー内の特定のタスクです。 スクリプトが 1 つ以上のコマンドで構成されているのと同様に、ワークフローも順番に実行される 1 つ以上のアクティビティで構成されます。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、Windows Workflow Foundation で実行されます。 対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。 InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。 これらの概念の詳細については、「 [スクリプト ワークフローでのアクティビティの使用](https://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
+アクティビティは、シーケンス内で実行されるワークフロー内の特定のタスクです。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、Windows Workflow Foundation で実行されます。 
 
-ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。 ワークフローの共通パラメーターの詳細については、「[about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx)」を参照してください。
+対応するアクティビティがコマンドレットにない場合、Windows PowerShell ワークフローは [InlineScript](#use-inlinescript) アクティビティ内でそのコマンドレットを自動的に実行します。 コマンドレットの中には、InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できないものもあります。 詳細については、「[スクリプト ワークフローでのアクティビティの使用](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11))」を参照してください。
+
+ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。 「[about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters)」を参照してください。
 
 ### <a name="positional-parameters"></a>位置指定パラメーター
 
-ワークフローのアクティビティおよびコマンドレットでは、位置指定パラメーターを使用できません。  このため、パラメーターを使用する必要があります。
-
-たとえば、実行中のすべてのサービスを取得する次のコードを考えてみます。
+ワークフローのアクティビティおよびコマンドレットでは、位置指定パラメーターを使用できません。 そのため、パラメーター名を使用する必要があります。 実行中のすべてのサービスを取得する次のコードについて考えてみます。
 
 ```azurepowershell-interactive
 Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 
-同じコードをワークフローで実行しようとすると、「指定された名前のパラメーターを使用してパラメーター セットを解決できません。」というメッセージが表示されます。  これを修正するには、次のようにパラメーター名を指定します。
+このコードをワークフローで実行しようとすると、`Parameter set cannot be resolved using the specified named parameters.` のようなメッセージが表示されます。この問題を修正するには、次の例に示すように、パラメーター名を指定します。
 
 ```powershell
 Workflow Get-RunningServices
@@ -69,16 +69,16 @@ Workflow Get-RunningServices
 
 ### <a name="deserialized-objects"></a>逆シリアル化されたオブジェクト
 
-ワークフロー内のオブジェクトは逆シリアル化されます。  これは、オブジェクトのプロパティは使用できるけれども、メソッドが使用できないことを意味します。  例として、サービス オブジェクトの Stop メソッドを使用してサービスを停止する次の PowerShell コードを考えます。
+ワークフロー内のオブジェクトは逆シリアル化されます。つまり、そのプロパティは引き続き使用できますが、メソッドは使用できません。  例として、`Service` オブジェクトの `Stop` メソッドを使用してサービスを停止する次の PowerShell コードを考えます。
 
 ```azurepowershell-interactive
 $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-ワークフローでこれを実行しようとすると、「Windows PowerShell ワークフローでは、メソッド呼び出しはサポートされていません」というエラー メッセージが表示されます。
+ワークフローでこれを実行しようとすると、`Method invocation is not supported in a Windows PowerShell Workflow.` のようなエラーが表示されます。
 
-これに対処する 1 つの方法は、これら 2 つのコード行を [InlineScript](#inlinescript) ブロックにラップすることであり、この場合 $Service はブロック内のサービス オブジェクトです。
+1 つの対処方法として、以下の 2 行のコードを [InlineScript](#use-inlinescript) ブロックでラップします。 この場合、`Service` はブロック内のサービス オブジェクトを表します。
 
 ```powershell
 Workflow Stop-Service
@@ -90,7 +90,7 @@ Workflow Stop-Service
 }
 ```
 
-もう 1 つの方法は、メソッドとして同じ機能を実行する別のコマンドレットがある場合は、それを使用することです。  このサンプルでは、Stop-Service コマンドレットは Stop メソッドと同じ機能を提供し、ワークフローでは次のように使用できます。
+もう 1 つの方法は、メソッドとして同じ機能を持つ別のコマンドレットがある場合は、それを使用することです。 この例では、`Stop-Service` コマンドレットは `Stop` メソッドと同じ機能を提供し、ワークフローでは次のコードを使用できます。
 
 ```powershell
 Workflow Stop-MyService
@@ -100,7 +100,7 @@ Workflow Stop-MyService
 }
 ```
 
-## <a name="inlinescript"></a>InlineScript
+## <a name="use-inlinescript"></a>InlineScript を使用する
 
 `InlineScript` アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。  ワークフロー内のコマンドは Windows Workflow Foundation に送信されて処理されますが、InlineScript ブロック内のコマンドは Windows PowerShell によって処理されます。
 
@@ -145,15 +145,15 @@ Workflow Stop-MyService
 }
 ```
 
-InlineScript アクティビティは特定のワークフローにとって重要ですが、ワークフロー コンストラクトをサポートせず、次の理由により、必要な場合にのみ使用する必要があります。
+InlineScript アクティビティは特定のワークフローで不可欠な場合がありますが、ワークフロー コンストラクトをサポートしていません。 次の理由により、これらは必要な場合にのみ使用してください。
 
-* InlineScript ブロックの内部で[チェックポイント](#checkpoints)を使用することはできません。 ブロック内でエラーが発生した場合は、ブロックの先頭から再開する必要があります。
-* InlineScript ブロックの内部で[並列実行](#parallel-processing)を使用することはできません。
+* InlineScript ブロックの内部で[チェックポイント](#use-checkpoints-in-a-workflow)を使用することはできません。 ブロック内でエラーが発生した場合は、ブロックの先頭から再開する必要があります。
+* InlineScript ブロックの内部で[並列実行](#use-parallel-processing)を使用することはできません。
 * InlineScript は、InlineScript ブロックの長さ全体について Windows PowerShell セッションを保持するため、ワークフローの拡張性に影響します。
 
-InlineScript の使用について詳しくは、「[ワークフローでの Windows PowerShell コマンドの実行](https://technet.microsoft.com/library/jj574197.aspx)」および「[about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx)」をご覧ください。
+InlineScript の使用について詳しくは、「[ワークフローでの Windows PowerShell コマンドの実行](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11))」および「[about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript)」をご覧ください。
 
-## <a name="parallel-processing"></a>並列処理
+## <a name="use-parallel-processing"></a>並列処理を使用する
 
 Windows PowerShell ワークフローの利点の 1 つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
 
@@ -168,7 +168,7 @@ Parallel
 <Activity3>
 ```
 
-例として、複数のファイルをネットワーク上にコピーする次の PowerShell コマンドを考えます。  これらのコマンドは、1 つのファイルのコピーが完了してから次へファイルのコピーが開始されるように、順番に実行されます。
+例として、複数のファイルをネットワーク上にコピーする次の PowerShell コマンドを考えます。 これらのコマンドは、1 つのファイルのコピーが完了してから次へファイルのコピーが開始されるように、順番に実行されます。
 
 ```azurepowershell-interactive
 Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
@@ -192,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-`ForEach -Parallel` の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。 これは、次に示す構文を使用します。 この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 各項目について、Activity1 が完了してから Activity2 が開始されます。 Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。 並列処理を制限するため、`ThrottleLimit` パラメーターを使用します。 `ThrottleLimit` が高すぎると、問題が発生することがあります。 `ThrottleLimit` パラメーターの理想的な値は、環境内のさまざまな要因によって異なります。 最初は低い値で試して、特定の状況で機能するものが見つかるまで値を大きくしてさまざまな値を試してください。
+`ForEach -Parallel` の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。 コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。 このプロセスは、次に示す構文を使用します。 この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。 各項目について、Activity1 が完了してから Activity2 が開始されます。 Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。 並列処理を制限するため、`ThrottleLimit` パラメーターを使用します。 `ThrottleLimit` が高すぎると、問題が発生することがあります。 `ThrottleLimit` パラメーターの理想的な値は、環境内のさまざまな要因によって異なります。 最初は低い値から始めて、特定の状況で機能するものが見つかるまで値を大きくしてさまざまな値を試してください。
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -203,7 +203,7 @@ ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 <Activity3>
 ```
 
-次の例は、並列でファイルのコピーを行う前の例と似ています。  この場合、各ファイルのコピーが完了するたびに、メッセージが表示されます。  すべてのファイルのコピーが完了してはじめて、最終的な完了メッセージが表示されます。
+次の例は、並列でファイルのコピーを行う前の例と似ています。  この場合、各ファイルのコピーが完了するたびに、メッセージが表示されます。  すべてがコピーされた後にのみ、最終的な完了メッセージが表示されます。
 
 ```powershell
 Workflow Copy-Files
@@ -221,13 +221,17 @@ Workflow Copy-Files
 ```
 
 > [!NOTE]
-> 子 runbook を並列で実行することはお勧めしません。これを行うと、結果の信頼性が低くなることが示されているためです。 子 Runbook からの出力は表示されない場合があるため、ある子 Runbook での設定が、並列に実行されている他の子 Runbook に影響を与える可能性があります。 $VerbosePreference や $WarningPreference などの変数が子 Runbook に伝播されない可能性があります。 また、子 Runbook がこれらの値を変更した場合は、呼び出しの後に正しく復元されない可能性があります。
+> 子 runbook を並列で実行することはお勧めしません。これを行うと、結果の信頼性が低くなることが示されているためです。 子 Runbook からの出力は表示されない場合があるため、ある子 Runbook での設定が、並列に実行されている他の子 Runbook に影響を与える可能性があります。 `VerbosePreference` や `WarningPreference` などの変数は、子 Runbook に反映されない場合があります。 また、子 Runbook がこれらの値を変更した場合は、呼び出しの後に正しく復元されない可能性があります。
 
-## <a name="checkpoints"></a>チェックポイント
+## <a name="use-checkpoints-in-a-workflow"></a>ワークフローでチェックポイントを使用する
 
-*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。 ワークフローがエラーで終了した場合、または中断した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。  `Checkpoint-Workflow` アクティビティを使用してワークフローにチェックポイントを設定できます。 Azure Automation には[フェア シェア](automation-runbook-execution.md#fair-share)という機能があり、実行時間が 3 時間を超える Runbook は、他の Runbook を実行できるようにアンロードされます。 アンロードされた Runbook は最終的には再び読み込まれ、その Runbook の最新のチェックポイントから再開されます。 最終的には Runbook が確実に完了するようにするには、3 時間未満の実行間隔でチェックポイントを追加する必要があります。 各実行中に新しいチェックポイントが追加され、3 時間後にエラーが原因で Runbook が削除されると、Runbook の再開がいつまでも実行されます。
+チェックポイントは、変数の現在の値と、その時点までに生成された出力を含むワークフローの現在の状態のスナップショットです。 ワークフローがエラーで終了するか中断した場合、次に実行されるときに、最初からではなく、最後のチェックポイントから開始されます。 
 
-次のサンプル コードでは、Activity2 の後に例外が発生し、ワークフローが終了します。 ワークフローを再実行すると、設定された最後のチェックポイントの直後に Activity2 があるため、まず Activity2 が実行されます。
+`Checkpoint-Workflow` アクティビティを使用してワークフローにチェックポイントを設定できます。 Azure Automation には[フェア シェア](automation-runbook-execution.md#fair-share)という機能があり、実行時間が 3 時間に達した Runbook は、他の Runbook を実行できるようにアンロードされます。 最終的には、アンロードされた Runbook は再度読み込まれます。 その場合、Runbook で最後に取得されたチェックポイントから実行が再開されます。
+
+最終的に Runbook が確実に完了するように、3 時間未満の実行間隔でチェックポイントを追加する必要があります。 各実行中に新しいチェックポイントが追加され、3 時間後にエラーが原因で Runbook が削除されると、Runbook の再開がいつまでも実行されます。
+
+次の例では、Activity2 の後に例外が発生し、ワークフローが終了します。 ワークフローを再実行すると、設定された最後のチェックポイントの直後に Activity2 があるため、まず Activity2 が実行されます。
 
 ```powershell
 <Activity1>
@@ -237,9 +241,9 @@ Checkpoint-Workflow
 <Activity3>
 ```
 
-例外を引き起こす可能性があり、ワークフローが再開された場合は繰り返す必要のないアクティビティの後に、ワークフローのチェックポイントを設定する必要があります。 たとえば、ワークフローによって仮想マシンが作成される場合があります。 チェックポイントをコマンドの前後に設定して、仮想マシンを作成できます。 作成に失敗した場合、ワークフローが再開されると、コマンドは繰り返し実行されます。 作成の成功後にワークフローが失敗した場合、ワークフローが再開されても仮想マシンが再び作成されることはありません。
+例外を引き起こす可能性があり、ワークフローが再開された場合は繰り返す必要のないアクティビティの後に、ワークフローのチェックポイントを設定します。 たとえば、ワークフローによって仮想マシンが作成される場合があります。 チェックポイントをコマンドの前後に設定して、仮想マシンを作成できます。 作成に失敗した場合、ワークフローが再開されると、コマンドは繰り返し実行されます。 作成の成功後にワークフローが失敗した場合、ワークフローが再開されても仮想マシンが再び作成されることはありません。
 
-次の例では、ネットワーク上の場所に複数のファイルをコピーし、各ファイルの後にチェックポイントを設定します。  ネットワーク上の場所が失われた場合は、ワークフローがエラーで終了します。  ワークフローを再び開始すると、最後のチェックポイントで再開するので、既にコピーされているファイルだけがスキップされます。
+次の例では、ネットワーク上の場所に複数のファイルをコピーし、各ファイルの後にチェックポイントを設定します。  ネットワーク上の場所が失われた場合は、ワークフローがエラーで終了します。  再度開始されると、最後のチェックポイントから再開されます。 既にコピーされているファイルのみがスキップされます。
 
 ```powershell
 Workflow Copy-Files
@@ -257,9 +261,9 @@ Workflow Copy-Files
 }
 ```
 
-ユーザー名資格情報は、[Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) アクティビティを呼び出した後、または最後のチェックポイントの後は保持されないため、資格情報を null に設定し、`Suspend-Workflow` またはチェックポイントが呼び出された後にアセット ストアから再取得する必要があります。  そうしないと、`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.` というエラー メッセージが表示される場合があります。
+ユーザー名資格情報は、[Suspend-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) アクティビティを呼び出した後、または最後のチェックポイントの後は保持されないため、資格情報を null に設定し、`Suspend-Workflow` またはチェックポイントが呼び出された後にアセット ストアから再取得する必要があります。  そうしないと、次のエラー メッセージが表示される場合があります。`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
-次の同じコードは、PowerShell ワークフロー Runbook でこれを処理する方法を示しています。
+次の同じコードは、PowerShell ワークフロー Runbook でこの状況を処理する方法を示しています。
 
 ```powershell
 workflow CreateTestVms
@@ -286,14 +290,10 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。 サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合は、これらのコマンドレットを使用する必要ありません。
 
-
-これは、サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合には必要ありません。
-
-チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](https://technet.microsoft.com/library/jj574114.aspx)」を参照してください。
+チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
-
+* PowerShell ワークフロー Runbook の詳細については、「[チュートリアル: PowerShell ワークフロー Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。

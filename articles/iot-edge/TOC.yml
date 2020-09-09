@@ -27,11 +27,11 @@
               href: tutorial-c-module.md
             - name: Windows デバイス向けの C モジュール
               href: tutorial-c-module-windows.md
-        - name: 'C#'
+        - name: C#
           items:
-            - name: 'Linux デバイス向けの C# モジュール'
+            - name: Linux デバイス向けの C# モジュール
               href: tutorial-csharp-module.md
-            - name: 'Windows デバイス向けの C# モジュール'
+            - name: Windows デバイス向けの C# モジュール
               href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
@@ -177,6 +177,8 @@
       items:
         - name: IoT Edge デプロイの監視
           href: how-to-monitor-iot-edge-deployments.md
+        - name: モジュール ツインの監視
+          href: how-to-monitor-module-twins.md
         - name: EdgeAgent ダイレクト メソッド
           href: how-to-edgeagent-direct-method.md
     - name: ゲートウェイとしての IoT Edge デバイスの使用
@@ -197,20 +199,32 @@
           href: how-to-store-data-blob.md
         - name: Blob Storage モジュールのデプロイ
           href: how-to-deploy-blob.md
+    - name: IoT Edge の Azure SQL Edge
+      items:
+        - name: エッジでの Azure SQL について
+          href: ../azure-sql-edge/overview.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+        - name: Azure SQL Edge モジュールをデプロイする
+          href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: DevOps ツールを使用した管理
       items:
-        - name: Azure DevOps Projects
-          href: how-to-devops-project.md
+        - name: Azure DevOps Starter
+          href: how-to-devops-starter.md
         - name: Azure DevOps
-          href: how-to-ci-cd.md
-        - name: Jenkins 用の IoT Edge プラグイン
-          href: how-to-devops-plugins.md
+          items:
+            - name: YAML
+              href: how-to-continuous-integration-continuous-deployment.md
+            - name: 従来のエディター
+              href: how-to-continuous-integration-continuous-deployment-classic.md
     - name: トラブルシューティング
       items:
         - name: 標準的な診断手順
           href: troubleshoot.md
         - name: よくあるエラーの解決方法
           href: troubleshoot-common-errors.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
@@ -236,12 +250,12 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT サンプル
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
@@ -263,16 +277,12 @@
       href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics ツール
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-iot-edge.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/iot-edge/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=iot-edge'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-iot-edge'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: ビデオ

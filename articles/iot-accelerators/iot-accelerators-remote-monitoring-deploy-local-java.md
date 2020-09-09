@@ -3,17 +3,18 @@ title: リモート監視ソリューションをローカルにデプロイす�
 description: この攻略ガイドでは、テストおよび開発のために IntelliJ を使用してリモート監視ソリューション アクセラレータをローカル コンピューターにデプロイする方法を示します。
 author: v-krghan
 manager: dominicbetts
+ms.custom: devx-track-java
 ms.author: v-krghan
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319169"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 
@@ -98,7 +99,7 @@ Node.js v8 は、スクリプトで Azure リソースを作成するために�
    また、このスクリプトにより、ローカル コンピューターに一連の環境変数も追加されます。 各変数名には、**PCS** というプレフィックスが付いています。 これらの環境変数では、リモート監視で Azure Key Vault リソースからその構成値を読み取れるようにするための詳細が提供されます。
 
    > [!TIP]
-   > このスクリプトが完了すると、環境変数は、 **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** という名前のファイルに保存されます。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターで設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
+   > このスクリプトが完了すると、環境変数は、 **\<your home folder\>\\.pcs\\\<solution name\>.env** という名前のファイルに保存されます。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターで設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
 
 1. コマンドライン環境を閉じます。
 
@@ -109,7 +110,7 @@ Node.js v8 は、スクリプトで Azure リソースを作成するために�
 * **PCS_AAD_APPID**: Azure Active Directory (Azure AD) アプリケーションの ID。
 * **PCS_AAD_APPSECRET**: Azure AD アプリケーションのシークレット。
 
-構成値はこの Key Vault リソースから読み取られます。 これらの環境変数は、デプロイから **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** ファイルに保存できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
+構成値はこの Key Vault リソースから読み取られます。 これらの環境変数は、デプロイから **\<your home folder\>\\.pcs\\\<solution name\>.env** ファイルに保存できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
 
 マイクロサービスで必要な構成の一部は、初回デプロイ時に作成された Key Vault のインスタンスに格納されます。 このキー コンテナー内の対応する変数は、必要に応じて変更する必要があります。
 

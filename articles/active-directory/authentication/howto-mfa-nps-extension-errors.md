@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611383"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716726"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
@@ -43,8 +43,8 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | エラー コード | エラー メッセージ | トラブルシューティングの手順 |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | エラー: userObjectSid の検索に失敗しました | ユーザーがオンプレミスの Active Directory インスタンスに存在することを確認します。 フォレスト間の信頼を使用している場合、詳細については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](/windows/win32/adschema/attributes-all)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
 
 ## <a name="errors-your-users-may-encounter"></a>ユーザー側で発生する可能性があるエラー
 
@@ -60,7 +60,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | **OathCodePinIncorrect** | 入力したコードと PIN が誤っています。 | このエラーは、NPS 拡張機能では発生しません。 このエラーが発生した場合、トラブルシューティング方法については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
 | **ProofDataNotFound** | プルーフ データが、指定した認証方法に対して構成されていません。 | 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」の説明に従って、ユーザーに別の認証方法を試してもらうか、新しい認証方法を追加してもらいます。 認証方法が適切に設定されていることを確認した後も、このエラーが引き続き発生する場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
 | **SMSAuthFailedWrongCodePinEntered** | 入力したコードと PIN が誤っています。 (OneWaySMS) | このエラーは、NPS 拡張機能では発生しません。 このエラーが発生した場合、トラブルシューティング方法については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **TenantIsBlocked** | テナントがブロックされています | [サポートにお問い合わせください](#contact-microsoft-support)。お問い合わせの際は、Azure Portal の Azure AD プロパティ ページのディレクトリ ID をご用意ください。 |
+| **TenantIsBlocked** | テナントがブロックされています | [サポートにお問い合わせください](#contact-microsoft-support)。お問い合わせの際は、Azure portal の Azure AD プロパティ ページの *[テナント ID]* をご用意ください。 |
 | **UserNotFound** | 指定したユーザーが見つかりませんでした | テナントが Azure AD でアクティブとして表示されなくなりました。 サブスクリプションがアクティブで、必要なファースト パーティー アプリがあることを確認します。 また、証明書サブジェクトが意図したとおりであること、およびその証明書が引き続き有効で、サービス プリンシパルで登録されていることを確認します。 |
 
 ## <a name="messages-your-users-may-encounter-that-arent-errors"></a>ユーザーに表示されるエラー以外のメッセージ
@@ -99,7 +99,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 ### <a name="health-check-script"></a>正常性チェック スクリプト
 
-[Azure MFA NPS 拡張機能の正常性チェック スクリプト](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
+[Azure MFA NPS 拡張機能の正常性チェック スクリプト](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
 
 ### <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 

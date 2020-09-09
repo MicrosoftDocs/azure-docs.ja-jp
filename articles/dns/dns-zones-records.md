@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231371"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846829"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -53,7 +53,7 @@ Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wi
 ### <a name="caa-records"></a>CAA レコード
 
 ドメイン所有者は CAA レコードで、ドメインの証明書を発行する権限のある証明機関 (CA) を指定できます。 これにより、CA が状況によって証明書を誤発行することを防ぐことができます。 CAA レコードには、3 つのプロパティがあります。
-* **フラグ**: 0 ～ 255 の整数。[RFC](https://tools.ietf.org/html/rfc6844#section-3) ごとに特別な意味を持つ重要なフラグを表すために使われます。
+* **フラグ**:0 から 255 の整数。[RFC](https://tools.ietf.org/html/rfc6844#section-3) ごとに特別な意味を持つ重要なフラグを表すために使われます。
 * **タグ**: 次のいずれかの ASCII 文字列。
     * **issue**: 証明書 (すべての種類) の発行を許可されている CA を指定するときに使用します。
     * **issuewild**: 証明書 (ワイルドカード証明書のみ) の発行を許可されている CA を指定するときに使用します。
@@ -113,7 +113,7 @@ DNS レコード内の複数の文字列と TXT レコード セット内の複�
 
 Azure DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。  DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、この後説明する 'メタデータ' がサポートされます。
 
-### <a name="metadata"></a>メタデータ
+### <a name="metadata"></a>Metadata
 
 レコード セットのタグの代わりに、Azure DNS では "メタデータ" を使用してレコード セットに注釈を付けることができます。  メタデータを使用すると、タグと同じように、各レコード セットに名前と値のペアを関連付けることができます。  これは、各レコード セットの用途を記録しておきたい場合などに便利です。  タグと異なる点として、メタデータは、Azure の課金内容に関するフィルター ビューを提供するためには使用できず、Azure Resource Manager のポリシーで指定することもできません。
 

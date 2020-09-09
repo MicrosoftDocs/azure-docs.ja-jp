@@ -3,14 +3,16 @@ title: Azure Notebooks プレビューを使用して GitHub から Jupyter ノ�
 description: 短時間で GitHub リポジトリから Jupyter ノートブックを複製し、ご自分の Azure Notebooks アカウントで実行します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77064599"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424479"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを複製する
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 このクイックスタートでは、GitHub に格納されている Jupyter ノートブックを Azure Notebooks アカウントにコピーします。 
 
@@ -22,8 +24,6 @@ Azure Notebooks のクローンはクラウドに存在するため、コラボ�
 [なし] :
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services ノートブックを複製する
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします 詳細については、[Azure Notebooks へのサインインに関するクイックスタート](quickstart-sign-in-azure-notebooks.md)を参照してください。
 
@@ -49,11 +49,11 @@ Azure Notebooks のクローンはクラウドに存在するため、コラボ�
 
 1. 複製が完了すると、Azure Notebooks によって新しいプロジェクトが表示され、すべてのファイルのコピーがあることを確認できます。
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="完了した複製の表示。" lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>ノートブックを共有する
 
-1. 複製したプロジェクトのコピーを共有するには、 **[共有]** コントロールを使用する、リンクを取得する、リンクを含む HTML または Markdown のコードを取得する、またはリンクを含む電子メール メッセージを作成します。
+1. 複製したプロジェクトのコピーを共有するには、**[共有]** コントロールを使用する、リンクを取得する、リンクを含む HTML または Markdown のコードを取得する、またはリンクを含む電子メール メッセージを作成します。
 
     ![プロジェクト共有コマンド](media/quickstarts/share-project-command.png)
 

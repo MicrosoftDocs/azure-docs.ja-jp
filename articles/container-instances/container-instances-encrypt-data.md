@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080362"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259707"
 ---
 # <a name="encrypt-deployment-data"></a>デプロイ データの暗号化
 
@@ -26,10 +26,10 @@ Microsoft のマネージド キーを利用してコンテナー データを�
 
 |    |    Microsoft のマネージド キー     |     カスタマー マネージド キー     |
 |----|----|----|
-|    暗号化/暗号化解除の操作    |    Azure    |    Azure    |
-|    キー記憶域    |    Microsoft キー ストア    |    Azure Key Vault    |
-|    キーのローテーションの責任    |    Microsoft    |    Customer    |
-|    キーへのアクセス    |    Microsoft のみ    |    Microsoft、顧客    |
+|    **暗号化/暗号化解除の操作**    |    Azure    |    Azure    |
+|    **キー記憶域**    |    Microsoft キー ストア    |    Azure Key Vault    |
+|    **キーのローテーションの責任**    |    Microsoft    |    Customer    |
+|    **キーへのアクセス**    |    Microsoft のみ    |    Microsoft、顧客    |
 
 このドキュメントの残りの部分では、キー (カスタマー マネージド キー) を使用して ACI のデプロイ データを暗号化するために必要な手順について説明します。 
 
@@ -39,7 +39,7 @@ Microsoft のマネージド キーを利用してコンテナー データを�
 
 ### <a name="create-service-principal-for-aci"></a>ACI 用のサービス プリンシパルを作成する
 
-最初のステップでは、[Azure テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)に、Azure Container Instances サービスへのアクセス許可を付与するためのサービス プリンシパルが割り当てられていることを確認します。 
+最初のステップでは、[Azure テナント](../active-directory/develop/quickstart-create-new-tenant.md)に、Azure Container Instances サービスへのアクセス許可を付与するためのサービス プリンシパルが割り当てられていることを確認します。 
 
 > [!IMPORTANT]
 > 次のコマンドを実行してサービス プリンシパルを正常に作成するには、お使いのテナントでサービス プリンシパルを作成するためのアクセス許可があることを確認します。
@@ -59,7 +59,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault リソースを作成する
 
-[Azure portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)、[CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)、または [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell) を使用して、Azure Key Vault を作成します。 
+[Azure portal](../key-vault/secrets/quick-create-portal.md#create-a-vault)、[CLI](../key-vault/secrets/quick-create-cli.md)、または [PowerShell](../key-vault/secrets/quick-create-powershell.md) を使用して、Azure Key Vault を作成します。 
 
 キー コンテナーのプロパティについては、次のガイドラインを使用します。 
 * 名前:一意の名前が必要です。 
@@ -96,7 +96,7 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 > [!IMPORTANT]
 > カスタマー マネージド キーによるデプロイ データの暗号化は、現在ロールアウト中の最新の API バージョン (2019-12-01) で使用できます。デプロイ テンプレートでこの API バージョンを指定してください。 これに関して何か問題がある場合は、Azure サポートにご連絡ください。
 
-キー コンテナーのキーとアクセス ポリシーを設定した後は、次のプロパティを ACI のデプロイ テンプレートに追加します。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」のテンプレートを編集した完全なテンプレートです。 
+キー コンテナーのキーとアクセス ポリシーを設定した後は、次のプロパティを ACI のデプロイ テンプレートに追加します。 テンプレートを使用した ACI リソースのデプロイについて詳しくは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](./container-instances-multi-container-group.md)」のテンプレートを編集した完全なテンプレートです。 
 * `resources` の下で、`apiVersion` を `2019-12-01` に設定します。
 * デプロイ テンプレートのコンテナー グループ プロパティ セクションに、次の値を含む `encryptionProperties` を追加します。
   * `vaultBaseUrl`: お使いのキー コンテナーの DNS 名。ポータルのキー コンテナー リソースの概要ブレードで確認できます。
@@ -129,7 +129,7 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 ]
 ```
 
-次に示すのは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)」のテンプレートを編集した完全なテンプレートです。 
+次に示すのは、「[チュートリアル: Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする](./container-instances-multi-container-group.md)」のテンプレートを編集した完全なテンプレートです。 
 
 ```json
 {
@@ -233,14 +233,14 @@ ACI サービスによるキーへのアクセスを許可するための、新�
 az group create --name myResourceGroup --location eastus
 ```
 
-[az group deployment create][az-group-deployment-create] コマンドで、テンプレートをデプロイします。
+[az deployment group create][az-deployment-group-create] コマンドを使用してテンプレートをデプロイします。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 数秒以内に、Azure から最初の応答を受信します。 デプロイが完了すると、ACI サービスによって保持されているそのデプロイに関連したデータはすべて、指定したキーで暗号化されます。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

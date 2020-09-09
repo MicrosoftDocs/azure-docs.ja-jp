@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679289"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433141"
 ---
 # <a name="override-materials-during-model-conversion"></a>モデル変換中に素材をオーバーライドする
 
-変換中に、レンダラーに使用される [PBR 素材](../../overview/features/pbr-materials.md)を定義するために、ソース モデルの素材設定が使用されます。
+レンダラーに使用される [PBR 素材](../../overview/features/pbr-materials.md)を定義するために、ソース モデルの素材設定が使用されます。
 場合によっては、[既定の変換](../../reference/material-mapping.md)では目的の結果が得られず、変更を加える必要があります。
 Azure Remote Rendering で使用するためにモデルを変換する場合、素材のオーバーライド ファイルを用意し、素材ごとに素材変換を行う方法をカスタマイズできます。
 [モデル変換の構成](configure-model-conversion.md)に関するセクションでは、素材のオーバーライド ファイル名を宣言する手順が説明されています。
 
 ## <a name="the-override-file-used-during-conversion"></a>変換中に使用されるオーバーライド ファイル
 
-単純な例として、ボックス モデルに "既定値" という 1 つの素材があるとします。 albedo の色は、ARR で使用するために調整する必要があります。
+単純な例として、ボックス モデルに "既定値" という 1 つの素材があるとします。
+さらに、ARR で使用するために albedo の色を調整する必要があるとします。
 この場合、`box_materials_override.json` ファイルは次のように作成できます。
 
 ```json
@@ -38,7 +39,7 @@ Azure Remote Rendering で使用するためにモデルを変換する場合、
 ]
 ```
 
-`box_materials_override.json` ファイルが入力コンテナーに配置され、`box.fbx` とは別に `ConversionSettings.json` が追加されます。これにより、オーバーライド ファイルの位置が変換に指示されます ([モデル変換の構成](configure-model-conversion.md)に関するページを参照してください)。
+`box_materials_override.json` ファイルが入力コンテナーに配置され、`box.fbx` とは別に `box.ConversionSettings.json` が追加されます。これにより、オーバーライド ファイルの位置が変換に指示されます ([モデル変換の構成](configure-model-conversion.md)に関するページを参照してください)。
 
 ```json
 {
@@ -51,7 +52,7 @@ Azure Remote Rendering で使用するためにモデルを変換する場合、
 ### <a name="color-materials"></a>色素材
 
 [色素材](../../overview/features/color-materials.md)モデルは、照明に関係のない常に影の付いたサーフェスを表します。
-これは、たとえば写真測量アルゴリズムによって作成された資産に役立ちます。
+色素材は、たとえば写真測量アルゴリズムによって作成された資産に役立ちます。
 素材のオーバーライド ファイルでは、`unlit` を `true` に設定することで、素材を色素材として宣言できます。
 
 ```json

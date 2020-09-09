@@ -1,6 +1,6 @@
 ---
-title: Azure Automation でセキュリティで保護された資産を暗号化する
-description: Azure Automation では、複数のレベルの暗号化を使用してセキュリティで保護された資産を守ります。 既定では、暗号化は Microsoft のマネージド キーを使用して実行されます。 顧客は、暗号化にカスタマー マネージド キーを使用するように自分の Automation アカウントを構成できます。 この記事では、暗号化の両方のモードの詳細と、これらの 2 つを切り替える方法について説明します。
+title: Azure Automation でのセキュリティで保護された資産の暗号化
+description: この記事では、暗号化を使用するように Automation アカウントを構成することの概念について説明します。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,18 +9,19 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 594bac257c2b9739f1ece276c881348b35d2f704
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604811"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185842"
 ---
-# <a name="encrypt-secure-assets-in-azure-automation"></a>Azure Automation でセキュリティで保護された資産を暗号化する
+# <a name="encryption-of-secure-assets-in-azure-automation"></a>Azure Automation でのセキュリティで保護された資産の暗号化
 
 Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、Azure Automation で複数のレベルの暗号化を使用して保護されます。 暗号化に使用される最上位のキーに基づいて、暗号化には次の 2 つのモデルがあります。
--    Microsoft のマネージド キーの使用
--    カスタマー マネージド キーの使用
+
+- Microsoft のマネージド キーの使用
+- 管理するキーの使用
 
 ## <a name="microsoft-managed-keys"></a>Microsoft のマネージド キー
 
@@ -28,37 +29,35 @@ Azure Automation でセキュリティ保護される資産としては、資格
 
 セキュリティで保護された各資産が暗号化され、Automation アカウントごとに生成される一意キー (データ暗号化キー) を使用して Azure Automation に格納されます。 これらのキー自体も暗号化され、アカウント暗号化キー (AEK) と呼ばれる、アカウントごとに生成されるまた別の一意キーを使用して Azure Automation に格納されます。 これらのアカウント暗号化キーは暗号化され、Microsoft のマネージド キーを使用して Azure Automation に格納されます。 
 
-## <a name="customer-managed-keys-with-key-vault-preview"></a>キー コンテナーでのカスタマー マネージド キー (プレビュー)
+## <a name="keys-that-you-manage-with-key-vault-preview"></a>Key Vault (プレビュー) を使用して管理するキー
 
 独自のキーを使用して、Automation アカウントのセキュリティで保護された資産の暗号化を管理できます。 Automation アカウントのレベルでカスタマー マネージド キーを指定すると、そのキーは Automation アカウントのアカウント暗号化キーへのアクセスを保護および制御するために使用されます。 この機能は、セキュリティで保護されたすべての資産を暗号化および暗号化を解除するために使用されます。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、セキュリティで保護された資産を保護するために使用される暗号化キーを監査することもできます。
 
 カスタマー マネージド キーを格納するには、Azure Key Vault を使用します。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。  Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
 
-## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Automation アカウントのカスタマー マネージド キーを有効にする
+## <a name="use-of-customer-managed-keys-for-an-automation-account"></a>Automation アカウントのカスタマー マネージド キーの使用
 
-Automation アカウントのカスタマー マネージド キーで暗号化を有効にすると、Azure Automation は、関連付けられているキー コンテナー内のカスタマー マネージド キーを使用してアカウント暗号化キーをラップします。 カスタマー マネージド キーを有効にしてもパフォーマンスに影響はなく、アカウントは新しいキーですぐに暗号化され、遅延は発生しません。
+Automation アカウントのカスタマー マネージド キーによる暗号化を使用すると、Azure Automation により、関連付けられているキー コンテナー内のカスタマー マネージド キーを使用してアカウント暗号化キーがラップされます。 カスタマー マネージド キーを有効にしてもパフォーマンスに影響はなく、アカウントは新しいキーですぐに暗号化され、遅延は発生しません。
 
 新しい Automation アカウントは、常に Microsoft のマネージド キーを使用して暗号化されます。 アカウントの作成時にカスタマー マネージド キーを有効にすることはできません。 カスタマー マネージド キーは、Azure Key Vault に格納されます。このキー コンテナーは、Automation アカウントに関連付けられているマネージド ID にキーのアクセス許可を付与するアクセス ポリシーを使用してプロビジョニングする必要があります。 マネージド ID は、ストレージ アカウントが作成された後でのみ使用できます。
 
 Azure Automation でのセキュリティで保護された資産の暗号化に使用されているキーを、カスタマー マネージド キーを有効または無効にするか、キーのバージョンを更新するか、または別のキーを指定することによって変更した場合、アカウント暗号化キーの暗号化は変更されますが、Azure Automation アカウントのセキュリティで保護された資産を再暗号化する必要はありません。
 
-次の 3 つのセクションでは、Automation アカウントのカスタマー マネージド キーを有効にするしくみについて説明します。 
-
 > [!NOTE] 
 > カスタマー マネージド キーを有効にするには、API バージョン 2020-01-13-preview を使用して Azure Automation REST API 呼び出しを行う必要があります
 
-### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>Azure Automation でカスタマー マネージド キーを使用するための前提条件
+### <a name="prerequisites-for-using-customer-managed-keys-in-azure-automation"></a>Azure Automation 内でカスタマー マネージド キーを使用するための前提条件
 
 Automation アカウントのカスタマー マネージド キーを有効にする前に、次の前提条件が満たされていることを確認する必要があります。
 
  - カスタマー マネージド キーが Azure Key Vault に格納されていること。 
  - Key Vault で **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の両方のプロパティを有効にします。 これらの機能は、誤削除が発生した場合にキーの復旧を許可するために必要です。
- - Azure Automation の暗号化では RSA キーのみがサポートされています。 キーの詳細については、[Azure Key Vault のキー、シークレット、および証明書の概要](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)に関するページを参照してください。
+ - Azure Automation の暗号化では RSA キーのみがサポートされています。 キーの詳細については、[Azure Key Vault のキー、シークレット、および証明書の概要](../key-vault/general/about-keys-secrets-certificates.md)に関するページを参照してください。
 - Automation アカウントとキー コンテナーは異なるサブスクリプションにあってもかまいませんが、同じ Azure Active Directory テナントに存在する必要があります。
 
-### <a name="assign-an-identity-to-the-automation-account"></a>Automation アカウントに ID を割り当てる
+### <a name="assignment-of-an-identity-to-the-automation-account"></a>Automation アカウントへの ID の割り当て
 
-Automation アカウントでカスタマー マネージド キーを使用するには、その Automation アカウントが、カスタマー マネージド キーを格納しているキー コンテナーに対して認証する必要があります。 Azure Automation では、 Azure Key Vault でアカウントを認証するためにシステム割り当てマネージド ID が使用されます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」を参照してください。
+Automation アカウントでカスタマー マネージド キーを使用するには、その Automation アカウントが、カスタマー マネージド キーを格納しているキー コンテナーに対して認証する必要があります。 Azure Automation では、 Azure Key Vault でアカウントを認証するためにシステム割り当てマネージド ID が使用されます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 Automation アカウントのシステム割り当てマネージド ID は、次の REST API 呼び出しを使用して構成します。
 
@@ -93,7 +92,7 @@ Automation アカウントのシステム割り当て ID が次のような応�
 }
 ```
 
-### <a name="configure-the-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを構成する
+### <a name="configuration-of-the-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーの構成
 
 Automation アカウントにマネージド ID が割り当てられたら、カスタマー マネージド キーを格納しているキー コンテナーへのアクセスを構成します。 Azure Automation では、カスタマー マネージド キーに **get**、**recover**、**wrapKey**、**UnwrapKey** が必要です。
 
@@ -178,21 +177,20 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-## <a name="manage-customer-managed-keys-lifecycle"></a>カスタマー マネージド キーのライフサイクルを管理する
-
-### <a name="rotate-customer-managed-keys"></a>カスタマー マネージド キーをローテーションする
+## <a name="rotation-of-a-customer-managed-key"></a>カスタマー マネージド キーのローテーション
 
 Azure Key Vault のカスタマー マネージド キーは、お使いのコンプライアンス ポリシーに従ってローテーションすることができます。 キーがローテーションされたら、新しいキー URI を使用するように Automation アカウントを更新する必要があります。
 
 キーをローテーションしても、Automation アカウントのセキュリティで保護された資産の再暗号化はトリガーされません。 これ以上必要な操作はありません。
 
-### <a name="revoke-access-to-customer-managed-keys"></a>カスタマー マネージド キーへのアクセス権を取り消す
+## <a name="revocation-of-access-to-a-customer-managed-key"></a>カスタマー マネージド キーの失効
 
-カスタマー マネージド キーへのアクセス権を取り消すには、PowerShell または Azure CLI を使用します。 詳細については、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) に関する記事、または [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関する記事を参照してください。 アクセス権を取り消すと、Azure Automation が暗号化キーにアクセスできなくなるため、Automation アカウントのセキュリティで保護されたすべての資産へのアクセスが実質的にブロックされます。
+カスタマー マネージド キーへのアクセス権を取り消すには、PowerShell または Azure CLI を使用します。 詳細については、[Azure Key Vault PowerShell](/powershell/module/az.keyvault/) に関する記事、または [Azure Key Vault CLI](/cli/azure/keyvault) に関する記事を参照してください。 アクセス権を取り消すと、Azure Automation が暗号化キーにアクセスできなくなるため、Automation アカウントのセキュリティで保護されたすべての資産へのアクセスが実質的にブロックされます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Key Vault とは](../key-vault/general/overview.md)
-- [Azure Automation の証明書資産](shared-resources/certificates.md)
-- [Azure Automation の資格情報資産](shared-resources/credentials.md)
-- [Azure Automation の変数資産](shared-resources/variables.md)
+- Azure Key Vault を理解するには、「[Azure Key Vault とは](../key-vault/general/overview.md)」を参照してください。
+- 証明書を操作するには、「[Azure Automation で証明書を管理する](shared-resources/certificates.md)」を参照してください。
+- 資格情報を処理するには、「[Azure Automation で資格情報を管理する](shared-resources/credentials.md)」を参照してください。
+- Automation 変数を使用するには、「[Azure Automation で変数を管理する](shared-resources/variables.md)」を参照してください。
+- 接続を使用する場合のヘルプについては、「[Azure Automation の接続を管理する](automation-connections.md)」を参照してください。

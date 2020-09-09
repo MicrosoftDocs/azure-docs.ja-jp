@@ -4,16 +4,16 @@ description: Azure で最適なパフォーマンスが得られるように Lin
 author: rickstercdn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81757088"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654193"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -34,7 +34,7 @@ VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D 
 * **XFS**: バリアを無効にするには、マウント オプション `nobarrier` を使用します (バリアを有効にするには `barrier` を使用します)。
 
 ## <a name="unmanaged-storage-account-considerations"></a>非管理対象ストレージ アカウントに関する考慮事項
-Azure CLI で VM を作成したときの既定のアクションでは、Azure Managed Disks が使用されます。  これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。  非管理対象ディスクではストレージ アカウントが必要であり、パフォーマンスに関するその他の考慮事項がいくつかあります。  マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。  次のセクションで説明するパフォーマンスに関する考慮事項は、非管理対象ディスクを使用する場合にのみ適用されます。  既定の推奨ストレージ ソリューションは、マネージド ディスクを使用することです。
+Azure CLI で VM を作成したときの既定のアクションでは、Azure Managed Disks が使用されます。  これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。  非管理対象ディスクではストレージ アカウントが必要であり、パフォーマンスに関するその他の考慮事項がいくつかあります。  マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../managed-disks-overview.md)」をご覧ください。  次のセクションで説明するパフォーマンスに関する考慮事項は、非管理対象ディスクを使用する場合にのみ適用されます。  既定の推奨ストレージ ソリューションは、マネージド ディスクを使用することです。
 
 非管理対象ディスクを使用する VM を作成する場合は、近接性を確保し、ネットワーク待ち時間を最小限に抑えるために、VM と同じリージョンに存在するストレージ アカウントからディスクを接続する必要があります。  各 Standard Storage アカウントには、最大 20,000 IOPS および 500 TB のサイズ容量が適用されます。  この制限により、OS ディスクと作成するすべてのデータ ディスクの両方を含む、約 40 個の使用頻度の高いディスクとなります。 Premium Storage アカウントの場合、最大 IOPS に関する制限はありませんが、32 TB のサイズ制限があります。 
 
@@ -115,6 +115,8 @@ Red Hat 配布ファミリでは、次のコマンドのみが必要です。
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
+
+Azure で調整されたカーネルを使用した Ubuntu 18.04 では、マルチキュー I/O スケジューラが使用されます。 このシナリオでは、`noop` ではなく `none` が適切な選択です。 詳細については、[Ubuntu の I/O スケジューラ](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers)に関するページを参照してください。
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>ソフトウェア RAID の使用による IOPS の向上
 単一のディスクで実現できる以上の IOPS を必要とするワークロードの場合、複数のディスクから成るソフトウェア RAID 構成を使用する必要があります。 Azure は既にローカルのファブリック層でディスクの回復性を実現しているため、RAID 0 のストライピング構成を使用することで最高レベルのパフォーマンスが実現されます。  ドライブのパーティション分割、フォーマット、マウントを実行する前に、Azure 環境でディスクをプロビジョニングして作成し、それらを Linux VM に接続します。  Azure の Linux VM でのソフトウェア RAID セットアップの構成の詳細については、「 **[Linux でのソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 」を参照してください。

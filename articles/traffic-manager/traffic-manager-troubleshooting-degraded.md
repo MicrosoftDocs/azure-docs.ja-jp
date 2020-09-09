@@ -3,21 +3,21 @@ title: Azure Traffic Manager での機能低下状態のトラブルシューテ
 description: Traffic Manager プロファイルが機能低下状態と示されるときのトラブルシューティング方法について説明します。
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
+author: duongau
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: rohink
-ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: duau
+ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82130764"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401556"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
@@ -56,9 +56,11 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
 
 出力例:
 
-    StatusCode StatusDescription
-    ---------- -----------------
-           301 Moved Permanently
+```output
+StatusCode StatusDescription
+---------- -----------------
+        301 Moved Permanently
+```
 
 リダイレクト応答を受け取ったことがわかります。 既に説明したように、200 以外の StatusCode はすべて障害と見なされます。 Traffic Manager で、エンドポイントの状態が "オフライン" に変更されます。 問題を解決するには、Web サイトの構成をチェックして、適切な StatusCode がプローブ パスから返されることを確認します。 200 を返すパスを指すように、Traffic Manager のプローブを再構成します。
 

@@ -3,19 +3,20 @@ title: 自動 ML 結果の概要
 titleSuffix: Azure Machine Learning
 description: 自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。
 services: machine-learning
-author: RachelKellam
-ms.author: rakellam
-ms.reviewer: sgilley
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 89fe1d80fb7282a72bde6bcafa070f2d7461b02f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237003"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320835"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,8 +24,8 @@ ms.locfileid: "79237003"
 この記事では、自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。 
 
 各項目の詳細情報
-+ [分類モデルのメトリック、グラフ、曲線](#classification)
-+ [回帰モデルのメトリック、チャート、グラフ](#regression)
++ [分類モデルのメトリックとグラフ](#classification)
++ [回帰モデルのメトリックとグラフ](#regression)
 + [モデルの解釈可能性と機能の重要性](#explain-model)
 
 ## <a name="prerequisites"></a>前提条件
@@ -78,9 +79,9 @@ Azure Machine Learning の自動機械学習機能を使用して構築するす
 
 メトリック|説明|計算|追加のパラメーター
 --|--|--|--
-AUC_Macro| AUC は、受信者操作特徴曲線の下の領域です。 Macro は、クラスごとの AUC の算術平均です。  | [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
-AUC_Micro| AUC は、受信者操作特徴曲線の下の領域です。 Micro は、各クラスの真陽性と偽陽性を組み合わせることでグローバルに計算されます。| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
-AUC_Weighted  | AUC は、受信者操作特徴曲線の下の領域です。 重み付けは各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
+AUC_macro| AUC は、受信者操作特徴曲線の下の領域です。 Macro は、クラスごとの AUC の算術平均です。  | [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
+AUC_micro| AUC は、受信者操作特徴曲線の下の領域です。 Micro は、各クラスの真陽性と偽陽性を組み合わせることでグローバルに計算されます。| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
+AUC_weighted  | AUC は、受信者操作特徴曲線の下の領域です。 重み付けは各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。| [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
 accuracy|精度は、true ラベルと正確に一致する予測ラベルの割合です。 |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |なし|
 average_precision_score_macro|平均適合率は、各しきい値で達成した適合率の加重平均として適合率-再現率曲線をまとめたもので、前のしきい値より増加した再現率を重みとして使用します。 Macro は、各クラスの平均適合率スコアの算術平均です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
 average_precision_score_micro|平均適合率は、各しきい値で達成した適合率の加重平均として適合率-再現率曲線をまとめたもので、前のしきい値より増加した再現率を重みとして使用します。 Micro は、各カットオフの真陽性と偽陽性を組み合わせることでグローバルに計算されます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
@@ -98,6 +99,12 @@ recall_score_macro|再現率は、特定のクラスのうち、正しくラベ�
 recall_score_micro|再現率は、特定のクラスのうち、正しくラベル付けされた要素の割合です。 Micro は、真陽性、偽陰性、偽陽性の合計をカウントすることによって、グローバルに計算されます|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
 recall_score_weighted|再現率は、特定のクラスのうち、正しくラベル付けされた要素の割合です。 重み付けは各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|重み付けされた精度は、それぞれの例に対して指定された重みが、その例の true クラス内の true インスタンスの割合に一致する精度です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight は、ターゲット内の各要素に対して、そのクラスの割合が等しいベクターです|
+
+### <a name="binary-vs-multiclass-metrics"></a>バイナリ メトリックと多クラス メトリック
+
+AutoML によって、バイナリ メトリックと多クラス メトリックは区別されません。 データセットに 2 つのクラスがある場合でも、3 つ以上のクラスがある場合でも、同じ検証メトリックが報告されます。 ただし、一部のメトリックは多クラス分類を対象としています。 バイナリ データセットに適用した場合、これらのメトリックによってどのクラスも `true` クラスとして扱われません。 明らかに多クラス向けのメトリックには、`micro`、`macro`、または `weighted` がサフィックスとして付けられます。 例として、`average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC` などがあります。
+
+具体的な例で、この区別を明確にします。リコールを `tp / (tp + fn)` として計算する代わりに、多クラスの平均リコール (`micro`、`macro`、または `weighted`) は、二項分類データセットの両方のクラスの平均をとります。 これは、`true` クラスと `false` クラスのリコールを個別に計算してから、その 2 つの平均を取得することと同じです。
 
 <a name="confusion-matrix"></a>
 
@@ -123,7 +130,7 @@ weighted_accuracy|重み付けされた精度は、それぞれの例に対し�
 
 <a name="precision-recall-chart"></a>
 ### <a name="precision-recall-chart"></a>精度/再現率グラフ
-#### <a name="what-is-a-precision-recall-chart"></a>精密/再現率グラフとは何ですか？
+#### <a name="what-is-a-precision-recall-chart"></a>精度/再現率グラフとは何ですか？
 精度/再現率曲線は、モデルの精度と再現率の関係を示します。 精度という用語は、モデルがすべてのインスタンスに正しくラベルを付ける能力を表します。 再現率は、分類子が特定のラベルのすべてのインスタンスを見つける能力を表します。
 
 #### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>自動 ML では、精度/再現率グラフを使用するとどうなりますか？
@@ -144,15 +151,13 @@ weighted_accuracy|重み付けされた精度は、それぞれの例に対し�
 ### <a name="roc-chart"></a>ROC グラフ
 
 #### <a name="what-is-a-roc-chart"></a>ROC グラフとは何ですか？
-受信者操作特性 (ROC) は、特定のモデルについて正しく分類されたラベルと間違って分類されたラベルを対比したプロットです。 ROC 曲線は、誤検知のラベルが示されないため、高バイアスのデータセットでモデルをトレーニングするときは、あまり役に立たないことがあります。
+受信者操作特性 (ROC) は、特定のモデルについて正しく分類されたラベルと間違って分類されたラベルを対比したプロットです。 多数派クラスによって少数派クラスからのコントリビューションが打ち消される可能性があるため、クラスの不均衡が大きいデータセットでモデルをトレーニングする場合、ROC 曲線はあまり有益ではありません。
 
 #### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>自動 ML は、ROC グラフで何をしますか？
-自動 ML は、マクロ平均精度/再現率、マイクロ平均精度/再現率、およびモデルのすべてのクラスに関連付けられた精度/再現率を生成します。 
-
-マクロ平均では、各クラスとは無関係にメトリックを計算して、平均値を計算し、すべてのクラスを同等に扱います。 ただし、マイクロ平均は、すべてのクラスのコントリビューションを集計して平均を算出します。 データセットにクラスの不均衡が存在する場合、マイクロ平均が推奨されます。
+ROC グラフの下の領域は、適切に分類されたサンプルの割合として視覚化できます。 ROC グラフの上級ユーザーは、曲線の下の領域を超えて、分類のしきい値または決定境界の関数として、真陽性率と偽陽性率を直感的に理解できます。
 
 #### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
-理想的なモデルは、 100％ に近い真の陽性率を示し、 0％ に近い誤検出率を示します。 
+100% の真陽性率と 0% の偽陽性率で左上隅に近づく ROC 曲線が最適なモデルになります。 ランダム モデルは、左下から右上隅までの平坦な線として表示されます。 ランダムよりも悪いと、y=x 線を下回ります。
 
 ##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>例 1:低い true ラベルと高い false ラベルを持つ分類モデル
 ![低い true ラベルと高い false ラベルを持つ分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
@@ -162,7 +167,8 @@ weighted_accuracy|重み付けされた精度は、それぞれの例に対し�
 <a name="lift-curve"></a>
 ### <a name="lift-chart"></a>リフト チャート
 #### <a name="what-is-a-lift-chart"></a>リフト チャートとは何ですか？
-リフト チャートは、分類モデルのパフォーマンスの評価に使用されます。 精度の観点では、モデルを使用しない場合と比較して、生成されたモデルでどの程度の改善が期待されるかを示します。
+リフト チャートは、分類モデルのパフォーマンスの評価に使用されます。 リフト チャートには、ランダム モデルと比較して、モデルのパフォーマンスが何倍優れているかが示されます。 これにより、クラスの数を増やすと分類が困難になるという事実を考慮した相対的なパフォーマンスが得られます。 ランダム モデルでは、2 つのクラスを持つデータセットと比較して、10 個のクラスを持つデータセットからのサンプルの割合が、誤って予測されます。
+
 #### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>自動 ML は、リフト チャートで何をしますか？
 Azure Machine Learning で自動的に作成されたモデルのリフトとベースラインを比較して、その特定のモデルでの値のゲインを確認できます。
 #### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
@@ -172,10 +178,10 @@ Azure Machine Learning で自動的に作成されたモデルのリフトとベ
 ##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>例 2:ランダムに選択されたモデルよりパフォーマンスがよい分類モデル
 ![より良いパフォーマンスの分類モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
 <a name="gains-curve"></a>
-### <a name="gains-chart"></a>ゲイン チャート
-#### <a name="what-is-a-gains-chart"></a>ゲイン チャートとは何ですか？
+### <a name="cumulative-gains-chart"></a>累積ゲイン チャート
+#### <a name="what-is-a-cumulative-gains-chart"></a>累積ゲイン チャートとは何ですか?
 
-ゲイン チャートでは、データの各部分によって分類モデルのパフォーマンスが評価されます。 データ セットの各パーセンタイルについて、ランダムに選択されたモデルと比較してパフォーマンスがどの程度向上すると予想されるかがわかります。
+累積ゲイン チャートによって、データの各部分の分類モデルのパフォーマンスが評価されます。 チャートには、データ セットの各パーセンタイルに対して、正確に分類されたサンプルの数が示されます。
 
 #### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>自動 ML は、ゲイン チャートで何をしますか？
 モデルからの望ましいゲインに対応するパーセンテージを使用して分類カットオフを選択するには、累積ゲイン チャートを使用します。 この情報では、付随するリフト チャートの結果を調べる別の方法が提供されます。
@@ -196,7 +202,7 @@ Azure Machine Learning で自動的に作成されたモデルのリフトとベ
 
 マクロ平均では、各クラスとは無関係にメトリックを計算して、平均値を計算し、すべてのクラスを同等に扱います。 ただし、マイクロ平均は、すべてのクラスのコントリビューションを集計して平均を算出します。 
 #### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
- 適切に調整されたモデルは、y=x の線と一致し、予測の信頼性は妥当です。 過剰信頼モデルは y=0 の線と一致し、予測確率はありますが、実際の確率はありません。 
+適切に調整されたモデルは、y=x の線と一致し、サンプルが各クラスに属する確率を正しく予測します。 過剰信頼モデルによって、0 と 1 に近い確率が過剰予測され、各サンプルのクラスが不確実であることはほぼありません。
 
 
 ##### <a name="example-1-a-well-calibrated-model"></a>例 1:適切に調整されたモデル
@@ -250,11 +256,11 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
 ### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>残差グラフのヒストグラム
 #### <a name="what-is-a-residuals-chart"></a>残差グラフとは何ですか？
-残差は、観察された y から予測された y を引いた値を表します。 低バイアスでの許容誤差を示すため、残差のヒストグラムは 0 を中心とするベル曲線として成形する必要があります。 
+残余は、予測と実際の値 (`y_pred - y_true`) の差です。 低バイアスでの許容誤差を示すため、残差のヒストグラムは 0 を中心とするベル曲線として成形する必要があります。 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>自動 ML は、残渣チャートで何をしますか？
 自動 ML は、予測内のエラーの分布を示す残差グラフを自動的に提供します。
 #### <a name="what-does-a-good-model-look-like"></a>適切なモデルはどのようなものでしょうか？
-適切なモデルには、通常、ベル曲線またはゼロ付近の誤差があります。
+通常、適切なモデルはほぼゼロを中心とした残差になります。
 
 ##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>例 1:エラーにバイアスを持つ回帰モデル
 ![エラーにバイアスを持つ SA 回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
@@ -265,6 +271,9 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 ## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> モデルの解釈可能性と機能の重要性
 自動 ML は、実行に対する機械学習の解釈可能性ダッシュボードを提供します。
 解釈可能性機能の有効化の詳細については、自動 ML 実験で解釈可能性を有効にする[方法](how-to-machine-learning-interpretability-automl.md)を参照してください。
+
+> [!NOTE]
+> 現在、ForecastTCN モデルは説明クライアントではサポートされていません。 このモデルが最適なモデルとして返された場合、説明ダッシュボードは返されず、オンデマンドでの説明の実行はサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

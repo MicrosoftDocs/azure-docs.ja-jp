@@ -5,12 +5,13 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e8b5e5944d58e9bf3291b3870027257b2c87ad24
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614164"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012672"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>サービスの WCF ベースの通信をセキュリティで保護する
 セキュリティは、通信の最も重要な側面の 1 つです。 Reliable Services アプリケーション フレームワークに最初から用意されている通信スタックとツールを利用してセキュリティを確保することができます。 この記事では、サービスのリモート処理を使用しているときに、セキュリティを向上させる方法について説明します。
@@ -120,4 +121,4 @@ Reliable Services の WCF ベースの通信スタックを設定する方法に
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-次の手順については、「[Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)」を参照してください。
+次の手順については、「[Reliable Services の OWIN 対応 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)」を参照してください。

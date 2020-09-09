@@ -2,13 +2,13 @@
 title: 制限 - LUIS
 description: この記事では、Azure Cognitive Services Language Understanding (LUIS) の既知の制限を示します。 LUIS にはいくつかの制限領域があります。 モデルの制限によって、LUIS の意図、エンティティ、および機能が制御されます。 キーの種類に基づくクォータ制限。 キーボードの組み合わせは LUIS Web サイトを制御します。
 ms.topic: reference
-ms.date: 05/06/2020
-ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 06/04/2020
+ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593241"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055343"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS モデルとキーの制限
 LUIS にはいくつかの制限領域があります。 1 つは[モデルの制限](#model-limits)であり、これによって LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の制限領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。
@@ -37,8 +37,8 @@ LUIS にはいくつかの制限領域があります。 1 つは[モデルの�
 | [事前構築済みのエンティティ](./luis-prebuilt-entities.md) | 制限なし|
 | [正規表現エンティティ](./luis-concept-entity-types.md)|20 エンティティ<br>最大文字数: 500 文字/ 正規表現エンティティ パターンあたり|
 | [ロール](luis-concept-roles.md)|アプリケーションあたり 300 の役割。 エンティティあたりの 10 の役割|
-| [発話][utterances] | 500 文字|
-| [発話][utterances] | アプリケーションあたり 15,000 - 意図あたりの発話の数に制限はありません|
+| [発話][utterances] | 500 文字<br><br>この文字制限より長いテキストがある場合は、LUIS に入力する前に発話を分割する必要があり、セグメントごとに個別の意図の応答を受け取ることになります。 句読点や音声内の長い一時停止など、操作可能な明らかな中断があります。|
+| [発話の例][utterances] | アプリケーションあたり 15,000 - 意図あたりの発話の数に制限はありません<br><br>追加の例でアプリケーションをトレーニングする必要がある場合は、[ディスパッチ](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) モデル アプローチを使用します。 1 つ以上の意図で個々の LUIS アプリ (親ディスパッチ アプリに対して子アプリと呼ばれる) をトレーニングし、次に各子 LUIS アプリの発話からサンプリングされたディスパッチ アプリをトレーニングして、予測要求を正しい子アプリに送ります。 |
 | [バージョン](luis-concept-version.md)| アプリケーションごとに 100 バージョン |
 | [バージョン名][luis-how-to-manage-versions] | 128 文字 |
 
@@ -68,7 +68,7 @@ LUIS にはいくつかの制限領域があります。 1 つは[モデルの�
 
 ## <a name="resource-usage-and-limits"></a>リソース使用量と上限
 
-Language Understand には、作成用に 1 つの種類と、予測エンドポイントに対するクエリの実行用に 1 つの種類という、個別のリソースがあります。 キーの種類の違いの詳細については、「[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)」を参照してください。
+Language Understand には、作成用に 1 つの種類と、予測エンドポイントに対するクエリの実行用に 1 つの種類という、個別のリソースがあります。 キーの種類の違いの詳細については、「[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-how-to-azure-subscription.md)」を参照してください。
 
 <a name="key-limits"></a>
 

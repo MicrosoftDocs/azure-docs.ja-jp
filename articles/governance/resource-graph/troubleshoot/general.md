@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: Azure Resource Graph を使用して Azure リソースのクエリを実行する際に発生するさまざまな SDK に関する問題をトラブルシューティングする方法について説明します。
-ms.date: 10/18/2019
+ms.date: 08/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 052c3e1c10f1b0ca94653f086e2df4f3d395070e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74303904"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056943"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
 
@@ -19,6 +19,25 @@ Azure Resource Graph を使用して Azure リソースをクエリすると、�
 ほとんどのエラーは、Azure Resource Graph を使用したクエリ実行中の問題の結果です。 クエリが失敗すると、SDK は失敗したクエリの詳細を提供します。 この情報から問題が示されるので、問題を解決すれば、次回以降のクエリは成功します。
 
 ## <a name="general-errors"></a>一般エラー
+
+### <a name="scenario-throttled-requests"></a><a name="throttled"></a>シナリオ:スロットルされた要求
+
+#### <a name="issue"></a>問題
+
+大量に、または頻繁にリソース クエリを実行するお客様により、要求がスロットルされています。
+
+#### <a name="cause"></a>原因
+
+Azure Resource Graph では、タイム ウィンドウに基づいて各ユーザーにクォータ数が割り当てられます。 たとえば、ユーザーは、5 秒間のウィンドウごとに最大 15 のクエリをスロットルなしで送信できます。 クォータ値は多数の要因によって決定され、変更される可能性があります。 詳細については、[Azure Resource Graph のスロットル](../overview.md#throttling)に関する記事をご覧ください。
+
+#### <a name="resolution"></a>解像度
+
+スロットルされた要求を処理する方法はいくつかあります。
+
+- [クエリのグループ化](../concepts/guidance-for-throttled-requests.md#grouping-queries)
+- [クエリの時間差処理](../concepts/guidance-for-throttled-requests.md#staggering-queries)
+- [並列クエリ](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
+- [改ページ位置の自動修正](../concepts/guidance-for-throttled-requests.md#pagination)
 
 ### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>シナリオ:サブスクリプションが多すぎる
 

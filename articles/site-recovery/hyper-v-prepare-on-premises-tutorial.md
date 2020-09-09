@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224029"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86135662"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス Hyper-V サーバーを準備する
 
@@ -56,12 +56,12 @@ Hyper-V ホストが VMM で管理される場合、オンプレミス VMM サ�
 
 ### <a name="prepare-vmm-for-network-mapping"></a>ネットワーク マッピング用に VMM を準備する
 
-VMM を使用している場合、[ネットワーク マッピング](site-recovery-network-mapping.md)は、オンプレミス VMM VM ネットワークと Azure 仮想ネットワークの間でマッピングを行います。 マッピングによって、フェールバック後に作成されるとき、Azure VM は正しいネットワークに接続されます。
+VMM を使用している場合、[ネットワーク マッピング](./hyper-v-vmm-network-mapping.md)は、オンプレミス VMM VM ネットワークと Azure 仮想ネットワークの間でマッピングを行います。 マッピングによって、フェールバック後に作成されるとき、Azure VM は正しいネットワークに接続されます。
 
 次の手順に従って、ネットワーク マッピング用に VMM を準備します。
 
-1. Hyper-V ホストが置かれているクラウドに関連付けられている [VMM 論理ネットワーク](https://docs.microsoft.com/system-center/vmm/network-logical)があることを確認します。
-2. 論理ネットワークにリンクされている [VM ネットワーク](https://docs.microsoft.com/system-center/vmm/network-virtual)があることを確認します。
+1. Hyper-V ホストが置かれているクラウドに関連付けられている [VMM 論理ネットワーク](/system-center/vmm/network-logical)があることを確認します。
+2. 論理ネットワークにリンクされている [VM ネットワーク](/system-center/vmm/network-virtual)があることを確認します。
 3. VMM で、VM を VM ネットワークに接続します。
 
 ## <a name="verify-internet-access"></a>インターネット アクセスを確認する
@@ -94,5 +94,5 @@ VMM を使用している場合、[ネットワーク マッピング](site-reco
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する](tutorial-hyper-v-to-azure.md)
-> [VMM クラウドに Hyper-V VM の Azure へのディザスター リカバリーを設定する](tutorial-hyper-v-vmm-to-azure.md)
+> [Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する](./hyper-v-azure-tutorial.md)
+> [VMM クラウドに Hyper-V VM の Azure へのディザスター リカバリーを設定する](./hyper-v-vmm-azure-tutorial.md)

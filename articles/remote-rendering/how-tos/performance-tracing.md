@@ -5,22 +5,22 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679237"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021162"
 ---
 # <a name="create-client-side-performance-traces"></a>クライアント側のパフォーマンス トレースの作成
 
 Azure Remote Rendering のパフォーマンスが期待どおりにならない理由は多数あります。 クラウド サーバーの純粋なレンダリングのパフォーマンスとは別に、特にネットワーク接続の品質はエクスペリエンスに大きな影響を与えます。 サーバーのパフォーマンスをプロファイリングするには、[サーバー側のパフォーマンス クエリ](../overview/features/performance-queries.md)に関する章を参照してください。
 
-この章では、*パフォーマンス トレース*を使用して、潜在的なクライアント側のボトルネックを特定する方法について説明します。
+この章では、 *:::no-loc text="performance traces":::* を使用して、潜在的なクライアント側のボトルネックを特定する方法について説明します。
 
 ## <a name="getting-started"></a>作業の開始
 
-Windows パフォーマンス トレース機能を初めて使用する場合は、このセクションにある、作業を開始するための最も基本的な用語とアプリケーションについての説明を参照してください。
+Windows :::no-loc text="performance tracing"::: 機能を初めて使用する場合は、このセクションにある、作業を開始するための最も基本的な用語とアプリケーションについての説明を参照してください。
 
 ### <a name="installation"></a>インストール
 
@@ -51,7 +51,7 @@ ARR パフォーマンスの問題を特定するには、HoloLens でトレー�
 
 ### <a name="wpr-configuration"></a>WPR の構成
 
-1. *[スタート]* メニューから [Windows Performance Recorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) を起動します。
+1. *[スタート] メニュー*から [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) を起動します。
 1. **[More Options]\(その他のオプション\)** を展開します。
 1. **[Add Profiles]\(プロファイルの追加\)** をクリックします。
 1. *AzureRemoteRenderingNetworkProfiling.wprp* ファイルを選択します。 このファイルは、ARR SDK の *Tools/ETLProfiles* にあります。
@@ -81,7 +81,7 @@ HoloLens でトレースを記録するには、デバイスを起動し、そ�
 
 1. 左側で、 *[Performance]\(パフォーマンス\) > [Performanc]\(パフォーマンスのトレース\)* に移動します。
 1. **[Custom profiles]\(カスタム プロファイル\)** を選択します。
-1. **[Browse]\(参照\)** をクリックします。
+1. **:::no-loc text="Browse...":::** をクリックします。
 1. *AzureRemoteRenderingNetworkProfiling.wprp* ファイルを選択します。 このファイルは、ARR SDK の *Tools/ETLProfiles* にあります。
 1. **[Start Trace]\(トレースの開始\)** をクリックします。
 1. これで、HoloLens でトレースが記録されます。 調査する必要があるパフォーマンスの問題を必ずトリガーしてください。 次に、 **[Stop Trace]\(トレースの停止\)** をクリックします。

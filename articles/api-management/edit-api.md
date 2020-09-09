@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用した API の編集 | Microsoft Docs
-description: このチュートリアルでは、API Management (APIM) を使用して API を編集する方法を示します。
+description: API Management (APIM) を使用して API を編集する方法について説明します。 APIM インスタンスで操作を追加、削除、名前変更したり、API の Swagger を編集したりします。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072152"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905161"
 ---
 # <a name="edit-an-api"></a>API の編集
 
@@ -41,7 +41,7 @@ ms.locfileid: "70072152"
 2. 前にインポートした API の 1 つを選びます。
 3. **[デザイン]** タブを選択します。
 4. 編集する操作を選びます。
-5. 操作の名前を変更するには、 **[フロントエンド]** ウィンドウの**鉛筆**を選択します。
+5. 操作の名前を変更するには、**[フロントエンド]** ウィンドウの**鉛筆**を選択します。
 
 ## <a name="update-the-swagger"></a>Swagger を更新する
 

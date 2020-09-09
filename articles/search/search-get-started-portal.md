@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369452"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935315"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -25,15 +25,17 @@ ms.locfileid: "80369452"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-ポータルの **データ インポート** ウィザードおよび **Search エクスプローラー** ツールを使用して概念を簡単に把握し、インデックスに対する興味深いクエリを数分で作成します。
+**[データのインポート]** ウィザードは、検索インデックスの作成手順を案内する Azure portal ツールであり、これを使用すれば、関心のあるクエリを数分で記述することができます。 
 
-ツールに制限がありすぎる場合は、[.NET での Azure Cognitive Search のプログラミングに関するコーディングを前提とした概要記事](search-howto-dotnet-sdk.md)を検討するか、または [REST API の呼び出しを行うために Postman](search-get-started-postman.md) を使います。 
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+また、このウィザードには、AI エンリッチメントのページも用意されているので、イメージ ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI を使用したコンテンツ処理には、光学式文字認識 (OCR)、キー フレーズとエンティティ抽出、イメージ分析が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
+開始する前に、次の項目を用意する必要があります。
+
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
+
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
 ### <a name="check-for-space"></a>領域の確認
 
@@ -51,15 +53,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>手順 1 - データのインポート ウィザードを起動し、データ ソースを作成する
 
-1. Azure Cognitive Search サービスのダッシュボード上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
+1. Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
+
+1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページ上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
 
    ![[データのインポート] コマンド](media/search-get-started-portal/import-data-cmd.png)
 
-2. ウィザードで **[データに接続します]**  >  **[サンプル]**  >  **[hotels-sample]** の順にクリックします。 このデータ ソースは組み込まれています。 独自のデータ ソースを作成する場合は、名前、型、接続情報を指定する必要があります。 作成すると、他のインポート操作で再度使用できる "既存のデータ ソース" になります。
+1. ウィザードで **[データに接続します]**  >  **[サンプル]**  >  **[hotels-sample]** の順にクリックします。 このデータ ソースは組み込まれています。 独自のデータ ソースを作成する場合は、名前、型、接続情報を指定する必要があります。 作成すると、他のインポート操作で再度使用できる "既存のデータ ソース" になります。
 
    ![サンプル データセットの選択](media/search-get-started-portal/import-datasource-sample.png)
 
-3. 次のページに進みます。
+1. 次のページに進みます。
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>手順 2 - [コンテンツのエンリッチ] ページをスキップする
 
@@ -136,7 +140,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この時点で検索インデックスは、ビルトインの [**Search エクスプローラー**](search-explorer.md)のクエリ ページを使って照会する準備が整っています。 このページには、任意のクエリ文字列をテストできるよう検索ボックスが備わっています。
 
-**Search エクスプローラー**は、[REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
+**Search エクスプローラー**は、[REST API 要求](/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
 
 > [!TIP]
 > [Azure Cognitive Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から次の手順のデモをご覧いただけます。
@@ -146,7 +150,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[Search エクスプローラー] コマンド](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2019-05-06) を使います。
+2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2020-06-30) を使用します。
 
    ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -184,7 +188,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * **$filter** パラメーターは、指定した条件に一致する結果を返します。 この例では、評価が 4 を超えるものが返されます。
 
-* フィルター構文は、OData 構文です。 詳細については、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
+* フィルター構文は、OData 構文です。 詳細については、[フィルターの OData 構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> クエリのファセット
 
@@ -203,7 +207,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * ファセットできるのは、フィルター可能なフィールドのみです。 結果として返されるのは、取得可能なフィールドのみです。
 
-* *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)に関するページを参照してください。
+* *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](./search-faceted-navigation.md#filter-based-on-a-range)に関するページを参照してください。
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 検索結果の強調表示
@@ -236,11 +240,11 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 あいまい検索とワイルドカード検索は、検索の出力に影響を及ぼします。 これらのクエリ形式に対しては言語分析が実行されません。 あいまい検索とワイルドカード検索を使用する際は、あらかじめ [Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md#stage-2-lexical-analysis)に関するページで、字句解析の例外についてのセクションを参照してください。
 
-完全なクエリ パーサーによって有効になるクエリのシナリオの詳細については、[Azure Cognitive Search での Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
+完全なクエリ パーサーによって有効になるクエリのシナリオの詳細については、[Azure Cognitive Search での Lucene クエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a> 地理空間検索を試す
 
-地理空間検索は、座標を格納しているフィールドの [edm.GeographyPoint データ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)によってサポートされます。 地理空間検索はフィルターの種類で、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)で指定します。
+地理空間検索は、座標を格納しているフィールドの [edm.GeographyPoint データ型](/rest/api/searchservice/supported-data-types)によってサポートされます。 地理空間検索はフィルターの種類で、[フィルターの OData 構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)で指定します。
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>例 (地理座標フィルター): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -252,7 +256,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 このチュートリアルでは、Azure portal を使用した Azure Cognitive Search について簡単に紹介しました。
 
-**データのインポート** ウィザードを使って検索インデックスを作成する方法について説明しました。 [インデクサー](search-indexer-overview.md)について取り上げると共に、インデックス設計の基本的なワークフローについて説明しました。その際、[公開済みのインデックスに対して行うことができる変更](https://docs.microsoft.com/rest/api/searchservice/update-index)についても触れています。
+**データのインポート** ウィザードを使って検索インデックスを作成する方法について説明しました。 [インデクサー](search-indexer-overview.md)について取り上げると共に、インデックス設計の基本的なワークフローについて説明しました。その際、[公開済みのインデックスに対して行うことができる変更](/rest/api/searchservice/update-index)についても触れています。
 
 Azure portal の **Search エクスプローラー**を使って、フィルターや検索結果の強調表示、あいまい検索、地理空間検索など、主要な機能を紹介する実践的な例を通じて、基本的なクエリの構文を学びました。
 
@@ -271,4 +275,9 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 ポータルのウィザードを使用して、ブラウザーで動作するすぐに使用できる Web アプリを生成します。 このウィザードを、先ほど作成した小さなインデックスで試すか、またはいずれかのビルトイン サンプル データ セットを使用して充実した検索環境を実現することができます。
 
 > [!div class="nextstepaction"]
-> [ポータルで検索アプリを作成する](search-create-app-portal.md)
+> [ポータルでデモ アプリを作成する](search-create-app-portal.md)
+
+クラウドの支出を最適化して節約することをご希望ですか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

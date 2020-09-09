@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - API のインポート | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - API のインポート
+description: API をインポートして API Management 製品に追加する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,14 +12,14 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: cb24f5efe70af7a1a358a1e9acc90204a1e33564
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3644eda24790b9f711d6584b05a18eba23f227ba
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70071935"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850935"
 ---
-# <a name="import-an-api"></a>API のインポート
+# <a name="import-an-api"></a>API をインポートする
 
 このサンプル スクリプトは、API をインポートし、API Management の成果物に追加します。 
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure API Management 用 Azure PowerShell サンプルは、[PowerShell サンプル](../powershell-samples.md)のページにあります。

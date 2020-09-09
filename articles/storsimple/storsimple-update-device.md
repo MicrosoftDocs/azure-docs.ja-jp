@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
-ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75933431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84170088"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの更新
 > [!NOTE]
@@ -84,22 +84,22 @@ StorSimple 用 Windows PowerShell を使用して、メンテナンス モード
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>手順 1: シリアル コンソールに接続する <a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>手順 1: シリアル コンソールに接続する <a name="step1"></a>
 まず、PuTTY などのアプリケーションを使用して、シリアル コンソールにアクセスします。 次の手順は、PuTTY を使用してシリアル コンソールに接続する方法について説明します。
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>手順 2: メンテナンス モードを開始する <a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>手順 2: メンテナンス モードを開始する <a name="step2"></a>
 コンソールに接続した後は、インストールする更新プログラムがあるかどうかを確認し、インストールするためにメンテナンス モードを開始します。
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>手順 3: 更新プログラムをインストールする <a name="step3">
+### <a name="step-3-install-your-updates"></a>手順 3: 更新プログラムをインストールする <a name="step3"></a>
 次に、更新プログラムをインストールします。
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>手順 4: メンテナンス モードを終了する <a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>手順 4: メンテナンス モードを終了する <a name="step4"></a>
 最後に、メンテナンス モードを終了します。
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

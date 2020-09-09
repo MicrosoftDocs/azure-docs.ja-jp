@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-java
+ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086117"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -174,3 +175,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>アプリケーション ログのクエリについての詳細情報
 
 Azure Monitor では、Log Analytics を使用したアプリケーション ログのクエリが広範にサポートされています。 このサービスについて詳しくは、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」を参照してください。 アプリケーション ログを分析するクエリの作成の詳細については、「[Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)」を参照してください。
+
+## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>複数行の Java スタック トレースを 1 行に変換する方法は?
+
+複数行のスタック トレースを 1 行に変換する回避策があります。 Java ログ出力を変更してスタック トレース メッセージを再フォーマットし、改行文字をトークンで置換できます。 Java Logback ライブラリを使用する場合、次のように `%replace(%ex){'[\r\n]+', '\\n'}%nopex` を追加することでスタック トレース メッセージを再フォーマットできます。
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+その後、下のように、Log Analytics で再び、トークンを改行文字で置換できます。
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+場合によっては、他の Java ログ ライブラリに同じ方法を利用することもできます。

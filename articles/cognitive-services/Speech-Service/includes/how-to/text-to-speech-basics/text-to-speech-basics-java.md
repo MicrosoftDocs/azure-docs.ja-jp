@@ -3,13 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
+ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: e0c2554162d54af6c0a483e26f708838c3045a03
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f83c2078358c7f35c5de45a5ac17d43750457562
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985980"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375459"
 ---
 ## <a name="prerequisites"></a>前提条件
 

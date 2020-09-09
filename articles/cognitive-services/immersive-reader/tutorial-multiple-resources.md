@@ -9,26 +9,27 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1abd1052c33346d949809d7c35a99ef97bde2c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195623"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516284"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>チュートリアル:複数のイマーシブ リーダー リソースを統合する
 
-[概要](./overview.md)に関するページでは、イマーシブ リーダーの機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 [Node.js のクイックスタート](./quickstart-nodejs.md)では、単一のリソースでイマーシブ リーダーを使用する方法について説明しました。 このチュートリアルでは、複数のイマーシブ リーダー リソースを同じアプリケーションに統合する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
+[概要](./overview.md)に関するページでは、イマーシブ リーダーの機能とそのしくみ (どのようにして言語学習者、新しい読者、および学習方法の異なる学生が読解力向上のために実証済みの手法を実装するか) について説明しました。 [Node.js のクイックスタート](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)では、単一のリソースでイマーシブ リーダーを使用する方法について説明しました。 このチュートリアルでは、複数のイマーシブ リーダー リソースを同じアプリケーションに統合する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 既存のリソース グループの下に複数のイマーシブ リーダー リソースを作成する
 > * 複数のリソースを使用してイマーシブ リーダーを起動する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [クイックスタート](./quickstart-nodejs.md)に従い、NodeJS を使用してイマーシブ リーダーを起動する Web アプリを作成します。 クイックスタートでは、1 つのイマーシブ リーダー リソースを構成します。 このチュートリアルでは、それをベースにして構築を行います。
+* [クイックスタート](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)に従い、NodeJS を使用してイマーシブ リーダーを起動する Web アプリを作成します。 クイックスタートでは、1 つのイマーシブ リーダー リソースを構成します。 このチュートリアルでは、それをベースにして構築を行います。
 
 ## <a name="create-the-immersive-reader-resources"></a>イマーシブ リーダー リソースを作成する
 

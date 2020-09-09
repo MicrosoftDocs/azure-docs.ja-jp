@@ -2,17 +2,17 @@
 title: Azure ネットワーク間接続
 description: このページでは、Azure ネットワーク機能に基づいたネットワーク間接続とソリューションのアプリケーション シナリオについて説明します。
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: rambala
-ms.openlocfilehash: 48ec26cc98310dfeb61aa17018c940b431cfbcee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: f13e3c03c0cfd747c7819d95a5fb98560db861c4
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644258"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398071"
 ---
 # <a name="cross-network-connectivity"></a>ネットワーク間接続
 
@@ -20,25 +20,25 @@ Fabrikam, Inc. は、米国東部に大規模な拠点があり、Azure をデ�
 
 Fabrikam Inc. は Contoso Ltd. を買収します。この合併の後、Fabrikam はネットワークを相互接続します。 このシナリオを次の図に示します。
 
- [![1]][1]
+![アプリケーションのシナリオ](./media/cross-network-connectivity/premergerscenario.png)
 
 上の図の真ん中の破線の矢印は、必要なネットワーク相互接続を示しています。 具体的には、次の 3 種類の必要なクロス接続があります。1) Fabrikam と Contoso の VNet のクロス接続、2) クロス リージョンのオンプレミスと VNet のクロス接続 (つまり、Contoso の VNet への Fabrikam のオンプレミス ネットワークの接続と、Fabrikam の VNet への Contoso のオンプレミス ネットワークの接続)、および 3) Fabrikam と Contoso のオンプレミス ネットワークのクロス接続。 
 
 次の表は、合併前の Contoso Ltd. の ExpressRoute のプライベート ピアリングのルート テーブルを示しています。
 
-[![2]][2]
+![合併前の Contoso の ExpressRoute ルート テーブル](./media/cross-network-connectivity/contosoexr-rt-premerger.png)
 
-次の表は、合併前の Contoso のサブスクリプションの VM の有効なルートを示しています。 表によれば、VNet 上の VM は、既定のデフォルトのものとは別に、VNet アドレス空間と Contoso のオンプレミス ネットワークを認識しています。 
+次の表は、合併前の Contoso のサブスクリプションの VM の有効なルートを示しています。 表によれば、VNet 上の VM は、既定のデフォルトのものとは別に、VNet アドレス空間と Contoso のオンプレミス ネットワークを認識しています。
 
-[![4]][4]
+![合併前の Contoso の VM ルート](./media/cross-network-connectivity/contosovm-routes-premerger.png)
 
 次の表は、合併前の Fabrikam Inc. の ExpressRoute のプライベート ピアリングのルート テーブルを示しています。
 
-[![3]][3]
+![合併前の Fabrikam の ExpressRoute ルート テーブル](./media/cross-network-connectivity/fabrikamexr-rt-premerger.png)
 
 次の表は、合併前の Fabrikam のサブスクリプションの VM の有効なルートを示しています。 表によれば、VNet 上の VM は、既定のデフォルトのものとは別に、VNet アドレス空間と Contoso のオンプレミス ネットワークを認識しています。
 
-[![5]][5]
+![合併前の Fabrikam の VM ルート](./media/cross-network-connectivity/fabrikamvm-routes-premerger.png)
 
 この記事では、1 つずつ手順を追って、次の Azure ネットワーク機能を使用して目的のクロス接続を実現する方法について説明します。
 
@@ -54,15 +54,15 @@ Contoso と Fabrikam の Azure サブスクリプションで VNet 間のグロ�
 
 次の図は、グローバル VNet ピアリングの構成後のネットワーク アーキテクチャを示しています。
 
-[![6]][6]
+![VNet ピアリング後のアーキテクチャ](./media/cross-network-connectivity/vnet-peering.png )
 
 次の表は、Contoso のサブスクリプションの VM に認識されるルートを示しています。 表の最後のエントリに注意してください。 このエントリは、仮想ネットワークのクロス接続の結果です。
 
-[![7]][7]
+![VNet ピアリング後の Contoso の VM ルート](./media/cross-network-connectivity/contosovm-routes-peering.png)
 
 次の表は、Fabrikam のサブスクリプションの VM に認識されるルートを示しています。 表の最後のエントリに注意してください。 このエントリは、仮想ネットワークのクロス接続の結果です。
 
-[![8]][8]
+![VNet ピアリング後の Fabrikam の VM ルート](./media/cross-network-connectivity/fabrikamvm-routes-peering.png)
 
 VNet ピアリングは 2 つの仮想ネットワークを直接リンクさせています (上の 2 つの表で *VNetGlobalPeering* エントリに次ホップがないことを確認できます)
 
@@ -74,23 +74,23 @@ Fabrikam の ExpressRoute 回線を Contoso サブスクリプションの VNet 
 
 次の図は、仮想ネットワークへの ExpressRoute クロス接続を構成した後のネットワーク アーキテクチャを示しています。
 
-[![9]][9]
+![ExpressRoutes のクロス接続後のアーキテクチャ](./media/cross-network-connectivity/exr-x-connect.png)
 
 次の表は、ExpressRoute 経由でオンプレミス ネットワークに仮想ネットワークをクロス接続した後の、Contoso Ltd. の ExpressRoute のプライベート ピアリングのルート テーブルを示しています。 ルート テーブルに両方の仮想ネットワークに属しているルートがあることを確認できます。
 
-[![10]][10]
+![ExR と VNet のクロス接続後の Contoso の ExpressRoute ルート テーブル](./media/cross-network-connectivity/contosoexr-rt-xconnect.png)
 
 次の表は、ExpressRoute 経由でオンプレミス ネットワークに仮想ネットワークをクロス接続した後の、Fabrikam Inc. の ExpressRoute のプライベート ピアリングのルート テーブルを示しています。 ルート テーブルに両方の仮想ネットワークに属しているルートがあることを確認できます。
 
-[![11]][11]
+![ExR と VNet のクロス接続後の Fabrikam の ExpressRoute ルート テーブル](./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png)
 
 次の表は、Contoso のサブスクリプションの VM に認識されるルートを示しています。 表の *[仮想ネットワーク ゲートウェイ]* のエントリに注意してください。 VM には、両方のオンプレミス ネットワークのルートが表示されます。
 
-[![12]][12]
+![ExR と VNet のクロス接続後の Contoso の VM ルート](./media/cross-network-connectivity/contosovm-routes-xconnect.png)
 
 次の表は、Fabrikam のサブスクリプションの VM に認識されるルートを示しています。 表の *[仮想ネットワーク ゲートウェイ]* のエントリに注意してください。 VM には、両方のオンプレミス ネットワークのルートが表示されます。
 
-[![13]][13]
+![ExR と VNet のクロス接続後の Fabrikam の VM ルート](./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png)
 
 >[!NOTE]
 >Fabrikam と Contoso、またはそのいずれかのサブスクリプションで、それぞれのハブ VNet へのスポーク Vnet を含めることもできます (ハブとスポークの設計は、この記事のアーキテクチャの図には示されていません)。 ExpressRoute へのハブ VNet ゲートウェイ間のクロス接続では、東部と西部のハブとスポークの間の通信も可能になります。
@@ -102,39 +102,21 @@ ExpressRoute Global Reach は、異なる ExpressRoute 回線に接続されて�
 
 次の図は、Global Reach の構成後のネットワーク アーキテクチャを示しています。
 
-[![14]][14]
+![Global Reach の構成後のアーキテクチャ](./media/cross-network-connectivity/globalreach.png)
 
 次の表は、Global Reach の構成後の Contoso Ltd. の ExpressRoute のプライベート ピアリングのルート テーブルを示しています。 ルート テーブルに両方のオンプレミス ネットワークに属しているルートがあることを確認できます。 
 
-[![15]][15]
+![Global Reach 後の Contoso の ExpressRoute ルート テーブル](./media/cross-network-connectivity/contosoexr-rt-gr.png)
 
 次の表は、Global Reach の構成後の Fabrikam Inc. の ExpressRoute のプライベート ピアリングのルート テーブルを示しています。 ルート テーブルに両方のオンプレミス ネットワークに属しているルートがあることを確認できます。
 
-[![16]][16]
+![Global Reach 後の Fabrikam の ExpressRoute ルート テーブル]( ./media/cross-network-connectivity/fabrikamexr-rt-gr.png )
 
 ## <a name="next-steps"></a>次のステップ
 
 VNet と VNet ピアリングについてさらにご質問がある場合、「[仮想ネットワークに関する FAQ][VNet-FAQ]」をご覧ください。 ExpressRoute と仮想ネットワーク接続についてさらにご質問がある場合は、「[ExpressRoute の FAQ][ER-FAQ]」を参照してください。
 
 Global Reach は国や地域ごとに国や地域でロールアウトされています。 Global Reach が必要な国や地域で使用可能かどうかを確認するには、「[ExpressRoute Global Reach][Global Reach]」を参照してください。
-
-<!--Image References-->
-[1]: ./media/cross-network-connectivity/premergerscenario.png "アプリケーションのシナリオ"
-[2]: ./media/cross-network-connectivity/contosoexr-rt-premerger.png "合併前の Contoso の ExpressRoute ルート テーブル"
-[3]: ./media/cross-network-connectivity/fabrikamexr-rt-premerger.png "合併前の Fabrikam の ExpressRoute ルート テーブル"
-[4]: ./media/cross-network-connectivity/contosovm-routes-premerger.png "合併前の Contoso の VM ルート"
-[5]: ./media/cross-network-connectivity/fabrikamvm-routes-premerger.png "合併前の Fabrikam の VM ルート"
-[6]: ./media/cross-network-connectivity/vnet-peering.png "VNet ピアリング後のアーキテクチャ"
-[7]: ./media/cross-network-connectivity/contosovm-routes-peering.png "VNet ピアリング後の Contoso の VM ルート"
-[8]: ./media/cross-network-connectivity/fabrikamvm-routes-peering.png "VNet ピアリング後の Fabrikam の VM ルート"
-[9]: ./media/cross-network-connectivity/exr-x-connect.png "ExpressRoutes のクロス接続後のアーキテクチャ"
-[10]: ./media/cross-network-connectivity/contosoexr-rt-xconnect.png "ExR と VNet のクロス接続後の Contoso の ExpressRoute ルート テーブル"
-[11]: ./media/cross-network-connectivity/fabrikamexr-rt-xconnect.png "ExR と VNet のクロス接続後の Fabrikam の ExpressRoute ルート テーブル"
-[12]: ./media/cross-network-connectivity/contosovm-routes-xconnect.png "ExR と VNet のクロス接続後の Contoso の VM ルート"
-[13]: ./media/cross-network-connectivity/fabrikamvm-routes-xconnect.png "ExR と VNet のクロス接続後の Fabrikam の VM ルート"
-[14]: ./media/cross-network-connectivity/globalreach.png "Global Reach の構成後のアーキテクチャ"
-[15]: ./media/cross-network-connectivity/contosoexr-rt-gr.png "Global Reach 後の Contoso の ExpressRoute ルート テーブル"
-[16]: ./media/cross-network-connectivity/fabrikamexr-rt-gr.png "Global Reach 後の Fabrikam の ExpressRoute ルート テーブル"
 
 <!--Link References-->
 [Virtual network peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

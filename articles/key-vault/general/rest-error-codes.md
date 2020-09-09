@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427703"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685716"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API のエラー コード
  
@@ -89,7 +89,7 @@ Azure OAUTH エンドポイントからアクセス トークンを要求する�
 
 このトークンには、次のように重要な部分が多くあります。
 
-- aud (対象ユーザー):トークンのリソース。 これは <https://vault.azure.net> であることに注意してください。 このトークンは、graph など、この値と明示的に一致しないリソースに対しては機能しません。
+- aud (対象ユーザー):トークンのリソース。 これは `https://vault.azure.net` であることに注意してください。 このトークンは、graph など、この値と明示的に一致しないリソースに対しては機能しません。
 - iat (発行時刻):トークンが発行されたときのエポックの開始以降のティック数。
 - nbf (期間の開始時刻):このトークンが有効になったときのエポックの開始以降のティック数。
 - exp (有効期限):このトークンの有効期限が切れたときのエポックの開始以降のティック数。
@@ -134,7 +134,7 @@ HTTP 403 は、顧客のアプリケーションが、顧客が考えている�
 
 ### <a name="troubleshooting-403"></a>403 のトラブルシューティング
 
-まず、ログ記録を有効にします。 その方法については、[Azure Key Vault のログ記録](logging.md)に関するページをご覧ください。
+まず、ログ記録を有効にします。 その方法については、「[Azure Key Vault のログ記録](logging.md)」を参照してください。
 
 ログ記録を有効にすると、403 の原因がアクセス ポリシーとファイアウォール ポリシーのどちらであるかを判断できます。
 

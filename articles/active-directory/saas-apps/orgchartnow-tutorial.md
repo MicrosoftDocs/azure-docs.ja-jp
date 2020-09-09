@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と OrgChart Now の統合 | Microsoft Docs'
 description: Azure Active Directory と OrgChart Now の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 50a1522f-81de-4d14-9b6b-dd27bb1338a4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a28bfbb7fcfd357dc3aac521db24788607cd2212
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095427"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル: Azure Active Directory と OrgChart Now の統合
 

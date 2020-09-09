@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229327"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247423"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "79229327"
 監視、検出、診断、トラブルシューティングにより、ユーザー エクスペリエンスの中断を最小限に抑えてサービスを続行できます。 監視と診断は実際にデプロイされる運用環境で不可欠ですが、実際にセットアップに移るときに動作するように、サービスを開発している間に同様のモデルを採用するかどうかで、その有効性が左右されます。 Service Fabric により、サービスの開発者は、1 台のコンピューターのローカルの開発のセットアップと実際の運用クラスターのセットアップの両方でシームレスに操作できる診断を簡単に実装できます。
 
 ## <a name="event-tracing-for-windows"></a>Windows イベント トレーシング
-[Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) では、Service Fabric のメッセージをトレースするための推奨されるテクノロジです。 ETW を使用する利点は次のとおりです。
+[Event Tracing for Windows](/windows/win32/etw/event-tracing-portal) (ETW) では、Service Fabric のメッセージをトレースするための推奨されるテクノロジです。 ETW を使用する利点は次のとおりです。
 
 * **ETW は、高速です。** コードの実行時間にほとんど影響を与えない追跡テクノロジとして構成されています。
 * **ETW トレースは、ローカル開発環境から実際のクラスターのセットアップに至るまでシームレスに機能します。** つまり、コードを実際のクラスターにデプロイする準備ができたら、トレース コードを書き直す必要はありません。
@@ -56,6 +56,5 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 ## <a name="next-steps"></a>次のステップ
 ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
 
-* [Azure Diagnostics でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Azure Diagnostics でログを収集する方法](./service-fabric-diagnostics-event-aggregation-wad.md)
 * [EventFlow を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-eventflow.md)
-

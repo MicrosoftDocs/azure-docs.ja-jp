@@ -4,21 +4,21 @@ description: Azure Firewall と統合して、App Service 環境内からの送�
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 07/13/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 4c25c64268b38e5929c73891f7c48e79b9b8593e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856052"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962504"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
 App Service Environment (ASE) が適切に動作するには、アクセスする必要がある外部の依存関係が複数あります。 ASE は、お客様の Azure Virtual Network (VNet) 内にあります。 お客様は、ASE の依存トラフィックを許可する必要があります。これは、自社の VNet からのすべての送信をロックしたいお客様にとって問題です。
 
-ASE の管理に使用される受信エンドポイントは多数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、「[App Service Environment の管理アドレス](https://docs.microsoft.com/azure/app-service/environment/management-addresses)」ドキュメントで公開されています。 また、AppServiceManagement という名前のサービス タグもあります。これをネットワーク セキュリティ グループ (NSG) と共に使用して、受信トラフィックをセキュリティで保護することができます。
+ASE の管理に使用される受信エンドポイントは多数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、「[App Service Environment の管理アドレス](./management-addresses.md)」ドキュメントで公開されています。 また、AppServiceManagement という名前のサービス タグもあります。これをネットワーク セキュリティ グループ (NSG) と共に使用して、受信トラフィックをセキュリティで保護することができます。
 
 ASE の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループを使用して ASE からの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の解決策に基づいてルールを設定し、それを使用して NSG を作成することができません。 
 
@@ -55,13 +55,13 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
    ![サービス エンドポイントの選択][2]
   
-1. ASE が存在する VNet に AzureFirewallSubnet という名前のサブネットを作成します。 「[Azure Firewall のドキュメント](https://docs.microsoft.com/azure/firewall/)」の指示に従って Azure Firewall を作成します。
+1. ASE が存在する VNet に AzureFirewallSubnet という名前のサブネットを作成します。 「[Azure Firewall のドキュメント](../../firewall/index.yml)」の指示に従って Azure Firewall を作成します。
 
 1. Azure Firewall UI の [ルール]、[アプリケーション ルール コレクション] から、[アプリケーション ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [FQDN タグ] セクションで、名前を指定し、[ソース アドレス] を「*」に設定して、FQDN タグとして App Service Environment と Windows Update を選択します。 
    
    ![アプリケーション ルールの追加][1]
    
-1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [IP アドレス] の [ルール] セクションで、名前を指定し、プロトコルを **[任意]** 選択して、[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを「123」に設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。 
+1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [IP アドレス] の [ルール] セクションで、名前を指定し、プロトコルとして **[任意]** を選択します。[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを 123 に設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。 
 
    ![NTP ネットワーク ルールの追加][3]
    
@@ -69,7 +69,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
    ![NTP サービス タグ ネットワーク ルールの追加][6]
    
-1. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。 インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。 0\.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall プライベート IP アドレスである仮想アプライアンス ルートを追加します。 
+1. インターネットの次ホップがある [App Service Environment 管理アドレス]( ./management-addresses.md)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。 インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。 0\.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall プライベート IP アドレスである仮想アプライアンス ルートを追加します。 
 
    ![ルート テーブルの作成][4]
    
@@ -77,7 +77,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
 #### <a name="deploying-your-ase-behind-a-firewall"></a>ファイアウォールの内側に ASE をデプロイする
 
-ファイアウォールの内側に ASE をデプロイする手順は、Azure Firewall を使用して既存の ASE を構成する手順と同じです。ただし、例外として、ASE サブネットを作成してから前の手順に従う必要があります。 既存のサブネットに ASE を作成するには、[Resource Manager テンプレートを使用した ASE の作成](https://docs.microsoft.com/azure/app-service/environment/create-from-template)に関するドキュメントで説明されているように、Resource Manager テンプレートを使用する必要があります。
+ファイアウォールの内側に ASE をデプロイする手順は、Azure Firewall を使用して既存の ASE を構成する手順と同じです。ただし、例外として、ASE サブネットを作成してから前の手順に従う必要があります。 既存のサブネットに ASE を作成するには、[Resource Manager テンプレートを使用した ASE の作成](./create-from-template.md)に関するドキュメントで説明されているように、Resource Manager テンプレートを使用する必要があります。
 
 ## <a name="application-traffic"></a>アプリケーション トラフィック 
 
@@ -88,7 +88,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
 アプリケーションに依存関係がある場合は、それらを Azure Firewall に追加する必要があります。 その他すべてに関する HTTP/HTTPS トラフィックとネットワークのルールを許可するようにアプリケーション ルールを作成します。 
 
-アプリケーション要求トラフィックの送信元であるアドレス範囲がわかっている場合は、そのアドレス範囲を ASE サブネットに割り当てられているルート テーブルに追加することができます。 アドレス範囲が大きい場合や指定されていない場合は、Application Gateway などのネットワーク アプライアンスを使用して、ルート テーブルに追加するアドレスを 1 つ指定することができます。 ILB ASE に合わせて Application Gateway を構成する方法の詳細については、[ILB ASE を Application Gateway と統合する方法](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)に関するページを参照してください。
+アプリケーション要求トラフィックの送信元であるアドレス範囲がわかっている場合は、そのアドレス範囲を ASE サブネットに割り当てられているルート テーブルに追加することができます。 アドレス範囲が大きい場合や指定されていない場合は、Application Gateway などのネットワーク アプライアンスを使用して、ルート テーブルに追加するアドレスを 1 つ指定することができます。 ILB ASE に合わせて Application Gateway を構成する方法の詳細については、[ILB ASE を Application Gateway と統合する方法](./integrate-with-application-gateway.md)に関するページを参照してください。
 
 この Application Gateway の使用は、システムの構成方法の一例にすぎません。 このパスに従わなかった場合は、ASE サブネット ルート テーブルへのルートの追加が必要になります。その結果、Application Gateway に送信された応答トラフィックはそこに直接送られます。 
 
@@ -96,9 +96,11 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
 Azure Firewall は、Azure Storage、Event Hub、または Azure Monitor ログにログを送信できます。 お使いのアプリをサポート対象の送信先と統合するには、Azure Firewall ポータルの [診断ログ] に移動し、目的の送信先のログを有効にします。 Azure Monitor ログと統合すると、Azure Firewall に送信されたすべてのトラフィックのログを確認できます。 拒否されているトラフィックを表示するには、Log Analytics ワークスペース ポータルの [ログ] を開き、次のようなクエリを入力します 
 
-    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
- 
-Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に役立ちます。 Azure Monitor ログの詳細については、[Azure Monitor でのログ データの分析](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)に関する記事をご覧ください。
+```kusto
+AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+```
+
+Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に役立ちます。 Azure Monitor ログの詳細については、[Azure Monitor でのログ データの分析](../../azure-monitor/log-query/log-query-overview.md)に関する記事をご覧ください。
  
 ## <a name="dependencies"></a>依存関係
 
@@ -246,8 +248,10 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
+|oryx-cdn.microsoft.io:443 |
 | \*.cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
+|\*.data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
 |apt-mo.trafficmanager.net:80 |
@@ -265,7 +269,7 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 
 ## <a name="us-gov-dependencies"></a>US Gov の依存関係
 
-US Gov リージョンの ASE の場合は、このドキュメントの「[ASE に合わせて Azure Firewall を構成する](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)」の手順に従って、ASE で Azure Firewall を構成します。
+US Gov リージョンの ASE の場合は、このドキュメントの「[ASE に合わせて Azure Firewall を構成する](#configuring-azure-firewall-with-your-ase)」の手順に従って、ASE で Azure Firewall を構成します。
 
 US Gov で Azure Firewall 以外のデバイスを使用する場合 
 

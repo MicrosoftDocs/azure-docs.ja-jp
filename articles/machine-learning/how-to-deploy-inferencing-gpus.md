@@ -5,17 +5,18 @@ description: この記事では、Azure Machine Learning を使用して、GPU �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: e4c2426d5248582a1255b9d3702bdb1e6d046936
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78398336"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751659"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +26,7 @@ ms.locfileid: "78398336"
 推論、つまりモデルによるスコア付けは、デプロイしたモデルを使用して予測を行うフェーズです。 CPU の代わりに GPU を使用すると、高度に並列化可能な計算によってパフォーマンスが向上します。
 
 > [!IMPORTANT]
-> Web サービスのデプロイでは、GPU による推論がサポートされるのは、Azure Kubernetes Service のみです。 __機械学習パイプライン__を使用した推論では、GPU は Azure Machine Learning コンピューティングでのみサポートされます。 ML パイプラインの使用方法の詳細については、[バッチ予測の実行](how-to-use-parallel-run-step.md)に関する記事を参照してください。 
+> Web サービスのデプロイでは、GPU による推論がサポートされるのは、Azure Kubernetes Service のみです。 __機械学習パイプライン__ を使用した推論では、GPU は Azure Machine Learning コンピューティングでのみサポートされます。 ML パイプラインの使用方法の詳細については、[バッチ予測の実行](how-to-use-parallel-run-step.md)に関する記事を参照してください。 
 
 > [!TIP]
 > この記事のコード スニペットでは TensorFlow モデルが使用されていますが、ここに記載されている情報は GPU をサポートする任意の機械学習フレームワークに適用できます。
@@ -151,8 +152,8 @@ dependencies:
 - pip:
   # You must list azureml-defaults as a pip dependency
   - azureml-defaults>=1.0.45
-- numpy
-- tensorflow-gpu=1.12
+  - numpy
+  - tensorflow-gpu=1.12
 channels:
 - conda-forge
 ```
@@ -160,6 +161,9 @@ channels:
 この例では、ファイルは `myenv.yml` として保存されます。
 
 ## <a name="define-the-deployment-configuration"></a>デプロイ構成を定義する
+
+> [!IMPORTANT]
+> AKS では、ポッドで GPU を共有することはできません。また、クラスター内の GPU と同じ数の GPU 対応の Web サービスのレプリカのみを使用できます。
 
 デプロイ構成では、Web サービスの実行に使用する Azure Kubernetes Service 環境を定義します。
 
@@ -212,9 +216,6 @@ aks_service = Model.deploy(ws,
 aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
-
-> [!NOTE]
-> `InferenceConfig` オブジェクトに `enable_gpu=True` がある場合、`deployment_target` パラメーターは GPU を提供するクラスターを参照する必要があります。 17 以下の場合、デプロイは失敗します。
 
 詳細については、リファレンス ドキュメントで [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py) に関するページをご覧ください。
 

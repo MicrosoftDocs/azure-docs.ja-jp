@@ -1,5 +1,5 @@
 ---
-title: デシジョン フォレスト回帰:モジュール リファレンス
+title: 2 クラス平均化パーセプトロン:モジュール リファレンス
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の 2 クラス平均化パーセプトロン モジュールを使用し、平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成する方法について説明します。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 53e40726a5745263ee2b3cb4ada8671bf65da963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: daa0cfdedfe634acd2039cd4ec87606d30f7e76f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137673"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520580"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
 

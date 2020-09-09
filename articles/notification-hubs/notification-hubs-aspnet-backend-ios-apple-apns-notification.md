@@ -4,24 +4,22 @@ description: Azure Notification Hubs を使用して特定のユーザーにプ�
 documentationcenter: ios
 author: sethm
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 48135ea614bbab4ca6649a83895ae5f632918c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72387475"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004177"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する
 
@@ -42,17 +40,17 @@ ms.locfileid: "72387475"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、「 [Notification Hubs の使用 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。 また、「 [安全なプッシュ (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 」チュートリアルの前提条件でもあります。
-バックエンド サービスとして Mobile Apps を使用する場合は、「 [iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
+このチュートリアルでは、「[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)」の説明のとおり通知ハブを作成し、構成したと想定しています。 また、「 [安全なプッシュ (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 」チュートリアルの前提条件でもあります。
+バックエンド サービスとして Mobile Apps を使用する場合は、「 [iOS アプリへのプッシュ通知の追加](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)」を参照してください。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>iOS アプリを変更する
 
-1. 「 [Notification Hubs の使用 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」で作成した単一枠ビュー アプリケーションを開きます。
+1. 「[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)」で作成した、単一ページの表示アプリを開きます。
 
    > [!NOTE]
-   > このセクションでは、プロジェクトは空の組織名で構成されていると想定しています。 そうでない場合は、すべてのクラス名の前に組織名を付けてください。
+   > このセクションでは、プロジェクトは空の組織名で構成されていると想定しています。 そうでない場合は、すべてのクラス名の先頭に組織名を追加します。
 
 2. `Main.storyboard` ファイルで、オブジェクト ライブラリから、スクリーンショットに表示されているコンポーネントを追加します。
 
@@ -66,9 +64,9 @@ ms.locfileid: "72387475"
    * **APNS**: Apple Platform Notification Service に通知を送信するためのスイッチとそのラベルです。
    * **Recipient Username**: "*Recipient username tag*" というプレースホルダー テキストが入っている UI テキスト フィールドです。GCM ラベルのすぐ下にあり、左右の余白と、GCM ラベルの下にあることの制約が適用されます。
 
-     「 [Notification Hubs の使用](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」チュートリアル (iOS) では、いくつかのコンポーネントが追加されています。
+     「[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)」チュートリアルで、いくつかのコンポーネントが追加されました。
 
-3. ビューに表示されているコンポーネントを **Ctrl** キーを押しながら `ViewController.h` までドラッグし、新しいアウトレットを追加します。
+3. ビューに表示されているコンポーネントを **Ctrl** キーを押しながら `ViewController.h` までドラッグし、次の新しいアウトレットを追加します。
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -88,10 +86,10 @@ ms.locfileid: "72387475"
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. `ViewController.h` で、インポート ステートメントの後ろに次の `#define` を追加します。 `<Enter Your Backend Endpoint>` のプレースホルダーは、前のセクションでアプリのバックエンドのデプロイに使用した宛先 URL に置き換えます。 たとえば、「 `http://your_backend.azurewebsites.net` 」のように入力します。
+4. `ViewController.h` で、インポート ステートメントの後ろに次の `#define` を追加します。 `<Your backend endpoint>` のプレースホルダーは、前のセクションでアプリのバックエンドのデプロイに使用した宛先 URL に置き換えます。 `http://your_backend.azurewebsites.net` の例を次に示します。
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
 5. プロジェクトで、作成済みの ASP.NET バックエンドとのインターフェイスになる、`RegisterClient` という名前の新しい Cocoa Touch クラスを作成します。 `NSObject` から継承するクラスを作成したら、 `RegisterClient.h` の中に次のコードを追加します。
@@ -343,9 +341,9 @@ ms.locfileid: "72387475"
     }
     ```
 
-    ログイン ボタンを有効にするデバイス トークンの設定方法に注意してください。 これは、ログイン アクションの一部として、View Controller がアプリケーション バックエンドでプッシュ通知を登録するためです。 そのため、デバイス トークンが適切に設定される前にログイン アクションにアクセスできないようにします。 プッシュ登録の前にログインが発生する場合には、プッシュ登録からログインを切り離す必要があります。
+    デバイス トークンの設定によって、どのように **[Log in]** ボタンが有効になるかに注目してください。 これは、ログイン アクションの一部として、View Controller がアプリケーション バックエンドでプッシュ通知を登録するためです。 デバイス トークンが適切に設定されるまで、**ログイン** アクションにアクセスできないようにします。 プッシュ登録の前にログインが発生する場合には、プッシュ登録からログインを切り離す必要があります。
 
-11. 以下のスニペットを使って、ViewController.m に **[Log in]** ボタンのアクション メソッドと、ASP.NET バックエンドを使って通知メッセージを送信するためのメソッドを実装します。
+11. ViewController.m で以下のスニペットを使用して、 **[Log in]** ボタンのアクション メソッドを実装し、ASP.NET バックエンドを使って通知メッセージを送信するメソッドを実装します。
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -481,7 +479,7 @@ ms.locfileid: "72387475"
 ## <a name="test-the-application"></a>アプリケーションをテストする
 
 1. XCode を使用して、物理 iOS デバイスでアプリケーションを実行します (プッシュ通知はシミュレーターでは機能しません)。
-2. iOS アプリケーションの UI で、ユーザー名とパスワードの両方に同じ値を入力します。 その後、 **[ログイン]** をクリックします。
+2. iOS アプリケーションの UI で、ユーザー名とパスワードの両方に同じ値を入力します。 次に、 **[Log in]** をクリックします。
 
     ![iOS テスト アプリケーション][2]
 
@@ -496,7 +494,7 @@ ms.locfileid: "72387475"
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
+このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 >[場所に基づいたプッシュ通知を送信する](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

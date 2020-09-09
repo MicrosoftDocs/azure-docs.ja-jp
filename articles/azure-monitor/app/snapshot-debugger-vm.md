@@ -6,12 +6,12 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1cc9893a309dcdf7ac575494d164052bb0c617c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671344"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325680"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Azure Service Fabric、クラウド サービス、および Virtual Machines で .NET アプリのスナップショット デバッガーを有効にする
 
@@ -21,11 +21,11 @@ ASP.NET または ASP.NET Core アプリケーションが Azure App Service で
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>ASP.NET アプリケーションのスナップショット コレクションの構成
 
-1. まだ有効にしていない場合は、[Web アプリで Application Insights を有効](../../azure-monitor/app/asp-net.md)にします。
+1. まだ有効にしていない場合は、[Web アプリで Application Insights を有効](./asp-net.md)にします。
 
 2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに含めます。
 
-3. 必要に応じて、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) に追加されたスナップショット デバッガー構成をカスタマイズします。既定のスナップショット デバッガー構成はほぼ空であり、すべての設定が省略可能です。 既定の構成と同じ構成を示す例を次に示します。
+3. 必要に応じて、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) に追加されたスナップショット デバッガー構成をカスタマイズします。既定のスナップショット デバッガー構成はほぼ空であり、すべての設定が省略可能です。 既定の構成と同じ構成を示す例を次に示します。
 
     ```xml
     <TelemetryProcessors>
@@ -59,12 +59,12 @@ ASP.NET または ASP.NET Core アプリケーションが Azure App Service で
     </TelemetryProcessors>
     ```
 
-4. スナップショットは、Application Insights にレポートされる例外についてのみ収集されます。 場合によっては (たとえば、.NET プラットフォームの古いバージョン)、[例外コレクションを構成](../../azure-monitor/app/asp-net-exceptions.md#exceptions)して、ポータルでスナップショット付きの例外を表示する必要があります。
+4. スナップショットは、Application Insights にレポートされる例外についてのみ収集されます。 場合によっては (たとえば、.NET プラットフォームの古いバージョン)、[例外コレクションを構成](./asp-net-exceptions.md#exceptions)して、ポータルでスナップショット付きの例外を表示する必要があります。
 
 
 ## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>ASP.NET Core 2.0 以降を使用してアプリケーションのスナップショット コレクションを構成する
 
-1. まだ有効にしていない場合は、[ASP.NET Core Web アプリで Application Insights を有効](../../azure-monitor/app/asp-net-core.md)にします。
+1. まだ有効にしていない場合は、[ASP.NET Core Web アプリで Application Insights を有効](./asp-net-core.md)にします。
 
     > [!NOTE]
     > お使いのアプリケーションが、2.1.1 以降のバージョンの Microsoft.ApplicationInsights.AspNetCore パッケージを参照していることを確認します。
@@ -151,7 +151,7 @@ ASP.NET または ASP.NET Core アプリケーションが Azure App Service で
 
 ## <a name="configure-snapshot-collection-for-other-net-applications"></a>その他の .NET アプリケーションのスナップショット コレクションの構成
 
-1. アプリケーションがまだ Application Insights を使用してインストルメント化されていない場合、まず[Application Insights を有効にし、インストルメンテーション キーを設定](../../azure-monitor/app/windows-desktop.md)します。
+1. アプリケーションがまだ Application Insights を使用してインストルメント化されていない場合、まず[Application Insights を有効にし、インストルメンテーション キーを設定](./windows-desktop.md)します。
 
 2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに追加します。
 
@@ -180,3 +180,4 @@ ASP.NET または ASP.NET Core アプリケーションが Azure App Service で
 - 例外をトリガーできるアプリケーションへのトラフィックを生成します。 その後、Application Insights インスタンスにスナップショットが送信がされるまで 10 ～ 15 分待機します。
 - Azure portal で[スナップショット](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal)を確認します。
 - スナップショット デバッガーの問題のトラブルシューティングについては、[スナップショット デバッガーのトラブルシューティング](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)のページを参照してください。
+

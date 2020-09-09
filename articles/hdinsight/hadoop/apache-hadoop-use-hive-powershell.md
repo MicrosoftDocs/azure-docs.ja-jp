@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75552595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081051"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "75552595"
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/overview)。
+* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/)。
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
@@ -52,16 +52,20 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 2. **Azure PowerShell** コマンド プロンプトを開きます。 ディレクトリを `hivejob.ps1` ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
 
-        .\hivejob.ps1
+    ```azurepowershell
+    .\hivejob.ps1
+    ```
 
     スクリプトの実行時に、クラスター名と HTTPS またはクラスター管理者アカウントの資格情報を入力するように求められます。 Azure サブスクリプションへのサインインを求められる場合もあります。
 
 3. ジョブが完了すると、次のテキストのような情報が返されます。
 
-        Display the standard output...
-        2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
-        2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
-        2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```output
+    Display the standard output...
+    2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
+    2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
+    2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```
 
 4. 前述のように、`Invoke-Hive` を使用してクエリを実行し、応答を待機できます。 次のスクリプトを使用して、Invoke-Hive の動作を確認します。
 
@@ -69,9 +73,11 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
     出力は次のテキストのようになります。
 
-        2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
-        2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
-        2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```output
+    2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
+    2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
+    2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```
 
    > [!NOTE]  
    > より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。 次のスニペットでは、`Invoke-Hive` コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。 HiveQL スクリプト ファイルは、wasbs:// にアップロードする必要があります。

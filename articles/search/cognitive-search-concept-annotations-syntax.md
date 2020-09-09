@@ -1,21 +1,21 @@
 ---
 title: スキルセットで入力と出力を参照する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search の AI エンリッチメント パイプラインでの注釈の構文と、スキルセットの入力と出力で注釈を参照する方法について説明します。
+description: Azure コグニティブ検索の AI エンリッチメント パイプラインでの注釈の構文と、スキルセットの入力と出力で注釈を参照する方法について説明します。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113873"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935536"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Cognitive Search スキルセットで注釈を参照する方法
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure コグニティブ検索スキルセットで注釈を参照する方法
 
 この記事では、さまざまなシナリオを説明する例を使用して、スキル定義で注釈を参照する方法を学習します。 ドキュメントの内容がスキルのセットを通過するにつれて、注釈が豊富になっていきます。 注釈は、ダウンストリームをさらに豊富にするための入力として使用することも、インデックスの出力フィールドにマッピングすることもできます。 
  
@@ -123,5 +123,5 @@ Azure BLOB ストレージに、エンティティ認識を使用して抽出す
 ## <a name="see-also"></a>参照
 + [エンリッチメント パイプラインにカスタム スキルを統合する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [スキルセットを作成する (REST)](/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをインデックスにマップする方法](cognitive-search-output-field-mapping.md)

@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
-ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 085da17a29e1d5ff1fa69a62e0029fb917d56bb1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72177065"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936335"
 ---
 # <a name="call-the-computer-vision-api"></a>Computer Vision API を呼び出す
 
@@ -25,14 +25,6 @@ ms.locfileid: "72177065"
 - タグ、説明、カテゴリを取得する
 - ドメイン固有情報 ("有名人") を取得する
 
-## <a name="prerequisites"></a>前提条件
-
-- ローカルに保存された画像の URL またはパス
-- サポートされている入力方法: application/octet-stream 形式または画像 URL 形式の未加工画像バイナリ
-- サポートされる画像形式: JPEG、PNG、GIF、BMP
-- 画像ファイルのサイズ:4 MB 以下
-- 画像サイズ: 50 &times; 50 ピクセル以上
-  
 この記事の例では、次の機能のデモンストレーションを行います。
 
 * 画像を分析して、タグの配列と説明を取得する
@@ -42,14 +34,22 @@ ms.locfileid: "72177065"
 
 - **オプション 1**:スコープされた分析 - 特定のモデルのみを分析する
 - **オプション 2**:高度な分析 - 追加情報を提供するために、[86 カテゴリ分類](../Category-Taxonomy.md)を使用して分析する
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* ローカルに保存された画像の URL またはパス
+* サポートされている入力方法: application/octet-stream 形式または画像 URL 形式の未加工画像バイナリ
+* サポートされる画像形式: JPEG、PNG、GIF、BMP
+* 画像ファイルのサイズ:4 MB 以下
+* 画像サイズ: 50 &times; 50 ピクセル以上
   
 ## <a name="authorize-the-api-call"></a>API 呼び出しを承認する
 
 Computer Vision API への呼び出しでは、毎回サブスクリプション キーが必要です。 このキーは、クエリ文字列パラメーターを通じて渡すか、または要求ヘッダーで指定する必要があります。
-
-無料試用版キーを入手するには、次のいずれかを実行します。
-* 「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」ページに移動します。 
-* [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)ページにアクセスして Computer Vision をサブスクライブします。
 
 サブスクリプション キーは、次のいずれかの方法で渡すことができます。
 
@@ -180,12 +180,12 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=cele
 フィールド | Type | コンテンツ
 ------|------|------|
 Tags  | `object` | タグの配列の最上位オブジェクト。
-tags[].Name | `string`  | タグ分類子からのキーワード。
-tags[].Score    | `number`  | 信頼度スコア (0 と 1 の間)。
-description  | `object` | description の最上位オブジェクト。
+tags[].Name | `string`    | タグ分類子からのキーワード。
+tags[].Score    | `number`    | 信頼度スコア (0 と 1 の間)。
+description     | `object`    | description の最上位オブジェクト。
 description.tags[] |    `string`    | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
-description.captions[].text | `string`  | 画像を説明する語句。
-description.captions[].confidence   | `number`  | 語句の信頼度スコア。
+description.captions[].text    | `string`    | 画像を説明する語句。
+description.captions[].confidence    | `number`    | 語句の信頼度スコア。
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>ドメイン固有モデルの JSON 出力を取得して解釈する
 
@@ -239,12 +239,12 @@ description.captions[].confidence   | `number`  | 語句の信頼度スコア。
 
 categories フィールドは、元の分類内の[86 カテゴリ](../Category-Taxonomy.md)の 1 つまたは複数の一覧です。 アンダースコアで終わるカテゴリは、そのカテゴリとその子 (たとえば、有名人モデルでは "people_" と "people_group") に一致します。
 
-フィールド   | Type  | コンテンツ
+フィールド    | Type    | コンテンツ
 ------|------|------|
-categories | `object`   | 最上位レベルのオブジェクト。
-categories[].name    | `string` | 86 カテゴリ分類リストからの名前。
-categories[].score  | `number`  | 信頼度スコア (0 と 1 の間)。
-categories[].detail  | `object?`      | (省略可能) 詳細オブジェクト。
+categories | `object`    | 最上位レベルのオブジェクト。
+categories[].name     | `string`    | 86 カテゴリ分類リストからの名前。
+categories[].score    | `number`    | 信頼度スコア (0 と 1 の間)。
+categories[].detail     | `object?`      | (省略可能) 詳細オブジェクト。
 
 複数のカテゴリと一致する場合 (たとえば、model=celebrities のときに 86 カテゴリ分類子が "people_" と "people_young" を返す場合)、詳細は、最も汎用性が高いレベルの一致 (この例では "people_") に添付されます。
 
@@ -254,4 +254,4 @@ categories[].detail  | `object?`      | (省略可能) 詳細オブジェクト�
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API を使用するには、[Computer Vision API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)を参照してください。
+REST API を使用するには、[Computer Vision API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b)を参照してください。

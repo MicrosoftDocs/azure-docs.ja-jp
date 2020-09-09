@@ -2,25 +2,21 @@
 title: チュートリアル:Zoom を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Zoom に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 15e3d72661ad35335c744fbaf0ab39627d254750
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384077"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545983"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>チュートリアル:Zoom を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -50,7 +46,7 @@ ms.locfileid: "80384077"
 
 ## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Zoom を構成する
 
-1. [Zoom 管理コンソール](https://zoom.us/signin)にサインインします。 左側のナビゲーション ウィンドウで **[詳細設定] > [Zoom for Developers]\(開発者向け Zoom\)** に移動します。
+1. [Zoom 管理コンソール](https://zoom.us/signin)にサインインします。 左側のナビゲーション ウィンドウで、 **[詳細設定] > [App Marketplace]\(アプリ マーケットプレース\)** の順に移動します。
 
     ![Zoom の統合](media/zoom-provisioning-tutorial/zoom01.png)
 
@@ -148,11 +144,14 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 * 現在、Zoom で許可されているベーシック ユーザーの数は 9,999 人までです。
+
+## <a name="change-log"></a>変更ログ
+* 2020 年 5 月 14日 - emails[type eq "work"] 属性に UPDATE 操作のサポートが追加されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

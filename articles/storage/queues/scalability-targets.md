@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: queues
 ms.openlocfilehash: 464807a7bf4a20b540e2d5344b721c8844bd7bca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750490"
 ---
 # <a name="scalability-and-performance-targets-for-queue-storage"></a>Queue storage のスケーラビリティとパフォーマンスのターゲット
@@ -24,7 +24,7 @@ ms.locfileid: "75750490"
 
 [!INCLUDE [storage-queues-scale-targets](../../../includes/storage-queues-scale-targets.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Queue storage のパフォーマンスとスケーラビリティのチェックリスト](storage-performance-checklist.md)
 - [Standard Storage アカウントのスケーラビリティ ターゲット](../common/scalability-targets-standard-account.md)

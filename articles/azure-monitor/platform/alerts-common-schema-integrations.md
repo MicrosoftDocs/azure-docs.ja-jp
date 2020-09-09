@@ -4,12 +4,12 @@ description: 共通アラートのスキーマを利用してすべてのアラ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668232"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322093"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>共通アラート スキーマを Logic Apps と統合する方法
 
@@ -23,13 +23,13 @@ ms.locfileid: "77668232"
 ## <a name="prerequisites"></a>前提条件 
 
 この記事は、以下を理解していることを前提としています。 
-* アラート ルールの設定 ([メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)、[ログ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)、[アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
-* [アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)の設定
-* アクション グループ内からの[共通アラート スキーマ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema)の有効化
+* アラート ルールの設定 ([メトリック](./alerts-metric.md)、[ログ](./alerts-log.md)、[アクティビティ ログ](./alerts-activity-log.md))
+* [アクション グループ](./action-groups.md)の設定
+* アクション グループ内からの[共通アラート スキーマ](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)の有効化
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>共通アラート スキーマを活用するロジック アプリを作成する
 
-1. [ロジック アプリを作成する手順](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app)に従います。 
+1. [ロジック アプリを作成する手順](./action-groups-logic-app.md)に従います。 
 
 1.  次のトリガーを選択します:**HTTP 要求の受信時**。
 
@@ -130,13 +130,13 @@ ms.locfileid: "77668232"
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     詳細については、[ロジック アプリの式の記述](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions)に関する記事をご覧ください。
+     詳細については、[ロジック アプリの式の記述](../../logic-apps/workflow-definition-language-functions-reference.md#logical-comparison-functions)に関する記事をご覧ください。
 
     
 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アクション グループについて学習します](../../azure-monitor/platform/action-groups.md)。
+* [アクション グループについて学習します](./action-groups.md)。
 * [共通アラート スキーマについて学習します](https://aka.ms/commonAlertSchemaDocs)。
 

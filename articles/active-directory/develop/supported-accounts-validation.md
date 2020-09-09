@@ -4,18 +4,18 @@ description: Microsoft ID プラットフォームにアプリを登録する際
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/12/2019
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128870"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336346"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>サポートされているアカウントの種類別の検証の相違点 (signInAudience)
 
@@ -39,9 +39,9 @@ ms.locfileid: "80128870"
 | 証明書 (`keyCredentials`) | 対称署名キー | 対称署名キー | 暗号化と非対称署名キー | 
 | クライアント シークレット (`passwordCredentials`) | 制限なし* | 制限なし* | LiveSDK が有効になっている場合:クライアント シークレットの最大数は 2 です | 
 | リダイレクト URI (`replyURLs`) | 詳細については、[リダイレクト URI および応答 URL に関する制約と制限](reply-url.md)を参照してください。 | | | 
-| API のアクセス許可 (`requiredResourceAccess`) | 制限なし* | 制限なし* | 許可されるリソースあたり最大 30 個のアクセス許可 (例: Microsoft Graph) | 
+| API のアクセス許可 (`requiredResourceAccess`) | 制限なし* | 制限なし* | 最大数は、アプリケーションあたりのリソースが 50 個、リソース (Microsoft Graph など) あたりのアクセス許可が 30 個です。 アプリケーションあたりの合計の上限は 200 (リソース数 x アクセス許可数) です。 | 
 | この API で定義されるスコープ (`oauth2Permissions`) | スコープ名の最大長は 120 文字です <br><br> 定義されるスコープの数に制限なし* | スコープ名の最大長は 120 文字です <br><br> 定義されるスコープの数に制限なし* |  スコープ名の最大長は 40 文字です <br><br> 定義されるスコープの最大数は 100 スコープです | 
-| 承認されたクライアント アプリケーション (`preautorizedApplications`) | 制限なし* | 制限なし* | 合計の最大は 500 です <br><br> 定義されるクライアント アプリの最大数は 100 です <br><br> クライアントあたりの定義されるスコープは最大 30 です | 
+| 承認されたクライアント アプリケーション (`preAuthorizedApplications`) | 制限なし* | 制限なし* | 合計の最大は 500 です <br><br> 定義されるクライアント アプリの最大数は 100 です <br><br> クライアントあたりの定義されるスコープは最大 30 です | 
 | appRoles | サポートされています <br> 制限なし* | サポートされています <br> 制限なし* | サポートされていません | 
 | ログアウト URL | http://localhost は許可 <br><br> 最大長は 255 文字です | http://localhost は許可 <br><br> 最大長は 255 文字です | <br><br> https://localhost は MSA では使用できますが、 http://localhost は使用できません <br><br> 最大長は 255 文字です <br><br> HTTP スキームは使用できません <br><br> ワイルドカードはサポートされていません | 
 

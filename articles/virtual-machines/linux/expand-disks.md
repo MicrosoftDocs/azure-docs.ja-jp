@@ -3,16 +3,16 @@ title: Linux VM の仮想ハード ディスクを拡張する
 description: Azure CLI を使用して、Linux VM の仮想ハード ディスクを拡張する方法について説明します。
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945184"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181750"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
 
@@ -56,7 +56,7 @@ ms.locfileid: "78945184"
     ```
 
     > [!NOTE]
-    > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズに切り上げられます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md)」をご覧ください。
+    > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズに切り上げられます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../managed-disks-overview.md)」をご覧ください。
 
 1. [az vm start](/cli/azure/vm#az-vm-start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
 
@@ -71,7 +71,7 @@ ms.locfileid: "78945184"
 1. 適切な資格情報を使用して VM に SSH 接続します。 [az vm show](/cli/azure/vm#az-vm-show) で、VM のパブリック IP アドレスを確認できます。
 
     ```azurecli
-    az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
+    az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --output tsv
     ```
 
 1. 基になるパーティションとファイル システムを拡張します。

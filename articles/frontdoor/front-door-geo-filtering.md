@@ -3,7 +3,7 @@ title: Azure Front Door のドメインに対する geo フィルタリング | 
 description: この記事では、Azure Front Door の geo フィルタリング ポリシーについて説明します
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -11,26 +11,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: kumud
+ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 558d1c098f07f8e09a6a68a065cac9b7b38cfbf3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411178"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399652"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリングとは
+# <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリング
 
 既定では、Azure Front Door は、要求を行っているユーザーの場所に関係なくユーザーの要求に応答します。 ただし、場合によっては、国/リージョンごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国/リージョンからのアクセスを許可したりブロックしたりすることができます。 
 
-WAF ポリシーには通常、一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。  geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR で、演算子は GeoMatch、値は対象となる 2 文字の国別コードです。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
+WAF ポリシーには通常、一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。  geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR、演算子は GeoMatch、値は対象となる 2 文字の国/地域コードです。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
 
 Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](front-door-tutorial-geo-filtering.md) を使用するか、または Microsoft から提供されている[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)を使用して構成できます。
 
-## <a name="country-code-reference"></a>国別コード リファレンス
+## <a name="countryregion-code-reference"></a>国/地域コード リファレンス
 
-|国番号 | 国名 |
+|国/地域コード | 国/地域名 |
 | ----- | ----- |
 | AD | アンドラ |
 | AE | アラブ首長国連邦|
@@ -62,7 +62,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | BW | ボツワナ|
 | BY | ベラルーシ|
 | BZ | ベリーズ|
-| CA | カナダ|
+| CA | Canada|
 | CD | コンゴ民主共和国|
 | CF | 中央アフリカ共和国|
 | CH | スイス|
@@ -198,7 +198,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | 米国|
+| US | United States|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|

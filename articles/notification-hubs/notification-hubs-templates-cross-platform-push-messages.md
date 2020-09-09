@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76263746"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219965"
 ---
-# <a name="templates"></a>テンプレート
+# <a name="notification-hubs-templates"></a>Notification Hubs テンプレート
 
 テンプレートを使用すると、クライアント アプリケーションで受信する通知の正確な形式を指定できます。 テンプレートを使用すると、アプリは、次のようないくつかの異なる利点を実現できます。
 
@@ -62,7 +62,7 @@ Notification Hubs のテンプレート機能を使用すると、クライア�
 
 次の図は、このプロセスを示しています。
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![クロスプラットフォームのテンプレートを使用するプロセスを示す図](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 iOS クライアント アプリ登録用のテンプレートは次のとおりです。
 
@@ -121,7 +121,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
 
 このパターンを使用すると、バックエンドは単一のメッセージを送信するだけでよく、アプリ ユーザーのための特定の個人用設定オプションを格納する必要はありません。 このシナリオを以下の図に示します。
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![バックエンドによって各プラットフォームにメッセージが 1 つだけ送信される様子を示す図。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>テンプレートを登録する方法
 
@@ -139,7 +139,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
 | $(prop, n)       | 上記と同じですが、テキストは明示的に n 文字に省略されます。たとえば $(title, 20) は title プロパティの内容を 20 文字に省略します。 |
 | .(prop, n)       | 上記と同じですが、テキストが省略されているので、テキストに 3 つのドットのサフィックスが付いています。 省略された文字列とサフィックスの合計サイズは n 文字以下です。 .(title, 20) で入力プロパティが "This is the title line" である場合、結果は **This is the title...** |
 | %(prop)          | 出力が URI エンコードされる点を除き、$(name) と同様です。 |
-| #(prop)          | JSON テンプレートで使用されます (たとえば iOS や Android テンプレート)。<br><br>この関数は前に示した $(prop) と同じように機能しますが、JSON テンプレート (Apple テンプレートなど) で使用する場合は例外です。 この場合、この関数が “{‘,’}” で囲まれておらず (たとえば、‘myJsonProperty’ : ‘#(name)’ など)、Javascript 形式の数字として評価される場合 (たとえば、regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)? など)、出力 JSON は数字です。<br><br>たとえば、'badge: '#(name)' は ('40'ではなく) 'badge' : 40 になります。 |
+| #(prop)          | JSON テンプレートで使用されます (たとえば iOS や Android テンプレート)。<br><br>この関数は前に示した $(prop) と同じように機能しますが、JSON テンプレート (Apple テンプレートなど) で使用する場合は例外です。 この場合、この関数が “{‘,’}” で囲まれておらず (たとえば、‘myJsonProperty’ : ‘#(name)’ など)、Javascript 形式の数字として評価される場合、たとえば正規表現の (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)? は、出力 JSON が数字です。<br><br>たとえば、'badge: '#(name)' は ('40' ではなく) 'badge' : 40 になります。 |
 | ‘text’ または “text” | リテラルです。 リテラルは、一重引用符または二重引用符で囲んだ任意のテキストを保持します。 |
 | expr1 + expr2    | 2 つの式を結合して 1 つの文字列にする連結演算子です。 |
 

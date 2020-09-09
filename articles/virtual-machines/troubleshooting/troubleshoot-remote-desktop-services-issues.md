@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919466"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508884"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
@@ -47,7 +47,9 @@ VM に接続しようとすると、次のシナリオが発生します。
 
     次のクエリを実行して、これらのエラーを検索するシリアル アクセス コンソール機能を使用することもできます。 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>原因
  
@@ -179,29 +181,44 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 1. この問題は、このサービスの開始アカウントが変更された場合に発生します。 これを既定値に戻します。 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. サービスを開始します。
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. リモート デスクトップを使用して VM に接続してみます。
 
 #### <a name="termservice-service-crashes-or-hangs"></a>TermService サービスがクラッシュまたはハングする
 1. サービスの状態が**開始中**または**停止中**のままになっている場合は、サービスを停止してみてください。 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. サービスをそれ自体の 'svchost' コンテナーで切り離します。
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. サービスを開始します。
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. それでもサービスを開始できない場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ### <a name="repair-the-vm-offline"></a>VM をオフライン修復する
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>復旧 VM に OS ディスクを接続する
 
-1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。 接続したディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 3. 管理者特権でのコマンド プロンプト インスタンス ( **[管理者として実行]** ) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
 
@@ -217,7 +234,7 @@ VM に接続しようとすると、次のシナリオが発生します。
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [OS ディスクを切断して、VM を再作成します](../windows/troubleshoot-recovery-disks-portal.md)。 その後、問題が解決されているかどうかを確認します。
+4. [OS ディスクを切断して、VM を再作成します](./troubleshoot-recovery-disks-portal-windows.md)。 その後、問題が解決されているかどうかを確認します。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

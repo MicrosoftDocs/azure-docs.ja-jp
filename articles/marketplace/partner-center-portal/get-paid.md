@@ -1,19 +1,19 @@
 ---
 title: Microsoft コマーシャル マーケットプレースでの支払いの受け取り
 description: Microsoft コマーシャル マーケットプレースで収益の支払いを受け取る方法について説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/09/2020
+author: eunjkim520
+ms.author: eunjkim
+ms.openlocfilehash: ab10e1f601afd1f96f1c7abf04b1fa9f88915bf8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780499"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317537"
 ---
-# <a name="getting-paid-in-commercial-marketplace"></a>コマーシャル マーケットプレースでの支払いの受け取り
+# <a name="getting-paid-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの支払いの受け取り
 
 ここでは、オファー、アドオン、広告の収益の支払いの受け取りに関する重要な情報を示します。
 
@@ -28,32 +28,15 @@ ms.locfileid: "82780499"
 
 Microsoft Store 料金は、アドオンを含む、コマーシャル マーケットプレースによって収集されたすべてのオファー売上に適用されます。
 
-## <a name="price-tiers"></a>価格レベル
-
-選択した価格レベルによって、オファーの配信先として選択したすべての国の販売価格が設定されます。 また、市場ごとに異なる価格を選択するなど、追加の価格設定機能を使用することもできます。
-
-アプリを無料で提供することも、顧客がオファーを取得するために支払う必要がある価格を選択することもできます。 価格レベルは、0.99 米国ドルから始まり、1.09 米国ドル、1.19 米国ドルのように増分します。 価格が高くなるにつれ、価格レベル間の増分が増加します。
-
-> [!NOTE] 
-> これらの価格レベルは、オファー内から提供されるアドオンにも適用されます。
-
-各価格レベルには、Microsoft Store によって提供される各通貨に対応する値があります。 この値は、世界中の同等の価格ポイントでオファーを販売するのに役立ちます。 ただし、外国為替レートの変動により、正確な販売額は、通貨によって多少異なる場合があります。
-
-また、特定の市場の現地通貨で選択した自由形式の価格を入力するオプションもあります。 この場合、新しい価格で更新を送信しない限り、(換算レートが変動しても) 価格は調整されません。 
-
-選択した価格によっては、顧客が売上税または付加価値税を支払わなければならない場合があることに注意してください。 詳細については、[有料オファーの税の詳細](tax-details-paid-transactions.md)に関するページを参照してください。
-
-
 ## <a name="payout-reporting"></a>支払いレポート
 
 [パートナー センター](https://partner.microsoft.com/dashboard)の**支払いの概要**で、支払い情報に関する詳細にアクセスし、レポートをダウンロードすることができます。 ここに記載されている情報と、収益金の分類方法の詳細については、「[支払いの概要の概説](payout-summary-overview.md)」を参照してください。
-
 
 ## <a name="payout-time-frame"></a>支払いの時間枠
 
 支払いは月単位で行われます (該当する支払いしきい値が満たされており、以下で説明するように支払いが保留になっていない場合)。 通常、その月の 15 日までに、所定の月の支払額を送信します。 支払いがお客様の受取りアカウントに届くまでは、通常、3 - 10 営業日かかることに注意してください。 詳細については、「[支払いのしきい値、方法、期間](payment-thresholds-methods-timeframes.md)」を参照してください。
 
-##  <a name="payout-hold-status"></a>支払い保留状態
+## <a name="payout-hold-status"></a>支払い保留状態
 
 既定では、前述のように月単位で支払いを送信します。 ただし、必要であれば、プログラムの支払いを保留状態にして、ご利用のアカウントへの送金を止めることもできます。 支払いが保留された場合でも、Microsoft はパートナー様の収益を引き続きすべて記録し、 **[入金状況]** で明細を提供させていただきます。 ただしパートナー様によって保留状態が解除されるまでは、Microsoft からの支払いは口座に送金されません。
 

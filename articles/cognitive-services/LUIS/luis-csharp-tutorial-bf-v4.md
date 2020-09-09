@@ -2,13 +2,14 @@
 title: チュートリアル:Language Understanding ボット C# v4
 description: C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Bot Framework バージョン 4 と Azure Web アプリ ボット サービスで作成します。
 ms.topic: tutorial
-ms.date: 02/03/2020
-ms.openlocfilehash: 2381f4cba39f81ab593f3149a2708f442156f30d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 06/22/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 820cdeb692dffbf80a0e85c9d3dd86b703a4cae3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988000"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931269"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>チュートリアル:C# で Language Understanding に対応した Web アプリ ボットを使用する
 
@@ -27,7 +28,6 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 * [Bot emulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
-
 ## <a name="create-a-web-app-bot-resource"></a>Web アプリ ボット リソースを作成する
 
 1. [Azure portal](https://portal.azure.com) で、 **[新しいリソースの作成]** を選択します。
@@ -38,7 +38,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
     |設定|目的|推奨される設定|
     |--|--|--|
-    |ボット名|リソース名|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
+    |ボット ハンドル|リソース名|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
     |サブスクリプション|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
     |Resource group|Azure リソースの論理グループ|このボットで使用するすべてのリソースを格納する新しいグループを作成し、グループに `luis-csharp-bot-resource-group` という名前を付けます。|
     |場所|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
@@ -54,7 +54,6 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
     |設定|目的|[選択]|
     |--|--|--|
-    |SDK バージョン|Bot Framework のバージョン|**SDK v4**|
     |SDK 言語|ボットのプログラミング言語|**C#**|
     |ボット|ボットの種類|**基本ボット**|
 
@@ -64,6 +63,8 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     > [![Web アプリ ボットの作成](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
     ボット サービスが作成されるまで待ち、次に進みます。
+
+1. 通知の `Go to resource` を選択して、Web アプリのボット ページにアクセスします。
 
 ## <a name="the-bot-has-a-language-understanding-model"></a>ボットの Language Understanding モデル
 
@@ -86,6 +87,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     ボットをすばやくテストするために、テスト機能を使用できます。 デバッグを含む詳細なテストを行う場合、ボット コードをダウンロードし、Visual Studio を使用します。
 
 ## <a name="download-the-web-app-bot-source-code"></a>Web アプリ ボットのソース コードをダウンロードする
+
 Web アプリ ボットのコードを開発するためには、コードをダウンロードし、ローカル コンピューターで使用します。
 
 1. Azure portal の **[ボットの管理]** セクションで **[ビルド]** を選択します。
@@ -105,6 +107,9 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 1. ユーザーの発話を LUIS の予測エンドポイントに送信するには、**FlightBookingRecognizer.cs** ファイルを開きます。 これは、ボット内に入力されたユーザーの発話が LUIS に送信される場所です。 LUIS からの応答は、**RecognizeAsync** メソッドから返されます。
 
     ```csharp
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
+
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Bot.Builder;
@@ -142,7 +147,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
                 => await _recognizer.RecognizeAsync<T>(turnContext, cancellationToken);
         }
     }
-    ````
+    ```
 
 1. **Dialogs の MainDialog.cs** を開きます。MainDialog.cs は発話をキャプチャし、actStep メソッドで executeLuisQuery に送信します。
 
@@ -311,21 +316,18 @@ Visual Studio 2019 でボットを起動します。 ブラウザー ウィン�
 
 1. ボット エミュレーターを開始し、 **[Open Bot]\(ボットを開く\)** を選択します。
 1. **[Open a bot]\(ボットを開く\)** ポップアップ ダイアログで、ボットの URL (`http://localhost:3978/api/messages` など) を入力します。 `/api/messages` ルートは、ボットの Web アドレスです。
-1. **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を入力します。これらは、ダウンロードしたボット コードのルートにある **appsettings.json** ファイル内にあります。
-
+1. **Microsoft アプリ ID** と **Microsoft アプリ パスワード**を入力します。これらは、ダウンロードしたボット コードのルートにある **appsettings.json** ファイル内にあります。次に **[接続]** を選択します。
 
 1. ボット エミュレーターで、「`Book a flight from Seattle to Berlin tomorrow`」と入力すると、前のセクションの **[Test in Web Chat]\(Web チャットでのテスト\)** で受け取った応答と同じ基本ボットの応答が返されます。
 
     [![エミュレーターでの基本ボットの返答](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. **[はい]** を選択します。 ボットは、その操作の要約で応答します。
-1. ボット エミュレーターのログから、`Luis Trace` を含む行を選択します。 これにより、発話の意図とエンティティについて LUIS からの JSON 応答が表示されます。
+1. ボット エミュレーターのログから、`<- trace LuisV3 Trace` を含む行を選択します。 これにより、発話の意図とエンティティについて LUIS からの JSON 応答が表示されます。
 
     [![エミュレーターでの基本ボットの返答](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
-
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
-
 
 ## <a name="next-steps"></a>次のステップ
 

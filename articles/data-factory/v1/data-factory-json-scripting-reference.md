@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3492f917be8116d0eed0c7ec03ed8aa9ff506520
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318894"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -114,7 +114,7 @@ typeProperties セクションは、アクティビティごとに異なりま�
 **コピー アクティビティ**の typeProperties セクションには、**source** と **sink** の 2 つのサブセクションが存在します。 データ ストアを source や sink として使用する JSON サンプルについては、この記事の「[データ ストア](#data-stores)」セクションを参照してください。
 
 ### <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [コピー アクティビティ](data-factory-data-movement-activities.md) が、Azure BLOB ストレージから Azure SQL データベースにデータをコピーします。
+次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
 
 ```json
 {
@@ -337,7 +337,7 @@ structure:
 | ポリシー名 | 説明 | 適用先 | 必須 | Default |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ |NA |
-| minimumRows |**Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL データベース</li><li>Azure テーブル</li></ul> |いいえ |NA |
+| minimumRows |**Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL データベース</li><li>Azure テーブル</li></ul> |いいえ |NA |
 
 **例:**
 
@@ -2446,15 +2446,15 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 ## <a name="sql-server"></a>SQL Server
 
 ### <a name="linked-service"></a>リンクされたサービス
-**OnPremisesSqlServer** 型のリンクされたサービスを作成し、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**OnPremisesSqlServer** 型のリンクされたサービスを作成し、SQL Server データベースをデータ ファクトリにリンクします。 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
-| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
+| gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
@@ -2481,7 +2481,7 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 ```
 #### <a name="example-json-for-using-windows-authentication"></a>例:Windows 認証を使用するための JSON
 
-ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
+ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
 
 ```json
 {
@@ -4843,7 +4843,7 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 | linkedServiceName |データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 <p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Store にデータをコピーします。</p>  | はい |
 | additionalLinkedServiceNames |Data Factory サービスがあなたの代わりに登録できるように、HDInsight の「リンクされたサービス」の追加ストレージ アカウントを指定します。 |いいえ |
 | osType |オペレーティング システムの種類。 使用できる値は、以下のとおりです。Windows (既定) および Linux |いいえ |
-| hcatalogLinkedServiceName |HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、Azure SQL データベースを metastore として使用して作成されます。 |いいえ |
+| hcatalogLinkedServiceName |HCatalog データベースを指す Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、Azure SQL Database をメタストアとして使用して作成されます。 |いいえ |
 
 ### <a name="json-example"></a>JSON の例
 次の JSON は、Linux ベースのオンデマンド HDInsight のリンクされたサービスを定義します。 Data Factory サービスは、データ スライスを処理するときに、 **Linux ベースの** HDInsight クラスターを自動的に作成します。
@@ -5001,15 +5001,15 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。
 
 ### <a name="linked-service"></a>リンクされたサービス
-**OnPremisesSqlServer** 型のリンクされたサービスを作成し、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**OnPremisesSqlServer** 型のリンクされたサービスを作成し、SQL Server データベースをデータ ファクトリにリンクします。 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
-| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
+| gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
@@ -5036,7 +5036,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 ```
 #### <a name="example-json-for-using-windows-authentication"></a>例:Windows 認証を使用するための JSON
 
-ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
+ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
 
 ```json
 {
@@ -5547,7 +5547,7 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 |はい |
+| storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL Database または Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 |はい |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ |
 
 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。

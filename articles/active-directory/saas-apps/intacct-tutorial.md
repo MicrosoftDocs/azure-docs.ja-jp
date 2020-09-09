@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Sage Intacct の統合 | Microsoft Docs
 description: Azure Active Directory と Sage Intacct の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 92518e02-a62c-4b1b-a8e9-2803eb2b49ac
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/05/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201348"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535844"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
 
@@ -45,6 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Sage Intacct では、**IDP** Initiated SSO がサポートされます
+* Sage Intacct を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>ギャラリーからの Sage Intacct の追加
 
@@ -57,7 +53,7 @@ Azure AD への Sage Intacct の統合を構成するには、ギャラリーか
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Sage Intacct**」と入力します。
 1. 結果パネルから **[Sage Intacct]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>Sage Intacct の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>Sage Intacct の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Sage Intacct に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと Sage Intacct の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
@@ -88,13 +84,12 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
     ![image](common/edit-attribute.png)
 
-1. その他に、Sage Intacct アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
+1. その他に、Sage Intacct アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[User Attributes & Claims]\(ユーザーの属性と要求\)** ダイアログで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 名前  |  ソース属性|
+    | 属性名  |  ソース属性|
     | ---------------| --------------- |
     | 会社名 | **Sage Intacct の会社 ID** |
     | name | 値は、Sage Intacct の **[User ID]\(ユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | 値は、Sage Intacct の **[Federated SSO User ID]\(フェデレーション SSO のユーザー ID\)** と同じにするようにします。これは、このチュートリアルの後半で説明する「**Sage Intacct のテスト ユーザーの作成**」セクションで入力するものです。 |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -104,7 +99,7 @@ Sage Intacct で Azure AD SSO を構成してテストするには、次の構�
 
     d. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力または選択します。
 
     f. **[OK]** をクリックします。
 
@@ -228,3 +223,4 @@ Azure AD ユーザーが Sage Intacct にサインインできるように設定
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

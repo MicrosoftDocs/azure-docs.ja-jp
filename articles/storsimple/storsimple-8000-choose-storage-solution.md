@@ -1,18 +1,18 @@
 ---
 title: アプライアンスを使用した Azure へのデータ転送オプション |Microsoft Docs
-description: データを Azure に転送するための適切なアプライアンスを選択する方法について説明します
+description: Data Box Edge、Azure File Sync、StorSimple 8000 シリーズの中から、Azure へのオンプレミス データ転送に最適なアプライアンスを選択する方法について説明します。
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68965354"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183277"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple を、Azure File Sync および Data Box Edge データ転送オプションと比較する 
 
@@ -28,14 +28,14 @@ ms.locfileid: "68965354"
 
 |                           |StorSimple 8000   |Azure File Sync   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|概要         |階層化ハイブリッド ストレージとアーカイブ|クラウドを使った階層化とマルチサイトの同期機能を備えた、一般的なファイル サーバー ストレージ。  |データを前処理し、ネットワーク経由で Azure に送信するストレージ ソリューション。        |
-|シナリオ        |ファイル サーバー、アーカイブ、バックアップのターゲット |ファイル サーバー、アーカイブ (マルチサイト)   |データ転送、ML の推論を含むデータの前処理、IoT、アーカイブ    |
-|Edge コンピューティング     |使用不可 |使用不可 |Azure IoT Edge を使用したコンテナーの実行をサポート    |
-|フォーム ファクター      |物理デバイス   |Windows Server にインストールされるエージェント |物理デバイス   |
-|ハードウェア         |サービスの一部として、Microsoft から提供される物理デバイス | お客様側で準備 |サービスの一部として、Microsoft から提供される物理デバイス  |
-|データ形式      |カスタム形式   |ファイル         |BLOB またはファイル    |
-|プロトコルのサポート |iSCSI          |SMB、NFS    | SMB または NFS      |
-|価格          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
+|**概要**     |階層化ハイブリッド ストレージとアーカイブ|クラウドを使った階層化とマルチサイトの同期機能を備えた、一般的なファイル サーバー ストレージ。  |データを前処理し、ネットワーク経由で Azure に送信するストレージ ソリューション。        |
+|**シナリオ**    |ファイル サーバー、アーカイブ、バックアップのターゲット |ファイル サーバー、アーカイブ (マルチサイト)   |データ転送、ML の推論を含むデータの前処理、IoT、アーカイブ    |
+|**Edge コンピューティング** |使用不可 |使用不可 |Azure IoT Edge を使用したコンテナーの実行をサポート    |
+|**フォーム ファクター**  |物理デバイス   |Windows Server にインストールされるエージェント |物理デバイス   |
+|**ハードウェア**     |サービスの一部として、Microsoft から提供される物理デバイス | お客様側で準備 |サービスの一部として、Microsoft から提供される物理デバイス  |
+|**データ形式**  |カスタム形式   |ファイル         |BLOB またはファイル    |
+|**プロトコルのサポート** |iSCSI          |SMB、NFS    | SMB または NFS      |
+|**料金**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>次のステップ
 

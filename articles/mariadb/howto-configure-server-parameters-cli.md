@@ -5,16 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/11/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632294"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493807"
 ---
-# <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーのサーバー パラメーターを構成する
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MariaDB サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。
 
 ## <a name="prerequisites"></a>前提条件
@@ -35,7 +36,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="show-server-configuration-parameter-details"></a>サーバー構成パラメーター詳細を表示する
 サーバーの特定の構成パラメーターに関する詳細を表示するには、[az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) コマンドを実行します。
 
-この例は、リソース グループ **myresourcegroup\_ にあるサーバー \_mydemoserver.mariadb.database.azure.com** の **slow**query**log** サーバー構成パラメーターの詳細を示します。
+この例は、リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターの詳細を示します。
 ```azurecli-interactive
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
@@ -43,7 +44,7 @@ az mariadb server configuration show --name slow_query_log --resource-group myre
 ## <a name="modify-a-server-configuration-parameter-value"></a>サーバー構成パラメーターの値を変更する
 特定のサーバー構成パラメーターの値を変更することもでき、MariaDB サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) コマンドを使用します。 
 
-リソース グループ **myresourcegroup\_ にあるサーバー \_mydemoserver.mariadb.database.azure.com** の **slow**query**log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
+リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
@@ -54,6 +55,14 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 ```
 
 このコードは、**slow\_query\_log** 構成を既定値 **OFF** にリセットします。 
+
+## <a name="setting-parameters-not-listed"></a>表示されないパラメーターの設定
+更新するサーバー パラメーターが Azure portal に一覧表示されていない場合は、必要に応じて `init_connect` を使用して、接続レベルでパラメーターを設定できます。 これにより、サーバーに接続する各クライアントのサーバー パラメーターが設定されます。 
+
+リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **init\_connect** サーバー構成パラメーターを更新して、文字セットなどの値を設定します。
+```azurecli-interactive
+az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
+```
 
 ## <a name="working-with-the-time-zone-parameter"></a>タイム ゾーン パラメーターを使用する
 
@@ -81,7 +90,7 @@ SELECT name FROM mysql.time_zone_name;
 
 グローバル レベルのタイム ゾーンは、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) コマンドを利用して設定できます。
 
-次のコマンドでは、リソース グループ **myresourcegroup\_ のサーバー** mydemoserver.mariadb.database.azure.com**のサーバー構成パラメーター**time**zone** が **US/Pacific** に更新されます。
+次のコマンドでは、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mariadb.database.azure.com** のサーバー構成パラメーター **time\_zone** が **US/Pacific** に更新されます。
 
 ```azurecli-interactive
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"

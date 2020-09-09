@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
-ms.date: 03/04/2020
+ms.topic: tutorial
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78298821"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146818"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -78,7 +78,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
  
  4. **[Scoping filter]\(スコープ フィルター\)** ページで、パイロットのベースとなる OU またはセキュリティ グループを入力します。  OU でフィルター処理するには、識別名の OU 部分を追加します。 この規則は、その OU に属しているすべてのユーザーに適用されます。  したがって、DN の末尾が "OU=CPUsers,DC=contoso,DC=com" である場合は、次のフィルターを追加することになります。  続けて、 **[次へ]** をクリックします。 
 
-    |ルール|属性|演算子|Value|
+    |ルール|属性|演算子|値|
     |-----|----|----|-----|
     |スコープ OU|DN|ENDSWITH|OU の識別名。|
     |スコープ グループ||ISMEMBEROF|セキュリティ グループの識別名。|
@@ -165,18 +165,18 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
  2. **[Azure Active Directory]** をクリックします。
  3. **[Azure AD Connect]** をクリックします。
  4. **[プロビジョニングの管理 (プレビュー)]** を選択します。
- ![](media/how-to-configure/manage1.png)</br>
+ ![[プロビジョニングの管理 (プレビュー)] リンクのスクリーンショット。](media/how-to-configure/manage1.png)</br>
  5.  **[新しい構成]** をクリックします。
- ![](media/tutorial-single-forest/configure1.png)</br>
+ ![[新しい構成] リンクを強調表示した [Azure AD のプロビジョニング (プレビュー)] 画面のスクリーンショット。](media/tutorial-single-forest/configure1.png)</br>
  6.  構成画面で、**通知用メール アドレス**を入力し、セレクターを **[有効]** に移動して、 **[保存]** をクリックします。
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![メール アドレスの入力を終え、[有効にする] を選択した状態の [構成] 画面のスクリーンショット。](media/tutorial-single-forest/configure2.png)</br>
  7. **[構成]** で **[すべてのユーザー]** を選択して、構成規則のスコープを変更します。
- ![](media/how-to-configure/scope2.png)</br>
+ ![[ユーザーのスコープを指定する] の横にある [すべてのユーザー] が強調表示された [構成] 画面のスクリーンショット。](media/how-to-configure/scope2.png)</br>
  8. 右側で、先ほど作成した特定の OU "OU=CPUsers,DC=contoso,DC=com" が含まれるようにスコープを変更します。
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![[ユーザーのスコープを指定する] 画面のスクリーンショット (作成した OU にスコープを変更したところ)。](media/tutorial-existing-forest/scope2.png)</br>
  9.  **[完了]** 、 **[保存]** の順にクリックします。
  10. この時点でスコープは、1 つの組織単位に設定されている必要があります。 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ ![[ユーザーのスコープを指定する] の横にある [1 個の組織単位] が強調表示された [構成] 画面のスクリーンショット。](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>クラウド プロビジョニングによってユーザーがプロビジョニングされていることを確認する
@@ -199,7 +199,9 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 3.  `Start-ADSyncSyncCycle` を実行します。  Enter キーを押します。  
 
 >[!NOTE] 
->AAD Connect 同期用に独自のカスタム スケジューラを実行している場合は、スケジューラを有効にしてください。 
+>Azure AD Connect 同期用に独自のカスタム スケジューラを実行している場合は、スケジューラを有効にしてください。 
+
+スケジューラが有効になると、参照属性 (例: manager) が更新されていない限り、Azure AD Connect によって、メタバースで `cloudNoFlow=true` が設定されたオブジェクトに対する変更のエクスポートが停止されます 。 オブジェクトに参照属性の更新がある場合、Azure AD Connect では `cloudNoFlow` シグナルを無視し、オブジェクトのすべての更新をエクスポートします。
 
 ## <a name="something-went-wrong"></a>問題が発生した場合
 パイロットが正しく機能しない場合は、次の手順に従って Azure AD Connect 同期の設定に戻ることができます。

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/10/2020
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064255"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965010"
 ---
 # <a name="edit-metadata-module"></a>Edit Metadata (メタデータの編集) モジュール
 
@@ -55,7 +55,8 @@ Edit Metadata (メタデータの編集) モジュールを使用して、デー
     + Edit Metadata (メタデータの編集) の操作後、列の型と値が変更されます。 Edit Metadata (メタデータの編集) を使用して列のデータ型をリセットすることで、いつでも元のデータ型を復元できます。  
 
     > [!NOTE]
-    > 任意の数値の型を **DateTime** 型に変更する場合は、 **[DateTime Format]\(DateTime 形式\)** フィールドを空白のままにします。 現時点では、ターゲットのデータ形式を指定することはできません。  
+    > **DateTime 形式**は、[Python の組み込みの datetime 形式](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)に従います。  
+    > 任意の数値の型を **DateTime** 型に変更する場合は、 **[DateTime Format]\(DateTime 形式\)** フィールドを空白のままにします。 現時点では、ターゲットのデータ形式を指定することはできません。
 
 1. **[Categorical]\(カテゴリ\)** オプションを選択して、選択した列内の値をカテゴリとして扱うことを指定します。
 

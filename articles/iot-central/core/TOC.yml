@@ -10,6 +10,16 @@
       href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
+        - name: 2020 年 7 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
+        - name: 2020 年 6 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
+        - name: 2020 年 6 月の UI とドキュメントの更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+        - name: 2020 年 5 月のジョブとメトリックの更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: 2020 年 5 月のダッシュボード更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: 2020 年 4 月の新機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: 2020 年 4 月の更新
@@ -35,8 +45,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: デバイスの接続 (Python)
           href: tutorial-connect-device-python.md
-        - name: プラグ アンド プレイ (プレビュー) デバイスの接続
-          href: tutorial-connect-pnp-device.md
         - name: ゲートウェイ デバイス テンプレートの作成
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge デバイスの接続
@@ -53,10 +61,14 @@
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
-    - name: Architecture
+    - name: アーキテクチャ
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
+    - name: デバイス テンプレートとは
+      href: concepts-device-templates.md
+    - name: メッセージのペイロード
+      href: concepts-telemetry-properties-commands.md
     - name: デバイスの接続性
       href: concepts-get-connected.md
     - name: IoT Edge デバイスへの接続
@@ -67,8 +79,6 @@
       items:
         - name: デバイス テンプレートを設定する
           href: howto-set-up-template.md
-        - name: MXChip IoT DevKit を準備して接続する
-          href: howto-connect-devkit.md
         - name: Azure Sphere DevKit を準備して接続する
           href: howto-connect-sphere.md
         - name: RuuviTag デバイスを準備して接続する
@@ -87,8 +97,6 @@
           href: howto-manage-devices.md
         - name: ルールを構成する
           href: howto-configure-rules.md
-        - name: ワークフローを使用して他のサービスと統合する
-          href: howto-configure-rules-advanced.md
         - name: デバイス データを分析する
           href: howto-create-analytics.md
         - name: ダッシュボードへのタイルの追加
@@ -99,16 +107,24 @@
           href: howto-run-a-job.md
     - name: 変換
       items:
-        - name: Azure で宛先にデータをエクスポートする
+        - name: クラウドの宛先にデータをエクスポートする (プレビュー)
           href: howto-export-data.md
+        - name: クラウドの宛先にデータをエクスポートする (レガシ)
+          href: howto-export-data-legacy.md
         - name: 規則に基づいて Webhook を作成する
           href: howto-create-webhooks.md
+        - name: ワークフローを使用して他のサービスと統合する
+          href: howto-configure-rules-advanced.md
         - name: 規則に基づいて Azure Monitor アクション グループを接続する
           href: howto-use-action-groups.md
         - name: カスタム規則の作成
           href: howto-create-custom-rules.md
         - name: Databricks を使用してカスタム分析を作成する
           href: howto-create-custom-analytics.md
+        - name: Power BI でのデータの視覚化
+          href: howto-connect-powerbi.md
+        - name: ファイルのアップロードの構成と使用
+          href: howto-configure-file-uploads.md
     - name: 管理
       items:
         - name: アプリケーションの管理
@@ -123,6 +139,12 @@
               href: howto-customize-ui.md
             - name: アプリケーションのエクスポート
               href: howto-use-app-templates.md
+            - name: アプリケーションの正常性を監視する
+              href: howto-monitor-application-health.md
+            - name: アプリケーションに関する情報
+              href: howto-get-app-info.md
+            - name: X.509 証明書のロール
+              href: how-to-roll-x509-certificates.md
         - name: 他の場所からの管理
           items:
             - name: Azure portal からの管理
@@ -141,6 +163,14 @@
               href: howto-manage-preferences.md
             - name: ライブ チャットの切り替え
               href: howto-show-hide-chat.md
+    - name: トラブルシューティング
+      items: null
+      '-name': Device connections
+      href: troubleshoot-connection.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
@@ -176,9 +206,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: IoT Central API リファレンス
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 顧客データ要求

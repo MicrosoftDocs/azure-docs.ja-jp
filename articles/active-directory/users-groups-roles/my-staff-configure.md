@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: da358ecb126dda21d18120bbe698fec234c85e4f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995835"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798960"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>マイ スタッフを使用してユーザーを管理する (プレビュー)
 
@@ -64,16 +64,17 @@ Au を構成した後は、マイ スタッフにアクセスするユーザー�
 
 Azure AD 条件付きアクセス ポリシーを使用して、マイ スタッフ ポータルを保護することができます。 これは、マイ スタッフにアクセスする前に多要素認証を要求するなどのタスクに使用します。
 
-Microsoft では、[Azure AD 条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/)を使用してマイ スタッフを保護することを強くお勧めします。 マイ スタッフに条件付きアクセス ポリシーを適用するには、PowerShell を使用して、マイ スタッフのサービス プリンシパルを手動で作成する必要があります。
+Microsoft では、[Azure AD 条件付きアクセス ポリシー](../conditional-access/index.yml)を使用してマイ スタッフを保護することを強くお勧めします。 マイ スタッフに条件付きアクセス ポリシーを適用するには、PowerShell を使用して、マイ スタッフのサービス プリンシパルを手動で作成する必要があります。
 
 ### <a name="apply-a-conditional-access-policy-to-my-staff"></a>マイ スタッフに条件付きアクセス ポリシーを適用する
 
 1. [Microsoft Graph ベータ版の PowerShell コマンドレット](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)をインストールします。
 1. 次のコマンドを実行します。
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. マイ スタッフ クラウド アプリケーションに適用する条件付きアクセス ポリシーを作成します。
 
     ![マイ スタッフ アプリの条件付きアクセス ポリシーを作成する](media/my-staff-configure/conditional-access.png)

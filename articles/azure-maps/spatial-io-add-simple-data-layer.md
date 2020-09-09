@@ -1,19 +1,20 @@
 ---
 title: シンプルなデータ レイヤーの追加 | Microsoft Azure Maps
 description: Azure Maps Web SDK によって提供される、空間 IO モジュールを使用してシンプルなデータ レイヤーを追加する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804488"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282808"
 ---
 # <a name="add-a-simple-data-layer"></a>シンプルなデータ レイヤーの追加
 
@@ -89,7 +90,7 @@ Azure Maps と GitHub スタイルのプロパティは、サポートされて�
 
 あまり一般的でないスタイルのプロパティに閲覧者が遭遇した場合、最も近い Azure Maps スタイルのプロパティに変換されます。 また、シンプルなデータ レイヤーの `getLayers` 関数を使用し、任意のレイヤーのオプションを更新することで、既定のスタイル式をオーバーライドできます。
 
-次のセクションでは、シンプルなデータ レイヤーでサポートされている既定のスタイル プロパティについて詳しく説明します。 サポートされているプロパティ名の順序は、プロパティの優先順位でもあります。 同じレイヤー オプションに 2 つのスタイル プロパティが定義されている場合、リスト内の最初のプロパティの方が優先順位が高くなります。
+次のセクションでは、シンプルなデータ レイヤーでサポートされている既定のスタイル プロパティについて詳しく説明します。 サポートされているプロパティ名の順序は、プロパティの優先順位でもあります。 同じレイヤー オプションに 2 つのスタイル プロパティが定義されている場合、リスト内の最初のプロパティの方が優先順位が高くなります。 カラーには任意の CSS3 カラー値 (16 進数、RGB、RGBA、HSL、HSLA、名前付きカラー値) を指定できます。
 
 ### <a name="bubble-layer-style-properties"></a>バブル レイヤーのスタイル プロパティ
 

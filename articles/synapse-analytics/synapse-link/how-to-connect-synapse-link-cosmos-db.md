@@ -1,28 +1,31 @@
 ---
-title: Azure Cosmos DB 用の Azure Synapse Link に接続する
+title: Azure Cosmos DB 用の Azure Synapse Link (プレビュー) に接続する
 description: Azure Synapse Link を使用して Azure Cosmos DB を Synapse ワークスペースに接続する方法
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d72d1feda4c267dfa3d5c0dea6928f1b7541b26d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fa33f2d9e0c4606587ca5ef65a3f4a021319431f
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599012"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85195047"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link に接続する
+# <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) に接続する
 
 この記事では、Azure Synapse Link を使用して Azure Synapse Analytics Studio から Azure Cosmos DB データベースにアクセスする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure Cosmos DB データベースをワークスペースに接続する前に、以下が必要です。
+
+> [!IMPORTANT]
+> 現時点では、Azure Synapse Link for Azure Cosmos DB は、マネージド仮想ネットワークが有効になっていないワークスペースでサポートされています。 
 
 * 既存の Azure Cosmos DB データベース。または、こちらの[クイックスタート](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)に従って新しいアカウントを作成します
 * 既存の Synapse ワークスペース。または、こちらの[クイックスタート](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)に従って新しいワークスペースを作成します 

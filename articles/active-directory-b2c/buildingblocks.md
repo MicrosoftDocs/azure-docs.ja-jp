@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf9c333af48e1c148dcd20ccf5ce91b284bd728b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201227"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -24,7 +24,7 @@ ms.locfileid: "78189873"
 
 [TrustFrameworkPolicy](trustframeworkpolicy.md)要素内に **BuildingBlocks** 要素が追加されます。
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -61,7 +61,7 @@ ms.locfileid: "78189873"
 
 **BuildingBlocks** 要素は次の要素で構成されます｡これらの要素は､定義されている順序通りに指定する必要があります｡
 
-- [ClaimsSchema](claimsschema.md) - ポリシーの一部として参照可能な要求の種類を定義します。す。 要求スキーマは、要求の種類を宣言する場所です。 要求の種類は、多くのプログラム言語の変数に似ています。 要求の種類を利用して､アプリケーションのユーザーからのデータの収集やソーシャル ID プロバイダーからの要求の受信､カスタム REST API との間のデータの送受信､カスタム ポリシーで使用する内部データの格納を行うことができます｡
+- [ClaimsSchema](claimsschema.md) - ポリシーの一部として参照可能な要求の種類を定義します。要求スキーマは、要求の種類を宣言する場所です。 要求の種類は、多くのプログラム言語の変数に似ています。 要求の種類を利用して､アプリケーションのユーザーからのデータの収集やソーシャル ID プロバイダーからの要求の受信､カスタム REST API との間のデータの送受信､カスタム ポリシーで使用する内部データの格納を行うことができます｡
 
 - [Predicates と PredicateValidationsInput](predicates.md) -適切な形式のデータのみが要求に入力されていることを確認する検証プロセスを実行することができます。
 

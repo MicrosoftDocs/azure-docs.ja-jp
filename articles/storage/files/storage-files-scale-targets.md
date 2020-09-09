@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536442"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496181"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -74,7 +74,7 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 各ステージでの展開の計画に役立つように、次の構成のシステムで行われた内部テストにおいて観察された結果を以下に示します。
 
-| システム構成 |  |
+| システム構成 | 詳細 |
 |-|-|
 | CPU | 64 仮想コアと 64 MiB の L3 キャッシュ |
 | メモリ | 128 GiB |
@@ -82,7 +82,7 @@ Azure File Sync の場合、2 つのステージで重要です。
 | ネットワーク | 1 Gbps ネットワーク |
 | ワークロード | 汎用ファイル サーバー|
 
-| 1 回限りの初期プロビジョニング  |  |
+| 1 回限りの初期プロビジョニング  | 詳細 |
 |-|-|
 | オブジェクトの数 | 2,500 万オブジェクト |
 | データセットのサイズ| 約 4.7 TiB |
@@ -92,7 +92,7 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 \* 新しいサーバー エンドポイントが作成されるとき、Azure File Sync エージェントはファイルの内容を何もダウンロードしません。 最初に完全な名前空間を同期した後、バックグラウンドでの呼び戻しをトリガーして、ファイル全体をダウンロードするか、またはクラウドの階層化が有効になっている場合は、サーバー エンドポイントに設定されているクラウド階層化ポリシーまでダウンロードします。
 
-| 継続的な同期  |   |
+| 継続的な同期  | 詳細  |
 |-|--|
 | 同期されるオブジェクトの数| 125,000 オブジェクト (約 1 % のチャーン) |
 | データセットのサイズ| 50 GiB |

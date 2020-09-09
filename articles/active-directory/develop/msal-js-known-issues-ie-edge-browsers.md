@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 05/18/2020
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5ae2dee68ec0da8e8a00d4f01583461462bc196c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696097"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772082"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
 
@@ -63,7 +63,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
 ## <a name="issues-due-to-popup-blockers"></a>ポップアップ ブロック機能に起因する問題
 
-たとえば、多要素認証中に 2 つ目のポップアップが開いたときに、IE や Microsoft Edge でポップアップがブロックされることがあります。 ポップアップを 1 回のみまたは常に許可するかどうかを確認するアラートがブラウザーで表示されます。 許可することを選択した場合、ブラウザーは自動的にポップアップ ウィンドウを開き、`null` ハンドルを返します。 その結果、ライブラリはウィンドウの制御を得ることができず、ポップアップ ウィンドウを閉じることができません。 Chrome では、ポップアップを許可するプロンプトを表示するときに、同じ問題が発生しません。これは、Chrome ではポップアップ ウィンドウが自動的に開かないためです。
+たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md)中に 2 つ目のポップアップが開いたときに、IE や Microsoft Edge でポップアップがブロックされることがあります。 ポップアップを 1 回のみまたは常に許可するかどうかを確認するアラートがブラウザーで表示されます。 許可することを選択した場合、ブラウザーは自動的にポップアップ ウィンドウを開き、`null` ハンドルを返します。 その結果、ライブラリはウィンドウの制御を得ることができず、ポップアップ ウィンドウを閉じることができません。 Chrome では、ポップアップを許可するプロンプトを表示するときに、同じ問題が発生しません。これは、Chrome ではポップアップ ウィンドウが自動的に開かないためです。
 
 **回避策**としては、アプリの使用を開始する前に、この問題を回避するために、開発者は IE と Microsoft Edge でポップアップを許可する必要があります。
 

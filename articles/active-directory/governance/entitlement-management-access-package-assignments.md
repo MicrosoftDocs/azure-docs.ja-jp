@@ -3,25 +3,25 @@ title: Azure AD エンタイトルメント管理でアクセス パッケージ
 description: Azure Active Directory エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、削除する方法を説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631740"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783554"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 
@@ -58,7 +58,7 @@ Azure AD エンタイトルメント管理を使用し、ユーザーをアク�
 
 ### <a name="viewing-assignments-programmatically"></a>プログラムによる割り当ての表示
 
-Microsoft Graph を使用して、アクセス パッケージの割り当てを取得することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignments をリストする](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、アクセス パッケージの割り当てを取得することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignments をリストする](/graph/api/accesspackageassignment-list?view=graph-rest-beta)ことができます。
 
 ## <a name="directly-assign-a-user"></a>ユーザーを直接割り当てる
 
@@ -90,7 +90,7 @@ Microsoft Graph を使用して、アクセス パッケージの割り当てを
 
 ### <a name="directly-assigning-users-programmatically"></a>プログラムによるユーザーの直接割り当て
 
-Microsoft Graph を使用して、アクセス パッケージにユーザーを直接割り当てることもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignmentRequest を作成する](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、アクセス パッケージにユーザーを直接割り当てることもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignmentRequest を作成する](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)ことができます。
 
 ## <a name="remove-an-assignment"></a>割り当ての削除
 

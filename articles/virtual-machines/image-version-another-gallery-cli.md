@@ -1,5 +1,5 @@
 ---
-title: 別のギャラリーからイメージ バージョンをコピーする
+title: CLI を使用して別のギャラリーからイメージ バージョンをコピーする
 description: Azure CLI を使用して、別のギャラリーからイメージ バージョンをコピーします。
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793983"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225837"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>別のギャラリーからイメージをコピーする
+# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Azure CLI を使用して別のギャラリーからイメージをコピーする
 
 組織内に複数のギャラリーがある場合は、他のギャラリーに格納されている既存のイメージ バージョンからイメージ バージョンを作成することもできます。 たとえば、新しいイメージを作成してテストするための開発およびテスト ギャラリーがあるとします。 運用環境で使用する準備ができたら、この例を使用して、それらのイメージを運用環境ギャラリーにコピーできます。 また、[Azure PowerShell](image-version-another-gallery-powershell.md) を使用して、別のギャラリーのイメージからイメージを作成することもできます。
 
@@ -154,7 +154,7 @@ az sig image-version create \
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
 >
-> また、イメージ バージョンを作成するときに、`--storage-account-type  premium_lrs` を追加してイメージを Premium ストレージに格納することも、`--storage-account-type  standard_zrs` を追加して [ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> また、イメージ バージョンを作成するときに、`--storage-account-type  premium_lrs` を追加してイメージを Premium ストレージに格納することも、`--storage-account-type  standard_zrs` を追加して[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)に格納することもできます。
 >
 
 ## <a name="next-steps"></a>次のステップ
@@ -162,3 +162,5 @@ az sig image-version create \
 [一般化された](vm-generalized-image-version-cli.md)イメージ バージョンまたは[特殊化された](vm-specialized-image-version-cli.md)イメージ バージョンから VM を作成します。
 
 また、イメージ バージョンの作成の自動化に役立つ [Azure Image Builder (プレビュー)](./linux/image-builder-overview.md) をお試しください。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)にも使用できます。 
+
+購入プラン情報を提供する方法については、「[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)」を参照してください。

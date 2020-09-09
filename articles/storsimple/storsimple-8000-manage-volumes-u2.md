@@ -3,15 +3,15 @@ title: StorSimple ボリュームの管理 (Update 3)
 description: StorSimple ボリュームを追加、変更、監視、削除する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228175"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204455"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -25,8 +25,8 @@ StorSimple デバイス マネージャー サービスは Azure Portal の拡�
 
 StorSimple ボリュームは、次のいずれかです。
 
-* **ローカル固定ボリューム**: これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
-* **階層化ボリューム**: これらのボリュームのデータは、クラウドにあふれる場合があります。
+* **ローカル固定ボリューム**:これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
+* **階層化ボリューム**:これらのボリュームのデータは、クラウドにあふれる場合があります。
 
 アーカイブ ボリュームは、階層化ボリュームの一種です。 アーカイブ ボリュームでより大きな重複除去チャンク サイズを使用すると、デバイスはより大きなデータのセグメントをクラウドに転送できます。
 
@@ -51,7 +51,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 デバイスとボリュームの種類ごとの最大プロビジョニング容量については、次の表を参照してください (仮想デバイスではローカル固定ボリュームを使用できない点に注意してください)。
 
-|  | 階層化ボリュームの最大サイズ | ローカル固定ボリュームの最大サイズ |
+| Type | 階層化ボリュームの最大サイズ | ローカル固定ボリュームの最大サイズ |
 | --- | --- | --- |
 | **物理デバイス** | | |
 | 8100 |64 TB |8 TB |

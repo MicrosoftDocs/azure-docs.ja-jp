@@ -1,25 +1,14 @@
 ---
 title: Azure Relay ハイブリッド接続プロトコル ガイド | Microsoft Docs
 description: この記事では、リスナーのクライアントとセンダーのロールを接続するためのハイブリッド接続リレーでのクライアント側の対話について説明します。
-services: service-bus-relay
-documentationcenter: na
-author: clemensv
-manager: timlt
-editor: ''
-ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: clemensv
-ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204582"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272011"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay ハイブリッド接続プロトコル
 
@@ -345,8 +334,8 @@ FIN フラグが設定されたバイナリ フレームを受信すると、要
 
 応答は、"response" という名前の JSON オブジェクトです。 本文の内容の処理規則は、`request` メッセージとまったく同じであり、`body` プロパティに基づきます。
 
-* **requestId** – 文字列。 REQUIRED. (必須。) 応答される `id` メッセージの `request` プロパティの値。
-* **statusCode** – 数値。 REQUIRED. (必須。) 通知の結果を示す数値の HTTP 状態コード。 [502 "Bad Gateway"](https://tools.ietf.org/html/rfc7231#section-6) と [504 "Gateway Timeout"](https://tools.ietf.org/html/rfc7231#section-6.6.3) を除く、[RFC7231、セクション 6](https://tools.ietf.org/html/rfc7231#section-6.6.5) のすべての状態コードが許可されます。
+* **requestId** – 文字列。 REQUIRED. (必須。) 応答される `request` メッセージの `id` プロパティの値。
+* **statusCode** – 数値。 REQUIRED. (必須。) 通知の結果を示す数値の HTTP 状態コード。 [502 "Bad Gateway"](https://tools.ietf.org/html/rfc7231#section-6.6.3) と [504 "Gateway Timeout"](https://tools.ietf.org/html/rfc7231#section-6.6.5) を除く、[RFC7231、セクション 6](https://tools.ietf.org/html/rfc7231#section-6) のすべての状態コードが許可されます。
 * **statusDescription** - 文字列。 省略可能。 [RFC7230、セクション 3.1.2](https://tools.ietf.org/html/rfc7230#section-3.1.2) に従う HTTP 状態コードの理由テキスト
 * **responseHeaders** – 外部 HTTP 応答で設定される HTTP ヘッダー。
   `request` と同様に、RFC7230 で定義済みのヘッダーを使うことはできません。
@@ -374,7 +363,7 @@ FIN フラグが設定されたバイナリ フレームを受信すると、要
 
 64 KB を超える応答の場合、ランデブー ソケット経由で応答を配信する必要があります。 また、要求が 64 KB より大きく、`request` のみがアドレス フィールドが含む場合は、`request` を取得するためにランデブー ソケットを確立する必要があります。 ランデブー ソケットが確立された後、対応するクライアントへの応答およびそれ以降の対応するクライアントからの要求は、ランデブー ソケットが存在している間は、それを介して配信される必要があります。
 
-ランデブー ソケットの確立には、`address` の `request` URL をそのまま使う必要があります。ただし、次のパラメーターを含める必要があります。
+ランデブー ソケットの確立には、`request` の `address` URL をそのまま使う必要があります。ただし、次のパラメーターを含める必要があります。
 
 | パラメーター      | 必須 | 説明
 | -------------- | -------- | -------------------------------------------------------------------
@@ -430,7 +419,7 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=
 
 _namespace-address_ は、ハイブリッド接続のホストとなる Azure Relay 名前空間の完全修飾ドメイン名です。通常、`{myname}.servicebus.windows.net` の形式で指定します。
 
-要求には、追加の HTTP ヘッダー (アプリケーション定義のヘッダーなど) を含めることができます。 指定したヘッダーはすべてリスナーに渡され、`connectHeader`accept**制御メッセージの** オブジェクトで確認できます。
+要求には、追加の HTTP ヘッダー (アプリケーション定義のヘッダーなど) を含めることができます。 指定したヘッダーはすべてリスナーに渡され、**accept** 制御メッセージの `connectHeader` オブジェクトで確認できます。
 
 クエリ文字列パラメーターのオプションは次のとおりです。
 
@@ -441,7 +430,7 @@ _namespace-address_ は、ハイブリッド接続のホストとなる Azure Re
 | `sb-hc-token`  | はい\*     | リスナーは、名前空間またはハイブリッド接続の**送信**権限を付与する有効な Service Bus 共有アクセス トークンを URL エンコードして指定する必要があります。
 | `sb-hc-id`     | いいえ        | ID の指定は任意です。指定した場合、エンド ツー エンドの診断トレースが可能になるほか、受け入れハンドシェイク時にリスナーに伝えられます。
 
- `{path}` は、このリスナーを登録するあらかじめ構成されたハイブリッド接続の名前空間パスを URL エンコードしたものです。 さらに通信するために、サフィックスとクエリ文字列式で `path` 式を拡張できます。 たとえば、ハイブリッド接続がパス `hyco` で登録されている場合、`path` の後にここで定義したクエリ文字列パラメーターを付けて `hyco/suffix?param=value&...` 式にできます。 完全な式は次のようなものになります。
+ `{path}` は、このリスナーを登録するあらかじめ構成されたハイブリッド接続の名前空間パスを URL エンコードしたものです。 さらに通信するために、サフィックスとクエリ文字列式で `path` 式を拡張できます。 たとえば、ハイブリッド接続がパス `hyco` で登録されている場合、`hyco/suffix?param=value&...` の後にここで定義したクエリ文字列パラメーターを付けて `path` 式にできます。 完全な式は次のようなものになります。
 
 ```
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
@@ -478,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _namespace-address_ は、ハイブリッド接続のホストとなる Azure Relay 名前空間の完全修飾ドメイン名です。通常、`{myname}.servicebus.windows.net` の形式で指定します。
 
-要求には、追加の HTTP ヘッダー (アプリケーション定義のヘッダーなど) を含めることができます。 RFC7230 (「[要求メッセージ](#Request message)」を参照) で直接定義されているものを除き、提供されたすべてのヘッダーはリスナーにフローし、`requestHeader`要求**メッセージの**  オブジェクトで見つけることができます。
+要求には、追加の HTTP ヘッダー (アプリケーション定義のヘッダーなど) を含めることができます。 RFC7230 (「[要求メッセージ](#request-message)」を参照) で直接定義されているものを除き、提供されたすべてのヘッダーはリスナーにフローし、**要求**メッセージの `requestHeader` オブジェクトで見つけることができます。
 
 クエリ文字列パラメーターのオプションは次のとおりです。
 
@@ -488,7 +477,7 @@ _namespace-address_ は、ハイブリッド接続のホストとなる Azure Re
 
 トークンは、`ServiceBusAuthorization` または `Authorization` HTTP ヘッダーで伝達することもできます。 匿名要求を許可するようにハイブリッド接続が構成されている場合は、トークンを省略できます。
 
-サービスは実質的にプロキシとして機能するため、本当の HTTP プロキシではなくても、`Via`RFC7230、セクション 5.7.1`Via` に準拠している [ ヘッダーを追加するか、既存の ](https://tools.ietf.org/html/rfc7230#section-5.7.1) ヘッダーに注釈を付けます。
+サービスは実質的にプロキシとして機能するため、本当の HTTP プロキシではなくても、[RFC7230、セクション 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1) に準拠している `Via` ヘッダーを追加するか、既存の `Via` ヘッダーに注釈を付けます。
 サービスは、リレー名前空間ホスト名を `Via` に追加します。
 
 | コード | Message  | 説明                    |

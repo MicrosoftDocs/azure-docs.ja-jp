@@ -3,12 +3,12 @@ title: Azure VM の作成時にバックアップを有効にする
 description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: bbc00239a34fc0eb88991fcabd91c5a0eb7dbea7
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672822"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892305"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 
@@ -28,9 +28,9 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
 
 1. Azure portal で、 **[リソースの作成]** をクリックします。
 
-2. Azure Marketplace で **[Compute]\(コンピューティング\)** をクリックし、VM イメージを選択します。
+2. Azure Marketplace で **[コンピューティング]** をクリックし、VM イメージを選択します。
 
-3. [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) の指示に従って、VM を設定します。
+3. [Windows](../virtual-machines/windows/quick-create-portal.md) または [Linux](../virtual-machines/linux/quick-create-portal.md) の指示に従って、VM を設定します。
 
 4. **[管理]** タブの **[バックアップの有効化]** で **[オン]** をクリックします。
 5. Azure Backup により、Recovery Services コンテナーにバックアップされます。 既存のコンテナーがない場合は、 **[新規作成]** をクリックします。
@@ -48,6 +48,9 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
 
       ![既定のバックアップ ポリシー](./media/backup-during-vm-creation/daily-policy.png)
 
+>[!NOTE]
+>[SSE と PMK は、Azure VM の既定の暗号化方法です](backup-encryption.md)。 Azure Backup では、これらの Azure VM のバックアップと復元がサポートされます。
+
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines の Azure Backup リソース グループ
 
 Backup サービスでは、復元ポイント コレクション (RPC) を格納する VM のリソース グループとは異なる、別のリソース グループ (RG) が作成されます。 RPC には、マネージド VM のインスタント復旧ポイントが格納されます。 Backup サービスによって作成されるリソース グループの既定の名前付け形式は `AzureBackupRG_<Geo>_<number>` です。 次に例を示します。*AzureBackupRG_northeurope_1*。 Azure Backup によって作成されたリソース グループ名はカスタマイズできるようになりました。
@@ -55,15 +58,15 @@ Backup サービスでは、復元ポイント コレクション (RPC) を格�
 注意する点:
 
 1. RG の既定の名前を使用することも、会社の要件に従って編集することもできます。
-2. VM バックアップ ポリシーの作成時には、入力として RG 名パターンを指定します。 RG 名の形式は `<alpha-numeric string>* n <alpha-numeric string>` にします。 'n' は (1 から始まる) 整数に置き換えられ、最初の RG がいっぱいになった場合はスケールアウトに使用されます。 現在、1 つの RG に最大 600 の RPC を含めることができます。
+2. VM バックアップ ポリシーの作成時には、入力として RG 名パターンを指定します。 RG 名の形式は `<alpha-numeric string>* n <alpha-numeric string>` にします。 'n' は (1 から始まる) 整数に置き換えられ、最初の RG がいっぱいになった場合はスケールアウトに使用されます。 現在、1 つの RG には、最大 600 の RPC を含めることができます。
               ![ポリシー作成時の名前の選択](./media/backup-during-vm-creation/create-policy.png)
-3. このパターンは、以下の RG の名前付け規則に従っている必要があり、合計長は、RG 名の許容最大長を超えてはなりません。
+3. このパターンでは、以下の RG の名前付け規則に従う必要があり、合計長は、RG 名の許容最大長を超えてはなりません。
     1. リソース グループ名に使用できるのは、英数字、ピリオド、アンダースコア、ハイフン、かっこのみです。 末尾をピリオドにすることはできません。
     2. リソース グループ名には、RG の名前とサフィックスを含めて、最大 74 文字を使用できます。
 4. 最初の `<alpha-numeric-string>` は必須ですが、'n' の後の 2 番目のものは省略可能です。 これが適用されるのは、カスタマイズした名前を指定する場合だけです。 どちらのテキストボックスにも入力しないと、既定の名前が使用されます。
 5. 必要が生じた場合、ポリシーを変更することで RG の名前を編集できます。 名前のパターンが変更されると、新しい RG の中に新しい RP が作成されます。 ただし、RP コレクションではリソースの移動がサポートされないため、古い RP は引き続き古い RG 内に存在し、移動されません。 最終的に、ポイントの有効期限が切れたときに RP のガベージ コレクションが実行されます。
 ![ポリシー変更時の名前の変更](./media/backup-during-vm-creation/modify-policy.png)
-6. Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。
+6. Backup サービスに使用するために作成されたリソース グループは、ロックしないことをお勧めします。
 
 PowerShell を使用して Virtual Machines の Azure Backup リソース グループを構成するには、[スナップショットのリテンション期間中の Azure Backup リソース グループの作成](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)に関するページを参照してください。
 

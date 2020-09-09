@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0d3c344d19d0831dd8525ddf3311e0ce7cd682
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520819"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -39,7 +39,7 @@ ms.locfileid: "79232963"
 
 ## <a name="create-integration-account"></a>統合アカウントを作成する
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)、または [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)、または [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-create) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -132,13 +132,13 @@ ms.locfileid: "79232963"
 
 #### <a name="azure-cli"></a>Azure CLI
 
-1. [Azure CLI の前提条件をインストールします](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (まだインストールしていない場合)。
+1. [Azure CLI の前提条件をインストールします](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (まだインストールしていない場合)。
 
-1. Azure portal で、Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 環境を開きます。
+1. Azure portal で、Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) 環境を開きます。
 
    ![Azure Cloud Shell を開く](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. コマンド プロンプトで [**az resource** コマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的の上位レベルに設定します。
+1. コマンド プロンプトで [**az resource** コマンド](/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的の上位レベルに設定します。
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -154,15 +154,15 @@ ms.locfileid: "79232963"
 
 ### <a name="downgrade-pricing-tier"></a>価格レベルのダウングレード
 
-この変更を行うには、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用します。
+この変更を行うには、[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用します。
 
-1. [Azure CLI の前提条件をインストールします](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (まだインストールしていない場合)。
+1. [Azure CLI の前提条件をインストールします](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (まだインストールしていない場合)。
 
-1. Azure portal で、Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 環境を開きます。
+1. Azure portal で、Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) 環境を開きます。
 
    ![Azure Cloud Shell を開く](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. コマンド プロンプトで、[**az resource** コマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
+1. コマンド プロンプトで、[**az resource** コマンド](/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -222,7 +222,7 @@ ms.locfileid: "79232963"
 
 統合アカウントを別の Azure リソース グループまたは Azure サブスクリプションに移動できます。 リソースを移動すると、Azure によって新しいリソース ID が作成されるため、代わりに新しい ID を使用し、移動したリソースに関連付けられているスクリプトまたはツールを更新してください。 サブスクリプションを変更する場合は、既存のリソース グループまたは新しいリソース グループも指定する必要があります。
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-move) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-move) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -254,7 +254,7 @@ ms.locfileid: "79232963"
 
 ## <a name="delete-integration-account"></a>統合アカウントの削除
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)、または [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-delete)、または [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 

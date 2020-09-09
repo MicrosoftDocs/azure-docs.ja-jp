@@ -11,12 +11,14 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+- 'Role: Cloud Development'
+- 'Role: System Architecture'
+ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730304"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323045"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -38,11 +40,11 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
 * **デバイス ID の管理**。 各 IoT Hub は、デバイス ID の管理 (作成、取得、更新、削除) を行うための、一連の HTTPS REST エンドポイントを公開します。 [デバイス ID](iot-hub-devguide-identity-registry.md)は、デバイスの認証とアクセス制御に使用されます。
 
-* **デバイス ツインの管理**。 各 IoT Hub は、[デバイス ツイン](iot-hub-devguide-device-twins.md)のクエリと更新 (タグとプロパティの更新) を実行するサービス接続 HTTPS REST エンドポイントを公開します。
+* **デバイス ツインの管理**。 各 IoT Hub は、[デバイス ツイン](iot-hub-devguide-device-twins.md)のクエリと更新 (タグとプロパティの更新) を実行するサービス接続 HTTPS REST エンドポイントを公開します。 
 
 * **ジョブの管理**。 各 IoT Hub は、[ジョブ](iot-hub-devguide-jobs.md)のクエリと管理を実行するサービス接続 HTTPS REST エンドポイントを公開します。
 
-* **デバイスのエンドポイント**。 IoT Hub では、ID レジストリ内のデバイスごとに、以下の一連のエンドポイントを公開しています。
+* **デバイスのエンドポイント**。 IoT Hub では、ID レジストリ内のデバイスごとに一連のエンドポイントを公開しています。 明記されている場合を除き、これらのエンドポイントは、[MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1、および [AMQP 1.0](https://www.amqp.org/) の各プロトコルを使用して公開されます。 AMQP および MQTT は、ポート 443 で [WebSockets](https://tools.ietf.org/html/rfc6455) 経由で使用することもできます。
 
   * *D2C メッセージの送信*。 デバイスは、このエンドポイントを使用して、[デバイスからクラウドへのメッセージを送信します](iot-hub-devguide-messages-d2c.md)。
 
@@ -50,13 +52,11 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
   * *ファイルのアップロードの開始*。 デバイスでは、[ファイルをアップロード](iot-hub-devguide-file-upload.md)するために、このエンドポイントを使用して、IoT Hub から Azure Storage の SAS URI を受け取ります。
 
-  * *デバイス ツインのプロパティを取得して更新します*。 デバイスは、このエンドポイントを使用して、その[デバイス ツイン](iot-hub-devguide-device-twins.md)のプロパティにアクセスします。
+  * *デバイス ツインのプロパティを取得して更新します*。 デバイスは、このエンドポイントを使用して、その[デバイス ツイン](iot-hub-devguide-device-twins.md)のプロパティにアクセスします。 HTTPS はサポートされていません。
 
-  * *ダイレクト メソッド要求の受信*。 デバイスは、このエンドポイントを使用して、[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)の要求をリッスンします。
+  * *ダイレクト メソッド要求の受信*。 デバイスは、このエンドポイントを使用して、[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)の要求をリッスンします。 HTTPS はサポートされていません。
 
-    これらのエンドポイントは、[MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1、および [AMQP 1.0](https://www.amqp.org/) の各プロトコルを使用して公開されます。 AMQP は、ポート 443 で [WebSockets](https://tools.ietf.org/html/rfc6455) 経由で使用することもできます。
-
-* **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが [AMQP](https://www.amqp.org/) プロトコルを使用して公開のみが行われる場合です。 メソッド呼び出しのエンドポイントは、HTTPS プロトコルを介して公開されます。
+* **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが、[AMQP](https://www.amqp.org/) および WebSockets プロトコル経由の AMQP を使用して、公開されるのみの場合です。 ダイレクト メソッド呼び出しのエンドポイントは、HTTPS プロトコル経由で公開されます。
   
   * *D2C メッセージの受信*。 このエンドポイントには、[Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)との互換性があります。 バックエンド サービスはこのエンドポイントを使用して、デバイスによって送信された[デバイスからクラウドへのメッセージ](iot-hub-devguide-messages-d2c.md)を読み取ることができます。 この組み込みのエンドポイントに加え、IoT Hub のカスタム エンドポイントを作成することもできます。
   
@@ -85,14 +85,9 @@ IoT Hub エンドポイントはすべて [TLS](https://tools.ietf.org/html/rfc5
 
 追加できるエンドポイントの数の制限については、「[クォータと調整](iot-hub-devguide-quotas-throttling.md)」をご覧ください。
 
-REST API の [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの正常性状態を取得できます。 エンドポイントの正常性が停止または異常である場合は、エンドポイントがこれらの状態にあるときは待機時間が長くなることが予測されるため、ルーティング メッセージ待機時間に関連した [IoT Hub メトリック](iot-hub-metrics.md)を使用してエラーを識別およびデバッグすることをお勧めします。
+## <a name="endpoint-health"></a>エンドポイントの正常性
 
-|正常性状態|説明|
-|---|---|
-|healthy|エンドポイントは想定どおりにメッセージを受け付けています。|
-|unhealthy|エンドポイントは想定どおりにメッセージを受け付けておらず、IoT Hub はこのエンドポイントへのデータ送信を再試行しています。 IoT Hub が最終的に一貫して正常状態を確立すると、異常なエンドポイントの状態が "正常" に更新されます。|
-|unknown|IoT Hub はエンドポイントとの接続を確立していません。 このエンドポイントとの間でメッセージが配信または拒否されたことはありません。|
-|dead|IoT Hub が再試行期間中にメッセージの送信を再試行した後、エンドポイントはメッセージを受け付けていません。|
+[!INCLUDE [iot-hub-endpoint-health](../../includes/iot-hub-include-endpoint-health.md)]
 
 ## <a name="field-gateways"></a>フィールド ゲートウェイ
 

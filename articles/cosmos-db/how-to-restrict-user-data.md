@@ -3,15 +3,15 @@ title: ユーザー アクセスを Azure Cosmos DB でのデータ操作のみ�
 description: アクセスを Azure Cosmos DB でのデータ操作のみに制限する方法について説明します
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74980020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031994"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>ユーザー アクセスをデータ操作のみに制限する
 
@@ -19,7 +19,9 @@ Azure Cosmos DB では、データベース サービスとの対話を認証す
 - Azure portal と対話するときに Azure Active Directory ID を使用する。
 - API および SDK からの呼び出しを発行するときに Azure Cosmos DB の[キー](secure-access-to-data.md#master-keys)または[リソース トークン](secure-access-to-data.md#resource-tokens)を使用する。
 
-各認証方法では、さまざまな操作のセットにアクセスできますが、いくつかの重複があります。![認証の種類ごとの操作の分割](./media/how-to-restrict-user-data/operations.png)
+各認証方法では、さまざまな操作のセットにアクセスできますが、いくつかの重複があります。
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="認証の種類ごとの操作の分割" border="false":::
 
 場合によっては、組織の一部のユーザーに対して、データ操作 (CRUD 要求とクエリ) のみを実行するように制限することができます。 これは、通常、リソースを作成または削除したり、作業中のコンテナーのプロビジョニングされたスループットを変更したりする必要がない開発者の場合に当てはまります。
 
@@ -49,7 +51,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>カスタム Azure Active Directory ロールの作成
 
-次のスクリプトでは、Azure Cosmos アカウントの "キーのみ" のアクセス権を持つ Azure Active Directory ロールの割り当てを作成します。 ロールは、[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)と [Azure Cosmos DB の粒度の細かいアクション](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)に基づいています。 これらのロールとアクションは、`Microsoft.DocumentDB` Azure Active Directory 名前空間の一部です。
+次のスクリプトでは、Azure Cosmos アカウントの "キーのみ" のアクセス権を持つ Azure Active Directory ロールの割り当てを作成します。 ロールは、[Azure カスタム ロール](../role-based-access-control/custom-roles.md)と、[Azure Cosmos DB 用の粒度の細かいアクション](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)に基づいています。 これらのロールとアクションは、`Microsoft.DocumentDB` Azure Active Directory 名前空間の一部です。
 
 1. 最初に、次の内容を含む `AzureCosmosKeyOnlyAccess.json` という名前の JSON ドキュメントを作成します。
 

@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79372076"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052695"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Language Understanding サービスでの保存データの暗号化
 
@@ -22,11 +22,11 @@ ms.locfileid: "79372076"
 
 ## <a name="about-cognitive-services-encryption"></a>Cognitive Services の暗号化について
 
-データは、[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) に準拠する [256 ビット AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 暗号化を使用して暗号化および暗号化解除されます。 暗号化と暗号化解除は透過的であり、暗号化とアクセスはユーザーによって管理されます。 データは既定でセキュリティ保護され、暗号化を利用するためにコードやアプリケーションを変更する必要はありません。
+データは、[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) に準拠する [256 ビット AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 暗号化を使用して暗号化および暗号化解除されます。 暗号化と暗号化解除は透過的であり、暗号化とアクセスはユーザーによって管理されます。 データは既定でセキュリティ保護され、暗号化を利用するためにコードまたはアプリケーションを変更する必要はありません。
 
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 
-サブスクリプションでは、Microsoft のマネージド暗号化キーが既定で使用されます。 ユーザー独自のキーを使用してサブスクリプションを管理するためのオプションもあります。 カスタマー マネージド キー (CMK) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
+サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自のキーを使用してサブスクリプションを管理するためのオプションもあります。 カスタマー マネージド キー (CMK) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault でのカスタマー マネージド キー
 
@@ -38,13 +38,11 @@ ms.locfileid: "79372076"
 
 カスタマー マネージド キーを使用できるようにするには、 [LUIS サービス カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。 要求の状態について連絡を差し上げるまで、約 3 から 5 営業日かかります。 要求によっては、お客様は待ち行列に登録され、スペースが利用できるようになってから承認される場合があります。 LUIS での CMK の使用が承認されたら、Azure portal から新しい Language Understanding リソースを作成し、価格レベルとして E0 を選択する必要があります。 新しい SKU は、CMK を除き、既に使用可能な F0 SKU と同じように機能します。 ユーザーは、F0 を新しい E0 SKU にアップグレードすることはできません。
 
-E0 リソースは Authoring サービスでのみ使用でき、E0 レベルは最初は米国西部リージョンでのみサポートされます。
-
 ![LUIS サブスクリプションの図](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>リージョン別の提供状況
 
-カスタマー マネージド キーは、現在、**米国西部**リージョンで利用できます。
+カスタマー マネージド キーは、すべての [オーサリング リージョン](luis-reference-regions.md)で利用できます。 
 
 ### <a name="limitations"></a>制限事項
 

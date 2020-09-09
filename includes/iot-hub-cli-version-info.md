@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d522d8dd20fb8e1e781f0b13ccdbc4fd98f1727c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ebc3cf8e131efbd8d315942c42325c3720586ae
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80321749"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85853216"
 ---
 > [!NOTE]
-> この記事では、`azure-iot` と呼ばれる、Azure IoT 拡張機能の最新バージョンを使用します。 従来のバージョンは `azure-iot-cli-ext` と呼ばれます。一度にインストールできるバージョンは 1 つだけです。 コマンド `az extension list` を使用すると、現在インストールされている拡張機能を確認できます。
+> この記事では、`azure-iot` と呼ばれる、Azure IoT 拡張機能の最新バージョンを使用します。 従来のバージョンは `azure-cli-iot-ext` と呼ばれます。一度にインストールできるバージョンは 1 つだけです。 コマンド `az extension list` を使用すると、現在インストールされている拡張機能を確認できます。
 >
 > 拡張機能の従来のバージョンを削除するには、`az extension remove --name azure-cli-iot-ext` を使用します。
 >

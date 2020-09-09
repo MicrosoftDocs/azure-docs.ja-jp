@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80055423"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326054"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -64,7 +64,7 @@ System Center Operations Manager Health Check ソリューションは、次の�
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics で使用される Operations Manager の実行アカウント
 
-Log Analytics は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン ユーザー アカウントなど)。 特権を持つ資格情報を使用して Operations Manager の実行アカウントを構成します。 詳細については、Operations Manager ドキュメントの「[How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)」(実行アカウントを作成する方法) を参照してください。
+Log Analytics は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン ユーザー アカウントなど)。 特権を持つ資格情報を使用して Operations Manager の実行アカウントを構成します。 詳細については、Operations Manager ドキュメントの「[How to create a Run As account](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12))」(実行アカウントを作成する方法) を参照してください。
 
 次の情報を使用すると、System Center Operations Manager Health Check 用に Operations Manager の実行アカウントを設定できます。
 
@@ -203,7 +203,7 @@ System Center Operations Manager Health Check ソリューションの管理パ�
 
 ## <a name="use-health-check-focus-area-recommendations"></a>正常性チェックの関心領域に関する推奨事項の使用
 
-Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、[管理ソリューションのインストール](../../azure-monitor/insights/solutions.md)に関する記事を参照してください。 インストール後は、Azure portal でワークスペースの **[概要]** ページの [System Center Operations Manager Health Check] タイルを使用して、推奨事項の概要を表示できます。
+Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、[管理ソリューションのインストール](./solutions.md)に関する記事を参照してください。 インストール後は、Azure portal でワークスペースの **[概要]** ページの [System Center Operations Manager Health Check] タイルを使用して、推奨事項の概要を表示できます。
 
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
@@ -229,7 +229,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](../../azure-monitor/log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](../log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +254,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](../../azure-monitor/log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](../log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,4 +295,5 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログの検索](../../azure-monitor/log-query/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。
+- [ログの検索](../log-query/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。
+

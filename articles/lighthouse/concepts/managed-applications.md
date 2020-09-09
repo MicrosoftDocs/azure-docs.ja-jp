@@ -1,18 +1,21 @@
 ---
 title: Azure Lighthouse と Azure Managed Applications
-description: Azure Lighthouse と Azure Managed Applications...
-ms.date: 05/01/2020
+description: Azure Lighthouse と Azure Managed Applications がさまざまなシナリオの実現にどのように役立つか、およびこれらを組み合わせて使用する方法について説明します。
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9923d31e78675927b4ca235607b2a61b24ccc41
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82782584"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163426"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
 
 Azure Managed Applications と Azure Lighthouse はどちらも、サービス プロバイダーがお客様のテナントに存在するリソースにアクセスできるようにします。 機能の違いや、有効にするために役立つシナリオの違い、そしてこれらを組み合わせて使用する方法について理解すると、役立つ場合があります。
+
+> [!TIP]
+> このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](enterprise.md)も同じプロセスとツールを使用できます。
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications の比較
 
@@ -20,7 +23,7 @@ Azure Managed Applications と Azure Lighthouse はどちらも、サービス �
 
 [Azure Lighthouse](../overview.md) により、サービス プロバイダーはお客様のサブスクリプション (またはリソース グループ) でさまざまな管理タスクを直接実行できます。 このアクセスは、サービス プロバイダーが独自のテナントにサインインして、お客様のテナントに属するリソースにアクセスできる、論理プロジェクションによって達成されます。 お客様は、サービス プロバイダーに委任するサブスクリプションまたはリソース グループを決定でき、これらのリソースへのフル アクセスはお客様が保持します。 また、サービス プロバイダーのアクセス権をいつでも削除することができます。
 
-Azure Lighthouse を使用するため、お客様は [ARM テンプレートを展開する](../how-to/onboard-customer.md)か、[Azure Marketplace のマネージド サービス オファー](managed-services-offers.md)を使用して [Azure 委任リソース管理](azure-delegated-resource-management.md)にオンボードされます。 [パートナー ID をリンクする](../../cost-management-billing/manage/link-partner-id.md)ことで、顧客エンゲージメントへの影響を追跡できます。
+Azure Lighthouse を使用するために、お客様は [ARM テンプレートを展開する](../how-to/onboard-customer.md)か、[Azure Marketplace のマネージド サービス オファー](managed-services-offers.md)を使用して [Azure の委任されたリソース管理](azure-delegated-resource-management.md)にオンボードされます。 [パートナー ID をリンクする](../../cost-management-billing/manage/link-partner-id.md)ことで、顧客エンゲージメントへの影響を追跡できます。
 
 Azure Lighthouse は通常、サービス プロバイダーがお客様の管理タスクを継続的に実行するときに使用されます。
 
@@ -47,4 +50,4 @@ Azure Lighthouse と Azure Managed Applications は異なるアクセス メカ�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Managed Applications](../../azure-resource-manager/managed-applications/overview.md) の詳細について説明します。
-- [Azure の委任されたリソース管理にサブスクリプションをオンボード](../how-to/onboard-customer.md)する方法について説明します。
+- [サブスクリプションを Azure Lighthouse にオンボードする](../how-to/onboard-customer.md)方法について学習します。

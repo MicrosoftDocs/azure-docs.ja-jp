@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a5e2a3569c70404d64d24ecfc35a8258ea864a4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472998"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480426"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>チュートリアル:Azure マネージド アプリケーションを Marketplace で公開する
 
@@ -98,7 +98,7 @@ SKU は、Marketplace では親プランの下に表示されます。 Azure Por
 
      使用できるアクションについては、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。 たとえば、仮想マシンの再起動をコンシューマーに許可するには、許可されているアクションに `Microsoft.Compute/virtualMachines/restart/action` を追加します。 `*/read` アクションは自動的に許可されるので、この設定を含める必要はありません。
    * **PrincipalId**: このプロパティは、顧客のサブスクリプション内のリソースへのアクセス権が付与されているユーザー、ユーザー グループ、またはアプリケーション の Azure Active Directory (Azure AD) 識別子です。 ロールの定義では、アクセス許可について説明します。
-   * **ロール定義**: このプロパティは、Azure AD によって提供されているロールベースのアクセス制御 (RBAC) の組み込みロールの一覧です。 最も適切なロールを選択して使用することで、顧客に代わってリソースを管理できます。
+   * **ロール定義**: このプロパティは、Azure AD によって提供されている Azure のすべての組み込みロールの一覧です。 最も適切なロールを選択して使用することで、顧客に代わってリソースを管理できます。
    * **ポリシー設定**: マネージド アプリケーションに [Azure Policy](../../governance/policy/overview.md) を適用して、デプロイしたソリューションのコンプライアンス要件を指定します。 使用可能なオプションから、適用するポリシーを選択します。 **[ポリシー パラメーター]** には、パラメーターの値を含んだ JSON 文字列を指定します。 ポリシーの定義とパラメーター値の形式については、「[Azure Policy のサンプル](../../governance/policy/samples/index.md)」を参照してください。
 
 複数の認可を追加できますが、 AD ユーザー グループを作成し、その ID を **PrincipalId** で指定することをお勧めします。 これにより、SKU を更新せずに、より多くのユーザーをユーザー グループに追加できます。
@@ -172,6 +172,6 @@ Hero ロゴ アイコンに関するガイドラインに従ってください�
 
 ## <a name="next-steps"></a>次のステップ
 
-* **[発行]** をクリックした後のことについては、「[Azure アプリケーション オファーを公開する](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)」を参照してください。
+* **[発行]** をクリックした後のことについては、「[Azure アプリケーション オファーを公開する](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)」を参照してください。
 * マネージド アプリケーションの概要については、[マネージド アプリケーションの概要](overview.md)に関するページをご覧ください。
 * サービス カタログ マネージド アプリケーションの発行については、「[サービス カタログ マネージド アプリケーションの作成と発行](publish-service-catalog-app.md)」を参照してください。

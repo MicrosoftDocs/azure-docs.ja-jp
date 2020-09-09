@@ -3,12 +3,13 @@ title: Linux 上に開発環境をセットアップする
 description: Linux にランタイムと SDK をインストールし、ローカル開発クラスターを作成します。 このセットアップが終わると、アプリケーションを構築する準備は完了です。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 420284a512147d729db23f3b71cbe8e9f6f050d9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193413"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429037"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ Service Fabric のランタイムと SDK を Windows Subsystem for Linux にイ�
 
 開発用に、次のオペレーティング システムのバージョンがサポートされています。
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16.04 (`Xenial Xerus`)、18.04 (`Bionic Beaver`)
 
     `apt-transport-https` パッケージがインストールされていることを確認してください。
          
@@ -60,46 +61,40 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 ### <a name="ubuntu"></a>Ubuntu
 
 1. ターミナルを開きます。
-2. ソース リストに Service Fabric リポジトリを追加します。
+
+2. 配布に対応するソース リストに `dotnet` リポジトリを追加します。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. ソース リストに `dotnet` リポジトリを追加します。
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. 新しい Gnu Privacy Guard (GnuPG または GPG) キーを APT キーリングに追加します。
+3. 新しい MS Open Tech Gnu Privacy Guard (GnuPG または GPG) キーを APT キーリングに追加します。
 
     ```bash
-    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. 公式の Docker GPG キーを APT キーリングに追加します。
+4. 公式の Docker GPG キーを APT キーリングに追加します。
 
     ```bash
-    sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. Docker レポジトリを設定します。
+5. Docker レポジトリを設定します。
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Azul JDK キーを APT キーリングに追加し、そのリポジトリを設定します。
+6. Azul JDK キーを APT キーリングに追加し、そのリポジトリを設定します。
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
+7. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
 
     ```bash
     sudo apt-get update
@@ -167,8 +162,8 @@ SDK インストールに付属する Service Fabric ランタイムには、次
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | npm から暗黙的に | latest |
-RHEL | - | OpenJDK 1.8 | npm から暗黙的に | latest |
+**Ubuntu** | 2.0.0 | AzulJDK 1.8 | npm から暗黙的に | latest |
+**RHEL** | - | OpenJDK 1.8 | npm から暗黙的に | latest |
 
 ## <a name="set-up-a-local-cluster"></a>ローカル クラスターをセットアップする
 インストールの完了後、ローカル クラスターを起動します。

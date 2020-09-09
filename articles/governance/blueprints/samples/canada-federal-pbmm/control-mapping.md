@@ -1,18 +1,18 @@
 ---
 title: カナダ連邦の PBMM ブループリント サンプルのコントロール
 description: カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 09/04/2019
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c70a58ef86d277341a6b4439fac3d160bea6e3f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545249"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925857"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング
 
-次の記事では、Azure Blueprints のカナダ連邦 Protected B, Medium Integrity, Medium Availability (PBMM) のブループリント サンプルを、カナダ連邦の PBMM コントロールにマップする方法について詳しく説明します。 コントロールの詳細については、[カナダ連邦 PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4) を参照してください。
+次の記事では、Azure Blueprints のカナダ連邦 Protected B, Medium Integrity, Medium Availability (PBMM) のブループリント サンプルを、カナダ連邦の PBMM コントロールにマップする方法について詳しく説明します。 コントロールの詳細については、[カナダ連邦 PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html) を参照してください。
 
 以下のマッピングは、**カナダ連邦 PBMM** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:Audit Canada Federal PBMM controls]\(プレビュー: カナダ連邦 PBMM コントロールの監査\)** 組み込みポリシー イニシアティブ。
 
@@ -39,7 +39,7 @@ ms.locfileid: "74545249"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) アカウント管理 | ロールベースのスキーム
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールはエラーを起こしやすいため、カスタム RBAC ルールがどこに実装されているかを理解しておくと、実装のニーズや適切性を確認するために役に立ちます。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールはエラーを起こしやすいため、カスタム RBAC ルールがどこに実装されているかを理解しておくと、実装のニーズや適切性を確認するために役に立ちます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
@@ -57,19 +57,19 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 - 最大 3 人の所有者をサブスクリプションに対して指定する必要がある
 - 複数の所有者がサブスクリプションに割り当てられている必要がある
-- 指定されたメンバーのいずれかが Administrators グループに含まれている Windows VM を監査する
-- 指定されたメンバーの一部が Administrators グループに含まれていない Windows VM を監査する
+- 指定されたメンバーのいずれかが Administrators グループに含まれている Windows VM からの監査結果を表示する
+- 指定されたメンバーの一部が Administrators グループに含まれていない Windows VM の監査結果を表示する
 - 指定されたメンバーのいずれかが Administrators グループに含まれている Windows VM を監査する要件をデプロイする
 - 指定されたメンバーの一部が Administrators グループに含まれていない Windows VM を監査する要件をデプロイする
 
 ## <a name="ac-6-least-privilege"></a>AC-6 最小限の特権
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的に確認する必要があるアカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。 これらのアカウント インジケーターを確認すれば、最小限の特権コントロールが実装されているかどうかを確かめることができます。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的に確認する必要があるアカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。 これらのアカウント インジケーターを確認すれば、最小限の特権コントロールが実装されているかどうかを確かめることができます。
 
 - 最大 3 人の所有者をサブスクリプションに対して指定する必要がある
 - 複数の所有者がサブスクリプションに割り当てられている必要がある
-- 指定されたメンバーのいずれかが Administrators グループに含まれている Windows VM を監査する
-- 指定されたメンバーの一部が Administrators グループに含まれていない Windows VM を監査する
+- 指定されたメンバーのいずれかが Administrators グループに含まれている Windows VM からの監査結果を表示する
+- 指定されたメンバーの一部が Administrators グループに含まれていない Windows VM の監査結果を表示する
 - 指定されたメンバーのいずれかが Administrators グループに含まれている Windows VM を監査する要件をデプロイする
 - 指定されたメンバーの一部が Administrators グループに含まれていない Windows VM を監査する要件をデプロイする
 
@@ -85,7 +85,7 @@ Azure SQL Database 用の高度なデータ セキュリティであるデータ
 
 このブループリントは、Azure App Service アプリケーションのリモート デバッグがオフになっていることを監視するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによってリモート アクセスの監視と制御を支援するものです。 また、パスワードなしでアカウントからのリモート接続を許可する Linux 仮想マシンを監査するポリシー定義も、このブループリントによって割り当てられます。 さらに、このブループリントでは、ストレージ アカウントに対する無制限のアクセスの監視に役立つ Azure Policy 定義も 1 件割り当てられます。 これらのインジケーターを監視すれば、リモート アクセスの方式がセキュリティ ポリシーに従っているかどうかを確かめることができます。
 
-- \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する
+- \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM の監査結果を表示する
 - \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する要件をデプロイする
 - ストレージ アカウントに対する制限のないネットワーク アクセスの監査
 - API アプリでリモート デバッグを無効にする
@@ -107,8 +107,8 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 このブループリントは、監査とイベントのログ記録の構成を監視するための [Azure Policy](../../../policy/overview.md) 定義を割り当てるものです。 これらの構成を監視することは、監査システムの障害や構成ミスを発見したり、是正措置を講じたりするうえで役立ちます。
 
 - 診断設定の監査
-- SQL サーバー レベルの監査設定の監査
-- Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
+- SQL Server の監査を有効にする必要があります
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) 監査の確認、分析、およびレポート | 集中的な確認と分析
@@ -116,8 +116,8 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的にレポートと分析が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
-- \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
+- VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- VM 用 Audit Log Analytics ワークスペース - 不一致の報告
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 
@@ -126,13 +126,14 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。 これらのポリシー定義では、Azure 仮想マシンにおける Log Analytics エージェントのデプロイのほか、他の Azure リソースの監査設定の構成が監査および実施されます。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL サーバーには監査と Advanced Data Security が構成されます。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
-- \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
+- VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- VM 用 Log Analytics ワークスペースの監査 - レポート 
+
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - 診断設定の監査
-- SQL サーバー レベルの監査設定の監査
-- Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
+- SQL Server の監査を有効にする必要があります
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL サーバーに対する Advanced Data Security のデプロイ
 - SQL サーバーでの監査のデプロイ
@@ -140,13 +141,13 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) 最小限の機能 | 承認されたソフトウェアまたはホワイトリスト登録
 
-Azure Security Center で提供される適応型アプリケーション制御は、仮想マシン上で特定のソフトウェアの実行をブロックまたは防止できる、自動化されたインテリジェントなエンドツーエンドのアプリケーション ホワイトリスト登録ソリューションです。 アプリケーション制御は、仮想マシンについて承認済みのアプリケーションの一覧を作成するうえで役立ちます。 このブループリントは、アプリケーションのホワイトリストが推奨されるものの、その構成がまだ済んでいない仮想マシンを監視するうえで役立つ [Azure Policy](../../../policy/overview.md) 定義を 1 件割り当てるものです。
+Azure Security Center で提供される適応型アプリケーション制御は、仮想マシン上で特定のソフトウェアの実行をブロックまたは防止できる、自動化されたインテリジェントなエンドツーエンドのアプリケーション許可リスト ソリューションです。 アプリケーション制御は、仮想マシンについて承認済みのアプリケーションの一覧を作成するうえで役立ちます。 このブループリントは、アプリケーションの許可リストが推奨されるものの、その構成がまだ済んでいない仮想マシンを監視するうえで役立つ [Azure Policy](../../../policy/overview.md) 定義を 1 件割り当てるものです。
 
 - 適応型アプリケーション制御を仮想マシンで有効にする必要がある
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 ユーザーがインストールするソフトウェア
 
-Azure Security Center で提供される適応型アプリケーション制御は、仮想マシン上で特定のソフトウェアの実行をブロックまたは防止できる、自動化されたインテリジェントなエンドツーエンドのアプリケーション ホワイトリスト登録ソリューションです。 アプリケーション制御は、ソフトウェア制限ポリシーに対するコンプライアンスを強制および監視するうえで役立ちます。 このブループリントは、アプリケーションのホワイトリストが推奨されるものの、その構成がまだ済んでいない仮想マシンを監視するうえで役立つ [Azure Policy](../../../policy/overview.md) 定義を 1 件割り当てるものです。
+Azure Security Center で提供される適応型アプリケーション制御は、仮想マシン上で特定のソフトウェアの実行をブロックまたは防止できる、自動化されたインテリジェントなエンドツーエンドのアプリケーション許可リスト ソリューションです。 アプリケーション制御は、ソフトウェア制限ポリシーに対するコンプライアンスを強制および監視するうえで役立ちます。 このブループリントは、アプリケーションの許可リストが推奨されるものの、その構成がまだ済んでいない仮想マシンを監視するうえで役立つ [Azure Policy](../../../policy/overview.md) 定義を 1 件割り当てるものです。
 
 - 適応型アプリケーション制御を仮想マシンで有効にする必要がある
 
@@ -167,25 +168,25 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 このブループリントは、パスワードなしでアカウントからのリモート接続を許可する Linux 仮想マシンや、passwd ファイルに誤ったアクセス許可が設定されている Linux 仮想マシンを監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てるものです。 また、このブループリントでは、Windows 仮想マシンのパスワード暗号化の種類の構成を監査するポリシー定義も割り当てられます。 これらのインジケーターを監視することは、システム認証子が ID と認証に関する組織のポリシーに準拠しているかどうかの確認に役立ちます。
 
-- \[プレビュー\]:passwd ファイルのアクセス許可が 0644 に設定されていない Linux VM を監査する
-- \[プレビュー\]:パスワードなしのアカウントが存在する Linux VM を監査する
-- \[プレビュー\]:passwd ファイルのアクセス許可が 0644 に設定されていない Linux VM を監査する要件をデプロイする
-- \[プレビュー\]:パスワードなしのアカウントが存在する Linux VM を監査する要件をデプロイする
+- passwd ファイルのアクセス許可が 0644 に設定されていない Linux VM の監査結果を表示する
+- パスワードなしのアカウントが存在する Linux VM の監査結果を表示する
+- passwd ファイルのアクセス許可が 0644 に設定されていない Linux VM を監査する要件をデプロイする
+- パスワードなしのアカウントが存在する Linux VM を監査する要件をデプロイする
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) 認証子の管理 | パスワードベースの認証
 
 このブループリントは、最小強度やその他のパスワード要件が適用されていない Windows 仮想マシンを監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることにより、強力なパスワードの強制を支援するものです。 パスワード強度のポリシーに違反している仮想マシンを把握できるようになるので、適切な是正措置を実施し、すべての仮想マシンのユーザー アカウントに対して、組織のパスワード ポリシーへの準拠を徹底させることができます。
 
-- \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する
-- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する
-- \[プレビュー\]:パスワードの変更禁止期間が 1 日になっていない Windows VM を監査する
-- \[プレビュー\]:パスワードの複雑さの設定が有効になっていない Windows VM を監査する
-- \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する
-- \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する要件をデプロイする
-- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する要件をデプロイする
-- \[プレビュー\]:パスワードの変更禁止期間が 1 日になっていない Windows VM を監査する要件をデプロイする
-- \[プレビュー\]:パスワードの複雑さの設定が有効になっていない Windows VM を監査する要件をデプロイする
-- \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する要件をデプロイする
+- 以前の 24 個のパスワードの再利用が許可されている Windows VM の監査結果を表示する
+- パスワードの最長有効期間が 70 日になっていない Windows VM の監査結果を表示する
+- パスワードの最短有効期間が 1 日になっていない Windows VM の監査結果を表示する
+- パスワードの複雑さの設定が有効になっていない Windows VM の監査結果を表示する
+- パスワードの最小文字数が 14 文字に制限されていない Windows VM の監査結果を表示する
+- 以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する要件をデプロイする
+- パスワードの有効期間が 70 日になっていない Windows VM を監査する要件をデプロイする
+- パスワードの変更禁止期間が 1 日になっていない Windows VM を監査する要件をデプロイする
+- パスワードの複雑さの設定が有効になっていない Windows VM を監査する要件をデプロイする
+- パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する要件をデプロイする
 
 ## <a name="ia-8-100-identification-and-authentication-non-organizational-users--identity-and-credential-assurance-levels"></a>IA-8 (100) 識別と認証 (組織外のユーザー) | ID および資格情報保証のレベル
 
@@ -198,7 +199,7 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
 
-- Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL サーバーに対する Advanced Data Security のデプロイ
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
@@ -217,10 +218,9 @@ Azure の分散型サービス拒否 (DDoS) Standard レベルでは、Basic サ
 このブループリントは、Azure Security Center でネットワーク セキュリティ グループの強化された推奨事項を監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、システム境界の管理と統制を支援するものです。 Azure Security Center では、インターネットに接続している仮想マシンのトラフィック パターンが分析され、ネットワーク セキュリティ グループのルールに関連して攻撃を受ける危険性の抑制に役立つ推奨事項が提示されます。
 また、このブルー プリントでは、保護されていないエンドポイント、アプリケーション、ストレージ アカウントを監視するポリシー定義も割り当てられます。 ファイアウォールで保護されていないエンドポイントやアプリケーションがあったり、アクセス制限のないストレージ アカウントがあると、情報システム内の情報に対する意図しないアクセスが許可される恐れがあります。
 
-- インターネットに接続している仮想マシン用のネットワーク セキュリティ グループ ルールは、強化する必要がある
+- アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある
 - インターネットに接続するエンドポイント経由のアクセスを制限する必要がある
 - ストレージ アカウントに対する制限のないネットワーク アクセスの監査
-- IaaS 上の Web アプリケーションに対する NSG 規則を強化する必要がある
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) 境界保護 | アクセス ポイント
 
@@ -239,7 +239,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、通信プロトコル用に実装された暗号化メカニズムを監視するのに役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、送信された情報の機密性と整合性を保護するのに役立ちます。 通信が適切に暗号化されていることを確認することで、組織の要件を満たしたり、承認されていない開示や変更から情報を保護したりできます。
 
 - API アプリには HTTPS を介してのみアクセスできるようにする
-- セキュリティで保護された通信プロトコルを使用していない Windows Web サーバーを監査する
+- セキュリティで保護された通信プロトコルを使用していない Windows Web サーバーからの監査結果を表示する
 - セキュリティで保護された通信プロトコルを使用していない Windows Web サーバーを監査する要件をデプロイする
 - Function App には HTTPS 経由でのみアクセスできるようにする
 - Redis Cache に対してセキュリティで保護された接続のみを有効にする必要がある
@@ -250,7 +250,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 このブループリントは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、保存情報の保護のための暗号化コントロールの使用に関するポリシーの実施を支援するものです。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントにより割り当てられるポリシー定義では、Data Lake Storage アカウントの暗号化と SQL データベースでの Transparent Data Encryption が必須になるほか、SQL データベース、仮想マシン ディスク、Automation アカウント変数の暗号化に漏れがないかどうかが監査されます。
 
-- Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL サーバーに対する Advanced Data Security のデプロイ
 - SQL DB Transparent Data Encryption のデプロイ
@@ -290,11 +290,11 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、さまざまな Azure リソースを対象にログ記録とデータ セキュリティを監査および適用することによって、システムの監視を支援するものです。 具体的には、割り当てられるポリシーによって、Log Analytics エージェントのデプロイが監査および実施されるほか、SQL データベース、ストレージ アカウント、ネットワーク リソースの高度なセキュリティ設定が監査および適用されます。 これらの機能は、異常な動作や攻撃の兆候の検出に役立つので、適切な措置を講じることができるようになります。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
-- Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL サーバーに対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ

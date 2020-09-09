@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078154"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -49,7 +49,7 @@ ms.locfileid: "81536235"
 
 * **Developer** ISE:この SKU にはスケールアップの機能、サービス レベル アグリーメント (SLA)、および公開されている制限はありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
 
-ユーザーが作成して ISE で実行する新しいロジック アプリの場合は、次の機能に対して、[固定の月額料金](https://azure.microsoft.com/pricing/details/logic-apps)を支払います。
+ユーザーが作成して ISE で実行する新しいロジック アプリの場合は、次の機能に対して、[固定の料金](https://azure.microsoft.com/pricing/details/logic-apps) (従量課金ではなく) を支払います。
 
 * [組み込みの](../connectors/apis-list.md#built-in)トリガーとアクション
 
@@ -57,7 +57,7 @@ ms.locfileid: "81536235"
 
 * [標準](../connectors/apis-list.md#managed-connectors)コネクタと[エンタープライズ](../connectors/apis-list.md#enterprise-connectors) コネクタ (必要な数のエンタープライズ接続を確立できます)
 
-   **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、パブリック ("グローバル") なマルチテナント Logic Apps サービスで実行されます。 固定月額料金は、マルチテナント サービスで実行されるコネクタにも適用されます (ISE で実行されるロジック アプリで使用する場合)。
+   **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、パブリック ("グローバル") なマルチテナント Logic Apps サービスで実行されます。 固定料金は、マルチテナント サービスで実行されるコネクタにも適用されます (ISE で実行されるロジック アプリで使用する場合)。
 
 * 追加コストなしの[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。お使いの [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づきます。
 
@@ -77,27 +77,27 @@ ms.locfileid: "81536235"
 
 ## <a name="connectors"></a>Connectors
 
-Azure Logic Apps のコネクタを使用すると、ご自身のロジック アプリに[トリガー](#triggers)、[アクション](#actions)、または両方を用意することで、クラウドまたはオンプレミスのアプリ、サービス、およびシステムにアクセスできます。 コネクタは、標準またはエンタープライズのいずれかとして分類されます。 これらの接続の概要については、「[Azure Logic Apps のコネクタ](../connectors/apis-list.md)」を参照してください。 ロジック アプリで使用する REST API 用の事前構築済みコネクタが利用できない場合、これらの REST API の単なるラッパーである[カスタム コネクタ](https://docs.microsoft.com/connectors/custom-connectors)を作成できます。 カスタム コネクタは標準コネクタとして課金されます。 以下のセクションで、トリガーとアクションの課金のしくみについて詳しく説明します。
+Azure Logic Apps のコネクタを使用すると、ご自身のロジック アプリに[トリガー](#triggers)、[アクション](#actions)、または両方を用意することで、クラウドまたはオンプレミスのアプリ、サービス、およびシステムにアクセスできます。 コネクタは、標準またはエンタープライズのいずれかとして分類されます。 これらの接続の概要については、「[Azure Logic Apps のコネクタ](../connectors/apis-list.md)」を参照してください。 ロジック アプリで使用する REST API 用の事前構築済みコネクタが利用できない場合、これらの REST API の単なるラッパーである[カスタム コネクタ](/connectors/custom-connectors)を作成できます。 カスタム コネクタは標準コネクタとして課金されます。 以下のセクションで、トリガーとアクションの課金のしくみについて詳しく説明します。
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>トリガー
 
-トリガーは、特定のイベントが発生したときに、ロジック アプリ インスタンスを作成する特別なアクションです。 トリガーにはさまざまな動作があり、それによってロジック アプリの課金方法が変わります。 Azure Logic Apps 内に存在するさまざまな種類のトリガーを次に示します。
+トリガーは、常にロジック アプリ ワークフローの最初の手順であり、特定の条件が満たされるか、特定のイベントが発生したときにロジック アプリ インスタンスを作成して実行する特殊なアクションです。 トリガーにはさまざまな動作があり、それによってロジック アプリの課金方法が変わります。 Azure Logic Apps 内に存在するさまざまな種類のトリガーを次に示します。
 
-* **ポーリング トリガー**:このトリガーは、ロジック アプリ インスタンスを作成してワークフローを開始する条件を満たすメッセージの有無について、継続的にエンドポイントをチェックします。 ロジック アプリ インスタンスが作成されていない場合でも、Logic Apps は各ポーリング要求を実行として課金します。 ポーリング間隔を指定するには、ロジック アプリ デザイナーを使用してトリガーを設定します。
+* **繰り返しトリガー**:特定のサービスやシステムに固有のものではないこの汎用トリガーを使用すると、任意のロジック アプリ ワークフローを開始し、トリガーに設定した繰り返し間隔に基づいて実行されるロジック アプリ インスタンスを作成できます。 たとえば、3 日ごとに実行されるトリガーや、より複雑なスケジュールで実行されるトリガーを設定できます。
+
+* **ポーリング トリガー**:通常は特定のサービスやシステムのマネージド コネクタに関連付けられた、このより特殊な繰り返しトリガーを使用すると、トリガーに設定した繰り返し間隔に基づいてロジック アプリ インスタンスを作成および実行するための条件を満たすイベントまたはメッセージがチェックされます。 たとえばトリガーがスキップされたときなど、ロジック アプリ インスタンスが作成されない場合でも、各ポーリング要求は Logic Apps サービスによって実行として測定されます。 ポーリング間隔を指定するには、ロジック アプリ デザイナーを使用してトリガーを設定します。
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook トリガー**:このトリガーは、クライアントが特定のエンドポイントに要求を送信するまで待機します。 Webhook のエンドポイントに送信された個々の要求がアクションの実行としてカウントされます。 たとえば、要求 Webhook トリガーと HTTP Webhook トリガーはどちらも Webhook トリガーです。
-
-* **繰り返しトリガー**:このトリガーは、トリガー内に設定された繰り返し間隔に基づいてロジック アプリ インスタンスを作成します。 たとえば、3 日ごとに実行されるトリガーや、より複雑なスケジュールで実行されるトリガーを設定できます。
+* **Webhook トリガー**:ポーリング トリガーを使用する代わりに、Webhook トリガーを使用して、クライアントが特定のエンドポイント URL でロジック アプリに要求を送信するのを待機することができます。 Webhook のエンドポイントに送信された個々の要求が、アクションの実行としてカウントされます。 たとえば、要求 Webhook トリガーと HTTP Webhook トリガーはどちらも汎用の Webhook トリガーです。 サービスまたはシステムのコネクタの一部にも、Webhook トリガーが備わっています。
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Actions
 
-Logic Apps では、HTTP などの "組み込み" アクションはネイティブ アクションとして課金されます。 たとえば、組み込みアクションには、HTTP 呼び出し、Azure Functions または API Management からの呼び出し、Condition、Loop、Switch ステートメントなどの制御フローのステップが含まれます。 各アクションには、独自のアクションの種類があります。 たとえば、[コネクタ](https://docs.microsoft.com/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 "*プレビュー*" 段階のエンタープライズ コネクタは、標準コネクタとして課金されます。
+Logic Apps では、HTTP などの "組み込み" アクションはネイティブ アクションとして課金されます。 たとえば、組み込みアクションには、HTTP 呼び出し、Azure Functions または API Management からの呼び出し、Condition、Loop、Switch ステートメントなどの制御フローのステップが含まれます。 各アクションには、独自のアクションの種類があります。 たとえば、[コネクタ](/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 "*プレビュー*" 段階のエンタープライズ コネクタは、標準コネクタとして課金されます。
 
 Azure Logic Apps では、すべての成功したアクションと失敗したアクションが実行として課金されます。 ただし、Logic Apps では、次のアクションは課金されません。
 
@@ -116,13 +116,13 @@ Azure Logic Apps では、すべての成功したアクションと失敗した
 
 Azure Logic Apps の [B2B および EDI 機能](logic-apps-enterprise-integration-b2b.md)と [XML 処理機能](logic-apps-enterprise-integration-xml.md)を追加コストなしで調査、開発、およびテストできる[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)には、[固定価格モデル](https://azure.microsoft.com/pricing/details/logic-apps)が適用されます。 各 Azure サブスクリプションでは、[特定の統合アカウントの制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)まで、統合アカウントを持つことができます。 各統合アカウントでは、特定の[成果物の制限](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)まで、成果物 (取引先、契約、マップ、スキーマ、アセンブリ、証明書、バッチ構成など) を格納できます。
 
-Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、スループットと使用に制限があります。 Free レベルの統合アカウントを除いて、各 Azure リージョンで複数の統合アカウントを持つことができます。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
+Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、リージョンの可用性、スループット、および使用に制限があります。 Free レベルの統合アカウントを除いて、各 Azure リージョンで複数の統合アカウントを持つことができます。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
 [Premium または Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のいずれかの ["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合は、お使いの ISE で合計 5 つの統合アカウントを持つことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
 Free、Basic、または Standard の統合アカウントから選択するには、次のユース ケースの説明を確認してください。
 
-* **Free**:運用シナリオではなく、調査シナリオを試す場合。
+* **Free**:運用シナリオではなく、調査シナリオを試す場合。 このレベルは、米国西部や東南アジアなどの Azure のパブリック リージョンのみで利用できますが、[Azure China 21Vianet](/azure/china/overview-operations) または [Azure Government](../azure-government/documentation-government-welcome.md) で利用することはできません。
 
 * **Basic**:メッセージの処理のみを必要とする場合、または大規模なビジネス エンティティと取引パートナー関係がある小規模なビジネス パートナーとして機能する場合。
 

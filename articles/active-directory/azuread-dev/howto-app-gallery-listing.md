@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 08/20/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 662bda03fc2d389ed316bd2c7141d5e6a30cef1a
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666938"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814633"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -99,7 +99,7 @@ Azure AD アプリ ギャラリーにアプリケーションを公開するに�
     * OpenID Connect を使用してギャラリー内の一覧にご利用のアプリケーションを追加する場合は、上記のように **[OpenID Connect & OAuth 2.0]** を選択します。
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
-- **SAML 2.0** または **WS-Fed**:ご利用のアプリで SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
+- **SAML 2.0** または **WS-Fed**:ご利用のアプリで SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../manage-apps/view-applications-portal.md)を使って、Azure AD テナントと直接統合できます。
 
   ![ギャラリーでの SAML 2.0 または WS-Fed アプリケーションの一覧表示](./media/howto-app-gallery-listing/saml.png)
 
@@ -113,7 +113,7 @@ HTML サインイン ページがある Web アプリケーションを作成し
 
 ![ギャラリーでのパスワード SSO アプリケーションの一覧表示](./media/howto-app-gallery-listing/passwordsso.png)
 
-* パスワード SSO を使用してギャラリー内の一覧にご利用のアプリケーションを追加する場合は、上記のように **[Password SSO]** を選択します。
+* パスワード SSO を使用してギャラリー内の一覧にご利用のアプリケーションを追加する場合は、次に示すように **[Password SSO(UserName & Password)]** を選択します。
 * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
 ## <a name="request-for-user-provisioning"></a>ユーザー プロビジョニングの要求

@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/18/2019
-ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/01/2020
+ms.openlocfilehash: 9c7e6733a9149008f6ed98ae7a7e0103f92f79f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234239"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325272"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor ログ レコードの標準プロパティ
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのいずれかにレコード セットとして格納され](../log-query/logs-structure.md)、それぞれが独自のプロパティ セットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
+
+> [!IMPORTANT]
+> APM 2.1 を使用している場合、Application Insights アプリケーションは他のすべてのログ データと共に Log Analytics ワークスペースに格納されます。 テーブルは名前が変更されて再構成されていますが、テーブル内の情報は Application Insights アプリケーションのテーブルと同じです。 これらの新しいテーブルの標準プロパティは、Log Analytics ワークスペース内の他のテーブルと同じです。
 
 > [!NOTE]
 > 標準プロパティのいくつかは、Log Analytics のスキーマ ビューや IntelliSense に表示されず、また、出力でプロパティを明示的に指定しない限り、クエリ結果にも表示されません。
@@ -122,7 +125,7 @@ union withsource = tt *
 複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。
 
 ## <a name="_isbillable"></a>\_IsBillable
-**\_IsBillable** プロパティでは、取り込まれたデータが課金対象かどうかを指定します。 **\_IsBillable** が _false_ のデータは無料で収集され、Azure アカウントには課金されません。
+**\_IsBillable** プロパティでは、取り込まれたデータが課金対象かどうかを指定します。 **\_IsBillable** が `false` のデータは無料で収集され、Azure アカウントには課金されません。
 
 ### <a name="examples"></a>例
 課金対象のデータ型を送信しているコンピューターの一覧を取得するには、次のクエリを使用します。
@@ -208,5 +211,6 @@ union withsource = tt *
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor ログ データの格納](../log-query/log-query-overview.md)方法の詳細を確認する。
-- [ログ クエリの作成](../../azure-monitor/log-query/get-started-queries.md)に関するレッスンを参照する。
-- [ログ クエリでのテーブルの結合](../../azure-monitor/log-query/joins.md)に関するレッスンを参照する。
+- [ログ クエリの作成](../log-query/get-started-queries.md)に関するレッスンを参照する。
+- [ログ クエリでのテーブルの結合](../log-query/joins.md)に関するレッスンを参照する。
+

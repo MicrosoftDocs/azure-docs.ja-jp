@@ -1,21 +1,21 @@
 ---
-title: Azure Monitor for Cosmos DB (プレビュー) で Azure Cosmos DB を監視する | Microsoft Docs
+title: Azure Monitor for Cosmos DB で Azure Cosmos DB を監視する | Microsoft Docs
 description: この記事では、Cosmos DB の所有者が CosmosDB アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Cosmos DB の機能について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/11/2020
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250677"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498918"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor for Azure Cosmos DB (プレビュー) の詳細
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB の探索
 
-Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB リソースの全体的なパフォーマンス、エラー、容量、操作上の正常性を、一元的な対話型エクスペリエンスで把握できます。 この記事では、この新しい監視エクスペリエンスの利点のほか、組織固有のニーズを満たすようそのエクスペリエンスに変更を加え、調整する方法をわかりやすく説明しています。   
+Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos DB リソースの全体的なパフォーマンス、障害、容量、操作の正常性を、統合された対話型エクスペリエンスで表示できます。 この記事では、この新しい監視エクスペリエンスの利点のほか、組織固有のニーズを満たすようそのエクスペリエンスに変更を加え、調整する方法をわかりやすく説明しています。   
 
 ## <a name="introduction"></a>はじめに
 
@@ -44,7 +44,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
     ![[サービス] の [監視] ドロップダウンとスピードメーターのスタイル画像が表示される検索ボックスに「監視」と入力したところ](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. **[Cosmos DB (プレビュー)]** を選択します。
+3. **[Cosmos DB]** を選択します。
 
     ![Cosmos DB の概要ブックのスクリーンショット](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -78,7 +78,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 | `201 Created` | リソースを作成するための POST 操作が成功しました。 |
 | `404 Not Found` | もう存在していないリソースを操作しようとしています。 たとえば、リソースは既に削除されている可能性があります。 |
 
-詳細な状態コード一覧については、[Azure Cosmos DB HTTP 状態コードに関する記事](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)を参照してください。
+詳細な状態コード一覧については、[Azure Cosmos DB HTTP 状態コードに関する記事](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)を参照してください。
 
 ### <a name="capacity"></a>容量
 
@@ -98,7 +98,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
 ## <a name="pin-export-and-expand"></a>ピン留め、エクスポート、展開
 
-セクションの右上にある画びょうアイコンを選択すると、メトリックのどのセクションでも [Azure ダッシュボード](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)にピン留めできます。
+セクションの右上にある画びょうアイコンを選択すると、メトリックのどのセクションでも [Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にピン留めできます。
 
 ![メトリック セクションのダッシュボードへのピン留めの例](./media/cosmosdb-insights-overview/pin.png)
 
@@ -110,7 +110,7 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
 ![ブックの展開アイコン](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Monitor for Azure Cosmos DB (プレビュー) のカスタマイズ
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB のカスタマイズ
 
 このエクスペリエンスは、Azure Monitor ブック テンプレートをベースに作成されているため、 **[カスタマイズ]**  >  **[編集]** して、編集したバージョンのコピーをカスタム ブックに **[保存]** することができます。 
 
@@ -120,8 +120,12 @@ Azure Monitor for Azure Cosmos DB (プレビュー) では、全 Azure Cosmos DB
 
 ![コマンド バーからブック ギャラリーを起動する](./media/cosmosdb-insights-overview/gallery.png)
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+トラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングの記事](troubleshoot-workbooks.md)を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
-* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../app/usage-workbooks.md)」で学習してください。
+* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。

@@ -4,19 +4,19 @@ description: クラウド アプリへのアクセスにマネージド デバ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 11/22/2019
+ms.topic: how-to
+ms.date: 06/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481485"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948829"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -28,7 +28,7 @@ ms.locfileid: "79481485"
 
 クラウド アプリへのアクセスにマネージド デバイスを要求すると、**Azure AD の条件付きアクセス**と **Azure AD のデバイス管理**が連携します。 これらの領域を十分に理解してない場合は、次のトピックを先に読んでおく必要があります。
 
-- **[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)** - この記事は、条件付きアクセスと関連する用語の概念的な概要を説明しています。
+- **[Azure Active Directory の条件付きアクセス](./overview.md)** - この記事は、条件付きアクセスと関連する用語の概念的な概要を説明しています。
 - **[Azure Active Directory のデバイス管理の概要](../devices/overview.md)** - この記事は、組織の管理下にあるデバイスを取得する際に使用できるさまざまなオプションの概要を説明しています。 
 - **Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
 
@@ -96,7 +96,31 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 - 従業員が情報にアクセスして共有する方法の統制を補助することによって、会社の情報が保護されている
 - デバイスとそのアプリが会社のセキュリティ要件に準拠している
 
+### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>シナリオ:iOS および Android デバイスのデバイス登録が必要
+
+このシナリオでは、Office 365 リソースへのすべてのモバイル アクセスで、登録されたデバイスを使用する必要があると判断されました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
+
+組織は、登録済みモバイル デバイスの使用を必須とするために、以下の手順を完了する必要があります。
+
+1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
+1. **[新しいポリシー]** を選択します。
+1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
+1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
+   1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択するか、このポリシーを適用する特定の**ユーザーとグループ**を選択します。 
+   1. **[Done]** を選択します。
+1. **[クラウド アプリまたは操作]**  >  **[Include]\(含める\)** で、 **[Office 365 (プレビュー)]** を選択します。
+1. **[条件]** で、 **[デバイス プラットフォーム]** を選択します。
+   1. **[構成]** を **[はい]** に設定します。
+   1. **Android** と **iOS** を含めます。
+1. **[アクセス制御]**  >  **[付与]** で、次のオプションを選択します。
+   - **デバイスは準拠としてマーク済みである必要があります**
+1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+1. **[作成]** を選択し、ポリシーを作成して有効にします。
+
 ### <a name="known-behavior"></a>既知の動作
+
+[デバイスコードの OAuth フロー](../develop/v2-oauth2-device-code.md)を使用する場合、マネージド デバイスを要求する許可コントロールや、デバイスの状態の条件は、サポートされません。 これは、認証を実行するデバイスがそのデバイスの状態を、コードを提供するデバイスに提供できず、トークン内のデバイスの状態が、認証を行うデバイスにロックされるためです。 代わりに、多要素認証を要求する許可コントロールを使用してください。
 
 Windows 7、iOS、Android、macOS、および一部のサードパーティ製 Web ブラウザーでは、Azure AD によって、デバイスが Azure AD に登録されるときにプロビジョニングされたクライアント証明書を使用してデバイスが識別されます。 ユーザーは、ブラウザーで最初にサインインするときに、証明書の選択を求められます。 エンド ユーザーは、ブラウザーを引き続き使用する前に、この証明書を選択する必要があります。
 

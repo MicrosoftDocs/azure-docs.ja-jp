@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79140896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078716"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) にリソースを追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "79140896"
 
 * ロジック アプリを実行するために作成した ISE。 ISE がない場合は、[まず ISE を作成します](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
-* ISE にデプロイされたリソースを更新したり、そのようなリソースを作成または追加したりするには、その ISE における所有者または共同作成者のロールが割り当てられているか、ISE に関連付けられている Azure リソース グループまたは Azure サブスクリプションからアクセス許可が継承されている必要があります。 所有者、共同作成者、継承されたアクセス許可のいずれも持たないユーザーには、統合サービス環境の共同作成者ロールまたは統合サービス環境の開発者ロールを割り当てることができます。 ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure リソースのロールベースのアクセス制御 (RBAC) の概要](../role-based-access-control/overview.md)」を参照してください。
+* ISE にデプロイされたリソースを更新したり、そのようなリソースを作成または追加したりするには、その ISE における所有者または共同作成者のロールが割り当てられているか、ISE に関連付けられている Azure リソース グループまたは Azure サブスクリプションからアクセス許可が継承されている必要があります。 所有者、共同作成者、継承されたアクセス許可のいずれも持たないユーザーには、統合サービス環境の共同作成者ロールまたは統合サービス環境の開発者ロールを割り当てることができます。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 
 <a name="create-logic-apps-environment"></a>
 
@@ -127,7 +127,7 @@ ISE でカスタム コネクタを使用するには、ISE 内から直接こ�
 
    ![カスタム コネクタを選択して編集する](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 
-1. [OpenAPI 定義](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)または [SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector) から通常の方法でコネクタを作成して続行します。
+1. [OpenAPI 定義](/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)または [SOAP](/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector) から通常の方法でコネクタを作成して続行します。
 
 1. ISE でカスタム コネクタを管理するには、[統合サービス環境の管理](../logic-apps/ise-manage-integration-service-environment.md)に関する記事を参照してください。
 

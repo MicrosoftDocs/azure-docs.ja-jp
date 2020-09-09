@@ -1,6 +1,6 @@
 ---
 title: 追加認証ページとは - Azure AD
-description: 2 要素認証のために [追加のセキュリティ確認] ページを取得する方法。
+description: 2 要素認証のために [追加のセキュリティ確認] ページに移動する方法
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,38 +8,47 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 47220bc721092005c7e4d65a00eb933cd5c49a8c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746758"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795985"
 ---
 # <a name="what-is-the-additional-verification-page"></a>追加認証ページとは
 
-組織によってお客様のアカウントに対して追加のセキュリティ確認が加えられたという内容のメールを IT 部門のだれかまたは上司から受け取りました。 これはどういう意味でしょうか。 これは、組織が、あなたがサインインするときに本人であることを確認する追加の手順を採用していることを意味します。 2 要素認証とも呼ばれるこの追加の確認は、ユーザー名、パスワード、携帯端末または携帯電話の組み合わせによって行われます。
+あなたの組織では、あなたがサインインするときに本人であることを確認する追加の手順を採用しています。 この追加のセキュリティ検証は、2 要素認証とも呼ばれます。 これは、ユーザー名、パスワード、モバイル デバイスまたは電話の組み合わせで構成されます。 alain@outlook.com などの Microsoft アカウントで 2 要素認証をオフにするだけの場合は、「[Microsoft アカウントの 2 段階認証を有効または無効にする](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)」の手順に従います。
 
-2 要素認証では、ユーザーが知っているものとユーザーが所有するものの 2 つの形式の認証を使用するため、パスワードだけよりも安全性が高くなります。 ユーザーが知っているものは、パスワードです。 ユーザーが所有するものは、ユーザーが通常携帯している電話やデバイスです。 2 要素認証は、悪意のあるハッカーによるなりすましを防ぐのに役立ちます。なぜなら、悪意のあるハッカーがあなたのパスワードを知っていたとしても、あなたのデバイスを持っていない可能性も高いためです。
+<center>
+
+![認証方法の概念画像](../authentication/media/concept-mfa-howitworks/methods.png)</center>
+
+2 要素認証では、次の 2 つの形式の認証を使用するため、パスワードだけよりも安全性が高くなります。
+
+- ユーザーが知っているも (パスワードなど)。
+- ユーザーが所持しているもの (携帯電話やその他のデバイス)。
+
+2 要素認証を使用すると、悪意のあるハッカーがなりすますのを防ぐのに役立ちます。 パスワードが知られてしまった場合でも、デバイスは持っていない可能性が高いです。
 
 >[!Important]
->この記事は、職場または学校アカウント (alain@contoso.com など) で 2 要素認証を使用しようとしているユーザーを対象としています。 従業員その他のユーザーに対して 2 要素認証を有効にする方法に関する情報を探している管理者の方は、「[Azure Active Directory 認証のドキュメント](https://docs.microsoft.com/azure/active-directory/authentication/)」を参照してください。
+>従業員その他のユーザーに対して 2 要素認証を有効にする方法に関する情報を探している管理者の方は、「[Azure Active Directory 認証のドキュメント](../authentication/index.yml)」を参照してください。 この記事は、職場または学校アカウント (alain@contoso.com など) で 2 要素認証を使用しようとしているユーザーを対象としています。
 
 ## <a name="who-decides-if-you-use-this-feature"></a>この機能の使用を決定するユーザー
 
-アカウントの種類に応じて、2 要素認証を使用しなければならないことをお客様の組織が決定する場合、またはお客様が自分で決定できる場合があります。
+2 要素認証を使用するかどうかを誰が決定するかは、所有しているアカウントの種類によって異なります。
 
-- **職場または学校のアカウント。** 職場または学校アカウント (例: alain@contoso.com) を使用している場合、お客様が 2 要素認証を使用しなければならないかどうかは、特定の認証方法と共にお客様の組織が決定します。 この機能を使用しなければならないことは組織の決定であるため、個人でこれを無効にすることはできません。
+- **職場または学校のアカウント。** 職場または学校アカウント (alain@contoso.com など) を使用している場合、お客様が 2 要素認証を使用するかどうかは、特定の認証方法と共にお客様の組織が決定します。 この機能を使用しなければならないことは組織の決定であるため、個人でこれを無効にすることはできません。
 
-- **個人の Microsoft アカウント。** 個人の Microsoft アカウント (例: alain@outlook.com) の場合、2 要素認証の設定を選択できます。 2 要素認証とご自分の個人の Microsoft アカウントで問題が発生する場合は、「[Microsoft アカウントの 2 段階認証を有効または無効にする](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)」を参照してください。 この機能の使用はユーザーが選択するので、ユーザーは必要に応じていつでもこれをオンまたはオフにできます。
+- **個人の Microsoft アカウント。** 個人の Microsoft アカウント (alain@outlook.com など) の場合、2 要素認証の設定を選択できます。 [Microsoft アカウントに対する 2 要素認証のオンとオフの切り替え](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページの簡単な手順を使用して、いつでもオンまたはオフにすることができます。
 
     >[!Note]
-    >2 要素認証およびいずれかの個人用 Microsoft アカウント (danielle@outlook.com など) で問題が発生している場合は、「[Microsoft アカウントで 2 段階認証を使用する方法](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification)」に記載されている推奨事項をお試しください。
+    >2 要素認証およびいずれかの個人用 Microsoft アカウントで問題が発生している場合は、[Microsoft アカウントで 2 段階認証を使用する方法](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification)に関するページでいくつかの推奨事項をご確認ください。
 
-## <a name="access-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページにアクセスする
+## <a name="open-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページを開く
 
-ご自分の組織で 2 要素認証をオンにして設定を行ったら、ご自分のアカウントのセキュリティを確保する詳細情報の提供を求めるプロンプトが表示されます。
+ご自分の組織で 2 要素認証がオンにされると、サインインするたびに、ご自分のアカウントのセキュリティを確保する詳細情報の提供を求めるプロンプトが表示されます。
 
 ![詳細情報を要求するプロンプト](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
 
@@ -49,17 +58,17 @@ ms.locfileid: "83746758"
 
     **[追加のセキュリティ確認]** ページが表示されます。
 
-2. ご自分の職場または学校アカウントへのサインイン後、ユーザー確認にどの 2 要素認証方法を使用するかを、 **[追加のセキュリティ確認]** ページで決定する必要があります。 選択できるオプションは次のとおりです。
+2. **[追加のセキュリティ確認]** ページで、職場または学校アカウントにサインインするときに本人確認を行うために使用する使用する 2 要素認証の方法を選択します。 選択できるオプションは次のとおりです。
 
     | 連絡方法 | 説明 |
     | --- | --- |
-    | モバイル アプリ | <ul><li>**[確認のため通知を受け取る]** : このオプションは、ユーザーのスマート フォンまたはタブレット上の認証アプリに通知をプッシュします。 通知を確認し、適切である場合は、アプリで **[認証]** を選択するだけです。 会社または学校の場合は、認証する前に PIN を入力する必要があります。</li><li>**[確認コードを使用する]** : このモードでは、認証アプリは 30 秒ごとに更新される確認コードを生成します。 サインイン画面に最新の確認コードを入力します。<br>Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594) および [iOS](https://go.microsoft.com/fwlink/?linkid=866594) で利用できます。</li></ul> |
+    | モバイル アプリ | <ul><li>**[確認のため通知を受け取る]** : このオプションは、ユーザーのスマート フォンまたはタブレット上の認証アプリに通知をプッシュします。 通知を確認し、適切である場合は、アプリで **[認証]** を選択するだけです。 会社または学校の場合は、認証する前に PIN を入力する必要があります。</li><li>**[確認コードを使用する]** : このモードでは、アプリにより 30 秒ごとに更新される確認コードが生成されます。 サインイン画面に最新の確認コードを入力します。<br>Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594) および [iOS](https://go.microsoft.com/fwlink/?linkid=866594) で利用できます。</li></ul> |
     | 認証用電話 | <ul><li>**[電話]** はユーザーが指定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # (シャープ記号) を押して認証を行います。</li><li>**[テキスト メッセージ]** は確認コードを含むテキスト メッセージを送信します。 テキスト内の指示に従って、テキスト メッセージに返信するか、指定された確認コードをサインイン インターフェイスに入力します。</li></ul> |
     | 会社電話 | ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # (シャープ記号) を押して認証を行います。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-**[追加のセキュリティ確認]** ページにアクセスしたら、ご自分の 2 要素認証方法を選択して設定する必要があります。
+**[追加のセキュリティ確認]** ページで 2 要素認証の方法を選択したら、それを設定する必要があります。
 
 - [モバイル デバイスを認証方法として設定する](multi-factor-authentication-setup-phone-number.md)
 
@@ -69,10 +78,6 @@ ms.locfileid: "83746758"
 
 ## <a name="related-resources"></a>関連リソース
 
-- [2 要素認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md)
-
-- [アプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)
-
 - [2 要素認証を使用してサインインする](multi-factor-authentication-end-user-signin.md)
 
-- [2 要素認証のサポートを受ける](multi-factor-authentication-end-user-troubleshoot.md) 
+- [2 要素認証のサポートを受ける](multi-factor-authentication-end-user-troubleshoot.md)

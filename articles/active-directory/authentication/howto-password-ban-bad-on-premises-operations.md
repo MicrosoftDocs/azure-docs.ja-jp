@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652631"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419769"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を有効にする
 
@@ -40,7 +40,7 @@ ms.locfileid: "80652631"
 1. 最初に **[モード]** を "*監査*" に設定しておくことをお勧めします。 機能と組織内のユーザーへの影響を把握し終えたら、 **[モード]** を "*強制*" に切り替えてかまいません。 詳細については、次の「[操作のモード](#modes-of-operation)」のセクションを参照してください。
 1. 準備ができたら、 **[保存]** を選択します。
 
-    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
+    [![Azure portal の [認証方法] でオンプレミスのパスワード保護を有効にする](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
 ## <a name="modes-of-operation"></a>操作のモード
 

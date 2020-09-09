@@ -1,29 +1,29 @@
 ---
 title: リソースが見つからないエラー
-description: Azure Resource Manager テンプレートでデプロイ時にリソースが見つからないエラーを解決する方法について説明します。
+description: リソースが見つからない場合のエラーを解決する方法について説明します。 このエラーは、Azure Resource Manager テンプレートをデプロイするとき、または管理アクションを実行するときに発生する可能性があります。
 ms.topic: troubleshooting
-ms.date: 01/21/2020
-ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/10/2020
+ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667949"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
+# <a name="resolve-resource-not-found-errors"></a>リソースが見つからないエラーを解決する
 
-この記事では、デプロイ時にリソースが見つからない場合に発生するエラーについて説明します。
+この記事では、操作中にリソースが見つからないときに発生するエラーについて説明します。 通常、このエラーは、リソースをデプロイしているときに発生します。 また、管理タスクを実行しているときに、Azure Resource Manager で必要なリソースが見つからない場合にもこのエラーは発生します。 たとえば、存在しないリソースにタグを追加しようとすると、このエラーが発生します。
 
 ## <a name="symptom"></a>症状
 
-解決できないリソースの名前がテンプレートに含まれている場合、次のようなエラーが表示されます。
+リソースが見つからないことを示す 2 つのエラー コードがあります。 **NotFound** エラーでは、次のような結果が返されます。
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-解決できないリソースで [reference](template-functions-resource.md#reference) または [listKeys](template-functions-resource.md#listkeys) 関数を使用すると、次のエラーが発生します。
+**ResourceNotFound** エラーでは、次のような結果が返されます。
 
 ```
 Code=ResourceNotFound;
@@ -33,11 +33,23 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>原因
 
-Resource Manager はリソースのプロパティを取得する必要がありますが、サブスクリプション内のリソースを識別できません。
+Resource Manager でリソースのプロパティを取得する必要がありますが、お使いのサブスクリプション内でリソースを見つけることができません。
 
-## <a name="solution-1---set-dependencies"></a>解決策 1 - 依存関係を設定する
+## <a name="solution-1---check-resource-properties"></a>解決策 1 - リソースのプロパティを確認する
 
-不足しているリソースをテンプレートにデプロイする場合は、依存関係を追加する必要があるかどうかを確認してください。 Resource Manager は、可能であれば複数のリソースを並列して作成することで、デプロイを最適化しています。 リソースを順番にデプロイする必要がある場合は、テンプレートで **dependsOn** 要素を使用する必要があります。 たとえば、Web アプリをデプロイする場合は、App Service プランが存在する必要があります。 Web アプリが App Service プランに依存していることを指定しなかった場合、Resource Manager では同時に両方のリソースが作成されます。 また、App Service プランのリソースが見つからないというエラーが発生します。これは、Web アプリにプロパティを設定しようとしたときに、そのリソースがまだ存在しないためです。 このエラーは、Web アプリに依存関係を設定することで回避します。
+管理タスクの実行中にこのエラーが発生した場合は、リソースに指定した値を確認してください。 次の 3 つの値を確認します。
+
+* リソース名
+* リソース グループ名
+* サブスクリプション
+
+PowerShell または Azure CLI を使用している場合は、リソースが含まれているサブスクリプションでコマンドを実行しているかどうかを確認します。 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) または [az account set](/cli/azure/account#az-account-set) を使用して、サブスクリプションを変更できます。 多くのコマンドにも、現在のコンテキストとは異なるサブスクリプションを指定できるサブスクリプション パラメーターが用意されています。
+
+プロパティを確認するのが難しい場合は、[ポータル](https://portal.azure.com)にサインインします。 使用しようとしているリソースを検索し、リソース名、リソース グループ、およびサブスクリプションを調べます。
+
+## <a name="solution-2---set-dependencies"></a>解決策 2 - 依存関係を設定する
+
+テンプレートをデプロイするときにこのエラーが発生した場合は、依存関係の追加が必要になることがあります。 Resource Manager は、可能であれば複数のリソースを並列して作成することで、デプロイを最適化しています。 リソースを順番にデプロイする必要がある場合は、テンプレートで **dependsOn** 要素を使用する必要があります。 たとえば、Web アプリをデプロイする場合は、App Service プランが存在する必要があります。 Web アプリが App Service プランに依存していることを指定しなかった場合、Resource Manager では同時に両方のリソースが作成されます。 また、App Service プランのリソースが見つからないというエラーが発生します。これは、Web アプリにプロパティを設定しようとしたときに、そのリソースがまだ存在しないためです。 このエラーは、Web アプリに依存関係を設定することで回避します。
 
 ```json
 {
@@ -70,9 +82,13 @@ Resource Manager はリソースのプロパティを取得する必要があり
 
    ![連続デプロイ](./media/error-not-found/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>解決策 2 - 別のリソース グループからリソースを取得する
+## <a name="solution-3---get-external-resource"></a>ソリューション 3 - 外部リソースを取得する
 
-デプロイ先とは別のリソース グループにリソースが存在する場合は、[resourceId 関数](template-functions-resource.md#resourceid)を使用して、リソースの完全修飾名を取得します。
+テンプレートをデプロイするときに、別のサブスクリプションまたはリソース グループに存在するリソースを取得する必要がある場合は、[resourceId 関数](template-functions-resource.md#resourceid)を使用します。 リソースの完全修飾名を取得するには、この関数が返ります。
+
+resourceId 関数のサブスクリプションとリソース グループのパラメーターは省略可能です。 指定しない場合は、既定で現在のサブスクリプションとリソース グループが使用されます。 別のリソース グループまたはサブスクリプション内のリソースを操作する場合は、それらの値を指定していることを確認してください。
+
+次の例では、別のリソース グループに存在するリソースのリソース ID を取得します。
 
 ```json
 "properties": {
@@ -81,22 +97,39 @@ Resource Manager はリソースのプロパティを取得する必要があり
 }
 ```
 
-## <a name="solution-3---check-reference-function"></a>解決策 3 - reference 関数を確認する
-
-[reference](template-functions-resource.md#reference) 関数を含む式を検索してください。 指定する値は、リソースが同じテンプレート、リソース グループ、およびサブスクリプション内にあるかどうかに応じて異なります。 シナリオで必要なパラメーター値を指定していることを再確認してください。 リソースが別のリソース グループ内にある場合は、完全なリソース ID を指定します。 たとえば、別のリソース グループのストレージ アカウントを参照するには、次のコードを使用します。
-
-```json
-"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
-```
-
 ## <a name="solution-4---get-managed-identity-from-resource"></a>解決策 4 - リソースからマネージド ID を取得する
 
 [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を暗黙的に作成するリソースをデプロイする場合は、そのリソースがデプロイされるまで待機してから、マネージド ID の値を取得する必要があります。 マネージ ID 名を [reference](template-functions-resource.md#reference) 関数に渡すと、Resource Manager はリソースと ID がデプロイされる前に参照の解決を試みます。 代わりに、ID が適用されるリソースの名前を渡します。 この方法では、Resource Manager が参照関数を解決する前に、リソースとマネージド ID が確実にデプロイされます。
 
 Reference 関数では、`Full` を使用して、マネージド ID を含むすべてのプロパティを取得します。
 
-たとえば、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+パターンは次のとおりです。
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+> [!IMPORTANT]
+> 次のパターンは使用しません。
+>
+> `"[reference(concat(resourceId(<resource-provider-namespace>, <resource-name>),'/providers/Microsoft.ManagedIdentity/Identities/default'),<API-version>).principalId]"`
+>
+> テンプレートが失敗します。
+
+たとえば、仮想マシンに適用されるマネージド ID のプリンシパル ID を取得するには、次を使用します。
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+または、仮想マシン スケール セットに適用されるマネージド ID のテナント ID を取得するには、次を使用します。
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
+```
+
+## <a name="solution-5---check-functions"></a>ソリューション 5 - 関数を確認する
+
+テンプレートをデプロイするときに、[reference](template-functions-resource.md#reference) または [listKeys](template-functions-resource.md#listkeys) 関数を使用する式を探します。 指定する値は、リソースが同じテンプレート、リソース グループ、およびサブスクリプション内にあるかどうかに応じて異なります。 シナリオに必要なパラメーター値を指定していることを確認してください。 リソースが別のリソース グループ内にある場合は、完全なリソース ID を指定します。 たとえば、別のリソース グループのストレージ アカウントを参照するには、次のコードを使用します。
+
+```json
+"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```

@@ -3,20 +3,19 @@ title: Azure Migrate での物理サーバーの移行のサポート
 description: Azure Migrate での物理サーバーの移行のサポートについて説明します。
 ms.topic: conceptual
 ms.custom: fasttrack-edit
-ms.date: 01/07/2020
-ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 06/14/2020
+ms.openlocfilehash: fe23989845d3c0b229a194c9a2a58f879b757811
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770341"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 
 この記事では、[Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) で物理サーバーを移行するためのサポートの設定および制限を要約しています。 Azure への移行のための物理サーバーの評価に関する情報を探している場合は、[評価のサポート マトリックス](migrate-support-matrix-physical.md)を確認してください。
 
-
-## <a name="overview"></a>概要
+## <a name="migrating-machines-as-physical"></a>物理としてのコンピューターの移行
 
 エージェント ベースのレプリケーションを使用して、オンプレミスのコンピューターを物理サーバーとして移行できます。 このツールを使用すると、さまざまなマシンを Azure に移行できます。
 

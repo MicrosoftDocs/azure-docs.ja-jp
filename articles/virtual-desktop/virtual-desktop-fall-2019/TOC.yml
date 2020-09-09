@@ -1,10 +1,10 @@
-- name: Windows Virtual Desktop Fall 2019 リリース
+- name: Windows Virtual Desktop (クラシック)
   href: ../index.yml
 - name: 概要
   items:
     - name: Windows Virtual Desktop とは
       href: ../overview.md
-    - name: Spring 2020 リリースのドキュメント
+    - name: Windows Virtual Desktop のドキュメント
       href: ../create-host-pools-azure-marketplace.md
 - name: チュートリアル
   items:
@@ -24,6 +24,8 @@
   items:
     - name: Windows Virtual Desktop リソースに接続する
       items:
+        - name: Windows デスクトップ クライアントを使用して接続する
+          href: connect-windows-7-10-2019.md
         - name: Web クライアントに接続する
           href: connect-web-2019.md
         - name: Android クライアントに接続する
@@ -68,6 +70,8 @@
           href: diagnostics-log-analytics-2019.md
     - name: 組み込みアプリの公開
       href: publish-apps-2019.md
+    - name: Azure Multi-Factor Authentication を設定する
+      href: ../set-up-mfa.md
 - name: 概念
   items:
     - name: Windows Virtual Desktop の環境

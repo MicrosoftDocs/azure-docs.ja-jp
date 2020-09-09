@@ -8,19 +8,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582698"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799555"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -107,7 +107,7 @@ Exchange Online を使用する場合は、組織内の一部のユーザーが�
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)に関する情報も確認できます。
+> この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps)に関する情報も確認できます。
 
 関連するユーザーのプロキシ アドレスの問題を解決したら、グループのライセンス処理を強制的に実行して、ライセンスが適用できるようになったことを確認してください。
 
@@ -120,7 +120,7 @@ Exchange Online を使用する場合は、組織内の一部のユーザーが�
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>監査ログの LicenseAssignmentAttributeConcurrencyException
 
 **問題**:ライセンス割り当ての LicenseAssignmentAttributeConcurrencyException がユーザーの監査ログに記録されています。
-グループベースのライセンスで、ユーザーに対する同じライセンスの同時ライセンス割り当てを処理しようとすると、この例外がユーザーに記録されます。 これは通常、同じライセンスが割り当てられた複数のグループにユーザーが属している場合に発生します。 AZure AD はユーザー ライセンスの処理を再試行し、問題を解決します。 この問題を解決するためにお客様の対処は必要ありません。
+グループベースのライセンスで、ユーザーに対する同じライセンスの同時ライセンス割り当てを処理しようとすると、この例外がユーザーに記録されます。 これは通常、同じライセンスが割り当てられた複数のグループにユーザーが属している場合に発生します。 Azure AD ではユーザー ライセンスの処理が再試行され、問題が解決されます。 この問題を解決するためにお客様の対処は必要ありません。
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>1 つのグループに割り当てられた複数の製品ライセンス
 

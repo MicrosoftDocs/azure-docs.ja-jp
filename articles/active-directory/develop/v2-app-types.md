@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677983"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121172"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -25,7 +25,7 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントでは、さ�
 
 ## <a name="the-basics"></a>基本
 
-Microsoft ID プラットフォーム エンドポイントを使う各アプリを、新しい[アプリ登録ポータル](https://go.microsoft.com/fwlink/?linkid=2083908)で登録する必要があります。 アプリの登録プロセスでは、次の値が収集され、対象のアプリに割り当てられます。
+Microsoft ID プラットフォーム エンドポイントを使う各アプリを、Azure portal の[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)で登録する必要があります。 アプリの登録プロセスでは、次の値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する **アプリケーション (クライアント) ID**
 * 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
@@ -42,13 +42,19 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>シングル ページ アプリ (JavaScript)
 
-最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 Angular、React、または Vue などのフレームワークを使用して記述されていることも、少なくありません。 Microsoft ID プラットフォーム エンドポイントでは、[OAuth 2.0 暗黙的フロー](v2-oauth2-implicit-grant-flow.md)を使用してこれらのアプリがサポートされます。
+最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあり、Angular、React、Vue などのフレームワークと共に使用されることもあります。 Microsoft ID プラットフォーム エンドポイントでは、[OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)を使用してこれらのアプリがサポートされます。
 
-このフローでは、アプリは Microsoft ID プラットフォーム承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、余分なページのリダイレクトなしに、JavaScript クライアント内ですべて行うことができます。
+このフローでは、アプリは Microsoft ID プラットフォームの `authorize` エンドポイントからコードを受け取り、クロス サイト Web 要求を使用してトークンと更新トークンに引き換えます。 更新トークンは 24 時間ごとに期限切れになるため、アプリは別のコードを要求する必要があります。
 
-![暗黙的な認証フロー](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![SPA アプリのコード フロー](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 
-このシナリオを実際に確認するには、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの、いずれかのシングル ページ アプリのコード サンプルを試してください。
+実際のシナリオについては、[認証コード フローを使用して、ユーザーをサインインし、JavaScript SPA から Microsoft Graph API を呼び出すチュートリアル](tutorial-v2-javascript-auth-code.md)を参照してください。
+
+### <a name="authorization-code-flow-vs-implicit-flow"></a>認証コード フローと暗黙的なフロー
+
+これまでの OAuth 2.0 のほとんどで、シングルページ アプリを作成するために推奨される方法は[暗黙的なフロー](v2-oauth2-implicit-grant-flow.md)でした。 [サード パーティの Cookie](reference-third-party-cookies-spas.md) が削除され、暗黙的なフローに関するセキュリティ上の懸念が[高まってきた](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14)ことから、シングルページ アプリの認証コード フローに移行しました。
+
+Safari およびその他のプライバシーを意識したブラウザーでアプリの互換性を確保するために、暗黙的なフローを使用することは推奨しなくなりました。代わりに、認証コード フローを推奨します。
 
 ## <a name="web-apps"></a>Web Apps
 
@@ -77,7 +83,8 @@ Microsoft ID プラットフォーム エンドポイントから受け取った
 
 このシナリオを実際に確認するには、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの、いずれかの Web アプリ サインインのコード サンプルを試してください。
 
-Web サーバー アプリは、単純なサインインを実行するだけでなく、REST API をはじめとする他の Web サービスにアクセスすることが必要な場合があります。 この場合、Web サーバー アプリは、OpenID Connect と OAuth 2.0 を組み合わせたフローに関与します。その際使用されるのが [OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md)です。 このシナリオの詳細については、[Web アプリと Web API の使用の開始](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)に関する記事を参照してください。
+Web サーバー アプリは、単純なサインインを実行するだけでなく、REST API をはじめとする他の Web サービスにアクセスすることが必要な場合があります。 この場合、Web サーバー アプリは、OpenID Connect と OAuth 2.0 を組み合わせたフローに関与します。その際使用されるのが [OAuth 2.0 承認コード フロー](v2-oauth2-auth-code-flow.md)です。 このシナリオの詳細については、[Web アプリと Web API の使用の開始](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)に関する記事を参照してください。
+
 
 ## <a name="web-apis"></a>Web API
 
@@ -120,3 +127,7 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティで
 ![デーモン アプリの認証フロー](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 デーモン アプリを作成するには、[クライアントの資格情報に関する記述](v2-oauth2-client-creds-grant-flow.md)を参照するか、[.NET サンプル アプリ](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)をお試しください。
+
+## <a name="next-steps"></a>次のステップ
+
+Microsoft ID プラットフォームでサポートされているアプリケーションの種類について説明しました。さまざまなシナリオで使用されるプロトコル コンポーネントについて理解を深めるため、[OAuth 2.0 と OpenID Connect](active-directory-v2-protocols.md) の詳細についてご覧ください。

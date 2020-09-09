@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75377907"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246692"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元
 
@@ -52,7 +52,7 @@ Azure Service Fabric では、Reliable Stateful サービスおよび Reliable A
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>ディザスター リカバリーの場合のデータ復元
 
-Service Fabric クラスター全体が失われた場合は、Reliable Stateful サービスと Reliable Actors のパーティションのデータを復元できます。 目的のバックアップは、[バックアップ ストレージ詳細での GetBackupAPI](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation) を使用するときに一覧から選択できます。 アプリケーション、サービス、またはパーティションのバックアップを列挙できます。
+Service Fabric クラスター全体が失われた場合は、Reliable Stateful サービスと Reliable Actors のパーティションのデータを復元できます。 目的のバックアップは、[バックアップ ストレージ詳細での GetBackupAPI](/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation) を使用するときに一覧から選択できます。 アプリケーション、サービス、またはパーティションのバックアップを列挙できます。
 
 次の例では、失われたクラスターが 「[Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)」で言及されている同じクラスターであるとします。 この場合、`SampleApp` は、バックアップ ポリシーを有効にしてデプロイされ、バックアップは Azure Storage に対して構成されます。
 
@@ -166,7 +166,7 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 #### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
-次の[復元 API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition) を使用することにより、バックアップ クラスター パーティションに対して復元を要求します。
+次の[復元 API](/rest/api/servicefabric/sfclient-api-restorepartition) を使用することにより、バックアップ クラスター パーティションに対して復元を要求します。
 
 ```powershell
 
@@ -306,7 +306,7 @@ $restoreResponse | Format-List
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **タイムアウト**:"_タイムアウト_" の復元状態は、要求がタイムアウトしたことを示します。 [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) を大きくして新しい復元要求を作成してください。 既定のタイムアウト時間は 10 分です。 再度復元を要求する前に、パーティションがデータ損失状態ではなくなっていることを確認してください。
+    - **タイムアウト**:"_タイムアウト_" の復元状態は、要求がタイムアウトしたことを示します。 [RestoreTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) を大きくして新しい復元要求を作成してください。 既定のタイムアウト時間は 10 分です。 再度復元を要求する前に、パーティションがデータ損失状態ではなくなっていることを確認してください。
      
         ```
         RestoreState  : Timeout
@@ -320,12 +320,12 @@ $restoreResponse | Format-List
 Service Fabric クラスター内の Reliable Stateful サービスおよび Reliable Actors パーティションを、"_自動復元_" するように構成できます。 バックアップ ポリシーで `AutoRestore` を _true_ に設定します。 "_自動復元_" を有効にすると、データの損失が報告された場合、最新のパーティション バックアップからデータが自動的に復元されます。 詳細については、次を参照してください。
 
 - [バックアップ ポリシーでの自動復元の有効化](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [RestorePartition API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
-- [GetPartitionRestoreProgress API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
+- [RestorePartition API リファレンス](/rest/api/servicefabric/sfclient-api-restorepartition)
+- [GetPartitionRestoreProgress API リファレンス](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
 ## <a name="next-steps"></a>次のステップ
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [バックアップと復元用の REST API リファレンス](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
 [3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3e0deb53e57cd29cbfce4c37f2d6c6729f15bebd
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ce25047ae93a332b62b7e785b23da5794031a98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411702"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497513"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>チュートリアル:ARM テンプレートにタグを追加する
 

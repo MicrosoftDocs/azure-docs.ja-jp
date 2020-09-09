@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center の脅威インテリジェンス レポート | Microsoft Docs
-description: このドキュメントでは、調査に Azure Security Center の脅威インテリジェンス レポートを使用し、セキュリティ アラートに関する詳しい情報を確認する方法を説明します。
+description: このページでは、調査に Azure Security Center の脅威インテリジェンス レポートを使用し、セキュリティ アラートについての詳しい情報を確認する方法を説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,22 +11,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4fdbab4a69fac1376779f37d5fa69fef587bf52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888228"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
-このドキュメントでは、セキュリティ アラートが生成される原因となった脅威に関して詳しい情報を確認するにあたり、Azure Security Center の脅威インテリジェンス レポートがどのような点で役に立つかを説明します。
+
+このページでは、セキュリティ アラートがトリガーされる原因となった脅威に関して詳しい情報を確認するにあたり、Azure Security Center の脅威インテリジェンス レポートがどのような点で役に立つかを説明します。
+
 
 ## <a name="what-is-a-threat-intelligence-report"></a>脅威インテリジェンス レポートとは
+
 Security Center の脅威保護機能は、Azure のリソース、ネットワーク、接続されているパートナー ソリューションからのセキュリティ情報を監視することで機能します。 この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。 詳細は、「[Azure Security Center での脅威の検出と対応方法](security-center-alerts-overview.md#detect-threats)」を参照してください。
 
-Security Center が脅威を発見すると、[セキュリティ アラート](security-center-managing-and-responding-alerts.md) がトリガーされます。このセキュリティ アラートでは、特定のイベントに関して推奨される修復方法などの詳しい情報を確認できます。 インシデント対応を担当するチームが脅威の調査とその修復を実施する際に役立つように、Security Center には脅威インテリジェンス レポートという機能が用意されており、検出された脅威に関して以下のような情報を確認できるようになっています。
+Security Center が脅威を発見すると、[セキュリティ アラート](security-center-managing-and-responding-alerts.md) がトリガーされます。このセキュリティ アラートでは、イベントに関して推奨される修復方法などの詳しい情報を確認できます。 インシデント対応チームによる脅威の調査と修復に役立つように、Security Center では、検出された脅威に関する情報を含む脅威インテリジェンス レポートが提供されます。 レポートには次のような情報が含まれます。
 
 * 攻撃者の ID または所属団体 (この情報が利用可能な場合)
 * 攻撃者の目的
@@ -38,36 +41,39 @@ Security Center が脅威を発見すると、[セキュリティ アラート](
 
 > [!NOTE]
 > レポートに記載される情報の量はさまざまであり、どの程度まで詳細な情報が表示されるかは、マルウェアの活動と拡散度に応じて決まります。
->
->
 
 Security Center には、攻撃の種類に応じて 3 種類の脅威レポートが用意されています。 具体的には、以下のとおりです。
 
-* **活動グループ レポート**: 攻撃者、その目的、および戦術に関する詳しい情報を記載したレポートです。
+* **活動グループ レポート**: 攻撃者、その目的、戦術に関する詳しい情報を記載したレポートです。
 * **キャンペーン レポート**: 主に特定の攻撃キャンペーンの詳細を取り扱うレポートです。
 * **脅威概要レポート**: 前の 2 つのレポートの全項目を確認できるレポートです。
 
-この種の情報は、インシデント対応プロセスにおいて継続的に調査を実施し、攻撃元、攻撃者の動機、この問題の影響を今後軽減するための方策を把握するために利用できます。
+この種の情報は、インシデント対応プロセスにおいて継続的に調査を実施し、攻撃元、攻撃者の動機、この問題の影響を将来軽減するための方策を把握するために利用できます。
+
+
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>脅威インテリジェンス レポートにアクセスする方法
-現在の警告は、 **[Security alerts]\(セキュリティ アラート\)** タイルで確認できます。 各警告の詳細を確認するには、Azure portal を開いて以下の手順に従ってください。
 
-1. [Security Center]\(セキュリティ センター\) ダッシュボードには **[Security alerts]\(セキュリティ アラート\)** タイルが表示されます。
-2. タイルをクリックして、 **[Security alerts]\(セキュリティ アラート\)** ブレードを開くと、アラートに関する詳細が表示されます。そこで、さらに詳しい情報を確認したいセキュリティ アラートをクリックします。
+1. Security Center のサイドバーから、 **[Security alerts]\(セキュリティ アラート\)** ページを開きます。
+1. アラートを選択します。 
+    アラートの詳細ページが開き、アラートの詳細が表示されます。 次に示すのは、 **[Ransomware indicators detected]\(検出されたランサムウェア インジケーター\)** アラート詳細ページです。
 
-    ![セキュリティのアラート](./media/security-center-threat-report/security-center-threat-report-fig1.png)
-3. この場合、 **[Suspicious process executed (不審なプロセスの実行)]** ブレードが表示され、アラートに関して以下の図に示すような詳細が表示されます。
+    [![[Ransomware indicators detected]\(検出されたランサムウェア インジケーター\) アラート詳細ページ](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
 
-    ![Security alert details](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. 各セキュリティ アラートに関して表示される情報の量は、アラートの種類に応じて変わります。 **[REPORTS]\(レポート\)** フィールドには、脅威インテリジェンス レポートへのリンクがあります。 リンクをクリックしてください。PDF ファイルが別のブラウザー ウィンドウで表示されます。
+1. レポートへのリンクを選択すると、既定のブラウザーで PDF が開きます。
 
-   ![Storage の選択](./media/security-center-threat-report/security-center-threat-report-fig3.png)
+    [![[Potentially Unsafe Action]\(安全でない可能性があるアクション\) アラート詳細ページ](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
 
-ここでは、このレポートの PDF のダウンロードのほか、検出されたセキュリティ面の問題の詳細を確認したり、入手した情報を基に各種の措置を講じたりできます。
+    PDF レポートをダウンロードすることもできます。 
 
-## <a name="see-also"></a>参照
-このドキュメントでは、セキュリティ アラートに関する調査にあたり Azure Security Center の脅威のインテリジェント レポートがどのような点で有用であるかを学習しました。 Azure Security Center の詳細については、次を参照してください。
+    >[!TIP]
+    > 各セキュリティ アラートに関して表示される情報の量は、アラートの種類に応じて変わります。
 
-* [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)。 Azure Security Center を導入するための設計上の考慮事項を計画し、理解する方法について説明しています。
+
+
+## <a name="next-steps"></a>次のステップ
+
+このページでは、セキュリティ アラートの調査時に脅威インテリジェンス レポートを開く方法について説明しました。 関連情報については、次のページを参照してください。
+
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)。 セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center でのセキュリティ インシデントの処理](security-center-incident.md)

@@ -6,12 +6,13 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-python
+ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084993"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962572"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -27,49 +28,76 @@ Azure App Service のワークフロー ファイルには、次の 3 つのセ�
 
 |Section  |タスク  |
 |---------|---------|
-|**認証** | 1.サービス プリンシパルを定義します <br /> 2.GitHub シークレットを作成します |
-|**ビルド** | 1.環境をセットアップする <br /> 2.Web アプリを作成します |
-|**デプロイする** | 1.Web アプリのデプロイ |
+|**認証** | 1.サービス プリンシパルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
+|**ビルド** | 1.環境を設定します。 <br /> 2.Web アプリを作成します。 |
+|**展開** | 1.Web アプリをデプロイします。 |
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/) の [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
+# <a name="user-level-credentials"></a>[ユーザー レベルの資格情報](#tab/userlevel)
+
+[Azure CLI](/cli/azure/) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
+                            --sdk-auth
 ```
 
-この例のリソースのプレースホルダーは、ご自分のサブスクリプション ID、リソース グループ名、およびアプリ名に置き換えます。 これにより、ご自分の App Service アプリにアクセスするためのロールの割り当て資格情報が出力されます。 この JSON オブジェクトをコピーします。このオブジェクトは、GitHub に対する認証に使用します。
+上記の例で、プレースホルダーをご利用のサブスクリプション ID、リソース グループ名、アプリ名に置き換えます。 これにより、以下のようなご自分の App Service アプリにアクセスするためのロールの割り当て資格情報を含む JSON オブジェクトが出力されます。 この JSON オブジェクトを後のためにコピーします。
 
-> [!NOTE]
-> 認証に発行プロファイルを使用する場合、サービス プリンシパルを作成する必要はありません。
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> 常に最小限のアクセス権を付与することをお勧めします。 これが、前の例の範囲がリソース グループ全体ではなく、特定の App Service アプリに限定される理由です。
+> 常に最小限のアクセス権を付与することをお勧めします。 前の例の範囲は、リソース グループ全体ではなく、特定の App Service アプリに限定されます。
+
+# <a name="app-level-credentials"></a>[アプリ レベルの資格情報](#tab/applevel)
+
+アプリ用の発行プロファイルを使用することで、アプリ レベルの資格情報を使用できます。 ポータルでアプリの管理ページに移動します。 **[概要]** ページで、 **[発行プロファイルの取得]** オプションをクリックします。
+
+後でファイルの内容が必要になります。
+
+---
 
 ## <a name="configure-the-github-secret"></a>GitHub シークレットの構成
 
-デプロイには、アプリ レベルの資格情報 (つまり発行プロファイルなど) を使用することもできます。 次のステップに従って、シークレットを構成します。
+# <a name="user-level-credentials"></a>[ユーザー レベルの資格情報](#tab/userlevel)
 
-1. ポータルで **[発行プロファイルの取得]** オプションを使用して、App Service アプリの発行プロファイルをダウンロードします。
+[GitHub](https://github.com/) で自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]\(新しいシークレットの追加\)** の順に選択します。
 
-2. [GitHub](https://github.com/) でご自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]** \(新しいシークレットの追加\) を選択します。
+[ユーザー レベルの資格情報](#generate-deployment-credentials)を使用するには、Azure CLI コマンドからの JSON 出力全体をシークレットの値フィールドに貼り付けます。 シークレットに `AZURE_CREDENTIALS` などの名前を付けます。
 
-    ![secrets](media/app-service-github-actions/secrets.png)
+後でワークフロー ファイルを構成する場合は、Azure ログイン アクションの入力 `creds` にシークレットを使用します。 次に例を示します。
 
-3. ダウンロードした発行プロファイルのファイルの内容をシークレットの [値] フィールドに貼り付けます。
+```yaml
+- uses: azure/login@v1
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+```
 
-4. ここで、ご自分のブランチの `.github/workflows/workflow.yml` のワークフロー ファイルで、デプロイ Azure Web アプリ アクションの入力 `publish-profile` のシークレットを置き換えます。
+# <a name="app-level-credentials"></a>[アプリ レベルの資格情報](#tab/applevel)
+
+[GitHub](https://github.com/) で自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]\(新しいシークレットの追加\)** の順に選択します。
+
+[アプリ レベルの資格情報](#generate-deployment-credentials)を使用するには、ダウンロードした発行プロファイルのファイルの内容をシークレットの値フィールドに貼り付けます。 シークレットに `azureWebAppPublishProfile` などの名前を付けます。
+
+後でワークフロー ファイルを構成する場合は、Azure Web アプリのデプロイ アクションの入力 `publish-profile` にシークレットを使用します。 次に例を示します。
     
-    ```yaml
-        - uses: azure/webapps-deploy@v2
-          with:
-            creds: ${{ secrets.azureWebAppPublishProfile }}
-    ```
+```yaml
+- uses: azure/webapps-deploy@v2
+  with:
+    publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
 
-5. 定義されたシークレットは以下のように表示されます。
-
-    ![secrets](media/app-service-github-actions/app-service-secrets.png)
+---
 
 ## <a name="set-up-the-environment"></a>環境をセットアップする
 
@@ -191,43 +219,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 | **package** | (オプション) パッケージまたはフォルダーへのパス。 デプロイする *.zip、*.war、*.jar またはフォルダー |
 | **slot-name** | (オプション) 運用スロット以外の既存のスロットを入力します。 |
 
-### <a name="deploy-using-publish-profile"></a>発行プロファイルを使用したデプロイ
+# <a name="user-level-credentials"></a>[ユーザー レベルの資格情報](#tab/userlevel)
 
-発行プロファイルを使用して Node.js アプリをビルドし、Azure にデプロイするサンプル ワークフローを次に示します。
-
-```yaml
-# File: .github/workflows/workflow.yml
-
-on: push
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-    
-    - name: Setup Node 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - name: 'npm install, build, and test'
-      run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-       
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v2
-          with: 
-            app-name: node-rn
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-```
-
-### <a name="deploy-using-azure-service-principal"></a>Azure サービス プリンシパルを使用したデプロイ
-
-Azure サービス プリンシパルを使用して Node.js アプリを構築し、Azure にデプロイするサンプル ワークフローを次に示します。
+Azure サービス プリンシパルを使用して Node.js アプリを構築し、Azure にデプロイするサンプル ワークフローを次に示します。 `creds` 入力で、前に作成した `AZURE_CREDENTIALS` シークレットを参照する方法に注意してください。
 
 ```yaml
 on: [push]
@@ -268,11 +262,47 @@ jobs:
         az logout
 ```
 
+# <a name="app-level-credentials"></a>[アプリ レベルの資格情報](#tab/applevel)
+
+アプリの発行プロファイルを使用して Node.js アプリをビルドし、Azure にデプロイするサンプル ワークフローを次に示します。 `publish-profile` 入力で、前に作成した `azureWebAppPublishProfile` シークレットを参照する方法に注意してください。
+
+```yaml
+# File: .github/workflows/workflow.yml
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action' 
+      uses: actions/checkout@master
+    
+    - name: Setup Node 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: 'npm install, build, and test'
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+       
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+          uses: azure/webapps-deploy@v2
+          with: 
+            app-name: node-rn
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
+
+---
+
 ## <a name="next-steps"></a>次のステップ
 
 GitHub には、一連のアクションが別々のリポジトリにあります。それぞれには、CI/CD に GitHub を使用し、ご自身のアプリを Azure にデプロイするときに役立つドキュメントとサンプルが含まれています。
 
-- [Azure にデプロイするための Actions ワークフロー](https://github.com/Azure/actions-workflow-samples)
+- [Azure にデプロイするためのアクション ワークフロー](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure ログイン](https://github.com/Azure/login)
 

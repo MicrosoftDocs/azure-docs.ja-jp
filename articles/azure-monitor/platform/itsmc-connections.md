@@ -5,16 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
-ms.date: 05/24/2018
-ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870590"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035027"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
-この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](../../azure-monitor/platform/itsmc-overview.md)に関する記事をご覧ください。
+この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
 
 次の ITSM 製品/サービスがサポートされています。 ITSMC に製品を接続する方法に関する詳細な情報を表示する製品を選択してください。
 
@@ -35,11 +35,11 @@ ms.locfileid: "81870590"
 
 次の前提条件が満たされていることを確認してください。
 
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - Service Manager Web アプリケーション (Web アプリ) がデプロイされ構成されている。 Web アプリに関する情報については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
 - ハイブリッド接続が作成および構成されている。 詳細情報: [ハイブリッド接続の構成](#configure-the-hybrid-connection)。
 - サポートされている Service Manager のバージョン: 2012 R2 または 2016。
-- ユーザー ロール: [上級オペレーター](https://technet.microsoft.com/library/ff461054.aspx)。
+- ユーザー ロール: [上級オペレーター](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
 
 ### <a name="connection-procedure"></a>接続手順
 
@@ -64,7 +64,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 | **Connection Name**   | ITSMC に接続する System Center Service Manager インスタンスの名前を入力します。  この名前は、インスタンスの作業項目を構成したり、詳細なログ分析を確認したりするときに使用します。 |
 | **パートナーの種類**   | **[System Center Service Manager]** を選択します。 |
 | **[サーバー URL]**   | Service Manager Web アプリの URL を入力します。 Service Manager Web アプリの詳細については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
-| **クライアント ID**   | Web アプリを認証するために (自動スクリプトを使用して) 生成したクライアント ID を入力します。 自動スクリプトの詳細については、[こちら](../../azure-monitor/platform/itsmc-service-manager-script.md)をご覧ください。|
+| **クライアント ID**   | Web アプリを認証するために (自動スクリプトを使用して) 生成したクライアント ID を入力します。 自動スクリプトの詳細については、[こちら](./itsmc-service-manager-script.md)をご覧ください。|
 | **クライアント シークレット**   | この ID 用に生成したクライアント シークレットを入力します。   |
 | **データの同期**   | ITSMC 経由で同期する Service Manager 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。 **オプション:** インシデント、変更要求。|
 | **データ同期スコープ** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
@@ -79,7 +79,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 - この Service Manager インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
 
-詳細情報:[Azure アラートから ITSM 作業項目を作成する](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報:[Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Service Manager Web アプリ サービスを作成しデプロイする
 
@@ -87,11 +87,11 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 
 お使いの Service Manager 用に ITSM Web アプリを設定するには、次の手順に従います。
 
-- **Web アプリのデプロイ** – Web アプリをデプロイしてプロパティを設定し、Azure AD で認証します。 Microsoft が提供する[自動スクリプト](../../azure-monitor/platform/itsmc-service-manager-script.md)を使用して、Web アプリをデプロイできます。
+- **Web アプリのデプロイ** – Web アプリをデプロイしてプロパティを設定し、Azure AD で認証します。 Microsoft が提供する[自動スクリプト](./itsmc-service-manager-script.md)を使用して、Web アプリをデプロイできます。
 - **ハイブリッド接続の構成** - 手動で[ハイブリッド接続を構成](#configure-the-hybrid-connection)します。
 
 #### <a name="deploy-the-web-app"></a>Web アプリのデプロイ
-[自動スクリプト](../../azure-monitor/platform/itsmc-service-manager-script.md)を使用して、Web アプリをデプロイしてプロパティを設定し、Azure AD で認証します。
+[自動スクリプト](./itsmc-service-manager-script.md)を使用して、Web アプリをデプロイしてプロパティを設定し、Azure AD で認証します。
 
 次の必要な情報を提供することにより、スクリプトを実行します。
 
@@ -178,14 +178,15 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 
 ### <a name="prerequisites"></a>前提条件
 次の前提条件が満たされていることを確認してください。
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow でサポートされているバージョン: New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ServiceNow でサポートされているバージョン: Orlando、New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
 > [!NOTE]
 > ITSMC では、ServiceNow からの公式の SaaS サービスのみがサポートされています。 ServiceNow のプライベート デプロイはサポートされていません。 
 
 **ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。**
 - ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、必要に応じて以下の情報をご覧ください。
 
+    - [Orlando の OAuth の設定](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [New York の OAuth の設定](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Madrid の OAuth の設定](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [London の OAuth の設定](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -201,8 +202,10 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 > 最後に [update]\(更新\) をクリックします。
 > 2) **接続が維持されるように内部プロシージャを確立することを推奨します:** トークンを更新するための更新トークンの有効期限にしたがってください。 更新トークンの予想される有効期限の前に必ず次の操作を行ってください (更新トークンの有効期限が切れる数日前に行うことをお勧めします)。
 >
->>  1) [ITSM コネクタ構成の手動での同期プロセスを完了します](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) セキュリティ上の理由から古いキーを保持することは推奨されないため、古い更新トークンを取り消します。 ServiceNow ブレードで System OAuth を検索し、[Manage Tokens]\(トークンの管理\) を選択します。 OAuth 名と有効期限の日付にしたがって、一覧から古いトークンを選択します。 [Revoke Access]\(アクセス権の取り消し\)、[Revoke]\(取り消し\) の順にクリックします。
+> 1. [ITSM コネクタ構成の手動での同期プロセスを完了します](./itsmc-resync-servicenow.md)
+> 2. セキュリティ上の理由から古いキーを保持することは推奨されないため、古い更新トークンを取り消します。 ServiceNow ブレードで System OAuth を検索し、[Manage Tokens]\(トークンの管理\) を選択します。 OAuth 名と有効期限の日付にしたがって、一覧から古いトークンを選択します。
+> ![SNOW システムの OAuth 定義](media/itsmc-connections/snow-system-oauth.png)
+> 3. [Revoke Access]\(アクセス権の取り消し\)、[Revoke]\(取り消し\) の順にクリックします。
 
 - Microsoft Log Analytics 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細については、こちらを参照してください](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
 - インストールしたユーザー アプリの統合ユーザー ロールを作成します。 統合ユーザー ロールを作成する方法については、[こちら](#create-integration-user-role-in-servicenow-app)をご覧ください。
@@ -245,7 +248,11 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 - この ServiceNow インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
-詳細情報:[Azure アラートから ITSM 作業項目を作成する](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報:[Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+
+
+> [!NOTE]
+> ServiceNow には、1 時間あたりの要求数のレート制限があります。 この制限を構成するには、ServiceNow インスタンスで "インバウンド REST API レート制限" を定義します。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>ServiceNow アプリで統合ユーザー ロールを作成する
 
@@ -297,7 +304,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 次の前提条件が満たされていることを確認してください。
 
 
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - Provance アプリが Azure AD で登録されており、クライアント ID が使用可能である。 詳細については、[Active Directory 認証の構成方法](../../app-service/configure-authentication-provider-aad.md)に関する記事をご覧ください。
 
 - ユーザー ロール: 管理者。
@@ -339,7 +346,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 - この Provance インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
-詳細情報:[Azure アラートから ITSM 作業項目を作成する](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報:[Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Cherwell を Azure の IT Service Management Connector に接続する
 
@@ -349,7 +356,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 次の前提条件が満たされていることを確認してください。
 
-- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - クライアント ID が生成されている。 詳細情報: [Cherwell のクライアント ID を生成する](#generate-client-id-for-cherwell)。
 - ユーザー ロール: 管理者。
 
@@ -391,7 +398,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 - この Cherwell インスタンスでは、Log Analytics アラート、ログ レコード、または Azure アラートからインシデントを作成できます。
 
-詳細情報:[Azure アラートから ITSM 作業項目を作成する](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+詳細情報:[Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>Cherwell のクライアント ID を生成する
 
@@ -405,4 +412,5 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
 
 
 ## <a name="next-steps"></a>次のステップ
- - [Azure アラートから ITSM 作業項目を作成する](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+ - [Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+

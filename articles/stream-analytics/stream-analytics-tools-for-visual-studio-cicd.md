@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354455"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187661"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>統合と開発に Azure Stream Analytics CI/CD NuGet パッケージを使用する 
 この記事では、Azure Stream Analytics CI/CD NuGet パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
@@ -34,13 +34,13 @@ NuGet パッケージの[Microsoft.Azure.Stream Analytics.CICD](https://www.nuge
 
 Stream Analytics Visual Studio プロジェクトが正常にビルドされると、**bin/[Debug/Retail]/Deploy** フォルダーに次の 2 つの Azure Resource Manager テンプレート ファイルが生成されます。 
 
-*  Resource Manager テンプレート ファイル
+* Resource Manager テンプレート ファイル
 
-       [ProjectName].JobTemplate.json 
+   `[ProjectName].JobTemplate.json`
 
-*  Resource Manager パラメーター ファイル
-
-       [ProjectName].JobTemplate.parameters.json   
+* Resource Manager パラメーター ファイル
+   
+   `[ProjectName].JobTemplate.parameters.json`
 
 parameters.json ファイルの既定のパラメーターは、Visual Studio プロジェクトの設定から取得されます。 別の環境にデプロイする場合は、パラメーターを適宜置換します。
 

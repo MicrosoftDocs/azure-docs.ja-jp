@@ -9,17 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738143"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから NSG フロー ログを構成する
 
@@ -110,7 +110,7 @@ NSG フロー ログを設定するための完全なテンプレートの 2 つ
 ```
 
 > [!NOTE]
-> * リソースの名前の形式は、"親リソース >/子リソース" です。 ここで、親リソースはリージョンの Network Watcher インスタンス (形式:NetworkWatcher_<RegionName> です。 例:NetworkWatcher_centraluseuap)
+> * リソースの名前の形式は、"親リソース_子リソース" となります。 ここで、親リソースはリージョンの Network Watcher インスタンス (形式:NetworkWatcher_RegionName。 例:NetworkWatcher_centraluseuap)
 > * targetResourceId はターゲット NSG のリソース ID です
 > * storageId は、コピー先のストレージ アカウントのリソース ID です
 
@@ -160,9 +160,14 @@ NSG フロー ログを設定するための完全なテンプレートの 2 つ
 
 テンプレートをデプロイするには、PowerShell で次のコマンドを実行します。
 ```azurepowershell
+$context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
+Set-AzContext $context
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"
 ```
+
+> [!NOTE]
+> 上記のコマンドでは、NetworkWatcherRG リソース グループにリソースがデプロイされ、NSG を含むリソース グループにはデプロイされません
 
 
 ## <a name="verifying-your-deployment"></a>デプロイの確認

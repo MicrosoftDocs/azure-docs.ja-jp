@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71123558"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087692"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -32,7 +32,9 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 1. エッジ ノードに SSH 接続します。
 
-        ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```
 
     Azure HDInsight で SSH を使用する方法については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
@@ -40,13 +42,17 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
     - Microsoft ML Server 9.1 の場合:
 
-            cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
-            sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
+        sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```
 
     - Microsoft R Server 9.0 の場合:
 
-            cd /usr/lib64/microsoft-deployr/9.0.1
-            sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-deployr/9.0.1
+        sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```
 
 1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成**します。
 
@@ -82,19 +88,20 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、"*rserve2*" というユーザーに属します。 この問題を回避するには、次のようにします。
 
-    # Create these required folders for user 'rserve2' in local and hdfs:
+```r
+# Create these required folders for user 'rserve2' in local and hdfs:
 
-    hadoop fs -mkdir /user/RevoShare/rserve2
-    hadoop fs -chmod 777 /user/RevoShare/rserve2
+hadoop fs -mkdir /user/RevoShare/rserve2
+hadoop fs -chmod 777 /user/RevoShare/rserve2
 
-    mkdir /var/RevoShare/rserve2
-    chmod 777 /var/RevoShare/rserve2
+mkdir /var/RevoShare/rserve2
+chmod 777 /var/RevoShare/rserve2
 
 
-    # Next, create a new Spark compute context:
- 
-    rxSparkConnect(reset = TRUE)
+# Next, create a new Spark compute context:
 
+rxSparkConnect(reset = TRUE)
+```
 
 この段階で、運用化の構成が完了しました。 これで、ご自身の RClient の `mrsdeploy` パッケージを使用してエッジ ノードの運用化に接続し、[リモート実行](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely)や [Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)などの機能の使用を開始できます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。 以降のセクションでは、このトンネルの設定方法について説明します。
 
@@ -102,15 +109,15 @@ mrsdeploy の機能を使って作成された Web サービスを Apache Spark 
 
 ポート 12800 を介したエッジ ノードへのトラフィックを許可していることを確認します。 これで、運用化機能への接続にエッジ ノードを使用できます。
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 `remoteLogin()` でエッジ ノードに接続できなくても、エッジ ノードへの SSH 接続が可能な場合は、ポート 12800 でトラフィックを許可するルールが適切に設定されているかどうかを確認する必要があります。 問題が解決しない場合は、SSH 経由のポート転送トンネリングを設定することで問題を回避できます。 手順については、次のセクションを参照してください。
 
@@ -118,19 +125,21 @@ mrsdeploy の機能を使って作成された Web サービスを Apache Spark 
 
 クラスターが VNet 上にセットアップされていない場合、または VNet 経由の接続で問題が発生している場合は、SSH ポート転送トンネリングを使用できます。
 
-    ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```bash
+ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```
 
 SSH セッションがアクティブになると、ローカル コンピューターのポート 12800 からのトラフィックは、SSH セッション経由でエッジ ノードのポート 12800 に転送されます。 `remoteLogin()` メソッドで `127.0.0.1:12800` を使用していることを確認してください。 これにより、ポート転送経由でエッジ ノードの運用化にログインします。
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://127.0.0.1:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://127.0.0.1:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 ## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>HDInsight worker ノードで運用化コンピューティング ノードをスケーリングする
 
@@ -164,7 +173,9 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 
 1. ご自身の ML サービス クラスターの関連 DLL を使用して、管理ユーティリティを実行します。 ML Server 9.1 の場合は、次の手順を実行します。
 
-        dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```bash
+    dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```
 
 1. 「**1**」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
 
@@ -182,12 +193,14 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 
 1. "Uris" セクションを見つけて、worker ノードの IP とポートの詳細を追加します。
 
-       "Uris": {
-         "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
-         "Values": [
-           "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
-         ]
-       }
+    ```json
+    "Uris": {
+        "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
+        "Values": [
+            "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
+        ]
+    }
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 

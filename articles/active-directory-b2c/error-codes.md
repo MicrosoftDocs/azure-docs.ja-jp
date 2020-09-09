@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 01/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d205998ad5710ecad346db4d7be18a68747c087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388529"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>エラー コード:Azure Active Directory B2C
 

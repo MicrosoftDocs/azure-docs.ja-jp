@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 223b1b996b82acaa753eb55723e251dc5901bbec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ad0ccdabd0320d8821d0760ca9802db37049149
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84611044"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -84,7 +84,65 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-Mapping Data Flow の[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事で詳細を確認してください。
+マッピング データ フローでは、次のデータ ストアで Parquet 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+
+### <a name="source-properties"></a>ソースのプロパティ
+
+次の表に、Parquet ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Format | 形式は `parquet` である必要があります | はい | `parquet` | format |
+| Wild card paths (ワイルドカード パス) | ワイルドカード パスに一致するすべてのファイルが処理されます。 データセットで設定されているフォルダーとファイル パスを上書きします。 | no | String[] | wildcardPaths |
+| Partition root path (パーティション ルート パス) | パーティション分割されたファイル データについては、パーティション分割されたフォルダーを列として読み取るためにパーティション ルート パスを入力できます。 | no | String | partitionRootPath |
+| List of files (ファイルの一覧) | 処理するファイルを一覧表示しているテキスト ファイルをソースが指しているかどうか | no | `true` または `false` | fileList |
+| Column to store file name (ファイル名を格納する列) | ソース ファイル名とパスを使用して新しい列を作成します | no | String | rowUrlColumn |
+| After completion (完了後) | 処理後にファイルを削除または移動します。 ファイル パスはコンテナー ルートから始まります | no | 削除: `true` または `false` <br> 移動: `[<from>, <to>]` | purgeFiles <br> moveFiles |
+| Filter by last modified (最終更新日時でフィルター処理) | 最後に変更された日時に基づいてファイルをフィルター処理することを選択します | no | Timestamp | modifiedAfter <br> modifiedBefore |
+
+### <a name="source-example"></a>ソースの例
+
+次の図は、マッピング データ フローにおける Parquet ソースの構成例です。
+
+![Parquet ソース](media/data-flow/parquet-source.png)
+
+関連付けられているデータ フロー スクリプトは次のとおりです。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    rowUrlColumn: 'fileName',
+    format: 'parquet') ~> ParquetSource
+```
+
+### <a name="sink-properties"></a>シンクのプロパティ
+
+次の表に、Parquet ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Format | 形式は `parquet` である必要があります | はい | `parquet` | format |
+| Clear the folder (フォルダーのクリア) | 書き込みの前に宛先フォルダーをクリアするかどうか | no | `true` または `false` | truncate |
+| File name option (ファイル名オプション) | 書き込まれたデータの名前付け形式です。 既定では、`part-#####-tid-<guid>` という形式で、パーティションごとに 1 ファイルです | no | パターン:String <br> [Per partition] (パーティションごと): String[] <br> [As data in column] (列内のデータとして): String <br> Output to a single file (1 つのファイルに出力する): `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+
+### <a name="sink-example"></a>シンクの例
+
+次の図は、マッピング データ フローにおける Parquet シンクの構成例です。
+
+![Parquet シンク](media/data-flow/parquet-sink.png)
+
+関連付けられているデータ フロー スクリプトは次のとおりです。
+
+```
+ParquetSource sink(
+    format: 'parquet',
+    filePattern:'output[n].parquet',
+    truncate: true,
+    allowSchemaDrift: true,
+    validateSchema: false,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> ParquetSink
+```
 
 ## <a name="data-type-support"></a>データ型のサポート
 

@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクトのパラメーターの詳細を含む、Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルのデプロイ手順。
-ms.date: 01/29/2020
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: 9df9392430fd0496ffb5e635a6fc3e31ba708208
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a7917f09e5e5ff898bd155f0961e5c9765b8d791
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76905559"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649212"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 のブループリント サンプルのデプロイ
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側の **[はじめに]** ページで、 _[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
-1. **PCI-DSS v3.2.1** ブループリント サンプルを _[その他のサンプル]_ で検索し、 **[このサンプルを使用する]** を選択します。
+1. **PCI-DSS v3.2.1** ブループリント サンプルを _[その他のサンプル]_ で検索し、**[このサンプルを使用する]** を選択します。
 
 1. ブループリント サンプルの _[基本]_ を入力します。
 

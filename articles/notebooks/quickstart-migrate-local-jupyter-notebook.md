@@ -3,14 +3,16 @@ title: ローカルの Jupyter ノートブックを Azure Notebooks プレビ�
 description: Jupyter ノートブックをローカル コンピューターまたは Web URL から Azure Notebooks プレビューにすばやく転送した後、共同作業用に共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77064327"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832119"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>クイック スタート:ローカルの Jupyter ノートブックを Azure Notebooks プレビューに移行する
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 このクイックスタートでは、ローカル コンピューターまたは別のアクセス可能なファイルの URL から Jupyter ノートブックを Azure Notebooks に移行します。 
 
@@ -25,8 +27,6 @@ ms.locfileid: "77064327"
 ## <a name="create-a-project-on-azure-notebooks"></a>Azure Notebooks でプロジェクトを作成する
 
 このクイックスタートでは、ローカル コンピューターまたは別のアクセス可能なファイルの URL からノートブックを移行する方法を紹介します。 GitHub リポジトリからノートブックを移行するには、「[クイック スタート:ノートブックの複製](quickstart-clone-jupyter-notebook.md)」をご覧ください。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 

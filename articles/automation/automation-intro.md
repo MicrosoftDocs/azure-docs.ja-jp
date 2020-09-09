@@ -1,24 +1,20 @@
 ---
 title: Azure Automation の概要
-description: Azure Automation を使用して、インフラストラクチャとアプリケーションのライフサイクルを自動化する方法を説明します。
+description: この記事では、Azure Automation の概要、および Azure Automation を使用してインフラストラクチャとアプリケーションのライフサイクルを自動化する方法を説明します。
 services: automation
 ms.subservice: process-automation
 keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Management, Change Tracking, DSC, インベントリ, Runbook, Python, グラフィカル
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010241"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448072"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
-
-この記事では、Azure Automation の概要を説明し、よく寄せられる質問に回答します。 さまざまな機能の詳細については、この概要に含まれているリンクを参照してください。
-
-## <a name="about-azure-automation"></a>Azure Automation について
 
 Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって管理するクラウドベースのオートメーションと構成サービスを提供します。 プロセスの自動化、構成管理、更新の管理、共有機能、異種環境機能で構成されます。 Automation は、ワークロードとリソースのデプロイ、運用、使用停止を完全に制御します。
 
@@ -32,13 +28,22 @@ Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって�
 
 ## <a name="configuration-management"></a>構成管理
 
-Azure Automation [State Configuration](automation-dsc-overview.md) は PowerShell DSC (Desired State Configuration) 用のクラウドベースのソリューションであり、エンタープライズ環境に必要なサービスを備えています。 この機能を使用すると、DSC リソースを Azure Automation で管理し、Azure クラウド内の DSC プル サーバーから仮想マシンおよび物理マシンに構成を適用できます。 クラウドやオンプレミスにある物理マシンや仮想マシン (Windows または Linux) の構成を監視し、自動的に更新できます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。
- 
-Azure Automation State Configuration サービスには、豊富なレポート作成機能と検索機能が備わっています。 それらの機能を使用することで、オペレーティング システムの構成内容についての詳細な情報を検索できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 これに関連して、割り当てられた構成をノードが逸脱したときに発生するイベントなど、重要なイベントをレポートする機能も重要です。 
+Azure Automation の構成管理では、次の 2 つの機能にアクセスできます。
+
+* 変更履歴とインベントリ
+* Azure Automation State Configuration
+
+### <a name="change-tracking-and-inventory"></a>変更履歴とインベントリ
+
+変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。 この機能の詳細については、[変更履歴とインベントリ](change-tracking.md)に関する記事を参照してください。
+
+### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
+
+[Azure Automation State Configuration](automation-dsc-overview.md) は、PowerShell DSC (Desired State Configuration) 用のクラウドベースの機能であり、エンタープライズ環境に必要なサービスを備えています。 この機能を使用すると、DSC リソースを Azure Automation で管理し、Azure クラウド内の DSC プル サーバーから仮想マシンおよび物理マシンに構成を適用できます。 
 
 ## <a name="update-management"></a>更新管理
 
-Azure Automation には、Windows システムと Linux システムのハイブリッド環境全体に対する[更新の管理](automation-update-management.md)ソリューションが含まれています。 このソリューションを使用すると、Azure を始めとするクラウドとオンプレミスの垣根を越えて更新の準拠状態を可視化することができます。 デプロイ スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 マシンにインストールすべきでない更新プログラムは、更新の管理機能を使用して、デプロイから除外することができます。
+Azure Automation には、Windows システムと Linux システムのハイブリッド環境全体に対する[更新管理](update-management/update-mgmt-overview.md)機能が含まれています。 更新管理を使用することで、Azure を始めとするクラウドとオンプレミスの垣根を越えて更新の準拠状態を可視化することができます。 この機能を使用すると、デプロイ スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 マシンにインストールすべきでない更新プログラムは、更新管理機能を使用して、デプロイから除外することができます。
 
 ## <a name="shared-capabilities"></a>共有機能
 
@@ -48,14 +53,14 @@ Azure Automation には、共有リソース、ロールベースのアクセス
 
 Azure Automation は、環境を大きな規模で容易に自動化して構成できるようにする一連の共有リソースで構成されます。
 
-* **[スケジュール](automation-schedules.md)** - あらかじめ定義されている時刻にオートメーション操作をトリガーします。
-* **[モジュール](automation-integration-modules.md)** - Azure やその他のシステムを管理します。 モジュールは、Microsoft、サード パーティ、コミュニティ、カスタム定義コマンドレット、および DSC リソース用の Automation アカウントにインポートできます。
+* **[スケジュール](./shared-resources/schedules.md)** - あらかじめ定義されている時刻にオートメーション操作をトリガーします。
+* **[モジュール](./shared-resources/modules.md)** - Azure やその他のシステムを管理します。 モジュールは、Microsoft、サード パーティ、コミュニティ、カスタム定義コマンドレット、および DSC リソース用の Automation アカウントにインポートできます。
 * **[モジュール ギャラリー](automation-runbook-gallery.md)** - PowerShell ギャラリーとのネイティブな統合をサポートします。Runbook を表示してそれらを Automation アカウントにインポートすることができます。 PowerShell ギャラリーと Microsoft スクリプト センターからプロセスの統合と作成をすぐに開始できます。
 * **[Python 2 パッケージ](python-packages.md)** - Automation アカウントでは、Python 2 Runbook がサポートされます。
-* **[資格情報](automation-credentials.md)** - Runbook と構成で実行時に使用される可能性がある秘匿性の高い情報を安全に格納します。
+* **[資格情報](./shared-resources/credentials.md)** - Runbook と構成で実行時に使用される可能性がある秘匿性の高い情報を安全に格納します。
 * **[接続](automation-connections.md)** - システムへの接続に使用される一般的な情報の名前と値の組を格納します。 実行時に Runbook と構成内で使用される接続をモジュールの作成者が定義します。
-* **[証明書](automation-certificates.md)** - デプロイされたリソースに対し、Runbook または DSC 構成が実行時にアクセスする際の認証とセキュリティ保護に使用される情報を定義します。 
-* **[変数](automation-variables.md)** - Runbook と構成間で使用できるコンテンツを保持します。 Runbook またはそれらを参照する構成を変更することなく、変数の値を変更できます。
+* **[証明書](./shared-resources/certificates.md)** - デプロイされたリソースに対し、Runbook または DSC 構成が実行時にアクセスする際の認証とセキュリティ保護に使用される情報を定義します。 
+* **[変数](./shared-resources/variables.md)** - Runbook と構成間で使用できるコンテンツを保持します。 Runbook またはそれらを参照する構成を変更することなく、変数の値を変更できます。
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -85,7 +90,7 @@ Azure Automation は、インフラストラクチャとアプリケーション
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="pricing-for-automation"></a>Automation の価格
+## <a name="pricing-for-azure-automation"></a>Azure Automation の価格
 
 Azure Automation に関する価格は、[価格](https://azure.microsoft.com/pricing/details/automation/)ページで確認できます。
 
@@ -93,4 +98,3 @@ Azure Automation に関する価格は、[価格](https://azure.microsoft.com/pr
 
 > [!div class="nextstepaction"]
 > [Automation アカウントを作成する](automation-quickstart-create-account.md)
-

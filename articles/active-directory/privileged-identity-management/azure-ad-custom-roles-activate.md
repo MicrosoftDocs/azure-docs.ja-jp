@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbd60d1311bd84adb303a0d329ab4e42f4d61525
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77498727"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421163"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management (PIM) で Azure AD のカスタム ロールをアクティブ化する
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) の Privileged Identity Management が、"ID �
 > [!NOTE]
 > プレビュー段階では、Azure AD のカスタム ロールがビルトイン ディレクトリ ロールと連携していません。 その機能の一般提供が開始されれば、ビルトイン ロールのエクスペリエンスでロールの管理が行えるようになります。 次のバナーが表示される場合は、これらのロールは[組み込みロールのエクスペリエンスで](pim-how-to-activate-role.md)管理する必要があり、この記事は適用されません。
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> :::image type="content" source="media/pim-how-to-add-role-to-user/pim-new-version.png" alt-text="Azure AD で [Privileged Identity Management] を選択します。" lightbox="media/pim-how-to-add-role-to-user/pim-new-version.png":::
 
 ## <a name="activate-a-role"></a>ロールのアクティブ化
 
@@ -44,7 +44,7 @@ Azure AD のカスタム ロールをアクティブ化する必要がある場�
    ![資格のある Azure AD カスタム ロールの割り当てを一覧表示する](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
 
 > [!Note] 
->  ロールを割り当てる前に、ロールを作成または構成する必要があります。 AAD カスタム ロールの構成について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure) をご覧ください
+> ロールを割り当てる前に、ロールを作成または構成する必要があります。 AAD カスタム ロールの構成に関する詳細については、「[Privileged Identity Management で Azure AD のカスタム ロールを構成する](azure-ad-custom-roles-configure.md)」を参照してください。
 
 1. **[Azure AD カスタム ロール (プレビュー)]** ページで、必要な割り当てを探します。
 1. **[自分のロールをアクティブにします ]** を選択して **[アクティブ化]** ページを開きます。

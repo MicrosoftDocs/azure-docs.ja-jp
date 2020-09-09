@@ -2,13 +2,13 @@
 title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529690"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530119"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -61,7 +61,7 @@ Azure Migrate アプライアンスでは、パフォーマンス データを�
 
 Azure Migrate アプライアンスが VM 上で収集するデータの詳細については、次の記事を参照してください。
 
-- **VMware VM**:収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。 [
+- **VMware VM**:収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。
 - **Hyper-V VM**:収集データを[レビュー](migrate-appliance.md#collected-data---hyper-v)します。
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか
@@ -107,7 +107,7 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM またはサーバーの数を教えてください
 
-1 つのアプライアンスで最大 10,000 までの VMware VM、最大 5,000 までの Hyper-V VM、および最大 250 までの物理サーバーを検出できます。 オンプレミスの環境に多くのマシンがある場合は、「[Hyper-v の評価のスケーリング](scale-hyper-v-assessment.md)」、「[VMware の評価のスケーリング](scale-vmware-assessment.md)」、「[物理サーバーの評価のスケーリング](scale-physical-assessment.md)」を参照してください。
+1 つのアプライアンスで最大 10,000 台の VMware VM、最大 5,000 台の Hyper-V VM、および最大 1,000 台の物理サーバーを検出できます。 オンプレミスの環境に多くのマシンがある場合は、「[Hyper-v の評価のスケーリング](scale-hyper-v-assessment.md)」、「[VMware の評価のスケーリング](scale-vmware-assessment.md)」、「[物理サーバーの評価のスケーリング](scale-physical-assessment.md)」を参照してください。
 
 ## <a name="can-i-delete-an-appliance"></a>アプライアンスを削除できますか。
 

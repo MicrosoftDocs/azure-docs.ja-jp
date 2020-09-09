@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 69ff3aa3f649b054192f9dd001af83dc8dbc2317
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745687"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588024"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -115,8 +115,8 @@ Speech ディクテーション モードの言語については、Speech の�
 |--|--|--|
 |ドイツ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
 |ドイツ語<br>`de-de`|1.0.2|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1つのトークンとして保持されます。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |
-|オランダ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは `Ik ga naar de kleuter school` に変換されます。 `kleuter` と `school` を別のエンティティとして独立にマークすることが可能になります。|
-|オランダ語<br>`de-de`|1.0.1|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは 1つのトークンとして保持されます。 そのため、`kleuterschool` は 1 つのエンティティとしてマークされます。 |
+|オランダ語<br>`nl-nl`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは `Ik ga naar de kleuter school` に変換されます。 `kleuter` と `school` を別のエンティティとして独立にマークすることが可能になります。|
+|オランダ語<br>`nl-nl`|1.0.1|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ik ga naar de kleuterschool` を入力した場合、それは 1つのトークンとして保持されます。 そのため、`kleuterschool` は 1 つのエンティティとしてマークされます。 |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>トークナイザーのバージョン間の移行

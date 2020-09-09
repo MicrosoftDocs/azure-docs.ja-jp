@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594941"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563349"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview にカスタム ドメインを設定する
 
@@ -29,15 +29,15 @@ Azure Static Web Apps では既定で、自動生成されたドメイン名が�
 
 アプリケーションに使用できる DNS 構成には、いくつかの種類があります。
 
-| 目的                            | THEN                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| `www.example.com` をサポートします                 | [CNAME レコードのマップ](#map-a-cname-record)           |
-| `example.com` をサポートします                     | [ルート ドメインの構成](#configure-a-root-domain) |
-| `www.example.com` へのすべてのサブドメインを参照 | [ワイルドカードのマップ](#map-a-wildcard-domain)                   |
+| 目的                                 | 手段                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| `www.example.com` または `blog.example.net` をサポートする| [CNAME レコードのマップ](#map-a-cname-record)           |
+| `example.com` をサポートします                          | [ルート ドメインの構成](#configure-a-root-domain) |
+| `www.example.com` へのすべてのサブドメインを参照      | [ワイルドカードのマップ](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>CNAME レコードのマップ
 
-CNAME レコードでは、あるドメインが別のドメインにマップされます。 CNAME レコードを使用して、Azure Static Web Apps によって提供される自動生成ドメインに `www.example.com` をマップできます。
+CNAME レコードでは、あるドメインが別のドメインにマップされます。 CNAME レコードを使用して、Azure Static Web Apps によって提供される自動生成ドメインに `www.example.com`、`blog.example.com`、またはその他のサブドメインをマップできます。
 
 1. [Azure Portal](https://portal.azure.com) を開き、Azure アカウントでサインインします。
 
@@ -80,7 +80,7 @@ CNAME レコードでは、あるドメインが別のドメインにマップ�
 
 1. **[検証]** ボタンをクリックします。
 
-これで、カスタム ドメインが構成されました。DNS プロバイダーによって世界規模で変更が反映されるには、数時間かかる場合があります。 [dnspropagation.net](https://dnspropagation.net) に移動して、反映の状態を確認できます。 `www` を含めてお使いのドメインのカスタム ドメインを入力し、ドロップダウンから [CNAME] を選択して、 **[開始]** を選択します。
+これで、カスタム ドメインが構成されました。DNS プロバイダーによって世界規模で変更が反映されるには、数時間かかる場合があります。 [dnspropagation.net](https://dnspropagation.net) に移動して、反映の状態を確認できます。 `www` を含めてお使いのカスタム ドメインを入力し、ドロップダウンから [CNAME] を選択して、 **[開始]** を選択します。
 
 DNS の変更が設定されると、Web サイトでは Static Web App の自動生成された URL (_random-name-123456789c.azurestaticapps.net_ など) が返されます。
 
@@ -92,7 +92,7 @@ DNS の変更が設定されると、Web サイトでは Static Web App の自�
 
 ## <a name="map-a-wildcard-domain"></a>ワイルドカード ドメインのマップ
 
-状況によっては、サブドメインに送信されたすべてのトラフィックを、別のドメインにルーティングしたい場合があります。 一般的な例としては、すべてのサブドメイン トラフィックを `www.example.com` にマッピングする場合があります。 これにより、`www.example.com` ではなく `ww.example.com` と入力した場合でも、要求が `www.example.com` に送信されます。
+状況によっては、サブドメインに送信されたすべてのトラフィックを、別のドメインにルーティングしたい場合があります。 一般的な例としては、すべてのサブドメイン トラフィックを `www.example.com` にマッピングする場合があります。 これにより、`www.example.com` ではなく `w.example.com` と入力した場合でも、要求が `www.example.com` に送信されます。
 
 ### <a name="configure-dns-provider"></a>DNS プロバイダーを構成する
 

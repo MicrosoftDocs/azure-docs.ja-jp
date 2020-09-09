@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887046"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985616"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>モデル変換 REST API を使用する
 
@@ -53,6 +53,8 @@ JSON ドキュメントにラップされている実行中の変換の ID を�
 
 #### <a name="request-body"></a>要求本文
 
+> [!NOTE]
+> Azure で変換を実行するために、`input.folderPath` 配下のものがすべて取得されます。 `input.folderPath` が指定されていない場合、コンテナーのコンテンツ全体が取得されます。 取得されるすべての BLOB およびフォルダーには、[有効な Windows ファイル名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)が指定されている必要があります。
 
 ```json
 {
@@ -79,7 +81,7 @@ ARR アカウントがストレージ アカウントにリンクされていな
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
-JSON ドキュメントにラップされている実行中の変換の ID を返します。 フィールド名は "conversionId" です。
+JSON ドキュメントにラップされている実行中の変換の ID を返します。 フィールド名は `conversionId` です。
 
 #### <a name="request-body"></a>要求本文
 
@@ -88,6 +90,8 @@ JSON ドキュメントにラップされている実行中の変換の ID を�
 > [!NOTE]
 > これらの SAS URI トークンは、クエリ文字列であり、完全な URI ではありません。 
 
+> [!NOTE]
+> Azure で変換を実行するために、`input.folderPath` 配下のものがすべて取得されます。 `input.folderPath` が指定されていない場合、コンテナーのコンテンツ全体が取得されます。 取得されるすべての BLOB およびフォルダーには、[有効な Windows ファイル名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)が指定されている必要があります。
 
 ```json
 {
@@ -120,6 +124,7 @@ JSON ドキュメントにラップされている実行中の変換の ID を�
 
 次の値を持つことができる "status" フィールドを含む JSON ドキュメントを返します。
 
+- "作成済み"
 - "Running"
 - "Success"
 - "Failure"

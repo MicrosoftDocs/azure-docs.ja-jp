@@ -9,12 +9,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 09/23/2019
-  ms.openlocfilehash: b07770c030c7265fb0dc95aa07e02cccaad41729
-  ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+  ms.openlocfilehash: 632f95724c8a7f122153d278521f612208e95766
+  ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83779027"
+  ms.lasthandoff: 08/30/2020
+  ms.locfileid: "89146457"
 landingContent:
 - title: Azure Batch について
   linkLists:
@@ -83,16 +83,16 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/batch?view=azure-cli-latest
+      url: /cli/azure/batch
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.batch/?view=azps-2.6.0
+      url: /powershell/module/az.batch/
     - text: .NET
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet
+      url: /dotnet/api/overview/azure/batch
     - text: Java
-      url: https://docs.microsoft.com/java/api/overview/azure/batch?view=azure-java-stable
+      url: /java/api/overview/azure/batch
     - text: Node.js
-      url: https://docs.microsoft.com/javascript/api/overview/azure/batch?view=azure-node-latest
+      url: /javascript/api/overview/azure/batch
     - text: Python
-      url: https://docs.microsoft.com/python/api/overview/azure/batch?view=azure-python
+      url: /python/api/overview/azure/batch
     - text: REST
-      url: https://docs.microsoft.com/rest/api/batchservice/
+      url: /rest/api/batchservice/

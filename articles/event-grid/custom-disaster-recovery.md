@@ -1,18 +1,15 @@
 ---
 title: Azure Event Grid のカスタム トピック用のディザスター リカバリー
 description: このチュートリアルでは、Event Grid サービスがリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/07/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76511520"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004546"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
@@ -30,7 +27,7 @@ ms.locfileid: "76511520"
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 この URL は後で必要になるのでメモしておいてください。
@@ -211,4 +208,4 @@ namespace EventGridFailoverPublisher
 
 - [http エンドポイントでイベントを受信](./receive-events.md)する方法について学習する
 - [イベントをハイブリッド接続にルーティング](./custom-event-to-hybrid-connection.md)する方法を理解する
-- [Azure DNS と Traffic Manager を使用したディザスター リカバリー](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)について学習する
+- [Azure DNS と Traffic Manager を使用したディザスター リカバリー](../networking/disaster-recovery-dns-traffic-manager.md)について学習する

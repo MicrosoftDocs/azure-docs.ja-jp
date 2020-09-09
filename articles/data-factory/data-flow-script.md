@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/13/2020
-ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 07/29/2020
+ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81413443"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448547"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -177,6 +177,39 @@ aggregate(groupBy(movie),
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
+また、次のスクリプトを使用すると、各列に名前を付けなくても、ストリームに存在するすべての列を使用して行ハッシュを生成できます。
+
+```
+derive(DWhash = sha1(columns()))
+```
+
+### <a name="string_agg-equivalent"></a>String_agg の同等のもの
+このコードは T-SQL ```string_agg()``` 関数のように動作し、文字列値を配列に集約します。 その後、SQL 変換先で使用するために、その配列を文字列にキャストできます。
+
+```
+source1 aggregate(groupBy(year),
+    string_agg = collect(title)) ~> Aggregate1
+Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新、upsert、挿入、削除の数をカウントする
+行の変更変換を使用する場合は、行の変更ポリシーによって発生した更新、upsert、挿入、削除の数をカウントしたい場合があります。 変更行の後に集計変換を追加し、そのデータ フロー スクリプトをこれらのカウントの集計の定義に貼り付けます。
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
+```
+
+### <a name="distinct-row-using-all-columns"></a>すべての列を使用する個別の行
+このスニペットは、すべての入力列を受け取り、グループ化に使用されるハッシュを生成して重複を排除した後、各重複項目の最初の発生を出力として提供する新しい集計変換を、データ フローに追加します。 明示的に列の名前を指定する必要はなく、これらは、受信データ ストリームから自動的に生成されます。
+
+```
+aggregate(groupBy(mycols = sha2(256,columns())),
+    each(match(true()), $$ = first($$))) ~> DistinctRows
 ```
 
 ## <a name="next-steps"></a>次のステップ

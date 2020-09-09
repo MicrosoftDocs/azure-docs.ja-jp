@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418322"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036353"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -26,17 +26,17 @@ ms.locfileid: "81418322"
 
 ## <a name="roles-and-requirements"></a>ロールと要件
 
-Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" ロールまたは "*所有者*" ロールのメンバーであるか、Azure サブスクリプションの "*管理者*" である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure portal で右上隅にあるユーザー名を選択し、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 
+Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" ロール、"*所有者*" ロールのメンバーであるか、Azure サブスクリプションの "*管理者*" である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure portal で右上隅にあるユーザー名を選択し、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 
 
 データセット、リンクされたサービス、パイプライン、トリガー、および統合ランタイムを含む Data Factory の子リソースを作成および管理するには、次の要件が適用されます。
-- Azure portal で子リソースを作成および管理するには、リソース グループ レベル以上で **Data Factory 共同作成者**ロールに属している必要があります。
+- Azure portal で子リソースを作成および管理するには、**リソース グループ** レベル以上で **Data Factory 共同作成者**ロールに属している必要があります。
 - PowerShell または SDK を使用して子リソースを作成および管理する場合は、リソース レベル以上での**共同作成者**ロールで十分です。
 
 ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。
 
 ## <a name="set-up-permissions"></a>アクセス許可の設定
 
-データ ファクトリを作成した後、他のユーザーがデータ ファクトリで操作を行えるようにすることができます。 このアクセスを他のユーザーに付与するには、データ ファクトリを含むリソース グループの **Data Factory 共同作成者**組み込みロールにそのユーザーを追加する必要があります。
+データ ファクトリを作成した後、他のユーザーがデータ ファクトリで操作を行えるようにすることができます。 このアクセスを他のユーザーに付与するには、Data Factory を含む**リソース グループ**の **Data Factory 共同作成者**組み込みロールにそのユーザーを追加する必要があります。
 
 ### <a name="scope-of-the-data-factory-contributor-role"></a>Data Factory 共同作成者ロールのスコープ
 
@@ -50,7 +50,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 ### <a name="resource-manager-template-deployment"></a>Resource Manager テンプレートの展開
 
-リソース グループ レベル以上の **Data Factory 共同作成者**ロールを持つユーザーは、Resource Manager テンプレートをデプロイできます。 結果として、このロールのメンバーは Resource Manager テンプレートを使用して、データ ファクトリとその子リソース (データ セット、リンクされたサービス、パイプライン、トリガー、統合ランタイムなど) の両方をデプロイすることができます。 ただし、このロールのメンバーシップがあっても、ユーザーは他のリソースを作成することはできません。
+リソース グループ レベル以上の **Data Factory 共同作成者**ロールを持つユーザーは、Resource Manager テンプレートをデプロイできます。 結果として、このロールのメンバーは Resource Manager テンプレートを使用して、データ ファクトリとその子リソース (データ セット、リンクされたサービス、パイプライン、トリガー、統合ランタイムなど) の両方をデプロイすることができます。 このロールのメンバーシップがあっても、ユーザーは他のリソースを作成することはできません。
 
 Azure Repos や GitHub に対するアクセス許可は、Data Factory のアクセス許可から独立しています。 結果として、閲覧者ロールのメンバーにすぎない、リポジトリのアクセス許可を持つユーザーは、Data Factory の子リソースを編集して変更内容をリポジトリにコミットすることは可能ですが、それらの変更を発行することはできません。
 
@@ -82,9 +82,9 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
   1. データ ファクトリ レベルで**共同作成者**組み込みロールを割り当てます。
   2. **Microsoft.Resources/deployments/** のアクセス許可を使用して、カスタム ロールを作成します。 このカスタム ロールをリソース グループ レベルのユーザーに割り当てます。
 
-- ユーザーがリンクされたサービスでのみ接続をテストできるようにします。
+- ユーザーがリンクされたサービスで接続をテストできるようにします。または、データセットのデータをプレビューできるようにします。
 
-    次のアクションのためのアクセス許可を持つカスタム ロールを作成します。**Microsoft.DataFactory/factories/getFeatureValue/read** および **Microsoft.DataFactory/factories/getDataPlaneAccess/read**。 このカスタム ロールを、ユーザーのデータ ファクトリ リソースに割り当てます。
+    次のアクションのためのアクセス許可を持つカスタム ロールを作成します。**Microsoft.DataFactory/factories/getFeatureValue/read** および **Microsoft.DataFactory/factories/getDataPlaneAccess/action**。 このカスタム ロールを、ユーザーのデータ ファクトリ リソースに割り当てます。
 
 - ユーザーが PowerShell または SDK からデータ ファクトリを更新できるようにし、Azure portal では更新を行えないようにします。
 

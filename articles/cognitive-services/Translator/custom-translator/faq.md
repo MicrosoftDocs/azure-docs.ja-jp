@@ -1,20 +1,20 @@
 ---
-title: よく寄せられる質問 - Custom Translator
+title: よく寄せられる質問 - カスタム翻訳ツール
 titleSuffix: Azure Cognitive Services
 description: この記事では、Azure Cognitive Services Custom Translator についてよく寄せられる質問とその回答を示します。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 0413c15c025e554ab8465736dfdb5607149c5ed2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588685"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507231"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>カスタム翻訳ツールに関してよく寄せられる質問
 
@@ -41,7 +41,7 @@ ms.locfileid: "83588685"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>デプロイされたシステムにアクセスする方法を教えてください。
 
-デプロイされたシステムには、Microsoft Translator V3 を介して CategoryID を指定することでアクセスできます。 Translator の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
+デプロイされたシステムには、Microsoft Translator Text API V3 を介して CategoryID を指定することでアクセスできます。 Translator Text API の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>データに文が既にアラインされている場合に、アラインと文の分割をスキップする方法を教えてください。
 
@@ -50,5 +50,6 @@ Custom Translator では、TMX ファイルと拡張子が `.align` のテキス
 抽出された文の数が同じベース名の 2 つのファイルと一致しない場合、Custom Translator では `.align` ファイルに対して文のアライン機能が実行されます。
 
 ## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>TMX をアップロードしようとすると、"ドキュメントの処理に失敗しました" と表示されます。
+
 
 TMX が <https://www.gala-global.org/tmx-14b> の TMX 1.4b 仕様に準拠していることを確認してください。

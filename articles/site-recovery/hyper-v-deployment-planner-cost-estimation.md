@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60947232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089551"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -167,16 +167,16 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>サポートされる通貨
 Site Recovery Deployment Planner は、次のいずれかの通貨でコスト レポートを生成できます。
 
-|Currency|名前||Currency|名前||Currency|名前|
+|Currency|名前|Currency|名前|Currency|名前|
 |---|---|---|---|---|---|---|---|
-|ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
-|CAD|カナダ ドル ($)||CHF|スイス フラン (chf)||DKK|デンマーク クローネ (kr)|
-|EUR|ユーロ (€)||GBP|イギリス ポンド (£)||HKD|香港ドル (HK$)|
-|IDR|インドネシア ルピア (Rp)||INR|インド ルピー (₹)||JPY|日本円 (¥)|
-|KRW|韓国ウォン (₩)||MXN|メキシコ ペソ (MX$)||MYR|マレーシア リンギ (RM$)|
+|ARS|アルゼンチン ペソ ($)|AUD|オーストラリア ドル ($)|BRL|ブラジル レアル (R$)|
+|CAD|カナダ ドル ($)|CHF|スイス フラン (chf)|DKK|デンマーク クローネ (kr)|
+|EUR|ユーロ (€)|GBP|イギリス ポンド (£)|HKD|香港ドル (HK$)|
+|IDR|インドネシア ルピア (Rp)|INR|インド ルピー (₹)|JPY|日本円 (¥)|
+|KRW|韓国ウォン (₩)|MXN|メキシコ ペソ (MX$)|MYR|マレーシア リンギ (RM$)|
 |NOK|ノルウェー クローネ (kr)||NZD|ニュージーランド ドル ($)||RUB|ロシア ルーブル (руб)|
-|SAR|サウジ リアル (SR)||SEK|スウェーデン クローナ (kr)||TWD|台湾ドル (NT$)|
-|TRY|トルコ リラ (TL)||USD| 米ドル ($)||ZAR|南アフリカ ランド (R)|
+|SAR|サウジ リアル (SR)|SEK|スウェーデン クローナ (kr)|TWD|台湾ドル (NT$)|
+|TRY|トルコ リラ (TL)|USD| 米ドル ($)|ZAR|南アフリカ ランド (R)|
 
 ## <a name="next-steps"></a>次のステップ
 [Site Recovery を使用して Hyper-V から Azure に VM](hyper-v-azure-tutorial.md) をレプリケートして保護する方法について詳しく調べてみましょう。

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117123"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507847"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -42,11 +42,11 @@ HANA のインストールを開始する前に、以下について検証しま
 
 Microsoft から HANA L インスタンス ユニットを受け取ったら、以下の設定を検証し、必要に応じて調整します。
 
-**手順 1**: HANA L インスタンスを受信し、インスタンスへのアクセスと接続を確立した後に、Azure portal で、インスタンスが正しい SKU および OS と共に表示されているかどうかを確認します。 チェックを実行するために必要な手順については、「[Azure portal を介した Azure HANA L インスタンスの制御](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal)」をお読みください。
+**手順 1**: HANA L インスタンスを受信し、インスタンスへのアクセスと接続を確立した後に、Azure portal で、インスタンスが正しい SKU および OS と共に表示されているかどうかを確認します。 チェックを実行するために必要な手順については、「[Azure portal を介した Azure HANA L インスタンスの制御](./hana-li-portal.md)」をお読みください。
 
 **手順 2**: HANA L インスタンスを受け取り、インスタンスへのアクセスと接続を確立したら、そのインスタンスの OS をご利用の OS プロバイダーに登録します。 この手順には、Azure の VM にデプロイされている SUSE SMT のインスタンスに SUSE Linux OS を登録することが含まれます。 
 
-HANA L インスタンス ユニットは、この SMT インスタンスに接続できます。 (詳細については、[SUSE Linux 用 SMT サーバーの設定方法](hana-setup-smt.md)に関するページを参照してください。) 別の方法として、Red Hat OS を、接続先にする必要がある Red Hat Subscription Manager に登録する必要があります。 詳細については、[SAP HANA on Azure (L インスタンス) とは何であるか](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページの説明を参照してください。 
+HANA L インスタンス ユニットは、この SMT インスタンスに接続できます。 (詳細については、[SUSE Linux 用 SMT サーバーの設定方法](hana-setup-smt.md)に関するページを参照してください。) 別の方法として、Red Hat OS を、接続先にする必要がある Red Hat Subscription Manager に登録する必要があります。 詳細については、[SAP HANA on Azure (L インスタンス) とは何であるか](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json)に関するページの説明を参照してください。 
 
 この手順は、OS に修正プログラムを適用する際に必要で、ユーザー側で実行する必要があります。 SUSE については、[SMT のインストールに関するこのページ](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)で、SMT のインストールと構成についてのドキュメントを見つけてください。
 
@@ -127,10 +127,10 @@ SAP HANA on Azure (L インスタンス) の場合、Azure で行われる時刻
 ## <a name="networking"></a>ネットワーク
 Azure 仮想ネットワークの設計と、それらの仮想ネットワークの HANA L インスタンスへの接続が、以下のドキュメントで説明されている推奨事項に従って行われていることが前提です。
 
-- [SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](./hana-overview-architecture.md)
 - [SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-単一ユニットのネットワーキングに関して、触れておくべき注意点がいくつかあります。 どの HANA L インスタンス ユニットにも 2 ～ 3 個の IP アドレスが備わっており、それらのアドレスは 2 ～ 3 個の NIC ポートに割り当てられています。 HANA スケールアウト構成と HANA システム レプリケーション シナリオでは、3 つの IP アドレスが使用されます。 ユニットの NIC に割り当てられている IP アドレスの 1 つは、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」で説明されているサーバー IP プールから割り当てられたものです。
+単一ユニットのネットワーキングに関して、触れておくべき注意点がいくつかあります。 どの HANA L インスタンス ユニットにも 2 ～ 3 個の IP アドレスが備わっており、それらのアドレスは 2 ～ 3 個の NIC ポートに割り当てられています。 HANA スケールアウト構成と HANA システム レプリケーション シナリオでは、3 つの IP アドレスが使用されます。 ユニットの NIC に割り当てられている IP アドレスの 1 つは、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](./hana-overview-architecture.md)」で説明されているサーバー IP プールから割り当てられたものです。
 
 アーキテクチャのイーサネットの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)についてのページを参照してください。
 
@@ -265,7 +265,3 @@ SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりまし�
 
 
  
-
-
-
-

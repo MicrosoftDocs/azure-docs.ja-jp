@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671909"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993858"
 ---
 # <a name="conditional-access-session"></a>条件付きアクセス:Session
 
@@ -48,7 +48,7 @@ ms.locfileid: "78671909"
 
 詳細については、「[おすすめアプリのためにアプリの条件付きアクセス制御をデプロイする](/cloud-app-security/proxy-deployment-aad)」を参照してください。
 
-## <a name="sign-in-frequency-preview"></a>サインインの頻度 (プレビュー)
+## <a name="sign-in-frequency"></a>サインインの頻度
 
 サインインの頻度は、ユーザーがリソースにアクセスしようとしたときにサインインし直すように求められるまでの期間を定義します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "78671909"
 
 詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)」という記事を参照してください。
 
-## <a name="persistent-browser-session-preview"></a>永続的なブラウザー セッション (プレビュー)
+## <a name="persistent-browser-session"></a>永続的ブラウザー セッション
 
 永続的なブラウザー セッションでは、ユーザーはブラウザー ウィンドウを閉じてから再度開いた後でもサインインした状態を維持できます。
 

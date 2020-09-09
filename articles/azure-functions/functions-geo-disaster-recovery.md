@@ -4,12 +4,12 @@ description: Azure Functions で冗長性のために地理的リージョンを
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080239"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506283"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo ディザスター リカバリー
 
@@ -22,7 +22,7 @@ Azure Functions は特定のリージョンで実行されます。  可用性�
 * アクティブ/アクティブ。 両方のリージョンがアクティブであり、(重複またはローテーションして) イベントを受信しています。 アクティブ/アクティブは、HTTPS 関数を Azure Front Door と組み合わせる場合にお勧めします。
 * アクティブ/パッシブ。 1 つのリージョンがアクティブでイベントを受信し、セカンダリがアイドル状態です。  フェールオーバーが必要になると、セカンダリ リージョンがアクティブになり、処理を引き継ぎます。  これは、Service Bus や Event Hubs のような HTTP 以外の関数の場合にお勧めします。
 
-マルチリージョン デプロイの詳細については、[複数のリージョンでアプリを実行する](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)方法に関する記事をご覧ください。
+マルチリージョン デプロイの詳細については、[複数のリージョンでアプリを実行する](/azure/architecture/reference-architectures/app-service-web-app/multi-region)方法に関する記事をご覧ください。
 
 ## <a name="activeactive-for-https-functions"></a>HTTPS 関数でのアクティブ/アクティブ
 

@@ -1,25 +1,28 @@
 ---
-title: ARM テンプレートを使用して Azure DB for MySQL を作成する
-description: この記事では、Azure Resource Manager テンプレートを使用して、Azure Database for MySQL サーバーと仮想ネットワーク統合を作成する方法について説明します。
-services: azure-resource-manager
+title: クイック スタート:Azure DB for MySQL を作成する - ARM テンプレート
+description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Database for MySQL サーバーと仮想ネットワーク統合を作成する方法について説明します。
 author: mgblythe
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
-ms.date: 04/27/2020
-ms.openlocfilehash: 7313d12509859514e41b30c4021f74f25a0e50b9
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 05/19/2020
+ms.openlocfilehash: 47c203eaea0c3fc2a39267ed78eb603c4836cd2b
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82630368"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660283"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL サーバーを作成する
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL サーバーを作成する
 
-Azure Database for MySQL は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 このクイックスタートでは、あらかじめ定義されている Azure Resource Manager (ARM) テンプレートを使用して、Azure Database for MySQL サーバーと仮想ネットワーク統合を作成する方法について説明します。 サーバーの作成には、Azure portal、Azure CLI、Azure PowerShell を使用できます。
+Azure Database for MySQL は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Database for MySQL サーバーと仮想ネットワーク統合を作成します。 サーバーの作成には、Azure portal、Azure CLI、Azure PowerShell を使用できます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,15 +42,13 @@ Azure Database for MySQL は、高可用な MySQL データベースをクラウ
 
 ---
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
 Azure Database for MySQL サーバーは、定義済みの一連のコンピューティング リソースとストレージ リソースを使って作成します。 詳細については、「[Azure Database for MySQL の価格レベル](concepts-pricing-tiers.md)」を参照してください。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成します。
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/)からのものです。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet/)からのものです。
-
-:::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
+:::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json":::
 
 このテンプレートには、次の 5 つの Azure リソースが定義されています。
 
@@ -215,7 +216,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>次のステップ
 
-テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
+Resource Manager テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [ チュートリアル: 初めての Azure Resource Manager テンプレートを作成およびデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

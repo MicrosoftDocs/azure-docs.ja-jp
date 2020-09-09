@@ -36,7 +36,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 HDFS レプリケーション係数未満か、それに近いごく少数のノードにまで、HDInsight クラスターがスケール ダウンされました。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 1. 次のコマンドを使用して、HDInsight クラスター上の HDFS の状態をレポートします。
 

@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop ユーザー用のフィードをカスタマイズする - Azure
-description: PowerShell コマンドレットで Windows Virtual Desktop ユーザー用のフィードをカスタマイズする方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) ユーザー用のフィードをカスタマイズする - Azure
+description: PowerShell コマンドレットを使用して Windows Virtual Desktop (クラシック) ユーザー用のフィードをカスタマイズする方法。
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a93aa35353940cfdbded1634448d4f6d2865c365
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3a8c1a5da4f4d46d98e01eeb0bf210567af19a95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614088"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007235"
 ---
-# <a name="customize-feed-for-windows-virtual-desktop-users"></a>Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
+# <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>Windows Virtual Desktop (クラシック) ユーザー用のフィードをカスタマイズする
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../customize-feed-for-virtual-desktop-users.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../customize-feed-for-virtual-desktop-users.md)を参照してください。
 
 フィードは、RemoteApp とリモート デスクトップのリソースがユーザーの認識可能な方法で表示されるようにカスタマイズすることができます。
 
@@ -37,14 +35,18 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/get-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/get-rdsremoteapp.png)
 
 RemoteApp にフレンドリ名を割り当てるには、次の PowerShell コマンドレットを実行します。
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![Name と New FriendlyName が強調表示された PowerShell コマンドレット Set-RDSRemoteApp のスクリーンショット。](../media/set-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![Name と New FriendlyName が強調表示された PowerShell コマンドレット Set-RDSRemoteApp のスクリーンショット。](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>リモート デスクトップの表示名をカスタマイズする
 
@@ -55,18 +57,22 @@ Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroup
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/get-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![Name と FriendlyName が強調表示された PowerShell コマンドレット Get-RDSRemoteApp のスクリーンショット。](../media/get-rdsremotedesktop.png)
 
 リモート デスクトップのリソースにフレンドリ名を割り当てるには、次の PowerShell コマンドレットを実行します。
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![Name と New FriendlyName が強調表示された PowerShell コマンドレット Set-RDSRemoteApp のスクリーンショット。](../media/set-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![Name と New FriendlyName が強調表示された PowerShell コマンドレット Set-RDSRemoteApp のスクリーンショット。](../media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 これでフィードをユーザーに合わせてカスタマイズしたので、Windows Virtual Desktop クライアントにサインインして、それを試すことができます。これを行うには、Windows Virtual Desktop への接続方法に関するページに進みます。
-    
- * [Windows 10 または Windows 7 から接続する](../connect-windows-7-and-10.md)
- * [Web ブラウザーから接続する](connect-web-2019.md) 
+
+ * [Windows 10 または Windows 7 から接続する](connect-windows-7-10-2019.md)
+ * [Web ブラウザーから接続する](connect-web-2019.md)

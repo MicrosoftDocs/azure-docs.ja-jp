@@ -1,20 +1,26 @@
 ---
-title: Azure Automation アカウントで監視タスクを作成する
-description: Azure Automation アカウントで監視タスクを作成してフォルダーに作成された新しいファイルを監視する方法を説明します。
+title: Azure Automation 監視タスクを使用して更新されたファイルを追跡する
+description: この記事では、Azure Automation アカウントで監視タスクを作成してフォルダーに作成された新しいファイルを監視する方法を説明します。
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 1175350e7f9f4db92d7d59eba0cc66ac4bb49f5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617360"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185655"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>ローカル マシンでのファイル変更を追跡する Azure Automation 監視タスクを作成する
+# <a name="track-updated-files-with-a-watcher-task"></a>監視タスクによる更新されたファイルの追跡
 
 Azure Automation では、PowerShell Runbook で監視タスクを使用して、イベントを検索し、アクションをトリガーします。 監視タスクには、監視とアクションという 2 つの部分が含まれています。 監視 Runbook は、監視タスクで定義された間隔で実行され、データをアクション Runbook に出力します。 
+
+> [!NOTE]
+> Azure China Vianet 21 では、監視タスクはサポートされていません。
+
+> [!IMPORTANT]
+> 2020 年 5 月から、イベントの監視、定期的なタスクのスケジュール、およびアクションのトリガーを行う方法として Azure Logic Apps の使用がサポートされるようになりました。 「[Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)」を参照してください。
 
 このチュートリアルでは、ディレクトリへの新しいファイルの追加を監視する監視タスクの作成手順について説明します。 学習内容は次のとおりです。
 
@@ -31,12 +37,9 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 このチュートリアルを完了するには、以下が必要です。
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* 監視およびアクションの Runbook と監視タスクを保持する、[Automation アカウント](automation-offering-get-started.md)。
+* 監視およびアクションの Runbook と監視タスクを保持する、[Automation アカウント](./index.yml)。
 * 監視タスクが実行される、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)。
 * PowerShell Runbook。 PowerShell ワークフロー Runbook は、監視タスクではサポートされていません。
-
-> [!NOTE]
-> Azure 中国では、監視タスクはサポートされていません。
 
 ## <a name="import-a-watcher-runbook"></a>監視 Runbook をインポートする
 
@@ -58,7 +61,7 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 
 ## <a name="create-an-automation-variable"></a>Automation 変数を作成する
 
-[Automation 変数](automation-variables.md)を使用して、上述の Runbook が各ファイルから読み取って保存するタイムスタンプを格納します。
+[Automation 変数](./shared-resources/variables.md)を使用して、上述の Runbook が各ファイルから読み取って保存するタイムスタンプを格納します。
 
 1. **[共有リソース]** の **[変数]** を選択し、 **[+ 変数の追加]** をクリックします。
 1. 名前に「Watch-NewFileTimestamp」と入力します。
@@ -166,5 +169,4 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 次のリンクから、独自の Runbook を作成する方法についてご覧ください。
 
 > [!div class="nextstepaction"]
-> [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
-
+> [PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)

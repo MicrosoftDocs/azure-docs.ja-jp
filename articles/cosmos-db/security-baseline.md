@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3431ad88a27da9d83b75ed3661d6129f157b9b1f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195249"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531508"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 用の Azure セキュリティ ベースライン
 
@@ -90,7 +90,7 @@ Azure Security Center の統合された脅威インテリジェンスの概要:
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
 
-**ガイダンス**: ネットワーク セキュリティ グループ (NSG) フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。 NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して、Azure クラウド内のトラフィック フローに関する分析情報を提供できます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
+**ガイダンス**:ネットワーク セキュリティ グループ (NSG) フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。 NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して、Azure クラウド内のトラフィック フローに関する分析情報を提供できます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
 NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
@@ -184,7 +184,7 @@ Azure Monitor でアラートを作成する方法: https://docs.microsoft.com/a
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
-**ガイダンス**: Azure Monitor を介してログを取り込み、Azure Cosmos DB によって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージにはストレージ アカウントを使用します。 または、Azure Sentinel またはサードパーティのセキュリティ インシデントおよびイベント管理 (SIEM) に対してデータを有効にしてオンボードすることもできます。 
+**ガイダンス**:Azure Monitor を介してログを取り込み、Azure Cosmos DB によって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージにはストレージ アカウントを使用します。 または、Azure Sentinel またはサードパーティのセキュリティ インシデントおよびイベント管理 (SIEM) に対してデータを有効にしてオンボードすることもできます。 
 
 Azure Cosmos DB の診断ログを有効にする方法: https://docs.microsoft.com/azure/cosmos-db/logging
 
@@ -216,7 +216,7 @@ Azure アクティビティ ログの診断設定を有効にする方法: https
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-**ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure Cosmos DB インスタンスに関連付けられている Log Analytics ワークスペースのログ保有期間を設定します。
+**ガイダンス**:Azure Monitor で、組織のコンプライアンス規則に従って、Azure Cosmos DB インスタンスに関連付けられている Log Analytics ワークスペースのログ保有期間を設定します。
 
 ログ保有期間のパラメーターを設定する方法: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -236,7 +236,7 @@ Log Analytics ワークスペースで Azure Cosmos DB に対するクエリを�
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
-**ガイダンス**: Azure Security Center で、Azure Cosmos DB の Advanced Threat Protection を有効にして、セキュリティ ログおよびイベント内の異常なアクティビティを監視します。 Azure Cosmos DB で診断設定を有効にし、Log Analytics ワークスペースにログを送信します。
+**ガイダンス**:Azure Security Center で、Azure Cosmos DB の Advanced Threat Protection を有効にして、セキュリティ ログおよびイベント内の異常なアクティビティを監視します。 Azure Cosmos DB で診断設定を有効にし、Log Analytics ワークスペースにログを送信します。
 
  
 
@@ -284,9 +284,9 @@ Azure Monitor を使用してログ アラートを作成、表示、管理す�
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: Azure portal の ID およびアクセス管理 (IAM) ペインを使用して、Azure Cosmos DB リソースでロールベースのアクセス制御 (RBAC) を構成し、インベントリを保持することができます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。 組み込みのロールまたはカスタム ロールは、個人とグループに使用できます。
+**ガイダンス**:Azure portal の ID およびアクセス管理 (IAM) ペインを使用して、Azure Cosmos DB リソースでロールベースのアクセス制御 (RBAC) を構成し、インベントリを保持することができます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。 組み込みのロールまたはカスタム ロールは、個人とグループに使用できます。
 
-Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応する RBAC が組み込まれています。 Azure Active Directory (AD) にプロファイルを持つ個人は、これらの RBAC ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。
+Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応する RBAC が組み込まれています。 Azure Active Directory (AD) にプロファイルを持つ個人は、これらの Azure ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。
 
 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出することもできます。 
 
@@ -310,7 +310,7 @@ PowerShell を使用して Azure Active Directory でディレクトリ ロー�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**: Azure AD または Azure Cosmos DB に関しては、既定または空白のパスワードの概念は存在しません。 代わりに、Azure Cosmos DB では、2 種類のキー (マスター キーとリソース トークン) を使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 キーは、いつでも再生成することができます。
+**ガイダンス**:Azure AD または Azure Cosmos DB に関しては、既定または空白のパスワードの概念は存在しません。 代わりに、Azure Cosmos DB では、2 種類のキー (マスター キーとリソース トークン) を使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 キーは、いつでも再生成することができます。
 
 Azure Cosmos DB のデータへのアクセスのセキュリティ保護の概要: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -324,7 +324,7 @@ Azure Active Directory を使用してプログラムでキーにアクセスす
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
-**ガイダンス**: 適用できません。Azure Cosmos DB は、管理者アカウントをサポートしていません。  すべてのアクセスは、Azure Active Directory と Azure ロールベースのアクセス制御 (RBAC) に統合されます。
+**ガイダンス**: 適用できません。Azure Cosmos DB は、管理者アカウントをサポートしていません。  すべてのアクセスは、Azure Active Directory と Azure ロールベースのアクセス制御 (Azure RBAC) に統合されています。
 
 
 
@@ -334,7 +334,7 @@ Azure Active Directory を使用してプログラムでキーにアクセスす
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス**: Azure Cosmos DB は、2 種類のキーを使用してユーザーを承認し、データ プレーン レベルでのシングル サインオン (SSO) はサポートされていません。 Cosmos DB のコントロール プレーンへのアクセスは、REST API 経由で行うことができ、SSO がサポートされています。 認証を行うには、Azure Active Directory から取得した要求の Authorization ヘッダーを JSON Web トークンに設定します。
+**ガイダンス**:Azure Cosmos DB は、2 種類のキーを使用してユーザーを承認し、データ プレーン レベルでのシングル サインオン (SSO) はサポートされていません。 Cosmos DB のコントロール プレーンへのアクセスは、REST API 経由で行うことができ、SSO がサポートされています。 認証を行うには、Azure Active Directory から取得した要求の Authorization ヘッダーを JSON Web トークンに設定します。
 
 Azure Database for Cosmos DB REST API の概要: https://docs.microsoft.com/rest/api/cosmos-db/
 
@@ -518,7 +518,7 @@ Cosmos DB セキュリティの概要: https://docs.microsoft.com/azure/cosmos-d
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-Azure Cognitive Search を使用して Azure Cosmos DB データのインデックスを作成する方法: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp ;bc=/azure/cosmos-db/breadcrumb/toc.json
+Azure Cognitive Search を使用して Azure Cosmos DB データのインデックスを作成する方法: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp;bc=/azure/cosmos-db/breadcrumb/toc.json
 
 Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -528,7 +528,7 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応するロールベースのアクセス制御 (RBAC) が組み込まれています。 Azure Active Directory にプロファイルを持つ個人は、これらの RBAC ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。 ロールの割り当ては、Azure Cosmos アカウント、データベース、コンテナー、およびオファー (スループット) へのアクセスを含む、コントロールプレーン アクセスのみに限定されています。
+**ガイダンス**: Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応するロールベースのアクセス制御 (RBAC) が組み込まれています。 Azure Active Directory にプロファイルを持つ個人は、これらの Azure ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。 ロールの割り当ては、Azure Cosmos アカウント、データベース、コンテナー、およびオファー (スループット) へのアクセスを含む、コントロールプレーン アクセスのみに限定されています。
 
 Azure Cosmos DB で RBAC を実装する方法: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -582,7 +582,7 @@ Azure アクティビティ ログ イベントのアラートを作成する方
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
-**ガイダンス**: Azure Security Center からの Azure Cosmos DB インスタンスに関する推奨事項に従います。 
+**ガイダンス**:Azure Security Center からの Azure Cosmos DB インスタンスに関する推奨事項に従います。 
 
 Microsoft では、Azure Cosmos DB インスタンスをサポートする、基になるホストに対してシステム パッチと脆弱性管理を実行します。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
@@ -650,7 +650,7 @@ Azure ロールベースのアクセス制御の概要: https://docs.microsoft.c
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
-**ガイダンス**: メタデータを使用して Azure Cosmos DB インスタンスと関連リソースにタグを適用し、それらを論理的に整理して分類します。
+**ガイダンス**:メタデータを使用して Azure Cosmos DB インスタンスと関連リソースにタグを適用し、それらを論理的に整理して分類します。
 
 タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -711,7 +711,7 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
-**ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。このガイドラインは、コンピューティング リソースと Azure 全体を対象にしています。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -773,7 +773,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
-**ガイダンス**: 適用できません。このガイドラインは、Azure App Service またはコンピューティング リソース上で実行されている Web アプリケーションを対象にしています。
+**ガイダンス**:適用できません。このガイドラインは、Azure App Service またはコンピューティング リソース上で実行されている Web アプリケーションを対象にしています。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -786,7 +786,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**: Azure Policy を使用して、Cosmos DB インスタンスの標準的なセキュリティ構成を定義して実装します。 "Microsoft.DocumentDB" 名前空間で Azure Policy エイリアスを使用して、Cosmos DB インスタンスの構成を監査または適用するためのカスタム ポリシーを作成します。 また、次のような Azure Cosmos DB 用の組み込みのポリシー定義を使用することもできます。
+**ガイダンス**:Azure Policy を使用して、Cosmos DB インスタンスの標準的なセキュリティ構成を定義して実装します。 "Microsoft.DocumentDB" 名前空間で Azure Policy エイリアスを使用して、Cosmos DB インスタンスの構成を監査または適用するためのカスタム ポリシーを作成します。 また、次のような Azure Cosmos DB 用の組み込みのポリシー定義を使用することもできます。
 
 - Cosmos DB アカウントの Advanced Threat Protection のデプロイ
 
@@ -811,7 +811,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -832,7 +832,7 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: Cosmos DB または関連リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
+**ガイダンス**:Cosmos DB または関連リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
 Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -937,7 +937,7 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
-**ガイダンス**: Microsoft Antimalware は、Azure サービス (Azure App Service など) をサポートする基になるホストで有効になっていますが、顧客のコンテンツに対しては実行されません。
+**ガイダンス**:Microsoft Antimalware は、Azure サービス (Azure App Service など) をサポートする基になるホストで有効になっていますが、顧客のコンテンツに対しては実行されません。
 
 Azure Cosmos DB を含む非コンピューティング Azure リソースにアップロードされているファイルを事前にスキャンする必要があります。 Microsoft は、お客様のデータにアクセスできないため、お客様に代わってお客様のコンテンツのマルウェア対策スキャンを実行することはできません。
 
@@ -961,7 +961,7 @@ Azure Cosmos DB を含む非コンピューティング Azure リソースにア
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
-**ガイダンス**: Azure Cosmos DB では、4 時間ごとにデータのスナップショットが取得されます。 すべてのバックアップは別々のストレージ サービス内に個別に保存されます。これらのバックアップは、リージョンの障害からの回復性を確保するためにグローバルにレプリケートされます。 どのような場合でも、最新の 2 つのスナップショットのみが保持されます。 ただし、コンテナーまたはデータベースが削除された場合、Azure Cosmos DB には、ある特定のコンテナーまたはデータベースの既存のスナップショットが 30 日間保持されます。 Azure サポートに連絡して、バックアップから復元してください。
+**ガイダンス**:Azure Cosmos DB では、4 時間ごとにデータのスナップショットが取得されます。 すべてのバックアップは別々のストレージ サービス内に個別に保存されます。これらのバックアップは、リージョンの障害からの回復性を確保するためにグローバルにレプリケートされます。 どのような場合でも、最新の 2 つのスナップショットのみが保持されます。 ただし、コンテナーまたはデータベースが削除された場合、Azure Cosmos DB には、ある特定のコンテナーまたはデータベースの既存のスナップショットが 30 日間保持されます。 Azure サポートに連絡して、バックアップから復元してください。
 
 Azure Cosmos DB の自動バックアップの概要: https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
@@ -1009,7 +1009,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
-**ガイダンス**: Cosmos DB に保存されているすべてのユーザー データは、保存時と転送時に暗号化されているため、操作は何も必要ありません。 つまり、保存時の暗号化機能は、既定で "オン" になっています。 オンまたはオフにするコントロールはありません。 Azure Cosmos DB では、アカウントが実行されているすべてのリージョンで AES 256 暗号化が使われます。
+**ガイダンス**:Cosmos DB に保存されているすべてのユーザー データは、保存時と転送時に暗号化されているため、操作は何も必要ありません。 つまり、保存時の暗号化機能は、既定で "オン" になっています。 オンまたはオフにするコントロールはありません。 Azure Cosmos DB では、アカウントが実行されているすべてのリージョンで AES 256 暗号化が使われます。
 
 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護します。
 
@@ -1064,7 +1064,7 @@ NIST の出版物を参照してください。IT の計画と機能に関する
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 Azure Security Center のセキュリティ連絡先を設定する方法: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
@@ -1100,7 +1100,7 @@ Azure Sentinel にアラートをストリーミングする方法: https://docs
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 に従ってください。
+**ガイダンス**:お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 に従ってください。
 
 Microsoft マネージド クラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 

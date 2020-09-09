@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202553"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -41,7 +41,7 @@ ms.locfileid: "79476690"
 
 次の例では、`currentDateTime` 要求を `approvedDateTime` 要求と比較します。 `currentDateTime` が `approvedDateTime` より後の場合にエラーがスローされます。 変換で、値が 5 分間 (30,000 ミリ秒) の差以内である場合に等価として扱われます。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="approvedDateTime" TransformationClaimType="leftOperand" />
@@ -56,7 +56,7 @@ ms.locfileid: "79476690"
 ```
 
 `login-NonInteractive` 検証技術プロファイルによって、`AssertApprovedDateTimeLaterThanCurrentDateTime` 要求変換が呼び出されます。
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -67,7 +67,7 @@ ms.locfileid: "79476690"
 
 セルフアサート技術プロファイルによって **login-NonInteractive** 検証技術プロファイルが呼び出されます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="DateTimeGreaterThan">Custom error message if the provided left operand is greater than the right operand.</Item>
@@ -96,7 +96,7 @@ ms.locfileid: "79476690"
 
 次の例では、要求 `dateOfBirth` (date データ型) から別の要求 `dateOfBirthWithTime` (dateTime データ型) への変換を示します。
 
-```XML
+```xml
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
@@ -125,7 +125,7 @@ ms.locfileid: "79476690"
 
 次の例では、要求 `systemDateTime` (dateTime データ型) から別の要求 `systemDate` (date データ型) への変換を示します。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
@@ -151,7 +151,7 @@ ms.locfileid: "79476690"
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
-```XML
+```xml
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="currentDateTime" />
@@ -179,7 +179,7 @@ ms.locfileid: "79476690"
 この要求変換を使用すると、2 つの ClaimType がお互いにとって等しいか、後か、前かを判断できます。 たとえば、ユーザーがサービス使用条件 (TOS) に同意した最終時刻を格納できます。 3 か月後に、TOS にもう一度アクセスするようユーザーに要求できます。
 要求変換を実行するには、まず現在の dateTime と、ユーザーが TOS に同意した最終時刻を取得する必要があります。
 
-```XML
+```xml
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="currentDateTime" TransformationClaimType="firstDateTime" />

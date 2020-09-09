@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130768"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231354"
 ---
 # <a name="tutorial-mount-the-cluster"></a>チュートリアル:クラスターのマウント
 
@@ -93,14 +93,14 @@ mount コマンドのローカル パスは、ユーザーが指定できます�
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| 必須の設定 | |
+| 必須の設定 | 説明 |
 --- | ---
 ``hard`` | Azure FXT Edge Filer クラスターに対するソフト マウントは、アプリケーション エラーおよび可能性のあるデータ損失と関連付けられます。
 ``proto=netid`` | このオプションは、NFS ネットワーク エラーの適切な処理をサポートします。
 ``mountproto=netid`` | このオプションは、マウント操作に対するネットワーク エラーの適切な処理をサポートします。
 ``retry=n`` | 一時的なマウントの障害を回避するため、``retry=30`` を設定します。 (フォアグラウンド マウントの場合は、別の値が推奨されます。)
 
-| 推奨される設定  | |
+| 推奨される設定  | 説明 |
 --- | ---
 ``nointr``            | このオプションをサポートする以前の OS カーネル (2008 年 4 月以前) をクライアントが使用している場合は、それを使用します。 オプション "intr" が既定値です。
 

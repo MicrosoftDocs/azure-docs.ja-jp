@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する | Microsoft Azure Maps
 description: このチュートリアルでは、Azure Notebooks (Python) を使用して、Microsoft Azure Maps Weather Service の天気予報データにセンサー データを結合する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: e5292f5166e739264e9cf969480b70f415fcc75a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333491"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851647"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
@@ -35,13 +35,13 @@ ms.locfileid: "80333491"
 
 このチュートリアルを完了するには、まず以下を実行する必要があります。
 
-1. [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従い、S0 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。
+1. [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従い、S0 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。
 2. [主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従い、アカウントの主サブスクリプション キーを取得します。
 
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
-Azure Notebooks の概要と基本的な使用方法については、「[Azure ノートブックを作成する](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)」の手順に従ってください。
+Azure Notebooks の概要と基本的な使用方法については、「[Azure Notebook を作成する](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)」の手順に従ってください。
 
 > [!Note]
 > このプロジェクトの Jupyter Notebook ファイルは、[Weather Maps Jupyter Notebook リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)からダウンロードできます。

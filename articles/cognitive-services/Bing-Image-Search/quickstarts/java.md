@@ -9,19 +9,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 979bd034b2f4d3665de64fe8ffdb33efc7a370cb
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 79e5b5e0562c86668c276a94ab28835c13433eb8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478570"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327244"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>クイック スタート:Azure コグニティブ サービスである Bing Image Search API で画像を検索する 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>クイック スタート:Bing Image Search API と Java を使用してイメージを検索する 
 
-このクイックスタートを使用して、Azure Cognitive Services の Bing Image Search API に検索要求を送信します。 この Java アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートを使用して、Azure Cognitive Services の Bing Image Search API に検索要求を送信する方法について説明します。 この Java アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) で入手できます。
 
@@ -48,7 +48,7 @@ ms.locfileid: "80478570"
     import com.google.gson.JsonParser;
     ```
 
-2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。 `host` には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -59,14 +59,14 @@ ms.locfileid: "80478570"
 
 ## <a name="construct-the-search-request-and-query"></a>検索要求とクエリを構築する
 
-1. 最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 検索語句は、URL エンコードしたうえで要求に追加する必要があります。
+前の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 要求に追加する前に、検索語句を URL エンコードします。
 
-    ```java
-    // construct the search request URL (in the form of endpoint + query string)
-    URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
-    HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-    ```
+```java
+// construct the search request URL (in the form of endpoint + query string)
+URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
+HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+```
 
 ## <a name="receive-and-process-the-json-response"></a>JSON 応答の受信と処理
 
@@ -79,7 +79,8 @@ ms.locfileid: "80478570"
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
     ```
-2. Bing 関連の HTTP ヘッダーを JSON 本文から分離する
+2. Bing 関連の HTTP ヘッダーを JSON 本文から分離します。
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -91,7 +92,7 @@ ms.locfileid: "80478570"
     }
     ```
 
-3. ストリームを閉じて、応答を解析します。 返された検索結果の総数とサムネイルの URL を最初の画像の結果に取得します。
+3. ストリームを閉じて、応答を解析します。 返された検索結果の合計数と、最初の画像結果のサムネイル URL を取得します。
 
     ```java
     stream.close();
@@ -160,9 +161,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Bing Image Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [Bing Search API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

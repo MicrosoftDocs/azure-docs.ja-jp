@@ -1,9 +1,9 @@
 ---
 title: Traffic Manager の Azure CLI サンプル | Microsoft Docs
-description: Azure CLI のサンプル
+description: アプリケーションの高可用性のために複数リージョン間でトラフィックを転送する場合に使用できる Azure CLI スクリプトについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: rohinkoul
+author: duongau
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
-ms.author: rohink
-ms.openlocfilehash: 3b14cf2058f425f650d827e10ef0ca77f1278b55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f547305dd492f8e8587514474e4602f2214009cb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938009"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400837"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Traffic Manager の Azure CLI サンプル
 

@@ -12,23 +12,13 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 10/24/2019
-  ms.openlocfilehash: 6ca73686874b1a90d5374d7d6326c4f121d928f9
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 7ba31270de5a2b81fdfbc61db6bc5f3065f45438
+  ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78970014"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84886255"
 landingContent:
-- title: 安全なサンプル アプリの開発
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Linux コンテナー内の Web アプリ
-      url: secure-web-app.md
-    - text: Web アプリと Azure Active Directory
-      url: secure-aad-app.md
-    - text: ペイメント カード業界
-      url: secure-pci-web-app.md
 - title: はじめに
   linkLists:
   - linkListType: concept

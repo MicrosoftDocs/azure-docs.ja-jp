@@ -1,6 +1,5 @@
 ---
-title: PowerShell モジュール
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):PowerShell モジュール - Azure
 description: Azure Machine Learning Studio (クラシック) のワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
 services: machine-learning
 ms.service: machine-learning
@@ -9,20 +8,21 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 6afd222730a9864e0b8edd681b1ce919b03c3be8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a165a15825e09931cee871396c22cd6ab35af719
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204292"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431303"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用 PowerShell モジュール
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio (クラシック) のリソースと資産をプログラムで管理できます。
 
-次の 3 つの Powershell モジュールを使用して Studio (クラシック) のリソースとやり取りすることができます。
+次の 3 つの PowerShell モジュールを使用して Studio (クラシック) のリソースとやり取りすることができます。
 
 * 2018 年にリリースされた [Azure PowerShell Az](#az-rm)。AzureRM のすべての機能が含まれていますが、コマンドレット名は異なります
 * 2016 年にリリースされた [AzureRM](#az-rm)。PowerShell Az に置き換えられます
@@ -53,7 +53,7 @@ PowerShell クラシックを Az または AzureRM と共にインストール�
 ## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell サポート表
 
 
-| | **Az** |  **PowerShell クラシック** |
+|  **Az** |  **PowerShell クラシック** |
 | --- | --- | --- |
 | ワークスペースを作成/削除する | [Resource Manager テンプレート](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | ワークスペース コミットメント プランを管理する | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |

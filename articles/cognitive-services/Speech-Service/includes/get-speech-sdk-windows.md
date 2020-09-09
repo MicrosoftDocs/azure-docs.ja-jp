@@ -4,16 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 138a9ef9d483ca0d460bab7185d646669650f83e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400005"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88944371"
 ---
 :::row:::
     :::column span="3":::
-        Speech SDK は Windows10 およびWindows Sever 2016以降のバージョンをサポートしています。 これより以前のバージョンはサポートして **いません**。 以前のバージョンの Windows では、Speech SDK の一部を使用することもできますが、これは推奨されません。
+        音声SDKは Windows10 およびWindows Sever 2016以降のバージョンをサポートしています。 これより以前のバージョンはサポートして **いません**。 以前のバージョンの Windows では、音声SDK の一部を使用することもできますが、これは推奨されません。
     :::column-end:::
     :::column:::
         <br>
@@ -25,7 +26,7 @@ ms.locfileid: "81400005"
 
 ### <a name="system-requirements"></a>システム要件
 
-Windows の Speech SDK は、システムで <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual StudioのVisual C++ 再配布可能パッケージ 2019<span class="docon docon-navigate-external x-hidden-focus"></span></a>を必要とします。
+Windowsの音声SDKは、システムで <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual StudioのVisual C++ 再配布可能パッケージ 2019<span class="docon docon-navigate-external x-hidden-focus"></span></a>を必要とします。
 
 - <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">x86 用にインストールする<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank"> x64用にインストールする<span class="docon docon-navigate-external x-hidden-focus"></span></a>

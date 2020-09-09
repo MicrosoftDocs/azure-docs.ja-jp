@@ -1,24 +1,16 @@
 ---
 title: Azure Service Bus メッセージングのサンプルの概要
 description: Service Bus メッセージングのサンプルでは、Azure Service Bus メッセージングの主要な機能を示します。 GitHub 上のサンプルへのリンクを提供します。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
-ms.service: service-bus-messaging
-ms.devlang: na
+author: spelluru
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: ccaca451ac4fb7b4301aca429a42baea91e5ed10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773459"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067530"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル
 Service Bus メッセージングのサンプルでは、[Service Bus メッセージング](https://azure.microsoft.com/services/service-bus/)の主要な機能をデモンストレーションしています。 現在、サンプルは次の場所でご覧いただけます。
@@ -38,5 +30,4 @@ Service Bus メッセージングのサンプルでは、[Service Bus メッセ�
 Service Bus の概念の要約については、次のトピックを参照してください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Service Bus のアーキテクチャ](service-bus-architecture.md)
-
+* [Service Bus のアーキテクチャ](./service-bus-messaging-overview.md)

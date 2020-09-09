@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Azure Kubernetes Services で Azure Dev Spaces を実行するためのネットワーク要件について説明します。
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、コンテナー、CNI、kubenet、SDN、ネットワーク
-ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262045"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214172"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>さまざまなネットワーク トポロジで Azure Dev Spaces 用のネットワークを構成する
 
@@ -33,9 +33,8 @@ Azure Dev Spaces では、次の FQDN にはイングレスおよびエグレス
 | cloudflare.docker.com      | HTTPS: 443 | Azure Dev Spaces の Docker イメージをプルするため |
 | gcr.io                     | HTTPS: 443 | Azure Dev Spaces の Helm イメージをプルするため |
 | storage.googleapis.com     | HTTPS: 443 | Azure Dev Spaces の Helm イメージをプルするため |
-| azds-*.azds.io             | HTTPS: 443 | Azure Dev Spaces コントローラーのために Azure Dev Spaces のバックエンド サービスと通信するため。 正確な FQDN は、`USERPROFILE\.azds\settings.json` 内の *dataplaneFqdn* で見つけることができます。 |
 
-上のすべての FQDN との間のネットワーク トラフィックを許可するようにファイアウォールまたはセキュリティ構成を更新してください。 たとえば、ネットワークをセキュリティで保護するためのファイアウォールを使用している場合、これらのドメインとの間のトラフィックを許可するには、そのファイアウォールのアプリケーション ルールに上の FQDN を追加する必要があります。
+上のすべての FQDN と [Azure Dev Spaces インフラストラクチャ サービス][service-tags]との間のネットワーク トラフィックを許可するようにファイアウォールまたはセキュリティ構成を更新してください。 たとえば、ネットワークをセキュリティで保護するためのファイアウォールを使用している場合、上記の FQDN をファイアウォールのアプリケーション ルールに追加し、さらに Azure Dev Spaces のサービス タグも[ファイアウォールに追加][firewall-service-tags]する必要があります。 これらのドメインとの間で送受信されるトラフィックを許可するには、ファイアウォールに対するこれら両方の更新が必要です。
 
 ### <a name="ingress-only-network-traffic-requirements"></a>イングレスのみのネットワーク トラフィックの要件
 
@@ -47,7 +46,7 @@ AKS では、[ネットワーク ポリシー][aks-network-policies]を使用し
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>イングレスおよびエグレス ネットワーク トラフィックの要件
 
-Azure Dev Spaces では、デバッグのために、クラスター上の開発スペース内のポッドと直接通信できます。 この機能が動作するようにするには、Azure Dev Spaces インフラストラクチャの IP アドレス (これは[リージョンによって異なります][dev-spaces-ip-auth-range-regions]) へのイングレスおよびエグレス通信を許可するネットワーク ポリシーを追加します。
+Azure Dev Spaces では、デバッグのために、クラスター上の開発スペース内のポッドと直接通信できます。 この機能が動作するようにするには、Azure Dev Spaces インフラストラクチャの IP アドレス (これは[リージョンによって異なります][service-tags]) へのイングレスおよびエグレス通信を許可するネットワーク ポリシーを追加します。
 
 ### <a name="ingress-only-network-traffic-requirements"></a>イングレスのみのネットワーク トラフィックの要件
 
@@ -59,7 +58,7 @@ Azure Dev Spaces は、名前空間にまたがるポッド間のルーティン
 
 ## <a name="using-api-server-authorized-ip-ranges"></a>API サーバーの許可された IP 範囲の使用
 
-AKS クラスターでは、クラスターにアクセスする IP アドレスを制限する追加のセキュリティ (カスタム仮想ネットワークの使用や、[許可された IP 範囲を使用する API サーバーへのアクセスのセキュリティ保護][aks-ip-auth-ranges]など) を構成できます。 クラスターの[作成][aks-ip-auth-range-create]中にこの追加のセキュリティを使用する場合に Azure Dev Spaces を使用するには、[リージョンに基づいて追加の範囲を許可する][dev-spaces-ip-auth-range-regions]必要があります。 また、既存のクラスターを[更新][aks-ip-auth-range-update]して、これらの追加の範囲を許可することもできます。 デバッグのために AKS クラスターに接続するすべての開発用コンピューターの IP アドレスが API サーバーに接続できるようにすることも必要です。
+AKS クラスターでは、クラスターにアクセスする IP アドレスを制限する追加のセキュリティ (カスタム仮想ネットワークの使用や、[許可された IP 範囲を使用する API サーバーへのアクセスのセキュリティ保護][aks-ip-auth-ranges]など) を構成できます。 クラスターの[作成][aks-ip-auth-range-create]中にこの追加のセキュリティを使用する場合に Azure Dev Spaces を使用するには、[リージョンに基づいて追加の範囲を許可する][service-tags]必要があります。 また、既存のクラスターを[更新][aks-ip-auth-range-update]して、これらの追加の範囲を許可することもできます。 デバッグのために AKS クラスターに接続するすべての開発用コンピューターの IP アドレスが API サーバーに接続できるようにすることも必要です。
 
 ## <a name="using-aks-private-clusters"></a>AKS プライベート クラスターの使用
 
@@ -84,14 +83,14 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
 
 ## <a name="client-requirements"></a>クライアントの要件
 
-Azure Dev Spaces は、デバッグのための AKS クラスターとの通信にクライアント側ツール (Azure Dev Spaces CLI 拡張機能、Visual Studio Code 拡張機能、Visual Studio 拡張機能など) を使用します。 Azure Dev Spaces のクライアント側ツールを使用するには、開発用コンピューターから *azds-\*.azds.io* ドメインへのトラフィックを許可します。 正確な FQDN については、`USERPROFILE\.azds\settings.json` 内の *dataplaneFqdn* を参照してください。 [API サーバーの許可された IP 範囲][auth-range-section]を使用している場合は、デバッグのために AKS クラスターに接続するすべての開発用コンピューターの IP アドレスが API サーバーに接続できるようにすることも必要です。
+Azure Dev Spaces は、デバッグのための AKS クラスターとの通信にクライアント側ツール (Azure Dev Spaces CLI 拡張機能、Visual Studio Code 拡張機能、Visual Studio 拡張機能など) を使用します。 Azure Dev Spaces のクライアント側ツールを使用するには、開発用マシンから [Azure Dev Spaces インフラストラクチャ][dev-spaces-allow-infrastructure]へのトラフィックを許可します。 [API サーバーの許可された IP 範囲][auth-range-section]を使用している場合は、デバッグのために AKS クラスターに接続するすべての開発用コンピューターの IP アドレスが API サーバーに接続できるようにすることも必要です。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
+Azure Dev Spaces のしくみの詳細について確認します。
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces でのチーム開発][team-quickstart]
+> [Azure Dev Spaces のしくみ](how-dev-spaces-works.md)
 
 [aks-cni]: ../aks/configure-azure-cni.md
 [aks-cni-ip-planning]: ../aks/configure-azure-cni.md#plan-ip-addressing-for-your-cluster
@@ -104,10 +103,11 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
 [azure-cli-install]: /cli/azure/install-azure-cli
-[dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-allow-infrastructure]: #virtual-network-or-subnet-configurations
 [dev-spaces-routing]: how-dev-spaces-works-routing.md
 [endpoint-options]: #using-different-endpoint-options
+[firewall-service-tags]: ../firewall/service-tags.md
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
-[team-quickstart]: quickstart-team-development.md
+[service-tags]: ../virtual-network/service-tags-overview.md#available-service-tags

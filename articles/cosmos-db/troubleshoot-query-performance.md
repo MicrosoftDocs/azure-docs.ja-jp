@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b3c6926f17e8378fd3b53bfd59a7c5ea8141adb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117915"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 
@@ -47,7 +47,7 @@ Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類で�
 
 Azure Cosmos DB でクエリを最適化する場合、最初の手順は常にクエリの[クエリ メトリックを取得する](profile-sql-api-query.md)ことです。 これらのメトリックは、Azure portal からも入手できます。 Data Explorer でクエリを実行すると、 **[結果]** タブの横にクエリ メトリックが表示されます。
 
-[ ![クエリ メトリックの取得](./media/troubleshoot-query-performance/obtain-query-metrics.png) ](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="クエリ メトリックの取得" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 クエリ メトリックを取得した後、クエリの **[取得したドキュメント数]** と **[出力したドキュメント数]** を比較します。 この比較により、この記事で確認する関連セクションを特定します。
 
@@ -200,7 +200,8 @@ WHERE c.description = "Malabar spinach, cooked"
 
 インデックスを使用できるいくつかの一般的な文字列関数の一覧を次に示します。
 
-- STARTSWITH(str_expr, str_expr)
+- STARTSWITH(str_expr1, str_expr2, bool_expr)  
+- CONTAINS(str_expr, str_expr, bool_expr)
 - LEFT(str_expr, num_expr) = str_expr
 - SUBSTRING(str_expr, num_expr, num_expr) = str_expr (ただし、最初の num_expr が 0 の場合のみ)
 
@@ -208,7 +209,6 @@ WHERE c.description = "Malabar spinach, cooked"
 
 | **システム関数**                     | **最適化のアイデア**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| CONTAINS                                | フルテキスト検索に Azure Search を使用します。                        |
 | UPPER/LOWER                             | システム関数を使用して比較のためにデータを正規化する代わりに、挿入時に大文字と小文字を正規化します。 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` のようなクエリが、```SELECT * FROM c WHERE c.name = 'BOB'``` になります。 |
 | 数学関数 (非集計) | クエリで値を頻繁に計算する必要がある場合は、JSON ドキュメントのプロパティとして値を格納することを検討します。 |
 

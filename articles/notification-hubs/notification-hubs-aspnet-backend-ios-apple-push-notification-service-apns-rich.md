@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9d47974554534a0614eb98b473c1e5539ff4d9aa
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71212189"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018010"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 
@@ -31,7 +32,7 @@ ms.locfileid: "71212189"
 
 このチュートリアルは iOS 7 および 8 に対応しています。
 
-  ![][IOS1]
+  ![3 つのスクリーンショット: [プッシュの送信] ボタンが表示されたアプリ画面、デバイスのスタート画面、および [戻る] ボタン付きの Windows ロゴ。][IOS1]
 
 概要:
 
@@ -49,7 +50,7 @@ ms.locfileid: "71212189"
 3. ソリューション エクスプローラーで **[すべてのファイルを表示]** をクリックし、フォルダーを右クリックして **[プロジェクトに含める]** をクリックします。
 4. 画像が選択された状態で、プロパティ ウィンドウでビルド アクションを **[埋め込まれたリソース]** に変更します。
 
-    ![][IOS2]
+    ![ソリューション エクスプローラーのスクリーンショット。 画像ファイルが選択され、プロパティ ウィンドウでは埋め込みリソースがビルド アクションとして表示されている。][IOS2]
 5. `Notifications.cs` に次の using ステートメントを追加します。
 
     ```csharp
@@ -146,12 +147,12 @@ ms.locfileid: "71212189"
 1. iOS プロジェクトを開き、 **[Targets]** セクションのメイン アプリケーション ターゲットに移動して、リモート通知を有効にします。
 2. **[Capabilities]** をクリックし、 **[Background Modes]** を [ON] にし、 **[Remote Notifications]** チェックボックスをオンにします。
 
-    ![][IOS3]
+    ![[Capabilities]\(機能\) 画面が表示されている iOS プロジェクトのスクリーンショット。 [Background Modes]\(バックグラウンド モード\) がオンになっており、[Remote notifications]\(リモート通知\) チェックボックスがオンになっている。][IOS3]
 3. `Main.storyboard` を開き、[ユーザーへの通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)に関するチュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。
 4. **Navigation Controller** をストーリーボードに追加し、Home View Controller に control キーを押しながらドラッグして、ナビゲーションの**ルート ビュー**にします。 Attributes inspector の **[Is Initial View Controller]** が選択されているのが、Navigation Controller のみであることを確認します。
 5. **View Controller** をストーリボードに追加し、**Image View** を追加します。 これは、ユーザーが情報を得るために通知をクリックすると表示されるページです。 ストーリーボードは次のようになります。
 
-    ![][IOS4]
+    ![ストーリーボードのスクリーンショット。 ナビゲーション ビュー、ホーム ビュー、および画像ビューの 3 つのアプリ画面が表示されている。][IOS4]
 6. ストーリーボードの **[Home View Controller]** をクリックし、**Custom Class** として **homeViewController** があることと、Identity inspector 内に **Storyboard ID** があることを確認します。
 7. Image View Controller について、 **imageViewController**として同じ確認をします。
 8. その後、作成した UI を扱うために **imageViewController** というタイトルの新しい View Controller クラスを作成します。

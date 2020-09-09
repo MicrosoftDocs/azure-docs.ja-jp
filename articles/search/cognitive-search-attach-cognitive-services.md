@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472453"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924979"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする 
 
@@ -29,7 +29,7 @@ Azure Cognitive Search には、画像分析と光学式文字認識 (OCR) の�
 
 + Azure Cognitive Search では、画像とテキストのエンリッチメントに対して課金する目的でスキルセットに指定する Cognitive Services リソース キーが使用されます。 課金対象スキルの実行は、[Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)になります。
 
-+ 画像抽出は、エンリッチメントに先立ってドキュメントがクラックされるときに行われる Azure Cognitive Search 操作です。 画像抽出は課金対象です。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)」をご覧ください。
++ 画像抽出は、エンリッチメントに先立ってドキュメントがクラックされるときに行われる Azure Cognitive Search 操作です。 画像抽出は課金対象です。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)」をご覧ください。
 
 + テキスト抽出はドキュメントのクラック段階でも行われます。 それは課金対象ではありません。
 
@@ -113,7 +113,7 @@ Cognitive Services API を呼び出すスキルに対してのみ課金されま
 次の例は、このパターンを示しています。 定義の最後にある `cognitiveServices` セクションに留意してください。
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -170,5 +170,5 @@ Cognitive Search のインデックス作成に関連するコストを見積も
 ## <a name="next-steps"></a>次のステップ
 + [Azure Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [スキルセットを作成する (REST)](/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

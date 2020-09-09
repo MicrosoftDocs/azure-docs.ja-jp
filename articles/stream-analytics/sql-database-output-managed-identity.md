@@ -4,14 +4,14 @@ description: この記事では、マネージド ID を使用して、Azure SQL
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 70ad69c1a34f656347b0cf53b28a1c35ac6ad043
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595841"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870189"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用して Azure SQL Database にアクセスする (プレビュー)
 
@@ -56,13 +56,17 @@ Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[�
 
    ![Active Directory 管理者ページ](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
  
-1. Active Directory 管理者ページで、SQL Server の管理者にするユーザーまたはグループを探して、 **[選択]** をクリックします。  
+1. Active Directory 管理者ページで、SQL Server の管理者にするユーザーまたはグループを探して、 **[選択]** をクリックします。
 
    ![Active Directory 管理者を追加する](./media/sql-db-output-managed-identity/add-admin.png)
 
-1. **[Active Directory 管理者]** ページの **[保存]** を選択します。 管理者を変更するプロセスには数分かかります。  
+   [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません。 「 [Azure Active Directory 認証を使用して SQL Database または Azure Synapse を認証する](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)」の「 **Azure AD の機能と制限事項** 」セクションでサポートされている管理者の一覧を参照してください。 ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。 また、選択されたユーザーまたはグループは、次のセクションで**包含データベース ユーザー**を作成することができるユーザーです。
 
-## <a name="create-a-database-user"></a>データベース ユーザーの作成
+1. **[Active Directory 管理者]** ページの **[保存]** を選択します。 管理者を変更するプロセスには数分かかります。
+
+   Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証ユーザーとして仮想マスター データベースに存在していてはいけません。 存在する場合、Azure AD 管理者のセットアップは失敗し、その作成がロールバックされて、管理者 (名前) が既に存在していることが示されます。 SQL Server 認証ユーザーは Azure AD に属していないため、Azure AD 認証を使用してそのユーザーとしてサーバーに接続しようとしても失敗します。 
+
+## <a name="create-a-contained-database-user"></a>包含データベース ユーザーを作成する
 
 次に、Azure Active Directory ID にマップされる SQL Database の包含データベース ユーザーを作成します。 包含データベース ユーザーは、master データベースに対するログインは持っていませんが、データベースに関連付けられているディレクトリ内の ID にマップされています。 Azure Active Directory の ID は、個々のユーザー アカウントでもグループ アカウントでもかまいません。 この場合は、Stream Analytics ジョブに対する包含データベース ユーザーを作成する必要があります。 
 
@@ -92,9 +96,19 @@ Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[�
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
+1. Stream Analytics ジョブに SQL Database へのアクセス権があるかどうかを Microsoft の Azure Active Directory で確認するには、データベースと通信するためのアクセス許可を Azure Active Directory に付与する必要があります。 これを行うには、Azure portal の [ファイアウォールと仮想ネットワーク] ページに再び移動し、[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する] を有効にします。 
+
+   ![ファイアウォールと仮想ネットワーク](./media/sql-db-output-managed-identity/allow-access.png)
+
 ## <a name="grant-stream-analytics-job-permissions"></a>Stream Analytics ジョブにアクセス許可を付与する
 
-Stream Analytics ジョブには、SQL Database リソースに対する **CONNECT** のために、マネージド ID からのアクセス許可があります。 ほとんどの場合、Stream Analytics ジョブに **SELECT** などのコマンドの実行を許可するのが効率的です。 SQL Server Management Studio を使用して、それらのアクセス許可を Stream Analytics ジョブに付与できます。 詳細については、「[GRANT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15)」のリファレンスを参照してください。
+前のセクションで説明したように、包含データベース ユーザーを作成し、ポータルで Azure サービスへのアクセス許可を付与すると、Stream Analytics ジョブには、マネージド ID を介して SQL Database リソースに**接続する**ためのマネージド ID からのアクセス許可が付与されます。 SELECT および INSERT のアクセス許可を Stream Analytics ジョブに付与することをお勧めします。これらは後で Stream Analytics ワークフローで必要になるためです。 **SELECT** のアクセス許可により、ジョブは SQL Database 内のテーブルへの接続をテストできます。 **INSERT** のアクセス許可により、入力と SQL Database 出力を構成した後で、エンドツーエンドの Stream Analytics クエリをテストできます。これらのアクセス許可を Stream Analytics ジョブに付与するには、SQL Server Management Studio を使用します。 詳細については、「GRANT (Transact-SQL)」のリファレンスを参照してください。
+
+データベース内の特定のテーブルまたはオブジェクトに対するアクセス許可のみを付与するには、次の T-SQL 構文を使用してクエリを実行します。 
+
+```sql
+GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME; 
+```
 
 または、SQL Server Management Studio でお使いの SQL データベースを右クリックし、 **[プロパティ] > [アクセス許可]** を選択します。 アクセス許可のメニューから、前に追加した Stream Analytics ジョブを確認でき、必要に応じて、手動でアクセス許可を付与または拒否することができます。
 
@@ -102,11 +116,13 @@ Stream Analytics ジョブには、SQL Database リソースに対する **CONNE
 
 マネージド ID を構成したので、Stream Analytics ジョブに出力として Azure SQL Database を追加できます。
 
+適切な出力スキーマを使用して SQL Database にテーブルが作成されていることを確認します。 このテーブルの名前は、SQL Database 出力を Stream Analytics ジョブに追加するときに入力する必要がある必須プロパティの 1 つです。 また、接続をテストして Stream Analytics クエリを実行するための **SELECT** および **INSERT** のアクセス許可がジョブにあることを確認します。 まだ行っていない場合は、「[Stream Analytics ジョブにアクセス許可を付与する](#grant-stream-analytics-job-permissions)」セクションを参照してください。 
+
 1. Stream Analytics ジョブに戻り、 **[ジョブ トポロジ]** の下にある **[出力]** ページに移動します。 
 
 1. **[追加] > [SQL Database]** を選択します。 SQL Database 出力シンクの出力プロパティ ウィンドウで、[認証モード] ドロップダウンから **[マネージド ID]** を選択します。
 
-1. 残りのプロパティを入力します。 SQL Database 出力の作成の詳細については、[Stream Analytics での SQL Database 出力の作成](stream-analytics-define-outputs.md#sql-database)に関する記事を参照してください。 終わったら、 **[保存]** を選択します。 
+1. 残りのプロパティを入力します。 SQL Database 出力の作成の詳細については、[Stream Analytics での SQL Database 出力の作成](sql-database-output.md)に関する記事を参照してください。 終わったら、 **[保存]** を選択します。 
 
 ## <a name="next-steps"></a>次のステップ
 

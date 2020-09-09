@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546599"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065881"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続アーキテクチャ
 この記事では、Azure Database for PostgreSQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for PostgreSQL データベース インスタンスに転送されるかについて説明します。
@@ -41,9 +41,10 @@ Azure Database for PostgreSQL への接続は、受信接続を Microsoft のク
 | 中国北部 | 139.219.15.17    |
 | 中国北部 2 | 40.73.50.0     |
 | 東アジア | 191.234.2.139、52.175.33.150、13.75.33.20、13.75.33.21     |
-| 米国東部 | 40.121.158.30、191.238.6.43  |
+| 米国東部 | 40.121.158.30、191.238.6.43、40.71.8.203、40.71.83.113   |
 | 米国東部 2 |40.79.84.180、191.239.224.107、52.177.185.181、40.70.144.38、52.167.105.38  |
 | フランス中部 | 40.79.137.0、40.79.129.1  |
+| フランス南部 | 40.79.177.0     |
 | ドイツ中部 | 51.4.144.100     |
 | ドイツ北東部 | 51.5.144.179  |
 | インド中部 | 104.211.96.159     |
@@ -64,8 +65,8 @@ Azure Database for PostgreSQL への接続は、受信接続を Microsoft のク
 | 英国南部 | 51.140.184.11   |
 | 英国西部 | 51.141.8.11  |
 | 米国中西部 | 13.78.145.25     |
-| 西ヨーロッパ | 40.68.37.158、191.237.232.75、13.69.105.208  |
-| 米国西部 | 104.42.238.205、23.99.34.75  |
+| 西ヨーロッパ | 40.68.37.158、191.237.232.75、13.69.105.208、104.40.169.187  |
+| 米国西部 | 104.42.238.205、23.99.34.75、13.86.216.212、13.86.217.212 |
 | 米国西部 2 | 13.66.226.202  |
 ||||
 

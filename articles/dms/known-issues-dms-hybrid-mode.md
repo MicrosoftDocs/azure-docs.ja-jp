@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649604"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196272"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>ハイブリッド モードの使用に関する既知の問題と移行の制限事項
 
@@ -93,10 +93,10 @@ worker コンピューターへのアクセス権がなくなった場合は、�
 
 以下のセクションでは、Azure Database Migration Service ハイブリッド モードを使用してオンライン移行を実行する場合に関連するシナリオ固有の問題について説明します。
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスへのオンライン移行
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance へのオンライン移行
 
 **CPU 使用率が高い**
 
-**問題点**: SQL Database マネージド インスタンスへのオンライン移行の場合、バックアップ数が多すぎるか、バックアップが大きすぎると、ハイブリッド worker を実行しているコンピューターの CPU 使用率が高くなります。
+**問題点**: SQL Managed Instance へのオンライン移行の場合、バックアップの数が多すぎるか、バックアップのサイズが大きすぎると、ハイブリッド worker を実行しているコンピューターの CPU 使用率が高くなります。
 
 **対応策**:この問題を軽減するには、圧縮されたバックアップを使用するか、複数の共有を使用するように移行を分割するか、ハイブリッド worker を実行しているコンピューターをスケールアップします。

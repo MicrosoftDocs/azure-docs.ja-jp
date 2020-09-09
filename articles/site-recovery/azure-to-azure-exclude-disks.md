@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
-ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973675"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135809"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>PowerShell を使用して Azure VM のレプリケーション時にディスクを除外する
 
@@ -25,14 +25,14 @@ ms.locfileid: "75973675"
 
 - [ディザスター リカバリーのアーキテクチャとコンポーネント](azure-to-azure-architecture.md)について理解していることを確認する。
 - すべてのコンポーネントの[サポート要件](azure-to-azure-support-matrix.md)を確認する。
-- AzureRm PowerShell "Az" モジュールがあることを確認する。 PowerShell をインストールまたは更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+- AzureRm PowerShell "Az" モジュールがあることを確認する。 PowerShell をインストールまたは更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-az-ps)」を参照してください。
 - Recovery Services コンテナー、および保護された仮想マシンを 1 回以上作成したことを確認する。 まだの場合は、「[Set up disaster recovery for Azure virtual machines using Azure PowerShell (Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーをセットアップする)](azure-to-azure-powershell.md)」の手順に従ってください。
 - レプリケーションが有効になっている Azure VM にディスクを追加する方法については、[この記事](azure-to-azure-enable-replication-added-disk.md)を参照してください。
 
 ## <a name="why-exclude-disks-from-replication"></a>レプリケーションからディスクを除外する理由
 次の理由のために、レプリケーションからディスクを除外しなければならない場合があります。
 
-- お使いの仮想マシンが、[データ変化率のレプリケートに対する Azure Site Recovery の制限](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)に達している。
+- お使いの仮想マシンが、[データ変化率のレプリケートに対する Azure Site Recovery の制限](./azure-to-azure-support-matrix.md)に達している。
 
 - 除外対象のディスクに頻繁に変更されるデータが存在するものの重要度が低いか、レプリケートする必要がない。
 

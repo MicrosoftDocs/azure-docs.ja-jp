@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bdb76954b1db8135d8a36d6658bb7fff274ac126
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c25e48bd46f0d37330f693cb4d6538e7bc29c4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367242"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>手順 2: CEF メッセージを送信するように、セキュリティ ソリューションを構成する
 
@@ -29,10 +29,11 @@ ms.locfileid: "77588452"
 
 セキュリティ ソリューションに既存のコネクタが既にある場合は、コネクタ固有の手順を次のように使用します。
 
+- [AI Vectra 検出](connect-ai-vectra-detect.md)
 - [Check Point](connect-checkpoint.md)
 - [Cisco](connect-cisco.md)
 - [ExtraHop Reveal(x)](connect-extrahop.md)
-- [F5 ](connect-f5.md)  
+- [F5 ASM](connect-f5.md)  
 - [Fortinet](connect-fortinet.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
@@ -40,6 +41,7 @@ ms.locfileid: "77588452"
 - [Zscaler](connect-zscaler.md)   
 
 ## <a name="configure-any-other-solution"></a>その他のソリューションを構成する
+
 特定のセキュリティ ソリューションにコネクタが存在しない場合は、次の一般的な手順に従って、CEF エージェントにログを転送します。
 
 1. ソリューションを構成して CEF メッセージを送信する方法の手順については、特定の構成に関する記事を確認してください。 ご利用のソリューションが一覧に含まれていない場合は、アプライアンスでこれらの値を設定して、このアプライアンスが、Log Analytics エージェントに基づいて、必要な形式で必要なログを Azure Sentinel Syslog エージェントに送信するようにします。 Azure Sentinel エージェントの Syslog デーモンでこれらのパラメーターを変更できれば、ご利用のアプライアンスでもこれらのパラメーターを変更することができます。
@@ -51,13 +53,12 @@ ms.locfileid: "77588452"
    > [!NOTE]
    > このソリューションは、Syslog RFC 3164 または RFC 5424 をサポートしています。
 
-
 1. Log Analytics で CEF イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
 
 1. 「手順 3: [接続を検証する](connect-cef-verify.md)」に進みます。
 
 ## <a name="next-steps"></a>次のステップ
+
 このドキュメントでは、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
-

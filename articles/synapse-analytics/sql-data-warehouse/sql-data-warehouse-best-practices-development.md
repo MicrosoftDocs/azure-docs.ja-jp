@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9c4f08b143ab4a0d3e780f68f8d5ab823d4eae12
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 0bd15da523281a52d36c9ed1336244aa21eb48cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206701"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL プール向けの開発に関するベスト プラクティス
 
@@ -120,7 +120,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 
 この記事で目的のトピックが見つからない場合は、ページの左側にある [Search for docs] を使用して、すべての Azure Synapse ドキュメントで検索を実行してみてください。  
 
-[Azure Synapse フォーラム](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse)は、他のユーザーや Azure Synapse 製品グループに質問を投稿できる場所です。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
+[Azure Synapse の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse 製品グループに質問を投稿できる場所です。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
 
 Stack Overflow で質問したい方のために、 [Azure SQL Data Warehouse Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
 

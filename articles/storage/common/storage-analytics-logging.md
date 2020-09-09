@@ -1,19 +1,20 @@
 ---
 title: Azure Storage Analytics のログ
-description: Azure Storage に対する要求の詳細をログに記録する方法について説明します。
+description: Storage Analytics を使用して、Azure Storage 要求の詳細をログします。 ログの対象となる要求、ログの格納方法、Storage のログを有効にする方法などについて説明します。
 author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204068"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021172"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -24,7 +25,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
  ログ エントリが作成されるのは、サービス エンドポイントに対して行われた要求がある場合に限られます。 たとえば、ストレージ アカウントの BLOB エンドポイントにはアクティビティが存在するが、Table エンドポイントや Queue エンドポイントには存在しない場合、Blob service に関連したログだけが作成されます。
 
 > [!NOTE]
->  現在、Storage Analytics のログは、BLOB、Queue、Table の各サービスでのみ使用できます。 ただし、Premium ストレージ アカウントは、サポートされません。
+>  現在、Storage Analytics のログは、BLOB、Queue、Table の各サービスでのみ使用できます。 Storage Analytics のログは、Premium パフォーマンス [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) アカウントでも使用できます。 ただし、Premium パフォーマンスを持つ汎用 v2 アカウントでは使用できません。
 
 ## <a name="requests-logged-in-logging"></a>ログで記録される要求
 ### <a name="logging-authenticated-requests"></a>認証済み要求のログ記録
@@ -63,7 +64,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 通常、ストレージ閲覧ツールでは、BLOB のメタデータを表示できます。この情報は、PowerShell やプログラムを使用して読み取ることもできます。 以下の PowerShell スニペットは、ログ BLOB の一覧をフィルタリングする例を示しています。名前でフィルタリングして時間を指定する部分と、メタデータでフィルタリングして **write** 操作を含むログのみを識別する部分が含まれています。  
 
  ```powershell
- Get-AzureStorageBlob -Container '$logs' |  
+ Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
@@ -136,20 +137,20 @@ Azure portal では、 **[Diagnostics settings (classic)]\(診断の設定 (ク�
 
 ### <a name="enable-storage-logging-using-powershell"></a>PowerShell を使用したストレージ ログの有効化  
 
- ローカル マシン上で PowerShell を使用して、ストレージ アカウント内のストレージ ログを構成できます。現在の設定を取得するには、Azure PowerShell コマンドレット **Get-AzureStorageServiceLoggingProperty** を使用し、現在の設定を変更するには、コマンドレット **Set-AzureStorageServiceLoggingProperty** を使用します。  
+ ローカル マシン上で PowerShell を使用して、ストレージ アカウント内のストレージ ログを構成できます。現在の設定を取得するには、Azure PowerShell コマンドレット **Get-AzStorageServiceLoggingProperty** を使用し、現在の設定を変更するには、コマンドレット **Set-AzStorageServiceLoggingProperty** を使用します。  
 
  ストレージ ログを制御するコマンドレットでは、**LoggingOperations** パラメーターが使用されます。このパラメーターは文字列で、記録する要求の種類がコンマ区切り形式で含まれています。 指定できる要求の種類には、**read**、**write**、および **delete** の 3 つがあります。 ログをオフにするには、**LoggingOperations** パラメーターに **none** の値を指定します。  
 
  以下のコマンドでは、既定のストレージ アカウント内の Queue サービスで read、write、および delete の各要求に対するログがオンにされます。リテンション期間は 5 日間に設定されています。  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
+Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  以下のコマンドでは、既定のストレージ アカウント内の Table サービスに対するログがオフにされます。  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
+Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)に関する記事をご覧ください。  

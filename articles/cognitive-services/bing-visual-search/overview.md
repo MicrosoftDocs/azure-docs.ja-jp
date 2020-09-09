@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 192517aa16e0fe56eb5b7dc8b852116af500b715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023723"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Visual Search API とは
 
@@ -38,7 +38,7 @@ Bing Visual Search を使用すると、次の分析情報を検出できます�
 | 関連検索                     | 他のユーザーによって行われた関連検索または画像の内容に基づく関連検索。            |
 | 画像を含む Web ページ     | 入力画像を含む Web ページ。            |
 | レシピ                              | 入力画像に示されている料理を作るためのレシピを含む Web ページ。            |
-| [エンティティ]                             | 有名な人物、場所、もの |
+| エンティティ                             | 有名な人物、場所、もの |
 
 分析情報だけでなく、Bing Visual Search は、入力画像から派生したさまざまな用語 (つまり、タグ) も返します。 これらのタグを使用して、ユーザーは画像で見つかる概念を調べることができます。 たとえば、入力画像が有名なアスリートである場合、そのアスリートの名前や "スポーツ" がタグとして返される可能性があります。 また、入力画像がアップル パイの場合は、"アップル パイ"、"パイ"、"デザート" などのタグが使用されるでしょう。
 
@@ -48,7 +48,7 @@ Bing Visual Search の結果には、画像内で興味を引く部分を囲む�
 
 Bing Visual Search API は RESTfulWeb サービスです。HTTP 要求を作成して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 このサービスに対しては、REST API または SDK を使用できます。
 
-1. Bing Search API シリーズにアクセスするための [Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/)できます。 アカウントを作成した後に [Azure portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) から、または無料試用版を有効にした後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis)からサブスクリプション キーを取得できます。
+1. Bing Search API シリーズにアクセスするための [Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 2. 有効な検索クエリを使用して API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
@@ -57,9 +57,17 @@ Bing Visual Search API は RESTfulWeb サービスです。HTTP 要求を作成�
 まず、Bing Visual Search API の[対話型のデモ](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)を試してみてください。
 このデモは、検索クエリをすばやくカスタマイズし、Web で画像を検索する方法を示しています。
 
-実際に要求を送信してみるには、クイック スタートを参照してください。[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+実際に要求を送信してみるには、クイック スタートを参照してください:
 
-## <a name="see-also"></a>参照
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)
+
+## <a name="see-also"></a>関連項目
 
 * 「[Images - Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」リファレンスには、画像ベースの検索結果を要求するために使用できるエンドポイント、要求ヘッダー、応答、およびクエリ パラメーターに関する定義と情報が含まれています。
 

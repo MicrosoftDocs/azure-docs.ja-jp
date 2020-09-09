@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40
+ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181615"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165585"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -264,7 +264,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
     ```
 
 ### <a name="more-information"></a>詳細情報
-このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "ブランド化ガイドライン")をご覧ください。
+このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](./howto-add-branding-in-azure-ad-apps.md "ブランド化ガイドライン")をご覧ください。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
 このコントローラーでは、コントローラーを保護する `[Authorize]` 属性の使用例を示します。 この属性は、認証されたユーザーのみを許可することで、コントローラーへのアクセスを制限します。 次のコードではこの属性を利用して、サインインの一部として取得されたユーザー要求を表示します。
@@ -403,11 +403,11 @@ Microsoft ID プラットフォームと統合するアプリケーションは�
 - アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
 - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
 
-詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)」を参照してください。
+詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](./v2-permissions-and-consent.md)」を参照してください。
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
-サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定されている HTTPS の URL です。 ホーム ページには、 *"Hello \<ユーザー>"* というウェルカム メッセージ、サインアウトのためのリンク、ユーザーの要求を表示するリンクが表示されます。 ユーザーの要求へのリンクは、前に作成した Claims コントローラーに接続しています。
+サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定されている HTTPS の URL です。 ホーム ページには、 *"Hello \<user>"* というウェルカム メッセージ、サインアウトのためのリンク、ユーザーの要求を表示するリンクが表示されます。 ユーザーの要求へのリンクは、前に作成した Claims コントローラーに接続しています。
 
 ### <a name="view-the-users-claims"></a>ユーザーの要求を表示する
 
@@ -424,7 +424,7 @@ Microsoft ID プラットフォームと統合するアプリケーションは�
 |**件名** |サブジェクト |Web 全体でユーザーを一意に識別する文字列|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**|
 
-さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[ID トークンに含まれる要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)を参照してください。
+さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[ID トークンに含まれる要求の一覧](./id-tokens.md)を参照してください。
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Authorize 属性を持つメソッドへのアクセスをテストする (省略可能)
 
@@ -468,13 +468,13 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>オプション 3:カスタム メソッドを使用して発行者を検証する
 
-**IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters クラス](/previous-versions/visualstudio/dn464192(v=vs.114))に関するページを参照してください。
+**IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) クラスに関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Web アプリが Web API を呼び出す方法について学習します。
 
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>このクイックスタート ガイドで使用されているアプリケーションの作成方法について学習します
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションの作成方法を確認する
 
 Microsoft ID プラットフォームで Web API を呼び出す Web アプリについてさらに学習します。
 
@@ -484,6 +484,6 @@ Microsoft ID プラットフォームで Web API を呼び出す Web アプリ�
 Microsoft Graph を呼び出す Web アプリを構築する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET チュートリアル](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Microsoft Graph ASP.NET チュートリアル](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

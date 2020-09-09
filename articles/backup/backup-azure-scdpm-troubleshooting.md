@@ -3,18 +3,18 @@ title: System Center Data Protection Manager のトラブルシューティン�
 description: この記事では、System Center Data Protection Manager を使用しているときに発生する可能性がある問題の解決方法について説明します。
 ms.topic: troubleshooting
 ms.date: 01/30/2019
-ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75664744"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513814"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager のトラブルシューティング
 
 この記事では、Data Protection Manager を使用しているときに発生する可能性がある問題の解決方法について説明します。
 
-System Center Data Protection Manager の最新リリース ノートについては、[System Center のドキュメント](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)を参照してください。 Data Protection Manager のサポートの詳細については、[この一覧](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)を参照してください。
+System Center Data Protection Manager の最新リリース ノートについては、[System Center のドキュメント](/system-center/dpm/dpm-release-notes)を参照してください。 Data Protection Manager のサポートの詳細については、[この一覧](/system-center/dpm/dpm-protection-matrix)を参照してください。
 
 ## <a name="error-replica-is-inconsistent"></a>エラー: レプリカに整合性がありません
 

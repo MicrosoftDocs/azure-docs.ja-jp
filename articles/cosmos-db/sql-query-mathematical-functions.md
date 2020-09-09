@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562831"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学関数 (Azure Cosmos DB)  
 
@@ -33,17 +33,32 @@ ms.locfileid: "74873269"
 ## <a name="functions"></a>関数
 
 一般に、次のサポートされている組み込みの数学関数では、入力引数に基づいて計算を実行し、数値式を返します。
-  
-||||  
-|-|-|-|  
-|[ABS](sql-query-abs.md)|[ACOS](sql-query-acos.md)|[ASIN](sql-query-asin.md)|  
-|[ATAN](sql-query-atan.md)|[ATN2](sql-query-atn2.md)|[CEILING](sql-query-ceiling.md)|  
-|[COS](sql-query-cos.md)|[COT](sql-query-cot.md)|[DEGREES](sql-query-degrees.md)|  
-|[EXP](sql-query-exp.md)|[FLOOR](sql-query-floor.md)|[LOG](sql-query-log.md)|  
-|[LOG10](sql-query-log10.md)|[PI](sql-query-pi.md)|[POWER](sql-query-power.md)|  
-|[RADIANS](sql-query-radians.md)|[RAND](sql-query-rand.md)|[ROUND](sql-query-round.md)|
-|[SIGN](sql-query-sign.md)|[SIN](sql-query-sin.md)|[SQRT](sql-query-sqrt.md)|
-|[SQUARE](sql-query-square.md)|[TAN](sql-query-tan.md)|[TRUNC](sql-query-trunc.md)||  
+ 
+* [ABS](sql-query-abs.md)
+* [ACOS](sql-query-acos.md)
+* [ASIN](sql-query-asin.md)
+* [ATAN](sql-query-atan.md)
+* [ATN2](sql-query-atn2.md)
+* [CEILING](sql-query-ceiling.md)
+* [COS](sql-query-cos.md)
+* [COT](sql-query-cot.md)
+* [DEGREES](sql-query-degrees.md)
+* [EXP](sql-query-exp.md)
+* [FLOOR](sql-query-floor.md)
+* [LOG](sql-query-log.md)
+* [LOG10](sql-query-log10.md)
+* [PI](sql-query-pi.md)
+* [POWER](sql-query-power.md)
+* [RADIANS](sql-query-radians.md)
+* [RAND](sql-query-rand.md)
+* [ROUND](sql-query-round.md)
+* [SIGN](sql-query-sign.md)
+* [SIN](sql-query-sin.md)
+* [SQRT](sql-query-sqrt.md)
+* [SQUARE](sql-query-square.md)
+* [TAN](sql-query-tan.md)
+* [TRUNC](sql-query-trunc.md)
+
   
 RAND を除く、すべての数学関数が決定論的関数です。 これは、特定の入力値のセットを使用して呼び出されるたびに、同じ結果を返すことを意味します。
 

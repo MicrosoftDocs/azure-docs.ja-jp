@@ -2,28 +2,23 @@
 title: Azure AD からアプリにユーザーをプロビジョニングするための SCIM エンドポイントを開発する
 description: クロスドメイン ID 管理システム (SCIM) では、自動ユーザー プロビジョニングが標準化されます。 SCIM エンドポイントを開発し、SCIM API を Azure Active Directory と統合して、クラウド アプリケーションへのユーザーとグループのプロビジョニングの自動化を開始する方法について学習します。
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297674"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690257"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を利用し、SCIM エンドポイントを構築し、ユーザー プロビジョニングを構成する
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
 アプリケーション開発者は System for Cross-Domain Identity Management (SCIM) ユーザー管理 API を使用し、アプリケーションと Azure AD の間のユーザーとグループの自動プロビジョニングを有効にできます。 この記事では、SCIM エンドポイントを構築し、Azure AD プロビジョニング サービスと統合する方法について説明します。 SCIM 仕様では、プロビジョニングのための共通のユーザー スキーマが提供されます。 SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用した場合、SCIM では エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
 
@@ -65,7 +60,7 @@ SCIM 2.0 (RFC [7642](https://tools.ietf.org/html/rfc7642)、[7643](https://tools
 |tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
 |status|active|isSoftDeleted (ユーザーに格納されない計算値)|
 
-上記で定義されたスキーマは、以下の Json ペイロードを使用して表されます。 アプリケーションに必要な属性に加えて、JSON の表現には、必要な "id"、"externalId"、"meta" の各属性が含まれていることに注意してください。
+上記で定義されたスキーマは、以下の JSON ペイロードを使用して表されます。 アプリケーションに必要な属性に加えて、JSON の表現には、必要な `id`、`externalId`、`meta` の各属性が含まれていることに注意してください。
 
 ```json
 {
@@ -139,7 +134,7 @@ SCIM RFC では複数のエンドポイントが定義されています。 /Use
 |/Group|グループ オブジェクトに対して CRUD 操作が実行されます。|
 |/ServiceProviderConfig|サポートされているリソースや認証方法など、サポートされている SCIM 標準の機能についての詳細が提供されます。|
 |/ResourceTypes|各リソースに関するメタデータが指定されます|
-|/Schemas|各クライアントおよびサービス プロバイダーによってサポートされている属性のセットは、異なる場合があります。 あるサービス プロバイダーには "name"、"title"、"emails" が含まれるのに対して、別のサービス プロバイダーでは "name"、"title"、"phoneNumbers" が使用されている、といったことがあります。 スキーマ エンドポイントにより、サポートされている属性を検出できます。|
+|/Schemas|各クライアントおよびサービス プロバイダーによってサポートされている属性のセットは、異なる場合があります。 たとえば、あるサービス プロバイダーに `name`、`title`、`emails` が含まれ、別のサービス プロバイダーに `name`、`title`、`phoneNumbers` が使用されることがあります。 スキーマ エンドポイントにより、サポートされている属性を検出できます。|
 |/Bulk|一括操作を使用すると、1 回の操作でリソース オブジェクトの大きなコレクションに対する操作を実行できます (たとえば、大きなグループのメンバーシップの更新)。|
 
 
@@ -154,10 +149,11 @@ SCIM RFC では複数のエンドポイントが定義されています。 /Use
 * [SCIM プロトコルのセクション 3.3](https://tools.ietf.org/html/rfc7644#section-3.3) に従って、ユーザー、グループ (オプション) の作成をサポートする。  
 * [SCIM プロトコルのセクション 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2) に従って、PATCH 要求によるユーザーまたはグループの変更をサポートする。  
 * [SCIM プロトコルのセクション 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1) に従って、これまで作成したユーザーまたはグループの既知のリソースの取得をサポートする。  
-* [SCIM プロトコルのセクション 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2) に従って、ユーザーまたはグループのクエリをサポートする。  既定では、ユーザーの取得には `id`、ユーザーのクエリには `username` と `externalid`、グループのクエリには `displayName` が使用されます。  
+* [SCIM プロトコルのセクション 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2) に従って、ユーザーまたはグループのクエリをサポートする。  既定では、ユーザーの取得には `id`、ユーザーのクエリには `username` と `externalId`、グループのクエリには `displayName` が使用されます。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID と管理者によるユーザーの照会をサポートする。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID とメンバーによるグループの照会をサポートする。  
 * アプリケーションに対する Azure AD の認証と承認のために、単一のベアラー トークンを受け入れる。
+* ユーザー `active=false` の論理削除とユーザー `active=true` の復元をサポートします。
 
 Azure AD との互換性を確保するために、SCIM エンドポイントの実装時は次の一般的なガイドラインに従ってください。
 
@@ -749,12 +745,14 @@ TLS 1.2 暗号スイートの最低条件:
 - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
+### <a name="ip-ranges"></a>IP 範囲
+Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory と AzureActiveDirectoryDomainServices の IP 範囲で動作します。 AzureActiveDirectory の IP 範囲のみへの統合を行う作業が進行中です。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>手順 3:SCIM エンドポイントを構築する
 
 これでスキーマを設計し、Azure AD SCIM の実装を理解したので、SCIM エンドポイントの開発を開始できます。 最初から開始して完全に独自の実装を構築するのではなく、SCIM コミュニティによって発行された多数のオープンソース SCIM ライブラリを使用できます。
 
-Azure AD プロビジョニング チームによって発行されたオープンソースの .NET Core [参照コード](https://aka.ms/SCIMReferenceCode)は、開発を開始するためのリソースの 1 つです。 SCIM エンドポイントを構築したら、それをテストします。参照コードの一部として提供されている [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)のコレクションを使用したり、[上記](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)の要求または応答のサンプルを通じて実行したりすることができます。  
+Azure AD プロビジョニング チームによって発行されたオープンソースの .NET Core [参照コード](https://aka.ms/SCIMReferenceCode)は、開発を開始するためのリソースの 1 つです。 SCIM エンドポイントを構築したら、それをテストします。参照コードの一部として提供されている [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)のコレクションを使用したり、[上記](#user-operations)の要求または応答のサンプルを通じて実行したりすることができます。  
 
    > [!Note]
    > 参照コードは、SCIM エンドポイントの構築を開始するのに役立ち、"現状のまま" 提供されることを目的としています。 コードのビルドと保守に役立つため、コミュニティからの貢献は歓迎されます。
@@ -802,7 +800,7 @@ SCIM サービスには、HTTP アドレスと、ルート証明機関が次の�
 * Microsoft.SCIM.WebHostSample: https://localhost:5001
 * IIS Express: https://localhost:44359/
 
-ASP.NET Core の HTTPS の詳細については、次のリンクを参照してください: 「[ASP.NET Core に HTTPS を適用する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)」
+ASP.NET Core の HTTPS の詳細については、次のリンクを参照してください: 「[ASP.NET Core に HTTPS を適用する](/aspnet/core/security/enforcing-ssl)」
 
 ### <a name="handling-endpoint-authentication"></a>エンドポイント認証の処理
 
@@ -810,7 +808,7 @@ Azure Active Directory からの要求には、OAuth 2.0 のベアラー トー�
 
 トークンでは、発行者は、`"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` のような iss 要求によって識別されます。 この例では、要求値のベース アドレスである `https://sts.windows.net` では発行者である Azure Active Directory を識別し、相対アドレス セグメントである _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ は、トークンの発行対象となった Azure Active Directory テナントの一意識別子になっています。
 
-トークンの対象は、ギャラリー内のアプリケーションのアプリケーション テンプレート ID になります。単一のテナントに登録されている各アプリケーションは、同じ `iss` 要求を SCIM 要求と共に受信する場合があります。 ギャラリー内の各アプリケーションのアプリケーション テンプレート ID はさまざまです。ギャラリー アプリケーションのアプリケーション テンプレート ID に関する質問は、[ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) にお問い合わせください。 すべてのカスタム アプリのアプリケーション テンプレート ID は _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ です。
+トークンの対象は、ギャラリー内のアプリケーションのアプリケーション テンプレート ID になります。単一のテナントに登録されている各アプリケーションは、同じ `iss` 要求を SCIM 要求と共に受信する場合があります。 すべてのカスタム アプリのアプリケーション テンプレート ID は _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ です。 Azure AD プロビジョニング サービスによって生成されたトークンは、テストにのみ使用する必要があります。 運用環境では使用しないでください。
 
 このサンプル コードでは、要求は Microsoft.AspNetCore.Authentication.JwtBearer パッケージを使用して認証されます。 次のコードでは、あらゆるサービスのエンドポイントに対する要求が、指定のテナントに対して Azure Active Directory から発行されたベアラー トークンを使用して認証されるようになります。
 
@@ -918,10 +916,10 @@ GET 要求をトークン コントローラーに送信することで有効な
 
 ***例 1.一致するユーザーをサービスに照会する***
 
-Azure Active Directory は、Azure AD 内のユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーをサービスに照会します。 クエリは次の例のようなハイパーテキスト転送プロトコル (HTTP) 要求として表現されます。jyoung は Azure Active Directory 内のユーザーの mailNickname 例です。
+Azure Active Directory は、Azure AD 内のユーザーの mailNickname 属性値に一致する `externalId` 属性値を持つユーザーをサービスに照会します。 クエリは次の例のようなハイパーテキスト転送プロトコル (HTTP) 要求として表現されます。jyoung は Azure Active Directory 内のユーザーの mailNickname 例です。
 
 >[!NOTE]
-> これは一例です。 すべてのユーザーに mailNickname 属性があるわけではありません。また、ユーザーが持つ値はディレクトリ内で一意ではない場合もあります。 また、照合に使用される属性 (この場合は externalId) は、[Azure AD 属性マッピング](customize-application-attributes.md)で構成可能です。
+> これは一例です。 すべてのユーザーに mailNickname 属性があるわけではありません。また、ユーザーが持つ値はディレクトリ内で一意ではない場合もあります。 また、照合に使用される属性 (この場合は `externalId`) は、[Azure AD 属性マッピング](customize-application-attributes.md)で構成可能です。
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -942,7 +940,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
  Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
 ```
 
-externalId 属性に特定の値を持つユーザーのサンプル クエリでは、QueryAsync メソッドに渡される引数の値は次のようになります。
+`externalId` 属性に特定の値を持つユーザーのサンプル クエリでは、QueryAsync メソッドに渡される引数の値は次のようになります。
 
 * parameters.AlternateFilters.Count:1
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
@@ -951,7 +949,7 @@ externalId 属性に特定の値を持つユーザーのサンプル クエリ�
 
 ***例 2.ユーザーをプロビジョニングする***
 
-ユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーを Web サービスに照会したときに、応答でユーザーが返されなかった場合、Azure Active Directory は、Azure Active Directory 内のユーザーに対応するユーザーをプロビジョニングするようにサービスに要求します。  このような要求の例を次に示します。 
+ユーザーの mailNickname 属性値に一致する `externalId` 属性値を持つユーザーを Web サービスに照会したときに、応答でユーザーが返されなかった場合、Azure Active Directory は、Azure Active Directory 内のユーザーに対応するユーザーをプロビジョニングするようにサービスに要求します。  このような要求の例を次に示します。 
 
 ```
  POST https://.../scim/Users HTTP/1.1
@@ -1171,12 +1169,12 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>手順 5:Azure AD アプリケーション ギャラリーにアプリケーションを発行する
 
-複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../develop/howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。 
+複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../azuread-dev/howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。 
 
 ### <a name="gallery-onboarding-checklist"></a>ギャラリーのオンボードのチェックリスト
 アプリケーションの迅速なオンボードと顧客のスムーズなデプロイ エクスペリエンスを確実なものとするために、以下のチェックリストに従ってください。 ギャラリーにオンボードする際に、ご自身から情報が収集されます。 
 > [!div class="checklist"]
-> * [SCIM 2.0 ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) のユーザーおよびグループ エンドポイントをサポートする (必要なのは 1 つだけですが両方を推奨)
+> * [SCIM 2.0 ](#step-2-understand-the-azure-ad-scim-implementation) のユーザーおよびグループ エンドポイントをサポートする (必要なのは 1 つだけですが両方を推奨)
 > * テナントごとに少なくとも 1 秒あたり 25 個の要求をサポートする (必須)
 > * 顧客のギャラリー オンボード後のガイドを行うエンジニアリングとサポートの連絡先を確立する (必須)
 > * アプリケーションの 3 つの無期限のテスト資格情報 (必須)
@@ -1194,14 +1192,15 @@ SCIM 仕様では、SCIM 固有の認証と承認のスキームは定義され�
 |--|--|--|--|
 |ユーザー名とパスワード (推奨されないか、Azure AD でサポートされていません)|簡単に実装できます|セキュリティで保護されていません - 「[パスワードは重要ではない](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)」を参照|ギャラリー アプリに対してケース バイ ケースでサポートされます。 ギャラリー以外のアプリではサポートされていません。|
 |有効期間が長いベアラー トークン|有効期間が長いトークンでは、ユーザーが存在している必要はありません。 プロビジョニングを設定する場合、管理者はこれらを簡単に使用できます。|有効期間が長いトークンは、メールのようにセキュリティで保護されていない方法を使用しないと、管理者と共有するのが困難です。 |ギャラリー アプリとギャラリー以外のアプリでサポートされます。 |
-|OAuth 認証コードの付与|アクセス トークンの有効期間はパスワードよりもはるかに短く、有効期間が長いベアラー トークンにはない自動更新メカニズムがあります。  初期承認中に実際のユーザーが存在する必要があり、アカウンタビリティのレベルを追加します。 |ユーザーが存在している必要があります。 ユーザーが組織からいなくなる場合、トークンは無効になり、承認を再度完了する必要があります。|ギャラリー アプリでサポートされます。 ギャラリー以外のアプリでのサポートは作業中です。|
+|OAuth 認証コードの付与|アクセス トークンの有効期間はパスワードよりもはるかに短く、有効期間が長いベアラー トークンにはない自動更新メカニズムがあります。  初期承認中に実際のユーザーが存在する必要があり、アカウンタビリティのレベルを追加します。 |ユーザーが存在している必要があります。 ユーザーが組織からいなくなる場合、トークンは無効になり、承認を再度完了する必要があります。|ギャラリー アプリでサポートされていますが、ギャラリー以外のアプリではサポートされていません。 ギャラリー以外のサポートはバックログにあります。|
 |OAuth クライアント資格情報の付与|アクセス トークンの有効期間はパスワードよりもはるかに短く、有効期間が長いベアラー トークンにはない自動更新メカニズムがあります。 承認コードの付与とクライアント資格情報の付与の両方で、同じ種類のアクセス トークンが作成されるため、これらの方法間の移動は API に対して透過的です。  プロビジョニングは完全に自動化することができ、ユーザーの介入なしに新しいトークンを自動的に要求することができます。 ||ギャラリー アプリとギャラリー以外のアプリでサポートされていません。 サポートはバックログに入っています。|
 
-[!NOTE] Azure AD プロビジョニング構成のカスタム アプリ UI では、トークン フィールドを空白のままにすることはお勧めしません。 生成されたトークンは、主にテスト目的で使用できます。
+> [!NOTE]
+> Azure AD プロビジョニング構成のカスタム アプリ UI では、トークン フィールドを空白のままにすることはお勧めしません。 生成されたトークンは、主にテスト目的で使用できます。
 
 **OAuth 承認コード付与フロー:** プロビジョニング サービスでは、[承認コードの付与](https://tools.ietf.org/html/rfc6749#page-24)がサポートされています。 ギャラリーにアプリを発行するための要求を送信した後、私たちのチームは次の情報を収集するためにお客様と協力します。
-*  承認 URL:ユーザー エージェント リダイレクトによってリソース所有者から承認を取得するためのクライアントによる URL。 ユーザーは、アクセスを承認するためにこの URL にリダイレクトされます。 
-*  トークン交換 URL:アクセス トークンの承認付与を交換するためのクライアントによる URL。通常は、クライアント認証を使用します。
+*  承認 URL:ユーザー エージェント リダイレクトによってリソース所有者から承認を取得するためのクライアントによる URL。 ユーザーは、アクセスを承認するためにこの URL にリダイレクトされます。 現在、この URL はテナントごとに構成できないことに注意してください。
+*  トークン交換 URL:アクセス トークンの承認付与を交換するためのクライアントによる URL。通常は、クライアント認証を使用します。 現在、この URL はテナントごとに構成できないことに注意してください。
 *  クライアント ID: 承認サーバーは、登録されたクライアントにクライアント識別子 (クライアントによって提供される登録情報を表す一意の文字列) を発行します。  クライアント識別子はシークレットではありません。これはリソースの所有者に公開されており、クライアント認証に単独で使用**できません**。  
 *  クライアント シークレット:クライアント シークレットは、承認サーバーによって生成されるシークレットです。 これは承認サーバーにのみ認識される一意の値である必要があります。 
 
@@ -1225,10 +1224,6 @@ OAuth v1 は、クライアント シークレットの露出が原因で、サ�
 * **テクニカル ドキュメント。** 顧客がどのように開始できるかに関するヘルプ センターの記事またはテクニカル ドキュメントを作成します。 [例:Envoy と Microsoft Azure Active Directory の統合。](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **顧客とのコミュニケーション。** 顧客とのコミュニケーション (月次のニュースレター、メールによるキャンペーン、製品のリリース ノート) を通じて、新しい統合を顧客に通知します。 
-
-### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Azure AD プロビジョニング サービスで使用される IP アドレスが SCIM 要求を行うことを許可する
-
-特定のアプリでは、アプリへの受信トラフィックが許可されます。 Azure AD プロビジョニング サービスが期待通りに機能するためには、使用する IP アドレスが許可されている必要があります。 各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 これらの IP は、必要に応じて、お使いのファイアウォールにダウンロードしてプログラムすることができます。 Azure AD プロビジョニングの予約済み IP 範囲は、"AzureActiveDirectoryDomainServices" にあります。
 
 ## <a name="related-articles"></a>関連記事
 

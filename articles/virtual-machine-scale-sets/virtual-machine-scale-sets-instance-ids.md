@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6ffc92fe8d17970e1408262387140331189d6e51
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080456"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM スケール セット VM のインスタンス ID を理解する
 この記事では、スケール セットのインスタンス ID と、さまざまな使用方法について説明します。
@@ -23,19 +23,19 @@ ms.locfileid: "83200123"
 
 スケール セットの各 VM には、それを一意に識別するインスタンス ID が割り当てられます。 このインスタンス ID は、スケール セット内の特定の VM に対する操作を実行するために、スケール セット API で使用されます。 たとえば、再イメージ化 API を使用する場合は、再イメージ化する特定のインスタンス ID を指定できます。
 
-REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)をご覧ください)
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesetvms/reimage)をご覧ください)
 
-Powershell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (詳しくは、[Powershell のドキュメント](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)をご覧ください)
+Powershell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (詳しくは、[Powershell のドキュメント](/powershell/module/az.compute/set-azvmssvm)をご覧ください)
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (詳しくは、[CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)をご覧ください)。
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (詳しくは、[CLI のドキュメント](/cli/azure/vmss?view=azure-cli-latest)をご覧ください)。
 
 インスタンス ID の一覧を取得するには、スケール セット内のすべてのインスタンスを一覧表示します。
 
-REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list)をご覧ください)
+REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesetvms/list)をご覧ください)
 
-Powershell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (詳しくは、[Powershell のドキュメント](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)をご覧ください)
+Powershell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (詳しくは、[Powershell のドキュメント](/powershell/module/az.compute/get-azvmssvm)をご覧ください)
 
-CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (詳しくは、[CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)をご覧ください)。
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (詳しくは、[CLI のドキュメント](/cli/azure/vmss?view=azure-cli-latest)をご覧ください)。
 
 [resources.azure.com](https://resources.azure.com) または [Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セット内の VM を一覧表示することもできます。
 
@@ -66,7 +66,7 @@ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 上記の出力のように、VM には "name" もあります。 この名前は、"{スケール セット名}_{インスタンス ID}" の形式になります。 この名前は、スケール セット内のインスタンスを一覧表示したときに、Azure ポータルで表示されます。
 
-![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![Azure portal の仮想マシン スケール セット内のインスタンスの一覧を示すスクリーンショット](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 名前の {インスタンス ID} 部分は、前述の "instanceId" のプロパティと同じ 10 進数です。
 

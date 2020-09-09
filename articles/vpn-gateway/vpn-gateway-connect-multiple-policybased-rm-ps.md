@@ -4,15 +4,15 @@ description: Azure Resource Manager と PowerShell を使用して、複数の�
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: 687c33e50a986cf8af08d0201fe0159a79cf02a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081986"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
@@ -36,8 +36,8 @@ ms.locfileid: "80123313"
 ### <a name="azure-support-for-policy-based-vpn"></a>ポリシー ベース VPN の Azure のサポート
 現在、Azure では、ルート ベース VPN ゲートウェイとポリシー ベース VPN ゲートウェイの両方の VPN ゲートウェイ モードをサポートしています。 これらは、異なる内部プラットフォームに基づいて構築され、結果として異なる仕様になります。
 
-|                          | **PolicyBased VPN ゲートウェイ** | **RouteBased VPN ゲートウェイ**       |**RouteBased VPN ゲートウェイ**                          |
-| ---                      | ---                         | ---                              |---                                                 |
+| カテゴリ | PolicyBased VPN Gateway | RouteBased VPN Gateway | RouteBased VPN Gateway |
+| -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure ゲートウェイ SKU**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE バージョン**          | IKEv1                       | IKEv2                            | IKEv1 および IKEv2                         |
 | **最大S2S 接続** | **1**                       | 10                               | 30                     |
@@ -205,6 +205,6 @@ ms.locfileid: "80123313"
       ```
 
 ## <a name="next-steps"></a>次のステップ
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/windows/quick-create-portal.md) に関するページを参照してください。
 
 カスタムの IPsec/IKE ポリシーの詳細については、[S2S VPN または VNet 対 VNet 接続用のIPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページも参照してください。

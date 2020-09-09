@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b45af924b75392374265ca41bd4dc1627edd4e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89e3aa1fec2157d77ac5c180bc4dd193f10398cd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190811"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078954"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
 
@@ -53,7 +53,7 @@ HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を�
 > [!WARNING]  
 > HDInsight HBase は、Azure Data Lake Storage Gen1 ではサポートされていません。
 
-Data Lake Storage Gen1 を追加のストレージ アカウントとして使用しても、パフォーマンスや、 クラスターから Azure Storage に対する読み取りまたは書き込みの機能には影響ありません。
+Data Lake Storage Gen1 を追加のストレージ アカウントとして使用しても、パフォーマンスには影響しません。 または、クラスターから Azure Storage に対して読み取りまたは書き込みを行う機能。
 
 ## <a name="use-data-lake-storage-gen1-as-default-storage"></a>既定のストレージとして Data Lake Storage Gen1 を使用する
 
@@ -62,7 +62,7 @@ Data Lake Storage Gen1 を既定のストレージとして HDInsight がデプ�
 * Cluster1 は、パス `adl://mydatalakestore/cluster1storage` を使用できます
 * Cluster2 は、パス `adl://mydatalakestore/cluster2storage` を使用できます
 
-両方のクラスターが同じ Data Lake Storage Gen1 アカウント **mydatalakestore** を使用していることに注意してください。 クラスターそれぞれが、Data Lake Storage で独自のルート ファイルシステムにアクセスします。 Azure portal のデプロイ エクスペリエンスでは、ルート パスに **/clusters/\<clustername >** などのフォルダー名を使用するように求められます。
+両方のクラスターが同じ Data Lake Storage Gen1 アカウント **mydatalakestore** を使用していることに注意してください。 クラスターそれぞれが、Data Lake Storage で独自のルート ファイルシステムにアクセスします。 Azure portal のデプロイ エクスペリエンスでは、ルート パスに **/clusters/\<clustername>** などのフォルダー名を使用するように求められます。
 
 Data Lake Storage Gen1 を既定のストレージとして使用するには、サービス プリンシパルに次のパスへのアクセスを許可する必要があります。
 
@@ -110,13 +110,13 @@ New-AzResourceGroupDeployment `
 
 Data Lake Storage Gen1 を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Storage アカウントを使うことができます。 追加のストレージとしての Data Lake Storage に格納されているデータに対して HDInsight ジョブを実行するときは、完全修飾パスを使用します。 次に例を示します。
 
-    adl://mydatalakestore.azuredatalakestore.net/<file_path>
+`adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 現在、URL には **cluster_root_path** がありません。 この理由は、この場合、Data Lake Storage は既定のストレージではないからです。 したがって、ファイルへのパスを指定することだけで済みます。
 
 Data Lake Storage Gen1 を追加のストレージとして使用するには、ファイルが格納されているパスへのアクセスをサービス プリンシパルに許可します。  次に例を示します。
 
-    adl://mydatalakestore.azuredatalakestore.net/<file_path>
+`adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 サービス プリンシパルの作成とアクセスの許可の詳細については、「Data Lake Storage のアクセスを構成する」を参照してください。
 

@@ -2,13 +2,14 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 07/27/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255126"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499995"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -17,7 +18,9 @@ Azure リソース、リソース グループ、サブスクリプションに�
 タグ付け戦略の実装方法に関する推奨事項については、「[リソースの名前付けとタグ付けの意思決定ガイド](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)」を参照してください。
 
 > [!IMPORTANT]
-> タグの名前は大文字と小文字が区別されます。 タグの値は大文字と小文字が区別されます。
+> 操作のタグの名前は大文字と小文字が区別されません。 大文字と小文字の区別に関係なく、タグ名を持つタグが更新または取得されます。 ただし、リソース プロバイダーでは、タグ名に指定した大文字と小文字がそのまま保持される可能性があります。 コスト レポートにはその大文字と小文字で表示されます。
+> 
+> タグの値は大文字と小文字が区別されます。
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
@@ -263,7 +266,7 @@ az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-現在、Azure CLI では、サブスクリプションへのタグの適用はサポートされていません。
+現在、Azure CLI には、サブスクリプションにタグを適用するコマンドはありません。 ただし、CLI を使用して、サブスクリプションにタグを適用する ARM テンプレートをデプロイできます。 「[リソース グループまたはサブスクリプションにタグを適用する](#apply-tags-to-resource-groups-or-subscriptions)」を参照してください。
 
 ### <a name="list-tags"></a>タグの一覧を表示する
 
@@ -436,7 +439,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ### <a name="apply-tags-from-resource-group"></a>リソース グループからタグを適用する
 
-リソース グループからリソースにタグを適用するには、[resourceGroup](../templates/template-functions-resource.md#resourcegroup) 関数を使います。 タグの値を取得するときは、`tags.tag-name` 構文ではなく `tags[tag-name]` 構文を使います。これは、ドット表記では一部の文字が正しく解析されないためです。
+リソース グループからリソースにタグを適用するには、[resourceGroup()](../templates/template-functions-resource.md#resourcegroup) 関数を使います。 タグの値を取得するときは、`tags.tag-name` 構文ではなく `tags[tag-name]` 構文を使います。これは、ドット表記では一部の文字が正しく解析されないためです。
 
 ```json
 {
@@ -523,6 +526,8 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
+サブスクリプション デプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](../templates/deploy-to-subscription.md)」を参照してください。
+
 次のテンプレートでは、オブジェクトからリソース グループまたはサブスクリプションにタグが追加されます。
 
 ```json
@@ -574,7 +579,7 @@ Azure REST API でタグを操作するには、次のように使用します�
 
 タグを使用して課金データをグループ化できます。 たとえば、異なる組織向けに複数の VM を実行している場合は、タグを使用して、コスト センターごとに使用状況をグループ化します。 また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
 
-タグに関する情報は、 [Azure Resource Usage API と RateCard API](../../billing/billing-usage-rate-card-overview.md) から、あるいはコンマ区切り値 (CSV) ファイルから取得できます。 使用状況ファイルは [Azure アカウント センター](https://account.azure.com/Subscriptions)または Azure portal からダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../billing/billing-download-azure-invoice-daily-usage-date.md)」を参照してください。 Azure アカウント センターから使用状況ファイルをダウンロードする場合は、 **[バージョン 2]** を選択します。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
+タグに関する情報は、[Azure Resource Usage API や Rate Card API](../../cost-management-billing/manage/usage-rate-card-overview.md)、またはコンマ区切り値 (CSV) ファイルから取得できます。 使用状況ファイルは [Azure アカウント センター](https://account.azure.com/Subscriptions)または Azure portal からダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。 Azure アカウント センターから使用状況ファイルをダウンロードする場合は、 **[バージョン 2]** を選択します。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
 
 REST API の操作については、「 [Azure Billing REST API Reference (Azure Billing REST API リファレンス)](/rest/api/billing/)」を参照してください。
 
@@ -583,15 +588,17 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
 タグには次の制限事項が適用されます。
 
 * すべてのリソースの種類で、タグがサポートされるわけではありません。 リソースの種類にタグを適用することができるかどうかを確認するには、[Azure リソースに対するタグのサポート](tag-support.md)に関する記事を参照してください。
-* 現在、管理グループではタグはサポートされていません。
 * 各リソース、リソース グループ、サブスクリプションには、最大で 50 個のタグ名と値のペアを付けることができます。 許可される最大数よりも多くのタグを適用する必要がある場合は、タグ値に JSON 文字列を使用します。 JSON 文字列には、1 つのタグ名に適用される値を多数含めることができます。 リソース グループまたはサブスクリプションには、それぞれ 50 個のタグ名と値のペアが付けられたリソースを多数含めることができます。
 * タグ名は 512 文字まで、タグ値は 256 文字までに制限されます。 ストレージ アカウントについては、タグ名は 128 文字まで、タグ値は 256 文字までに制限されます。
-* 一般化された VM では、タグがサポートされていません。
 * Cloud Services など、クラシック リソースにタグを適用することはできません。
 * タグ名には、これらの文字を含めることはできません: `<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
-   > また、Azure DNS ゾーンと Traffic Manger サービスでは現在、タグ内でスペースを使用することはできません。
+   > また、Azure DNS ゾーンと Traffic Manager サービスでは現在、タグ内でスペースを使用することはできません。
+   >
+   > Azure Front Door では、タグ名に `#` を使用できません。
+   >
+   > Azure Automation と Azure CDN では、リソースで 15 個のタグのみがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

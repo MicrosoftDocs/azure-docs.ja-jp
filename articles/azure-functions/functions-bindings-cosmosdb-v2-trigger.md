@@ -1,22 +1,23 @@
 ---
-title: Functions 2.x での Azure Cosmos DB のトリガー
+title: Functions 2.x 以降での Azure Cosmos DB のトリガー
 description: Azure Functions で Azure Cosmos DB のトリガーを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 838d6244127bc1b3609ab5e925e54dbab7fe3a2d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235191"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212691"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Functions 2.x での Azure Cosmos DB のトリガー
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降での Azure Cosmos DB のトリガー
 
 Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmos-db/change-feed.md)を使用して、パーティション間の挿入と更新をリッスンします。 変更フィードは、削除ではなく挿入と更新を発行します。
 
-セットアップと構成の詳細については、[概要](./functions-bindings-cosmosdb-v2.md)を参照してください。
+セットアップと構成の詳細については、[概要](./functions-bindings-cosmosdb-v2.md)に関するページをご覧ください。
 
 <a id="example" name="example"></a>
 
@@ -208,7 +209,7 @@ Python コードを次に示します。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Java 関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)から、`@CosmosDBInput` 注釈を Cosmos DB からデータを読み取るパラメーターに使用します。
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)から、`@CosmosDBInput` 注釈を Cosmos DB からデータを読み取るパラメーターに使用します。
 
 ---
 

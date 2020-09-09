@@ -2,15 +2,16 @@
 title: カスタム プロバイダーの C# RESTful エンドポイント リファレンス
 description: Azure カスタム プロバイダーの C# RESTful エンドポイントの基本リファレンスを提供します。 エンドポイントは Azure 関数アプリ経由で提供されます。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649419"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935638"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>カスタム プロバイダーの C# RESTful エンドポイント リファレンス
 

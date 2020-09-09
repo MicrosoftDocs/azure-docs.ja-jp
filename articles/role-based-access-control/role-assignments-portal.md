@@ -2,24 +2,20 @@
 title: Azure portal を使用して Azure ロールの割り当てを追加または削除する - Azure RBAC
 description: Azure portal と Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 01/25/2020
+ms.date: 06/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362248"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure ロールの割り当てを追加または削除する
 
@@ -35,11 +31,11 @@ Azure Active Directory で管理者ロールを割り当てる必要がある場
 
 ## <a name="access-control-iam"></a>アクセス制御 (IAM)
 
-**アクセス制御 (IAM)** は、ロールを割り当てることで、Azure リソースへのアクセス権を付与するために使用するブレードです。 ID とアクセス管理とも呼ばれ、Azure portal のいくつかの場所に示されます。 サブスクリプションの [アクセス制御 (IAM)] ブレードの例を次に示します。
+**アクセス制御 (IAM)** は、一般的には、ロールを割り当てて Azure リソースへのアクセスを付与するために使用するページです。 ID とアクセス管理とも呼ばれ、Azure portal のいくつかの場所に示されます。 サブスクリプションの [アクセス制御 (IAM)] ページの例を次に示します。
 
-![サブスクリプションの [アクセス制御 (IAM)] ブレード](./media/role-assignments-portal/access-control-subscription.png)
+![サブスクリプションの [アクセス制御 (IAM)] ページ](./media/role-assignments-portal/access-control-subscription.png)
 
-[アクセス制御 (IAM)] ブレードを最も効果的に使用するには、ロールを割り当てる際に、次の 3 つの質問に回答できると役立ちます。
+[アクセス制御 (IAM)] ページを最も効果的に使用するには、ロールを割り当てる際に、次の 3 つの質問に回答できると役立ちます。
 
 1. **誰がアクセスを必要としていますか?**
 
@@ -71,7 +67,7 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-   ![[追加] メニュー](./media/role-assignments-portal/add-menu.png)
+   ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
 
     [ロールの割り当ての追加] ウィンドウが開きます。
 
@@ -105,7 +101,7 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-   ![[追加] メニュー](./media/role-assignments-portal/add-menu.png)
+   ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
 
     [ロールの割り当ての追加] ウィンドウが開きます。
 
@@ -118,6 +114,75 @@ Azure RBAC では、Azure リソースへのアクセス権を付与するため
 1. **[保存]** をクリックしてロールを割り当てます。
 
    しばらくすると、サブスクリプション スコープで、ユーザーに所有者のロールが割り当てられます。
+
+## <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>マネージド ID のロールの割り当てを追加する (プレビュー)
+
+この記事で前に説明したように、 **[アクセス制御 (IAM)]** ページを使用して、マネージド ID のロールの割り当てを追加できます。 [アクセス制御 (IAM)] ページを使用するときには、スコープから開始し、次にマネージド ID とロールを選択します。 このセクションでは、マネージド ID のためにロールの割り当てを追加する別の方法について説明します。 これらの手順を使用して、マネージド ID から開始し、スコープとロールを選択します。
+
+> [!IMPORTANT]
+> 代わりになるこれらの手順を使用してマネージド ID のロールの割り当てを追加することは、現在プレビューの段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+### <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
+
+次の手順に従ってマネージド ID から開始することで、システム割り当てマネージド ID にロールを割り当てます。
+
+1. Azure portal で、システム割り当てマネージド ID を開きます。
+
+1. 左側のメニューで、 **[ID]** をクリックします。
+
+    ![システム割り当てマネージド ID](./media/shared/identity-system-assigned.png)
+
+1. **[アクセス許可]** で、 **[Azure でのロールの割り当て]** をクリックします。
+
+    選択したシステム割り当てマネージド ID に、既にロールが割り当てられている場合は、ロールの割り当ての一覧が表示されます。 この一覧では、自分が読み取りアクセス許可を認められているすべてのロールの割り当てが表示されます。
+
+    ![システム割り当てマネージド ID のロールの割り当て](./media/shared/role-assignments-system-assigned.png)
+
+1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
+
+1. **[ロールの割り当ての追加 (プレビュー)]** をクリックします。
+
+1. ドロップダウン リストを使用して、**サブスクリプション**、**リソース グループ**、リソースなど、ロールの割り当てを適用するリソースのセットを選択します。
+
+    選択したスコープに対するロールの割り当ての書き込みアクセス許可がない場合は、インライン メッセージが表示されます。 
+
+1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
+
+   ![[ロールの割り当ての追加] ウィンドウ](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+
+1. **[保存]** をクリックしてロールを割り当てます。
+
+   しばらくすると、選択されたスコープで、マネージド ID にロールが割り当てられます。
+
+### <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
+
+次の手順に従ってマネージド ID から開始することで、ユーザー割り当てマネージド ID にロールを割り当てます。
+
+1. Azure portal で、ユーザー割り当てマネージド ID を開きます。
+
+1. 左側のメニューで、 **[Azure でのロールの割り当て]** をクリックします。
+
+    選択したユーザー割り当てマネージド ID に、既にロールが割り当てられている場合は、ロールの割り当ての一覧が表示されます。 この一覧では、自分が読み取りアクセス許可を認められているすべてのロールの割り当てが表示されます。
+
+    ![システム割り当てマネージド ID のロールの割り当て](./media/shared/role-assignments-user-assigned.png)
+
+1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
+
+1. **[ロールの割り当ての追加 (プレビュー)]** をクリックします。
+
+1. ドロップダウン リストを使用して、**サブスクリプション**、**リソース グループ**、リソースなど、ロールの割り当てを適用するリソースのセットを選択します。
+
+    選択したスコープに対するロールの割り当ての書き込みアクセス許可がない場合は、インライン メッセージが表示されます。 
+
+1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
+
+   ![[ロールの割り当ての追加] ウィンドウ](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+
+1. **[保存]** をクリックしてロールを割り当てます。
+
+   しばらくすると、選択されたスコープで、マネージド ID にロールが割り当てられます。
 
 ## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
 

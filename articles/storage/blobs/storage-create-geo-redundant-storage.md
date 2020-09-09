@@ -1,30 +1,30 @@
 ---
 title: チュートリアル - Blob Storage を使用して高可用性アプリケーションを作成する
 titleSuffix: Azure Storage
-description: 読み取りアクセス geo 冗長ストレージを使用してアプリケーション データに高い可用性を確保します。
+description: 読み取りアクセス geo ゾーン冗長 (RA-GZRS) ストレージを使用してアプリケーション データに高い可用性を確保します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc
+ms.custom: mvc, devx-track-python, devx-track-javascript, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e437cfb984acb71b27bc60a06929b6755e8a3ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81606025"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001470"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
 このチュートリアルは、シリーズの第 1 部です。 ここでは、Azure でアプリケーション データを高可用にする方法について学習します。
 
-このチュートリアルを完了すると、BLOB を[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy.md) (RA-GRS) ストレージ アカウントにアップロードし、取得するコンソール アプリケーションが作成されます。
+このチュートリアルを完了すると、BLOB を[読み取りアクセス geo ゾーン冗長](../common/storage-redundancy.md) (RA-GZRS) ストレージ アカウントにアップロードし、取得するコンソール アプリケーションが作成されます。
 
-RA-GRS は、プライマリ リージョンからセカンダリ リージョンにトランザクションをレプリケートすることによって機能します。 このレプリケーション プロセスにより、セカンダリ リージョンのデータの結果整合性が保証されます。 アプリケーションでは、[サーキット ブレーカー](/azure/architecture/patterns/circuit-breaker) パターンを使用して、接続先のエンドポイントを判断し、障害と復旧がシミュレートされたときに自動的にエンドポイント間を切り替えます。
+Azure Storage の geo 冗長では、プライマリ リージョンから何百キロも離れたセカンダリ リージョンにトランザクションが非同期にレプリケートされます。 このレプリケーション プロセスにより、セカンダリ リージョンのデータの結果整合性が保証されます。 コンソール アプリケーションでは、[サーキット ブレーカー](/azure/architecture/patterns/circuit-breaker) パターンを使用して、接続先のエンドポイントを判断し、障害と復旧がシミュレートされたときに自動的にエンドポイント間を切り替えます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -64,25 +64,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を提供します。
 
-次の手順で、読み取りアクセス geo 冗長ストレージ アカウントを作成します。
+次の手順で、読み取りアクセス geo ゾーン冗長 (RA-GZRS) ストレージ アカウントを作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** ボタンを選択します。
-2. **[新規]** ページから **[ストレージ]** を選択します。
-3. **[おすすめ]** の下にある **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
+1. Azure portal で、 **[リソースの作成]** ボタンを選択します。
+2. **[新規]** ページの **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
 4. 下図のように、ストレージ アカウント フォームに次の情報を入力し、 **[作成]** を選択します。
 
-   | 設定       | 推奨値 | 説明 |
+   | 設定       | 値の例 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **名前** | mystorageaccount | ストレージ アカウント用の一意の値 |
-   | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。|
-   | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
-   | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
-   | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
-   |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
-   |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-   |**場所** | 米国東部 | 場所を選択します。 |
+   | **サブスクリプション** | *My subscription* | サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
+   | **ResourceGroup** | *myResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
+   | **名前** | *mystorageaccount* | ストレージ アカウントの一意の名前。 |
+   | **場所** | *米国東部* | 場所を選択します。 |
+   | **パフォーマンス** | *Standard* | この例のシナリオには Standard パフォーマンスが適しています。 |
+   | **アカウントの種類** | *StorageV2* | 汎用 v2 ストレージ アカウントの使用をお勧めします。 Azure Storage アカウントの種類について詳しくは、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。 |
+   | **レプリケーション**| *読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS)* | プライマリ リージョンはゾーン冗長で、セカンダリ リージョンにレプリケートされます。セカンダリ リージョンへの読み取りアクセスが有効となります。 |
+   | **アクセス層**| *ホット* | アクセスされる頻度の高いデータにはホット層を使用します。 |
 
-![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -118,7 +117,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションが実行されているローカル コンピューターの環境変数内に、この接続文字列を格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
 
-Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 オペレーティング システムに基づいて次のコマンドのいずれかを実行します。\<yourconnectionstring\> は実際の接続文字列に置き換えてください。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 オペレーティング システムに応じて次のいずれかのコマンドを実行します。\<yourconnectionstring\> は実際の接続文字列に置き換えてください。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。
 
 ### <a name="linux"></a>Linux
 
@@ -136,7 +135,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 アプリケーションには、実際のストレージ アカウントの資格情報を指定する必要があります。 この情報は、アプリケーションが実行されているローカル コンピューターの環境変数に格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下のいずれかの例に従います。
 
-Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 **[ストレージ アカウント名]** と **[キー]** の値を以下のコマンドに貼り付けて、プレースホルダー \<youraccountname\> と \<youraccountkey\> を置き換えてください。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 **[ストレージ アカウント名]** と **[キー]** の値を、それぞれ以下のコマンドの \<youraccountname\> と \<youraccountkey\> の部分に貼り付けます。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。
 
 ### <a name="linux"></a>Linux
 
@@ -173,7 +172,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 Visual Studio で **F5** キーを押すか **[スタート]** を選択してアプリケーションのデバッグを開始します。 構成に応じて、不足している NuGet パッケージが Visual Studio で自動的に復元されます。詳細については、[パッケージの復元によるパッケージのインストールと再インストール](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)に関するセクションを参照してください。
 
-コンソール ウィンドウが起動し、アプリケーションの実行が開始されます。 アプリケーションは、ソリューションの **HelloWorld.png** イメージをストレージ アカウントにアップロードします。 アプリケーションは、イメージがセカンダリ RA-GRS エンドポイントにレプリケートされたことを確認します。 次に、イメージのダウンロードを開始し、最大 999 回試行します。 各読み取りは **P** または **S** で表されます。この **P** はプライマリ エンドポイント、**S** はセカンダリ エンドポイントを示します。
+コンソール ウィンドウが起動し、アプリケーションの実行が開始されます。 アプリケーションは、ソリューションの **HelloWorld.png** イメージをストレージ アカウントにアップロードします。 アプリケーションは、イメージがセカンダリ RA-GZRS エンドポイントにレプリケートされたことを確認します。 次に、イメージのダウンロードを開始し、最大 999 回試行します。 各読み取りは **P** または **S** で表されます。この **P** はプライマリ エンドポイント、**S** はセカンダリ エンドポイントを示します。
 
 ![コンソール アプリの実行](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +180,7 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 # <a name="python"></a>[Python](#tab/python)
 
-ターミナルまたはコマンド プロンプトでアプリケーションを実行するには、**circuitbreaker.py** ディレクトリに移動して「`python circuitbreaker.py`」と入力します。 アプリケーションは、ソリューションの **HelloWorld.png** イメージをストレージ アカウントにアップロードします。 アプリケーションは、イメージがセカンダリ RA-GRS エンドポイントにレプリケートされたことを確認します。 次に、イメージのダウンロードを開始し、最大 999 回試行します。 各読み取りは **P** または **S** で表されます。この **P** はプライマリ エンドポイント、**S** はセカンダリ エンドポイントを示します。
+ターミナルまたはコマンド プロンプトでアプリケーションを実行するには、**circuitbreaker.py** ディレクトリに移動して「`python circuitbreaker.py`」と入力します。 アプリケーションは、ソリューションの **HelloWorld.png** イメージをストレージ アカウントにアップロードします。 アプリケーションは、イメージがセカンダリ RA-GZRS エンドポイントにレプリケートされたことを確認します。 次に、イメージのダウンロードを開始し、最大 999 回試行します。 各読み取りは **P** または **S** で表されます。この **P** はプライマリ エンドポイント、**S** はセカンダリ エンドポイントを示します。
 
 ![コンソール アプリの実行](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -343,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>次のステップ
 
-シリーズの第 1 部では、RA-GRS ストレージ アカウントでアプリケーションを高可用にする方法について学習しました。
+シリーズの第 1 部では、RA-GZRS ストレージ アカウントでアプリケーションを高可用にする方法について学習しました。
 
-シリーズの第 2 部に進んで、エラーをシミュレートし、アプリケーションがセカンダリ RA-GRS エンドポイントを使用するように強制する方法について学んでください。
+シリーズの第 2 部に進んで、エラーをシミュレートし、アプリケーションがセカンダリ RA-GZRS エンドポイントを使用するように強制する方法について学んでください。
 
 > [!div class="nextstepaction"]
-> [プライマリ リージョンからの読み取りで発生するエラーをシミュレートする](storage-simulate-failure-ragrs-account-app.md)
+> [プライマリ リージョンからの読み取りで発生するエラーをシミュレートする](simulate-primary-region-failure.md)

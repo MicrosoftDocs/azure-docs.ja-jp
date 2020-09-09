@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74559345"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534908"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションにセキュリティ ポリシーを適用することで、組織の大規模なセキュリティ体制を管理する方法について説明します。
@@ -26,7 +26,7 @@ ms.locfileid: "74559345"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>管理グループ
-Azure の管理グループを使用すると、一連のサブスクリプションに対するアクセス、ポリシー、およびレポートを効率的に管理できると共に、ルート管理グループに対してアクションを実行することで、Azure 資産全体を効果的に管理することができます。 各 Azure AD テナントには、ルート管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 このグループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 
+Azure の管理グループを使用すると、一連のサブスクリプションに対するアクセス、ポリシー、およびレポートを効率的に管理できると共に、ルート管理グループに対してアクションを実行することで、Azure 資産全体を効果的に管理することができます。 各 Azure AD テナントには、ルート管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 このグループにより、グローバル ポリシーと Azure ロールの割り当てをディレクトリ レベルで適用できます。 
 
 ルート管理グループは、次のいずれかのアクションを実行したときに自動的に作成されます。 
 1. [Azure Portal](https://portal.azure.com) の **[管理グループ]** に移動して、Azure の管理グループを使用するよう選択する。
@@ -39,7 +39,7 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
 管理者は、管理グループ内にサブスクリプションを整理し、それらの管理グループに管理ポリシーを適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用されたポリシーを自動的に継承します。 管理グループは Security Center をオンボードするのに必須のものではありませんが、管理グループを少なくとも 1 つ作成して、ルート管理グループが作成されるようにすることを強くお勧めします。 グループが作成されると、自分の Azure AD テナントの配下にあるすべてのサブスクリプションがそのグループにリンクされます。 PowerShell に関する操作説明と詳細については、「[リソースの整理と管理のための管理グループを作成する](../azure-resource-manager/management-groups-create.md)」をご覧ください。
 
  
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 3. メイン ページで、 **[New Management group]\(新しい管理グループ\)** を選択します。 
 
@@ -52,7 +52,7 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
 5.  **[保存]** を選びます。
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Azure Portal で管理グループを表示する
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 管理グループを表示するには、Azure メイン メニューの **[すべてのサービス]** を選択します。
 3. **[全般 ]** の **[管理グループ]** を選択します。
 
@@ -60,10 +60,10 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>テナント レベルの可視性を確保し、ポリシーの割り当てを行えるようにする
 
-Azure AD テナントに登録されているすべてのサブスクリプションのセキュリティ体制に対する可視性を確保するには、十分な読み取りアクセス許可を持った RBAC ロールがルート管理グループに対して割り当てられている必要があります。
+Azure AD テナントに登録されているすべてのサブスクリプションのセキュリティ対策を把握するには、十分な読み取りアクセス許可を持つ Azure ロールをルート管理グループに割り当てる必要があります。
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory でグローバル管理者のアクセス権を昇格する
-Azure Active Directory テナント管理者には、Azure サブスクリプションに対する直接のアクセス権はありません。 ただし、ディレクトリ管理者には、アクセス権のあるロールへと自身を昇格する権限があります。 Azure AD テナント管理者は、自身をルート管理グループ レベルのユーザー アクセス管理者へと昇格して、RBAC ロールの割り当てを行えるようにする必要があります。 PowerShell に関する操作説明と追加情報については、「[Azure Active Directory でグローバル管理者のアクセス権を昇格する](../role-based-access-control/elevate-access-global-admin.md)」をご覧ください。 
+Azure Active Directory テナント管理者には、Azure サブスクリプションに対する直接のアクセス権はありません。 ただし、ディレクトリ管理者には、アクセス権のあるロールへと自身を昇格する権限があります。 Azure AD テナント管理者は、Azure ロールを割り当てることができるように、自身をルート管理グループ レベルでユーザー アクセス管理者に昇格させる必要があります。 PowerShell に関する操作説明と追加情報については、「[Azure Active Directory でグローバル管理者のアクセス権を昇格する](../role-based-access-control/elevate-access-global-admin.md)」をご覧ください。 
 
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
@@ -74,7 +74,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
 3. **Azure リソースのアクセス管理**の下でスイッチを **[はい]** に設定します。
 
-   ![[全体管理者は、Azure サブスクリプションと管理グループを管理できます] - スクリーンショット](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![Azure リソースのアクセス管理 - スクリーンショット](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
    - スイッチを [はい] に設定すると、Azure RBAC のルート範囲 (/) でユーザー アクセス管理者ロールが割り当てられます。 この割り当てにより、この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てるアクセス許可が付与されます。 このスイッチは、Azure AD で全体管理者ロールが割り当てられたユーザーのみ利用できます。
 
@@ -87,13 +87,13 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 5. 昇格したアクセス権で行う必要のあるタスクを実行します。 完了したら、スイッチを **[いいえ]** に戻します。
 
 
-### <a name="assign-rbac-roles-to-users"></a>RBAC ロールをユーザーに割り当てる
-すべてのサブスクリプションを見ることができるようにするには、テナント管理者は、ルート管理グループのレベルでテナント全体の表示を許可するユーザー (管理者自身も含みます) に適切な RBAC ロールを割り当てる必要があります。 割り当てることが推奨されるロールは、**セキュリティ管理者**または**セキュリティ閲覧者**です。 一般に、セキュリティ管理者ロールはルート レベルでポリシーを適用するために必要であり、テナント レベルの可視性を提供するのであればセキュリティ閲覧者で十分です。 これらのロールによって付与されるアクセス許可について詳しくは、[セキュリティ管理者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-admin)または[セキュリティ閲覧者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-reader)に関するページをご覧ください。
+### <a name="assign-azure-roles-to-users"></a>Azure ロールをユーザーに割り当てる
+すべてのサブスクリプションを把握するには、テナント管理者は、自身を含め、テナント全体の表示を許可するユーザーに、適切な Azure ロールをルート管理グループ レベルで割り当てる必要があります。 割り当てることが推奨されるロールは、**セキュリティ管理者**または**セキュリティ閲覧者**です。 一般に、セキュリティ管理者ロールはルート レベルでポリシーを適用するために必要であり、テナント レベルの可視性を提供するのであればセキュリティ閲覧者で十分です。 これらのロールによって付与されるアクセス許可について詳しくは、[セキュリティ管理者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-admin)または[セキュリティ閲覧者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-reader)に関するページをご覧ください。
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Azure portal を使用してユーザーに RBAC ロールを割り当てます。 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure portal を使用してユーザーに Azure ロールを割り当てる: 
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 1. 管理グループを表示するには、Azure メイン メニューの **[すべてのサービス]** を選択してから、 **[管理グループ]** を選択します。
 1.  管理グループを選択し、 **[詳細]** をクリックします。
 
@@ -108,7 +108,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
    ![セキュリティ閲覧者ロールの追加のスクリーンショット](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>PowerShell を使用してユーザーに RBAC ロールを割り当てます。 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>PowerShell を使用してユーザーに Azure ロールを割り当てる: 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -140,7 +140,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 ### <a name="open-or-refresh-security-center"></a>Security Center を開くか更新する
 昇格されたアクセス権を取得できたら、Azure Security Center を開くか更新して、Azure AD テナントの配下にあるすべてのサブスクリプションに対する可視性が確保されていることを確認します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. サブスクリプション セレクターで、Security Center で表示するすべてのサブスクリプションを選択していることを確認します。
 
     ![サブスクリプション セレクターのスクリーンショット](./media/security-center-management-groups/subscription-selector.png)
@@ -155,13 +155,13 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
     ![サブスクリプションの対象範囲一覧のスクリーンショット](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>昇格されたアクセス権を削除する 
-RBAC ロールがユーザーに割り当てられたら、テナント管理者は自身をユーザー アクセス管理者ロールから削除する必要があります。
+Azure ロールがユーザーに割り当てられたら、テナント管理者は自身をユーザー アクセス管理者ロールから削除する必要があります。
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 
 2. ナビゲーション リストで **[Azure Active Directory]** 、 **[プロパティ]** の順にクリックします。
 
-3. **[全体管理者は、Azure サブスクリプションと管理グループを管理できます]** のスイッチを **[いいえ]** に設定します。
+3. **Azure リソースのアクセス管理**の下で、スイッチを **[いいえ]** に設定します。
 
 4. **[保存]** をクリックして設定を保存します。
 
@@ -183,7 +183,7 @@ RBAC ロールがユーザーに割り当てられたら、テナント管理者
 4. 手順 1 ～ 3 を繰り返して、スコープ内のすべてのサブスクリプションを追加します。
 
    > [!NOTE]
-   > 管理グループには、サブスクリプションと子管理グループの両方を含めることができます。 親管理グループに対する RBAC ロールをユーザーに割り当てると、そのアクセス権は子管理グループのサブスクリプションによって継承されます。 親管理グループで設定されたポリシーは、子にも継承されます。 
+   > 管理グループには、サブスクリプションと子管理グループの両方を含めることができます。 親管理グループに対する Azure ロールをユーザーに割り当てると、そのアクセス権は子管理グループのサブスクリプションによって継承されます。 親管理グループで設定されたポリシーは、子にも継承されます。 
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Security Center に対するテナント全体の可視性を確保する方法について学習しました。 Security Center の詳細については、次の記事を参照してください。
@@ -193,4 +193,3 @@ RBAC ロールがユーザーに割り当てられたら、テナント管理者
 
 > [!div class="nextstepaction"]
 > [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)
-

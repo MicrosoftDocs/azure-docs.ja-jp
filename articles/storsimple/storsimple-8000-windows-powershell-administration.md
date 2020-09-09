@@ -3,15 +3,15 @@ title: StorSimple 用 PowerShell のデバイス管理
 description: Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999519"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -29,7 +29,7 @@ Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイス�
 
 > [!NOTE]
 > * Windows PowerShell for StorSimple コマンドレットを使用すると、シリアル コンソールから、または Windows PowerShell リモート処理経由で StorSimple デバイスを管理できます。 このインターフェイスで使用できる個々のコマンドレットの詳細については、「 [Windows PowerShell for StorSimple コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)」を参照してください。
-> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)」を参照してください。
+> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)」を参照してください。
 
 
 Windows PowerShell for StorSimple には、次のいずれかの方法でアクセスできます。
@@ -105,7 +105,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
      > [!NOTE]
      > これは、デバイス管理者パスワードを忘れてしまい、オプション 1 またはオプション 2 を使用して接続できない場合に推奨するオプションです。
 
-4. **Change language**。このオプションでは、Windows PowerShell インターフェイスでの表示言語を変更できます。 サポートされている言語は、英語、日本語、ロシア語、フランス語、韓国語、スペイン語、イタリア語、ドイツ語、中国語、およびポルトガル語 (ブラジル) です。
+4. **Change language**。このオプションでは、Windows PowerShell インターフェイスでの表示言語を変更できます。 サポートされている言語は、英語、日本語、ロシア語、フランス語、韓国語、スペイン語、イタリア語、ドイツ語、中国語、およびポルトガル語です。
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Windows PowerShell for StorSimple を使用して StorSimple にリモート接続する
 

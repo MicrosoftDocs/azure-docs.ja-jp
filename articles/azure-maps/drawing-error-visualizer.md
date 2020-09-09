@@ -3,17 +3,17 @@ title: Azure Maps Drawing Error Visualizer を使用する
 description: この記事では、Creator Conversion API から返された警告とエラーを視覚化する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524745"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure Maps Drawing Error Visualizer の使用
 
@@ -23,7 +23,7 @@ Drawing Error Visualizer は、変換プロセス中に検出された [Drawing 
 
 Drawing Error Visualizer をダウンロードする前に、次のことを行う必要があります。
 
-1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 3. [Creator リソースを作成します](how-to-manage-creator.md)
 
@@ -78,15 +78,15 @@ _VisualizationTool.zip_ フォルダーを展開します。 次の項目が含�
 
 Drawing Error Visualizer ツールを起動すると、アップロード ページが表示されます。 アップロード ページには、ドラッグ アンド ドロップ ボックスがあります。 ドラッグ アンド ドロップ ボックスは、エクスプローラー ダイアログを起動するボタンとしても機能します。
 
-![Drawing Error Visualizer アプリ - スタート ページ](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Drawing Error Visualizer アプリ - スタート ページ":::
 
 _ConversionWarningsAndErrors.json_ ファイルは、ダウンロードしたディレクトリのルートに配置されています。 _ConversionWarningsAndErrors.json_ を読み込むには、ファイルをボックスにドラッグ アンド ドロップするか、ボックスをクリックして、エクスプローラー ダイアログでファイルを見つけ、ファイルをアップロードします。
 
-![Drawing Error Visualizer アプリ - ドラッグ アンド ドロップでデータを読み込む](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Drawing Error Visualizer アプリ - ドラッグ アンド ドロップでデータを読み込む":::
 
-_ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawing パッケージのエラーと警告の一覧が表示されます。 各エラーまたは警告には、レイヤー、レベル、および詳細メッセージが指定されています。 各エラーに移動して、エラーの解決方法の詳細を確認できます。  
+_ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawing パッケージのエラーと警告の一覧が表示されます。 各エラーまたは警告には、レイヤー、レベル、および詳細メッセージが指定されています。 エラーまたは警告に関する詳細情報を表示するには、 **[Details]\(詳細\)** リンクをクリックします。 操作できないセクションが一覧の下に表示されます。 各エラーに移動して、エラーの解決方法の詳細を確認できます。
 
-![Drawing Error Visualizer アプリ - エラーと警告](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Drawing Error Visualizer アプリ - エラーと警告":::
 
 ## <a name="next-steps"></a>次のステップ
 

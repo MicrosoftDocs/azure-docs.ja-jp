@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458439"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386165"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -27,7 +27,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * カスタマー マネージド キーは、 "*ISE を作成するときにのみ*" 指定でき、その後には指定できません。 ISE を作成した後に、このキーを無効にすることはできません。 現時点では、ISE でのカスタマー マネージド キーのローテーションはサポートされていません。
 
-* カスタマー マネージド キーをサポートするには、ISE で[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) が有効になっている必要があります。 この ID により、ISE は他の Azure Active Directory (Azure AD) テナントのリソースへのアクセスを認証できるため、ユーザーは自分の資格情報でサインインする必要がありません。
+* カスタマー マネージド キーをサポートするには、ISE で[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) が有効になっている必要があります。 この ID により、ISE は他の Azure Active Directory (Azure AD) テナントのリソースへのアクセスを認証できるため、ユーザーは自分の資格情報でサインインする必要がありません。
 
 * 現在、カスタマー マネージド キーをサポートし、システム割り当て ID を有効にする ISE を作成するには、HTTPS PUT 要求を使用して Logic Apps REST API を呼び出す必要があります。
 
@@ -39,7 +39,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
 * **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** プロパティが有効になっている Azure キー コンテナー。
 
-  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/overview-soft-delete.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md#create-a-vault)を確認してください。
+  これらのプロパティの有効化の詳細については、「[Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)」と [Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事を参照してください。 Azure Key Vault を初めて使用する場合は、Azure portal を使用するか、または Azure PowerShell コマンドの [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)を使用して[キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md#create-a-vault)を確認してください。
 
 * キー コンテナーで、次のプロパティ値を使用して作成されたキー。
 
@@ -52,7 +52,7 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
 
   ![カスタマー マネージド暗号化キーの作成](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  詳細については、[Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事、または Azure PowerShell コマンドの「[AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey)」を参照してください。
+  詳細については、[Azure Key Vault でカスタマー マネージド キーを構成する](../storage/common/storage-encryption-keys-portal.md)方法に関する記事、または Azure PowerShell コマンドの「[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)」を参照してください。
 
 * HTTPS PUT 要求で Logic Apps REST API を呼び出して ISE を作成するために使用できるツール。 たとえば、[Postman](https://www.getpostman.com/downloads/) を使用したり、このタスクを実行するロジック アプリを構築したりできます。
 
@@ -199,7 +199,7 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
 
 ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に、ISE のシステム割り当て ID 用のキー コンテナーにアクセス ポリシーを追加する必要があります。 そうしないと、ISE の作成に失敗し、アクセス許可エラーが発生します。 
 
-このタスクでは、Azure PowerShell の [AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドを使用するか、Azure portal で次の手順を実行します。
+このタスクでは、Azure PowerShell の [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドを使用するか、Azure portal で次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) で Azure キー コンテナーを開きます。
 

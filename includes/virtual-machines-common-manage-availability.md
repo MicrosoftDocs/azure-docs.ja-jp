@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 965da18c265fad1686473d5d6dcf8ba4a7a53b33
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696522"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89326278"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -32,9 +32,9 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
 * [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]
 * [可用性セット内の VM にマネージド ディスクを使用する]
-* [VM に影響するイベントにプロアクティブに応答するスケジュール化されたイベントを使用する](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
-* [各アプリケーション層に対して別々の可用性セットを構成する]
-* [ロード バランサーと可用性セットを結合する]
+* [VM に影響するイベントにプロアクティブに応答するスケジュール化されたイベントを使用する](../articles/virtual-machines/linux/scheduled-events.md)
+* [各アプリケーション層に対して別々の可用性セットを構成する](../articles/virtual-machines/windows/tutorial-availability-sets.md)
+* [ロード バランサーと可用性ゾーンまたはセットを結合する]
 * [可用性ゾーンを使ってデータセンター レベルの障害から保護する]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>可用性ゾーンを使ってデータセンター レベルの障害から保護する
@@ -45,7 +45,7 @@ Azure リージョン内の可用性ゾーンは、**障害ドメイン**と**�
 
 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。 複数のゾーンにレプリケートされた VM を使用するソリューションを構築することで、1 つのデータセンターで障害が発生してもアプリケーションとデータを保護することができます。 1 つのゾーンが侵害された場合、レプリケートされたアプリとデータが別のゾーンですぐに利用可能になります。
 
-![可用性ゾーン](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+![可用性ゾーン](./media/virtual-machines-common-manage-availability/three-zones-per-region.png)
 
 可用性ゾーンに [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) または [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) の VM をデプロイする方法の詳細をご覧ください。
 
@@ -53,7 +53,9 @@ Availability Zones では、Azure によって業界最高の 99.99% VM アッ�
 可用性セットは、VM の冗長性と可用性を提供するもう 1 つのデータセンター構成です。 データセンター内のこのような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
 
 > [!IMPORTANT]
-> 可用性セット内の単一インスタンスの仮想マシンは、仮想マシン接続について少なくとも 99.9% の SLA の資格を得るために、すべてのオペレーティング システム ディスクとデータ ディスクに Premium SSD または Ultra ディスクを使用する必要があります。
+> 可用性セット内の単一インスタンスの仮想マシンは、仮想マシン接続について少なくとも 99.9% の SLA の資格を得るために、すべてのオペレーティング システム ディスクとデータ ディスクに Premium SSD または Ultra ディスクを使用する必要があります。 
+> 
+> Standard SSD を使用する単一インスタンス仮想マシンは 99.5% 以上の SLA となり、Standard HDD を使用する単一インスタンス仮想マシンは 95% 以上の SLA となります。  「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください
 
 基盤となる Azure プラットフォームにより、可用性セット内の各仮想マシンに**更新ドメイン**と**障害ドメイン**が割り当てられます。 所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す、ユーザーが構成できない 5 つの更新ドメインが既定で割り当てられます (その後、最大 20 の更新ドメインを提供できるように Resource Manager のデプロイを増やすことができます)。 1 つの可用性セット内に 5 つ以上の仮想マシンが構成されているとき、6 つ目の仮想マシンは 1 つ目の仮想マシンと同じ更新ドメイン内に配置され、7 つ目は 2 つ目の仮想マシンと同じ更新ドメイン内に配置されるという方法で処理されます。 計画的メンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。 再起動された更新ドメインには、別の更新ドメインでメンテナンスが開始されるまでに、復旧するための時間として 30 分が与えられます。
 
@@ -65,7 +67,7 @@ Availability Zones では、Azure によって業界最高の 99.99% VM アッ�
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>可用性セット内の VM にマネージド ディスクを使用する
 現在、管理されていないディスクを持つ VM を使用している場合は、[可用性セット内の VM を Managed Disks を使用するように変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)ことを強くお勧めします。
 
-[管理ディスク](../articles/virtual-machines/windows/managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ障害ドメイン (記憶域クラスター) に自動的に配置し、VM 障害ドメインに合わせて調整することによって実現されます。 ストレージ障害ドメインが、ハードウェアまたはソフトウェアの障害によって機能しなくなった場合は、そのストレージ障害ドメイン上のディスクを含む VM インスタンスだけが機能しなくなります。
+[管理ディスク](../articles/virtual-machines/managed-disks-overview.md)では、可用性セットの VM のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ障害ドメイン (記憶域クラスター) に自動的に配置し、VM 障害ドメインに合わせて調整することによって実現されます。 ストレージ障害ドメインが、ハードウェアまたはソフトウェアの障害によって機能しなくなった場合は、そのストレージ障害ドメイン上のディスクを含む VM インスタンスだけが機能しなくなります。
 ![マネージド ディスク FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
@@ -80,12 +82,12 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 ```
 
 > [!NOTE]
-> 特定の状況では、同じ AvailabilitySet の 2 つの VM が同じ FaultDomain を共有している場合があります。 これを確認するには、可用性セットに移動し、 **[障害ドメイン]** 列を確認します。
-> この動作は、VM のデプロイ中に次のシーケンスで発生する可能性があります。
-> - 最初の VM をデプロイします
-> - 最初の VM を停止/割り当て解除します
-> - 2番目の VM をデプロイします。このような状況では、最初の VM と同じ障害ドメインに 2 番目の VM の OS ディスクが作成される可能性があるため、2 番目の VM も同じ障害ドメインに配置されます。 
-> この問題を回避するために、これらのデプロイ間で VM を停止または割り当て解除しないことをお勧めします。
+> 特定の状況下では、同じ可用性セット内の 2 つの VM で障害ドメインが共有される場合があります。 共有された障害ドメインを確認するには、可用性セットに移動し、 **[障害ドメイン]** 列をクリックします。 共有された障害ドメインは、VM のデプロイ時に次のシーケンスを完了したことで発生する可能性があります。
+> 1. 最初の VM をデプロイします。
+> 1. 最初の VM を停止するか割り当てを解除します。
+> 1. 2 つ目の VM をデプロイします。
+>
+> このような状況では、2つ目の VM の OS ディスクが最初の VM と同じ障害ドメインに作成される可能性があるため、2つの VM は同じ障害ドメインに配置されます。 この問題を回避するために、デプロイ間で VM を停止または割り当て解除しないことをお勧めします。
 
 アンマネージド ディスクを持つ VM を使用する計画がある場合は、VM の仮想ハード ディスク (VHD) が[ページ BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されているストレージ アカウント用の、以下のベスト プラクティスに従います。
 
@@ -95,11 +97,11 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>VM に影響するイベントにプロアクティブに応答するスケジュール化されたイベントを使用する
 
-[スケジュール化されたイベント](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)をサブスクライブすると、VM に影響する可能性のある将来のメンテナンス イベントについて VM に通知されます。 スケジュール化されたイベントを有効にすると、仮想マシンでメンテナンス アクティビティが実行されるまでの時間が最小限になります。 たとえば、VM に影響を与える可能性があるホスト OS の更新プログラムは、影響と、アクションが何も行われない場合にメンテナンスが実行される日時が指定されたイベントとして、キューに登録されます。 スケジュール化されたイベントは、VM に影響を与える可能性がある差し迫ったハードウェア障害が Azure で検出されたときも、キューに登録されます。これにより、復旧をいつ実行するかを決定できます。 お客様は、イベントを使用して、状態の保存やセカンダリへのフェールオーバーなどのタスクを、メンテナンスの前に実行できます。 メンテナンス イベントを適切に処理するロジックを完了した後、未処理のスケジュール化されたイベントを承認して、プラットフォームによるメンテナンスを続行させることができます。
+[スケジュール化されたイベント](../articles/virtual-machines/linux/scheduled-events.md)をサブスクライブすると、VM に影響する可能性のある将来のメンテナンス イベントについて VM に通知されます。 スケジュール化されたイベントを有効にすると、仮想マシンでメンテナンス アクティビティが実行されるまでの時間が最小限になります。 たとえば、VM に影響を与える可能性があるホスト OS の更新プログラムは、影響と、アクションが何も行われない場合にメンテナンスが実行される日時が指定されたイベントとして、キューに登録されます。 スケジュール化されたイベントは、VM に影響を与える可能性がある差し迫ったハードウェア障害が Azure で検出されたときも、キューに登録されます。これにより、復旧をいつ実行するかを決定できます。 お客様は、イベントを使用して、状態の保存やセカンダリへのフェールオーバーなどのタスクを、メンテナンスの前に実行できます。 メンテナンス イベントを適切に処理するロジックを完了した後、未処理のスケジュール化されたイベントを承認して、プラットフォームによるメンテナンスを続行させることができます。
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>ロード バランサーと可用性ゾーンまたはセットを結合する
-[Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) と可用性ゾーンまたはセットを結合することで、アプリケーションの回復性を最大化できます。 Azure Load Balanceは、複数の仮想マシンにトラフィックを振り分けます。 当社の標準層の仮想マシンには Azure Load Balanceが含まれています。 すべての仮想マシン層に Azure Load Balancer が含まれているわけではありません。 仮想マシンの負荷分散の詳細については、「 [仮想マシンの負荷分散](../articles/virtual-machines/virtual-machines-linux-load-balance.md)」を参照してください。
+[Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) と可用性ゾーンまたはセットを結合することで、アプリケーションの回復性を最大化できます。 Azure Load Balanceは、複数の仮想マシンにトラフィックを振り分けます。 当社の標準層の仮想マシンには Azure Load Balanceが含まれています。 すべての仮想マシン層に Azure Load Balancer が含まれているわけではありません。 仮想マシンの負荷分散の詳細については、「 [仮想マシンの負荷分散](../articles/virtual-machines/linux/tutorial-load-balancer.md)」を参照してください。
 
 複数の仮想マシン間でトラフィックを分散するためのロード バランサーが構成されていない場合、計画的メンテナンス イベントによって、トラフィックを提供している仮想マシンのみに影響が生じ、アプリケーション層の機能停止が生じます。 同じ層の複数の仮想マシンを、同じロード バランサーと可用性セット以下に配置することで、少なくとも 1 つのインスタンスによってトラフィックの提供を継続することができます。
 
@@ -108,7 +110,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 <!-- Link references -->
 [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-zones-or-sets
+[ロード バランサーと可用性ゾーンまたはセットを結合する]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [可用性セット内の VM にマネージド ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set
 [可用性ゾーンを使ってデータセンター レベルの障害から保護する]: #use-availability-zones-to-protect-from-datacenter-level-failures

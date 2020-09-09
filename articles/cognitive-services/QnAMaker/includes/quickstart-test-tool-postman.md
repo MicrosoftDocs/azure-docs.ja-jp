@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203969"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132895"
 ---
 この Postman ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
@@ -64,7 +62,7 @@ ms.locfileid: "82203969"
     }
     ```
 
-    質問はたったの 1 単語 (`size`) です。これにより、質問と回答の 2 つのセットのいずれかを返すことができます。 `strictFilters` 配列の指定により、`qna_maker` の回答のみに応答が限定されます。
+    質問はたったの 1 単語 (`size`) です。これにより、2 つの質問と回答のペアのいずれかを返すことができます。 `strictFilters` 配列の指定により、`qna_maker` の回答のみに応答が限定されます。
 
 1. この応答には、フィルター条件を満たした回答のみが含まれます。
 
@@ -103,9 +101,12 @@ ms.locfileid: "82203969"
     }
     ```
 
-    検索語句は満たしていないもののフィルターの条件は満たしているような質問と回答のセットがあったとしても、それは返されません。 代わりに一般的な回答 `No good match found in KB.` が返されます。
+    検索語句は満たしていないもののフィルターの条件は満たしているような質問と回答のペアがあったとしても、それは返されません。 代わりに一般的な回答 `No good match found in KB.` が返されます。
 
 ## <a name="use-debug-query-property"></a>デバッグ クエリ プロパティを使用する
+
+> [!NOTE]
+>すべての依存関係に Debug プロパティの使用をお勧めするわけではありません。 このプロパティは、トラブルシューティングで製品チームを支援するために追加されました。
 
 デバッグ情報により、返された回答がどのように決定されたかを理解できます。 これは役に立ちますが、必須ではありません。 デバッグ情報を含む回答を生成するには、`debug` プロパティを追加します。
 

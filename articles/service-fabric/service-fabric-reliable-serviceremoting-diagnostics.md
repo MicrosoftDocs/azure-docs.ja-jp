@@ -5,15 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236639"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245927"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting の診断とパフォーマンス監視
-Reliable ServiceRemoting ランタイムからは[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)が出力されます。 パフォーマンス カウンターは ServiceRemoting の動作状況を示し、トラブルシューティングとパフォーマンス監視に役立ちます。
+Reliable ServiceRemoting ランタイムからは[パフォーマンス カウンター](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)が出力されます。 パフォーマンス カウンターは ServiceRemoting の動作状況を示し、トラブルシューティングとパフォーマンス監視に役立ちます。
 
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
@@ -26,7 +26,7 @@ Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウ
 
 上記の各カテゴリには、1 つまたは複数のカウンターがあります。
 
-パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
+パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
 
 ### <a name="performance-counter-instance-names"></a>パフォーマンス カウンター インスタンス名
 多数の Service Remoting サービスまたはパーティションを持つクラスターには、多数のパフォーマンス カウンター インスタンスがあります。 パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定のパーティションとサービス メソッド (該当する場合) を識別するのに役立ちます。
@@ -36,7 +36,7 @@ Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウ
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) メソッドを使用して生成されます。
+*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
 
 *ServiceReplicaOrInstanceId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric レプリカ/インスタンス ID の文字列表現です。
 
@@ -57,7 +57,7 @@ Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウ
 
 *ServiceRuntimeMethodId* は、内部使用のために Fabric サービス ランタイムによって生成される 32 ビット整数の文字列表現です。 これは、その一意性を確保し、他のパフォーマンス カウンター インスタンス名と競合しないようにするために、パフォーマンス カウンター インスタンス名に含まれます。 パフォーマンス カウンター インスタンス名のこの部分を解釈しようとしないでください。
 
-*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) メソッドを使用して生成されます。
+*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
 
 *ServiceReplicaOrInstanceId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric レプリカ/インスタンス ID の文字列表現です。
 
@@ -92,4 +92,4 @@ Reliable Service ランタイムは、サービス メソッドの実行に関�
 
 ## <a name="next-steps"></a>次のステップ
 * [コード サンプル](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
-* [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [PerfView での EventSource プロバイダー](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

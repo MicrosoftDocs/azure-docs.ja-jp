@@ -8,5 +8,5 @@
   href: configure-model-conversion.md
 - name: モデル変換中に素材をオーバーライドする
   href: override-materials.md
-- name: 変換されたモデルに関する情報を取得する
+- name: 変換に関する情報を取得する
   href: get-information.md

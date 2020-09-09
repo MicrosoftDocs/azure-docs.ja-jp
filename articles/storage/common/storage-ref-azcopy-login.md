@@ -4,16 +4,16 @@ description: この記事では、azcopy login コマンドに関する参照情
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295401"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285273"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -23,11 +23,9 @@ Azure Storage リソースにアクセスするために Azure Active Directory 
 
 Azure Storage リソースにアクセスするために Azure Active Directory にログインします。
 
-Azure Storage アカウントへの権限を持つには、ストレージ アカウント、親リソース グループ、または親サブスクリプションのいずれかのコンテキストで、**ストレージ Blob データ共同作成者**ロールをユーザー アカウントに割り当てる必要があります。
+Azure Storage アカウントに対する承認を得るには、お使いのユーザー アカウントに、ストレージ アカウント、親リソース グループ、または親サブスクリプションのいずれかのコンテキストで**ストレージ BLOB データ共同作成者**ロールを割り当てる必要があります。
 
 このコマンドは、OS の組み込みメカニズムを使用して、現在のユーザーの暗号化されたログイン情報をキャッシュします。
-
-詳細については、例を参照してください。
 
 > [!IMPORTANT]
 > コマンド ラインを使用して環境変数を設定した場合、その変数はコマンド ラインの履歴で読み取ることができます。 資格情報を含む変数をコマンド ラインの履歴から消去することを検討してください。 変数が履歴に表示されないようにするために、ユーザーに資格情報の入力を要求し、環境変数を設定するためのスクリプトを使用できます。
@@ -64,11 +62,11 @@ azcopy login --identity
 ```
 
 VM のユーザー割り当て ID と、サービス ID のクライアント ID を使用してログインします。
-
+  
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
-
+ 
 VM のユーザー割り当て ID と、サービス ID のオブジェクト ID を使用してログインします。
 
 ```azcopy
@@ -76,49 +74,58 @@ azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
 VM のユーザー割り当て ID と、サービス ID のリソース ID を使用してログインします。
-
+ 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-クライアント シークレットを使用してサービス プリンシパルとしてログインします。 環境変数 AZCOPY_SPA_CLIENT_SECRET を、シークレット ベースのサービス プリンシパル認証用のクライアント シークレットに設定します。
+クライアント シークレットを使用して、サービス プリンシパルとしてログインします。環境変数 AZCOPY_SPA_CLIENT_SECRET を、シークレット ベースのサービス プリンシパル認証用のクライアント シークレットに設定します。
 
 ```azcopy
-azcopy login --service-principal
+azcopy login --service-principal --application-id <your service principal's application ID>
 ```
 
-証明書およびパスワードを使用してサービス プリンシパルとしてログインします。 環境変数 AZCOPY_SPA_CERT_PASSWORD を、証明書ベースのサービス プリンシパル認証用の証明書のパスワードに設定します。
+証明書とそのパスワードを使用して、サービス プリンシパルとしてログインします。
+
+環境変数 AZCOPY_SPA_CERT_PASSWORD を、証明書ベースのサービス プリンシパル認証用の証明書のパスワードに設定します。
 
 ```azcopy
-azcopy login --service-principal --certificate-path /path/to/my/cert
+azcopy login --service-principal --certificate-path /path/to/my/cert --application-id <your service principal's application ID>
 ```
 
-/path/to/my/cert を PEM または PKCS12 ファイルへのパスとして扱うようにしてください。 AzCopy は、証明書を取得するためにシステムの証明書ストアにアクセスしません。
+`/path/to/my/cert` は、PEM または PKCS12 ファイルへのパスとして扱います。 AzCopy は、証明書を取得するためにシステムの証明書ストアにアクセスしません。
 
-証明書ベースのサービス プリンシパル認証を行う場合、--certificate-path は必須です。
+証明書ベースのサービス プリンシパル認証を行う場合は、`--certificate-path` が必須です。
 
 ## <a name="options"></a>Options
 
-|オプション|説明|
-|--|--|
-|--aad-endpoint|利用する Azure Active Directory エンドポイント。 既定値 (`https://login.microsoftonline.com`) は、パブリック Azure クラウドに適しています。 各国のクラウドで認証するときに、このパラメーターを設定します。 [Azure AD 認証エンドポイント](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints) を参照してください。
-このフラグは、マネージド サービス ID には必要ありません。|
-|--application-id string|ユーザー割り当て ID のアプリケーション ID。 サービス プリンシパル認証に必要です。|
-|--certificate-path string|SPN 認証用の証明書へのパス。 証明書ベースのサービス プリンシパル認証に必要です。|
-|-h, --help|login コマンドのヘルプ コンテンツを表示します。|
-|--identity|マネージド サービス ID (MSI) とも呼ばれる、仮想マシンの ID を使用してログインします。|
-|--identity-client-id string|ユーザー割り当て ID のクライアント ID。|
-|--identity-object-id string|ユーザー割り当て ID のオブジェクト ID。|
-|--identity-resource-id string|ユーザー割り当て ID のリソース ID。|
-|--service-principal|証明書またはシークレットを使用して、SPN (サービス プリンシパル名) を介してログインします。 クライアント シークレットまたは証明書のパスワードは、適切な環境変数に格納する必要があります。 「`AzCopy env`」と入力すると、環境変数の名前と説明が表示されます。|
-|--tenant-id string| OAuth デバイス対話型ログインに使用する Azure Active Directory テナント ID。|
+**--aad-endpoint** string    使用する Azure Active Directory エンドポイント。 既定値 (https://login.microsoftonline.com) は、グローバル Azure クラウドに適しています。 各国のクラウドで認証するときに、このパラメーターを設定します。 マネージド サービス ID には必要ありません。
+
+**--application-id** string  ユーザー割り当て ID のアプリケーション ID。 サービス プリンシパル認証に必要です。
+
+**--certificate-path** string  SPN 認証用の証明書へのパス。 証明書ベースのサービス プリンシパル認証に必要です。
+
+**--help**   `azcopy login` コマンドのヘルプ。
+
+**--identity**   マネージド サービス ID (MSI) とも呼ばれる、仮想マシンの ID を使用してログインします。
+
+**--identity-client-id** string  ユーザー割り当て ID のクライアント ID。
+
+**--identity-object-id** string  ユーザー割り当て ID のオブジェクト ID。
+
+**--identity-resource-id** string  ユーザー割り当て ID のリソース ID。
+
+**--service-principal**   証明書またはシークレットを使用して、サービス プリンシパル名 (SPN) を介してログインします。 クライアント シークレットまたは証明書のパスワードは、適切な環境変数に格納する必要があります。 「AzCopy env」と入力すると、環境変数の名前と説明が表示されます。
+
+**--tenant-id** string   OAuth デバイス対話型ログインに使用する Azure Active Directory テナント ID。
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
 |オプション|説明|
 |---|---|
-|--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
+|--cap-mbps float|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
+|--trusted-microsoft-suffixes string   |Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。|
 
 ## <a name="see-also"></a>関連項目
 

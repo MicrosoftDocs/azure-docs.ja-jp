@@ -46,6 +46,8 @@
       href: forced-tunnel-support.md
     - name: ファイアウォールの統合
       href: firewall-integration.md
+    - name: ゾーン冗長性
+      href: zone-redundancy.md
 - name: リファレンス
   items:
     - name: 管理アドレス
@@ -83,7 +85,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: クォータの情報
-      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: ベスト プラクティス

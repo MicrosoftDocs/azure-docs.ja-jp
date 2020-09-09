@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3839fb325b1ed0c052f7a4e8955e9a9fda51fc5f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339911"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Azure Stack Edge と Azure Data Box Gateway のサポート チケットを開く
 
@@ -27,9 +27,9 @@ ms.locfileid: "82568712"
 サポート要求を作成するには、次の手順を実行します。
 
 1. Azure Stack Edge または Data Box Gateway の注文に移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート リクエスト]** を選択します。
-   
+
 2. **[新しいサポート リクエスト]** の **[基本]** タブで、次の手順を実行します。
-    
+
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
     2. **サブスクリプション**を選択します。
     3. **[サービス]** の **[使用中のサービス]** をオンにします。 ドロップダウン リストから **Azure Stack Edge と Azure Stack Gateway** を選択します。
@@ -42,7 +42,7 @@ ms.locfileid: "82568712"
         ![基本](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. **[詳細]** タブで、次の手順を実行します。
-    
+
     1. 問題の開始日時を指定します。
     2. 問題の **[説明]** を入力します。
     3. アップロードするファイルが他にある場合は、 **[ファイルのアップロード]** でフォルダー アイコンを選択してファイルを参照します。
@@ -67,16 +67,16 @@ ms.locfileid: "82568712"
 
 この情報は Azure Stack デバイスにのみ適用されます。 ハードウェアの問題を報告するプロセスは次のとおりです。
 
-1. Azure portal から、ハードウェアの問題に関するサポート チケットを開きます。 **[問題の種類]** で、 **[Azure Stack Hardware]\(Azure Stack ハードウェア\)** を選択します。 **[Hardware failure]\(ハードウェア障害\)** として **[問題のサブタイプ]** を選択します。 
+1. Azure portal から、ハードウェアの問題に関するサポート チケットを開きます。 **[問題の種類]** で、 **[Azure Stack Hardware]\(Azure Stack ハードウェア\)** を選択します。 **[Hardware failure]\(ハードウェア障害\)** として **[問題のサブタイプ]** を選択します。
 
     ![ハードウェアの問題](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
-    お客様がサポート チケットを作成すると、サポート エンジニアが可能な限り迅速にお客様に連絡し、リクエストを処理します。 
+    お客様がサポート チケットを作成すると、サポート エンジニアが可能な限り迅速にお客様に連絡し、リクエストを処理します。
 
-2. これがハードウェアの問題であると Microsoft サポートが判断した場合、次のいずれかのアクションが行われます。 
+2. これがハードウェアの問題であると Microsoft サポートが判断した場合、次のいずれかのアクションが行われます。
 
-    - 故障したハードウェア パーツのフィールド交換ユニット (FRU) が送信されます。 現時点では、電源装置が唯一サポートされている FRU です。 
-    - その他のパーツの故障に対しては、Microsoft はフル システム交換 (FSR) またはデバイス スワップを行います。
+    * 故障したハードウェア パーツのフィールド交換ユニット (FRU) が送信されます。 現時点でサポートされている FRU は、電源装置およびハード ドライブのみです。
+    * FRU のみは翌営業日に交換され、それ以外はすべてフル システム交換 (FSR) の発送が必要です。
 
 3. 現地時間で午後 4:30 (月曜日から金曜日) 前にサポート チケットが発行された場合は、翌営業日にオンサイトの技術者がお客様の所在地に派遣され、FRU またはフル デバイス交換が行われます。
 
@@ -84,11 +84,11 @@ ms.locfileid: "82568712"
 
 サポート チケットを作成したら、ポータル内からチケットのライフサイクルを管理できます。
 
-#### <a name="to-manage-your-support-requests"></a>サポート要求を管理するには
+### <a name="to-manage-your-support-requests"></a>サポート要求を管理するには
 
 1. ヘルプとサポート ページにアクセスするには、 **[参照] > [ヘルプとサポート]** の順に移動します。
 
-    ![サポート要求を管理する](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)   
+    ![サポート要求を管理する](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)
 
 2. **[ヘルプとサポート]** に **[最近のサポート要求]** の表形式の一覧が表示されます。
 
@@ -96,7 +96,6 @@ ms.locfileid: "82568712"
 
 3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
 
-   
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Stack Edge に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)方法について説明します。

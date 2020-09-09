@@ -1,6 +1,6 @@
 ---
 title: データ統合サービスである Data Factory の概要
-description: データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。
+description: Azure Data Factory の概要を理解する:データの移動と変換を調整および自動化するクラウド データ統合サービス。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73666799"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321092"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -112,13 +112,13 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 Data Factory ではリンクされたサービスは 2 つの理由で使用されます。
 
-* オンプレミスの SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の "*データ ストア*" を表すため。 サポートされているデータ ストアの一覧については、 [データ移動アクティビティ](#data-movement-activities) に関する記事をご覧ください。
+* SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の "*データ ストア*" を表すため。 サポートされているデータ ストアの一覧については、 [データ移動アクティビティ](#data-movement-activities) に関する記事をご覧ください。
 
 * アクティビティの実行をホストできる *コンピューティング リソース* を表すため。 たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。 サポートされているコンピューティング環境の一覧については、「[データ変換アクティビティ](#data-transformation-activities)」セクションを参照してください。
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory エンティティ間の関係
 
-![図: クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![図:クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 現時点では、データ ファクトリは、米国西部、米国東部、北ヨーロッパ リージョンで作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
@@ -142,6 +142,6 @@ Azure Data Factory には、次のいずれかのツールまたは API でデ�
 
 | チュートリアル | 説明 |
 | --- | --- |
-| [2 つのクラウド データ ストア間でのデータの移動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Blob Storage から SQL データベースにデータを移動するパイプラインを備えたデータ ファクトリを作成します。 |
+| [2 つのクラウド データ ストア間でのデータの移動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Blob Storage から SQL Database にデータを移動するパイプラインを備えたデータ ファクトリを作成します。 |
 | [Hadoop クラスターを使用したデータの変換](data-factory-build-your-first-pipeline.md) |Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行してデータを処理するデータ パイプラインを備えた最初の Azure データ ファクトリを構築します。 |
-| [データ管理ゲートウェイを使用したオンプレミス データ ストアとクラウド データ ストア間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md) |オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを構築します。 チュートリアルの一環として、ご使用のコンピューターに Data Management Gateway をインストールして構成します。 |
+| [データ管理ゲートウェイを使用したオンプレミス データ ストアとクラウド データ ストア間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md) |SQL Server データベースから Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを構築します。 チュートリアルの一環として、ご使用のコンピューターに Data Management Gateway をインストールして構成します。 |

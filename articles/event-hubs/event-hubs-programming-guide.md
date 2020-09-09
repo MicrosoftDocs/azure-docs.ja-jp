@@ -1,26 +1,21 @@
 ---
 title: .NET プログラミング ガイド - Azure Event Hubs （レガシー） | Microsoft Docs
 description: この記事では、Azure .NET SDK を使用して Azure Event Hubs 用のコードを記述する方法について説明します。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-ms.service: event-hubs
-ms.custom: seodec18
 ms.topic: article
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236239"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013913"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs の .NET プログラミング ガイド (レガシー Microsoft.Azure.EventHubs パッケージ)
-この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
+この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](./event-hubs-about.md)」を参照してください。
 
 > [!WARNING]
-> このガイドは、以前の**Microsoft.Azure.EventHubs**パッケージに関するものです。 最新の[Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md)パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)することをお勧めします。  
+> このガイドは、以前の**Microsoft.Azure.EventHubs**パッケージに関するものです。 最新の[Azure.Messaging.EventHubs](event-hubs-dotnet-standard-getstarted-send.md)パッケージを使用するには、コードを[移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)することをお勧めします。  
 
 
 ## <a name="event-publishers"></a>イベント発行元
@@ -102,7 +97,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>非同期送信と大規模送信
 
-イベントは、イベント ハブに非同期に送信されます。 非同期送信を利用すると、クライアントがイベントを送信できる速度が上がります。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)は [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返します。 クライアントで [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) クラスを使用して、クライアント側の再試行オプションを制御できます。
+イベントは、イベント ハブに非同期に送信されます。 非同期送信を利用すると、クライアントがイベントを送信できる速度が上がります。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)は [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) オブジェクトを返します。 クライアントで [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) クラスを使用して、クライアント側の再試行オプションを制御できます。
 
 ## <a name="event-consumers"></a>イベント コンシューマー
 [EventProcessorHost][] クラスは Event Hubs からのデータを処理します。 .NET プラットフォームでのイベント リーダーを作成するときには、この実装を使用すべきです。 [EventProcessorHost][] はイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チェックポイント処理とパーティション リースの管理が提供されます。
@@ -155,8 +150,8 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 
-* [Event Hubs API 概要](event-hubs-api-overview.md)
-* [Event Hubs とは](event-hubs-what-is-event-hubs.md)
+* [Event Hubs API 概要](./event-hubs-samples.md)
+* [Event Hubs とは](./event-hubs-about.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [イベント プロセッサ ホスト API リファレンス](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 

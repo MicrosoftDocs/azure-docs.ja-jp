@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209734"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747435"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Google Maps から Android アプリを移行する
 
@@ -314,7 +314,7 @@ Azure Maps コントロールではさらに縮小がサポートされていて
 
 ## <a name="localizing-the-map"></a>マップのローカライズ
 
-対象ユーザーが複数の国に分散している場合や、使用されている言語が異なる場合は、ローカライズが重要になります。
+対象ユーザーが複数の国または地域に分散している場合や、使用されている言語が異なる場合は、ローカライズが重要になります。
 
 **前: Google Maps**
 

@@ -1,40 +1,26 @@
 ---
-title: デプロイ トラブルシューティング ガイド
+title: Docker デプロイのトラブルシューティング
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用する Azure Kubernetes Service と Azure Container Instances での一般的な Docker デプロイ エラーの回避、解決、またはトラブルシューティング方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 08/06/2020
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4, devx-track-python
+ms.openlocfilehash: 3f8a3c705878e212e6a26670e20b5a81a3f2a6ba
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929249"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904379"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes Service と Azure Container Instances を使用したモデルの Docker デプロイのトラブルシューティング 
 
-Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的な Docker デプロイ エラーの回避方法または解決方法について説明します。
-
-Azure Machine Learning にモデルをデプロイすると、システムによって多数のタスクが実行されます。
-
-モデル デプロイで推奨される最新の方法は、[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして使用して、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API を経由することです。 この場合、サービスによって、デプロイ段階で基本的な docker イメージが自動的に作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
-
-1. ワークスペース モデル レジストリにモデルを登録します。
-
-2. 推論構成を定義する:
-    1. 環境 yaml ファイルで指定した依存関係に基づいて、[環境](how-to-use-environments.md)オブジェクトを作成するか、調達された環境のいずれかを使用します。
-    2. 環境とスコアリング スクリプトに基づいて、推論構成 (InferenceConfig オブジェクト) を作成します。
-
-3. モデルを Azure コンテナー インスタンス (ACI) サービスまたは Azure Kubernetes Service (AKS) にデプロイします。
-
-このプロセスの詳細は[モデル管理](concept-model-management-and-deployment.md)の概要にあります。
+Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的な Docker デプロイ エラーをトラブルシューティング、解決、または回避する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,6 +31,22 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
 * ローカルでデバッグするには、ローカル システム上に機能する Docker のインストールが必要です。
 
     Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
+
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>機械学習モデルの Docker デプロイの手順
+
+Azure Machine Learning にモデルをデプロイすると、システムによって多数のタスクが実行されます。
+
+モデル デプロイでは、[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして使用して、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API を経由する方法が推奨されます。 この場合、サービスによってデプロイ段階で基本的な Docker イメージが作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
+
+1. ワークスペース モデル レジストリにモデルを登録します。
+
+2. 推論構成を定義する:
+    1. 環境 yaml ファイルで指定した依存関係に基づいて、[環境](how-to-use-environments.md)オブジェクトを作成するか、調達された環境のいずれかを使用します。
+    2. 環境とスコアリング スクリプトに基づいて、推論構成 (InferenceConfig オブジェクト) を作成します。
+
+3. モデルを Azure コンテナー インスタンス (ACI) サービスまたは Azure Kubernetes Service (AKS) にデプロイします。
+
+このプロセスの詳細は[モデル管理](concept-model-management-and-deployment.md)の概要にあります。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -99,6 +101,8 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
 
 モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてみてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。 モデルを含む Docker イメージがダウンロードされ、ローカル システムで起動されます。
 
+[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) リポジトリにあるサンプル[ローカル展開ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)から、実行可能な例を探索します。
+
 > [!WARNING]
 > ローカル Web サービスのデプロイは、運用シナリオではサポートされていません。
 
@@ -124,7 +128,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-独自の conda 仕様 YAML を定義する場合、pip の依存関係として 1.0.45 以降のバージョンの azureml-defaults を列挙する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
+独自の conda 仕様 YAML を定義する場合、pip の依存関係として 1.0.45 以降のバージョンの azureml-defaults を列挙する必要があります。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
 
 この時点で、通常どおりにサービスを操作できます。 たとえば、次のコードは、サービスにデータを送信する方法を示しています。
 
@@ -149,7 +153,7 @@ Python 環境のカスタマイズの詳細については、[トレーニング
 ローカル テスト中に、ログ記録を追加したり、発見した問題の解決を試みるために、`score.py` ファイルを更新する必要がある場合があります。 変更を `score.py` ファイルに再度読み込むには、`reload()` を使用します。 たとえば、次のコードは、サービスのスクリプトを再度読み込み、サービスにデータを送信します。 データは、更新された `score.py` ファイルを使用してスコア付けされます。
 
 > [!IMPORTANT]
-> `reload` メソッドは、ローカル デプロイでのみ使用できます。 デプロイを別のコンピューティング先に更新する方法については、モデルのデプロイの「[Web サービスを更新する](how-to-deploy-and-where.md#update)」セクションを参照してください。
+> `reload` メソッドは、ローカル デプロイでのみ使用できます。 デプロイを別のコンピューティング先に更新する方法については、[Web サービスを更新する方法](how-to-deploy-update-web-service.md)に関する記事を参照してください。
 
 ```python
 service.reload()
@@ -180,6 +184,14 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+ログに `Booting worker with pid: <pid>` の行が何度も表示されている場合、これはワーカーを起動するのに十分なメモリがないことを意味します。
+このエラーを解決するには、`deployment_config` にある `memory_gb` の値を増やします
+ 
+## <a name="container-cannot-be-scheduled"></a>コンテナーをスケジュールできない
+
+Azure Kubernetes Service コンピューティング ターゲットにサービスをデプロイするときに、Azure Machine Learning では、要求された量のリソースを使用してサービスをスケジュールすることを試みます。 5 分後、利用可能な適切な量のリソースがある利用可能なノードがクラスターにない場合、"`Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00`" というメッセージが表示されてデプロイは失敗します。 このエラーに対処するには、ノードを追加するか、ノードの SKU を変更するか、またはサービスのリソース要件を変更します。 
+
+通常、このエラー メッセージでは、追加する必要があるリソースが示されます。たとえば、"`0/3 nodes are available: 3 Insufficient nvidia.com/gpu`" というエラー メッセージが表示された場合、これは、サービスに GPU が必要であり、クラスターの 3 つのノードには利用可能な GPU がないことを意味します。 これに対処するには、ノードを追加するか (GPU SKU を使用している場合)、GPU 対応の SKU に切り替えるか (SKU が GPU 対応でない場合)、GPU を必要としないように環境を変更します。  
 
 ## <a name="service-launch-fails"></a>サービスを起動できない
 
@@ -270,179 +282,11 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 504 状態コードは、要求がタイムアウトしたことを示します。既定のタイムアウトは 1 分です。
 
-タイムアウト値を増やすか、score.py を変更して不要な呼び出しを削除することで、サービスの高速化を試みることができます。 これらのアクションで問題が解決しない場合は、この記事の情報を使用して score.py ファイルをデバッグします。 コードがハング状態または無限ループになっている可能性があります。
+タイムアウト値を増やすか、score.py を変更して不要な呼び出しを削除することで、サービスの高速化を試みることができます。 これらのアクションで問題が解決しない場合は、この記事の情報を使用して score.py ファイルをデバッグします。 コードが応答なし状態または無限ループになっている可能性があります。
 
 ## <a name="advanced-debugging"></a>高度なデバッグ
 
-場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 Visual Studio Code と Python Tools for Visual Studio (PTVSD) を使用することによって、Docker コンテナー内で実行されるコードにアタッチできます。
-
-> [!IMPORTANT]
-> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
-
-ローカル Web サービスのデプロイでは、ローカル システムで動作する Docker インストールが必要です。 Docker の使用の詳細については、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
-
-### <a name="configure-development-environment"></a>開発環境の設定
-
-1. ローカルの VS Code 開発環境に Python Tools for Visual Studio (PTVSD) をインストールするには、次のコマンドを使用します。
-
-    ```
-    python -m pip install --upgrade ptvsd
-    ```
-
-    VS Code で PTVSD を使用する方法の詳細については、「[Remote Debugging (リモート デバッグ)](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)」を参照してください。
-
-1. Docker イメージと通信するように VS Code を構成するには、次のような新しいデバッグ構成を作成します。
-
-    1. VS Code から __[デバッグ]__ メニューを選択し、 __[構成を開く]__ を選択します。 __launch.json__ という名前のファイルが開きます。
-
-    1. __launch.json__ ファイルで、`"configurations": [` を含む行を見つけ、その後に次のテキストを挿入します。
-
-        ```json
-        {
-            "name": "Azure Machine Learning: Docker Debug",
-            "type": "python",
-            "request": "attach",
-            "port": 5678,
-            "host": "localhost",
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "/var/azureml-app"
-                }
-            ]
-        }
-        ```
-
-        > [!IMPORTANT]
-        > 構成セクションに既に他のエントリがある場合は、挿入したコードの後にコンマ (,) を追加します。
-
-        このセクションは、ポート 5678 を使用して Docker コンテナーにアタッチされます。
-
-    1. __launch.json__ ファイルを保存します。
-
-### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD を含むイメージの作成
-
-1. PTVSD が含まれるように、デプロイの Conda 環境を変更します。 次の例は、`pip_packages` パラメーターを使用して PTVSD を追加する方法を示しています。
-
-    ```python
-    from azureml.core.conda_dependencies import CondaDependencies 
-
-
-    # Usually a good idea to choose specific version numbers
-    # so training is made on same packages as scoring
-    myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
-                                'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
-
-    with open("myenv.yml","w") as f:
-        f.write(myenv.serialize_to_string())
-    ```
-
-1. サービスの開始時に PTVSD を起動し、接続を待機するには、`score.py` ファイルの先頭に次を追加します。
-
-    ```python
-    import ptvsd
-    # Allows other computers to attach to ptvsd on this IP address and port.
-    ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output = True)
-    # Wait 30 seconds for a debugger to attach. If none attaches, the script continues as normal.
-    ptvsd.wait_for_attach(timeout = 30)
-    print("Debugger attached...")
-    ```
-
-1. 環境定義に基づいてイメージを作成し、そのイメージをローカル レジストリにプルします。 デバッグ中に、イメージを再作成せずに、イメージ内のファイルに変更を加える必要が生じる場合があります。 Docker イメージにテキスト エディター (vim) をインストールするには、`Environment.docker.base_image` と `Environment.docker.base_dockerfile` のプロパティを使用します。
-
-    > [!NOTE]
-    > この例は、`ws` が Azure Machine Learning ワークスペースをポイントし、`model` がデプロイされているモデルであることを前提としています。 `myenv.yml` ファイルには、手順 1. で作成した Conda の依存関係が含まれています。
-
-    ```python
-    from azureml.core.conda_dependencies import CondaDependencies
-    from azureml.core.model import InferenceConfig
-    from azureml.core.environment import Environment
-
-
-    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
-    myenv.docker.base_image = None
-    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
-    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-    package = Model.package(ws, [model], inference_config)
-    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
-    package.pull()
-    ```
-
-    イメージが作成されてダウンロードされると、イメージ パス (リポジトリ、名前、タグ、また、ここではそのダイジェストを含む) が次のようなメッセージに表示されます。
-
-    ```text
-    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
-    ```
-
-1. イメージの操作を容易にするには、次のコマンドを使用してタグを追加します。 `myimagepath` を、前の手順の場所の値で置き換えます。
-
-    ```bash
-    docker tag myimagepath debug:1
-    ```
-
-    残りの手順では、完全なイメージ パス値の代わりに、`debug:1` でローカル イメージを参照できます。
-
-### <a name="debug-the-service"></a>サービスのデバッグ
-
-> [!TIP]
-> `score.py` ファイルで PTVSD 接続のタイムアウトを設定している場合、タイムアウトの有効期限が切れる前に、VS Code をデバッグ セッションに接続する必要があります。 このセクションの手順を使用する前に、VS Code を起動して `score.py` のローカル コピーを開き、ブレークポイントを設定して準備を整えておく必要があります。
->
-> デバッグとブレークポイントの設定の詳細については、「[Debugging (デバッグ)](https://code.visualstudio.com/Docs/editor/debugging)」を参照してください。
-
-1. イメージを使って Docker コンテナーを開始するには、次のコマンドを使用します。
-
-    ```bash
-    docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
-    ```
-
-1. VS Code をコンテナー内の PTVSD に接続するには、VS Code を開き、F5 キーを使用するか __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning : Docker Debug]__ 構成を選択します。 サイド バーのデバッグ アイコンを選択し、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning: Docker Debug]__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
-
-    ![デバッグ アイコン、デバッグの開始ボタン、および構成セレクター](./media/how-to-troubleshoot-deployment/start-debugging.png)
-
-この時点で、VS Code は Docker コンテナー内の PTVSD に接続し、前に設定したブレークポイントで停止します。 これで、実行時のようにコードをステップ実行したり、変数を表示したりできます。
-
-VS Code を使用した Python のデバッグの詳細については、「[Python コードのデバッグ](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)」を参照してください。
-
-<a id="editfiles"></a>
-### <a name="modify-the-container-files"></a>コンテナー ファイルの変更
-
-イメージ内のファイルに変更を加えるには、実行中のコンテナーにアタッチし、Bash シェルを実行します。 そこから、vim を利用してファイルを編集できます。
-
-1. 実行中のコンテナーに接続し、コンテナー内で Bash シェルを起動するには、次のコマンドを使用します。
-
-    ```bash
-    docker exec -it debug /bin/bash
-    ```
-
-1. サービスで使用されるファイルを検索するには、コンテナーで Bash シェルから次のコマンドを使用します (既定のディレクトリが `/var/azureml-app` と異なる場合)。
-
-    ```bash
-    cd /var/azureml-app
-    ```
-
-    ここから、vim を利用して `score.py` ファイルを編集できます。 vim の使用方法の詳細については、「[Using the Vim editor (Vim エディターの使用)](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html)」を参照してください。
-
-1. コンテナーへの変更は、通常は保持されません。 加えた変更を保存するには、上記の手順で起動したシェルを終了する前に、(つまり、別のシェルで) 次のコマンドを使用します。
-
-    ```bash
-    docker commit debug debug:2
-    ```
-
-    このコマンドによって、編集内容が含まれる `debug:2` という名前の新しいイメージが作成されます。
-
-    > [!TIP]
-    > 変更を有効にするには、現在のコンテナーを停止してから新しいバージョンの使用を開始する必要があります。
-
-1. コンテナー内のファイルに加えた変更が、VS Code で使用するローカル ファイルと確実に同期されるようにします。 そうしないと、デバッガーで期待通りのエクスペリエンスが得られません。
-
-### <a name="stop-the-container"></a>コンテナーの停止
-
-コンテナーを停止するには、次のコマンドを使用します。
-
-```bash
-docker stop debug
-```
+場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 Visual Studio Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。 詳細については、[VS Code での対話型デバッグのガイド](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

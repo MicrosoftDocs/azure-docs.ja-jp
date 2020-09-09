@@ -4,16 +4,32 @@ description: Azure Migrate サービスの最新の情報や最近行われた�
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81677240"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927173"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+## <a name="update-august-2020"></a>更新 (2020 年 8 月)
+
+- Azure Migrate プロジェクト キーがポータルから生成され、アプライアンスの登録を完了するために使用される、オンボード エクスペリエンスが向上しました。
+- VMware アプライアンスまたは Hyper-V アプライアンスを設定するために、ポータルからそれぞれ OVA か VHD ファイルまたはインストーラー スクリプトをダウンロードするオプション。
+- ユーザー エクスペリエンスが向上した、更新されたアプライアンス構成マネージャー。
+- Hyper-V VM の検出での、複数の資格情報のサポート。
+- 追加された資格情報および検出ソースに対する、向上した検索、並べ替え、およびフィルター機能。
+- Hyper-V ホストまたはクラスター、および物理サーバー用の検出ソースを追加するために使用する、単一項目の入力、複数の項目の入力、および CSV のインポートのオプション。
+- テーブルに追加された各ソースに対する検証および検出操作の状態の更新により、強化されたエラー エクスペリエンス。 
+
+## <a name="update-june-2020"></a>更新 (2020 年 6 月)
+
+- オンプレミス VMware VM を [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) に移行するための評価がサポートされるようになりました。 [詳細情報](how-to-create-azure-vmware-solution-assessment.md)
+- 物理サーバーを検出するための、アプライアンスでの複数の資格情報のサポート。
+- テナント制限が構成されているテナントのアプライアンスからの Azure ログインを許可するためのサポート。
 
 
 ## <a name="update-april-2020"></a>更新 (2020 年 4 月)
@@ -26,6 +42,7 @@ Azure Migrate では、Azure Government へのデプロイがサポートされ�
 - Azure Government でサポートされている地域やリージョンを[確認](migrate-support-matrix.md#supported-geographies-azure-government)します。
 - [エージェントベースの依存関係の分析](concepts-dependency-visualization.md#agent-based-analysis)は、Azure Government ではサポートされません。
 - Azure Government でプレビュー段階の機能 (具体的には[エージェントレスの依存関係の分析](concepts-dependency-visualization.md#agentless-analysis)と[アプリケーション検出](how-to-discover-applications.md)) がサポートされます。
+
 
 ## <a name="update-march-2020"></a>更新 (2020 年 3 月)
 

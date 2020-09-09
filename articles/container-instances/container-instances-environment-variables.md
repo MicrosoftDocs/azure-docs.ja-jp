@@ -3,12 +3,12 @@ title: コンテナー インスタンスで環境変数を設定する
 description: Azure Container Instances で実行するコンテナーで環境変数を設定する方法を説明します
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225855"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169767"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
 
@@ -166,7 +166,7 @@ Azure portal においてコンテナー開始時の環境変数を設定する�
 次のコードを使用して `secure-env.yaml` ファイルを作成します。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: securetest
 properties:

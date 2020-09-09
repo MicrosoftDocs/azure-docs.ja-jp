@@ -12,20 +12,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442523"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205506"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management、Event Hubs、Moesif を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
 
-API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外のアラート、サード パーティの統合の監査証跡が該当します。
+API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure イベント ハブ](../event-hubs/event-hubs-about.md)に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外のアラート、サード パーティの統合の監査証跡が該当します。
 
 この記事では、HTTP 要求と応答メッセージ全体をキャプチャしてイベント ハブに送信した後、HTTP ログと監視サービスを提供するサード パーティのサービスにそのメッセージをリレーする方法を示します。
 
@@ -48,7 +49,7 @@ Event Hubs には、複数のコンシューマー グループにイベント�
 
 代わりの方法として、HTTP 仕様の [RFC 7230](https://tools.ietf.org/html/rfc7230) に規定されている `application/http` メディア タイプを使用しました。 このメディア タイプでは、実際にネットワーク経由で HTTP メッセージを送信する際に使用されるのとまったく同じ形式が使用されますが、メッセージ全体を別の HTTP 要求の本文に含めることができます。 ここでは、本文を、Event Hubs に送信するメッセージとして使用します。 [Microsoft ASP.NET Web API 2.2 クライアント](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) ライブラリには、この形式を解析してネイティブ `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換できる便利なパーサーが含まれています。
 
-このメッセージを作成できるようにするには、Azure API Management の C# ベースの [ポリシー式](/azure/api-management/api-management-policy-expressions) を使用する必要があります。 Azure Event Hubs に HTTP 要求メッセージを送信するポリシーを次に示します。
+このメッセージを作成できるようにするには、Azure API Management の C# ベースの [ポリシー式](./api-management-policy-expressions.md) を使用する必要があります。 Azure Event Hubs に HTTP 要求メッセージを送信するポリシーを次に示します。
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -297,7 +298,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 `MoesifHttpMessageProcessor` では、サービスに HTTP イベント データを簡単にプッシュできる [C# Moesif API ライブラリ](https://www.moesif.com/docs/api?csharp#events)が利用されています。 HTTP データを Moesif Collector API に送信するには、アカウントとアプリケーション ID が必要です。Moesif アプリケーション ID は、[Moesif の Web サイト](https://www.moesif.com)でアカウントを作成してから、"_右上のメニュー_ -> " で _[App Setup]\(アプリ セットアップ\)_ に移動して取得します。
 
 ## <a name="complete-sample"></a>完全なサンプル
-サンプルの[ソース コード](https://github.com/dgilling/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](get-started-create-service-instance.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/common/storage-create-storage-account.md)が必要です。   
+サンプルの[ソース コード](https://github.com/dgilling/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](get-started-create-service-instance.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/common/storage-account-create.md)が必要です。   
 
 このサンプルは、イベント ハブからのイベントをリッスンし、そのイベントを Moesif の `EventRequestModel` オブジェクトと `EventResponseModel` オブジェクトに変換して、Moesif Collector API に転送するだけの簡単なコンソール アプリケーションです。
 
@@ -311,9 +312,9 @@ Azure API Management サービスでは、API を経由して送受信される 
 ## <a name="next-steps"></a>次のステップ
 * Azure Event Hubs の詳細
   * [Azure Event Hubs の使用](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)
 * API Management と Event Hubs の統合の詳細
   * [Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)
-  * [ロガーのエンティティ リファレンス](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [log-to-eventhub ポリシー リファレンス](/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [ロガーのエンティティ リファレンス](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [log-to-eventhub ポリシー リファレンス](./api-management-advanced-policies.md#log-to-eventhub)

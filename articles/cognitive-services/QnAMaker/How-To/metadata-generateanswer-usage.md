@@ -1,27 +1,26 @@
 ---
 title: メタデータと GenerateAnswer API - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker では、キー/値のペアの形式で、メタデータを質問/回答のセットに追加することができます。 ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
+description: QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/16/2020
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: d1258786ec6f611bea5f73f3cb1c176738733acd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659551"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919065"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
 ユーザーの質問に対して予測される回答を取得するには、GenerateAnswer API を使用します。 ナレッジ ベースを公開するときに、 **[公開]** ページにこの API を使用する方法に関する情報が表示されます。 また、メタデータ タグに基づいて回答をフィルター処理するように API を構成し、テスト クエリ文字列パラメーターを使用してエンドポイントからナレッジ ベースをテストすることも可能です。
 
-QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のセットに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
+QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../Concepts/knowledge-base.md)」 (ナレッジ ベース) を参照してください。
 
 <a name="qna-entity"></a>
 
@@ -37,7 +36,7 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>GenerateAnswer API を使用して回答の予測を取得する
 
-ボットやアプリケーションで [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問と回答のセットから最も一致するものを取得します。
+ボットやアプリケーションで [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) を使用して、ユーザーの質問についてナレッジ ベースのクエリを実行し、質問と回答のペアから最も一致するものを取得します。
 
 <a name="generateanswer-endpoint"></a>
 
@@ -184,19 +183,46 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>既定での論理 AND
+
+クエリで複数のメタデータ フィルターを組み合わせるには、`strictFilters` プロパティの配列に追加のメタデータ フィルターを付け加えます。 既定で、値が論理的に組み合わせられます (AND)。 論理的に組み合わせられる場合に、回答内で該当のペアが返されるためには、すべてのフィルターが QnA のペアと一致する必要があります。
+
+これは、`AND` の値を指定して `strictFiltersCompoundOperationType` プロパティを使用することと同じです。
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>strictFiltersCompoundOperationType プロパティを使用する論理 OR
+
+複数のメタデータ フィルターを組み合わせるときに、1 つまたは一部のフィルター一致のみに関心がある場合は、`OR` の値を指定して `strictFiltersCompoundOperationType` プロパティを使用します。
+
+これにより、いずれかのフィルターが一致した場合にナレッジ ベースによって回答が返されるようになりますが、メタデータが含まれていない回答は返されません。
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>クイックスタートのメタデータの例
+
+メタデータに関する以下の QnA Maker ポータルのクイックスタートで、メタデータの詳細について確認します。
+* [作成 - QnA ペアにメタデータを追加する](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [クエリ予測 - メタデータによる回答のフィルター処理を行う](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>質問と回答の結果を使用して会話のコンテキストを維持する
 
-GenerateAnswer への応答には、一致した質問と回答のセットの対応するメタデータ情報が含まれます。 クライアント アプリケーション内でこの情報を使って、以降の会話で使用するために以前の会話のコンテキストを格納することができます。
+GenerateAnswer への応答には、一致した質問と回答のペアの対応するメタデータ情報が含まれます。 クライアント アプリケーション内でこの情報を使って、以降の会話で使用するために以前の会話のコンテキストを格納することができます。
 
 ```json
 {

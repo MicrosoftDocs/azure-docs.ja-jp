@@ -5,23 +5,23 @@ description: Azure Storage アカウントの接続文字列を構成します�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 04/24/2020
+ms.topic: how-to
+ms.date: 07/16/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 681723ee9370f889ef86e6eae0878b148c17606b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087256"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
 接続文字列には、アプリケーションの実行時に共有キーによる承認を使用して Azure Storage アカウント内のデータにアクセスするために必要な承認情報が格納されています。 接続文字列は、次の目的に構成できます。
 
-* Azure ストレージ エミュレーターに接続する。
+* Azurite ストレージ エミュレーターに接続します。
 * Azure のストレージ アカウントにアクセスする。
 * Shared Access Signature (SAS) を介して Azure の特定のリソースにアクセスする。
 
@@ -37,15 +37,15 @@ ms.locfileid: "82176364"
 * デスクトップまたはデバイスで実行するアプリケーションの場合は、**app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
 * Azure クラウド サービスで実行するアプリケーションの場合、接続文字列は [Azure サービスの構成スキーマ (.cscfg) ファイル](https://msdn.microsoft.com/library/ee758710.aspx)に保存できます。 接続文字列をサービス構成ファイルの **ConfigurationSettings** セクションに追加します。
 
-構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新してストレージ エミュレーターとクラウドの Azure Storage アカウントを切り替えることができます。 必要な作業は、対象となる環境に合わせて接続文字列を編集するだけです。
+構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新して [Azurite ストレージ エミュレーター](../common/storage-use-azurite.md)とクラウドの Azure Storage アカウントを切り替えることができます。 必要な作業は、対象となる環境に合わせて接続文字列を編集するだけです。
 
 [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) を使用すると、アプリケーションの実行場所に関係なく、実行時に接続文字列にアクセスできます。
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>ストレージ エミュレーターの接続文字列を構成する
+## <a name="configure-a-connection-string-for-azurite"></a>Azurite の接続文字列を構成する
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-ストレージ エミュレーターについて詳しくは、「[開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)」をご覧ください。
+Azurite の詳細については、[ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../common/storage-use-azurite.md)方法に関するページを参照してください。
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Azure Storage アカウントの接続文字列を構成する
 
@@ -140,6 +140,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>次のステップ
 
-* [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
+* [ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../common/storage-use-azurite.md)
 * [Azure ストレージ エクスプローラー](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)

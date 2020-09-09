@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central でのアーキテクチャの概念 - エネルギー | Microsoft Docs
+title: Azure IoT Central でのアーキテクチャの概念 - スマート メーター | Microsoft Docs
 description: この記事では、Azure IoT Central エネルギー アプリ テンプレートのアーキテクチャに関連する主要な概念を紹介します。
 author: op-ravi
 ms.author: omravi
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aac5e35f3d0c42e97069ecb38fedaadcdc7794dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77024315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001844"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central - スマート メーター アプリのアーキテクチャ
 

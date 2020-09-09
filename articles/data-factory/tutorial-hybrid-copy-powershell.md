@@ -9,20 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
+ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 70bc79470cd72ce01007265c6c1236c951ddd7d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d148bc81e81c4afa32682fa1462ecfbf5427f164
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81411433"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079232"
 ---
-# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>チュートリアル: オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
+# <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>チュートリアル:SQL Server データベースから Azure Blob Storage にデータをコピーする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを Azure PowerShell を使って作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
+このチュートリアルでは、SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを Azure PowerShell を使って作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
 
 > [!NOTE]
 > この記事では、Data Factory サービスの概要については詳しく取り上げません。 詳細については、[Azure Data Factory の概要](introduction.md)に関するページをご覧ください。
@@ -48,7 +48,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にあるユーザー名をクリックし、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加する手順の例については、「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016、2017
-このチュートリアルでは、オンプレミスの SQL Server データベースを "*ソース*" データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、このオンプレミスの SQL Server データベース (ソース) から Azure Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
+このチュートリアルでは、SQL Server データベースを "*ソース*" データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、この SQL Server データベース (ソース) から Azure Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 
 1. SQL Server Management Studio を起動します。 ご使用のマシンにまだインストールされていない場合は、「[SQL Server Management Studio のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)」にアクセスしてください。
 
@@ -76,7 +76,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 
 ### <a name="azure-storage-account"></a>Azure ストレージ アカウント
-このチュートリアルでは、コピー先/シンク データ ストアに汎用の Azure Storage アカウント (具体的には Azure Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」をご覧ください。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、オンプレミスの SQL Server データベース (ソース) からこの Azure Blob Storage (シンク) にデータをコピーします。 
+このチュートリアルでは、コピー先/シンク データ ストアに汎用の Azure Storage アカウント (具体的には Azure Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」をご覧ください。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、SQL Server データベース (ソース) からこの Azure Blob Storage (シンク) にデータをコピーします。 
 
 #### <a name="get-storage-account-name-and-account-key"></a>ストレージ アカウント名とアカウント キーの取得
 このチュートリアルでは、Azure ストレージ アカウントの名前とキーを使用します。 以下の手順に従って、ご利用のストレージ アカウントの名前とキーを取得してください。
@@ -179,7 +179,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" または "*所有者*" ロールに属しているか、Azure サブスクリプションの "*管理者*" である必要があります。
-> * 現在 Data Factory が利用できる Azure リージョンの一覧については、「**リージョン別の利用可能な製品**」ページで目的のリージョンを選択し、 **[分析]** を展開して [[Data Factory]](https://azure.microsoft.com/global-infrastructure/services/) を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
+> * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
 >
 >
 
@@ -309,7 +309,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     前述の値はすべてメモしておいてください。後でこのチュートリアルの中で使用します。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このチュートリアルでは、Azure Storage アカウントとオンプレミスの SQL Server インスタンスをデータ ストアにリンクします。 リンクされたサービスは、Data Factory サービスが実行時に接続するために使用する接続情報を持っています。
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このチュートリアルでは、Azure Storage アカウントと SQL Server インスタンスをデータ ストアにリンクします。 リンクされたサービスは、Data Factory サービスが実行時に接続するために使用する接続情報を持っています。
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>Azure Storage のリンクされたサービスを作成する (コピー先/シンク)
 この手順では、Azure Storage アカウントをデータ ファクトリにリンクします。
@@ -317,7 +317,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. 次のコードを記述した *AzureStorageLinkedService.json* という名前の JSON ファイルを *C:\ADFv2Tutorial* フォルダーに作成します。 *ADFv2Tutorial* フォルダーがまだ存在しない場合は作成してください。  
 
     > [!IMPORTANT]
-    > ファイルを保存する前に、\<accountName> と \<accountKey> を実際の Azure Storage アカウントの名前とキーに置き換えてください。 「[前提条件](#get-storage-account-name-and-account-key)」セクションでメモしたものです。
+    > ファイルを保存する前に、\<accountName> と \<accountKey> を実際の Azure ストレージ アカウントの名前とキーに置き換えてください。 「[前提条件](#get-storage-account-name-and-account-key)」セクションでメモしたものです。
 
    ```json
     {
@@ -355,7 +355,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     "ファイルが見つかりません" エラーが表示された場合は、`dir` コマンドを実行してファイルが存在することを確認します。 ファイル名の拡張子が *.txt* となっている場合 (例: AzureStorageLinkedService.json.txt) は、その拡張子を削除してからもう一度 PowerShell コマンドを実行してください。
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>SQL Server のリンクされたサービスを作成して暗号化する (ソース)
-この手順では、オンプレミス SQL Server インスタンスをデータ ファクトリにリンクします。
+この手順では、SQL Server インスタンスをデータ ファクトリにリンクします。
 
 1. 次のコードを使用して、*SqlServerLinkedService.json* という名前の JSON ファイルを *C:\ADFv2Tutorial* フォルダーに作成します。
 
@@ -413,7 +413,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
     > [!IMPORTANT]
     > - SQL Server インスタンスへの接続に使用する認証に該当するセクションを選んでください。
-    > - **\<integration runtime name>** は、実際の統合ランタイムの名前に置き換えます。
+    > - **\<integration runtime name>** を統合ランタイムの名前に置き換えます。
     > - ファイルを保存する前に、 **\<servername>** 、 **\<databasename>** 、 **\<username>** 、 **\<password>** を実際の SQL Server インスタンスの値に置き換えてください。
     > - ユーザー アカウントまたはサーバー名にバックスラッシュ (\\) を使用する必要がある場合は、エスケープ文字 (\\) に続けて入力してください。 たとえば、「*mydomain\\\\myuser*」のように入力します。
 
@@ -432,7 +432,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 
 ## <a name="create-datasets"></a>データセットを作成する
-この手順では、入力データセットと出力データセットを作成します。 これらは、オンプレミスの SQL Server Database から Azure Blob Storage にデータをコピーする操作の入出力データを表します。
+この手順では、入力データセットと出力データセットを作成します。 これらは、SQL Server Database から Azure Blob Storage にデータをコピーする操作の入出力データを表します。
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>ソース SQL Server データベースのデータセットを作成する
 この手順では、SQL Server データベース インスタンス内のデータを表すデータセットを定義します。 データセットの型は、SqlServerTable です。 前の手順で作成した SQL Server のリンクされたサービスを参照します。 リンクされたサービスは、Data Factory サービスが実行時に SQL Server インスタンスに接続するために使用する接続情報を持っています。 このデータセットは、データが含まれる、データベース内の SQL テーブルを指定します。 このチュートリアルでは、ソース データが含まれている **emp** テーブルです。
@@ -707,7 +707,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ```
 
 ## <a name="verify-the-output"></a>出力を検証する
-このパイプラインは、*BLOB コンテナーに対して*fromonprem`adftutorial` という名前の出力フォルダーを自動的に作成します。 出力フォルダーに *dbo.emp.txt* ファイルがあることを確認してください。
+このパイプラインは、`adftutorial` BLOB コンテナーに対して *fromonprem* という名前の出力フォルダーを自動的に作成します。 出力フォルダーに *dbo.emp.txt* ファイルがあることを確認してください。
 
 1. Azure Portal の **adftutorial** コンテナー ウィンドウで **[最新の情報に更新]** を選択して出力フォルダーを表示します。
 1. フォルダーの一覧で、`fromonprem` を選択します。

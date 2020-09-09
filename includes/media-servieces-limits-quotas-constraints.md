@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656185"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997705"
 ---
 > [!NOTE]
 > 固定されないリソースの場合は、サポート チケットを開いてクォータの増加を要求してください。 上限を高くするために追加の Azure Media Services アカウントを作成することはしないでください。
@@ -45,18 +45,18 @@ ms.locfileid: "80656185"
 
 <sup>2</sup> ストレージ アカウントは、同じ Azure サブスクリプションからのものである必要があります。
 
-### <a name="jobs-encoding--analyzing-limits"></a>ジョブ (エンコードおよび分析) の制限
+### <a name="jobs-encoding--analyzing-limits"></a>Job (エンコードおよび分析) の制限
 
 | リソース | 既定の制限 | 
 | --- | --- | 
 | Media Services アカウントあたりの Job | 500,000 <sup>(3)</sup> (固定)|
-| ジョブあたりのジョブ入力数 | 50 (固定)|
-| ジョブあたりのジョブ出力数 | 20 (固定) |
+| Job ごとの Job 入力 | 50 (固定)|
+| Job ごとの Job 出力 | 20 (固定) |
 | Media Services アカウントあたりの Transform | 100 (固定)|
-| 1 つの変換内の変換の出力数 | 20 (固定) |
-| ジョブ入力あたりのファイル数|10 (固定)|
+| Transform にある Transform の出力 | 20 (固定) |
+| Job 入力ごとのファイル|10 (固定)|
 
-<sup>3</sup> この数には、キューに置かれたジョブ、終了したジョブ、アクティブなジョブ、および取り消されたジョブが含まれます。 削除された Job は含まれません。 
+<sup>3</sup> この数には、キューに置かれた Job、終了した Job、アクティブな Job、および取り消された Job が含まれます。 削除された Job は含まれません。 
 
 レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべての Job レコードは自動的に削除されます。 
 
@@ -66,7 +66,7 @@ ms.locfileid: "80656185"
 | --- | --- | 
 | Media Services アカウントあたりのライブ イベント数 <sup>(4)</sup> |5|
 | ライブ イベントあたりのライブ出力 |3 <sup>(5)</sup> |
-| ライブ出力の最大期間 | 25 時間 |
+| ライブ出力の最大期間 | [DVR ウィンドウのサイズ](../articles/media-services/latest/live-event-cloud-dvr.md) |
 
 <sup>4</sup> ライブ イベントの制限の詳細については、[ライブ イベントの種類の比較と制限](../articles/media-services/latest/live-event-types-comparison.md)に関する記事を参照してください。
 
@@ -81,7 +81,7 @@ ms.locfileid: "80656185"
 | ストリーミング ポリシー | 100 <sup>(6)</sup> |
 | 1 つの資産に同時に関連付けられる一意のストリーミング ロケーター数 | 100<sup>(7)</sup> (固定) |
 
-<sup>6</sup> カスタム [ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときはお使いのストリーミング ロケーターに対して常にそのセットを再利用する必要があります。 ストリーミング ロケーターごとに新しいストリーミング ポリシーを作成しないでください。
+<sup>6</sup> カスタム [ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 ストリーミング ロケーターごとに新しいストリーミング ポリシーを作成しないでください。
 
 <sup>7</sup> ストリーミング ロケーターは、ユーザーごとのアクセス制御を管理するようには設計されていません。 個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。
 

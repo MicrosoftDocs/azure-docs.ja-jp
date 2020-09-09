@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77192590"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530175"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "77192590"
 >
 >確認するには、Visual Studio を起動します。 **[ツール]** メニューの **[拡張機能と更新プログラム]** を選びます。 お使いの Visual Studio に対応した **NuGet パッケージ マネージャー**を探し、バージョンが最新であることを確認します。 最新バージョンでない場合は、アンインストールして、NuGet パッケージ マネージャーを再インストールしてください。
 
-![][B4]
+![Visual Studio 用 NuGet パッケージ マネージャー パッケージが強調表示された [拡張機能と更新プログラム] ダイアログ ボックスのスクリーンショット。][B4]
 
 > [!NOTE]
 > Web サイトのデプロイ用に Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) がインストールされていることを確認してください。
@@ -154,7 +154,7 @@ ms.locfileid: "77192590"
 
 1. ソリューション エクスプローラーで **AppBackend** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-2. 左側のウィンドウにある **[オンライン]** を選択し、**[検索]** ボックスに「**Microsoft.Azure.NotificationHubs**」と入力します。
+2. 左側のウィンドウにある **[オンライン]** を選択し、 **[検索]** ボックスに「**Microsoft.Azure.NotificationHubs**」と入力します。
 
 3. 結果の一覧で、 **[Microsoft Azure Notification Hubs]** を選択してから、 **[インストール]** を選択します。 インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
 
@@ -392,7 +392,7 @@ ms.locfileid: "77192590"
 
 3. **[App Service の作成]** ウィンドウで、Azure アカウントを選択します。 **[変更の種類]**  >  **[Web アプリ]** の順に選択します。 既定の **Web アプリ名**をそのまま保持し、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[App Service プラン]** の順に選択します。
 
-4. **作成** を選択します。
+4. **［作成］** を選択します
 
 5. **[概要]** セクションの **[サイト URL]** プロパティをメモします。 この URL は、このチュートリアルの後半で使用する "*バックエンドエンドポイント*" です。
 

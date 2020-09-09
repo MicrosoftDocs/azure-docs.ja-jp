@@ -12,12 +12,12 @@ metadata:
   ms.date: 11/08/2019
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: 242bbfa3143827162b087e231d99b6de451d4908
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 3a3dc1634d4b1f94968c62635e03ff6a295dc98c
+  ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78272983"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88799096"
 landingContent:
 - title: ユーザー、グループ、ロール、ライセンスについて
   linkLists:
@@ -31,18 +31,18 @@ landingContent:
     links:
     - text: 管理の委任
       url: roles-concept-delegation.md
-    - text: Azure RBAC ロールと Azure AD 管理者ロールの比較
-      url: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: Azure ロールと Azure AD 管理者ロールの比較
+      url: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
     - text: ユーザーの追加
-      url: https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+      url: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - text: グループの有効期限ポリシーの設定
       url: groups-quickstart-expiration.md
     - text: ユーザーへのライセンスの割り当て
-      url: https://docs.microsoft.com/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+      url: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
 - title: Azure AD 管理者ロールを割り当てる
   linkLists:
   - linkListType: how-to-guide
@@ -78,6 +78,6 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: カスタム ドメイン名を追加する
-      url: https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - text: カスタム ドメイン名の管理
       url: domains-manage.md

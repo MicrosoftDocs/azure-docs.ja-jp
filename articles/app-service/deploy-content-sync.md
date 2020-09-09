@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482974"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221138"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>クラウド フォルダーから Azure App Service へのコンテンツの同期
 この記事では、Dropbox と OneDrive のコンテンツを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) と同期する方法を示します。 
@@ -24,11 +24,11 @@ ms.locfileid: "77482974"
 
 左側のメニューで、 **[デプロイ センター]**  >  **[OneDrive]** または **[Dropbox]**  >  **[承認]** をクリックします。 承認のプロンプトに従います。 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![Azure portal のデプロイ センターで OneDrive または Dropbox を承認する方法を示します。](media/app-service-deploy-content-sync/choose-source.png)
 
 OneDrive または Dropbox の承認は、1 回のみ実行する必要があります。 既に承認されている場合は、 **[続行]** をクリックします。 **[アカウントの変更]** をクリックすることで、承認済みの OneDrive または Dropbox のアカウントを変更できます。
 
-![](media/app-service-deploy-content-sync/continue.png)
+![Azure portal のデプロイ センターで承認された OneDrive または Dropbox アカウントを変更する方法を示します。](media/app-service-deploy-content-sync/continue.png)
 
 **[構成]** ページで、同期するフォルダーを選択します。 このフォルダーは、OneDrive または Dropbox の次のコンテンツ パスの下に作成されます。 
    
@@ -43,7 +43,7 @@ OneDrive または Dropbox の承認は、1 回のみ実行する必要があり
 
 クラウド フォルダーのコンテンツを App Service と同期する場合は、 **[デプロイ センター]** ページに戻り、 **[同期]** をクリックします。
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![クラウド フォルダーを App Service と同期する方法を示します。](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > API に違いがあるため、**OneDrive for Business** は現時点ではサポートされていません。 
@@ -56,7 +56,7 @@ OneDrive または Dropbox の承認は、1 回のみ実行する必要があり
 
 左側のメニューで、 **[デプロイ センター]**  >  **[切断]** をクリックします。
 
-![](media/app-service-deploy-content-sync/disable.png)
+![Azure portal の App Service アプリでクラウド フォルダーの同期を切断する方法を示します。](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

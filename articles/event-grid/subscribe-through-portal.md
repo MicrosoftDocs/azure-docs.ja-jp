@@ -1,18 +1,14 @@
 ---
 title: ポータルを使用した Azure Event Grid サブスクリプション
 description: この記事では、Azure portal を使用して、Azure Blob Storage などのサポートされているソースの Event Grid サブスクリプションを作成する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/07/2020
+ms.openlocfilehash: 2890f57e50e508f85579a2b1198de536fa9a9013
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393174"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119992"
 ---
 # <a name="subscribe-to-events-through-portal"></a>ポータルを使用したイベントのサブスクライブ
 

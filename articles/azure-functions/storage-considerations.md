@@ -2,13 +2,13 @@
 title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/27/2020
+ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648800"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318183"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -18,12 +18,12 @@ Azure Functions では、関数アプリ インスタンスを作成するとき
 |ストレージ サービス  | 機能の使用法  |
 |---------|---------|
 | [Azure BLOB Storage](../storage/blobs/storage-blobs-introduction.md)     | バインドの状態と関数キーを管理します。  <br/>[Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)からも使用されます。 |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | 関数アプリ コードを[従量課金プラン](functions-scale.md#consumption-plan)に格納して実行するために使用されるファイル共有。 |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](functions-scale.md#consumption-plan)や [Premium プラン](functions-scale.md#premium-plan)で、関数アプリ コードを格納して実行するために使用されるファイル共有。 |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。       |
 
 > [!IMPORTANT]
-> 従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
+> 従量課金/Premium ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File ストレージに保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
@@ -41,7 +41,7 @@ Azure Functions では、関数アプリ インスタンスを作成するとき
 
 ストレージ アカウント接続は、[AzureWebJobsStorage アプリケーション設定](./functions-app-settings.md#azurewebjobsstorage)の中で管理されます。 
 
-ストレージ キーを再生成する場合は、ストレージ アカウント接続文字列を更新する必要があります。 ストレージ キーの管理については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)をご覧ください。
+ストレージ キーを再生成する場合は、ストレージ アカウント接続文字列を更新する必要があります。 ストレージ キーの管理については、[こちら](../storage/common/storage-account-create.md)をご覧ください。
 
 ### <a name="shared-storage-accounts"></a>共有のストレージ アカウント
 
@@ -80,5 +80,3 @@ Azure Functions ホスティングのオプションについて確認してく�
 
 > [!div class="nextstepaction"]
 > [Azure Functions のスケールとホスティング](functions-scale.md)
-
-

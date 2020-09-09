@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの診断設定を使用する
 description: この記事では、Azure Backup の新旧の診断イベントの使用方法を説明します。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 4efc00da96493c751c4a85dbdcc280d1ca0ef5ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183706"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826669"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services コンテナーの診断設定を使用する
 
@@ -29,13 +29,15 @@ Azure Backup には、次の診断機能が用意されています。 各イベ
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-詳細については、「[Azure Backup 診断イベントのデータ モデル](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)」を参照してください。
+まだ[レガシ イベント](#legacy-event)の AzureBackupReport を使用している場合は、上記のイベントを使用するように切り替えることをお勧めします。
+
+詳細については、「[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)」を参照してください。
 
 これらのイベントのデータを、ストレージ アカウント、Log Analytics ワークスペース、またはイベント ハブに送信できます。 このデータを Log Analytics ワークスペースに送信する場合は、 **[診断設定]** 画面で **[リソース固有]** トグルを選択します。 詳細については、次のセクションを参照してください。
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>Log Analytics での診断設定の使用
 
-Azure Backup を使用して、コンテナー診断データをバックアップ用の専用 Log Analytics テーブルに送信できるようになりました。 これらのテーブルは、[リソース固有テーブル](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)と呼ばれます。
+Azure Backup を使用して、コンテナー診断データをバックアップ用の専用 Log Analytics テーブルに送信できるようになりました。 これらのテーブルは、[リソース固有テーブル](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)と呼ばれます。
 
 コンテナーの診断データを Log Analytics に送信するには、次のようにします。
 
@@ -50,23 +52,23 @@ Azure Backup を使用して、コンテナー診断データをバックアッ�
 データが Log Analytics ワークスペースに送信されると、これらのイベントごとに専用のテーブルがワークスペース内に作成されます。 これらのテーブルのどれに対しても、直接クエリを実行できます。 また、必要に応じて、これらのテーブル間で JOIN または UNION を実行できます。
 
 > [!IMPORTANT]
-> 6 つのイベント (CoreAzureBackup、AddonAzureBackupJobs、AddonAzureBackupAlerts、AddonAzureBackupPolicy、AddonAzureBackupStorage、AddonAzureBackupProtectedInstance) は、[バックアップ レポート](https://docs.microsoft.com/azure/backup/configure-reports)のリソース固有モードで "*のみ*" サポートされます。 "*これら 6 つのイベントのデータを Azure 診断モードで送信しようとした場合、データはバックアップ レポートに一切表示されません。* "
+> 6 つのイベント (CoreAzureBackup、AddonAzureBackupJobs、AddonAzureBackupAlerts、AddonAzureBackupPolicy、AddonAzureBackupStorage、AddonAzureBackupProtectedInstance) は、[バックアップ レポート](./configure-reports.md)のリソース固有モードで "*のみ*" サポートされます。 "*これら 6 つのイベントのデータを Azure 診断モードで送信しようとした場合、データはバックアップ レポートに一切表示されません。* "
 
 ## <a name="legacy-event"></a>レガシ イベント
 
 従来、コンテナーのバックアップ関連の診断データは、すべてが AzureBackupReport という名前の 1 つのイベントに含まれていました。 ここに示した 6 つのイベントは、実質的には、AzureBackupReport に含まれるすべてのデータを分解したものです。
 
-現時点では、AzureBackupReport イベントは引き続きサポートされています。これは、ユーザーがこのイベントに対して既存のカスタム クエリを持っている場合の下位互換性を保つためです。 例として、カスタム ログ アラートやカスタム視覚化エフェクトがあります。 "*可能な限り早く[新しいイベント](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users)にアップグレードすることをお勧めします。* " 新しいイベントでは次のようになります。
+現時点では、AzureBackupReport イベントは引き続きサポートされています。これは、ユーザーがこのイベントに対して既存のカスタム クエリを持っている場合の下位互換性を保つためです。 例として、カスタム ログ アラートやカスタム視覚化エフェクトがあります。 "*可能な限り早く[新しいイベント](#diagnostics-events-available-for-azure-backup-users)にアップグレードすることをお勧めします。* " 新しいイベントでは次のようになります。
 
 * ログ クエリでデータをより簡単に操作できます。
 * スキーマとその構造をより確実に発見できます。
 * インジェスト待機時間とクエリ時間の両方でパフォーマンスが向上します。
 
-"*Azure 診断モードのレガシ イベントは、最終的に非推奨になります。後で複雑な移行を回避するには、新しいイベントを選択することが役に立つ場合があります。* " Log Analytics を使用する[レポート ソリューション](https://docs.microsoft.com/azure/backup/configure-reports)でも、レガシ イベントからのデータのサポートが停止されます。
+"*Azure 診断モードのレガシ イベントは、最終的に非推奨になります。後で複雑な移行を回避するには、新しいイベントを選択することが役に立つ場合があります。* " Log Analytics を使用する[レポート ソリューション](./configure-reports.md)でも、レガシ イベントからのデータのサポートが停止されます。
 
 ### <a name="steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace"></a>Log Analytics ワークスペース用の新しい診断設定に移行するための手順
 
-1. レガシ イベントを使用して Log Analytics ワークスペースにデータを送信しているコンテナーと、それらが属しているサブスクリプションを特定します。 次のワークスペースを実行して、これらのコンテナーとサブスクリプションを識別します。
+1. レガシ イベントを使用して Log Analytics ワークスペースにデータを送信しているコンテナーと、それらが属しているサブスクリプションを特定します。 各ワークスペースで次のクエリを実行して、これらのコンテナーとサブスクリプションを特定します。
 
     ````Kusto
     let RangeStart = startofday(ago(3d));
@@ -80,9 +82,9 @@ Azure Backup を使用して、コンテナー診断データをバックアッ�
         | where TimeGenerated >= RangeStart | where OperationName == "Vault"
         | summarize arg_max(TimeGenerated, *) by ResourceId
         | project ResourceId, Category};
-        // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
+        // Some Workspaces will not have AzureDiagnostics Table, so you need to use isFuzzy
     let CombinedVaultTable = (){
-        CombinedTable | union isfuzzy = true
+        union isfuzzy = true
         (VaultUnderAzureDiagnostics() ),
         (VaultUnderResourceSpecific() )
         | distinct ResourceId, Category};
@@ -94,7 +96,11 @@ Azure Backup を使用して、コンテナー診断データをバックアッ�
     | project ResourceId, SubscriptionId, VaultName
     ````
 
-1. Azure Backup に[組み込まれている Azure ポリシー定義](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)を使用して、指定したスコープ内のすべてのコンテナーに新しい診断設定を追加します。 このポリシーによって、診断設定がないか、または従来の診断設定しかないコンテナーに新しい診断設定が追加されます。 このポリシーは、一度にサブスクリプションまたはリソース グループ全体に割り当てることができます。 ポリシーを割り当てる各サブスクリプションに対して、所有者のアクセス権を持っている必要があります。
+    以下に、あるワークスペースで実行されているクエリのスクリーンショットを示します。
+
+    ![ワークスペース クエリ](./media/backup-azure-diagnostics-events/workspace-query.png)
+
+2. Azure Backup に[組み込まれている Azure ポリシー定義](./azure-policy-configure-diagnostics.md)を使用して、指定したスコープ内のすべてのコンテナーに新しい診断設定を追加します。 このポリシーによって、診断設定がないか、または従来の診断設定しかないコンテナーに新しい診断設定が追加されます。 このポリシーは、一度にサブスクリプションまたはリソース グループ全体に割り当てることができます。 ポリシーを割り当てる各サブスクリプションに対して、所有者のアクセス権を持っている必要があります。
 
 すべてのカスタム クエリを移行し終わり、新しいテーブルのデータを使用するようになるまで、AzureBackupReport と 6 つの新しいイベントに対して個別の診断設定を選択できます。 次の図に、2 つの診断設定を持つコンテナーの例を示します。 最初の **Setting1** という名前の設定では、AzureBackupReport イベントのデータが、Azure 診断モードで Log Analytics ワークスペースに送信されます。 2 つ目の **Setting2** という名前の設定では、6 つの新しい Azure Backup イベントのデータが、リソース固有モードで Log Analytics ワークスペースに送信されます。
 
@@ -124,4 +130,4 @@ Azure Backup イベントと Azure Site Recovery イベントは、同じ Recove
 
 ## <a name="next-steps"></a>次のステップ
 
-[診断イベント用の Log Analytics データ モデルを確認する](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+[診断イベント用の Log Analytics データ モデルを確認する](./backup-azure-reports-data-model.md)

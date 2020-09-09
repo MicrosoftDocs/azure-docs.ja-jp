@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e5f772fe8152f209a8188ab5bf2d0010248feabf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446684"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934312"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>クイック スタート:Bing Visual Search REST API と C# を使用して画像に関する分析情報を取得する
 
-このクイック スタートでは、Bing Visual Search API に画像をアップロードして、返される分析情報を表示する方法を示します。
+このクイックスタートでは、Bing Visual Search API に画像をアップロードして、返される分析情報を表示する方法を紹介します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +42,7 @@ ms.locfileid: "75446684"
     using System.Collections.Generic;
     ```
 
-2. サブスクリプション キー、エンドポイント、およびアップロードする画像へのパスを格納する変数を追加します。 `uriBase` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. サブスクリプション キー、エンドポイント、およびアップロードする画像へのパスを格納する変数を追加します。 `uriBase` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +50,7 @@ ms.locfileid: "75446684"
         static string imagePath = @"<path_to_image>";
     ```
 
-3. 画像のパスを取得するための `GetImageFileName()` というメソッドを作成します
+3. 画像へのパスを取得するための `GetImageFileName()` という名前のメソッドを作成します。
     
     ```csharp
     static string GetImageFileName(string path)
@@ -69,7 +70,7 @@ ms.locfileid: "75446684"
 
 ## <a name="build-the-form-data"></a>フォーム データを作成する
 
-ローカルの画像をアップロードするには、最初に、API に送信するフォーム データを作成します。 フォーム データには `Content-Disposition` ヘッダーが含まれる必要があります。その `name` パラメーターには "image" を設定する必要があり、`filename` パラメーターには任意の文字列を設定できます。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
+1. ローカルの画像をアップロードするには、最初に、API に送信するフォーム データを作成します。 フォーム データには、`Content-Disposition` ヘッダー、"image" に設定されている `name` パラメーター、画像のファイル名に設定されている `filename` パラメーターが含まれます。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
 
     ```
     --boundary_1234-abcd
@@ -80,7 +81,7 @@ ms.locfileid: "75446684"
     --boundary_1234-abcd--
     ```
 
-1. POST フォーム データを書式設定する境界文字列を追加します。 境界文字列により、データの開始、終了、改行文字が決まります。
+2. POST フォーム データを書式設定する境界文字列を追加します。 境界文字列により、データの開始、終了、改行文字が決まります。
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -90,14 +91,14 @@ ms.locfileid: "75446684"
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. フォーム データにパラメーターを追加するには、次の変数を使います。
+3. フォーム データにパラメーターを追加するには、次の変数を使います。
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. `BuildFormDataStart()` という名前の関数を作成し、境界文字列と画像のパスを使用して、フォーム データの開始を作成します。
+4. `BuildFormDataStart()` という名前の関数を作成し、境界文字列と画像へのパスを使用して、フォーム データの開始を作成します。
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +112,7 @@ ms.locfileid: "75446684"
         }
     ```
 
-4. `BuildFormDataEnd()` という名前の関数を作成し、境界文字列を使用して、フォーム データの終了を作成します。
+5. `BuildFormDataEnd()` という名前の関数を作成し、境界文字列を使用して、フォーム データの終了を作成します。
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -126,7 +127,7 @@ ms.locfileid: "75446684"
 
 2. `WebRequest` 使用して、URI、contentType 値、ヘッダーを格納します。  
 
-3. `request.GetRequestStream()` を使用して、フォーム データと画像データを書き込んだ後、応答を受け取ります。 関数は次のようになります。
+3. `request.GetRequestStream()` を使用して、フォーム データと画像データを書き込んだ後、応答を受け取ります。 関数は次のコードのようになります。
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -158,14 +159,14 @@ ms.locfileid: "75446684"
 
 ## <a name="create-the-main-method"></a>Main メソッドを作成する
 
-1. アプリケーションの `Main` メソッドでは、画像のファイル名とバイナリ データを取得します。
+1. アプリケーションの `Main()` メソッドでは、画像のファイル名とバイナリ データを取得します。
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. 境界を書式設定して、POST の本文を設定します。 その後、`startFormData()` と `endFormData` を呼び出してフォーム データを作成します。
+2. 境界を書式設定して、POST の本文を設定します。 その後、`BuildFormDataStart()` と `BuildFormDataEnd()` を呼び出して、フォーム データを作成します。
 
     ```csharp
     // Set up POST body.
@@ -180,7 +181,7 @@ ms.locfileid: "75446684"
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. `BingImageSearch()` を呼び出して API の応答を取得し、応答を表示します。
+4. `BingImageSearch()` を呼び出して API の応答を取得し、応答を出力します。
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,81 +192,81 @@ ms.locfileid: "75446684"
 
 ## <a name="using-httpclient"></a>HTTPClient の使用
 
-`HttpClient` を使用する場合は、`MultipartFormDataContent` クラスを使用してフォーム データを作成できます。 次のコード セクションを使用して、前の例の対応するメソッドを置き換えるだけです。
+`HttpClient` を使用する場合は、`MultipartFormDataContent` クラスを使用してフォーム データを作成できます。 次のコード セクションを使用して、前の例にある対応するメソッドを置き換えます。
 
-`Main` メソッドを次のコードに置き換えます。
+1. `Main()` メソッドを次のコードに置き換えます。
 
-```csharp
-        static void Main()
-        {
-            try
-            {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+   ```csharp
+           static void Main()
+           {
+               try
+               {
+                   Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-                if (accessKey.Length == 32)
-                {
-                    if (IsImagePathSet(imagePath))
-                    {
-                        var filename = GetImageFileName(imagePath);
-                        Console.WriteLine("Getting image insights for image: " + filename);
-                        var imageBinary = GetImageBinary(imagePath);
+                   if (accessKey.Length == 32)
+                   {
+                       if (IsImagePathSet(imagePath))
+                       {
+                           var filename = GetImageFileName(imagePath);
+                           Console.WriteLine("Getting image insights for image: " + filename);
+                           var imageBinary = GetImageBinary(imagePath);
 
-                        var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
-                        var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
+                           var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
+                           var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
 
-                        Console.WriteLine("\nJSON Response:\n");
-                        Console.WriteLine(JsonPrettyPrint(json));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Bing Visual Search API subscription key!");
-                    Console.WriteLine("Please paste yours into the source code.");
-                }
+                           Console.WriteLine("\nJSON Response:\n");
+                           Console.WriteLine(JsonPrettyPrint(json));
+                       }
+                   }
+                   else
+                   {
+                       Console.WriteLine("Invalid Bing Visual Search API subscription key!");
+                       Console.WriteLine("Please paste yours into the source code.");
+                   }
 
-                Console.Write("\nPress Enter to exit ");
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-```
+                   Console.Write("\nPress Enter to exit ");
+                   Console.ReadLine();
+               }
+               catch (Exception e)
+               {
+                   Console.WriteLine(e.Message);
+               }
+           }
+   ```
 
-`BingImageSearch` メソッドを次のコードに置き換えます。
+2. `BingImageSearch()` メソッドを次のコードに置き換えます。
 
-```csharp
-        /// <summary>
-        /// Calls the Bing visual search endpoint and returns the JSON response.
-        /// </summary>
-        static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
-        {
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
-            requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
+   ```csharp
+           /// <summary>
+           /// Calls the Bing visual search endpoint and returns the JSON response.
+           /// </summary>
+           static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
+           {
+               var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+               requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
 
-            var content = new MultipartFormDataContent(boundary);
-            content.Add(new ByteArrayContent(image), "image", "myimage");
-            requestMessage.Content = content;
+               var content = new MultipartFormDataContent(boundary);
+               content.Add(new ByteArrayContent(image), "image", "myimage");
+               requestMessage.Content = content;
 
-            var httpClient = new HttpClient();
+               var httpClient = new HttpClient();
 
-            Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
-            HttpResponseMessage httpResponse = httpRequest.Result;
-            HttpStatusCode statusCode = httpResponse.StatusCode;
-            HttpContent responseContent = httpResponse.Content;
+               Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
+               HttpResponseMessage httpResponse = httpRequest.Result;
+               HttpStatusCode statusCode = httpResponse.StatusCode;
+               HttpContent responseContent = httpResponse.Content;
 
-            string json = null;
+               string json = null;
 
-            if (responseContent != null)
-            {
-                Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
-                json = stringContentsTask.Result;
-            }
+               if (responseContent != null)
+               {
+                   Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
+                   json = stringContentsTask.Result;
+               }
 
-            return json;
-        }
-```
+               return json;
+           }
+   ```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383055"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087424"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -37,7 +37,7 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka
 
 またこのドキュメントでは、読者が「[Azure Kubernetes Service tutorial (Azure Container Service チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 この記事では、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
 ### <a name="network-topology"></a>ネットワーク トポロジ
 
@@ -80,7 +80,7 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
     |プロパティ | 値 |
     |---|---|
     |アドレス空間|AKS クラスター ネットワークに使用されているものと重複しないアドレス空間を使用する必要があります。|
-    |Location|AKS クラスターに使用した仮想ネットワークと同じ __場所__ を使用します。|
+    |場所|AKS クラスターに使用した仮想ネットワークと同じ __場所__ を使用します。|
 
 1. 仮想ネットワークが作成されるまで待ち、その後、次の手順に進みます。
 
@@ -92,9 +92,9 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 
     |プロパティ |値 |
     |---|---|
-    |\<この VN> からリモート仮想ネットワークへのピアリングの名前|このピアリング構成の一意の名前を入力します。|
+    |\<this VN> からリモート仮想ネットワークへのピアリングの名前|このピアリング構成の一意の名前を入力します。|
     |仮想ネットワーク|**AKS クラスター**用の仮想ネットワークを選択します。|
-    |\<AKS VN> から \<この VN> へのピアリングの名前|一意の名前を入力します。|
+    |\<AKS VN> から \<this VN> へのピアリングの名前|一意の名前を入力します。|
 
     その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。
 
@@ -118,7 +118,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
     ![Apache Ambari サービスの構成](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. __kafka-env__ 構成を検索するには、右上の `kafka-env`[Filter (フィルター)]__フィールドに「__ 」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
@@ -132,7 +132,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Kafka がリッスンするインターフェイスを構成するには、右上の `listeners`[Filter (フィルター)] __フィールドに「__ 」と入力します。
+6. Kafka がリッスンするインターフェイスを構成するには、右上の __[Filter (フィルター)]__ フィールドに「`listeners`」と入力します。
 
 7. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成するには、 __[listeners (リスナー)]__ フィールドの値を `PLAINTEXT://0.0.0.0:9092`に変更します。
 
@@ -160,8 +160,8 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 3. `index.js` ファイルを編集し、次の行を変更します。
 
-    * `var topic = 'mytopic'`: `mytopic` を、このアプリケーションで使用される Kafka トピックの名前に置き換えます。
-    * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13` を、クラスターのブローカー ホスト (いずれか 1 つ) の内部 IP アドレスに置き換えます。
+    * `var topic = 'mytopic'`:`mytopic` を、このアプリケーションで使用される Kafka トピックの名前に置き換えます。
+    * `var brokerHost = '176.16.0.13:9092`:`176.16.0.13` を、クラスターのいずれかのブローカー ホストの内部 IP アドレスに置き換えます。
 
         クラスター内のブローカー ホスト (workernodes) の内部 IP アドレスを取得する方法については、[Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) に関するドキュメントを参照してください。 ドメイン名が `wn` で始まるいずれかのエントリの IP アドレスを選択します。
 

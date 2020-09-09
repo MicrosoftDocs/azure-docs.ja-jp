@@ -3,7 +3,7 @@ title: Angular シングルページ アプリのチュートリアル - Azure
 titleSuffix: Microsoft identity platform
 description: Angular SPA アプリケーションで、Microsoft ID プラットフォーム エンドポイントからのアクセス トークンを必要とする API を呼び出す方法を説明します。
 services: active-directory
-author: hahamil
+author: hamiltonha
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,18 +11,15 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: a58da8b11876d662173ae83de43d8ed74ab43e93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181598"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118298"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
-
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 このチュートリアルでは、Angular シングルページ アプリケーション (SPA) で次のことを行う方法を説明します。
 - 個人用アカウント、職場アカウント、学校アカウントをサインインさせます。
@@ -34,7 +31,7 @@ ms.locfileid: "82181598"
 
 ## <a name="how-the-sample-app-works"></a>このサンプル アプリのしくみ
 
-![このチュートリアルで生成されたサンプル アプリの動作を示す図](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![このチュートリアルで生成されたサンプル アプリの動作を示す図](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 ### <a name="more-information"></a>詳細情報
 
@@ -63,17 +60,18 @@ MSAL.js ライブラリのソース コードは、GitHub の [AzureAD/microsoft
 
 次の npm コマンドを使用して、新しい Angular アプリケーションを生成します。
 
-```Bash
+```bash
 npm install -g @angular/cli@8                    # Install the Angular CLI
-npm install @angular/material@8 @angular/cdk@8   # Install the Angular Material component library (optional, for UI)
 ng new my-application --routing=true --style=css # Generate a new Angular app
+cd my-application                                # Change to the app directory
+npm install @angular/material@8 @angular/cdk@8   # Install the Angular Material component library (optional, for UI)
 npm install msal @azure/msal-angular             # Install MSAL and MSAL Angular in your application
 ng generate component page-name                  # To add a new page (such as a home or profile page)
 ```
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
-Azure portal に[シングルページ アプリケーションを登録する手順](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)を実行します。
+Azure portal に[シングルページ アプリケーションを登録する手順](./scenario-spa-app-registration.md)を実行します。
 
 後で使用するために、登録の **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 
@@ -126,7 +124,7 @@ Azure portal に[シングルページ アプリケーションを登録する�
     |値の名前|概要|
     |---------|---------|
     |Enter_the_Application_Id_Here|これは、アプリケーションの登録の **[概要]** ページの **[アプリケーション (クライアント) ID]** の値です。 |
-    |Enter_the_Cloud_Instance_Id_Here|これは、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「 **https://login.microsoftonline.com** 」と入力します。 各国のクラウド (中国など) の場合は、「[各国のクラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)」を参照してください。|
+    |Enter_the_Cloud_Instance_Id_Here|これは、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「 **https://login.microsoftonline.com** 」と入力します。 各国のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。|
     |Enter_the_Tenant_Info_Here| 次のいずれかのオプションに設定します。1) お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値をディレクトリ (テナント) ID またはテナント名 (例: "**contoso.microsoft.com**") に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。 |
     |Enter_the_Redirect_Uri_Here|**http://localhost:4200** に置き換えます。|
 
@@ -141,7 +139,7 @@ Azure portal に[シングルページ アプリケーションを登録する�
 3. 次の import ステートメントを `src/app/app.component.ts` の先頭に追加します。
 
     ```javascript
-    import { MsalService } from '@azure/msal-angular';
+    import { MsalService, BroadcastService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
 ## <a name="sign-in-a-user"></a>ユーザーのサインイン
@@ -151,6 +149,8 @@ Azure portal に[シングルページ アプリケーションを登録する�
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+
+    ngOnInit() { }
 
     login() {
         const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -343,7 +343,6 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 ## <a name="next-steps"></a>次のステップ
 
-引き続き、ユーザーをサインインさせてトークンを取得する方法を Angular のチュートリアルでご覧ください。
+ID とアクセスの管理を初めて体験する方のために、「[認証と承認](authentication-vs-authorization.md)」を手始めに、最新の認証の概念を理解するのに役立つ記事がいくつか用意されています。
 
-> [!div class="nextstepaction"]
-> [Angular チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Microsoft ID プラットフォームでのシングルページ アプリケーションの開発についてさらに詳しく知りたい場合は、複数パートから構成される記事の「[シナリオ: シングルページ アプリケーション](scenario-spa-overview.md)」シリーズが、作業を開始するのに役立ちます。

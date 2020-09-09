@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 92957bd078c04a9bb7ac35f9d30f042a44e10764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074133"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -37,7 +37,7 @@ ms.locfileid: "82100636"
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
-次の手順は、VHD ディスクをコピーし、スナップショット構成を作成する方法を示しています。 その後、[New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用して、ディスクのスナップショットを取得できます。 
+次の手順は、VHD ディスクをコピーし、スナップショット構成を作成する方法を示しています。 その後、[New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用して、ディスクのスナップショットを取得できます。 
 
  
 
@@ -53,18 +53,18 @@ ms.locfileid: "82100636"
 2. VM を取得します。
 
    ```azurepowershell-interactive
-   $vm = get-azvm `
-   -ResourceGroupName $resourceGroupName 
-   -Name $vmName
+   $vm = Get-AzVM `
+       -ResourceGroupName $resourceGroupName `
+       -Name $vmName
    ```
 
 3. スナップショットの構成を作成します。 この例では、スナップショットは OS ディスクのものです。
 
    ```azurepowershell-interactive
-   $snapshot =  New-AzSnapshotConfig 
-   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
-   -Location $location 
-   -CreateOption copy
+   $snapshot =  New-AzSnapshotConfig `
+       -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+       -Location $location `
+       -CreateOption copy
    ```
    
    > [!NOTE]
@@ -73,10 +73,10 @@ ms.locfileid: "82100636"
 4. スナップショットを取得します。
 
    ```azurepowershell-interactive
-   New-AzSnapshot 
-   -Snapshot $snapshot 
-   -SnapshotName $snapshotName 
-   -ResourceGroupName $resourceGroupName 
+   New-AzSnapshot `
+       -Snapshot $snapshot `
+       -SnapshotName $snapshotName `
+       -ResourceGroupName $resourceGroupName 
    ```
 
 

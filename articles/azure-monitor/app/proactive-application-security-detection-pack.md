@@ -3,18 +3,18 @@ title: Azure Application Insights とセキュリティ検出パック
 description: Azure Application Insights とスマート検出を使用してアプリケーションを監視し、潜在的なセキュリティの問題を検出します。
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081629"
 ---
 # <a name="application-security-detection-pack-preview"></a>アプリケーション セキュリティ検出パック (プレビュー)
 
 Application Insights は、アプリケーションによって生成されたテレメトリを自動的に分析し、潜在的なセキュリティの問題を検出します。 この機能を使用して、潜在的なセキュリティの問題を識別し、アプリケーションを修正するか必要なセキュリティ手段が講じることで、それらの問題を処理できます。
 
-この機能を使用するには、[テレメトリを送信するようにアプリを構成する](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview)こと以外は、特別な設定は必要ありません。
+この機能を使用するには、[テレメトリを送信するようにアプリを構成する](./usage-overview.md)こと以外は、特別な設定は必要ありません。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
 検出されるセキュリティの問題には、次の 3 つの種類があります。

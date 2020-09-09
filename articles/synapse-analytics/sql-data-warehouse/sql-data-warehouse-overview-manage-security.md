@@ -5,18 +5,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 27d3a242d91a79ea00974748f4a8b5460d2dd247
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200972"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Azure Synapse でデータベースをセキュリティで保護する
 
@@ -33,11 +33,11 @@ ms.locfileid: "81416068"
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。
+ファイアウォール ルールは[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)とそのデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。
 
-ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから SQL プールにアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークのファイアウォールとローカル コンピューターを設定してください。  
+ベスト プラクティスとして、可能な限りサーバーレベルのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから SQL プールにアクセスするには、TCP ポート 1433 での発信を許可するようにネットワークのファイアウォールとローカル コンピューターを設定してください。  
 
-Azure Synapse Analytics は、サーバー レベルの IP ファイアウォール規則を使用します。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください
+Azure Synapse Analytics は、サーバー レベルの IP ファイアウォール規則を使用します。 データベース レベルの IP ファイアウォール規則はサポートされていません。 詳細については、「[Azure SQL Database ファイアウォール規則](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)」を参照してください
 
 SQL プールへの接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
@@ -45,11 +45,11 @@ SQL プールへの接続は、既定で暗号化されます。  暗号化を�
 
 認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL プールでは現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。
 
-データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
+データベースのサーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定しています。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
 
 ただし、ベスト プラクティスとして、組織のユーザーは別のアカウントを使用して認証する必要があります。 この方法により、アプリケーションに付与されるアクセス許可を制限でき、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。
 
-SQL Server 認証済みユーザーを作成するには、サーバーの **マスター** データベースにサーバー管理ログインを使用して接続し、新しいサーバー ログインを作成します。  また、マスター データベースでもユーザーを作成することをお勧めします。 マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。  また、オブジェクト エクスプ ローラーを使用して、SQL Server のすべてのデータベースを表示することもできます。
+SQL Server 認証済みユーザーを作成するには、サーバーの **マスター** データベースにサーバー管理ログインを使用して接続し、新しいサーバー ログインを作成します。  また、マスター データベースでもユーザーを作成することをお勧めします。 マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。  また、オブジェクト エクスプ ローラーを使用して、サーバーのすべてのデータベースを表示することもできます。
 
 ```sql
 -- Connect to master database and create a login
@@ -66,7 +66,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ログインの作成や新しいデータベースの作成などの追加の操作を実行するアクセス許可をユーザーに与えるには、master データベース内の `Loginmanager` ロールと `dbmanager` ロールにユーザーを割り当てます。
 
-これらの追加のロールと SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理](../../sql-database/sql-database-manage-logins.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事をご覧ください。  Azure Active Directory を使用した接続の詳細については、[Azure Active Directory Authentication を使用した接続](sql-data-warehouse-authentication.md)に関する記事を参照してください。
+これらの追加のロールと SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理](../../azure-sql/database/logins-create-manage.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事をご覧ください。  Azure Active Directory を使用した接続の詳細については、[Azure Active Directory Authentication を使用した接続](sql-data-warehouse-authentication.md)に関する記事を参照してください。
 
 ## <a name="authorization"></a>承認
 
@@ -92,13 +92,13 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Azure Portal または Azure Resource Manager API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 詳細については、[Azure portal でのロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事をご覧ください。
+Azure portal または Azure Resource Manager API を使用したデータベースとサーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 詳細については、[Azure portal でのロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事をご覧ください。
 
 ## <a name="encryption"></a>暗号化
 
 Transparent Data Encryption (TDE) を使用すると、保存データを暗号化および暗号化解除することにより、悪意のあるアクティビティの脅威から保護できます。 データベースを暗号化すると、アプリケーションに変更を加える必要なく、関連付けられているバックアップとトランザクション ログ ファイルが暗号化されます。 TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。
 
-SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的に回転します。 使用される暗号化アルゴリズムは、AES-256 です。 TDE の一般的な説明については、「 [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的に回転します。 使用される暗号化アルゴリズムは、AES-256 です。 TDE の一般的な説明については、「 [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
 
 データベースは、[Azure portal](sql-data-warehouse-encryption-tde.md) または [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) を使用して暗号化できます。
 

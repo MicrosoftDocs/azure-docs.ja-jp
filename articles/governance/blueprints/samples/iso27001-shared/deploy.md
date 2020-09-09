@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共有サービス ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む ISO 27001 Shared Services ブループリント サンプルのデプロイ手順です。
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: a9dabc99469321445006e449757a10fbc51aba87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0f2fa71e56deadba1188ab0fa69898c261861eb5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75920685"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521464"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルをデプロイする
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側の **[はじめに]** ページで、 _[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
-1. 検索、 **ISO 27001。Shared Services\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、**このサンプルを使用する** を選択します。 __
+1. 検索、 **ISO 27001。Shared Services\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、**このサンプルを使用する** を選択します。__
 
 1. ブループリント サンプルの _[基本]_ を入力します。
 
@@ -110,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |許可されるリソースの種類|ポリシー割り当て|許可されるリソースの種類|デプロイできるリソースの種類の一覧。 この一覧は、共有サービスでデプロイされるすべてのリソースの種類から構成されています。|
 |許可されるストレージ アカウントの SKU|ポリシー割り当て|Allowed storage SKU (許可されるストレージの SKU)|許可される診断ログのストレージ アカウントの SKU の一覧。 既定値は _["Standard_LRS"]_ です。|
 |許可される仮想マシンの SKU|ポリシー割り当て|デプロイが許可される仮想マシンの SKU の一覧。 既定値は " _["Standard_DS1_v2", "Standard_DS2_v2"]\(["Standard_DS1_v2"、"Standard_DS2_v2"]\)_ " です。|
-|ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを監査するリソースの種類|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
+|ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを監査するリソースの種類|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 |Log Analytics resource group (Log Analytics リソース グループ)|Resource group|名前|**[ロック済み]** - **組織名**と `-sharedsvsc-log-rg` を連結して、リソース グループを一意にします。|
 |Log Analytics resource group (Log Analytics リソース グループ)|Resource group|場所|**[ロック済み]** - ブループリントのパラメーターを使用します。|
 |Log Analytics テンプレート|Resource Manager テンプレート|サービス階層|Log Analytics ワークスペースの階層を設定します。 既定値は _[PerNode]_ です。|

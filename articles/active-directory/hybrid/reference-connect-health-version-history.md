@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 03/20/2019
+ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897038"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279416"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -30,7 +30,15 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 > Connect Health エージェントは、新しいバージョンがリリースされると自動的に更新されます。 Azure portal で自動アップグレード設定が有効になっていることを確認してください。
 >
 
-Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
+Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](./reference-connect-version-history.md)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
+
+## <a name="april-2020"></a>2020 年 4 月
+**エージェントの更新**
+
+- AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.77.0)
+
+   1.   アラートが誤って報告されていた "AD FS サービスのサービス プリンシパル名 (SPN) が無効" アラートのバグを修正しました。
+
 
 ## <a name="july-2019"></a>2019 年 7 月
 **エージェントの更新**
@@ -217,7 +225,7 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 ## <a name="november-2015"></a>2015 年 11 月
 **新機能:**
 
-* [ロールベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-azure-rbac) のサポート
 
 **新しいプレビュー機能:**
 
@@ -251,6 +259,5 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 * アプリケーション、エラーの種類などによってグループ化された AD FS サーバーへの失敗した要求の傾向。
 * Azure AD グローバル管理者の資格情報を使用した簡単なエージェントのデプロイメント。  
 
-## <a name="next-steps"></a>次のステップ
-「 [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](whatis-hybrid-identity-health.md)」を参照してください。
-
+## <a name="next-steps"></a>次の手順
+「 [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](./whatis-azure-ad-connect.md)」を参照してください。

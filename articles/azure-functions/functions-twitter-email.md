@@ -4,21 +4,21 @@ description: Azure Logic Apps および Azure Cognitive Services と統合し、
 author: craigshoemaker
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 04/27/2020
 ms.author: cshoe
-ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f6698bcc8125cd00dcb1cd6c86a8d69153242b35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
+ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190301"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208551"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
 Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合できます。 この統合により、他の Azure サービスやサードパーティ製のサービスとのオーケストレーションにおいて、Functions のコンピューティング機能を使用することができます。 
 
-このチュートリアルでは、Azure 上で Functions と Logic Apps、Cognitive Services を使用することで、Twitter 投稿の感情分析を実行する方法を説明します。 HTTP によってトリガーされる関数は、感情 スコアに基づいて、ツイートを緑、黄、赤に分類します。 ネガティブな感情が検出されると、電子メールが送信されます。 
+このチュートリアルでは、Azure 上で Azure Functions と Logic Apps、Cognitive Services を使用することで、Twitter 投稿の感情分析を実行する方法を説明します。 HTTP トリガー関数は、センチメント スコアに基づいて、ツイートを緑、黄、赤に分類します。 ネガティブな感情が検出されると、電子メールが送信されます。 
 
 ![Logic Apps デザイナーでのアプリの最初の 2 つの手順の画像](media/functions-twitter-email/00-logic-app-overview.png)
 
@@ -38,7 +38,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 + [Outlook.com](https://outlook.com/) のアカウント (通知の送信用)。
 
 > [!NOTE]
-> Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のアプリおよびサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+> Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のアプリおよびサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
 + この記事では、[Azure portal から初めての関数を作成する方法](functions-create-first-azure-function.md)に関するページで作成したリソースを使用して作業を開始します。
 リソースの作成が済んでいない場合は、すぐにこれらの手順に従って Function App を作成してください。
@@ -74,21 +74,21 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
 ## <a name="create-the-function-app"></a>Function App の作成
 
-関数は、Logic Apps ワークフローの処理タスクをオフロードするのに役立ちます。 このチュートリアルでは、HTTP によってトリガーされる関数を使用して、Cognitive Services からのツイート 感情 スコアを処理し、カテゴリ値を返します。  
+Azure Functions は、ロジック アプリ ワークフローの処理タスクをオフロードするのに役立ちます。 このチュートリアルでは、HTTP トリガー関数を使用して、Cognitive Services からのツイート センチメント スコアを処理し、カテゴリ値を返します。  
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-an-http-triggered-function"></a>HTTP によってトリガーされる関数の作成  
+## <a name="create-an-http-trigger-function"></a>HTTP トリガー関数の作成  
 
-1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** を選択します。
+1. **[関数]** ウィンドウの左側のメニューで、 **[関数]** を選択し、上部のメニューから **[追加]** を選択します。
 
-    ![Azure Portal での関数のクイック スタート ページ](media/functions-twitter-email/05-function-app-create-portal.png)
+2. **[新しい関数]** ウィンドウで **[HTTP トリガー]** を選択します。
 
-2. 次に、 **[Webhook + API]** を選択し、 **[作成]** をクリックします。 
+    ![HTTP トリガー関数の選択](./media/functions-twitter-email/06-function-http-trigger.png)
 
-    ![HTTP トリガーの選択](./media/functions-twitter-email/06-function-webhook.png)
+3. **[新しい関数]** ページで **[関数の作成]** を選択します。
 
-3. この `run.csx` ファイルの内容を次のコードに置き換えて、 **[保存]** をクリックします。
+4. 新しい HTTP トリガー関数内で、左側のメニューから **[Code + Test]\(コード + テスト\)** を選択します。`run.csx` ファイルの内容を次のコードに置き換え、 **[保存]** を選択します。
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -123,11 +123,12 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
             : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
+
     この関数コードは、要求で受信した感情 スコアに基づいて、色のカテゴリを返します。 
 
-4. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。 **[要求本文]** に「`0.2`」という値を入力し、 **[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
+5. 関数をテストするには、上部のメニューから **[テスト]** を選択します。 **[入力]** タブで、 **[Body]\(本体\)** に `0.2` の値を入力し、 **[実行]** を選択します。 値 **RED** が、 **[出力]** タブの **[HTTP 応答のコンテンツ]** に返されます。 
 
-    ![Azure Portal で関数をテストする](./media/functions-twitter-email/07-function-test.png)
+    :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="プロキシ設定を定義する":::
 
 これで、感情 スコアを分類する関数が作成できました。 次に、Twitter および Cognitive Services API に関数を統合するロジック アプリを作成します。 
 
@@ -187,7 +188,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
     ![[新しいステップ]、[アクションの追加]](media/functions-twitter-email/12-connection-settings.png)
 
-4. 次に、テキスト ボックスに「**Tweet Text**」と入力し、 **[新しいステップ]** をクリックします。
+4. 次に、テキスト ボックスに「**ツイート テキスト**」と入力し、 **[新しいステップ]** をクリックします。
 
     ![分析するテキストを定義する](media/functions-twitter-email/13-analyze-tweet-text.png)
 
@@ -215,7 +216,7 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 
 ## <a name="add-email-notifications"></a>電子メール通知を追加する
 
-ワークフローの最後の部分では、感情スコアが _RED_ だったときに電子メールがトリガーされます。 このトピックでは Outlook.com コネクタを使用します。 Gmail や Office 365 の Outlook コネクタを使用して同様の手順を実行することもできます。   
+ワークフローの最後の部分では、感情スコアが _RED_ だったときに電子メールがトリガーされます。 この記事では Outlook.com コネクタを使用します。 Gmail や Office 365 の Outlook コネクタを使用して同様の手順を実行することもできます。   
 
 1. Logic Apps デザイナーで、 **[新しいステップ]**  >  **[条件の追加]** をクリックします。 
 
@@ -303,4 +304,3 @@ Cognitive Services API は、個々のリソースとして Azure で使用で�
 > [Azure Functions を使用してサーバーレス API を作成する](functions-create-serverless-api.md)
 
 Logic Apps の詳細については、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) に関するページを参照してください。
-

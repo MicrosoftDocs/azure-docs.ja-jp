@@ -1,27 +1,22 @@
 ---
 title: Windows Virtual Desktop 環境のホスト プールの作成 - Azure
 description: Windows Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612579"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121376"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)を参照してください。
 
 この記事では、Windows Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
 
@@ -37,15 +32,16 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>エラー:サービスにアクセスすると、[無料アカウントの作成] が表示される
 
-!["無料アカウントの作成" メッセージが表示された Azure portal を示す画像](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> !["無料アカウントの作成" メッセージが表示された Azure portal を示す画像](media/create-new-account.png)
 
-**原因**:Azure にサインインしたアカウントにアクティブなサブスクリプションがないか、アカウントにサブスクリプションを表示するアクセス許可がありません。 
+**原因**:Azure にサインインしたアカウントにアクティブなサブスクリプションがないか、アカウントにサブスクリプションを表示するアクセス許可がありません。
 
 **解決策**:少なくとも共同作成者レベルのアクセス権を持つアカウントを使用して、セッション ホスト仮想マシン (VM) をデプロイするサブスクリプションにサインインします。
 
 ### <a name="error-exceeding-quota-limit"></a>エラー:"クォータ制限を超過しています"
 
-操作がクォータ制限を超えた場合は、次のいずれかの方法を実行できます。 
+操作がクォータ制限を超えた場合は、次のいずれかの方法を実行できます。
 
 - 同じパラメーターで、ただし VM数と VM コア数を減らして、新しいホスト プールを作成します。
 
@@ -60,9 +56,10 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<ホスト名>/joindomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>エラー:デプロイに失敗しました….\<hostname>/joindomain
 
-![デプロイ失敗のスクリーンショット。](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![デプロイ失敗のスクリーンショット。](media/failure-joindomain.png)
 
 未処理エラーの例:
 
@@ -103,7 +100,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vmextensionprovisioningerror"></a>エラー:VMExtensionProvisioningError
 
-![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![ターミナルのプロビジョニングの状態 (失敗) を示しているデプロイ失敗のスクリーンショット。](media/failure-vmextensionprovisioning.png)
 
 **原因 1:** Windows Virtual Desktop 環境の一時的なエラーです。
 
@@ -113,14 +111,15 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>エラー:指定した管理者のユーザー名は許可されません
 
-![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![指定した管理者が許可されないことを示しているデプロイ失敗のスクリーンショット。](media/failure-username.png)
 
 未処理エラーの例:
 
 ```Error
- { …{ "provisioningOperation": 
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ { …{ "provisioningOperation":
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
  "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
@@ -130,16 +129,17 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>エラー:拡張機能を処理しているときに VM がエラーを報告しました
 
-![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![リソース操作の完了とターミナルのプロビジョニングの状態を示している、デプロイ失敗のスクリーンショット。](media/failure-processing.png)
 
 未処理エラーの例:
 
 ```Error
 { … "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
  One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
@@ -149,7 +149,8 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>エラー:DeploymentFailed – PowerShell DSC 構成 'FirstSessionHost' がエラーで完了しました
 
-![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![PowerShell DSC 構成 'FirstSessionHost' がエラーで完了したデプロイ失敗のスクリーンショット。](media/failure-dsc.png)
 
 未処理エラーの例:
 
@@ -159,7 +160,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n
@@ -251,6 +252,12 @@ the VM.\\\"
 **原因:** このエラーの原因は、Azure Resource Manager テンプレートに関連付けられている zip ファイルのダウンロードが、静的ルート、ファイアウォール規則、または NSG によってブロックされていることです。
 
 **解決策:** ブロックしている静的ルート、ファイアウォール規則、または NSG を削除します。 必要に応じて、Azure Resource Manager テンプレートの json ファイルをテキスト エディターで開き、zip ファイルへのリンクを実行し、許可されている場所にリソースをダウンロードします。
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>エラー:VM を削除した後、ホスト プールからセッション ホストを削除することができません
+
+**原因:** VM を削除する前に、セッション ホストを削除する必要があります。
+
+**解決策:** セッション ホストをドレイン モードにして、セッション ホストからすべてのユーザーをサインアウトしてから、ホストを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

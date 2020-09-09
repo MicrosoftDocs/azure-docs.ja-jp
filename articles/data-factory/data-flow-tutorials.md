@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 04/17/2020
-ms.openlocfilehash: 3abec9b0c37e0475e369ce3cd2f91e40a1040b75
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 08/11/2020
+ms.openlocfilehash: c1527161948a6312fc0877748b2818b3ccc2143e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628965"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322621"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -37,6 +37,8 @@ ms.locfileid: "82628965"
 
 [Benchmark timings (ベンチマークのタイミング)](http://youtu.be/6CSbWm4lRhw?hd=1)
 
+[データ フローのワークフローのデバッグ](https://youtu.be/y3suL7UsWVw)
+
 ## <a name="transformation-overviews"></a>変換の概要
 
 [Aggregate transformation (集計変換)](http://youtu.be/jdL75xIr98I)
@@ -51,6 +53,8 @@ ms.locfileid: "82628965"
 
 [参照変換](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
+[参照変換の更新情報とヒント](https://youtu.be/MBskWoeuTLw)
+
 [Pivot transformation (ピボット変換)](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
 [Pivot transformation: mapping drifted columns (ピボット変換: 誤差のある列のマッピング)](https://youtu.be/5MygzCX0wnM)
@@ -58,6 +62,8 @@ ms.locfileid: "82628965"
 [Select transformation (選択変換)](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
 [Select transformation:Rule-based mapping (選択変換: ルールベースのマッピング)](https://youtu.be/5lf1lh1qMwU)
+
+[Select transformation:大規模なデータセット](https://www.youtube.com/watch?v=R5ea2_R0ouc)
 
 [Surrogate key transformation (代理キー変換)](https://www.youtube.com/watch?v=ISpegL9CbTM)
 
@@ -101,8 +107,6 @@ ms.locfileid: "82628965"
 
 [Data lineage (データ系列)](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
-[Optimization tips (最適化のヒント)](https://www.youtube.com/watch?v=a2KtwUJngHo)
-
 [Iterate files with parameters (パラメーターを使用したファイルの反復処理)](http://youtu.be/uEgz0ptYRDM?hd=1)
 
 [Decrease start-up times (起動時間の短縮)](https://youtu.be/FFCbU4ujCiY?t=528)
@@ -115,6 +119,8 @@ ms.locfileid: "82628965"
 
 [データ フローの起動時間の最適化](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
+[データ フロー用の Azure Integration Runtime](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
 ## <a name="mapping-data-flow-scenarios"></a>マッピング データ フローのシナリオ
 
 [Fuzzy lookups (あいまい参照)](http://youtu.be/7gdwExjHBbw)
@@ -123,7 +129,7 @@ ms.locfileid: "82628965"
 
 [Clean addresses pattern (アドレスのクリーニングのパターン)](https://youtu.be/axEYbuU3lmw)
 
-[Deduplication (重複除去)](https://www.youtube.com/watch?v=OLenvYwg__I)
+[Deduplication (重複除去)](https://youtu.be/QOi26ETtPTw)
 
 [Merge files (ファイルのマージ)](http://youtu.be/WbDTBAyYte8)
 
@@ -148,6 +154,8 @@ ms.locfileid: "82628965"
 [Logical Models vs. Physical Models (論理モデルと物理モデル)](http://youtu.be/K5tgzLjEE9Q)
 
 [Detect source data changes (ソース データの変更の検出)](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+[ジェネリック型 2 緩やかに変化するディメンション](http://youtu.be/tc283k8CWh8)
 
 ## <a name="data-flow-expressions"></a>データ フローの式
 

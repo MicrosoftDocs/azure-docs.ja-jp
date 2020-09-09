@@ -1,16 +1,17 @@
 ---
 title: Service Fabric のカスタム正常性レポートの追加
 description: Azure Service Fabric の正常性エンティティにカスタム正常性レポートを送信する方法について説明します。 品質正常性レポートの設計と実装の推奨事項を紹介します。
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: d00f740085b15bdb5fe698a069d97f168507f31f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: gwallace
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451595"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012655"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Service Fabric のカスタム正常性レポートの追加
 Azure Service Fabric では、特定のエンティティで、問題のあるクラスターおよびアプリケーションの条件にフラグを設定することを目的とする [正常性モデル](service-fabric-health-introduction.md) が導入されています。 正常性モデルは、 **正常性レポーター** (システム コンポーネントとウォッチドッグ) を使用します。 その目標は、簡単かつ迅速な診断および修復です。 サービスの作成者は、正常性に関して事前に検討する必要があります。 正常性に影響する可能性があるすべての条件は、特にルートに近い問題にフラグを設定するために役立つ場合に、レポートする必要があります。 正常性情報があると、デバッグや調査にかかる時間と労力を軽減することができます。 クラウド (プライベートまたは Azure) で大規模なサービスを立ち上げ、運用すると、この情報が役立つことがよくわかります。
@@ -38,7 +39,7 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 > 
 > 
 
-正常性レポートの設計を決定したら、正常性レポートを簡単に送信できます。 クラスターが[セキュリティで保護](service-fabric-cluster-security.md)されていない場合や、ファブリック クライアントに管理者特権がある場合は、[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) を使用して正常性をレポートできます。 レポートの送信には、PowerShell または REST で API を介して [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) を使用します。 バッチ レポートで、パフォーマンスを向上することもできます。
+正常性レポートの設計を決定したら、正常性レポートを簡単に送信できます。 クラスターが[セキュリティで保護](service-fabric-cluster-security.md)されていない場合や、ファブリック クライアントに管理者特権がある場合は、[FabricClient](/dotnet/api/system.fabric.fabricclient) を使用して正常性をレポートできます。 レポートの送信には、PowerShell または REST で API を介して [FabricClient.HealthManager.ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) を使用します。 バッチ レポートで、パフォーマンスを向上することもできます。
 
 > [!NOTE]
 > 正常性レポートは同期的であり、クライアント側の検証作業のみを表します。 レポートが正常性クライアントあるいは `Partition` または `CodePackageActivationContext` オブジェクトによって受け入れられても、そのレポートがストアに適用されるとは限りません。 正常性レポートは非同期に送信されます。また、場合によっては他のレポートと一括して送信される可能性があります。 サーバー上の処理が失敗する場合もあります (シーケンス番号が古い、レポートが適用されるエンティティが削除されているなど)。
@@ -58,7 +59,7 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 > 
 
 クライアントでのバッファリングでは、レポートの一意性を考慮に入れます。 たとえば、特定の不良なレポーターが、同じエンティティの同じプロパティに関して、1 秒あたり 100 個のレポートを発行している場合、レポートは直前のバージョンに置き換えられます。 このようなレポートは、クライアント キューに最大でも 1 つ存在します。 バッチ処理を構成すると、複数のレポートは 1 つにまとめられ、送信間隔ごとに 1 回、正常性マネージャーに送信されます。 エンティティの最新の状態が反映された、最後に追加されたレポートが送信されます。
-正常性に関連するエントリの望ましい値を指定した [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) を渡して `FabricClient` を作成するときに、構成パラメーターを指定します。
+正常性に関連するエントリの望ましい値を指定した [FabricClientSettings](/dotnet/api/system.fabric.fabricclientsettings) を渡して `FabricClient` を作成するときに、構成パラメーターを指定します。
 
 ファブリック クライアントを作成し、レポートの追加時にレポートを送信する例を次に示します。 タイムアウトや、再試行可能なエラーが発生した場合、40 秒間隔で再試行されます。
 
@@ -72,7 +73,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-既定のファブリック クライアント設定を維持することをお勧めします。既定で `HealthReportSendInterval` は 30 秒に設定されています。 この設定で、バッチ処理によるパフォーマンスが最適になります。 できるだけ早く送信する必要がある重要なレポートの場合は、[FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API で Immediate `true` を指定して `HealthReportSendOptions` を使用します。 Immediate (即時) レポートは、このバッチ処理間隔をバイパスします。 正常性クライアントのバッチ処理は可能な限り常に利用することが望ましいので、Immediate フラグは慎重に使用してください。 即時送信は、ファブリック クライアントが終了するときも便利です (たとえば、プロセスが無効な状態と判断され、副作用を防ぐためにシャットダウンする必要がある場合など)。 蓄積されたレポートは、ベストエフォートで送信されます。 Immediate フラグを使用する 1 つのレポートが追加されると、正常性クライアントは最終送信以降に蓄積されたすべてのレポートをバッチ処理します。
+既定のファブリック クライアント設定を維持することをお勧めします。既定で `HealthReportSendInterval` は 30 秒に設定されています。 この設定で、バッチ処理によるパフォーマンスが最適になります。 できるだけ早く送信する必要がある重要なレポートの場合は、[FabricClient.HealthClient.ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API で Immediate `true` を指定して `HealthReportSendOptions` を使用します。 Immediate (即時) レポートは、このバッチ処理間隔をバイパスします。 正常性クライアントのバッチ処理は可能な限り常に利用することが望ましいので、Immediate フラグは慎重に使用してください。 即時送信は、ファブリック クライアントが終了するときも便利です (たとえば、プロセスが無効な状態と判断され、副作用を防ぐためにシャットダウンする必要がある場合など)。 蓄積されたレポートは、ベストエフォートで送信されます。 Immediate フラグを使用する 1 つのレポートが追加されると、正常性クライアントは最終送信以降に蓄積されたすべてのレポートをバッチ処理します。
 
 PowerShell を使用して、クラスターへの接続を確立するときに、同じパラメーターを指定できます。 ローカル クラスターへの接続を開始する例を次に示します。
 
@@ -114,12 +115,12 @@ REST の場合、レポートは Service Fabric ゲートウェイに送信さ�
 ## <a name="report-from-within-low-privilege-services"></a>低特権サービス内からのレポート
 クラスターに対する管理アクセス権がない Service Fabric サービスの場合、`Partition` または `CodePackageActivationContext` を使用して現在のコンテキストのエンティティに関する正常性をレポートすることができます。
 
-* ステートレス サービスの場合は、 [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) を使用して現在のサービス インスタンスについてレポートします。
-* ステートフル サービス場合は、 [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) を使用して現在のレプリカについてレポートします。
-* 現在のパーティション エンティティについてレポートするには、 [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) を使用します。
-* 現在のアプリケーションについてレポートするには、 [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) を使用します。
-* 現在のノード上にデプロイされている現在のアプリケーションについてレポートするには、 [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) を使用します。
-* 現在のノード上にデプロイされているアプリケーションのサービス パッケージについてレポートするには、[CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) を使用します。
+* ステートレス サービスの場合は、 [IStatelessServicePartition.ReportInstanceHealth](/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) を使用して現在のサービス インスタンスについてレポートします。
+* ステートフル サービス場合は、 [IStatefulServicePartition.ReportReplicaHealth](/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) を使用して現在のレプリカについてレポートします。
+* 現在のパーティション エンティティについてレポートするには、 [IServicePartition.ReportPartitionHealth](/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) を使用します。
+* 現在のアプリケーションについてレポートするには、 [CodePackageActivationContext.ReportApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) を使用します。
+* 現在のノード上にデプロイされている現在のアプリケーションについてレポートするには、 [CodePackageActivationContext.ReportDeployedApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) を使用します。
+* 現在のノード上にデプロイされているアプリケーションのサービス パッケージについてレポートするには、[CodePackageActivationContext.ReportDeployedServicePackageHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) を使用します。
 
 > [!NOTE]
 > 内部的には、`Partition` と `CodePackageActivationContext` は、既定の設定で構成される正常性クライアントを保持します。 [正常性クライアント](service-fabric-report-health.md#health-client)について説明したように、レポートはタイマーに従ってバッチ処理され、送信されます。 レポートを送信できるように、オブジェクトを維持することをお勧めします。
@@ -290,7 +291,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-REST と、目的のエンティティに送られ、本体に正常性レポートの説明が含まれている POST 要求を使用して、正常性レポートを送信します。 たとえば、REST の送信方法については、[クラスターの正常性レポート](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster)または[サービスの正常性レポート](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)に関するページを参照してください。 すべてのエンティティがサポートされています。
+REST と、目的のエンティティに送られ、本体に正常性レポートの説明が含まれている POST 要求を使用して、正常性レポートを送信します。 たとえば、REST の送信方法については、[クラスターの正常性レポート](/rest/api/servicefabric/report-the-health-of-a-cluster)または[サービスの正常性レポート](/rest/api/servicefabric/report-the-health-of-a-service)に関するページを参照してください。 すべてのエンティティがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 正常性データに基づいて、サービスの作成者とクラスター/アプリケーション管理者は、情報の使用方法を検討できます。 たとえば、障害が引き起こされる前に重大な問題を把握するために、正常性状態に基づいてアラートを設定できます。 管理者は、問題を自動的に解決する修復システムを設定することもできます。
@@ -306,4 +307,3 @@ REST と、目的のエンティティに送られ、本体に正常性レポー
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 354cd8d291f8ad5c842d33b5ac63b0deb58b7d41
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: a3c37d42cc6cda644063b098cb53f05079455339
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870038"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508527"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Azure での Windows 仮想マシンの可用性の管理 
 
@@ -26,5 +26,5 @@ ms.locfileid: "81870038"
 
 IaaS の SQL Server で N 層アプリケーションを実行するための参照アーキテクチャを表示する
 
-* [SQL Server を使用した Azure の Windows N 層アプリケーション](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [高可用性を得るために複数の Azure リージョンで N 層アプリケーションを実行する](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [SQL Server を使用した Azure の Windows N 層アプリケーション](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [高可用性を得るために複数の Azure リージョンで N 層アプリケーションを実行する](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

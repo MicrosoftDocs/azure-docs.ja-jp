@@ -3,29 +3,29 @@ title: アプリケーションのセルフ サービス アクセスの使用�
 description: セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55da8731855c8afda496edff33f3fbb7982cd44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29ff3ca98c0fa5929a5e1c0ad5678222253130b6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65784554"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641791"
 ---
 # <a name="how-to-use-self-service-application-access"></a>アプリケーションのセルフサービス アクセスの使用方法
 
-ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可する任意のアプリケーションに対する、**アプリケーションへのセルフ サービス アクセス権**を有効にする必要があります。
+ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの**セルフサービス アプリケーション アクセス**を有効にする必要があります。
 
 この機能は、IT グループとして時間とコストを節約するための優れた方法であり、Azure Active Directory を使用した最新のアプリケーション デプロイの一部として強くお勧めします。
 

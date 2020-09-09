@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Automation のケースを開くときに収集するデータ | Microsoft Docs
-description: この記事では、Microsoft Azure サポートで Azure Automation のケースを開く前に収集する必要のある情報について説明します。
+description: この記事では、Microsoft Azure サポートで Azure Automation のケースを開く前に収集する情報について説明します。
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679401"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684843"
 ---
-# <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Automation のケースを開くときに収集するデータ
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Automation のケースを開くときに収集するデータ
 
 この記事では、Microsoft Azure サポートで Azure Automation のケースを開く前に収集する必要のある情報について説明します。 この情報は、ケースを開くためには必要ありません。 ただし、Microsoft が問題を迅速に解決するのに役立ちます。 また、ケースを開いた後にサポート エンジニアがこのデータを要求する場合もあります。
 
@@ -89,7 +89,7 @@ ms.locfileid: "81679401"
 
 ## <a name="next-steps"></a>次のステップ
 
-さらにサポートが必要な場合: 
+さらにサポートが必要な場合:
 
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
 * [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。

@@ -53,7 +53,7 @@ Azure の業界をリードする可用性 99.99% の SLA は、Microsoft が管
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 
-Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure Security Center](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MariaDB のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
+Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure Trust Center](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MariaDB のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402828"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144823"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -24,7 +24,7 @@ Azure Machine Learning は、作業を追跡するために Git リポジトリ�
 
 ジョブを Azure Machine Learning に送信するとき、ソース ファイルがローカル git リポジトリに格納されていれば、リポジトリに関する情報がトレーニング プロセスの一部として追跡されます。
 
-Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスからクローンできます。
+Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスから複製できます。
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git リポジトリをワークスペース ファイル システムにクローンする
 Azure Machine Learning では、ワークスペース内のすべてのユーザーに共有ファイル システムが提供されます。
@@ -43,8 +43,8 @@ Python SDK または Machine Learning CLI からトレーニング実行を送�
 
 | プロパティ | 値の取得に使用される Git コマンド | 説明 |
 | ----- | ----- | ----- |
-| `azureml.git.repository_uri` | `git ls-remote --get-url` | リポジトリのクローン元の URI。 |
-| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | リポジトリのクローン元の URI。 |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | リポジトリの複製元の URI。 |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | リポジトリの複製元の URI。 |
 | `azureml.git.branch` | `git symbolic-ref --short HEAD` | 実行が送信されたときのアクティブなブランチ。 |
 | `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | 実行が送信されたときのアクティブなブランチ。 |
 | `azureml.git.commit` | `git rev-parse HEAD` | 実行するために送信されたコードのコミット ハッシュ。 |
@@ -116,4 +116,4 @@ az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup
 
 ## <a name="next-steps"></a>次のステップ
 
-* [モデル トレーニング用のコンピューティング先を設定して使用する](how-to-set-up-training-targets.md)
+* [モデル トレーニング用のコンピューティング ターゲットを使用する](how-to-set-up-training-targets.md)

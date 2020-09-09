@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: azuread-dev
   ms.workload: identity
-  ms.openlocfilehash: 5af100e7e5a1456dae4bc4e68334299d1fd12794
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 113a28ca5b4152ca8beedc7bdc3f1027c5acdf17
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77163213"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88116072"
 landingContent:
 - title: 開発者のための Azure Active Directory
   linkLists:
@@ -23,7 +23,7 @@ landingContent:
     - text: 開発者のための Azure Active Directory (v1.0)
       url: v1-overview.md
     - text: Microsoft ID プラットフォームの進化
-      url: ../develop/about-microsoft-identity-platform.md
+      url: ./about-microsoft-identity-platform.md
     - text: Microsoft ID プラットフォーム (v2.0)
       url: ../develop/v2-overview.md
   - linkListType: concept

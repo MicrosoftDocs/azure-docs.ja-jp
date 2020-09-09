@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043610"
 ---
 # <a name="known-issues"></a>既知の問題 #
 
@@ -41,6 +41,7 @@ ms.locfileid: "82692254"
 
 - ブラウザーに広告ブロッカーがインストールされていると、(オンデマンドまたはライブでの) 広告の挿入時に問題が発生することがあります。
 - モバイル デバイスで広告の再生時に問題が発生することがあります。
+- MP4 Midroll の広告は、現在 Azure Media Player でサポートされていません。
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
@@ -49,7 +50,7 @@ ms.locfileid: "82692254"
 
 - オーディオのみの資産は、AzureHtml5JS テクノロジで再生されません。
   - オーディオのない資産を再生したい場合は、[Azure Media Services Explorer ツール](https://aka.ms/amse)を使用して、空のオーディオを挿入してください。
-  - サイレント オーディオを挿入する手順は、[こちら](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)でご覧いただけます。
+  - サイレント オーディオを挿入する手順は、[こちら](../previous/media-services-advanced-encoding-with-mes.md#silent_audio)でご覧いただけます。
 
 ## <a name="flash"></a>点滅 ##
 
@@ -77,7 +78,7 @@ ms.locfileid: "82692254"
 ### <a name="microsoft"></a>Microsoft ###
 
 - 現在、IE8 での再生は、ECMAScript 5 との互換性がないために正しく機能しません。
-- IE および一部のバージョンの Edge では、タブ移動でボタンを選択したり、F (または f) ホットキーを使用したりすることによって全画面表示に切り替えることができません。
+- IE および一部のバージョンの Microsoft Edge では、タブ移動でボタンを選択したり、F (または f) ホットキーを使用したりすることによって全画面表示に切り替えることができません。
 
 ## <a name="google"></a>Google ##
 

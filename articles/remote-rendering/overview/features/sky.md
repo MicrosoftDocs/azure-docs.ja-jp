@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: be3dc2b113cb21c2dfb54a29e7f426e0d925c6d9
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f2a871e409761116182f67eb877f3727038fe0dc
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759117"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013641"
 ---
 # <a name="sky-reflections"></a>空の反射
 
@@ -75,17 +76,17 @@ void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
     ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
 
     skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
-    {
-        if (res->IsRanToCompletion())
         {
-            ApiHandle<SkyReflectionSettings> settings = *session->Actions()->SkyReflectionSettings();
-            settings->SkyReflectionTexture(*res->Result());
-        }
-        else
-        {
-            printf("Texture loading failed!");
-        }
-    });
+            if (res->GetIsRanToCompletion())
+            {
+                ApiHandle<SkyReflectionSettings> settings = session->Actions()->GetSkyReflectionSettings();
+                settings->SetSkyReflectionTexture(res->GetResult());
+            }
+            else
+            {
+                printf("Texture loading failed!");
+            }
+        });
 }
 
 ```

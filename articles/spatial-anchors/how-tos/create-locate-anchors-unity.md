@@ -5,15 +5,16 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 72d25582d15e745b0bdefcde5f68af94eab49293
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 47862469c074e85484227876caaef0ade64080de
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222609"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003397"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Unity で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -158,7 +159,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) デリゲートの詳細を確認してください。
 
 ```csharp
-    this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args)
+    this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args) =>
     {
         var status = args.Status;
         if (status.UserFeedback == SessionUserFeedback.None) return;
@@ -198,7 +199,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
     // you might show content at this anchor for a while, then save when
     // the user confirms placement.
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor();
-    cloudAnchor.LocalAnchor = this.localAnchor.GetNativeAnchorPointer();
+    cloudAnchor.LocalAnchor = this.localAnchor.GetNativeSpatialAnchorPtr();
     await this.cloudSession.CreateAnchorAsync(cloudAnchor);
     this.feedback = $"Created a cloud anchor with ID={cloudAnchor.Identifier}");
 ```
@@ -240,7 +241,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 ```csharp
     var anchor = await cloudSession.GetAnchorPropertiesAsync(@"anchorId");
-    if (anchor != nullptr)
+    if (anchor != null)
     {
         anchor.AppProperties[@"last-user-access"] = @"just now";
         await this.cloudSession.UpdateAnchorPropertiesAsync(anchor);

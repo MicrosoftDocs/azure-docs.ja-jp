@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b946a360ced05500a4ef89cda7c623d8ae16658e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563566"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Firewall Manager のアーキテクチャのオプション
 
@@ -37,14 +37,15 @@ Azure Firewall Manager は、次の 2 種類のネットワーク アーキテ�
 |**オンプレミス接続**     |最大 10 Gbps とサイト間接続 30 個の VPN Gateway、ExpressRoute|よりスケーラブルな最大 20 Gbps とサイト間接続 1000 個の VPN Gateway、ExpressRoute|
 |**SDWAN を使用したブランチ接続の自動化**      |サポートされていません|サポートされています|
 |**リージョンごとのハブ**     |リージョンごとに複数の仮想ネットワーク|リージョンごとに 1 つの仮想ハブ。 複数の Virtual WAN で複数のハブが可能|
-|**Azure Firewall – 複数のパブリック IP アドレス**      |お客様側で準備|自動生成。 GA で利用可能。|
-|**Azure Firewall Availability Zones**     |サポートされています|プレビューでは利用不可。 GA で利用可能|
-|**サードパーティのサービスとしてのセキュリティ パートナーによる高度なインターネット セキュリティ**     |お客様が自分で選択したパートナー サービスへの VPN 接続を確立して管理|信頼されたセキュリティ パートナーのフローとパートナー管理のエクスペリエンスによって自動化|
+|**Azure Firewall – 複数のパブリック IP アドレス**      |お客様側で準備|自動生成|
+|**Azure Firewall Availability Zones**     |サポートされています|まだ使用できません|
+|**サードパーティのサービスとしてのセキュリティ パートナーによる高度なインターネット セキュリティ**     |お客様が自分で選択したパートナー サービスへの VPN 接続を確立して管理|セキュリティ パートナー プロバイダーのフローとパートナー管理のエクスペリエンスによって自動化|
 |**ハブにトラフィックをルーティングするための集中ルート管理**     |お客様が管理するユーザー定義ルート|BGP を使用してサポート|
+|**複数のセキュリティ プロバイダーのサポート**|サードパーティのファイアウォールへの強制トンネリングを手動で構成してサポート|2 つのセキュリティ プロバイダーの自動サポート:プライベート トラフィックのフィルタリング用の Azure Firewall とインターネット フィルタリング用のサードパーティ|
 |**Application Gateway上の Web アプリケーション ファイアウォール** |Virtual Network でサポート|現在はスポーク ネットワークでサポート|
 |**ネットワーク仮想アプライアンス**|Virtual Network でサポート|現在はスポーク ネットワークでサポート|
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Firewall Manager プレビューのデプロイの概要](deployment-overview.md)を確認します
+- [Azure Firewall Manager のデプロイ概要](deployment-overview.md)を確認する
 - [セキュリティで保護された仮想ハブ](secured-virtual-hub.md)について学習します。

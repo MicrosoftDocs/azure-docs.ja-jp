@@ -7,7 +7,12 @@
 - name: クイックスタート
   items:
     - name: Service Health イベントのアラートの構成
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure portal
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: alerts-activity-log-service-notifications-arm.md
 - name: 概念
   items:
     - name: Azure の状態のページ
@@ -19,7 +24,7 @@
 - name: 操作方法
   items:
     - name: Service Health イベントのアラートの構成
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: Azure Portal を使用したサービス正常性通知の表示
       href: service-notifications.md
     - name: Webhook 経由でアラートを外部のシステムに送信する
@@ -30,9 +35,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: アラートを OpsGenie に送信する
       href: service-health-alert-webhook-opsgenie.md
-    - name: REST を使用した正常性イベントの取得
-      href: service-health-rest.md
-    - name: リソース正常性イベントのアラートの構成
+    - name: Azure portal を使用してリソースの正常性アラートを構成する
+      href: resource-health-alert-monitor-guide.md
+    - name: Resource Manager テンプレートを使用して Resource Health アラートを構成する
       href: resource-health-alert-arm-template-guide.md
 - name: リファレンス
   items:

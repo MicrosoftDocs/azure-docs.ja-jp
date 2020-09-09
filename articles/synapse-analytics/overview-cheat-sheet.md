@@ -1,20 +1,20 @@
 ---
-title: チート シート - Azure Synapse Analytics
+title: チート シート - Azure Synapse Analytics (ワークスペース プレビュー)
 description: Azure Synapse Analytics をユーザーに紹介するリファレンス ガイド
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: aa93a816fc11158d928978bdec2dbf42119fa149
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420946"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807028"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics のチート シート
 
@@ -22,20 +22,20 @@ ms.locfileid: "81420946"
 
 Azure Synapse Analytics のチート シートでは、サービスの基本的な概念と重要なコマンドについて説明します。 この記事は、新しい学習者と、Azure Synapse の重要なトピックのハイライトを希望する学習者の両方に役立ちます。
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
 > [!div class="mx-imgBorder"]
 >![Synapse アーキテクチャ](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>概念
-| 名詞と動詞                         | 実行内容       |
+## <a name="terminology"></a>用語
+| 期間                         | 定義      |
 |:---                                 |:---                 |
-| **Synapse ワークスペース (プレビュー)** | Azure でクラウドベースのエンタープライズ分析を行うための、セキュリティ保護可能なコラボレーション境界。 ワークスペースは、特定のリージョンにデプロイされ、関連付けられた ADLSg2 アカウントと (一時データを格納するための) ファイル システムを持ちます。 ワークスペースは、リソース グループに属します。 |
-| **SQL Analytics**   | プールまたはオンデマンド機能を使用して分析を実行します。  |
+| **Synapse ワークスペース** | Azure でクラウドベースのエンタープライズ分析を行うための、セキュリティ保護可能なコラボレーション境界。 ワークスペースは、特定のリージョンにデプロイされ、関連付けられた ADLS Gen2 アカウントと (一時データを格納するための) ファイル システムを持ちます。 ワークスペースは、リソース グループに属します。 |
+| **Synapse SQL**   | プールまたはオンデマンド機能を使用して分析を実行します。  |
 | **SQL プール**   | 対応するデータベースをワークスペースにデプロイできる、0 対 N の SQL プロビジョニング済みのリソース。 各 SQL プールには、データベースが関連付けられています。 SQL プールは、手動または自動でスケーリング、一時停止、または再開できます。 SQL プールは、100 DWU から最大 30,000 DWU までスケーリングできます。       |
-| **SQL オンデマンド (プレビュー)**   | データ レイク内のデータに対して T-SQL クエリを実行できる、大規模データ用に構築された分散データ処理システム。 サーバーレスであるため、インフラストラクチャを管理する必要はありません。       |
-|**Apache Spark** | Spark プールで使用される Spark ランタイム。 現在サポートされているバージョンは、Python 3.6.1、Scala 2.11.12、Apache Spark 0.5 向け .NET サポート、および Delta Lake 0.3 を使用する Spark 2.4 です。  | 
-| **Apache Spark プール (プレビュー)**  | 対応するデータベースをワークスペースにデプロイできる、0 対 N の Spark プロビジョニング済みのリソース。 Spark プールは、自動で一時停止、再開、およびスケーリングできます。  |
+| **SQL オンデマンド**   | データ レイク内のデータに対して T-SQL クエリを実行できる、大規模データ用に構築された分散データ処理システム。 サーバーレスであるため、インフラストラクチャを管理する必要はありません。       |
+|**Synapse 用の Apache Spark** | Spark プールで使用される Spark ランタイム。 現在サポートされているバージョンは、Python 3.6.1、Scala 2.11.12、Apache Spark 0.5 向け .NET サポート、および Delta Lake 0.3 を使用する Spark 2.4 です。  | 
+| **Apache Spark プール**  | 対応するデータベースをワークスペースにデプロイできる、0 対 N の Spark プロビジョニング済みのリソース。 Spark プールは、自動で一時停止、再開、およびスケーリングできます。  |
 | **Spark アプリケーション**  |   ドライバー プロセスと Executor プロセスのセットで構成されます。 Spark アプリケーションは Spark プールで実行されます。            |
 | **Spark セッション**  |   Spark アプリケーションの統合エントリ ポイント。 これにより、Spark のさまざまな機能との対話、および少数のコンストラクトとの対話が可能になります。 ノートブックを実行するには、セッションを作成する必要があります。 セッションは、特定のサイズの特定の数の Executor で実行するように構成できます。 ノートブック セッションの既定の構成では、2 つの中規模の Executor で実行されます。 |
 | **SQL 要求**  |   SQL プールまたは SQL オンデマンドを介して実行されるクエリなどの操作。 |
@@ -55,7 +55,7 @@ Azure Synapse Analytics のチート シートでは、サービスの基本的�
 
 - [ワークスペースを作成する](quickstart-create-workspace.md)
 - [Synapse Studio を使用する](quickstart-synapse-studio.md)
-- [SQL プールを作成する](quickstart-create-sql-pool.md)
+- [SQL プールを作成する](quickstart-create-sql-pool-portal.md)
+- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)
 - [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
-- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
 

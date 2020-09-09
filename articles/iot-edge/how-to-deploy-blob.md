@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804624"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
@@ -88,10 +88,10 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
    - コンテナーのオペレーティング システムに応じて `<storage mount>` を置き換えます。 BLOB モジュールによってそのデータが格納される[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上の既存のディレクトリへの絶対パスを指定します。 ストレージ マウントによって、提供したデバイス上の位置がモジュール内の設定された位置にマップされます。
 
-     - Linux コンテナーの場合、形式は **\<ストレージのパスまたはボリューム>:/blobroot** です。 次に例を示します。
+     - Linux コンテナーの場合、形式は **\<your storage path or volume>:/blobroot** です。 次に例を示します。
          - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: `my-volume:/blobroot`
          - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する:`/srv/containerdata:/blobroot`。 [コンテナー ユーザーにディレクトリへのアクセス権を付与する](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)手順に必ず従ってください
-     - Windows コンテナーの場合、形式は **\<ストレージのパスまたはボリューム>:C:/BlobRoot** です。 次に例を示します。
+     - Windows コンテナーの場合、形式は **\<your storage path or volume>:C:/BlobRoot** です。 次に例を示します。
          - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: `my-volume:C:/BlobRoot`。
          - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する: `C:/ContainerData:C:/BlobRoot`。
          - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、「[ローカル ストレージとして SMB 共有を使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)」を参照してください
@@ -130,7 +130,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 6. **[追加]** を選択します。
 
-7. **ルート** 　でルート のセクションに進みます。
+7. **次へ:ルート** 　でルート のセクションに進みます。
 
 #### <a name="specify-routes"></a>ルートを指定する
 
@@ -155,7 +155,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 Azure IoT Edge では、エッジ ソリューションの開発に役立つ、Visual Studio Code のテンプレートが提供されます。 次の手順を使って、BLOB ストレージ モジュールで新しい IoT Edge ソリューションを作成し、配置マニフェストを構成します。
 
-1. **[表示]** > **[コマンド パレット]** を選択します。
+1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
 
 1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。
 
@@ -200,10 +200,10 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
 1. コンテナーのオペレーティング システムに応じて `<storage mount>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ マウントによって、提供したデバイス上の位置がモジュール内の設定された位置にマップされます。  
 
-     - Linux コンテナーの場合、形式は **\<ストレージのパスまたはボリューム>:/blobroot** です。 次に例を示します。
+     - Linux コンテナーの場合、形式は **\<your storage path or volume>:/blobroot** です。 次に例を示します。
          - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: `my-volume:/blobroot`
          - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する:`/srv/containerdata:/blobroot`。 [コンテナー ユーザーにディレクトリへのアクセス権を付与する](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)手順に必ず従ってください
-     - Windows コンテナーの場合、形式は **\<ストレージのパスまたはボリューム>:C:/BlobRoot** です。 次に例を示します。
+     - Windows コンテナーの場合、形式は **\<your storage path or volume>:C:/BlobRoot** です。 次に例を示します。
          - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: `my-volume:C:/BlobRoot`。
          - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する: `C:/ContainerData:C:/BlobRoot`。
          - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください

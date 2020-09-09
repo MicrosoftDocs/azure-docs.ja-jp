@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314310"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543386"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
 
@@ -74,7 +74,7 @@ Azure Machine Learning の環境を使用して、プロジェクトのソフト
 ### <a name="profile-models"></a>モデルのプロファイル
 
 Azure Machine Learning は、モデルのデプロイ時に作成されるサービスの CPU とメモリの要件を把握するのに役立ちます。 モデルを実行して CPU 使用率、メモリ使用率、応答の待機時間などの情報を返す、サービスのプロファイル テストを行います。 また、リソースの使用状況に基づいて CPU とメモリに関する推奨事項が提示されます。
-詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#profilemodel)に関するページの、プロファイルのセクションを参照してください。
+詳細については、[モデルのデプロイ](how-to-deploy-profile-model.md)に関するページの、プロファイルのセクションを参照してください。
 
 ### <a name="package-and-debug-models"></a>モデルをパッケージ化しデバッグする
 
@@ -153,7 +153,7 @@ Azure ML では、メタデータを使用して、すべての ML 資産のエ�
 - [解釈可能性](how-to-machine-learning-interpretability.md)を使用すると、モデルを説明したり、規制コンプライアンスを満たしたり、モデルが指定された入力の結果にどのように到達するかを理解したりできます。
 - Azure ML 実行履歴には、モデルをトレーニングするのに使用されたコード、データ、およびコンピューティングのスナップショットが保存されます。
 - Azure ML モデル レジストリにより、モデルに関連するすべてのメタデータ (それをトレーニングした実験、それがデプロイされている場所、そのデプロイが正常かどうかなど) が取り込まれます。
-- [Azure Event Grid との統合](concept-event-grid-integration.md)を使用すると、ML ライフサイクル内のイベントに対してアクションを実行できます。 たとえば、モデル登録、デプロイ、データ ドリフト、トレーニング (実行) などのイベントです。
+- [Azure との統合](how-to-use-event-grid.md)を使用すると、ML ライフサイクル内のイベントに対してアクションを実行できます。 たとえば、モデル登録、デプロイ、データ ドリフト、トレーニング (実行) などのイベントです。
 
 > [!TIP]
 > モデルやデータセットに関する一部の情報は自動的にキャプチャされますが、__タグ__を使用して追加情報を付加できます。 ワークスペースで登録済みのモデルやデータセットを検索する場合は、タグをフィルターとして使用できます。

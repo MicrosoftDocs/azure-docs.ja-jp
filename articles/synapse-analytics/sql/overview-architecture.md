@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse SQL アーキテクチャ
+title: Synapse SQL アーキテクチャ
 description: Azure Synapse SQL が超並列処理 (MPP) と Azure Storage を組み合わせて、ハイ パフォーマンスとスケーラビリティを実現する方法を説明します。
 services: synapse-analytics
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046858"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL アーキテクチャ 
 

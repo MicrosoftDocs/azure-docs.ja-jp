@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230627"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165823"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
 
@@ -32,14 +32,14 @@ ms.locfileid: "79230627"
 
 - パスワード (入力された場合) がアプリケーションまたは認証ライブラリによって格納されることはありません。
 - 他の ID プロバイダーへのリダイレクトが有効になります (たとえば、MSAL での職場または学校アカウントや個人アカウントでのログイン、または Azure AD B2C でのソーシャル アカウントでのログイン)。
-- たとえば、ユーザーに認証フェーズの間に多要素認証 (MFA) を行わせることで (Windows Hello PIN の入力、電話での呼び出し、または携帯電話での認証アプリ)、STS で条件付きアクセスを制御します。 必要な多要素認証がまだ設定されていない場合、ユーザーは同じダイアログで必要な時に必要な分だけで設定できます。  ユーザーは、携帯電話番号を入力すると、認証アプリケーションをインストールし、QR タグをスキャンして自分のアカウントを追加するよう指示されます。 このサーバー主導の対話は優れたエクスペリエンスです。
+- たとえば、ユーザーに認証フェーズの間に[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) を行わせることで (Windows Hello PIN の入力、電話での呼び出し、または携帯電話での認証アプリ)、STS で条件付きアクセスを制御します。 必要な多要素認証がまだ設定されていない場合、ユーザーは同じダイアログですぐに設定できます。  ユーザーは、携帯電話番号を入力すると、認証アプリケーションをインストールし、QR タグをスキャンして自分のアカウントを追加するよう指示されます。 このサーバー主導の対話は優れたエクスペリエンスです。
 - パスワードが期限切れのとき、ユーザーがこの同じダイアログでパスワードを変更できるようにします (古いパスワードと新しいパスワードのための追加フィールドを提供します)。
 - Azure AD テナント管理者/アプリケーション所有者によって制御されるテナントまたはアプリケーション (イメージ) のブランド化を有効にします。
 - ユーザーが認証の直後に自分の名前でアプリケーションがリソース/スコープにアクセスすることに同意できるようにします。
 
 ### <a name="embedded-vs-system-web-ui"></a>埋め込み Web UI とシステム Web UI の比較
 
-MSAL.NET はマルチフレームワーク ライブラリであり、UI コントロールでブラウザーをホストできるようにフレームワーク固有のコードが用意されています (たとえば、.Net Classic では、WinForms が使用され、Xamarin ではネイティブのモバイル コントロールなどが使用されます)。 このコントロールは、`embedded` Web UI と呼ばれます。 また、MSAL.NET ではシステム OS ブラウザーを開始することもできます。
+MSAL.NET はマルチフレームワーク ライブラリであり、UI コントロールでブラウザーをホストできるようにフレームワーク固有のコードが用意されています (たとえば、.NET Classic では WinForms が使用され、Xamarin ではネイティブのモバイル コントロールなどが使用されます)。 このコントロールは、`embedded` Web UI と呼ばれます。 また、MSAL.NET ではシステム OS ブラウザーを開始することもできます。
 
 通常は、プラットフォームの既定値を使用することをお勧めします。これは、一般的にはシステム ブラウザーです。 システム ブラウザーは、以前にログインしたことのあるユーザーを記憶するのに適しています。 この動作を変更する必要がある場合は、`WithUseEmbeddedWebView(bool)` を使用します
 
@@ -98,8 +98,7 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 
 ### <a name="linux-and-mac"></a>Linux および MAC
 
-Linux の場合、MSAL.NET では xdg-open ツールを使用して既定の OS ブラウザーが開きます。 トラブルシューティングを行うには、ターミナル (たとえば、`xdg-open "https://www.bing.com"`) からツールを実行します  
-Mac の場合、`open <url>` を呼び出すとブラウザーが開かれます
+Linux の場合、MSAL.NET では xdg-open ツールを使用して既定の OS ブラウザーが開きます。 トラブルシューティングを行うには、ターミナル (たとえば、`xdg-open "https://www.bing.com"`) からツールを実行します。 Mac の場合、`open <url>` を呼び出すとブラウザーが開かれます。
 
 ### <a name="customizing-the-experience"></a>エクスペリエンスのカスタマイズ
 

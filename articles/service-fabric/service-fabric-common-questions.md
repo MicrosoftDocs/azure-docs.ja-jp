@@ -4,12 +4,12 @@ description: Service Fabric についてよく寄せられる質問 (機能、�
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254897"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292847"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -22,9 +22,9 @@ Service Fabric で実行できる内容とその使用方法に関してよく�
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書はどのようにロールバックするのですか?
 
-アプリケーションに対するアップグレードをロールバックするには、Service Fabric クラスターのクォーラムが変更をコミットする前に正常性エラーが検出される必要があります。コミットされた変更は、ロールフォワードのみが可能です。 監視対象外の破壊的な証明書の変更が行われた場合、クラスターを回復するために、エスカレーション エンジニアによる初めから終わりまでのカスタマー サポート サービスが必要になる場合があります。  [Service Fabric アプリケーションのアップグレード](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master)は、[Application アップグレード パラメーター](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)に適用され、ダウンタイムが発生しないアップグレードが確約されています。  推奨されるアプリケーション アップグレードである監視モードに従えば、更新ドメインを通した自動進行は正常性チェックの合格に基づいたものとなり、既定のサービスの更新が失敗した場合は自動的にロールバックが行われます。
+アプリケーションに対するアップグレードをロールバックするには、Service Fabric クラスターのクォーラムが変更をコミットする前に正常性エラーが検出される必要があります。コミットされた変更は、ロールフォワードのみが可能です。 監視対象外の破壊的な証明書の変更が行われた場合、クラスターを回復するために、エスカレーション エンジニアによる初めから終わりまでのカスタマー サポート サービスが必要になる場合があります。  [Service Fabric アプリケーションのアップグレード](./service-fabric-application-upgrade.md?branch=master)は、[Application アップグレード パラメーター](./service-fabric-application-upgrade-parameters.md?branch=master)に適用され、ダウンタイムが発生しないアップグレードが確約されています。  推奨されるアプリケーション アップグレードである監視モードに従えば、更新ドメインを通した自動進行は正常性チェックの合格に基づいたものとなり、既定のサービスの更新が失敗した場合は自動的にロールバックが行われます。
  
-お使いのクラスターが、Resource Manager テンプレートで旧来の証明書の Thumbprint プロパティをまだ活用している場合は、最新の機密管理機能を活用するため、[クラスターで使用するのを証明書の拇印から共通名に変更する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)ことをお勧めします。
+お使いのクラスターが、Resource Manager テンプレートで旧来の証明書の Thumbprint プロパティをまだ活用している場合は、最新の機密管理機能を活用するため、[クラスターで使用するのを証明書の拇印から共通名に変更する](./service-fabric-cluster-change-cert-thumbprint-to-cn.md)ことをお勧めします。
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>複数の Azure リージョンまたは自らのデータセンターにまたがるクラスターを作成することはできますか?
 
@@ -36,12 +36,12 @@ Service Fabric コア クラスタリング テクノロジを使用すると、
 
 以下の点を考慮してください。 
 
-1. 現在、Azure での Service Fabric クラスター リソースは、クラスターが構築される仮想マシン スケール セットと同じように、地域に限定されています。 つまり、地域的な障害が発生したとき、Azure Resource Manager または Azure Portal を使用してクラスターを管理できなくなることがあります。 クラスターが実行し続けていて、直接やり取りできる場合にも、そのような状況になることがあります。 また、現在の Azure では、地域にまたがって使用できる単独の仮想ネットワークは提供されていません。 つまり、Azure における複数リージョン クラスターは、[VM Scale Sets の各 VM のための Public IP Addresses](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) か [Azure VPN Gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) を必要とします。 これらのネットワーク オプションにより、コストやパフォーマンスがさまざまな影響を受けます。ある程度まではアプリケーション設計にも影響があります。このため、このような環境を立ち上げるには、事前に注意深い分析と計画が必要です。
+1. 現在、Azure での Service Fabric クラスター リソースは、クラスターが構築される仮想マシン スケール セットと同じように、地域に限定されています。 つまり、地域的な障害が発生したとき、Azure Resource Manager または Azure Portal を使用してクラスターを管理できなくなることがあります。 クラスターが実行し続けていて、直接やり取りできる場合にも、そのような状況になることがあります。 また、現在の Azure では、地域にまたがって使用できる単独の仮想ネットワークは提供されていません。 つまり、Azure の複数リージョン クラスターは、[仮想マシン スケール セット内の各 VM に対するパブリック IP アドレス](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine)、または [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を必要とします。 これらのネットワーク オプションにより、コストやパフォーマンスがさまざまな影響を受けます。ある程度まではアプリケーション設計にも影響があります。このため、このような環境を立ち上げるには、事前に注意深い分析と計画が必要です。
 2. 特に、異なるクラウド プロバイダーやオンプレミス リソースと Azure など、複数の環境の _タイプ_ が混在する場合、これらのマシンのメンテナンス、管理、監視は複雑になります。 そのような環境で実稼働ワークロードを実行する前には、クラスターとアプリケーションの両方のアップグレード、監視、管理、診断についてよく理解する必要があります。 Azure または自身のデータセンターでこのような問題を解決した経験がある場合は、Service Fabric クラスターを構築または実行する際にも同じソリューションを適用できると考えられます。 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric ノードでは、OS の更新は自動的に受信されますか?
 
-現在、[仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)一般公開機能を使用できます。
+現在、[仮想マシン スケール セットによる OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)一般公開機能を使用できます。
 
 Azure で実行されていないクラスターの場合は、Service Fabric ノードのオペレーティング システムにパッチを適用するための[アプリケーションが提供](service-fabric-patch-orchestration-application.md)されています。
 
@@ -122,11 +122,11 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 | FabricRM.exe |
 | FileStoreService.exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>アプリケーションを KeyVault に対して認証してシークレットを取得するにはどうすればよいですか?
-アプリケーションを KeyVault に対して認証するための資格情報を取得する方法を次に示します。
+### <a name="how-can-my-application-authenticate-to-key-vault-to-get-secrets"></a>アプリケーションを Key Vault に対して認証してシークレットを取得するにはどうすればよいですか?
+アプリケーションを Key Vault に対して認証するための資格情報を取得する方法を次に示します。
 
-A. アプリケーションのビルド/パッキング ジョブ中に、SF アプリのデータ パッケージに証明書をプルし、これを使用して KeyVault に対して認証することができます。
-B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)を取得し、[KeyVault からシークレットを取得](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)することができます。
+A. アプリケーションのビルド/パッキング ジョブ中に、SF アプリのデータ パッケージに証明書をプルし、これを使用して Key Vault に対して認証することができます。
+B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)を取得し、[Key Vault からシークレットを取得](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)することができます。
 
 ## <a name="application-design"></a>アプリケーションの設計
 
@@ -155,7 +155,7 @@ Reliable Services は通常はパーティション分割されるため、格�
 
 各オブジェクトは 3 回格納される必要があること (1 回はプライマリに、2 回はレプリカに) に留意すると、容量全部を使用して運用した場合は、約 3,500 万個のオブジェクトをコレクションに格納するのに十分なメモリがあります。 ただし、障害ドメインとアップグレード ドメインが同時に失われた場合の回復力を備えておくことが推奨されます。これは容量の約 1/3 に当たるため、この数値は約 2,300 万個に減少します。
 
-この計算では、以下も想定されていることに注意してください。
+この計算では、以下も想定されています。
 
 - パーティション間のデータの分散はほぼ一定であるか、クラスター リソース マネージャーに負荷メトリックを報告すること。 既定では、Service Fabric は、レプリカの数に基づいて負荷を分散します。 前の例では、クラスター内の各ノードに 10 個のプライマリ レプリカと 20 個のセカンダリ レプリカが配置されます。 パーティション間で負荷が均等に分散される場合は問題はありません。 負荷が均等でない場合は、負荷をレポートして、小さなレプリカがリソース マネージャーによって 1 つにまとめられ、大きなレプリカが個々のノードでより多くのメモリを消費できるようにする必要があります。
 
@@ -167,6 +167,12 @@ Reliable Services は通常はパーティション分割されるため、格�
 
 Reliable Services と同じように、アクター サービスに格納できるデータの量は、ディスク領域の合計とクラスター内のノードで使用できるメモリによってのみ制限されます。 ただし、個々のアクターは、小さな分量の状態とそれに関連付けられたビジネス ロジックをカプセル化するために使用すると、最も効果があります。 原則として、個々のアクターには、キロバイト単位で測定される状態を格納してください。
 
+
+### <a name="where-does-azure-service-fabric-resource-provider-store-customer-data"></a>Azure Service Fabric リソース プロバイダーでは、顧客データはどこに格納されていますか?
+
+Azure Service Fabric リソース プロバイダーによって、デプロイされているリージョン外に顧客データが移動または格納されることはありません。
+
+
 ## <a name="other-questions"></a>その他の質問
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric はコンテナーとどのように関連していますか?
@@ -177,9 +183,9 @@ Reliable Services と同じように、アクター サービスに格納でき�
 
 GitHub では Service Fabric のオープン ソース化された部分 ([Reliable Services フレームワーク](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[Reliable Actors フレームワーク](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[ASP.NET Core 統合ライブラリ](https://github.com/Azure/service-fabric-aspnetcore)、[Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)、[Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) が提供されており、これらのプロジェクトにはコミュニティの皆さんにも参加していただいています。 
 
-Service Fabric ラインタイムをオープン ソース化する予定であることは、[最近発表](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/)しました。 現時点では、GitHub には、Linux のビルドおよびテスト ツールを含む、[Service Fabric リポジトリ](https://github.com/Microsoft/service-fabric/)がアップされており、このリポジトリを複製し、Linux 用の Service Fabric をビルドして、基本的なテストを実行し、問題を開き、pull request を送信することができます。 完全な CI 環境と共に、Windows ビルド環境の移行にも全力で取り組んでいます。
+Service Fabric ラインタイムをオープン ソース化する予定であることは、[最近発表](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)しました。 現時点では、GitHub には、Linux のビルドおよびテスト ツールを含む、[Service Fabric リポジトリ](https://github.com/Microsoft/service-fabric/)がアップされており、このリポジトリを複製し、Linux 用の Service Fabric をビルドして、基本的なテストを実行し、問題を開き、pull request を送信することができます。 完全な CI 環境と共に、Windows ビルド環境の移行にも全力で取り組んでいます。
 
-詳しくは、[Service Fabric ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)での発表をご覧ください。
+詳しくは、[Service Fabric ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)での発表をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,22 +1,20 @@
 ---
-title: PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシー (プレビュー) に移行する
-description: Azure Firewall 構成を Azure Firewall ポリシーに移行する方法 (プレビュー) について説明します。
+title: PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシーに移行する
+description: Azure Firewall の構成を Azure Firewall ポリシーに移行する方法について説明します
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77443110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601328"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシー (プレビュー) に移行する
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシーに移行する
 
 Azure PowerShell スクリプトを使用して、既存の Azure Firewall 構成を Azure Firewall ポリシー リソースに移行できます。 その後、Azure Firewall Manager を使用してポリシーをデプロイできます。
 
@@ -161,4 +159,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>次のステップ
 
-Azure Firewall Manager のデプロイについて、詳細を学習します。[Azure Firewall Manager プレビューのデプロイの概要](deployment-overview.md)を確認してください。
+Azure Firewall Manager のデプロイについて、詳細を学習します。[Azure Firewall Manager のデプロイの概要](deployment-overview.md)。

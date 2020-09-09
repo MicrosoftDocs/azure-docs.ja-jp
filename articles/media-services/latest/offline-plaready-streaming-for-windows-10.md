@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/01/2019
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9e0c4daeae9884bdb5feaceccc23046866f0d59c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160241"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266682"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 を使用した Windows 10 用のオフラインの PlayReady ストリーミング
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services は、DRM 保護を適用したオフラインでのダウンロード/再生をサポートしています。 この記事では、Windows 10/PlayReady クライアントに向けた Azure Media Services のオフライン サポートについて説明します。 iOS/FairPlay および Android/Widevineデバイスに向けたオフライン モードのサポートの詳細については、以下の記事を参照してください。
 
@@ -44,7 +47,7 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 * 多くのプレーヤーやエンコーダー ツールで MP4 がサポートされていますが、MP4 コンテナーと DRM の間にはバインディングがありません。
 * 長期的には、CENC を使用する CFF が主流となります。 ただし現在では、ツール/プレーヤーのサポート エコシステムがまだありません。 今すぐにでもソリューションが必要なのです。
  
-そのアイデアは、次のようなものです。H264/AAC によるスムーズ ストリーミング ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) ファイル形式には、PlayReady (AES-128 CTR) とのバインディングがあります。 個々のスムーズ ストリーミング .ismv ファイル (オーディオはビデオ内に多重化されていると想定) 自体は fMP4 であり、再生に使用できます。 スムーズ ストリーミング コンテンツが PlayReady 暗号化を受けると、各 .ismv ファイルは、PlayReady で保護された、断片化された MP4 になります。 好みのビットレートの .ismv ファイルを選択し、ダウンロードのためにその名前を .mp4 に変更できます。
+そのアイデアは、次のようなものです。H264/AAC によるスムーズ ストリーミング ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) ファイル形式には、PlayReady (AES-128 CTR) とのバインディングがあります。 個々のスムーズ ストリーミング .ismv ファイル (オーディオはビデオ内に多重化されていると想定) 自体は fMP4 であり、再生に使用できます。 スムーズ ストリーミング コンテンツが PlayReady 暗号化を受けると、各 .ismv ファイルは、PlayReady で保護された、断片化された MP4 になります。 好みのビットレートの .ismv ファイルを選択し、ダウンロードのためにその名前を .mp4 に変更できます。
 
 プログレッシブ ダウンロード用の、PlayReady で保護された MP4 をホストするためのオプションが 2 つあります。
 

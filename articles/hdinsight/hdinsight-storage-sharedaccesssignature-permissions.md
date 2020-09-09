@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77314514ca26997fecd6b5d7c6ba1fc7d14c2584
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006315"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -31,7 +31,7 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 
 * 既存の[ストレージ コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md)。  
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
 
 * Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
@@ -421,7 +421,9 @@ Remove-AzResourceGroup `
 
     次のテキストのようなメッセージが返されます。
 
-        put: java.io.IOException
+    ```output
+    put: java.io.IOException
+    ```
 
     このエラーは、ストレージの場所が読み取りと一覧表示のみであるために発生します。 次のコマンドを使用して、書き込み可能なクラスターの既定のストレージ上にデータを置きます。
 

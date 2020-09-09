@@ -3,15 +3,16 @@ title: WebJobs SDK の使用方法
 description: WebJobs SDK 用のコードを書く方法を学びます。 Azure サービスやサード パーティのデータにアクセスするイベント ドリブンのバックグラウンド処理のジョブを作成します。
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734996"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962011"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -23,7 +24,7 @@ WebJobs SDK のバージョン 3.*x* とバージョン 2.*x* には、重要な
 
 * バージョン 3.*x* では、.NET Core のサポートが追加されています。
 * バージョン 3.*x* では、WebJobs SDK で必要となるストレージ バインディング拡張機能を明示的にインストールする必要があります。 バージョン 2.*x* では、ストレージのバインドは SDK に含まれていました。
-* .NET Core (3.*x*) プロジェクト用の Visual Studio のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して WebJobs を開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
+* .NET Core (3.*x*) プロジェクト用の Visual Studio のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
 
 可能な場合は、バージョン 3.*x* とバージョン 2.*x* 両方の例が提供されています。
 
@@ -129,7 +130,7 @@ static void Main()
 
 ASP.NET アプリケーションの既定値は `Int32.MaxValue` であり、これは Basic またはそれ以降の App Service プランで実行されている WebJobs で適切に動作します。 WebJobs は通常、Always On の設定を必要としており、これは Basic またはそれ以降の App Service プランでのみサポートされています。
 
-WebJobs が Free または Shared App Service プランで実行されている場合、アプリケーションは、現在 [300 の接続制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)を持つ App Service サンドボックスにより制限されています。 `ServicePointManager` の設定がバインドなしの接続制限の場合、サンドボックスの接続がしきい値に達し、サイトがシャット ダウンする可能性が高くなります。 その場合は、`DefaultConnectionLimit`の設定を 50 または 100 のようにより低いものにすることで、これを防ぎつつ十分なスループットを可能にします。
+Web ジョブが Free または Shared App Service プランで実行されている場合、アプリケーションは、現在 [300 の接続制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)を持つ App Service サンドボックスにより制限されています。 `ServicePointManager` の設定がバインドなしの接続制限の場合、サンドボックスの接続がしきい値に達し、サイトがシャット ダウンする可能性が高くなります。 その場合は、`DefaultConnectionLimit`の設定を 50 または 100 のようにより低いものにすることで、これを防ぎつつ十分なスループットを可能にします。
 
 あらゆる HTTP 要求が行われる前に、この設定を構成する必要があります。 このため、WebJobs ホストでは設定を自動的に調整しないでください。 ホストが開始する前に HTTP 要求が発生する可能性があり、予期しない動作を招くことがあります。 最善の方法は、次に示すように、`JobHost` を初期化する前に `Main` メソッドですぐに値を設定することです。
 
@@ -749,6 +750,9 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 これらの設定を使用すると、単一のインスタンスで、関数がシングルトンとして実行されるようになります。 Web アプリが複数のインスタンスにスケールアウトするとき、関数の単一のインスタンスのみが実行されるようにするには、関数にリスナー レベルのシングルトン ロック (`[Singleton(Mode = SingletonMode.Listener)]`) を適用します。 リスナー ロックは、JobHost の起動時に取得されます。 3 つのスケール アウト インスタンスのすべてが同時に開始すると、1 つのインスタンスのみがロックを取得して、1 つのみがリスナーを開始します。
 
+> [!NOTE]
+> SingletonMode.Function の機能の詳細については、この [GitHub リポジトリ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs)を参照してください。
+
 ### <a name="scope-values"></a>スコープ値
 
 シングルトンで "*スコープ式/値*" を指定することができます。 式/値により、特定スコープでの関数のすべての実行がシリアル化されることが保証されます。 この方法で詳細なロックを実装すると、要件によって指示されたように他の呼び出しをシリアル化すると同時に、関数のある程度の並列処理が可能になります。 たとえば、次のコードでは、スコープ式は、受信メッセージの `Region` 値 にバインドしています。 キューに 3 つのメッセージが含まれ、それぞれ East、East、West リージョンである場合、East リージョンのメッセージは順次実行されますが、West リージョンのメッセージは East のメッセージと並列に実行されます。
@@ -801,7 +805,7 @@ Async 関数のコードを書く方法については、[Azure Functions](../az
 
 ## <a name="multiple-instances"></a>複数インスタンス
 
-Web アプリが複数のインスタンス上で稼働している場合、継続的な WebJobs は各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
+Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
 
 一部のトリガーで二重の処理が発生する可能性がありますが、キューと BLOB ストレージ トリガーでは、関数がキュー メッセージや BLOB を 2 回以上処理することが自動的に防止されます。 詳細については、Azure Functions ドキュメントの[同一入力のための設計](../azure-functions/functions-idempotent.md)に関する記事を参照してください。
 
@@ -811,7 +815,7 @@ Web アプリが複数のインスタンス上で稼働している場合、継�
 
 ## <a name="filters"></a>フィルター
 
-関数のフィルター (プレビュー) は、独自のロジックで WebJobs 実行パイプラインをカスタマイズする方法を提供します。 フィルターは [ASP.NET Core フィルター](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)に似ています。 関数またはクラスに適用される宣言型の属性として実装することができます。 詳細については、[関数フィルター](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters)を参照してください。
+関数のフィルター (プレビュー) は、独自のロジックで WebJobs 実行パイプラインをカスタマイズする方法を提供します。 フィルターは [ASP.NET Core フィルター](/aspnet/core/mvc/controllers/filters)に似ています。 関数またはクラスに適用される宣言型の属性として実装することができます。 詳細については、[関数フィルター](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters)を参照してください。
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
@@ -956,7 +960,7 @@ static async Task Main()
 
 #### <a name="version-2x"></a>バージョン 2.*x*
 
-バージョン 2.*x* では、WebJobs SDK 用に Application Insights プロバイダーによって内部で作成された [`TelemetryClient`] では、[`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) が使用されます。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)します。
+バージョン 2.*x* では、WebJobs SDK 用に Application Insights プロバイダーによって内部で作成された [`TelemetryClient`] では、[`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) が使用されます。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/)します。
 
 [`TelemetryClient`] は、`ITelemetryClientFactory` を実装するクラスによって作成されます。 既定で、これは [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) です。
 

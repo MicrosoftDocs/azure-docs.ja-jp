@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1279ef9b8767ba05f329678429dff40f9bfed640
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609198"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280115"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -246,5 +246,5 @@ Azure AD Connect は、オンプレミスの AD からのユーザー オブジ�
 >オンプレミスのユーザー オブジェクトと Azure AD ユーザー オブジェクトの間のあいまい一致が完了した後、管理ロールを既存のユーザー オブジェクトに再度割り当てることができます。
 
 ## <a name="related-links"></a>関連リンク
-* [Locate Active Directory Objects in Active Directory Administrative Center (Active Directory 管理センターで Active Directory オブジェクトを見つける)](https://technet.microsoft.com/library/dd560661.aspx)
-* [Azure Active Directory PowerShell を使用してオブジェクトについて Azure Active Directory を照会する方法に関する記事](https://msdn.microsoft.com/library/azure/jj151815.aspx)
+* [Locate Active Directory Objects in Active Directory Administrative Center (Active Directory 管理センターで Active Directory オブジェクトを見つける)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560661(v=ws.10))
+* [Azure Active Directory PowerShell を使用してオブジェクトについて Azure Active Directory を照会する方法に関する記事](/previous-versions/azure/jj151815(v=azure.100))

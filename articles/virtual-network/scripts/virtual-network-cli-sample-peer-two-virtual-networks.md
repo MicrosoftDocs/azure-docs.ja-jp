@@ -1,6 +1,6 @@
 ---
 title: 2 つの仮想ネットワークのピアリング - Azure CLI のスクリプト サンプル
-description: Azure CLI スクリプト サンプル - 2 つの仮想ネットワークのピアリング。
+description: このスクリプト サンプルでは、Azure CLI のスクリプト サンプルを使用して、Azure ネットワークを通じて同じリージョンに 2 つの仮想ネットワークを作成して接続します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 2dd5336d66872cc8c56fd372e89b67ce9c892f3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6cd6d61ba1404ca6b6de63a0151ec414b2df54e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74083839"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492464"
 ---
-# <a name="peer-two-virtual-networks-script-sample"></a>2 つの仮想ネットワークのピアリングのスクリプト サンプル
+# <a name="peer-two-virtual-networks-with-an-azure-cli-script-sample"></a>Azure CLI のスクリプト サンプルを使用した 2 つの仮想ネットワークのピアリング
 
 このスクリプト サンプルでは、Azure ネットワークを使用して同じリージョンに 2 つの仮想ネットワークを作成して接続します。 スクリプトを実行すると、2 つの仮想ネットワーク間のピアリングが作成されます。
 

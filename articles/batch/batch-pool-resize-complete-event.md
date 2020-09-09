@@ -4,10 +4,10 @@ description: Batch プールのサイズ変更完了イベントのリファレ�
 ms.topic: reference
 ms.date: 04/20/2017
 ms.openlocfilehash: 94301f29fb6e7968dbe0389754fcf2a3b105d7ef
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83723818"
 ---
 # <a name="pool-resize-complete-event"></a>プールのサイズ変更の完了イベント

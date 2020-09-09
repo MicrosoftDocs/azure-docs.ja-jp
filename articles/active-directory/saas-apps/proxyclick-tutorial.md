@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Proxyclick の統合 | Microsoft Docs'
 description: このチュートリアルでは、Azure Active Directory と Proxyclick の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c58a859-71c2-4542-ae92-e5f16a8e7f18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 6a4d1c8a390ebd1194d14c057bb32d3111bf39be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3974c5e2a46ede6ef3f92d74759f58ed55b8497
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093488"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553446"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>チュートリアル: Azure Active Directory と Proxyclick の統合
 
@@ -159,7 +155,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     1. **[SAML Request Method]\(SAML 要求メソッド\)** 一覧で、 **[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
 
-    1. **[Issuer]/(発行者/)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
+    1. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
     1. **[SAML 2.0 Endpoint URL]\(SAML 2.0 エンドポイント URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -185,7 +181,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 

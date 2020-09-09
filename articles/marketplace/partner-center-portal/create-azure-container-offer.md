@@ -1,36 +1,35 @@
 ---
 title: Azure Container オファーを作成する - Azure Marketplace
-description: この記事では、Container オファーを作成して Azure Marketplace に公開する方法について説明します。
-author: mingshen
-ms.author: mingshen
+description: Container オファーを作成して Azure Marketplace に公開する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/07/2020
-ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+author: keferna
+ms.author: keferna
+ms.date: 06/17/2020
+ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791937"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815635"
 ---
-# <a name="create-an-azure-container-offer"></a>Azure Container オファーを作成する
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
-> [!IMPORTANT]
-> 現在、Azure Container オファーの管理を Cloud パートナー ポータルからパートナー センターに移行しています。 オファーが移行されるまでは、Cloud パートナー ポータル向けの「[Containers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)」の手順に従って、オファーを管理してください。
-
-この記事では、Azure Marketplace 向けの Container オファーを作成して公開する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+この記事では、Azure Marketplace 向けの Container オファーを作成して公開する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+
 2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
+
 3. [概要] ページで、 **[+ 新しいオファー]**  >  **[Azure Container]** の順に選択します。
 
-    ![左側のナビゲーション メニューの画像。](./media/new-offer-azure-container.png)
+   ![左側のナビゲーション メニューの画像。](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
@@ -53,27 +52,27 @@ ms.locfileid: "82791937"
 
 このページには、オファーの現在の状態に基づくさまざまなリンクが示されます。 次に例を示します。
 
-- オファーがドラフトの場合 - [ドラフトのオファーを削除する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- オファーが発行中の場合 - [オファーの販売を停止する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- オファーがプレビューの場合 - [公開する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [公開を取り消す](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
+- オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーがプレビューの場合 - [公開する](publishing-status.md#publisher-approval)
+- 公開元のサインアウトを完了していない場合 - [公開を取り消す](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
 オファーを設定するには、次の手順に従います。
 
-### <a name="connect-lead-management--optional"></a>リード管理の接続 - 省略可能
+### <a name="customer-leads--optional"></a>潜在顧客 – 省略可能
 
 パートナー センターを使用してオファーをコマーシャル マーケットプレースに発行する場合、それを顧客関係管理 (CRM) システムに接続できます。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。
 
 1. **潜在顧客の送信先となるリードのターゲットを選択します**。 パートナー センターでは、次の CRM システムがサポートされています。
 
-- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-- [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+   - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+   - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
-> [!NOTE]
-> ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
+   > [!NOTE]
+   > ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
 
 2. パートナー センターで公開する際は、オファーをリードの宛先に接続します。
 3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft により接続が検証され、テスト リードが送信されます。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
@@ -81,9 +80,9 @@ ms.locfileid: "82791937"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
+- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
 
 続行する前に、 **[下書きの保存]** を選択します。
@@ -94,7 +93,12 @@ ms.locfileid: "82791937"
 
 #### <a name="category"></a>カテゴリ
 
-少なくとも 1 つ (最大 5 つ) のカテゴリを選択します。 これらのカテゴリは、オファーを適切なマーケットプレース検索領域に配置するために使用され、オファーの詳細ページに表示されます。 オファーの説明では、これらのカテゴリにオファーがどのように対応しているかを説明します。 コンテナーは、 **[コンテナー]** の下、そして **[コンテナー イメージ]** カテゴリに表示されます。
+オファーを適切なマーケットプレース検索領域に配置するために、カテゴリとサブカテゴリを選択します。 オファーでこれらのカテゴリがどのようにサポートされるかを、必ずオファーの説明に記述してください。 選択:
+
+- 少なくとも 1 つ、最大で 2 つのカテゴリ。プライマリ カテゴリとセカンダリ カテゴリを含みます (省略可能)。
+- プライマリ カテゴリ、セカンダリ カテゴリ、またはその両方についてそれぞれ最大 2 つのサブカテゴリ。 オファーに適用できるサブカテゴリがない場合は、 **[該当なし]** を選択します。
+
+「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」でカテゴリとサブカテゴリの完全な一覧を参照してください。 コンテナーは、常に **[コンテナー]** の下、そして **[コンテナー イメージ]** カテゴリに表示されます。
 
 #### <a name="legal"></a>法的情報
 
@@ -103,18 +107,18 @@ ms.locfileid: "82791937"
 - Microsoft 商業マーケットプレース向け標準契約を使用する。
 - 独自の使用条件を指定する。
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースの標準契約
+#### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースの標準契約
 
 Microsoft では、商業マーケットプレースの取り引きに役立つ標準契約テンプレートをご用意しています。 [標準契約] の下でソリューションを提供することを選択できます。この場合、顧客には確認し、同意することが一度だけ求められます。 これは、独自の使用条件を作成しない場合に適しています。
 
-標準契約の詳細については、「[Microsoft 商業マーケットプレースの標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)」を参照してください。 [標準契約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF をダウンロードすることもできます (ポップアップ ブロッカーをオフにしてください)。
+標準契約の詳細については、「[Microsoft 商業マーケットプレースの標準契約](../standard-contract.md)」を参照してください。 [標準契約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF をダウンロードすることもできます (ポップアップ ブロッカーをオフにしてください)。
 
-標準契約を使用するには、 **[Microsoft 商業マーケットプレース向け標準契約を使用する]** チェックボックスを選択し、 **[承諾]** をクリックします。
+標準契約を使用するには、**[Microsoft のコマーシャル マーケットプレース向け標準契約を使用しますか?](../standard-contract.md) をオンにします
 
 > [!NOTE]
 > Microsoft 商業マーケットプレースの標準契約を使用してオファーを公開した後に、独自のカスタムの使用条件を使用することはできません。 ソリューションは、標準契約または独自の使用条件のどちらか一方の下で提供します。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-1-standard-contract.png" alt-text="[Microsoft 商業マーケットプレース向け標準契約を使用する] チェックボックスの画像。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-1-standard-contract.png" alt-text="Microsoft 商業マーケットプレース向け標準契約を使用する チェックボックスの画像。":::
 
 ##### <a name="your-own-terms-and-conditions"></a>独自の使用条件
 
@@ -149,40 +153,11 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明には、次の 1 つまたは複数を含めます。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- オファーによってもたらされる価値と主なメリット
-- カテゴリまたは業界のアソシエーション、あるいはその両方
-- アプリ内購入の機会
-- 必要な開示
-
-説明を記述するためのいくつかのヒントを次に示します。
-
-- 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
-  - プランの説明。
-  - オファーから利益を得るユーザーの種類
-  - オファーが対応する顧客のニーズや問題。
-- 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-- 業界固有の語彙または利益に基づく表現を使用するようにしてください。
-
-オファーの**説明**をより魅力的なものにするには、リッチ テキスト エディターを使用して説明を書式設定してください。 番号付け、箇条書き、太字、斜体、およびインデントを使用して、説明を読みやすくします。
-
-:::image type="content" source="media/text-editor2.png" alt-text="リッチ テキスト エディターの画像。" border="false" :::
-
-- このドロップダウンを使用して、テキストに段落スタイルを適用します。
-
-    :::image type="content" source="media/text-editor3.png" alt-text="リッチ テキスト エディターのテキスト スタイル コントロールの画像。" border="false":::
-
-- これらのアイコンを使用して、テキストに番号付けまたは箇条書きを適用します。
-
-     :::image type="content" source="media/text-editor4.png" alt-text="リッチ テキスト エディターの箇条書きと番号付きリストのコントロールの画像。" border="false":::
-
-- これらのアイコンを使用して、テキストのインデントを追加または削除します。
-
-    :::image type="content" source="media/text-editor5.png" alt-text="リッチ テキスト エディターのインデント コントロールの画像。" border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>プライバシー ポリシーのリンク
 
@@ -209,25 +184,30 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 #### <a name="additional-marketplace-listing-resources"></a>マーケットプレースのリスト登録に関するその他のリソース
 
-オファーのリスト登録の作成について詳しくは、「[オファーの掲載のベスト プラクティス](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)」を参照してください
+オファーのリスト登録の作成について詳しくは、「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」を参照してください
 
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
- オファーのロゴの PNG ファイルを次の 4 つのピクセル サイズで提供します。
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、これらを別の画像に置き換えることもできます。
 
-- **小** (48 x 48)
-- **中** (90 x 90)
-- **大** (216 x 216)
-- **ワイド** (255 x 115)
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **中** (90 x 90 px、省略可能)
+- **小** (48 x 48 px、省略可能)
 
-4 つすべてのロゴが必要であり、マーケットプレースのリスト登録のさまざまな場所で使用されます。
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
@@ -271,20 +251,19 @@ Azure サブスクリプション ID GUID を使用してプレビュー対象�
 
 Azure サブスクリプション ID は少なくとも 1 つ追加します。個別に追加するか (最大 10 個)、CSV ファイルをアップロードします (最大 100 個)。 これらのサブスクリプション ID を追加することで、オファーを一般公開する前にプレビューできるユーザーを定義します。 オファーが既に一般公開されている場合、オファーの変更や更新をテストするためにプレビュー対象ユーザーを選択できます。
 
-> [!NOTE]
-> プレビュー対象ユーザーはプライベート対象ユーザーとは異なります。 **プレビュー**対象ユーザーは、([可用性] タブで設定される) **プライベート**対象ユーザーにのみ公開されるものを含め、マーケットプレースで一般公開される前にすべてのオファー プランを閲覧し、確定できます。
+続行する前に、 **[下書きの保存]** を選択します。
 
-続行する前に、 **[下書きの保存]** を選択してください。
+## <a name="plan-overview"></a>プランの概要
 
-### <a name="plan-overview"></a>プランの概要
+このタブでは、同じオファー内でさまざまなプラン オプションを指定できます。 プラン (以前は SKU と呼ばれていました) は、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 商業マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
 
-このタブでは、同じオファー内でさまざまなプラン オプションを指定できます。 これらのプランは以前、SKU、つまり、Stock Keeping Unit と呼ばれていました。 プランは、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 商業マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 プランの作成後、 **[プランの概要]** タブが表示されます。
 
 - プラン名
 - 価格モデル
-- クラウドの可用性 (グローバルまたは Government)
+- Azure リージョン (グローバルまたは Government)
 - 現在の公開状態
 - 利用できるアクション
 
@@ -293,7 +272,7 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 - **ドラフトを削除する** - プランの状態がドラフトの場合。
 - **販売プランを停止する** - プランの状態が一般公開の場合。
 
-#### <a name="create-new-plan"></a>新しいプランを作成する
+### <a name="create-new-plan"></a>新しいプランを作成する
 
 **[新しいプランの作成]** を選択します。 **[新しいプラン]** ダイアログ ボックスが表示されます。
 
@@ -308,28 +287,24 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 このタブでは、プランが利用できるクラウドを選択できます。 このタブでの設定により、他のタブに表示されるフィールドが変わります。
 
-#### <a name="cloud-availability"></a>クラウドでの利用可否
+#### <a name="azure-regions"></a>Azure Azure リージョン
 
-プランは、少なくとも 1 つのクラウドで利用できる必要があります。
+Azure Container オファーのすべてのプランは、自動的に **[Azure グローバル]** で利用できるようになります。  コマーシャル マーケットプレースを使用する、すべてのグローバル Azure リージョンの顧客がプランを使用できます。 詳細については、「[利用可能な地域と通貨サポート](../marketplace-geo-availability-currencies.md)」を参照してください。
 
-**[Azure Global]** オプションを選択すると、商業マーケットプレースを使用するすべてのグローバル Azure リージョンで顧客がプランを使用できます。 詳細については、「[利用可能な地域と通貨サポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」を参照してください。
-
-[ **[Azure Government クラウド]** ](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) オプションを選択すると、ソリューションがここに表示されます。 これは政府機関コミュニティ クラウドであり、米国連邦、州、地方、部族の各政府機関の顧客と、彼らにサービスを提供する資格があるパートナー向けにアクセスが規制されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。
-
-Azure Government に[公開](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを作成し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に対する試用版アカウントの申請を行います。
+[[Azure Government]](../../azure-government/documentation-government-welcome.md) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカ合衆国の連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](../../azure-government/documentation-government-manage-marketplace-partners.md)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを作成し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に対する試用版アカウントの申請を行います。
 
 > [!NOTE]
-> プランが公開され、特定のクラウドで利用できるようになったら、そのクラウドは削除できません。
+> プランが公開され、特定のリージョンで利用できるようになった後に、そのリージョンを削除することはできません。
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government クラウドの認定
+#### <a name="azure-government-certifications"></a>Azure Government の認定資格
 
-このオプションは、 **[Cloud availability]\(クラウドの利用可否\)** で **[Azure Government クラウド]** を選択した場合にのみ表示されます。
+このオプションは、 **[Azure リージョン]** で **[Azure Government]** を選択した場合にのみ表示されます。
 
 Azure Government サービスでは、特定の政府の規制および要件の対象となるデータが処理されます。 FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4、CJIS などです。
 
 これらのプログラムの認定資格を示すため、それらを説明するリンクを最大 100 個指定できます。 プログラムのリスト登録に直接リンクするか、独自の Web サイトにリンクできます。 これらのリンクは、Azure Government の顧客にのみ表示されます。
 
-## <a name="plan-listing"></a>プランのリスト登録
+### <a name="plan-listing"></a>プランのリスト登録
 
 このタブには、現在のオファー内の異なるプラン別に特定の情報が表示されます。
 
@@ -341,7 +316,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 (オファーではなく) ソフトウェア プランの簡単な概要です。 この概要は Azure Marketplace の検索結果に表示されます。最大 100 文字を入力できます。
 
-### <a name="plan-description"></a>プランの説明
+### <a name="plan-description"></a>プラン説明
 
 このソフトウェア プラン独特の要素やオファーに含まれる他のプランとの違いを説明します。 オファーについては説明しないでください。プランの説明だけです。 この説明は Azure Marketplace と Azure portal の **[オファーのリスト登録]** ページに表示されます。 プラン概要に入力したものと同じ内容にすることができます。最大 2,000 文字を入力できます。
 
@@ -359,7 +334,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal のプラン詳細の画像。":::
 
-## <a name="plan-availability"></a>プランの可用性
+### <a name="plan-availability"></a>プランの可用性
 
 公開したオファーを非表示にし、マーケットプレースで顧客がそれを検索、閲覧、購入できないようにする場合、 **[可用性]** タブで **[プランの非表示]** チェックボックスを選択します。
 
@@ -374,7 +349,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 コンテナー イメージは、プライベートの [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) でホストされる必要があります。 **[技術的な構成]** タブで、Azure Container Registry 内のコンテナー イメージ リポジトリの参照情報を指定します。
 
-オファーの公開後、特定のパブリック コンテナー レジストリでコンテナー イメージが Azure Marketplace にコピーされます。 コンテナー イメージの使用要求はすべて、Azure Marketplace パブリック コンテナー レジストリからサービスが提供されます (プライベートのものからではありません)。 詳細については、[Azure Container の技術資産の準備](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)に関する記事を参照してください。
+オファーの公開後、特定のパブリック コンテナー レジストリでコンテナー イメージが Azure Marketplace にコピーされます。 コンテナー イメージの使用要求はすべて、Azure Marketplace パブリック コンテナー レジストリからサービスが提供されます (プライベートのものからではありません)。 詳細については、[Azure Container の技術資産の準備](create-azure-container-technical-assets.md)に関する記事を参照してください。
 
 ### <a name="image-repository-details"></a>イメージ リポジトリの詳細
 
@@ -382,11 +357,11 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 **Azure サブスクリプション ID** - 使用状況が報告され、コンテナー イメージが含まれる Azure Container Registry に対してサービスが課金されるサブスクリプション ID を入力します。 この ID は Azure portal の[[サブスクリプション] ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にあります。
 
-**Azure リソース グループ名** - Azure Container Registry とコンテナー イメージが含まれる[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)の名前を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできる必要があります。 この名前は Azure portal の [[リソース グループ]](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
+**Azure リソース グループ名** - Azure Container Registry とコンテナー イメージが含まれる[リソース グループ](../../azure-resource-manager/management/manage-resource-groups-portal.md)の名前を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできる必要があります。 この名前は Azure portal の [[リソース グループ]](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
 
-**Azure コンテナー レジストリ名** - コンテナー イメージが含まれる [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) の名前を指定します。 このコンテナー レジストリは、前に指定した Azure リソース グループに存在する必要があります。 完全なログイン サーバー名ではなく、レジストリ名のみを含めます。 名前からは必ず **azurecr.io** を除外してください。 レジストリ名は、Azure portal の[[コンテナー レジストリ] ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)にあります。
+**Azure コンテナー レジストリ名** - コンテナー イメージが含まれる [Azure Container Registry](../../container-registry/container-registry-intro.md) の名前を指定します。 このコンテナー レジストリは、前に指定した Azure リソース グループに存在する必要があります。 完全なログイン サーバー名ではなく、レジストリ名のみを含めます。 名前からは必ず **azurecr.io** を除外してください。 レジストリ名は、Azure portal の[[コンテナー レジストリ] ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)にあります。
 
-**Azure Container Registry の管理者ユーザー名** - コンテナー イメージが含まれる Azure Container Registry にリンクされている[管理者ユーザー名](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)を指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 必要に応じて、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
+**Azure Container Registry の管理者ユーザー名** – コンテナー イメージが含まれる Azure Container Registry にリンクされている[管理者ユーザー名](../../container-registry/container-registry-authentication.md#admin-account)) を指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 必要に応じて、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
 
@@ -394,7 +369,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="[アクセス キー]メニューの画像。":::
 
-**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするときに、リポジトリの名前を含めます。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) >  **[リポジトリ]** ページに移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)」を参照してください。
+**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするときに、リポジトリの名前を含めます。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) >  **[リポジトリ]** ページに移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](../../container-registry/container-registry-repositories.md)」を参照してください。
 
 > [!NOTE]
 > 設定した名前は変更できません。 アカウント内のオファー別に一意の名前を使用します。
@@ -407,7 +382,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 このフィールドには、サポートされているすべてのプラットフォームで最新バージョンのイメージを指す**最新**のタグを含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://github.com/estesp/manifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。
 
-マニフェスト タグ (最新のタグを除く) はすべて X.Y **-** か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、**最新**のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 詳細については、[Azure Container の技術資産の準備](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)に関する記事を参照してください。
+マニフェスト タグ (最新のタグを除く) はすべて X.Y **-** か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、**最新**のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 詳細については、[Azure Container の技術資産の準備](create-azure-container-technical-assets.md)に関する記事を参照してください。
 
 > [!NOTE]
 > テスト中にイメージを識別できるように、必ずテスト タグをイメージに追加してください。
@@ -428,10 +403,10 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 オファーを送信して公開するには、 **[公開]** を選択します。
 
-オファーのプレビュー バージョンが確認および承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。
+オファーのプレビュー バージョンが確認して承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。
 
-オファーを一般に (プライベート オファーの場合は、プライベート対象ユーザーに) 公開するには、パートナー センターに移動して、 **[一般公開する]** を選択します。
+オファーを一般に公開するには、パートナー センターにアクセスし、 **[一般公開する]** を選択します。
 
 ## <a name="next-step"></a>次のステップ
 
-- [コマーシャル マーケットプレースで既存のオファーを更新する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [コマーシャル マーケットプレースで既存のオファーを更新する](update-existing-offer.md)

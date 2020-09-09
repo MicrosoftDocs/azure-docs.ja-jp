@@ -4,7 +4,7 @@
   items:
     - name: Machine Learning
       tocHref: /azure/storage/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Team Data Science Process
           tocHref: /azure/storage/
@@ -30,7 +30,7 @@
   items:
     - name: Machine Learning
       tocHref: /azure/machine-learning/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Team Data Science Process
           tocHref: /azure/machine-learning/
@@ -45,7 +45,7 @@
   items:
     - name: Machine Learning
       tocHref: /azure/hdinsight/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Team Data Science Process
           tocHref: /azure/hdinsight/spark/
@@ -64,7 +64,7 @@
   items:
     - name: Machine Learning
       tocHref: /azure/hdinsight/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Team Data Science Process
           tocHref: /azure/hdinsight/spark/

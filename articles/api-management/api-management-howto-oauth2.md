@@ -1,7 +1,7 @@
 ---
 title: API Management の OAuth 2.0 を使用して開発者アカウントを承認する
 titleSuffix: Azure API Management
-description: API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。
+description: API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。 OAuth 2.0 では、ユーザーが利用資格のあるリソースにアクセスできるように、API をセキュリティで保護します。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75430691"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902260"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
@@ -50,7 +50,7 @@ ms.locfileid: "75430691"
     > [!NOTE]
     > これらのフィールドは、OAuth 2.0 認証サーバーを現在の API Management サービス インスタンス内で識別するために使用されるもので、それらの値が OAuth 2.0 サーバーによって自動入力されることはありません。
 
-3. **クライアント登録ページ URL** を入力します。 このページでは、ユーザーがアカウントを作成して管理できます。このページは使用される OAuth 2.0 プロバイダーによって異なります。 **[クライアント登録ページ URL]** では、ユーザーによるアカウント管理をサポートする OAuth 2.0 プロバイダーについて、ユーザーが自身のアカウントを作成および構成するために使用できるページを指定します。 この機能を OAuth 2.0 プロバイダーがサポートしている場合でも、組織によってはこの機能を構成または使用していない場合があります。 OAuth 2.0 プロバイダーでユーザーによるアカウント管理が構成されていない場合は、会社の URL、`https://placeholder.contoso.com` のような URL などのプレースホルダー URL を入力してください。
+3. **クライアント登録ページ URL** を入力します。 このページでは、ユーザーがアカウントを作成して管理できます。このページは使用される OAuth 2.0 プロバイダーによって異なります。 **[クライアント登録ページ URL]** では、ユーザーによるアカウント管理をサポートする OAuth 2.0 プロバイダーについて、ユーザーが自身のアカウントを作成および構成するために使用できるページを指定します (`https://contoso.com/login` など)。 この機能を OAuth 2.0 プロバイダーがサポートしている場合でも、組織によってはこの機能を構成または使用していない場合があります。 OAuth 2.0 プロバイダーでユーザーによるアカウント管理が構成されていない場合は、会社の URL、`https://placeholder.contoso.com` のような URL などのプレースホルダー URL を入力してください。
 
     ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -75,6 +75,11 @@ ms.locfileid: "75430691"
     既定の設定は、 **[Client authentication methods (クライアント認証方式)]** が **[Basic (基本)]** 、 **[Access token sending method (アクセス トークン送信方式)]** が **[Authorization header (承認ヘッダー)]** です。 これらの値は、 **[既定のスコープ (Default scope)]** と共に、フォームのこのセクションで構成されます。
 
 6. **[クライアントの資格情報]** セクションには **[クライアント ID]** と **[クライアント シークレット]** が含まれます。これらは OAuth 2.0 サーバーの作成と構成のプロセスで取得されます。 **[クライアント ID]** と **[クライアント シークレット]** が指定された後に、 **[認証コード]** の **redirect_uri** が生成されます。 この URI は、OAuth 2.0 サーバー構成で応答 URL を構成するために使用されます。
+
+    新しい開発者ポータルでは、URI サフィックスは次の形式です。
+
+    - 承認コード付与フローの場合は `/signin-oauth/code/callback/{authServerName}`
+    - 暗黙的な許可のフローの場合は `/signin-oauth/implicit/callback`
 
     ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-04.png)
 
@@ -135,14 +140,14 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [api-management-open-console]: ./media/api-management-howto-oauth2/api-management-open-console.png
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
-[API Management policy reference]: api-management-policy-reference.md
-[Caching policies]: api-management-policy-reference.md#caching-policies
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-policies.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
 [https://oauth.net/2/]: https://oauth.net/2/
@@ -153,4 +158,3 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Configure an API to use OAuth 2.0 user authorization]: #step2
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
-

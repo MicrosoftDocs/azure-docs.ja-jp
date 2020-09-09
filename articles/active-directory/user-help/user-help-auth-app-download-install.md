@@ -9,24 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741365"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798977"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリのダウンロードとインストール
 
 >[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
+>このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、[Azure Active Directory の管理ドキュメント](../index.yml)を参照してください。
+>
+> アカウントへのサインインに問題がある場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429)」をヘルプとして参照してください。  また、Microsoft アカウントへのサインイン試行時に ["指定した Microsoft アカウントは登録されていません"](https://support.microsoft.com/help/13811) というメッセージが表示される場合の対処方法を、詳しく確認することができます。
 
-Microsoft Authenticator アプリは、2 要素認証を使用する場合に、アカウントにサインインするために役立ちます。 2 要素認証は、特に機密情報を閲覧する際に、アカウントにより安全にアクセスするために役立ちます。 パスワードは忘れたり、盗まれたり、侵害されたりすることがあるため、2 要素認証は、他のユーザーの侵入を困難にすることでお客様のアカウントの保護に役立つ追加のセキュリティ手順です。
-
-Microsoft Authenticator アプリは次のような複数の方法で使用できます。
+Microsoft Authenticator アプリは、2 要素認証を使用する場合に、アカウントにサインインするために役立ちます。 2 要素認証を使用すると、アカウントをより安全に使用するのに役立ちます。これは、パスワードは忘れたり、盗まれたり、危害を受けたりするためです。 2 要素認証では、電話のような 2 つ目の要素を使用して、他のユーザーが自分のアカウントに侵入するのを困難にします。 Microsoft Authenticator アプリは次のような複数の方法で使用できます。
 
 - **2 要素認証。** 標準の認証方法。その要素の 1 つはパスワードです。 ユーザー名とパスワードを使用したサインイン後、通知を承認するか、提供された認証コードを入力します。
 
@@ -34,13 +34,9 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 
 - **コードの生成。** 認証アプリをサポートする他のアカウント用のコード ジェネレーターとして使用します。
 
-> [!Important]
-> Microsoft Authenticator アプリは、2 要素認証を使用し、時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
->
-> 組織では、サインインして組織のデータやドキュメントにアクセスするために、認証アプリの使用がユーザーに要求されている場合があります。 アプリにユーザー名が表示される場合でも、登録プロセスを完了するまで、アカウントは検証方法として機能するように実際に設定されてはいません。 詳しくは、「[職場または学校のアカウントを追加する](user-help-auth-app-add-work-school-account.md)」をご覧ください。
-> 
-> [!NOTE]
-> アカウントへのサインインに問題がある場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429)」をヘルプとして参照してください。  Microsoft アカウントへのサインイン試行時に ["指定した Microsoft アカウントは登録されていません"](https://support.microsoft.com/help/13811) というメッセージが表示される場合の対処方法を、詳しく確認してください。
+Authenticator は、2 要素認証を使用し、時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
+
+組織では、サインインして組織のデータやドキュメントにアクセスするために、Authenticator アプリの使用がユーザーに要求されている場合があります。 アプリにユーザー名が表示される場合でも、登録を完了するまで、アカウントは検証方法として実際に設定されていません。 詳しくは、「[職場または学校のアカウントを追加する](user-help-auth-app-add-work-school-account.md)」をご覧ください。
 
 ## <a name="download-and-install-the-app"></a>アプリのダウンロードとインストール
 
@@ -55,7 +51,7 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリをダウンロードして、インストールしたら、さまざまなアカウントを追加する必要があります。 詳細については、次を参照してください。
+アプリをダウンロードしてインストールしたら、[Authenticator アプリの概要](user-help-auth-app-overview.md)を参照して、詳細を確認してください。 セットアップ オプションの詳細については、以下を参照してください。
 
 - **認証アプリ。** 認証アプリをダウンロードして使用する場合、2 段階認証やパスワード リセットのために承認通知かランダムに生成された承認コードを取得できます。 Microsoft Authenticator アプリの設定方法と使用方法に関する段階的な説明が必要な場合は、「[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)」を参照してください。
 

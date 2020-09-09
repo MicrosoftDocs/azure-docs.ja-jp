@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 4cfa136585611e81a4060c5544d5dc464b32f12c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 690304ecef80d988f9a554cd10ce4689f5c72133
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537442"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070141"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー向け Azure Monitor Application Insights Agent の概要
 
@@ -71,18 +72,19 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  テレメトリの表示:
 
-- パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します。
-- 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
-- より高度なクエリのために[分析を使用](../../azure-monitor/app/analytics.md)します。
-- [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
+- パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+- 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
+- より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
+- [ダッシュボードを作成](./overview-dashboard.md)します。
 
  テレメトリの追加:
 
 - サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
-- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
-- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
+- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](./javascript.md)を追加します。
+- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](./asp-net.md)します。
 
 Application Insights エージェントをさらに活用する:
 
 - ここに記載されているコマンドの説明については、[詳細な手順](status-monitor-v2-detailed-instructions.md)に関する記事を参照してください。
 - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
+

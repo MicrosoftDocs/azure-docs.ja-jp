@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e24e78d5661c2fbb60a96c2fb6d6192ffade9579
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833555"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
@@ -40,12 +40,14 @@ Azure Resource Manager テンプレートの例と、それに関連するパラ
 * *dnsSuffix*:このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。  Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net*です。  しかし、ILB ASE はユーザーの仮想ネットワーク内部に位置することから、パブリック サービスの既定のルート ドメインを使用しても意味がありません。  ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。  たとえば、Contoso Corporation という架空の企業では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、 *internal-contoso.com* という既定のルート ドメインが使用されます。 
 * *ipSslAddressCount*:ILB ASE には単一の ILB アドレスしかないため、このパラメーターは、*azuredeploy.json* ファイル内で既定値の 0 に自動設定されます。  ILB ASE 用に明示されている IP-SSL アドレスがないため、ILB ASE の IP-SSL アドレス プールはゼロに設定する必要があり、ゼロ以外に設定するとプロビジョニング エラーが発生します。 
 
-ILB ASE に関して *azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の Powershell コード スニペットを使用して ILB ASE を作成することができます。  ファイル パス ("PATH" 部分) は、コンピューター上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。  また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
+ILB ASE に関して *azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の PowerShell コード スニペットを使用して ILB ASE を作成することができます。  ファイル パスは、マシン上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。  また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
 
-    $templatePath="PATH\azuredeploy.json"
-    $parameterPath="PATH\azuredeploy.parameters.json"
+```azurepowershell-interactive
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 Azure Resource Manager テンプレートを送信した後、ILB ASE が作成されるまでには数時間かかります。  作成が完了すると、ポータル UX で、デプロイを開始したサブスクリプションの App Service Environment の一覧に ILB ASE が表示されます。
 
@@ -61,19 +63,21 @@ ILB ASE を作成したら、TLS/SSL 証明書を、アプリへの TLS/SSL 接�
 
 その後、.pfx ファイルは base64 文字列に変換する必要がありますが、これは TLS/SSL 証明書が Azure Resource Manager テンプレートを使用してアップロードされるためです。  Azure Resource Manager テンプレートはテキスト ファイルであるため、パラメーターとしてテンプレートに含めることができるように、.pfx ファイルを base64 文字列に変換する必要があります。
 
-以下の Powershell コード スニペットには、自己署名証明書を生成して、その証明書を .pfx ファイルとしてエクスポートし、.pfx ファイルを base64 でエンコードされた文字列に変換してから、それを別のファイルに保存する例を示します。  base64 エンコード用の PowerShell コードは、[PowerShell スクリプトのブログ][examplebase64encoding]に記載されているコードを基にしています。
+以下の PowerShell コード スニペットは、自己署名証明書を生成して、その証明書を .pfx ファイルとしてエクスポートし、.pfx ファイルを base64 でエンコードされた文字列に変換してから、それを別のファイルに保存する例を示しています。  base64 エンコード用の PowerShell コードは、[PowerShell スクリプトのブログ][examplebase64encoding]に記載されているコードを基にしています。
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
 
-    $fileContentBytes = get-content -encoding byte $fileName
-    $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
-    $fileContentEncoded | set-content ($fileName + ".b64")
+$fileContentBytes = get-content -encoding byte $fileName
+$fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+$fileContentEncoded | set-content ($fileName + ".b64")
+```
 
 TLS/SSL 証明書が正常に生成され、base64 でエンコードされた文字列に変換されたら、GitHub にある、[既定の TLS/SSL 証明書を構成する][configuringDefaultSSLCertificate]ためのサンプルの Azure Resource Manager テンプレートを使用できます。
 
@@ -83,42 +87,46 @@ TLS/SSL 証明書が正常に生成され、base64 でエンコードされた�
 * *existingAseLocation*:ILB ASE のデプロイ先の Azure リージョンを含むテキスト文字列。  次に例を示します。"South Central US"。
 * *pfxBlobString*:based64 でエンコードされた .pfx ファイルの文字列表現。  前述したコード スニペットを使用すると、"exportedcert.pfx.b64" 内に含まれる文字列をコピーし、 *pfxBlobString* 属性の値として貼り付けることになります。
 * *password*:pfx ファイルの保護に使用されるパスワード。
-* *certificateThumbprint*:証明書のサムプリント。  この値を Powershell (前述のコード スニペットにある *$certificate.Thumbprint* など) から取得した場合、値はそのまま使用できます。  ただし、この値を Windows 証明書のダイアログからコピーした場合は、忘れずに余分なスペースを削除してください。  *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります
+* *certificateThumbprint*:証明書のサムプリント。  この値を PowerShell (前述のコード スニペットにある *$certificate.Thumbprint* など) から取得している場合は、値をそのまま使用できます。  ただし、この値を Windows 証明書のダイアログからコピーした場合は、忘れずに余分なスペースを削除してください。  *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります
 * *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。  この名前は、TLS/SSL 証明書を表す *Microsoft.Web/certificates* エンティティに固有の Azure Resource Manager 識別子の一部として使用されます。  この名前は、サフィックス "\_yourASENameHere_InternalLoadBalancingASE" で終わる**必要があります**。  このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示すインジケーターとして、ポータルによって使用されます。
 
 一部省略した *azuredeploy.parameters.json* の例を次に示します。
 
-    {
-         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-              "appServiceEnvironmentName": {
-                   "value": "yourASENameHere"
-              },
-              "existingAseLocation": {
-                   "value": "East US 2"
-              },
-              "pfxBlobString": {
-                   "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
-              },
-              "password": {
-                   "value": "PASSWORDGOESHERE"
-              },
-              "certificateThumbprint": {
-                   "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
-              },
-              "certificateName": {
-                   "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
-              }
-         }
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appServiceEnvironmentName": {
+            "value": "yourASENameHere"
+        },
+        "existingAseLocation": {
+            "value": "East US 2"
+        },
+        "pfxBlobString": {
+            "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
+        },
+        "password": {
+            "value": "PASSWORDGOESHERE"
+        },
+        "certificateThumbprint": {
+            "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
+        },
+        "certificateName": {
+            "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
+        }
     }
+}
+```
 
-*azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の PowerShell コード スニペットを使用して既定の TLS/SSL 証明書を構成することができます。  ファイル パス ("PATH" 部分) は、コンピューター上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。  また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
+*azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の PowerShell コード スニペットを使用して既定の TLS/SSL 証明書を構成することができます。  ファイル パスは、マシン上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。  また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
 
-    $templatePath="PATH\azuredeploy.json"
-    $parameterPath="PATH\azuredeploy.parameters.json"
+```azurepowershell-interactive
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 Azure Resource Manager テンプレートを送信した後、変更が適用されるまでには、ASE フロントエンドあたり約 40 分かかります。  たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまで約 1 時間 20 分かかります。  テンプレートの実行中に、ASE をスケーリングすることはできません。  
 

@@ -1,19 +1,14 @@
 ---
 title: Event Grid ソースとして Azure Container Registry
 description: Azure Event Grid で Container Registry イベント用に用意されているプロパティについて説明します
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 07/07/2020
+ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393361"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113719"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Event Grid ソースとして Azure Container Registry
 

@@ -4,24 +4,26 @@ titleSuffix: Azure Media Services
 description: Dynamic Packager を使用してフィルターを作成し、マニフェストをフィルター処理して選択的にストリーミングする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186208"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299033"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Dynamic Packager を使用してマニフェストをフィルター処理する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 アダプティブ ビットレート ストリーミング コンテンツをデバイスに配信するときは、特定のデバイス機能または利用可能なネットワーク帯域幅をターゲットにするために、マニフェストの複数のバージョンを公開することが必要な場合があります。 [Dynamic Packager](dynamic-packaging-overview.md) を使用すると、特定のコーデック、解像度、ビットレート、およびオーディオ トラックの組み合わせをその場で除外できるフィルターを指定できます。 このフィルターを使用すると、複数のコピーを作成する必要がなくなります。 必要なのは、ターゲット デバイス (iOS、Android、SmartTV、またはブラウザー) とネットワーク機能 (高帯域幅、モバイル、または低帯域幅の各シナリオ) に合わせて構成されたフィルターの特定のセットを含む新しい URL を発行することだけです。 この場合、クライアントはクエリ文字列によって (利用可能な[アセット フィルターまたはアカウント フィルター](filters-concept.md)を指定して) コンテンツのストリーミングを操作したり、フィルターを使用してストリームの特定のセクションをストリーミングしたりできます。
 
@@ -36,7 +38,7 @@ ms.locfileid: "74186208"
 
 ## <a name="overview-of-manifests"></a>マニフェストの概要
 
-Azure Media Services では、HLS、MPEG DASH、Smooth Streaming プロトコルがサポートされます。 ストリーミング クライアント マニフェスト (HLS のマスター再生リスト、DASH の Media Presentation Description [MPD]、および Smooth Streaming) は、URL 内の形式セレクターに基づいて、[ダイナミック パッケージ](dynamic-packaging-overview.md)の一部として動的に生成されます。 詳しくは、[一般的なオンデマンド ワークフロー](dynamic-packaging-overview.md#delivery-protocols)での配信プロトコルをご覧ください。
+Azure Media Services では、HLS、MPEG DASH、Smooth Streaming プロトコルがサポートされます。 ストリーミング クライアント マニフェスト (HLS のマスター再生リスト、DASH の Media Presentation Description [MPD]、および Smooth Streaming) は、URL 内の形式セレクターに基づいて、[ダイナミック パッケージ](dynamic-packaging-overview.md)の一部として動的に生成されます。 詳しくは、[一般的なオンデマンド ワークフロー](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery)での配信プロトコルをご覧ください。
 
 ### <a name="get-and-examine-manifest-files"></a>マニフェスト ファイルを取得して調査する
 

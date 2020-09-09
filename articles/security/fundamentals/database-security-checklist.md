@@ -1,6 +1,6 @@
 ---
 title: Azure のデータベース セキュリティのチェックリスト | Microsoft Docs
-description: この記事では、Azure のデータベース セキュリティのチェックリスト一式を提供します。
+description: Azure のデータベース セキュリティのチェックリストを使用して、クラウド コンピューティングのセキュリティに関する重要な問題に対処するようにしてください。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: d9283a36d5f7ccb82b2cc211485487d5a3dcce7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79201027"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542978"
 ---
 # <a name="azure-database-security-checklist"></a>Azure のデータベース セキュリティのチェックリスト
 
@@ -28,7 +28,7 @@ Azure データベースには、セキュリティ向上を促進するため�
 
 これには以下が含まれます。
 
--    IP アドレスで接続を制限する[ファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成できるファイアウォール
+-    IP アドレスで接続を制限する[ファイアウォール規則](../../azure-sql/database/firewall-configure.md)を作成できるファイアウォール
 -    Azure Portal からアクセス可能なサーバーレベルのファイアウォール
 -    SSMS からアクセス可能なデータベースレベルのファイアウォール規則
 -    セキュリティで保護された接続文字列を使用した、データベースへのセキュリティで保護された接続
@@ -50,10 +50,10 @@ Azure データベースには、セキュリティ向上を促進するため�
 | <br> 移動/転送時の暗号化| <ul><li>[トランスポート層セキュリティ](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)は、データがネットワークに移動するときのデータの暗号化を目的としています。</li><li>データベースは、TLS (トランスポート層セキュリティ) 経由の [TDS (表形式データ ストリーム)](https://msdn.microsoft.com/library/dd357628.aspx) プロトコルに基づく、クライアントからのセキュリティで保護された通信を必要とします。</li></ul> |
 |<br>保存時の暗号化| <ul><li>[Transparent Data Encryption](https://go.microsoft.com/fwlink/?LinkId=526242)。非アクティブなデータがデジタル形式で物理的に保存されているとき。</li></ul>|
 |**アクセスの制御**||  
-|<br> データベース アクセス | <ul><li>[認証](../../sql-database/sql-database-manage-logins.md) (Azure Active Directory 認証)。AD 認証は、Azure Active Directory によって管理されている ID を使用します。</li><li>[承認](../../sql-database/sql-database-manage-logins.md)によって、必要最小限の特権がユーザーに付与されます。</li></ul> |
-|<br>アプリケーション アクセス| <ul><li>[行レベル セキュリティ](https://msdn.microsoft.com/library/dn765131) (セキュリティ ポリシーを使用。同時にユーザーの ID、ロール、または実行コンテキストに基づいて行レベルのアクセスを制限)。</li><li>[動的データ マスク](../../sql-database/sql-database-dynamic-data-masking-get-started.md) (アクセス許可とポリシーを使用。特権のないユーザーに対して機密データをマスクすることでデータの公開を制限)</li></ul>|
+|<br> データベース アクセス | <ul><li>[認証](../../azure-sql/database/logins-create-manage.md) (Azure Active Directory 認証)。AD 認証は、Azure Active Directory によって管理されている ID を使用します。</li><li>[承認](../../azure-sql/database/logins-create-manage.md)によって、必要最小限の特権がユーザーに付与されます。</li></ul> |
+|<br>アプリケーション アクセス| <ul><li>[行レベル セキュリティ](https://msdn.microsoft.com/library/dn765131) (セキュリティ ポリシーを使用。同時にユーザーの ID、ロール、または実行コンテキストに基づいて行レベルのアクセスを制限)。</li><li>[動的データ マスク](../../azure-sql/database/dynamic-data-masking-overview.md) (アクセス許可とポリシーを使用。特権のないユーザーに対して機密データをマスクすることでデータの公開を制限)</li></ul>|
 |**プロアクティブな監視**||  
-| <br>追跡および検出| <ul><li>[監査](../../sql-database/sql-database-auditing.md)では、データベース イベントを追跡し、[Azure ストレージ アカウント](../../storage/common/storage-create-storage-account.md)の監査ログ/アクティビティ ログにイベントを書き込みます。</li><li>[Azure Monitor のアクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)を使用して Azure データベースの正常性を追跡します。</li><li>[脅威の検出](../../sql-database/sql-database-threat-detection.md)は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。 </li></ul> |
+| <br>追跡および検出| <ul><li>[監査](../../sql-database/sql-database-auditing.md)では、データベース イベントを追跡し、[Azure ストレージ アカウント](../../storage/common/storage-create-storage-account.md)の監査ログ/アクティビティ ログにイベントを書き込みます。</li><li>[Azure Monitor のアクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)を使用して Azure データベースの正常性を追跡します。</li><li>[脅威の検出](../../azure-sql/database/threat-detection-configure.md)は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。 </li></ul> |
 |<br>Azure Security Center| <ul><li>[データ監視](../../security-center/security-center-enable-auditing-on-sql-databases.md)では、SQL などの Azure サービスの一元的なセキュリティ監視ソリューションとして Azure Security Center を使用します。</li></ul>|        
 
 ## <a name="conclusion"></a>まとめ
@@ -62,7 +62,7 @@ Azure データベースは、多くの組織や規制のコンプライアン�
 ## <a name="next-steps"></a>次のステップ
 いくつかの簡単な手順に従うだけで、悪意のあるユーザーや未承認のアクセスからデータベースを今まで以上に強力に保護できるようになります。 このチュートリアルで学習する内容は次のとおりです。
 
-- サーバーまたはデータベースの[ファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を設定する
+- サーバーまたはデータベースの[ファイアウォール規則](../../azure-sql/database/firewall-configure.md)を設定する
 - [暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption)でデータを保護する
 - [SQL Database の監査](../../sql-database/sql-database-auditing.md)を有効にする
 

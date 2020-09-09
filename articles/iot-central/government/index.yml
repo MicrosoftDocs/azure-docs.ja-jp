@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f244a01815962febf4a9ba8165b1687f500587b9
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: a036b23d460fc5c638f36ff0dbca9bcda11cd39c
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024746"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87335925"
 landingContent:
 - title: 政府機関ソリューションを構築する
   linkLists:
@@ -38,13 +38,9 @@ landingContent:
     - text: デバイス テンプレートを設定する
       url: ../core/howto-set-up-template.md
     - text: デバイスの接続
-      url: ../core/tutorial-connect-device-nodejs.md
-    - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
-      url: ../core/tutorial-connect-pnp-device.md
+      url: ../core/tutorial-connect-device.md
   - linkListType: how-to-guide
     links:
-    - text: MX Chip IoT DevKit を準備して接続する
-      url: ../core/howto-connect-devkit.md
     - text: その他の IoT クラウドの接続
       url: ../core/howto-build-iotc-device-bridge.md
 - title: 接続を維持する

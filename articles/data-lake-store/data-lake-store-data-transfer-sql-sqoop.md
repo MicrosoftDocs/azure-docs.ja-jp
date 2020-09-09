@@ -4,15 +4,15 @@ description: Sqoop を使用して Azure SQL Database と Azure Data Lake Storag
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73839071"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323079"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする
 
@@ -22,7 +22,7 @@ Apache Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1
 
 ログやファイルなどの非構造化データおよび半構造化データを処理する場合は、ビッグ データ アプリケーションが自然な選択です。 ただし、リレーショナル データベースに格納された構造化データを処理する必要が生じることもあります。
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) は、リレーショナル データベースとビッグ データ レポジトリ (Data Lake Storage Gen1 など) の間でデータを転送するために設計されたツールです。 このツールを使用すると、Azure SQL Database などのリレーショナル データベース管理システム (RDBMS) から Data Lake Storage Gen1 にデータをインポートすることができます。 ビッグ データ ワークロードを使用してデータを転送および分析し、再びデータを RDBMS にエクスポートすることができます。 この記事では、Azure SQL データベースをリレーショナル データベースとして使用し、それに対してインポートまたはエクスポートを行うことができます。
+[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) は、リレーショナル データベースとビッグ データ レポジトリ (Data Lake Storage Gen1 など) の間でデータを転送するために設計されたツールです。 このツールを使用すると、Azure SQL Database などのリレーショナル データベース管理システム (RDBMS) から Data Lake Storage Gen1 にデータをインポートすることができます。 ビッグ データ ワークロードを使用してデータを転送および分析し、再びデータを RDBMS にエクスポートすることができます。 この記事では、インポートまたはエクスポートを行う対象のリレーショナル データベースとして、Azure SQL Database のデータベースを使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,41 +31,47 @@ Apache Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Storage Gen1 アカウント**。 アカウントを作成する手順については、「[Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください
 * Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 この記事では、Data Lake Storage Gen1 にアクセスできる HDInsight Linux クラスターがあることを前提とします。
-* **Azure SQL データベース**。 Azure SQL データベースの作成方法については、 [Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)
+* **Azure SQL データベース**。 Azure SQL Database でデータベースを作成する方法については、「[Azure SQL Database にデータベースを作成する](../sql-database/sql-database-get-started.md)」を参照してください
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Azure SQL データベースにサンプル テーブルを作成する
+## <a name="create-sample-tables-in-the-database"></a>データベースにサンプル テーブルを作成する
 
-1. 開始するには、Azure SQL データベースに 2 つのサンプル テーブルを作成します。 [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、データベースに接続してから次のクエリを実行します。
+1. 開始するには、データベースに 2 つのサンプル テーブルを作成します。 [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) または Visual Studio を使用して、データベースに接続してから次のクエリを実行します。
 
     **Table1 の作成**
 
-       CREATE TABLE [dbo].[Table1](
-       [ID] [int] NOT NULL,
-       [FName] [nvarchar](50) NOT NULL,
-       [LName] [nvarchar](50) NOT NULL,
-        CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
+    ```tsql
+    CREATE TABLE [dbo].[Table1](
+    [ID] [int] NOT NULL,
+    [FName] [nvarchar](50) NOT NULL,
+    [LName] [nvarchar](50) NOT NULL,
+     CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED
            (
                   [ID] ASC
            )
-       ) ON [PRIMARY]
-       GO
+    ) ON [PRIMARY]
+    GO
+    ```
 
     **Table2 の作成**
 
-       CREATE TABLE [dbo].[Table2](
-       [ID] [int] NOT NULL,
-       [FName] [nvarchar](50) NOT NULL,
-       [LName] [nvarchar](50) NOT NULL,
-        CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
+    ```tsql
+    CREATE TABLE [dbo].[Table2](
+    [ID] [int] NOT NULL,
+    [FName] [nvarchar](50) NOT NULL,
+    [LName] [nvarchar](50) NOT NULL,
+     CONSTRAINT [PK_Table_2] PRIMARY KEY CLUSTERED
            (
                   [ID] ASC
            )
-       ) ON [PRIMARY]
-       GO
+    ) ON [PRIMARY]
+    GO
+    ```
 
 1. 次のコマンドを実行して、**Table1** にサンプル データを追加します。 **Table2** は空のままにします。 後で、**Table1** から Data Lake Storage Gen1 にデータをインポートします。 次に、Data Lake Storage Gen1 から **Table2** にデータをエクスポートします。
 
-       INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
+    ```tsql
+    INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
+    ```
 
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 にアクセスできる HDInsight クラスターから Sqoop を使用する
 
@@ -75,7 +81,9 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
 1. クラスターから Data Lake Storage Gen1 アカウントにアクセスできるかどうかを確認します。 SSH プロンプトで、次のコマンドを実行します。
 
-       hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net/
+    ```console
+    hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net/
+    ```
 
    このコマンドにより、Data Lake Storage Gen1 アカウントのファイル/フォルダーの一覧が提供されます。
 
@@ -85,25 +93,33 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
 1. **Table1** から Data Lake Storage Gen1 アカウントにデータをインポートします。 次の構文を使用します。
 
-       sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```console
+    sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```
 
-   **sql-database-server-name** プレースホルダーは、Azure SQL データベースが実行されているサーバーの名前を表しています。 **sql-database-name** プレース ホルダーは、実際のデータベース名を表します。
+   **sql-database-server-name** プレースホルダーは、データベースが実行されているサーバーの名前を表しています。 **sql-database-name** プレース ホルダーは、実際のデータベース名を表します。
 
    たとえば、次のように入力します。
 
-       sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```console
+    sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+    ```
 
 1. Data Lake Storage Gen1 アカウントにデータが転送済みであることを確認します。 次のコマンドを実行します。
 
-       hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
+    ```console
+    hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
+    ```
 
    次の出力が表示されます。
 
-       -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
-       -rwxrwxrwx   0 sshuser hdfs         12 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00000
-       -rwxrwxrwx   0 sshuser hdfs         14 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00001
-       -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
-       -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
+    ```console
+    -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
+    -rwxrwxrwx   0 sshuser hdfs         12 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00000
+    -rwxrwxrwx   0 sshuser hdfs         14 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00001
+    -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
+    -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
+    ```
 
    各 **part-m-** * ファイルは、ソース テーブル **Table1** 内の行に対応します。 検証する part-m-* ファイルのコンテンツを表示できます。
 
@@ -111,28 +127,36 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
 1. Data Lake Storage Gen1 アカウントから Azure SQL Database 内の空のテーブル **Table2** にデータをエクスポートします。 次の構文を使用します。
 
-       sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```console
+    sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```
 
    たとえば、次のように入力します。
 
-       sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```console
+    sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+    ```
 
-1. SQL Database テーブルにデータがアップロードされていることを確認します。 [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
+1. SQL Database テーブルにデータがアップロードされていることを確認します。 [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
 
-       SELECT * FROM TABLE2
+    ```tsql
+    SELECT * FROM TABLE2
+    ```
 
    このコマンドの出力は次のようになります。
 
-        ID  FName    LName
-       -------------------
-       1    Neal     Kell
-       2    Lila     Fulton
-       3    Erna     Myers
-       4    Annette  Simpson
+    ```output
+     ID  FName    LName
+    -------------------
+    1    Neal     Kell
+    2    Lila     Fulton
+    3    Erna     Myers
+    4    Annette  Simpson
+    ```
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Sqoop を使用するときのパフォーマンスに関する考慮事項
 
-Data Lake Storage Gen1 にデータをコピーする Sqoop ジョブのパフォーマンス調整の詳細については、[Sqoop のパフォーマンスに関するブログ記事](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)を参照してください。
+Data Lake Storage Gen1 にデータをコピーする Sqoop ジョブのパフォーマンス調整の詳細については、[Sqoop のパフォーマンスに関するブログ記事](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

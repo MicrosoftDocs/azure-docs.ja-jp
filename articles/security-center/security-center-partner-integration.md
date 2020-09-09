@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519244"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -91,7 +91,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 Security Center は、Azure で実行されていても Security Center に接続されていないセキュリティ ソリューションを自動的に検出し、 **[検出されたソリューション]** セクションにそのソリューションを表示します。 これらのソリューションには、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) などの Azure ソリューションや、パートナー ソリューションが含まれます。
 
 > [!NOTE]
-> 検出されたソリューション機能のサブスクリプション レベルで、Security Center の Standard レベルが必要です。 価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+> 検出されたソリューション機能のサブスクリプション レベルで、Security Center の standard レベルが必要です。 価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 >
 
 ソリューションの下の **[接続]** を選択して、Security Center と統合し、セキュリティのアラートが通知されるようにします。

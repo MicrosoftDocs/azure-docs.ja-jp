@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b160f0aa50c30f7856bc09b88b3eb305f32d6f98
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535759"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961926"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 バックアップが無期限に保持されるように構成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。
@@ -41,8 +41,8 @@ App Service によって、アプリで使用するようにユーザーが構�
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要件および制限
-* バックアップと復元の機能には、**Standard** レベルまたは **Premium** レベル以上のレベルにある App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md)に関するページを参照してください。 **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
-* バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。
+* バックアップと復元の機能には、**Standard** レベル、**Premium** レベル、または **Isolated** レベルの App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md)に関するページを参照してください。 **Premium** レベルと **Isolated** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
+* バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 * 最大 10 GB のアプリとデータベースのコンテンツをバックアップできます。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
 * TLS が有効になっている Azure Database for MySQL のバックアップはサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
 * TLS が有効になっている Azure Database for PostgreSQL のバックアップはサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
@@ -74,7 +74,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 4. **[ストレージ アカウント]** と **[コンテナー]** を選択して、バックアップ先を選択します。 ストレージ アカウントは、バックアップするアプリと同じサブスクリプションに属する必要があります。 必要に応じて、各ページで新しいストレージ アカウントまたは新しいコンテナーを作成できます。 完了したら、 **[選択]** をクリックします。
 
-5. 開いたままになっている **[バックアップ構成]** ページで、 **[データベースをバックアップする]** を構成し、バックアップに含めるデータベース (SQL データベースまたは MySQL) を選択してから、 **[OK]** をクリックします。
+5. 開いたままになっている **[バックアップ構成]** ページで、 **[データベースをバックアップする]** を構成し、バックアップに含めるデータベース (SQL Database または MySQL) を選択してから、 **[OK]** をクリックします。
 
     ![ストレージ アカウントの選択](./media/manage-backup/configure-database.png)
 
@@ -150,7 +150,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 ## <a name="how-backups-are-stored"></a>バックアップの保存方法
 アプリの 1 つ以上のバックアップを作成すると、ストレージ アカウントとアプリの **[コンテナー]** ページに、バックアップが表示されます。 ストレージ アカウントでは、各バックアップは、バックアップ データを含む `.zip` ファイルと、`.zip` ファイルの内容のマニフェストを含む `.xml` ファイルで構成されます。 バックアップにアクセスする場合は、これらのファイルを解凍して参照でき、アプリを実際に復元する必要はありません。
 
-アプリのデータベースのバックアップは、.zip ファイルのルートに保存されます。 SQL データベースの場合、これは BACPAC ファイルで (ファイル拡張子はありません)、インポートできます。 BACPAC のエクスポートに基づく SQL データベースの作成については、「[BACPAC ファイルのインポートによる新しいユーザー データベースの作成](https://technet.microsoft.com/library/hh710052.aspx)」を参照してください。
+アプリのデータベースのバックアップは、.zip ファイルのルートに保存されます。 SQL Database の場合、これは BACPAC ファイルで (ファイル拡張子はありません)、インポートできます。 BACPAC のエクスポートに基づいて Azure SQL Database でデータベースを作成するには、[Azure SQL Database でデータベースを作成するための BACPAC ファイルのインポート](../azure-sql/database/database-import.md)に関する記事を参照してください。
 
 > [!WARNING]
 > **websitebackups** コンテナー内のファイルを変更すると、バックアップが無効になり、復元できなくなる可能性があります。
@@ -159,7 +159,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
-[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、バックアップ管理をスクリプトで自動化できます。
+[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/) を使用すると、バックアップ管理をスクリプトで自動化できます。
 
 サンプルについては、以下を参照してください。
 
@@ -169,4 +169,4 @@ App Service によって、アプリで使用するようにユーザーが構�
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>次の手順
-アプリをバックアップから復元する方法については、 [Azure でのアプリの復元](web-sites-restore.md)に関するページを参照してください。 
+アプリをバックアップから復元する方法については、 [Azure でのアプリの復元](web-sites-restore.md)に関するページを参照してください。

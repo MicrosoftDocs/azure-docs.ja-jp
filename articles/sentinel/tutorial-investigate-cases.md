@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel でインシデントを調査する | Microsoft Docs
-description: このチュートリアルでは、Azure Sentinel でインシデントを調査する方法について説明します。
+description: このチュートリアルでは、Azure Sentinel を使用して、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587194"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566337"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
@@ -37,10 +37,12 @@ ms.locfileid: "77587194"
 > * 調査グラフを使用する
 > * 脅威に対応する
 
-インシデントには複数のアラートを含めることができます。 ケースは、特定の調査に関連するすべての証拠を集計したものです。 インシデントは、 **[分析]** ページで作成した分析ルールに基づいて作成されます。 重大度および状態など、アラートに関連するプロパティはインシデント レベルで設定されます。 探している脅威の種類とその検出方法が Azure Sentinel に認識された後、インシデントを調査することで検出された脅威を監視できます。
+インシデントには複数のアラートを含めることができます。 ケースは、特定の調査に関連するすべての証拠を集計したものです。 インシデントは、 **[分析]** ページで作成した分析ルールに基づいて作成されます。 重大度や状態など、アラートに関連するプロパティはインシデント レベルで設定されます。 探している脅威の種類とその検出方法が Azure Sentinel に認識された後、インシデントを調査することで検出された脅威を監視できます。
 
 ## <a name="prerequisites"></a>前提条件
-分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合にのみ、インシデントを調査できます。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
+- インシデントの調査が可能なのは、分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合のみです。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
+
+- インシデントを割り当てる必要があるゲスト ユーザーがいる場合は、そのユーザーに Azure AD テナントの[ディレクトリ閲覧者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)ロールを割り当てる必要があります。 通常の (ゲスト以外の) ユーザーには、既定でこのロールが割り当てられています。
 
 ## <a name="how-to-investigate-incidents"></a>インシデントの調査方法
 
@@ -81,7 +83,7 @@ ms.locfileid: "77587194"
 1. インシデントを選択し、 **[調査]** を選択します。 これにより、調査グラフが表示されます。 グラフには、アラートに直接接続されているエンティティと、さらに接続されている各リソースのイラスト マップが示されます。
 
    > [!IMPORTANT] 
-   > 分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合にのみ、インシデントを調査できます。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
+   > インシデントの調査が可能なのは、分析ルールを設定するときにエンティティ マッピング フィールドを使用した場合のみです。 調査グラフでは、元のインシデントにエンティティが含まれている必要があります。
 
    ![マップを表示する](media/tutorial-investigate-cases/map1.png)
 
@@ -107,7 +109,21 @@ ms.locfileid: "77587194"
 
     ![マップのタイムラインを使用してアラートを調査する](media/tutorial-investigate-cases/use-timeline.png)
 
+## <a name="closing-an-incident"></a>インシデントを閉じる
 
+特定のインシデントを解決した後 (調査が結論に達した場合など)、インシデントの状態を **[Closed]\(終了\)** に設定する必要があります。 この場合、インシデントを閉じる理由を指定して、インシデントを分類するよう求められます。 この手順は必須です。 **[Select classification]\(分類を選択\)** をクリックし、ドロップダウン リストから次のいずれかを選択します。
+
+- [True Positive - suspicious activity]\(真陽性 - 疑わしいアクティビティ\)
+- [Benign Positive - suspicious but expected]\(無害な陽性 - 不審だが、予期されている)
+- [False Positive - incorrect alert logic]\(偽陽性 - 間違ったアラート ロジック\)
+- [False Positive - incorrect data]\(偽陽性 - 不適切なデータ\)
+- [Undetermined]\(不明\)
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt-text}":::
+
+適切な分類を選択した後、 **[コメント]** フィールドに説明文を追加します。 これは、このインシデントを参照する必要がある場合に役立ちます。 完了したら **[適用]** をクリックすると、インシデントが閉じられます。
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Sentinel を使用して、インシデントの調査を開始する方法について説明しました。 [自動プレイブックを使用した脅威への対応](tutorial-respond-threats-playbook.md)に関するチュートリアルに進んでください。

@@ -1,18 +1,18 @@
 ---
 title: Azure Blueprints の関数
 description: Azure Blueprints の定義と割り当てに使用できる関数について説明します。
-ms.date: 05/22/2020
+ms.date: 08/27/2020
 ms.topic: reference
-ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834783"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050762"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure Blueprints で使用する関数
 
-Azure Blueprints では、ブループリントの定義をより動的にする関数が提供されます。 これらの関数は、ブループリントの定義とブループリント アーティファクトで使用するためのものです。 Resource Manager テンプレートのアーティファクトでは、ブループリントのパラメーターによって動的な値を取得するだけでなく、Resource Manager の関数の使用も完全にサポートされています。
+Azure Blueprints では、ブループリントの定義をより動的にする関数が提供されます。 これらの関数は、ブループリントの定義とブループリント アーティファクトで使用するためのものです。 Azure Resource Manager テンプレート (ARM テンプレート) のアーティファクトでは、ブループリントのパラメーターによって動的な値を取得するだけでなく、Resource Manager の関数の使用も完全にサポートされています。
 
 次の関数がサポートされています。
 
@@ -30,11 +30,11 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 そのブループリント アーティファクトの出力が設定されたプロパティのオブジェクトが返されます。
 
 > [!NOTE]
-> `artifacts()` 関数は、Resource Manager テンプレート内からは使用できません。 Azure PowerShell または REST API によってブループリントを [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) の一部として管理する場合、関数は、ブループリント定義の JSON 内またはアーティファクト JSON 内のみで使用できます。
+> `artifacts()` 関数は、ARM テンプレート内からは使用できません。 Azure PowerShell または REST API によってブループリントを [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) の一部として管理する場合、関数は、ブループリント定義の JSON 内またはアーティファクト JSON 内のみで使用できます。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | artifactName |はい |string |ブループリント アーティファクトの名前。 |
 
@@ -60,9 +60,9 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Resource Manager テンプレート アーティファクト
+#### <a name="arm-template-artifact"></a>ARM テンプレートのアーティファクト
 
-返されるオブジェクトの **outputs** のプロパティは、Resource Manager テンプレート内で定義されており、デプロイによって返されます。
+返されるオブジェクトの **outputs** のプロパティは、ARM テンプレート内で定義されており、デプロイによって返されます。
 
 #### <a name="role-assignment-artifact"></a>ロールの割り当てアーティファクト
 
@@ -78,7 +78,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 
 ### <a name="example"></a>例
 
-次のサンプル出力プロパティを含む ID が _myTemplateArtifact_ の Resource Manager テンプレート アーティファクト:
+次のサンプル出力プロパティを含む ID が _myTemplateArtifact_ の ARM テンプレート アーティファクト:
 
 ```json
 {
@@ -106,7 +106,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 
 _myTemplateArtifact_ サンプルからデータを取得する例を次にいくつか示します。
 
-| 式 | 種類 | 値 |
+| 式 | Type | 値 |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
@@ -123,7 +123,7 @@ _myTemplateArtifact_ サンプルからデータを取得する例を次にい�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | string1 |はい |string |連結の最初の値。 |
 | 残りの引数 |いいえ |string |連結する順番での追加の値 |
@@ -134,7 +134,7 @@ _myTemplateArtifact_ サンプルからデータを取得する例を次にい�
 
 ### <a name="remarks"></a>解説
 
-Azure Blueprint 関数は、文字列でのみ動作する点が、Azure Resource Manager テンプレート関数と異なります。
+Azure Blueprint 関数は、文字列でのみ動作する点が、ARM テンプレート関数と異なります。
 
 ### <a name="example"></a>例
 
@@ -148,7 +148,7 @@ Azure Blueprint 関数は、文字列でのみ動作する点が、Azure Resourc
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -158,7 +158,7 @@ Azure Blueprint 関数は、文字列でのみ動作する点が、Azure Resourc
 
 ### <a name="remarks"></a>解説
 
-Azure Blueprint 関数は、ブループリント パラメーターでのみ動作する点が、Azure Resource Manager テンプレート関数と異なります。
+Azure Blueprint 関数は、ブループリント パラメーターでのみ動作する点が、ARM テンプレート関数と異なります。
 
 ### <a name="example"></a>例
 
@@ -174,7 +174,7 @@ Azure Blueprint 関数は、ブループリント パラメーターでのみ動
                 "type": "array",
                 "metadata": {
                     "displayName": "Principal IDs",
-                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the RBAC assignment.",
+                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the Azure role assignment.",
                     "strongType": "PrincipalId"
                 }
             }
@@ -218,7 +218,7 @@ Azure Blueprint 関数は、ブループリント パラメーターでのみ動
 
 ### <a name="remarks"></a>解説
 
-Azure Blueprint 関数は、Azure Resource Manager テンプレート関数と異なります。 `resourceGroup()` 関数は、サブスクリプション レベルのアーティファクトまたはブループリント定義では使用できません。 リソース グループ アーティファクトの一部であるブループリント アーティファクトでのみ使用できます。
+Azure Blueprint 関数は、ARM テンプレート関数と異なります。 `resourceGroup()` 関数は、サブスクリプション レベルのアーティファクトまたはブループリント定義では使用できません。 リソース グループ アーティファクトの一部であるブループリント アーティファクトでのみ使用できます。
 
 `resourceGroup()` 関数の一般的な使用方法は、リソース グループ アーティファクトと同じ場所にリソースを作成することです。
 
@@ -269,7 +269,7 @@ Azure Blueprint 関数は、Azure Resource Manager テンプレート関数と�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | placeholderName |はい |string |取得するリソース グループ アーティファクトのプレースホルダーの名前。 |
 

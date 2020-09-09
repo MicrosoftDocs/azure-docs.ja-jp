@@ -3,15 +3,15 @@ title: Linux VM での DNS 名前解決のオプション
 description: Azure IaaS での Linux 仮想マシンの名前解決のシナリオを示します (提供される DNS サービス、ハイブリッド外部 DNS、独自 DNS サーバーの使用など)。
 author: RicksterCDN
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641726"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372826"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。
@@ -92,7 +92,9 @@ DNS では、主に UDP プロトコルが使用されます。 UDP プロトコ
 
 Linux 仮想マシンの現在の設定を確認するには、次に示す 'cat/etc/resolv.conf' の 'options' 行を確認します。
 
-    options timeout:1 attempts:5
+```config-conf
+options timeout:1 attempts:5
+```
 
 resolv.conf ファイルは自動生成され、編集すべきではありません。 'options' 行を追加する具体的な手順は、ディストリビューションによって異なります。
 
@@ -119,7 +121,7 @@ DNS 転送は、仮想ネットワーク間の DNS 解決も可能にし、オ�
 
 Azure が提供する名前解決を使用すると、内部 DNS サフィックスが DHCP を使用して各仮想マシンに提供されます。 独自の名前解決のソリューションを使用している場合、このサフィックスは他の DNS アーキテクチャに干渉するため、仮想マシンには提供されません。 FQDN を使用してマシンを参照するか、VM でサフィックスを構成するために、次の PowerShell または API を使用して、サフィックスを決定することができます。
 
-* Azure Resource Manager によって管理される仮想ネットワークでは、サフィックスは[ネットワーク インターフェイス カード](https://msdn.microsoft.com/library/azure/mt163668.aspx) リソースから入手できます。 `azure network public-ip show <resource group> <pip name>` コマンドを実行して、NIC の FQDN が含まれているパブリック IP の詳細を表示することもできます。
+* Azure Resource Manager によって管理される仮想ネットワークでは、サフィックスは[ネットワーク インターフェイス カード](/rest/api/virtualnetwork/networkinterfaces) リソースから入手できます。 `azure network public-ip show <resource group> <pip name>` コマンドを実行して、NIC の FQDN が含まれているパブリック IP の詳細を表示することもできます。
 
 Azure へのクエリの転送がニーズに合わない場合は、独自の DNS ソリューションを提供する必要があります。  DNS 解決では次を行う必要があります。
 
@@ -129,6 +131,6 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 * 外部エージェントによる脅威を軽減するために、インターネットからのアクセスをセキュリティ保護する。
 
 > [!NOTE]
-> 最適なパフォーマンスのため、Azure DNS サーバーで仮想マシンを使用する場合は、IPv6 を無効にし、各 DNS サーバー仮想マシンに[インスタンスレベル パブリック IP](../../virtual-network/virtual-networks-instance-level-public-ip.md) を割り当てます。  
+> 最適なパフォーマンスのため、Azure DNS サーバーで仮想マシンを使用する場合は、IPv6 を無効にし、各 DNS サーバー仮想マシンに[インスタンスレベル パブリック IP](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) を割り当てます。  
 >
 >

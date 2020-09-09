@@ -3,22 +3,22 @@ title: Linux での Java Web アプリ パフォーマンスの監視 | Microsof
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537527"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322603"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) で Linux システムのパフォーマンス メトリックを探索するには、[collectd](https://collectd.org/) を Application Insights のプラグインと共にインストールします。 このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
+[Application Insights](./app-insights-overview.md) で Linux システムのパフォーマンス メトリックを探索するには、[collectd](https://collectd.org/) を Application Insights のプラグインと共にインストールします。 このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
 
 既に [Application Insights で Java Web サービスをインストルメント化][java]してある場合は、通常、collectd を使用します。 collectd を使用すると、アプリのパフォーマンスの向上や問題の診断に役立つ多くのデータを得られます。 
 
 ## <a name="get-your-instrumentation-key"></a>インストルメンテーション キーの取得
-[Microsoft Azure Portal](https://portal.azure.com) で、データを表示する [Application Insights](../../azure-monitor/app/app-insights-overview.md) リソースを開きます。 (または[新しいリソースを作成](../../azure-monitor/app/create-new-resource.md )します。)
+[Microsoft Azure Portal](https://portal.azure.com) で、データを表示する [Application Insights](./app-insights-overview.md) リソースを開きます。 (または[新しいリソースを作成](./create-new-resource.md)します。)
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 
@@ -105,7 +105,7 @@ Application Insights のリソースで、[メトリックを開いてグラフ�
 *ポータルにデータが表示されません。*
 
 * [[検索]][diagnostic] を開き、未加工のイベントが到着しているかどうかを確認します。 メトリックス エクスプローラーに表示されるまでに時間がかかる場合があります。
-* 必要に応じて [データ送信についてファイアウォール例外を設定](../../azure-monitor/app/ip-addresses.md)
+* 必要に応じて [データ送信についてファイアウォール例外を設定](./ip-addresses.md)
 * Application Insights プラグインでトレースを有効にします。 `<Plugin ApplicationInsightsWriter>`に次の行を追加します。
   * `SDKLogger true`
 * ターミナルを開き、詳細モードで collectd を起動して報告されている問題がないか確認します。
@@ -121,13 +121,12 @@ Application Insights の Write プラグインは特定の Read プラグイン�
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-
+[metrics]: ../platform/metrics-charts.md
 

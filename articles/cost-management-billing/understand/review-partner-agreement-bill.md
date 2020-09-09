@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.subservice: billing
+ms.topic: tutorial
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e5ecc67fe86afa15c66d175f0705818154588bf
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78299314"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684356"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>チュートリアル:Microsoft Partner Agreement の請求書を確認する
 
@@ -69,7 +70,7 @@ Azure portal の検索ボックスで「*コストの管理と請求*」と入�
 |Date     | トランザクションの日付  |
 |請求書 ID     | トランザクションが課金される請求書の識別子。 サポート要求を送信する場合、ID を Azure サポートに知らせると、サポート要求が迅速に処理されます |
 |トランザクションの種類     |  購入、キャンセル、利用料金などのトランザクションの種類  |
-|製品ファミリ     | 仮想マシン用のコンピューターや Azure SQL データベース用のデータベースなどの製品のカテゴリ|
+|製品ファミリ     | 仮想マシン用のコンピューターや Azure SQL Database 用のデータベースなどの製品のカテゴリ|
 |製品 SDKU     | お使いの製品のインスタンスを識別する一意のコード |
 |金額     |  トランザクションの金額      |
 |請求プロファイル     | トランザクションは、この課金プロファイルの請求書に表示されます |

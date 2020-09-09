@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318766"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮形式
 *このトピックが適用されるコネクタは、[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[ファイル システム](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md)、[SFTP](data-factory-sftp-connector.md) です。*
@@ -497,7 +497,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 
 `compression` プロパティを入力データセットの JSON で指定すると、パイプラインでソースから圧縮データを読み取ることができます。このプロパティを出力データセットの JSON で指定すると、コピー アクティビティにより出力先に圧縮データを書き込むことができます。 いくつかのサンプル シナリオを次に示します。
 
-* Azure BLOB から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL データベースに書き込みます。 `compression` `type` JSON プロパティを使用して、Azure BLOB 入力データセットを GZIP として定義します。
+* Azure BLOB から GZIP 圧縮データを読み取って展開し、生成されたデータを Azure SQL Database に書き込みます。 `compression` `type` JSON プロパティを使用して、Azure BLOB 入力データセットを GZIP として定義します。
 * オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure BLOB に書き込みます。 `compression` `type` JSON プロパティを使用して、Azure BLOB 出力データセットを GZip として定義します。
 * FTP サーバーから .zip ファイルを読み取り、圧縮解除して中にあるファイルを取得し、それらのファイルを Azure Data Lake Store に格納します。 `compression` `type` JSON プロパティを使用して、FTP 入力データセットを ZipDeflate として定義します。
 * Azure BLOB から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure BLOB に書き込みます。 この場合、Azure BLOB 入力データセットは `compression` `type` を GZIP に設定して定義し、Azure BLOB 出力データセットは `compression` `type` を BZIP2 に設定して定義します。   

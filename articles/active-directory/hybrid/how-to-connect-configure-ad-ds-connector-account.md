@@ -1,24 +1,25 @@
 ---
-title: 'Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 | Microsoft Docs'
+title: Azure AD Connect:AD DS コネクタ アカウントのアクセス許可を構成する | Microsoft Docs
 description: このドキュメントでは、新しい ADSyncConfig PowerShell モジュールを使用して AD DS コネクタ アカウントを構成する方法について詳しく説明します
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/29/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72515819"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279297"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
 [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) という名前の PowerShell モジュールがビルド 1.1.880.0 (2018 年 8 月にリリース) に導入されました。これには、Azure AD Connect のデプロイ用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。 
 
@@ -38,17 +39,17 @@ Azure AD Connect の高速インストールでは、自動的に生成された
 | パスワード ハッシュの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
 | Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への読み取りと書き込みのアクセス許可。 |
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
-| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/howto-sspr-writeback.md)」に記載された属性への読み取りと書き込みのアクセス許可。 |
+| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/tutorial-enable-sspr-writeback.md)」に記載された属性への読み取りと書き込みのアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に記載されているデバイスのオブジェクトとコンテナーに対する読み取りと書き込みのアクセス許可。 |
-| グループの書き戻し |同期された **Office 365 グループ**のグループ オブジェクトの読み取り、作成、更新、削除。  詳しくは、「[グループの書き戻し](how-to-connect-preview.md#group-writeback)」をご覧ください。|
+| グループの書き戻し |同期された **Office 365 グループ**のグループ オブジェクトの読み取り、作成、更新、削除。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>ADSyncConfig PowerShell モジュールの使用 
-ADSyncConfig モジュールは AD DS PowerShell モジュールとツールに依存するため、[AD DS 用のリモート サーバー管理ツール (RSAT)](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) が必要です。 AD DS 用の RSAT をインストールするには、「管理者として実行」して Windows PowerShell ウィンドウを開いて、次のように実行します。 
+ADSyncConfig モジュールは AD DS PowerShell モジュールとツールに依存するため、[AD DS 用のリモート サーバー管理ツール (RSAT)](/windows-server/remote/remote-server-administration-tools) が必要です。 AD DS 用の RSAT をインストールするには、「管理者として実行」して Windows PowerShell ウィンドウを開いて、次のように実行します。 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
 ```
-![[構成]](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
+![構成](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
 >[!NOTE]
 >AD DS 用の RAST が既にインストールされているドメイン コントローラーにファイル **C:\Program files \microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** を、コピーし、そこでこの PowerShell モジュールを使用することもできます。
@@ -136,7 +137,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 このコマンドレットは、次のアクセス許可を設定します。 
  
 
-|種類 |Name |アクセス |適用対象| 
+|Type |名前 |アクセス |適用対象| 
 |-----|-----|-----|-----|
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |デバイスの子孫オブジェクト| 
 |Allow |AD DS コネクタ アカウント|すべてのプロパティの読み取り |InetOrgPerson の子孫オブジェクト| 
@@ -162,7 +163,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|種類 |Name |アクセス |適用対象|
+|Type |名前 |アクセス |適用対象|
 |-----|-----|-----|-----| 
 |Allow|AD DS コネクタ アカウント|プロパティの読み取り/書き込み|ユーザーの子孫オブジェクト|
 
@@ -182,7 +183,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|種類 |Name |アクセス |適用対象|
+|Type |名前 |アクセス |適用対象|
 |-----|-----|-----|-----| 
 |Allow |AD DS コネクタ アカウント |ディレクトリの変更のレプリケート |このオブジェクトのみ (ドメインのルート)| 
 |Allow |AD DS コネクタ アカウント |ディレクトリの変更すべてのレプリケート |このオブジェクトのみ (ドメインのルート)| 
@@ -202,7 +203,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|種類 |Name |アクセス |適用対象|
+|Type |名前 |アクセス |適用対象|
 |-----|-----|-----|-----| 
 |Allow |AD DS コネクタ アカウント |パスワードのリセット |ユーザーの子孫オブジェクト| 
 |Allow |AD DS コネクタ アカウント |プロパティ lockoutTime の書き込み |ユーザーの子孫オブジェクト| 
@@ -222,7 +223,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|種類 |Name |アクセス |適用対象|
+|Type |名前 |アクセス |適用対象|
 |-----|-----|-----|-----| 
 |Allow |AD DS コネクタ アカウント |汎用の読み取り/書き込み |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
 |Allow |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
@@ -245,7 +246,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 このコマンドレットは、次のアクセス許可を設定します。  
  
 
-|種類 |Name |アクセス |適用対象|
+|Type |名前 |アクセス |適用対象|
 |-----|-----|-----|-----| 
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |ユーザーの子孫オブジェクト| 
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |InetOrgPerson の子孫オブジェクト| 
@@ -267,7 +268,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|種類 |Name |アクセス |適用対象|
+|Type |名前 |アクセス |適用対象|
 |-----|-----|-----|-----| 
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |パブリック フォルダーの子孫オブジェクト| 
 
@@ -292,7 +293,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|種類 |Name |アクセス |適用対象|
+|Type |名前 |アクセス |適用対象|
 |-----|-----|-----|-----| 
 |Allow |SYSTEM |フル コントロール |このオブジェクト 
 |Allow |Enterprise Admins |フル コントロール |このオブジェクト 
@@ -306,8 +307,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 |Allow |Authenticated Users |読み取りのアクセス許可 |このオブジェクト 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md)
+- [Azure AD Connect:アカウントとアクセス許可](reference-connect-accounts-permissions.md)
 - [高速インストール](how-to-connect-install-express.md)
 - [カスタム インストール](how-to-connect-install-custom.md)
 - [ADSyncConfig リファレンス](reference-connect-adsyncconfig.md)
-

@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 12/19/2019
-ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343117"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 
@@ -34,6 +34,20 @@ Azure Data Factory ユーザー インターフェイス エクスペリエン�
 ここでは、ファクトリを構成するパイプライン、アクティビティ、データセット、リンクされたサービス、データ フロー、トリガー、および統合ランタイムを作成します。 作成キャンバスを使用してパイプラインの構築を開始するには、[コピー アクティビティを使用したデータのコピー](tutorial-copy-data-portal.md)に関する記事をご覧ください。 
 
 既定のビジュアル作成エクスペリエンスは、Data Factory サービスと直接連携します。 データ ファクトリ パイプラインでの作業時にソース管理とコラボレーションを可能にするために、Azure Repos Git または GitHub 統合もサポートされます。 これらの作成エクスペリエンスの違いについて詳しくは、「[Azure Data Factory でのソース管理](source-control.md)」をご覧ください。
+
+### <a name="properties-pane"></a>プロパティ ペイン
+
+パイプライン、データセット、データ フローなどの最上位レベルのリソースの場合、上位のプロパティは、キャンバスの右側のプロパティ ペインで編集できます。 プロパティ ペインには、名前、説明、注釈、その他の上位プロパティなどのプロパティが含まれています。 パイプライン アクティビティやデータ フロー変換などのサブリソースは、キャンバスの下部にあるパネルを使用して編集されます。 
+
+![作成キャンバス](media/author-visually/properties-pane.png)
+
+プロパティ ペインは、既定ではリソースの作成時にのみ表示されます。 編集するには、キャンバスの右上隅にあるプロパティ ペイン アイコンをクリックします。
+
+## <a name="management-hub"></a>管理ハブ
+
+Azure Data Factory UX の *[管理]* タブによってアクセスされる管理ハブは、データ ファクトリのグローバル管理アクションをホストするポータルです。 ここでは、データ ストアと外部コンピューティングへの接続、ソース管理の構成、およびトリガーの設定を管理できます。 詳細については、[管理ハブ](author-management-hub.md)の機能に関するページを参照してください。
+
+![リンクされたサービスの管理](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>式と関数
 

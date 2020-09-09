@@ -3,13 +3,13 @@ title: チュートリアル - デプロイ用のコンテナー イメージを
 description: Azure Container Instances チュートリアル第 1 部 (全 3 部) - Azure Container Instances にデプロイするアプリをコンテナー イメージとして準備します
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 3a73d68f99c7e2ec4c71e408abbdbc7eec7ee95d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74533338"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407168"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>チュートリアル:Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する
 

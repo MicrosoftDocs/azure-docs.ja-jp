@@ -9,10 +9,10 @@ ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797121"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを作成する
@@ -103,7 +103,7 @@ Azure AD テナントで VPN クライアントを登録します。
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 
-6. 必須フィールドに入力し、 **[状態]** を **[有効]** にします。 **[スコープの追加]** をクリックします。
+6. 必須フィールドに入力し、**[状態]** を **[有効]** にします。 **[スコープの追加]** をクリックします。
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
 

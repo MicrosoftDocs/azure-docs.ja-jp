@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900930"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413725"
 ---
 # <a name="about-azure-key-vault-keys"></a>Azure Key Vault のキーについて
 
@@ -30,20 +30,20 @@ Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして
 
 基本の JWK/JWA の仕様は、Key Vault の実装に固有のキーの種類も有効にするように拡張されます。 たとえば、HSM ベンダー固有のパッケージを使用してキーをインポートすると、Key Vault HSM でのみ使用できるキーの安全なトランスポートが可能です。 
 
-Azure Key Vault は、ソフト キーとハード キーの両方をサポートします。
+Azure Key Vault では、ソフトウェアで保護するキーと HSM で保護するキーの両方がサポートされています。
 
-- **"ソフト" キー**:Key Vault によってソフトウェアで処理されるが、HSM 内のシステム キーを使って保存時に暗号化されるキー。 クライアントは、既存の RSA または EC (Elliptic Curve) キーをインポートするか、または Key Vault による生成を要求できます。
-- **"ハード" キー**:HSM (ハードウェア セキュリティ モジュール) で処理されるキー。 これらのキーは、Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとに 1 つのセキュリティ ワールドがあります)。 クライアントは、RSA または EC キーをインポートできます (ソフト形式で、または互換性のある HSM デバイスからエクスポートすることにより)。 クライアントは、Key Vault にキーの生成を要求することもできます。 このキーの種類では、HSM キー マテリアルを取得するために、key_hsm 属性が JWK に追加されます。
+- **ソフトウェアで保護するキー**:Key Vault によってソフトウェアで処理されるが、HSM 内のシステム キーを使って保存時に暗号化されるキー。 クライアントは、既存の RSA または EC (Elliptic Curve) キーをインポートするか、または Key Vault による生成を要求できます。
+- **HSM で保護するキー**:HSM (ハードウェア セキュリティ モジュール) で処理されるキー。 これらのキーは、Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとに 1 つのセキュリティ ワールドがあります)。 クライアントは、RSA または EC キーをインポートできます (ソフトウェア保護形式で、または互換性のある HSM デバイスからエクスポートすることにより)。 クライアントは、Key Vault にキーの生成を要求することもできます。 このキーの種類では、HSM キー マテリアルを取得するために、key_hsm 属性が JWK に追加されます。
 
-地理的境界について詳しくは、[Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/privacy/) をご覧ください。  
+地理的境界について詳しくは、[Microsoft Azure トラスト センター](https://azure.microsoft.com/support/trust-center/privacy/) をご覧ください。  
 
 ## <a name="cryptographic-protection"></a>暗号化による保護
 
 Key Vault では、RSA キーと楕円曲線キーのみがサポートされます。 
 
--   **EC**:"ソフト" 楕円曲線キー。
+-   **EC**:ソフトウェアで保護される楕円曲線キー。
 -   **EC-HSM**:"ハード" 楕円曲線キー。
--   **RSA**:"ソフト"RSA キー。
+-   **RSA**:ソフトウェアで保護される RSA キー。
 -   **RSA-HSM**:"ハード" RSA キー。
 
 Key Vault では、サイズが 2048、3072、4096 の RSA キーがサポートされています。 サポートされている楕円曲線キーの種類は P-256、P-384、P-521、P-256K (SECP256K1) です。

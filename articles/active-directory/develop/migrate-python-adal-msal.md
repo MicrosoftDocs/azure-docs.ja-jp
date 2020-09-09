@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
-ms.custom: aaddev
-ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128044"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119914"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -38,19 +38,19 @@ ADAL は、Azure Active Directory (Azure AD) v1.0 エンドポイントで動作
   - OAuth v2.0
   - OpenID Connect (OIDC)
 
-詳細については、[Microsoft ID プラットフォーム (v2.0) エンドポイントについての違い](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)に関するページを参照してください。
+詳細については、[Microsoft ID プラットフォーム (v2.0) エンドポイントについての違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを参照してください。
 
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-ADAL Python ではリソースのトークンが取得されますが、MSAL Python ではスコープのトークンが取得されます。 MSAL Python の API サーフェスには、リソース パラメーターがなくなりました。 要求される必要なアクセス許可とリソースを宣言する文字列のリストとして、スコープを指定する必要があります。 スコープの例については、[Microsoft Graph のスコープ](https://docs.microsoft.com/graph/permissions-reference)に関するページを参照してください。
+ADAL Python ではリソースのトークンが取得されますが、MSAL Python ではスコープのトークンが取得されます。 MSAL Python の API サーフェスには、リソース パラメーターがなくなりました。 要求される必要なアクセス許可とリソースを宣言する文字列のリストとして、スコープを指定する必要があります。 スコープの例については、[Microsoft Graph のスコープ](/graph/permissions-reference)に関するページを参照してください。
 
 `/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
 
-さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関する記事および「[v1.0 トークンを受け入れる Web API のスコープ](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)」の記事を参照してください。
+さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)に関する記事および「[v1.0 トークンを受け入れる Web API のスコープ](./msal-v1-app-scopes.md)」の記事を参照してください。
 
 ### <a name="error-handling"></a>エラー処理
 
-Python 用 Azure Active Directory 認証ライブラリ (ADAL) では、例外 `AdalError` を使用して問題が発生したことを示します。 Python 用 MSAL では通常、代わりにエラー コードを使用します。 詳細については、[Python 用 MSAL のエラー処理](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python)に関するページを参照してください。
+Python 用 Azure Active Directory 認証ライブラリ (ADAL) では、例外 `AdalError` を使用して問題が発生したことを示します。 Python 用 MSAL では通常、代わりにエラー コードを使用します。 詳細については、[Python 用 MSAL のエラー処理](./msal-handling-exceptions.md?tabs=python)に関するページを参照してください。
 
 ### <a name="api-changes"></a>API の変更
 
@@ -77,31 +77,49 @@ Microsoft 認証ライブラリ (MSAL) では、更新トークンの概念が�
 
 次のコードは、別の OAuth2 ライブラリ (ADAL Python を含むがこれに限らない) によって管理されている更新トークンを、Python 用 MSAL による管理に移行するために役立ちます。 これらの更新トークンを移行する理由の 1 つは、アプリを Python 用 MSAL に移行するときに既存のユーザーがサインインし直す必要をなくすことです。
 
-更新トークンを移行するには、Python 用 MSAL と以前の更新トークンを使用して新しいアクセス トークンを取得します。 新しい更新トークンが返されると、Python 用 MSAL によってキャッシュに保存されます。 これを行う方法の例を次に示します。
+更新トークンを移行するには、Python 用 MSAL と以前の更新トークンを使用して新しいアクセス トークンを取得します。 新しい更新トークンが返されると、Python 用 MSAL によってキャッシュに保存されます。
+MSAL Python 1.3.0 以降では、この目的のための API が MSAL 内に用意されています。
+次のコード スニペットを参照してください。[MSAL Python を使用して更新トークンを移行する完全なサンプル](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.3.0/sample/migrate_rt.py#L28-L67)からの抜粋です。
 
 ```python
-from msal import PublicClientApplication
+import msal
+def get_preexisting_rt_and_their_scopes_from_elsewhere():
+    # Maybe you have an ADAL-powered app like this
+    #   https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/1.2.3/sample/device_code_sample.py#L72
+    # which uses a resource rather than a scope,
+    # you need to convert your v1 resource into v2 scopes
+    # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
+    # You may be able to append "/.default" to your v1 resource to form a scope
+    # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-def get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    raise NotImplementedError("You will need to implement this by yourself")
+    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # powered by some 3rd-party auth library, and persist its tokens somehow.
 
-app = PublicClientApplication(..., token_cache=...)
+    # Either way, you need to extract RTs from there, and return them like this.
+    return [
+        ("old_rt_1", ["scope1", "scope2"]),
+        ("old_rt_2", ["scope3", "scope4"]),
+        ]
 
-for old_rt, old_scope in get_preexisting_rt_and_their_scopes_from_elsewhere(...):
-    # Assuming the old scope could be a space-delimited string.
-    # MSAL expects a list, like ["scope1", "scope2"].
-    scopes = old_scope.split()
-        # If your old refresh token came from ADAL for Python, which uses a resource rather than a scope,
-        # you need to convert your v1 resource into v2 scopes
-        # See https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison#scopes-not-resources
-        # You may be able to append "/.default" to your v1 resource to form a scope
-        # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    result = app.client.obtain_token_by_refresh_token(old_rt, scope=scopes)
-    # When this call returns the new token(s), a new refresh token is issued by the Microsoft identity platform and MSAL for Python
-    # stores it in the token cache.
+# We will migrate all the old RTs into a new app powered by MSAL
+app = msal.PublicClientApplication(
+    "client_id", authority="...",
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# We choose a migration strategy of migrating all RTs in one loop
+for old_rt, scopes in get_preexisting_rt_and_their_scopes_from_elsewhere():
+    result = app.acquire_token_by_refresh_token(old_rt, scopes)
+    if "error" in result:
+        print("Discarding unsuccessful RT. Error: ", json.dumps(result, indent=2))
+
+print("Migration completed")
 ```
+
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関するページを参照してください。
+詳細については、[v1.0 と v2.0 の比較](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを参照してください。

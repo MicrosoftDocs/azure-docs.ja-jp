@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113162"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934839"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Cognitive Search の OData 地理空間関数 - `geo.distance` および `geo.intersects`
 
@@ -84,7 +84,7 @@ geography ポイント定数の形式は `geography'POINT(<longitude> <latitude>
 
 `geo.intersects` 関数は、`Edm.GeographyPoint` 型の変数と、定数 `Edm.GeographyPolygon` を取り、ポイントが多角形の境界内にある場合は `Edm.Boolean` -- `true` を返し、それ以外の場合は `false` を返します。
 
-多角形は、境界リングを定義するポイント シーケンスとして格納される 2 次元の表面です (下の[例](#examples)を参照してください)。 多角形は閉じられている必要があります。つまり、最初と最後のポイント セットを同じにする必要があります。 [多角形のポイントは反時計回りにする必要があります](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+多角形は、境界リングを定義するポイント シーケンスとして格納される 2 次元の表面です (下の[例](#examples)を参照してください)。 多角形は閉じられている必要があります。つまり、最初と最後のポイント セットを同じにする必要があります。 [多角形のポイントは反時計回りにする必要があります](/rest/api/searchservice/supported-data-types#Anchor_1)。
 
 ### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>180 度経線に広がる地理空間のクエリと多角形
 
@@ -105,25 +105,33 @@ Azure Cognitive Search での他のコレクション以外のすべてのフィ
 
 指定された参照ポイントの 10 キロメートル内にあるホテルをすべて探します (場所は `Edm.GeographyPoint` 型のフィールドです)。
 
+```odata-filter-expr
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
-多角形として表現された所与のビューポート内にあるホテルをすべて探します (場所は `Edm.GeographyPoint` 型のフィールドです)。 多角形が閉じられていること (最初のポイントと最後のポイントのセットを同じにする必要があります)、[ポイントが時計回りで一覧表示されている](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)ことに注意してください。
+多角形として表現された所与のビューポート内にあるホテルをすべて探します (場所は `Edm.GeographyPoint` 型のフィールドです)。 多角形が閉じられていること (最初のポイントと最後のポイントのセットを同じにする必要があります)、[ポイントが時計回りで一覧表示されている](/rest/api/searchservice/supported-data-types#Anchor_1)ことに注意してください。
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 ### <a name="order-by-examples"></a>order by の例
 
 `rating` 別にホテルを降順で並べ替え、その後、特定の座標からの距離別に昇順で並べ替えます。
 
+```odata-filter-expr
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 `search.score` と `rating` に基づいて降順でホテルを並べ替え、その後、所与の座標からの距離別に昇順で並べ替え、2 つのホテルで評価が同じ場合、距離的に近い方が先に表示されるようにします。
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

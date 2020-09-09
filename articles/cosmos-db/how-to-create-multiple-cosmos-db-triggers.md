@@ -3,21 +3,22 @@ title: 複数の独立した Cosmos DB 用 Azure Functions トリガーを作成
 description: 複数の独立した Cosmos DB 用 Azure Functions トリガーを構成してイベント駆動型のアーキテクチャを作成する方法について説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604945"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019982"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>複数の Cosmos DB 用 Azure Functions トリガーの作成
 
 この記事では、複数の Cosmos DB 用 Azure Functions トリガーが並列で動作し、変更に対して個別に対応するよう構成する方法について説明します。
 
-![Cosmos DB 用 Azure Functions トリガーと連携し、リース コンテナーを共有するサーバーレスのイベントベース Functions](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="Cosmos DB 用 Azure Functions トリガーと連携し、リース コンテナーを共有するサーバーレスのイベントベース Functions" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>イベントベースのアーキテクチャの要件
 

@@ -4,15 +4,15 @@ description: Windows 10 または Windows Server 2016 で PowerShell を使用�
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0303bac88f34c895a4a680cd5bff0e9d1513d2e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5361df9e9cfc9f5d299d494ed634dcaaaf2e707
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753617"
 ---
 # <a name="generate-and-export-certificates-for-user-vpn-connections"></a>ユーザー VPN 接続の証明書を生成してエクスポートする
 

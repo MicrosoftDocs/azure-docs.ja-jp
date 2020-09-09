@@ -14,17 +14,20 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64869021"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263452"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要  
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このチュートリアルでは、Java クライアント SDK を使用して Azure Media Services で基本的なビデオ コンテンツ配信サービスを実装する手順について説明します。
 
@@ -42,7 +45,7 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
 
 たとえば、ビルド ツールが `gradle` の場合は、`build.gradle` ファイルに次の依存関係を追加します。
 
-    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+`compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'`
 
 >[!IMPORTANT]
 >`azure-media` パッケージ バージョン `0.9.8` 以降では、Azure Active Directory (AAD) 認証のサポートが追加され、Azure Access Control Service (ACS) 認証のサポートが削除されます。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。 詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。
@@ -65,7 +68,7 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
 * `clientKey`:Azure AD アプリケーションのクライアント キー
 * `restApiEndpoint`:Azure Media Services アカウントの REST API エンドポイント
 
-Azure AD アプリケーションを作成し、Azure Portal から前の構成値を取得できます。 詳細については、[Azure Portal での Azure AD 認証の開始](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)に関するページの「**サービス プリンシパル認証**」をご覧ください。
+Azure AD アプリケーションを作成し、Azure Portal から前の構成値を取得できます。 詳細については、[Azure Portal での Azure AD 認証の開始](./media-services-portal-get-started-with-aad.md)に関するページの「**サービス プリンシパル認証**」をご覧ください。
 
 また、このコードはローカルに保存されているビデオ ファイルに依存しています。 コードを編集して、アップロードする独自のローカル ファイルを指定する必要があります。
 
@@ -320,6 +323,5 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 
 [Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Azure for Java developers]: https://docs.microsoft.com/java/azure/
-[Media Services Client Development]: https://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
+[Azure for Java developers]: /java/azure/
+[Media Services Client Development]: /previous-versions/azure/dn223283(v=azure.100)

@@ -4,17 +4,18 @@ description: この記事では、モデルのメタデータとデータを Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 83da2024ab74b705b45a5891f6b40251020dad31
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.custom: references_regions
+ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408667"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506997"
 ---
-# <a name="backup-and-restore"></a>バックアップと復元
+# <a name="analysis-services-database-backup-and-restore"></a>Analysis Services データベースのバックアップと復元
 
 Azure Analysis Services の表形式モデル データベースのバックアップは、オンプレミスの Analysis Services の場合とほぼ同じです。 主な違いは、バックアップ ファイルの保存場所です。 バックアップ ファイルは、[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)のコンテナーに保存する必要があります。 既存のストレージ アカウントとコンテナーを使用できるほか、ご利用のサーバーのストレージを構成する際にストレージ アカウントとコンテナーを作成することもできます。
 
@@ -22,6 +23,9 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 > ストレージ アカウントを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 > 
 > 
+
+> [!NOTE]
+> ストレージ アカウントが別のリージョンにある場合は、ストレージ アカウントのファイアウォール設定を構成して、 **[選択されたネットワーク]** からのアクセスを許可します。 ファイアウォールの **[アドレス範囲]** に、Analysis Services サーバーがあるリージョンの IP アドレスの範囲を指定します。 すべてのネットワークからのアクセスを許可するようにストレージ アカウントのファイアウォール設定を構成することはできますが、[選択されたネットワーク] を選択して IP アドレス範囲を指定することをお勧めします。 詳細については、[ネットワーク接続に関する FAQ](analysis-services-network-faq.md#backup-and-restore)に関するページを参照してください。
 
 バックアップは、.abf という拡張子で保存されます。 インメモリの表形式モデルの場合、モデル データとメタデータの両方が保存されます。 DirectQuery 表形式モデルの場合、モデルのメタデータのみが保存されます。 バックアップは、オプションの選択によって、圧縮したり暗号化したりすることができます。
 
@@ -37,7 +41,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 2.  **[有効]** をクリックし、 **[ストレージの設定]** をクリックします。
 
-    ![[有効化]](./media/analysis-services-backup/aas-backup-enable.png)
+    ![有効化](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. 既存のストレージ アカウントを選択するか、新しいアカウントを作成します。
 
@@ -73,8 +77,8 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 ### <a name="powershell"></a>PowerShell
 [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) コマンドレットを使用します。
 
-## <a name="restore"></a>[復元]
-復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
+## <a name="restore"></a>復元
+復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
 
 
 
@@ -104,5 +108,5 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 ## <a name="related-information"></a>関連情報
 
 [Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)  
-[高可用性](analysis-services-bcdr.md)     
-[Azure Analysis Services を管理する](analysis-services-manage.md)
+[高可用性](analysis-services-bcdr.md)      
+[Analysis Services のネットワーク接続に関する FAQ](analysis-services-network-faq.md)

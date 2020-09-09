@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984890"
 ---
 # <a name="create-python-model-module"></a>Create Python Model モジュール
 
@@ -25,7 +25,7 @@ Create Python Model モジュールを使用して、Python スクリプトか�
 モデルを作成した後は、Azure Machine Learning の他の学習器と同じように、[モデルのトレーニング](train-model.md)を使用してデータセットでモデルをトレーニングできます。 トレーニング済みのモデルを [Score Model](score-model.md) に渡し、予測を行うことができます。 その後、トレーニング済みのモデルを保存し、そのスコアリング ワークフローを Web サービスとして公開できます。
 
 > [!WARNING]
-> 現時点では、Python モデルのスコアリング結果を [Evaluate Model](evaluate-model.md)に渡すことはできません。 モデルを評価する必要がある場合は、[Execute Python Script](execute-python-script.md) モジュールを使用して、カスタム Python スクリプトを作成・実行できます。  
+> 現時点では、このモジュールを **Tune Model Hyperparameters** モジュールに接続することや、Python モデルのスコア付けされた結果を [Evaluate Model](evaluate-model.md) に渡すことはできません。 ハイパーパラメーターを調整したり、モデルを評価したりする必要がある場合は、[Execute Python Script](execute-python-script.md) モジュールを使用して、カスタム Python スクリプトを記述できます。
 
 
 ## <a name="configure-the-module"></a>モジュールを構成する

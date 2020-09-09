@@ -8,50 +8,58 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: ポータルを使用して Spring Cloud アプリを起動する
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Azure CLI を使用して Spring Cloud アプリを起動する
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: ソースから Spring Cloud アプリを起動する
-      href: spring-cloud-launch-from-source.md
-    - name: Maven を使用して Spring Cloud アプリを起動する
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: 最初のアプリを起動する
+      href: spring-cloud-quickstart.md
+    - name: マイクロサービスをビルドして実行する
+      expanded: true
+      items:
+        - name: サンプル アプリの概要
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Azure Spring Cloud サービスのプロビジョニング
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: 構成サーバーを設定する
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: アプリをビルドして配置する
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: ログ、メトリック、トレースの使用
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: チュートリアル
   items:
-    - name: 構成サーバーを設定する
-      href: spring-cloud-tutorial-config-server.md
-    - name: アプリケーションを手動でスケーリングする
+    - name: アプリを手動でスケーリングする
       href: spring-cloud-tutorial-scale-manual.md
-    - name: 分散トレースと App Insights を使用してアプリケーションを監視する
-      href: spring-cloud-tutorial-distributed-tracing.md
-    - name: アラートとアクション グループを使用して Spring Cloud のリソースを監視する
+    - name: アプリを自動スケーリングする
+      href: spring-cloud-tutorial-setup-autoscale.md
+    - name: アラートとアクション グループ
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: アプリケーションを Azure CosmosDB にバインドする
-      href: spring-cloud-tutorial-bind-cosmos.md
-    - name: Azure Cache for Redis を使用してアプリケーションをバインドする
-      href: spring-cloud-tutorial-bind-redis.md
-    - name: アプリケーションを Azure MySQL にバインドする
-      href: spring-cloud-tutorial-bind-mysql.md
-    - name: Azure Spring Cloud を使用したサーキット ブレーカー ダッシュボード
+    - name: IntelliJ を使用してアプリを展開する
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
+    - name: サーキット ブレーカー ダッシュボード
       href: spring-cloud-tutorial-circuit-breaker.md
-    - name: カスタム DNS 名を Azure Spring Cloud にマップする
+    - name: カスタム DNS 名
       href: spring-cloud-tutorial-custom-domain.md
     - name: IntelliJ を使用して Azure Spring Cloud アプリケーションをデプロイする
       href: spring-cloud-tutorial-intellij-deploy-apps.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+    - name: terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
+      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
+    - name: Jenkins での CI/CD
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+    - name: マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
+      href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: 概念
   items:
-    - name: Azure Spring Cloud のクォータと制限について
+    - name: アプリとデプロイについて
+      href: spring-cloud-concept-understand-app-and-deployment.md
+    - name: クォータと制限について
       href: spring-cloud-quotas.md
-    - name: Azure Spring Cloud におけるメトリックについて
+    - name: メトリックを理解する
       href: spring-cloud-concept-metrics.md
-    - name: Azure Spring Cloud サービスのセキュリティ コントロール
+    - name: Azure Spring Boot アクチュエータ
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
+    - name: セキュリティ コントロール
       href: spring-cloud-concept-security-controls.md
-    - name: Azure Spring Cloud におけるアプリの状態について
+    - name: アプリの状態について
       href: spring-cloud-concept-app-status.md
     - name: ディザスター リカバリーを計画する
       href: disaster-recovery.md
@@ -59,39 +67,60 @@
   items:
     - name: Java Spring アプリをデプロイ用に準備する
       href: spring-cloud-tutorial-prepare-app-deployment.md
-    - name: Azure Spring Cloud アプリケーションを開始、停止、削除する方法
-      href: spring-cloud-howto-start-stop-delete.md
-    - name: ステージング環境を設定する方法
-      href: spring-cloud-howto-staging-environment.md
+    - name: 構成サーバーを設定する
+      href: spring-cloud-tutorial-config-server.md
     - name: サービス登録を有効にする
       href: spring-cloud-service-registration.md
-    - name: アプリケーションのログとメトリックを分析する
-      href: diagnostic-services.md
-    - name: Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
-      href: spring-cloud-howto-log-streaming.md
-    - name: Azure Spring Cloud で永続ストレージを使用する
+    - name: アプリを Azure CosmosDB にバインドする
+      href: spring-cloud-tutorial-bind-cosmos.md
+    - name: アプリを Azure Cache for Redis にバインドする
+      href: spring-cloud-tutorial-bind-redis.md
+    - name: アプリを Azure MySQL にバインドする
+      href: spring-cloud-tutorial-bind-mysql.md
+    - name: アプリの開始、停止、および削除
+      href: spring-cloud-howto-start-stop-delete.md
+    - name: ステージング環境のセットアップ
+      href: spring-cloud-howto-staging-environment.md
+    - name: 永続的ストレージを使用する
       href: spring-cloud-howto-persistent-storage.md
-    - name: Azure Spring Cloud と Azure の負荷分散ソリューションを統合する
+    - name: Azure 負荷分散ソリューションと統合する
       href: spring-cloud-howto-integrate-azure-load-balancers.md
-- name: Azure Spring Cloud への DevOps デプロイ
-  items:
-    - name: Azure DevOps を使用した CI/CD
-      href: spring-cloud-howto-cicd.md
-    - name: GitHub Actions を使用した CI/CD
-      href: spring-cloud-howto-github-actions.md
-    - name: GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する
-      href: spring-cloud-github-actions-key-vault.md
-    - name: Jenkins での CI/CD
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+    - name: システム割り当てマネージド ID を有効化する
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+    - name: 問題の自己診断と解決
+      href: spring-cloud-howto-self-diagnose-solve.md
+    - name: モニター
+      items:
+        - name: 分散トレースと App Insights
+          href: spring-cloud-tutorial-distributed-tracing.md
+        - name: ログとメトリックの分析
+          href: diagnostic-services.md
+        - name: リアルタイムでのログのストリーミング
+          href: spring-cloud-howto-log-streaming.md
+    - name: DevOps の展開
+      items:
+        - name: Azure DevOps を使用した CI/CD
+          href: spring-cloud-howto-cicd.md
+        - name: GitHub Actions を使用した CI/CD
+          href: spring-cloud-howto-github-actions.md
+        - name: GitHub Actions での Key Vault を使用した認証
+          href: spring-cloud-github-actions-key-vault.md
+    - name: トラブルシューティング
+      items:
+        - name: トラブルシューティング ガイド
+          href: spring-cloud-troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure CLI プラグイン
-      href: spring-cloud-cli-reference.md
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.springcloud'
     - name: リソース
       href: spring-cloud-resources.md
     - name: よく寄せられる質問
       href: spring-cloud-faq.md
-    - name: トラブルシューティング ガイド
-      href: spring-cloud-troubleshoot.md
     - name: REST API リファレンス
       href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

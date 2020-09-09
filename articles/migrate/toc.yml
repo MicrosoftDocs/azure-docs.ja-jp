@@ -48,12 +48,18 @@
           href: tutorial-assess-physical.md
         - name: 物理サーバーを移行する
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: AWS の VM を評価して移行する
+      items:
+        - name: アマゾン ウェブ サービス (AWS) の VM を見つけて評価し、Azure に移行する
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: 移行の対象となるインポートされたサーバーを評価する
       items:
         - name: 移行の対象となるインポートされたサーバーを評価する
           href: tutorial-assess-import.md
 - name: 概念
   items:
+    - name: Azure Migrate を使用した移行計画の作成
+      href: concepts-migration-planning.md
     - name: サポート マトリックス
       items:
         - name: 一般的なサポート
@@ -80,8 +86,10 @@
       href: hyper-v-migration-architecture.md
     - name: エージェントベースの VMware 移行のアーキテクチャ
       href: agent-based-migration-architecture.md
-    - name: 評価の概要
+    - name: 評価の概要 (Azure VM への移行)
       href: concepts-assessment-calculation.md
+    - name: 評価の概要 (AVS への移行)
+      href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: 評価のベスト プラクティス
       href: best-practices-assessment.md
     - name: 依存関係の分析の概要
@@ -118,16 +126,20 @@
       href: how-to-create-group-machine-dependencies.md
     - name: マシンの依存関係の分析 (エージェントレス)
       href: how-to-create-group-machine-dependencies-agentless.md
-    - name: 評価を作成する
+    - name: Azure VM の評価を作成する
       href: how-to-create-assessment.md
+    - name: AVS の評価を作成する
+      href: how-to-create-azure-vmware-solution-assessment.md
     - name: SQL Server データベースにアクセスする
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
+      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
     - name: 評価のカスタマイズ
       href: how-to-modify-assessment.md
     - name: 移行ツールの追加
       href: how-to-migrate.md
     - name: SSE と CMK を使用して暗号化された Azure VM への VMware VN の移行
       href: how-to-migrate-vmware-vms-with-cmk-disks.md
+    - name: Windows 2003 サーバーの移行を準備する
+      href: prepare-windows-server-2003-migration.md
     - name: マシンの移行の準備
       href: prepare-for-migration.md
     - name: Azure Migrate プロジェクトの削除
@@ -156,12 +168,14 @@
       href: troubleshoot-appliance-discovery.md
     - name: 評価と依存関係の視覚化のトラブルシューティング
       href: troubleshoot-assessment.md
+    - name: エージェントレスの VMware 移行におけるレプリケーションの問題のトラブルシューティング
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行
-      href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
+      href: /azure/cloud-adoption-framework/migrate/
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/migrate/'
+      href: /rest/api/migrate/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.migrate/allversions
     - name: 価格
@@ -169,7 +183,7 @@
     - name: UserVoice
       href: 'https://aka.ms/AzureMigrateUservoice'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-migrate.html'
+      href: /answers/topics/azure-migrate.html
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/tag/azure-migrate/'
     - name: Azure Migrate

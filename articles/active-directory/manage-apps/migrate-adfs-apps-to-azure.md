@@ -2,23 +2,24 @@
 title: アプリケーション認証を AD FS から Azure Active Directory に移動する
 description: この記事は、アプリケーションを Azure AD に移動する方法の理解に役立つことを目的としています。特に、フェデレーション SaaS アプリケーションに重点を置いています。
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 04/01/2020
-ms.author: baselden
+ms.author: kenwith
+ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b777cce9b704be558460edf20cf243258c160b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202300"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641366"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -237,7 +238,7 @@ SaaS アプリでは、認証要求の送信先と、受信したトークンの
 | 構成設定| AD FS| Azure AD での構成方法 |
 | - | - | - |
 | **IdP のサインオン URL** <p>アプリから見た IdP のサインオン URL (ユーザーがログインのためにリダイレクトされる場所)。| AD FS のサインオン URL は、AD FS フェデレーション サービス名に "/adfs/ls/" を付加したものです。 <p>例: `https://fs.contoso.com/adfs/ls/`| {tenant-id} をテナント ID に置き換えます。 <p> ‎SAML-P プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>‎WS-Federation プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP のサインアウト URL**<p>アプリから見た IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。| サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| {tenant-id} をテナント ID に置き換えます。<p>SAML-P プロトコルを使用するアプリの場合: <p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> ‎WS-Federation プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **IdP のサインアウト URL**<p>アプリから見た IdP のサインアウト URL (ユーザーがアプリのサインアウトを選択したときにリダイレクトされる場所)。| サインアウト URL はサインオン URL と同じであるか、同じ URL に "wa=wsignout1.0" を付加したものです。 例: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| {tenant-id} をテナント ID に置き換えます。<p>SAML-P プロトコルを使用するアプリの場合:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> ‎WS-Federation プロトコルを使用するアプリの場合: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **トークン署名証明書**<p>IdP では、発行されたトークンに署名するために、証明書の秘密キーが使用されます。 アプリが信頼するように構成されているのと同じ IdP からトークンが来ていることを確認します。| AD FS トークン署名証明書は、[AD FS の管理] の **[証明書]** の下にあります。| Azure portal で、アプリケーションの **[シングル サインオンのプロパティ]** の **[SAML 署名証明書]** ヘッダーの下にあります。 ここで、アプリにアップロードするための証明書をダウンロードすることができます。  <p>アプリケーションに複数の証明書がある場合は、フェデレーション メタデータ XML ファイルですべての証明書を確認することができます。 |
 | **識別子/"発行者"**<p>アプリから見た IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。<p>‎SAML トークンでは、値は Issuer 要素として表示されます。| AD FS の識別子は、通常、 **[サービス] > [フェデレーション サービスのプロパティの編集]** の下にある [AD FS の管理] のフェデレーション サービス識別子です。 例: `http://fs.contoso.com/adfs/services/trust`| {tenant-id} をテナント ID に置き換えます。<p>https:\//sts.windows.net/{tenant-id}/ |
 | **IdP のフェデレーション メタデータ**<p>IdP の一般公開されているフェデレーション メタデータの場所。 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。| AD FS フェデレーション メタデータ URL は、[AD FS の管理] にあり、これは **[サービス] > [エンドポイント] > [メタデータ] > [種類: フェデレーション メタデータ]** の下で確認できます。 例: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD での対応する値は、[https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) というパターンに従います。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。   <p>詳細については、「[フェデレーション メタデータ](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)」を参照してください。 |
@@ -397,7 +398,7 @@ Azure AD で組み込みのポリシーを実装するには、[新しい条件�
 次の表では、いくつかの便利な許可および除外オプションと、それらが Azure AD にどのようにマッピングするかを示します。 
 
 
-| | Azure AD で許可オプションを構成する方法| Azure AD で除外オプションを構成する方法 |
+| オプション | Azure AD で許可オプションを構成する方法| Azure AD で除外オプションを構成する方法 |
 | - | - | - |
 | 特定のネットワークから| Azure AD の[ネームド ロケーション](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)にマッピングします| [信頼できる場所](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)に対しては **[除外]** オプションを使用します |
 | 特定のグループから| [ユーザーやグループの割り当てを設定します](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| ユーザーおよびグループで **[除外]** オプションを使用します |
@@ -462,7 +463,7 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 ‎ |
 | パスワードベースの SSO| [マイ アプリによるセキュリティで保護されたサインイン](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[拡張機能](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。  
 ‎ |
-| アプリケーション プロキシ| コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)[ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) に関する記事をご覧ください。  
+| アプリケーション プロキシ| コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)に関する記事をご覧ください。  
 ‎ |
 
 > [!NOTE]
@@ -482,7 +483,7 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 
 デプロイが完了したら、デプロイが成功したことと、実行する必要がある新しい手順の注意を、ユーザーに通知できます。
 
-* 移行されたすべてのアプリケーションにアクセスするには[アクセス パネル](https://myapps.microsoft.com)を使用するようユーザーに指示します。 
+* [マイ アプリ](https://myapps.microsoft.com)を使用して、移行されたすべてのアプリケーションにアクセスするようにユーザーに指示します。 
 
 * MFA の設定の更新が必要な場合があることをユーザーに通知します。 
 

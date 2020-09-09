@@ -3,20 +3,20 @@ title: チュートリアル - geo フィルタリング WAF ポリシーを構�
 description: このチュートリアルでは、geo フィルタリング ポリシーを作成して、既存の Front Door フロントエンド ホストに関連付ける方法について学習します
 services: frontdoor
 documentationcenter: ''
-author: teresayao
+author: duongau
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: tyao
-ms.openlocfilehash: e3119745e35140d0344d25f34f54b63939d2542d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.author: duau
+ms.openlocfilehash: 31892232d5483bd2cb99d27c4672dbf347b904ef
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471457"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399023"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング WAF ポリシーを設定する方法
 このチュートリアルでは、Azure PowerShell を使用して、サンプル geo フィルタリング ポリシーを作成し、それを既存の Front Door フロントエンド ホストに関連付ける方法を説明します。 このサンプル geo フィルタリング ポリシーでは、他のすべての国/地域 (米国を除く) からの要求がブロックされます。
@@ -28,7 +28,7 @@ geo フィルター ポリシーの設定を開始する前に、PowerShell 環�
 ### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
 Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使う一連のコマンドレットが用意されています。 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>サインインのための対話型ダイアログを使用して Azure に接続する
 ```
@@ -51,7 +51,7 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
 ## <a name="define-geo-filtering-match-condition"></a>geo フィルタリングの一致条件を定義する
 
-一致条件を作成するときに、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) のパラメーターを使用して、"US" から送信されていない要求を選択するサンプル一致条件を作成します。 2 文字の国番号と国名との対応については、[こちら](front-door-geo-filtering.md)を参照してください。
+一致条件を作成するときに、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) のパラメーターを使用して、"US" から送信されていない要求を選択するサンプル一致条件を作成します。 2 文字の国および地域コードと国名および地域名の対応については、[こちら](front-door-geo-filtering.md)を参照してください。
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `

@@ -1,22 +1,22 @@
 ---
-title: 'Azure Active Directory のデバイス ID とは '
+title: Azure Active Directory のデバイス ID とは
 description: デバイス ID 管理を活用して、環境内のリソースにアクセスするデバイスを管理する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 03/26/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025593"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 
@@ -45,9 +45,9 @@ Azure AD にデバイスを追加する場合、次の複数のオプション�
 - **Azure AD 参加済み**
    - Azure AD 参加済みのデバイスは、組織所有であり、その組織に属する Azure AD アカウントを使用してサインインします。 これらはクラウド内にのみ存在します。
       - Windows 10 
-      - Windows Server 2019 (サーバー コアはサポート対象外)
+      - [Azure で実行する Windows Server 2019 Virtual Machines](howto-vm-sign-in-azure-ad-windows.md) (Server Core はサポートされません)
 - **ハイブリッド Azure AD 参加済み**
-   - ハイブリッド Azure AD 参加済みのデバイスは、組織所有であり、その組織に属する Azure AD アカウントを使用してサインインします。 これらはクラウド内とオンプレミスに存在します。
+   - ハイブリッド Azure AD 参加済みのデバイスは、組織所有であり、その組織に属する Active Directory Domain Services アカウントを使用してサインインします。 これらはクラウド内とオンプレミスに存在します。
       - Windows 7、8.1、または 10
       - Windows Server 2008 以降
 

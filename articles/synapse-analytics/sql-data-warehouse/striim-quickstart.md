@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208554"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim の Azure SQL DW の Marketplace サービスのインストール ガイド
 
@@ -30,7 +30,7 @@ Striim クラスター名、パスワード、および管理者のパスワー�
 
 ![Striim を構成する][configure]
 
-デプロイした後、Azure portal で \<VM Name>-masternode をクリックし、[接続] をクリックして、[VM ローカル アカウントを使用してログインする] をコピーします 
+デプロイした後、Azure portal で \<VM Name>-masternode をクリックし、[接続] をクリックし、[Login using VM local account]\(VM ローカル アカウントを使用してログイン) をコピーします 
 
 ![Striim を SQL Data Warehouse に接続する][connect]
 

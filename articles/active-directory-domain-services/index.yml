@@ -13,12 +13,12 @@ metadata:
   ms.author: iainfou
   manager: daveba
   ms.date: 08/01/2019
-  ms.openlocfilehash: f5fa27e19da6bb64b7e214ec32cbfbf0a417118e
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 859c5ecbfc549d1dff1d874977aaecd86a899af0
+  ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70010563"
+  ms.lasthandoff: 08/15/2020
+  ms.locfileid: "88245147"
 landingContent:
 - title: Azure AD Domain Services について
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
       url: join-windows-vm.md
     - text: 管理ツールのインストール
       url: tutorial-create-management-vm.md
-- title: '[構成]'
+- title: 構成
   linkLists:
   - linkListType: tutorial
     links:
@@ -74,7 +74,7 @@ landingContent:
       url: check-health.md
     - text: 電子メール通知の構成
       url: notifications.md
-    - text: セキュリティ監査の有効化 (プレビュー)
+    - text: セキュリティ監査を有効にする
       url: security-audit-events.md
 - title: VM のドメイン参加
   linkLists:
@@ -88,7 +88,9 @@ landingContent:
       url: join-ubuntu-linux-vm.md
     - text: Red Hat Enterprise Linux
       url: join-rhel-linux-vm.md
-- title: '[トラブルシューティング]'
+    - text: SUSE Linux Enterprise
+      url: join-suse-linux-vm.md
+- title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:

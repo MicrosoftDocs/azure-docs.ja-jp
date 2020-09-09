@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
+ms.custom: devx-track-java
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 13dc7a7766158a84a515a4b986ac6d34cd97114a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 27439b9c558ac8dcb358a25c3f6efbac9f0dfef8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75467205"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375477"
 ---
 [!INCLUDE [jre](./jre.md)]

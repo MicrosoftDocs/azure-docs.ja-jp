@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e3eefb97c85b3865abbf116b9912dc45f6db8ce8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836041"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326870"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor の Insights の概要
 Insights は、特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 [Azure Monitor データ プラットフォーム](../platform/data-platform.md)にデータを格納し、Azure Monitor のその他の機能を分析やアラートに使用しますが、追加のデータを収集したり、Azure portal で独自のユーザー エクスペリエンスを提供したりできます。 Azure portal で、Azure Monitor メニューの **[Insights]** セクションから分析情報にアクセスします。
@@ -29,14 +29,14 @@ Application Insights は、複数のプラットフォームで使用できる W
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor for Containers
 コンテナーに対する Azure Monitor は、Azure Kubernetes Service (AKS) でホストされた Azure Container Instances またはマネージド Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスを監視します。 コンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
-「[コンテナーに対する Azure Monitor の概要](../insights/container-insights-overview.md)」を参照してください。
+「[コンテナーに対する Azure Monitor の概要](./container-insights-overview.md)」を参照してください。
 
 ![Azure Monitor for Containers](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>Azure Monitor for Resource Groups (プレビュー)
 リソース グループ向けの Azure Monitor は、個別のリソースで発生した問題をトリアージおよび診断するために役立つ一方で、リソース グループ全体の正常性とパフォーマンスに関してコンテキストを提供します。
 
-「[Azure Monitor でリソース グループを監視する (プレビュー)](../insights/resource-group-insights.md)」を参照してください。
+「[Azure Monitor でリソース グループを監視する (プレビュー)](./resource-group-insights.md)」を参照してください。
 
 ![Azure Monitor for Resource Groups](media/insights-overview/resource-group-insights.png)
 
@@ -55,3 +55,4 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 ## <a name="next-steps"></a>次のステップ
 * 分析情報で利用される [Azure Monitor データ プラットフォーム](../platform/data-platform.md)について詳しく理解します。
 * 各種の [Azure Monitor によって使用されるデータ ソース](../platform/data-sources.md)と、それぞれの分析情報によって収集されるさまざまな種類のデータについて理解します。
+

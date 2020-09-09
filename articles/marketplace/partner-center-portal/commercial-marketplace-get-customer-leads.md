@@ -1,18 +1,18 @@
 ---
 title: Microsoft コマーシャル マーケットプレースからのリード管理
 description: Microsoft AppSource および Azure Marketplace のオファーからリードを生成し、受け取る方法について説明します
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800927"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535979"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーからの顧客リード
 
@@ -87,10 +87,12 @@ ms.locfileid: "83800927"
 
 ## <a name="best-practices-for-lead-management"></a>リード管理のベスト プラクティス
 
+販売サイクルを通じてリードを促進するためのいくつかの推奨事項を次に示します。
+
 - **プロセス**: マイルストーン、分析、明確なチーム所有権を持つ明確な販売プロセスを定義します。
 - **限定**:リードが完全に条件に合致しているかどうかを示す前提条件を定義します。 販売担当者とマーケティング担当者が完全な販売プロセスを実行する前に、リードを慎重に見込みありと評価するように確認します。
-- **フォローアップ**:忘れずにフォローしてください。 一般的なトランザクションでは、5 から 12 回のフォローアップの電話が必要です。
-- **育成**:利益率を高めるために、リードを育成します。
+- **フォローアップ**:24 時間以内に忘れずにフォローアップしてください。 顧客が体験版をデプロイした直後に、リードを任意の CRM に追加します。リードの熱が冷めないうちにメールを送信します。 お客様の製品がリードの問題解決に役立っているかどうかをより深く理解するために、電話連絡のスケジュール設定を要求します。 一般的なトランザクションでは、多くのフォローアップの電話が必要です。
+- **育成**:利益率を高めるために、リードを育成します。 様子を見ますが、やり過ぎないようにします。 リードをクローズする前に、少なくとも数回メールを送信することをお勧めします。1 回試みただけで諦めないようにしましょう。 その顧客は製品に直接関わり、無料試用版に時間を費やしたことを忘れないでください。有望な見込み客です。
 
 ## <a name="common-questions-about-lead-management"></a>リード管理についてよく寄せられる質問
 
@@ -104,21 +106,24 @@ ms.locfileid: "83800927"
 
 ### <a name="how-can-i-find-the-test-lead"></a>テスト リードを確認するにはどうすればよいですか?
 
-リードのターゲットで `"MSFT_TEST"` を検索します。 Microsoft のテスト リードの例を次に示します。
+リードのターゲットで `"MSFT_TEST"` を検索します。 Microsoft のテスト リードの例を以下に示します。 テスト リードの形式は、リードのターゲットによって異なります。
 
 ```
-company = MSFT_TEST_636573304831318844
-country = US
-description = MSFT_TEST_636573304831318844
-email = MSFT_TEST_636573304831318844@test.com
-encoding = UTF-8
-encoding = UTF-8
-first_name = MSFT_TEST_636573304831318844
-last_name = MSFT_TEST_636573304831318844
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|<Offer Name>
-oid = 00Do0000000ZHog
-phone = 1234567890
-title = MSFT_TEST_636573304831318844
+{
+    "UserDetails": {
+      "FirstName": "MSFT_TEST_636573304831318844",
+      "LastName": "MSFT_TEST_636573304831318844",
+      "Email": "MSFT_TEST_636573304831318844@test.com",
+      "Phone": "1234567890",
+      "Country": "US",
+      "Company": "MSFT_TEST_636573304831318844",
+      "Title": "MSFT_TEST_636573304831318844"
+    },
+    "LeadSource": "AzureMarketplace",
+    "ActionCode": "INS",
+    "OfferTitle": "Contoso Test"
+    "Description": "MSFT_TEST_636573304831318844"
+}
 ```
 
 ### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>ライブ オファーがあるのですが、なぜリードが表示されないのですか?

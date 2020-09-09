@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 69423e7545178fd74ad44f5cab7b37b6f24b3577
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639634"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022192"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services での ASP.NET Core
 
@@ -20,7 +21,7 @@ ASP.NET Core は、オープンソースでクロスプラットフォームの�
 
 Service Fabric の ASP.NET Core の入門チュートリアルと、開発環境のセットアップ方法については、「[チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする](service-fabric-tutorial-create-dotnet-app.md)」をご覧ください。
 
-この記事の残りの部分では、読者が ASP.NET Core に慣れているものと想定しています。 そうでない場合は、[ASP.NET Core の基礎](https://docs.microsoft.com/aspnet/core/fundamentals/index)に関するページをご覧ください。
+この記事の残りの部分では、読者が ASP.NET Core に慣れているものと想定しています。 そうでない場合は、[ASP.NET Core の基礎](/aspnet/core/fundamentals/index)に関するページをご覧ください。
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>Service Fabric 環境の ASP.NET Core
 
@@ -94,7 +95,7 @@ Kestrel と HTTP.sys のどちらの `ICommunicationListener` の実装でも、
 ## <a name="httpsys-in-reliable-services"></a>Reliable Services での HTTP.sys
 **Microsoft.ServiceFabric.AspNetCore.HttpSys** NuGet パッケージをインポートすることにより、Reliable Services で HTTP.sys を使用できます。 このパッケージには、`ICommunicationListener` の実装である `HttpSysCommunicationListener` が含まれます。 `HttpSysCommunicationListener` により、Web サーバーとして HTTP.sys を使って、リライアブル サービスの内部に ASP.NET Core WebHost を作成できます。
 
-HTTP.sys は、[Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx) に基づいて構築されています。 この API では、**HTTP.sys** カーネル ドライバーを使って HTTP 要求が処理され、Web アプリケーションを実行するプロセスにルーティングされます。 これにより、同一の物理マシンまたは仮想マシン上の複数のプロセスが、一意の URL パスまたはホスト名によって明確化された Web アプリケーションを同じポート上でホストできます。 これらの機能は、Service Fabric で同じクラスター内の複数の Web サイトをホストする場合に役立ちます。
+HTTP.sys は、[Windows HTTP Server API](/windows/win32/http/http-api-start-page) に基づいて構築されています。 この API では、**HTTP.sys** カーネル ドライバーを使って HTTP 要求が処理され、Web アプリケーションを実行するプロセスにルーティングされます。 これにより、同一の物理マシンまたは仮想マシン上の複数のプロセスが、一意の URL パスまたはホスト名によって明確化された Web アプリケーションを同じポート上でホストできます。 これらの機能は、Service Fabric で同じクラスター内の複数の Web サイトをホストする場合に役立ちます。
 
 >[!NOTE]
 >HTTP.sys の実装は、Windows プラットフォームでのみ動作します。
@@ -133,9 +134,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>Endpoint configuration (エンドポイントの構成)
 
-HTTP.sys を含む Windows HTTP Server API を使用する Web サーバーには、`Endpoint` 構成が必要です。 Windows HTTP Server API を使用する Web サーバーでは、最初に HTTP.sys で URL を予約する必要があります (通常、この操作は [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) ツールを使用して実行します)。 
+HTTP.sys を含む Windows HTTP Server API を使用する Web サーバーには、`Endpoint` 構成が必要です。 Windows HTTP Server API を使用する Web サーバーでは、最初に HTTP.sys で URL を予約する必要があります (通常、この操作は [netsh](/windows/win32/http/netsh-commands-for-http) ツールを使用して実行します)。 
 
-このアクションには、サービスに既定では付与されていない昇格された特権が必要です。 ServiceManifest.xml の `Endpoint` 構成の `Protocol` プロパティの "http" または "https" オプションは、ユーザーの代わりに HTTP.sys に URL を登録するよう Service Fabric ランタイムに明確に指示するために使用されます。 それは、[*強力なワイルドカード*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL プレフィックスを使用して行われます。
+このアクションには、サービスに既定では付与されていない昇格された特権が必要です。 ServiceManifest.xml の `Endpoint` 構成の `Protocol` プロパティの "http" または "https" オプションは、ユーザーの代わりに HTTP.sys に URL を登録するよう Service Fabric ランタイムに明確に指示するために使用されます。 それは、[*強力なワイルドカード*](/windows/win32/http/urlprefix-strings) URL プレフィックスを使用して行われます。
 
 たとえば、サービス用に `http://+:80` を予約するには、ServiceManifest.xml で次の構成を使用します。
 
@@ -191,7 +192,7 @@ HTTP.sys で動的に割り当てられたポートを使用するには、`Endp
 ## <a name="kestrel-in-reliable-services"></a>リライアブル サービスでの Kestrel
 **Microsoft.ServiceFabric.AspNetCore.Kestrel** NuGet パッケージをインポートすることにより、Reliable Services で Kestrel を使用できます。 このパッケージには、`ICommunicationListener` の実装である `KestrelCommunicationListener` が含まれます。 `KestrelCommunicationListener` により、Web サーバーとして Kestrel を使って、リライアブル サービスの内部に ASP.NET Core WebHost を作成できます。
 
-Kestrel は、ASP.NET Core 用のクロスプラットフォーム Web サーバーです。 HTTP.sys とは異なり、Kestrel では一元的なエンドポイント マネージャーは使用されません。 また、HTTP.sys とは異なり、Kestrel では複数のプロセス間のポート共有はサポートされません。 Kestrel の各インスタンスは、一意のポートを使用する必要があります。 Kestrel の詳細については、[実装の詳細 ](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)に関する記事を参照してください。
+Kestrel は、ASP.NET Core 用のクロスプラットフォーム Web サーバーです。 HTTP.sys とは異なり、Kestrel では一元的なエンドポイント マネージャーは使用されません。 また、HTTP.sys とは異なり、Kestrel では複数のプロセス間のポート共有はサポートされません。 Kestrel の各インスタンスは、一意のポートを使用する必要があります。 Kestrel の詳細については、[実装の詳細 ](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)に関する記事を参照してください。
 
 ![Kestrel の図][4]
 
@@ -335,7 +336,7 @@ HTTPS では、ServiceManifest.xml へのポートの指定なしで HTTPS プ�
 
 
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric 構成プロバイダー
-ASP.NET Core でのアプリの構成は、構成プロバイダーによって設定されるキーと値のペアに基づきます。 一般的な ASP.NET Core 構成のサポートの詳細については、「[ASP.NET Core の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/)」を参照してください。
+ASP.NET Core でのアプリの構成は、構成プロバイダーによって設定されるキーと値のペアに基づきます。 一般的な ASP.NET Core 構成のサポートの詳細については、「[ASP.NET Core の構成](/aspnet/core/fundamentals/configuration/)」を参照してください。
 
 このセクションでは、`Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet パッケージをインポートして、ASP.NET Core の構成に Service Fabric 構成プロバイダーを統合する方法について説明します。
 
@@ -448,7 +449,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>構成の更新
-Service Fabric の構成プロバイダーでは、構成の更新もサポートされています。 ASP.NET Core の `IOptionsMonitor` を使って変更通知を受け取った後、`IOptionsSnapshot` を使って構成データを再度読み込むことができます。 詳細については、[ASP.NET Core のオプション](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)に関するページを参照してください。
+Service Fabric の構成プロバイダーでは、構成の更新もサポートされています。 ASP.NET Core の `IOptionsMonitor` を使って変更通知を受け取った後、`IOptionsSnapshot` を使って構成データを再度読み込むことができます。 詳細については、[ASP.NET Core のオプション](/aspnet/core/fundamentals/configuration/options)に関するページを参照してください。
 
 これらのオプションは既定でサポートされています。 構成の更新を有効にするために、さらにコーディングする必要はありません。
 
@@ -470,8 +471,8 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
  
 インターネットに公開されるステートレス サービスでは、ロード バランサーを介して到達できる、安定した一般的なエンドポイントを使用する必要があります。 アプリケーションのユーザーにこの URL を提供します。 次の構成をお勧めします。
 
-|  |  | **メモ** |
-| --- | --- | --- |
+| Type | 推奨 | Notes |
+| ---- | -------------- | ----- |
 | Web サーバー | Kestrel | Kestrel は Windows と Linux でサポートされているため、好まれている Web サーバーです。 |
 | ポート構成 | 静的 | 一般的な静的ポートを ServiceManifest.xml の `Endpoints` 構成で構成する必要があります (HTTP の場合は 80、HTTPS の場合は 443 など)。 |
 | ServiceFabricIntegrationOptions | なし | Service Fabric 統合ミドルウェアを構成するときに `ServiceFabricIntegrationOptions.None` オプションを使用し、サービスによって受信要求で一意の識別子が検証されないようにします。 アプリケーションの外部ユーザーは、ミドルウェアで使用される一意の識別情報を知りません。 |
@@ -495,8 +496,8 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
 ### <a name="internal-only-stateless-aspnet-core-service"></a>内部専用のステートレス ASP.NET Core サービス
 クラスター内からのみ呼び出されるステートレス サービスでは、複数のサービス間の協調動作を保証するために、一意の URL と動的に割り当てられたポートを使用する必要があります。 次の構成をお勧めします。
 
-|  |  | **メモ** |
-| --- | --- | --- |
+| Type | 推奨 | Notes |
+| ---- | -------------- | ----- |
 | Web サーバー | Kestrel | 内部のステートレス サービスに HTTP.sys を使用することもできますが、サーバーで複数のサービス インスタンスがホストを共有できるようにするには、Kestrel が推奨されます。  |
 | ポート構成 | 動的割り当て | ステートフル サービスの複数のレプリカでは、ホスト プロセスまたはホスト オペレーティング システムを共有できるため、一意のポートが必要になります。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 動的なポート割り当てでこの設定を行うことにより、前述の誤った ID に関する問題を防ぐことができます。 |
@@ -505,8 +506,8 @@ Service Fabric の構成プロバイダーでは、構成の更新もサポー�
 ### <a name="internal-only-stateful-aspnet-core-service"></a>内部専用のステートフル ASP.NET Core サービス
 クラスター内からのみ呼び出されるステートフル サービスでは、複数のサービス間の協調動作を保証するために、動的に割り当てられたポートを使用する必要があります。 次の構成をお勧めします。
 
-|  |  | **メモ** |
-| --- | --- | --- |
+| Type | 推奨 | Notes |
+| ---- | -------------- | ----- |
 | Web サーバー | Kestrel | `HttpSysCommunicationListener` は、レプリカがホスト プロセスを共有するステートフル サービス向けに設計されていません。 |
 | ポート構成 | 動的割り当て | ステートフル サービスの複数のレプリカでは、ホスト プロセスまたはホスト オペレーティング システムを共有できるため、一意のポートが必要になります。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 動的なポート割り当てでこの設定を行うことにより、前述の誤った ID に関する問題を防ぐことができます。 |

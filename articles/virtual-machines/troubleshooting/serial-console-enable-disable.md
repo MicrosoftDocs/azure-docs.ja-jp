@@ -38,7 +38,7 @@ ms.locfileid: "75451299"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI で次のコマンドを使用して、サブスクリプション全体に対して Serial console を無効にしてから再度有効にすることができます ([試してみる] ボタンを使用して、コマンドを実行できる Azure Cloud Shell のインスタンスを起動できます)。
+Azure CLI で次のコマンドを使用して、サブスクリプション全体に対して Serial console を無効にしてから再度有効にすることができます ([使ってみる] ボタンを使用して、コマンドを実行できる Azure Cloud Shell のインスタンスを起動できます)。
 
 サブスクリプションに対してシリアル コンソールを無効にするには、以下のコマンドを使用します。
 ```azurecli-interactive

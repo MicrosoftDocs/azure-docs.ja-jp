@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: key-vault
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 01b3c9584f3ecddbcdcc6938f5eb469510a47a4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838724"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>キーのトランザクション (リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup>):
 
@@ -46,7 +46,10 @@ ms.locfileid: "81768748"
 
 ### <a name="azure-private-link-integration"></a>Azure Private Link の統合
 
+> [!NOTE]
+> プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、akv-privatelink@microsoft.com まで電子メールをお送りください。 いただいたご依頼は、ケースごとの事情を考慮して承認します。
+
 | リソース | 制限 |
 | -------- | ----- |
 | キー コンテナーあたりのプライベート エンドポイント | 64 |
-| サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナー | 64 |
+| サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナー | 400 |

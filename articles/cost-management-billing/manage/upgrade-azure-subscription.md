@@ -1,21 +1,22 @@
 ---
 title: Azure アカウントをアップグレードする
-description: Azure アカウントをアップグレードする方法について説明します。
+description: Azure 無料アカウントまたは Microsoft Azure for Students Starter アカウントをアップグレードする方法について説明します。 Azure サポートのプランの詳細を参照してください。
 keywords: 従量課金制へのアップグレード
 author: bandersmsft
 ms.reviewer: sasrin
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29454bc5edb02ff571e06be3e9f203792d473aed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7223d33f8f26897d24841f84454405f91cf3bc49
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199451"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686345"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Azure 無料アカウントまたは Azure for Students Starter アカウントをアップグレードする
 

@@ -4,14 +4,14 @@ description: Azure Cosmos DB の SQL の ORDER BY 句について説明します
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484336"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
 
@@ -215,6 +215,11 @@ ORDER BY <sort_specification>
     }
 ]
 ```
+
+> [!Note]
+> .NET SDK バージョン 3.4.0 以降でのみ、混合型で ORDER BY がサポートされます。 そのため、未定義の値と定義済みの値の組み合わせで並べ替える場合、このバージョン (またはそれ以降) を使用してください。
+
+さまざまな型を結果に表示する順序を制御できます。 上の例では、文字列値の前に未定義の値がどのように並べ替えられたかを示しました。 そうではなく、たとえば、未定義の値の並べ替え順序をもっと細かく制御することが望まれた場合、未定義のプロパティが確実に最初か最後になるように、"aaaaaaaaa" または "zzzzzzzz" の文字列値を割り当てることができました。
 
 ## <a name="next-steps"></a>次のステップ
 

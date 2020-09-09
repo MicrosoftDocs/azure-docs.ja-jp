@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669836"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -37,8 +37,10 @@ Sybase データベースから、サポートされている任意のシンク 
 
 具体的には、この Sybase コネクタは以下をサポートします。
 
-- SAP Sybase SQL Anywhere (ASA) **バージョン 16 以降** (IQ および ASE はサポートされません)。
+- SAP Sybase SQL Anywhere (ASA) **バージョン 16 以降**。
 - **基本**または **Windows** 認証を使用したデータのコピー。
+
+Sybase IQ と ASE はサポートされていません。 代わりに、Sybase ドライバーと共に汎用 ODBC コネクタを使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 

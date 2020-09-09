@@ -1,18 +1,18 @@
 ---
 title: カナダ連邦 PBMM ブループリント サンプルの概要
 description: カナダ連邦の PBMM ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のカナダ連邦の PBMM コントロールを評価するのに役立ちます。
-ms.date: 05/08/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: fcaf4a844db10f4a87b205d08cfe3a86a6182957
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: de45d8dd3834aee3c430ec8eeb66a063e3ad5a83
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005676"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500097"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルの概要
 
-カナダ連邦の Protected B, Medium Integrity, Medium Availability (PBMM) のブループリント サンプルでは、[Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4) の構成証明に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンス ガードレールが提供されます。 
+カナダ連邦の Protected B, Medium Integrity, Medium Availability (PBMM) のブループリント サンプルでは、[Canada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html) の構成証明に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンス ガードレールが提供されます。 
 
 ## <a name="blueprint-sample"></a>ブループリント サンプル
 

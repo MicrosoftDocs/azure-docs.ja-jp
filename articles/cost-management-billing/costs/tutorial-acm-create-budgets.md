@@ -3,23 +3,24 @@ title: チュートリアル - Azure の予算を作成して管理する
 description: このチュートリアルでは、使用する Azure サービスのコストの計画とアカウントについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
-ms.topic: conceptual
+ms.date: 08/20/2020
+ms.topic: tutorial
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101758"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322281"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
 Cost Management での予算は、組織のアカウンタビリティを計画および推進するのに役立ちます。 予算では、特定の期間中に消費またはサブスクライブする Azure サービスを考慮することができます。 コストを事前に管理するために支出を他のユーザーに通知したり、支出の時間変化を監視したりするのに役立ちます。 作成した予算のしきい値を超えた場合は、通知のみがトリガーされます。 どのリソースも影響を受けることはなく、消費が停止されることはありません。 予算を使用して、コストを分析するときに支出を比較および追跡できます。
 
-コストと使用状況データは通常 12 時間から 16 時間以内に利用できるようになり、予算は 4 時間ごとにこれらのコストに対して評価されます。 通常、メール通知は 12 から 16 時間以内に受け取ります。
+コストと使用状況データは通常 8 時間から 24 時間以内に利用できるようになり、予算は 12 時間から 14 時間ごとにこれらのコストに対して評価されます。 [コストと使用状況データの更新](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention)の詳細を把握するようにしてください。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
 
 将来の有効期限日を選択した場合、期間 (月、四半期、または年) の最後に、予算は自動的に同じ予算金額にリセットされます。 同じ予算金額でリセットされるため、予算を計上される通貨金額が将来の期間では異なる場合は、別の予算を作成する必要があります。
 
@@ -40,7 +41,7 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 予算は、次の種類の Azure アカウントの種類とスコープに対してサポートされています。
 
-- Azure のロールベースのアクセス制御のスコープ
+- Azure ロールベースのアクセス制御 (Azure RBAC) のスコープ
     - 管理グループ
     - サブスクリプション
 - Enterprise Agreement のスコープ
@@ -101,11 +102,13 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![月額コスト データを使用した予算の作成を示す例 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-予算金額を構成したら、 **[次へ]** を選択して予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。
+予算金額を構成したら、 **[次へ]** を選択して予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
 
 メールを受信したい場合は、迷惑メール フォルダーに振り分けられることのないよう、承認済みの差出人一覧に azure-noreply@microsoft.com を追加してください。 通知の詳細については、[コスト アラートの使用](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。
 
 以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。
+
+アラート上限では、指定した予算しきい値が 0.01 から 1000% までの範囲でサポートされます。
 
 ![アラート条件を示す例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -114,6 +117,15 @@ Cost Management データに対するアクセス許可の割り当てについ�
 ![コスト分析に表示される予算と支出の例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 前の例では、サブスクリプションの予算を作成しました。 リソース グループに対する予算を作成することもできます。 リソース グループに対する予算を作成する場合は、 **[コストの管理と請求]** &gt; **[サブスクリプション]** に移動してサブスクリプションを選択し、 **[リソース グループ]** を選択してリソース グループを選択し、 **[予算]** を選択して予算を**追加**します。
+
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>Azure と AWS の統合コストに対する予算を作成する
+
+リンクされた統合アカウントと共に、管理グループをコネクタに割り当てることで、Azure と AWS のコストを 1 つにまとめることができます。 同じ管理グループに、ご利用の Azure サブスクリプションを割り当てます。 そのうえで、統合したコストの予算を作成します。
+
+1. Cost Management で **[予算]** を選択します。
+1. **[追加]** を選択します。
+1. **[スコープの変更]** を選択し、管理グループを選択します。
+1. 完了するまで、予算の作成を続行します。
 
 ## <a name="costs-in-budget-evaluations"></a>予算評価におけるコスト
 
@@ -124,8 +136,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 - パブリッシャーの種類: Azure
 - 料金タイプ: 使用法
 
-予算コストの評価は、実際のコストに基づいています。 償却費は含まれていません。 予算で使用できるフィルター オプションの詳細については、「[グループ化とフィルタリングのオプションの概要](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)」を参照してください。
-
+予算コストの評価は、実際のコストに基づいています。 償却費は含まれていません。 予算で使用できるフィルター オプションの詳細については、「[グループ化とフィルタリングのオプションの概要](group-filter.md)」を参照してください。
 
 ## <a name="trigger-an-action-group"></a>アクション グループをトリガーする
 
@@ -179,9 +190,14 @@ $ActionGroupId = (Set-AzActionGroup -ResourceGroupName YourResourceGroup -Name T
 
 New-AzConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して予算を作成する
 
 Azure Resource Manager テンプレートを使用して予算を作成できます。 テンプレートの使用については、[Azure Resource Manager テンプレートを使用した予算の作成](quick-create-budget-template.md)に関するページを参照してください。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+作成した予算が不要になった場合は、詳細を確認して予算を削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

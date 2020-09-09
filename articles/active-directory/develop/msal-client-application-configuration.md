@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81534467"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
@@ -35,7 +35,7 @@ ms.locfileid: "81534467"
 
 機関は、MSAL がトークンを要求できるディレクトリを示す URL です。 一般的な機関を次に示します。
 
-- https\://login.microsoftonline.com/\<テナント\>/。&lt;テナント&gt;は、Azure Active Directory (Azure AD) テナントのテナント ID か、この Azure AD テナントに関連付けられたドメインです。 特定の組織のユーザーをサインインする場合にのみ使用されます。
+- https\://login.microsoftonline.com/\<tenant\>/。&lt;テナント&gt;は、Azure Active Directory (Azure AD) テナントのテナント ID か、この Azure AD テナントに関連付けられたドメインです。 特定の組織のユーザーをサインインする場合にのみ使用されます。
 - https\://login.microsoftonline.com/common/。 職場および学校アカウント、または個人用 Microsoft アカウントを持つユーザーのサインインに使用されます。
 - https\://login.microsoftonline.com/organizations/。 職場および学校アカウントを持つユーザーをサインインする場合に使用されます。
 - https\://login.microsoftonline.com/consumers/。 個人用 Microsoft アカウント (以前の Windows Live ID アカウント) のみを持つユーザーのサインインに使用されます。
@@ -85,7 +85,7 @@ Azure AD クラウド機関には、2 つの部分があります。
 
 Azure AD 機関の対象ユーザーとテナント ID の両方を指定した場合、MSAL では意味のある例外がスローされます。
 
-対象ユーザーを指定しない場合、アプリの対象ユーザーは Azure AD および個人用 Microsoft アカウントになります  (つまり、`common` を指定した場合と同様の動作になります)。
+対象ユーザーを指定しない場合、アプリの対象ユーザーは Azure AD および個人用 Microsoft アカウントになります (つまり、`common` を指定した場合と同様の動作になります)。
 
 ### <a name="effective-audience"></a>有効な対象ユーザー
 
@@ -112,7 +112,7 @@ MSAL を使用してパブリック クライアント アプリを開発して�
   ---------  | --------------
   デスクトップ アプリ (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` の値。 これは、登録する必要がある WebAuthenticationBroker.GetCurrentApplicationCallbackUri() の結果に値を設定することによって、ブラウザーでの SSO を有効にします
-  .NET Core | `https://localhost` 今のところ、埋め込み Web ビュー用の UI が .NET Core には存在しないため、これによって、ユーザーはシステム ブラウザーを使用して対話型認証を実行できるようになります。
+  .NET Core | `https://localhost`. 今のところ、埋め込み Web ビュー用の UI が .NET Core には存在しないため、これによって、ユーザーはシステム ブラウザーを使用して対話型認証を実行できるようになります。
 
 - ブローカーをサポートしていない Xamarin Android および iOS アプリケーションを構築している場合は、リダイレクト URI を追加する必要はありません (Xamarin Android および iOS では、リダイレクト URI は自動的に `msal{ClientId}://auth` に設定されます)
 

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成する方法について説明する
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 07/10/2020
+ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208144"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683608"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
@@ -31,14 +31,18 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 ストレージ クラスは、保存の単位を永続ボリュームを使用して動的に作成する方法を定義します。 Kubernetes ストレージ クラスについて詳しくは、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページをご覧ください。
 
-各 AKS クラスターには 2 つの事前作成されたストレージ クラスが含まれ、どちらも Azure ディスクで動作するように構成されています。
+各 AKS クラスターには 4 つの事前作成されたストレージ クラスが含まれ、そのうち 2 つが Azure ディスクで動作するように構成されています。
 
-* *default* ストレージ クラスは、標準の Azure ディスクをプロビジョニングします。
-    * Standard ストレージでは、HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard ディスクは、コスト効率が重視される、開発およびテストのワークロードに最適です。
+* *default* ストレージ クラスは、標準の SSD Azure ディスクをプロビジョニングします。
+    * Standard ストレージでは、Standard SDD が使用されており、信頼性の高いパフォーマンスを実現しながらコスト効率にも優れたストレージを提供します。 
 * *managed-premium* ストレージ クラスは、プレミアムな Azure ディスクをプロビジョニングします。
     * Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 クラスター内の AKS ノードでプレミアム ストレージを使用する場合は、*managed-premium* クラスを選択します。
     
-これらの既定のストレージ クラスでは、作成後のボリューム サイズを更新できません。 この機能を有効にするには、*allowVolumeExpansion: true* 行を既定のストレージ クラスのいずれかに追加するか、独自のカスタム ストレージ クラスを作成します。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS でのアプリケーションのストレージ オプション][storage-class-concepts]に関するページを参照してください。
+既定のストレージ クラスの 1 つを使用している場合、ストレージ クラスの作成後、ボリューム サイズを更新することはできません。 ストレージ クラスの作成後にボリューム サイズを更新できるようにするには、既定のストレージ クラスの 1 つに行 `allowVolumeExpansion: true` を追加します。あるいは、独自のカスタム ストレージ クラスを作成できます。 (データの損失を防ぐための) PVC のサイズの縮小はサポートされていないことに注意してください。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 
+
+たとえば、サイズ 4 TiB のディスクを使用する場合、[サイズ 4 TiB 以上ではディスク キャッシュがサポートされない](../virtual-machines/premium-storage-performance.md#disk-caching)ため、`cachingmode: None` を定義するストレージ クラスを作成する必要があります。
+
+ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS でのアプリケーションのストレージ オプション][storage-class-concepts]に関するページを参照してください。
 
 事前作成されているストレージ クラスを確認するには、[kubectl get sc][kubectl-get] コマンドを使用します。 次の例は、AKS クラスター内で使用できる事前に作成されたストレージ クラスを示したものです。
 
@@ -147,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>Ultra ディスクの使用
+Ultra ディスクの利用については、[Azure Kubernetes Service (AKS) での Ultra ディスクの使用](use-ultra-disks.md)に関するページを参照してください。
 
 ## <a name="back-up-a-persistent-volume"></a>永続ボリュームのバックアップ
 
@@ -269,7 +276,7 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create
@@ -280,3 +287,11 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

@@ -2,25 +2,21 @@
 title: チュートリアル:SAP Cloud Platform Identity Authentication を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを SAP Cloud Platform Identity Authentication に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: f49b5738-c769-403b-8f29-84ddeea7fbf1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c330d8000825b2e0ccbdab8c5c1cdefa4d3d45c8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77060445"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543374"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>チュートリアル:SAP Cloud Platform Identity Authentication を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,7 +54,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![SAP Cloud Platform Identity Authentication 管理コンソール](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  管理者ユーザーを作成し、ユーザーを選択します。  
+2.  新しい管理者を一覧に追加するには、左側パネルの **[+ 追加]** ボタンを押します。 **[システムの追加]** を選択し、システムの名前を入力します。   
+
+> [!NOTE]
+> SAP Cloud Platform Identity Authentication の管理者ユーザーの種類は **System** にする必要があります。 通常の管理者ユーザーを作成すると、プロビジョニング中、"*無許可*" エラーが発生することがあります。   
 
 3.  [Configure Authorizations]\(承認の構成\) で、 **[Manage Users]\(ユーザーの管理\)**  および **[Manage Groups]\(グループの管理\)** のトグルボタンをオンにします。
 

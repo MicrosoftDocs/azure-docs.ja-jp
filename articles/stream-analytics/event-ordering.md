@@ -5,18 +5,18 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 08/06/2020
+ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75461196"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901693"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics 用のイベント順序ポリシーの構成
 
-この記事では、Azure Stream Analytics で遅延到着と順不同のイベント ポリシーを設定し、使用する方法について説明します。 クエリで [Timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 句を使用する場合のみ、これらのポリシーが適用されます。
+この記事では、Azure Stream Analytics で遅延到着と順不同のイベント ポリシーを設定し、使用する方法について説明します。 クエリで [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 句を使用する場合のみ、これらのポリシーが適用されます。また、これらはクラウド入力ソースにのみ適用されます。
 
 ## <a name="event-time-and-arrival-time"></a>イベント時間と到着時間
 
@@ -75,6 +75,11 @@ Stream Analytics ジョブは、*イベント時間*または*到着時間*の�
 このメッセージは、入力内の少なくとも 1 つのパーティションが空で、遅延到着しきい値で出力を遅延させることを通知するものです。 この問題を解決するには、以下のいずれかを実行することをお勧めします。  
 1. イベント ハブ/IoT ハブのすべてのパーティションが入力を受け取るようにする。 
 2. クエリで Partition by PartitionId 句を使用する。 
+
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>遅延到着ポリシーが 0 に設定されていても 5 秒の遅延があるのはなぜですか?
+これは、入力をまったく受け取ったことがない入力パーティションが存在する場合に発生します。 この動作を検証するため、パーティションごとの入力メトリックを確認できます。 
+
+パーティションに、構成されている遅延到着のしきい値を超えるデータがない場合は、イベントの順序に関する考慮事項のセクションで説明しているように、Stream Analytics により、アプリケーションのタイムスタンプが進められます。 このために、推定到着時間が必要です。 パーティションにどのようなデータも存在したことがない場合、Stream Analytics では、到着時刻は*ローカル時刻- 5 秒*であると推定します。 このパーティションには、どのようなデータも存在したことがないため、5 秒の透かしの遅延が表示される可能性があります。  
 
 ## <a name="next-steps"></a>次のステップ
 * [時間の処理に関する考慮事項](stream-analytics-time-handling.md)

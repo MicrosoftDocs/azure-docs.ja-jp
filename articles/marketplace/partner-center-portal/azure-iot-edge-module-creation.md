@@ -1,22 +1,22 @@
 ---
 title: パートナー センターを使用して Azure Marketplace で Azure IoT Edge モジュールのオファーを作成する
-description: パートナー センターを使用して、Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する方法について説明します
-author: anbene
-ms.author: mingshen
+description: パートナー センターを使用して、Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.topic: how-to
+author: keferna
+ms.author: keferna
+ms.date: 08/07/2020
+ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857655"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815778"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する
+# <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
-この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "82857655"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
@@ -50,27 +50,27 @@ ms.locfileid: "82857655"
 
 このページには、ユーザーの選択に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
-- オファーがドラフトの場合 - [ドラフトのオファーを削除する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- オファーが発行中の場合 - [オファーの販売を停止する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- オファーがプレビューの場合 - [公開する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
+- オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーがプレビューの場合 - [公開する](publishing-status.md#publisher-approval)
+- 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
 オファーを設定するには、次の手順に従います。
 
-### <a name="connect-lead-management"></a>リード管理の接続
+### <a name="customer-leads"></a>潜在顧客
 
 パートナー センターを使用してオファーをマーケットプレースに公開する場合、それを顧客関係管理 (CRM) システムに任意で接続できます。 これにより、自社の製品に顧客が関心を示したり、製品を使用したりした場合はすぐにその顧客の連絡先情報を受信できるようになります。
 
 1. 顧客リードの送信先となるリードのターゲットを選択します。 パートナー センターでは、次の CRM システムがサポートされています。
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)または [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
+    > ご利用の CRM システムが上記に記載されていない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して潜在顧客のデータを格納し、次にそのデータをご利用の CRM システムにエクスポートします。
 
 2. パートナー センターで公開する際は、オファーをリードの宛先に接続します。
 3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
@@ -78,9 +78,9 @@ ms.locfileid: "82857655"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
+- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
 
 続行する前に、 **[下書きの保存]** を選択します。
@@ -91,7 +91,12 @@ ms.locfileid: "82857655"
 
 #### <a name="category"></a>カテゴリ
 
-少なくとも 1 つ (最大 5 つ) のカテゴリを選択します。 これらのカテゴリは、オファーを適切なマーケットプレース検索領域に配置するために使用され、オファーの詳細ページに表示されます。 オファーの説明では、これらのカテゴリにオファーがどのように対応しているかを説明します。 参照ページでは、すべての IoT Edge モジュールが、 **"モノのインターネット" の "IoT Edge モジュール"**   カテゴリの下に表示されます。
+オファーを適切なマーケットプレース検索領域に配置するために、カテゴリとサブカテゴリを選択します。 オファーでこれらのカテゴリがどのようにサポートされるかを、必ずオファーの説明に記述してください。 選択:
+
+- 少なくとも 1 つ、最大で 2 つのカテゴリ。プライマリ カテゴリとセカンダリ カテゴリを含みます (省略可能)。
+- プライマリ カテゴリ、セカンダリ カテゴリ、またはその両方についてそれぞれ最大 2 つのサブカテゴリ。 オファーに適用できるサブカテゴリがない場合は、 **[該当なし]** を選択します。
+
+「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」でカテゴリとサブカテゴリの完全な一覧を参照してください。 マーケットプレースでは、IoT Edge モジュールは常に  **[モノのインターネット]**  >  **[IoT Edge モジュール]**  カテゴリに表示されます。
 
 #### <a name="legal"></a>法的情報
 
@@ -104,14 +109,14 @@ ms.locfileid: "82857655"
 
 Microsoft では、商業マーケットプレースの取り引きに役立つ標準契約テンプレートをご用意しています。 [標準契約] の下でソリューションを提供することを選択できます。この場合、顧客には確認し、同意することが一度だけ求められます。 独自の使用条件を作らない場合、これをお勧めします。
 
-標準契約の詳細については、「[Microsoft 商業マーケットプレースの標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)」を参照してください。 [標準契約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF をダウンロードすることもできます (ポップアップ ブロッカーをオフにしてください)。
+標準契約の詳細については、「[Microsoft 商業マーケットプレースの標準契約](../standard-contract.md)」を参照してください。 [標準契約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF をダウンロードすることもできます (ポップアップ ブロッカーをオフにしてください)。
 
 標準契約を使用するには、 **[Microsoft 商業マーケットプレース向け標準契約を使用する]** チェックボックスを選択し、 **[承諾]** をクリックします。
 
 > [!NOTE]
 > Microsoft 商業マーケットプレースの標準契約を使用してオファーを公開した後に、独自のカスタムの使用条件を使用することはできません。 ソリューションは、標準契約または独自の使用条件の下で提供します。
 
-![[Microsoft 商業マーケットプレース向け標準契約を使用する] チェックボックス使用の画像。](./media/iot-edge-module-creation/iot-edge-module-standard-contract-checkbox.png)
+![[Microsoft 商業マーケットプレース向け標準契約を使用する] チェックボックス使用の画像。](media//iot-edge-module-standard-contract-checkbox.png)
 
 ##### <a name="your-own-terms-and-conditions"></a>独自の使用条件
 
@@ -146,44 +151,15 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 ### <a name="description"></a>説明
 
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 これは、マーケットプレースのリスト登録に関する概要で顧客に表示されます。
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-説明には、次の 1 つまたは複数を含めます。
+IoT Edge モジュールのオファーには、説明の一番下に、次のような最小ハードウェア要件の段落が含まれている必要があります。
 
-- オファーによってもたらされる価値と主なメリット
-- カテゴリまたは業界のアソシエーション、あるいはその両方
-- アプリ内購入の機会
-- 必要な開示
+- 最小ハードウェア要件: Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ
 
-IoT Edge モジュールのオファーには、説明の一番下に最小ハードウェア要件の段落が含まれている必要があります。 次に例を示します。
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-"*最小ハードウェア要件: Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ*"
-
-説明を記述するためのいくつかのヒントを次に示します。
-
-- 説明の先頭のいくつかの文で、オファーの価値を明確に説明します。 次の項目を含めます。
-    - プランの説明。
-    - オファーから利益を得るユーザーの種類。
-    - 顧客は、オファーのアドレスを必要とします。またはそれを発行します。
-- 先頭のいくつかの文が検索結果に表示される場合があることに注意してください。
-- 特徴や機能に頼って製品を販売しないでください。 代わりに、オファーによって提供される価値に焦点を当てます。
-- 業界固有の語彙または利益に基づく表現を使用してください。
-
-プランの**説明**をより魅力的なものにするには、リッチ テキスト エディターを使用して説明を書式設定してください。 リッチ テキスト エディターを使用すると、数字、箇条書き、太字、斜体、およびインデントを追加して、説明を読みやすくすることができます。
-
-:::image type="content" source="media/text-editor2.png" alt-text="リッチ テキスト エディターの画像。" border="false":::
-
-- コンテンツ形式を変更するには、このスクリーンショットのように、書式設定するテキストを強調表示して、テキスト スタイルを選択します。
-
-     :::image type="content" source="media/text-editor3.png" alt-text="リッチ テキスト エディターのテキスト スタイル コントロールの画像。" border="false":::
-
-- 箇条書きまたは番号付きリストをテキストに追加するには、このスクリーンショットにあるオプションを使用します。
-  
-    :::image type="content" source="media/text-editor4.png" alt-text="リッチ テキスト エディターの箇条書きまたは番号付きリストのコントロールの画像。" border="false":::
-
-- テキストのインデントを追加または削除するには、このスクリーンショットにあるオプションを使用します。
-
-    :::image type="content" source="media/text-editor5.png" alt-text="リッチ テキスト エディターのインデント コントロールの画像。" border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-url"></a>[プライバシー ポリシーの URL]
 
@@ -194,7 +170,7 @@ IoT Edge モジュールのオファーには、説明の一番下に最小ハ�
 オファーに関する補足のオンライン ドキュメントを提供します。 最大 25 個のリンクを追加できます。 リンクを追加するには、 **[+ リンクの追加]** を選択し、次のフィールドに入力します。
 
 - **[タイトル]** - オファーの詳細ページでタイトルが顧客に表示されます。
-- **[リンク (URL)]** - 顧客がオンライン ドキュメントを閲覧するためのリンクを入力します。 リンクの先頭は http:// か https:// でなければなりません。
+- **[リンク (URL)]** - 顧客がオンライン ドキュメントを閲覧するためのリンクを入力します。 リンクは `http://` または `https://` で始まっている必要があります。
 
 少なくともドキュメントへのリンクを 1 つと、 [Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)に記載されている互換性のある IoT Edge デバイスへのリンクを 1 つ、追加するようにしてください。
 
@@ -212,55 +188,90 @@ IoT Edge モジュールのオファーには、説明の一番下に最小ハ�
 
 #### <a name="additional-marketplace-listing-resources"></a>マーケットプレースのリスト登録に関するその他のリソース
 
-オファーのリスト登録の作成について詳しくは、「[オファーの掲載のベスト プラクティス](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)」を参照してください。
+オファーのリスト登録の作成について詳しくは、「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」を参照してください。
 
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
-オファーで使用するロゴと画像を提供します。 画像はすべて .png 形式である必要があります。 ぼやけた画像は拒否されます。
+オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
+
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴの .png ファイルを次の 4 つのピクセル サイズで提供します。
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
 
-- **小 (48 x 48)**
-- **中 (90 x 90)**
-- **大 (216 x 216)**
-- **ワイド (255 x 115)**
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **中** (90 x 90 px、省略可能)
+- **小** (48 x 48 px、省略可能)
 
-4 つすべてのロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
-オファーがどのように動作するかを示すスクリーンショットを最大 5 つ追加します。 それぞれを 1280 x 720 ピクセルのサイズおよび .png 形式とする必要があります。
+オファーがどのように動作するかを示すスクリーンショットを最大 5 つ追加します。 それぞれが 1280 x 720 ピクセルのサイズで PNG 形式である必要があります。
 
 #### <a name="videos-optional"></a>ビデオ (省略可能)
 
-オファーをデモンストレーションするビデオを最大 5 つ追加します。 ビデオの名前、Web アドレス、ビデオのサムネイル .png 画像 (1280 x 720 ピクセルのサイズ) を入力します。
+オファーをデモンストレーションするビデオを最大 5 つ追加します。 ビデオの名前、Web アドレス、ビデオのサムネイル PNG 画像 (1280 x 720 ピクセルのサイズ) を入力します。
 
-#### <a name="offer-examples"></a>プランのサンプル
+#### <a name="marketplace--examples"></a>Marketplace の例
 
-次の例からは、オファーのさまざまな場所でオファーのリスト登録フィールドがどのように表示されるかがわかります。
+Azure Marketplace でのオファー情報の表示例を次に示します。
 
-このスクリーンショットには、Azure Marketplace の **[オファーのリスト登録]** ページが表示されます。
+:::image type="content" source="media/example-iot-azure-marketplace-offer.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-offer-listing-page.png" alt-text="Azure Marketplace の [オファーのリスト登録] ページの画像。":::
+#### <a name="call-out-descriptions"></a>コールアウトの説明
 
-これは Azure Marketplace の検索結果のスクリーンショットです。
+1. 大型のロゴ
+2. Categories
+3. サポートのアドレス (リンク)
+4. 使用条件
+5. プライバシー ポリシーのアドレス (リンク)
+6. 名前
+7. まとめ
+8. 説明
+9. 便利なリンク
+10. スクリーンショット、ビデオ
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-search-results.png" alt-text="Azure Marketplace の検索結果の画像。":::
+<br>Azure Marketplace の検索結果におけるオファー情報の表示例を次に示します。
 
-これは Azure portal の **[オファーのリスト登録]** ページのスクリーンショットです。
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Azure Marketplace の検索結果でこのオファーがどのように表示されるかを示しています。":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-listing-page-azure-portal.png" alt-text="Azure portal の [オファーのリスト登録] ページの画像。":::
+#### <a name="call-out-descriptions"></a>コールアウトの説明
 
-これは Azure portal の検索結果のスクリーンショットです。
+1. 小型のロゴ
+2. プラン名
+3. 検索結果の概要
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-search-results.png" alt-text="Azure portal の [オファーのリスト登録] ページの画像。":::
+<br>Azure portal でのオファー情報の表示例を次に示します。
 
-**[下書きの保存]** を選択してから、次のセクション「プレビュー」に進みます。
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Azure portal でこのオファーがどのように表示されるかを示しています。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. 名前
+2. 説明
+3. 便利なリンク
+4. Screenshots (スクリーンショット)
+
+<br>Azure portal の検索結果におけるオファー情報の表示例を次に示します。
+
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Azure portal の検索結果でこのオファーがどのように表示されるかを示しています。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. 小型のロゴ
+2. プラン名
+3. 検索結果の概要
+
+<br>**[下書きの保存]** を選択してから、次のセクション「プレビュー」に進みます。
 
 ## <a name="preview"></a>プレビュー
 
@@ -276,20 +287,19 @@ Azure サブスクリプション ID GUID でプレビュー対象ユーザー�
 
 Azure サブスクリプション ID は少なくとも 1 つ追加します。個別に追加するか (最大 10 個)、CSV ファイルをアップロードします (最大 100 個)。 これらのサブスクリプション ID を追加することで、オファーを一般公開する前にプレビューできるユーザーを定義します。 オファーが既に一般公開されている場合、オファーの変更や更新をテストするためにプレビュー対象ユーザーを定義できます。
 
-> [!NOTE]
-> プレビュー対象ユーザーはプライベート対象ユーザーとは異なります。 **プレビュー**対象ユーザーは、([可用性] タブで設定される) **プライベート**対象ユーザーにのみ公開されるものを含め、マーケットプレースで一般公開される前にすべてのオファー プランを閲覧し、確定できます。
-
 **[下書きの保存]** を選択してから、次のセクション「プランの概要」に進みます。
 
-### <a name="plan-overview"></a>プランの概要
+## <a name="plan-overview"></a>プランの概要
 
-このタブでは、パートナー センターの同じオファー内でさまざまなプラン オプションを指定できます。 このようなプランは以前、SKU、つまり、Stock Keeping Unit と呼ばれていました。 プランの違いとは、グローバル クラウド、Government クラウド、プランで参照される画像など、利用できるクラウドの違いです。 マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+このタブでは、パートナー センターの同じオファー内でさまざまなプラン オプションを指定できます。 プラン (以前は SKU と呼ばれていました) は、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 プランの作成後、 **[プランの概要]** タブが表示されます。
 
 - プラン名
 - 価格モデル
-- クラウドの可用性 (グローバルまたは Government)
+- Azure リージョン (グローバルまたは Government)
 - 現在の公開状態
 - 利用できるアクション
 
@@ -298,7 +308,7 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 - **下書きを削除する**:プランの状態が下書きの場合。
 - **販売プランを停止する**:プランの状態が一般公開の場合。
 
-#### <a name="create-new-plan"></a>新しいプランを作成する
+### <a name="create-new-plan"></a>新しいプランを作成する
 
 **[新しいプランの作成]** を選択します。 **[新しいプラン]** ダイアログ ボックスが表示されます。
 
@@ -315,24 +325,22 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 このタブでは、プランが利用できるクラウドを構成できます。 このタブでの設定により、他のタブに表示されるフィールドが変わります。
 
-#### <a name="cloud-availability"></a>クラウドでの利用可否
+#### <a name="azure-regions"></a>Azure Azure リージョン
 
-プランは、Azure IoT Hub を利用し、少なくとも 1 つのクラウドで利用できる必要があります。
+IoT Edge モジュールのオファーのすべてのプランは、自動的に **[Azure グローバル]** で利用できるようになります。  マーケットプレースを使用する、すべてのグローバル Azure リージョンの顧客がプランを使用できます。 詳細については、「[利用可能な地域と通貨サポート](../marketplace-geo-availability-currencies.md)」を参照してください。
 
-マーケットプレースを利用するすべてのグローバル Azure リージョンで顧客がプランを利用できるよう、 **[Azure Global]** オプションを選択します。 詳細については、「[利用可能な地域と通貨サポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」を参照してください。
-
-[[Azure Government クラウド]](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカの連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを計画し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
+[[Azure Government]](../../azure-government/documentation-government-welcome.md) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカ合衆国の連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](../../azure-government/documentation-government-manage-marketplace-partners.md)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを計画し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
 
 > [!NOTE]
-> プランが公開され、特定のクラウドで利用できるようになったら、そのクラウドは削除できません。
+> プランが公開され、特定のリージョンで利用できるようになった後に、そのリージョンを削除することはできません。
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government クラウドの認定
+#### <a name="azure-government-certifications"></a>Azure Government の認定資格
 
-このオプションは、 **[Cloud availability]\(クラウドの利用可否\)** で **[Azure Government クラウド]** を選択した場合にのみ表示されます。
+このオプションは、 **[Azure リージョン]** で **[Azure Government]** を選択した場合にのみ表示されます。
 
 Azure Government サービスでは、特定の政府の規制および要件の対象となるデータが処理されます。 FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4、CJIS などです。 これらのプログラムの認定資格を認識させるため、認定資格について説明するリンクを 100 個まで提供することができます。 プログラムのリスト登録に直接リンクするか、独自の Web サイトにリンクできます。 これらのリンクは、Azure Government の顧客にのみ表示されます。
 
-## <a name="plan-listing"></a>プランのリスト登録
+### <a name="plan-listing"></a>プランのリスト登録
 
 このタブには、同じオファー内の異なるプラン別に特定の情報が表示されます。
 
@@ -352,17 +360,27 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 #### <a name="plan-examples"></a>プランの例
 
-次の例は、プランのリスト登録フィールドが、さまざまなビューでどのように表示されるかを示しています。
+Azure Marketplace でのプランの詳細の例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
-以下はプラン詳細を閲覧するときの Azure Marketplace のフィールドです。
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Azure Marketplace でのプランの詳細を示しています。":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-plan-details.png" alt-text="Azure Marketplace でプラン詳細を閲覧するときに表示されるフィールドの画像。":::
+#### <a name="call-out-descriptions"></a>コールアウトの説明
 
-以下は Azure portal のプラン詳細です。
+1. プラン名
+2. プラン名
+3. プラン説明
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-plan-details.png" alt-text="Azure portal のプラン詳細の画像。":::
+<br>Azure portal でのプランの詳細の例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
-## <a name="availability"></a>可用性
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Azure portal でのプラン詳細を示しています。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. プラン名
+2. プラン名
+3. プラン説明
+
+### <a name="availability"></a>可用性
 
 公開したオファーを非表示にし、マーケットプレースで顧客がそれを検索、閲覧、購入できないようにする場合、[可用性] タブで **[プランの非表示]** チェックボックスを選択します。
 
@@ -379,7 +397,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 オファーの公開後、特定のパブリック コンテナー レジストリで IoT Edge コンテナー イメージが Azure Marketplace にコピーされます。 Azure ユーザーがモジュールの使用を要求すると、プライベート コンテナー レジストリではなく、Azure Marketplace パブリック コンテナー レジストリからサービスが提供されます。
 
-複数のプラットフォームを対象にしたり、タグを利用し、複数のバージョンのモジュール コンテナー イメージを提供したりできます。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset)」を参照してください。
+複数のプラットフォームを対象にしたり、タグを利用し、複数のバージョンのモジュール コンテナー イメージを提供したりできます。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](create-iot-edge-module-asset.md)」を参照してください。
 
 ### <a name="image-repository-details"></a>イメージ リポジトリの詳細
 
@@ -389,25 +407,35 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 **[Azure サブスクリプション ID]** :リソースの使用状況が報告され、コンテナー イメージが含まれる Azure Container Registry に対してサービスが課金されるサブスクリプション ID を入力します。 この ID は Azure portal の[サブスクリプション ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にあります。
 
-**[Azure リソース グループ名]** :Azure Container Registry とコンテナー イメージが含まれる[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)名を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできます。 この名前は Azure portal の[リソース グループ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
+**[Azure リソース グループ名]** :Azure Container Registry とコンテナー イメージが含まれる[リソース グループ](../../azure-resource-manager/management/manage-resource-groups-portal.md)名を指定します。 リソース グループにはサブスクリプション ID (上記) でアクセスできます。 この名前は Azure portal の[リソース グループ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) ページにあります。
 
-**[Azure コンテナー レジストリ名]** :コンテナー イメージが含まれる [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) の名前を指定します。 このコンテナー レジストリは、前に指定した Azure リソース グループに存在する必要があります。 完全なログイン サーバー名ではなく、レジストリ名のみを指定します。 名前からは必ず **azurecr.io** を省略します。 レジストリ名は、Azure portal の[コンテナー レジストリ ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)にあります。
+**[Azure コンテナー レジストリ名]** :コンテナー イメージが含まれる [Azure Container Registry](../../container-registry/container-registry-intro.md) の名前を指定します。 このコンテナー レジストリは、前に指定した Azure リソース グループに存在する必要があります。 完全なログイン サーバー名ではなく、レジストリ名のみを指定します。 名前からは必ず **azurecr.io** を省略します。 レジストリ名は、Azure portal の[コンテナー レジストリ ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)にあります。
 
-**[Azure Container Registry の管理者ユーザー名]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている[管理者ユーザー名](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)を指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 任意で、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
+**[Azure Container Registry の管理者ユーザー名]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている[管理者ユーザー名](../../container-registry/container-registry-authentication.md#admin-account)を指定します。 このユーザー名とパスワードは、自社からレジストリにアクセスするために必要です。 管理者ユーザー名とパスワードを取得するには、Azure コマンド ライン インターフェイス (CLI) で **admin-enabled** プロパティを **[True]** に設定します。 任意で、Azure portal で **[管理者ユーザー]** を **[有効にする]** に設定できます。
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="[コンテナー レジストリの更新] ダイアログ ボックスの画像。":::
 
-**[Azure Container Registry のパスワード]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 **[コンテナー レジストリ]** 、 **[アクセス キー]** の順に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
+#### <a name="call-out-description"></a>コールアウトの説明
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Azure portal のアクセス キー画面の画像。":::
+1. 管理者ユーザー
 
-**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) の**リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)」を参照してください。 名前は設定後に変更できません。 アカウント内のオファー別に一意の名前を使用します。
+<br>**[Azure Container Registry のパスワード]** :コンテナー イメージが含まれる Azure Container Registry に関連付けられている管理者ユーザー名のパスワードを指定します。 会社でレジストリへのアクセスを確保するには、ユーザー名とパスワードが必要です。 **[コンテナー レジストリ]** 、 **[アクセス キー]** の順に移動するか、Azure CLI で [show コマンド](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)を使用することで、Azure portal からパスワードを取得できます。
+
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Azure portal のアクセス キー画面の画像。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. アクセス キー
+2. ユーザー名
+3. Password
+
+**Azure Container Registry 内のリポジトリ名**。 イメージが含まれる Azure Container Registry リポジトリの名前を指定します。 レジストリにイメージをプッシュするとき、リポジトリの名前を指定します。 リポジトリの名前は、[[コンテナー レジストリ]](https://azure.microsoft.com/services/container-registry/) の**リポジトリ ページ**に移動すると見つかります。 詳細については、「[Azure Portal でコンテナー レジストリ リポジトリを表示する](../../container-registry/container-registry-repositories.md)」を参照してください。 名前は設定後に変更できません。 アカウント内のオファー別に一意の名前を使用します。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>新しいバージョンのオファーのイメージ タグ
 
 更新プログラムを公開したとき、顧客は Azure Marketplace から更新プログラムを自動的に取得できなければなりません。 彼らが更新しない場合、特定のバージョンのイメージを維持できなければなりません。 これはイメージを更新するたびに新しいイメージ タグを追加することで行います。
 
-**イメージ タグ**。 サポートされているすべてのプラットフォームで、最新版のイメージを指す**最新**のタグをこのフィールドに含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://github.com/estesp/manifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。 マニフェスト タグ (最新のタグを除く) はすべて X.Y- か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、最新のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)」を参照してください。
+**イメージ タグ**。 サポートされているすべてのプラットフォームで、最新版のイメージを指す**最新**のタグをこのフィールドに含める必要があります。 バージョン タグも含める必要があります (たとえば、xx.xx.xx から始まり、xx は数字です)。 複数のプラットフォームを対象とするには、顧客は[マニフェスト タグ](https://github.com/estesp/manifest-tool)を使用する必要があります。 マニフェスト タグで参照されるすべてのタグも、アップロードできるように追加する必要があります。 マニフェスト タグ (最新のタグを除く) はすべて X.Y- か X.Y.Z- で始める必要があります。X、Y、Z は整数です。 たとえば、最新のタグが 1.0.1-linux-x64、1.0.1-linux-arm32、1.0.1-windows-arm32 を指す場合、これら 6 つのタグをこのフィールドに追加する必要があります。 タグとバージョン管理の詳細については、「[IoT Edge モジュールの技術アセットの準備](create-iot-edge-module-asset.md)」を参照してください。
 
 ### <a name="default-deployment-settings-optional"></a>既定の展開設定 (省略可能)
 
@@ -415,7 +443,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 **既定のルート**。 IoT Edge ハブは、モジュール、IoT ハブ、デバイス間の通信を管理します。 モジュールと IoT Hub の間でデータの入力と出力のルートを設定することにより、メッセージの処理や追加のコードの記述を行うための追加のサービスを必要とせず、自由な場所にメッセージを送信できます。 ルートは名前と値のペアを使用して作成されます。 最大 5 つの既定ルート名を定義できます。それぞれ最大 512 文字を使用できます。
 
-ルート値には正しい[ルート構文](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)を使用してください (通常、FROM/message/* INTO $upstream として定義されています)。 つまり、モジュールにより送信されるメッセージはすべて、IoT Hub に移動します。 モジュールを参照するには、既定のモジュール名を使用します。モジュール名は、スペースと特殊文字を除いた**オファー名**です。 未知の他のモジュールを参照するには、お客様がこの情報を更新する必要があることがわかるように <FROM_MODULE_NAME> 規約を使用します。 IoT Edge ルートの詳細については、「[ルートの宣言](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)」を参照してください。
+ルート値には正しい[ルート構文](../../iot-edge/module-composition.md#declare-routes)を使用してください (通常、FROM/message/* INTO $upstream として定義されています)。 つまり、モジュールにより送信されるメッセージはすべて、IoT Hub に移動します。 モジュールを参照するには、既定のモジュール名を使用します。モジュール名は、スペースと特殊文字を除いた**オファー名**です。 未知の他のモジュールを参照するには、お客様がこの情報を更新する必要があることがわかるように <FROM_MODULE_NAME> 規約を使用します。 IoT Edge ルートの詳細については、「[ルートの宣言](../../iot-edge/module-composition.md#declare-routes)」を参照してください。
 
 たとえば、モジュール ContosoModule が ContosoInput の入力をリッスンし、ContosoOutput の出力データをリッスンする場合、次の 2 つの既定のルートを定義するのが適切です。
 
@@ -424,14 +452,14 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 - 名前 #2:FromContosoModuleToCloud
 - 値 #2:FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**既定のモジュール ツインの必要なプロパティ**。 モジュール ツインは IoT Hub の JSON ドキュメントであり、必要なプロパティなど、モジュール インスタンスの状態情報が格納されます。 モジュールの構成や状態を同期するために、必要なプロパティを報告されるプロパティと共に使用します。 ソリューション バックエンドにより必要なプロパティを設定でき、モジュールによりそれらを読み取れます。 モジュールでは、必要なプロパティに対する変更を知らせる通知を受け取ることもできます。 必要なプロパティは最大 5 つの名前と値のペアで作成され、各既定値は 512 文字未満にする必要があります。 最大 5 つの名前と値のツインの目的のプロパティを定義できます。 ツインの目的のプロパティの値は、有効な JSON であり、エスケープせず、配列を含まず、最大ネスト階層は 4 レベルでなければなりません。 既定値に必要なパラメーターでは意味をなさないシナリオでは (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。 ツインの必要なプロパティに関する詳細については、「[必要なプロパティの定義または更新](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)」をご覧ください。
+**既定のモジュール ツインの必要なプロパティ**。 モジュール ツインは IoT Hub の JSON ドキュメントであり、必要なプロパティなど、モジュール インスタンスの状態情報が格納されます。 モジュールの構成や状態を同期するために、必要なプロパティを報告されるプロパティと共に使用します。 ソリューション バックエンドにより必要なプロパティを設定でき、モジュールによりそれらを読み取れます。 モジュールでは、必要なプロパティに対する変更を知らせる通知を受け取ることもできます。 必要なプロパティは最大 5 つの名前と値のペアで作成され、各既定値は 512 文字未満にする必要があります。 最大 5 つの名前と値のツインの目的のプロパティを定義できます。 ツインの目的のプロパティの値は、有効な JSON であり、エスケープせず、配列を含まず、最大ネスト階層は 4 レベルでなければなりません。 既定値に必要なパラメーターでは意味をなさないシナリオでは (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。 ツインの必要なプロパティに関する詳細については、「[必要なプロパティの定義または更新](../../iot-edge/module-composition.md#define-or-update-desired-properties)」をご覧ください。
 
 たとえば、モジュールがツインの目的のプロパティによって動的に構成可能なリフレッシュ レートをサポートする場合、以下の既定ツインの目的のプロパティを定義するのが適切です。
 
 - 名前 #1:RefreshRate
 - 値 #1:60
 
-**既定の環境変数**。 環境変数は、構成プロセスを容易にする補足情報をモジュールに提供します。 環境変数は名前と値のペアを使用して作成されます。 既定の環境変数の名前と値はそれぞれ、512 文字未満にする必要があり須磨。最大 5 つを定義できます。 既定値に必要なパラメーターでは意味をなさないとき (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。
+**既定の環境変数**。 環境変数は、構成プロセスを容易にする補足情報をモジュールに提供します。 環境変数は名前と値のペアを使用して作成されます。 既定の環境変数の名前と値はそれぞれ、512 文字未満にする必要があります。最大 5 つを定義できます。 既定値に必要なパラメーターでは意味をなさないとき (たとえば、顧客のサーバーの IP アドレスなど)、既定値としてパラメーターを追加できます。
 
 たとえば、モジュールが開始される前に使用条件に同意する必要がある場合は、次の環境変数を定義できます。
 
@@ -446,7 +474,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 ## <a name="review-and-publish"></a>レビューと公開
 
-オファーの必須セクションをすべて完了したら、レビューと発行のためにそれを送信することができます。
+オファーの必須セクションをすべて完了したら、レビューと公開のためにそれを送信することができます。
 
 ポータルの右上隅で、 **[レビューと公開]** を選択します。
 
@@ -460,7 +488,7 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 
 オファーを送信して公開するには、 **[公開]** を選択します。
 
-オファーのプレビュー バージョンが確認および承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。 オファーを一般に (プライベート オファーの場合は、プライベート対象ユーザーに) 公開するには、パートナー センターに移動して、 **[一般公開する]** を選択します。
+オファーのプレビュー バージョンが確認して承認できるようになったら、その旨をお知らせするメールを Microsoft からお送りします。 オファーを一般に公開するには、パートナー センターにアクセスし、 **[一般公開する]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

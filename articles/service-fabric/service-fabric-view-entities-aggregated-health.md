@@ -1,16 +1,17 @@
 ---
 title: Azure Service Fabric のエンティティの正常性の集計を確認する方法
 description: 正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: gwallace
+ms.custom: devx-track-csharp
+ms.openlocfilehash: eeb2fd94e6b98bc9d89be22501406db9a8ba7773
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464131"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013165"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
 Azure Service Fabric に正常性エンティティを使用する[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
@@ -55,10 +56,10 @@ Service Fabric Explorer を使用したクラスターのビュー
 >
 
 ## <a name="health-queries"></a>正常性クエリ
-Service Fabric では、サポート対象の各 [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。 アクセスには、API ([FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上メソッドを使用)、PowerShell コマンドレット、および REST を使用できます。 これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、異常評価 (エンティティが正常でない場合)、子の正常性統計情報 (該当する場合) といったエンティティの正常性についての完全な情報を返します。
+Service Fabric では、サポート対象の各 [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。 アクセスには、API ([FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上メソッドを使用)、PowerShell コマンドレット、および REST を使用できます。 これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、異常評価 (エンティティが正常でない場合)、子の正常性統計情報 (該当する場合) といったエンティティの正常性についての完全な情報を返します。
 
 > [!NOTE]
-> 正常性エンティティは、正常性ストアにすべてが設定されると返されます。 エンティティはアクティブな (削除されていない) 状態で、システム レポートを含む必要があります。 階層チェーン上の親エンティティも、システム レポートを含む必要があります。 これらの条件が満たされていないと、正常性クエリからは [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) と、エンティティが返されない理由を示す [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` が返されます。
+> 正常性エンティティは、正常性ストアにすべてが設定されると返されます。 エンティティはアクティブな (削除されていない) 状態で、システム レポートを含む必要があります。 階層チェーン上の親エンティティも、システム レポートを含む必要があります。 これらの条件が満たされていないと、正常性クエリからは [FabricException](/dotnet/api/system.fabric.fabricexception) と、エンティティが返されない理由を示す [FabricErrorCode](/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` が返されます。
 >
 >
 
@@ -87,7 +88,7 @@ Service Fabric では、サポート対象の各 [エンティティ型](service
 * [省略可能] 正常性の統計情報に fabric:/System 正常性の統計情報を含めるフィルター。 正常性の統計情報が除外されていない場合にのみ適用されます。 既定で、正常性の統計情報には、システム アプリケーションではなく、ユーザー アプリケーションの統計情報のみが含まれています。
 
 ### <a name="api"></a>API
-クラスターの正常性を取得するには、 `FabricClient` を作成し、 [HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) で **GetClusterHealthAsync**メソッドを呼び出します。
+クラスターの正常性を取得するには、 `FabricClient` を作成し、 [HealthManager](/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) で **GetClusterHealthAsync**メソッドを呼び出します。
 
 次の呼び出しでは、クラスターの正常性を取得します。
 
@@ -95,7 +96,7 @@ Service Fabric では、サポート対象の各 [エンティティ型](service
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-次のコードは、カスタム クラスターの正常性ポリシーとノードおよびアプリケーションのフィルターを使用して、クラスターの正常性を取得します。 正常性の統計情報に fabric:/System 統計情報を含めることを指定します。 入力情報が含まれる [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription)が作成されます。
+次のコードは、カスタム クラスターの正常性ポリシーとノードおよびアプリケーションのフィルターを使用して、クラスターの正常性を取得します。 正常性の統計情報に fabric:/System 統計情報を含めることを指定します。 入力情報が含まれる [ClusterHealthQueryDescription](/dotnet/api/system.fabric.description.clusterhealthquerydescription)が作成されます。
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -127,7 +128,7 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-クラスターの正常性を取得するコマンドレットは [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
+クラスターの正常性を取得するコマンドレットは [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
 
 クラスターの状態 (5 つのノード、システム アプリケーション、fabric:/WordCount) は上記のように構成されています。
 
@@ -225,7 +226,7 @@ HealthEvents            : None
 ```
 
 ### <a name="rest"></a>REST
-クラスターの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+クラスターの正常性を取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-a-cluster)または [POST 要求](/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-node-health"></a>ノードの正常性の取得
 ノード エンティティの正常性を返し、ノードで報告された正常性のイベントが含まれます。 次の内容を入力します。
@@ -235,7 +236,7 @@ HealthEvents            : None
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントのフィルター。 すべてのイベントは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 
 ### <a name="api"></a>API
-API を使用してノードの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) メソッドを呼び出します。
+API を使用してノードの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetNodeHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) メソッドを呼び出します。
 
 次のコードは、指定したノード名のノードの正常性を取得します。
 
@@ -243,7 +244,7 @@ API を使用してノードの正常性を取得するには、 `FabricClient` 
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(nodeName);
 ```
 
-次のコードは、指定したノード名のノードの正常性を取得し、 [NodeHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription)を通じてイベント フィルターとカスタム ポリシーを渡します。
+次のコードは、指定したノード名のノードの正常性を取得し、 [NodeHealthQueryDescription](/dotnet/api/system.fabric.description.nodehealthquerydescription)を通じてイベント フィルターとカスタム ポリシーを渡します。
 
 ```csharp
 var queryDescription = new NodeHealthQueryDescription(nodeName)
@@ -256,7 +257,7 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-ノードの正常性を取得するコマンドレットは [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
+ノードの正常性を取得するコマンドレットは [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
 次のコマンドレットは、既定の正常性ポリシーを使用してノードの正常性を取得します。
 
 ```powershell
@@ -294,7 +295,7 @@ _Node_0                     Ok
 ```
 
 ### <a name="rest"></a>REST
-ノードの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+ノードの正常性を取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-a-node)または [POST 要求](/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-application-health"></a>アプリケーションの正常性の取得
 アプリケーション エンティティの正常性を返します。 デプロイされたアプリケーションとサービスの子の正常性状態が含まれます。 次の内容を入力します。
@@ -305,7 +306,7 @@ _Node_0                     Ok
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、アプリケーションのすべての子 (サービス、パーティション、レプリカ、デプロイされたアプリケーション、デプロイされたサービス パッケージ) に関する ok、警告、エラーの数が含まれます。
 
 ### <a name="api"></a>API
-アプリケーションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) メソッドを呼び出します。
+アプリケーションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetApplicationHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) メソッドを呼び出します。
 
 次のコードは、指定のアプリケーション名 (URI) のアプリケーションの正常性を取得します。
 
@@ -313,7 +314,7 @@ _Node_0                     Ok
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(applicationName);
 ```
 
-次のコードは、 [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription)を通じて指定したフィルターとカスタム ポリシーを使用して、指定したアプリケーション名 (URI) のアプリケーションの正常性を取得します。
+次のコードは、 [ApplicationHealthQueryDescription](/dotnet/api/system.fabric.description.applicationhealthquerydescription)を通じて指定したフィルターとカスタム ポリシーを使用して、指定したアプリケーション名 (URI) のアプリケーションの正常性を取得します。
 
 ```csharp
 HealthStateFilter warningAndErrors = HealthStateFilter.Error | HealthStateFilter.Warning;
@@ -440,7 +441,7 @@ HealthEvents                    : None
 ```
 
 ### <a name="rest"></a>REST
-アプリケーションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+アプリケーションの正常性を取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-an-application)または [POST 要求](/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-service-health"></a>サービスの正常性の取得
 サービス エンティティの正常性を返します。 パーティションの正常性状態が含まれます。 次の内容を入力します。
@@ -451,7 +452,7 @@ HealthEvents                    : None
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、サービスのすべてのパーティションとレプリカに関する ok、警告、およびエラーの数が表示されます。
 
 ### <a name="api"></a>API
-API を使用してサービスの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) メソッドを呼び出します。
+API を使用してサービスの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetServiceHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) メソッドを呼び出します。
 
 次の例は、指定のサービス名 (URI) のサービスの正常性を取得します。
 
@@ -459,7 +460,7 @@ API を使用してサービスの正常性を取得するには、 `FabricClien
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
-次のコードは、 [ServiceHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription)を通じてフィルターとカスタム ポリシーを指定し、指定したサービス名 (URI) のサービスの正常性を取得します。
+次のコードは、 [ServiceHealthQueryDescription](/dotnet/api/system.fabric.description.servicehealthquerydescription)を通じてフィルターとカスタム ポリシーを指定し、指定したサービス名 (URI) のサービスの正常性を取得します。
 
 ```csharp
 var queryDescription = new ServiceHealthQueryDescription(serviceName)
@@ -472,7 +473,7 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-サービスの正常性を取得するコマンドレットは [Get-ServiceFabricServiceHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
+サービスの正常性を取得するコマンドレットは [Get-ServiceFabricServiceHealth](/powershell/module/servicefabric/get-servicefabricservicehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
 
 次のコマンドレットは、既定の正常性ポリシーを使用してサービスの正常性を取得します。
 
@@ -512,7 +513,7 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-サービスの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+サービスの正常性を取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-a-service)または [POST 要求](/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-partition-health"></a>パーティションの正常性の取得
 パーティション エンティティの正常性を返します。 レプリカの正常性状態が含まれます。 次の内容を入力します。
@@ -523,14 +524,14 @@ HealthStatistics      :
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、ok 状態、警告状態、およびエラー状態のレプリカ数が表示されます。
 
 ### <a name="api"></a>API
-API を使用してパーティションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription)を作成します。
+API を使用してパーティションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetPartitionHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [PartitionHealthQueryDescription](/dotnet/api/system.fabric.description.partitionhealthquerydescription)を作成します。
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-パーティションの正常性を取得するコマンドレットは [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
+パーティションの正常性を取得するコマンドレットは [Get-ServiceFabricPartitionHealth](/powershell/module/servicefabric/get-servicefabricpartitionhealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
 
 次のコマンドレットは、**fabric:/WordCount/WordCountService** サービスの全パーティションの正常性を取得し、レプリカの正常性状態をフィルター処理します。
 
@@ -604,7 +605,7 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-パーティションの正常性を取得するには、[GET 要求](/rest/api/servicefabric/sfclient-api-getpartitionhealth)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+パーティションの正常性を取得するには、[GET 要求](/rest/api/servicefabric/sfclient-api-getpartitionhealth)または [POST 要求](/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-replica-health"></a>レプリカの正常性の取得
 ステートフル サービス レプリカまたはステートレス サービス インスタンスの正常性を返します。 次の内容を入力します。
@@ -614,14 +615,14 @@ HealthStatistics      :
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントのフィルター。 すべてのイベントは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 
 ### <a name="api"></a>API
-API を使用してレプリカの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) メソッドを呼び出します。 詳細なパラメーターを指定するには、 [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription)を使用します。
+API を使用してレプリカの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetReplicaHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) メソッドを呼び出します。 詳細なパラメーターを指定するには、 [ReplicaHealthQueryDescription](/dotnet/api/system.fabric.description.replicahealthquerydescription)を使用します。
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-レプリカの正常性を取得するコマンドレットは [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
+レプリカの正常性を取得するコマンドレットは [Get-ServiceFabricReplicaHealth](/powershell/module/servicefabric/get-servicefabricreplicahealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
 
 次のコマンドレットは、サービスのすべてのパーティションのプライマリ レプリカの正常性を取得します。
 
@@ -647,7 +648,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-レプリカの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+レプリカの正常性を取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-a-replica)または [POST 要求](/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-deployed-application-health"></a>デプロイされたアプリケーションの正常性の取得
 ノード エンティティにデプロイされたアプリケーションの正常性を返します。 デプロイされたサービス パッケージの正常性状態が含まれます。 次の内容を入力します。
@@ -658,7 +659,7 @@ HealthEvents          :
 * [省略可能] 正常性の統計情報を除外するフィルター。 指定しない場合、正常性の統計情報には、ok、警告、およびエラーの正常性状態のデプロイ済みサービス パッケージ数が表示されます。
 
 ### <a name="api"></a>API
-API を使用してノードにデプロイされたアプリケーションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)を使用します。
+API を使用してノードにデプロイされたアプリケーションの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetDeployedApplicationHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [DeployedApplicationHealthQueryDescription](/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription)を使用します。
 
 ```csharp
 DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedApplicationHealthAsync(
@@ -706,7 +707,7 @@ HealthStatistics                   :
 ```
 
 ### <a name="rest"></a>REST
-デプロイされたアプリケーションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+デプロイされたアプリケーションの正常性を取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-a-deployed-application)または [POST 要求](/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-deployed-service-package-health"></a>デプロイされたサービス パッケージの正常性の取得
 デプロイされたサービス パッケージ エンティティの正常性を返します。 次の内容を入力します。
@@ -716,7 +717,7 @@ HealthStatistics                   :
 * [省略可能] 結果で返す対象のエントリ (たとえば、エラーのみ、警告とエラーの両方) を指定するイベントのフィルター。 すべてのイベントは、フィルターに関係なく、エンティティで集計された正常性の評価に使用されます。
 
 ### <a name="api"></a>API
-API を使用してデプロイされたサービス パッケージの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [DeployedServicePackageHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription)を使用します。
+API を使用してデプロイされたサービス パッケージの正常性を取得するには、 `FabricClient` を作成し、HealthManager で [GetDeployedServicePackageHealthAsync](/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) メソッドを呼び出します。 省略可能なパラメーターを指定するには、 [DeployedServicePackageHealthQueryDescription](/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription)を使用します。
 
 ```csharp
 DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeployedServicePackageHealthAsync(
@@ -724,7 +725,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-デプロイされたサービス パッケージの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。 アプリケーションのデプロイ先を確認するには、 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) を実行して、デプロイされたアプリケーションを確認します。 アプリケーション内のサービス パッケージを確認するには、 [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) の出力で、デプロイされたサービス パッケージの子を確認します。
+デプロイされたサービス パッケージの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedServicePackageHealth](/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。 アプリケーションのデプロイ先を確認するには、 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) を実行して、デプロイされたアプリケーションを確認します。 アプリケーション内のサービス パッケージを確認するには、 [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) の出力で、デプロイされたサービス パッケージの子を確認します。
 
 次のコマンドレットは、 **_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。 エンティティには、アクティブ化に成功したサービス パッケージとエントリー ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
 
@@ -776,7 +777,7 @@ HealthEvents               :
 ```
 
 ### <a name="rest"></a>REST
-デプロイされたサービス パッケージの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+デプロイされたサービス パッケージの正常性を取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-a-service-package)または [POST 要求](/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="health-chunk-queries"></a>正常性チャンク クエリ
 正常性チャンク クエリは、入力フィルターごとにクラスターの複数レベルの子を (再帰的に) 返すことができます。 返される子をとても柔軟に選択することができる高度なフィルターをサポートしています。 フィルターでは、一意の識別子、他のグループの収集、正常性状態を使用して子を指定できます。 最初のレベルの子が常に含まれている正常性コマンドとは異なり、既定ではどの子も含まれていません。
@@ -804,14 +805,14 @@ HealthEvents               :
 * [省略可能] ノードとクラスターのイベントを評価するために使用されるクラスターの正常性ポリシー。
 * [省略可能] アプリケーション マニフェストのポリシーをオーバーライドするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
 * [省略可能] 結果で返される対象のエントリを指定するノードとアプリケーションのフィルター。 フィルターは、複数のエンティティのうちの 1 つのエンティティまたはグループのみか、そのレベルのすべてのエンティティに適用されます。 フィルターの一覧には、一般的なフィルターを 1 つだけ含めることができるほか、特定の識別子に対応するフィルターを含めて、クエリによって返されるエンティティを絞り込むこともできます。 空の場合、既定では子は返されません。
-  フィルターの詳細については、[NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) と [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter) に関するページを参照してください。 アプリケーションのフィルターでは、子に対する高度なフィルターを再帰的に指定できます。
+  フィルターの詳細については、[NodeHealthStateFilter](/dotnet/api/system.fabric.health.nodehealthstatefilter) と [ApplicationHealthStateFilter](/dotnet/api/system.fabric.health.applicationhealthstatefilter) に関するページを参照してください。 アプリケーションのフィルターでは、子に対する高度なフィルターを再帰的に指定できます。
 
 チャンクの結果には、フィルターに該当する子が含まれます。
 
 現時点では、チャンク クエリは異常性の評価またはエンティティ イベントを返しません。 この追加情報は、既存のクラスター正常性クエリを使用して取得できます。
 
 ### <a name="api"></a>API
-クラスターの正常性チャンクを取得するには、 `FabricClient` を作成し、 [HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) で **GetClusterHealthChunkAsync**メソッドを呼び出します。 [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) を渡して、正常性ポリシーと高度なフィルターを記述できます。
+クラスターの正常性チャンクを取得するには、 `FabricClient` を作成し、 [HealthManager](/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) で **GetClusterHealthChunkAsync**メソッドを呼び出します。 [ClusterHealthQueryDescription](/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) を渡して、正常性ポリシーと高度なフィルターを記述できます。
 
 次のコードは、高度なフィルターを使用してクラスターの正常性チャンクを取得します。
 
@@ -857,7 +858,7 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-クラスターの正常性を取得するコマンドレットは [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
+クラスターの正常性を取得するコマンドレットは [Get-ServiceFabricClusterChunkHealth](/powershell/module/servicefabric/get-servicefabricclusterhealthchunk)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。
 
 次のコードは、常に返される特定のノードを除き、状態がエラーのノードのみを取得します。
 
@@ -1007,7 +1008,7 @@ ApplicationHealthStateChunks :
 ```
 
 ### <a name="rest"></a>REST
-クラスターの正常性チャンクを取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster)を使用できます。これらの要求の本文には、正常性ポリシーと高度なフィルターが記載されています。
+クラスターの正常性チャンクを取得するには、[GET 要求](/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks)または [POST 要求](/rest/api/servicefabric/health-of-cluster)を使用できます。これらの要求の本文には、正常性ポリシーと高度なフィルターが記載されています。
 
 ## <a name="general-queries"></a>一般クエリ
 一般クエリは、指定した型の Service Fabric エンティティの一覧を返します。 API ( **FabricClient.QueryManager**のメソッド)、PowerShell コマンドレット、REST を通じて公開されます。 これらのクエリは複数のコンポーネントからのサブクエリを集計します。 そのうちの 1 つが [正常性ストア](service-fabric-health-introduction.md#health-store)で、各クエリ結果の正常性状態の集計を設定します。  
@@ -1021,30 +1022,30 @@ ApplicationHealthStateChunks :
 
 エンティティの **HealthState** が含まれるクエリは次のとおりです。
 
-* ノード一覧: クラスター内のノードの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * PowerShell: Get-ServiceFabricNode
-* アプリケーション一覧: クラスター内のアプリケーションの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
-  * PowerShell: Get-ServiceFabricApplication
-* サービス一覧: アプリケーション内のサービスの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * PowerShell: Get-ServiceFabricService
-* パーティション一覧: サービス内のパーティションの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
-  * PowerShell: Get-ServiceFabricPartition
-* レプリカ一覧: パーティション内のレプリカの一覧を返します (ページング)。
-  * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * PowerShell: Get-ServiceFabricReplica
-* デプロイ済みアプリケーション一覧: ノード上にデプロイされたアプリケーションの一覧を返します。
-  * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
-* デプロイ済みサービス パッケージ一覧: デプロイされたアプリケーション内のサービス パッケージの一覧を返します。
-  * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * PowerShell: Get-ServiceFabricDeployedApplication
+* ノード一覧:クラスター内のノードの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetNodeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * PowerShell:Get-ServiceFabricNode
+* アプリケーション一覧:クラスター内のアプリケーションの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * PowerShell:Get-ServiceFabricApplication
+* サービス一覧:アプリケーション内のサービスの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * PowerShell:Get-ServiceFabricService
+* パーティション一覧:サービス内のパーティションの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetPartitionListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+  * PowerShell:Get-ServiceFabricPartition
+* レプリカ一覧:パーティション内のレプリカの一覧を返します (ページング)。
+  * API:[FabricClient.QueryClient.GetReplicaListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * PowerShell:Get-ServiceFabricReplica
+* デプロイ済みアプリケーション一覧:ノード上にデプロイされたアプリケーションの一覧を返します。
+  * API:[FabricClient.QueryClient.GetDeployedApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+  * PowerShell:Get-ServiceFabricDeployedApplication
+* デプロイ済みサービス パッケージ一覧:デプロイされたアプリケーション内のサービス パッケージの一覧を返します。
+  * API:[FabricClient.QueryClient.GetDeployedServicePackageListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+  * PowerShell:Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList\<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡します。
+> 一部のクエリはページングされた結果を返します。 これらのクエリの戻り値は、[PagedList\<T>](/dotnet/api/system.fabric.query.pagedlist-1) から派生した一覧です。 結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。 同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡します。
 
 ### <a name="examples"></a>例
 次のコードは、クラスター内の正常でないアプリケーションを取得します。

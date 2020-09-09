@@ -2,19 +2,17 @@
 title: .NET Framework 4.7.2 アップグレードによる Azure Data Lake Analytics の U-SQL ジョブのエラーをトラブルシューティングする方法
 description: .NET Framework 4.7.2 へのアップグレードによる U-SQL ジョブのエラーをトラブルシューティングします。
 services: data-lake-analytics
-author: guyhay
-ms.author: guyhay
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f553da53f665676dd44ec581d082f9a39e242516
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79213576"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132383"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics が .NET Framework v4.7.2 にアップグレード中
 

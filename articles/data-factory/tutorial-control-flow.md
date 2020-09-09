@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418730"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85513307"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -48,13 +48,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * Azure ストレージ アカウント。 BLOB ストレージをソース データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
 * Azure Storage Explorer. このツールをインストールするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。
-* Azure SQL Database。 データベースをシンク データ ストアとして使用します。 Azure SQL Database がない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関するページを参照してください。
+* Azure SQL Database。 データベースをシンク データ ストアとして使用します。 Azure SQL Database のデータベースがない場合は、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * 見ることができます。 この記事では、Visual Studio 2019 を使用します。
 * Azure .NET SDK。 [Azure .NET SDK](https://azure.microsoft.com/downloads/) をダウンロードしてインストールします。
 
 現在 Data Factory が利用可能な Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。 データ ストアとコンピューティングは、別のリージョンに配置できます。 ストアには、Azure Storage と Azure SQL Database が含まれます。 コンピューティングには、Data Factory で使用される HDInsight が含まれます。
 
-「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。 このチュートリアルの後の方で、**アプリケーション (クライアント) ID** や**ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
+「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。 このチュートリアルの後の方で、**アプリケーション (クライアント) ID** や**ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
 
 ### <a name="create-a-blob-table"></a>BLOB テーブルを作成する
 

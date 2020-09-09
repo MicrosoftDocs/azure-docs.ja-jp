@@ -26,7 +26,7 @@ ms.locfileid: "75887327"
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1. 次を実行してメタ テーブルを修正します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "75887327"
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次を実行してリージョンをオンラインにします。
 
@@ -65,7 +65,7 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 これらの重複するリージョンを手動でマージします。 HBase HMaster Web UI テーブル セクションに移動し、問題が発生しているテーブル リンクを選択します。 このテーブルに属している各リージョンの開始キー/終了キーが表示されます。 次に、これらの重複するリージョンをマージします。 HBase シェルで`merge_region 'xxxxxxxx','yyyyyyy', true` を実行します。 次に例を示します。
 
@@ -89,7 +89,7 @@ RegionC, startkey:010, endkey:080.
 
 最も可能性の高い原因は、RegionServer のクラッシュ時または VM の再起動時のリージョンの部分的な削除です。 現時点で Azure Storage はフラットな BLOB ファイル システムであり、一部のファイル操作はアトミックではありません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 以下の残りのファイルとフォルダーを手動でクリーンアップします。
 

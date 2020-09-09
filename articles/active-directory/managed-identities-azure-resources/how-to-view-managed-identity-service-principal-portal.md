@@ -3,24 +3,24 @@ title: Azure portal でマネージド ID のサービス プリンシパルを�
 description: Azure portal でマネージド ID のサービス プリンシパルを表示するための段階的手順。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c12f15cc79d5329d028239ade4e18a853000bf01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c88f3cdc880888162301ace5c896161f669d2ede
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298599"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269201"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal でマネージド ID のサービス プリンシパルを表示する
 
@@ -35,7 +35,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。
 - まだ Azure アカウントを持っていない場合は、[無料アカウントを新規登録](https://azure.microsoft.com/free/)してください。
-- [仮想マシン](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)または[アプリケーション](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)でシステム割り当ての ID を有効にします。
+- [仮想マシン](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)または[アプリケーション](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity)でシステム割り当ての ID を有効にします。
 
 ## <a name="view-the-service-principal"></a>サービス プリンシパルを表示する
 
@@ -49,5 +49,4 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure リソースのマネージド ID](/azure/active-directory/managed-identities-azure-resources/overview)
-
+[Azure リソースのマネージド ID](./overview.md)

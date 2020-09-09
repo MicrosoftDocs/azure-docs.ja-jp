@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312987"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557186"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>クイック スタート:モデルをレンダリング用に変換する
 
@@ -157,7 +157,7 @@ BLOB ストレージを作成するには、最初にストレージ アカウ�
 
 変換されたモデルは、**blobOutputContainerName** によって指定されたストレージ コンテナーに書き戻されます。 サブパスは、オプションの **outputFolderPath** を使用して指定できます。 上記の例では、結果の "robot.arrAsset" が "converted/robot" にある出力用の BLOB コンテナーにコピーされます。
 
-構成設定である **outputAssetFileName** によって、変換されたアセットの名前が決まります。このパラメーターは省略可能であり、省略した場合は出力ファイル名は入力ファイル名から推測されます。 
+構成設定である **outputAssetFileName** によって、変換されたアセットの名前が決まります。このパラメーターは省略可能であり、省略した場合は出力ファイル名は入力ファイル名から推測されます。
 
 PowerShell を開き、「[前提条件](#prerequisites)」に記載されているとおり *Azure PowerShell* がインストールされていることを確認します。 そして、次のコマンドでご自分のサブスクリプションにログインし、画面上の指示に従います。
 
@@ -175,6 +175,8 @@ Connect-AzAccount
 ```
 
 次のような結果が表示されます。![Conversion.ps1](./media/successful-conversion.png)
+
+## <a name="insert-new-model-into-quickstart-sample-app"></a>新しいモデルをクイックスタート サンプル アプリに挿入する
 
 変換スクリプトによって、変換されたモデルの *Shared Access Signature (SAS)* URI が生成されます。 これで、この URI を**モデル名**としてクイックスタートのサンプル アプリにコピーできるようになりました (「[クイックスタート: Unity によるモデルのレンダリング](render-model.md)」を参照してください)。
 
@@ -198,4 +200,4 @@ Connect-AzAccount
 モデルの変換の詳細を学びたい場合は、[モデル変換 REST API](../how-tos/conversion/conversion-rest-api.md) をチェックしてみてください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Unity プロジェクトをゼロから設定する](../tutorials/unity/project-setup.md)
+> [チュートリアル:リモートでレンダリングされたモデルの表示](../tutorials/unity/view-remote-models/view-remote-models.md)

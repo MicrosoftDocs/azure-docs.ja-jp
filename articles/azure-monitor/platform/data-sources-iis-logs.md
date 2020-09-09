@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670578"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008185"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
 インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-platform.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
@@ -19,7 +19,7 @@ ms.locfileid: "77670578"
 ![IIS ログ](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>IIS ログの構成
-Azure Monitor は IIS によって作成されたログ ファイルからエントリを収集するため、[ログを記録するように IIS を構成する](https://technet.microsoft.com/library/hh831775.aspx)必要があります。
+Azure Monitor は IIS によって作成されたログ ファイルからエントリを収集するため、[ログを記録するように IIS を構成する](/previous-versions/orphan-topics/ws.11/hh831775(v=ws.11))必要があります。
 
 Azure Monitor は W3C 形式で格納された IIS ログ ファイルのみをサポートし、カスタム フィールドや IIS 詳細ログはサポートしていません。 ログは NCSA または IIS のネイティブ形式では収集されません。
 
@@ -43,7 +43,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | csUserName |サーバーにアクセスした認証されたユーザーの名前。 匿名ユーザーはハイフンで示されます。 |
 | csUriStem |要求のターゲット (Web ページなど) |
 | csUriQuery |クライアントが実行を試行していたクエリ (存在する場合) |
-| ManagementGroupName |Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
+| ManagementGroupName |Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です |
 | RemoteIPCountry |クライアントの IP アドレスの国や地域。 |
 | RemoteIPLatitude |クライアントの IP アドレスの緯度。 |
 | RemoteIPLongitude |クライアントの IP アドレスの経度。 |

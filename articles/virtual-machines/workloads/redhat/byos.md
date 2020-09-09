@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273173"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052164"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
 
@@ -69,7 +69,7 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Azure CLI から Red Hat Gold Image を使用する
 
-次の手順では、Azure CLI を使用した RHEL VM の初期デプロイ プロセスについて説明します。 この手順では、[Azure CLI がインストール済み](https://docs.microsoft.com/cli/azure/install-azure-cli)であることを前提としています。
+次の手順では、Azure CLI を使用した RHEL VM の初期デプロイ プロセスについて説明します。 この手順では、[Azure CLI がインストール済み](/cli/azure/install-azure-cli)であることを前提としています。
 
 >[!IMPORTANT]
 >次のすべてのコマンドでは、発行元、オファー、プラン、およびイメージの参照ですべて小文字を使用してください。
@@ -96,7 +96,7 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
 
     OR
 
-    az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
+    az vm image terms accept --urn redhat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
 
     >[!NOTE]
@@ -108,13 +108,16 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
     # Example:
-    az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest --validate
     ```
 
 1. `--validate` 引数を指定せずに前の例と同じコマンドを実行して、VM をプロビジョニングします。
 
     ```azurecli
-    az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
+    az vm create -n <VM name> -g <resource group name> --image <image urn>
+
+    # Example:
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
 1. VM に SSH で接続し、権利のないイメージがあることを確認します。 この手順を行うには、`sudo yum repolist`を実行します。 RHEL 8 の場合は `sudo dnf repolist` を使用します。 出力で、サブスクリプション マネージャーを使用して、VM を Red Hat に登録するよう求められます。
@@ -135,7 +138,7 @@ Cloud Access を有効にする手順が完了すると、Red Hat によって R
     # Define user name and blank password
     $securePassword = ConvertTo-SecureString 'TestPassword1!' -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PSCredential("azureuser",$securePassword)
-    Get-AzureRmMarketplaceTerms -Publisher RedHat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
+    Get-AzureRmMarketplaceTerms -Publisher redhat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
 
     # Create a resource group
     New-AzureRmResourceGroup -Name $resourceGroup -Location $location
@@ -197,7 +200,7 @@ Azure Disk Encryption の適用手順については、「[Linux VM での Azure
 
     この場合、Microsoft か Red Hat にお問い合わせいただき、サブスクリプションを有効にしてください。
 
-- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
+- RHEL BYOS イメージのスナップショットを変更し、そのカスタム イメージを [Shared Image Gallery](../../linux/shared-image-galleries.md) に公開する場合、スナップショットの元のソースに一致するプラン情報を指定する必要があります。 たとえば、コマンドは次のようになります。
 
     ```azurecli
     az vm create –image \

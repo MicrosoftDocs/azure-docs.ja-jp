@@ -4,15 +4,15 @@ description: Azure Application Gateway のバックエンドの正常性に関�
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
-ms.topic: article
-ms.date: 08/30/2019
+ms.topic: troubleshooting
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983842"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132043"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -81,7 +81,7 @@ BackendAddressPoolsText : [
 **[詳細]** 列に表示されるメッセージは問題に関する詳細な分析情報を示すため、これに基づいて問題のトラブルシューティングを開始できます。
 
 > [!NOTE]
-> 既定の probe 要求は \<プロトコル\>://127.0.0.1:\<ポート\>/ の形式で送信されます。 たとえば、ポート80 における HTTP probe の場合は http://127.0.0.1:80 になります。 HTTP 状態コード 200 から 399 のみが正常と見なされます。 プロトコルと宛先ポートは、HTTP 設定から継承されます。 Application Gateway で別のプロトコル、ホスト名、またはパスに対して probe を実行し、他の状態コードを正常として認識させるには、カスタム probe を構成し、それを HTTP 設定に関連付けます。
+> 既定の probe 要求は、\<protocol\>://127.0.0.1:\<port\>/ の形式で送信されます。 たとえば、ポート80 における HTTP probe の場合は http://127.0.0.1:80 になります。 HTTP 状態コード 200 から 399 のみが正常と見なされます。 プロトコルと宛先ポートは、HTTP 設定から継承されます。 Application Gateway で別のプロトコル、ホスト名、またはパスに対して probe を実行し、他の状態コードを正常として認識させるには、カスタム probe を構成し、それを HTTP 設定に関連付けます。
 
 <a name="error-messages"></a>エラー メッセージ
 ------------------------
@@ -170,13 +170,13 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **メッセージ:** Status code of the backend\'s HTTP response did not match the probe setting. (バックエンドの HTTP 応答の状態コードが probe 設定と一致しませんでした。) Expected:{HTTPStatusCode0} Received:{HTTPStatusCode1}. (必要: {HTTPStatusCode0} 受信: {HTTPStatusCode1}。)
 
-**原因:** TCP 接続が確立され、TLS ハンドシェイクが完了すると (TLS が有効な場合)、Application Gateway は probe を HTTP GET 要求としてバックエンド サーバーに送信します。 前述のように、既定の probe の対象は \<プロトコル\>://127.0.0.1:\<ポート\>/ であり、200 から 399 の範囲の応答状態コードは正常であると見なされます。 サーバーからそれ以外の状態コードが返された場合、そのサーバーはこのメッセージで "異常" とマークされます。
+**原因:** TCP 接続が確立され、TLS ハンドシェイクが完了すると (TLS が有効な場合)、Application Gateway は probe を HTTP GET 要求としてバックエンド サーバーに送信します。 前述のように、既定の probe の対象は \<protocol\>://127.0.0.1:\<port\>/ であり、200 から 399 の範囲の応答状態コードは正常であると見なされます。 サーバーからそれ以外の状態コードが返された場合、そのサーバーはこのメッセージで "異常" とマークされます。
 
 **解決方法:** バックエンド サーバーの応答コードに応じて、次の手順を実行できます。 一般的な状態コードをいくつか次に示します。
 
 | **Error** | **アクション** |
 | --- | --- |
-| probe 状態コードの不一致: 401 を受信 | バックエンド サーバーで認証が必要かどうかを確認します。 この時点で、Application Gateway の probe で認証用の資格情報を渡すことはできません。 probe 状態コードの照合で \"HTTP 401\" を許可するか、サーバーが認証を必要としないパスに対して probe を実行します。 | |
+| probe 状態コードの不一致: 401 を受信 | バックエンド サーバーで認証が必要かどうかを確認します。 Application Gateway の probe では、認証用の資格情報を渡すことはできません。 probe 状態コードの照合で \"HTTP 401\" を許可するか、サーバーが認証を必要としないパスに対して probe を実行します。 | |
 | probe 状態コードの不一致: 403 を受信 | アクセスは禁止されています。 バックエンド サーバーでパスへのアクセスが許可されているかどうかを確認します。 | |
 | probe 状態コードの不一致: 404 を受信 | ページが見つかりません。 バックエンド サーバーでホスト名のパスにアクセスできるかどうかを確認します。 ホスト名またはパス パラメーターをアクセス可能な値に変更します。 | |
 | probe 状態コードの不一致: 405 を受信 | Application Gateway の probe 要求で HTTP GET メソッドが使用されています。 対象のサーバーでこのメソッドが許可されているかどうかを確認します。 | |
@@ -203,9 +203,13 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 [Application Gateway の probe の一致](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)の詳細を確認します。
 
+>[!NOTE]
+> すべての TLS 関連のエラー メッセージについて、SNI の動作と、v1 と v2 の SKU 間の違いを確認するには、「[TLS の概要](ssl-overview.md)」ページを参照してください。
+
+
 #### <a name="backend-server-certificate-invalid-ca"></a>バックエンド サーバーの証明書: 無効な CA
 
-**メッセージ:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (バックエンドによって使用されるサーバー証明書が既知の証明機関 (CA) によって署名されていません。) Whitelist the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (バックエンドによって使用されるサーバー証明書のルート証明書をアップロードして、アプリケーション ゲートウェイでバックエンドをホワイトリストに登録してください。)
+**メッセージ:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (バックエンドによって使用されるサーバー証明書が既知の証明機関 (CA) によって署名されていません。) Allow the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (バックエンドによって使用されるサーバー証明書のルート証明書をアップロードして、アプリケーション ゲートウェイでバックエンドを許可してください。)
 
 **原因:** Application Gateway v2 でのエンドツーエンド SSL を使用するには、サーバーが正常であると判断するためにバックエンド サーバーの証明書を検証する必要があります。
 TLS または SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。
@@ -280,7 +284,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 **メッセージ:** The Common Name (CN) of the backend certificate does not match the host header of the probe. (バックエンド証明書の共通名 (CN) が probe のホスト ヘッダーと一致しません。)
 
-**原因:** Application Gateway は、バックエンドの HTTP 設定に指定されているホスト名が、バックエンド サーバーの TLS または SSL 証明書によって提示される CN のものと一致するかどうかを確認します。 これは、Standard_v2 SKU と WAF_v2 SKU における動作です。 Standard SKU と WAF SKU の Server Name Indication (SNI) は、バックエンド プール アドレスの FQDN として設定されます。
+**原因:** Application Gateway は、バックエンドの HTTP 設定に指定されているホスト名が、バックエンド サーバーの TLS または SSL 証明書によって提示される CN のものと一致するかどうかを確認します。 これは、Standard_v2 SKU と WAF_v2 (V2) SKU における動作です。 Standard SKU と WAF SKU (v1) の Server Name Indication (SNI) は、バックエンド プール アドレスの FQDN として設定されます。 SNI の動作と、v1 と v2 の SKU 間の違いの詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。
 
 v2 SKU では、既定の probe がある (カスタムの probe が構成および関連付けられていない) 場合、SNI は HTTP 設定に指定されているホスト名から設定されます。 または、HTTP 設定で [バックエンド アドレスからホスト名を選択します] が指定されている場合 (バックエンド アドレス プールに有効な FQDN が含まれる)、この設定が適用されます。
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 6b27e47339b80cc46290065c4d17150a301f2534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067832"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836126"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>EXPLAIN を使用して Azure Database for MySQL でのクエリのパフォーマンスをプロファイリングする方法
 **EXPLAIN** は、クエリを最適化するための便利なツールです。 EXPLAIN ステートメントを使うと、SQL ステートメントの実行状況に関する情報を取得できます。 EXPLAIN ステートメントを実行したときの出力の例を次に示します。
@@ -167,4 +167,4 @@ EXPLAIN と異なる種類のインデックスを使うと、パフォーマン
 
 
 ## <a name="next-steps"></a>次のステップ
-- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[MSDN フォーラム](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。
+- 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[Microsoft Q&A の質問ページ](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。

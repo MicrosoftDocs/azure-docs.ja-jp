@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75465641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080659"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターの概要
 
@@ -21,9 +21,16 @@ Service Fabric クラスターは、ネットワークで接続された一連�
 オンプレミスに Service Fabric クラスターを作成するプロセスは、一連の VM がある任意のクラウド上にクラスターを作成するプロセスとほぼ同じです。 VM をプロビジョニングするための最初の手順は、使用しているクラウド プロバイダーまたはオンプレミス環境に左右されます。 一連の VM を相互にネットワーク接続できる状態にした後は、Service Fabric パッケージの設定、クラスター設定の編集、クラスターの作成と管理のスクリプトの実行の手順はオンプレミスの場合と同じです。 これにより、新しいホスティング環境の使用を決めたときにも、Service Fabric クラスターの運用と管理の経験を活かすことができます。
 
 ## <a name="cluster-security"></a>クラスターのセキュリティ
+
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。  承認されていないユーザーが接続できないように、クラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。
 
+> [!NOTE]
+> Windows 認証は Kerberos に基づいています。 認証の種類として NTLM はサポートされていません。
+>
+> Service Fabric クラスターでは、可能な限り x.509 証明書認証を使用してください。
+
 ### <a name="node-to-node-security"></a>ノード間のセキュリティ
+
 ノード間のセキュリティにより、クラスター内の VM やコンピューター間の通信が保護されます。 このセキュリティ シナリオでは、クラスターへの参加が許可されているコンピューターのみが、クラスター内でホストされているアプリケーションとサービスに参加できます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。  クラスター証明書は、クラスター トラフィックをセキュリティで保護するため、およびクラスターとサーバーの認証を提供するために必要です。  テスト クラスターでは自己署名証明書を使用できますが、運用環境クラスターをセキュリティで保護するには、信頼された証明機関からの証明書を使用する必要があります。
 
 Windows スタンドアロン クラスターでは、Windows セキュリティも有効にできます。 Windows Server 2012 R2 と Windows Active Directory を使用している場合、グループ管理サービス アカウントで Windows セキュリティを使用することをお勧めします。 それ以外の場合は、Windows アカウントで Windows セキュリティを使用してください。
@@ -31,6 +38,7 @@ Windows スタンドアロン クラスターでは、Windows セキュリティ
 詳細については、「[ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)」を参照してください。
 
 ### <a name="client-to-node-security"></a>クライアントとノードの間のセキュリティ
+
 クライアントとノードの間のセキュリティでは、クライアントの認証を行い、クラスター内のクライアントと個々のノードの間の通信をセキュリティで保護できます。 この種類のセキュリティでは、権限のあるユーザーのみが、クラスターと、クラスターにデプロイされたアプリケーションにアクセスできます。 クライアントは、X.509 証明書のセキュリティ資格情報を通じて一意に識別されます。 クラスターで管理クライアントまたはユーザー クライアントを認証するために、必要に応じて任意の数のクライアント証明書を使用できます。
 
 クラスターでクライアントを認証するために、クライアント証明書に加えて、Azure Active Directory も構成できます。
@@ -55,6 +63,7 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 詳細については、[スタンドアロン クラスターのアップグレード](service-fabric-cluster-upgrade-standalone.md)に関するページを参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+
 クラスターは、次のオペレーティング システムが実行されている VM 上またはコンピューター上に作成できます (Linux はまだサポートされていません)。
 
 * Windows Server 2012 R2
@@ -62,6 +71,7 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 * Windows Server 2019
 
 ## <a name="next-steps"></a>次のステップ
+
 スタンドアロン クラスターの[セキュリティ保護](service-fabric-cluster-security.md)、[スケーリング](service-fabric-cluster-scaling-standalone.md)、および[アップグレード](service-fabric-cluster-upgrade-standalone.md)について詳細を確認します。
 
 [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。

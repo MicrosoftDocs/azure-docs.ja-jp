@@ -35,6 +35,8 @@
           href: temporal-tables.md
         - name: スケールアップ/スケールダウン
           href: database/scale-resources.md
+        - name: 読み取りスケールアウト
+          href: database/read-scale-out.md
         - name: Security
           items:
             - name: 概要
@@ -42,6 +44,9 @@
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: ベスト プラクティス
               href: database/security-best-practice.md
+            - name: Azure Policy によるセキュリティ制御
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./database/security-controls-policy.md
             - name: セキュリティ ベースライン
               href: database/security-baseline.md
             - name: セキュリティ属性
@@ -50,10 +55,18 @@
               href: database/advanced-data-security.md
             - name: 高度な脅威保護
               href: database/threat-detection-overview.md
+            - name: データの検出と分類
+              href: database/data-discovery-and-classification-overview.md
             - name: 動的データ マスク
               href: database/dynamic-data-masking-overview.md
             - name: SQL 脆弱性評価
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL 脆弱性評価
+                  href: database/sql-vulnerability-assessment.md
+                - name: 脆弱性評価のルール
+                  href: database/sql-database-vulnerability-assessment-rules.md
+                - name: ストレージに脆弱性スキャンを格納する
+                  href: database/sql-database-vulnerability-assessment-storage.md
             - name: ログイン、ユーザー アカウント、ロール、およびアクセス許可
               href: database/logins-create-manage.md
             - name: Azure AD Authentication
@@ -61,20 +74,22 @@
               items:
                 - name: Azure AD 認証の構成
                   href: database/authentication-aad-configure.md
-                - name: 多要素 AAD 認証
+                - name: Multi-factor Azure AD 認証
                   href: database/authentication-mfa-ssms-overview.md
                 - name: 多要素認証の構成
                   href: database/authentication-mfa-ssms-configure.md
                 - name: 条件付きアクセス
                   href: database/conditional-access-configure.md
+                - name: サービス プリンシパル (アプリケーション)
+                  href: database/authentication-aad-service-principal.md
+                - name: ディレクトリ閲覧者ロール
+                  href: database/authentication-aad-directory-readers-role.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: 概要
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Bring Your Own Key (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: データの検出と分類
-                  href: database/data-discovery-and-classification-overview.md
         - name: ビジネス継続性
           displayName: 'Backup, back up, restore, recovery'
           items:
@@ -130,12 +145,16 @@
               href: database/temporal-tables-retention-policy.md
             - name: Azure Blob Storage を使用したバックアップ保有期間の構成
               href: database/long-term-backup-retention-configure.md
-        - name: Security
+        - name: セキュリティ
           items:
+            - name: Azure AD Authentication
+              items:
+                - name: Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する
+                  href: database/authentication-aad-guest-users.md
+                - name: ディレクトリ閲覧者ロールをグループに割り当てる
+                  href: database/authentication-aad-directory-readers-role-tutorial.md
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
-            - name: ストレージに脆弱性スキャンを格納する
-              href: database/sql-database-vulnerability-assessment-storage.md
             - name: Always Encrypted
               items:
                 - name: Azure キー コンテナーの使用
@@ -194,10 +213,14 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
             - name: Java
               items:
+                - name: Java と JDBC の使用
+                  href: database/connect-query-java.md
                 - name: Spring Data JDBC の使用
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data JPA の使用
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
+                - name: Spring Data R2DBC の使用
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
 - name: SQL Database (SQL DB)
   items:
     - name: ドキュメント
@@ -206,14 +229,14 @@
       items:
         - name: SQL Database とは
           href: database/sql-database-paas-overview.md
+        - name: 新機能
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Single Database
           href: database/single-database-overview.md
         - name: エラスティック プール
           href: database/elastic-pool-overview.md
         - name: 論理 SQL サーバー
           href: database/logical-servers.md
-        - name: リリース ノート
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: サービス レベル
           items:
             - name: サーバーレス
@@ -224,8 +247,6 @@
               href: database/service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
-            - name: Premium RS から移行する
-              href: database/service-tiers-prs.md
     - name: クイックスタート
       href: database/quickstart-content-reference-guide.md
       items:
@@ -268,6 +289,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: TDE 保護機能の削除
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: サービス プリンシパルを使用してユーザーを作成する
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: データの移動
           items:
             - name: DMS を使用した移行
@@ -282,8 +305,6 @@
           href: database/connectivity-architecture.md
         - name: 接続の設定
           href: database/connectivity-settings.md
-        - name: 読み取りスケールアウト
-          href: database/read-scale-out.md
         - name: T-SQL の相違点
           href: database/transact-sql-tsql-differences-sql-server.md
         - name: Azure Automation
@@ -342,44 +363,6 @@
               href: database/vnet-service-endpoint-rule-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
-        - name: Machine Learning サービス
-          items:
-            - name: 概要
-              href: database/machine-learning-services-overview.md
-            - name: 主な相違点
-              href: database/machine-learning-services-differences.md
-            - name: クイックスタート
-              items:
-                - name: R スクリプトの作成
-                  href: database/r-script-create-quickstart.md
-                - name: モデルのトレーニングとスコア付け
-                  href: database/r-train-score-model-create-quickstart.md
-            - name: チュートリアル
-              items:
-                - name: R で予測モデルを作成する
-                  items:
-                    - name: 1 - データの準備
-                      href: database/predictive-model-prepare-data-tutorial.md
-                    - name: 2 - モデルの作成
-                      href: database/predictive-model-build-compare-tutorial.md
-                    - name: 3 - モデルのデプロイ
-                      href: database/predictive-model-deploy-tutorial.md
-                - name: R でクラスタリング モデルを作成する
-                  items:
-                    - name: 1 - データの準備
-                      href: database/clustering-model-prepare-data-tutorial.md
-                    - name: 2 - モデルの作成
-                      href: database/clustering-model-build-tutorial.md
-                    - name: 3 - モデルのデプロイ
-                      href: database/clustering-model-deploy-tutorial.md
-            - name: 方法
-              items:
-                - name: 高度な R 関数の記述
-                  href: database/machine-learning-services-functions.md
-                - name: R および SQL データの処理
-                  href: database/machine-learning-services-data-issues.md
-                - name: R パッケージの追加
-                  href: database/machine-learning-services-add-r-packages.md
         - name: データベース シャーディング
           items:
             - name: データベース シャーディング
@@ -407,7 +390,7 @@
             - name: アドホック クエリの作成と実行
               items:
                 - name: Azure Data Studio
-                  href: 'https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
+                  href: /sql/azure-data-studio/quickstart-sql-database?toc=%2Fazure%2Fazure-sql%2Ftoc.json
                 - name: SSMS
                   href: database/connect-query-ssms.md
                 - name: Azure portal
@@ -426,6 +409,12 @@
                   href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
+                - name: Java と Spring Data JDBC
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
+                - name: Java と Spring Data JPA
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
+                - name: Java と Spring Data R2DBC
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
@@ -447,7 +436,7 @@
             - name: 接続の問題に対する Resource Health の使用
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: DTU を仮想コアに移行する
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: データベース リソースをスケーリングする
               href: database/single-database-scale.md
             - name: プール リソースをスケーリングする
@@ -548,7 +537,7 @@
               href: database/elastic-query-horizontal-partitioning.md
             - name: スキーマが異なるテーブル間のクエリ
               href: database/elastic-query-vertical-partitioning.md
-        - name: エラスティック ジョブ
+        - name: エラスティック ジョブ (プレビュー)
           items:
             - name: ジョブの構成
               href: database/elastic-jobs-overview.md
@@ -616,7 +605,7 @@
                           items:
                             - name: SQL Database を使用した場合
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: SQL Data Warehouse を使用した場合
+                            - name: Azure Synapse Analytics (旧称 SQL Data Warehouse) を使用した場合
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: geo 復元を使用したディザスター リカバリー
                       href: database/saas-dbpertenant-dr-geo-restore.md
@@ -654,22 +643,25 @@
       items:
         - name: SQL Managed Instance とは
           href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: 新機能
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
         - name: インスタンス プール
           href: managed-instance/instance-pools-overview.md
         - name: よく寄せられる質問
           displayName: faq
           href: managed-instance/frequently-asked-questions-faq.md
-        - name: リリース ノート
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
     - name: クイックスタート
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: 作成
+        - name: SQL マネージド インスタンスの作成
           items:
-            - name: Azure Portal の使用
+            - name: Azure portal
               href: managed-instance/instance-create-quickstart.md
-            - name: PowerShell の使用
+            - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM テンプレート
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: インスタンス プールの作成
               href: managed-instance/instance-pools-configure.md
         - name: 構成
@@ -708,16 +700,20 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: 概念
       items:
-        - name: トランザクション レプリケーション
-          href: managed-instance/replication-transactional-overview.md
-        - name: Management API リファレンス
-          href: managed-instance/api-references-create-manage-instance.md
         - name: リソース制限
           href: managed-instance/resource-limits.md
         - name: 接続のアーキテクチャ
           href: managed-instance/connectivity-architecture-overview.md
         - name: T-SQL の相違点
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: トランザクション レプリケーション
+          href: managed-instance/replication-transactional-overview.md
+        - name: 管理操作
+          items:
+            - name: 概要
+              href: managed-instance/management-operations-overview.md
+            - name: API リファレンス
+              href: managed-instance/api-references-create-manage-instance.md
         - name: Machine Learning サービス
           items:
             - name: 概要
@@ -729,23 +725,25 @@
                 - name: Python
                   items:
                     - name: Python スクリプトを実行する
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: データ構造とオブジェクト
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: Python 関数
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: モデルのトレーニングとスコア付け
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: ONNX モデルをデプロイする
+                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true
                 - name: R
                   items:
                     - name: R スクリプトの実行
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: データ型とオブジェクト
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: R 関数
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: モデルのトレーニングとスコア付け
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
             - name: チュートリアル
               items:
                 - name: Python
@@ -753,63 +751,103 @@
                     - name: スキー レンタル (線形回帰)
                       items:
                         - name: 1 - 概要
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - データを準備する
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - モデルをトレーニングする
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - モデルをデプロイする
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 顧客を分類する (K-Means クラスタリング)
                       items:
                         - name: 1 - 概要
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - データを準備する
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - モデルを作成する
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - モデルをデプロイする
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: NYC タクシーのヒント (分類)
+                      items:
+                        - name: 1 - 概要
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 2 - データの探索
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 3 - 機能エンジニアリング
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 4 - トレーニングおよびデプロイ
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 5 - 予測
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                 - name: R
                   items:
                     - name: スキー レンタル (デシジョン ツリー)
                       items:
                         - name: 1 - 概要
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - データを準備する
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - モデルをトレーニングする
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - モデルをデプロイする
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                     - name: 顧客を分類する (K-Means クラスタリング)
                       items:
                         - name: 1 - 概要
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 2 - データを準備する
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 3 - モデルを作成する
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: 4 - モデルをデプロイする
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-            - name: Python、R パッケージの管理
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: NYC タクシーのヒント (分類)
+                      items:
+                        - name: 1 - 概要
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 2 - データの探索
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 3 - 機能エンジニアリング
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 4 - トレーニングおよびデプロイ
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: 5 - 予測
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+            - name: 方法
               items:
-                - name: Python
+                - name: データ探索とモデリング
                   items:
-                    - name: Python パッケージ情報の取得
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: sqlmlutils を使用してインストールする
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                - name: R
+                    - name: Python
+                      items:
+                        - name: Python でのヒストグラムのプロット
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-plot-histogram?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: pandas データ フレームにデータをインポートする
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: SQL にデータフレームを挿入する
+                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: 予測
                   items:
-                    - name: R パッケージ情報の取得
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: sqlmlutils を使用してインストールする
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: miniCRAN リポジトリの作成
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
-                    - name: R パッケージを使用するためのヒント
-                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: PREDICT T-SQL でのネイティブ スコアリング
+                      href: 'https://docs.microsoft.com/sql/machine-learning/predictions/native-scoring-predict-transact-sql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: パッケージの管理
+                  items:
+                    - name: 新しい Python パッケージのインストール
+                      items:
+                        - name: Python パッケージ情報の取得
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: sqlmlutils を使用してインストールする
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: 新しい R パッケージのインストール
+                      items:
+                        - name: R パッケージ情報の取得
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: sqlmlutils を使用してインストールする
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: miniCRAN リポジトリの作成
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: R パッケージを使用するためのヒント
+                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
         - name: 特徴
           items:
             - name: リンク サーバー
@@ -858,8 +896,10 @@
           href: managed-instance/threat-detection-configure.md
         - name: アプリケーションの接続
           href: managed-instance/connect-application-instance.md
-        - name: アラートを作成する
+        - name: マネージド インスタンスでのアラートの作成
           href: managed-instance/alerts-create.md
+        - name: マネージド インスタンスでのフェールオーバーの手動開始
+          href: managed-instance/user-initiated-failover.md
     - name: サンプル
       items:
         - name: Azure CLI
@@ -880,95 +920,110 @@
           items:
             - name: SQL Server VM とは
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: ドキュメントの変更
+            - name: 新機能
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: クイックスタート
           items:
-            - name: SQL VM の作成 - ポータル
+            - name: SQL VM の作成
+              items: null
+            - name: ポータル
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
-            - name: SQL VM の作成 - PowerShell
+            - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+            - name: ARM テンプレート
+              displayName: Resource Manager
+              href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: 概念
           items:
-            - name: ベスト プラクティス
-              items:
-                - name: パフォーマンスのベスト プラクティス
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
-                - name: セキュリティに関する考慮事項
-                  href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: アプリケーション パターン
-                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: ビジネス継続性
               items:
-                - name: 高可用性のオプション
+                - name: 概要
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-                - name: Always On 可用性グループ
-                  href: virtual-machines/windows/availability-group-overview.md
                 - name: バックアップと復元
                   href: virtual-machines/windows/backup-restore.md
-                - name: SQL Server 2014 の自動バックアップ
-                  href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: SQL Server 2016 以降の自動バックアップ
-                  href: virtual-machines/windows/automated-backup.md
+                - name: バックアップ用の Azure Storage
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: Always On 可用性グループ
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: フェールオーバー クラスター インスタンス
+                  href: virtual-machines/windows/failover-cluster-instance-overview.md
+            - name: ベスト プラクティス
+              items:
+                - name: パフォーマンス
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: セキュリティ
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: クラスター構成
+                  href: virtual-machines/windows/hadr-cluster-best-practices.md
+                - name: アプリケーション パターン
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: 管理
               items:
                 - name: 専用ホスト
                   href: virtual-machines/windows/dedicated-host.md
-                - name: Azure Portal の場合
-                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: SQL 2008 および R2 のサポートの延長
                   href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
-                - name: VM への接続
-                  href: virtual-machines/windows/ways-to-connect-to-sql.md
-                - name: 記憶域を構成する
+        - name: 操作方法ガイド
+          items:
+            - name: SQL Server VM への接続
+              href: virtual-machines/windows/ways-to-connect-to-sql.md
+            - name: SQL Server VM の作成
+              items:
+                - name: ポータルの使用
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: Azure PowerShell の使用
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: 管理する
+              items:
+                - name: Azure Portal の場合
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: ライセンス モデル
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: エディションを変更する
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: バージョンを変更する
+                  href: virtual-machines/windows/change-sql-server-version.md
+                - name: ストレージ
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Azure Key Vault の統合
+                  href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: 記憶域を UltraSSD に移行する
+                  href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+                - name: SQL VM RP への登録
+                  displayName: 'resource provider, registration'
+                  items:
+                    - name: 単一の VM
+                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                    - name: 複数の VM の一括登録
+                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
                 - name: 管理タスクの自動化
                   items:
                     - name: SQL Server IaaS Agent 拡張機能の使用
                       href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                     - name: 自動修正
                       href: virtual-machines/windows/automated-patching.md
-                    - name: Azure Key Vault 統合の構成
-                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
-        - name: 操作方法ガイド
-          items:
-            - name: SQL VM の作成
-              items:
-                - name: ポータルの使用
-                  href: virtual-machines/windows/create-sql-vm-portal.md
-                - name: Azure PowerShell の使用
-                  href: virtual-machines/windows/create-sql-vm-powershell.md
-            - name: SQL VM RP への登録
-              displayName: 'resource provider, registration'
-              items:
-                - name: 単一の VM
-                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
-                - name: 複数の VM の一括登録
-                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-            - name: 管理する
-              items:
-                - name: ライセンス モデル
-                  displayName: 'ahb, ahub, payg, change, modify, update'
-                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Edition
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-edition.md
-                - name: バックアップと復元用の Azure Storage
-                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: 移行
               items:
                 - name: SQL Server データベースを VM へ
                   href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
                 - name: VM を新しいリージョンへ
                   href: virtual-machines/windows/move-sql-vm-different-region.md
-            - name: 高可用性の構成
+            - name: ビジネス継続性
               items:
+                - name: バックアップと復元
+                  items:
+                    - name: 自動バックアップ (SQL 2016 以降)
+                      href: virtual-machines/windows/automated-backup.md
+                    - name: 自動バックアップ (SQL 2014)
+                      href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性グループ
                   items:
-                    - name: Azure SQL VM CLI
-                      href: virtual-machines/windows/availability-group-az-cli-configure.md
-                    - name: Azure portal テンプレート
-                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
+                    - name: Azure portal
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                    - name: PowerShell または Az CLI
+                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure クイック スタート テンプレート
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: 複数のリージョン
@@ -985,16 +1040,32 @@
                           href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                         - name: ロード バランサー - Azure PowerShell
                           href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                - name: フェールオーバー クラスター インスタンス
+                - name: フェールオーバー クラスター インスタンス (FCI)
                   items:
-                    - name: 記憶域スペース ダイレクトの使用
-                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
-                    - name: Premium ファイル共有の使用
-                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: FCI 用に VM を準備する
+                      href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
+                    - name: FCI を作成する
+                      items:
+                        - name: Azure 共有ディスク
+                          href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
+                        - name: 記憶域スペース ダイレクト (Win2016 以降)
+                          href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                        - name: Premium ファイル共有 (Win2012 以降)
+                          href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: 分散ネットワーク名 (DNN)
+                      items:
+                        - name: FCI の DNN を作成する
+                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
+                        - name: FCI DNN と SQL Server の機能
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                - name: 接続の構成
+                  items:
+                    - name: 仮想ネットワーク名 (VNN)
+                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: リファレンス
           items:
             - name: Azure PowerShell
-              href: /powershell/azure/overview
+              href: /powershell/azure/
             - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
@@ -1003,12 +1074,17 @@
               href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
             - name: REST
               href: /rest/api/
+            - name: Azure Policy の組み込み
+              displayName: 'samples, policies, definitions'
+              href: ./database/policy-reference.md
         - name: リソース
           items:
             - name: よく寄せられる質問
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 価格
               href: virtual-machines/windows/pricing-guidance.md
+            - name: アーカイブ済みの従来の RM ドキュメント
+              href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Data Tools (SSDT)
               href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
             - name: SQL Server Management Studio (SSMS)
@@ -1088,7 +1164,7 @@
       href: /sql/connect/sql-server-drivers
       items:
         - name: ADO.NET
-          href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
+          href: /sql/connect/ado-net/microsoft-ado-net-sql-server?view=sql-server-ver15&preserve-view=true
         - name: JDBC
           href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
         - name: Node.js
@@ -1101,6 +1177,9 @@
           href: /sql/connect/python/python-driver-for-sql-server
         - name: Ruby
           href: /sql/connect/ruby/ruby-driver-for-sql-server
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./database/policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

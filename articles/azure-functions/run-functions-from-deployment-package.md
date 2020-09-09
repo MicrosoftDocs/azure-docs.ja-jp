@@ -3,21 +3,18 @@ title: Azure Functions をパッケージから実行する
 description: 関数アプリのプロジェクト ファイルが含まれたデプロイ パッケージ ファイルをマウントすることで、Azure Functions ランタイムで関数を実行します。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79365273"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639887"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 
 Azure では、関数アプリのデプロイ パッケージ ファイルから、関数を直接実行できます。 他のオプションは、関数アプリの `d:\home\site\wwwroot` ディレクトリ内のファイルをデプロイすることです。
 
 この記事では、パッケージから関数を実行するメリットについて説明します。 関数アプリでこの機能を有効にする方法も示します。
-
-> [!IMPORTANT]
-> [Premium プラン](functions-scale.md#premium-plan)で Linux 関数アプリに関数をデプロイするときは、常にパッケージ ファイルから実行し、[Azure Functions Core Tools を使用してアプリを発行](functions-run-local.md#project-file-deployment)する必要があります。
 
 ## <a name="benefits-of-running-from-a-package-file"></a>パッケージ ファイルから実行することのメリット
   
@@ -53,6 +50,9 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 ## <a name="integration-with-zip-deployment"></a>zip デプロイとの統合
 
 [Zip デプロイ][Zip deployment for Azure Functions]は、関数アプリ プロジェクトを `wwwroot` ディレクトリに配置することを可能にする Azure App Service の機能です。 プロジェクトは、.zip デプロイ ファイルとしてパッケージ化されます。 同じ API を使用して、パッケージを `d:\home\data\SitePackages` フォルダーに配置できます。 `WEBSITE_RUN_FROM_PACKAGE` アプリ設定が値 `1` の場合、zip デプロイ API は、ファイルを `d:\home\site\wwwroot` 抽出する代わりに、パッケージを `d:\home\data\SitePackages` フォルダーにコピーします。 それは、`packagename.txt` ファイルも作成します。 再起動後、パッケージは読み取り専用のファイルシステムとして `wwwroot` にマウントされます。 zip デプロイの詳細については、[Azure Functions の zip デプロイ](deployment-zip-push.md)に関する記事を参照してください。
+
+> [!NOTE]
+> デプロイが行われると、関数アプリの再起動がトリガーされます。 再起動する前に、既存のすべての関数の実行に完了またはタイムアウトが許可されます。詳細については、「[デプロイ動作](functions-deployment-technologies.md#deployment-behaviors)」を参照してください。
 
 ## <a name="adding-the-website_run_from_package-setting"></a>WEBSITE_RUN_FROM_PACKAGE 設定の追加
 

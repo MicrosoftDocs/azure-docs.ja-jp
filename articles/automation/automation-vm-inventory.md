@@ -1,51 +1,51 @@
 ---
-title: インベントリ収集による Azure 仮想マシンの管理 | Microsoft Docs
-description: インベントリ収集による仮想マシンの管理
+title: Azure Automation における VM からのインベントリ収集を管理する | Microsoft Docs
+description: この記事では、VM からのインベントリ収集を管理する方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
 keywords: インベントリ, オートメーション, 変更, 追跡
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617369"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185723"
 ---
-# <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
+# <a name="manage-inventory-collection-from-vms"></a>VM からのインベントリ収集を管理する
 
-Azure 仮想マシンに対するインベントリの追跡は、その仮想マシンのリソース ページから有効にすることができます。 ご利用のコンピューター上で次のインベントリ情報を収集して表示できます。
+Azure VM のインベントリ追跡は、マシンのリソース ページから有効にすることができます。 ご利用のコンピューター上で次のインベントリ情報を収集して表示できます。
 
-- Windows ソフトウェア (Windows アプリケーションと Windows の更新プログラム)、サービス、ファイル、レジストリ キー
-- Linux ソフトウェア (パッケージ) のデーモン、ファイル
+- Windows の更新プログラム、Windows のアプリケーション、サービス、ファイル、レジストリ キー
+- Linux ソフトウェア パッケージ、デーモン、ファイル
 
-この方法では、ブラウザーベースのユーザー インターフェイスで、インベントリ収集を設定および構成できます。
+Azure Automation の変更履歴とインベントリには、インベントリの収集を設定、構成するためのブラウザーベースのユーザー インターフェイスが備わっています。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-この記事では、ソリューションを構成した VM があることを前提にしています。 Azure 仮想マシンをお持ちでない場合は、[仮想マシンを作成](../virtual-machines/windows/quick-create-portal.md)してください。
+この記事は、変更履歴とインベントリの対象として有効にする VM があることを前提としています。 Azure VM がない場合は、[VM を作成](../virtual-machines/windows/quick-create-portal.md)してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure portal](https://portal.azure.com/) にサインインします。
 
-## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>仮想マシン リソース ページからインベントリ収集を有効にする
+## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>VM リソース ページからインベントリ収集を有効にする
 
 1. Azure Portal の左ウィンドウで **[仮想マシン]** を選択します。
-2. 仮想マシンの一覧で仮想マシンを選択します。
+2. VM の一覧で、マシンを選択します。
 3. **[リソース]** メニューの **[操作]** で **[インベントリ]** を選択します。
 4. データ ログを格納する Log Analytics ワークスペースを選択します。
     そのリージョンで利用可能なワークスペースがない場合は、既定のワークスペースと Automation アカウントを作成するよう求められます。
-5. コンピューターのオンボードを開始するために、 **[Enable]\(有効化\)** を選択します。
+5. コンピューターを有効にするために、 **[Enable]\(有効化\)** を選択します。
 
    ![オンボード オプションの表示](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    ステータス バーに、ソリューションが有効になっていることが通知されます。 このプロセスには最大 15 分かかる可能性があります。 この間、ウィンドウは閉じても開いたままでもかまいません。開いたままにした場合は、ソリューションが有効になると、そのことを伝えるメッセージが表示されます。 デプロイの状態は通知ペインから監視することができます。
+    ステータス バーに、変更履歴とインベントリ機能が有効になっていることが通知されます。 このプロセスには最大 15 分かかる可能性があります。 この間、ウィンドウは閉じても開いたままでもかまいません。開いたままにした場合は、機能が有効になると、そのことを伝えるメッセージが表示されます。 デプロイの状態は通知ペインから監視することができます。
 
-   ![オンボードの直後にインベントリ ソリューションを表示する](./media/automation-vm-inventory/inventory-onboarded.png)
+   ![インベントリを表示する](./media/automation-vm-inventory/inventory-onboarded.png)
 
 デプロイが完了すると、ステータス バーは表示されなくなります。 システムがまだインベントリ データを収集しているため、データが表示されない可能性があります。 データの完全な収集には 24 時間かかることがあります。
 
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 2. 新しい収集設定を追加するには、 **[Windows レジストリ]** 、 **[Windows ファイル]** 、または **[Linux ファイル]** のタブを選択して、追加する設定カテゴリに移動します。
 3. 適切なカテゴリを選択し、ページの上部にある **[追加]** をクリックします。
 
-次の表に、さまざまなカテゴリに対して構成可能な各プロパティの情報を示します。
+以降のセクションに、さまざまなカテゴリに対して構成可能な各プロパティの情報を示します。
 
 ### <a name="windows-registry"></a>Windows レジストリ
 
@@ -100,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ![[インベントリ] ページでコンピューター グループを表示する](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-一覧からコンピューター グループを選択すると、[Machine groups] (コンピューター グループ) ページが開きます。 このページには、コンピューター グループに関する詳細が表示されます。 これらの詳細には、グループを定義するために使用されるログ分析クエリが含まれます。 ページの下部には、そのグループの一部になっているコンピューターのページ単位の一覧があります。
+一覧からコンピューター グループを選択すると、[Machine groups] (コンピューター グループ) ページが開きます。 このページには、コンピューター グループに関する詳細が表示されます。 これらの詳細には、グループを定義するために使用される Azure Monitor ログ クエリが含まれます。 ページの下部には、そのグループの一部になっているコンピューターのページ単位の一覧があります。
 
 ![コンピューター グループのページを表示する](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -110,22 +110,26 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ![新しいコンピューター グループを作成する](./media/automation-vm-inventory/create-new-group.png)
 
-## <a name="disconnect-your-virtual-machine-from-management"></a>仮想マシンを管理から切断する
+## <a name="disconnect-your-vm-from-management"></a>VM を管理から切断する
 
-インベントリ管理から仮想マシンを除外するには:
+変更履歴とインベントリの管理対象から VM を除外するには、次の手順に従います。
 
-1. Azure Portal の左側にある **[Log Analytics]** をクリックし、仮想マシンのオンボード時に使用したワークスペースを選択します。
-2. [Log Analytics] ページで、 **[リソース]** メニューを開きます。
+1. Azure portal の左ペインで **[Log Analytics]** を選択し、変更履歴とインベントリの対象として VM を有効にするときに使用したワークスペースを選択します。
+2. **[Log Analytics]** ページで、 **[リソース]** メニューを開きます。
 3. **[ワークスペースのデータ ソース]** で **[仮想マシン]** を選択します。
-4. 切断する仮想マシンを一覧で選択します。 仮想マシンの **[OMS 接続]** 列の **[このワークスペース]** の横に、緑色のチェック マークが表示されます。
+4. 切断する VM を一覧から選択します。 マシンの **[OMS 接続]** 列の **[このワークスペース]** の横に、緑色のチェック マークが表示されます。
 
    >[!NOTE]
    >Operations Management Suite (OMS) は、Azure Monitor ログと呼ばれるようになりました。
-   
+
 5. 次のページの上部にある **[切断]** をクリックします。
 6. 確認ウィンドウで **[はい]** をクリックして、マシンを管理から切断します。
 
+>[!NOTE]
+>マシンは登録解除された後も表示されます。これは、過去 24 時間以内にインベントリされたすべてのマシンについてレポートするためです。 マシンの接続を切断した後、マシンが一覧に表示されなくなるには、24 時間待機する必要があります。
+
 ## <a name="next-steps"></a>次のステップ
 
-* 仮想マシン上のファイルとレジストリ設定内の変更を管理する方法については、「[変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する](../log-analytics/log-analytics-change-tracking.md)」を参照してください。
-* 仮想マシン上の Windows とパッケージの更新を管理する方法については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
+* この機能の操作の詳細については、「[Change Tracking と Inventory の管理](change-tracking-file-contents.md)」を参照してください。
+* ソフトウェアの変更の追跡について詳しくは、[変更履歴を使用して環境内のソフトウェアの変更を追跡する](./change-tracking.md)方法に関するページを参照してください。
+* この機能に関する一般的な問題のトラブルシューティングについては、「[Change Tracking と Inventory に関する問題のトラブルシューティング](troubleshoot/change-tracking.md)」を参照してください。

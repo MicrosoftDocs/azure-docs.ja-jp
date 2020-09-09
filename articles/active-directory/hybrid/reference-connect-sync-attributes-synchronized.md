@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b00037704558d0029223b3c99154d0d60757612f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082120"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279433"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同期: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -165,9 +165,9 @@ ms.locfileid: "82082120"
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Exchange Online がこの属性の権限のあるソースになり、それ以降の変更をオンプレミスから同期できない場合、Azure AD から Exchange Online に 1 回だけ同期されます。 詳細については、([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) を参照してください。|
 | title |X |X | | |
-| unauthOrig |X |X |X | |
+| unauthOrig |X |x |X | |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
@@ -178,42 +178,42 @@ ms.locfileid: "82082120"
 | 属性名 | User | Contact | グループ | 解説 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
-| authOrig |X |X |X | |
+| authOrig |X |x |X | |
 | c |X |X | | |
 | cn |X | |X | |
 | co |X |X | | |
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| description |X |X |X | |
-| displayName |X |X |X | |
-| dLMemRejectPerms |X |X |X | |
-| dLMemSubmitPerms |X |X |X | |
-| extensionAttribute1 |X |X |X | |
-| extensionAttribute10 |X |X |X | |
-| extensionAttribute11 |X |X |X | |
-| extensionAttribute12 |X |X |X | |
-| extensionAttribute13 |X |X |X | |
-| extensionAttribute14 |X |X |X | |
-| extensionAttribute15 |X |X |X | |
-| extensionAttribute2 |X |X |X | |
-| extensionAttribute3 |X |X |X | |
-| extensionAttribute4 |X |X |X | |
-| extensionAttribute5 |X |X |X | |
-| extensionAttribute6 |X |X |X | |
-| extensionAttribute7 |X |X |X | |
-| extensionAttribute8 |X |X |X | |
-| extensionAttribute9 |X |X |X | |
+| description |X |x |X | |
+| displayName |X |x |X | |
+| dLMemRejectPerms |X |x |X | |
+| dLMemSubmitPerms |X |x |X | |
+| extensionAttribute1 |X |x |X | |
+| extensionAttribute10 |X |x |X | |
+| extensionAttribute11 |X |x |X | |
+| extensionAttribute12 |X |x |X | |
+| extensionAttribute13 |X |x |X | |
+| extensionAttribute14 |X |x |X | |
+| extensionAttribute15 |X |x |X | |
+| extensionAttribute2 |X |x |X | |
+| extensionAttribute3 |X |x |X | |
+| extensionAttribute4 |X |x |X | |
+| extensionAttribute5 |X |x |X | |
+| extensionAttribute6 |X |x |X | |
+| extensionAttribute7 |X |x |X | |
+| extensionAttribute8 |X |x |X | |
+| extensionAttribute9 |X |x |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
 | homePhone |X |X | | |
-| info |X |X |X | |
+| info |X |x |X | |
 | Initials |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| mail |X |X |X | |
-| mailNickname |X |X |X | |
+| mail |X |x |X | |
+| mailNickname |X |x |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
 | member | | |X | |
@@ -236,23 +236,23 @@ ms.locfileid: "82082120"
 | postalCode |X |X | | |
 | postOfficeBox |X |X | |この属性は現在、SharePoint Online では使用されていません。 |
 | preferredLanguage |X | | | |
-| proxyAddresses |X |X |X | |
+| proxyAddresses |X |x |X | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
+| sourceAnchor |X |x |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Exchange Online がこの属性の権限のあるソースになり、それ以降の変更をオンプレミスから同期できない場合、Azure AD から Exchange Online に 1 回だけ同期されます。 詳細については、([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) を参照してください。|
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン
-。 ライセンスの割り当てに使用されます。 |
+. ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 | wWWHomePage |X |X | | |
 
@@ -273,12 +273,12 @@ ms.locfileid: "82082120"
 | ipPhone |X |X | | |
 | l |X |X | | |
 | mail |X |X |X | |
-| mailNickname |X |X |X | |
+| mailNickname |X |x |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
 | member | | |X | |
 | mobile |X |X | | |
-| msExchHideFromAddressLists |X |X |X | |
+| msExchHideFromAddressLists |X |x |X | |
 | msRTCSIP-ApplicationOptions |X | | | |
 | msRTCSIP-DeploymentLocator |X |X | | |
 | msRTCSIP-Line |X |X | | |
@@ -291,14 +291,14 @@ ms.locfileid: "82082120"
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
-| proxyAddresses |X |X |X | |
+| proxyAddresses |X |x |X | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
+| sourceAnchor |X |x |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |x | |Exchange Online がこの属性の権限のあるソースになり、それ以降の変更をオンプレミスから同期できない場合、Azure AD から Exchange Online に 1 回だけ同期されます。 詳細については、([KB](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange)) を参照してください。|
 | title |X |X | | |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
@@ -315,7 +315,7 @@ ms.locfileid: "82082120"
 | objectSID |X | |X |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
 | proxyAddresses |X |X |X |機械的なプロパティ。 Azure AD によって使用されます。 ユーザー向けのすべてのセカンダリの電子メール アドレスが含まれています。 |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 |
-| sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
+| sourceAnchor |X |x |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |この UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
@@ -325,15 +325,15 @@ ms.locfileid: "82082120"
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | c |X |X | | |
 | cn |X | |X | |
-| description |X |X |X | |
-| displayName |X |X |X | |
-| mail |X |X |X | |
+| description |X |x |X | |
+| displayName |X |x |X | |
+| mail |X |x |X | |
 | mailNickname |X |X |X | |
 | member | | |X | |
 | objectSID |X | |X |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
-| proxyAddresses |X |X |X | |
+| proxyAddresses |X |x |X | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
-| sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
+| sourceAnchor |X |x |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
@@ -346,7 +346,7 @@ ms.locfileid: "82082120"
 | co |X |X | | |
 | company |X |X | | |
 | countryCode |X |X | | |
-| description |X |X |X | |
+| description |X |x |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -386,18 +386,18 @@ ms.locfileid: "82082120"
 | givenName |X |X | | |
 | mail |X | |X | |
 | managedBy | | |X | |
-| mailNickName |X |X |X | |
+| mailNickName |X |x |X | |
 | member | | |X | |
 | objectSID |X | | |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
-| proxyAddresses |X |X |X | |
+| proxyAddresses |X |x |X | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | sn |X |X | | |
-| sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
+| sourceAnchor |X |x |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="windows-10"></a>Windows 10
-Windows 10 のドメイン参加コンピューター (デバイス) は、一部の属性を Azure AD と同期します。 シナリオの詳細については、「 [Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](../active-directory-azureadjoin-devices-group-policy.md)」をご覧ください。 これらの属性は常に同期され、Windows 10 は選択解除できるアプリとして表示されません。 Windows 10 のドメイン参加コンピューターは、属性 userCertificate が設定されていることで識別されます。
+Windows 10 のドメイン参加コンピューター (デバイス) は、一部の属性を Azure AD と同期します。 シナリオの詳細については、「 [Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](../devices/hybrid-azuread-join-plan.md)」をご覧ください。 これらの属性は常に同期され、Windows 10 は選択解除できるアプリとして表示されません。 Windows 10 のドメイン参加コンピューターは、属性 userCertificate が設定されていることで識別されます。
 
 | 属性名 | Device | 解説 |
 | --- |:---:| --- |
@@ -431,7 +431,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |フィルター:オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
 | msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。 |
 | msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |訴訟ホールド: クラウド サービスが訴訟ホールド状態にあるユーザーを特定できるようにします。 |
-| proxyAddresses| proxyAddresses |X |X |X |Exchange Online の x500 アドレスのみが挿入されます。 |
+| proxyAddresses| proxyAddresses |X |x |X |Exchange Online の x500 アドレスのみが挿入されます。 |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できます。 Azure AD Connect ビルド 1.1.552.0 以降が必要です。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange メールのパブリック フォルダー

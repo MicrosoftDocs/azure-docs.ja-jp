@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048566"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586607"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM のデプロイ アーキテクチャ
 
@@ -29,7 +29,7 @@ Azure の専用 HSM は、暗号化キーの保管機能を Azure 内で実現�
 
 HSM は、Microsoft のデータ センター全体に分散され、高可用性ソリューションの基盤となる一対のデバイスとして容易にプロビジョニングできます。 災害に対する回復性の高いソリューションとなるよう、これらを複数のリージョン全体にデプロイすることもできます。 専用 HSM は現在、以下のリージョンで提供されています。
 
-* 米国東部
+* East US
 * 米国東部 2
 * 米国西部
 * 米国中南部

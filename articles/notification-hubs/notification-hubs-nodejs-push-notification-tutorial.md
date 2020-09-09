@@ -17,12 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592011"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077494"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -44,7 +45,7 @@ ms.locfileid: "82592011"
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
-Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすくスケーラブルなマルチプラットフォーム インフラストラクチャが提供されます。 サービス インフラストラクチャの詳細については、「 [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 」のページを参照してください。
+Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすくスケーラブルなマルチプラットフォーム インフラストラクチャが提供されます。 サービス インフラストラクチャの詳細については、「 [Azure Notification Hubs](/previous-versions/azure/azure-services/jj927170(v=azure.100)) 」のページを参照してください。
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
@@ -89,7 +90,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 ![Azure Portal - Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> また、[Azure PowerShell](/powershell/azureps-cmdlets-docs) に用意されている **Get-AzureSbNamespace** コマンドレット、または [Azure コマンド ライン インターフェイス (Azure CLI)](../cli-install-nodejs.md) で **azure sb namespace show** コマンドを使用して、接続文字列を取得することもできます。
+> また、[Azure PowerShell](/powershell/azure/) に用意されている **Get-AzureSbNamespace** コマンドレット、または [Azure コマンド ライン インターフェイス (Azure CLI)](/cli/azure/install-classic-cli) で **azure sb namespace show** コマンドを使用して、接続文字列を取得することもできます。
 
 ## <a name="general-architecture"></a>全般的なアーキテクチャ
 
@@ -155,11 +156,11 @@ notificationHubService.apns.send(null, payload, function(error){
 - **Tags** - タグ識別子。 タグが指定されない場合、通知はすべてのクライアントに送信されます。
 - **Payload** - メッセージの XML ペイロード。
 - **TargetName** -  トースト通知の場合は `toast`。 `token` 。
-- **NotificationClass** - 通知の優先度。 有効な値については、「 **Push notifications from a server (サーバーからのプッシュ通知)** 」の「 [HTTP Header Elements](https://msdn.microsoft.com/library/hh221551.aspx) (HTTP ヘッダー要素)」のセクションを参照してください。
+- **NotificationClass** - 通知の優先度。 有効な値については、「 **Push notifications from a server (サーバーからのプッシュ通知)** 」の「 [HTTP Header Elements](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) (HTTP ヘッダー要素)」のセクションを参照してください。
 - **Options** - 省略可能な要求ヘッダー。
 - **Callback** - コールバック関数。
 
-有効な `TargetName`、`NotificationClass`、ヘッダー オプションについては、[サーバーからのプッシュ通知](https://msdn.microsoft.com/library/hh221551.aspx)に関するページを参照してください。
+有効な `TargetName`、`NotificationClass`、ヘッダー オプションについては、[サーバーからのプッシュ通知](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41))に関するページを参照してください。
 
 次のサンプル コードは、`NotificationHubService` によって公開されている `MpnsService` インスタンスを使用して、トースト プッシュ通知を送信します。
 
@@ -182,7 +183,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 - **Options** - 省略可能な要求ヘッダー。
 - **Callback** - コールバック関数。
 
-有効なタイプと要求ヘッダーの一覧については、「 [プッシュ通知サービスの要求ヘッダーと応答ヘッダー](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)」を参照してください。
+有効なタイプと要求ヘッダーの一覧については、「 [プッシュ通知サービスの要求ヘッダーと応答ヘッダー](/previous-versions/windows/apps/hh465435(v=win.10))」を参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `WnsService` インスタンスを使用して、トースト プッシュ通知を UWP アプリに送信します。
 
@@ -199,7 +200,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 上記のサンプル スニペットを使用すると、さまざまなデバイスにプッシュ通知を提供するサービス インフラストラクチャを簡単に構築できます。 これで、node.js による Notification Hubs の使用の基本を学習できました。さらに次のリンクを使用して、これらの機能を拡張する方法の詳細を学習してください。
 
-- MSDN リファレンス: [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx)
+- MSDN リファレンス: [Azure Notification Hubs](/previous-versions/azure/azure-services/jj927170(v=azure.100))
 - 他のサンプルと実装の詳細については、GitHub の [Azure SDK for Node] リポジトリを参照してください。
 
 [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -222,14 +223,14 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter_sqlexpression
+[Azure Service Bus Notification Hubs]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
-[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
+[nodejswebsite]: ../app-service/quickstart-nodejs.md
+[webmatrix]: /aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure Portal]: https://portal.azure.com

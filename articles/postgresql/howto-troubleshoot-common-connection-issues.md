@@ -5,14 +5,14 @@ keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエ�
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c97e8e0d55a99e0b022bdc6e97edc778d7b6588a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562221"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107599"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング
 
@@ -50,6 +50,7 @@ ms.locfileid: "82562221"
 * クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、PostgreSQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
 * ユーザー エラー:接続文字列のサーバー名の間違いや、ユーザー名に *\@servername* サフィックスがないなど、接続パラメーターを誤って入力している可能性があります。
 * "_Server is not configured to allow ipv6 connections (ipv6 接続を許可するようにサーバーが構成されていません)_ " というエラーが表示された場合は、Basic レベルでは、VNet サービス エンドポイントはサポートされていないことに注意してください。 Basic サーバーに接続しようとしているサブネットから Microsoft.Sql エンドポイントを削除する必要があります。
+* "_sslmode value "***" invalid when SSL support is not compiled in error (SSL サポートがエラーでコンパイルされていないときに sslmode 値 "***" は無効です)_ " 接続エラーが表示されている場合は、PostgreSQL クライアントが SSL をサポートしていないことを意味します。 おそらく、クライアント側の libpq が "--with-openssl" フラグでコンパイルされていません。 SSL がサポートされている PostgreSQL クライアントを使用して接続してみてください。 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Storage のコンプライアンス認証 | Microsoft Docs
-description: Azure Storage でのコンプライアンス認証の概要
+description: データの収集と使用を管理する、国、地域、および業界固有の要件に対する Azure Storage でのコンプライアンス認証の概要を説明します。
 services: storage
 author: fhryo-msft
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: f711d0dbc2df2a5ab102b520fb0d166a459383c1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ac37dc66c9861c974c2d5fea435a3ae6771e6c7d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684458"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035010"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage のコンプライアンス認証
 

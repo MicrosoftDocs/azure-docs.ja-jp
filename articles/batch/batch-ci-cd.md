@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726844"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229397"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -28,8 +28,8 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 この記事の手順を行うには、Azure DevOps 組織とチーム プロジェクトが必要です。
 
-* [Azure DevOps 組織の作成](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [Azure DevOps でのプロジェクトの作成](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [Azure DevOps 組織の作成](/azure/devops/organizations/accounts/create-organization)
+* [Azure DevOps でのプロジェクトの作成](/azure/devops/organizations/projects/create-project)
 
 ### <a name="source-control-for-your-environment"></a>環境のソース管理
 
@@ -48,7 +48,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 このセクションでは、バージョン管理と Resource Manager テンプレートの設計に習熟していることを前提としています。 これらの概念になじみがない場合は、以下のページで詳細を確認してください。
 
-* [ソース管理の概要](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [ソース管理の概要](/azure/devops/user-guide/source-control)
 * [Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
@@ -62,7 +62,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 ![Azure Resource Manager テンプレートを使用したリンク テンプレート構造の例](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-最初に説明するテンプレートは Azure Storage Account 用です。 このソリューションでは、アプリケーションを Batch アカウントにデプロイするためにストレージ アカウントが必要です。 ストレージ アカウント用の Resource Manager テンプレートを構築する際には、[Microsoft.Storage リソース タイプの Resource Manager テンプレートのリファレンス ガイド](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions)を参照することをお勧めします。
+最初に説明するテンプレートは Azure Storage Account 用です。 このソリューションでは、アプリケーションを Batch アカウントにデプロイするためにストレージ アカウントが必要です。 ストレージ アカウント用の Resource Manager テンプレートを構築する際には、[Microsoft.Storage リソース タイプの Resource Manager テンプレートのリファレンス ガイド](/azure/templates/microsoft.storage/allversions)を参照することをお勧めします。
 
 ```json
 {
@@ -102,7 +102,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 }
 ```
 
-次は、Azure Batch アカウントのテンプレートについて説明します。 Azure Batch アカウントは、プール (マシンのグループ) 全体で多数のアプリケーションを実行するためのプラットフォームとして機能します。 Batch アカウント用の Resource Manager テンプレートを構築する際には、[Microsoft.Batch リソース タイプの Resource Manager テンプレートのリファレンス ガイド](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions)を参照することをお勧めします。
+次は、Azure Batch アカウントのテンプレートについて説明します。 Azure Batch アカウントは、プール (マシンのグループ) 全体で多数のアプリケーションを実行するためのプラットフォームとして機能します。 Batch アカウント用の Resource Manager テンプレートを構築する際には、[Microsoft.Batch リソース タイプの Resource Manager テンプレートのリファレンス ガイド](/azure/templates/microsoft.batch/allversions)を参照することをお勧めします。
 
 ```json
 {
@@ -141,7 +141,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 }
 ```
 
-次のテンプレートは、Azure Batch プール (アプリケーションを処理するバックエンド マシン) を作成するサンプルです。 Batch アカウント プール用の Resource Manager テンプレートを構築する際には、[Microsoft.Batch リソース タイプの Resource Manager テンプレートのリファレンス ガイド](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions)を参照することをお勧めします。
+次のテンプレートは、Azure Batch プール (アプリケーションを処理するバックエンド マシン) を作成するサンプルです。 Batch アカウント プール用の Resource Manager テンプレートを構築する際には、[Microsoft.Batch リソース タイプの Resource Manager テンプレートのリファレンス ガイド](/azure/templates/microsoft.batch/allversions)を参照することをお勧めします。
 
 ```json
 {
@@ -189,7 +189,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 最後に、オーケストレーターのように機能するテンプレートがあります。 このテンプレートには、機能テンプレートをデプロイする役割があります。
 
-[リンクされた Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md)については別の記事でも詳しく説明しています。
+[リンクされた Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/deployment-tutorial-linked-template.md)については別の記事でも詳しく説明しています。
 
 ```json
 {
@@ -309,7 +309,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 ## <a name="continuous-integration"></a>継続的インテグレーション
 
-[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops) は Azure DevOps Services に含まれ、アプリケーションのビルド、テスト、デプロイの各パイプラインの実装に役立ちます。
+[Azure Pipelines](/azure/devops/pipelines/get-started/) は Azure DevOps Services に含まれ、アプリケーションのビルド、テスト、デプロイの各パイプラインの実装に役立ちます。
 
 通常、パイプラインのこの段階では、コードを検証してソフトウェアの該当する部分を構築するために、テストを実行します。 テストの回数や種類、および実行するその他のタスクは、ビルドとリリースの多様な戦略によって異なります。
 
@@ -323,9 +323,9 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 1. ビルド パイプラインを作成するには、次の 2 つの方法があります。
 
-    a. [ビジュアル デザイナーを使用します](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav)。 これを使用するには、 **[新しいパイプライン]** ページで [ビジュアル デザイナーを使用する] をクリックします。
+    a. [ビジュアル デザイナーを使用します](/azure/devops/pipelines/get-started-designer)。 これを使用するには、 **[新しいパイプライン]** ページで [ビジュアル デザイナーを使用する] をクリックします。
 
-    b. [YAML ビルドを使用します](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops)。 新しい YAMLパイプラインを作成するには、[新しいパイプライン] ページで [Azure Repos] または [GitHub] オプションをクリックします。 または、[Visual Designer] をクリックしてから YAML テンプレートを使用することで、以下の例をソース管理に格納して、既存の YAML ファイルを参照できます。
+    b. [YAML ビルドを使用します](/azure/devops/pipelines/get-started-yaml)。 新しい YAMLパイプラインを作成するには、[新しいパイプライン] ページで [Azure Repos] または [GitHub] オプションをクリックします。 または、[Visual Designer] をクリックしてから YAML テンプレートを使用することで、以下の例をソース管理に格納して、既存の YAML ファイルを参照できます。
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,11 +357,11 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
     ![ビルドのライブ出力の表示](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> HPC バッチ アプリケーションを実行するためにクライアント アプリケーションを使用する場合は、そのアプリケーションのために別のビルド定義を作成する必要があります。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) のドキュメントにいくつもの攻略ガイドがあります。
+> HPC バッチ アプリケーションを実行するためにクライアント アプリケーションを使用する場合は、そのアプリケーションのために別のビルド定義を作成する必要があります。 [Azure Pipelines](/azure/devops/pipelines/get-started/index) のドキュメントにいくつもの攻略ガイドがあります。
 
 ## <a name="continuous-deployment"></a>継続的なデプロイ
 
-また、Azure Pipelines を使用して、アプリケーションと基になるインフラストラクチャをデプロイします。 [リリース パイプライン](https://docs.microsoft.com/azure/devops/pipelines/release)は、継続的配置を有効にし、リリース プロセスを自動化するコンポーネントです。
+また、Azure Pipelines を使用して、アプリケーションと基になるインフラストラクチャをデプロイします。 [リリース パイプライン](/azure/devops/pipelines/release)は、継続的配置を有効にし、リリース プロセスを自動化するコンポーネントです。
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>アプリケーションと基になるインフラストラクチャのデプロイ
 

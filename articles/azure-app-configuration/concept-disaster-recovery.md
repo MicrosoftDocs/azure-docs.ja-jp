@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523766"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207192"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -64,7 +64,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ## <a name="synchronization-between-configuration-stores"></a>構成ストア間の同期
 
-すべての geo 冗長構成ストアに同じデータ セットが存在していることが重要です。 App Configuration の**エクスポート**機能を使用することで、プライマリ ストアからセカンダリにオンデマンドでデータをコピーできます。 この機能は Azure portal と CLI の両方で使用できます。
+すべての geo 冗長構成ストアに同じデータ セットが存在していることが重要です。 これを実現する方法は 2 つあります。
+
+### <a name="backup-manually-using-the-export-function"></a>エクスポート機能を使用して手動でバックアップする
+
+App Configuration の**エクスポート**機能を使用することで、プライマリ ストアからセカンダリにオンデマンドでデータをコピーできます。 この機能は Azure portal と CLI の両方で使用できます。
 
 Azure portal からは、次の手順に従って、別の構成ストアに変更をプッシュできます。
 
@@ -72,15 +76,19 @@ Azure portal からは、次の手順に従って、別の構成ストアに変�
 
 1. 開いた新しいブレードで、ご利用のセカンダリ ストアのサブスクリプション、リソース グループ、リソース名を指定して、 **[適用]** を選択します。
 
-1. UI が更新され、そのセカンダリ ストアにエクスポートする構成データを選択できるようになります。 時刻値は既定のままにし、 **[元のラベル]** と **[新しいラベル]** の両方を同じ値に設定できます。 **[適用]** を選択します。
+1. UI が更新され、そのセカンダリ ストアにエクスポートする構成データを選択できるようになります。 時刻値は既定のままにし、 **[元のラベル]** と **[ラベル]** の両方を同じ値に設定できます。 **[適用]** を選択します。 プライマリ ストア内のすべてのラベルに対して、この手順を繰り返します。
 
-1. すべての構成の変更について、前述の手順を繰り返します。
+1. 構成を変更するたびに、前述の手順を繰り返します。
 
-このエクスポート プロセスを自動化するには、Azure CLI を使用します。 次のコマンドは、1 つの構成変更をプライマリ ストアからセカンダリにエクスポートする方法を示しています。
+エクスポート プロセスは Azure CLI を使用して実行することもできます。 次のコマンドは、すべての構成をプライマリ ストアからセカンダリにエクスポートする方法を示しています。
 
 ```azurecli
-    az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+    az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
+
+### <a name="backup-automatically-using-azure-functions"></a>Azure Functions を使用して自動的にバックアップする
+
+Azure Functions を使用して、バックアップ プロセスを自動化できます。 App Configuration で Azure Event Grid との統合を利用します。 設定が完了すると、構成ストアでキーと値に加えられたすべての変更について、App Configuration から Event Grid にイベントが発行されます。 このようにして、Azure Functions アプリでこれらのイベントをリッスンし、それに応じてデータをバックアップできます。 詳細については、[App Configuration のストアを自動的にバックアップする方法](./howto-backup-config-store.md)に関するチュートリアルを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

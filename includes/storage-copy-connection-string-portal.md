@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 364da4bb5f3f76f0a8a189db5aa59cca305470ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4170671b1dbcb8d2932b54f101cf5691b2461e31
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70197155"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035887"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>Azure Portal で資格情報をコピーする
 
@@ -21,7 +21,7 @@ ms.locfileid: "70197155"
 
 1. [Azure portal](https://portal.azure.com) にサインインする
 2. 自分のストレージ アカウントを探します。
-3. ストレージ アカウントの概要の **[設定]** セクションで、 **[アクセス キー]** を選択します。 ここでは、アカウント アクセス キーと各キーの完全な接続文字列を表示できます。   
+3. ストレージ アカウントの概要の **[設定]** セクションで、 **[アクセス キー]** を選択します。 ここでは、アカウント アクセス キーと各キーの完全な接続文字列を表示できます。
 4. **[Key1]** の **[接続文字列]** の値を見つけ、 **[コピー]** ボタンを選択して接続文字列をコピーします。 すぐ後の手順で、接続文字列の値を環境変数に追加します。
 
     ![Azure portal から接続文字列をコピーする方法を示すスクリーンショット](media/storage-copy-connection-string-portal/portal-connection-string.png)

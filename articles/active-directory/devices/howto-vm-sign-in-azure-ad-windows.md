@@ -4,28 +4,27 @@ description: Windows を実行している Azure VM への Azure AD サインイ
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
-ms.date: 10/29/2019
+ms.topic: how-to
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050076"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005024"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
-組織は、**Windows Server 2019 Datacenter エディション** または **Windows 10 1809** 以降を実行している Azure 仮想マシン (VM) に Azure Active Directory (AD) 認証を利用できるようになりました。 Azure AD を使用して VM を認証することにより、ポリシーを一元的に管理し、適用することができます。 Azure のロール ベースのアクセス制御 (RBAC) や Azure AD 条件付きアクセスなどのツールを使用すると、VM にアクセスできるユーザーを制御することができます。 この記事では、Azure AD 認証を使用できるように Windows Server 2019 VM を作成して構成する方法について説明します。
+組織は、**Windows Server 2019 Datacenter エディション** または **Windows 10 1809** 以降を実行している Azure 仮想マシン (VM) に Azure Active Directory (AD) 認証を利用できるようになりました。 Azure AD を使用して VM を認証することにより、ポリシーを一元的に管理し、適用することができます。 Azure のロール ベースのアクセス制御 (Azure RBAC) や Azure AD 条件付きアクセスなどのツールを使用すると、VM にアクセスできるユーザーを制御することができます。 この記事では、Azure AD 認証を使用できるように Windows Server 2019 VM を作成して構成する方法について説明します。
 
-|     |
-| --- |
-| Azure Windows VM への Azure AD サインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+> [!NOTE]
+> Azure Windows VM への Azure AD サインインは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Azure AD 認証を使用して、Azure 内の Windows VM にログインすると、次のような数多くのメリットがあります。
 
@@ -70,7 +69,7 @@ Azure 内の Windows VM に対して Azure AD 認証を有効にするには、V
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure 内の Windows VM に対して Azure AD ログインを有効にする
 
-Azure 内の Windows VM に Azure AD ログインを使用するには、最初に Windows VM に対して Azure AD ログイン オプションを有効にする必要があります。その後、VM にログインする権限を持つユーザーの RBAC ロールの割り当てを構成する必要があります。
+Azure 内の Windows VM に Azure AD ログインを使用するには、最初に Windows VM に対して Azure AD ログイン オプションを有効にする必要があります。その後、VM にログインする権限を持つユーザーの Azure ロールの割り当てを構成する必要があります。
 Windows VM に対して Azure AD ログインを有効にするには、次のような複数の方法があります。
 
 - Windows VM の作成時に Azure portal のエクスペリエンスを使用する
@@ -145,7 +144,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>仮想マシン ロールの割り当てを構成する
 
-VM を作成したので、VM にログインできるユーザーを決定する Azure RBAC ポリシーを構成する必要があります。 VM へのログインを承認するには、次の 2 つの RBAC ロールが使用されます。
+VM を作成したので、VM にログインできるユーザーを決定する Azure RBAC ポリシーを構成する必要があります。 VM へのログインを承認するには、次の 2 つの Azure ロールが使用されます。
 
 - **仮想マシンの管理者ログイン**:このロールを割り当てられたユーザーは、管理者特権を持つユーザーとして Azure 仮想マシンにログインできます。
 - **仮想マシンのユーザー ログイン**:このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
@@ -175,7 +174,7 @@ Azure AD を有効にした Windows Server 2019 Datacenter VM のロールの割
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Azure Cloud Shell のエクスペリエンスを使用する
 
-次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用し、現在の Azure ユーザーに対して、VM に対する仮想マシンの管理者ログイン ロールを割り当てます。 アクティブな Azure アカウントのユーザー名は [az account show](/cli/azure/account#az-account-show) で取得され、スコープは、[az vm show](/cli/azure/vm#az-vm-show) により、前の手順で作成された VM に設定されます。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、通常の RBAC 継承のアクセス許可が適用されます。 詳細については、[ロールベースのアクセス制御](../../virtual-machines/linux/login-using-aad.md)に関するページを参照してください。
+次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用し、現在の Azure ユーザーに対して、VM に対する仮想マシンの管理者ログイン ロールを割り当てます。 アクティブな Azure アカウントのユーザー名は [az account show](/cli/azure/account#az-account-show) で取得され、スコープは、[az vm show](/cli/azure/vm#az-vm-show) により、前の手順で作成された VM に設定されます。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、Azure RBAC における通常の継承アクセス許可が適用されます。 詳細については、[Azure Active Directory 認証を使用した Azure の Linux 仮想マシンへのログイ](../../virtual-machines/linux/login-using-aad.md)に関するページを参照してください。
 
 ```   AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -190,11 +189,11 @@ az role assignment create \
 > [!NOTE]
 > AAD ドメインとログオン ユーザー名ドメインが一致しない場合は、`--assignee` のユーザー名だけでなく、`--assignee-object-id` を使用してユーザー アカウントのオブジェクト ID を指定する必要があります。 ユーザー アカウントのオブジェクト ID は、[az ad user list](/cli/azure/ad/user#az-ad-user-list)を使用して取得できます。
 
-RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、次の記事を参照してください。
+Azure RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、次の記事を参照してください。
 
-- [RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](/azure/role-based-access-control/role-assignments-cli)
-- [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](/azure/role-based-access-control/role-assignments-portal)
-- [RBAC と Azure PowerShell を使用して Azure リソースへのアクセスを管理する](/azure/role-based-access-control/role-assignments-powershell).
+- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](/azure/role-based-access-control/role-assignments-cli)
+- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](/azure/role-based-access-control/role-assignments-portal)
+- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](/azure/role-based-access-control/role-assignments-powershell)。
 
 ## <a name="using-conditional-access"></a>条件付きアクセスの使用
 
@@ -203,10 +202,13 @@ Azure AD サインインで有効になる Azure 上の Windows VM へのアク�
 > [!NOTE]
 > "Azure Windows VM サインイン" アプリへのアクセス要求に対して、"Azure Windows VM サインイン" をアクセス制御付与として使用する場合は、Azure上のターゲット Windows VM に対して RDP セッションを開始するクライアントの一部として、多要素認証要求を提供する必要があります。 Windows 10 クライアントでこれを実現する唯一の方法は、RDP クライアントで Windows Hello for Business の PIN または生体認証を使用することです。 生体認証のサポートは、Windows 10 バージョン 1809 で RDP クライアントに追加されています。 Windows Hello for Business 認証を使用するリモート デスクトップは、証明書信頼モデルを使用するデプロイでのみ利用でき、現時点ではキー信頼モデルでは利用できません。
 
+> [!WARNING]
+> ユーザー単位で有効化または適用された Azure Multi-Factor Authentication は、VM のサインインではサポートされていません。
+
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD 資格情報を使用して Windows VM にログインする
 
 > [!IMPORTANT]
-> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 参加済みまたはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの RBAC ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。 現在、AADLoginForWindows 拡張機能で Azure Active Directory 認証を使用してログインするために Azure Bastion を使用することはできません。 ダイレクト RDP のみがサポートされています。
+> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 登録済み (最低限必要なビルドは 20H1)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの Azure ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。 Azure AD 登録済みの Windows 10 PC を使用している場合は、資格情報を AzureAD\UPN 形式で入力する必要があります (例: AzureAD\john@contoso.com)。 現在、AADLoginForWindows 拡張機能で Azure Active Directory 認証を使用してログインするために Azure Bastion を使用することはできません。直接 RDP のみサポートされています。
 
 Azure AD を使用して Windows Server 2019 仮想マシンにログインするには、次の操作を行います。 
 
@@ -313,13 +315,13 @@ AADLoginForWindows 拡張機能が特定のエラー コードで失敗した場
 
 ### <a name="troubleshoot-sign-in-issues"></a>サインアップに関する問題のトラブルシューティング
 
-Azure AD 資格情報を使用して RDP 接続しようとしたときに発生する可能性のある一般的なエラーとしては、RBAC ロールが割り当てられていない、承認されていないクライアント、2FA (2 要素認証) サインイン方法が必要、などがあります。 次の情報を使用して、これらの問題を修正してください。
+Azure AD 資格情報を使用して RDP 接続しようとしたときに発生する可能性のある一般的なエラーとしては、Azure ロールが割り当てられていない、クライアントが承認されていない、サインイン方法として 2FA (2 要素認証) が必要、などがあります。 次の情報を使用して、これらの問題を修正してください。
 
 Device State (デバイスの状態) と SSO State (SSO 状態) を表示するには、`dsregcmd /status`を実行します。 目標は、Device State (デバイスの状態) で `AzureAdJoined : YES` と表示され、`SSO State`で `AzureAdPrt : YES`と表示されることです。
 
 Azure AD アカウントを使用した RDP サインインは、イベント ビューアーの AAD\Operational イベント ログ下にキャプチャされます。
 
-#### <a name="rbac-role-not-assigned"></a>RBAC の役割が割り当てられていません
+#### <a name="azure-role-not-assigned"></a>Azure ロールが割り当てられていない
 
 VM へのリモート デスクトップ接続を開始したときに次のエラー メッセージが表示された場合、 
 
@@ -340,7 +342,7 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 リモート デスクトップ接続を開始するために使用している Windows 10 PC が、VM が参加している Azure AD ディレクトリと同じディレクトリに Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのいずれかであることを確認します。 デバイスID の詳細については、「[デバイス ID とは](/azure/active-directory/devices/overview)」の記事を参照してください。
 
 > [!NOTE]
-> Windows 10 20H1 では、VM へのリモート デスクトップ接続を開始するために、Azure AD に登録済み PC のサポートが追加されます。 Windows Insider プログラムに参加して、この機能を試してみてください。Windows 10 の新機能もいち早く使用できます。
+> Windows 10 ビルド 20H1 では、VM への RDP 接続を開始するために、Azure AD 登録済み PC のサポートが追加されました。 Azure AD 登録済み (Azure AD 参加済みまたはハイブリッド Azure AD 参加済みではない) PC を RDP クライアントとして使用して VM への接続を開始する場合は、AzureAD\UPN の形式 (例: AzureAD\john@contoso.com) で資格情報を入力する必要があります。
 
 さらに、Azure AD への参加が完了した後に AADLoginForWindows 拡張機能がアンインストールされていないことを確認します。
  

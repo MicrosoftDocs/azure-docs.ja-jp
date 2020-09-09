@@ -7,18 +7,19 @@ ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: d5fdeaeb9060794af2168f072a174b49b9c9d3d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 53c5e53dc61d6e7012521fdae8f6b1eb599c433d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76937683"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499043"
 ---
 # <a name="azure-cli-examples-for-azure-dns"></a>Azure DNS に関する Azure CLI の例
 
 次の表には、Azure DNS に関する Azure CLI の例へのリンクが含まれています。
 
-| | |
+| アーティクル | 説明 |
 |-|-|
 | [DNS ゾーンとレコードの作成](./scripts/dns-cli-create-dns-zone-record.md) | ドメイン名のために DNS ゾーンとレコードを作成します。 |
 | | |

@@ -3,25 +3,25 @@ title: 環境を Power BI に接続する - Azure Time Series Insights | Microso
 description: Azure Time Series Insights を Power BI に接続して、組織全体でデータを共有、グラフ化、表示する方法について説明します。
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75863844"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046715"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI の Time Series Insights からのデータを視覚化する
+# <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Azure Time Series Insights Gen2 からのデータを Power BI で視覚化する
 
-Azure Time Series Insights は、クラウド内の時系列データを格納、管理、クエリの実行、および視覚化するためのプラットフォームです。 [Power BI](https://powerbi.microsoft.com) は、組織全体で洞察と結果を共有できる豊富な視覚化機能を備えた、ビジネス分析ツールです。 両方のサービスを統合して、Time Series Insights の固有の視覚化機能と Power BI のそれの、両方のいいところを得られるようになりました。
+Azure Time Series Insights は、クラウド内の時系列データを格納、管理、クエリの実行、および視覚化するためのプラットフォームです。 [Power BI](https://powerbi.microsoft.com) は、組織全体で洞察と結果を共有できる豊富な視覚化機能を備えた、ビジネス分析ツールです。 両方のサービスが統合されて、Azure Time Series Insights 固有の視覚化機能と、Power BI の視覚化機能の両方の長所を利用できるようになりました。
 
 学習内容は次のとおりです。
 
-* クラウド コネクタを使用して Time Series Insights を Power BI に接続する
+* クラウド コネクタを使用して Azure Time Series Insights を Power BI に接続する
 * Power BI でデータを使用して視覚化資料を作成する
 * Power BI にレポートを発行し、組織の他の部門と共有する
 
@@ -32,16 +32,18 @@ Azure Time Series Insights は、クラウド内の時系列データを格納�
 ## <a name="prerequisites"></a>前提条件
 
 * 最新バージョンの [Power BI Desktop](https://powerbi.microsoft.com/downloads/) をダウンロードしてインストールすること
-* [Azure Time Series Insights プレビュー インスタンス](time-series-insights-update-how-to-manage.md)を備えるまたは作成する
+* [Azure Time Series Insights Gen2 環境](time-series-insights-update-how-to-manage.md)がある、またはそれを作成する
 
 > [!IMPORTANT]
-> Power BI コネクタは、現在、**Warm ストア**用に構成された Time Series Insights プレビュー*従量課金制* 環境でサポートされています。
+>
+> * このコネクタは、現在のところ、**Warm ストア**を使用して構成された Azure Time Series Insights Gen2 環境でのみサポートされています。
+> * 別の Azure AD テナントから Azure Time Series Insights Gen2 環境へのゲスト アクセスを持っている場合、このコネクタにアクセスすることはできません。 [環境へのアクセスに関するポリシー](./concepts-access-policies.md)を確認してください。
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Time Series Insights から Power BI へのデータの接続
+## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Azure Time Series Insights から Power BI にデータを接続する
 
-Time Series Insights 環境を Power BI に接続するには、次の手順を実行します。
+Azure Time Series Insights 環境を Power BI に接続するには、次の手順を実行します。
 
-1. Time Series Insights Explorer を開く
+1. Azure Time Series Insights Explorer を開く
 1. データをクエリまたは生データとしてエクスポートする
 1. Power BI Desktop を開く
 1. カスタム クエリから読み込む
@@ -50,10 +52,10 @@ Time Series Insights 環境を Power BI に接続するには、次の手順を�
 
 作業を開始するには:
 
-1. Time Series Insights プレビュー エクスプローラーを開き、データをキュレーションします。
+1. Azure Time Series Insights Gen2 Explorer を開き、データをキュレーションします。
 1. 満足できるビューを作成したら、 **[その他の操作]** ドロップダウン メニューに移動して、 **[Power BI に接続]** を選択します。
 
-    [![Time Series Insights プレビュー エクスプローラーのエクスポート](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights Gen2 Explorer でのエクスポート](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. このタブ内でパラメーターを設定します。
 
@@ -65,11 +67,11 @@ Time Series Insights 環境を Power BI に接続するには、次の手順を�
        > 後で Power BI により、いつでもデータを集計できますが、集計後に生データに戻すことはできません。 
        
        > [!NOTE]
-       > 生イベント レベル データには、10 万までのイベント数の制限があります。
+       > 生イベント レベル データには、25 万までのイベント数の制限があります。
 
        [![接続](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. **Warm ストア**用に Time Series Insights インスタンスを構成していない場合は、警告が表示されます。
+   1. **Warm ストア**を使用して Azure Time Series Insights 環境を構成していない場合は、警告が表示されます。
 
        [![Warm ストア の警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
@@ -82,9 +84,9 @@ Time Series Insights 環境を Power BI に接続するには、次の手順を�
 
     [![[ホーム] のドロップダウン](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. 「**Time Series Insights**」を検索し、 **[Azure Time Series Insights (Beta)]** を選択して、 **[接続]** をクリックします。
+1. 「**Azure Time Series Insights**」を検索し、 **[Azure Time Series Insights (Beta)]** を選択してから、 **[接続]** をクリックします。
 
-    [![Time Series Insights への Power BI の接続](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Power BI を Azure Time Series Insights に接続する](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     または、 **[Azure]** タブに移動し、 **[Azure Time Series Insights (Beta)]** を選択して、 **[接続]** をクリックします。
     
@@ -111,8 +113,10 @@ Time Series Insights 環境を Power BI に接続するには、次の手順を�
     [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1.  **[視覚化]** 列で、希望する視覚化を選択します。 たとえば、 **[折れ線グラフ]** を選択します。 これにより、空の折れ線グラフがキャンバスに追加されます。
- 
-1.  **[フィールド]** の一覧で **[タイムスタンプ]** を選択し、 **[軸]** フィールドにドラッグして項目を X 軸に沿って表示します。
+
+1.  **[フィールド]** 一覧で **[_Timestamp]\(_タイムスタンプ\)** を選択し、 **[軸]** フィールドにドラッグして項目を X 軸に沿って表示します。 必ず、 **[軸]** の値として **[_Timestamp]\(_タイムスタンプ\)** に切り替えます (既定は **[日付の階層]** です)。
+
+    [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1.  再び **[フィールド]** の一覧で **[TimeSeriesId]** を選択し、 **[値]** フィールドにドラッグして項目を Y 軸に表示します。
 
@@ -145,5 +149,3 @@ Time Series Insights 環境を Power BI に接続するには、次の手順を�
 * Azure Time Series Insights のための [Power BI コネクタの概念](https://docs.microsoft.com/power-bi/desktop-query-overview)に関するページをご覧ください。
 
 * [Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-query-overview) の詳細を参照してください。
-
-* [Time Series Insights GA エクスプローラー](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)および [Time Series Insights プレビュー エクスプローラー](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)を参照してください。

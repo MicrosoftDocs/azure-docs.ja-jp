@@ -1,22 +1,22 @@
 ---
-title: CLI の例 - アクティブ geo レプリケーション - プールされた Azure SQL データベース
+title: 'Az CLI: エラスティック プールのアクティブ geo レプリケーションを構成する'
 description: Azure SQL Database のプールされたデータベースに対してアクティブ geo レプリケーションの設定とフェールオーバーを実行する Azure CLI のサンプル スクリプト。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: ''
+ms.custom: sqldbrb=1
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 2646ed98f4a73c69d339df0134e8a565c958c514
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8d0860cc5a4ee60cbf60d7b55789c518049dfb90
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528776"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Azure SQL Database のプールされたデータベースに対して CLI を使用してアクティブ geo レプリケーションを構成する
 
@@ -42,7 +42,7 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
+リソース グループと、それに関連付けられているすべてのリソースを削除するには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az group delete --name $resource
@@ -53,7 +53,7 @@ az group delete --name $secondaryResource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| コマンド | 説明 |
 |---|---|
 | [az sql elastic-pool](/cli/azure/sql/elastic-pool) | エラスティック プールのコマンド。 |
 | [az sql db replica](/cli/azure/sql/db/replica) | データベースのレプリケーション コマンド。 |
@@ -62,4 +62,4 @@ az group delete --name $secondaryResource
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../sql-database-cli-samples.md)のページにあります。
+その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../../azure-sql/database/az-cli-script-samples-content-guide.md)のページにあります。

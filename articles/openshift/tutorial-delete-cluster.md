@@ -2,16 +2,17 @@
 title: チュートリアル - Azure Red Hat OpenShift クラスターを削除する
 description: このチュートリアルでは、Azure CLI を使用して Azure Red Hat OpenShift クラスターを削除する方法を学習します
 author: sakthi-vetrivel
+ms.custom: fasttrack-edit
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae2c1072b9490931609dd61f1cac2a47f1cffef3
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232140"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469951"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを削除する
 
@@ -25,7 +26,7 @@ ms.locfileid: "82232140"
 
 前のチュートリアルでは、Azure Red Hat OpenShift クラスターを作成し、OpenShift Web コンソールを使用して接続しました。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - Azure Red Hat Openshift 4 クラスターを作成する](tutorial-create-cluster.md)方法に関するページから開始してください。
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -39,7 +40,7 @@ az login
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
-前のチュートリアルでは、次の変数を設定しました。 
+前のチュートリアルでは、次の変数を設定しました。
 
 ```bash
 CLUSTER=yourclustername
@@ -49,7 +50,7 @@ RESOURCE_GROUP=yourresourcegroup
 これらの値を使用して、次のようにクラスターを削除します。
 
 ```bash
-az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
 ```
 
 次に、クラスターを削除するかどうかを確認するメッセージが表示されます。 `y` で確認した後、クラスターが削除されるまでに数分かかります。 コマンドが終了すると、リソース グループ全体とそれに含まれているすべてのリソース (クラスターなど) が削除されます。

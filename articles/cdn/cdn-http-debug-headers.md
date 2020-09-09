@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
-ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343022"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの X-EC-Debug HTTP ヘッダー
 デバッグ キャッシュ要求ヘッダー `X-EC-Debug` では、要求された資産に適用されているキャッシュ ポリシーに関する追加情報が提供されます。 これらのヘッダーは、**Azure CDN Premium from Verizon** 製品に固有です。
@@ -27,7 +27,7 @@ ms.locfileid: "81260498"
 ## <a name="usage"></a>使用法
 POP サーバーからユーザーに送信される応答には、以下の条件を満たす場合にのみ、`X-EC-Debug` ヘッダーが含まれます。
 
-- [Debug Cache Response Headers 機能](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)が、指定された要求のルール エンジンで有効になっている。
+- [Debug Cache Response Headers 機能](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm)が、指定された要求のルール エンジンで有効になっている。
 - 指定された要求で、応答に含められるデバッグ キャッシュ応答ヘッダーのセットが定義されている。
 
 ## <a name="requesting-debug-cache-information"></a>デバッグ キャッシュ情報の要求

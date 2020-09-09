@@ -1,14 +1,15 @@
 ---
-author: sptramer
 ms.topic: include
 ms.date: 05/31/2019
-ms.author: sttramer
-ms.openlocfilehash: c4bc5a6befaf684cd07fb3b6799ba00099627132
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: fd3965c42679c8435348a66cc7eeab90d1eeb1b3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "66814704"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85374672"
 ---
 このサンプルを実行するには、最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールします。 開始するには、`az login` を実行して、Azure との接続を作成します。
 

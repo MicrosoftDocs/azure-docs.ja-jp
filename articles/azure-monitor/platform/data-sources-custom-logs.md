@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 155c8fc3e7f1e37fe455c8f21d36e090c4fffce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670595"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112002"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
 
@@ -122,17 +122,19 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 | TimeGenerated |Azure Monitor がレコードを収集した日付と時刻。  ログが時間基準の区切り記号を使用する場合、これはエントリから収集された時間になります。 |
 | SourceSystem |レコードが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または System Center Operations Manager <br> Linux – すべての Linux エージェント |
 | RawData |収集されたエントリの完全テキスト。 [このデータを解析して個別のプロパティに格納する](../log-query/parse-text.md)のが最も一般的です。 |
-| ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
+| ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>カスタム ログ追加のサンプル チュートリアル
 次のセクションでは、カスタム ログの作成例を段階的に説明します。  収集されるサンプル ログには 1 行につき 1 エントリが与えられます。これは日時で始まり、コード、状態、メッセージがコンマで区切られて続きます。  以下はサンプルのエントリです。
 
-    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2019-08-27 01:38:22 302,Error,Application could not connect to database
-    2019-08-27 01:31:34 303,Error,Application lost connection to database
+```output
+2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+2019-08-27 01:38:22 302,Error,Application could not connect to database
+2019-08-27 01:31:34 303,Error,Application lost connection to database
+```
 
 ### <a name="upload-and-parse-a-sample-log"></a>サンプル ログをアップロードし、解析する
 ログ ファイルの 1 つをお見せします。ログ ファイルで収集されているイベントを確認できます。  この例の場合、区切り記号には改行を選択して問題ありません。  ログの 1 エントリが複数行にまたがるようであれば、区切り記号としてタイムスタンプを使用する必要があります。

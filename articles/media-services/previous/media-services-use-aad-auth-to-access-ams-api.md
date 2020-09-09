@@ -13,17 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682041"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262517"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス  
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Media Services API は RESTful API です。 この API を使って、メディア リソースに対して操作を実行できます。そのためには、REST API または公開されているクライアント SDK を使用します。 Azure Media Services には、Microsoft .NET 用の Media Services クライアント SDK が用意されています。 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 
 
@@ -149,12 +151,11 @@ Media Services .NET クライアント SDK を使用していない場合、手�
 
 次の記事では、Azure AD 認証の概念の概要について説明されています。 
 
-- [Azure AD で対応できる認証シナリオ](../../active-directory/develop/authentication-scenarios.md)
-- [Azure AD でのアプリケーションの追加、更新、または削除](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+- [Azure AD で対応できる認証シナリオ](../../active-directory/develop/authentication-vs-authorization.md)
+- [Azure AD でのアプリケーションの追加、更新、または削除](../../active-directory/develop/quickstart-register-app.md)
 - [PowerShell を使用したロールベースのアクセス制御の構成と管理](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Portal を使って [Azure AD 認証にアクセスし、Azure Media Services API を利用する](media-services-portal-get-started-with-aad.md)。
 * [.NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)。
-

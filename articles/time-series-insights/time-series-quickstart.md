@@ -1,42 +1,42 @@
 ---
-title: クイック スタート:Azure Time Series Insights エクスプローラー- Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights エクスプローラーを使用する方法について説明します。 大量の IoT データを視覚化し、環境の主な機能を知ることができます。
+title: クイック スタート:Azure Time Series Insights Explorer - Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights Explorer を使用する方法について説明します。 大量の IoT データを視覚化し、環境の主な機能を知ることができます。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/13/2020
-ms.openlocfilehash: a566c55d2ac51efc5ff2650ad682f10dae2bdc31
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/30/2020
+ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059353"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
+# <a name="quickstart-explore-azure-time-series-insights-gen1"></a>クイック スタート:Azure Time Series Insights Gen1 の探索
 
-この Azure Time Series Insights エクスプローラー クイック スタートは、無料のデモンストレーション環境で Time Series Insights の使用を開始するときに役立ちます。 このクイックスタートでは、Web ブラウザーで大量の IoT データを視覚化する方法を学習し、現在一般提供されている主な機能を知ることができます。
+この Azure Time Series Insights Explorer クイック スタートは、無料のデモンストレーション環境で Azure Time Series Insights の使用を開始するときに役立ちます。 このクイックスタートでは、Web ブラウザーで大量の IoT データを視覚化する方法を学習し、現在一般提供されている主な機能を知ることができます。
 
 Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 Azure Time Series Insights は、ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりするために役立ちます。
 
-柔軟性を高めるために、強力な [REST API](./time-series-insights-update-tsq.md) および[クライアント SDK](https://github.com/microsoft/tsiclient) を介して、Azure Time Series Insights を既存のアプリケーションに追加できます。 API を使用すると、時系列データの保存やクエリを行ったり、任意のクライアント アプリケーションで時系列データを使用したりすることができます。 クライアント SDK を使用して、既存のアプリケーションに UI コンポーネントを追加することもできます。
+柔軟性を高めるために、強力な [REST API](./concepts-query-overview.md) および[クライアント SDK](https://github.com/microsoft/tsiclient) を介して、Azure Time Series Insights を既存のアプリケーションに追加できます。 API を使用すると、時系列データの保存やクエリを行ったり、任意のクライアント アプリケーションで時系列データを使用したりすることができます。 クライアント SDK を使用して、既存のアプリケーションに UI コンポーネントを追加することもできます。
 
-この Time Series Insights エクスプローラー クイックスタートでは、現在一般提供されている機能のガイド付きツアーを提供します。
+この Azure Time Series Insights Explorer クイック スタートでは、機能のガイド付きツアーを提供します。
 
 > [!IMPORTANT]
 > [無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を、まだお持ちでない場合は、作成します。
 
 ## <a name="prepare-the-demo-environment"></a>デモ環境を準備する
 
-1. ブラウザーで、[一般提供デモ](https://insights.timeseries.azure.com/demo)に移動します。
+1. ブラウザーで、[Gen1 デモ](https://insights.timeseries.azure.com/demo)に移動します。
 
-1. メッセージが表示されたら、Azure アカウントの資格情報を使用して Time Series Insights エクスプローラーにサインインします。
+1. メッセージが表示されたら、Azure アカウントの資格情報を使用して Azure Time Series Insights Explorer にサインインします。
 
-1. Time Series Insights のクイック ツアー ページが表示されます。 **[次へ]** を選択してクイック ツアーを開始します。
+1. Azure Time Series Insights のクイック ツアー ページが表示されます。 **[次へ]** を選択してクイック ツアーを開始します。
 
    [![クイックスタートの開始 - [次へ] を選択する](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
@@ -50,7 +50,7 @@ Azure Time Series Insights は、数十億件の IoT イベントを同時に簡
 
    [![期間を選択する](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
-   Time Series Insights には、指定した期間のグラフが表示されます。 その折れ線グラフ内でさまざまなアクションを実行できます。 たとえば、フィルター処理、ピン留め、並べ替え、積み重ねができます。
+   Azure Time Series Insights には、指定した期間を視覚化したグラフが表示されます。 その折れ線グラフ内でさまざまなアクションを実行できます。 たとえば、フィルター処理、ピン留め、並べ替え、積み重ねができます。
 
    **日時選択パネル**に戻るには、次に示すように下矢印を選択します。
 
@@ -91,6 +91,4 @@ Azure Time Series Insights は、数十億件の IoT イベントを同時に簡
 
 ## <a name="next-steps"></a>次のステップ
 
-独自の Time Series Insights 環境を作成する準備ができました:
-> [!div class="nextstepaction"]
-> [Time Series Insights 環境の計画](time-series-insights-environment-planning.md)
+* 独自の Azure Time Series Insights 環境を作成する準備ができました。 [Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)に関するページをご覧ください。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069166"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
@@ -106,9 +106,9 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
 * **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります (既定のポートは 22 です)。 Azure Portal で **[仮想マシン]**  >  *[VM 名]*  >  **[設定]**  >  **[エンドポイント]** を選択して、SSH TCP ポート番号を確認します。
-* **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。** ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。 ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。 プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。 詳細については、 [ネットワーク アクセス制御リスト (ACL) の概要](../../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
+* **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。** ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。 ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。 プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。 詳細については、 [ネットワーク アクセス制御リスト (ACL) の概要](/previous-versions/azure/virtual-network/virtual-networks-acl)に関するページを参照してください。
 
-問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、別のエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」をご覧ください。
+問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、別のエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。 詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=/azure/virtual-machines/windows/classic/toc.json)」をご覧ください。
 
 <a id="nsg"></a>
 
@@ -116,14 +116,14 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。 Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。 ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。
 詳細については、「 [ネットワーク セキュリティ グループについて](../../virtual-network/security-overview.md)」をご覧ください。
 
-NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
+NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](../../network-watcher/network-watcher-monitoring-overview.md)」を参照してください。 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>ソース 5: Linux ベースの Azure 仮想マシン
 最後に考えられる問題のソースは、Azure 仮想マシン自体に関連するものです。
 
 ![Linux ベースの Azure 仮想マシンを示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-[Linux ベースの仮想マシンのパスワードをリセットする](../linux/reset-password.md)手順をまだ実行していない場合は、仮想マシンでその手順に従います。
+[Linux ベースの仮想マシンのパスワードをリセットする](./reset-password.md)手順をまだ実行していない場合は、仮想マシンでその手順に従います。
 
 もう一度、コンピューターから接続を試みてください。 引き続き接続できない場合は、以下の問題が考えられます。
 
@@ -133,4 +133,4 @@ NSG 構成の検証に IP Verify を使用することもできます。 詳細�
 * Azure 仮想マシンで実行されている侵入検出ソフトウェアまたはネットワーク監視ソフトウェアが、SSH 接続を妨げている。
 
 ## <a name="additional-resources"></a>その他のリソース
-アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Linux Azure 仮想マシンにおけるアプリケーション接続の問題のトラブルシューティング](../linux/troubleshoot-app-connection.md)」を参照してください。
+アプリケーションへのアクセスのトラブルシューティングに関する詳細については、「[Linux Azure 仮想マシンにおけるアプリケーション接続の問題のトラブルシューティング](./troubleshoot-app-connection.md)」を参照してください。

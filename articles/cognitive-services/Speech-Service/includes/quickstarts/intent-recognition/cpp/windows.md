@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 770e037641ac8fbf75989dc94b66fd1df0689e50
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9c0c2673acf12ddf80b77be57acc5af55e7f160c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81422038"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298801"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -73,6 +73,8 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 > この値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
+
+この例では、`AddIntent()` 関数を使用して、個別に意図を追加します。 モデルのすべての意図を追加する場合は、`AddAllIntents(model)` を使用し、モデルを渡します。
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 

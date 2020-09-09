@@ -6,16 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/24/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2beaae3fd6aaae719ac84ef86d7dd7877c94f757
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456398"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076125"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>PowerShell を使用して Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -39,15 +40,16 @@ PowerShell を使用してシステム割り当てマネージド ID を構成�
 
 ## <a name="create-a-new-key-vault"></a>新しいキー コンテナーを作成する
 
-PowerShell を使用して、新しいキー コンテナーを作成するには、[New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) を呼び出します。 Azure Storage 暗号化用のカスタマー マネージド キーの格納に使用するキー コンテナーには、2 つのキー保護設定 ( **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** ) を有効にする必要があります。
+PowerShell を使用して新しいキー コンテナーを作成するには、バージョン 2.0.0 以降の [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault/2.0.0) PowerShell モジュールをインストールします。 次に、[New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) を呼び出して新しいキー コンテナーを作成します。
 
-角かっこ内のプレースホルダー値を独自の値で置き換えてください。
+Azure Storage 暗号化用のカスタマー マネージド キーの格納に使用するキー コンテナーには、2 つのキー保護設定 ( **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** ) を有効にする必要があります。 バージョン 2.0.0 以降の Az.KeyVault モジュールでは、新しいキー コンテナーを作成するときには、既定で、論理的な削除が有効になります。
+
+次の例では、 **[論理的な削除]** と **[Do Not Purge] (消去しない)** のプロパティを有効にして新しいキー コンテナーを作成しています。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
     -ResourceGroupName <resource_group> `
     -Location <location> `
-    -EnableSoftDelete `
     -EnablePurgeProtection
 ```
 
@@ -74,13 +76,34 @@ Set-AzKeyVaultAccessPolicy `
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
 
-Azure Storage の暗号化では 2048 ビットの RSA と RSA-HSM キーのみがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
+Azure Storage の暗号化では、2048 ビット、3072 ビット、および 4096 ビットの RSA キーおよび RSA-HSM キーのみがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>カスタマー マネージド キーによる暗号化を構成する
 
-既定で Azure Storage の暗号化には、Microsoft マネージド キーを使用します。 この手順では、カスタマー マネージド キーを使用するように Azure Storage アカウントを構成し、そのストレージ アカウントに関連付けるキーを指定します。
+既定で Azure Storage の暗号化には、Microsoft マネージド キーを使用します。 この手順では、Azure Key Vault でカスタマー マネージド キーを使用するように Azure Storage アカウントを構成してから、そのストレージ アカウントに関連付けるキーを指定します。
 
-ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出します。 ストレージ アカウントのカスタマー マネージド キーを有効にするには、 **-KeyvaultEncryption** オプションを指定します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
+カスタマー マネージド キーを使用して暗号化を構成する場合は、関連付けられているキー コンテナーでキーのバージョンが変更されたときに、暗号化に使用するキーを自動的に更新することを選択できます。 または、キーのバージョンが手動で更新されるまで、暗号化に使用するキーのバージョンを明示的に指定できます。
+
+> [!NOTE]
+> キーを交換するには、Azure Key Vault でキーの新しいバージョンを作成します。 Azure Storage では Azure Key Vault でのキーの交換は処理されないため、キーを手動で交換するか、スケジュールに基づいて交換する関数を作成する必要があります。
+
+### <a name="configure-encryption-to-automatically-update-the-key-version"></a>キーのバージョンを自動的に更新するように暗号化を構成する
+
+キーのバージョンを自動的に更新するようにカスタマー マネージド キーを使用した暗号化を構成するには、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.0.0 以降をインストールします。
+
+カスタマー マネージド キーのキー バージョンを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を構成するときに、キーのバージョンを省略します。 次の例に示すように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出してストレージ アカウントの暗号化設定を更新し、 **-KeyvaultEncryption** オプションを含めてストレージ アカウントでカスタマー マネージド キーを有効にします。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
+    -AccountName $storageAccount.StorageAccountName `
+    -KeyvaultEncryption `
+    -KeyName $key.Name `
+    -KeyVaultUri $keyVault.VaultUri
+```
+
+### <a name="configure-encryption-for-manual-updating-of-key-versions"></a>キー バージョンを手動で更新するように暗号化を構成する
+
+暗号化で使用するキー バージョンを明示的に指定するには、ストレージ アカウント用のカスタマー マネージド キーを指定して暗号化を設定するときに、キー バージョンを指定します。 次の例に示すように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出してストレージ アカウントの暗号化設定を更新し、 **-KeyvaultEncryption** オプションを含めてストレージ アカウントでカスタマー マネージド キーを有効にします。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -91,9 +114,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-## <a name="update-the-key-version"></a>キーのバージョンを更新する
-
-キーの新しいバージョンを作成した場合、その新しいバージョンを使用するには、ストレージ アカウントを更新する必要があります。 まず [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) を呼び出し、キーの最新バージョンを取得します。 次に、前のセクションで示したように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出して、キーの新しいバージョンを使用するように、ストレージ アカウントの暗号化設定を更新します。
+キー バージョンを手動で更新する場合は、新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新する必要があります。 まず [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) を呼び出し、キーの最新バージョンを取得します。 次に、前の例で示したように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出して、新しいバージョンのキーを使用するようにストレージ アカウントの暗号化設定を更新します。
 
 ## <a name="use-a-different-key"></a>別のキーを使用する
 
@@ -101,7 +122,7 @@ Azure Storage の暗号化に使用するキーを変更するには、「[カ�
 
 ## <a name="revoke-customer-managed-keys"></a>カスタマー マネージド キーを取り消す
 
-キーが侵害された可能性があると思われる場合は、キー コンテナーのアクセス ポリシーを削除することにより、カスタマー マネージド キーを取り消すことができます。 カスタマー マネージド キーを取り消すには、次の例に示すように、[Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
+キー コンテナーのアクセス ポリシーを削除することで、カスタマー マネージド キーを取り消すことができます。 カスタマー マネージド キーを取り消すには、次の例に示すように、[Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
 
 ```powershell
 Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `

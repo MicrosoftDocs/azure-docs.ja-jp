@@ -4,12 +4,12 @@ description: Azure Backup Server を使用して Exchange サーバーを Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 043122271bfa91b1cbaa490760da712cd1b867cc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421349"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825037"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure にバックアップする
 
@@ -23,8 +23,8 @@ Azure Backup Server を[インストールして準備](backup-azure-microsoft-a
 
 Exchange サーバーに MABS 保護エージェントをインストールするには、次の手順に従います。
 
-1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)」を参照してください。
-2. MABS 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「[MABS 保護エージェントのインストール](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)」を参照してください。
+1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)」を参照してください。
+2. MABS 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「[MABS 保護エージェントのインストール](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)」を参照してください。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange サーバーの保護グループを作成する
 
@@ -34,7 +34,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 4. 保護する Exchange サーバー データベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
-   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)」を確認してください。
+   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](/system-center/dpm/back-up-exchange)」を確認してください。
    >
    >
 

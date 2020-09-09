@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Container Registry Task (
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78398504"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259488"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする
 
@@ -48,9 +48,9 @@ Azure CLI をローカルで使用する場合は、Azure CLI のバージョン
 
 ### <a name="clone-your-fork"></a>フォークの複製
 
-リポジトリをフォークしたら、フォークのクローンを作成し、ローカル クローンを含むディレクトリに移動します。
+リポジトリをフォークしたら、フォークを複製して、ローカル クローンを含むディレクトリを入力します。
 
-`git` を使用してリポジトリを複製し、 **\<your-github-username\>** を GitHub のユーザー名に置き換えます。
+`git` を使用してリポジトリをクローンし、 **\<your-github-username\>** を GitHub のユーザー名で置き換えます。
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -70,7 +70,7 @@ cd acr-build-helloworld-node
 
 これで、コンピューターにソース コードを取得したので、次の手順に従ってコンテナー レジストリを作成して、ACR Task を使用してコンテナー イメージをビルドします。
 
-サンプル コマンドの実行を簡単にするために、このシリーズのチュートリアルではシェル環境変数を使用します。 次のコマンドを実行して、`ACR_NAME` 変数を設定します。 **\<registry-name\>** を新しいコンテナー レジストリの一意の名前に置き換えます。 レジストリ名は、Azure 内で一意にする必要があり、小文字のみで 5 - 50 文字の英数字を含める必要があります。 このチュートリアルで作成する他のリソースはこの名前に基づくため、この最初の変数のみ変更する必要があります。
+サンプル コマンドの実行を簡単にするために、このシリーズのチュートリアルではシェル環境変数を使用します。 次のコマンドを実行して、`ACR_NAME` 変数を設定します。 **\<registry-name\>** を新しいコンテナー レジストリの一意の名前で置き換えます。 レジストリ名は、Azure 内で一意にする必要があり、小文字のみで 5 - 50 文字の英数字を含める必要があります。 このチュートリアルで作成する他のリソースはこの名前に基づくため、この最初の変数のみ変更する必要があります。
 
 [![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
@@ -176,7 +176,7 @@ ACR Task によって、既定でビルド イメージがレジストリに自�
 
 #### <a name="create-a-key-vault"></a>Key Vault を作成します
 
-[Azure キー コンテナー](/azure/key-vault/)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
+[Azure キー コンテナー](../key-vault/index.yml)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
 
 ```azurecli-interactive
 AKV_NAME=$ACR_NAME-vault

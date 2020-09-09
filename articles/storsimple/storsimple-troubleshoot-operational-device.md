@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: twooley
-ms.openlocfilehash: ca79e4240c1a82e46bea44a9d018a3c681920480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2e68c7016a37824f1bf307a676c39281d4d41d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75933291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507822"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>StorSimple 運用デバイスのトラブルシューティング
 > [!NOTE]

@@ -1,46 +1,70 @@
 ---
-title: Azure Automation の Windows Hybrid Runbook Worker
-description: この記事では、お使いのローカル データ センターまたはクラウド 環境内の Windows ベースのコンピューターで Runbook を実行できるようにする Azure Automation Hybrid Runbook Worker のインストールについて説明します。
+title: Azure Automation への Windows Hybrid Runbook Worker のデプロイ
+description: この記事では、お使いのローカル データ センターまたはクラウド環境内の Windows ベースのマシン上で Runbook を実行するために使用できる Hybrid Runbook Worker をデプロイする方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/10/2019
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 163650a05bf47e6cb8a8832bb85477740d88b0cd
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787364"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660514"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
-Azure Automation の Hybrid Runbook Worker 機能を使う、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Azure Automation によって Runbook が格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。 この記事では、Windows コンピューターに Hybrid Runbook Worker をデプロイする方法について説明します。
+Azure Automation の Hybrid Runbook Worker 機能を使うと、ロールをホスティングしているマシン上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Azure Automation によって Runbook が格納および管理された後、1 つ以上の指定されたマシンに配信されます。 この記事では、Windows マシンに Hybrid Runbook Worker をデプロイする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。
 
 Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="prerequisites"></a>前提条件
 
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+始める前に、以下のものを用意してください。
 
-## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Windows Hybrid Runbook Worker のインストールと構成
+### <a name="a-log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Windows Hybrid Runbook Worker をインストールして構成するには、次の方法のいずれかを使用します。
+Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して作成できます。
 
-* Azure VM の場合、[Windows 用仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して、Windows 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、Azure Resource Manager テンプレートまたは PowerShell を使用して仮想マシンが既存の Log Analytics ワークスペースに登録されます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループに VM を追加できます。 [手動展開](#manual-deployment)セクションのステップ 3 と 4 を参照してください。
+Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。
 
-* Automation Runbook を使用して、Windows コンピューターを構成するプロセスを完全に自動化します。 データセンターまたは他のクラウド環境のマシンの場合、この方法をお勧めします。
-
-* 手順に従って、非 Azure VM に Hybrid Runbook Worker ロールを手動でインストールして構成します。
+ワークスペースはあっても、それが Automation アカウントにリンクされていない場合は、Automation の機能を有効にすると、Hybrid Runbook Worker のサポートを含む Azure Automation の機能が追加されます。 Log Analytics ワークスペースで Azure Automation 機能のいずれかを有効にすると (具体的には、[Update Management](update-management/update-mgmt-overview.md) または[変更履歴とインベントリ](change-tracking.md))、worker コンポーネントがエージェント マシンに自動的にプッシュされます。
 
 > [!NOTE]
-> Hybrid Runbook Worker ロールをサポートするサーバーの構成を Desired State Configuration (DSC) を使用して管理するには、サーバーを DSC ノードとして追加する必要があります。
+> Update Management または変更履歴とインベントリ機能を有効にすると、Azure Automation では、Log Analytics ワークスペースと Automation アカウントのリンクに特定のリージョンのみがサポートされます。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。 いずれの機能でも有効にする前に、Azure Automation の [Azure の価格](https://azure.microsoft.com/pricing/details/automation/)情報を確認します。
 
-### <a name="minimum-requirements-for-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker の最小要件
+   ワークスペースに Update Management 機能を追加するには、次の PowerShell コマンドレットを実行します。
+
+```powershell-interactive
+   Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
+```
+
+   ワークスペースに変更履歴とインベントリ機能を追加するには、次の PowerShell コマンドレットを実行します。
+
+```powershell-interactive
+   Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
+```
+
+### <a name="log-analytics-agent"></a>Log Analytics エージェント
+
+Hybrid Runbook Worker ロールには、サポートされている Windows オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)が必要です。
+
+### <a name="supported-windows-operating-system"></a>サポートされている Windows オペレーティング システム
+
+Windows Hybrid Runbook Worker では、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
+
+* Windows Server 2019
+* Windows Server 2016、バージョン 1709 および 1803
+* Windows Server 2012、2012 R2
+* Windows Server 2008 SP2 (x64)、2008 R2
+* Windows 10 Enterprise (マルチセッションを含む) および Pro
+* Windows 8 Enterprise および Pro
+* Windows 7 SP1
+
+### <a name="minimum-requirements"></a>最小要件
 
 Windows Hybrid Runbook Worker の最小要件は次のようになります。
 
-* Windows Server 2012 またはそれ以降
 * Windows PowerShell 5.1 以降 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))
 * .NET Framework 4.6.2 以降。
 * 2 コア
@@ -51,23 +75,46 @@ Windows Hybrid Runbook Worker の最小要件は次のようになります。
 
 Hybrid Runbook Worker のその他のネットワーク要件については、[ネットワークの構成](automation-hybrid-runbook-worker.md#network-planning)に関するページを参照してください。
 
-### <a name="server-onboarding-for-management-with-state-configuration-dsc"></a>State Configuration (DSC) を使用した管理のためのサーバーのオンボード
+### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>Hybrid Runbook Worker グループへのマシンの追加
 
-State Configuration (DSC) による管理のためのサーバーのオンボードについては、[State Configuration (DSC) による管理のためのマシンのオンボード](automation-dsc-onboarding.md)に関するページを参照してください。
+Automation アカウントの Hybrid Runbook Worker グループに worker マシンを追加できます。 Azure Automation 機能と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用している場合、Automation Runbook をサポートする必要があることに注意してください。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
 
-[Update Management](automation-update-management.md) を有効にすると、Runbook の更新をサポートするために、Log Analytics ワークスペースに接続された Windows コンピューターはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このワーカーは、Automation アカウントで既に定義されている Hybrid Runbook Worker グループには登録されません。
+>[!NOTE]
+>Azure Automation [Update Management](update-management/update-mgmt-overview.md) を有効にすると、オペレーティング システムの更新の管理をサポートするために、Log Analytics ワークスペースに接続された Windows マシンはすべて Hybrid Runbook Worker として自動的に構成されます。 ただし、このワーカーは、Automation アカウントで既に定義されている Hybrid Runbook Worker グループには登録されません。
 
-### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>Hybrid Runbook Worker グループへのコンピューターの追加
+## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンの有効化
 
-ワーカー コンピューターを、Automation アカウントの Hybrid Runbook Worker グループに追加できます。 Azure Automation 機能と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用している場合、Automation Runbook をサポートする必要があることに注意してください。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
+Azure Automation State Configuration による管理のためのマシンの有効化については、[Azure Automation State Configuration による管理のためのマシンの有効化](automation-dsc-onboarding.md)に関する記事を参照してください。
+
+> [!NOTE]
+> Hybrid Runbook Worker ロールをサポートするマシンの構成を Desired State Configuration (DSC) を使用して管理するには、マシンを DSC ノードとして追加する必要があります。
+
+## <a name="windows-hybrid-runbook-worker-installation-options"></a>Windows Hybrid Runbook Worker のインストール オプション
+
+Windows Hybrid Runbook Worker をインストールして構成するには、次の方法のいずれかを使用します。
+
+* Azure VM の場合、[Windows 用仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して、Windows 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、Azure Resource Manager テンプレートまたは PowerShell を使用して仮想マシンが既存の Log Analytics ワークスペースに登録されます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループに VM を追加できます。
+
+* Azure 以外の VM の場合は、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/agent-windows.md)」の記事で説明されているデプロイ オプションを使用して、Windows 用の Log Analytics エージェントをインストールします。 複数のマシンにこのプロセスを繰り返して、複数の worker を環境に追加できます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループに VM を追加できます。
+
+* 1 つ以上の Windows マシンの構成プロセスを完全に[自動化](#automated-deployment)するには、提供された PowerShell スクリプトを使用します。 データセンターまたは他のクラウド環境のマシンの場合、この方法をお勧めします。
 
 ## <a name="automated-deployment"></a>自動化されたデプロイ
 
-ターゲット マシン上で、Windows Hybrid Worker ロールのインストールと構成を自動化するために、次の手順を実行します。
+ターゲット マシン上で、PowerShell スクリプト **New-OnPremiseHybridWorker.ps1** を使用して Windows Hybrid Worker ロールのインストールと構成を自動化するために、次の手順を実行します。 スクリプトでは、次の手順が実行されます。
+
+* 必要なモジュールをインストールする
+* Azure アカウントを使用してサインインする
+* 指定されたリソース グループと Automation アカウントが存在することを確認する
+* Automation アカウント属性への参照を作成する
+* Azure Monitor Log Analytics ワークスペースを作成する (指定されていない場合)
+* ワークスペースで Azure Automation ソリューションを有効にする
+* Windows 用 Log Analytics エージェントをダウンロードしてインストールする
+* マシンを Hybrid Runbook Worker として登録する
 
 ### <a name="step-1---download-the-powershell-script"></a>手順 1 - PowerShell スクリプトをダウンロードする
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker)から **New-OnPremiseHybridWorker.ps1** スクリプトをダウンロードします。 ダウンロードは、Hybrid Runbook Worker ロールが実行されているコンピューターまたは環境内の別のコンピューターから直接行う必要があります。 スクリプトをダウンロードしたら、それをワーカーにコピーします。 **New-OnPremiseHybridWorker.ps1** スクリプトでは、実行中に以下で説明するパラメーターが使用されます。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker)から **New-OnPremiseHybridWorker.ps1** スクリプトをダウンロードします。 スクリプトをダウンロードしたら、ターゲット マシン上でコピーまたは実行します。 **New-OnPremiseHybridWorker.ps1** スクリプトでは、実行中に以下で説明するパラメーターが使用されます。
 
 | パラメーター | Status | 説明 |
 | --------- | ------ | ----------- |
@@ -80,12 +127,9 @@ State Configuration (DSC) による管理のためのサーバーのオンボー
 | `TenantID` | 省略可能 | Automation アカウントに関連付けられているテナント組織の識別子。 |
 | `WorkspaceName` | 省略可能 | Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。 |
 
-> [!NOTE]
-> 機能を有効にすると、Azure Automation では、Log Analytics ワークスペースと Automation アカウントのリンクに特定のリージョンのみがサポートされます。 サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。
-
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>手順 2 - Windows PowerShell コマンド ウィンドウを開く
 
-**スタート**画面から、管理者モードで **Windows PowerShell** を開きます。
+**[スタート]** メニューから、 **[スタート]** をクリックして「**PowerShell**」と入力し、 **[Windows PowerShell]** を右クリックして、 **[管理者として実行]** をクリックします。
 
 ### <a name="step-3---run-the-powershell-script"></a>手順 3 - PowerShell スクリプトを実行する
 
@@ -94,62 +138,50 @@ PowerShell コマンドライン シェルで、ダウンロードしたスク�
 スクリプトの実行後、Azure での認証が求められます。 サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用してサインインする必要があります。
 
 ```powershell-interactive
-.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> -AAResourceGroupName <NameofResourceGroup>`
--OMSResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
--SubscriptionID <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
+$NewOnPremiseHybridWorkerParameters = @{
+  AutomationAccountName = <nameOfAutomationAccount>
+  AAResourceGroupName   = <nameOfResourceGroup>
+  OMSResourceGroupName  = <nameOfResourceGroup>
+  HybridGroupName       = <nameOfHRWGroup>
+  SubscriptionID        = <subscriptionId>
+  WorkspaceName         = <nameOfLogAnalyticsWorkspace>
+}
+.\New-OnPremiseHybridWorker.ps1 @NewOnPremiseHybridWorkerParameters
 ```
 
 ### <a name="step-4---install-nuget"></a>手順 4 - NuGet をインストールする
 
-NuGet をインストールし、Azure 資格情報で認証するように求められます。 最新の NuGet バージョンをお持ちでない場合は、[使用可能な NuGet ディストリビューション バージョン](https://www.nuget.org/downloads)から入手できます。
+NuGet をインストールし、Azure 資格情報で認証するように求められます。 最新の NuGet バージョンをお持ちでない場合は、[使用可能な NuGet ディストリビューション バージョン](https://www.nuget.org/downloads)からダウンロードできます。
 
 ### <a name="step-5---verify-the-deployment"></a>手順 5 - デプロイを検証する
 
-スクリプトが完了すると、[ハイブリッド Worker グループ] ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数が増分されます。 [ハイブリッド worker グループ] ページ上にあるリストからグループを選択し、 **[ハイブリッド Worker]** タイルを選択できます。 [ハイブリッド Worker] ページでは、グループの各メンバーの一覧を見ることができます。
+スクリプトが終了すると、Automation アカウントの [ハイブリッド Worker グループ] ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数が増分されます。 [ハイブリッド worker グループ] ページ上にあるリストからグループを選択し、 **[ハイブリッド Worker]** タイルを選択できます。 [ハイブリッド Worker] ページでは、グループの各メンバーの一覧を見ることができます。
 
 ## <a name="manual-deployment"></a>手動デプロイ
 
-ターゲット マシンで、最初の 2 つの手順を Automation 環境に対して 1 回実行します。 その後、各ワーカー コンピューターに対して残りの手順を実行します。
+Windows Hybrid Runbook Worker をインストールして構成するには、次の手順を実行します。
 
-### <a name="step-1---create-a-log-analytics-workspace"></a>手順 1 - Log Analytics ワークスペースを作成する
+### <a name="step-1---verify-agent-is-reporting-to-workspace"></a>手順 1 - エージェントがワークスペースにレポートを送信していることを確認する
 
-Log Analytics ワークスペースがまだない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。
-
-### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>手順 2 - Log Analytics ワークスペースに Azure Automation 機能を追加する
-
-Automation 機能は、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。 ソリューションを Log Analytics ワークスペースに追加すると、次の手順で説明するように、インストールするワーカー コンポーネントがエージェント コンピューターに自動的にプッシュされます。
-
-ワークスペースに Automation ソリューションを追加するには、次の PowerShell コマンドレットを実行します。
-
-```powershell-interactive
-Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true -DefaultProfile <IAzureContextContainer>
-```
-
-### <a name="step-3---install-the-log-analytics-agent-for-windows"></a>手順 3 - Windows 用 Log Analytics エージェントをインストールする
-
-Windows 用 Log Analytics エージェントにより、コンピューターが Azure Monitor Log Analytics ワークスペースに接続されます。 コンピューターにエージェントをインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
-
-コンピューターにエージェントをインストールするには、[Azure Monitor ログへの Windows コンピューターの接続](../log-analytics/log-analytics-windows-agent.md)に関する記事の手順に従います。 コンピューターごとにこのプロセスを繰り返して、複数の worker を環境に追加できます。
+Windows 用 Log Analytics エージェントにより、マシンが Azure Monitor Log Analytics ワークスペースに接続されます。 マシンにエージェントをインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
 
 エージェントが Log Analytics ワークスペースに正常に接続されたら、数分後に次のクエリを実行して、ワークスペースにハートビート データが送信されていることを確認できます。
 
 ```kusto
 Heartbeat 
-| where Category == "Direct Agent" 
+| where Category == "Direct Agent"
 | where TimeGenerated > ago(30m)
 ```
 
-検索結果には、コンピューターのハートビート レコードが表示されます。これにより、エージェントがサービスに接続され、レポートが送信されていることが示されます。 既定では、各エージェントからその割り当て済みのワークスペースにハートビート レコードが転送されます。 
+検索結果には、マシンのハートビート レコードが表示されます。これにより、エージェントがサービスに接続され、レポートが送信されていることが示されます。 既定では、各エージェントからその割り当て済みのワークスペースにハートビート レコードが転送されます。 エージェントのインストールとセットアップを完了するには、次の手順を使用します。
 
-エージェントのインストールとセットアップを完了するには、次の手順を使用します。
+1. エージェント マシンを追加するには、この機能を有効にします。 Update Management と Azure VM については、「[Automation アカウントから Update Management を有効にする](update-management/update-mgmt-enable-automation-account.md)」、[Azure portal を参照して Update Management を有効にする方法](update-management/update-mgmt-enable-portal.md)に関するページ、「[Runbook から Update Management を有効にする](update-management/update-mgmt-enable-runbook.md)」、または「[Azure VM から Update Management を有効にする](update-management/update-mgmt-enable-vm.md)」を参照してください。 変更履歴と VM については「[Azure VM の有効化](automation-enable-changes-from-auto-acct.md#enable-azure-vms)」を、Azure 以外の VMについては「[ワークスペースでのマシンの有効化](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)」を参照してください。
 
-1. ソリューションを有効にしてエージェントマシンをオンボードできるようにします。 「[ワークスペースでのマシンの配布準備](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace)」を参照してください。
-2. エージェントにより Automation ソリューションが正しくダウンロードされたことを確認します。 
-3. Hybrid Runbook Worker のバージョンを確認するには、**C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation** を参照し、**version** サブフォルダーをメモします。
+2. Hybrid Runbook Worker のバージョンを確認するには、`C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` を参照し、**version** サブフォルダーを確認します。
 
-### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>手順 4 - Runbook 環境をインストールして、Azure Automation に接続する
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>手順 2 - Runbook 環境をインストールして、Azure Automation に接続する
 
-Log Analytics ワークスペースにレポートを送信するようにエージェントを構成すると、Automation ソリューションは、`Add-HybridRunbookWorker` cmdlet コマンドレットを含む `HybridRegistration` PowerShell モジュールをプッシュダウンします。 コンピューターに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
+Log Analytics ワークスペースにレポートを送信するようにエージェントを構成すると、Azure Automation 機能により、`Add-HybridRunbookWorker` コマンドレットを含む `HybridRegistration` PowerShell モジュールがプッシュダウンされます。 マシンに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
 
 管理者モードで PowerShell セッションを開き、次のコマンドを実行してモジュールをインポートします。
 
@@ -161,42 +193,47 @@ Import-Module .\HybridRegistration.psd1
 次に、次の構文を使用して `Add-HybridRunbookWorker` コマンドレットを実行します。
 
 ```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
+Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 ```
 
-このコマンドレットに必要な情報は、Azure portal の [キーの管理] ページから取得できます。 このページを開くには、Automation アカウントの [設定] ページで **[キー]** を選択します。
+パラメーター `Url` と `Key` に必要な情報は、Automation アカウントの **[キー]** ページから取得できます。 ページの左側にある **[アカウントの設定]** セクションで **[キー]** を選択します。
 
 ![キーの管理ページ](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* `GroupName` パラメーターには、Hybrid Runbook Worker グループの名前を使用します。 Automation アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。 このグループが存在しない場合は、追加されます。
-* `EndPoint` パラメーターには、[キーの管理] ページの **[URL]** エントリを使用します。
-* `Token` パラメーターには、[キーの管理] ページの **[プライマリ アクセス キー]** エントリを使用します。
+* `Url` パラメーターには、 **[URL]** の値をコピーします。
+
+* `Key` パラメーターには、 **[プライマリ アクセス キー]** の値をコピーします。
+
+* `GroupName` パラメーターには、Hybrid Runbook Worker グループの名前を使用します。 Automation アカウントにこのグループが既に存在する場合は、現在のマシンがそれに追加されます。 このグループが存在しない場合は、追加されます。
+
 * 必要に応じて、`Verbose` パラメーターを設定して、インストールの詳細を取得します。
 
-### <a name="step-5----install-powershell-modules"></a>手順 5 - PowerShell モジュールをインストールする
+### <a name="step-3----install-powershell-modules"></a>手順 3 - PowerShell モジュールをインストールする
 
-Runbook は、Azure Automation 環境にインストールされているモジュールで定義されているアクティビティとコマンドレットをすべて使用できます。 これらのモジュールはオンプレミス コンピューターに自動的に配置されないため、手動でインストールする必要があります。 Azure モジュールは例外です。 このモジュールは既定でインストールされ、すべての Azure サービスのコマンドレットと Azure Automation のアクティビティにアクセスできます。
+Runbook は、Azure Automation 環境にインストールされているモジュールで定義されているアクティビティとコマンドレットをすべて使用できます。 これらのモジュールはオンプレミス マシンに自動的に配置されないため、手動でインストールする必要があります。 Azure モジュールは例外です。 このモジュールは既定でインストールされ、すべての Azure サービスのコマンドレットと Azure Automation のアクティビティにアクセスできます。
 
-Hybrid Runbook Worker の主な目的はローカル リソースを管理することであるため、ほとんどの場合、これらのリソースをサポートするモジュール (特に `PowerShellGet` モジュール) をインストールする必要があります。 Windows PowerShell モジュールのインストールについては、「[Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)」を参照してください。
+Hybrid Runbook Worker の主な目的はローカル リソースを管理することであるため、ほとんどの場合、これらのリソースをサポートするモジュール (特に `PowerShellGet` モジュール) をインストールする必要があります。 Windows PowerShell モジュールのインストールについては、「[Windows PowerShell](/powershell/scripting/developer/windows-powershell)」を参照してください。
 
-インストールされるモジュールは `PSModulePath` 環境変数によって参照されている場所に置き、ハイブリッド worker が自動的にインポートできるようにする必要があります。 詳細については、「[PSModulePath にモジュールをインストールする](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)」を参照してください。
+インストールされるモジュールは `PSModulePath` 環境変数によって参照されている場所に置き、ハイブリッド worker が自動的にインポートできるようにする必要があります。 詳細については、「[PSModulePath にモジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)」を参照してください。
 
-## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>オンプレミスの Windows コンピューターから Hybrid Runbook Worker を削除する
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>オンプレミスの Windows マシンから Hybrid Runbook Worker を削除する
 
 1. Azure Portal で、Automation アカウントに移動します。
+
 2. **[アカウント設定]** で、 **[キー]** を選択し、 **[URL]** と **[プライマリ アクセス キー]** の値をメモします。
 
 3. 管理者モードで PowerShell セッションを開き、その URL とプライマリ アクセス キーの値を使用して、次のコマンドを実行します。 削除処理の詳細なログを取得するには、 `Verbose` パラメーターを使用します。 ハイブリッド Worker グループから古いコンピューターを削除するには、省略可能な `machineName` パラメーターを使用します。
 
 ```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
 ```
 
 ## <a name="remove-a-hybrid-worker-group"></a>ハイブリッド worker グループを削除する
 
-Hybrid Runbook Worker グループを削除するには、まず、グループのメンバーであるすべてのコンピューターから Hybrid Runbook Worker を削除する必要があります。 その後、次の手順を使用してグループを削除します。
+Hybrid Runbook Worker グループを削除するには、まず、グループのメンバーであるすべてのマシンから Hybrid Runbook Worker を削除する必要があります。 その後、次の手順を使用してグループを削除します。
 
 1. Azure ポータルで Automation アカウントを開きます。
+
 2. **[プロセス オートメーション]** で **[ハイブリッド Worker グループ]** を選択します。 削除するグループを選択します。 そのグループの [プロパティ] ページが表示されます。
 
    ![[プロパティ] ページ](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
@@ -210,5 +247,5 @@ Hybrid Runbook Worker グループを削除するには、まず、グループ�
 ## <a name="next-steps"></a>次のステップ
 
 * オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
-* Hybrid Runbook Worker をトラブルシューティングする方法については、[Windows Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#windows)に関する記事を参照してください。
 
+* Hybrid Runbook Worker のトラブルシューティングを行う方法については、「[Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#general)」を参照してください。

@@ -4,15 +4,15 @@ description: Azure Application Gateway の TLS ポリシーを構成し、バッ
 services: application gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 871cb930e867002d8af1e7755de27d4873327543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253632"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>Application Gateway の TLS ポリシーの概要
 

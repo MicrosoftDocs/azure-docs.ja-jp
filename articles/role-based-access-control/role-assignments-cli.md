@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 95ec9a25f97154d8e2d0e2e5b5f9cd29cf7a9c31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983327"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure でのロールの割り当てを追加または削除する
 
@@ -69,7 +69,7 @@ Azure RBAC でアクセス権を付与するには、ロールの割り当てを
 リソース グループのスコープでユーザーにロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
 次の例では、*pharma-sales* リソース グループのスコープで、*patlong\@contoso.com* ユーザーに "*仮想マシンの共同作成者*" ロールを付与します。
@@ -94,7 +94,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 ロール名ではなく一意のロール ID を使用してロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。
 
 ```azurecli
-az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
 次の例では、*pharma-sales* リソース グループ スコープで、*patlong\@contoso.com* ユーザーに[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが付与されます。 一意のロール ID を取得するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用するか、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。
@@ -108,7 +108,7 @@ az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee
 グループにロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 グループのオブジェクト ID を取得する方法については、「[オブジェクト ID を取得する](#get-object-ids)」を参照してください。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 次の例では、*Ann Mack Team* グループ (ID 22222222-2222-2222-2222-222222222222) に、サブスクリプション スコープで "*閲覧者*" ロールが割り当てられます。
@@ -132,7 +132,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 アプリケーションにロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 アプリケーションのオブジェクト ID を取得する方法については、「[オブジェクト ID を取得する](#get-object-ids)」を参照してください。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup}
 ```
 
 次の例では、*pharma-sales* リソース グループのスコープで、オブジェクト ID 44444444-4444-4444-4444-444444444444 を使ってアプリケーションに "*仮想マシンの共同作成者*" ロールを割り当てています。
@@ -146,7 +146,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 サブスクリプションのスコープでユーザーにロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 サブスクリプション ID を取得するには、Azure portal の **[サブスクリプション]** ブレードで確認するか、[az account list](/cli/azure/account#az-account-list) を使用できます。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --subscription {subscriptionNameOrId}
 ```
 
 次の例では、サブスクリプション スコープで *annm\@example.com* ユーザーに*閲覧者*ロールを割り当てます。
@@ -160,7 +160,7 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 管理グループのスコープでユーザーにロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 管理グループ ID を取得するには、Azure portal の **[管理グループ]** ブレードで確認するか、[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用します。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --scope /providers/Microsoft.Management/managementGroups/{groupId}
 ```
 
 次の例では、管理グループ スコープで *alain\@example.com* ユーザーに*課金データ閲覧者*ロールを割り当てます。
@@ -176,7 +176,7 @@ az role assignment create --role "Billing Reader" --assignee alain@example.com -
 ロールの割り当てを追加するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用し、`--assignee-object-id` の値を指定してから、`--assignee-principal-type` を `ServicePrincipal` に設定します。
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --assignee-principal-type {assigneePrincipalType} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 次の例では、*pharma-sales* リソース グループ スコープで、*msi-test* マネージド ID に "*仮想マシン共同作成者*" ロールを割り当てます。
@@ -190,7 +190,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 Azure RBAC でアクセス権を削除するには、[az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) を使用してロールの割り当てを削除します。
 
 ```azurecli
-az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
+az role assignment delete --assignee {assignee} --role {roleNameOrId} --resource-group {resourceGroup}
 ```
 
 次の例では、*pharma-sales* リソース グループの *patlong\@contoso.com* ユーザーから、"*仮想マシンの共同作成者*" ロールの割り当てを削除します。

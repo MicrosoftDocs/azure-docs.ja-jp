@@ -10,12 +10,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 2ed84dfdfcabafe7222b8cb64a853ed04e2335a2
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: a1c16e8dd2a9b00e726dd527137bde4c059edae2
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78944164"
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86243020"
 landingContent:
 - title: API Management について
   linkLists:
@@ -60,12 +60,14 @@ landingContent:
   - linkListType: sample
     links:
     - text: ポリシー
-      url: policy-samples.md
+      url: ./policies/index.md
     - text: Azure PowerShell
       url: powershell-samples.md
-- title: Architecture
+    - text: Azure Policy の組み込み
+      url: ./policy-samples.md
+- title: アーキテクチャ
   linkLists:
   - linkListType: architecture
     links:
     - text: 基本的なエンタープライズ統合
-      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
+      url: /azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration

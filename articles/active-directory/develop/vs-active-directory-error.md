@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b437e3117540719c8c0adc5701ac1a5e934340b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886094"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114474"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
@@ -33,26 +33,30 @@ Azure Active Director 接続済みサービスを使って以前の認証コー�
 
 MVC プロジェクトの場合、接続済みサービスは、以前にサービスを使用して構成された次の設定のいずれかが存在するかどうかを確認します。
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:AADInstance" value="" />
-    <add key="ida:PostLogoutRedirectUri" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:AADInstance" value="" />
+<add key="ida:PostLogoutRedirectUri" value="" />
+```
 
 さらに、以前に接続済みサービスを使用して構成された、Web API プロジェクトの次の設定のいずれかが存在するかどうかを確認します。
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:Audience" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:Audience" value="" />
+```
 
 ## <a name="incompatible-authentication-code"></a>互換性のない認証コード
 
 最後に、接続済みサービスは、Visual Studio の以前のバージョンで構成された認証コードのバージョンを検出しようと試みます。 このエラーが発生した場合、プロジェクトで互換性のない認証の種類が検出されたことを表します。 接続済みサービスは、Visual Studio の以前のバージョンに対して次の種類の認証を検出します。
 
-* [Windows 認証]
+* Windows 認証
 * 個々のユーザー アカウント
 * 組織アカウント
 
-MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `authentication` ファイルで `web.config` 要素を探します。
+MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `web.config` ファイルで `authentication` 要素を探します。
 
 ```xml
 <configuration>
@@ -62,7 +66,7 @@ MVC プロジェクトで Windows 認証を検出するために、接続済み�
 </configuration>
 ```
 
-Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `IISExpressWindowsAuthentication` ファイルで `.csproj` 要素を探します。
+Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `.csproj` ファイルで `IISExpressWindowsAuthentication` 要素を探します。
 
 ```xml
 <Project>
@@ -92,4 +96,4 @@ Web API プロジェクトで Windows 認証を検出するために、接続済
 
 認証の種類を変更するには、互換性のない認証の種類を削除して、再度接続済みサービスの追加を試行します。
 
-詳細については、「 [Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。
+詳細については、「 [Azure AD の認証シナリオ](./authentication-vs-authorization.md)」を参照してください。

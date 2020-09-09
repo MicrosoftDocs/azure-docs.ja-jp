@@ -1,6 +1,6 @@
 ---
 title: クラウド サービスの構成方法 (ポータル) | Microsoft Docs
-description: Azure のクラウド サービスの構成方法について説明します。 クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。 これらの例では、Azure ポータルを使用します。
+description: Azure のクラウド サービスの構成方法について説明します。 クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。 これらの例では、Azure Portal を使用します。
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -8,16 +8,16 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811403"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223739"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services の構成方法
 
-クラウド サービスで最もよく使用される設定は Azure ポータルで構成できます。 また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。 どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
+クラウド サービスで最もよく使用される設定は Azure Portal で構成できます。 また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。 どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
 また、クラウド サービス ロールまたはリモート デスクトップのインスタンスを管理することもできます。
 
@@ -25,7 +25,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ## <a name="change-a-cloud-service"></a>クラウド サービスの変更
 
-[Azure ポータル](https://portal.azure.com/)を開いた後、クラウド サービスに移動します。 ここから、多くの部分を管理します。
+[Azure Portal](https://portal.azure.com/)を開いた後、クラウド サービスに移動します。 ここから、多くの部分を管理します。
 
 ![[設定] ページ](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
@@ -48,7 +48,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 クラウド サービスにアラートを追加できます。 **[設定]**  >  **[アラート ルール]**  >  **[アラートの追加]** の順にクリックします。
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![[設定] ウィンドウのスクリーンショット。[アラート ルール] オプションが赤で囲まれ、強調されています。[アラートの追加] オプションが赤で囲まれています。](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 ここでは、アラートをセットアップできます。 **[メトリック]** ドロップダウン ボックスの一覧で、次の種類のデータのアラートを設定できます。
 
@@ -58,7 +58,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * ネットワーク送信
 * CPU の割合
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![[アラート ルールの追加] ウィンドウのスクリーンショット。すべての構成オプションが設定されています。](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>メトリック タイルから監視を構成する
 
@@ -103,7 +103,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
-* [TLS または SSL 証明書](cloud-services-configure-ssl-certificate-portal.md)を構成する
+* [TLS/SSL 証明書](cloud-services-configure-ssl-certificate-portal.md)を構成する
 
 
 

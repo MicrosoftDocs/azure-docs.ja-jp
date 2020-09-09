@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7aa93d8ba21cafddc5511e16fa430b76942b1a6d
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668288"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653998"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
-Azure Kubernetes Service (AKS) でクラスターを管理するにあたっては、アプリケーションのアップタイムが重要になります。 既定で、AKS により [仮想マシン スケール セット (VMSS)](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) 内の複数のノードを使用して高可用性が提供されます。 しかし、これらの複数のノードでは、お使いのシステムはリージョン障害から保護されません。 アップタイムを最大化するには、ビジネス継続性の維持とディザスター リカバリーの準備について事前に計画を立てておきます。
+Azure Kubernetes Service (AKS) でクラスターを管理するにあたっては、アプリケーションのアップタイムが重要になります。 既定で、AKS により [仮想マシン スケール セット (VMSS)](../virtual-machine-scale-sets/overview.md) 内の複数のノードを使用して高可用性が提供されます。 しかし、これらの複数のノードでは、お使いのシステムはリージョン障害から保護されません。 アップタイムを最大化するには、ビジネス継続性の維持とディザスター リカバリーの準備について事前に計画を立てておきます。
 
 この記事では、AKS でのビジネス継続性とディザスター リカバリーに関する計画を立てる方法に重点を置いて説明します。 学習内容は次のとおりです。
 
@@ -33,8 +33,8 @@ Azure Kubernetes Service (AKS) でクラスターを管理するにあたって�
 
 AKS クラスターは、1 つのリージョンにデプロイされます。 リージョンの障害からシステムを保護するには、複数のリージョンにまたがる複数の AKS クラスターにアプリケーションをデプロイします。 AKS クラスターをデプロイする場所を計画するときには、次の点を考慮してください。
 
-* [**AKS リージョンの可能性**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability):ユーザーに近いリージョンを選択しましょう。 AKS では、継続的に新しいリージョンを展開しています。
-* [**Azure のペアになっているリージョン**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions):利用する地域に対して、相互にペアになった 2 つのリージョンを選択しましょう。 ペアになったリージョンでは、プラットフォームの更新が調整され、必要に応じて復旧作業の優先順位が付けられます。
+* [**AKS リージョンの可能性**](./quotas-skus-regions.md#region-availability):ユーザーに近いリージョンを選択しましょう。 AKS では、継続的に新しいリージョンを展開しています。
+* [**Azure のペアになっているリージョン**](../best-practices-availability-paired-regions.md):利用する地域に対して、相互にペアになった 2 つのリージョンを選択しましょう。 ペアになったリージョンでは、プラットフォームの更新が調整され、必要に応じて復旧作業の優先順位が付けられます。
 * **サービスの可用性**:ペアになったリージョンを、ホット/ホット、ホット/ウォーム、またはホット/コールドのいずれにするかを決定します。 両方のリージョンを同時に実行する場合、一方のリージョンをトラフィックの提供を開始する "*準備ができた*" 状態にするのか、 それとも一方のリージョンはトラフィックの提供を準備する時間が必要な状態にするのかを検討しましょう。
 
 AKS リージョンの可用性と、ペアになったリージョンは、複合的に考慮する必要があります。 AKS クラスターは、リージョンのディザスター リカバリーを連携的に管理するよう設計された、ペアのリージョンにデプロイするようにしましょう。 たとえば、AKS は "米国東部" と "米国西部" で利用できます。 これらのリージョンはペアになっています。 AKS の BC/DR 戦略を作成するときは、これらの 2 つのリージョンを選択します。
@@ -45,7 +45,7 @@ AKS リージョンの可用性と、ペアになったリージョンは、複�
 
 **ベスト プラクティス**: Azure Traffic Manager は、お客様を最も近い AKS クラスターおよびアプリケーション インスタンスに送ることができます。 パフォーマンスと冗長性を最大限に高めるため、すべてのアプリケーション トラフィックは、Traffic Manager を介して AKS クラスターへ送るようにします。
 
-複数のリージョンに複数の AKS クラスターがある場合は、Traffic Manager を使用して、各クラスターで実行されているアプリケーションにトラフィックをどのように送信するかを制御します。 [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) は、ネットワーク トラフィックをリージョン間で分散することができる、DNS ベースのトラフィック ロード バランサーです。 Traffic Manager を使用して、クラスターの応答時間、または地理的な場所に基づいてユーザーをルーティングします。
+複数のリージョンに複数の AKS クラスターがある場合は、Traffic Manager を使用して、各クラスターで実行されているアプリケーションにトラフィックをどのように送信するかを制御します。 [Azure Traffic Manager](../traffic-manager/index.yml) は、ネットワーク トラフィックをリージョン間で分散することができる、DNS ベースのトラフィック ロード バランサーです。 Traffic Manager を使用して、クラスターの応答時間、または地理的な場所に基づいてユーザーをルーティングします。
 
 ![Traffic Manager を使用する AKS](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
@@ -55,15 +55,15 @@ AKS リージョンの可用性と、ペアになったリージョンは、複�
 
 Traffic Manager は DNS 参照を実行して、ユーザーの最も適切なエンドポイントを返します。 入れ子になったプロファイルは、プライマリの場所の優先順位を付けることができます。 たとえば、ユーザーは通常、地理的に最も近いリージョンに接続します。 そのリージョンに問題がある場合、Traffic Manager は代わりにユーザーをセカンダリ リージョンに送ります。 この方法により、地理的に最も近いリージョンが利用できなくても、お客様はアプリケーション インスタンスに確実に接続することができます。
 
-エンドポイントとルーティングを設定する方法については、[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)に関する記事をご覧ください。
+エンドポイントとルーティングを設定する方法については、[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)に関する記事をご覧ください。
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したレイヤー 7 のアプリケーション ルーティング
+### <a name="application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したアプリケーション ルーティング
 
-Traffic Manager は、DNS (レイヤー 3) を使ってトラフィックのシェーピングを行います。 [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) には、HTTP/HTTPS (レイヤー 7) のルーティング オプションが用意されています。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
+[Azure Front Door Service](../frontdoor/front-door-overview.md) は、スプリット TCP ベースのエニーキャスト プロトコルを使用して、エンド ユーザーが最も近い Front Door POP (point of presence) にすぐに接続されるようにします。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>グローバル仮想ネットワーク ピアリングを使用してリージョンを相互接続する
 
-クラスターが相互に通信する必要がある場合、両方の仮想ネットワークを相互に接続するには、[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用して実現できます。 このテクノロジは、異なる地理的リージョンにまたがっていても、Microsoft のバックボーン ネットワーク全体で高帯域幅を提供して仮想ネットワークを相互に接続します。
+クラスターが相互に通信する必要がある場合、両方の仮想ネットワークを相互に接続するには、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を使用して実現できます。 このテクノロジは、異なる地理的リージョンにまたがっていても、Microsoft のバックボーン ネットワーク全体で高帯域幅を提供して仮想ネットワークを相互に接続します。
 
 AKS クラスターが実行されている仮想ネットワークをピアリングするための前提条件は、仮想ネットワーク ピアリングを介して Kubernetes サービスに到達できるように、AKS クラスター内で標準 Load Balancer を使用することです。
 
@@ -83,7 +83,7 @@ Container Registry の geo レプリケーションを使用して同じリー�
 * **信頼性の向上**:リージョンが利用できない場合、AKS クラスターは、使用可能なコンテナー レジストリからイメージをプルします。
 * **低コスト**:データセンター間のネットワーク エグレス料金が発生しません。
 
-geo レプリケーションは、*Premium* SKU コンテナー レジストリの機能です。 geo レプリケーションを構成する方法については、[Container Registry の geo レプリケーション](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)に関する記事をご覧ください
+geo レプリケーションは、*Premium* SKU コンテナー レジストリの機能です。 geo レプリケーションを構成する方法については、[Container Registry の geo レプリケーション](../container-registry/container-registry-geo-replication.md)に関する記事をご覧ください
 
 ## <a name="remove-service-state-from-inside-containers"></a>サービスの状態をコンテナー内から削除する
 
@@ -93,12 +93,12 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 状態は、外部化することも、状態を操作するコードと同じ場所に配置することもできます。 通常、状態の外部化は、ネットワーク上のさまざまなコンピューターで実行されている、または同一コンピューター上でアウト オブ プロセスを実行しているデータベースやその他のデータ ストアを使用して行います。
 
-コンテナーとマイクロサービスは、それらの内部で実行されているプロセスが状態を保持していないときに、回復性が最も高くなります。 アプリケーションにはほぼ常に何らかの状態が含まれるので、Azure Database for MySQL、Azure Database for PostgreSQL、または Azure SQL Database などの PaaS ソリューションを使用してください。
+コンテナーとマイクロサービスは、それらの内部で実行されているプロセスが状態を保持していないときに、回復性が最も高くなります。 アプリケーションにはほぼ常に何らかの状態が含まれるので、Azure Cosmos DB、Azure Database for PostgreSQL、Azure Database for MySQL、Azure SQL Database などの PaaS ソリューションを使用してください。
 
 ポータブル アプリケーションをビルドするには、次のガイドラインを参照してください。
 
 * [Twelve-Factor App Methodology](https://12factor.net/)
-* [Web アプリケーションを複数の Azure リージョンで実行する](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)
+* [Web アプリケーションを複数の Azure リージョンで実行する](/azure/architecture/reference-architectures/app-service-web-app/multi-region)
 
 ## <a name="create-a-storage-migration-plan"></a>ストレージ移行プランの作成
 
@@ -122,7 +122,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 Azure Managed Disks を使用している場合は、次のようなレプリケーションと DR ソリューションを選択することができます。
 
 * [Azure での Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure Backup](../backup/backup-overview.md)
 
 ### <a name="application-based-asynchronous-replication"></a>アプリケーションベースの非同期レプリケーション
 

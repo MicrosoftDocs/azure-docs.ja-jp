@@ -3,15 +3,15 @@ title: Azure CLI を使用して Linux 環境を作成する
 description: Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969560"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829018"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -324,7 +324,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
 ```
 
 ## <a name="create-a-virtual-nic"></a>仮想 NIC の作成
-仮想ネットワーク インターフェイス カード (NIC) は使用時に規則を適用可能なため、プログラム上で使用できます。 [VM サイズ](sizes.md)に応じて、複数の仮想 NIC を VM にアタッチできます。 次の [az network nic create](/cli/azure/network/nic) コマンドでは、*myNic* という名前の NIC を作成し、ネットワーク セキュリティ グループに関連付けます。 また、この仮想 NIC に *myPublicIP* というパブリック IP アドレスも関連付けています。
+仮想ネットワーク インターフェイス カード (NIC) は使用時に規則を適用可能なため、プログラム上で使用できます。 [VM サイズ](../sizes.md)に応じて、複数の仮想 NIC を VM にアタッチできます。 次の [az network nic create](/cli/azure/network/nic) コマンドでは、*myNic* という名前の NIC を作成し、ネットワーク セキュリティ グループに関連付けます。 また、この仮想 NIC に *myPublicIP* というパブリック IP アドレスも関連付けています。
 
 ```azurecli
 az network nic create \
@@ -550,13 +550,13 @@ sudo apt-get install -y nginx
 ![VM 上の既定 NGINX サイト](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>テンプレートとしてのエクスポート
-同じパラメーターを使用して追加の開発環境を作成する場合や、開発環境に合った運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 [JSON テンプレートを手動で構築](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group) を使って、リソース グループを次のようにエクスポートします。
+同じパラメーターを使用して追加の開発環境を作成する場合や、開発環境に合った運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 [JSON テンプレートを手動で構築](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json)できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group) を使って、リソース グループを次のようにエクスポートします。
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `az group export` コマンドに `--include-parameter-default-value` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
+このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `az group export` コマンドに `--include-parameter-default-value` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) します。
 
 テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment) を使います。
 
@@ -566,7 +566,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-[テンプレートからデプロイする方法に関する詳細](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご確認ください。 段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
+[テンプレートからデプロイする方法に関する詳細](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json)をご確認ください。 段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。 ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。

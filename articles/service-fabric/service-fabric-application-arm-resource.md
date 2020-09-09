@@ -3,12 +3,12 @@ title: Azure Resource Manager を使用したデプロイとアップグレー�
 description: Azure Resource Manager テンプレートを使用して Service Fabric クラスターにアプリケーションとサービスをデプロイする方法を説明します。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610252"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256511"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -261,13 +261,12 @@ Microsoft.ServiceFabric/clusters/application を ARM テンプレートから削
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Resource Manager を使用して既存のアプリケーションを管理する
 
-クラスターが既に稼働していて、Resource Manager のリソースとして管理したいアプリケーションのいくつかが既にデプロイされている場合は、それらのアプリケーションを削除してから再デプロイする代わりに、同じAPI の PUT 呼び出しを使用してアプリケーションを Resource Manager のリソースとして認識させることができます。 詳細については、「[Service Fabric アプリケーション リソース モデルとは](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)」を参照してください。
+クラスターが既に稼働していて、Resource Manager のリソースとして管理したいアプリケーションのいくつかが既にデプロイされている場合は、それらのアプリケーションを削除してから再デプロイする代わりに、同じAPI の PUT 呼び出しを使用してアプリケーションを Resource Manager のリソースとして認識させることができます。 詳細については、「[Service Fabric アプリケーション リソース モデルとは](./service-fabric-concept-resource-model.md)」を参照してください。
 
 > [!NOTE]
-> クラスターのアップグレードで異常なアプリを無視できるようにするには、"upgradeDescription/healthPolicy" セクションで "maxPercentUnhealthyApplications: 100" を指定します。すべての設定について詳しくは、[Service Fabrics REST API クラスター アップグレード ポリシーのドキュメント](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy) をご覧ください。
+> クラスターのアップグレードで異常なアプリを無視できるようにするには、"upgradeDescription/healthPolicy" セクションで "maxPercentUnhealthyApplications: 100" を指定します。すべての設定について詳しくは、[Service Fabrics REST API クラスター アップグレード ポリシーのドキュメント](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy) をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric CLI](service-fabric-cli.md) または [PowerShell](service-fabric-deploy-remove-applications.md) を使用して、他のアプリケーションをクラスターにデプロイします。 
 * [Service Fabric クラスターをアップグレードします](service-fabric-cluster-upgrade.md)。
-

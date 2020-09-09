@@ -1,5 +1,5 @@
 ---
-title: Azure Policy を使用して VM 拡張機能のインストールを制限する
+title: Azure Policy を使用して VM 拡張機能のインストールを制限する (Windows)
 description: Azure Policy を使用して拡張機能の展開を制限できます。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: b86429c90f436007116a45c6dbab443d6cc889e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069760"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy を使用して Windows VM への拡張機能のインストールを制限する
 
@@ -88,7 +88,6 @@ nano $home/clouddrive/parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -99,7 +98,7 @@ nano $home/clouddrive/parameters.json
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 
-ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) コマンドレットを使用してポリシー定義を作成します。
+ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition) コマンドレットを使用してポリシー定義を作成します。
 
  ポリシーの規則とパラメーターは、ご自身のクラウド シェルで、.json ファイルとして作成し格納したファイルです。
 
@@ -118,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>ポリシーを割り当てる
 
-この例では、[New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) を使用して、ポリシーをリソース グループに割り当てます。 **myResourceGroup** リソース グループに作成された VM はどれも、VM Access Agent やカスタム スクリプト拡張機能をインストールできません。 
+この例では、[New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) を使用して、ポリシーをリソース グループに割り当てます。 **myResourceGroup** リソース グループに作成された VM はどれも、VM Access Agent やカスタム スクリプト拡張機能をインストールできません。 
 
-[Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) コマンドレットを使用して、この例にあるものの代わりに使用するサブスクリプション ID を取得します。
+[Get-AzSubscription | Format-Table](/powershell/module/az.accounts/get-azsubscription) コマンドレットを使用して、この例にあるものの代わりに使用するサブスクリプション ID を取得します。
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"

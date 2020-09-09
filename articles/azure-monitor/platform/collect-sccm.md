@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655258"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319322"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
@@ -21,7 +21,7 @@ ms.locfileid: "77655258"
 Azure Monitor では、Configuration Manager の現在のブランチ バージョン 1606 以降がサポートされます。
 
 >[!NOTE]
->Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 この機能は、使用する前に有効にする必要があります。 詳細については、「[Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)」 (更新プログラムのオプション機能の有効化) を参照してください。
+>Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 この機能は、使用する前に有効にする必要があります。 詳細については、「[Enable optional features from updates](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)」 (更新プログラムのオプション機能の有効化) を参照してください。
 
 ## <a name="configuration-overview"></a>構成の概要
 
@@ -41,7 +41,7 @@ Azure Monitor では、Configuration Manager の現在のブランチ バージ�
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Configuration Manager に Log Analytics へのアクセス許可を付与する
 
-次の手順では、前に Configuration Manager 用に作成した AD アプリケーションとサービス プリンシパルに、Log Analytics ワークスペースの "*共同作成者*" ロールを付与します。 まだワークスペースがない場合は、続行する前に [Azure Monitor でのワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 これにより、Configuration Manager は認証を行って Log Analytics ワークスペースに接続できます。  
+次の手順では、前に Configuration Manager 用に作成した AD アプリケーションとサービス プリンシパルに、Log Analytics ワークスペースの "*共同作成者*" ロールを付与します。 まだワークスペースがない場合は、続行する前に [Azure Monitor でのワークスペースの作成](../learn/quick-create-workspace.md)に関するページを参照してください。 これにより、Configuration Manager は認証を行って Log Analytics ワークスペースに接続できます。  
 
 > [!NOTE]
 > Log Analytics ワークスペースへのアクセス許可を Configuration Manager に指定する必要があります。 そうしないと、Configuration Manager で構成ウィザードを使用するときにエラー メッセージが表示されます。
@@ -66,7 +66,7 @@ Azure Monitor では、Configuration Manager の現在のブランチ バージ�
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager を Log Analytics ワークスペースに接続する
 
 >[!NOTE]
-> Log Analytics 接続を追加するには、Configuration Manager 環境でオンライン モード用に[サービス接続ポイント](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point)を構成しておく必要があります。
+> Log Analytics 接続を追加するには、Configuration Manager 環境でオンライン モード用に[サービス接続ポイント](/configmgr/core/servers/deploy/configure/about-the-service-connection-point)を構成しておく必要があります。
 
 > [!NOTE]
 > 階層の最上層サイトを Azure Monitor に接続する必要があります。 スタンドアロン プライマリ サイトを Azure Monitor に接続した後で、環境に中央管理サイトを追加する場合は、接続を削除し、新しい階層内で接続を再作成する必要があります。
@@ -139,14 +139,15 @@ Log Analytics 接続を Configuration Manager に追加し、Configuration Manag
 
 ## <a name="view-data-from-configuration-manager"></a>Configuration Manager のデータを表示する
 
-Log Analytics 接続を Configuration Manager に追加し、Configuration Manager サービス接続ポイントのサイト システムの役割を実行しているコンピューターにエージェントをインストールすると、エージェントからのデータが Azure Monitor の Log Analytics ワークスペースに送信されます。 Azure Monitor で、Configuration Manager コレクションが[コンピューター グループ](../../azure-monitor/platform/computer-groups.md)として表示されます。 グループは、 **[Configuration Manager]** ページの **[設定] > [コンピューター グループ]** で見ることができます。
+Log Analytics 接続を Configuration Manager に追加し、Configuration Manager サービス接続ポイントのサイト システムの役割を実行しているコンピューターにエージェントをインストールすると、エージェントからのデータが Azure Monitor の Log Analytics ワークスペースに送信されます。 Azure Monitor で、Configuration Manager コレクションが[コンピューター グループ](./computer-groups.md)として表示されます。 グループは、 **[Configuration Manager]** ページの **[設定] > [コンピューター グループ]** で見ることができます。
 
 コレクションがインポートされると、コレクションのメンバーシップを持つコンピューターが何台検出されたかを確認できます。 インポートされたコレクションの数を確認することもできます。
 
 ![コンピューター グループ - [SCCM] タブ](./media/collect-sccm/sccm-computer-groups02.png)
 
-いずれかをクリックすると、ログ クエリ エディターが開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用すると、コレクション メンバーシップ データをさらに詳しく分析できます。
+いずれかをクリックすると、ログ クエリ エディターが開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログ検索](../log-query/log-query-overview.md)を使用すると、コレクション メンバーシップ データをさらに詳しく分析できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[ログの検索](../../azure-monitor/log-query/log-query-overview.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。
+[ログの検索](../log-query/log-query-overview.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。
+

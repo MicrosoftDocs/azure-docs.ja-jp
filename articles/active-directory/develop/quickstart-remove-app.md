@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bdcf32f53da49834b37471a8258262f0eb2b21da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215900"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115324"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームに登録されたアプリケーションを削除する
 
@@ -34,7 +34,7 @@ ms.locfileid: "79215900"
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>自分または自分の組織が作成したアプリケーションを削除する
 
-自分または自分の組織が登録したアプリケーションは、テナント内のアプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方で表されます。 詳細については、[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。
+自分または自分の組織が登録したアプリケーションは、テナント内のアプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方で表されます。 詳細については、[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](./app-objects-and-service-principals.md)に関するページを参照してください。
 
 ### <a name="to-remove-an-application"></a>アプリケーションを削除するには
 
@@ -49,7 +49,7 @@ ms.locfileid: "79215900"
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>他の組織が作成したアプリケーションを削除する
 
-テナントのコンテキストで **[アプリの登録]** を表示している場合、 **[すべてのアプリ]** タブに表示されるアプリケーションの一部は、別のテナントからのものであり、同意プロセス中にご自分のテナントに登録されました。 さらに具体的には、組織のテナントの中に対応するアプリケーション オブジェクトが存在せず、サービス プリンシパル オブジェクトのみによって表されるアプリケーションです。 アプリケーション オブジェクトとサービス プリンシパル オブジェクトの違いの詳細については、[Azure AD のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。
+テナントのコンテキストで **[アプリの登録]** を表示している場合、 **[すべてのアプリ]** タブに表示されるアプリケーションの一部は、別のテナントからのものであり、同意プロセス中にご自分のテナントに登録されました。 さらに具体的には、組織のテナントの中に対応するアプリケーション オブジェクトが存在せず、サービス プリンシパル オブジェクトのみによって表されるアプリケーションです。 アプリケーション オブジェクトとサービス プリンシパル オブジェクトの違いの詳細については、[Azure AD のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](./app-objects-and-service-principals.md)に関するページを参照してください。
 
 (同意を与えた後に) ディレクトリに対するアプリケーションのアクセス権を削除するには、会社の管理者がアプリケーションのサービス プリンシパルを削除する必要があります。 管理者にはグローバル管理者のアクセス権が必要です。Azure portal を使用してアプリケーションを削除するか、[Azure AD PowerShell コマンドレット](https://go.microsoft.com/fwlink/?LinkId=294151)を使用してアクセス許可を削除できます。
 

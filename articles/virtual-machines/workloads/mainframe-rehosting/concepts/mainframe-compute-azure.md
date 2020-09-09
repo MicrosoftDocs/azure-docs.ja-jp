@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76288933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998937"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>メインフレーム コンピューティングを Azure に移行する
 
@@ -94,13 +94,13 @@ M シリーズの VM は、128 vCPU までスケールアップできます (こ
 
 Azure ベースのソリューションの利点の 1 つは、スケールアウトする機能です。スケーリングにより、ほぼ無制限のコンピューティング キャパシティをアプリケーションに利用できます。 Azure では、コンピューティング パワーのスケールアウトに複数の方法がサポートされています。
 
-- **クラスター全体への負荷分散。** このシナリオでは、アプリケーションは[ロード バランサー](/azure/load-balancer/load-balancer-overview)またはリソース マネージャーを使用して、クラスター内の複数の VM 間にワークロードを分散させることができます。 より多くのコンピューティング キャパシティが必要な場合は、VM がクラスターに追加されます。
+- **クラスター全体への負荷分散。** このシナリオでは、アプリケーションは[ロード バランサー](../../../../load-balancer/load-balancer-overview.md)またはリソース マネージャーを使用して、クラスター内の複数の VM 間にワークロードを分散させることができます。 より多くのコンピューティング キャパシティが必要な場合は、VM がクラスターに追加されます。
 
-- **仮想マシン スケール セット。** このバースト シナリオでは、アプリケーションは、VM の使用量に基づいて追加される[コンピューティング リソース](/azure/virtual-machine-scale-sets/overview)にスケーリングできます。 需要が低下すると、スケール セット内の VM の数も減り、コンピューティング パワーの効率的な使用が保証されます。
+- **仮想マシン スケール セット。** このバースト シナリオでは、アプリケーションは、VM の使用量に基づいて追加される[コンピューティング リソース](../../../../virtual-machine-scale-sets/overview.md)にスケーリングできます。 需要が低下すると、スケール セット内の VM の数も減り、コンピューティング パワーの効率的な使用が保証されます。
 
-- **PaaS スケーリング。** Azure PaaS のオファリングでは、コンピューティング リソースがスケーリングされます。 たとえば、[Azure Service Fabric](/azure/service-fabric/service-fabric-overview) では、要求の量の増加に合わせてコンピューティング リソースが割り当てられます。
+- **PaaS スケーリング。** Azure PaaS のオファリングでは、コンピューティング リソースがスケーリングされます。 たとえば、[Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md) では、要求の量の増加に合わせてコンピューティング リソースが割り当てられます。
 
-- **Kubernetes クラスター。** Azure 上のアプリケーションでは、指定されたリソースに対するコンピューティング サービス用に [Kubernetes クラスター](/azure/aks/concepts-clusters-workloads)を使用できます。 Azure Kubernetes Service (AKS) は、Kubernetes ノード、プール、および Azure 上のクラスターを調整するマネージド サービスです。
+- **Kubernetes クラスター。** Azure 上のアプリケーションでは、指定されたリソースに対するコンピューティング サービス用に [Kubernetes クラスター](../../../../aks/concepts-clusters-workloads.md)を使用できます。 Azure Kubernetes Service (AKS) は、Kubernetes ノード、プール、および Azure 上のクラスターを調整するマネージド サービスです。
 
 コンピューティング リソースをスケールアウトする適切な方法を選択するには、Azure とメインフレームの違いを理解することが重要です。 要点は、コンピューティング リソースによってデータが共有される方法、または共有されるかどうか、です。 Azure では、通常 (既定では)、データは複数の VM によって共有されません。 スケールアウト コンピューティング クラスター内の複数の VM によってデータを共有する必要がある場合は、共有されるデータが、この機能をサポートするリソース内に存在する必要があります。 次のセクションで説明するように、Azure では、データの共有にはストレージが関係します。
 
@@ -115,7 +115,7 @@ Azure アーキテクチャでは処理の各レベルを最適化できます�
 ## <a name="next-steps"></a>次のステップ
 
 - [メインフレーム移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure 仮想マシンでのメインフレーム リホスト](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure 仮想マシンでのメインフレーム リホスト](../overview.md)
 - [メインフレーム ストレージを Azure に移動する](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM リソース

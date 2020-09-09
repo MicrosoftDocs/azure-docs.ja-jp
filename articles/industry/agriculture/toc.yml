@@ -17,6 +17,8 @@
       href: integration-patterns-in-azure-farmbeats.md
     - name: センサー パートナーの統合
       href: sensor-partner-integration-in-azure-farmbeats.md
+    - name: 気象パートナーの統合
+      href: weather-partner-integration-in-azure-farmbeats.md
     - name: 画像パートナーの統合
       href: imagery-partner-integration-in-azure-farmbeats.md
 - name: ハウツー ガイド
@@ -29,6 +31,8 @@
       href: manage-farms-in-azure-farmbeats.md
     - name: センサー データの取得
       href: get-sensor-data-from-sensor-partner.md
+    - name: 気象データの取得
+      href: get-weather-data-from-weather-partner.md
     - name: マップの生成
       href: generate-maps-in-azure-farmbeats.md
     - name: ルールの構成とアラートの管理

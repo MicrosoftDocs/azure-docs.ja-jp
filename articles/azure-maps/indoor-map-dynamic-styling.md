@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6d31edaea109f2969cc68c566594dc436be203d7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743541"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517299"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator の屋内マップに動的スタイル設定を実装する
 
@@ -21,7 +21,7 @@ Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 3. [Creator リソースを作成します](how-to-manage-creator.md)
 4. [サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
@@ -48,7 +48,7 @@ Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/
 /* Upon a mouse click, log the feature properties to the browser's console. */
 map.events.add("click", function(e){
 
-    var features = map.layers.getRenderedShapes(e.position, "indoor")
+    var features = map.layers.getRenderedShapes(e.position, "indoor");
 
     var result = features.reduce(function (ids, feature) {
         if (feature.layer.id == "indoor_unit_office") {

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82782620"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
@@ -96,7 +96,7 @@ IoT Edge エージェントには、モジュールのイメージにアクセ�
 
 コンテナー エンジンを再起動して更新を有効にします。
 
-| プラットフォーム | command |
+| プラットフォーム | コマンド |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (管理者用 PowerShell) | `Restart-Service iotedge-moby -Force` |
@@ -222,7 +222,7 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
    ![仮想マシンの DNS 名を構成する](./media/troubleshoot/configure-dns.png)
 
 3. **[DNS 名ラベル]** に値を指定し、 **[保存]** を選択します。
-4. 新しい DNS 名をコピーします。名前は **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** の形式である必要があります。
+4. 新しい DNS 名をコピーします。これは、 **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** の形式である必要があります。
 5. 仮想マシン内で、次のコマンドを使用して、実際の DNS 名によって IoT Edge ランタイムを設定します。
 
    * Linux の場合:

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77153878"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923400"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure Cognitive Search での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
 
@@ -42,7 +42,7 @@ OData 式は単純なものから複雑なものまで幅がありますが、�
 - **定数**: 特定のデータ型のリテラル値です。
 
 > [!NOTE]
-> Azure Cognitive Search の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure Cognitive Search で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure コグニティブ検索での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Cognitive Search の用語が使用されます。
+> Azure Cognitive Search の用語は、いくつかの点で [OData 標準](https://www.odata.org/documentation/)とは異なります。 Azure Cognitive Search で**フィールド**と呼ばれているものは、OData では**プロパティ**と呼ばれています。同様に、**フィールド パス**は**プロパティ パス**に相当します。 Azure Cognitive Search での**ドキュメント**を含む**インデックス**は、OData での**エンティティ**を含む**エンティティ セット**よりも広い意味で使用されています。 このリファレンス全体では、Azure Cognitive Search の用語が使用されます。
 
 ## <a name="field-paths"></a>フィールド パス
 
@@ -83,31 +83,33 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 `Address/City` というフィールド パスを検討します。 フィルターでは、これは現在のドキュメントの単一の都市、たとえば "San Francisco" (サンフランシスコ) を参照します。 一方、`Rooms/Type` は、多数の客室の `Type` サブフィールド (第 1 室は "標準"、第 2 室は "デラックス"、以下同様) を参照します。 `Rooms/Type` では、`Type` サブフィールドの "*単一のインスタンス*" は参照されないため、フィルター内で直接使用することはできません。 代わりに、客室の種類でフィルター処理するには、次のように[ラムダ式](search-query-odata-collection-operators.md)と範囲変数を使用します。
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 この例では、範囲変数 `room` が `room/Type` フィールド パスで使用されます。 これにより、`room/Type` で、現在のドキュメント内の現在の客室の種類が参照されます。 これは `Type` サブ フィールドの単一のインスタンスであるため、フィルター内で直接使用することができます。
 
 ### <a name="using-field-paths"></a>フィールド パスの使用
 
-フィールド パスは、[Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) の多数のパラメーターの中で使用されます。 次の表に、これらを使用できるすべての場所とその使用に関する制限を示します。
+フィールド パスは、[Azure Cognitive Search REST API](/rest/api/searchservice/) の多数のパラメーターの中で使用されます。 次の表に、これらを使用できるすべての場所とその使用に関する制限を示します。
 
 | API | パラメーター名 | 制限 |
 | --- | --- | --- |
-| インデックスの[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)または[更新](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | なし |
-| インデックスの[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)または[更新](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | **検索可能**フィールドのみを参照できます |
-| インデックスの[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)または[更新](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | **フィルター処理できる**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `queryType` が `full` の場合の `search` | **検索可能**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | **ファセット可能**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | **検索可能**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | **検索可能**フィールドのみを参照できます |
-| [Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions) と [Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | [suggester](index-add-suggesters.md) の一部であるフィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions)、および [Autocomplete](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | **フィルター処理できる**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) と [Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | **並べ替え可能**フィールドのみを参照できます |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents)、[Suggest](https://docs.microsoft.com/rest/api/searchservice/suggestions)、および [Lookup](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | **取得可能**フィールドのみを参照できます |
+| インデックスの[作成](/rest/api/searchservice/create-index)または[更新](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | なし |
+| インデックスの[作成](/rest/api/searchservice/create-index)または[更新](/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | **検索可能**フィールドのみを参照できます |
+| インデックスの[作成](/rest/api/searchservice/create-index)または[更新](/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | **フィルター処理できる**フィールドのみを参照できます |
+| [Search](/rest/api/searchservice/search-documents) | `queryType` が `full` の場合の `search` | **検索可能**フィールドのみを参照できます |
+| [Search](/rest/api/searchservice/search-documents) | `facet` | **ファセット可能**フィールドのみを参照できます |
+| [Search](/rest/api/searchservice/search-documents) | `highlight` | **検索可能**フィールドのみを参照できます |
+| [Search](/rest/api/searchservice/search-documents) | `searchFields` | **検索可能**フィールドのみを参照できます |
+| [Suggest](/rest/api/searchservice/suggestions) と [Autocomplete](/rest/api/searchservice/autocomplete) | `searchFields` | [suggester](index-add-suggesters.md) の一部であるフィールドのみを参照できます |
+| [Search](/rest/api/searchservice/search-documents)、[Suggest](/rest/api/searchservice/suggestions)、および [Autocomplete](/rest/api/searchservice/autocomplete) | `$filter` | **フィルター処理できる**フィールドのみを参照できます |
+| [Search](/rest/api/searchservice/search-documents) と [Suggest](/rest/api/searchservice/suggestions) | `$orderby` | **並べ替え可能**フィールドのみを参照できます |
+| [Search](/rest/api/searchservice/search-documents)、[Suggest](/rest/api/searchservice/suggestions)、および [Lookup](/rest/api/searchservice/lookup-document) | `$select` | **取得可能**フィールドのみを参照できます |
 
 ## <a name="constants"></a>定数
 
-OData では、定数は特定の [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) 型のリテラル値です。 Azure Cognitive Search でサポートされる型の一覧については、「[サポートされるデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。 コレクション型の定数はサポートされていません。
+OData では、定数は特定の [Entity Data Model](/dotnet/framework/data/adonet/entity-data-model) (EDM) 型のリテラル値です。 Azure Cognitive Search でサポートされる型の一覧については、「[サポートされるデータ型](/rest/api/searchservice/supported-data-types)」を参照してください。 コレクション型の定数はサポートされていません。
 
 次の表に、Azure Cognitive Search でサポートされている各データ型の定数の例を示します。
 
@@ -241,6 +243,6 @@ select_expression ::= '*' | field_path(',' field_path)*
 
 - [Azure Cognitive Search のファセット ナビゲーション](search-faceted-navigation.md)
 - [Azure Cognitive Search のフィルター](search-filters.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene クエリ構文](query-lucene-syntax.md)
 - [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)

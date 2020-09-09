@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/01/2020
 ms.author: apimpm
-ms.openlocfilehash: 9af20972a47e2d0ad20de62f1bb9d10e4d43563c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82702653"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252858"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>Azure API Management から Power Platform に API をエクスポートする 
 
@@ -29,7 +29,7 @@ Microsoft [Power Platform](https://powerplatform.microsoft.com) を使用する�
 
 + 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 + Power Platform にエクスポートしたい API が API Management インスタンスに存在することを確認する
-+ Power Apps または Power Automate [環境](https://docs.microsoft.com/powerapps/powerapps-overview#power-apps-for-admins)があることを確認する 
++ Power Apps または Power Automate [環境](/powerapps/powerapps-overview#power-apps-for-admins)があることを確認する 
 
 ## <a name="export-an-api"></a>API をエクスポートする
 
@@ -47,4 +47,4 @@ Microsoft [Power Platform](https://powerplatform.microsoft.com) を使用する�
 ## <a name="next-steps"></a>次のステップ
 
 * [Power Platform について理解を深める](https://powerplatform.microsoft.com/)
-* [チュートリアルに従って API Management の一般的なタスクを確認する](https://docs.microsoft.com/azure/api-management/import-and-publish)
+* [チュートリアルに従って API Management の一般的なタスクを確認する](./import-and-publish.md)

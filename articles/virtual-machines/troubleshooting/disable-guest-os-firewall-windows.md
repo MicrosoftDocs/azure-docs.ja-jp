@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774334"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009766"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にする
 
@@ -74,7 +74,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 #### <a name="mitigation-3-pstools-commands"></a>軽減策 3: PSTools コマンド
 
-1.  トラブルシューティング用の VM で、[PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)をダウンロードします。
+1.  トラブルシューティング用の VM で、[PSTools](/sysinternals/downloads/pstools)をダウンロードします。
 
 2.  CMD インスタンスを開き、その DIP を通して VM にアクセスします。
 

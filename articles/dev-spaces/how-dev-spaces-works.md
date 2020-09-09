@@ -1,16 +1,16 @@
 ---
 title: Azure Dev Spaces のしくみ
 services: azure-dev-spaces
-ms.date: 03/24/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234956"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212538"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces のしくみ
 
@@ -22,9 +22,9 @@ Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復�
 
 Azure Dev Spaces を使用すると、AKS クラスターのコンテキストで Kubernetes アプリケーションを開発、テスト、反復する手間が軽減されます。 この作業の削減により、開発者は、Kubernetes で実行するようにサービスを構成することではなく、アプリケーションのビジネス ロジックに集中することができます。
 
-### <a name="connect-your-development-machine-to-aks"></a>開発用コンピューターを AKS に接続する
+### <a name="local-process-with-kubernetes"></a>Local Process with Kubernetes
 
-Azure Dev Spaces を使用すると、開発用コンピューターを AKS クラスターに接続し、AKS クラスター上で実行されているかのように開発用コンピューター上でコードを実行したりデバッグしたりすることができます。 Azure Dev Spaces は、開発マシンとクラスターとの間でリモート エージェントとしてトラフィックをリダイレクトするポッドをクラスター上で実行することにより、接続された AKS クラスターとの間でトラフィックをリダイレクトします。 このようにトラフィックをリダイレクトすることで、開発用コンピューター上のコードと、AKS クラスターで実行されているサービスとが、同じ AKS クラスター内にあるかのように通信できます。 開発用コンピューターを AKS に接続する方法の詳細については、「[開発用コンピューターと AKS クラスターを接続する方法][how-it-works-connect]」を参照してください。
+Local Process with Kubernetes を使用すると、開発用コンピューターを Kubernetes クラスターに接続し、クラスター上で実行されているかのように開発用コンピューター上でコードを実行したりデバッグしたりすることができます。 Azure Dev Spaces は、開発用コンピューターとクラスターとの間でリモート エージェントとしてトラフィックをリダイレクトするポッドをクラスター上で実行することにより、接続されたクラスターとの間でトラフィックをリダイレクトします。 このようにトラフィックをリダイレクトすることで、開発用コンピューター上のコードと、クラスターで実行されているサービスとが、同じクラスター内にあるかのように通信できます。 開発用コンピューターを Kubernetes クラスターに接続する方法の詳細については、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」を参照してください。
 
 ### <a name="run-your-code-in-aks"></a>AKS でコードを実行する
 
@@ -46,14 +46,12 @@ Azure Dev Spaces を使用すると、チームは、クラウド ネイティ�
 
 実際にローカル開発用コンピューターを AKS クラスターに接続する方法については、「[開発用マシンを AKS クラスターに接続する][connect]」を参照してください。
 
-チーム開発のために Azure Dev Spaces の使用を開始するには、[Azure Dev Spaces でのチーム開発][quickstart-team]に関するクイックスタートを参照してください。
 
-[connect]: how-to/connect.md
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
+[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [routing]: #team-development

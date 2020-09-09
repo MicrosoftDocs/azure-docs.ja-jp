@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74869835"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132655"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
 
@@ -20,7 +20,7 @@ ms.locfileid: "74869835"
 
 一意キー ポリシーを使用してコンテナーを作成した後は、論理パーティション内に新しく項目を作成したり既存の項目を更新したりして重複項目を作成することは、一意キー制約で指定されているためできなくなります。 パーティション キーと一意キーを組み合わせることで、コンテナーのスコープ内にある項目の一意性が確保されます。
 
-たとえば、メール アドレスを一意キー制約にし、`CompanyID` をパーティション キーにして、Azure Cosmos コンテナーを作成するものとします。 ユーザーのメール アドレスを一意キーとして構成すると、各項目は特定の `CompanyID` 内で一意のメール アドレスを持つようになります。 重複する電子メール アドレスを同じパーティション キー値と組み合わせて、2 つの項目を作成することはできません。 
+たとえば、メール アドレスを一意キー制約にし、`CompanyID` をパーティション キーにして、Azure Cosmos コンテナーを作成するものとします。 ユーザーのメール アドレスを一意キーとして構成すると、各項目は特定の `CompanyID` 内で一意のメール アドレスを持つようになります。 重複する電子メール アドレスを同じパーティション キー値と組み合わせて、2 つの項目を作成することはできません。 Azure Cosmos DB の SQL (Core) API では、項目は JSON 値として保存されます。 これらの JSON 値では、大文字と小文字が区別されます。 プロパティを一意のキーとして選択すると、そのプロパティに大文字と小文字を区別する値を挿入できます。 たとえば、name プロパティに一意のキーが定義されている場合、"Gaby" は "gaby" とは異なるため、これらの両方をコンテナーに挿入できます。
 
 メール アドレスは同じでも、姓と名とメール アドレスは異なる項目を作成するには、一意キー ポリシーにさらにパスを追加します。 つまり、メール アドレスだけに基づいて一意なキーを作成するのではなく、姓、名、メール アドレスの組み合わせを使用して、一意キーを作成することもできます。 このキーは、複合一意キーと呼ばれます。 その場合、指定した `CompanyID` 内では、3 つの値の一意な組み合わせだけが使用できるようになります。 
 

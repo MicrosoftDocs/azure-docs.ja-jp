@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113155"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717879"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -41,7 +41,7 @@ Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使�
 * デバイスにネットワーク リソースへの無制限のアクセスを許可するか制限付きアクセスを許可するかを決定する、ネットワーク アクセス保護 (NAP) クライアント正常性ポリシーを制定し、強制できます。
 
 * 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する方法を提供できます。
-  詳細については、「[Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」(ネットワーク ポリシー サーバー) を参照してください。
+  詳細については、「[Network Policy Server](/windows-server/networking/technologies/nps/nps-top)」(ネットワーク ポリシー サーバー) を参照してください。
 
 組織がセキュリティを強化し、高水準のコンプライアンスを実現するには、NPS を Azure Multi-Factor Authentication と統合して、ユーザーが 2 段階認証を使用して VPN サーバーの仮想ポートに接続する方法があります。 ユーザーはアクセスの許可を得るために、ユーザー名とパスワードの組み合わせを、ユーザーが管理している他の情報と共に提供する必要があります。 これは、信頼できる、簡単に複製できない情報にする必要があります。 たとえば、携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなどです。
 
@@ -94,7 +94,7 @@ Azure の NPS 拡張機能を NPS と統合した場合、正常な認証フロ�
 
 ネットワーク ポリシーとアクセス サービスは、RADIUS サーバーと RADIUS クライアントの機能を提供します。 この記事では、環境内のメンバー サーバーまたはドメイン コントローラーにネットワーク ポリシーとアクセス サービス ロールがインストールされていることを前提としています。 このガイドで、VPN 構成の RADIUS を構成します。 ネットワーク ポリシーとアクセス サービス ロールは、VPN サーバー*以外の*サーバーにインストールします。
 
-Windows Server 2012 以降にネットワーク ポリシーとアクセス サービス ロール サービスをインストールする方法については、「[Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx)」(NAP 正常性ポリシー サーバーのインストール) を参照してください。 Windows Server 2016 では、NAP は非推奨となります。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS](https://technet.microsoft.com/library/cc771746)」(NPS のベスト プラクティス) を参照してください。
+Windows Server 2012 以降にネットワーク ポリシーとアクセス サービス ロール サービスをインストールする方法については、「[Install a NAP Health Policy Server](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10))」(NAP 正常性ポリシー サーバーのインストール) を参照してください。 Windows Server 2016 では、NAP は非推奨となります。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10))」(NPS のベスト プラクティス) を参照してください。
 
 ### <a name="azure-mfa-license"></a>Azure MFA のライセンス
 
@@ -228,9 +228,9 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 2. サーバー マネージャーで **[ツール]** を選択し、 **[ルーティングとリモート アクセス]** を選択します。
 
-3. **[ルーティングとリモート アクセス]** ウィンドウで、 **[\<サーバー名> (ローカル)]** を右クリックし、 **[プロパティ]** を選択します。
+3. **[ルーティングとリモート アクセス]** ウィンドウで、 **[\<server name> (ローカル)]** を右クリックし、 **[プロパティ]** を選択します。
 
-4. **[\<サーバー名> (ローカル) のプロパティ]** ウィンドウで、 **[セキュリティ]** タブを選択します。
+4. **[\<server name> (ローカル) のプロパティ]** ウィンドウで、 **[セキュリティ]** タブを選択します。
 
 5. **[セキュリティ]** タブで、 **[認証プロバイダー]** の **[RADIUS 認証]** を選択し、 **[構成]** を選択します。
 
@@ -245,9 +245,9 @@ NPS ロールがメンバー サーバーにインストールされている場
     b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
 
     c. **[タイムアウト (秒)]** ボックスで、値として「**30**」を入力します。  
-    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。
+    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。 VPN やリージョンによっては、ユーザーが複数の通話を受けられないように、タイムアウト設定が 30 秒を超える必要があります。 この問題が発生した場合は、問題が再発しなくなるまで **[タイムアウト (秒)]** 値を 30 秒単位で増やします。
 
-    ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
 8. **[OK]** を選択します。
 
@@ -308,31 +308,33 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 このセクションでは、VPN サーバーでのクライアント認証に MFA を使用するように VPN を構成する手順について説明します。
 
+> [!NOTE]
+> REQUIRE_USER_MATCH レジストリ キーでは、大文字と小文字が区別されます。 値はすべて大文字の形式で設定する必要があります。
+>
+
 NPS 拡張機能をインストールして構成したら、このサーバーによって処理される RADIUS ベースのすべてのクライアント認証に MFA を使用する必要があります。 すべての VPN ユーザーを Azure Multi-Factor Authentication に登録していない場合、次のいずれかを実行できます。
 
 * 別の RADIUS サーバーを設定して、MFA を使用するように構成されていないユーザーを認証します。
 
 * ユーザーが Azure Multi-Factor Authentication に登録されている場合、チャレンジされたユーザーが 2 つ目の認証要素を提供できるようにするレジストリ エントリを作成します。
 
-_HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新しい文字列値を作成し、値を *True* または *False* に設定します。
+_HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新しい文字列値を作成し、値を *TRUE* または *FALSE* に設定します。
 
 ![[ユーザー照合が必要] 設定](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-値が *True* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *False* に設定されている場合は、Azure Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *False* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
+値が *TRUE* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *FALSE* に設定されている場合は、Azure Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *FALSE* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>Azure Active Directory GUID ID の取得
 
-NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの ID を入力する必要があります。 次の手順で ID を取得します。
+
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>Azure Active Directory テナント ID を取得する
+
+NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの ID を入力する必要があります。 テナント ID を取得するには、次の手順を実行します。
 
 1. Azure テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
+1. Azure portal のメニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
+1. **[概要]** ページに、"*テナント情報*" が表示されます。 次のスクリーンショットの例に示すように、 *[テナント ID]* の横にある **[コピー]** アイコンを選択します。
 
-2. Azure portal のメニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
-
-3. **[プロパティ]** を選択します。
-
-4. Azure AD ID をコピーするには、 **[コピー]** ボタンを選択します。
-
-    ![Azure portal での Azure AD ディレクトリ ID](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![Azure portal からのテナント ID の取得](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
 
@@ -386,7 +388,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 5. コマンド プロンプトに先ほどコピーしたテナント ID を貼り付け、Enter キーを押します。
 
-    ![以前にコピーした Azure AD ディレクトリ ID を入力する](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![前にコピーした Azure AD テナント ID の入力](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     スクリプトによって自己署名証明書が作成され、他の構成変更が実行されます。 出力は次の図のようになります。
 
@@ -412,7 +414,9 @@ Azure MFA で以前に構成したセカンダリ検証方法で認証に成功�
 
 Windows イベント ビューアーのログで成功したサインイン イベントを表示するには、次の PowerShell コマンドを入力して、NPS サーバーの Windows セキュリティ ログを照会します。
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![PowerShell セキュリティ イベント ビューアー](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +426,9 @@ Windows イベント ビューアーのログで成功したサインイン イ�
 
 Azure Multi-Factor Authentication の NPS 拡張機能がインストールされているサーバーで、拡張機能に固有のイベント ビューアーのアプリケーション ログ (*アプリケーションとサービス ログ\Microsoft\AzureMfa*) を確認できます。
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![イベント ビューアー AuthZ ログ ウィンドウの例](./media/howto-mfa-nps-extension-vpn/image46.png)
 
@@ -440,13 +446,13 @@ Azure Multi-Factor Authentication ログの関連するイベントを次に示�
 
 ![Azure Multi-Factor Authentication のログ](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-高度なトラブルシューティングを実行するには、NPS サービスがインストールされているサーバーで NPS データベース形式のログ ファイルを参照します。 ログ ファイルは、コンマ区切りのテキスト ファイルとして _%SystemRoot%\System32\Logs_ フォルダーに作成されています。 ログ ファイルの詳細については、「[Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx)」(NPS データベース形式のログ ファイルの解釈) を参照してください。
+高度なトラブルシューティングを実行するには、NPS サービスがインストールされているサーバーで NPS データベース形式のログ ファイルを参照します。 ログ ファイルは、コンマ区切りのテキスト ファイルとして _%SystemRoot%\System32\Logs_ フォルダーに作成されています。 ログ ファイルの詳細については、「[Interpret NPS Database Format Log Files](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))」(NPS データベース形式のログ ファイルの解釈) を参照してください。
 
 これらのログ ファイルのエントリは、スプレッドシートやデータベースにインポートしないと解釈が困難です。 ログ ファイルを解釈する場合に役立つ Internet Authentication Service (IAS) 解析ツールは、オンラインで多数見つかります。 このようなダウンロード可能な[シェアウェア アプリケーション](https://www.deepsoftware.com/iasviewer)の出力を次に示します。
 
 ![シェアウェア アプリ IAS パーサーのサンプル](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-その他のトラブルシューティングには、Wireshark や [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) などのプロトコル アナライザーを使用できます。 Wireshark の次の画像は、VPN サーバーと NPS 間の RADIUS メッセージを示しています。
+その他のトラブルシューティングには、Wireshark や [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) などのプロトコル アナライザーを使用できます。 Wireshark の次の画像は、VPN サーバーと NPS 間の RADIUS メッセージを示しています。
 
 ![フィルター処理されたトラフィックを示す Microsoft Message Analyzer](./media/howto-mfa-nps-extension-vpn/image50.png)
 

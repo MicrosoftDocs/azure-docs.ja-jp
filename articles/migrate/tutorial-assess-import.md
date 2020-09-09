@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 40dd81b9eb7ff2b20abb1bf3ea4337b63fb2a831
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82114566"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447078"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>インポートされたデータを使用してサーバーを評価する
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[作業の開始]** で、 **[ツールの追加]** を選択します。
 5. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成する地理的な場所を指定します。 詳細:
+6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成する地理的な場所を指定します。 詳細情報:
 
     - [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
     - 移行を実行するときは、任意のターゲット リージョンを選択できます。
@@ -111,6 +111,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **[メモリ]** | はい | サーバーに割り当てられている合計 RAM (MB 単位)。
 **OS 名** | はい | サーバーのオペレーティング システム。 <br/> この[一覧](#supported-operating-system-names)内の名前と一致するか、この名前を含むオペレーティング システム名は、評価によって認識されます。
 **OS バージョン** | いいえ | サーバーのオペレーティング システムのバージョン。
+**OS アーキテクチャ** | いいえ | サーバー OS アーキテクチャ <br/> 有効な値: x64、x86、amd64、32 ビット、64 ビット
 **ディスクの数** | いいえ | 個々のディスクの詳細が指定されている場合は必要ありません。
 **Disk 1 size (ディスク 1 のサイズ)**  | いいえ | ディスクの最大サイズ (GB 単位)。<br/>テンプレートに[列を追加](#add-multiple-disks)することで、さらにディスクの詳細を追加できます。 最大 8 つのディスクを追加できます。
 **Disk 1 read ops (ディスク 1 の読み取り操作)** | いいえ | 1 秒あたりのディスク読み取り操作。
@@ -178,10 +179,21 @@ CSV テンプレートに情報を追加したら、Server Assessment にサー�
 
 Server Assessment を使用して、次の 2 種類の評価を作成できます。
 
-**評価の種類** | **詳細** | **データ**
+
+**評価の種類** | **詳細**
+--- | --- 
+**Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md)、[物理サーバー](how-to-set-up-appliance-physical.md)を評価できます。
+**Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。[詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
+
+### <a name="sizing-criteria"></a>サイズ変更の設定基準
+
+Server Assessment には、サイズ変更の設定基準として、次の 2 つのオプションが用意されています。
+
+**サイズ変更の設定基準** | **詳細** | **データ**
 --- | --- | ---
-**パフォーマンスベース** | 指定されたパフォーマンスデータ値に基づく評価。 | **推奨される VM サイズ**: CPU とメモリの使用率データに基づきます。<br/><br/> **推奨されるディスクの種類 (Standard または Premium マネージド ディスク)** : オンプレミスのディスクの 1 秒あたりの入出力 (IOPS) とスループットに基づきます。
-**オンプレミス** | オンプレミスのサイズ設定に基づく評価。 | **推奨される VM サイズ**: 指定されたサーバーのサイズに基づきます。<br/><br> **推奨されるディスクの種類**: 評価用に選択するストレージの種類の設定に基づきます。
+**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードの推奨値は、CPU とメモリの使用率データに基づきます。
+**現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | **Azure VM の評価**: VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、オンプレミスの VM サイズに基づきます。
+
 
 評価を実行するには:
 
@@ -190,24 +202,31 @@ Server Assessment を使用して、次の 2 種類の評価を作成できま�
 
     ![アクセス](./media/tutorial-assess-physical/assess.png)
 
-3. **[サーバーの評価]** で、評価の名前を指定します。
+3. **[サーバーの評価]** で評価の名前を指定し、**評価**の種類として、 *[Azure VM]* (Azure VM の評価を実行する場合) または *[Azure VMware Solution (AVS)]* (AVS の評価を実行する場合) を選択します。
+
+    ![評価の基本](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
 4. **[Discovery source]\(検出ソース\)** で、 **[Machines added via import to Azure Migrate]\(インポートで Azure Migrate に追加されたマシン\)** を選択します。
+
 5. **[すべて表示]** を選択して、評価のプロパティを確認します。
 
     ![評価のプロパティ](./media/tutorial-assess-physical/view-all.png)
 
-6. **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+6. **[次へ]** をクリックして**評価するマシンを選択**します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
 7. **[グループにマシンを追加します]** で、グループに追加するサーバーを選択します。
-8. **[評価の作成]** を選択してグループを作成し、評価を実行します。
+8. **[次へ]** をクリックして **[評価の確認と作成]** を選択し、評価の詳細を確認します。
+9. **[評価の作成]** をクリックしてグループを作成し、評価を実行します。
 
     ![評価を作成する](./media/tutorial-assess-physical/assessment-create.png)
 
 9. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
 10. **[評価のエクスポート]** を選択し、Microsoft Excel ファイルとしてダウンロードします。
 
-## <a name="review-an-assessment"></a>評価を確認する
+**Azure VMware Solution (AVS)** の評価について詳しくは、[こちら](how-to-create-azure-vmware-solution-assessment.md)を参照してください。 
 
-評価には以下が記述されています。
+## <a name="review-an-azure-vm-assessment"></a>Azure VM の評価を確認する
+
+Azure VM の評価で評される内容は次のとおりです。
 
 - **Azure 対応性**: サーバーが Azure への移行に適しているかどうか。
 - **月間コスト見積もり**: Azure でサーバーを実行するためのコンピューティングとストレージの月間推定コスト。

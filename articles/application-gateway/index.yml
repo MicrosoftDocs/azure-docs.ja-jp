@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 03/24/2020
-  ms.openlocfilehash: aaa1774b7680f87e9c3dab13dbe53a627f3890bf
-  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+  ms.openlocfilehash: 0ff595778193a4ff11ebd67e1cec4bccfa3afc61
+  ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80245737"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89378510"
 landingContent:
 - title: Application Gateway について
   linkLists:
@@ -27,6 +27,8 @@ landingContent:
     links:
     - text: よく寄せられる質問
       url: application-gateway-faq.md
+    - text: 新機能
+      url: https://azure.microsoft.com/updates/?category=networking&query=Application%20Gateway
 - title: 高トラフィック ボリュームのサポート
   linkLists:
   - linkListType: concept
@@ -71,6 +73,18 @@ landingContent:
     links:
     - text: AKS のイングレス コントローラーを作成する
       url: ingress-controller-install-new.md
+- title: Application Gateway を使用して HTTP ヘッダーと URL を書き換える
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Application Gateway を使用して HTTP ヘッダーと URL を書き換える
+      url: rewrite-http-headers-url.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure portal を使用して HTTP ヘッダーを書き換える
+      url: rewrite-http-headers-portal.md
+    - text: Azure portal を使用して URL とクエリ文字列を書き換える
+      url: rewrite-url-portal.md
 - title: Application Gateway のトラブルシューティング
   linkLists:
   - linkListType: overview

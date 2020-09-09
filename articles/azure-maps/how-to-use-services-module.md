@@ -1,6 +1,6 @@
 ---
 title: Azure Maps サービス モジュールの使用 | Microsoft Azure Maps
-description: この記事では、Azure Maps サービス モジュールを使用して Microsoft Azure Maps REST サービスを利用する方法について説明します。
+description: Azure Maps サービス モジュールについて学習します。 Web または Node.js アプリケーションで Azure Maps REST サービスにアクセスするには、このヘルパー ライブラリを読み込んで使用する方法を参照してください。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6e9d1f35d021c3381f9c2887dfb1c150bb720871
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2f8d41c8248ab761c6d781263f3978937ad01e22
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804658"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004135"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Azure Maps サービス モジュールの使用
 

@@ -1,14 +1,14 @@
-- name: Azure VMware Solution (AVS)
+- name: Azure VMware Solution
   href: index.yml
 - name: 概要
   items:
-    - name: Azure VMware Solution (AVS) について
+    - name: Azure VMware Solution について
       href: introduction.md
 - name: チュートリアル
   items:
     - name: 1 - ネットワークの計画
       href: tutorial-network-checklist.md
-    - name: 2 - AVS プライベート クラウドの作成
+    - name: 2 - プライベート クラウドの作成
       href: tutorial-create-private-cloud.md
     - name: 3 - ネットワークの構成
       href: tutorial-configure-networking.md
@@ -16,6 +16,12 @@
       href: tutorial-access-private-cloud.md
     - name: 5 - プライベート クラウドのスケーリング
       href: tutorial-scale-private-cloud.md
+    - name: 6 - NSX-T ネットワーク セグメントの作成
+      href: tutorial-nsx-t-network-segment.md
+    - name: 7 - オンプレミスからプライベート クラウドへのピアリング
+      href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 8 - コンテンツ ライブラリを介した VM のデプロイ
+      href: tutorial-deploy-vm-content-library.md
 - name: 概念
   items:
     - name: プライベート クラウドとクラスター
@@ -26,19 +32,47 @@
       href: concepts-storage.md
     - name: プライベート クラウドのアクセスと ID
       href: concepts-identity.md
+    - name: ロールベースのアクセス制御
+      href: concepts-rbac.md
     - name: プライベート クラウドのアップグレード
       href: concepts-upgrades.md
 - name: 操作方法ガイド
   items:
+    - name: 移行評価
+      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: HCX の設定
       href: hybrid-cloud-extension-installation.md
     - name: DHCP の管理
       href: manage-dhcp.md
     - name: 障害復旧
       href: disaster-recovery.md
+    - name: Azure のネイティブ統合
+      items:
+        - name: API Management
+          href: concepts-api-management.md
+        - name: ハブ アンド スポーク
+          href: concepts-avs-hub-and-spoke-integration.md
+        - name: Azure Backup Server
+          items:
+            - name: Backup Server の設定
+              href: set-up-mabs-for-avs.md
+            - name: Backup Server を使用したプライベート クラウドのバックアップ
+              href: backup-avs-vms-with-mabs.md
+        - name: Application Gateway
+          href: protect-avs-web-apps-with-app-gateway.md
+        - name: AVS を使用した Traffic Manager
+          href: deploy-traffic-manager-to-balance-avs-workloads.md
+    - name: VMware ソリューション
+      items:
+        - name: vRealize Operations の設定
+          href: vrealize-operations-for-avs.md
 - name: リファレンス
   items: null
 - name: リソース
   items:
+    - name: トラブルシューティング
+      items:
+        - name: デプロイまたはプロビジョニングのエラーに関するヘルプの表示
+          href: fix-deployment-provisioning-failures.md
     - name: よく寄せられる質問
       href: faq.md

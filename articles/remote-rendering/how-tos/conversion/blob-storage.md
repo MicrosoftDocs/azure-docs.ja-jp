@@ -29,7 +29,7 @@ ms.locfileid: "80679341"
 
 - [Azure Portal](https://portal.azure.com)
 - [az コマン ドライン](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDK (C#、Python ...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Azure Remote Rendering が自分のストレージ アカウントにアクセスできることを確認する
@@ -52,8 +52,8 @@ SAS URI は、次のいずれかを使用して生成できます。
 
 - az PowerShell モジュール
   - 「[PowerShell スクリプトの例](../../samples/powershell-example-scripts.md)」を参照
-- [az コマン ドライン](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+- [az コマンド ライン](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - コンテナーを右クリックして [Shared Access Signature の取得] を選択する (入力コンテナーに対しては読み取りとリスト アクセス、出力コンテナーに対しては書き込みアクセス)
 - SDK (C#、Python ...)
 

@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Fieldglass の統合 | Microsoft Docs'
 description: Azure Active Directory と Fieldglass の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2510195f-d5b1-4684-b3da-283fb8619df2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ada7092fa626987513416f7be0a52f6abeefaeb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 442445bc930408097f213329fad98b84200943ee
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158197"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>チュートリアル: Azure Active Directory と Fieldglass の統合
 
@@ -110,10 +105,10 @@ Fieldglass で Azure AD シングル サインオンを構成するには、次�
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-    | |
-    |--|
-    | `https://www.fieldglass.net/<company name>`|
-    | `https://<company name>.fgvms.com/<company name>`|
+    ```http
+    https://www.fieldglass.net/<company name>
+    https://<company name>.fgvms.com/<company name>
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Fieldglass クライアント サポート チーム](https://www.fieldglass.com/customer-support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

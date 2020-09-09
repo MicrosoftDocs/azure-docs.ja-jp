@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 02/28/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 82318df08ffc9ec47b1ed40171f79163bbdd600f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 13129d5a2540548b8532b14593de60fdca73efef
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78207804"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560772"
 ---
 # <a name="whats-new-in-custom-vision"></a>Custom Vision の新機能
 
@@ -27,6 +27,6 @@ ms.locfileid: "78207804"
 
 * [Custom Vision Web サイト](https://www.customvision.ai/)の Smart Labeler ツールでは、トレーニング画像用の推奨タグが生成されます。 これにより、Custom Vision モデルをトレーニングするときに、多数の画像にすばやくラベルを付けることができます。 この機能の使用方法については、[推奨されるタグ](./suggested-tags.md)に関するページをご覧ください。
 
-## <a name="cognitive-service-updates"></a>コグニティブ サービスの更新プログラム
+## <a name="cognitive-service-updates"></a>Cognitive Services の更新プログラム
 
 [Cognitive Services に対する Azure 更新プログラムのお知らせ](https://azure.microsoft.com/updates/?product=cognitive-services)

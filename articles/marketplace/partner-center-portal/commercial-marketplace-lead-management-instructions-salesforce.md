@@ -1,18 +1,18 @@
 ---
 title: Salesforce でのリード管理 - Microsoft コマーシャル マーケットプレース
 description: Salesforce を使用して Microsoft AppSource および Azure Marketplace のリードを構成する方法について説明します
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 7d64b8914fa0b109dfc662a97a7f84d94e3491ec
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c3667de6a9bf85109a94201aa8e144869e4b033f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789710"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117117"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce 用にリード管理を構成する
 
@@ -64,15 +64,15 @@ ms.locfileid: "82789710"
 
 ## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>リードを Salesforce に送信するようにオファーを構成する
 
-発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、これらの手順に従います。
+発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 
-1. **[リード管理]** セクションで **[接続]** を選択します。 
+1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    ![[リード管理] セクションの [接続] ボタン](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-salesforce/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** に対して **[Salesforce]** を選択し、Web-to-Lead フォームの `oid` 値を **[組織 ID]** フィールドに貼り付けます。
 

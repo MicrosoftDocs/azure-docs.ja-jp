@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview アプリケーションの構�
 ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 661e795f0e85f872b1072a8f641b8938115c5d7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79227383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073074"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
@@ -61,11 +61,11 @@ Azure Blockchain Workbench アプリケーションは、構成メタデータ�
 
 例については、「[構成ファイルの例](#configuration-file-example)」を参照してください。
 
-## <a name="type"></a>種類
+## <a name="type"></a>Type
 
 サポートされているデータ型。
 
-| 種類 | 説明 |
+| Type | 説明 |
 |-------|-------------|
 | address  | *contracts*、*users* などのブロックチェーン アドレスの種類。 |
 | array    | integer、bool、money、または time 型の単一レベル配列。 配列は、静的でも動的でもかまいません。 配列内の要素のデータ型を指定するには、**ElementType** を使用します。 [構成例](#example-configuration-of-type-array)をご覧ください。 |
@@ -324,7 +324,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | AllowedInstanceRoles | 遷移の開始が許可されているスマート コントラクトに参加している、または指定されているユーザー ロールのリスト。 インスタンス ロールは、ワークフロー内の **Properties** に定義されています。 AllowedInstanceRoles は、スマート コントラクトのインスタンスに参加しているユーザーを表します。 AllowedInstanceRoles を使用すると、コントラクト インスタンス内のユーザー ロールに対するアクションの実行を制限できます。  たとえば、AllowedRoles でロールを指定した場合、ロールの種類 (所有者) のすべてのユーザーでなく、コントラクトを作成したユーザー (InstanceOwner) のみに終了の実行を許可することができます。 | いいえ |
 | DisplayName | 遷移のわかりやすい表示名。 | はい |
 | 説明 | 遷移の説明。 | いいえ |
-| Function | 遷移を開始する関数の名前。 | はい |
+| 機能 | 遷移を開始する関数の名前。 | はい |
 | NextStates | 遷移が成功した後の次の状態候補のコレクション。 | はい |
 
 ### <a name="transitions-example"></a>遷移の例
@@ -391,7 +391,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | 名前 | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | はい | 255 |
 | 説明 | プロパティまたはパラメーターの説明。 | いいえ | 255 |
-| 種類 | プロパティの[データ型](#type)。 | はい |
+| Type | プロパティの[データ型](#type)。 | はい |
 
 ### <a name="identifiers-example"></a>識別子の例
 
@@ -996,5 +996,4 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench REST API リファレンス](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)
-
+> [Azure Blockchain Workbench REST API リファレンス](/rest/api/azure-blockchain-workbench)

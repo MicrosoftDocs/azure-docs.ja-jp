@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113105"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919660"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $select 構文
 
@@ -63,7 +63,9 @@ field_path ::= identifier('/'identifier)*
 
 結果に `HotelId`、`HotelName`、および `Rating` の最上位フィールドを含め、`Address` の `City` サブフィールドを含めます。
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 結果の例は次のようになります。
 
@@ -80,7 +82,9 @@ field_path ::= identifier('/'identifier)*
 
 結果に `HotelName` 最上位フィールドを含め、`Rooms` コレクションに `Address` のすべてのサブフィールドと各オブジェクトの `Type` および `BaseRate` のサブフィールドを含めます。
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 結果の例は次のようになります。
 
@@ -113,4 +117,4 @@ field_path ::= identifier('/'identifier)*
 - [Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

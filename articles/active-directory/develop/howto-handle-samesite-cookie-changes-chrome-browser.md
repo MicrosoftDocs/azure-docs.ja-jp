@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534603"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116973"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome ブラウザーにおける SameSite Cookie の変更の処理
 
@@ -59,7 +59,7 @@ Web アプリを更新しないと、この新しい動作によって認証エ�
 
 ASP.NET と ASP.NET Core で SameSite cookie を処理する方法の詳細については、以下も参照してください。
 
-- [ASP.NET Core での SameSite cookie の使用](https://docs.microsoft.com/aspnet/core/security/samesite)。
+- [ASP.NET Core での SameSite cookie の使用](/aspnet/core/security/samesite)。
 - [SameSite の問題に関する ASP.NET ブログ](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)

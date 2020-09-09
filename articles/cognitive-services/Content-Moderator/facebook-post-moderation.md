@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774279"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548516"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -28,7 +28,7 @@ ms.locfileid: "76774279"
 > * Content Moderator と Facebook からの HTTP イベントをリッスンする Azure Functions を作成します。
 > * Facebook アプリケーションを使用して Facebook のページを Content Moderator にリンクします。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 この図では、このシナリオの各コンポーネントが示されています。
 
@@ -70,14 +70,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     | アプリ設定の名前 | value   | 
     | -------------------- |-------------|
-    | cm:TeamId   | Content Moderator のチーム ID  | 
-    | cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
-    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 これは、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
-    | cm:ImageWorkflow | 画像に対して実行するワークフローの名前 |
-    | cm:TextWorkflow | テキストに対して実行するワークフローの名前 |
-    | cm:CallbackEndpoint | このガイドで後で作成する CMListener 関数アプリの URL |
-    | fb:VerificationToken | お客様が作成するシークレット トークン。Facebook のフィード イベントにサブスクライブするために使用されます |
-    | fb:PageAccessToken | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 このトークンは、後の手順で取得します。 |
+    | `cm:TeamId`   | Content Moderator のチーム ID  | 
+    | `cm:SubscriptionKey` | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
+    | `cm:Region` | Content Moderator のリージョン名 (スペースなし)。 この名前は、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
+    | `cm:ImageWorkflow` | 画像に対して実行するワークフローの名前 |
+    | `cm:TextWorkflow` | テキストに対して実行するワークフローの名前 |
+    | `cm:CallbackEndpoint` | このガイドで後で作成する CMListener 関数アプリの URL |
+    | `fb:VerificationToken` | お客様が作成するシークレット トークン。Facebook のフィード イベントにサブスクライブするために使用されます |
+    | `fb:PageAccessToken` | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 このトークンは、後の手順で取得します。 |
 
     ページ上部にある **[保存]** ボタンをクリックします。
 

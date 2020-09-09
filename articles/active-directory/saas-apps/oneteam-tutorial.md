@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Oneteam の統合 | Microsoft Docs
 description: Azure Active Directory と Oneteam の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2e94916c-64ae-4e1a-a8b5-bc6ef7d28c29
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: e6a9560cfe0daf158dad03a3171047669a19eade
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547963"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>チュートリアル:Azure Active Directory と Oneteam の統合
 

@@ -7,50 +7,85 @@
     - name: Media Services の最新情報
       displayName: release notes
       href: release-notes.md
+    - name: Media Services のコンプライアンス
+      href: concept-compliance.md
 - name: クイックスタート
-  expanded: true
   items:
-    - name: ポータルと Wirecast を使用したライブ イベント
-      displayName: 'live, event, portal, wirecast'
-      href: live-events-wirecast-quickstart.md
-    - name: ポータルと OBS を使用したライブ イベント
-      displayName: 'live, event, portal, obs'
-      href: live-events-obs-quickstart.md
+    - name: 環境を設定する
+      items:
+        - name: Azure サブスクリプションを検索する
+          href: how-to-set-azure-subscription.md
+        - name: Media Services アカウントを作成する
+          href: create-account-howto.md
+        - name: API にアクセスする
+          href: access-api-howto.md
+        - name: Azure Cloud Shell を設定する
+          href: 'https://docs.microsoft.com/azure/cloud-shell/overview'
+        - name: REST を使用した開発
+          items:
+            - name: Postman を使用して接続する
+              href: media-rest-apis-with-postman.md
+        - name: SDK を使用した開発
+          items:
+            - name: Java を使用して接続する
+              href: configure-connect-java-howto.md
+            - name: .NET を使用して接続する
+              href: configure-connect-dotnet-howto.md
+            - name: Node.js を使用して接続する
+              href: configure-connect-nodejs-howto.md
+            - name: Python を使用して接続する
+              href: configure-connect-python-howto.md
+    - name: Azure portal で Media Services を試す
+      items:
+        - name: ポータルと Wirecast を使用したライブ イベント
+          href: live-events-wirecast-quickstart.md
+        - name: ポータルと OBS を使用したライブ イベント
+          href: live-events-obs-quickstart.md
+        - name: ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信
+          href: manage-assets-quickstart.md
+        - name: ポータルを使用したコンテンツの暗号化
+          href: encrypt-content-quickstart.md
 - name: チュートリアル
   items:
-    - name: リモート ファイルのエンコードとビデオのストリーム配信
+    - name: .NET
       items:
-        - name: REST の場合
-          displayName: 'encoding, job, transform'
-          href: stream-files-tutorial-with-rest.md
-        - name: CLI の場合
-          href: stream-files-cli-quickstart.md
-        - name: .NET の場合
+        - name: リモート ファイルのエンコードとストリーム配信 (.NET)
           href: stream-files-dotnet-quickstart.md
-        - name: Node.js の場合
+        - name: アップロードされたファイルのエンコードとストリーム配信 (.NET)
+          href: stream-files-tutorial-with-api.md
+        - name: .NET を使用したライブ ストリーム配信
+          href: stream-live-tutorial-with-api.md
+        - name: .NET を使用したビデオの分析
+          href: analyze-videos-tutorial-with-api.md
+        - name: AES-128 を使用した動的な暗号化
+          href: protect-with-aes128.md
+        - name: DRM を使用した動的な暗号化
+          href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: リモート ファイルのエンコードとストリーム配信 (REST)
+          href: stream-files-tutorial-with-rest.md
+    - name: CLI
+      items:
+        - name: リモート ファイルのエンコードとストリーム配信 (CLI)
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: リモート ファイルのエンコードとストリーム配信 (Node.js)
           href: stream-files-nodejs-quickstart.md
-    - name: アップロードされたファイルのエンコードとビデオのストリーム配信
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: ライブ ストリーム配信
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: ビデオの分析
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: AES-128 を使用した動的な暗号化
-      href: protect-with-aes128.md
-    - name: DRM を使用した動的な暗号化
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Azure portal
+      items:
+        - name: Azure Log Analytics での AMS イベントの保存
+          href: tutorial-events-log-analytics.md
 - name: サンプル
   items:
     - name: Media Services v3 のサンプル
       displayName: '.NET, Java'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
+      href: /samples/browse/?products=azure-media-services
     - name: Media Services v3 の REST サンプル
       href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
 - name: 概念
+  expanded: true
   items:
     - name: 概要
       href: concepts-overview.md
@@ -66,12 +101,9 @@
       items:
         - name: アセット
           href: assets-concept.md
-        - name: アセットの管理
-          href: manage-asset-concept.md
-          displayName: 'name, naming, file name, upload, output, download'
     - name: ファイルの処理
       items:
-        - name: Transform と Job
+        - name: 変換およびジョブ
           href: transforms-jobs-concept.md
           displayName: 'preset, schema'
     - name: コンテンツのエンコード
@@ -91,13 +123,13 @@
         - name: 概要
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Transform と Job
+        - name: 変換およびジョブ
           href: transforms-jobs-concept.md
     - name: ライブ ストリーミング
       items:
         - name: 概要
           href: live-streaming-overview.md
-        - name: ライブ イベントとライブ出力
+        - name: ライブ イベントとライブ ストリーミング
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: テスト済みのオンプレミス ライブ エンコーダー
@@ -154,6 +186,8 @@
           href: streaming-policy-concept.md
         - name: コンテンツ キー ポリシー
           href: content-key-policy-concept.md
+        - name: Azure AD によるコンテンツの保護
+          href: azure-ad-content-protection.md
     - name: 監視
       items:
         - name: Event Grid を使用したイベント
@@ -164,10 +198,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: 診断ログのスキーマ
           href: media-services-diagnostic-logs-schema.md
-    - name: Player クライアント
+    - name: Azure Media Player
       items:
-        - name: Azure Media Player
-          href: use-azure-media-player.md
+        - name: Azure Media Player の概要
+          href: ../azure-media-player/azure-media-player-overview.md
     - name: v3 API シリーズを使用した開発
       items:
         - name: 概要
@@ -187,12 +221,24 @@
               href: job-error-codes.md
     - name: 高可用性
       items:
-        - name: エンコード
+        - name: ビデオ オン デマンド
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
-        - name: ストリーミング
-          displayName: 'failover, bcdr, HA, high availability'
-          href: media-services-high-availability-streaming.md
+    - name: トラブルシューティング
+      items:
+        - name: よく寄せられる質問
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: エラー コード
+          items:
+            - name: ストリーミング エンドポイントのエラー コード
+              href: streaming-endpoint-error-codes.md
+            - name: ライブ イベントのエラー コード
+              href: live-event-error-codes.md
+            - name: ジョブ エラー コード
+              href: job-error-codes.md
+        - name: アカウントの資格情報をリセットする
+          href: cli-reset-account-credentials.md
     - name: v2 から v3 への移行
       items:
         - name: v2 と v3 の比較
@@ -203,78 +249,50 @@
           displayName: naming
 - name: 操作方法ガイド
   items:
-    - name: はじめに
+    - name: アセットの作成とメディアのアップロード
       items:
-        - name: アカウントを作成する
-          href: create-account-howto.md
-          displayName: 'portal, cli, storage'
-        - name: アカウント資格情報のリセット
-          href: cli-reset-account-credentials.md
-        - name: API へのアクセス
-          displayName: 'portal, cli'
-          href: access-api-howto.md
-        - name: メディア占有ユニットをスケーリングする
-          href: media-reserved-units-cli-how-to.md
         - name: アセットを作成する
-          href: cli-create-asset.md
-    - name: 開発者ガイド
-      items:
-        - name: REST を使用した開発
-          items:
-            - name: Postman を使用して接続する
-              href: media-rest-apis-with-postman.md
-        - name: SDK を使用した開発
-          items:
-            - name: Java を使用して接続する
-              href: configure-connect-java-howto.md
-            - name: .NET を使用して接続する
-              href: configure-connect-dotnet-howto.md
-            - name: Node.js を使用して接続する
-              href: configure-connect-nodejs-howto.md
-            - name: Python を使用して接続する
-              href: configure-connect-python-howto.md
-    - name: コンテンツをアップロードする
-      items:
-        - name: HTTPS から
-          displayName: upload
-          href: job-input-from-http-how-to.md
-        - name: ローカル ファイルから
-          items:
-            - name: .NET の場合
-              displayName: upload
-              href: job-input-from-local-file-how-to.md
-            - name: REST の場合
-              displayName: upload
-              href: upload-files-rest-how-to.md
-            - name: CLI の場合
-              href: cli-upload-file-asset.md
+          href: how-to-create-asset.md
+        - name: メディアをアップロードする
+          href: how-to-upload-media.md
     - name: 変換とジョブの作成
       items:
         - name: 変換を作成する
           href: cli-create-transform.md
         - name: ジョブを作成する
           href: cli-create-jobs.md
+        - name: ローカル ファイルと .NET を使用してジョブ入力を作成する
+          displayName: upload
+          href: job-input-from-local-file-how-to.md
         - name: 複数の変換出力を含むジョブ
           href: job-multiple-transform-outputs.md
     - name: コンテンツのエンコード
       items:
         - name: ジョブ入力としての HTTPS
-          displayName: 'encode, encoding'
           href: job-input-from-http-how-to.md
         - name: ジョブ入力としてのローカル ファイル
-          displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: カスタム変換を使用してエンコードする
           items:
             - name: .NET の場合
               displayName: 'encode, encoding, custom, transform'
-              href: customize-encoder-presets-how-to.md
+              items:
+                - name: エンコーダー プリセットのカスタマイズ
+                  href: customize-encoder-presets-how-to.md
+                - name: オーバーレイ変換の作成
+                  href: how-to-create-overlay.md
+                - name: .NET を使用してサムネイルを生成する
+                  href: media-services-generate-thumbnails-dotnet.md
             - name: CLI の場合
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: REST の場合
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+            - name: REST を使用してサムネイルを生成する
+              href: media-services-generate-thumbnails-rest.md
+            - name: メディア占有ユニットをスケーリングする
+              href: media-reserved-units-cli-how-to.md
         - name: ビデオをサブクリップする
           items:
             - name: .NET の場合
@@ -338,26 +356,21 @@
           href: download-results-howto.md
         - name: 説明的なオーディオの通知
           href: signal-descriptive-audio-howto.md
-    - name: トラブルシューティング
+    - name: メディア プレイヤーの使用
       items:
-        - name: よく寄せられる質問
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: エラー コード
-          items:
-            - name: ストリーミング エンドポイントのエラー コード
-              href: streaming-endpoint-error-codes.md
-            - name: ライブ イベントのエラー コード
-              href: live-event-error-codes.md
-            - name: ジョブ エラー コード
-              href: job-error-codes.md
+        - name: Azure Media Player のフル セットアップ
+          href: ../azure-media-player/azure-media-player-full-setup.md
+        - name: Video.js プレイヤーの使用
+          href: how-to-video-js-player.md
+        - name: Shaka ビデオ プレイヤーの使用
+          href: how-to-shaka-player.md
 - name: リファレンス
   items:
     - name: OpenAPI の仕様 (Swagger)
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/media/'
+      href: /rest/api/media/
     - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDK
@@ -369,11 +382,17 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: /javascript/api/overview/azure/mediaservices/management
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.media/allversions
+    - name: Standard Encoder のスキーマ
+      items:
+        - name: 入力メタデータ
+          href: input-metadata-schema.md
+        - name: 出力メタデータ
+          href: output-metadata-schema.md
 - name: リソース
   items:
     - name: Azure Media Services コミュニティ

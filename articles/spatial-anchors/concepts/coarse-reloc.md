@@ -8,12 +8,13 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844396"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003186"
 ---
 # <a name="coarse-relocalization"></a>粗い再局在化
 
@@ -120,13 +121,11 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 次に、粗い再局在化に使用するセンサーを決定する必要があります。 この決定は、開発中のアプリケーションに固有のものですが、次の表に示す推奨事項を参考にしてください。
 
-
-|             | 屋内 | 屋外 |
-|-------------|---------|----------|
-| GPS         | Off | On |
-| WiFi        | On | オン (オプション) |
-| BLE ビーコン | On (オプションで省略可能、以下を参照) | Off |
-
+|                 | 屋内 | 屋外 |
+|-----------------|---------|----------|
+| **GPS**         | Off | On |
+| **WiFi**        | On | オン (オプション) |
+| **BLE ビーコン** | On (オプションで省略可能、以下を参照) | Off |
 
 ### <a name="enabling-gps"></a>GPS を有効化する
 
@@ -658,12 +657,11 @@ GPS 信号の精度は、アンカーの作成時とクエリ実行時の両方�
 
 次の表は、サポートされているプラットフォームごとに収集されるセンサー データと、プラットフォーム固有の注意事項をまとめたものです。
 
-
-|             | HoloLens | Android | iOS |
-|-------------|----------|---------|-----|
-| GPS         | 該当なし | [LocationManager][3] API (GPS とネットワークの両方) でサポートされます | [CLLocationManager][4] API でサポートされます |
-| WiFi        | 3 秒ごとに約 1 回のスキャンの割合でサポートされます。 | サポートされています。 API レベル 28 以降では、WiFi スキャンは 2 分ごとに 4 回の呼び出しに調整されます。 Android 10 からは、開発者の設定メニューから調整を無効にすることができます。 詳細については、[Android のドキュメント][5]を参照してください。 | なし - パブリック API がありません |
-| BLE ビーコン | [Eddystone][1] と [iBeacon][2] に制限されています | [Eddystone][1] と [iBeacon][2] に制限されています | [Eddystone][1] と [iBeacon][2] に制限されています |
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **GPS**         | 該当なし | [LocationManager][3] API (GPS とネットワークの両方) でサポートされます | [CLLocationManager][4] API でサポートされます |
+| **WiFi**        | 3 秒ごとに約 1 回のスキャンの割合でサポートされます。 | サポートされています。 API レベル 28 以降では、WiFi スキャンは 2 分ごとに 4 回の呼び出しに調整されます。 Android 10 からは、開発者の設定メニューから調整を無効にすることができます。 詳細については、[Android のドキュメント][5]を参照してください。 | なし - パブリック API がありません |
+| **BLE ビーコン** | [Eddystone][1] と [iBeacon][2] に制限されています | [Eddystone][1] と [iBeacon][2] に制限されています | [Eddystone][1] と [iBeacon][2] に制限されています |
 
 ## <a name="next-steps"></a>次のステップ
 

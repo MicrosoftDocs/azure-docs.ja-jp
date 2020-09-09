@@ -3,34 +3,34 @@ title: Azure Resource Manager テンプレート サンプル
 description: さまざまな構成で Azure Container Instances をデプロイする Azure Resource Manager テンプレートのサンプルを見つける
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981647"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169648"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 
-次のサンプル テンプレートは、さまざまな構成のコンテナー インスタンスを展開します。
+次のサンプル テンプレートは、さまざまな構成のコンテナー インスタンスをデプロイします。
 
-展開オプションについては、[展開](#deployment)セクションを参照してください。 独自のテンプレートを作成する場合は、Azure Container Instances の [Azure Resource Manager テンプレート リファレンス][ref]にテンプレートの形式と使用可能なプロパティが詳しく説明されています。
+デプロイオプションについては、[デプロイ](#deployment)セクションを参照してください。 独自のテンプレートを作成する場合は、Azure Container Instances の [Azure Resource Manager テンプレート リファレンス][ref]にテンプレートの形式と使用可能なプロパティが詳しく説明されています。
 
 ## <a name="sample-templates"></a>サンプル テンプレート
 
-| | |
+| Template | 説明 |
 |-|-|
 | **アプリケーション** ||
 | [WordPress][app-wp] | コンテナー グループに WordPress Web サイトと、MySQL データベースを作成します。 WordPress サイトのコンテンツと MySQL データベースは、Azure Files 共有で永続化されます。 WordPress へのパブリック ネットワーク アクセスを公開するアプリケーション ゲートウェイも作成します。 |
-| [SQL Server と IIS を使用する MS NAV][app-nav] | 全機能を備えた自己完結型 Dynamics NAV / Dynamics 365 Business Central 環境に単一の Windows コンテナーを展開します。 |
+| [SQL Server と IIS を使用する MS NAV][app-nav] | 全機能を備えた自己完結型 Dynamics NAV / Dynamics 365 Business Central 環境に単一の Windows コンテナーをデプロイします。 |
 | **Volumes** ||
-| [emptyDir][vol-emptydir] | emptyDir ボリュームを共有する 2 つの Linux コンテナーを展開します。 |
-| [gitRepo][vol-gitrepo] | GitHub リポジトリのクローンを作成し、ボリュームとしてマウントする Linux コンテナーを展開します。 |
+| [emptyDir][vol-emptydir] | emptyDir ボリュームを共有する 2 つの Linux コンテナーをデプロイします。 |
+| [gitRepo][vol-gitrepo] | GitHub リポジトリのクローンを作成し、ボリュームとしてマウントする Linux コンテナーをデプロイします。 |
 | [secret][vol-secret] | シークレット ボリュームとしてマウントされている PFX 証明書を使用して Linux コンテナーを配置します。 |
 | **ネットワーク** ||
-| [UDP 公開されたコンテナー][net-udp] | UDP ポートを公開する、Windows または Linux のコンテナーを展開します。 |
-| [パブリック IP を使用する Linux コンテナー][net-publicip] | パブリック IP を使用してアクセスできる 1 つの Linux コンテナーを展開します。 |
-| [仮想ネットワークを使用したコンテナー グループのデプロイ (プレビュー)][net-vnet] | 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループをデプロイします。 |
+| [UDP 公開されたコンテナー][net-udp] | UDP ポートを公開する、Windows または Linux のコンテナーをデプロイします。 |
+| [パブリック IP を使用する Linux コンテナー][net-publicip] | パブリック IP を使用してアクセスできる 1 つの Linux コンテナーをデプロイします。 |
+| [仮想ネットワークでのコンテナー グループのデプロイ][net-vnet] | 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループをデプロイします。 |
 | **Azure リソース** ||
 | [Azure Storage アカウントおよび Azure Files 共有を作成する][az-files] | コンテナー インスタンスで Azure CLI を使用して、ストレージ アカウントと Azure Files 共有します。
 

@@ -1,16 +1,16 @@
 ---
-title: セキュリティ コントロール
+title: Azure App Service のセキュリティ コントロール
 description: 組織で Azure App Service を評価するためのセキュリティ コントロールのチェックリストを示します。
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93e5123e5b61c9013177f7f3c908578b68da52d6
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671450"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962929"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure App Service のセキュリティ コントロール
 
@@ -39,8 +39,8 @@ ms.locfileid: "74671450"
 
 | セキュリティ コントロール | はい/いいえ | Notes |  ドキュメント
 |---|---|--|
-| 認証| はい | お客様は、[Azure Active Directory (Azure AD)](../active-directory/index.yml) および OAuth と互換性のある他の ID プロバイダーと自動的に統合される App Service でアプリケーションを構築できます。App Service 資産への管理アクセスでは、Azure AD で認証されたプリンシパルと Azure Resource Manager RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。 | [Azure App Service での認証および承認](overview-authentication-authorization.md)
-| 承認| はい | App Service 資産へのアクセス管理では、Azure AD で認証されたプリンシパルと Azure Resource Manager の RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。  | [Azure App Service での認証および承認](overview-authentication-authorization.md)
+| 認証| はい | お客様は、[Azure Active Directory (Azure AD)](../active-directory/index.yml) および OAuth と互換性のある他の ID プロバイダーと自動的に統合される App Service でアプリケーションを構築できます。App Service 資産への管理アクセスでは、Azure AD で認証されたプリンシパルと Azure RBAC の組み合わせによって、すべてのアクセスが制御されます。 | [Azure App Service での認証および承認](overview-authentication-authorization.md)
+| 承認| はい | App Service 資産への管理アクセスでは、Azure AD で認証されたプリンシパルと Azure RBAC の組み合わせによって、すべてのアクセスが制御されます。  | [Azure App Service での認証および承認](overview-authentication-authorization.md)
 
 ## <a name="data-protection"></a>データ保護
 
@@ -49,7 +49,7 @@ ms.locfileid: "74671450"
 | 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | Web サイト ファイルのコンテンツは、Azure Storage に格納されます。これにより、コンテンツは保存時に自動的に暗号化されます。 <br><br>お客様が提供するシークレットは保存時に暗号化されます。 シークレットは、App Service 構成データベースに格納されている間、保存時に暗号化されます。<br><br>ローカルに接続されたディスクは、必要に応じて、Web サイトによって一時ストレージとして使用できます (D:\local および %TMP%)。 ローカルに接続されたディスクでは、保存時の暗号化は行われません。 | [保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい | お客様はアプリケーション シークレットを Key Vault に格納し、それらを実行時に取得することを選択できます。 | [App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)](app-service-key-vault-references.md)
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
-| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | お客様は、インバウンド トラフィックで HTTPS を必要とし、使用するように Web サイトを構成することができます。  | [Azure App Service を HTTPS のみにする方法](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/) (ブログ記事)
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | お客様は、インバウンド トラフィックで HTTPS を必要とし、使用するように Web サイトを構成することができます。  | [Azure App Service を HTTPS のみにする方法](/archive/blogs/benjaminperkins/how-to-make-an-azure-app-service-https-only) (ブログ記事)
 | API 呼び出しの暗号化| はい | App Service を構成するための管理呼び出しは、HTTPS 経由の [Azure Resource Manager](../azure-resource-manager/index.yml) 呼び出しで行われます。 |
 
 ## <a name="configuration-management"></a>構成管理

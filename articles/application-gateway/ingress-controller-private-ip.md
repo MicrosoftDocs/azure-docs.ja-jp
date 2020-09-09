@@ -4,15 +4,15 @@ description: この記事では、内部ルーティングにプライベート 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73795483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806794"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>イングレス エンドポイントの内部ルーティングにプライベート IP を使用する 
 

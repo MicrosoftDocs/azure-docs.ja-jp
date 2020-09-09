@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 title: Content Moderator のドキュメント
-summary: Azure Content Moderator API は、テキスト、画像、ビデオのコンテンツに不適切な内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できる Cognitive Services です。このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。
+summary: Azure Content Moderator API は、テキスト、画像、ビデオのコンテンツに不適切な内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できる Cognitive Services です このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。
 metadata:
   title: Content Moderator のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
- description: Azure Content Moderator API は、テキスト、画像、ビデオのコンテンツに不適切な内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できる Cognitive Services です。このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。
- services: cognitive-services
+  description: Azure Content Moderator API は、テキスト、画像、ビデオのコンテンツに不適切な内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できる Cognitive Services です このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。
+  services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.topic: landing-page

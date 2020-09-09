@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718822"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260109"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
 この記事では、Service Fabric Mesh アプリケーションのサービスで Azure Files ベースのボリュームをマウントする方法について説明します。  Azure Files ボリューム ドライバーは、サービスの状態を保持するためのコンテナーに Azure Files 共有をマウントするために使用される Docker ボリューム ドライバーです。 ボリュームを利用することで、汎用目的のファイル ストレージが提供され、通常のディスク I/O ファイル API を利用してファイルを読み書きすることができます。  アプリケーション データを保存するためのボリュームとオプションの詳細については、[状態の保存](service-fabric-mesh-storing-state.md)に関するページを参照してください。
 
-サービスにボリュームをマウントするには、Service Fabric Mesh アプリケーションでボリューム リソースを作成し、サービスでそのボリュームを参照します。  ボリューム リソースを宣言し、それをサービス リソースで参照する作業は、[YAML ベースのリソース ファイル](#declare-a-volume-resource-and-update-the-service-resource-yaml)か [JSON ベースのデプロイ テンプレート](#declare-a-volume-resource-and-update-the-service-resource-json)で行うことができます。 ボリュームをマウントする前に、最初に Azure ストレージ アカウントと[ファイル共有を Azure Files](/azure/storage/files/storage-how-to-create-file-share) で作成します。
+サービスにボリュームをマウントするには、Service Fabric Mesh アプリケーションでボリューム リソースを作成し、サービスでそのボリュームを参照します。  ボリューム リソースを宣言し、それをサービス リソースで参照する作業は、[YAML ベースのリソース ファイル](#declare-a-volume-resource-and-update-the-service-resource-yaml)か [JSON ベースのデプロイ テンプレート](#declare-a-volume-resource-and-update-the-service-resource-json)で行うことができます。 ボリュームをマウントする前に、最初に Azure ストレージ アカウントと[ファイル共有を Azure Files](../storage/files/storage-how-to-create-file-share.md) で作成します。
 
 ## <a name="prerequisites"></a>前提条件
 > [!NOTE]

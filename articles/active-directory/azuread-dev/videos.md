@@ -13,12 +13,12 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
-ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7865fbe758b35ae9ff1ffe526da5e7100e83c966
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201956"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117551"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory 開発者プラットフォームに関するビデオ
 
@@ -73,4 +73,4 @@ ms.locfileid: "77201956"
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい [Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop)について確認します
+新しい [Microsoft ID プラットフォーム](../develop/index.yml)について確認します

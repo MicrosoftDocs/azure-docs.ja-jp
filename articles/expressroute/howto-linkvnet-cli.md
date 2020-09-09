@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: VNet を回線にリンクする:CLI'
 description: この記事では、Resource Manager デプロイ モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: cherylmc
-ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 07/27/2020
+ms.author: duau
+ms.openlocfilehash: ac36e303cbeaf5167b5bbec3cea503c37b276058
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476136"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393209"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -153,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 *RoutingWeight* の範囲は 0 ～ 32000 です。 既定値は 0 です。
 
 ## <a name="configure-expressroute-fastpath"></a>ExpressRoute FastPath を構成する 
-ExpressRoute 回線が [ExpressRoute Direct](expressroute-erdirect-about.md) 上にあり、仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ の場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効することができます。 FastPath を使用すると、オンプレミス ネットワークと仮想ネットワーク間における 1 秒あたりのパケット数や 1 秒あたりの接続数など、データ パスのパフォーマンスが向上します。 
+仮想ネットワーク ゲートウェイが Ultra Performance または ErGw3AZ である場合は、[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) を有効にすることができます。 FastPath を使用すると、オンプレミス ネットワークと仮想ネットワーク間における 1 秒あたりのパケット数や 1 秒あたりの接続数など、データ パスのパフォーマンスが向上します。 
 
 **新しい接続で FastPath を構成する**
 

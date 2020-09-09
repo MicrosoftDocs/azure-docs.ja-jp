@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464081"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256052"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio での Service Fabric アプリケーションのアップグレードの構成
 Visual Studio Service Fabric ツールは、ローカルまたはリモート クラスターへの発行のアップグレード サポートを提供します。 テストやデバッグ中にアプリケーションを置き換えるのではなく、アプリケーションを新しいバージョンにアップグレードしたくなるシナリオが 3 つあります。
@@ -57,7 +57,7 @@ Visual Studio Service Fabric ツールを使用して Service Fabric アプリ�
 3. UnmonitoredManual アップグレード モードを選択した場合は、PowerShell コンソールを手動で起動してアップグレード プロセスを続行し、プロセスを完了する必要があります。 手動アップグレードのしくみについては、「 [Service Fabric アプリケーションのアップグレード: 高度なトピック](service-fabric-application-upgrade-advanced.md) 」を参照してください。
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>PowerShell を使用したアプリケーションのアップグレード
-PowerShell コマンドレットを使用して、Service Fabric アプリケーションをアップグレードできます。 詳細については、「[Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)」および「[Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade)」を参照してください。
+PowerShell コマンドレットを使用して、Service Fabric アプリケーションをアップグレードできます。 詳細については、「[Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)」および「[Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade)」を参照してください。
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>アプリケーション マニフェスト ファイルでの正常性チェック ポリシーの指定
 Service Fabric アプリケーションの各サービスでは、既定値をオーバーライドした独自の正常性ポリシー パラメーターを使用できます。 これらのパラメーター値は、アプリケーション マニフェスト ファイルで指定できます。

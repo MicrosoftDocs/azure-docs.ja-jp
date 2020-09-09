@@ -6,12 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907342"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260146"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh アプリケーションを別の Azure リージョンに移動する
 
@@ -21,14 +21,14 @@ ms.locfileid: "76907342"
 
 ## <a name="prerequisites"></a>前提条件
 
-* クライアントと Service Fabric Mesh アプリケーションの間のトラフィックをルーティングするための仲介役として機能するイングレス コントローラー ([Application Gateway](https://docs.microsoft.com/azure/application-gateway/) など)
+* クライアントと Service Fabric Mesh アプリケーションの間のトラフィックをルーティングするための仲介役として機能するイングレス コントローラー ([Application Gateway](../application-gateway/index.yml) など)
 * ターゲット Azure リージョン (`westus`、`eastus`、または `westeurope`) での Service Fabric Mesh (プレビュー) の可用性
 
 ## <a name="prepare"></a>準備
 
-1. 最新のデプロイから Azure Resource Manager テンプレートとパラメーターをエクスポートすることで、Service Fabric Mesh アプリケーションの現在の状態の「スナップショット」を取得します。 これを行うには、Azure portal を使用して「[デプロイ後にテンプレートをエクスポートする](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment)」の手順に従います。 [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate) を使用することもできます。
+1. 最新のデプロイから Azure Resource Manager テンプレートとパラメーターをエクスポートすることで、Service Fabric Mesh アプリケーションの現在の状態の「スナップショット」を取得します。 これを行うには、Azure portal を使用して「[デプロイ後にテンプレートをエクスポートする](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment)」の手順に従います。 [Azure CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、または [REST API](/rest/api/resources/resourcegroups/exporttemplate) を使用することもできます。
 
-2. 該当する場合は、ターゲット リージョンでの再デプロイのために、[同じリソース グループ内の他のリソースをエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group)します。
+2. 該当する場合は、ターゲット リージョンでの再デプロイのために、[同じリソース グループ内の他のリソースをエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource-group)します。
 
 3. エクスポートされたテンプレートをレビュー (および必要に応じて編集) し、既存のプロパティ値がターゲット リージョンで使用するものであることを確認します。 新しい `location` (Azure リージョン) は、再デプロイ時に指定するパラメーターです。
 
@@ -36,15 +36,15 @@ ms.locfileid: "76907342"
 
 1. ターゲット リージョンに新しいリソース グループを作成するか、既存のリソース グループを使用します。
 
-2. エクスポートしたテンプレートを使用して、Azure portal を使用して「[カスタム テンプレートからリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)」の手順に従います。 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、[Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)、または [REST API](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest) を使用することもできます。
+2. エクスポートしたテンプレートを使用して、Azure portal を使用して「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」の手順に従います。 [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、または [REST API](../azure-resource-manager/templates/deploy-rest.md) を使用することもできます。
 
 3. [Azure ストレージ アカウント](../storage/common/storage-account-move.md)などの関連リソースの移動に関するガイダンスについては、「[リージョン間の Azure リソースの移動](../azure-resource-manager/management/move-region.md)」に記載されている各サービスのガイダンスを参照してください。
 
-## <a name="verify"></a>Verify (英語の可能性あり)
+## <a name="verify"></a>確認
 
 1. デプロイが完了したら、アプリケーション エンドポイントをテストして、アプリケーションの機能を確認します。
 
-2. アプリケーションの状態を確認することもできます。そのためには [Azure Service Fabric Mesh CLI](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli) を使用して、アプリケーションの状態 ([az mesh app show](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) を確認し、アプリケーション ログと ([az mesh code-package-log](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) コマンドをレビューします。
+2. アプリケーションの状態を確認することもできます。そのためには [Azure Service Fabric Mesh CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli) を使用して、アプリケーションの状態 ([az mesh app show](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) を確認し、アプリケーション ログと ([az mesh code-package-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) コマンドをレビューします。
 
 ## <a name="commit"></a>Commit
 

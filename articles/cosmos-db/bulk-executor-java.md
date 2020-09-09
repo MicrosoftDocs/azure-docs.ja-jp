@@ -5,22 +5,23 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.custom: devx-track-java
+ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985645"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892611"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
 このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos コンテナーに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
 
-現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor Java ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。
+現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor Java ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。 説明されているバルク エグゼキューター ライブラリは、[Azure Cosmos DB Java sync SDK v2](sql-api-sdk-java.md) でのみ使用することができ、Java バルク サポートで現在推奨されているソリューションとなります。 現在、3.x、4.x、またはより上位のその他のバージョンの SDK では使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +44,7 @@ ms.locfileid: "80985645"
 
 それでは、GitHub からサンプル Java アプリケーションをダウンロードして、コードの作業を行います。 このアプリケーションでは、Azure Cosmos DB データに対して一括操作を実行します。 アプリケーションを複製するために、コマンド プロンプトを開き、コピー先のディレクトリに移動し、次のコマンドを実行します。
 
-```
+```bash
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
@@ -123,13 +124,13 @@ ms.locfileid: "80985645"
 
 5. 一括インポート アプリケーションの準備ができたら、"mvn clean package" コマンドを使用して、ソースからコマンド ライン ツールをビルドします。 このコマンドは、ターゲット フォルダーに jar ファイルを生成します。  
 
-   ```java
+   ```bash
    mvn clean package
    ```
 
 6. ターゲットの依存関係が生成されたら、次のコマンドを使用して一括インポーター アプリケーションを呼び出すことができます。  
 
-   ```java
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
@@ -182,17 +183,18 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
    |int getNumberOfDocumentsUpdated()  |   一括更新 API 呼び出しに渡されたドキュメントのうち正常に更新されたドキュメントの総数。      |
    |double getTotalRequestUnitsConsumed() |  一括更新 API 呼び出しによって使用された要求ユニット (RU) の合計数。       |
    |Duration getTotalTimeTaken()  |   一括更新 API 呼び出しが実行を完了するまでに要した合計時間。      |
-   |List\<Exception> getErrors()   |       一括更新 API 呼び出しに渡されたバッチの一部のドキュメントの挿入が失敗した場合、エラーの一覧を取得します。      |
+   |List\<Exception> getErrors()   |       更新操作に関連する操作またはネットワークの問題の一覧を取得します。      |
+   |List\<BulkUpdateFailure> getFailedUpdates()   |       失敗につながる特定の例外を伴う、完了できなかった更新プログラムの一覧を取得します。|
 
 3. 一括更新アプリケーションの準備ができたら、"mvn clean package" コマンドを使用して、ソースからコマンド ライン ツールをビルドします。 このコマンドは、ターゲット フォルダーに jar ファイルを生成します。  
 
-   ```
+   ```bash
    mvn clean package
    ```
 
 4. ターゲットの依存関係が生成されたら、次のコマンドを使用して一括更新アプリケーションを呼び出すことができます。
 
-   ```
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 

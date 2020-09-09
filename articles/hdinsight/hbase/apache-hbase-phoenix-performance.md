@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75552646"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079498"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix のパフォーマンスに関するベスト プラクティス
 
@@ -82,13 +82,17 @@ Phoenix では、データを配布するリージョンの数を制御して、
 
 作成中のテーブルに対してソルト処理を行う場合は、ソルト バケットの番号を指定します。
 
-    CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```sql
+CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
+```
 
 このソルト処理により、主キーの値に沿って値が自動的に選択され、テーブルが分割されます。 
 
 特定の場所でテーブルを分割するには、分割を発生させる範囲の値を指定して、事前にテーブルを分割します。 たとえば、3 つのリージョンでテーブルを分割するには、次のように処理します。
 
-    CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```sql
+CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
+```
 
 ## <a name="index-design"></a>インデックスの設計
 
@@ -120,11 +124,15 @@ Phoenix インデックスは、インデックス付きテーブルのデータ
 
 ただし、socialSecurityNum を利用して firstName と lastName を検索したい場合は、インデックス テーブルに実際のデータとして firstName と lastName が含まれるカバリング インデックスを作成できます。
 
-    CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```sql
+CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
+```
 
 このカバリング インデックスにより、次のクエリを使用してセカンダリ インデックスを含むテーブルから読み取りを行うだけで、すべてのデータを取得できるようになります。
 
-    SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```sql
+SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
+```
 
 ### <a name="use-functional-indexes"></a>関数インデックスの使用
 
@@ -132,7 +140,9 @@ Phoenix インデックスは、インデックス付きテーブルのデータ
 
 たとえば、ある人の結合された名と姓に対し、インデックスを作成して大文字と小文字を区別しない検索を実行できます。
 
-     CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```sql
+CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
+```
 
 ## <a name="query-design"></a>クエリの設計
 
@@ -155,44 +165,62 @@ Phoenix インデックスは、インデックス付きテーブルのデータ
 
 airlineid が主キーにもインデックスにも含まれないフィールドであるとき、airlineid が `19805` であるすべてのフライトを選択する場合は、次のようになります。
 
-    select * from "FLIGHTS" where airlineid = '19805';
+```sql
+select * from "FLIGHTS" where airlineid = '19805';
+```
 
 次のように explain コマンドを実行します。
 
-    explain select * from "FLIGHTS" where airlineid = '19805';
+```sql
+explain select * from "FLIGHTS" where airlineid = '19805';
+```
 
 クエリ プランは次のようになります。
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
-        SERVER FILTER BY AIRLINEID = '19805'
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
+   SERVER FILTER BY AIRLINEID = '19805'
+```
 
 このプランでは、FULL SCAN OVER FLIGHTS というフレーズに注意してください。 このフレーズは、このクエリを実行すると、より効率的な RANGE SCAN または SKIP SCAN のオプションを使用せずに、テーブルのすべての行に対して TABLE SCAN が実行されることを示しています。
 
 2014 年 1 月 2 日の、キャリアが `AA`、flightnum が 1 以上のフライトを照会するとします。 year、month、dayofmonth、carrier、flightnum 列が例のテーブル内に存在し、これらすべてが複合主キーの一部であると仮定します。 クエリは次のようになります。
 
-    select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 このクエリに対するプランを次のように検証します。
 
-    explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```sql
+explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
+```
 
 結果のプランは次のとおりです。
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
+```
 
 角かっこ内の値は、主キーの値の範囲です。 この場合、範囲の値は year が 2014、month が 1、dayofmonth が 2 で固定されていますが、flightnum の値としては 2 以上 (`*` まで) の範囲が認められています。 このクエリ プランにより、主キーが期待どおりに使用されていることを確認できます。
 
 次に、`carrier2_idx` という名前で、FLIGHTS テーブルに carrier フィールドのみのインデックスを作成します。 このインデックスには、カバリングされた (データがインデックス内にも格納された) 列として、flightdate、tailnum、origin、flightnum も含まれています。
 
-    CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```sql
+CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
+```
 
 たとえば、次のクエリのように、flightdate および tailnum と一緒にキャリアも取得する場合を考えてみます。
 
-    explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```sql
+explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
+```
 
 インデックスは次のように使用されます。
 
-    CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```sql
+CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
+```
 
 explain で表示されるプランの結果の項目に関する詳細な一覧については、[Apache Phoenix チューニング ガイド](https://phoenix.apache.org/tuning_guide.html)の「Explain Plans (Explain プラン)」セクションを参照してください。
 
@@ -222,7 +250,9 @@ explain で表示されるプランの結果の項目に関する詳細な一覧
 
 データ整合性よりも書き込み速度を優先するシナリオの場合は、テーブルの作成時に先書きログを無効にすることを検討してください。
 
-    CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```sql
+CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
+```
 
 これらのオプションの詳細については、[Apache Phoenix の文法](https://phoenix.apache.org/language/index.html#options)に関するページを参照してください。
 

@@ -3,21 +3,21 @@ title: Azure Traffic Manager のトラフィック ビュー
 description: この概要では、Traffic Manager のトラフィック ビューのしくみについて説明します。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: rohinkoul
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: rohink
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938358"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401539"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
 

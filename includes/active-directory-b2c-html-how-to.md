@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80116952"
 ---
 ## <a name="use-custom-page-content"></a>カスタム ページ コンテンツを使用する
@@ -89,7 +89,7 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 
 タイトルに製品のブランド名を使用したカスタム ページ コンテンツを作成します。
 
-1. 次の HTML スニペットをコピーします。 これは、 *\<body\>* タグ内に *\<div id="api"\>\</div\>* という空の要素が配置されている適切な形式の HTML5です。 この要素は、Azure AD B2C コンテンツが挿入される場所を示します。
+1. 次の HTML スニペットをコピーします。 これは、 *\<body\>* タグ内に配置される、 *\<div id="api"\>\</div\>* と呼ばれる空の要素を持つ整形式の HTML5です。 この要素は、Azure AD B2C コンテンツが挿入される場所を示します。
 
    ```html
    <!DOCTYPE html>

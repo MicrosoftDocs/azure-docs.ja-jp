@@ -1,21 +1,14 @@
 ---
 title: Apache Kafka アプリからイベント ハブを使用する - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 02/12/2020
-ms.author: shvija
-ms.openlocfilehash: 91e2d70bab8c1be4b3e5b400ce21122eccb1e9eb
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.date: 07/20/2020
+ms.openlocfilehash: ab29c9c4270514e95752ab2bbd085ffe1b0a2fb0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811380"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534874"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。  
@@ -53,7 +46,7 @@ Azure Event Hubs には、セキュリティで保護されたリソースへの
 - Shared Access Signature (SAS)
 
 #### <a name="oauth"></a>OAuth
-Event Hubs は、Azure Active Directory (Azure AD) と連携するため、Azure AD の **OAuth** 2.0 に準拠した一元的な承認サーバーを利用できます。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、粒度の細かいアクセス許可をクライアントの ID に与えることができます。 protocol に **SASL_SSL** を、mechanism に **OAUTHBEARER** を指定すれば、この機能を Kafka クライアントで使用することができます。 RBAC のロールとレベルを使用したアクセスのスコープ設定について詳しくは、[Azure AD によるアクセスの承認](authorize-access-azure-active-directory.md)に関するページを参照してください。
+Event Hubs は、Azure Active Directory (Azure AD) と連携するため、Azure AD の **OAuth** 2.0 に準拠した一元的な承認サーバーを利用できます。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、粒度の細かいアクセス許可をクライアントの ID に与えることができます。 protocol に **SASL_SSL** を、mechanism に **OAUTHBEARER** を指定すれば、この機能を Kafka クライアントで使用することができます。 Azure ロールとレベルを使用したアクセスのスコープ設定について詳しくは、[Azure AD によるアクセスの承認](authorize-access-azure-active-directory.md)に関するページを参照してください。
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -73,6 +66,9 @@ sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!NOTE]
+> Kafka クライアントで SAS 認証を使用する場合、SAS キーの再生成時に確立された接続は切断されません。 
+
 #### <a name="samples"></a>サンプル 
 SAS または OAuth を使用してイベント ハブを作成しアクセスする手順の**チュートリアル**については、「[クイックスタート: Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング](event-hubs-quickstart-kafka-enabled-event-hubs.md)」を参照してください。
 
@@ -86,12 +82,10 @@ Kafka 機能用 Event Hubs では、あるプロトコルで書き込みを、�
 
 まだサポートされていない Kafka の機能の一覧を次に示します。
 
-*   べき等プロデューサー
 *   トランザクション
 *   圧縮
 *   サイズ ベースのリテンション期間
 *   ログの圧縮
-*   既存トピックへのパーティションの追加
 *   HTTP Kafka API のサポート
 *   Kafka Streams
 

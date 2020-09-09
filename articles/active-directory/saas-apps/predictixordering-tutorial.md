@@ -1,28 +1,24 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Predictix Ordering の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Predictix Ordering の統合 | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory と Predictix Ordering の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2fe2f976-e97f-4368-9695-3e1624409e8b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0eec8d9d88b286e386bd310c98d03737e56e05b2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094117"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553735"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル: Azure Active Directory と Predictix Ordering の統合
+# <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル:Azure Active Directory と Predictix Ordering の統合
 
 このチュートリアルでは、Predictix Ordering と Azure Active Directory (Azure AD) を統合する方法について説明します。
 この統合には、次の利点があります。
@@ -110,11 +106,10 @@ Predictix Ordering で Azure AD シングル サインオンを構成するに�
 
     1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンの URL を入力します。
 
-        | |
-        |--|
-        | `https://<companyname-pricing>.dev.ordering.predictix.com` |
-        | `https://<companyname-pricing>.ordering.predictix.com` |
-        | |
+        ```https
+        https://<companyname-pricing>.dev.ordering.predictix.com
+        https://<companyname-pricing>.ordering.predictix.com
+        ```
 
     > [!NOTE]
     > これらの値はプレースホルダーです。 実際のサインオン URL と識別子を使用する必要があります。 この値を取得するには、[Predictix Ordering サポート チーム](https://www.predix.io/support/)に問い合わせてください。 また、Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスに示されているパターンを参照することもできます。
@@ -155,11 +150,11 @@ Predictix Ordering 側でシングル サインオンを構成するには、ダ
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

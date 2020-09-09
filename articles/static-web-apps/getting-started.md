@@ -1,22 +1,22 @@
 ---
 title: クイック スタート:Azure Static Web Apps を使用して静的 Web アプリを初めてビルドする
-description: 好みのフロントエンド フレームワークを使用して Azure Static Web Apps インスタンスをビルドする方法について説明します。
+description: Azure Static Web Apps Web サイトをビルドする方法について学習します。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599133"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752453"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>クイック スタート:静的 Web アプリを初めてビルドする
 
-Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、任意のフロントエンド フレームワークを使用して GitHub リポジトリから Web アプリケーションをビルドします。
+Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Visual Studio Code 拡張機能を使用して、Web アプリケーションを Azure Static Web Apps にデプロイします。
 
 Azure サブスクリプションを持っていない場合は、[無料試用版アカウントを作成できます](https://azure.microsoft.com/free)。
 
@@ -24,148 +24,97 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 - [GitHub](https://github.com) アカウント
 - [Azure](https://portal.azure.com) アカウント
+- [Visual Studio Code](https://code.visualstudio.com)
+- [Visual Studio Code 用 Azure Static Web Apps 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
 
-## <a name="create-a-repository"></a>リポジトリを作成する
+[!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
-この記事では、GitHub テンプレート リポジトリを使用して、新しいリポジトリを簡単に作成できるようにします。 テンプレートでは、さまざまなフロントエンド フレームワークでビルドされたスターター アプリが使用されます。
+[!INCLUDE [clone the repository](../../includes/static-web-apps-get-started-clone-repo.md)]
 
-# <a name="angular"></a>[Angular](#tab/angular)
-
-- 次の場所に移動して、新しいリポジトリを作成します
-  - https://github.com/staticwebdev/angular-basic/generate
-- リポジトリの名前を **my-first-static-web-app** に設定します
-
-# <a name="react"></a>[React](#tab/react)
-
-- 次の場所に移動して、新しいリポジトリを作成します
-  - https://github.com/staticwebdev/react-basic/generate
-- リポジトリの名前を **my-first-static-web-app** に設定します
-
-# <a name="vue"></a>[Vue](#tab/vue)
-
-- 次の場所に移動して、新しいリポジトリを作成します
-  - https://github.com/staticwebdev/vue-basic/generate
-- リポジトリの名前を **my-first-static-web-app** に設定します
-
-# <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
-
-- 次の場所に移動して、新しいリポジトリを作成します
-  - https://github.com/staticwebdev/vanilla-basic/generate
-- リポジトリの名前を **my-first-static-web-app** に設定します
-
-> [!NOTE]
-> Azure Static Web Apps で Web アプリを作成するには、少なくとも 1 つの HTML ファイルが必要です。 このステップで作成するリポジトリには、1 つの _index.html_ ファイルが含まれます。
-
----
-
-**[Create repository from template]\(テンプレートからリポジトリを作成する\)** ボタンをクリックします。
-
-:::image type="content" source="media/getting-started/create-template.png" alt-text="テンプレートからリポジトリを作成する":::
+次に、Visual Studio Code を開き、 **[ファイル] > [フォルダーを開く]** に移動して、お使いのマシンにクローンしたリポジトリをエディターで開きます。
 
 ## <a name="create-a-static-web-app"></a>静的 Web アプリを作成する
 
-リポジトリが作成されたので、Azure portal から静的 Web アプリを作成できます。
+1. Visual Studio Code 内で、アクティビティ バーの Azure ロゴを選択して、Azure 拡張機能ウィンドウを開きます。
 
-- [Azure Portal](https://portal.azure.com) に移動します
-- **[リソースの作成]** をクリックします
-- **Static Web Apps** を検索します
-- **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-- **[作成]**
+    :::image type="content" source="media/getting-started/extension-azure-logo.png" alt-text="Azure ロゴ":::
 
-### <a name="basics"></a>基本
+    > [!NOTE]
+    > Azure と GitHub へのサインインが必要です。 Visual Studio Code から Azure と GitHub にまだサインインしていない場合は、拡張機能により、作成プロセス中に両方にサインインするように求められます。
 
-まず、新しいアプリを構成し、それを GitHub リポジトリにリンクします。
+1. マウス ポインターを _[Static Web Apps]_ ラベルの上に置き、**プラス記号**を選択します。
 
-:::image type="content" source="media/getting-started/basics-tab.png" alt-text="[基本] タブ":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="アプリケーション名":::
 
-- お使いの "_Azure サブスクリプション_" を選択します
-- "_リソース グループ_" を選択するか、新しく作成します
-- アプリに **my-first-static-web-app** という名前を設定します。
-  - 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `_`です。
-- 最も近い "_リージョン_" を選択します
-- **[Free]** _SKU_ を選択します
-- **[GitHub でサインイン]** ボタンをクリックし、GitHub で認証します
+1. エディターの上部にコマンド パレットが表示され、アプリケーションの名前を入力するように求められます。
 
-GitHub にサインインしたら、リポジトリの情報を入力します。
+    「**my-first-static-web-app**」と入力し、**Enter** キーを押します。
 
-:::image type="content" source="media/getting-started/repository-details.png" alt-text="リポジトリの詳細":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="静的 Web アプリを作成する":::
 
-- 希望する "_組織_" を選択します
-- _[リポジトリ]_ ドロップダウンから **my-first-web-static-app** を選択します
-- _[ブランチ]_ ドロップダウンから **[master]** を選択します
-- **[次へ: ビルド >]** ボタンをクリックして、ビルド構成を編集します
+1. **master** ブランチを選択し、**Enter** キーを押します。
 
-:::image type="content" source="media/getting-started/next-build-button.png" alt-text="[次へ: ビルド] ボタン":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="ブランチ名":::
 
-### <a name="build"></a>Build
+1. アプリケーション コードの場所として **/** を選択し、**Enter** キーを押します。
 
-次に、使用するフロントエンド フレームワークに固有の構成の詳細を追加します。
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="アプリケーション コードの場所":::
 
-# <a name="angular"></a>[Angular](#tab/angular)
+1. 拡張機能により、アプリケーション内の API の場所の入力が求められます。 この記事では API を実装しません。
 
-- _[App location]\(アプリの場所\)_ ボックスに「 **/** 」と入力します
-- _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-- _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**dist/angular-basic**」と入力します
+    **[Skip for now]\(後で確認する\)** を選択し、**Enter** キーを押します。
 
-# <a name="react"></a>[React](#tab/react)
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API の場所":::
 
-- _[App location]\(アプリの場所\)_ ボックスに「 **/** 」と入力します
-- _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-- _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**build**」と入力します
+1. アプリで運用環境用にファイルを構築する場所を選択します。
 
-# <a name="vue"></a>[Vue](#tab/vue)
+    # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-- _[App location]\(アプリの場所\)_ ボックスに「 **/** 」と入力します
-- _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-- _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「**dist**」と入力します
+    ボックスをクリアし、**Enter** キーを押します。
 
-# <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="アプリ ファイルのパス":::
 
-- _[App location]\(アプリの場所\)_ ボックスに「 **/** 」と入力します
-- _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
-- _[App artifact location]\(アプリ成果物の場所\)_ ボックスから既定値をクリアします
+    # <a name="angular"></a>[Angular](#tab/angular)
 
----
+    「**dist/angular-basic**」と入力し、**Enter** キーを押します。
 
-**[確認および作成]** ボタンを選択します。
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular アプリのファイル パス":::
 
-:::image type="content" source="media/getting-started/review-create.png" alt-text="[確認および作成] ボタン":::
+    # <a name="react"></a>[React](#tab/react)
 
-### <a name="review--create"></a>確認と作成
+    「**build**」と入力し、**Enter** キーを押します。
 
-要求が検証されたら、アプリケーションの作成を続行できます。
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React アプリのファイル パス":::
 
-**[作成]** ボタンをクリックします
+    # <a name="vue"></a>[Vue](#tab/vue)
 
-:::image type="content" source="media/getting-started/create-button.png" alt-text="[作成] ボタン":::
+    「**dist**」と入力し、**Enter** キーを押します。
 
-リソースが作成されたら、 **[リソースに移動]** ボタンをクリックします
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue アプリのファイル パス":::
 
-:::image type="content" source="media/getting-started/resource-button.png" alt-text="[リソース グループ] ボタン":::
+    ---
 
-## <a name="view-the-website"></a>Web サイトを表示する
+1. 最も近い場所を選択し、**Enter** キーを押します。
 
-静的アプリのデプロイには 2 つの側面があります。 まず、アプリを構成する基になる Azure リソースをプロビジョニングします。 2 つ目は、アプリケーションをビルドして発行する GitHub Actions ワークフローです。
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="リソースの場所":::
 
-新しい静的サイトに移動する前にまず、デプロイ ビルドの実行が完了している必要があります。
+1. アプリが作成されると、確認通知が Visual Studio Code に表示されます。
 
-Static Web Apps の概要ウィンドウには、Web アプリとの対話に役立つ一連のリンクが表示されます。
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="作成された確認":::
 
-:::image type="content" source="media/getting-started/overview-window.png" alt-text="概要ウィンドウ":::
+1. Visual Studio Code エクスプローラー ウィンドウで、 _[Static Web Apps]_ セクションに戻ります。 **[Production]\(実稼働\)** を右クリックし、 **[ポータルで開く]** を選択して Azure portal でアプリを表示します。
 
-1. "Click here to check the status of your GitHub Actions runs" (こちらをクリックして、GitHub Actions の実行の状態を確認してください) というバナーをクリックすると、リポジトリに対して実行されている GitHub Actions が表示されます。 デプロイ ジョブが完了したことを確認したら、生成された URL を使用して Web サイトに移動できます。
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="ポータルを開く":::
 
-2. GitHub Actions ワークフローが完了したら、 _[URL]_ リンクをクリックして、新しいタブで Web サイトを開くことができます。
+[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このアプリケーションを引き続き使用しない場合は、次の手順を使用して Azure Static Web Apps インスタンスを削除することができます。
+このアプリケーションを引き続き使用しない場合は、拡張機能を使用して Azure Static Web Apps インスタンスを削除することができます。
 
-1. [Azure portal](https://portal.azure.com) を開きます。
-1. 上部の検索バーから **my-first-web-static-app** を検索します
-1. アプリ名をクリックします
-1. **[削除]** ボタンをクリックします
-1. **[はい]** をクリックして削除操作を確定します
+Visual Studio Code エクスプローラー ウィンドウで、 _[Static Web Apps]_ セクションに戻ります。 **[my-first-static-web-app]** を右クリックし、 **[削除]** を選択します。
+
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="アプリの削除":::
 
 ## <a name="next-steps"></a>次のステップ
 

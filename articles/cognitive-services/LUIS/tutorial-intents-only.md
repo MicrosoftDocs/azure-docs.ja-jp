@@ -3,12 +3,12 @@ title: チュートリアル:意図の予測 - LUIS
 description: このチュートリアルでは、発話 (テキスト) に基づいてユーザーの意図を予測するカスタム アプリを作成します。
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588952"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959861"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -113,9 +113,8 @@ ms.locfileid: "83588952"
 
     `get a medium vegetarian pizza for delivery`
 
-    これは、発話例とまったく同じではないため、この意図によって何を予測するべきかを LUIS が学習できるかどうかを判断するための有用なテストになります。
-
-    最後のクエリ文字列パラメーターは `query` です。これは発話の**クエリ**です。 この発話は、どの発話例とも同じではありません。 これは適切なテストであり、最上位のスコアリング意図として `OrderPizza` 意図を返すはずです。
+  
+    クエリ文字列パラメーターは `query` で、発話の**クエリ**は URI で渡されます。 この発話は、どの発話例とも同じではありません。 これは、LUIS が上位スコアの意図として `OrderPizza` 意図を学習および予測するかどうかを確認するための優れたテストとなります。
 
     ```JSON
     {

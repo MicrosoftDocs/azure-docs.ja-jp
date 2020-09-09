@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:ポータルを使用した新しいポリシーの割り当て
 description: このクイックスタートでは、Azure portal を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 03/24/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb3f97ab2f8da3ff2809cb969c8442779e173983
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240000"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548381"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>クイック スタート:準拠していないリソースを識別するためのポリシー割り当てを作成する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="[割り当て] ページでポリシー定義を割り当てる" border="false":::
 
-1. **[ポリシーの割り当て]** ページで、 **[スコープ]** を選択します。その際、省略記号をクリックし、管理グループまたはサブスクリプションを選択します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 次に、 **[スコープ]** ページの下部にある **[選択]** をクリックします。
+1. **[ポリシーの割り当て]** ページで、省略記号を選択した後、管理グループまたはサブスクリプションを選択して **[スコープ]** を設定します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 次に、 **[スコープ]** ページの下部にある **[選択]** ボタンを使用します。
 
    この例では、**Contoso** サブスクリプションを使用しています。 お客様によってサブスクリプションは異なります。
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](./samples/index.md)に関する記事をご覧ください。
 
-1. ポリシー定義の一覧で、"_Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)_ " 定義を見つけます。 そのポリシーをクリックし、 **[選択]** をクリックします。
+1. ポリシー定義の一覧で、"_Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)_ " 定義を見つけます。 そのポリシーを選択し、 **[選択]** ボタンを使用します。
 
    :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="適切なポリシー定義を見つける" border="false":::
 
@@ -60,13 +60,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[マネージド ID を作成します]** のチェックは外しておいてください。 このボックスは、ポリシーまたはイニシアティブに [deployIfNotExists](./concepts/effects.md#deployifnotexists) 効果を含むポリシーが含まれるときにオンにする "_必要があります_"。 このクイック スタートに使用するポリシーにはそれが含まれないため、オフのままにします。 詳しくは、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](./how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
 
-1. **[割り当て]** をクリックします。
+1. **[割り当て]** を選択します。
 
 以上の手順で、準拠していないリソースを特定し、環境のコンプライアンスの状態を理解できるようになりました。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
 
-ページの左側にある **[コンプライアンス]** を選択します。 次に、作成した "**Managed Disks を使用していない VM の監査**" ポリシー割り当てを見つけます。
+ページの左側にある **[コンプライアンス]** を選択します。 次に、作成した "_Managed Disks を使用していない VM の監査_" ポリシー割り当てを見つけます。
 
 :::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="ポリシーのコンプライアンスのページにあるコンプライアンスの詳細" border="false":::
 
@@ -88,9 +88,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 作成した割り当てを削除するには、次の手順のようにします。
 
-1. Azure Policy ページの左側の **[コンプライアンス]** (または **[割り当て]** ) を選択し、作成した "**Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)** " ポリシーの割り当てを見つけます。
+1. Azure Policy ページの左側の **[コンプライアンス]** (または **[割り当て]** ) を選択し、作成した "_Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)_ " ポリシーの割り当てを見つけます。
 
-1. "**マネージド ディスクを使用しない VM の監査**" ポリシー割り当てを右クリックし、 **[割り当ての削除]** を選択します。
+1. "_マネージド ディスクを使用しない VM の監査_" ポリシー割り当てを右クリックし、 **[割り当ての削除]** を選択します。
 
    :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="コンプライアンスのページから割り当てを削除する" border="false":::
 

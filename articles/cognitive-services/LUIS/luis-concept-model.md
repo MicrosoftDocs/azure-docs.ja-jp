@@ -3,12 +3,12 @@ title: モデルを使用した設計 - LUIS
 description: 言語を理解するために、いくつかの種類のモデルを使用できます。 複数の方法で使用できるモデルもあります。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591881"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683924"
 ---
 # <a name="design-with-intent-and-entity-models"></a>意図およびエンティティ モデルを使用した設計
 
@@ -36,7 +36,7 @@ LUIS の機械学習手法を使用すると、簡単に概念をコンピュー
 
 ## <a name="entities-extract-data"></a>データを抽出するエンティティ
 
-エンティティは、発話から抽出するデータの単位を表します。 機械学習エンティティは、サブエンティティを含む最上位レベルのエンティティであり、機械学習エンティティでもあります。
+エンティティは、発話から抽出するデータの単位を表します。 機械学習エンティティは、機械学習エンティティであるサブエンティティを含む最上位レベルのエンティティです。
 
 機械学習エンティティの例としては、航空券の注文があります。 概念的には、これは、日付、時刻、座席数、ファースト クラスまたはコーチなどの座席の種類、出発地、目的地、食事の選択など、多くの小さなデータ単位を持つ 1 つのトランザクションです。
 
@@ -65,11 +65,11 @@ LUIS はオーサリング API を使用する "_モデルの分解_" をサポ�
 
 * [意図](#intents-classify-utterances)
     * [features](#features)
-* [機械学習エンティティ](reference-entity-machine-learned-entity.md):
-    * サブエンティティ (機械学習エンティティとも呼ばれます)
+* [機械学習エンティティ](reference-entity-machine-learned-entity.md)
+    * サブエンティティ (機械学習エンティティでもあります)
         * [features](#features)
             * [フレーズ リスト](luis-concept-feature.md)
-            * [機械学習されていないエンティティ](luis-concept-feature.md) ([正規表現](reference-entity-regular-expression.md)、[リスト](reference-entity-list.md)、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)など)
+            * [非機械学習エンティティ](luis-concept-feature.md) ([正規表現](reference-entity-regular-expression.md)、[リスト](reference-entity-list.md)、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)など)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>

@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623343"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020883"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 
 > [!IMPORTANT] 
 > この記事で説明する S1、S2、S3 パフォーマンス レベルは提供が中止されるため、新しい Azure Cosmos DB アカウントで使用できなくなります。
->
 
 この記事では、S1、S2、S3 パフォーマンス レベルの概要を示し、これらのパフォーマンス レベルを使用するコレクションを単一パーティション コレクションに移行する方法について説明します。 この記事を読むと、次の質問に回答できるようになります。
 
@@ -43,7 +43,7 @@ S1、S2、S3 パフォーマンス レベルでは、標準の Azure Cosmos DB �
 
 次の表では、単一パーティション コレクション、パーティション分割コレクション、S1、S2、S3 パフォーマンス レベルで使用可能なスループットとストレージのオプションを比較しています。 この例は米国東部 2 リージョンの場合です。
 
-|   |パーティション分割コレクション|単一パーティション コレクション|S1|S2|S3|
+| クォータ名  |パーティション分割コレクション|単一パーティション コレクション|S1|S2|S3|
 |---|---|---|---|---|---|
 |最大スループット|無制限|10,000 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
 |最小スループット|2,500 RU/秒|400 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
@@ -76,7 +76,7 @@ S3 コレクションを使用している場合、2500 RU/秒の単一パーテ
 
 米国東部リージョンで 10 個の S1 コレクションを使用していて、ストレージがそれぞれ 1 GB であるとすると、これらの 10 個の S1 コレクションは 400 RU/秒 (最小レベル) で 10 個の単一パーティション コレクションに移行します。 1 か月間 10 個の単一パーティション コレクションを保持した場合、請求内容は次のようになります。
 
-![10 個の S1 コレクションの価格と、単一パーティション コレクションの価格を使用した 10 個のコレクションの比較](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="10 個の S1 コレクションの価格と、単一パーティション コレクションの価格を使用した 10 個のコレクションの比較" border="false":::
 
 <a name="more-storage-needed"></a>
 

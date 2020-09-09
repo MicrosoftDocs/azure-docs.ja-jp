@@ -3,15 +3,15 @@ title: Azure Cosmos DB コネクタ用 Power BI チュートリアル
 description: この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、Cosmos DB および Power BI コネクタを使用してデータを視覚化する方法を説明します。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69616807"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027777"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
 
@@ -51,22 +51,24 @@ PowerBI.com でレポートを共有するには、PowerBI.com のアカウン�
 ## <a name="lets-get-started"></a>作業を開始する
 このチュートリアルでは、ユーザーが世界中の火山を研究している地質学者であると仮定します。 火山データは Azure Cosmos DB アカウント内に格納されており、JSON ドキュメント形式は次のとおりです。
 
-    {
-        "Volcano Name": "Rainier",
-           "Country": "United States",
-          "Region": "US-Washington",
-          "Location": {
-            "type": "Point",
-            "coordinates": [
-              -121.758,
-              46.87
-            ]
-          },
-          "Elevation": 4392,
-          "Type": "Stratovolcano",
-          "Status": "Dendrochronology",
-          "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-    }
+```json
+{
+    "Volcano Name": "Rainier",
+        "Country": "United States",
+        "Region": "US-Washington",
+        "Location": {
+          "type": "Point",
+          "coordinates": [
+            -121.758,
+            46.87
+          ]
+        },
+        "Elevation": 4392,
+        "Type": "Stratovolcano",
+        "Status": "Dendrochronology",
+        "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
+}
+```
 
 Azure Cosmos DB アカウントから火山データを取得し、対話型の Power BI レポートでデータを視覚化します。
 
@@ -74,13 +76,13 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 2. ようこそ画面から直接 **[データの取得]** を実行したり、 **[最近のソース]** を参照したり、 **[Open Other Reports] \(他のレポートを開く)** を実行したりできます。 右上隅にある [X] を選択して画面を閉じます。 Power BI Desktop の **[レポート]** ビューが表示されます。
    
-   ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
 
 3. **[ホーム]** リボンをクリックし、 **[データの取得]** をクリックします。  **[データの取得]** ウィンドウが表示されます。
 
 4. **[Azure]** をクリックし、 **[Azure Cosmos DB (ベータ版)]** を選択して、 **[接続]** をクリックします。 
 
-    ![Power BI Desktop のデータの取得 - Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop のデータの取得 - Power BI コネクタ":::
 
 5. **[Preview Connector] \(プレビュー コネクタ)** ページで、 **[続行]** をクリックします。 **[Azure Cosmos DB]** ウィンドウが表示されます。
 
@@ -98,92 +100,104 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
     
     プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record**として表されます。
     
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ナビゲーション ウィンドウ](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ナビゲーション ウィンドウ":::
+
 12. データを変換するには、 **[編集]** をクリックしてクエリ エディターを新しいウィンドウで起動します。
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON ドキュメントをフラット化して変換する
 1. [Power BI Query Editor] \(Power BI クエリ エディター) ウィンドウに切り替えます。中央のウィンドウに **[ドキュメント]** 列が表示されます。
-   ![Power BI Desktop クエリ エディター](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。  フィールドの一覧を示すコンテキスト メニューが表示されます。  Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択します。 **[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** チェックボックスをオフにし、 **[OK]** をクリックします。
-   
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ドキュメントの展開](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. 中央のウィンドウに、選択したフィールドを含む結果のプレビューが表示されます。
-   
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - フラット化された結果](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
-4. この例では、Location プロパティは、ドキュメント内の GeoJSON ブロックです。  ご覧のように、Power BI Desktop では Location は **Record** タイプとして表されます。  
-5. [Document.Location] 列ヘッダーの右側にある展開コントロールをクリックします。  type フィールドと coordinates フィールドを含むコンテキスト メニューが表示されます。  coordinates フィールドを選択してみましょう。 **[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** が選択されていないことを確認し、 **[OK]** をクリックします。
-   
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 場所レコード](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
-6. 中央のウィンドウに、 **List** タイプの [coordinates] 列が表示されます。  このチュートリアルの冒頭に示されているように、ここで使用する GeoJSON データは、Latitude 値と Longitude 値が coordinates 配列に記録された Point タイプです。
-   
-    coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 座標一覧](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. coordinates 配列をフラット化するために、LatLong という **カスタム列** を作成します。  **[列の追加]** リボンを選択し、 **[カスタム列]** をクリックします。  **[カスタム列]** ウィンドウが表示されます。
-8. "LatLong" など、新しい列の名前を入力します。
-9. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 **[OK]** をクリックします。
-   
-    DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
-   
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - カスタム列の追加](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
-10. これで、中央のウィンドウに、値が入力された新しい LatLong 列が表示されます。
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop クエリ エディター":::
+
+1. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。  フィールドの一覧を示すコンテキスト メニューが表示されます。  Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択します。 **[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** チェックボックスをオフにし、 **[OK]** をクリックします。
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ドキュメントの展開":::
+
+1. 中央のウィンドウに、選択したフィールドを含む結果のプレビューが表示されます。
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - フラット化された結果":::
+
+1. この例では、Location プロパティは、ドキュメント内の GeoJSON ブロックです。  ご覧のように、Power BI Desktop では Location は **Record** タイプとして表されます。  
+
+1. [Document.Location] 列ヘッダーの右側にある展開コントロールをクリックします。  type フィールドと coordinates フィールドを含むコンテキスト メニューが表示されます。  coordinates フィールドを選択してみましょう。 **[Use original column name as prefix]\(元の列名をプレフィックスとして使用する\)** が選択されていないことを確認し、 **[OK]** をクリックします。
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 場所レコード":::
+
+1. 中央のウィンドウに、 **List** タイプの [coordinates] 列が表示されます。  このチュートリアルの冒頭に示されているように、ここで使用する GeoJSON データは、Latitude 値と Longitude 値が coordinates 配列に記録された Point タイプです。
+   
+   coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 座標一覧":::
+
+1. coordinates 配列をフラット化するために、LatLong という **カスタム列** を作成します。  **[列の追加]** リボンを選択し、 **[カスタム列]** をクリックします。  **[カスタム列]** ウィンドウが表示されます。
+
+1. "LatLong" など、新しい列の名前を入力します。
+
+1. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 **[OK]** をクリックします。
+   
+   DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - カスタム列の追加":::
+
+1. これで、中央のウィンドウに、値が入力された新しい LatLong 列が表示されます。
     
-    ![Azure Cosmos DB コネクタの Power BI チュートリアル - カスタム LatLong 列](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Azure Cosmos DB コネクタの Power BI チュートリアル - カスタム LatLong 列":::
     
     新しい列でエラーが発生する場合は、クエリ設定で適用された手順が次の図と一致することを確認してください。
     
-    ![適用された手順は、Source、Navigation、Expanded Document、Expanded Document.Location、Added Custom である必要がある](./media/powerbi-visualize/power-bi-applied-steps.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="適用された手順は、Source、Navigation、Expanded Document、Expanded Document.Location、Added Custom である必要がある":::
     
     手順が異なる場合は、余分な手順を削除し、カスタム列をもう一度追加してみてください。 
 
-11. **[終了して適用]** をクリックしてデータ モデルを保存します。
-    
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 閉じて適用](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
+1. **[終了して適用]** をクリックしてデータ モデルを保存します。
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 閉じて適用":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>レポートを作成する
+
 Power BI Desktop レポート ビューは、データを視覚化するためにレポート作成を開始できる場所です。  **[レポート]** キャンバスにフィールドをドラッグ アンド ドロップすることにより、レポートを作成できます。
 
-![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbireportview2.png)
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop のレポート ビュー - Power BI コネクタ":::
 
 レポート ビューには以下が表示されます。
 
 1. **[フィールド]** ウィンドウ。ここで、レポートに使用できるデータ モデルとフィールドの一覧を確認できます。
-2. **[視覚エフェクト]** ウィンドウ。 レポートに 1 つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
-3. **[レポート]** キャンバス。ここで、レポート用のビジュアルを作成します。
-4. **[レポート]** ページ。 Power BI Desktop では、複数のレポート ページを追加できます。
+1. **[視覚エフェクト]** ウィンドウ。 レポートに 1 つまたは複数の視覚エフェクトを含めることができます。  **[視覚エフェクト]** ウィンドウで、ニーズに合った視覚エフェクトの種類を指定します。
+1. **[レポート]** キャンバス。ここで、レポート用のビジュアルを作成します。
+1. **[レポート]** ページ。 Power BI Desktop では、複数のレポート ページを追加できます。
 
 単純な対話型マップ ビュー レポートを作成する基本的な手順を次に示します。
 
 1. 例として、個々の火山の場所を示すマップ ビューを作成します。  **[視覚エフェクト]** ウィンドウで、ビジュアルの種類として、上記のスクリーンショットで強調表示されているマップをクリックします。  **[レポート]** キャンバスに、ビジュアルの種類のマップが描かれます。  **[視覚化エフェクト]** ウィンドウには、ビジュアルの種類のマップに関連するプロパティのセットも表示されます。
-2. ここで、 **[フィールド]** ウィンドウの LatLong フィールドを **[視覚エフェクト]** ウィンドウの **Location** プロパティにドラッグ アンド ドロップします。
-3. 次に、Volcano Name フィールドを **Legend** プロパティにドラッグ アンド ドロップします。  
-4. さらに、Elevation フィールドを **Size** プロパティにドラッグ アンド ドロップします。  
-5. ここで、マップ ビジュアルに複数のバブルが表示されます。バブルは個々の火山の場所を示し、バブルのサイズは火山の高度と相関性があります。
-6. これで、基本的なレポートを作成できました。  別の視覚エフェクトを追加することで、レポートをさらにカスタマイズできます。  この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。  
+1. ここで、 **[フィールド]** ウィンドウの LatLong フィールドを **[視覚エフェクト]** ウィンドウの **Location** プロパティにドラッグ アンド ドロップします。
+1. 次に、Volcano Name フィールドを **Legend** プロパティにドラッグ アンド ドロップします。  
+1. さらに、Elevation フィールドを **Size** プロパティにドラッグ アンド ドロップします。  
+1. ここで、マップ ビジュアルに複数のバブルが表示されます。バブルは個々の火山の場所を示し、バブルのサイズは火山の高度と相関性があります。
+1. これで、基本的なレポートを作成できました。  別の視覚エフェクトを追加することで、レポートをさらにカスタマイズできます。  この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。  
    
-7. [ファイル] メニューの **[保存]** をクリックして、ファイルを PowerBITutorial.pbix として保存します。
+1. [ファイル] メニューの **[保存]** をクリックして、ファイルを PowerBITutorial.pbix として保存します。
 
 ## <a name="publish-and-share-your-report"></a>レポートを発行して共有する
 レポートを共有するには、PowerBI.com のアカウントが必要です。
 
 1. Power BI Desktop で、 **[ホーム]** リボンをクリックします。
-2. **[発行]** をクリックします。  PowerBI.com アカウントのユーザー名とパスワードの入力が求められます。
-3. 資格情報が認証されると、選択済みの宛先にレポートが発行されます。
-4. レポートを PowerBI.com に表示して共有するには、 **['PowerBITutorial.pbix' を Power BI で開く]** をクリックします。
+1. **[発行]** をクリックします。  PowerBI.com アカウントのユーザー名とパスワードの入力が求められます。
+1. 資格情報が認証されると、選択済みの宛先にレポートが発行されます。
+1. レポートを PowerBI.com に表示して共有するには、 **['PowerBITutorial.pbix' を Power BI で開く]** をクリックします。
    
-    ![Power BI への発行が成功しました! Power BI でチュートリアルを開く](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI への発行が成功しました!Power BI でチュートリアルを開く":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>PowerBI.com でのダッシュボードの作成
 レポートが用意できたので、PowerBI.com で共有しましょう。
 
 レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。 たとえば、**PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
 
-   ![PowerBI.com の新しいレポートとデータセットのスクリーンショット](./media/powerbi-visualize/powerbi-reports-datasets.png)
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="PowerBI.com の新しいレポートとデータセットのスクリーンショット":::
 
 共有可能なダッシュ ボードを作成するには、PowerBI.com レポートで **[ライブ ページをピン留めする]** ボタンをクリックします。
 
-   ![PowerBI.com の新しいレポートとデータセットのスクリーンショット](./media/powerbi-visualize/power-bi-pin-live-tile.png)
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="PowerBI.com の新しいレポートとデータセットのスクリーンショット":::
 
 その後、「 [レポートからタイルをピン留め](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) 」の指示に従って、新しいダッシュボードを作成します。 
 
@@ -194,13 +208,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 09/01/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 949118214851c3eceffd8c1d638a4093bdf7f366
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334716"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89304031"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -17,12 +17,12 @@ ms.locfileid: "80334716"
 | リソースの種類ごとのリソース グループあたりのリソース数 |800 - リソースの種類によっては、800 の制限を超えることがあります。 「[リソース グループあたり 800 インスタンスに制限されないリソース](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)」を参照してください。 |
 | デプロイ履歴でのリソース グループあたりのデプロイ数 |800<sup>1</sup> |
 | デプロイあたりのリソース数 |800 |
-| 一意のスコープあたりの管理ロック数 |20 |
+| 一意の[スコープ](../articles/azure-resource-manager/management/overview.md#understand-scope)あたりの管理ロック数  |20 |
 | リソースまたはリソース グループあたりのタグ数 |50 |
 | タグ キーの長さ |512 |
 | タグ値の長さ |256 |
 
-<sup>1</sup> リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 詳細については、「[デプロイ数が 800 を超えたときのエラーを解決する](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md)」を参照してください。
+<sup>1</sup>この制限に近づくと、デプロイは履歴から自動的に削除されます。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 詳細については、「[デプロイ履歴からの自動削除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)」を参照してください。
 
 #### <a name="template-limits"></a>テンプレートの制限
 

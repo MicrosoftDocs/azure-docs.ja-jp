@@ -1,15 +1,15 @@
 ---
 title: V3 API での予測エンドポイントの変更
 description: クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
-ms.topic: conceptual
-ms.date: 04/14/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81530387"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610882"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
@@ -73,16 +73,9 @@ V2 予測 API は、V3 プレビューの後、少なくとも 9 か月間は非
 
 ### <a name="changes-by-slot-name-and-version-name"></a>スロット名とバージョン名による変更
 
-V3 エンドポイントの HTTP 呼び出しの形式が変更されました。
+[V3 エンドポイントの HTTP 呼び出しの形式](developer-reference-resource.md#rest-endpoints)が変更されました。
 
 バージョンによってクエリを実行する場合は、まず `"directVersionPublish":true` を使用して [API 経由で発行](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
-
-|予測 API のバージョン|メソッド|URL|
-|--|--|--|
-|V3|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
-|V3|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
-|V2|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
-|V2|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
 
 |`SLOT-NAME` の有効な値|
 |--|
@@ -93,17 +86,7 @@ V3 エンドポイントの HTTP 呼び出しの形式が変更されました�
 
 ### <a name="query-string-changes"></a>クエリ文字列の変更
 
-V3 API には異なるクエリ文字列パラメーターがあります。
-
-|パラメーター名|Type|Version|Default|目的|
-|--|--|--|--|--|
-|`log`|boolean|V2 および V3|false|ログ ファイルにクエリを格納します。 既定値は false です。|
-|`query`|string|V3 のみ|既定値なし - GET 要求では必須|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
-|`show-all-intents`|boolean|V3 のみ|false|すべての意図と対応するスコアを **prediction.intents** オブジェクトに返します。 意図は、親の `intents` オブジェクト内のオブジェクトとして返されます。 これにより、配列 `prediction.intents.give` 内で意図を探す必要はなく、プログラムによるアクセスが可能になります。 V2 では、これらは配列で返されていました。 |
-|`verbose`|boolean|V2 および V3|false|**V2 では**、true に設定した場合、予測されたすべての意図が返されていました。 予測されたすべての意図が必要な場合は、V3 の `show-all-intents` パラメーターを使用します。<br><br>**V3 では**、このパラメーターではエンティティ予測のエンティティ メタデータの詳細のみが提供されます。  |
-|`timezoneOffset`|string|V2|-|datetimeV2 エンティティに適用されるタイムゾーン。|
-|`datetimeReference`|string|V3|-|datetimeV2 エンティティに適用される[タイムゾーン](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 V2 の `timezoneOffset` を置き換えます。|
-
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ### <a name="v3-post-body"></a>V3 の POST 本文
 
@@ -290,4 +273,4 @@ V2 API は、V3 プレビューの後、少なくとも 9 か月間は非推奨�
 
 ## <a name="next-steps"></a>次のステップ
 
-V3 API のドキュメントを使用して、LUIS [エンドポイント](https://aka.ms/luis-api-v3) API に対する既存の REST 呼び出しを更新します。
+V3 API のドキュメントを使用して、LUIS [エンドポイント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API に対する既存の REST 呼び出しを更新します。

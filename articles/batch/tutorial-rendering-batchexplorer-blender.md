@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117082"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85964806"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>チュートリアル: Batch Explorer を使って Blender のシーンをレンダリングする
 
@@ -27,9 +27,9 @@ ms.locfileid: "82117082"
 
 Batch で従量課金制のレンダリング アプリケーションを使用するには、従量課金制サブスクリプションまたはその他の Azure 購入オプションが必要です。 金融クレジットを提供する無料の Azure オファーを使用する場合、従量課金制ライセンスはサポートされません。
 
-ストレージ アカウントが関連付けられている Azure Batch アカウントが必要です。  Batch アカウントの作成については、Batch のいずれかのクイック スタート記事 ([CLI に関する記事](https://docs.microsoft.com/azure/batch/quick-create-cli) など) を参照してください。
+ストレージ アカウントが関連付けられている Azure Batch アカウントが必要です。  Batch アカウントの作成については、Batch のいずれかのクイック スタート記事 ([CLI に関する記事](./quick-create-cli.md) など) を参照してください。
 
-このチュートリアルに記載されている VM サイズと VM 数には、少なくとも 50 コアから成る低優先度コア クォータが必要です。既定のクォータを使用することはできますが、より小さい VM サイズを使用しなければならなくなります。つまり、画像のレンダリングにかかる時間が長くなります。 コア クォータの引き上げを要求する手順については、[こちらの記事](https://docs.microsoft.com/azure/batch/batch-quota-limit)を参照してください。
+このチュートリアルに記載されている VM サイズと VM 数には、少なくとも 50 コアから成る低優先度コア クォータが必要です。既定のクォータを使用することはできますが、より小さい VM サイズを使用しなければならなくなります。つまり、画像のレンダリングにかかる時間が長くなります。 コア クォータの引き上げを要求する手順については、[こちらの記事](./batch-quota-limit.md)を参照してください。
 
 最後に、[Batch Explorer](https://azure.github.io/BatchExplorer/) をインストールする必要があります。Batch Explorer には、Windows 用、OSX 用、Linux 用があります。 必須ではありませんが、[Blender](https://www.blender.org/download/) がインストールされていれば、サンプル モデル ファイルを表示することができます。
 
@@ -139,4 +139,4 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 ## <a name="next-steps"></a>次のステップ
 * Batch Explorer で利用できるレンダリング アプリケーションを [ギャラリー] セクションで探します。
 * アプリケーションごとにいくつかのテンプレートが用意され、今後も拡充されていく予定です。  たとえば Blender については、単一の画像を複数のタイルに分割することで 1 つの画像を構成する各部分を並列にレンダリングできるテンプレートが存在します。
-* レンダリング機能の包括的な説明については、[こちら](https://docs.microsoft.com/azure/batch/batch-rendering-service)にある一連の記事を参照してください。
+* レンダリング機能の包括的な説明については、[こちら](./batch-rendering-service.md)にある一連の記事を参照してください。

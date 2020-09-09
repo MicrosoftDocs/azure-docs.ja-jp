@@ -2,13 +2,13 @@
 title: テンプレート関数 - 日付
 description: Azure Resource Manager テンプレートで、日付の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192299"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058046"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM テンプレート用の日付関数
 
@@ -29,7 +29,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
 |:--- |:--- |:--- |:--- |
 | base | はい | string | 加算する期間の開始日時の値。 [ISO 8601 タイムスタンプの形式](https://en.wikipedia.org/wiki/ISO_8601)を使用します。 |
 | duration | はい | string | ベースに加算する時間の値。 負の値を指定することができます。 [ISO 8601 期間の形式](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用します。 |
-| format | いいえ | string | 日時の結果の出力形式。 指定しない場合、ベース値の形式が使用されます。 [標準書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
+| format | いいえ | string | 日時の結果の出力形式。 指定しない場合、ベース値の形式が使用されます。 [標準書式指定文字列](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -144,13 +144,13 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| format |いいえ |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
+| format |いいえ |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
 
 ### <a name="remarks"></a>解説
 
 この関数は、パラメーターの既定値に対する式の中でのみ使用できます。 この関数をテンプレートのその他の場所で使用すると、エラーが返されます。 テンプレートの他の場所でこの関数を使用することは、呼び出しのたびに異なる値が返されるため、許可されていません。 同じパラメーターで同じテンプレートをデプロイしても、同じ結果が生成される保証はありません。
 
-[以前の正常なデプロイを再デプロイするオプション](rollback-on-error.md)を使用し、以前のデプロイに utcNow を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
+[エラー発生時に以前の正常なデプロイにロールバックするオプション](rollback-on-error.md)を使用し、以前のデプロイに utcNow を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
 
 既定値に対する utcNow 関数に依存するテンプレートを再デプロイするときは注意が必要です。 再デプロイを行うときに、パラメーターの値を指定しないと、関数が再評価されます。 新しいリソースを作成するのではなく、既存のリソースを更新する場合は、以前のデプロイのパラメーター値を渡します。
 
@@ -164,7 +164,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで日�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcValue": {

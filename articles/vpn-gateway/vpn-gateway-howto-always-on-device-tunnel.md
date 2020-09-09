@@ -1,19 +1,19 @@
 ---
 title: Always-On VPN トンネルの構成
 titleSuffix: Azure VPN Gateway
-description: VPN Gateway に Always On VPN トンネルを構成する手順
+description: Windows 10 Always On と共にゲートウェイを使用し、Azure への永続的デバイス トンネルを確立し、構成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9036992a354b41cd75735e5ccd895d7287a00e91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e64d2223740942fe35ae8a730303bee8893c2489
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371753"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035605"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN デバイス トンネルの構成
 

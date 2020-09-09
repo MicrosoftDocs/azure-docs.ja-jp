@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025384"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542363"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn アカウント接続のデータ共有と同意
 
@@ -39,7 +39,9 @@ Microsoft のアプリおよびサービス内で LinkedIn の情報にアクセ
 組織の設定を管理するには Azure Active Directory 管理者でなければなりません。 すべてのユーザーについて有効にすることも、特定のユーザー セットだけにすることもできます。
 
 1. 統合を有効または無効にするには、[Azure AD 組織の LinkedIn の統合の同意](linkedin-integration.md)に関するページに記載されている手順に従います。
-2. LinkedIn の統合を組織で発表するときは、[Microsoft のアプリおよびサービスで LinkedIn の情報](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)に関する FAQ にユーザーの注意を促します。 この記事では、LinkedIn の情報が表示される場所、アカウントの接続方法、その他について説明します。
+2. LinkedIn の統合を組織で発表するときは、[Microsoft のアプリおよびサービスで LinkedIn の情報](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)に関する FAQ にユーザーの注意を促します。 この記事では、LinkedIn の情報が表示される場所、[データの共有とプライバシー](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)、[アカウントの接続方法](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772)などについて説明します。
+
+管理者は、LinkedIn の統合についてユーザーに発表し、[LinkedIn の統合でのデータの共有とプライバシー](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)に関するすべての情報をユーザーに提供する必要があります。 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Microsoft と LinkedIn でのデータ アクセスに対するユーザーの同意
 

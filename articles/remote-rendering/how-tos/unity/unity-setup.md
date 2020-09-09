@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a0be44d8709726e159e17e703566c6c576bc18f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679185"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018979"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Unity 向けに Remote Rendering を設定する
 
@@ -74,9 +75,9 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 同時に複数の `ARRServiceUnity` のインスタンスは存在できません。 これは、いくつかの一般的な機能を実装することによって、すばやく作業を開始することを意図しています。 ただし、大規模なアプリケーションの場合は、これらの操作を自分で行うことをお勧めします。
 
-`ARRServiceUnity` を設定して使用する方法の例については、[チュートリアル:Unity プロジェクトをゼロから設定する](../../tutorials/unity/project-setup.md)を参照してください。
+`ARRServiceUnity` を設定して使用する方法の例については、[チュートリアル:リモートでレンダリングされたモデルの表示](../../tutorials/unity/view-remote-models/view-remote-models.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Unity 用の Remote Rendering パッケージをインストールする](install-remote-rendering-unity-package.md)
-* [チュートリアル:Unity プロジェクトをゼロから設定する](../../tutorials/unity/project-setup.md)
+* [チュートリアル:リモートでレンダリングされたモデルの表示](../../tutorials/unity/view-remote-models/view-remote-models.md)

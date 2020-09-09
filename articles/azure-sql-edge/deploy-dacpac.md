@@ -2,19 +2,19 @@
 title: SQL Database DAC パッケージの使用 - Azure SQL Edge (プレビュー)
 description: Azure SQL Edge での dacpac の使用について説明します (プレビュー)
 keywords: SQL Edge, sqlpackage
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 17d0ba4d7298e60255477c4801e0bcb9b9a4ecac
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84233273"
 ---
 # <a name="sql-database-dac-packages-in-sql-edge"></a>SQL Edge での SQL Database DAC パッケージ
 

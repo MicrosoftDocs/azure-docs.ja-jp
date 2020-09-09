@@ -6,14 +6,14 @@ author: Deland-Han
 manager: dcscontentpm
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437111"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534857"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -48,7 +48,7 @@ Storage Explorer では、アカウント キーを使用して要求を認証�
 
 Azure Storage には、_管理_と_データ_という 2 つのアクセスのレイヤーがあります。 サブスクリプションとストレージ アカウントには管理レイヤーを介してアクセスします。 コンテナー、BLOB、およびその他のデータ リソースには、データ レイヤーを介してアクセスします。 たとえば、Azure からストレージ アカウントの一覧を取得する場合は、管理エンドポイントに要求を送信します。 アカウント内の BLOB コンテナーの一覧が必要な場合は、適切なサービス エンドポイントに要求を送信します。
 
-RBAC ロールには、管理レイヤーまたはデータ レイヤーにアクセスするためのアクセス許可が含まれている場合があります。 たとえば、閲覧者ロールは、管理レイヤー リソースへの読み取り専用アクセス権を付与します。
+Azure ロールでは、管理レイヤーまたはデータ レイヤーにアクセスするためのアクセス許可を与えることができます。 たとえば、閲覧者ロールは、管理レイヤー リソースへの読み取り専用アクセス権を付与します。
 
 厳密に言えば、閲覧者ロールは、データ レイヤーのアクセス許可を提供せず、データ レイヤーにアクセスするためには必要ありません。
 
@@ -58,11 +58,18 @@ Storage Explorer を使用すると、Azure リソースに接続するために
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>管理レイヤーのアクセス許可を取得できない場合、管理者からは何が必要でしょうか?
 
-現在、この問題に対する RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)することができます。
+BLOB コンテナーまたはキューにアクセスする場合、Azure 資格情報を利用してそれらのリソースにアタッチできます。
 
-### <a name="recommended-built-in-rbac-roles"></a>推奨される組み込みの RBAC ロール
+1. [接続] ダイアログを開きます。
+2. [Add a resource via Azure Active Directory (Azure AD)]\(Azure Active Directory (Azure AD) を使用してリソースを追加する\) を選択します。 [次へ] をクリックします。
+3. アタッチしているリソースに関連付けられているユーザー アカウントとテナントを選択します。 [次へ] をクリックします。
+4. リソースの種類を選択し、リソースの URL を入力し、接続の一意の表示名を入力します。 [次へ] をクリックします。 [接続] をクリックします。
 
-Storage Explorer を使用するために必要なアクセス許可を提供できる組み込み RBAC ロールは複数あります。 そうしたロールの一部を以下に示します。
+その他のリソースの種類については現在、RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)することができます。
+
+### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
+
+Storage Explorer を使用するために必要なアクセス許可を提供できる Azure 組み込みロールがいくつかあります。 そうしたロールの一部を以下に示します。
 - [所有者](/azure/role-based-access-control/built-in-roles#owner):リソースへのアクセスを含め、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
 - [共同作成者](/azure/role-based-access-control/built-in-roles#contributor):リソースへのアクセスを除き、すべてを管理します。 **注**: このロールでは、キー アクセスが付与されます。
 - [閲覧者](/azure/role-based-access-control/built-in-roles#reader):リソースを読み取って一覧表示します。
@@ -75,7 +82,7 @@ Storage Explorer を使用するために必要なアクセス許可を提供で
 
 証明書のエラーは、通常、次のいずれかの状況で発生します。
 
-- アプリが "_透過プロキシ_" 経由で接続されています。つまり、サーバー (会社のサーバーなど) はHTTPS トラフィックを傍受し、暗号化を解除した後、自己署名証明書を使用して暗号化します。
+- アプリは "_透過プロキシ_" 経由で接続されます。 つまり、サーバー (会社のサーバーなど) は HTTPS トラフィックを傍受し、暗号化を解除した後、自己署名証明書を使用して暗号化します。
 - 受信した HTTPS メッセージに自己署名 TLS/SSL 証明書を挿入するアプリケーションを実行しています。 証明書を挿入するアプリケーションの例としては、ウイルス対策およびネットワーク トラフィック検査ソフトウェアなどがあります。
 
 Storage Explorer は自己署名証明書または信頼されない証明書が表示されると、受信した HTTPS メッセージが変更されているかどうかを認識できなくなります。 自己署名証明書のコピーがある場合は、次の手順に従って、それを信頼するように Storage Explorer に指示できます。
@@ -140,7 +147,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
     ![南京錠アイコン](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. ストレージ エクスプローラーを開きます。
+5. Storage Explorer を開きます。
 6. "サービス ハブがキーチェーンへのアクセスを要求しています" というようなメッセージが表示されます。 Mac 管理者アカウントのパスワードを入力し、 **[常に許可]** ( **[常に許可]** が使用できない場合は **[許可]** ) を選択します。
 7. サインインを試します。
 
@@ -297,6 +304,8 @@ SAS URL を使用してサービスに接続し、エラーが発生する場合
 
 ## <a name="linux-dependencies"></a>Linux の依存関係
 
+### <a name="snap"></a>スナップ
+
 Storage Explorer 1.10.0 以降は、Snap Store からスナップとして入手できます。 Storage Explorer スナップは、すべての依存関係を自動的にインストールし、スナップの新しいバージョンが利用可能になると更新されます。 Storage Explorer スナップのインストールは、推奨されるインストール方法です。
 
 Storage Explorer では、パスワード マネージャーを使用する必要があります。Storage Explorer が正しく機能するためには、これを手動で接続しなければならない場合があります。 次のコマンドを実行して、Storage Explorer をシステムのパスワード マネージャーに接続できます。
@@ -305,57 +314,76 @@ Storage Explorer では、パスワード マネージャーを使用する必�
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
+### <a name="targz-file"></a>.tar.gz ファイル
+
 アプリケーションを tar.gz ファイルとしてダウンロードすることもできますが、依存関係は手動でインストールする必要があります。
 
-> [!IMPORTANT]
-> .tar.gz のダウンロードで提供されている Storage Explorer は、Ubuntu ディストリビューションでのみサポートされています。 他のディストリビューションについては検証されておらず、代替または追加のパッケージが必要となる場合があります。
+.tar.gz ダウンロードで提供されている Storage Explorer は、次の Ubuntu バージョンでのみサポートされています。 Storage Explorer は他の Linux ディストリビューションでも動作することがありますが、正式にはサポートされていません。
 
-Linux 用の Storage Explorer の場合、次のパッケージが最も一般的な要件となります。
+- Ubuntu 20.04 x64
+- Ubuntu 18.04 x64
+- Ubuntu 16.04 x64
 
-* [.NET Core 2.2 ランタイム](/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
-* `libgconf-2-4`
-* `libgnome-keyring0` または `libgnome-keyring-dev`
-* `libgnome-keyring-common`
+Storage Explorer を使用するには、お使いのシステムに .NET Core をインストールする必要があります。 .NET Core 2.1 を推奨していますが、Storage Explorer は 2.2 でも動作します。
 
 > [!NOTE]
-> Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、[Storage Explorer に修正プログラムを適用](#patching-storage-explorer-for-newer-versions-of-net-core)する必要があります。 Storage Explorer 1.8.0 以降を実行している場合は、.NET Core 2.2 まで使用できます。 現時点で、2.2 を超えるバージョンは動作が検証されていません。
+> Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、[Storage Explorer に修正プログラムを適用](#patching-storage-explorer-for-newer-versions-of-net-core)する必要があります。 Storage Explorer 1.8.0 以降を実行している場合は、少なくとも .NET Core 2.1 が必要になります。
 
-# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
-1. Storage Explorer をダウンロードします。
-2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current) をインストールします。
-3. 次のコマンドを実行します。
+1. Storage Explorer .tar.gz ファイルをダウンロードします。
+2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. Storage Explorer をダウンロードします。
-2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current) をインストールします。
-3. 次のコマンドを実行します。
+1. Storage Explorer .tar.gz ファイルをダウンロードします。
+2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
-1. Storage Explorer をダウンロードします。
-2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current) をインストールします。
-3. 次のコマンドを実行します。
+1. Storage Explorer .tar.gz ファイルをダウンロードします。
+2. [.NET Core Runtime](https://docs.microsoft.com/dotnet/core/install/linux) をインストールします。
    ```bash
-   sudo apt install libgnome-keyring-dev
-   ```
-
-# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
-
-1. Storage Explorer をダウンロードします。
-2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current) をインストールします。
-3. 次のコマンドを実行します。
-   ```bash
-   sudo apt install libgnome-keyring-dev
+   wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     sudo dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 ---
+
+Storage Explorer で必要なライブラリの多くは、Canonical の標準 Ubuntu インストールにプレインストールされています。 カスタム環境の場合、一部のライブラリが不足することがあります。 Storage Explorer を起動できない場合、お使いのシステムに次のパッケージがインストールされていることを確認することをお勧めします。
+
+- iproute2
+- libasound2
+- libatm1
+- libgconf2-4
+- libnspr4
+- libnss3
+- libpulse0
+- libsecret-1-0
+- libx11-xcb1
+- libxss1
+- libxtables11
+- libxtst6
+- xdg-utils
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>新しいバージョンの .NET Core への Storage Explorer 修正プログラムの適用
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79458071"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513022"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -26,7 +26,7 @@ ms.locfileid: "79458071"
 
 ## <a name="start-cloud-shell"></a>Cloud Shell の起動
 1. Azure Portal 上部のナビゲーションから **Cloud Shell** を起動します。 <br>
-![](media/quickstart/shell-icon.png)
+![Azure portal で Azure Cloud Shell を起動する方法を示すスクリーンショット。](media/quickstart/shell-icon.png)
 
 2. ストレージ アカウントと Microsoft Azure ファイル共有を作成するためのサブスクリプションを選択します。
 3. [Create storage]\(ストレージの作成\) を選択します。
@@ -36,7 +36,7 @@ ms.locfileid: "79458071"
 
 ### <a name="select-the-bash-environment"></a>Bash 環境を選ぶ
 シェル ウィンドウの左側にある環境ドロップダウンで [`Bash`] が選択されていることを確認します。 <br>
-![](media/quickstart/env-selector.png)
+![Azure Cloud Shell 用の Bash 環境を選択する方法を示すスクリーンショット。](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>サブスクリプションの設定
 1. 自分が利用できるサブスクリプションを一覧表示します。
@@ -44,10 +44,11 @@ ms.locfileid: "79458071"
    az account list
    ```
 
-2. 優先するサブスクリプションを設定します。 <br>
-```azurecli-interactive
-az account set --subscription 'my-subscription-name'
-```
+2. 優先するサブスクリプションを設定します。
+
+   ```azurecli-interactive
+   az account set --subscription 'my-subscription-name'
+   ```
 
 > [!TIP]
 > 設定したサブスクリプションは、`/home/<user>/.azure/azureProfile.json` を使って今後のセッション用に記憶されます。
@@ -73,7 +74,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ### <a name="ssh-into-your-linux-vm"></a>Linux VM への SSH 接続
 1. Azure Portal の検索バーで VM 名を検索します。
 2. [接続] をクリックして、VM 名とパブリック IP アドレスを取得します。 <br>
-   ![](media/quickstart/sshcmd-copy.png)
+   ![SSH を使用して Linux VM に接続する方法を示すスクリーンショット。](media/quickstart/sshcmd-copy.png)
 
 3. `ssh` コマンドを使用して VM への SSH 接続を確立します。
    ```
@@ -81,7 +82,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
    ```
 
 SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表示されます。 <br>
-![](media/quickstart/ubuntu-welcome.png)
+![SSH 接続を確立した後の Ubuntu の初期化とウェルカム プロンプトを示すスクリーンショット。](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>クリーンアップしています 
 1. SSH セッションを終了します。

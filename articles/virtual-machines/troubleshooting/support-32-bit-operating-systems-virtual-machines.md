@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71846395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079861"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート
 
-Microsoft Azure をご利用のユーザーは、32 ビットの Windows オペレーティング システムを Azure で利用できるようになりました。 これらのオペレーティング システムの一部は既にサポート有効期間が終了しているため、Microsoft では追加サポートを提供しない場合があります。 Microsoft Azure 仮想マシン (VM) 上で実行される Linux ベースまたは Berkeley ソフトウェア配布 (BSD) ベースのオペレーティング システムに対しても、サポートは提供されません。
+Microsoft Azure をご利用のユーザーは、32 ビットの Windows オペレーティング システムを Azure で利用できるようになりました。 特殊化された VHD のみがサポートされ、一般化されたイメージは Azure では機能しません。 これらのオペレーティング システムの一部は既にサポート有効期間が終了しているため、Microsoft では追加サポートを提供しない場合があります。 Microsoft Azure 仮想マシン (VM) 上で実行される Linux ベースまたは Berkeley ソフトウェア配布 (BSD) ベースのオペレーティング システムに対しても、サポートは提供されません。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -34,8 +34,8 @@ Azure 仮想マシンでサポートされているオペレーティング シ�
 ## <a name="references"></a>References
 
 * [Azure の Windows Server 2008/R2のセキュリティ更新プログラムを無料で延長する方法に関する詳細情報](https://www.microsoft.com/cloud-platform/windows-server-2008)
-* [Azure の Windows Server 2008 SP2 32 ビットに特化したイメージのサポートに関する詳細情報](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
-* [Azure Site Recovery を使用した Azure への Windows Server 2008 イメージの移行サポートに関する詳細情報](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-windows-server-2008)
+* [Azure の Windows Server 2008 SP2 32 ビットに特化したイメージのサポートに関する詳細情報](/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
+* [Azure Site Recovery を使用した Azure への Windows Server 2008 イメージの移行サポートに関する詳細情報](../../site-recovery/migrate-tutorial-windows-server-2008.md)
 * [Azure の拡張機能がサポートされるオペレーティング システムに関する詳細情報](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)
 * [Microsoft Azure で Windows Server 2003 を実行する方法に関する詳細情報](https://support.microsoft.com/help/3206074/running-windows-server-2003-on-microsoft-azure)
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:NAT ゲートウェイを作成する - Resource Manager テンプレート
+title: NAT ゲートウェイを作成する - Resource Manager テンプレート
 titleSuffix: Azure Virtual Network NAT
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、NAT ゲートウェイを作成する方法について説明します。
 services: load-balancer
@@ -8,21 +8,22 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to create a NAT gateway by using an Azure Resource Manager template so that I can provide outbound connectivity for my virtual machines.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
-ms.topic: quickstart
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 3850f3f22e730e46f6d278b6cef0e17d357b126d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc4804070e0fa4ca6e9e54dcf6e04aafcc17f91a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81618048"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053900"
 ---
-# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>クイック スタート:NAT ゲートウェイを作成する - Resource Manager テンプレート
+# <a name="create-a-nat-gateway---resource-manager-template"></a>NAT ゲートウェイを作成する - Resource Manager テンプレート
 
 Azure Resource Manager テンプレートを使用して、Virtual Network NAT の使用を開始します。  このテンプレートは、仮想ネットワーク、NAT ゲートウェイ リソース、および Ubuntu 仮想マシンをデプロイします。 Ubuntu 仮想マシンは、NAT ゲートウェイ リソースに関連付けられているサブネットにデプロイされます。
 

@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b4acd431656eb008702f62dc1ecf12bda62dae17
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67721743"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051085"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Ink Recognizer API の言語と地域のサポート
+
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 この記事では、Ink Recognizer API でサポートされる言語について説明します。 次の言語で記述されたデジタル インク コンテンツは、API で解釈して処理できます。
 
 ## <a name="supported-languages"></a>サポートされている言語
 
-| 言語                                   | 言語コード   |
+| Language                                   | 言語コード   |
 |:-------------------------------------------|:---------------:|
 | アフリカーンス語                                  |    `af-ZA`      |
 | アルバニア語                                   |     `sq-AL`     |
@@ -89,7 +91,7 @@ ms.locfileid: "67721743"
 | コサ語                                      |     `xh-ZA`     |
 | ズールー語                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Ink Recognizer API とは](overview.md)
 * [Ink Recognizer API にデジタル インク ストロークを送信する](concepts/send-ink-data.md)

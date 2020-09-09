@@ -2,13 +2,13 @@
 title: チュートリアル:パターン - LUIS
 description: このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善すると共に、与える発話の例を減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例として与えられます。
 ms.topic: tutorial
-ms.date: 05/07/2020
-ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/06/2020
+ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592918"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039502"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加して予測を改善する
 
@@ -39,12 +39,10 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
 
 次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true)をダウンロードして保存します。
 
 1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
-1. [LUIS ポータル](https://www.luis.ai)で、その JSON を新しいアプリにインポートします。 **[マイ アプリ]** ページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、 **[Import as JSON]\(JSON としてインポート\)** を選択します。 前の手順でダウンロードしたファイルを選択します。
-
-1. **[管理]** セクションの **[バージョン]** タブでアクティブなバージョンを選択し、 **[複製]** を選択します。 複製したバージョンに `patterns` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+1. [LUIS ポータル](https://www.luis.ai)で、その JSON を新しいアプリにインポートします。 **[マイ アプリ]** ページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、 **[Import as JSON]\(JSON としてインポート\)** を選択します。 前の手順でダウンロードしたファイルを選択し、アプリに `Patterns tutorial` という名前を付けます。
 
 ## <a name="create-new-intents-and-their-utterances"></a>新しい意図とその発話を作成する
 
@@ -67,8 +65,6 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
     |`Who is John W. Smith's manager?`|
     |`Who does Jill Jones directly report to?`|
     |`Who is Jill Jones supervisor?`|
-
-    意図の発話で従業員エンティティの代わりに keyPhrase エンティティにラベルが付いているかどうかは気にしないでください。 どちらも [テスト] ウィンドウとエンドポイントで正しく予測されます。
 
 1. 左側のナビゲーションで、 **[Intents]\(意図\)** を選択します。
 
@@ -109,50 +105,50 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.313054234
+                    "score": 0.326605469
                 },
                 "OrgChart-Reports": {
-                    "score": 0.2462688
+                    "score": 0.127583548
                 },
                 "EmployeeFeedback": {
-                    "score": 0.0488328524
-                },
-                "GetJobInformation": {
-                    "score": 0.0156933
+                    "score": 0.0299124215
                 },
                 "MoveEmployee": {
-                    "score": 0.011265873
+                    "score": 0.01159851
                 },
-                "Utilities.StartOver": {
-                    "score": 0.003065792
-                },
-                "Utilities.Stop": {
-                    "score": 0.00300148362
-                },
-                "Utilities.Cancel": {
-                    "score": 0.00271081156
-                },
-                "None": {
-                    "score": 0.00212835032
+                "GetJobInformation": {
+                    "score": 0.0104600191
                 },
                 "ApplyForJob": {
-                    "score": 0.0020669254
+                    "score": 0.007508645
                 },
-                "Utilities.Confirm": {
-                    "score": 0.00200891262
+                "Utilities.StartOver": {
+                    "score": 0.00359402061
+                },
+                "Utilities.Stop": {
+                    "score": 0.00336530479
                 },
                 "FindForm": {
-                    "score": 0.00194145238
+                    "score": 0.002653719
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00263288687
+                },
+                "None": {
+                    "score": 0.00238638581
                 },
                 "Utilities.Help": {
-                    "score": 0.00182301877
+                    "score": 0.00226386427
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00211663754
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -171,9 +167,9 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -190,13 +186,9 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
     }
     ```
 
-上位 2 つの意図のスコアは近いですが、最も高い意図は有意に高い (60% 超) とは言えず、また次の意図のスコアよりも十分高いとは言えません。
+正しい最上位の意図 `OrgChart-Manager` が予測されましたが、スコアが 70% 以下であり、次に高い意図よりも十分高いとは言えません。 正しい意図のスコアを割合で大幅に高く、また次に高いスコアからさらに離れたものにするパターンを使用してください。
 
-LUIS トレーニングは毎回まったく同じではなく、少し変動があるため、次のトレーニング サイクルではこれらの上位 2 つのスコアが逆になる可能性があります。 その結果、間違った意図が返されることがあります。
-
-正しい意図のスコアを割合で大幅に高く、また次に高いスコアからさらに離れたものにするパターンを使用してください。
-
-この 2 つ目のブラウザー ウィンドウは開いたままにします。 後でまた使います。
+この 2 つ目のブラウザー ウィンドウは開いたままにします。 このチュートリアルで、後でまた使います。
 
 ## <a name="template-utterances"></a>テンプレート発話
 サブジェクト ドメインである人事の性質上、組織内の従業員の関係について一般的なたずね方がいくつかあります。 次に例を示します。
@@ -206,16 +198,16 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-発話の多数の例を提供せずに、それぞれの文脈の一意性を判断するには、これらの発話は類似しすぎています。 意図のパターンを追加することにより、発話の多数の例を提供しなくても、LUIS は意図の一般的な発話パターンを学習します。
+発話の_多数_の例を提供せずに、それぞれの文脈の一意性を判断するには、これらの発話は類似しすぎています。 意図のパターンを追加することにより、発話の多数の例をさらに提供しなくても、LUIS は意図の一般的な発話パターンを学習します。
 
 この意図のテンプレート発話例には、次のものが含まれます:
 
 |テンプレート発話例|構文の意味|
 |--|--|
-|`Who does {Employee} report to[?]`|交換可能な `{Employee}`<br>無視 `[?]`|
-|`Who reports to {Employee}[?]`|交換可能な `{Employee}`<br>無視 `[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|交換可能な `{EmployeeListEntity}`<br>無視 `[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|交換可能な `{EmployeeListEntity}`<br>無視 `[?]`|
 
-`{Employee}` 構文では、テンプレート発話内でのエンティティの位置とそれがどのエンティティであるかがマークされます。 オプションの構文 `[?]` は、オプションである単語または[句読点](luis-reference-application-settings.md#punctuation-normalization)をマークします。 LUIS は、かっこ内のオプションのテキストを無視し、発話を照合します。
+`{EmployeeListEntity}` 構文では、テンプレート発話内でのエンティティの位置とそれがどのエンティティであるかがマークされます。 オプションの構文 `[?]` は、オプションである単語または[句読点](luis-reference-application-settings.md#punctuation-normalization)をマークします。 LUIS は、かっこ内のオプションのテキストを無視し、発話を照合します。
 
 構文は正規表現のように見えますが、正規表現ではありません。 中かっこ `{}` と角かっこ `[]` の構文のみがサポートされています。 これらは 2 階層まで入れ子にすることができます。
 
@@ -233,25 +225,25 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
     |テンプレート発話|
     |:--|
-    |`Who is {Employee} the subordinate of[?]`|
-    |`Who does {Employee} report to[?]`|
-    |`Who is {Employee}['s] manager[?]`|
-    |`Who does {Employee} directly report to[?]`|
-    |`Who is {Employee}['s] supervisor[?]`|
-    |`Who is the boss of {Employee}[?]`|
+    |`Who is {EmployeeListEntity} the subordinate of[?]`|
+    |`Who does {EmployeeListEntity} report to[?]`|
+    |`Who is {EmployeeListEntity}['s] manager[?]`|
+    |`Who does {EmployeeListEntity} directly report to[?]`|
+    |`Who is {EmployeeListEntity}['s] supervisor[?]`|
+    |`Who is the boss of {EmployeeListEntity}[?]`|
 
-    これらのテンプレート発話には、中かっこ表記の **Employee** エンティティが含まれています。
+    これらのテンプレート発話には、中かっこ表記の **EmployeeListEntity** エンティティが含まれています。
 
 1. [パターン] ページで **OrgChart-Reports** 意図を選択し、次のテンプレート発話を入力します。
 
     |テンプレート発話|
     |:--|
-    |`Who are {Employee}['s] subordinates[?]`|
-    |`Who reports to {Employee}[?]`|
-    |`Who does {Employee} manage[?]`|
-    |`Who are {Employee} direct reports[?]`|
-    |`Who does {Employee} supervise[?]`|
-    |`Who does {Employee} boss[?]`|
+    |`Who are {EmployeeListEntity}['s] subordinates[?]`|
+    |`Who reports to {EmployeeListEntity}[?]`|
+    |`Who does {EmployeeListEntity} manage[?]`|
+    |`Who are {EmployeeListEntity} direct reports[?]`|
+    |`Who does {EmployeeListEntity} supervise[?]`|
+    |`Who does {EmployeeListEntity} boss[?]`|
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>パターンが使用されるときにエンドポイントにクエリを実行する
 
@@ -261,7 +253,7 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 1. 発行が完了したら、ブラウザーのタブをエンドポイント URL のタブに再び切り替えます。
 
-1. アドレス バーの URL の末尾に移動して、_YOUR_QUERY_HERE_ を `Who is the boss of Jill Jones?` に置き換えます。
+1. アドレス バーで URL の末尾に移動し、クエリがまだ `Who is the boss of Jill Jones?` であることを確認してから、新しい予測の URL を送信します。
 
     ```json
     {
@@ -270,50 +262,50 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.999997854
+                    "score": 0.999999046
                 },
                 "OrgChart-Reports": {
-                    "score": 6.13748343E-05
+                    "score": 3.237443E-05
                 },
                 "EmployeeFeedback": {
-                    "score": 8.052567E-06
+                    "score": 4.364242E-06
                 },
                 "GetJobInformation": {
-                    "score": 1.18197136E-06
+                    "score": 1.616159E-06
                 },
                 "MoveEmployee": {
-                    "score": 7.65549657E-07
-                },
-                "None": {
-                    "score": 3.975E-09
-                },
-                "Utilities.StartOver": {
-                    "score": 1.53E-09
-                },
-                "Utilities.Confirm": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Help": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Stop": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Cancel": {
-                    "score": 1.25833333E-09
-                },
-                "FindForm": {
-                    "score": 1.15384613E-09
+                    "score": 7.575752E-07
                 },
                 "ApplyForJob": {
-                    "score": 5.26923061E-10
+                    "score": 5.234157E-07
+                },
+                "None": {
+                    "score": 3.3E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.26E-09
+                },
+                "FindForm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.13636367E-09
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -332,9 +324,9 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -351,7 +343,7 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
     }
     ```
 
-これで、意図の予測の確度は大幅に高くなり、次に高い意図のスコアは大幅に小さくなりました。 トレーニング時に、この 2 つの意図が入れ替わることはありません。
+これで、意図の予測の確度は大幅に高くなり、次に高い意図のスコアは非常に小さくなりました。 トレーニング時に、この 2 つの意図が入れ替わることはありません。
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>省略可能なテキストと事前構築済みエンティティの使用
 
@@ -372,8 +364,8 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 |Intent|省略可能なテキストと事前構築済みエンティティを含む発話の例|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who is {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 
 省略可能な構文の角かっこ `[]` を使用すると、この省略可能なテキストをテンプレート発話に簡単に追加でき、最大 2 レベルまで入れ子にでき `[[]]`、エンティティやテキストを含めることができます。
@@ -383,9 +375,10 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 **質問: 3 月 3 日が数値 `3` および日付 `March 3` の両方として予測される場合、事前構築済みの数がテンプレート発話の一部になっていないのはなぜですか。** コンテキスト上、テンプレート発話では日付を `March 3` のようにリテラルで、または `in a month` のように抽象化して使用しています。 日付は数値を含むことができますが、数値は必ずしも日付として見えなくてもかまいません。 常に、予測 JSON の結果で返したい種類をもっともよく表すエンティティを使用します。
 
-**質問: `Who will {Employee}['s] manager be on March 3?` のような不適切な語句の発話はどうなりますか。** `will` と `be` が分けられるこのような文法的に異なる動詞の時制は、新しいテンプレート発話にする必要があります。 既存のテンプレート発話は一致しません。 発話の意図は変わっていませんが、発話での単語の配置が変わっています。 この変更は、LUIS での予測に影響します。 動詞の時制の[グループ化や OR 演算子](#use-the-or-operator-and-groups)を使用して、このような発話を組み合わせることができます。
+**質問: `Who will {EmployeeListEntity}['s] manager be on March 3?` のような不適切な語句の発話はどうなりますか。** `will` と `be` が分けられるこのような文法的に異なる動詞の時制は、新しいテンプレート発話にする必要があります。 既存のテンプレート発話は一致しません。 発話の意図は変わっていませんが、発話での単語の配置が変わっています。 この変更は、LUIS での予測に影響します。 動詞の時制の[グループ化や OR 演算子](#use-the-or-operator-and-groups)を使用して、このような発話を組み合わせることができます。
 
-**注意: エンティティが最初に見つけられた後、パターンが照合されます。**
+> [!CAUTION]
+> **注意: エンティティが最初に見つけられた後、パターンが照合されます。**
 
 ### <a name="add-new-pattern-template-utterances"></a>新しいパターン テンプレート発話を追加する
 
@@ -393,9 +386,9 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
     |Intent|省略可能なテキストと事前構築済みエンティティを含む発話の例|
     |--|--|
-    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 2. ナビゲーション バーの **[Train]\(トレーニング\)** を選択して、アプリをトレーニングします。
 
@@ -403,7 +396,7 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 4. テスト発話をいくつか入力し、パターンが一致して意図スコアが十分に高いことを確認します。
 
-    最初の発話を入力した後、結果の下の **[Inspect]\(検査\)** を選択してすべての予測結果を見ることができます。 各発話には **OrgChart-Manager** 意図があるため、Employee and datetimeV2 のエントリの値が抽出されるはずです。
+    最初の発話を入力した後、結果の下の **[Inspect]\(検査\)** を選択してすべての予測結果を見ることができます。 各発話には **OrgChart-Manager** 意図があるため、`EmployeeListEntity` および `datetimeV2` エンティティの値が抽出されるはずです。
 
     |発話|
     |--|
@@ -425,18 +418,21 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 前述のテンプレート発話の一部はとても似ています。 テンプレート発話を減らすには、**グループ** `()` と **OR** `|` 構文を使用します。
 
-次の 2 つのパターンは、グループ `()` と OR `|` の構文を使用して 1 つのパターンに結合することができます。
+次の 2 つのパターンは、グループ `()` と OR `|` の構文を使用して 1 つのパターンに結合できます。
 
 |Intent|省略可能なテキストと事前構築済みエンティティを含む発話の例|
 |--|--|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 新しいテンプレート発話は次のようになります。
 
-`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+`who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`.
 
 ここでは、必須の動詞の時制を囲む**グループ**と、**or** パイプでつなげた省略可能な `in` および `on` を使用しています。
+
+> [!NOTE]
+> 例のテンプレートで _OR_ 記号の `|` (パイプ) を使用する場合は、パイプ記号の前後にスペースを挿入して区切ってください。
 
 1. **[パターン]** ページで **[OrgChart-Manager]** フィルターを選択します。 `manager` を検索して一覧を絞り込みます。
 
@@ -444,7 +440,7 @@ LUIS トレーニングは毎回まったく同じではなく、少し変動が
 
 1. テンプレートの発話を次のように変更します。
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+    `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`
 
 2. ナビゲーション バーの **[Train]\(トレーニング\)** を選択して、アプリをトレーニングします。
 

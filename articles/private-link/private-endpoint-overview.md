@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744405"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639836"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -35,7 +35,9 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 プライベート エンドポイントに関する重要な詳細情報を次に示します。 
 - プライベート エンドポイントは、[VPN](https://azure.microsoft.com/services/vpn-gateway/) と [Express Route](https://azure.microsoft.com/services/expressroute/) のどちらかのほか、Private Link を使用したサービスを使って、同じ VNet、各リージョンでピアリングされた VNet、グローバルにピアリングされた VNet、およびオンプレミスのコンシューマー間の接続を可能にします。
  
-- プライベート エンドポイントを作成すると、リソースのライフサイクルにわたって読み取り専用のネットワーク インターフェイスも作成されます。 このインターフェイスには、プライベート リンク リソースにマップされる、サブネットからのプライベート IP アドレスが割り当てられます。
+- ネットワーク通信は、クライアントがプライベート エンドポイントに接続することでしか開始できません。サービス プロバイダーに、サービス コンシューマーへの接続を開始するルーティング構成はありません。 接続は一方向にのみ確立できます。
+
+- プライベート エンドポイントを作成すると、リソースのライフサイクルにわたって読み取り専用のネットワーク インターフェイスも作成されます。 このインターフェイスには、プライベート リンク リソースにマップされる、サブネットからのプライベート IP アドレスが動的に割り当てられます。 プライベート IP アドレスの値は、プライベート エンドポイントのライフサイクル全体にわたって変更されません。
  
 - プライベート エンドポイントは、仮想ネットワークと同じリージョンにデプロイする必要があります。 
  
@@ -45,6 +47,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
  
 - 同じ仮想ネットワーク内の同じサブネットまたは異なるサブネットに複数のプライベート エンドポイントを作成できます。 サブスクリプションに作成できるプライベート エンドポイントの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)に関する記事を参照してください。
 
+- プライベート リンク リソースからのサブスクリプションも、Micosoft.Network リソース プロバイダーに登録されている必要があります。 詳細については、 [Azure リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関する記事を参照してください。
 
  
 ## <a name="private-link-resource"></a>プライベート リンク リソース 
@@ -53,6 +56,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |プライベート リンク リソース名  |リソースの種類   |サブリソース  |
 |---------|---------|---------|
 |**Private Link サービス** (独自のサービス)   |  Microsoft.Network/privateLinkServices       | empty |
+|**Azure Automation** |  Microsoft.Automation/automationAccounts | Webhook、DSCAndHybridWorker |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        | 
 |**Azure ストレージ**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)<BR> Table (table、table_secondary)<BR> Queue (queue、queue_secondary)<BR> File (file、file_secondary)<BR> Web (web、web_secondary)        |
@@ -61,19 +65,27 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure Database for PostgreSQL- シングルサーバー** | Microsoft.DBforPostgreSQL/servers    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Azure IoT Hub** | Microsoft.Devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | コンテナー |
-|**Azure Kubernetes Service - Kubernetes API** | Microsoft.ContainerService/managedClusters    | managedCluster |
+|**Azure Kubernetes Service - Kubernetes API** | Microsoft.ContainerService/managedClusters    | management |
 |**Azure Search** | Microsoft.Search/searchService| searchService|  
 |**Azure Container Registry** | Microsoft.ContainerRegistry/registries    | 使用) |
-|**Azure App Configuration** | Microsoft.Appconfiguration/configurationStores    | configurationStore |
+|**Azure App Configuration** | Microsoft.Appconfiguration/configurationStores    | configurationStores |
 |**Azure Backup** | Microsoft.RecoveryServices/vaults    | コンテナー |
 |**Azure Event Hub** | Microsoft.EventHub/namespaces    | namespace |
 |**Azure Service Bus** | Microsoft.ServiceBus/namespaces | namespace |
 |**Azure Relay** | Microsoft.Relay/namespaces | namespace |
 |**Azure Event Grid** | Microsoft.EventGrid/topics    | topic |
 |**Azure Event Grid** | Microsoft.EventGrid/domains    | domain |
-|**Azure WebApps** | Microsoft.Web/sites    | site |
+|**Azure WebApps** | Microsoft.Web/sites    | sites |
 |**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces    | ワークスペース |
+|**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
+|**Azure Monitor** | Microsoft.Insights/privateLinkScopes    | azuremonitor |
+|**Cognitive Services** | (Microsoft.CognitiveServices/accounts    | account |
+|**Azure File Sync** | microsoft.storagesync/storagesyncservices    | Afs |
+    
+  
+
   
  
 ## <a name="network-security-of-private-endpoints"></a>プライベート エンドポイントのネットワーク セキュリティ 
@@ -83,7 +95,7 @@ Azure サービスでプライベート エンドポイントを使用する場�
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>承認ワークフローを使用したプライベート リンク リソースへのアクセス 
 次の接続の承認方法を使用して、プライベート リンク リソースに接続できます。
-- **自動的**な承認: 特定のプライベート リンク リソースに対するアクセス許可を自ら所有しているか、付与されている場合。 必要なアクセス許可は、次の形式のプライベート リンク リソースの種類に基づきます: Microsoft.\<プロバイダー>/<リソースの種類>/privateEndpointConnectionApproval/action
+- **自動的**な承認: 特定のプライベート リンク リソースに対するアクセス許可を自ら所有しているか、付与されている場合。 必要なアクセス許可は、次の形式のプライベート リンク リソースの種類に基づきます: Microsoft.\<Provider>/<リソースの種類>/privateEndpointConnectionApproval/action
 - **手動**による要求: 必要な許可がなく、アクセスを要求したい場合。 承認ワークフローが開始されます。 プライベート エンドポイントとそれ以降のプライベート エンドポイント接続は、"Pending (保留中)" 状態で作成されます。 プライベート リンク リソースの所有者は、接続を承認する役割を担います。 次の承認ワークフロー ダイアグラムに示すように、プライベート エンドポイントは、承認されると、トラフィックを正常に送信できるようになります。  
 
 ![ワークフローの承認](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -121,9 +133,9 @@ Azure サービスでプライベート エンドポイントを使用する場�
 
 
 ## <a name="next-steps"></a>次のステップ
-- [ポータルを使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
-- [PowerShell を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
-- [CLI を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
+- [ポータルを使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
+- [PowerShell を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
+- [CLI を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
 - [ポータルを使用してストレージ アカウント用のプライベート エンドポイントを作成する](create-private-endpoint-storage-portal.md)
 - [ポータルを使用して Azure Cosmos アカウントのプライベート エンドポイントを作成する](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell を使用して独自の Private Link サービスを作成する](create-private-link-service-powershell.md)

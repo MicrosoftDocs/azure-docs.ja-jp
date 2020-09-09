@@ -8,20 +8,21 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/25/2020
-ms.openlocfilehash: 8761a8f6daf0e15a00dc989e77339fea9536b330
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.date: 06/23/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801282"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917892"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>クイック スタート:REST API を使用して Node.js で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
 > * [ポータル](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -129,7 +130,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="1---create-index"></a>1 - インデックスの作成 
 
-**hotels_quickstart_index.json** というファイルを作成します。  このファイルでは、次の手順で読み込むドキュメントに対する Azure Cognitive Search の処理を定義します。 各フィールドは `name` によって識別されます。それぞれ、指定された `type` を備えています。 さらに各フィールドは、Azure Cognitive Search がそのフィールドに対して検索、フィルター、並べ替え、およびファセットを実行できるかどうかを指定する、一連のインデックス属性も備えています。 ほとんどのフィールドは単純なデータ型ですが、`AddressType` のように、自分のインデックスでリッチなデータ構造を作成できる複合型もあります。  [サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)と[インデックス属性](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)について、詳細をお読みください。 
+**hotels_quickstart_index.json** というファイルを作成します。  このファイルでは、次の手順で読み込むドキュメントに対する Azure Cognitive Search の処理を定義します。 各フィールドは `name` によって識別されます。それぞれ、指定された `type` を備えています。 さらに各フィールドは、Azure Cognitive Search がそのフィールドに対して検索、フィルター、並べ替え、およびファセットを実行できるかどうかを指定する、一連のインデックス属性も備えています。 ほとんどのフィールドは単純なデータ型ですが、`AddressType` のように、自分のインデックスでリッチなデータ構造を作成できる複合型もあります。  [サポートされているデータ型](/rest/api/searchservice/supported-data-types)と[インデックス属性](./search-what-is-an-index.md#index-attributes)について、詳細をお読みください。 
 
 以下を **hotels_quickstart_index.json** に追加するか、[ファイルをダウンロードします](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json)。 
 
@@ -280,7 +281,7 @@ class AzureSearchClient {
         // The query key is used for read-only requests and so can be distributed with less risk of abuse.
         this.queryKey = queryKey;
         this.indexName = indexName;
-        this.apiVersion = '2019-05-06';
+        this.apiVersion = '2020-06-30';
     }
 
     // All methods go inside class body here!
@@ -289,7 +290,7 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-このクラスの最初の役割は、さまざまな要求の送信先となる URL の構築方法を認識することです。 これらの URL は、クラス コンストラクターに渡された構成データを使用するインスタンス メソッドによって構築します。 ここで構築する URL は API バージョンごとに異なり、そのバージョンを指定する引数が必要であることに注意してください (このアプリケーションでは `2019-05-06`)。 
+このクラスの最初の役割は、さまざまな要求の送信先となる URL の構築方法を認識することです。 これらの URL は、クラス コンストラクターに渡された構成データを使用するインスタンス メソッドによって構築します。 ここで構築する URL は API バージョンごとに異なり、そのバージョンを指定する引数が必要であることに注意してください (このアプリケーションでは `2020-06-30`)。 
 
 これらのメソッドの 1 つ目は、インデックス自体の URL を返します。 クラス本文内に次のメソッドを追加します。
 
@@ -609,7 +610,7 @@ const run = async () => {
 
 ## <a name="3---search-an-index"></a>3 - インデックスの検索
 
-Azure portal で、自分の検索サービスの **[概要]** の **[インデックス]** タブに戻ります。 インデックスには現在 4 つのドキュメントが含まれており、一定量のストレージが消費されています (インデックスの基本状態が UI に適切に反映されるまで数分かかる場合があります)。 インデックス名をクリックすると、**Search エクスプローラー**が開きます。 このページでは、データ クエリを試すことができます。 `*&$count=true` というクエリ文字列を検索してみてください。自分のドキュメントと、結果の数がすべて返されます。 `historic&highlight=Description&$filter=Rating gt 4` というクエリ文字列を試してみてください。単語 "historic" が `<em></em>` タグで囲まれた単一のドキュメントが返されます。 詳細については、[Azure Cognitive Search でのクエリを構成する方法](https://docs.microsoft.com/azure/search/search-query-overview)に関するページを参照してください。 
+Azure portal で、自分の検索サービスの **[概要]** の **[インデックス]** タブに戻ります。 インデックスには現在 4 つのドキュメントが含まれており、一定量のストレージが消費されています (インデックスの基本状態が UI に適切に反映されるまで数分かかる場合があります)。 インデックス名をクリックすると、**Search エクスプローラー**が開きます。 このページでは、データ クエリを試すことができます。 `*&$count=true` というクエリ文字列を検索してみてください。自分のドキュメントと、結果の数がすべて返されます。 `historic&highlight=Description&$filter=Rating gt 4` というクエリ文字列を試してみてください。単語 "historic" が `<em></em>` タグで囲まれた単一のドキュメントが返されます。 詳細については、[Azure Cognitive Search でのクエリを構成する方法](./search-query-overview.md)に関するページを参照してください。 
 
 **index.js** を開いて先頭付近にこのコードを追加して、これらのクエリをコードで再現します。
 

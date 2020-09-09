@@ -1,25 +1,19 @@
 ---
 title: クイック スタート:Python で Azure Service Bus キューを使用する
 description: この記事では、Python を使用して、Azure Service Bus キューを作成し、このキューとの間でメッセージを送受信する方法について説明します。
-services: service-bus-messaging
+author: spelluru
 documentationcenter: python
-author: axisc
-editor: spelluru
-ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.custom: seo-python-october2019
-ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.custom: seo-python-october2019, devx-track-python
+ms.openlocfilehash: 55ed71c6947c70ac797656f2f18cf71dd8aaae9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478641"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852482"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>クイック スタート:Python で Azure Service Bus キューを使用する
 

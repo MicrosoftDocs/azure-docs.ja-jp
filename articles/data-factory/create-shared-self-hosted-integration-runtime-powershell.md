@@ -10,13 +10,13 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106629"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136050"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 
@@ -28,21 +28,19 @@ ms.locfileid: "82106629"
 
 Azure Data Factory の UI を使用して共有のセルフホステッド IR を作成するには、次の手順を実行します。
 
-1. 共有されるセルフホステッド IR で、リンクされた IR を作成するデータ ファクトリへのアクセス許可を付与します。
+1. 共有されるセルフホステッド IR で、 **[別のデータ ファクトリにアクセス許可を付与]** を選択し、[統合ランタイムのセットアップ] ページで、リンクされた IR を作成するデータ ファクトリを選択します。
       
-    ![[共有] タブのアクセス許可を付与するためのボタン](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![アクセス許可を割り当てるための選択](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![[共有] タブのアクセス許可を付与するためのボタン](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. 共有されるセルフホステッド IR のリソース ID をメモしておきます。
-      
-   ![リソース ID の場所](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. 上記の共有されるセルフホステッド IR の "リソース ID" に注目してコピーしておきます。
+         
 3. アクセス許可が付与されたデータ ファクトリで、新しいセルフホステッド IR (共有) を作成して、リソース ID を入力します。
       
-   ![リンクされたセルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![名前とリソース ID のボックス](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![セルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![リンクされたセルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![名前とリソース ID のボックス](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Azure PowerShell を使用して共有のセルフホステッド IR を作成する
 
@@ -101,7 +99,7 @@ Azure PowerShell を使用して共有のセルフホステッド IR を作成�
     > [!NOTE]  
     > この手順は省略可能です。 既にデータ ファクトリがある場合は、この手順をスキップしてください。 
 
-    [New-AzResourceGroup](../azure-resource-manager/management/overview.md) コマンドを使用して [Azure リソース グループ](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
+    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 次の例では、`myResourceGroup` という名前のリソース グループを WestEurope の場所に作成します。 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -157,7 +155,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>別のデータ ファクトリを作成する
 
 > [!NOTE]  
-> この手順は省略可能です。 共有先のデータ ファクトリが既にある場合は、この手順をスキップしてください。
+> この手順は省略可能です。 共有先のデータ ファクトリが既にある場合は、この手順をスキップしてください。 ただし、他のデータ ファクトリに対してロールの割り当てを追加または削除するには、[ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)や[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)など、`Microsoft.Authorization/roleAssignments/write` アクセス許可と `Microsoft.Authorization/roleAssignments/delete` アクセス許可が必要です。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

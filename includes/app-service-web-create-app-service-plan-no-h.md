@@ -19,7 +19,7 @@ Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=az
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
 
-次の例では、`myAppServicePlan`Free**価格レベルの** という名前の App Service プランを作成します。
+次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE

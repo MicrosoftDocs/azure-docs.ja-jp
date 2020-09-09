@@ -1,18 +1,18 @@
 ---
 title: SAS URI に関する一般的な問題と解決策 - Azure Marketplace
 description: 共有アクセス署名の使用時に発生する一般的な問題と推奨される解決策。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 56db3562efdc0406e745fd38b73df0a473d0ecd5
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4eb3c3e893a276aed10807a13a0f2d6d3bc4e71d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87316840"
 ---
 # <a name="common-sas-uri-issues-and-fixes"></a>SAS URI に関する一般的な問題と解決策
 

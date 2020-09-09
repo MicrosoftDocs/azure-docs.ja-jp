@@ -3,24 +3,27 @@ title: クイック スタート:ブラウザーでの JavaScript v10 用 Azure 
 description: HTML ページで JavaScript v10 SDK を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
 services: storage
 author: mhopkins-msft
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.service: storage
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3982e54d06f2e84c4e8e8703e70e9a26773c389a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161127"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429219"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>クイック スタート:ブラウザーで JavaScript v10 SDK を使用して BLOB を管理する
 
 このクイックスタートでは、すべてブラウザー内で実行される JavaScript コードを使用して BLOB を管理する方法について説明します。 BLOB は、大量のテキストやバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を保持できるオブジェクトです。 必要なセキュリティ対策を使用して BLOB ストレージ アカウントへの保護されたアクセスを確保します。
+
+> [!NOTE]
+> このクイックスタートでは、Azure Blob Storage クライアント ライブラリのレガシー バージョンを使用します。 最新バージョンで始めるには、「[クイックスタート: ブラウザーで JavaScript v12 SDK を使用して BLOB を管理する](quickstart-blobs-javascript-browser.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +43,7 @@ Azure Portal に戻り、ストレージ アカウントを選択します。 �
 
 次の表は、各 CORS 設定の説明と、ルールを定義するために使用する値を示しています。
 
-|設定  |値  | 説明 |
+|設定  |[値]  | [説明] |
 |---------|---------|---------|
 | 許可されるオリジン | * | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | 許可されたメソッド     | delete、get、head、merge、post、options、および put | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |

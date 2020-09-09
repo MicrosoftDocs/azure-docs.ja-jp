@@ -55,7 +55,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -295,7 +295,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -310,8 +310,8 @@ groups:
     title: C#
   - id: programming-language-javascript
     title: JavaScript
-  - id: programming-language-more
-    title: その他の言語
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-eighteen
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -340,7 +340,7 @@ groups:
     title: その他の言語
 - id: programming-languages-set-two-with-js-spx
   title: プログラミング言語
-  prompt: プログラミング言語または CLI を選択する。
+  prompt: プログラミング言語または CLI を選択する
   pivots:
   - id: programmer-tool-spx
     title: CLI
@@ -365,7 +365,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -385,7 +385,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -403,7 +403,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -454,10 +454,122 @@ groups:
     title: Python
   - id: programming-language-objectivec
     title: Objective-C
+- id: programming-languages-set-twenty
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-java-android
+    title: Java (Android)
+  - id: programming-language-kotlin
+    title: Kotlin (Android)
+  - id: programming-language-swift
+    title: Swift (iOS)
+- id: programming-languages-set-twenty-one
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+- id: programming-languages-set-twenty-two
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-spark-all-minus-sql
+  title: プログラミング言語
+  prompt: 言語の選択
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
+- id: aml-control-methods
+  title: Azure Machine Learning コントロール プレーン
+  prompt: Azure Machine Learning コントロール プレーンのインターフェイスを選択する
+  pivots:
+  - id: py-sdk
+    title: Python SDK
+  - id: cli
+    title: Azure CLI
+- id: speech-full-stack
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-spx
+    title: CLI
+- id: programming-languages-voice-assistants
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-more
+    title: その他の言語
+- id: ams-lva-edge-programming-languages
+  title: Live Video Analytics on IoT Edge のプログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: App Service プラットフォーム
+  prompt: ホスティング プラットフォームを選択する
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: カスタム コンテナーを使用した App Service
+  prompt: カスタム コンテナー プラットフォームを選択する
+  pivots:
+  - id: container-linux
+    title: Linux コンテナー
+  - id: container-windows
+    title: Windows コンテナー
+- id: programming-languages-spring-cloud
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
 metadata:
-  ms.openlocfilehash: 3888e33063df9251d2e53322e9372d79d15b4222
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: 0659c68f39493c3e3b2e66ebc5a38d96cd13404d
+  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800458"
+  ms.lasthandoff: 08/27/2020
+  ms.locfileid: "88998919"

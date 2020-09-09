@@ -2,20 +2,20 @@
 title: Spark を使用して Cassandra API のテーブル データを読み取る
 titleSufix: Azure Cosmos DB
 description: この記事では、Azure Cosmos DB 内の Cassandra API テーブルからデータを読み取る方法について説明します。
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60893402"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85257416"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Spark を使用して Azure Cosmos DB の Cassandra API テーブルからデータを読み取る
 
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>フィルターを適用する
 
-現在、述語プッシュ ダウンはサポートされていません。以下のサンプルは、クライアント側のフィルター処理を反映したものです。 
+データベースに述語をプッシュ ダウンすると、より適切に最適化された Spark クエリを実行できます。 述語とは true または false を返すクエリに対する条件で、通常は WHERE 句に配置されます。 述語プッシュ ダウンは、データベース クエリのデータをフィルター処理することで、データベースから取得されるエントリの数を減らしてクエリのパフォーマンスを向上させます。 既定では、Spark データセット API は有効な WHERE 句をデータベースに自動的にプッシュダウンします。 
 
 ```scala
 val readBooksDF = spark
@@ -102,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+物理プランの PushedFilters セクションには、GreaterThan プッシュ ダウン フィルターが含まれています。 
+
+:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="パーティション":::
 
 ## <a name="rdd-api"></a>RDD API
 

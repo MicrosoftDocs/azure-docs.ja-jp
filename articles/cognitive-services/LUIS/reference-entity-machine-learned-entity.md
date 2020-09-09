@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585591"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684581"
 ---
-# <a name="machine-learned-entity"></a>機械学習エンティティ
+# <a name="machine-learning-entity"></a>機械学習エンティティ
 
 機械学習エンティティは、LUIS アプリケーションをビルドするのに推奨されるエンティティです。
 
@@ -348,6 +348,6 @@ ms.locfileid: "83585591"
 
 ## <a name="next-steps"></a>次のステップ
 
-機械学習エンティティの詳細については、[チュートリアル](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)、および[ハウツーガイド](luis-how-to-add-entities.md#create-a-machine-learned-entity)を参照してください。
+機械学習エンティティの詳細については、[チュートリアル](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)、[攻略ガイド](luis-how-to-add-entities.md#create-a-machine-learned-entity)を参照してください。
 
 [リスト](reference-entity-list.md) エンティティと[正規表現](reference-entity-regular-expression.md)エンティティについて説明します。

@@ -4,12 +4,12 @@ description: この記事では、Azure Backup の監視アラートと Azure Ba
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 670314d8703889016431838a9f5b0a6dc56b84b8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76989571"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892560"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup の監視アラート - FAQ
 
@@ -38,7 +38,7 @@ LA ワークスペースを作成した後は、最大 2 年間データを保�
 
 ### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>LA ワークスペースを構成した後は、自分のデータがすべてレポートに表示されますか?
 
- 診断設定を構成した後に生成されたデータはすべて、LA ワークスペースにプッシュされ、レポートで使用できます。 進行中のジョブはレポートにプッシュされません。 ジョブは終了または失敗した後に、レポートに送信されます。
+ 診断設定を構成した後に生成されたデータはすべて、LA ワークスペースにプッシュされ、レポートで使用できます。 進行中のジョブはレポートにプッシュされません。 そのジョブは、完了するか、または失敗した後にレポートに送信されます。
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>コンテナーおよびサブスクリプションにまたがるレポートを表示できますか?
 
@@ -47,22 +47,6 @@ LA ワークスペースを作成した後は、最大 2 年間データを保�
 ### <a name="can-i-view-reports-across-tenants"></a>テナントにまたがってレポートを表示できますか?
 
 お客様が、ご自分の顧客のサブスクリプションまたは LA ワークスペースへの委任アクセス権を持つ [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) ユーザーである場合、バックアップ レポートを使用して、ご利用のすべてのテナントにわたってデータを表示することができます。
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure バックアップ エージェント ジョブの状態がポータルに反映されるまでに、どれくらいの時間がかかりますか。
-
-Azure portal に Azure バックアップ エージェント ジョブの状態が反映されるまでには、最大で 15 分かかります。
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。
-
-アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>通知が設定されているのに、電子メールが送信されないことはありますか。
-
-はい。 次のような状況では、通知は送信されません。
-
-* 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した
-* ジョブが取り消された
-* 元のバックアップ ジョブが進行中のために、2 番目のバックアップ ジョブが失敗した
 
 ## <a name="recovery-services-vault"></a>Recovery Services コンテナー
 

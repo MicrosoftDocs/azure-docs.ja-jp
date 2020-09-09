@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services のパッケージ化と配信元エラー | Microsoft Docs
 description: このトピックでは、Azure Media Services ストリーミング エンドポイント (配信元) サービスから通知されることがあるエラーについて説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: error-reference
 ms.date: 05/07/2019
-ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.author: inhenkel
+ms.openlocfilehash: 8442c52052a2016da002d392c6fe0834b3813229
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582701"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295327"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー 
+# <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー
 
 このトピックでは、Azure Media Services [ストリーミング エンドポイント サービス](streaming-endpoint-concept.md)から通知されることがあるエラーについて説明します。
 
@@ -200,7 +200,7 @@ ms.locfileid: "80582701"
 
 ## <a name="see-also"></a>関連項目
 
-- [エラー コードのエンコード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [エラー コードのエンコード](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services の概念](concepts-overview.md)
 - [クォータと制限](limits-quotas-constraints.md)
 

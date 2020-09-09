@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/23/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: 2391b63cbc0539b9c2e505e8cf531aeb78eb9bfd
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943116"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406080"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>チュートリアル:単一ページの Web アプリの作成
 
@@ -43,8 +43,10 @@ Bing News Search API を使うと、Web を検索して、検索クエリに関�
 
 ## <a name="prerequisites"></a>前提条件
 
-チュートリアルを進めるには、Bing Search API のサブスクリプション キーが必要です。 所有していない場合は、[試用キー](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)および[基本の Bing Maps キー](https://www.microsoft.com/maps/create-a-bing-maps-key)を使用できます。
+チュートリアルを進めるには、Bing Search API のサブスクリプション キーが必要です。 ない場合は、作成する必要があります。
 
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
 
 ## <a name="app-components"></a>アプリのコンポーネント
 他の単一ページ Web アプリと同様に、このチュートリアルのアプリケーションには 3 つのパーツが含まれています。
@@ -407,15 +409,18 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後に、次のコマンドを使用して、CORS プロキシを開始します。
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 

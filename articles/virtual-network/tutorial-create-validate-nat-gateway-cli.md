@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:NAT ゲートウェイの作成とテスト - Azure CLI
+title: NAT ゲートウェイの作成とテスト - Azure CLI
 titlesuffix: Azure Virtual Network NAT
 description: このチュートリアルでは、Azure CLI を使用して NAT ゲートウェイを作成し、NAT サービスをテストする方法について説明します。
 services: virtual-network
@@ -8,17 +8,19 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to test a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: b3e10b3abbe5c9815e51ce67786882dbd294df3f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7d4467e557105100fc32940c05fa349722689867
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202230"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054376"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>チュートリアル:Azure CLI を使用した NAT ゲートウェイの作成と、NAT サービスのテスト
 
@@ -42,6 +44,7 @@ ms.locfileid: "79202230"
   az group create \
     --name myResourceGroupNAT \
     --location eastus2
+    
 ```
 
 ## <a name="create-the-nat-gateway"></a>NAT ゲートウェイの作成
@@ -55,6 +58,7 @@ ms.locfileid: "79202230"
   --resource-group myResourceGroupNAT \
   --name myPublicIPsource \
   --sku standard
+  
 ```
 
 ### <a name="create-a-public-ip-prefix"></a>パブリック IP プレフィックスの作成
@@ -66,6 +70,7 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
   --resource-group myResourceGroupNAT \
   --name myPublicIPprefixsource \
   --length 31
+  
 ```
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT ゲートウェイ リソースの作成
@@ -83,6 +88,7 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
     --public-ip-addresses myPublicIPsource \
     --public-ip-prefixes myPublicIPprefixsource \
     --idle-timeout 10       
+    
   ```
 
 この時点で、NAT ゲートウェイは機能する状態となっていますが、仮想ネットワークのどのサブネットでそれを使用するかを構成する作業だけ残っています。
@@ -100,11 +106,11 @@ VM をデプロイして NAT ゲートウェイをテストする前に、仮想
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location eastus2 \
     --name myVnetsource \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetsource \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="configure-nat-service-for-source-subnet"></a>送信元サブネット用の NAT サービスの構成
@@ -117,6 +123,7 @@ VM をデプロイして NAT ゲートウェイをテストする前に、仮想
     --vnet-name myVnetsource \
     --name mySubnetsource \
     --nat-gateway myNATgateway
+    
 ```
 
 これで、インターネットを宛先とするすべてのアウトバウンド トラフィックでこの NAT サービスが使用されるようになります。  UDR を構成する必要はありません。
@@ -134,6 +141,7 @@ NAT ゲートウェイをテストする前に、送信元 VM を作成する必
     --resource-group myResourceGroupNAT \
     --name myPublicIPsourceVM \
     --sku standard
+    
 ```
 
 ### <a name="create-an-nsg-for-source-vm"></a>送信元 VM 用の NSG の作成
@@ -144,6 +152,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
   az network nsg create \
     --resource-group myResourceGroupNAT \
     --name myNSGsource 
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>送信元 VM 上の SSH エンドポイントの公開
@@ -161,6 +170,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="create-nic-for-source-vm"></a>送信元 VM 用の NIC の作成
@@ -175,6 +185,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --subnet mySubnetsource \
     --public-ip-address myPublicIPSourceVM \
     --network-security-group myNSGsource
+    
 ```
 
 ### <a name="create-a-source-vm"></a>送信元 VM の作成
@@ -189,6 +200,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --image UbuntuLTS \
     --generate-ssh-keys \
     --no-wait
+    
 ```
 
 コマンドからはすぐに制御が戻りますが、VM がデプロイされるまでには数分かかる場合があります。
@@ -206,11 +218,11 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location westus \
     --name myVnetdestination \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetdestination \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="create-public-ip-for-destination-vm"></a>送信先 VM 用のパブリック IP の作成
@@ -221,8 +233,8 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
   az network public-ip create \
   --resource-group myResourceGroupNAT \
   --name myPublicIPdestinationVM \
-  --sku standard \
-  --location westus
+  --sku standard
+  
 ```
 
 ### <a name="create-an-nsg-for-destination-vm"></a>送信先 VM 用の NSG の作成
@@ -232,8 +244,8 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 ```azurecli-interactive
     az network nsg create \
     --resource-group myResourceGroupNAT \
-    --name myNSGdestination \
-    --location westus
+    --name myNSGdestination
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>送信先 VM 上の SSH エンドポイントの公開
@@ -251,6 +263,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>送信先 VM 上の HTTP エンドポイントの公開
@@ -268,6 +281,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 80
+    
 ```
 
 ### <a name="create-nic-for-destination-vm"></a>送信先 VM 用の NIC の作成
@@ -281,8 +295,8 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --vnet-name myVnetdestination \
     --subnet mySubnetdestination \
     --public-ip-address myPublicIPdestinationVM \
-    --network-security-group myNSGdestination \
-    --location westus
+    --network-security-group myNSGdestination
+    
 ```
 
 ### <a name="create-a-destination-vm"></a>送信先 VM の作成
@@ -296,8 +310,8 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --nics myNicdestination \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --no-wait \
-    --location westus
+    --no-wait
+    
 ```
 コマンドからはすぐに制御が戻りますが、VM がデプロイされるまでには数分かかる場合があります。
 
@@ -311,6 +325,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
     --name myPublicIPdestinationVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -327,16 +342,14 @@ ssh <ip-address-destination>
 サインインしたら、次のコマンドをコピーして貼り付けます。  
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get -y install nginx && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt -y install nginx && \
 sudo ln -sf /dev/null /var/log/nginx/access.log && \
 sudo touch /var/www/html/index.html && \
 sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
+
 ```
 
 これらのコマンドによって仮想マシンが更新され、nginx がインストールされて、100 キロバイトのファイルが作成されます。 このファイルは、NAT サービスを使用してソース VM から取得されます。
@@ -353,6 +366,7 @@ sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
     --name myPublicIPsourceVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -369,12 +383,9 @@ ssh <ip-address-source>
 NAT サービスのテスト準備を行うために、次のコマンドをコピーして貼り付けます。
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get install -y nload golang && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt install -y nload golang && \
 echo 'export GOPATH=${HOME}/go' >> .bashrc && \
 echo 'export PATH=${PATH}:${GOPATH}/bin' >> .bashrc && \
 . ~/.bashrc &&
@@ -410,6 +421,7 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupNAT
+  
 ```
 
 ## <a name="next-steps"></a>次のステップ

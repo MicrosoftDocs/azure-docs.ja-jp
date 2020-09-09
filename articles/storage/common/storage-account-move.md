@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: common
-ms.topic: article
-ms.date: 09/27/2019
+ms.topic: how-to
+ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515013"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -37,7 +37,7 @@ ms.locfileid: "81459034"
 
 - プレビュー機能については、お使いのサブスクリプションがターゲット リージョンのホワイトリストに登録されていることを確認してください。
 
-<a id="prepare" />
+<a id="prepare"></a>
 
 ## <a name="prepare"></a>準備
 
@@ -174,7 +174,7 @@ PowerShell を使用してテンプレートをデプロイするには:
     ```
 ---
 
-<a id="move" />
+<a id="move"></a>
 
 ## <a name="move"></a>詳細ビュー
 
@@ -232,25 +232,10 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 ### <a name="move-data-to-the-new-storage-account"></a>新しいストレージ アカウントにデータを移動する
 
-データを移動するいくつかの方法を次に示します。
+AzCopy は、データの移動に推奨されるツールです。 パフォーマンスのために最適化されています。  より迅速な方法では、データがストレージ サーバー間で直接コピーされます。その場合、AzCopy では、コンピューターのネットワーク帯域幅を使用しません。 コマンド ラインまたはカスタム スクリプトの一部として AzCopy を使用します。 [AzCopy の作業開始](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
-:heavy_check_mark:**Azure 記憶域エクスプローラー**
+Azure Data Factory を使用してデータを移動することもできます。 これには、直感的なユーザー インターフェイスが用意されています。 Azure Data Factory を使用するには、以下のリンクのいずれかを参照してください。 
 
-  使いやすく、小規模なデータセットに適しています。 コンテナーとファイル共有をコピーして、ターゲット アカウントに貼り付けることができます。
-
-  「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」を参照してください。
-
-:heavy_check_mark:**AzCopy**
-
-  これは、推奨されている手法です。 パフォーマンスのために最適化されています。  より迅速な方法では、データがストレージ サーバー間で直接コピーされます。その場合、AzCopy では、コンピューターのネットワーク帯域幅を使用しません。 コマンド ラインまたはカスタム スクリプトの一部として AzCopy を使用します。
-
-  「[AzCopy を使ってみる](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
-
-:heavy_check_mark:**Azure Data Factory** 
-
-  AzCopy の現在のリリースではサポートされていない機能が必要な場合にのみ、このツールを使用してください。 たとえば、AzCopy の現在のリリースでは、階層型名前空間を持つアカウント間で BLOB をコピーすることはできません。 また、AzCopy では、ファイル アクセス制御リストまたはファイルのタイムスタンプ (例: 作成および変更時のタイムスタンプ) が保持されません。 
-
-  次のリンクを参照してください。
   - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob ストレージをコピー先、またはコピー元にして、データをコピーする)](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)

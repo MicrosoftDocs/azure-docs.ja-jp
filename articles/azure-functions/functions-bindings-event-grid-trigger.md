@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
+ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891273"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214135"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -27,7 +27,7 @@ HTTP トリガーの例については、「[HTTP エンドポイントへのイ
 
 ### <a name="c-2x-and-higher"></a>C# (2.x 以降)
 
-次の例は、[ にバインドする](functions-dotnet-class-library.md) C# 関数`EventGridEvent`を示したものです。
+次の例は、`EventGridEvent` にバインドする[ C# 関数](functions-dotnet-class-library.md)を示したものです。
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -53,7 +53,7 @@ namespace Company.Function
 
 ### <a name="version-1x"></a>バージョン 1.x
 
-次の例は、[ にバインドする Functions 1.x の ](functions-dotnet-class-library.md)C# 関数`JObject`を示したものです。
+次の例は、`JObject` にバインドする Functions 1.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -401,29 +401,33 @@ Event Grid の HTTP 要求の受信を始めるには、関数を呼び出すエ
 
 ### <a name="azure-portal"></a>Azure portal
 
-Event Grid トリガーを使って Azure Portal で開発した関数の場合は、 **[vent Grid サブスクリプションの追加]** を選びます。
+イベント グリッド トリガーを使用して Azure portal で開発する関数の場合は、 **[統合]** を選択します。次に、 **[イベント グリッド トリガー]** を選択し、 **[Event Grid サブスクリプションの作成]** を選択します。
 
-![ポータルでサブスクリプションを作成する](media/functions-bindings-event-grid/portal-sub-create.png)
+:::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="ポータルで新しいイベント サブスクリプションをトリガーに接続する。":::
 
-このリンクを選ぶと、ポータルに **[イベント サブスクリプションの作成]** ページが表示され、エンドポイント URL があらかじめ設定されています。
+このリンクを選ぶと、現在のトリガー エンドポイントが既に定義された **[イベント サブスクリプションの作成]** ページがポータルに表示されます。
 
-![事前設定されたエンドポイント URL](media/functions-bindings-event-grid/endpoint-url.png)
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="関数のエンドポイントが既に定義された [イベント サブスクリプションの作成]" :::
 
 Azure Portal を使ってサブスクリプションを作成する方法について詳しくは、Event Grid のドキュメントの「[カスタム イベントの作成 - Azure Portal](../event-grid/custom-event-quickstart-portal.md)」をご覧ください。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使ってサブスクリプションを作成するには、[az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) コマンドを使います。
+[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使ってサブスクリプションを作成するには、[az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) コマンドを使います。
 
 このコマンドには、関数を呼び出すエンドポイント URL が必要です。 バージョン固有の URL パターンの例を次に示します。
 
 #### <a name="version-2x-and-higher-runtime"></a>バージョン 2.x (以降) のランタイム
 
-    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```
 
 #### <a name="version-1x-runtime"></a>バージョン 1.x ランタイム
 
-    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```
 
 システム キーは、Event Grid トリガー用のエンドポイント URL に含める必要のある承認キーです。 次のセクションでは、システム キーを取得する方法について説明します。
 
@@ -504,7 +508,7 @@ Event Grid トリガーをローカルにテストするには、クラウド内
 1. [要求を生成](#generate-a-request)し、ビューアー アプリから要求本文をコピーします。
 1. Event Grid トリガー関数の localhost URL に[要求を手動で投稿](#manually-post-the-request)します。
 
-テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI コマンドを使います。
+テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI コマンドを使います。
 
 ### <a name="create-a-viewer-web-app"></a>ビューアー Web アプリを作成する
 
@@ -512,7 +516,7 @@ Event Grid トリガーをローカルにテストするには、クラウド内
 
 **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
 
 デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 

@@ -3,22 +3,22 @@ title: Azure Application Insights の検索の使用 | Microsoft Docs
 description: Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324456"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 
-検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](../../azure-monitor/app/app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
+検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](./app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
 
-(データでのより複雑なクエリについては、[Analytics](../../azure-monitor/log-query/get-started-portal.md) を使用してください。)
+(データでのより複雑なクエリについては、[Analytics](../log-query/get-started-portal.md) を使用してください。)
 
 ## <a name="where-do-you-see-search"></a>検索が表示される場所
 
-### <a name="in-the-azure-portal"></a>Azure ポータルで次の操作を行います。
+### <a name="in-the-azure-portal"></a>Azure Portal で次の操作を行います。
 
 [Application Insights] でお使いのアプリケーションの [概要] タブ から診断検索を開くことができます (上部バーの中にあります)。または、左側のメニューから開くことができます。
 
@@ -56,13 +56,13 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 イベントの種類は、次のとおりです。
 
-* **トレース** - [診断ログ](../../azure-monitor/app/asp-net-trace-logs.md) (TrackTrace、log4Net、NLog、System.Diagnostic.Trace の呼び出しなど)。
+* **トレース** - [診断ログ](./asp-net-trace-logs.md) (TrackTrace、log4Net、NLog、System.Diagnostic.Trace の呼び出しなど)。
 * **要求** - サーバー アプリケーションで受信した HTTP 要求 (ページ、スクリプト、画像、スタイル ファイル、データなど)。 これらのイベントは、要求と応答の概要グラフの作成に使用されます。
-* **ページ ビュー** - [Web クライアントによって送信されたテレメトリ](../../azure-monitor/app/javascript.md)。ページ ビュー レポートの作成に使用されます。
-* **カスタム イベント** - [利用状況の監視](../../azure-monitor/app/api-custom-events-metrics.md)のために TrackEvent() への呼び出しを挿入した場合は、ここで検索できます。
-* **例外** - TrackException() を使用してログに記録した、[サーバーでキャッチされていない例外](../../azure-monitor/app/asp-net-exceptions.md)。
-* **依存関係** - 他のサービスに対する[サーバー アプリケーションからの呼び出し](../../azure-monitor/app/asp-net-dependencies.md) (REST API、データベースなど)、および[クライアント コード](../../azure-monitor/app/javascript.md)からの AJAX 呼び出し。
-* **可用性** - [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)の結果。
+* **ページ ビュー** - [Web クライアントによって送信されたテレメトリ](./javascript.md)。ページ ビュー レポートの作成に使用されます。
+* **カスタム イベント** - [利用状況の監視](./api-custom-events-metrics.md)のために TrackEvent() への呼び出しを挿入した場合は、ここで検索できます。
+* **例外** - TrackException() を使用してログに記録した、[サーバーでキャッチされていない例外](./asp-net-exceptions.md)。
+* **依存関係** - 他のサービスに対する[サーバー アプリケーションからの呼び出し](./asp-net-dependencies.md) (REST API、データベースなど)、および[クライアント コード](./javascript.md)からの AJAX 呼び出し。
+* **可用性** - [可用性テスト](./monitor-web-app-availability.md)の結果。
 
 ## <a name="filter-on-property-values"></a>プロパティの値に基づくフィルター選択
 
@@ -81,10 +81,10 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="search-the-data"></a>データの検索
 
 > [!NOTE]
-> さらに複雑なクエリを作成するには、[検索] ブレードの上部から [ **[ログ (Analytics)]** ](../../azure-monitor/log-query/get-started-portal.md) を開きます。
+> さらに複雑なクエリを作成するには、[検索] ブレードの上部から [ **[ログ (Analytics)]** ](../log-query/get-started-portal.md) を開きます。
 >
 
-すべてのプロパティ値について語句を検索できます。 これは、プロパティ値を持つ[カスタム イベント](../../azure-monitor/app/api-custom-events-metrics.md)を作成している場合に特に便利です。
+すべてのプロパティ値について語句を検索できます。 これは、プロパティ値を持つ[カスタム イベント](./api-custom-events-metrics.md)を作成している場合に特に便利です。
 
 時間範囲を設定することもできます。範囲が狭いほど、検索時間が短くなります。
 
@@ -110,7 +110,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。 ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるため、関連するイベントごとに操作できます。
 
-[サンプリングについてはこちらを参照してください](../../azure-monitor/app/sampling.md)。
+[サンプリングについてはこちらを参照してください](./sampling.md)。
 
 ## <a name="create-work-item"></a>作業項目を作成する
 
@@ -128,24 +128,25 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 Application Insights SDK によって送信される標準のテレメトリに加えて、次の操作を実行できます。
 
-* [.NET](../../azure-monitor/app/asp-net-trace-logs.md) または [Java](../../azure-monitor/app/java-trace-logs.md) の好みのログ記録フレームワークからのログ トレースをキャプチャする。 これは、ログ トレースを検索し、ページ ビュー、例外、その他のイベントと関連付けることができることを意味します。
-* カスタム イベント、ページ ビュー、および例外を送信する[コードを作成](../../azure-monitor/app/api-custom-events-metrics.md)する。
+* [.NET](./asp-net-trace-logs.md) または [Java](./java-trace-logs.md) の好みのログ記録フレームワークからのログ トレースをキャプチャする。 これは、ログ トレースを検索し、ページ ビュー、例外、その他のイベントと関連付けることができることを意味します。
+* カスタム イベント、ページ ビュー、および例外を送信する[コードを作成](./api-custom-events-metrics.md)する。
 
-[ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](../../azure-monitor/app/asp-net-trace-logs.md)。
+[ログとカスタム テレメトリを Application Insights に送信する方法についてはこちら](./asp-net-trace-logs.md)。
 
 ## <a name="q--a"></a><a name="questions"></a>Q & A
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
 
-「[制限の概要](../../azure-monitor/app/pricing.md#limits-summary)」を参照してください。
+「[制限の概要](./pricing.md#limits-summary)」を参照してください。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>サーバーの要求の POST データを表示するにはどうしたらよいですか
 
-POST データは自動的に記録されませんが、[TrackTrace または log の呼び出し](../../azure-monitor/app/asp-net-trace-logs.md)を使用できます。 メッセージ パラメーターに POST データを格納します。 プロパティと同じ方法でメッセージをフィルター処理することはできませんが、サイズの制限が緩和されます。
+POST データは自動的に記録されませんが、[TrackTrace または log の呼び出し](./asp-net-trace-logs.md)を使用できます。 メッセージ パラメーターに POST データを格納します。 プロパティと同じ方法でメッセージをフィルター処理することはできませんが、サイズの制限が緩和されます。
 
 ## <a name="next-steps"></a><a name="add"></a>次のステップ
 
-* [Analytics で複雑なクエリを作成する](../../azure-monitor/log-query/get-started-portal.md)
-* [Application Insights にログとカスタム テレメトリを送信する](../../azure-monitor/app/asp-net-trace-logs.md)
-* [可用性と応答性のテストを設定する](../../azure-monitor/app/monitor-web-app-availability.md)
-* [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)
+* [Analytics で複雑なクエリを作成する](../log-query/get-started-portal.md)
+* [Application Insights にログとカスタム テレメトリを送信する](./asp-net-trace-logs.md)
+* [可用性と応答性のテストを設定する](./monitor-web-app-availability.md)
+* [トラブルシューティング](../faq.md)
+

@@ -3,12 +3,13 @@ title: Azure Service Fabric のアプリケーション シークレットを管
 description: Service Fabric アプリケーションでシークレット値をセキュリティで保護する方法 (プラットフォーム不可知) について説明します。
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a11869c3b606ed9e74ce4f598109139fa1bb4164
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583240"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012825"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションで暗号化されたシークレットを管理する
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
@@ -99,7 +100,7 @@ Settings.xml 内の値をオーバーライドするには、ApplicationManifest
 
 これで、アプリケーション インスタンスの作成時に、" *アプリケーション パラメーター* " として値を指定できるようになります。 ビルド プロセスでの統合を容易にするために、アプリケーション インスタンスの作成は、PowerShell を使用してスクリプト化することも、C# で記述することもできます。
 
-PowerShell を使用する場合、パラメーターを[ハッシュ テーブル](https://technet.microsoft.com/library/ee692803.aspx)として `New-ServiceFabricApplication` コマンドに指定します。
+PowerShell を使用する場合、パラメーターを[ハッシュ テーブル](/previous-versions/windows/it-pro/windows-powershell-1.0/ee692803(v=technet.10))として `New-ServiceFabricApplication` コマンドに指定します。
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}

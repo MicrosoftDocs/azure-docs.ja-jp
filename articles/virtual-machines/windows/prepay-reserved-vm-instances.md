@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: 8d9b883c5319108166951814fcedb18181e25145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c78c04acb1d59ed49366683ddfb7f7e1ec5804f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083482"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances を使用してコストを削減する
+# <a name="save-costs-with-azure-reserved-vm-instances-windows"></a>Azure Reserved Virtual Machine Instances を使用してコストを削減する (Windows)
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]

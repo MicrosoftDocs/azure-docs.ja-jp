@@ -15,6 +15,8 @@
           href: quickstart-create-server-database-azure-cli.md
         - name: DB の作成 - Azure CLI アップコマンド
           href: quickstart-create-server-up-azure-cli.md
+        - name: DB の作成 - Azure PowerShell
+          href: quickstart-create-postgresql-server-database-using-azure-powershell.md
         - name: DB の作成 - Resource Manager テンプレート
           href: quickstart-create-postgresql-server-database-using-arm-template.md
           displayName: deploy azure resource manager template
@@ -26,6 +28,12 @@
               href: connect-nodejs.md
             - name: Java
               href: connect-java.md
+            - name: Java と Spring Data JDBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Java と Spring Data JPA
+              href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+            - name: Java と Spring Data R2DBC
+              href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
             - name: Ruby
               href: connect-ruby.md
             - name: PHP
@@ -36,7 +44,7 @@
               href: connect-go.md
     - name: Hyperscale (Citus)
       items:
-        - name: DB の作成 - ポータル
+        - name: サーバー グループの作成 - ポータル
           href: quickstart-create-hyperscale-portal.md
 - name: チュートリアル
   items:
@@ -48,8 +56,10 @@
               href: tutorial-design-database-using-azure-portal.md
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
         - name: 2 - Web アプリの設計 - Python
-          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          href: ../app-service/tutorial-python-postgresql-app.md
           maintainContext: true
         - name: 3 - 監視と調整
           href: tutorial-monitor-and-tune.md
@@ -63,9 +73,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 単一サーバー
@@ -108,7 +115,12 @@
               href: concepts-data-access-and-security-private-link.md
             - name: データの暗号化
               href: concepts-data-encryption-postgresql.md
-            - name: セキュリティ ベースライン
+            - name: インフラストラクチャの二重暗号化
+              href: concepts-infrastructure-double-encryption.md
+            - name: Azure Policy によるセキュリティ制御
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
+            - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
               href: security-baseline.md
         - name: ビジネス継続性
           items:
@@ -147,10 +159,14 @@
               href: concepts-aks.md
             - name: Java
               items:
+                - name: Java と JDBC の使用
+                  href: connect-java.md
                 - name: Spring Data JDBC の構成
-                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data JPA の構成
-                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                - name: Spring Data R2DBC の構成
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql
         - name: レプリケーション
           items:
             - name: 読み取りレプリカ
@@ -159,20 +175,24 @@
               href: concepts-logical.md
     - name: Hyperscale (Citus)
       items:
-        - name: Nodes
-          href: concepts-hyperscale-nodes.md
         - name: 分散データ
-          href: concepts-hyperscale-distributed-data.md
-        - name: ディストリビューション列の選択
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: テーブル コロケーション
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: ノードとテーブル
+              href: concepts-hyperscale-nodes.md
+            - name: アプリケーションの種類の決定
+              href: concepts-hyperscale-app-type.md
+            - name: ディストリビューション列の選択
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: テーブル コロケーション
+              href: concepts-hyperscale-colocation.md
         - name: データ アクセスとセキュリティ
           items:
             - name: ファイアウォール規則
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL の構成
               href: concepts-hyperscale-ssl-connection-security.md
+            - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
+              href: postgresql-hyperscale-security-baseline.md
         - name: ビジネス継続性
           items:
             - name: バックアップと復元
@@ -189,6 +209,8 @@
           items:
             - name: 構成オプション
               href: concepts-hyperscale-configuration-options.md
+            - name: 予約容量の前払い
+              href: concepts-hyperscale-reserved-pricing.md
 - name: 操作方法ガイド
   items:
     - name: 単一サーバー
@@ -227,6 +249,8 @@
               href: howto-restore-server-portal.md
             - name: Azure CLI
               href: howto-restore-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restore-server-powershell.md
         - name: データベースの移行
           items:
             - name: ダンプと復元
@@ -235,18 +259,28 @@
               href: howto-migrate-using-export-and-import.md
             - name: 最小限のダウンタイムでの移行
               href: howto-migrate-online.md
+        - name: アプリケーションの接続
+          items:
+            - name: TLS の構成
+              href: howto-tls-configurations.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: サーバー パラメーターの構成
           items:
             - name: Azure portal
               href: howto-configure-server-parameters-using-portal.md
             - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
         - name: ストレージの自動拡張
           items:
             - name: Azure portal
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
         - name: アクセス ログ
           items:
             - name: Azure portal
@@ -287,12 +321,18 @@
               href: howto-data-encryption-cli.md
             - name: データ暗号化の検証
               href: howto-data-encryption-validation.md
+        - name: インフラストラクチャの二重暗号化
+          items:
+            - name: インフラストラクチャの二重暗号化を構成する
+              href: howto-double-encryption.md
         - name: サーバーの再起動
           items:
             - name: Azure portal
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
         - name: パブリック ネットワーク アクセスの拒否
           items:
             - name: Azure portal
@@ -303,34 +343,59 @@
               href: howto-read-replicas-portal.md
             - name: 読み取りレプリカ Azure CLI の管理、REST API
               href: howto-read-replicas-cli.md
+            - name: 読み取りレプリカの管理 (Azure PowerShell)
+              href: howto-read-replicas-powershell.md
+        - name: リージョン間の移動
+          items:
+            - name: Azure portal
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: ユーザーの作成
           href: howto-hyperscale-create-users.md
-        - name: スケール
+        - name: サーバー グループのサイズ
           href: howto-hyperscale-scaling.md
         - name: ファイアウォールの管理
           items:
             - name: Azure portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 分散データ
+          items:
+            - name: テーブルの配布と変更
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
         - name: モニター
           items:
             - name: メトリックに基づいたアラートの作成
               href: howto-hyperscale-alert-on-metric.md
+            - name: Access データベース ログ
+              href: howto-hyperscale-logging.md
         - name: トラブルシューティング
           items:
             - name: 接続エラーのトラブルシューティング
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: リファレンス
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 単一サーバー
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: Resource Manager テンプレート
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Hyperscale (Citus)
+      items:
+        - name: SQL API 関数
+          href: reference-hyperscale-functions.md
+        - name: サーバー パラメーター
+          href: reference-hyperscale-parameters.md
+        - name: システム テーブル
+          href: reference-hyperscale-metadata.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745733"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799487"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>職場のデバイスを組織のネットワークに参加させる
 制限されている可能性があるリソースにアクセスできるように、職場所有の Windows 10 デバイスを組織のネットワークに参加させます。
@@ -27,9 +27,9 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
 - Windows がデバイスを組織のネットワークに登録して、ユーザーが個人アカウントを使用してリソースにアクセスできるようにします。 デバイスが登録されたら、ユーザーが組織のユーザー名とパスワードを使用してサインインし、制限されたリソースにアクセスできるように、Windows は次にデバイスをネットワークに参加させます。
 
-- オプションで、組織の選択に基づいて、[Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) または[セキュリティ情報](user-help-security-info-overview.md)のどちらかを使用して 2 段階認証を設定するよう求められることがあります。
+- オプションで、組織の選択に基づいて、[Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) または[セキュリティ情報](./security-info-setup-signin.md)のどちらかを使用して 2 段階認証を設定するよう求められることがあります。
 
-- オプションで、組織の選択に基づいて、Microsoft Intune などのモバイル デバイス管理で自動的に登録されることがあります。 Microsoft Intune での登録の詳細については、[Intune でのデバイスの登録](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)に関するページを参照してください。
+- オプションで、組織の選択に基づいて、Microsoft Intune などのモバイル デバイス管理で自動的に登録されることがあります。 Microsoft Intune での登録の詳細については、[Intune でのデバイスの登録](/intune-user-help/enroll-your-device-in-intune-all)に関するページを参照してください。
 
 - 組織のアカウントで自動サインインを使用して、サインイン プロセスを実行します。
 
@@ -115,4 +115,4 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
 - 組織で電話などの個人デバイスを登録させるようにする場合は、「[個人デバイスを組織のネットワークに登録する](user-help-register-device-on-network.md)」を参照してください。
 
-- 組織が Microsoft Intune を使用して管理されていて、登録、サインイン、またはその他の Intune 関連の問題について質問がある場合は、[Intune ユーザー ヘルプ コンテンツ](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)を参照してください。
+- 組織が Microsoft Intune を使用して管理されていて、登録、サインイン、またはその他の Intune 関連の問題について質問がある場合は、[Intune ユーザー ヘルプ コンテンツ](/intune-user-help/use-managed-devices-to-get-work-done)を参照してください。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806322"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636128"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 
@@ -97,7 +97,7 @@ Speech サービスがコール センターで利用される場合、機能的
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) は、録音ごとに Shared Access Signature (SAS) URI を作成し、HTTP POST 要求をトリガーして文字起こしを開始するために使用されます。 また、Azure Functions は、バッチ文字起こし API で文字起こしを回収し、削除するための要求の作成に使用されます。
 
 Microsoft 社内では以上のテクノロジを利用し、バッチ モードの Microsoft カスタマー コールを支援しています。
-![バッチ アーキテクチャ](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="バッチ モードの Microsoft カスタマー コールを支援するために使用されるテクノロジ。":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>コール センター データのリアルタイム文字起こし
 

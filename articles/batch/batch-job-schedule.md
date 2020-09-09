@@ -4,12 +4,12 @@ description: タスクを管理するにはジョブ スケジュールを使用
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: c75f635a937dcddd2c1c02cc717f96f1441efe81
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7da3c78e00f5d7e41a5396603cf4885a50cb6e5c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726640"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146353"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>効率のためにジョブのスケジュールを設定する
 
@@ -67,7 +67,7 @@ ms.locfileid: "83726640"
 
 ## <a name="for-more-information"></a>詳細情報
 
-Azure CLI を使用してジョブを管理するには、「[az batch job-schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)」を参照してください。
+Azure CLI を使用してジョブを管理するには、「[az batch job-schedule](/cli/azure/batch/job-schedule)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

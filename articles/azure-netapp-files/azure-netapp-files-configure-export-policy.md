@@ -6,22 +6,26 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
-ms.date: 10/18/2019
-ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551560"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533210"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS ボリュームのエクスポート ポリシーを構成する
 
-Azure NetApp Files ボリュームへのアクセスを制御するエクスポート ポリシーは、必要に応じて構成することができます。 Azure NetApp Files エクスポート ポリシーでサポートされるのは NFS のみです。  NFSv3 と NFSv4 の両方がサポートされています。 
+Azure NetApp Files ボリュームへのアクセスを制御するために、エクスポート ポリシーを構成できます。 Azure NetApp Files のエクスポート ポリシーでは、NFS プロトコル (NFSv3 と NFSv 4.1 の両方) とデュアル プロトコル (NFSv3 と SMB) を使用するボリュームがサポートされています。 
+
+最大 5 つのエクスポートポリシー ルールを作成できます。
 
 ## <a name="steps"></a>手順 
 
-1.  Azure NetApp Files ナビゲーション ウィンドウで **[ポリシーのエクスポート]** をクリックします。 
+1.  [ボリューム] ページで、エクスポート ポリシーを構成するボリュームを選択し、 **[エクスポート ポリシー]** をクリックします。 
+
+    また、ボリュームの作成時にエクスポート ポリシーを構成することもできます。
 
 2.  次のフィールドの情報を指定して、エクスポート ポリシー ルールを作成します。   
     *  **[インデックス]**    
@@ -39,10 +43,18 @@ Azure NetApp Files ボリュームへのアクセスを制御するエクスポ�
         * 読み取りと書き込み
         * [読み取り専用]
 
-    ![エクスポート ポリシー](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **[読み取り専用]** と **[読み取り/書き込み]**  
+        NFSv4.1 で Kerberos 暗号化を使用する場合は、「[NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)」の手順に従ってください。  Kerberos のパフォーマンスへの影響については、「[NFSv4.1 での Kerberos のパフォーマンスに対する影響](configure-kerberos-encryption.md#kerberos_performance)」を参照してください。 
+
+        ![Kerberos のセキュリティ オプション](../media/azure-netapp-files/kerberos-security-options.png) 
+
+    * **ルート アクセス**  
+        `root` アカウントがボリュームにアクセスできるかどうかを指定します。  既定では、ルート アクセスは **[On]\(オン\)** に設定され、`root` アカウントはボリュームにアクセスできます。
+
+![エクスポート ポリシー](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>次のステップ 
-* [ボリュームを管理する](azure-netapp-files-manage-volumes.md)
 * [仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [スナップショットを管理する](azure-netapp-files-manage-snapshots.md)

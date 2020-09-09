@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79218977"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749317"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
@@ -24,7 +24,11 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 
 すべてのリージョンの音声エクスペリエンスにカスタム構成を実行するための Speech ポータルについては、 https://speech.microsoft.com を参照してください
 
-Speech サービスを呼び出す場合は、呼び出しがサブスクリプションのリージョンと一致していることを確認してください。
+リージョンを検討するとき、次のポイントを念頭に置きます。
+
+* アプリケーションで [Speech SDK](speech-sdk.md) を使用する場合、Speech の構成を作成するときに `westus` などのリージョン ID を指定します。
+* アプリケーションで Speech Service の [REST API](rest-apis.md) のいずれかを使用する場合、要求を行うときに使用するエンドポイント URI にリージョンが含まれます。
+* あるリージョン用に作成されたキーはそのリージョンでのみ有効です。 別のリージョンで使用すると認証エラーが発生します。
 
 ## <a name="speech-sdk"></a>Speech SDK
 
@@ -74,6 +78,10 @@ Speech SDK を介して**意図認識**を使用できるリージョンは以�
 | 西ヨーロッパ    | `westeurope`         |
 | 北ヨーロッパ   | `northeurope`        |
 | 東南アジア | `southeastasia`      |
+
+### <a name="speaker-recognition"></a>Speaker Recognition
+
+現在、Speaker Recognition は `westus` リージョンでのみ使用できます。
 
 ## <a name="rest-apis"></a>REST API
 

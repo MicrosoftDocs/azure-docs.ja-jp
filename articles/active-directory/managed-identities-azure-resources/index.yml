@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.subservice: devices
   ms.topic: landing-page
-  author: MarkusVi
-  ms.author: markvi
+  author: barclayn
+  ms.author: barclayn
   ms.date: 08/29/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 2a403b66cfd1005e86f269d4affe4086564e291c
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 0cecb8d1b27e6e236c02e9c70ed2e24095d9ee73
+  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70162562"
+  ms.lasthandoff: 08/27/2020
+  ms.locfileid: "89018350"
 landingContent:
 - title: マネージド ID について
   linkLists:

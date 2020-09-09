@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 4/6/2020
-ms.openlocfilehash: a2c376ec2bd1f03b626c11b0d6a6c3850c9ef8c4
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 7/1/2020
+ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804590"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964517"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL - Hyperscale (Citus) の構成オプション
 
@@ -20,7 +20,7 @@ ms.locfileid: "80804590"
  
 Hyperscale (Citus) サーバー グループ内のワーカー ノードおよびコーディネーター ノードのコンピューティングおよびストレージ設定を別々に選択できます。  コンピューティング リソースは仮想コアとして提供されます。仮想コアは、基礎となるハードウェアの論理 CPU を表します。 プロビジョニングのストレージ サイズは、Hyperscale (Citus) サーバー グループのコーディネーターおよびワーカー ノードに利用できる容量を参照します。 ストレージには、データベース ファイル、一時ファイル、トランザクション ログ、および Postgres サーバー ログが含まれます。
  
-|                       | ワーカー ノード           | コーディネーター ノード      |
+| リソース              | ワーカー ノード           | コーディネーター ノード      |
 |-----------------------|-----------------------|-----------------------|
 | コンピューティング、仮想コア       | 4、8、16、32、64      | 4、8、16、32、64      |
 | 仮想コアあたりのメモリ、GiB | 8                     | 4                     |
@@ -91,6 +91,33 @@ Hyperscale (Citus) サーバー グループは次の Azure リージョンで�
     * 西ヨーロッパ
 
 これらのリージョンの一部は、Azure サブスクリプションによっては最初はアクティブ化されていない可能性があります。 上の一覧のリージョンを使用したいが、サブスクリプションに表示されない場合、またはこの一覧にないリージョンを使用したい場合は、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いてください。
+
+## <a name="limits-and-limitations"></a>制限と制限事項
+
+次のセクションでは、Hyperscale (Citus) サービスの容量と機能の制限について説明します。
+
+### <a name="maximum-connections"></a>最大接続数
+
+すべての PostgreSQL 接続は (アイドル接続であっても) 10 MB 以上のメモリを使用するため、同時接続数を制限することが重要です。 ノードを正常に保つために Microsoft が選択した制限は次のとおりです。
+
+* コーディネーター ノード
+   * 最大接続数: 該当なし
+   * 最大ユーザー接続数: 297
+* ワーカー ノード
+   * 最大接続数: 600
+   * 最大ユーザー接続数: 597
+
+これらの制限を超えて接続しようとすると、エラーが発生して失敗します。 ノードの監視用に 3 つの接続がシステムによって予約されます。そのため、ユーザー クエリに使用できる接続が接続の合計数よりも 3 つ少なくなります。
+
+新しい接続の確立には時間がかかります。 これは、短時間の接続を多数要求するほとんどのアプリケーションの妨げになります。 アイドル状態のトランザクションを減らす一方で、既存の接続を再利用するために、接続プーラーを使用することをお勧めします。 詳細については、[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)を参照してください。
+
+### <a name="storage-scaling"></a>ストレージのスケーリング
+
+コーディネーターおよびワーカー ノードのストレージは、スケールアップ (拡張) できますが、スケールダウン (縮小) することはできません。
+
+### <a name="storage-size"></a>ストレージ サイズ
+
+コーディネーターおよびワーカー ノードでは、最大 2 TiB のストレージがサポートされます。 ノードとクラスターのサイズについては、[上記](#compute-and-storage)の使用可能なストレージ オプションと IOPS 計算を参照してください。
 
 ## <a name="pricing"></a>価格
 最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。

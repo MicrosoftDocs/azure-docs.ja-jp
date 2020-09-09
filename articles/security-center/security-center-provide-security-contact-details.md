@@ -11,61 +11,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 08ad761e81909e6ab23c7c07f5ce05865136bc47
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204102"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516301"
 ---
-# <a name="provide-security-contact-details-in-azure-security-center"></a>Azure Security Center でセキュリティ連絡先の詳細情報を指定する
-Azure Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定していない場合、それを指定するよう推奨されます。 この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 MSRC では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者からの脅威インテリジェンスと不正使用の報告を受け取ります。
+# <a name="set-up-email-notifications-for-security-alerts"></a>セキュリティ アラートのメール通知を設定する 
 
-電子メール通知は、最初に警告が発生したとき、および重大度が高い警告に対してのみ送信されます。 また、電子メールの設定は、サブスクリプション ポリシーに対してのみ構成できます。 サブスクリプション内のリソース グループは、この設定を継承します。 アラートは、Azure Security Center の Standard レベルのみで利用できます。
+組織内の適切なユーザーが環境内のセキュリティ アラートについて通知を受け取るようにするには、 **[メール通知]** 設定ページでメール アドレスを入力します。
 
-アラート メール通知の送信:
-- 1 日あたりアラートの種類ごとに 1 人のメール受信者に送信されます  
-- 1 日に 1 人の受信者に送信されるメール メッセージは 3 件以下です
-- 各メール メッセージには、アラートの集計ではなく単一のアラートが含まれます
-- 重大度が高いアラートに関してのみ送信されます
+通知を設定するときに、特定の個人またはサブスクリプションの特定の Azure ロールを持つユーザーにメールを送信するように構成できます。 
 
-> [!TIP]
-> 他の重大度レベルのアラートについては、[ワークフローの自動化](workflow-automation.md)を作成して、関連する担当者に電子メールを送信するロジック アプリを使用します。
- 
-たとえば、RDP 攻撃について警告するメール メッセージが既に送信されている場合、別のアラートがトリガーされた場合でも、同じ日に RDP 攻撃に関する別のメール メッセージを受信することはありません。 
+アラート疲れを避けるため、Security Center では送信メールの量が制限されています。 各サブスクリプションについて、Security Center では以下のように送信が行われます。
 
-> [!IMPORTANT]
-> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  ステップ バイ ステップ ガイドではありません。
+- **重要度が高い**アラートに関しては、1 日あたり最大 **4 通**のメール
+- **重要度が中程度**のアラートに関しては、1 日あたり最大 **2 通**のメール
+- **重要度が低い**アラートに関しては、1 日あたり最大 **1 通**のメール
+
+
+:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="セキュリティ アラートに関する電子メールを受信する連絡先の詳細を構成しています。" :::
+
+## <a name="availability"></a>可用性
+
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般公開|
+|価格:|Free レベル|
+|必要なロールとアクセス許可:|**Security Admin**<br>**サブスクリプションの所有者** |
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov (一部)<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
 
 ## <a name="set-up-email-notifications-for-alerts"></a>アラートの電子メール通知を設定する<a name="email"></a>
 
-1. セキュリティ管理者またはサブスクリプション所有者のロールを持つユーザーとして、 **[メール通知]** ページを開きます。
+個人または特定の Azure ロールを持つすべてのユーザーにメール通知を送信できます。
 
-    - アラートの場合、 **[価格と設定]** を開き、該当するサブスクリプションを選択して、 **[電子メール通知]** を選択します。
+1. Security Center の **[Pricing & settings]\(価格と設定\)** 領域の関連するサブスクリプションで、 **[メール通知]** を選択します。
 
-    - 推奨事項を実装する場合は、 **[推奨事項]** で **[セキュリティ連絡先の詳細の指定]** を選択し、連絡先情報を提供する Azure サブスクリプションを選択します。 この操作で **[メール通知]** が開きます。
+1. 以下のように通知の受信者を定義します。
 
-   ![セキュリティの連絡先詳細の提供][2]
-
-1. セキュリティ連絡先の電子メール アドレスを (複数の場合はコンマで区切って) 入力します。 入力できる電子メール アドレスの数に制限はありません。
-
-1. 重大度が高い警告に関する電子メールを受信するには、 **[Send me emails about alerts (警告に関する電子メールを受け取る)]** オプションをオンにします。 その他の重大度レベルについては、「[ワークフローの自動化](workflow-automation.md)」で説明されているロジック アプリを使用します。
-
-1. サブスクリプションの所有者 (従来のサービス管理者と共同管理者、およびサブスクリプションのスコープでの RBAC 所有者ロール) に電子メール通知を送信できます。
+    - ドロップダウン リストから、使用可能なロールを選択します。
+    - または、特定のメール アドレスをコンマ区切りで入力します。 入力できる電子メール アドレスの数に制限はありません。
 
 1. セキュリティ連絡先の情報をサブスクリプションに適用するには、 **[保存]** を選択します。
 
+
 ## <a name="see-also"></a>関連項目
-Security Center の詳細については、次を参照してください。
+セキュリティ アラートの詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-* [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-
-<!--Image references-->
-[1]: ./media/security-center-provide-security-contacts/provide-contacts.png
-[2]:./media/security-center-provide-security-contacts/provide-contact-details.png
+* [セキュリティ アラート - リファレンス ガイド](alerts-reference.md) - Azure Security Center の Threat Protection モジュールで表示される可能性のあるセキュリティ アラートについて説明しています
+* [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md): セキュリティ アラートの管理と対応の方法について説明しています
+* [ワークフローの自動化](workflow-automation.md) -- カスタム通知ロジックを使用してアラートに対する応答を自動化します

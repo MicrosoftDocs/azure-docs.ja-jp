@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227219"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080739"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -30,7 +30,7 @@ ms.locfileid: "79227219"
 * クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。 手順については、[Apache Hadoop クラスターの管理](../../hdinsight/hdinsight-administer-use-portal-linux.md)に関するページを参照してください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
-[高度な分析のための Azure 仮想マシンのセットアップに関するページ](../../machine-learning/data-science-virtual-machine/overview.md)の指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\\<ユーザー名\>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。 これらの Hive クエリに必要なことは、データ スキーマと Azure BLOB ストレージの構成を適切なフィールドに提供し、送信できるようにすることだけです。
+[高度な分析のための Azure 仮想マシンのセットアップに関するページ](../../machine-learning/data-science-virtual-machine/overview.md)の指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\\<user name\>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。 これらの Hive クエリに必要なことは、データ スキーマと Azure BLOB ストレージの構成を適切なフィールドに提供し、送信できるようにすることだけです。
 
 ここでは、Hive テーブルのデータが **圧縮されていない** 表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
 
@@ -70,7 +70,9 @@ Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 
 #### <a name="submit-hive-queries-in-hql-files"></a>".hql" ファイルで Hive クエリを送信する
 ハイブ クエリがより複雑で、複数の行が存在する場合、コマンド ラインやハイブ コマンド コンソールでクエリを編集することは実際的ではありません。 別の方法として、Hadoop クラスターのヘッド ノードでテキスト エディターを使用して、ヘッド ノードのローカル ディレクトリの中の ".hql" ファイルにハイブ クエリを保存します。 次のように `-f` 引数を使用すると、".hql" ファイルの Hive クエリを送信できます。
 
-    hive -f "<path to the '.hql' file>"
+```console
+hive -f "<path to the '.hql' file>"
+```
 
 ![".hql" ファイルでの Hive クエリ](./media/move-hive-tables/run-hive-queries-3.png)
 
@@ -78,8 +80,10 @@ Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 
 
 既定では、Hadoop コマンド ラインで Hive クエリを送信した後に、マップ/縮小ジョブの進行状況が画面に出力されます。 マップ/縮小ジョブの進捗の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` ("S" は大文字) を使用します。
 
-    hive -S -f "<path to the '.hql' file>"
-    hive -S -e "<Hive queries>"
+```console
+hive -S -f "<path to the '.hql' file>"
+hive -S -e "<Hive queries>"
+```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive コマンド コンソールで Hive クエリを送信する。
 Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。 次に例を示します。 この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。 緑色のボックスは、Hive クエリからの出力を強調表示しています。
@@ -91,7 +95,9 @@ Hadoop コマンド ラインで `hive` コマンドを実行すると、まず 
 **Hive クエリの結果をローカル ファイルに出力する。**
 Hive クエリの結果をヘッド ノード上のローカル ディレクトリに出力するには、次のように Hadoop コマンド ラインで Hive クエリを送信する必要があります。
 
-    hive -e "<hive query>" > <local path in the head node>
+```console
+hive -e "<hive query>" > <local path in the head node>
+```
 
 次の例では、Hive クエリの出力が `C:\apps\temp` ディレクトリ内の `hivequeryoutput.txt` ファイルに書き込まれます。
 
@@ -101,7 +107,9 @@ Hive クエリの結果をヘッド ノード上のローカル ディレクト�
 
 Hive クエリの結果は、Hadoop クラスターの既定のコンテナー内にある Azure BLOB に出力することもできます。 そのための Hive クエリは次のとおりです。
 
-    insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```console
+insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
+```
 
 次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。 ここでは、ディレクトリ名のみを指定する必要があります (BLOB 名は必要ありません)。 `wasb:///queryoutputdir/queryoutput.txt`のようにディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
 
@@ -112,7 +120,7 @@ Azure ストレージ エクスプローラーを使用して Hadoop クラス�
 ![Hive クエリの出力が表示されている Azure Storage Explorer](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a>Hive エディターで Hive クエリを送信する
-*https:\//\<Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
+*https:\//\<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
 
 ### <a name="submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a>Azure PowerShell コマンドで Hive クエリを送信する
 PowerShell を使用して Hive クエリを送信することもできます。 手順については、「 [PowerShell を使用して Hive ジョブを送信する](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)」を参照してください。
@@ -122,34 +130,38 @@ Hive クエリは、[GitHub リポジトリ](https://github.com/Azure/Azure-Mach
 
 Hive テーブルを作成する Hive クエリを次に示します。
 
-    create database if not exists <database name>;
-    CREATE EXTERNAL TABLE if not exists <database name>.<table name>
-    (
-        field1 string,
-        field2 int,
-        field3 float,
-        field4 double,
-        ...,
-        fieldN string
-    )
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
-    STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+create database if not exists <database name>;
+CREATE EXTERNAL TABLE if not exists <database name>.<table name>
+(
+    field1 string,
+    field2 int,
+    field3 float,
+    field4 double,
+    ...,
+    fieldN string
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>'
+STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
+```
 
 接続する必要があるフィールドと他の構成の説明を次に示します。
 
-* **\<データベース名\>** : 作成するデータベースの名前。 既定のデータベースを使用する場合、"*create database...* " クエリは省略してかまいません。
-* **\<テーブル名\>** : 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *\<テーブル名\>* で直接参照でき、\<データベース名\> は不要です。
-* **\<フィールド区切り記号\>** : Hive テーブルにアップロードするデータ ファイル内のフィールドを区切る区切り記号。
-* **\<行区切り記号\>** : データ ファイル内の行を区切る区切り記号。
-* **\<ストレージの場所\>** : Hive テーブルのデータを保存する Azure Storage の場所。 *LOCATION \<ストレージの場所\>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、 *'wasb:///\<directory 1>/'* や *'wasb:///\<directory 1>/\<directory 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
+* **\<database name\>** : 作成するデータベースの名前。 既定のデータベースを使用する場合、"*create database...* " クエリは省略してかまいません。
+* **\<table name\>** : 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *\<table name\>* で直接参照でき、\<database name\> は不要です。
+* **\<field separator\>** : Hive テーブルにアップロードするデータ ファイルのフィールドを区切る区切り記号。
+* **\<line separator\>** : データ ファイル内の行を区切る区切り記号。
+* **\<storage location\>** : Hive テーブルのデータを保存する Azure Sorage の場所。 *LOCATION \<storage location\>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、 *'wasb:///\<directory 1>/'* や *'wasb:///\<directory 1>/\<directory 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
 * **TBLPROPERTIES("skip.header.line.count"="1")** :データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Hive テーブルへのデータの読み込み
 Hive テーブルにデータを読み込む Hive クエリを次に示します。
 
-    LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```hiveql
+LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
+```
 
-* **\<BLOB データのパス\>** : Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、 *\<BLOB データのパス\>* は *'wasb://\<このコンテナー内のディレクトリ>/\<BLOB ファイル名>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、 *\<BLOB データのパス\>* は *'wasb://\<コンテナー名>\<ストレージ アカウント名>.blob.core.windows.net/\<BLOB ファイル名>'* の形式にする必要があります。
+* **\<path to blob data\>** :Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、 *\<path to blob data\>* は *'wasb://\<directory in this container>/\<blob file name>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、 *\<path to blob data\>* は、 *'wasb://\<container name>@\<storage account name>.blob.core.windows.net/\<blob file name>'* の形式である必要があります。
 
   > [!NOTE]
   > Hive テーブルにアップロードする BLOB データは、Hadoop クラスターのストレージ アカウントの既定のコンテナーまたは追加のコンテナーに配置されている必要があります。 それ以外の場合、 *LOAD DATA* クエリはデータにアクセスできないために失敗します。
@@ -164,69 +176,83 @@ Hive テーブルをパーティション分割することに加え、Optimized
 ### <a name="partitioned-table"></a>パーティション テーブル
 パーティション テーブルを作成し、そこにデータを読み込む Hive クエリを次に示します。
 
-    CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
-    (field1 string,
-    ...
-    fieldN string
-    )
-    PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-         lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
-    LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
-        PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<table name>
+(field1 string,
+...
+fieldN string
+)
+PARTITIONED BY (<partitionfieldname> vartype) ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' TBLPROPERTIES("skip.header.line.count"="1");
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
+    PARTITION (<partitionfieldname>=<partitionfieldvalue>);
+```
 
 パーティション テーブルの照会時には、`where` 句の**先頭**にパーティション条件を追加することをお勧めします。それにより、検索の有効性が向上します。
 
-    select
-        field1, field2, ..., fieldN
-    from <database name>.<partitioned table name>
-    where <partitionfieldname>=<partitionfieldvalue> and ...;
+```hiveql
+select
+    field1, field2, ..., fieldN
+from <database name>.<partitioned table name>
+where <partitionfieldname>=<partitionfieldvalue> and ...;
+```
 
 ### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>ORC 形式での Hive データの格納
 ORC 形式で格納されているデータを BLOB ストレージから Hive テーブルに直接読み込むことはできません。 ORC 形式で格納されているデータを Azure BLOB から Hive テーブルに読み込むために実行する必要がある手順を以下に示します。
 
 外部テーブル **STORED AS TEXTFILE** を作成し、データを BLOB ストレージからテーブルに読み込みます。
 
-        CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
-            lines terminated by '<line separator>' STORED AS TEXTFILE
-            LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
+```hiveql
+CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>'
+    lines terminated by '<line separator>' STORED AS TEXTFILE
+    LOCATION 'wasb:///<directory in Azure blob>' TBLPROPERTIES("skip.header.line.count"="1");
 
-        LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
+```
 
 手順 1 の外部テーブルと同じスキーマを持つ内部テーブルを、同じフィールド区切り記号を使用して作成し、ORC 形式で Hive データを格納します。
 
-        CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
-        (
-            field1 string,
-            field2 int,
-            ...
-            fieldN date
-        )
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```hiveql
+CREATE TABLE IF NOT EXISTS <database name>.<ORC table name>
+(
+    field1 string,
+    field2 int,
+    ...
+    fieldN date
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
+```
 
 手順 1 の外部テーブルからデータを選択し、ORC テーブルに挿入します。
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name>
-            SELECT * FROM <database name>.<external textfile table name>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name>
+    SELECT * FROM <database name>.<external textfile table name>;
+```
 
 > [!NOTE]
-> TEXTFILE テーブル *\<データベース名\>.\<外部テキストファイル テーブル名\>* にパーティションが含まれている場合、手順 3 で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。 *\<データベース名\>.\<ORC テーブル名\>* にはテーブル スキーマのフィールドとしてパーティション変数が含まれないため、 *\<データベース名\>.\<ORC テーブル名\>* に挿入すると失敗します。 この場合、 *\<データベース名\>.\<ORC テーブル名\>* に挿入するフィールドを次のように具体的に選択する必要があります。
+> TEXTFILE テーブル *\<database name\>.\<external textfile table name\>* にパーティションが含まれている場合、手順 3. で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。 これを *\<database name\>.\<ORC table name\>* に挿入すると 失敗します。その理由は、 *\<database name\>.\<ORC table name\>* にはテーブル スキーマのフィールドとしてパーティション変数が含まれないためです。 この場合、ユーザーは *\<database name\>\<ORC table name\>.* に挿入するフィールドを、以下のように具体的に選択する必要があります 。
 >
 >
 
-        INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
-           SELECT field1, field2, ..., fieldN
-           FROM <database name>.<external textfile table name>
-           WHERE <partition variable>=<partition value>;
+```hiveql
+INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
+    SELECT field1, field2, ..., fieldN
+    FROM <database name>.<external textfile table name>
+    WHERE <partition variable>=<partition value>;
+```
 
-すべてのデータが *\<データベース名\>.\<ORC テーブル名\>* に挿入された後に、次のクエリを使用して *\<外部テキスト ファイル テーブル名\>* を削除するのが安全です。
+すべてのデータが *\<database name\>.\<ORC table name\>* に挿入された後に、次のクエリを使用して *\<external text file table name\>* を削除するのが安全です。
 
-        DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```hiveql
+    DROP TABLE IF EXISTS <database name>.<external textfile table name>;
+```
 
 この手順が終了すれば、すぐに使用できる ORC 形式のデータを含むテーブルが手に入ったことになります。  

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954078"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654380"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>ExpressRoute を Azure VM のディザスター リカバリーと統合する
 
@@ -22,7 +22,7 @@ ms.locfileid: "73954078"
 
 Site Recovery では、Azure VM のデータを Azure にレプリケートすることで、Azure VM のディザスター リカバリーを行うことができます。
 
-- Azure VM で [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) を使用する場合、VM データが、セカンダリ リージョン内のレプリケートされているマネージド ディスクにレプリケートされます。
+- Azure VM で [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) を使用する場合、VM データが、セカンダリ リージョン内のレプリケートされているマネージド ディスクにレプリケートされます。
 - Azure VM でマネージド ディスクを使用しない場合、VM データは Azure ストレージ アカウントにレプリケートされます。
 - レプリケーション エンドポイントはパブリックですが、Azure VM のレプリケーション トラフィックはインターネットを経由しません。
 

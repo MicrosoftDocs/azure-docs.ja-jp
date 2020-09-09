@@ -7,17 +7,17 @@ author: jasonnutter
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860054"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115239"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する
 
@@ -47,7 +47,7 @@ ms.locfileid: "83860054"
 >
 > 1. [Azure portal](https://portal.azure.com) にサインインします。
 > 1. そのアカウントで複数のテナントにアクセスできる場合は、右上でアカウントを選択してから、ポータルのセッションを、使用したい Azure AD テナントに設定します。
-> 1. 手順に従って、Azure portal に[シングルページ アプリケーションを登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)します。
+> 1. 手順に従って、Azure portal に[シングルページ アプリケーションを登録](./scenario-spa-app-registration.md)します。
 > 1. アプリの登録の **[認証]** ペインで新しいプラットフォームを追加し、リダイレクト URI (`http://localhost:4200/`) を登録します。
 > 1. このクイックスタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を使用します。 **[ID トークン]** と **[アクセス トークン]** で **[暗黙的な許可]** 設定を選択します。 このアプリはユーザーのサインインを実行して API を呼び出すため、ID トークンとアクセス トークンが必要です。
 
@@ -99,15 +99,15 @@ ms.locfileid: "83860054"
 >|値の名前|説明|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|これは、アプリケーションの登録の **[概要]** ページの **[アプリケーション (クライアント) ID]** の値です。 |
->|Enter_the_Cloud_Instance_Id_Here|これは、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「 **https://login.microsoftonline.com** 」と入力します。 各国のクラウド (中国など) の場合は、「[各国のクラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)」を参照してください。|
+>|Enter_the_Cloud_Instance_Id_Here|これは、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「 **https://login.microsoftonline.com** 」と入力します。 各国のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。|
 >|Enter_the_Tenant_Info_Here| 次のいずれかのオプションに設定します。1) お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値をディレクトリ (テナント) ID またはテナント名 (例: "**contoso.microsoft.com**") に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。 |
 >|Enter_the_Redirect_Uri_Here|**http://localhost:4200** に置き換えます。|
 >|cacheLocation  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では **sessionStorage** です。   |
->|storeAuthStateInCookie  | (省略可能) 認証要求の状態を格納するライブラリを識別します。 認証フローを検証するためには、ブラウザーの Cookie にこの状態が必要になります。 この Cookie は、Internet Explorer および Edge の 2 つのブラウザーに適合するように設定されます。 詳細については、[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)に関するページを参照してください。 |
+>|storeAuthStateInCookie  | (省略可能) 認証要求の状態を格納するライブラリを識別します。 認証フローを検証するためには、ブラウザーの Cookie にこの状態が必要になります。 この Cookie は、Internet Explorer および Microsoft Edge の 2 つのブラウザーに適合するように設定されます。 詳細については、[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)に関するページを参照してください。 |
 > > [!TIP]
 > > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 
-使用できる構成オプションの詳細については、[クライアント アプリケーションの初期化](msal-js-initializing-client-applications.md)に関する記事を参照してください。 
+使用できる構成オプションの詳細については、[クライアント アプリケーションの初期化](msal-js-initializing-client-applications.md)に関する記事を参照してください。
 
 MSAL.js ライブラリのソース コードは、GitHub の [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) リポジトリにあります。
 
@@ -134,7 +134,7 @@ Node.js を使用している場合:
 
 ## <a name="how-the-sample-works"></a>このサンプルのしくみ
 
-![このクイックスタートのサンプル アプリによる処理を示す図](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![このクイックスタートのサンプル アプリによる処理を示す図](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -142,5 +142,4 @@ Node.js を使用している場合:
 引き続き、ユーザーをサインインさせてトークンを取得する方法を Angular のチュートリアルでご覧ください。
 
 > [!div class="nextstepaction"]
-> [Angular チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
-
+> [Angular チュートリアル](./tutorial-v2-angular.md)

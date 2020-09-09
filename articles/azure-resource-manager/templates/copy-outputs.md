@@ -40,7 +40,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 * Azure PowerShell **2.6** 以降
 * Azure CLI **2.0.74** 以降
 * REST API バージョン **2019-05-10** 以降
-* [リンクされたデプロイ](linked-templates.md)には、デプロイ リソースの種類に API バージョン **2019-05-10** 以降を使用する必要があります
+* [[Linked deployments]\(リンクされたデプロイ\)](linked-templates.md) には、デプロイ リソースの種類に API バージョン **2019-05-10** 以降を使用する必要があります
 
 以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
 

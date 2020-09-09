@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 2d41b48613ef7ba883a6a51b0fa67407fb730719
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084882"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846226"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL アプリケーションでのログ記録
 

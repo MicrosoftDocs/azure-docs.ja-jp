@@ -8,17 +8,17 @@ author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 317f6a73812b0e4284564ca9b5593e09e22edf12
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456830"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048722"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer の TCP アイドル タイムアウト設定を構成する
 
@@ -43,6 +43,10 @@ TCP keep-alive は、バッテリーの寿命に制約がないシナリオに�
 
 次のセクションでは、パブリック IP とロード バランサー リソースのアイドル タイムアウト設定を変更する方法について説明します。
 
+>[!NOTE]
+> TCP アイドル タイムアウトは、UDP プロトコルの負荷分散規則には影響しません。
+
+
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>インスタンスレベル パブリック IP の TCP タイムアウトを 15 分で構成します。
 
 ```azurepowershell-interactive
@@ -65,6 +69,6 @@ $lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
 
 [内部ロード バランサーの概要](load-balancer-internal-overview.md)
 
-[インターネットに接続するロード バランサーの構成の開始](quickstart-create-standard-load-balancer-powershell.md)
+[インターネットに接続するロード バランサーの構成の開始](quickstart-load-balancer-standard-public-powershell.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)

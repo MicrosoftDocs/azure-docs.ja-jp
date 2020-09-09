@@ -1,26 +1,28 @@
 ---
-title: Power BI を使用してナレッジ ストア (プレビュー) に接続する
+title: Power BI を使用してナレッジ ストアに接続する
 titleSuffix: Azure Cognitive Search
-description: 分析と探索を目的に Power BI を使用して Azure Cognitive Search のナレッジ ストア (プレビュー) に接続します。
+description: 分析と探索を目的に Power BI を使用して Azure Cognitive Search のナレッジ ストアに接続します。
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270028"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289173"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Power BI を使用してナレッジ ストアに接続する
 
-> [!IMPORTANT] 
-> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
+この記事では、Power BI Desktop アプリの Power Query を使用してナレッジ ストアに接続し、探索する方法を説明します。 テンプレートを使用してすぐに作業を開始することも、カスタム ダッシュボードを最初から作成することもできます。 次の短いビデオでは、Azure Cognitive Search を Power BI と組み合わせて使用して、データのエクスペリエンスを向上させる方法を示します。
 
-この記事では、Power BI Desktop アプリの Power Query を使用してナレッジ ストアに接続し、探索する方法を説明します。 テンプレートを使用してすぐに作業を開始することも、カスタム ダッシュボードを最初から作成することもできます。
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=593&end=663]
+
+
 
 + [Azure portal でのナレッジ ストアの作成](knowledge-store-create-portal.md)に関するページか、「[REST を使用して Azure Cognitive Search のナレッジ ストアを作成する](knowledge-store-create-rest.md)」の手順に従って、このチュートリアルに使用されているサンプル ナレッジ ストアを作成します。 ナレッジ ストアの作成に使用した Azure ストレージ アカウントの名前とそのアクセス キー (Azure portal から入手) も必要になります。
 
@@ -28,7 +30,7 @@ ms.locfileid: "78270028"
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>サンプル Power BI テンプレート - Azure portal のみ
 
-[Azure portal を使用してナレッジ ストア](knowledge-store-create-portal.md)を作成するときは、[データのインポート](https://github.com/Azure-Samples/cognitive-search-templates) ウィザードの 2 ページ目で、**Power BI テンプレート**をダウンロードすることもできます。 このテンプレートでは、WordCloud や Network Navigator など、テキスト ベースのコンテンツ用の視覚エフェクトがいくつか提供されます。 
+[Azure portal を使用してナレッジ ストア](knowledge-store-create-portal.md)を作成するときは、**データのインポート** ウィザードの 2 ページ目で、[Power BI テンプレート](https://github.com/Azure-Samples/cognitive-search-templates)をダウンロードすることもできます。 このテンプレートでは、WordCloud や Network Navigator など、テキスト ベースのコンテンツ用の視覚エフェクトがいくつか提供されます。 
 
 **[認知技術を追加します]** ページの **[Power BI テンプレートを取得する]** をクリックして、そのパブリックな GitHub の場所からテンプレートを取得してダウンロードします。 ウィザードでは、ウィザードで指定されたナレッジ ストアの予測でキャプチャされたデータの構造に合わせてテンプレートが変更されます。 このため、データ入力とスキルの選択が異なるとすると、ダウンロードしたテンプレートは、ウィザードを実行するたびに変化します。
 
@@ -43,7 +45,7 @@ ms.locfileid: "78270028"
 
 1. **[データの取得]** ウィンドウで **[Azure]** を選択し、 **[Azure Table Storage]** を選択します。
 
-1. **[接続]** をクリックします。
+1. **[Connect]** をクリックします。
 
 1. **[アカウント名または URL]** に、Azure Storage アカウントの名前を入力します (完全な URL が自動的に作成されます)。
 
@@ -66,7 +68,7 @@ ms.locfileid: "78270028"
 
 1. テーブルの右上にある対立する矢印を含んだアイコンをクリックして、 *[コンテンツ]* を展開します。 列が一覧表示されたら、すべての列を選択し、"metadata" で始まる列の選択を解除します。 **[OK]** をクリックすると、選択した列が表示されます。
 
-   ![テーブルを編集する](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "コンテンツを展開する")
+   ![コンテンツを展開する](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "コンテンツを展開する")
 
 1. 列の左上にある [ABC-123] アイコンをクリックして、次の列のデータ型を変更します。
 
@@ -102,7 +104,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 

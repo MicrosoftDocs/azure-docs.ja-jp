@@ -8,12 +8,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ab6133faef4a6c7a8eb929e5f4cd1840e971a99
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088344"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows Virtual Machines のセキュリティ コントロール
 
@@ -28,13 +28,13 @@ ms.locfileid: "82101588"
 | サービス エンドポイントのサポート| はい | |
 | VNet インジェクションのサポート| はい | |
 | ネットワークの分離とファイアウォールのサポート| はい |  |
-| 強制トンネリングのサポート| はい | 「[Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)」を参照してください。 |
+| 強制トンネリングのサポート| はい | 「[Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)」を参照してください。 |
 
 ## <a name="monitoring--logging"></a>監視およびログ記録
 
 | セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
-| Azure 監視サポート (Log analytics や App Insights など)| はい | [Azure で Windows 仮想マシンの監視と更新を行う](tutorial-monitoring.md)。 |
+| Azure 監視サポート (Log analytics や App Insights など)| はい | [Azure で Windows 仮想マシンの監視と更新を行う](./tutorial-monitor.md)。 |
 | コントロールと管理プレーンのログ記録と監査| はい |  |
 | データ プレーンのログ記録と監査 | いいえ |  |
 
@@ -49,9 +49,9 @@ ms.locfileid: "82101588"
 
 | セキュリティ コントロール | はい/いいえ | Notes |
 |---|---|--|
-| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | 「[Windows VM の仮想ディスクを暗号化する](/azure/virtual-machines/windows/disk-encryption-overview)」を参照してください。 |
-| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Virtual Machines では、[ExpressRoute](/azure/expressroute) と VNet の暗号化がサポートされています。 「[VM での転送中の暗号化](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。 |
-| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい | カスタマー マネージド キーは、サポートされている Azure の暗号化シナリオです。「[Azure の暗号化の概要](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。|
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | 「[Windows VM の仮想ディスクを暗号化する](./disk-encryption-overview.md)」を参照してください。 |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Virtual Machines では、[ExpressRoute](../../expressroute/index.yml) と VNet の暗号化がサポートされています。 「[VM での転送中の暗号化](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms)」を参照してください。 |
+| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい | カスタマー マネージド キーは、サポートされている Azure の暗号化シナリオです。「[Azure の暗号化の概要](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms)」を参照してください。|
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
 | API 呼び出しの暗号化| はい | HTTPS および TLS 経由。 |
 

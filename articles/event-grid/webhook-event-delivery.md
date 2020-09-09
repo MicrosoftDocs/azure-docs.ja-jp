@@ -1,26 +1,21 @@
 ---
 title: webhook のイベント配信
 description: この記事では、WebHook を使用する場合の WebHook イベント配信とエンドポイント検証について説明します。
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: 7ae8a21d4ea9216bea13d47ad5ae41f3bc1c2089
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 07/07/2020
+ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629772"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461240"
 ---
 # <a name="webhook-event-delivery"></a>Webhook のイベント配信
 Webhook は、Azure Event Grid からイベントを受信する多数ある方法の 1 つです。 新しいイベントの準備ができるたびに、Event Grid サービスは、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに POST します。
 
 Webhook をサポートする他の多くのサービスと同様に、Event Grid を使用するには、Webhook エンドポイントへのイベントの配信を開始する前に、そのエンドポイントの所有権を証明する必要があります。 この要件により、悪意のあるユーザーはエンドポイントをイベントで氾濫させることができなくなります。 以下に示す 3 つの Azure サービスのいずれかを使用すると、Azure インフラストラクチャはこの検証を自動的に処理します。
 
-- [Event Grid コネクタ](https://docs.microsoft.com/connectors/azureeventgrid/)を使用した Azure Logic Apps
+- [Event Grid コネクタ](/connectors/azureeventgrid/)を使用した Azure Logic Apps
 - [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) を使用した Azure Automation
 - [Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)を使用した Azure Functions
 
@@ -38,7 +33,7 @@ Webhook をサポートする他の多くのサービスと同様に、Event Gri
    この認証メカニズムではまた、webhook エンドポイントが 200 の HTTP 状態コードを返すことも必要です。それにより、手動検証モードに設定される前に、検証イベントの POST が受け付けられたことを認識できるようになります。 つまり、エンドポイントが 200 を返しても、同期的に検証の応答を戻さないと、モードは手動検証モードに移行されます。 5 分以内に検証 URL に GET が存在した場合、検証ハンドシェイクは成功したと見なされます。
 
 > [!NOTE]
-> 検証に自己署名証明書を使用することは、サポートされていません。 代わりに、証明機関 (CA) からの署名入り証明書を使用します。
+> 検証に自己署名証明書を使用することは、サポートされていません。 代わりに、商用証明機関 (CA) からの署名入り証明書を使用します。
 
 ### <a name="validation-details"></a>検証の詳細
 

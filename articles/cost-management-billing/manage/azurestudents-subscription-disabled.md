@@ -4,15 +4,16 @@ description: Azure for Students サブスクリプションが無効になって
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.subservice: billing
+ms.topic: how-to
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: fb091efd9888930f7e834d840d3cab047949dbf1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2ccfcb26c66d936d474cd5bd4f830d03a8b0002
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203000"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682915"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>私の Azure for Students サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。
 

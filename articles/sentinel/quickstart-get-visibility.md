@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Azure Sentinel の概要
-description: Azure Sentinel クイック スタート - Azure Sentinel の概要
+description: このクイックスタートでは、Azure Sentinel を使用し、環境全体で発生していることをすばやく表示および監視できるようにする方法について説明します。 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798665"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496215"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>クイック スタート:Azure Sentinel の概要
 
@@ -91,23 +91,26 @@ ms.locfileid: "83798665"
 
 次のサンプル クエリを使用すると、数週間にわたるトラフィックの傾向を比較できます。 クエリを実行するデバイスの製造元とデータ ソースを簡単に切り替えることができます。 この例では Windows の SecurityEvent を使用していますが、他のファイアウォールの AzureActivity または CommonSecurityLog に対して実行するために切り替えることができます。
 
-     |where DeviceVendor == "Palo Alto Networks":
-      // week over week query
-      SecurityEvent
-      | where TimeGenerated > ago(14d)
-      | summarize count() by bin(TimeGenerated, 1d)
-      | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
-
+```console
+ |where DeviceVendor == "Palo Alto Networks":
+  // week over week query
+  SecurityEvent
+  | where TimeGenerated > ago(14d)
+  | summarize count() by bin(TimeGenerated, 1d)
+  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+```
 
 複数のソースからのデータを組み込んだクエリを作成することをお勧めします。 作成されたばかりの新しいユーザーの Azure Active Directory 監査ログを確認し、Azure ログをチェックして作成後 24 時間以内にユーザーがロールの割り当てを変更し始めたかどうかを確認するクエリを作成できます。 その疑わしいアクティビティは、このダッシュボードに表示されます。
 
-    AuditLogs
-    | where OperationName == "Add user"
-    | project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
-    | join (AzureActivity
-    | where OperationName == "Create role assignment"
-    | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
-    | project-away user1
+```console
+AuditLogs
+| where OperationName == "Add user"
+| project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
+| join (AzureActivity
+| where OperationName == "Create role assignment"
+| project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
+| project-away user1
+```
 
 データを見るユーザーのロール必要なものに基づいて、さまざまなブックを作成できます。 たとえば、ファイアウォール データを含むネットワーク管理者用のブックを作成できます。 また、確認する頻度、毎日確認することがあるかどうか、1 時間に 1 回確認する必要がある項目などに基づいてブックを作成することもできます。たとえば、Azure AD のサインを毎時確認し、異常を検索することができます。 
 

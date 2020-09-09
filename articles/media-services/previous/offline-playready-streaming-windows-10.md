@@ -14,21 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 001d408eaa7ce637bd7cc1f1183dd8748cddf539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a26be590d5f7b467f57e8e18eac54ce57be24094
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189524"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266597"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 用のオフライン PlayReady ストリーミング  
+# <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 用のオフライン PlayReady ストリーミング
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/offline-plaready-streaming-for-windows-10.md)
 > * [Version 2](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Media Services は、DRM 保護を適用したオフラインでのダウンロード/再生をサポートしています。 この記事では、Windows 10/PlayReady クライアントに向けた Azure Media Services のオフライン サポートについて説明します。 iOS/FairPlay および Android/Widevineデバイスに向けたオフライン モードのサポートの詳細については、以下の記事を参照してください。
 
@@ -48,7 +51,7 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 * 多くのプレーヤーやエンコーダー ツールで MP4 がサポートされていますが、MP4 コンテナーと DRM の間にはバインディングがありません。
 * 長期的には、CENC を使用する CFF が主流となります。 ただし現在では、ツール/プレーヤーのサポート エコシステムがまだありません。 今すぐにでもソリューションが必要なのです。
  
-そのアイデアは、次のようなものです。H264/AAC によるスムーズ ストリーミング ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) ファイル形式には、PlayReady (AES-128 CTR) とのバインディングがあります。 個々のスムーズ ストリーミング .ismv ファイル (オーディオはビデオ内に多重化されていると想定) 自体は fMP4 であり、再生に使用できます。 スムーズ ストリーミング コンテンツが PlayReady 暗号化を受けると、各 .ismv ファイルは、PlayReady で保護された、断片化された MP4 になります。 好みのビットレートの .ismv ファイルを選択し、ダウンロードのためにその名前を .mp4 に変更できます。
+そのアイデアは、次のようなものです。H264/AAC によるスムーズ ストリーミング ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) ファイル形式には、PlayReady (AES-128 CTR) とのバインディングがあります。 個々のスムーズ ストリーミング .ismv ファイル (オーディオはビデオ内に多重化されていると想定) 自体は fMP4 であり、再生に使用できます。 スムーズ ストリーミング コンテンツが PlayReady 暗号化を受けると、各 .ismv ファイルは、PlayReady で保護された、断片化された MP4 になります。 好みのビットレートの .ismv ファイルを選択し、ダウンロードのためにその名前を .mp4 に変更できます。
 
 プログレッシブ ダウンロード用の、PlayReady で保護された MP4 をホストするためのオプションが 2 つあります。
 

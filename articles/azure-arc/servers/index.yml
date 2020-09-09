@@ -1,0 +1,32 @@
+### YamlMime:Landing
+title: Azure Arc サーバー (プレビュー)
+summary: Azure Arc サーバー
+metadata:
+  title: Azure Arc サーバー
+  description: Azure でオンプレミスのマシンを管理する方法について説明します
+  author: mgoedtel
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 9080f5bb770f5cb86284b5816c340a614843038c
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763815"
+landingContent:
+- title: Azure Arc 対応サーバーを使用してマシンを Azure に接続する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc 対応サーバーとは
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Azure portal から Azure Arc へのマシンの接続
+      url: onboard-portal.md
+    - text: サービス プリンシパルを使用したマシンの大規模な接続
+      url: onboard-service-principal.md
+    - text: PowerShell DSC を使用してマシンを Azure に接続する
+      url: onboard-dsc.md

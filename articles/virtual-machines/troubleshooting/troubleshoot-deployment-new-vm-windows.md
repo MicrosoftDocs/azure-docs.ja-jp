@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028398"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -37,7 +37,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 [デプロイ操作の表示](../../azure-resource-manager/templates/deployment-history.md)
 
-[アクティビティ ログを表示して Azure リソースを管理する](../../resource-group-audit.md)
+[アクティビティ ログを表示して Azure リソースを管理する](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -53,7 +53,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 **解決策**
 
-これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な [元の VHD をアップロードするために Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)を使用します。 一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。
+これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な [元の VHD をアップロードするために Add-AzVhd](/powershell/module/az.compute/add-azvhd)を使用します。 一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。
 
 **キャプチャ エラー:**
 
@@ -90,5 +90,3 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 
 ## <a name="next-steps"></a>次のステップ
 Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](restart-resize-error-troubleshooting.md)を参照してください。
-
-

@@ -1,18 +1,19 @@
 ---
 title: Azure App Service の予約割引
-description: Azure App Service Isolated スタンプに予約割引を適用する方法について説明します。
+description: Azure App Service Isolated スタンプに予約割引を適用する方法について説明します。 割引は、リージョンの登録料に自動的に適用されます。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 97a0b63200951a30d1b5576fddbb5aa044a91a62
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7d3134652d75cb4ce40b3e9366d3083f5d760df
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200335"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682622"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Azure App Service Isolated スタンプに予約割引を適用する方法
 

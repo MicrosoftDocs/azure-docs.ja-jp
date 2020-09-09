@@ -4,11 +4,11 @@ ms.service: active-directory
 ms.topic: include
 ms.date: 04/30/2019
 ms.author: daveba
-ms.openlocfilehash: 5e430b16bbdebf97c1499d997fe2c30771270987
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 77c262982fc24215462559772e01f8d85dd00d2d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73523234"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256656"
 ---
-この機能を使用するには、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「 [Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+この機能を使用するには、Azure AD Premium P2 ライセンスが必要です。 ご自分の要件に適したライセンスを確認するには、 [Free、Office 365 アプリ、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。

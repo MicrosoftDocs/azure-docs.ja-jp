@@ -3,8 +3,8 @@ title: Azure AD アプリケーション プロキシのセキュリティに関
 description: Azure AD アプリケーション プロキシを使用する場合のセキュリティに関する注意事項を説明します
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481230"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759890"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -47,7 +47,7 @@ Azure AD アプリケーション プロキシでは、すべての認証に Azu
 
 ネットワークへの接続が確立される前に、多数のポリシー制御を適用できます。
 
-[条件付きアクセス](../conditional-access/overview.md)を使用すると、バックエンド アプリケーションにアクセスできるトラフィックの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
+[条件付きアクセス](../conditional-access/concept-conditional-access-cloud-apps.md)を使用すると、ユーザーがアプリケーションにアクセスするときの制限を定義できます。 場所、認証の強度、およびユーザーのリスク プロファイルに基づいてサインインを制限するポリシーを作成できます。
 
 条件付きアクセスを使用して Multi-Factor Authentication のポリシーを構成することで、ユーザー認証に別のセキュリティ層を追加することもできます。 さらに、Azure AD 条件付きアクセスを利用して Microsoft Cloud App Security にお使いのアプリケーションをルーティングし、[アクセス](https://docs.microsoft.com/cloud-app-security/access-policy-aad) ポリシーおよび[セッション](https://docs.microsoft.com/cloud-app-security/session-policy-aad) ポリシーによって、リアルタイムの監視と制御を提供することも可能です。
 

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/08/2020
+ms.openlocfilehash: 4e6f8a115e996ac6862f2fb04e5050b94f9f823b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254932"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132739"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -48,18 +48,20 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | 移行先  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL |  |  |
-|   | Oracle |  |  |
+|   | RDS SQL | X |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL |  |  |
-|   | Oracle |  |   |
+|   | RDS SQL | X |  |
+|   | Oracle | X |   |
 | **Azure SQL VM** | SQL Server | ✔ | GA |
-|   | Oracle |   |   |
+|   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL |   |   |
-|   | RDS MySQL |   |   |
-| **Azure DB for PostgreSQL** | PostgreSQL |  |
-|  | RDS PostgreSQL |   |   |
+| **Azure DB for MySQL** | MySQL | X |   |
+|   | RDS MySQL | X |   |
+| **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
+| **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>オンライン (継続的同期) の移行のサポート
 
@@ -69,18 +71,23 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
-|   | Oracle |  |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
-|   | Oracle | ✔ | プライベート プレビュー |
-| **Azure SQL VM** | SQL Server |   |   |
-|   | Oracle  |  |  |
+|   | Oracle | X |  |
+| **Azure SQL VM** | SQL Server | X |   |
+|   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
-| **Azure DB for PostgreSQL** | PostgreSQL | ✔ | GA |
+| **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | ✔ | GA |
+|   | Azure DB for PostgreSQL - 単一サーバー* | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | パブリック プレビュー |
+| **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
+|   | RDS PostgreSQL | ✔ | GA |
+
+*PostgreSQL バージョン 10 以降でサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

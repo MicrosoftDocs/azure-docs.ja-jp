@@ -1,17 +1,18 @@
 ---
 title: REST API で Azure サブスクリプション課金データを確認する
-description: Azure REST API を使用してサブスクリプションの課金詳細を確認する方法を説明します。
+description: Azure REST API を使用してサブスクリプションの課金詳細を確認する方法を説明します。 フィルターを使用して、結果をカスタマイズできます。
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7b80bd57906515ffeb0ff9e8ac52cf7178f5ccd8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202809"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684713"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API を使用してサブスクリプションの課金を確認する
 

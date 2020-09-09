@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202316"
 ---
 # <a name="verification-display-control"></a>検証表示コントロール
 
@@ -53,7 +53,7 @@ ms.locfileid: "78188785"
 
 その後、ユーザーが**確認コード**を入力し、 **[コードの確認]** を選択して、バックエンドで **VerifyCode** アクションをトリガーします。 すべての検証に合格すれば、**VerificationControl** は完了したとみなされ、ユーザーは次の手順に進むことができます。
 
-```XML
+```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="email"  Required="true" />

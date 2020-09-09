@@ -4,15 +4,15 @@ description: この記事では、Azure Bastion 診断ログを有効にして�
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744206"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion リソース ログを有効にして使用する
 

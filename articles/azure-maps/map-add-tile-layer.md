@@ -1,6 +1,6 @@
 ---
 title: マップにタイル レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップにタイル レイヤーをオーバーレイする方法を示します。 タイル レイヤーを使用すると、マップに画像をレンダリングできます。
+description: マップに画像をスーパーインポーズする方法について説明します。 Azure Maps Web SDK を使用して気象レーダーのオーバーレイが含まれるタイル レイヤーをマップに追加する例を参照してください。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: c96916c029c9c49ad7d4c493fed8859354508ebe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988602"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010176"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
@@ -37,6 +37,7 @@ ms.locfileid: "76988602"
 * `{quadkey}` - Bing Maps タイル システムの名前付け規則に基づくタイルの quadkey 識別子。
 * `{bbox-epsg-3857}` - EPSG 3857 空間参照系の `{west},{south},{east},{north}` 形式の境界ボックス文字列。
 * `{subdomain}` - サブドメインの値のプレースホルダー。この値が指定されると、`subdomain` が追加されます。
+* `{azMapsDomain}` - タイル要求のドメインと認証を、マップで使用されているものと同じ値に合わせるためのプレースホルダー。
 
 ## <a name="add-a-tile-layer"></a>タイル レイヤーを追加する
 

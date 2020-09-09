@@ -1,22 +1,24 @@
 ---
 title: Azure Disk Encryption 用のキー コンテナーの作成と構成
 description: この記事では、Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します
+author: ju-shim
+ms.author: jushiman
+ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.custom: seodec18
-ms.openlocfilehash: 30fa6b910c0241621c2b2cdae9bb9a164f27cedb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: acd2ae54d81fb508d5f8c02262cf8c2f0f071fb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080609"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption のキー コンテナーを作成して構成する
 
-Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」と「[キー コンテナーのセキュリティ保護](../key-vault/general/secure-your-key-vault.md)」を参照してください。
+Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../key-vault/general/secure-your-key-vault.md)」を参照してください。
 
 Azure Disk Encryption で使用するためのキー コンテナーの作成と構成には、次の 3 つの手順が必要です。
 
@@ -30,7 +32,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 
 ## <a name="install-tools-and-connect-to-azure"></a>ツールをインストールし、Azure に接続する
 
-この記事の手順を完了するには、[Azure CLI](/cli/azure/)、[Azure PowerShell Az モジュール](/powershell/azure/overview)、または [Azure portal](https://portal.azure.com) のいずれかを使用します。
+この記事の手順を完了するには、[Azure CLI](/cli/azure/)、[Azure PowerShell Az モジュール](/powershell/azure/)、または [Azure portal](https://portal.azure.com) のいずれかを使用します。
 
 ### <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
 

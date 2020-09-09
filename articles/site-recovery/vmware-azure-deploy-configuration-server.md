@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228979"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287735"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -39,7 +39,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
 1. アプリケーションを作成するには、アプリケーション開発者のロールがユーザーに必要です。
     - 確認するには、Azure portal にサインインします。</br>
     - **[Azure Active Directory]**  >  **[Roles and administrators]\(ロールと管理者\)** に移動します。</br>
-    - アプリケーション開発者のロールがユーザーに割り当てられていることを確認します。 割り当てられていない場合、このアクセス許可を持つユーザーを使用するか、[アクセス許可の有効化を管理者](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)に要求します。
+    - アプリケーション開発者のロールがユーザーに割り当てられていることを確認します。 割り当てられていない場合、このアクセス許可を持つユーザーを使用するか、[アクセス許可の有効化を管理者](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles)に要求します。
     
 2. アプリケーション開発者のロールを割り当てることができない場合は、ID を作成するユーザーに対して **[ユーザーはアプリケーションを登録できる]** フラグが **[はい]** に設定されていることを確認します。 これらのアクセス許可を有効にするには、次の手順を実行します。
     - Azure portal にサインインします。
@@ -49,7 +49,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory フェデレーション サービス (AD FS) は*サポートされていません*。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) で管理されているアカウントを使用します。
+> Active Directory フェデレーション サービス (AD FS) は*サポートされていません*。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) で管理されているアカウントを使用します。
 
 ## <a name="download-the-template"></a>テンプレートをダウンロードする
 

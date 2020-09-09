@@ -9,12 +9,12 @@ ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609505"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps からの IBM MQ サーバーへの接続
 
@@ -94,7 +94,7 @@ MQ アクションを追加するときに MQ 接続がまだない場合は、�
      > [!IMPORTANT]
      > 確実に **[証明書 - ローカル コンピューター]**  >  **[信頼されたルート証明機関]** ストアに証明書をインストールするようにしてください。
 
-* MQ サーバーでは、SSL 接続に使用する暗号化仕様を定義する必要があります。 ただし、.NET の SsLStream では、暗号化仕様の順序を指定することは許可されません。 この制限を回避するには、コネクタが SSL ネゴシエーションで送信するスイート内の最初の暗号化仕様に一致するように MQ サーバー構成を変更できます。
+* MQ サーバーでは、TLS/SSL 接続に使用する暗号化仕様を定義する必要があります。 ただし、.NET の SslStream では、暗号化仕様の順序を指定することはできません。 この制限を回避するには、コネクタが TLS/SSL ネゴシエーションで送信するスイート内の最初の暗号化仕様に一致するように、MQ サーバー構成を変更できます。
 
   接続しようとすると、MQ サーバーは、もう一方の終端が正しくない暗号化仕様を使用したために接続が失敗したことを示すイベント メッセージをログに記録します。 このイベント メッセージには、一覧の最初に表示される暗号化仕様が含まれています。 チャネル構成の暗号化仕様を、イベント メッセージ内の暗号化仕様に一致するように更新します。
 

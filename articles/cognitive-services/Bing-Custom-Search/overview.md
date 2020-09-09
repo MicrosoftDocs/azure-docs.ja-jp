@@ -10,26 +10,26 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448739"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434580"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは
 
 Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした、広告なしの検索エクスペリエンスを作成できます。 Bing で検索するドメインと Web ページを指定できるほか、特定のコンテンツをピン留め、ブースト、またはレベル下げすることもできます。そのようにして Web の表示をカスタムすれば、適合度の高い検索結果をユーザーがすばやく見つけることができるようになります。 
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>特徴
 
-|機能  |説明  |
+|特徴量  |説明  |
 |---------|---------|
 |[カスタム リアルタイム検索候補](define-custom-suggestions.md)     | ユーザーが入力するときにドロップダウン リストとして表示される検索候補を提供します。       | 
 |[カスタム画像検索エクスペリエンス](get-images-from-instance.md)     | カスタム検索インスタンスで指定されたドメインや Web サイトから画像を検索する機能を実現できます。        |        
 |[カスタム動画検索エクスペリエンス](get-videos-from-instance.md)     | カスタム検索インスタンスで指定されたドメインやサイトから動画を検索する機能を実現できます。        |    
 |[カスタム検索インスタンスの共有](share-your-custom-search.md)     | 検索インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを共同で行うことができます。        | 
-|[アプリケーションや Web サイトの UI の構成](hosted-ui.md)     | 検索インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを共同で行うことができます。        | 
+|[アプリケーションや Web サイトの UI の構成](hosted-ui.md)     | ご自身の Web ページと Web アプリに JavaScript コード スニペットとして簡単に統合できるホステッド UI が用意されています。        | 
 ## <a name="workflow"></a>ワークフロー
 
 カスタマイズした検索インスタンスは、[Bing Custom Search ポータル](https://customsearch.ai)を使用して作成できます。 Bing に検索させたいドメイン、Web サイト、Web ページと、検索させたくない Web サイトとを指定するカスタムの検索インスタンスをポータルから作成することができます。 ポータルを使用して、検索エクスペリエンスをプレビューしたり、API から提供される検索ランキングを調整したり、必要に応じて、Web サイトやアプリケーションにレンダリングする検索可能なユーザー インターフェイスを構成したりすることができます。

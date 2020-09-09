@@ -1,20 +1,20 @@
 ---
 title: マップに多角形レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK で地図上に多角形およびマルチ ポリゴンをレンダリングする方法について説明します。
-author: Philmea
-ms.author: philmea
+description: マップに多角形または円を追加する方法について説明します。 Azure Maps Web SDK を使用して幾何学図形をカスタマイズし、それらの更新や維持を容易にする方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 58262be34a716a04e9779454a30e845d691f3a6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648529"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037713"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>マップに多角形レイヤーを追加する
 
@@ -51,7 +51,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップに多角形を追加する ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Add a polygon to a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに多角形を追加する ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a>」Pen を表示します。
 </iframe>
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>多角形と線レイヤーを同時に使用する
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 <br/>
 
-<iframe height='500' scrolling='no' title='多角形と多角形を追加する線レイヤー' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/aRyEPy/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Polygon and line layer to add polygon</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='多角形と多角形を追加する線レイヤー' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Polygon and line layer to add polygon</a>」Pen を表示します。
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>多角形をパターンで塗りつぶす
@@ -70,7 +70,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="多角形塗りつぶしパターン" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Polygon fill pattern</a>」Pen を表示します。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>Polygon fill pattern</a>」Pen を表示します。
 </iframe>
 
 
@@ -83,14 +83,14 @@ Polygon レイヤーにはごくわずかのスタイル オプションしか�
 
 <br/>
 
-<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/LXvxpg/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>LXvxpg</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a>」Pen を表示します。
 </iframe>
 
 <a id="addACircle"></a>
 
 ## <a name="add-a-circle-to-the-map"></a>マップに円を追加する
 
-Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用しています。 `Point` フィーチャーを作成すると、マップ上に円がレンダリングされます。 この `Point` には、値が `subType` の `"Circle"` プロパティと、メートル単位で半径を表す数値が指定された `radius` プロパティがあります。 
+Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用しています。 `Point` フィーチャーを作成すると、マップ上に円がレンダリングされます。 この `Point` には、値が `"Circle"` の `subType` プロパティと、メートル単位で半径を表す数値が指定された `radius` プロパティがあります。 
 
 ```javascript
 {
@@ -110,7 +110,7 @@ Azure Maps Web SDK では、このような `Point` フィーチャーが `Polyg
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップに円を追加する' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/PRmzJX/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Add a circle to a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに円を追加する' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a>」Pen を表示します。
 </iframe>
 
 ## <a name="make-a-geometry-easy-to-update"></a>ジオメトリを簡単に更新する
@@ -129,7 +129,7 @@ var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='シェイプのプロパティを更新する' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Update shape properties</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='シェイプのプロパティを更新する' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>Update shape properties</a>」Pen を表示します。
 </iframe>
 
 ## <a name="next-steps"></a>次のステップ

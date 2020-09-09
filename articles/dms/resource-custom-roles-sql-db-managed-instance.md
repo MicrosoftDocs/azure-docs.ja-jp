@@ -1,7 +1,7 @@
 ---
-title: カスタム ロール:SQL Server から SQL マネージド インスタンスへのオンライン移行
+title: カスタム ロール:SQL Server から SQL Managed Instance へのオンライン移行
 titleSuffix: Azure Database Migration Service
-description: SQL Server から Azure SQL Database マネージド インスタンスへオンライン移行するためにカスタム ロールを使用する方法について説明します。
+description: SQL Server から Azure SQL Managed Instance へオンライン移行するためにカスタム ロールを使用する方法について説明します。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78254945"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087681"
 ---
-# <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>SQL Server から SQL Database マネージド インスタンスへオンライン移行するためのカスタム ロール
+# <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server から Azure SQL Managed Instance へオンライン移行するためのカスタム ロール
 
 Azure Database Migration Service では、Azure サービスとの対話にアプリ ID を使用します。 アプリ ID には、サブスクリプション レベルの共同作成者ロール (多くの企業セキュリティ部門では許可されません)、または Azure Database Migration Service に必要な特定のアクセス許可を付与するカスタム ロールの作成が必要です。 Azure Active Directory には 2,000 個のカスタム ロールの制限があるため、そのアプリ ID に特に必要なすべてのアクセス許可を 1 つまたは 2 つのカスタム ロールに結合し、特定のオブジェクトまたはリソース グループ (またはサブスクリプション レベル) のカスタム ロールにアプリ ID に付与することをお勧めします。 カスタム ロールの数が問題にならない場合は、以下で説明するように、リソースの種類ごとにカスタム ロールを分割して、合計 3 つのカスタム ロールを作成できます。
 
@@ -30,7 +30,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 現在のところは、アプリ ID に対して少なくとも 2 つのカスタム ロールを作成することをお勧めします。1 つはリソース レベルで、もう 1 つはサブスクリプション レベルです。
 
 > [!NOTE]
-> 新しい SQL Database マネージド インスタンス コードが Azure にデプロイされると、最後のカスタム ロールの要件は最終的に削除される可能性があります。
+> SQL Managed Instance の新しいコードが Azure にデプロイされると、最後のカスタム ロールの要件は最終的に削除される可能性があります。
 
 **アプリ ID のカスタム ロール**。 このロールは、Azure Database Migration Service の*リソース* レベルまたは*リソース グループ* レベルでの移行に必要です (アプリ ID の詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」の記事を参照してください)。
 
@@ -83,18 +83,18 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 
 上記の json は 3 つのテキスト ファイルに保存する必要があり、AzureRM、AZ PowerShell コマンドレット、または Azure CLI を使用し、**New-AzureRmRoleDefinition (AzureRM)** または **New-AzRoleDefinition (AZ)** を使用してロールを作成できます。
 
-詳細については、「[Azure リソースのカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」の記事を参照してください。
+詳細については、「[Azure カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。
 
 これらのカスタム ロールを作成した後は、ロールの割り当てをユーザーに追加し、アプリ ID を適切なリソースまたはリソース グループに追加する必要があります。
 
-* "DMS ロール - アプリ ID" ロールは、移行に使用されるアプリ ID に、またストレージ アカウント、Azure Database Migration Service インスタンス、および SQL Database マネージド インスタンス リソース レベルで付与する必要があります。
+* 移行に使用されるアプリ ID に対して、"DMS ロール - アプリ ID" ロールを、ストレージ アカウント、Azure Database Migration Service インスタンス、および SQL Managed Instance リソース レベルで付与する必要があります。
 * "DMS ロール - アプリ ID - サブ" ロールは、サブスクリプション レベルで APP ID に付与する必要があります (リソースまたはリソース グループでの付与は失敗します)。 この要件は、コードの更新がデプロイされるまでの一時的なものです。
 
 ## <a name="expanded-number-of-roles"></a>ロール数の拡大
 
 Azure Active Directory のカスタム ロールの数が問題にならない場合は、合計 3 つのロールを作成することをお勧めします。 "DMS ロール - アプリ ID - サブ" ロールは引き続き必要ですが、上記の "DMS ロール - アプリ ID" ロールはリソースの種類ごとに 2 つの異なるロールに分割されます。
 
-**SQL Database マネージド インスタンス用の アプリ ID のカスタム ロール**
+**SQL マネージド インスタンス用の アプリ ID のカスタム ロール**
 
 ```json
 {

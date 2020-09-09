@@ -4,15 +4,15 @@ description: Azure CDN サービスでの Azure Web アプリケーション フ
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.topic: overview
-ms.date: 03/18/2020
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754284"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225154"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Content Delivery Network の Azure Web アプリケーション ファイアウォール
 
@@ -45,7 +45,7 @@ Azure CDN でホストされている Web アプリケーションには、一�
 
 WAF ポリシーは、次の 2 つのモードで実行するように構成できます。
 
-- *検出モード*:検出モードで実行されている WAF では、監視以外の他のアクションは実施されず、要求とそれに一致した WAF ルールが WAF ログに記録されます。 Front Door では、診断のログ記録を有効にすることができます。 ポータルを使用しているときに、 **[診断]** セクションに移動します。
+- *検出モード*:検出モードで実行されている WAF では、監視以外の他のアクションは実施されず、要求とそれに一致した WAF ルールが WAF ログに記録されます。 CDN では、診断のログ記録を有効にすることができます。 ポータルを使用しているときに、 **[診断]** セクションに移動します。
 
 - *防止モード*:防止モードの WAF は、要求が規則に一致すると指定されたアクションを実行します。 一致が見つかった場合、それより優先順位が低い規則は評価されません。 一致した要求は、WAF ログにも記録されます。
 

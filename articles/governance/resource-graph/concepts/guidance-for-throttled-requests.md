@@ -1,14 +1,15 @@
 ---
 title: スロットルされた要求に関するガイダンス
 description: Azure Resource Graph によって要求がスロットルされないように、グループ化、時間差処理、改ページ調整、およびクエリの並列処理を行う方法について説明します。
-ms.date: 12/02/2019
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229739"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006008"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス
 
@@ -29,6 +30,8 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
 
 - `x-ms-user-quota-remaining` (int):ユーザーの残りリソース クォータ。 この値はクエリ カウントにマップされます。
 - `x-ms-user-quota-resets-after` (hh:mm:ss):ユーザーのクォータ消費量がリセットされるまでの期間。
+
+セキュリティ プリンシパルがテナントまたは管理グループ [クエリ スコープ](./query-language.md#query-scope)内の 5,000 を超えるサブスクリプションにアクセスできる場合、応答は最初の 5,000 サブスクリプションに限定され、`x-ms-tenant-subscription-limit-hit` ヘッダーは `true` として返されます。
 
 ヘッダーの働きを示すために、ヘッダーと、値 `x-ms-user-quota-remaining: 10` と `x-ms-user-quota-resets-after: 00:00:03` が含まれているクエリ応答を検討してみましょう。
 

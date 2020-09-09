@@ -1,23 +1,18 @@
 ---
-title: Azure Arc for servers (プレビュー) エージェントの管理
-description: この記事では、コンピューターに配置された Azure Arc for servers Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/29/2020
+title: Azure Arc 対応サーバー (プレビュー) エージェントの管理
+description: この記事では、コンピューターに配置された Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581715"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213130"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
-Azure Monitor で Windows または Linux 用 Azure Arc for servers (プレビュー) Connected Machine エージェントを最初に配置した後、エージェントを再構成したり、アップグレードしたり、ライフサイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+Windows または Linux 用 Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを最初にデプロイした後、エージェントを再構成したり、アップグレードしたり、ライフサイクルの提供終了段階に達した場合にコンピューターから削除したりする必要がある場合があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
 
 ## <a name="upgrading-agent"></a>エージェントのアップグレード
 
@@ -28,17 +23,25 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 | Windows | 手動<br> Windows Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
 | SUSE Linux Enterprise Server | [zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| RedHat Enterprise、Amazon、CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) | 
+| RedHat Enterprise、Amazon、CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) |
 
 ### <a name="windows-agent"></a>Windows エージェント
 
-Windows マシン上のエージェントを最新バージョンに更新するには、エージェントを Microsoft Update から使用でき、既存のソフトウェア更新管理プロセスを使用してデプロイできます。 また、コマンド プロンプトからでも、スクリプトまたはその他のオートメーション ソリューションからでも、あるいは `AzureConnectedMachine.msi`を実行することによって UI ウィザードからでも手動で実行できます。 
+Windows 用 Connected Machine エージェントの更新プログラム パッケージは、以下から取得できます。
+
+* Microsoft Update
+
+* [Microsoft Update カタログ](https://www.catalog.update.microsoft.com/Home.aspx)
+
+* Microsoft ダウンロード センターから [Windows エージェント Windows インストーラー パッケージ](https://aka.ms/AzureConnectedMachineAgent)。
+
+ソフトウェア更新管理プロセスをサポートするさまざまな方法に従って、エージェントをアップグレードできます。 Microsoft Update から取得する他に、コマンド プロンプト、スクリプトまたはその他のオートメーション ソリューション、または `AzureConnectedMachine.msi` の実行による UI ウィザードから手動でダウンロードして実行できます。
 
 > [!NOTE]
 > * エージェントをアップグレードするには、"*管理者*" アクセス許可が必要です。
 > * 手動でアップグレードするには、まず、インストーラー パッケージをダウンロードし、ターゲット サーバー上のフォルダーにコピーするか、共有ネットワーク フォルダーからコピーする必要があります。 
 
-Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/command-line-options)に関するページを参照してください。
+Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](/windows/win32/msi/command-line-options)に関するページを参照してください。
 
 #### <a name="to-upgrade-using-the-setup-wizard"></a>セットアップ ウィザードを使用してアップグレードするには
 
@@ -60,7 +63,9 @@ Windows インストーラー パッケージのコマンドライン オプシ�
 
 ### <a name="linux-agent"></a>Linux エージェント
 
-Linux マシン上のエージェントを最新バージョンに更新するために、2 つのコマンドが含まれています。 1 つのコマンドは、リポジトリからの使用可能な最新のパッケージのリストでローカル パッケージのインデックスを更新するもので、もう 1 つのコマンドは、ローカル パッケージをアップグレードするものです。 
+Linux マシン上のエージェントを最新バージョンに更新するために、2 つのコマンドが含まれています。 1 つのコマンドは、リポジトリからの使用可能な最新のパッケージのリストでローカル パッケージのインデックスを更新するもので、もう 1 つのコマンドは、ローカル パッケージをアップグレードするものです。
+
+Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)から、最新のエージェント パッケージをダウンロードできます。
 
 > [!NOTE]
 > エージェントをアップグレードするには、*root* アクセス許可 (つまり、Sudo を使用して権限を昇格したアカウント) が必要です。
@@ -115,7 +120,7 @@ Linux マシン上のエージェントを最新バージョンに更新する�
 
 ## <a name="about-the-azcmagent-tool"></a>Azcmagent ツールについて
 
-Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中に Azure Arc for servers (プレビュー) Connected Machine エージェントを構成したり、インストール後にエージェントの初期構成を変更したりできます。 Azcmagent.exe では、エージェントをカスタマイズし、その状態を表示するための次のコマンドライン パラメーターが提供されます。
+Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中に Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを構成したり、インストール後にエージェントの初期構成を変更したりすることができます。 Azcmagent.exe では、エージェントをカスタマイズし、その状態を表示するための次のコマンドライン パラメーターが提供されます。
 
 * **Connect** - マシンを Azure Arc に接続します。
 
@@ -131,13 +136,16 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 * **-v または --verbose** - 詳細なログ記録を有効にします。
 
-対話形式でのログオン中に **Connect**、**Disconnect**、および **Reconnect** を手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォーム [アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化することができます。 サービス プリンシパルを使用してマシンを Azure Arc for servers (プレビュー) に登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
+対話形式でのログオン中に **Connect**、**Disconnect**、および **Reconnect** を手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォーム [アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化することができます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバー (プレビュー) に登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
+
+>[!NOTE]
+>**Azcmagent** を実行するには、Linux マシンに対する*ルート* アクセス許可が必要です。
 
 ### <a name="connect"></a>接続する
 
 このパラメーターでは、マシンを表す Azure Resource Manager 内のリソースが、Azure で作成されることを指定します。 リソースは指定されたサブスクリプションとリソース グループにあり、マシンに関するデータは、`--location` 設定で指定された Azure リージョンに格納されます。 既定のリソース名は、指定されていない場合はこのマシンのホスト名になります。
 
-このマシンのシステム割り当て ID に対応する証明書がダウンロードされ、ローカルに保存されます。 この手順が完了すると、Azure Connected Machine Metadata Service とゲスト構成エージェントでは、Azure Arc for servers (プレビュー) との同期が開始されます。
+このマシンのシステム割り当て ID に対応する証明書がダウンロードされ、ローカルに保存されます。 この手順が完了すると、Azure Connected Machine Metadata Service とゲスト構成エージェントから、Azure Arc 対応サーバー (プレビュー) との同期が開始されます。
 
 サービス プリンシパルを使用して接続するには、次のコマンドを実行します。
 
@@ -153,7 +161,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 ### <a name="disconnect"></a>[接続解除]
 
-このパラメーターでは、マシンを表す Azure Resource Manager 内のリソースが、Azure で削除されることを指定します。 エージェントはマシンから削除されません。これは、別の手順として実行する必要があります。 マシンが切断された後、Azure Arc for servers (プレビュー) に再登録する場合は、`azcmagent connect` を使用して、Azure でその新しいリソースが作成されるようにします。
+このパラメーターでは、マシンを表す Azure Resource Manager 内のリソースが、Azure で削除されることを指定します。 エージェントはマシンから削除されません。これは、別の手順として実行する必要があります。 マシンが切断された後、Azure Arc 対応サーバー (プレビュー) に再登録する場合は、`azcmagent connect` を使用して、Azure でその新しいリソースが作成されるようにします。
 
 サービス プリンシパルを使用して切断するには、次のコマンドを実行します。
 
@@ -169,9 +177,12 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 ### <a name="reconnect"></a>[再接続]
 
-このパラメーターでは、既に登録されているマシンまたは接続されているマシンを Azure Arc for servers (プレビュー) に再接続します。 証明書の有効期限が切れるまで、45 日以上マシンがオフになっている場合に、この操作が必要になることがあります。 このパラメーターでは、提供されている認証オプションを使用して、このマシンを表す Azure Resource Manager リソースに対応する新しい資格情報を取得します。
+> [!WARNING]
+> `reconnect` コマンドは非推奨となっています。使用しないでください。 このコマンドは、将来リリースされるエージェントでは削除される予定であり、既存のエージェントは再接続要求を実行できなくなります。 代わりに、マシンを[切断](#disconnect)してから再度[接続](#connect)してください。
 
-このコマンドには、[Azure に接続されたマシンのオンボード](overview.md#required-permissions) ロールよりも高い特権が必要です。
+このパラメーターを使用すると、既に登録されている、または接続されているマシンを Azure Arc 対応サーバー (プレビュー) に再接続されます。 証明書の有効期限が切れるまで、45 日以上マシンがオフになっている場合に、この操作が必要になることがあります。 このパラメーターでは、提供されている認証オプションを使用して、このマシンを表す Azure Resource Manager リソースに対応する新しい資格情報を取得します。
+
+このコマンドには、[Azure に接続されたマシンのオンボード](agent-overview.md#required-permissions) ロールよりも高い特権が必要です。
 
 サービス プリンシパルを使用して再接続するには、次のコマンドを実行します。
 
@@ -187,7 +198,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 ## <a name="remove-the-agent"></a>エージェントを削除する
 
-Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Arc for servers (プレビュー) へのマシンの登録は解除されません。登録解除は、Azure でのマシンの管理が不要になったときに別途実行するプロセスになります。
+Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Arc 対応サーバー (プレビュー) へのマシンの登録は解除されません。これは、Azure でのマシンの管理が不要になったときに、別途実行するプロセスになります。
 
 ### <a name="windows-agent"></a>Windows エージェント
 
@@ -207,7 +218,7 @@ Windows または Linux の Connected Machine エージェントをマシンか�
 #### <a name="uninstall-from-the-command-line"></a>コマンドラインからアンインストールする
 
 コマンド プロンプトからエージェントを手動でアンインストールするか、スクリプトなどの自動化された方法を使用するには、次の例を使用できます。 まず、製品コード (アプリケーション パッケージの一意識別子である GUID) を、オペレーティング システムから取得する必要があります。 アンインストールを実行するには、Msiexec.exe コマンドライン (`msiexec /x {Product Code}`) を使用します。
-    
+
 1. レジストリ エディターを開きます。
 
 2. レジストリ キー `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` で、製品コード GUID を探してコピーします。
@@ -256,9 +267,9 @@ Linux エージェントをアンインストールするために使用する�
 
 ## <a name="unregister-machine"></a>マシンの登録を解除する
 
-今後 Azure のサービスを利用してマシンの管理を行う予定がない場合は、次の手順を実行して Arc for servers (プレビュー) に対するマシンの登録を解除してください。 これらの手順を行うのは、Connected Machine エージェントをマシンから削除する前でも後でもかまいません。
+Azure のサポート サービスを利用してマシンの管理を行う予定がない場合は、次の手順を行って Arc 対応サーバー (プレビュー) に対するマシンの登録を解除してください。 これらの手順を行うのは、Connected Machine エージェントをマシンから削除する前でも後でもかまいません。
 
-1. [Azure portal](https://aka.ms/hybridmachineportal) に移動して、Azure Arc for servers (プレビュー) を開きます。
+1. [Azure portal](https://aka.ms/hybridmachineportal) に移動して、Azure Arc 対応サーバー (プレビュー) を開きます。
 
 2. 一覧でマシンを選択し、省略記号 ( **...** ) を選択してから、 **[削除]** を選択します。
 
@@ -304,6 +315,6 @@ sudo azcmagent_proxy remove
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) を使用した監視の有効化などの方法です。
+- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
 - [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook や機能 (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-intro.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share とは
 description: Azure Data Share を使用して、複数の顧客やパートナーとデータを簡単かつ安全に共有する方法を説明します。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 07/10/2019
-ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/30/2020
+ms.openlocfilehash: 0dd0fbdd9bcf4d4fab2ffe9f420264ab737a700b
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77621864"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511923"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Data Share とは
 
@@ -78,15 +78,6 @@ Azure Data Share は、現在、スナップショットベースの共有とイ
 * データ共有をサブスクライブし、増分スナップショットによってデータの最新のコピーを受け取ります
 
 上記のすべての主要機能は、Azure portal または REST API によってサポートされます。 REST API での Azure Data Share の使用に関して詳しくは、リファレンス ドキュメントをご覧ください。 
-
-## <a name="security"></a>Security
-
-Azure Data Share では、保存時と転送中のデータを保護するために Azure によって提供される基盤のセキュリティが利用されます。 データは保存時に暗号化され、基になるデータ ストアでサポートされます。 データは転送中も暗号化されます。 データ共有に関するメタデータも、保存時と転送中に暗号化されます。 
-
-Azure Data Share のリソース レベルでアクセス制御を設定し、承認されたユーザーだけによってアクセスされることを保証できます。 
-
-Azure Data Share では、Azure Active Directory での自動 ID 管理用に、Azure リソースのマネージド ID (旧称 MSI) を利用します。 Azure リソースのマネージド ID は、データ共有に使われているデータ ストアにアクセスするために利用されます。 データ プロバイダーとデータ コンシューマーの間で資格情報が交換されることはありません。 詳しくは、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities) に関するページをご覧ください。 
-
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 

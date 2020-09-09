@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 02/05/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 2d8ac3775021c574d3c03e44b06d6b5e689070e7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743111"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852660"
 ---
-# <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
+# <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
-Azure Virtual WAN は、ネットワーク、セキュリティ、ルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 これらの機能には、ブランチ接続 (SD-WAN や VPN CPE などの Virtual WAN パートナー デバイスからの接続自動化経由)、サイト間 VPN 接続、リモート ユーザー VPN (ポイント対サイト) 接続、プライベート (ExpressRoute) 接続、クラウド内接続 (仮想ネットワークの推移的な接続)、VPN ExpressRoute 相互接続、ルーティング、Azure ファイアウォール、プライベート接続のための暗号化などが含まれます。Virtual WAN の利用を開始するために、これらのすべてのユース ケースを用意する必要はありません。 単純に 1 つのユース ケースだけで始めて、発展に応じてネットワークを調整することができます。 Virtual WAN アーキテクチャは、ブランチ (VPN または SD-WAN デバイス)、ユーザー (Azure VPN、OpenVPN、または IKEv2 クライアント)、ExpressRoute 回線、および仮想ネットワーク向けにスケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャです。 これにより、[グローバル トランジット ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)が可能になります。つまり、クラウドでホストされたネットワーク "ハブ" によって、さまざまな種類の "スポーク" に分散されている可能性があるエンドポイント間の推移的な接続が可能になります。
+Azure Virtual WAN は、ネットワーク、セキュリティ、ルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 これらの機能には、ブランチ接続 (SD-WAN や VPN CPE などの Virtual WAN パートナー デバイスからの接続自動化経由)、サイト間 VPN 接続、リモート ユーザー VPN (ポイント対サイト) 接続、プライベート (ExpressRoute) 接続、クラウド内接続 (仮想ネットワークの推移的な接続)、VPN ExpressRoute 相互接続、ルーティング、Azure Firewall、プライベート接続のための暗号化が含まれます。 Virtual WAN の利用を開始するために、これらのすべてのユース ケースを用意する必要はありません。 単純に 1 つのユース ケースから始めて、ネットワークの発展に合わせて調整することができます。
 
-Azure リージョンは、接続先として選択できるハブとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN または VPN デバイスとのスポーク接続の場合、ユーザーは Azure Virtual WAN 内で手動で設定するか、Virtual WAN CPE (SD-WAN または VPN) パートナー ソリューションを使用して Azure への接続を設定することができます。 Azure Virtual WAN での接続の自動化 (デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして接続を確立する機能) をサポートするパートナーの一覧が提供されています。 詳細については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。 
+Virtual WAN アーキテクチャは、ブランチ (VPN または SD-WAN デバイス)、ユーザー (Azure VPN、OpenVPN、または IKEv2 クライアント)、ExpressRoute 回線、仮想ネットワーク向けにスケールとパフォーマンスが組み込まれたスケールスケーリングするハブ アンド スポーク アーキテクチャです。 これにより、[グローバル トランジット ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)が可能になります。つまり、クラウドでホストされたネットワーク "ハブ" によって、さまざまな種類の "スポーク" に分散されている可能性があるエンドポイント間の推移的な接続が可能になります。
+
+Azure リージョンは、接続先として選択できるハブとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN または VPN デバイスとのスポーク接続の場合、ユーザーは Azure Virtual WAN 内で手動で設定するか、Virtual WAN CPE (SD-WAN または VPN) パートナー ソリューションを使用して Azure への接続を設定することができます。 Azure Virtual WAN での接続の自動化 (デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして接続を確立する機能) をサポートするパートナーの一覧が提供されています。 詳細については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan1.png)
 
@@ -56,13 +58,13 @@ Azure リージョンは、接続先として選択できるハブとして機�
 
 * **ハブ仮想ネットワーク接続:** ハブ仮想ネットワーク接続リソースは、ハブを仮想ネットワークにシームレスに接続するために使用します。
 
-* **(プレビュー) ハブ間接続** - ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
+* **ハブ間接続**ハブはすべて、仮想 WAN 内で相互に接続されています。 これは、ローカル ハブに接続されているブランチ、ユーザー、または VNet が、接続されたハブのフル メッシュ アーキテクチャを使用して、別のブランチまたは VNet と通信できることを意味します。 また、ハブ間の VNet と同様に、ハブ間接続されたフレームワークを使用して、仮想ハブを通じて転送するハブ内の VNet を接続することもできます。
 
 * **ハブのルート テーブル:** 仮想ハブのルートを作成して、そのルートを仮想ハブのルート テーブルに適用することができます。 仮想ハブのルート テーブルには、複数のルートを適用できます。
 
 **追加の Virtual WAN リソース**
 
-  * **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
+* **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>接続の種類
 
@@ -70,21 +72,9 @@ Virtual WAN では、次の種類の接続を使用できます。サイト間 V
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>サイト間 VPN 接続
 
-![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan.png)
+サイト間 IPsec または IKE (IKEv2) 接続を使用して、Azure 内のリソースに接続することができます。 詳細については、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページを参照してください。 
 
-仮想 WAN サイト間接続を作成するときに、利用可能なパートナーと連携できます。 パートナーを利用しない場合は、手動で接続を構成できます。 詳細については、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページを参照してください。
-
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Virtual WAN パートナーのワークフロー
-
-Virtual WAN パートナーと連携する場合のワークフローは、次のとおりです。
-
-1. ブランチ デバイス (VPN/SDWAN) コントローラーが、[Azure サービス プリンシパル](../active-directory/develop/howto-create-service-principal-portal.md)を使用してサイト中心の情報を Azure にエクスポートするために認証を受けます。
-2. ブランチ デバイス (VPN/SDWAN) コントローラーが、Azure 接続構成を取得し、ローカル デバイスを更新します。 これにより、オンプレミス VPN デバイスの構成のダウンロード、編集、および更新が自動化されます。
-3. デバイスに適切な Azure 構成が設定されると、Azure WAN に対してサイト間接続 (2 つのアクティブなトンネル) が確立されます。 Azure では、IKEv1 と IKEv2 の両方がサポートされています。 BGP はオプションです。
-
-#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>サイト間仮想 WAN 接続のパートナー
-
-利用可能なパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
+この種類の接続には、VPN デバイスまたは Virtual WAN パートナー デバイスが必要です。 Virtual WAN パートナーは、デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして、Azure Virtual WAN ハブへの接続を確立できる、接続の自動化を提供しています。 利用可能なパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。 VPN または SD-WAN デバイス プロバイダーが前述のリンク先に記載されていない場合は、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページの手順を行って簡単に接続を設定できます。
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>ユーザー VPN (ポイント対サイト) 接続
 
@@ -93,13 +83,58 @@ IPsec/IKE (IKEv2) 接続または OpenVPN 接続を使用して、Azure 内の�
 ### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute 接続
 ExpressRoute を使用すると、プライベート接続を介してオンプレミス ネットワークを Azure に接続できます。 接続を作成するには、[Virtual WAN を使用した ExpressRoute 接続の作成](virtual-wan-expressroute-portal.md)に関するページを参照してください。
 
+### <a name="hub-to-vnet-connections"></a><a name="hub"></a>ハブから VNet への接続
+
+Azure 仮想ネットワークを仮想ハブに接続することができます。 詳細については、[VNet のハブへの接続](virtual-wan-site-to-site-portal.md#vnet)に関するセクションを参照してください。
+
+### <a name="transit-connectivity"></a><a name="transit"></a>トランジット接続
+
+#### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>VNet 間のトランジット接続
+
+Virtual WAN では、VNet 間のトランジット接続が可能です。 VNet では、仮想ネットワーク接続を介して仮想ハブに接続します。 すべての仮想ハブにはルーターが存在するため、**Standard Virtual WAN** の VNet 間でトランジット接続が有効になります。 このルーターは、仮想ハブが最初に作成されたときにインスタンス化されます。
+
+ルーターには 4 つのルーティング状態があります。プロビジョニング済み、プロビジョニング中、失敗、または、なしです。 Azure portal で [仮想ハブ] ページに移動すると、 **[Routing status]\(ルーティングの状態\)** が表示されます。
+
+* **なし**状態は、仮想ハブでルーターがプロビジョニングされなかったことを示します。 これは、Virtual WAN の種類が *Basic* の場合、またはサービスが利用可能になる前に仮想ハブがデプロイされた場合に発生する可能性があります。
+* **失敗**状態は、インスタンス化中の失敗を示します。 ルーターをインスタンス化またはリセットするには、Azure portal の仮想ハブの [概要] ページに移動し、 **[Reset Router]\(ルーターのリセット\)** オプションを見つけます。
+
+各仮想ハブ ルーターは、最大 50 Gbps の集約スループットをサポートしています。 仮想ネットワーク接続間の接続では、単一の仮想ハブに接続されているすべての VNet 全体で合計 2,000 VM のワークロードを想定しています。
+
+#### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN と ExpressRoute 間のトランジット接続
+
+Virtual WAN では、VPN と ExpressRoute 間のトランジット接続が可能です。 これは、VPN 接続サイトまたはリモート ユーザーが ExpressRoute 接続サイトと通信できることを意味します。 また、**ブランチ間フラグ**が有効であり、VPN と ExpressRoute 接続で BGP がサポートされていることが暗黙的に想定されています。 このフラグは、Azure portal の Azure Virtual WAN 設定にあります。 すべてのルート管理は仮想ハブ ルーターによって提供されます。これにより、仮想ネットワーク間のトランジット接続も可能になります。
+
+### <a name="custom-routing"></a><a name="routing"></a>カスタム ルーティング
+
+Virtual WAN には、高度なルーティング機能強化があります。 カスタム ルート テーブルの設定、ルートの関連付けと伝達による仮想ネットワーク ルーティングの最適化、ラベルを使用したルート テーブルの論理的なグループ化、多数のネットワーク仮想アプライアンス (NVA) または共有サービスのルーティング シナリオを簡素化する機能があります。
+
+### <a name="global-vnet-peering"></a><a name="global"></a>グローバル VNET ピアリング
+
+グローバル VNet ピアリングには、異なるリージョンにある 2 つの VNet を接続するメカニズムが用意されています。 Virtual WAN では、仮想ネットワーク接続によって VNet が仮想ハブと接続されます。 ユーザーはグローバル VNet ピアリングを明示的に設定する必要がありません。 同じリージョンの仮想ハブに接続された VNet には、VNet ピアリング料金が発生します。 別のリージョンの仮想ハブに接続された VNet には、グローバル VNet ピアリング料金が発生します。
+
+### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute トラフィックの暗号化
+
+Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機能があります。 この手法により、パブリック インターネットを経由したり、パブリック IP アドレスを使用したりすることなく、ExpressRoute を経由してオンプレミス ネットワークと Azure 仮想ネットワークの間で暗号化されたトランジットを提供できます。 詳細については、[Virtual WAN 向けの ExpressRoute 経由の IPsec](vpn-over-expressroute.md)に関するページを参照してください。
+
 ## <a name="locations"></a><a name="locations"></a>場所
 
 場所の情報については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
+## <a name="route-tables-for-basic-and-standard-virtual-wans"></a><a name="route"></a>Basic および Standard 仮想 WAN のルート テーブル
+
+ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用する場合は、以下を考慮してください。
+
+* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、新しいルート テーブルを作成する必要があります (Azure portal のハブの [ルート テーブル] セクションにあります)。
+
+* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
+
 ## <a name="faq"></a><a name="faq"></a>FAQ
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+
+## <a name="whats-new"></a><a name="new"></a>新機能
+
+RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN)ページで、最新の Virtual WAN 機能の更新を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

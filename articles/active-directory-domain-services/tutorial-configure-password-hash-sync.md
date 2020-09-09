@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676606"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491784"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>チュートリアル:ハイブリッド環境の Azure Active Directory Domain Services でパスワード同期を有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "80676606"
 
 オンプレミスの AD DS 環境から同期されるアカウントで Azure AD DS を使用するには、NTLM および Kerberos 認証に必要なこれらのパスワード ハッシュを同期するよう Azure AD Connect を構成する必要があります。 Azure AD Connect の構成後は、オンプレミスのアカウント作成またはパスワード変更イベントによって従来のパスワード ハッシュも Azure AD に同期されます。
 
-オンプレミスの AD DS 環境を持たないクラウド専用アカウントを使用する場合、これらの手順を実行する必要はありません。
+オンプレミスの AD DS 環境を持たないクラウド専用アカウントを使用する場合、または "*リソース フォレスト*" を使用する場合は、これらの手順を実行する必要はありません。 リソース フォレストを使用するマネージド ドメインの場合、オンプレミスのパスワード ハッシュが同期されることはありません。 オンプレミスのアカウントの認証では、独自の AD DS ドメイン コントローラーに対するフォレストの信頼を使用します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
     * 必要に応じて、[Azure AD Connect でパスワード ハッシュの同期を有効にします][enable-azure-ad-connect]。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
+    * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
 
 ## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Azure AD Connect を使用したパスワード ハッシュの同期
 
@@ -97,7 +97,7 @@ Azure AD Connect がインストールされ、Azure AD と同期するよう構
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    アカウントとグループの数の観点からご利用のディレクトリのサイズに応じて、従来のパスワード ハッシュを Azure AD と同期するには時間がかかる場合があります。 このパスワードは、Azure AD と同期された後、Azure AD DS マネージド ドメインと同期されます。
+    アカウントとグループの数の観点からご利用のディレクトリのサイズに応じて、従来のパスワード ハッシュを Azure AD と同期するには時間がかかる場合があります。 このパスワードは、Azure AD と同期された後、マネージド ドメインと同期されます。
 
 ## <a name="next-steps"></a>次のステップ
 

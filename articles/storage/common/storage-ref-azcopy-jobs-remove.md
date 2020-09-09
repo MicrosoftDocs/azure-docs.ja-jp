@@ -4,16 +4,16 @@ description: この記事では、azcopy jobs remove コマンドに関する参
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1f1b58e9cce061aaa313457ec43256a766e3a2e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034155"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281975"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
@@ -39,16 +39,18 @@ azcopy jobs remove [jobID] [flags]
   azcopy jobs rm e52247de-0323-b14d-4cc8-76e0be2e2d44
 ```
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
-**-h, --help**                remove のヘルプを表示します。
+**--help**                remove のヘルプを表示します。
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
-**--cap-mbps uint32**      転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
+**--cap-mbps float**      転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
 
-**--output-type** string   コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
+**--output-type** string   コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は `text` です。 (既定値は `text`)
 
-## <a name="see-also"></a>参照
+**--trusted-microsoft-suffixes** string   Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。
+
+## <a name="see-also"></a>関連項目
 
 - [azcopy jobs](storage-ref-azcopy-jobs.md)

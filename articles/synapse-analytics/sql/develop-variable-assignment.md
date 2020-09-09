@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2a596b71ee7e5f58e01d5bc10b330f6f54a69d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c3bd04d037f7852bd7d9ea51719abf27f09093b0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426659"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495677"
 ---
-# <a name="assigning-variables-with-synapse-sql"></a>変数への Synapse SQL の代入
+# <a name="assign-variables-with-synapse-sql"></a>変数に Synapse SQL を代入する
 
 この記事では、T-SQL 変数に Synapse SQL を代入する際のヒントについて説明します。
 
-## <a name="setting-variables-with-declare"></a>DECLARE を使用した変数の設定
+## <a name="set-variables-with-declare"></a>DECLARE を使用して変数を設定する
 
 Synapse SQL の変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定されます。 DECLARE を使用した変数の初期化は、Synapse SQL で変数値を設定する最も柔軟な方法の 1 つです。
 
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-同じ DECLARE ステートメントで変数を初期化して使用することはできません。 説明のため、次の例では、同じ DECLARE ステートメントで *@p1* の初期化と使用の両方が行われます。このようなステートメントは使用できません。 次の例は、エラーが発生します。
+同じ DECLARE ステートメントで変数を初期化して使用することはできません。 たとえば、次の例は、 *\@p1* が同じ DECLARE ステートメントで初期化して使用されているため許可されません。 次の例は、エラーが発生します。
 
 ```sql
 DECLARE @p1 int = 0
@@ -45,7 +45,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>SET を使用した値の設定
+## <a name="set-values-with-set"></a>SET を使用して値を設定する
 
 SET は、1 つの変数を設定する際によく使用されるメソッドです。
 

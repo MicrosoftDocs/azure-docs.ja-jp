@@ -3,35 +3,35 @@ title: ネイティブ クライアント アプリの発行 - Azure AD | Micros
 description: ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
-ms.author: mimart
+ms.topic: how-to
+ms.date: 05/12/2020
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro, has-adal-ref
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a649a6fab1fe85efc4edcfd2d3151ab85302101b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610277"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165075"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
-Azure Active Directory (Azure AD) アプリケーション プロキシは、Web アプリを発行するために使用できますが、Azure AD Authentication Library (ADAL) で構成されたネイティブ クライアント アプリケーションの発行にも使うことができます。 ネイティブ クライアント アプリケーションはデバイスにインストールされる点が Web アプリとは異なり、Web アプリはブラウザーからアクセスされます。
+Azure Active Directory (Azure AD) アプリケーション プロキシは、Web アプリを発行するために使用できますが、Microsoft Authentication Library (MSAL) で構成されたネイティブ クライアント アプリケーションの発行にも使うことができます。 ネイティブ クライアント アプリケーションはデバイスにインストールされる点が Web アプリとは異なり、Web アプリはブラウザーからアクセスされます。
 
 ネイティブ クライアント アプリケーションをサポートするには、Azure AD によって発行されてヘッダーで送信されたトークンを、アプリケーション プロキシで受け入れます。 アプリケーション プロキシ サービスでは、ユーザーに対する認証が行われます。 このソリューションでは、認証のためにアプリケーションのトークンは使われません。
 
 ![エンド ユーザー、Azure AD、発行済みアプリケーション間の関係](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-ネイティブ アプリケーションを発行するには、認証の処理が行われ、多数のクライアント環境がサポートされている、Azure AD Authentication Library を使います。 アプリケーション プロキシは、 [ネイティブ アプリケーションから Web API のシナリオ](../azuread-dev/native-app.md)に適しています。
+ネイティブ アプリケーションを発行するには、認証の処理が行われ、多数のクライアント環境がサポートされている、Microsoft Authentication Library を使います。 アプリケーション プロキシは、[サインイン済みのユーザーに代わって Web API を呼び出すデスクトップ アプリ](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user)のシナリオに当てはまります。
 
 この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。
 
@@ -56,8 +56,7 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
    - 自分の組織内のアカウントのみを対象にするには、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
    - 企業および教育機関の顧客のみを対象とするには、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
    - 最も広範な Microsoft ID のセットを対象にするには、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント]** を選択します。
-
-1. **[リダイレクト URI]** という見出しで、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、アプリケーションのリダイレクト URI を入力します。
+1. **[リダイレクト URI]** で、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、アプリケーションのリダイレクト URI `https://login.microsoftonline.com/common/oauth2/nativeclient` を入力します。
 1. **Microsoft プラットフォームのポリシー**を選択して読んだ後、 **[登録]** を選択します。 新しいアプリケーション登録の概要ページが作成されて、表示されます。
 
 新しいアプリ登録の作成について詳しくは、[Azure Active Directory とのアプリケーションの統合](../develop/quickstart-register-app.md)に関する記事をご覧ください。
@@ -69,26 +68,45 @@ Azure Active Directory (Azure AD) アプリケーション プロキシは、Web
 1. 新しいアプリケーション登録ページのサイドバーで、 **[API のアクセス許可]** を選択します。 新しいアプリケーション登録に対する **[API のアクセス許可]** ページが表示されます。
 1. **[アクセス許可の追加]** を選択します。 **[API アクセス許可の要求]** ページが表示されます。
 1. **[API を選択します]** の設定で、 **[所属する組織で使用している API]** を選択します。 API が公開されているディレクトリ内のアプリケーションを含む一覧が表示されます。
-1. 検索ボックスに入力するかスクロールしてプロキシ アプリケーションを探し (「[手順 1: プロキシ アプリケーションを発行する](#step-1-publish-your-proxy-application)」で発行したもの)、プロキシ アプリケーションを選択します。
+1. 検索ボックスに入力するかスクロールしてプロキシ アプリケーションを探し (「[手順 1: プロキシ アプリケーションを発行する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-native-client-application#step-1-publish-your-proxy-application)」で発行したもの)、プロキシ アプリケーションを選択します。
 1. **[アプリケーションに必要なアクセス許可の種類]** の見出しで、アクセス許可の種類を選択します。 ネイティブ アプリケーションでサインインしたユーザーとしてプロキシ アプリケーションの API にアクセスする必要がある場合は、 **[委任されたアクセス許可]** を選択します。
 1. **[アクセス許可を選択する]** の見出しで、必要なアクセス許可を選択して、 **[アクセス許可の追加]** を選択します。 ネイティブ アプリケーションの **[API のアクセス許可]** ページに、追加したプロキシ アプリケーションとアクセス許可 API が表示されるようになります。
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>手順 4:Active Directory 認証ライブラリの編集
+## <a name="step-4-add-the-microsoft-authentication-library-to-your-code-net-c-sample"></a>手順 4:Microsoft Authentication Library をコードに追加する (.NET C# サンプル)
 
-Active Directory Authentication Library (ADAL) の認証コンテキストのネイティブ アプリケーション コードを編集して、次のテキストを含めます。
+Microsoft Authentication Library (MSAL) の認証コンテキストのネイティブ アプリケーション コードを編集して、次のテキストを含めます。 
 
-```
+```         
 // Acquire Access Token from AAD for Proxy Application
-AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<Tenant ID>");
-AuthenticationResult result = await authContext.AcquireTokenAsync("< External Url of Proxy App >",
-        "<App ID of the Native app>",
-        new Uri("<Redirect Uri of the Native App>"),
-        PromptBehavior.Never);
+IPublicClientApplication clientApp = PublicClientApplicationBuilder
+.Create(<App ID of the Native app>)
+.WithDefaultRedirectUri() // will automatically use the default Uri for native app
+.WithAuthority("https://login.microsoftonline.com/{<Tenant ID>}")
+.Build();
 
-//Use the Access Token to access the Proxy Application
-HttpClient httpClient = new HttpClient();
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
+AuthenticationResult authResult = null;
+var accounts = await clientApp.GetAccountsAsync();
+IAccount account = accounts.FirstOrDefault();
+
+IEnumerable<string> scopes = new string[] {"<Scope>"};
+
+try
+ {
+    authResult = await clientApp.AcquireTokenSilent(scopes, account).ExecuteAsync();
+ }
+    catch (MsalUiRequiredException ex)
+ {
+     authResult = await clientApp.AcquireTokenInteractive(scopes).ExecuteAsync();                
+ }
+
+if (authResult != null)
+ {
+  //Use the Access Token to access the Proxy Application
+
+  HttpClient httpClient = new HttpClient();
+  HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+  HttpResponseMessage response = await httpClient.GetAsync("<Proxy App Url>");
+ }
 ```
 
 サンプル コードで必要な情報は、次のように Azure AD ポータルで見つかります。
@@ -96,15 +114,14 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 | 必要な情報 | Azure AD ポータルで見つける方法 |
 | --- | --- |
 | \<Tenant ID> | **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** |
-| \<External Url of Proxy App> | **[エンタープライズ アプリケーション]**  > <*自分のプロキシ アプリケーション*> >  **[アプリケーション プロキシ]**  >  **[外部 URL]** |
-| \<App ID of the Native app> | **[エンタープライズ アプリケーション]**  > <*自分のネイティブ アプリケーション*> >  **[プロパティ]**  >  **[アプリケーション ID]** |
-| \<Redirect URI of the Native App> | **[Azure Active Directory]**  >  **[アプリの登録]**  > <*自分のアプリケーション*> >  **[リダイレクト URI]** |
-| \<Proxy App API Url> | **[Azure Active Directory]**  >  **[アプリの登録]**  > <*自分のネイティブ アプリケーション*> >  **[API のアクセス許可]**  >  **[API/アクセス許可の名前]** |
+| \<App ID of the Native app> | **[アプリケーションの登録]**  > *ネイティブ アプリケーション* >  **[概要]**  >  **[アプリケーション ID]** |
+| \<Scope> | **[アプリケーション 登録]**  > *ネイティブ アプリケーション* >  **[API 権限]** > Permisson API (user_impersonation) をクリックします > 右側に、**user_impersonation** というキャプション付きのパネルが表示されます。 > スコープは、編集ボックスの URL です。
+| \<Proxy App Url> | API への外部 URL とパス
 
-これらのパラメーターで ADAL を編集した後は、会社のネットワークの外部のユーザーであっても、ネイティブ クライアント アプリケーションに対して認証を行うことができるようになります。
+これらのパラメーターで MSAL コードを編集した後は、会社のネットワークの外部のユーザーであっても、ネイティブ クライアント アプリケーションに対して認証を行うことができるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 
 ネイティブ アプリケーション フローの詳細については、[Azure Active Directory でのネイティブ アプリ](../azuread-dev/native-app.md)に関する記事をご覧ください。
 
-[Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md#choosing-a-single-sign-on-method)のセットアップについて確認してください。
+[Azure Active Directory でのアプリケーションへのシングル サインオン](sso-options.md#choosing-a-single-sign-on-method)のセットアップについて確認してください。

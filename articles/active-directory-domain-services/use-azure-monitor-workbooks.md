@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654472"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722740"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure AD Domain Services のセキュリティ監査イベントを確認する
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
 Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインの状態を把握するために、セキュリティ監査イベントを有効にすることができます。 これらのセキュリティ監査イベントは、Azure Monitor ブックを使用して確認できます。このブックでは、テキスト、分析クエリ、およびパラメーターが、豊富な対話型レポートに結合されています。 Azure AD DS には、セキュリティの概要とアカウントのアクティビティに関するブック テンプレートが含まれており、監査イベントを掘り下げて環境を管理することができます。
 
@@ -31,9 +31,9 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
-* Log Analytics ワークスペースにデータをストリーミングする、Azure Active Directory Domain Services マネージド ドメインに対して有効にされたセキュリティ監査イベント。
-    * 必要な場合は、[Azure Active Directory Domain Services でセキュリティ監査を有効にします][enable-security-audits]。
+    * 必要に応じて、[Azure Active Directory Domain Services マネージド ドメインを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+* Log Analytics ワークスペースにデータをストリーミングする、マネージド ドメインに対して有効にされたセキュリティ監査イベント。
+    * 必要な場合、[Azure AD DS でセキュリティ監査を有効にします][enable-security-audits]。
 
 ## <a name="azure-monitor-workbooks-overview"></a>Azure Monitor ブックの概要
 
@@ -61,7 +61,9 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
     ![Azure portal で [ブック] メニュー オプションを選択する](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. **[Security Overview Report]\(セキュリティの概要レポート\)** を選択します。
-1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。 "*過去 7 日間*" など、 **[時間の範囲]** を選択します。
+1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。
+
+    次の例のスクリーンショットに示すように、"*Last 7 days*" (過去 7 日) などの **[時間の範囲]** を選択します。
 
     ![Azure portal で [ブック] メニュー オプションを選択する](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
@@ -73,7 +75,7 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 
 1. グラフの下にあるセキュリティの概要レポートの下部には、選択したアクティビティの種類の詳細が表示されます。 次のレポート例に示すように、右側で関係するユーザー名を使用してフィルター処理できます。
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Azure Monitor ブックでのアカウント ロックアウトの詳細。](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>アカウント アクティビティ レポート ブックを使用する
 
@@ -85,9 +87,13 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com*)。
 1. 左側のメニューで、 **[監視] > [ブック]** を選択します。
 1. **[Account Activity Report]\(アカウント アクティビティ レポート\)** を選択します。
-1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。 "*過去 30 日*" などの **[時間の範囲]** と、 **[Tile view]\(タイル ビュー\)** でデータを表示する方法を選択します。 次のレポートの例に示すように、**アカウントのユーザー名** (*felix* など) でフィルター処理できます。
+1. ブックの上部にあるドロップダウン メニューから、Azure サブスクリプションを選択し、Azure Monitor ワークスペースを選択します。
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    "*過去 30 日*" などの **[時間の範囲]** と、 **[Tile view]\(タイル ビュー\)** でデータを表示する方法を選択します。
+
+    次のレポートの例に示すように、**アカウントのユーザー名** (*felix* など) でフィルター処理できます。
+
+    [![Azure Monitor ブックでのアカウント アクティビティ レポート。](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     グラフの下の領域には、アクティビティの結果やソース ワークステーションなどの情報と共に、個々のサインイン イベントが表示されます。 この情報は、アカウントのロックアウトの原因になったり、潜在的な攻撃を示す可能性があるサインイン イベントを繰り返すソースを特定するのに役立ちます。
 
@@ -117,4 +123,4 @@ Azure Monitor ブック内のすべてのグラフとテーブルは、Kusto ク
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
 [azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
-[kusto-queries]: https://docs.microsoft.com/azure/kusto/query/tutorial?pivots=azuredataexplorer
+[kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

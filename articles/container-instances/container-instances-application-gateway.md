@@ -3,12 +3,12 @@ title: コンテナー グループの静的 IP アドレス
 description: 仮想ネットワーク内にコンテナー グループを作成し、Azure アプリケーション ゲートウェイを使用して、コンテナー化された Web アプリに静的フロントエンド IP アドレスを公開します
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481791"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260789"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>コンテナー グループの静的 IP アドレスの公開
 
@@ -17,7 +17,7 @@ ms.locfileid: "79481791"
 この記事では、Azure CLI を使用して、このシナリオ用のリソースを作成します。
 
 * Azure 仮想ネットワーク
-* 小規模な Web アプリをホストする[仮想ネットワーク (プレビュー)](container-instances-vnet.md) にデプロイされたコンテナー グループ
+* 小規模な Web アプリをホストする[仮想ネットワーク](container-instances-vnet.md)にデプロイされたコンテナー グループ
 * パブリック フロントエンド IP アドレスを持つアプリケーション ゲートウェイ、ゲートウェイで Web サイトをホストするリスナー、バックエンド コンテナー グループへのルート
 
 アプリケーション ゲートウェイが実行され、コンテナー グループがネットワークの委任されたサブネットに安定したプライベート IP アドレスを公開している限り、このパブリック IP アドレスでコンテナー グループにアクセスできます。
@@ -103,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[アプリケーション ゲートウェイのクイックスタート](../application-gateway/quick-create-cli.md)の手順に従って、仮想ネットワークにアプリケーション ゲートウェイを作成します。 次の [az network application-gateway create][az-network-application-gateway-create] コマンドを実行すると、パブリック フロントエンド IP アドレスを持つアプリケーション ゲートウェイと、バックエンド コンテナー グループへのルートが作成されます。 ゲートウェイの設定の詳細については、[Application Gateway のドキュメント](/azure/application-gateway/)を参照してください。
+[アプリケーション ゲートウェイのクイックスタート](../application-gateway/quick-create-cli.md)の手順に従って、仮想ネットワークにアプリケーション ゲートウェイを作成します。 次の [az network application-gateway create][az-network-application-gateway-create] コマンドを実行すると、パブリック フロントエンド IP アドレスを持つアプリケーション ゲートウェイと、バックエンド コンテナー グループへのルートが作成されます。 ゲートウェイの設定の詳細については、[Application Gateway のドキュメント](../application-gateway/index.yml)を参照してください。
 
 ```azurecli
 az network application-gateway create \

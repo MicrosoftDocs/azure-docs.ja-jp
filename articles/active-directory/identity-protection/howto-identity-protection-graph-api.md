@@ -4,149 +4,93 @@ description: Microsoft Graph に対してクエリを実行して、Azure Active
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: reference
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 07/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671616"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950121"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
-Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 危険なユーザーとサインインに関する情報を明らかにする API が 4 つあります。最初の API **riskDetection** を使用すると、Microsoft Graph に対して、ユーザーやサインインに結び付いているリスク検出とその検出に関連する情報の一覧のクエリを実行できます。 2 つ目の API である **riskyUsers** を使用すると、Microsoft Graph に対して、リスクとして検出されたユーザーの Identity Protection に関する情報のクエリを実行できます。 3 つ目の API である **signIn** を使用すると、Microsoft Graph に対して、リスク状態、詳細、およびレベルに関連する特定のプロパティを使用して、Azure AD のサインインに関する情報のクエリを実行できます。 4 つ目の API である **identityRiskEvents** を使用すると、Microsoft Graph に対して、[リスク検出](../reports-monitoring/concept-risk-events.md)とその関連情報の一覧に対するクエリを実行できます。 identityRiskEvents API は 2020 年 1 月 10 日に非推奨となる予定です。代わりに **riskDetections** API を使用することをお勧めします。 この記事では、Microsoft Graph への接続とこれらの API のクエリの概要について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)またはこれらの API に関する特定のリファレンス ドキュメントを参照してください。
+Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](./overview-identity-protection.md) API のホームです。 危険なユーザーとサインインに関する情報を明らかにする API が 3 つあります。最初の API **riskDetection** を使用すると、Microsoft Graph に対して、ユーザーやサインインに結び付いているリスク検出とその検出に関連する情報の一覧のクエリを実行できます。 2 つ目の API である **riskyUsers** を使用すると、Microsoft Graph に対して、リスクとして検出されたユーザーの Identity Protection に関する情報のクエリを実行できます。 3 つ目の API である **signIn** を使用すると、Microsoft Graph に対して、リスク状態、詳細、およびレベルに関連する特定のプロパティを使用して、Azure AD のサインインに関する情報のクエリを実行できます。 
 
-* [riskDetection API](/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [riskyUsers API](/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [signIn API](/graph/api/resources/signin?view=graph-rest-beta)
-* [identityRiskEvents API](/graph/api/resources/identityriskevent?view=graph-rest-beta) は "*2020 年 1 月 10 日に非推奨になっています*"。
+この記事では、Microsoft Graph への接続とこれらの API のクエリの概要について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)またはこれらの API に関する特定のリファレンス ドキュメントを参照してください。
+
+* [riskDetection API](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
+* [riskyUsers API](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
+* [signIn API](/graph/api/resources/signin?view=graph-rest-v1.0)
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph に接続する
 
 Microsoft Graph を介して Identity Protection のデータにアクセスするには、次の 4 つのステップがあります。
 
-1. ドメイン名を取得します。
-2. 新しいアプリ登録を作成します。 
-3. このシークレットとその他いくつかの情報を使って Microsoft Graph に本人性を証明し、認証トークンを取得します。 
-4. このトークンを使って API エンドポイントに要求を行い、Identity Protection データを取得します。
+- [ドメイン名を取得する](#retrieve-your-domain-name)
+- [新しいアプリ登録を作成する](#create-a-new-app-registration)
+- [API のアクセス許可を構成する](#configure-api-permissions)
+- [有効な資格情報名を構成する](#configure-a-valid-credential)
 
-以降の手順を開始する前に次の情報が必要となります。
+### <a name="retrieve-your-domain-name"></a>ドメイン名の取得 
 
-* Azure AD にアプリケーションを作成するための管理者特権
-* テナントのドメインの名前 (例: contoso.onmicrosoft.com)
+1. [Azure portal](https://portal.azure.com) にサインインします。  
+1. **[Azure Active Directory]**  >  **[カスタム ドメイン名]** に移動します。 
+1. `.onmicrosoft.com` ドメインをメモします。この情報は、後の手順で必要になります。
 
-## <a name="retrieve-your-domain-name"></a>ドメイン名の取得 
+### <a name="create-a-new-app-registration"></a>新しいアプリ登録の作成
 
-1. Azure Portal に管理者として[サインイン](https://portal.azure.com)します。 
-1. 左のナビゲーション ウィンドウで、 **[Active Directory]** をクリックします。 
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/41.png)
-
-1. **[管理]** セクションで、 **[プロパティ]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/42.png)
-
-1. ドメイン名をコピーします。
-
-## <a name="create-a-new-app-registration"></a>新しいアプリ登録の作成
-
-1. **[Active Directory]** ページの **[管理]** セクションで、 **[アプリの登録]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/42.png)
-
-1. 上部のメニューで、 **[新しいアプリケーションの登録]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/43.png)
-
+1. Azure portal で、 **[Azure Active Directory]**  >  **[アプリの登録]** に移動します。
+1. **[新規登録]** を選択します。
 1. **[作成]** ページで、以下の手順を実行します。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/44.png)
-
-   1. **[名前]** ボックスにアプリケーションの名前 (例:Azure AD リスク検出 API アプリケーション) を入力します。
-
-   1. **[種類]** として **[Web アプリケーションや Web API]** を選択します。
-
-   1. **[サインオン URL]** ボックスに、「`http://localhost`」と入力します。
-
-   1. **Create** をクリックしてください。
-1. **[設定]** ページを開くには、アプリケーションの一覧で、新しく作成したアプリの登録をクリックします。 
+   1. **[名前]** ボックスにアプリケーションの名前 (例:Azure AD リスク検出 API)。
+   1. **[サポートされているアカウントの種類]** で、その API を使用するアカウントの種類を選択します。
+   1. **[登録]** を選択します。
 1. **[アプリケーション ID]** をコピーします。
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>API を使用するためのアクセス許可をアプリケーションに付与します。
+### <a name="configure-api-permissions"></a>API のアクセス許可を構成する
 
-1. **[設定]** ページで、 **[必要なアクセス許可]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/15.png)
-
-1. **[必要なアクセス許可]** ページで、上部ツール バーの **[追加]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/16.png)
-
+1. 作成した**アプリケーション**から、 **[API のアクセス許可]** を選択します。
+1. **[構成されたアクセス許可]** ページで、上部ツール バーの **[アクセス許可の追加]** をクリックします。
 1. **[API アクセスの追加]** ページで、 **[API を選択します]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/17.png)
-
 1. **[API を選択します]** ページで、 **[Microsoft Graph]** を選んで、 **[選択]** をクリックします。
+1. **[API アクセス許可の要求]** ページで、以下を実行します。 
+   1. **[アプリケーションのアクセス許可]** を選択します。
+   1. [`IdentityRiskEvent.Read.All`] と [`IdentityRiskyUser.Read.All`] の横にあるチェックボックスをオンにします。
+   1. **[アクセス許可の追加]** を選択します.
+1. **[Grant admin consent for domain]\(ドメインに管理者の同意を与えます\)** を選択します。 
 
-   ![Creating an application](./media/howto-identity-protection-graph-api/18.png)
+### <a name="configure-a-valid-credential"></a>有効な資格情報を構成する
 
-1. **[API アクセスの追加]** ページで、 **[アクセス許可を選択します]** をクリックします。
+1. 作成した**アプリケーション**から、 **[証明書とシークレット]** を選択します。
+1. **[クライアント シークレット]** で、 **[新しいクライアント シークレット]** を選択します。
+   1. クライアント シークレットの **[説明]** を入力し、組織のポリシーに従って有効期限を設定します。
+   1. **[追加]** を選択します。
 
-   ![Creating an application](./media/howto-identity-protection-graph-api/19.png)
-
-1. **[アクセスの有効化]** ページで、 **[すべての ID リスク イベント情報の読み取り]** をクリックし、 **[選択]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/20.png)
-
-1. **[API アクセスの追加]** ページで、 **[完了]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/21.png)
-
-1. **[必要なアクセス許可]** ページで **[アクセス許可の付与]** をクリックし、 **[はい]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/22.png)
-
-## <a name="get-an-access-key"></a>アクセス キーを取得する
-
-1. **[設定]** ページで、 **[キー]** をクリックします。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/23.png)
-
-1. **[キー]** ページで、次の手順を実行します。
-
-   ![Creating an application](./media/howto-identity-protection-graph-api/24.png)
-
-   1. **[キーの説明]** テキスト ボックスに、説明 (例: *Azure AD リスク検出*) を入力します。
-   1. **[期間]** として、 **[1 年]** を選びます。
-   1. **[保存]** をクリックします。
-   1. キーの値をコピーし、安全な場所に貼り付けます。   
-   
    > [!NOTE]
    > このキーを紛失した場合、このセクションに戻って新しいキーを作成する必要があります。 このキーはだれにも渡さないように注意してください。このキーがあれば、だれでもデータにアクセスすることができます。
-   > 
 
 ## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>Microsoft Graph に対して認証を行って Identity Risk Detections API のクエリを実行する
 
 この時点で次の情報が揃っている必要があります。
 
 - テナントのドメインの名前
-- クライアント ID 
-- キー 
+- アプリケーション (クライアント) ID 
+- クライアント シークレットまたは証明書 
 
 本人確認を行うために、post 要求を `https://login.microsoft.com` に送信します。要求本文に次のパラメーターを指定してください。
 
 - grant_type: “**client_credentials**”
 - resource: `https://graph.microsoft.com`
-- client_id: \<クライアント ID\>
-- client_secret: \<キー\>
+- client_id: \<your client ID\>
+- client_secret: \<your key\>
 
-認証に成功すると、認証トークンが返されます。  
+成功すると、この要求では認証トークンが返されます。  
 API を呼び出すためには、次のパラメーターを持つヘッダーを作成します。
 
 ```
@@ -155,9 +99,11 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
 
 トークンの種類とアクセス トークンは、認証時に返されたトークンで確認できます。
 
-このヘッダーは、API URL (`https://graph.microsoft.com/beta/identityRiskEvents`) に対する要求として送信します。
+このヘッダーは、API URL (`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`) に対する要求として送信します。
 
 成功した場合の応答は、OData JSON 形式の ID リスク検出とその関連データのコレクションです。必要に応じてこのデータを解析し、処理できます。
+
+### <a name="sample"></a>サンプル
 
 以下に示したコードは、PowerShell を使って認証と API 呼び出しを行う例です。  
 該当するクライアント ID、秘密キー、テナントのドメインを追加してください。
@@ -178,7 +124,7 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
     if ($oauth.access_token -ne $null) {
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
 
-        $url = "https://graph.microsoft.com/beta/identityRiskEvents"
+        $url = "https://graph.microsoft.com/v1.0/identityProtection/riskDetections"
         Write-Output $url
 
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
@@ -201,7 +147,7 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
 Identity Protection サインイン リスク ポリシーを使用すると、リスクがリアルタイムで検出されたときに条件を適用できます。 オフラインで検出された場合はどうなるのでしょうか。 オフラインで発生したためにサインイン リスク ポリシーをトリガーしなかった検出を理解するには、riskDetection API に対してクエリを実行できます。
 
 ```
-GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskDetections?$filter=detectionTimingType eq 'offline'
 ```
 
 ### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>危険なサインイン ポリシー (riskyUsers API) によってトリガーされた MFA チャレンジに合格したすべてのユーザーを取得する
@@ -209,16 +155,9 @@ GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType 
 Identity Protection のリスクベースのポリシーが組織に与える影響を把握するには、危険なサインイン ポリシーによってトリガーされた MFA チャレンジに合格したすべてのユーザーのクエリを実行します。 この情報は、Identity Protection によって危険であると誤検出された可能性があるユーザーや、AI が危険と見なすアクションを実行している可能性がある正当なユーザーを把握するために役立ちます。
 
 ```
-GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-### <a name="get-all-the-risky-sign-ins-for-a-specific-user-signin-api"></a>特定のユーザーに対する危険なサインインをすべて取得する (signIn API)
-
-ユーザーが侵害された可能性があると考えられる場合は、危険なサインインをすべて取得することで、危険の状態をより把握できます。 
-
-```
-https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>' and riskState eq 'atRisk'
-```
 ## <a name="next-steps"></a>次のステップ
 
 以上、Microsoft Graph の API を呼び出す基本的な方法を紹介しました。  
@@ -228,8 +167,8 @@ Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプ
 
 関連情報については、以下をご覧ください。
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-- [Azure Active Directory Identity Protection で検出されるリスク検出の種類](../reports-monitoring/concept-risk-events.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)
+- [Azure Active Directory Identity Protection で検出されるリスク検出の種類](./overview-identity-protection.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Microsoft Graph の概要](https://developer.microsoft.com/graph/docs)
-- [Azure AD Identity Protection Service Root](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
+- [Azure AD Identity Protection Service Root](/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)

@@ -1,20 +1,21 @@
 ---
-title: 強化学習モデルをトレーニングしてデプロイする
+title: 強化学習モデルをトレーニングしてデプロイします (プレビュー)。
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の強化学習 (RL) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
+description: Azure Machine Learning の強化学習 (プレビュー) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654426"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650827"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -33,7 +34,7 @@ ms.locfileid: "83654426"
 > * 実験を送信して実行を開始する
 > * 結果の表示
 
-この記事は、Azure Machine Learning ノートブックの [GitHub リポジトリ](https://aka.ms/azureml-rl-notebooks)にある [RLlib Pong の例](https://aka.ms/azureml-rl-pong)が基になっています。
+この記事は、Azure Machine Learning ノートブックの [GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)にある [RLlib Pong の例](https://aka.ms/azureml-rl-pong)が基になっています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +42,7 @@ ms.locfileid: "83654426"
 
  - Azure Machine Learning コンピューティング インスタンス
 
-     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
+     - サンプルのノートブックを複製する方法を学習します ([環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
          - **tutorials** ではなく **how-to-use-azureml** フォルダーを複製します
      - `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` にある仮想ネットワーク セットアップ ノートブックを実行して、分散強化学習に使用されるネットワーク ポートを開きます。
      - サンプル ノートブック `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb` を実行します
@@ -167,6 +168,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(head_compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="worker-computing-cluster"></a>ワーカー コンピューティング クラスター
 
@@ -430,4 +433,4 @@ run.wait_for_completion()
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、IMPALA 学習エージェントを使用して強化学習エージェントをトレーニングする方法について学習しました。 その他の例については、[Azure Machine Learning 強化学習の GitHub リポジトリ](https://aka.ms/azureml-rl-notebooks)を参照してください。
+この記事では、IMPALA 学習エージェントを使用して強化学習エージェントをトレーニングする方法について学習しました。 その他の例については、[Azure Machine Learning 強化学習の GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)を参照してください。

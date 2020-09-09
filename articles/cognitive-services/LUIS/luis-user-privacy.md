@@ -78,7 +78,7 @@ LUIS ユーザーは、ポータルでデータの表示を完全に制御でき
 
 これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure のオーストラリア地域に格納されます。 アクティブ ラーニングを無効にすることができます。「[Disable active learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)」 (アクティブ ラーニングを無効にする) を参照してください。 格納されている発言を管理するには、「[Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance)」 (発話を削除する) を参照してください。
 
-### <a name="united-states"></a>United States
+### <a name="united-states"></a>米国
 
 [luis.ai](https://www.luis.ai) ポータルおよび United States Authoring (Programmatic API とも呼ばれる) は、Azure の米国地域でホストされています。 luis.ai ポータルおよび United States Authoring (Programmatic API とも呼ばれる) は、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
 

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886927"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146600"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
 
@@ -23,7 +23,7 @@ WAF ポリシーをリスナーに関連付けると、1 つの WAF の背後に
 アプリケーション ゲートウェイにポリシーが適用されていて、そのアプリケーション ゲートウェイの 1 つのリスナーに別のポリシーを適用した場合、リスナーのポリシーは有効になりますが、割り当てられているリスナーに対してのみ有効になります。 特定のポリシーが割り当てられていない他のすべてのリスナーには、依然として Application Gateway ポリシーが適用されます。 
 
    > [!NOTE]
-   > サイトごとおよび URI ごとの WAF ポリシーはパブリック プレビュー段階です。 つまり、この機能には、Microsoft の追加使用条件が適用されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+   > URI ごとの WAF ポリシーはパブリック プレビュー段階です。 つまり、この機能には、Microsoft の追加使用条件が適用されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
    > [!NOTE]
    > ファイアウォール ポリシーが WAF に関連付けられている場合は、その WAF に関連付けられているポリシーが常に存在している必要があります。 このポリシーは上書きできますが、WAF からのポリシーの関連付け解除は完全にはサポートされていません。 
 
@@ -97,9 +97,20 @@ WAF の状態を確認するには、ポータルでそれを参照します。 
 
 カスタム ルールのみの WAF ポリシーの編集は無効になっています。 ルールの無効化、除外の追加など、WAF の設定を編集するには、新しいトップ レベルのファイアウォール ポリシー リソースに移行する必要があります。
 
-これを行うには、*Web アプリケーション ファイアウォール ポリシー*を作成し、選択したアプリケーション ゲートウェイおよびリスナーにそれを関連付けます。 この新しいポリシーは、現在の WAF 構成とまったく同じにする**必要**があります。つまり、すべてのカスタム ルール、除外、無効になっているルールなどを、作成する新しいポリシーにコピーする必要があります。 ポリシーをアプリケーション ゲートウェイに関連付けたら、WAF のルールと設定の変更に進むことができます。 Azure PowerShell でこの操作を行うこともできます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
+これを行うには、*Web アプリケーション ファイアウォール ポリシー*を作成し、選択したアプリケーション ゲートウェイおよびリスナーにそれを関連付けます。 この新しいポリシーは、現在の WAF 構成とまったく同じにする必要があります。つまり、すべてのカスタム ルール、除外、無効になっているルールなどを、作成する新しいポリシーにコピーする必要があります。 ポリシーをアプリケーション ゲートウェイに関連付けたら、WAF のルールと設定の変更に進むことができます。 Azure PowerShell でこの操作を行うこともできます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
 
 必要な場合は、移行スクリプトを使用して WAF ポリシーに移行できます。 詳しくは、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](migrate-policy.md)」をご覧ください。
+
+## <a name="force-mode"></a>強制モード
+
+現在の構成とまったく同じポリシーにすべてをコピーしない場合は、WAF を "強制" モードに設定できます。 次の Azure PowerShell コードを実行すると、WAF は force モードになります。 その後、設定が構成とまったく同じではない場合でも、WAF ポリシーを WAF に関連付けることができます。 
+
+```azurepowershell-interactive
+$appgw = Get-AzApplicationGateway -Name <your Application Gateway name> -ResourceGroupName <your Resource Group name>
+$appgw.ForceFirewallPolicyAssociation = $true
+```
+
+次に、WAF ポリシーをアプリケーション ゲートウェイに関連付ける手順に進みます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

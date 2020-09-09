@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877544"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341561"
 ---
 # <a name="entity-functions"></a>エンティティ関数
 
@@ -18,7 +18,7 @@ ms.locfileid: "80877544"
 エンティティは、それぞれが適度なサイズの状態を備えた多数のエンティティ全体に作業を分散することにより、アプリケーションをスケールアウトする手段を提供します。
 
 > [!NOTE]
-> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。
+> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。 現在、.NET と JavaScript でサポートされています。
 
 ## <a name="general-concepts"></a>一般的な概念
 

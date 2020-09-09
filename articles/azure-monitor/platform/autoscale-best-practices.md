@@ -4,15 +4,15 @@ description: Azure での Web Apps、Virtual Machine Scale Sets、および Clou
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226375"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327057"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
-Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
+Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](../../api-management/api-management-key-concepts.md)にのみ適用されます。
 
 ## <a name="autoscale-concepts"></a>自動スケールの概念
 
@@ -22,7 +22,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
   自動スケール設定には、インタンスの最大値、最小値、既定値があります。
 * 自動スケール ジョブでは、スケールに使用する関連付けられたメトリックを常に読み取り、スケールアウトまたはスケールインの構成済みのしきい値を超えているかどうかをチェックします。 自動スケールで使用できるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](autoscale-common-metrics.md)」をご覧ください。
 * しきい値はすべてインスタンス レベルで計算されます。 たとえば、"インスタンス数が 2 で、平均 CPU 使用率が 80% を超えたときに、インスタンスを 1 つ増やしてスケールアウトする" とは、全インスタンスの平均 CPU 使用率が 80% を超えたときにスケールアウトすることを意味します。
-* すべての自動スケール エラーがアクティビティ ログに記録されます。 その後、自動スケーリング エラーが発生したときに必ず、電子メール、SMS、または Webhook で通知されるように、[アクティビティ ログ アラート](./../../azure-monitor/platform/activity-log-alerts.md)を構成できます。
+* すべての自動スケール エラーがアクティビティ ログに記録されます。 その後、自動スケーリング エラーが発生したときに必ず、電子メール、SMS、または Webhook で通知されるように、[アクティビティ ログ アラート](./activity-log-alerts.md)を構成できます。
 * 同様に、正常なスケール アクションすべてが、アクティビティ ログに記録されます。 その後、自動スケーリング操作が正常に実行されたときに必ず、電子メール、SMS、または webhook で通知されるように、アクティビティ ログ アラートを構成できます。 また、正常なスケール操作が行われたときに通知されるように、自動スケール設定の通知タブで、電子メールまたは webhook の通知を構成することもできます。
 
 ## <a name="autoscale-best-practices"></a>自動スケールのベスト プラクティス

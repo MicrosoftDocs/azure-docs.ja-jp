@@ -1,5 +1,5 @@
 ---
-title: 'SSMS: Synapse SQL に接続してクエリを実行する'
+title: SQL Server Management Studio (SSMS) を使用して Synapse SQL に接続する
 description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の Synapse SQL に接続し、クエリを実行します。
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 704da86fd1d816dbf5d6cd9cf67dfee53fce2622
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077719"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Synapse SQL に接続する
 > [!div class="op_single_selector"]
@@ -30,14 +30,17 @@ ms.locfileid: "81419636"
 
 ### <a name="supported-tools-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) でサポートされるツール
 
-SSMS はバージョン 18.5 から部分的にサポートされており、接続やクエリなどの機能に制限があります。 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) は完全にサポートされます。
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) は、バージョン 1.18.0 以降、完全にサポートされます。 SSMS は、バージョン 18.5 以降、部分的にサポートされています。接続してクエリを実行する場合にのみ使用できます。
 
+> [!NOTE]
+> クエリの実行時に AAD ログインの接続が 1 時間以上開いていると、AAD に依存するクエリは失敗します。 これには、AAD パススルーと、AAD とやり取りするステートメント (CREATE EXTERNAL PROVIDER など) を使用したストレージのクエリが含まれます。 これは、SSMS や ADS のクエリ エディターなど、接続を開いたままにするすべてのツールに影響します。 Synapse Studio のように、新しい接続を開いてクエリを実行するツールは影響を受けません。
+> この問題を軽減するには、SSMS を再起動するか、ADS で接続および切断します。 。
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の前提条件を確認してください。  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。 
-* SQL プールの場合、既存のデータ ウェアハウスが必要です。 作成するには、[SQL プールの作成](../quickstart-create-sql-pool.md)に関する記事を参照してください。 SQL オンデマンドの場合は、あらかじめ作成時点でワークスペースにプロビジョニングされています。 
+* SQL プールの場合、既存のデータ ウェアハウスが必要です。 作成するには、[SQL プールの作成](../quickstart-create-sql-pool-portal.md)に関する記事を参照してください。 SQL オンデマンドの場合は、あらかじめ作成時点でワークスペースにプロビジョニングされています。 
 * 完全修飾 SQL サーバー名。 調べる方法については、「[Synapse SQL に接続する](connect-overview.md)」を参照してください。
 
 ## <a name="connect"></a>接続する

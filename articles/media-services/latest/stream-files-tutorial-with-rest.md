@@ -3,23 +3,25 @@ title: Azure Media Services v3 を使用してリモート ファイルとスト
 description: Azure Media Services で REST を使用して URL に基づいてファイルをエンコードし、コンテンツをストリーム配信します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/16/2020
-ms.author: juliako
-ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 350584984bff82c7dc80aff38044d887f981424c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472035"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256755"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services では、メディア ファイルをさまざまなブラウザーおよびデバイスで再生できる形式にエンコードすることができます。 たとえば、Apple の HLS または MPEG DASH 形式のコンテンツをストリーム配信することが必要な場合があります。 ストリーム配信する前に、高品質のデジタル メディア ファイルをエンコードする必要があります。 エンコードのガイダンスについては、[エンコードの概念](encoding-concept.md)に関する記事をご覧ください。
 
@@ -42,7 +44,7 @@ Azure Media Services では、メディア ファイルをさまざまなブラ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md)
+- [Media Services アカウントを作成する](./create-account-howto.md)
 
     リソース グループ名および Media Services アカウント名として使用した値を覚えておいてください。
 
@@ -125,7 +127,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 ### <a name="start-a-streaming-endpoint"></a>ストリーミング エンドポイントを開始する
 
-ストリーミングを有効にするには、最初にビデオをストリーミングする[ストリーミング エンドポイント](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept)を開始する必要があります。
+ストリーミングを有効にするには、最初にビデオをストリーミングする[ストリーミング エンドポイント](./streaming-endpoint-concept.md)を開始する必要があります。
 
 > [!NOTE]
 > ストリーミング エンドポイントが実行状態の場合のみ課金されます。
@@ -147,11 +149,11 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        「[非同期 Azure 操作の追跡](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)」の記事では、応答で返される値を通じて非同期 Azure 操作の状態を追跡する方法について説明します。
+        「[非同期 Azure 操作の追跡](../../azure-resource-manager/management/async-operations.md)」の記事では、応答で返される値を通じて非同期 Azure 操作の状態を追跡する方法について説明します。
 
 ### <a name="create-an-output-asset"></a>出力アセットを作成する
 
-出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。 
+出力[アセット](/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。 
 
 1. Postman アプリの左側のウィンドウで、[Assets]\(アセット\) を選択します。
 2. 次に、[Create or update an Asset]\(アセットを作成または更新する\) を選択します。
@@ -175,14 +177,14 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 ### <a name="create-a-transform"></a>変換を作成する
 
-Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transform と Job](transform-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
+Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
 
-新しい [Transform](https://docs.microsoft.com/rest/api/media/transforms) インスタンスを作成するときは、出力として生成するものを指定する必要があります。 必須のパラメーターは、**TransformOutput** オブジェクトです。 各 **TransformOutput** には **Preset** が含まれます。 **Preset** では、目的の **TransformOutput** の生成に使用されるビデオやオーディオの処理操作の詳細な手順が記述されています。 この記事で説明されているサンプルでは、**AdaptiveStreaming** という名前の組み込みプリセットを使っています。 プリセットは、入力ビデオを入力の解像度とビットレートに基づいて自動生成されるビットレート ラダー (ビットレートと解像度のペア) にエンコードし、ビットレートと解像度の各ペアに対応する、H.264 ビデオと AAC オーディオを含む ISO MP4 ファイルを生成します。 このプリセットについては、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページをご覧ください。
+新しい [Transform](/rest/api/media/transforms) インスタンスを作成するときは、出力として生成するものを指定する必要があります。 必須のパラメーターは、**TransformOutput** オブジェクトです。 各 **TransformOutput** には **Preset** が含まれます。 **Preset** では、目的の **TransformOutput** の生成に使用されるビデオやオーディオの処理操作の詳細な手順が記述されています。 この記事で説明されているサンプルでは、**AdaptiveStreaming** という名前の組み込みプリセットを使っています。 プリセットは、入力ビデオを入力の解像度とビットレートに基づいて自動生成されるビットレート ラダー (ビットレートと解像度のペア) にエンコードし、ビットレートと解像度の各ペアに対応する、H.264 ビデオと AAC オーディオを含む ISO MP4 ファイルを生成します。 このプリセットについては、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページをご覧ください。
 
 組み込み EncoderNamedPreset またはカスタム プリセットを使用できます。 
 
 > [!Note]
-> [Transform](https://docs.microsoft.com/rest/api/media/transforms) を作成するときは、最初に **Get** メソッドを使って変換が既に存在するかどうかを確認する必要があります。 このチュートリアルでは、変換を一意の名前で作成していることを前提としています。
+> [Transform](/rest/api/media/transforms) を作成するときは、最初に **Get** メソッドを使って変換が既に存在するかどうかを確認する必要があります。 このチュートリアルでは、変換を一意の名前で作成していることを前提としています。
 
 1. Postman アプリの左側のウィンドウで、[Encoding and Analysis]\(エンコードと分析\) を選択します。
 2. [Create Transform]\(変換の作成\) を選択します。
@@ -215,7 +217,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ### <a name="create-a-job"></a>ジョブの作成
 
-[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)は、作成された**変換**を特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。
+[ジョブ](/rest/api/media/jobs)は、作成された**変換**を特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。
 
 この例では、ジョブの入力は HTTPS URL ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") に基づいています。
 
@@ -256,18 +258,18 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 #### <a name="job-error-codes"></a>ジョブ エラー コード
 
-[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
+[エラー コード](/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
 ### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
-エンコード ジョブが完了したら、次に、出力**アセット**内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
+エンコード ジョブが完了したら、次に、出力**アセット**内のビデオをクライアントが再生に使用できるようにします。 これを実現するには 2 つのステップがあります。最初に [StreamingLocator](/rest/api/media/streaminglocators) を作成し、次にクライアントが使用できるストリーミング URL を作成します。 
 
 ストリーミング ロケーターを作成するプロセスは発行と呼ばれます。 既定では、ストリーミング ロケーターは API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存在し続けます。 
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアな (暗号化されていない) コンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー "Predefined_ClearStreamingOnly" が使用されます。
+[StreamingLocator](/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 この例では、クリアな (暗号化されていない) コンテンツをストリーム配信するので、定義済みのクリア ストリーミング ポリシー "Predefined_ClearStreamingOnly" が使用されます。
 
 > [!IMPORTANT]
-> カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 
+> カスタム [StreamingPolicy](/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 
 
 Media Service アカウントには、**ストリーミング ポリシー** エントリの数に対するクォータがあります。 ストリーミング ロケーターごとに新しい**ストリーミング ポリシー**を作成しないでください。
 
@@ -297,7 +299,7 @@ Media Service アカウントには、**ストリーミング ポリシー** エ
 
 #### <a name="list-paths"></a>パスの一覧を取得する
 
-[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。
+[ストリーミング ロケーター](/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。
 
 1. Postman アプリの左側のウィンドウで、[Streaming Policies]\(ストリーミング ポリシー\) を選択します。
 2. [List Paths]\(パスの一覧表示\) を選択します。

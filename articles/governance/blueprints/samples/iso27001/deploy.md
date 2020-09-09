@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含むスタンドアロンの ISO 27001 ブループリント サンプルのデプロイ手順です。
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: f5920541d49c454bd6648318c04ed607eada1dfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006808"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルをデプロイする
 
@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
 |許可されるストレージ アカウントの SKU|ポリシー割り当て|許可されるストレージ SKU の一覧|ストレージ アカウントに指定できる SKU の一覧。|
 |許可される仮想マシンの SKU|ポリシー割り当て|許可される仮想マシン SKU の一覧|仮想マシンに指定できる SKU の一覧。|
-|ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
+|ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 
 ## <a name="next-steps"></a>次のステップ
 

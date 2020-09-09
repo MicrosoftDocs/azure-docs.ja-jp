@@ -1,20 +1,14 @@
 ---
 title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 02/20/2020
-ms.author: babanisa
-ms.custom: seodec18
-ms.openlocfilehash: 75ee828c659aba895f65d0cf14070966428a1d19
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682521"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116133"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -103,7 +97,7 @@ Event Grid はデータ ソースとイベント ハンドラーを接続しま�
 
 ![操作の自動化](./media/overview/Ops_automation.png)
 
-Event Grid を使用すると、自動化を迅速にして、ポリシーの適用を簡素化できます。 たとえば、Event Grid を使用して、仮想マシンや SQL データベースが作成されたら Azure Automation に通知します。 イベントを使用して、サービス構成が準拠していることの自動確認、操作ツールへのメタデータの配置、仮想マシンのタグ付け、作業項目を登録などを実行します。
+Event Grid を使用すると、自動化を迅速にして、ポリシーの適用を簡素化できます。 たとえば、Event Grid を使用して、Azure SQL で仮想マシンやデータベースが作成されたら Azure Automation に通知します。 イベントを使用して、サービス構成が準拠していることの自動確認、操作ツールへのメタデータの配置、仮想マシンのタグ付け、作業項目を登録などを実行します。
 
 ### <a name="application-integration"></a>アプリケーションの統合
 

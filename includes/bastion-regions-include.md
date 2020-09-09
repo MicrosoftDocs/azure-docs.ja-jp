@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/19/2020
+ms.date: 08/14/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 48c18e08943e170fdd53f04b49b517424b511c62
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83721017"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246324"
 ---
 >[!NOTE]
 >Microsoft は、対応リージョンを拡大するために鋭意努力しています。 リージョンを追加した場合は、このリストに追加する予定です。
@@ -62,6 +62,8 @@ ms.locfileid: "83721017"
 * US DoD Central
 * US DoD East
 * US Gov アリゾナ
-* US Gov アイオワ
 * US Gov テキサス
 * US Gov バージニア州
+
+**Azure China**
+* 中国北部 2

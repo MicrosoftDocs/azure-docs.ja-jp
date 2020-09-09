@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234543"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318030"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -34,16 +34,16 @@ Azure SQL Analytics は、すべての Azure SQL データベースを対象に�
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [診断設定](../platform/diagnostic-settings.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
-| [Azure Storage アカウント](../platform/collect-azure-metrics-logs.md) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
+| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
 | [Windows エージェント](../platform/agent-windows.md) | いいえ | Azure SQL Analytics では、Windows のダイレクト エージェントは使用されません。 |
 | [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | Azure SQL Analytics では、Linux のダイレクト エージェントは使用されません。 |
 | [System Center Operations Manager 管理グループ](../platform/om-agents.md) | いいえ | Operations Manager エージェントから Azure Monitor への直接の接続は、Azure SQL Analytics では使用されません。 |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics のオプション
 
-次の表に、Azure SQL Analytics ダッシュボードの 2 つのバージョンでサポートされているオプションの概要を示します。1 つは、単一データベースとプールされたデータベース、およびエラスティック プール用で、もう 1 つは、マネージド インスタンスおよびインスタンス データベース用です。
+次の表に、Azure SQL Analytics ダッシュボードの 2 つのバージョンでサポートされているオプションの概要を示します。1 つは Azure SQL Database 用で、もう 1 つは Azure SQL Managed Instance データベース用です。
 
-| Azure SQL Analytics のオプション | 説明 | 単一データベースとプールされたデータベースおよびエラスティック プールのサポート | マネージド インスタンスとインスタンス データベースのサポート |
+| Azure SQL Analytics のオプション | 説明 | SQL Database のサポート | SQL Managed Instance のサポート |
 | --- | ------- | ----- | ----- |
 | 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブです。 | はい | はい |
 | 洞察 | パフォーマンスに対する Intelligent Insights の階層型のドリルダウンを提供します。 | はい | はい |
@@ -56,13 +56,13 @@ Azure SQL Analytics は、すべての Azure SQL データベースを対象に�
 
 ## <a name="configuration"></a>構成
 
-[Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) を Log Analytics ワークスペースに追加します。
+[Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) を Log Analytics ワークスペースに追加します。
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーム配信するための Azure SQL データベースの構成
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーミングするように Azure SQL Database を構成する
 
 ワークスペースに Azure SQL Analytics ソリューションを作成した後は、その診断テレメトリを Azure SQL Analytics にストリーム配信するように、監視するリソースの**それぞれを構成**する必要があります。 次のページの詳細手順に従ってください。
 
-- Azure SQL データベースの Azure Diagnostics を有効にして、[診断テレメトリを Azure SQL Analytics にストリーム配信](../../sql-database/sql-database-metrics-diag-logging.md)します。
+- データベースに対して Azure Diagnostics を有効にして、[診断テレメトリを Azure SQL Analytics にストリーミング](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)します。
 
 上記手順ではまた､1 つの Azure SQL Analytics ワークスペースから複数の Azure サブスクリプションを 1 つの窓で監視するためのサポート機能を有効にする手順も説明しています｡
 
@@ -72,13 +72,13 @@ Azure SQL Analytics をワークスペースに追加すると、Azure SQL Analy
 
 ![Azure SQL Analytics の概要タイル](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-読み込みが完了すると、Azure SQL Analytics に診断テレメトリを送信する単一データベースとプールされたデータベース、エラスティック プール、マネージド インスタンス、マネージド インスタンス データベースの数がタイルに表示されます。
+読み込みが完了すると、タイルには SQL Database のデータベースおよびエラスティック プールの数と、Azure SQL Analytics が診断テレメトリを受信する SQL Managed Instance のインスタンスおよびインスタンス データベースの数が表示されます。
 
 ![Azure SQL Analytics のタイル](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Azure SQL Analytics には、2 つの独立したビューが用意されています。1 つは、単一データベースとプールされたデータベース、およびエラスティック プールの監視用で、もう 1 つは、マネージド インスタンスとインスタンス データベースの監視用です。
+Azure SQL Analytics には 2 つの異なるビューが用意されています。1 つは SQL Database の監視用で、もう 1 つは SQL Managed Instance を監視するためのビューです。
 
-単一データベースとプールされたデータベースおよびエラスティック プール用の Azure SQL Analytics 監視ダッシュボードを表示するには、タイルの上部をクリックします。 マネージド インスタンスとインスタンス データベース用の Azure SQL Analytics 監視ダッシュボードを表示するには、タイルの下部をクリックします。
+SQL Database の Azure SQL Analytics 監視ダッシュボードを表示するには、タイルの上部をクリックします。 SQL Managed Instance の Azure SQL Analytics 監視ダッシュボードを表示するには、タイルの下部をクリックします。
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Azure SQL Analytics データの表示
 
@@ -86,7 +86,7 @@ Azure SQL Analytics には、2 つの独立したビューが用意されてい�
 
 Azure Monitor に一部のメトリックまたはログがストリーム配信されないと、Azure SQL Analytics 内のタイルに監視情報が表示されません。
 
-### <a name="single-and-pooled-databases-and-elastic-pools-view"></a>単一データベースとプールされたデータベースおよびエラスティック プールのビュー
+### <a name="sql-database-view"></a>SQL データベース ビュー
 
 データベースの Azure SQL Analytics タイルが選択されると、監視ダッシュボードが表示されます。
 
@@ -98,7 +98,7 @@ Azure Monitor に一部のメトリックまたはログがストリーム配信
 
 このビューの各パースペクティブは、サブスクリプション、サーバー、エラスティック プール、およびデータベース レベルの概要を提供します。 さらに、各パースペクティブは、右側にパースペクティブ特定のレポートを示します。 一覧からサブスクリプション、サーバー、プール、またはデータベースを選択するとドリル ダウンが続行されます。
 
-### <a name="managed-instance-and-instances-databases-view"></a>マネージド インスタンスとインスタンス データベースのビュー
+### <a name="sql-managed-instance-view"></a>SQL Managed Instance ビュー
 
 データベースの Azure SQL Analytics タイルが選択されると、監視ダッシュボードが表示されます。
 
@@ -106,13 +106,13 @@ Azure Monitor に一部のメトリックまたはログがストリーム配信
 
 タイルのいずれかを選択すると、特定のパースペクティブでドリルダウン レポートが開きます。 パースペクティブを選択すると、ドリル ダウン レポートが開きます。
 
-マネージド インスタンスのビューを選択すると、マネージド インスタンスの使用率、それに含まれるデータベース、インスタンス全体で実行されたクエリに関するテレメトリの詳細が表示されます。
+SQL Managed Instance ビューを選択すると、インスタンスの使用率、インスタンス データベース、およびマネージド インスタンス全体で実行されたクエリに関するテレメトリの詳細が表示されます。
 
 ![Azure SQL Analytics のタイムアウト](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights レポート
 
-Azure SQL Database [Intelligent Insights](../../sql-database/sql-database-intelligent-insights.md) では、すべての Azure SQL データベースのパフォーマンスに何が起きているかを把握できます。 収集されたすべてのインテリジェントな洞察を Insights パースペクティブを使用して視覚化およびアクセスできます。
+Azure SQL Database [Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) では、すべての Azure SQL データベースのパフォーマンスに何が起きているかを把握できます。 収集されたすべてのインテリジェントな洞察を Insights パースペクティブを使用して視覚化およびアクセスできます。
 
 ![Azure SQL Analytics Insights](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -170,7 +170,7 @@ Azure SQL Analytics を使用するには､少なくとも Azure で閲覧者�
 
 ## <a name="analyze-data-and-create-alerts"></a>データの分析とアラートの作成
 
-Azure SQL Analytics のデータ分析のカスタム クエリやカスタム レポート機能は [Log Analytics 言語](../log-query/get-started-queries.md)に依拠しています｡ [利用可能なメトリックおよびログ](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available)でのカスタム クエリでは､データベース リソースから収集され､利用可能になっているデータの説明を検索してください｡
+Azure SQL Analytics のデータ分析のカスタム クエリやカスタム レポート機能は [Log Analytics 言語](../log-query/get-started-queries.md)に依拠しています｡ [利用可能なメトリックおよびログ](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)でのカスタム クエリでは､データベース リソースから収集され､利用可能になっているデータの説明を検索してください｡
 
 Azure SQL Analytics の自動アラート機能は、条件が満たされたときにアラートをトリガーする Log Analytics クエリに依拠しています。 Azure SQL Analytics でアラートを設定できる Log Analytics クエリに関する、次のいくつかの例を検索してください。
 
@@ -178,7 +178,7 @@ Azure SQL Analytics の自動アラート機能は、条件が満たされたと
 
 Azure SQL Database リソースから送られるデータを使用して簡単に[アラートを作成](../platform/alerts-metric.md)できます。 ログ アラートで使用できる実用的な[ログ クエリ](../log-query/log-query-overview.md)をいくつか示します。
 
-#### <a name="high-cpu-on-azure-sql-database"></a>高 CPU (Azure SQL Database 上)
+#### <a name="high-cpu"></a>高 CPU 使用率
 
 ```
 AzureMetrics
@@ -194,7 +194,7 @@ AzureMetrics
 > - このアラートを設定するための前提条件は、監視されるデータベースが Basic メトリックを Azure SQL Analytics にストリーム配信することです。
 > - 高い DTU 結果を得るために、MetricName 値の cpu_percent を dtu_consumption_percent に置き換えます。
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>高 CPU (Azure SQL Database エラスティック プール上)
+#### <a name="high-cpu-on-elastic-pools"></a>エラスティック プールの高 CPU
 
 ```
 AzureMetrics
@@ -210,7 +210,7 @@ AzureMetrics
 > - このアラートを設定するための前提条件は、監視されるデータベースが Basic メトリックを Azure SQL Analytics にストリーム配信することです。
 > - 高い DTU 結果を得るために、MetricName 値の cpu_percent を dtu_consumption_percent に置き換えます。
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>過去 1 時間の平均が 95% を超える Azure SQL Database ストレージ
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>過去 1 時間の平均が 95% を超えるストレージ
 
 ```
 let time_range = 1h;
@@ -254,9 +254,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instances"></a>マネージド インスタンスのアラートの作成
+### <a name="creating-alerts-for-sql-managed-instance"></a>SQL Managed Instance のアラートの作成
 
-#### <a name="managed-instance-storage-is-above-90"></a>マネージド インスタンスのストレージが 90% を超えている
+#### <a name="storage-is-above-90"></a>ストレージが 90% を超えている
 
 ```
 let storage_percentage_threshold = 90;
@@ -272,7 +272,7 @@ AzureDiagnostics
 > - このアラートを設定する際の事前要件は、監視対象のマネージド インスタンスで、Azure SQL Analytics に対する ResourceUsageStats ログのストリーム配信が有効になっていることです。
 > - このクエリでは、クエリの結果が存在する (結果が 0 より多い) ときにアラートが発生するようアラート ルールを設定する必要があります。それにより、条件がマネージド インスタンス上に存在することが示されます。 出力は、マネージド インスタンスでのストレージの消費の割合です。
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>マネージド インスタンスの CPU の過去 1 時間の平均使用量が 95% を超えている
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>CPU の過去 1 時間の平均使用量が 95% を超えている
 
 ```
 let cpu_percentage_threshold = 95;
@@ -297,3 +297,4 @@ Azure SQL Analytics は無料で使用できますが、毎月割り当てられ
 - Azure Monitor で[ログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な Azure SQL データを表示します。
 - Azure SQL データを表示する[独自のダッシュ ボードを作成](../learn/tutorial-logs-dashboards.md)します。
 - Azure SQL の特定のイベントが発生した場合の[アラートを作成](../platform/alerts-overview.md)します。
+

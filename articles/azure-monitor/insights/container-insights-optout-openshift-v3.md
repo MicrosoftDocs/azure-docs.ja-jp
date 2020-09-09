@@ -3,16 +3,16 @@ title: お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止
 description: この記事では、コンテナー用の Azure Monitor でお使いの Azure Red Hat OpenShift クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195718"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815438"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法 
 
-お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。  
+お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
@@ -22,7 +22,7 @@ ms.locfileid: "82195718"
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)
 
-Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.65 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ### <a name="create-template"></a>テンプレートの作成
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>次のステップ
 
-クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../../log-analytics/log-analytics-manage-del-workspace.md)に関するページを参照してください。
+クラスターの監視をサポートするためだけにワークスペースが作成され、不要になった場合、手動で削除する必要があります。 ワークスペースを削除する方法の詳細については、[Azure Log Analytics ワークスペースの削除](../platform/delete-workspace.md)に関するページを参照してください。

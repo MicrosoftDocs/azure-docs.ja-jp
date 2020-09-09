@@ -1,18 +1,18 @@
 ---
-title: 照明
+title: シーンのライティング
 description: 光源の説明とプロパティ
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679125"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022148"
 ---
-# <a name="lights"></a>照明
+# <a name="scene-lighting"></a>シーンのライティング
 
 既定では、リモートでレンダリングされるオブジェクトは、[スカイライト](sky.md)を使用して照射されます。 ほとんどのアプリケーションではこれで十分ですが、さらに光源をシーンに追加することができます。
 

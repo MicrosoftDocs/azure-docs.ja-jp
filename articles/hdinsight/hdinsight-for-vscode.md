@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.custom: devx-track-python
+ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878631"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876786"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
@@ -70,7 +71,7 @@ Spark & Hive Tools は、Visual Studio Code でサポートされているプラ
 
 ## <a name="connect-to-an-azure-account"></a>Azure アカウントに接続する
 
-Visual Studio Code からクラスターにスクリプトを送信するには、その前に Azure アカウントに接続するか、またはクラスターをリンクしておく必要があります。 Apache Ambari のユーザー名とパスワードの資格情報またはドメイン参加済みアカウントを使用します。 Azure に接続するには、これらの手順に従います。
+Visual Studio Code からクラスターにスクリプトを送信する前に、ユーザーは Azure サブスクリプションにサインインするか、[HDInsight クラスターをリンクする](#link-a-cluster)ことができます。 Ambari のユーザー名とパスワードまたは ESP クラスターのドメイン参加済みの資格情報を使用して、HDInsight クラスターに接続します。 Azure に接続するには、これらの手順に従います。
 
 1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Azure:Sign In**」と入力します。
 
@@ -171,7 +172,10 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
 
 ## <a name="submit-interactive-pyspark-queries"></a>対話型の PySpark クエリを送信する
 
-対話型 PySpark クエリを送信するには、これらの手順に従います。
+ユーザーは、次の方法で PySpark Interactive を実行できます。
+
+### <a name="using-the-pyspark-interactive-command-in-py-file"></a>PY ファイルで PySpark Interactive コマンドを使用する
+PySpark Interactive コマンドを使用してクエリを送信するには、次の手順を実行します。
 
 1. [前に](#open-a-work-folder)説明した **HDexample** フォルダーを閉じていた場合、もう一度開きます。  
 
@@ -193,31 +197,61 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
         print(sortedCollection[i])
    ```
 
-4. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
+4. PySpark カーネルをインストールするためのプロンプトが、ウィンドウの右下隅に表示されます。 PySpark のインストールを続行するには **[インストール]** ボタンをクリックします。この手順をスキップするには、 **[スキップ]** をクリックします。
 
-5. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[Spark: PySpark Interactive]** を選択してクエリを送信します。 または、Ctrl + Alt + I ショートカットを使用します。
+   ![PySpark カーネルをインストールする](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-   ![PySpark Interactive のコンテキスト メニュー](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+5. 後でインストールする必要がある場合は、 **[ファイル]**  >  **[基本設定]**  >  **[設定]** に移動し、 **[Hdinsight:Pyspark のインストールをスキップする]** をオフにします。 
+    
+    ![PySpark カーネルをインストールする](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
-6. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、**Python Interactive** の結果が新しいタブに表示されます。また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。
+6. 手順 4 でインストールが正常に完了した場合、ウィンドウの右下隅に "PySpark が正常にインストールされました" というメッセージ ボックスが表示されます。 **[再読み込み]** ボタンをクリックして、ウィンドウを再度読み込みます。
+    ![正常にインストールされた PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+
+7. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
+
+8. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[Spark: PySpark Interactive]** を選択してクエリを送信します。 または、Ctrl + Alt + I ショートカットを使用します。
+
+    ![PySpark Interactive のコンテキスト メニュー](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+
+9. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、**Python Interactive** の結果が新しいタブに表示されます。PySpark をクリックすると、カーネルが **PySpark** に切り替わり、コードが正常に実行されます。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。
 
    ![PySpark Interactive の Python Interactive ウィンドウ](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-7. 「 **%%info**」と入力し、Shift + Enter キーを押してジョブ情報を表示します (省略可能)。
+10. 「 **%%info**」と入力し、Shift + Enter キーを押してジョブ情報を表示します (省略可能)。
 
-   ![PySpark Interactive: ジョブ情報の表示](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
+    ![PySpark Interactive: ジョブ情報の表示](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
-8. ツールでは **Spark SQL** クエリもサポートされています。
+ツールでは **Spark SQL** クエリもサポートされています。
 
    ![PySpark Interactive: 結果の表示](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
 
-   送信の状態は、クエリの実行時に下部のステータス バーの左側に表示されます。 **[PySpark Kernel (busy)]\(PySpark カーネル (ビジー)\)** 状態のときに他のクエリを送信しないでください。  
 
-   > [!NOTE]
-   >
-   > 設定で **[Python Extension Enabled]\(Python 拡張機能が有効\)** チェック ボックスがオフ (既定の設定ではオン) の場合、送信される PySpark 対話結果には古いウィンドウが使用されます。
-   >
-   > ![Python Interactive の Python 拡張機能の無効](./media/hdinsight-for-vscode/pyspark-interactive-python-extension-disabled.png)
+### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>#%% コメントを使用して PY ファイルで対話型クエリを実行する
+
+1. ノートブックのエクスペリエンスを得るには、PY コードの前に **#%%** を追加します。
+
+    ![#%% を追加する](./media/hdinsight-for-vscode/run-cell.png)
+
+2. **[セルの実行]** をクリックします。 しばらくすると、新しいタブに Python Interactive の結果が表示されます。
+
+   ![セルの実行結果](./media/hdinsight-for-vscode/run-cell-get-results.png)
+
+   > [!NOTE]  
+   > カーネルまたは設定が混雑した場合は、**Python:インタープリターを選択して Jupyter サーバーを起動する** コマンドを使用し、**IPython カーネルを再起動**してから、VSCode を再読み込みすると、解決できます。
+
+## <a name="leverage-ipynb-support-from-python-extension"></a>Python 拡張機能の IPYNB サポートを活用する
+
+1. コマンド パレットからコマンドを使用するか、ワークスペースで新しい .ipynb ファイルを作成することで、Jupyter Notebook を作成できます。 詳細については、「[Visual Studio Code での Jupyter Notebook の使用](https://code.visualstudio.com/docs/python/jupyter-support)」を参照してください。
+
+2. [PySpark] をクリックしてカーネルを **PySpark** に切り替え、 **[セルの実行]** をクリックすると、しばらくしてから結果が表示されます。
+
+   ![ipynb の実行結果](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
+
+
+> [!NOTE]
+>
+>この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません。これは[既知の問題](#known-issues)です。
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブを送信する
 
@@ -257,6 +291,21 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
    ![Python ジョブの送信の結果の出力](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
 Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)** ウィンドウに送信ログが表示されます。 Spark UI URL と Yarn UI URL も表示されます。 Web ブラウザーで URL を開いて、ジョブの状態を追跡することができます。
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity Broker (HIB) との統合
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with ID Broker (HIB) に接続する
+
+HDInsight ESP cluster with ID Broker (HIB) に接続するには、通常の手順に従って Azure サブスクリプションにサインインします。 サインインすると、Azure Explorer にクラスターの一覧が表示されます。 詳細な手順については、「[HDInsight クラスターに接続する](#connect-to-an-azure-account)」を参照してください。
+
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with ID Broker (HIB) で Hive/PySpark ジョブを実行する
+
+Hive ジョブを実行するには、通常の手順に従って、HDInsight ESP cluster with ID Broker (HIB) にジョブを送信します。 詳細な手順については、「[対話型 Hive クエリと Hive バッチ スクリプトを送信する](#submit-interactive-hive-queries-and-hive-batch-scripts)」を参照してください。
+
+対話型 PySpark ジョブを実行するには、通常の手順に従って、HDInsight ESP cluster with ID Broker (HIB) にジョブを送信します。 詳細な手順については、「[「対話型の PySpark クエリを送信する](#submit-interactive-pyspark-queries)」を参照してください。
+
+PySpark バッチ ジョブを実行するには、通常の手順に従って、HDInsight ESP cluster with ID Broker (HIB) にジョブを送信します。 詳細な手順については、「[PySpark バッチ ジョブを送信する](#submit-pyspark-batch-job)」を参照してください。
+
 
 ## <a name="apache-livy-configuration"></a>Apache Livy の構成
 
@@ -416,6 +465,13 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 ## <a name="sign-out"></a>サインアウトする  
 
 メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
+
+## <a name="known-issues"></a>既知の問題
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません 
+
+"Jupyter Notebook に接続できませんでした。" は、Python バージョン 2020.5.78807 以降の既知の問題です。 この問題を回避するには、 **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** バージョンの ms-python を使用することをお勧めします。
+
+![既知の問題](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>次のステップ
 

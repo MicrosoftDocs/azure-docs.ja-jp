@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: a683ad71f5e80c91728262dc7bbabf36e9d68deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75773950"
 ---
 # <a name="peering-policy"></a>ピアリング ポリシー
@@ -57,7 +57,7 @@ ms.locfileid: "75773950"
 * Exchange ピアリングによるピアでは、トラフィックは最低 200 Mb とし、2 Gb 未満にする必要があります。  トラフィックが 2 Gb を超える場合は、Direct ピアリングを検討する必要があります。
 * Direct ピアリングの場合、ネットワークから Microsoft へのトラフィックは、以下の最小要件を満たしている必要があります。
 
-    | ジオ (主要地域)                       | Microsoft への最小トラフィック   |
+    | ジオ (主要地域)                      | Microsoft への最小トラフィック   |
     | :----------------------- |:-------------------------------|
     | アフリカ                   | 500 Mbps                       |
     | APAC (インドを除く)      |   2 Gbps                       |

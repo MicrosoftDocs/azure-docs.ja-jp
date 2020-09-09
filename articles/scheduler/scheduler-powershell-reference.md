@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b82dba923db16e96cc0884b629723c4e8496c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080915"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure Scheduler の PowerShell コマンドレット リファレンス
 
@@ -22,7 +22,7 @@ ms.locfileid: "78898499"
 >
 > Scheduler は Azure portal で利用できなくなりましたが、現時点では [REST API](/rest/api/scheduler) と [Azure Scheduler PowerShell コマンドレット](scheduler-powershell-reference.md)がまだ使用できるので、お客様はジョブとジョブ コレクションを管理することができます。
 
-Scheduler ジョブとジョブ コレクションを作成および管理するためのスクリプトを作成するために、PowerShell コマンドレットを使用できます。 この記事では、Azure Scheduler 用の主要な PowerShell コマンドレットと、その参考記事へのリンクを列挙します。 お使いの Azure サブスクリプションの Azure PowerShell をインストールするには、[Azure PowerShell をインストールして構成する方法](/powershell/azure/overview)を参照してください。 [Azure Resource Manager コマンドレット](/powershell/azure/overview)の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+Scheduler ジョブとジョブ コレクションを作成および管理するためのスクリプトを作成するために、PowerShell コマンドレットを使用できます。 この記事では、Azure Scheduler 用の主要な PowerShell コマンドレットと、その参考記事へのリンクを列挙します。 お使いの Azure サブスクリプションの Azure PowerShell をインストールするには、[Azure PowerShell をインストールして構成する方法](/powershell/azure/)を参照してください。 [Azure Resource Manager コマンドレット](/powershell/azure/)の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

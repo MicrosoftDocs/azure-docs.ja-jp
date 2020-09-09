@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b03dd9140ef49d34ba0303742aa4961a9f313cc9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323368"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>クイック スタート:Bing Video Search REST API と Java を使用して動画を検索する
 
-このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな Java アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、追加のエラー処理と機能、コードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) で入手できます。
+このクイックスタートを使用して、Bing Video Search API を呼び出してみましょう。 このシンプルな Java アプリケーションでは、HTTP 動画検索クエリを API に送信して、その JSON 応答を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 
+
+このサンプルのソース コードは、追加のエラー処理と機能、コードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +62,7 @@ ms.locfileid: "75382652"
     }
     ```
 
-3. `SearchVideos()` という名前の新しいメソッドを作成し、API エンドポイントのホストとパス、サブスクリプション キー、検索語句の各変数を宣言します。 戻り値は `SearchResults` オブジェクトです。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+3. API エンドポイントのホストとパス、サブスクリプション キー、検索語句の各変数を指定して、`SearchVideos()` という名前の新しいメソッドを作成します。 このメソッドから `SearchResults` オブジェクトが返されます。 `host` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -72,66 +75,66 @@ ms.locfileid: "75382652"
 
 ## <a name="construct-and-send-the-search-request"></a>検索要求を構築して送信する
 
-1. `SearchVideos()` で、次の手順を実行します。
+この `SearchVideos()` メソッドで次の手順を行います。
 
-    1. API のホストとパス、検索クエリのエンコーディングを組み合わせて要求の URL を作成します。 次に、`openConnection()` を使用して接続を作成し、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。
+1. API のホストとパス、エンコーディングされた検索クエリを組み合わせて要求の URL を作成します。 `openConnection()` を使用して接続を作成し、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。
 
-        ```java
-        URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
-        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        ```
+     ```java
+     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
+     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+     connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+     ```
 
-    2. API から応答を取得して、JSON 文字列を格納します。
+2. API から応答を取得して、JSON 文字列を格納します。
 
-        ```java
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
-        ```
+     ```java
+     InputStream stream = connection.getInputStream();
+     String response = new Scanner(stream).useDelimiter("\\A").next();
+     ```
 
-    3. `getHeaderFields();` を使用して応答から HTTP ヘッダーを抽出し、Bing に関連したものを `results` オブジェクトに格納します。 その後ストリームを閉じて結果を返します。
+ 3. `getHeaderFields()` を使用して応答から HTTP ヘッダーを抽出し、Bing に関連したものを `results` オブジェクトに格納します。 その後、ストリームを閉じて結果を返します。
 
-        ```java
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
-        }
-        stream.close();
-        return results;
-        ```
+     ```java
+     // extract Bing-related HTTP headers
+     Map<String, List<String>> headers = connection.getHeaderFields();
+     for (String header : headers.keySet()) {
+         if (header == null) continue;      // may have null key
+         if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
+             results.relevantHeaders.put(header, headers.get(header).get(0));
+         }
+     }
+     stream.close();
+     return results;
+     ```
 
 ## <a name="format-the-response"></a>応答の書式設定
 
-1. Bing Video API から返された応答を書式設定する `prettify()` という名前のメソッドを作成します。 Gson ライブラリの `JsonParser` を使用して JSON 文字列を取り込み、それをオブジェクトに変換します。 さらに、`GsonBuilder()` と `toJson()` を使用して、書式設定済みの文字列を作成します。 
+Bing Video API から返された応答を書式設定する `prettify()` という名前のメソッドを作成します。 Gson ライブラリの `JsonParser` を使用して、JSON 文字列をオブジェクトに変換します。 さらに、`GsonBuilder()` と `toJson()` を使用して、書式設定済みの文字列を作成します。
 
-    ```java
-    // pretty-printer for JSON; uses GSON parser to parse and re-serialize
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-    ```
+```java
+// pretty-printer for JSON; uses GSON parser to parse and re-serialize
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonObject json = parser.parse(json_text).getAsJsonObject();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
 ## <a name="send-the-request-and-print-the-response"></a>要求を送信して応答を出力する
 
-1. アプリケーションの main メソッドで、検索語を指定して `SearchVideos` を呼び出します。 その後、応答に格納された HTTP ヘッダーと API によって返された JSON 文字列を出力することができます。
+アプリケーションの main メソッドで、検索語を指定して `SearchVideos` を呼び出します。 その後、応答に格納された HTTP ヘッダーと API によって返された JSON 文字列を出力します。
 
-    ```java
-    public static void main (String[] args) {
+ ```java
+ public static void main (String[] args) {
 
-        SearchResults result = SearchVideos(searchTerm);
-        //print the Relevant HTTP Headers
-        for (String header : result.relevantHeaders.keySet())
-            System.out.println(header + ": " + result.relevantHeaders.get(header));
-        System.out.println(prettify(result.jsonResponse));
-    }
-    ```
+     SearchResults result = SearchVideos(searchTerm);
+     //print the Relevant HTTP Headers
+     for (String header : result.relevantHeaders.keySet())
+         System.out.println(header + ": " + result.relevantHeaders.get(header));
+     System.out.println(prettify(result.jsonResponse));
+ }
+ ```
 
 ## <a name="json-response"></a>JSON 応答
 

@@ -1,30 +1,20 @@
 ---
 title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: c16dd4345e62fa9e826e657cce9a752186ec1b82
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 06/23/2020
+ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628659"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936233"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
-Azure Event Hubs は、大量のイベントやデータを取り込んで処理するスケーラブルなイベント処理サービスで、短い待機時間と高い信頼性を実現します。 概要については、「[Event Hubs とは](event-hubs-what-is-event-hubs.md)」を参照してください。
+Azure Event Hubs は、大量のイベントやデータを取り込んで処理するスケーラブルなイベント処理サービスで、短い待機時間と高い信頼性を実現します。 概要については、「[Event Hubs とは](./event-hubs-about.md)」を参照してください。
 
-[概要記事](event-hubs-what-is-event-hubs.md)内の情報に基づいて作成されたこの記事では、Event Hubs のコンポーネントと機能に関する実装の技術的な詳細を説明します。
+[概要記事](./event-hubs-about.md)内の情報に基づいて作成されたこの記事では、Event Hubs のコンポーネントと機能に関する実装の技術的な詳細を説明します。
 
 ## <a name="namespace"></a>名前空間
 Event Hubs 名前空間は一意のスコープ コンテナーを提供します。このコンテナーは、1 つ以上のイベント ハブまたは Kafka トピックを作成する[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)によって参照されます。 
@@ -43,11 +33,11 @@ Event Hubs 名前空間は一意のスコープ コンテナーを提供しま�
 
 ### <a name="publishing-an-event"></a>イベントの発行
 
-AMQP 1.0、Kafka 1.0 (以降)、または HTTPS 経由でイベントを発行できます。 Event Hubs は、.NET クライアントからイベント ハブへのイベント発行で使用できる[クライアント ライブラリとクラス](event-hubs-dotnet-framework-api-overview.md)を提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](https://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントまたはバッチのどちらであるかには関係なく、単一パブリケーション (イベント データ インスタンス) には 1 MB の制限があります。 このしきい値より大きいイベントを発行すると、エラーが発生します。 発行元にとっては、イベント ハブ内のパーティションを意識せずに、次のセクションで説明する "*パーティション キー*" のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
+AMQP 1.0、Kafka 1.0 (以降)、または HTTPS 経由でイベントを発行できます。 Event Hubs は、.NET クライアントからイベント ハブへのイベント発行で使用できる[クライアント ライブラリとクラス](./event-hubs-dotnet-framework-getstarted-send.md)を提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](https://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントまたはバッチのどちらであるかには関係なく、単一パブリケーション (イベント データ インスタンス) には 1 MB の制限があります。 このしきい値より大きいイベントを発行すると、エラーが発生します。 発行元にとっては、イベント ハブ内のパーティションを意識せずに、次のセクションで説明する "*パーティション キー*" のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
 
 AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の TLS オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+![パーティション キー](./media/event-hubs-features/partition_keys.png)
 
 Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 そうでない場合、エラーが発生します。
 
@@ -56,7 +46,7 @@ Event Hubs によって、1 つのパーティション キー値を共有する
 Event Hubs では、 *発行元ポリシー*を介してイベント プロデューサーをきめ細かく制御できます。 発行元ポリシーは、多数の独立したイベント発行元を支援するために設計されたランタイム機能です。 発行元ポリシーでは、次のメカニズムを使用してイベント ハブにイベントを発行する際に、各発行元は独自の一意の識別子を使用します。
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 ```
 
 前もって発行元名を作成しておく必要はありませんが、独立した発行元 ID を保証するために、発行元名はイベントを発行するときに使用される SAS トークンと一致する必要があります。 発行元ポリシーを使用する場合は、 **PartitionKey** 値を発行元名に設定します。 適切に機能するために、これらの値が一致する必要があります。
@@ -85,23 +75,24 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 コンシューマー グループ内の 1 つのパーティションが同時に接続できるリーダーは最大 5 つですが、**コンシューマー グループごとのパーティションのアクティブな受信者は 1 つだけにすることをお勧めします**。 1 つのパーティション内で、各リーダーがすべてのメッセージを受信します。 同じパーティションに複数のリーダーがある場合、重複したメッセージを処理します。 お使いのコード内でこれを処理する必要があり、相応の作業量が生じる場合があります。 ただし、これは一部のシナリオで有効な手法です。
 
+Azure SDK によって提供される一部のクライアントはインテリジェントなコンシューマー エージェントです。これは、各パーティションに 1 つのリーダーがあり、イベント ハブのすべてのパーティションが読み取られていることを確認するための詳細を自動的に管理します。 これにより、コードではイベント ハブから読み取られるイベントの処理に注力できるため、パーティションの詳細の多くを無視できます。 詳細については、「[パーティションに接続する](#connect-to-a-partition)」を参照してください。
 
 コンシューマー グループ URI 表記の例を次に示します。
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
 ```
 
 次の図は、Event Hubs ストリーム処理のアーキテクチャを示しています。
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Event Hubs のアーキテクチャ](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>ストリームのオフセット
 
 "*オフセット*" は、パーティション内のイベントの位置です。 オフセットは、クライアント側のカーソルと考えることができます。 オフセットはイベントのバイト位置です。 このオフセットにより、イベント コンシューマー (リーダー) は、イベント ストリーム内でのイベント読み取りの開始点を指定することができます。 オフセットは、タイムスタンプとして、またはオフセット値として指定することができます。 Event Hubs サービスの外部で独自のオフセット値を格納する場合は、コンシューマーの責任で行います。 パーティション内では、各イベントにオフセットが含まれます。
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![パーティションのオフセット](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>チェックポイント機能
 
@@ -110,7 +101,7 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 リーダーがパーティションから切断し、その後再び接続すると、該当するコンシューマー グループ内の該当するパーティションの最後のリーダーによって最後に送信されたチェックポイントから読み取りが開始されます。 リーダーは接続の際に、このオフセットをイベント ハブに渡して、読み取りを開始する場所を指定します。 このように、チェックポイント処理を使用することで、ダウンストリーム アプリケーションごとにイベントに "完了" のマークを付けると共に、異なるコンピューター上で実行中のリーダー間でフェールオーバーが発生した場合に回復性をもたらすことができます。 このチェックポイント処理で、より小さなオフセットを指定すると、古いデータに戻ることができます。 このメカニズムにより、チェックポイント処理ではフェールオーバーの回復性とイベント ストリームの再生の両方を実現できます。
 
 > [!NOTE]
-> Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
+> Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
@@ -122,7 +113,12 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 #### <a name="connect-to-a-partition"></a>パーティションに接続する
 
-パーティションに接続する場合は、特定のパーティションへのリーダーの接続を調整するためにリース メカニズムを使用するのが一般的です。 このため、コンシューマー グループ内のどのパーティションもアクティブなリーダーが 1 つだけである可能性があります。 チェックポイント処理、リース、リーダー管理は、.NET クライアントの [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) クラスを使用して簡略化されます。 イベント プロセッサ ホストはインテリジェントなコンシューマー エージェントです。
+パーティションに接続する場合は、特定のパーティションへのリーダーの接続を調整するためにリース メカニズムを使用するのが一般的です。 このため、コンシューマー グループ内のどのパーティションもアクティブなリーダーが 1 つだけである可能性があります。 チェックポイント処理、リース、およびリーダーの管理は、インテリジェントなコンシューマー エージェントとして機能する Event Hubs SDK 内のクライアントを使用して簡略化されます。 次のとおりです。
+
+- .NET 用 [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
+- Java 用 [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
+- Python 用 [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
+- JavaScript/TypeScript 用 [EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 
 #### <a name="read-events"></a>イベントを読み取る
 
@@ -142,13 +138,11 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 Event Hubs の詳細については、次のリンクを参照してください。
 
 - Event Hubs の使用
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
-* [Event Hubs サンプル][]
-
-[Event Hubs サンプル]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+* [Event Hubs サンプル](event-hubs-samples.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81766869"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318982"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -29,19 +29,17 @@ ms.locfileid: "81766869"
 PowerShell でコンピューターに対して変更を行うには、管理者レベルのアクセス許可が必要です。
 ### <a name="execution-policy"></a>実行ポリシー
 - 説明:既定では、PowerShell スクリプトの実行は無効になっています。 RemoteSigned スクリプトは現在のスコープに対してのみ許可することをお勧めします。
-- リファレンス: 「[About Execution Policies (実行ポリシーの概要)](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)」と「[Set-ExecutionPolicy](
-https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
-)」
+- リファレンス: 「[About Execution Policies (実行ポリシーの概要)](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)」と「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)」
 - コマンド: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
 - 省略可能なパラメーター:
     - `-Force` 確認プロンプトをバイパスします。
 
 **エラーの例**
 
-```
+```output
 Install-Module : The 'Install-Module' command was found in the module 'PowerShellGet', but the module could not be
 loaded. For more information, run 'Import-Module PowerShellGet'.
-    
+
 Import-Module : File C:\Program Files\WindowsPowerShell\Modules\PackageManagement\1.3.1\PackageManagement.psm1 cannot
 be loaded because running scripts is disabled on this system. For more information, see about_Execution_Policies at
 https:/go.microsoft.com/fwlink/?LinkID=135170.
@@ -53,8 +51,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 `$PSVersionTable` コマンドを実行して、PowerShell のインスタンスを監査します。
 このコマンドでは次の出力が生成されます。
 
-
-```
+```output
 Name                           Value
 ----                           -----
 PSVersion                      5.1.17763.316
@@ -81,36 +78,41 @@ SerializationVersion           1.1.0.1
 1. 管理者として昇格された実行ポリシーで PowerShell を実行します。
 2. NuGet パッケージ プロバイダーをインストールします。
     - 説明:PowerShellGallery などの NuGet ベースのリポジトリとやり取りするには、このプロバイダーが必要です
-    - リファレンス: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
+    - リファレンス: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
     - コマンド: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
     - 省略可能なパラメーター:
         - `-Proxy` 要求用のプロキシ サーバーを指定します。
         - `-Force` 確認プロンプトをバイパスします。
     
     NuGet が設定されていない場合、次のプロンプトを受け取ります。
-        
-        NuGet provider is required to continue
-        PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet
-         provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
-        'C:\Users\t\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running
-        'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import
-         the NuGet provider now?
-        [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
-    
+
+    ```output
+    NuGet provider is required to continue
+    PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. 
+    The NuGet provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
+    'C:\Users\t\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running
+    'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import
+    the NuGet provider now?
+    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
+    ```    
+
 3. PowerShell ギャラリーを信頼できるリポジトリとして構成します。
     - 説明:既定では、PowerShell ギャラリーは信頼されていないリポジトリです。
-    - リファレンス: [Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6)。
+    - リファレンス: [Set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6)。
     - コマンド: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
     - 省略可能なパラメーター:
         - `-Proxy` 要求用のプロキシ サーバーを指定します。
 
     PowerShell ギャラリーが信頼されていない場合は、次のプロンプトを受け取ります。
 
-        Untrusted repository
-        You are installing the modules from an untrusted repository. If you trust this repository, change its
-        InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
-        'PSGallery'?
-        [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+    ```output
+    Untrusted repository
+    You are installing the modules from an untrusted repository. 
+    If you trust this repository, change its InstallationPolicy value 
+    by running the Set-PSRepository cmdlet. Are you sure you want to 
+    install the modules from 'PSGallery'?
+    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+    ```
 
     `Get-PSRepository` コマンドを実行することにより、この変更を確認して、すべての PSRepositories を監査できます。
 
@@ -123,14 +125,16 @@ SerializationVersion           1.1.0.1
         - `-Force` "インストール済み" の警告をバイパスして、最新バージョンをインストールします。
 
     最新バージョンの PowerShellGet を使っていない場合、次のエラーを受け取ります。
-    
-        Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
-        At line:1 char:20
-        Install-Module abc -AllowPrerelease
-                           ~~~~~~~~~~~~~~~~
-            CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
-            FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
-    
+
+    ```output
+    Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
+    At line:1 char:20
+    Install-Module abc -AllowPrerelease
+                   ~~~~~~~~~~~~~~~~
+    CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
+    FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
+    ```
+
 5. PowerShell を再起動します。 現在のセッションで新しいバージョンを読み込むことはできません。 新しい PowerShell セッションでは、最新バージョンの PowerShellGet が読み込まれます。
 
 ## <a name="download-and-install-the-module-via-powershell-gallery"></a>PowerShell ギャラリーからモジュールをダウンロードしてインストールする
@@ -140,7 +144,7 @@ SerializationVersion           1.1.0.1
 1. PowerShell ギャラリーのすべての前提条件が満たされていることを確認します。
 2. 管理者として昇格された実行ポリシーで PowerShell を実行します。
 3. Az.ApplicationMonitor モジュールをインストールします。
-    - リファレンス: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6)。
+    - リファレンス: [Install-Module](/powershell/module/powershellget/install-module?view=powershell-6)。
     - コマンド: `Install-Module -Name Az.ApplicationMonitor`。
     - 省略可能なパラメーター:
         - `-Proxy` 要求用のプロキシ サーバーを指定します。
@@ -166,10 +170,10 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Archive (v1.0.1.0) を使用して zip ファイルとして nupkg を解凍する
 
 - 説明:Microsoft.PowerShell.Archive (v1.0.1.0) の基本バージョンでは、nupkg ファイルを解凍できません。 ファイル名を .zip 拡張子に変更します。
-- リファレンス: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
+- リファレンス: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
 - コマンド:
 
-    ```
+    ```console
     $pathToNupkg = "C:\az.applicationmonitor.0.3.0-alpha.nupkg"
     $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
     $pathToNupkg | rename-item -newname $pathToZip
@@ -180,10 +184,10 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Expand-Archive (v1.1.0.0) を使用して nupkg を解凍する
 
 - 説明:拡張子を変更せずに nupkg ファイルを解凍するには、最新バージョンの Expand-Archive を使用します。
-- リファレンス: 「[Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)」と「[Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)」。
+- リファレンス: 「[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)」と「[Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)」。
 - コマンド:
 
-    ```
+    ```console
     $pathToNupkg = "C:\az.applicationmonitor.0.2.1-alpha.nupkg"
     $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\az.applicationmonitor"
     Expand-Archive -LiteralPath $pathToNupkg -DestinationPath $pathInstalledModule
@@ -193,7 +197,7 @@ SerializationVersion           1.1.0.1
 手動でダウンロードした PowerShell モジュールを PowerShell ディレクトリにインストールし、PowerShell セッションで検出されるようにします。
 詳細については、「[PowerShell モジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module)」を参照してください。
 
-他のディレクトリにモジュールをインストールする場合は、[Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) を使ってモジュールを手動でインポートします。
+他のディレクトリにモジュールをインストールする場合は、[Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) を使ってモジュールを手動でインポートします。
 
 > [!IMPORTANT] 
 > DLL は相対パスでインストールされます。
@@ -212,14 +216,14 @@ SerializationVersion           1.1.0.1
 Az.ApplicationMonitor を PowerShell ギャラリーからダウンロードしてインストールする PowerShell コマンドでは、`-Proxy` パラメーターがサポートされています。
 インストール スクリプトを作成するときは、上記の手順を確認します。
 
-Application Insights SDK では、アプリのテレメトリを Microsoft に送信する必要があります。 web.config ファイルでアプリのプロキシ設定を構成することをお勧めします。 詳細については、「[Application Insights の FAQ」の「プロキシのパススルー](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)」を参照してください。
+Application Insights SDK では、アプリのテレメトリを Microsoft に送信する必要があります。 web.config ファイルでアプリのプロキシ設定を構成することをお勧めします。 詳細については、「[Application Insights の FAQ」の「プロキシのパススルー](../faq.md#proxy-passthrough)」を参照してください。
 
 
 ## <a name="enable-monitoring"></a>監視を有効にする
 
 モニターを有効にするには `Enable-ApplicationInsightsMonitoring` コマンドを使用します。
 
-このコマンドレットの使用方法の詳細については、[API リファレンス](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)に関する記事を参照してください。
+このコマンドレットの使用方法の詳細については、[API リファレンス](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring)に関する記事を参照してください。
 
 
 
@@ -227,17 +231,18 @@ Application Insights SDK では、アプリのテレメトリを Microsoft に�
 
  テレメトリの表示:
 
-- パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します。
-- 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
-- より高度なクエリのために[分析を使用](../../azure-monitor/app/analytics.md)します。
-- [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
+- パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+- 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
+- より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
+- [ダッシュボードを作成](./overview-dashboard.md)します。
 
  テレメトリの追加:
 
 - サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
-- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
-- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
+- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](./javascript.md)を追加します。
+- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](./asp-net.md)します。
 
 Application Insights エージェントをさらに活用する:
 
 - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
+

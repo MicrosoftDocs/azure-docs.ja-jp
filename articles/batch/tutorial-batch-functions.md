@@ -5,13 +5,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
-ms.custom: mvc
-ms.openlocfilehash: 01c3ab167239affa4d7ae94f5649d60072c3c270
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117167"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930096"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>チュートリアル:Azure Functions を使用して Batch ジョブをトリガーする
 
@@ -22,7 +22,7 @@ ms.locfileid: "82117167"
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 アカウントを作成およびリンクする方法の詳細については、「[Batch アカウントを作成する](quick-create-portal.md#create-a-batch-account)」を参照してください。
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
-* [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -55,7 +55,7 @@ ms.locfileid: "82117167"
 ここで、OCR Batch ジョブの実際の入力および出力ファイルを格納する BLOB コンテナーを作成します。
 
 1. ご自分の Azure 資格情報を使用して、Storage Explorer にサインインします。
-1. ご自分の Batch アカウントにリンクされているストレージ アカウントを使用し、「[BLOB コンテナーを作成する](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container)」の手順に従って、2 つの BLOB コンテナー (1 つは入力ファイル用、1 つは出力ファイル用) を作成します。
+1. ご自分の Batch アカウントにリンクされているストレージ アカウントを使用し、「[BLOB コンテナーを作成する](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)」の手順に従って、2 つの BLOB コンテナー (1 つは入力ファイル用、1 つは出力ファイル用) を作成します。
 
 この例では、入力コンテナーは `input` という名前で、そこには OCR が適用されていないドキュメントがすべて処理のために最初にアップロードされます。 出力コンテナーは `output` という名前で、そこには OCR が適用された処理済みのドキュメントが Batch ジョブによって書き込まれます。  
     * この例では、入力コンテナーを `input`、出力コンテナーを `output` と呼ぶことにします。  
@@ -68,7 +68,7 @@ Storage Explorer 内で、ご自分の出力コンテナーの Shared Access Sig
 
 このセクションでは、ファイルがご自分の入力コンテナーにアップロードされるたびに OCR Batch ジョブをトリガーする Azure 関数を作成します。
 
-1. 「[Azure Blob Storage によってトリガーされる関数の作成](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function)」の手順に従って、関数を作成します。
+1. 「[Azure Blob Storage によってトリガーされる関数の作成](../azure-functions/functions-create-storage-blob-triggered-function.md)」の手順に従って、関数を作成します。
     1. ストレージ アカウントを求められたら、ご自分の Batch アカウントにリンクしたのと同じストレージ アカウントを使用します。
     1. **[ランタイム スタック]** で [.NET] を選択します。 Batch .NET SDK を活用するために、C# で関数を作成します。
 1. BLOB によってトリガーされる関数を作成したら、その関数内で GitHub の [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) および [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) を使用します。
@@ -111,4 +111,4 @@ Storage Explorer からご使用のローカル マシンに出力ファイル�
 
 * .NET API を使用して Batch ワークロードのスケジュール設定と処理を行う他の例については、[GitHub のサンプル](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)を参照してください。 
 
-* Batch ワークロードの実行に使用できる Azure Functions の他のトリガーについては、[Azure Functions のドキュメント](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)を参照してください。
+* Batch ワークロードの実行に使用できる Azure Functions の他のトリガーについては、[Azure Functions のドキュメント](../azure-functions/functions-triggers-bindings.md)を参照してください。

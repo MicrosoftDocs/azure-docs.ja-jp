@@ -54,6 +54,9 @@
         - name: Identity Governance
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: アプリケーションのプロビジョニング
+          tocHref: /azure/active-directory/app-provisioning/
+          topicHref: /azure/active-directory/app-provisioning/
         - name: アプリケーション管理
           tocHref: /azure/active-directory/manage-apps/
           topicHref: /azure/active-directory/manage-apps/
@@ -111,9 +114,22 @@
     - name: Synapse Analytics
       tocHref: /azure/synapse-analytics/
       topicHref: /azure/synapse-analytics/
+    - name: Azure Arc
+      tocHref: /azure/azure-arc/
+      topicHref: /azure/azure-arc/
+      items:
+        - name: Arc 対応 Kubernetes
+          tocHref: /azure/azure-arc/kubernetes/
+          topicHref: /azure/azure-arc/kubernetes/
+        - name: Arc 対応サーバー
+          tocHref: /azure/azure-arc/servers/
+          topicHref: /azure/azure-arc/servers/
     - name: ASC for IoT
       tocHref: /azure/asc-for-iot/
       topicHref: /azure/asc-for-iot/
+    - name: 構成証明
+      tocHref: /azure/attestation/
+      topicHref: /azure/attestation/
     - name: オートメーション
       tocHref: /azure/automation/
       topicHref: /azure/automation/
@@ -438,9 +454,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box ファミリ
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: ストレージ
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Data Box のオフライン転送
           tocHref: /azure/databox/
@@ -463,9 +479,9 @@
     - name: 専用 HSM
       tocHref: /azure/dedicated-hsm/
       topicHref: /azure/dedicated-hsm/
-    - name: Devtest ラボ
-      tocHref: /azure/devtest-lab/
-      topicHref: /azure/devtest-lab/
+    - name: DevTest Labs
+      tocHref: /azure/devtest-labs/
+      topicHref: /azure/devtest-labs/
     - name: FXT Edge Filer
       tocHref: /azure/fxt-edge-filer/
       topicHref: /azure/fxt-edge-filer/
@@ -595,6 +611,9 @@
         - name: Azure Media Player
           tocHref: /azure/media-services/azure-media-player/
           topicHref: /azure/media-services/azure-media-player/
+        - name: Live Video Analytics on IoT Edge
+          tocHref: /azure/media-services/live-video-analytics-edge/
+          topicHref: /azure/media-services/live-video-analytics-edge/
     - name: メッセージング サービス
       tocHref: /azure/messaging-services/
       topicHref: /azure/messaging-services/

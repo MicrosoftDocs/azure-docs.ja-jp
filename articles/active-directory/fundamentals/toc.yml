@@ -11,6 +11,8 @@
       href: whats-new.md
     - name: Microsoft 365 Government の最新情報
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD の新着情報のアーカイブ
+      href: whats-new-archive.md
 - name: クイックスタート
   expanded: true
   items:
@@ -33,8 +35,6 @@
           href: identity-secure-score.md
         - name: リモート ワーカーをセキュリティで保護する
           href: concept-secure-remote-workers.md
-        - name: 継続的アクセス評価
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: グループとユーザー
       items:
         - name: グループとアクセス管理
@@ -47,10 +47,14 @@
       items:
         - name: Azure AD のアーキテクチャ
           href: active-directory-architecture.md
+        - name: すべてのアプリを Azure AD と統合する
+          href: five-steps-to-full-application-integration-with-azure-ad.md
     - name: デプロイ ガイド
       items:
         - name: デプロイ 30、90、およびそれ以降
           href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory のデプロイ計画
+          href: active-directory-deployment-plans.md
     - name: データ ストレージ
       items:
         - name: ヨーロッパ向けの ID データ ストレージ
@@ -82,6 +86,8 @@
           href: add-custom-domain.md
         - name: 会社のブランドを追加する
           href: customize-branding.md
+        - name: '"サインイン状態の維持" の構成'
+          href: keep-me-signed-in.md
         - name: Azure サブスクリプションを関連付ける
           href: active-directory-how-subscriptions-associated-directory.md
         - name: プライバシー情報を追加する
@@ -100,6 +106,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: グループ所有者の追加または削除
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: グループを使用したリソースへのアクセス管理
+          href: active-directory-manage-groups.md
     - name: ユーザー
       items:
         - name: 新しいユーザーの追加または削除
@@ -114,14 +122,10 @@
           href: license-users-groups.md
         - name: 削除済みユーザーの復元
           href: active-directory-users-restore.md
-- name: リソース
+- name: トラブルシューティング
   expanded: true
   items:
     - name: Azure Active Directory のサポートを利用する
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory に関する FAQ
       href: active-directory-faq.md
-    - name: Azure Active Directory のデプロイ計画
-      href: active-directory-deployment-plans.md
-    - name: Azure AD の新着情報のアーカイブ
-      href: whats-new-archive.md

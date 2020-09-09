@@ -1,47 +1,49 @@
 ---
 title: データベースのバックアップと復元 - Azure SQL Edge (プレビュー)
-description: Azure SQL Edge (プレビュー) のバックアップと復元の機能について説明します
+description: Azure SQL Edge (プレビュー) のバックアップと復元の機能について説明します。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5c7bdbc49d8f1c6af7f38911919c660b03e1a37a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667864"
 ---
-# <a name="backup-and-restore-databases-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) でのデータベースのバックアップと復元 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) でのデータベースのバックアップと復元 
 
-Azure SQL Edge は Linux 上の Microsoft SQL Server データベース エンジンの最新バージョンに基づいて構築されており、SQL Server on Linux や コンテナーで実行されている SQL Server で利用できるのと同様のデータベースのバックアップおよび復元機能が提供されます。 バックアップと復元のコンポーネントにより、Azure SQL Edge データベースに格納されているデータを保護するうえで不可欠な保護機能が提供されます。 致命的なデータ損失のリスクを最小限に抑えるには、データベースを定期的にバックアップして、データの変更を定期的に保持することをお勧めします。 十分に計画されたバックアップおよび復元戦略は、さまざまな障害が原因で発生するデータ損失からデータベースを保護します。 一連のバックアップの復元とデータベースの回復を実行することでご自分の戦略をテストして、災害に効率的に対応するための準備を整えてください。
+Azure SQL Edge は、最新バージョンの Linux の Microsoft SQL Server データベース エンジンの上に構築されています。 コンテナーで実行される SQL Server on Linux と SQL Server で使用できるデータベースのバックアップおよび復元機能と同様の機能が提供されます。 バックアップおよび復元コンポーネントにより、Azure SQL Edge データベースに格納されるデータを保護するために不可欠な保護機能が提供されます。 
+
+致命的なデータ損失のリスクを最小限に抑えるために、データベースを定期的にバックアップして、データの変更を定期的に保持する必要があります。 十分に計画されたバックアップおよび復元戦略は、さまざまな障害が原因で発生するデータ損失からデータベースを保護します。 一連のバックアップの復元とデータベースの回復を実行することでご自分の戦略をテストして、災害に効率的に対応するための準備を整えてください。
 
 バックアップが重要である理由の詳細については、「[SQL Server データベースのバックアップと復元](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases/)」をご覧ください。
 
-Azure SQL Edge では、ローカル ストレージまたは Azure BLOB のどちらを使用したバックアップおよび復元もサポートされています。 Azure Blob Storage を使用したバックアップと復元の詳細については、「[Microsoft Azure Blob Storage サービスを使用した SQL Server のバックアップと復元](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/)」と「[SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)」を参照してください。
+Azure SQL Edge では、ローカル ストレージと Azure BLOB の両方を、バックアップと復元の対象として使用できます。 詳細については、「[Azure Blob Storage を使用した SQL Server のバックアップと復元](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/)」と「[SQL Server の URL へのバックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)」をご覧ください。
 
-## <a name="backing-up-a-database-in-azure-sql-edge"></a>Azure SQL Edge でのデータベースのバックアップ
+## <a name="back-up-a-database-in-azure-sql-edge"></a>Azure SQL Edge でデータベースをバックアップする
 
-Azure SQL Edge では、SQL Server でサポートされているのと同じバックアップの種類がサポートされています。 SQL Server でサポートされているバックアップの種類の完全な一覧については、[バックアップの概要](/sql/relational-databases/backup-restore/backup-overview-sql-server/)に関する記事を参照してください。
+Azure SQL Edge では、SQL Server でサポートされているのと同じバックアップの種類がサポートされています。 完全な一覧については、「[バックアップの概要](/sql/relational-databases/backup-restore/backup-overview-sql-server/)」を参照してください。
 
 > [!IMPORTANT] 
-> Azure SQL Edge で作成されたデータベースでは、既定で単純復旧モデルが使用されます。 そのため、これらのデータベースではログ バックアップを実行できません。 これらのデータベースでログ バックアップを実行する必要がある場合は、管理者がデータベースの復旧モデルを完全復旧モデルに変更する必要があります。 SQL Server でサポートされている復旧モデルの完全な一覧については、「[復旧モデルの概要](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov)」を参照してください。
+> Azure SQL Edge で作成されたデータベースでは、既定で単純復旧モデルが使用されます。 そのため、これらのデータベースでログ バックアップを実行することはできません。 これを行う必要がある場合は、データベース復旧モデルを完全復旧モデルに変更する管理者が必要です。 SQL Server でサポートされている復旧モデルの完全な一覧については、「[復旧モデルの概要](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov)」を参照してください。
 
-### <a name="backup-to-local-disk"></a>ローカル ディスクへのバックアップ
+### <a name="back-up-to-local-disk"></a>ローカル ディスクにバックアップする
 
-以下に示す例では、Transact-SQL コマンド BACKUP DATABASE を使って、コンテナー内にデータベースのバックアップを作成します。 この例の目的を示すために、バックアップ ファイルを格納するための "backup" という名前の新しいフォルダーを作成します。
+次の例では、`BACKUP DATABASE` Transact-SQL コマンドを使用して、コンテナー内にデータベースのバックアップを作成します。 この例のために、バックアップ ファイルを格納するための *backup* という名前の新しいフォルダーを作成します。
 
-1. バックアップ用のフォルダーを作成します。 このコマンドは、Azure SQL Edge コンテナーが実行されているホスト上で実行する必要があります。 次のコマンドで、 **<AzureSQLEdge_Container_Name>** をご自分のデプロイの Azure SQL Edge コンテナーの名前に置き換えてください。
+1. バックアップ用のフォルダーを作成します。 Azure SQL Edge コンテナーが実行されているホスト上でこのコマンドを実行します。 次のコマンドの **<AzureSQLEdge_Container_Name>** を、ご自分のデプロイ内の Azure SQL Edge コンテナーの名前に置き換えてください。
 
     ```bash
     sudo docker exec -it <AzureSQLEdge_Container_Name> mkdir /var/opt/mssql/backup
     ```
 
-2. SQL Server Management Studio (SSMS) または Azure Data Studio (ADS) を使用して Azure SQL Edge インスタンスに接続し、BACKUP DATABASE コマンドを実行してユーザー データベースのバックアップを作成します。 次の例では、*IronOreSilicaPrediction* データベースのバックアップを作成します。
+2. SQL Server Management Studio (SSMS) または Azure Data Studio を使用して、Azure SQL Edge インスタンスに接続します。 `BACKUP DATABASE` コマンドを実行して、ユーザー データベースのバックアップを作成します。 次の例では、*IronOreSilicaPrediction* データベースのバックアップを作成します。
 
     ```sql
     BACKUP DATABASE [IronOreSilicaPrediction] 
@@ -51,7 +53,7 @@ Azure SQL Edge では、SQL Server でサポートされているのと同じバ
     GO
     ```
 
-3. このコマンドを実行し、データベースのバックアップに成功した場合は、SSMS または ADS の結果セクションに次のようなメッセージが表示されます。
+3. このコマンドを実行し、データベースのバックアップに成功した場合は、SSMS または Azure Data Studio の結果セクションに次のようなメッセージが表示されます。
 
     ```txt
     10 percent processed.
@@ -71,11 +73,11 @@ Azure SQL Edge では、SQL Server でサポートされているのと同じバ
     Completion time: 2020-04-09T23:54:48.4957691-07:00
     ```
 
-### <a name="backup-to-url"></a>Backup to URL
+### <a name="back-up-to-url"></a>URL にバックアップする
 
-Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバックアップがサポートされています。 ページ BLOB とブロック BLOB の詳細については、「[ブロック BLOB とページ BLOB へのバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)」を参照してください。 次の例では、データベース *IronOreSilicaPrediction* がブロック BLOB にバックアップされます。 
+Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバックアップがサポートされています。 詳細については、「[ブロック BLOB とページ BLOB へのバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)」を参照してください。 次の例では、データベース *IronOreSilicaPrediction* がブロック BLOB にバックアップされます。 
 
-1. ブロック BLOB へのバックアップを構成するための最初の手順は、Azure SQL Edge で SQL Server 資格情報を作成するために使用できる Shared Access Signature (SAS) トークンを生成することです。 このスクリプトでは、保存されているアクセス ポリシーに関連付けられた Shared Access Signature が作成されます。 詳細については、「[Shared Access Signature、第 1 部:SAS モデル](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)に関するページを参照してください。 スクリプトはまた、SQL Server に対する資格情報を作成するのに必要な T-SQL コマンドも書き込みます。 次のスクリプトは、ストレージ アカウントを持つ Azure サブスクリプションとバックアップ用のストレージ コンテナーを既にお持ちであることを前提としています。
+1. ブロック BLOB へのバックアップを構成するには、まず Azure SQL Edge 上に SQL Server 資格情報を作成するために使用できる Shared Access Signature (SAS) トークンを生成します。 このスクリプトでは、保存されているアクセス ポリシーに関連付けられた SAS が作成されます。 詳細については、[共有アクセス署名のパート 1 のSAS モデルの説明](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)に関するページをご覧ください。 スクリプトはまた、SQL Server に対する資格情報を作成するのに必要な T-SQL コマンドも書き込みます。 次のスクリプトは、ストレージ アカウントを持つ Azure サブスクリプションとバックアップ用のストレージ コンテナーを既にお持ちであることを前提としています。
 
     ```PowerShell
     # Define global variables for the script  
@@ -107,9 +109,9 @@ Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバ�
     Write-Host $tSql
     ```
 
-    スクリプトが正常に実行されたら、CREATE CREDENTIAL コマンドをクエリ ツールにコピーし、SQL Server のインスタンスに接続し、コマンドを実行して Shared Access Signature を持つ資格情報を作成します。
+    スクリプトが正常に実行されたら、`CREATE CREDENTIAL` コマンドをクエリ ツールにコピーします。 次に、SQL Server のインスタンスに接続し、コマンドを実行して SAS を使用する資格情報を作成します。
 
-2. SQL Server Management Studio (SSMS) または Azure Data Studio (ADS) を使用して Azure SQL Edge インスタンスに接続し、前の手順のコマンドを使用して資格情報を作成します。 CREATE CREDENTIAL コマンドは、前の手順の実際の出力で置き換えてください。
+2. SSMS または Azure Data Studio を使用して Azure SQL Edge インスタンスに接続し、前の手順のコマンドを使用して資格情報を作成します。 `CREATE CREDENTIAL` コマンドを、前の手順の実際の出力に置き換えてください。
 
     ```sql
     IF NOT EXISTS  
@@ -129,21 +131,21 @@ Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバ�
     GO
     ```
 
-## <a name="restoring-a-database-in-azure-sql-edge"></a>Azure SQL Edge でのデータベースの復元
+## <a name="restore-a-database-in-azure-sql-edge"></a>Azure SQL Edge でデータベースを復元する
 
-Azure SQL Edge では、ローカル ディスク、ネットワークの場所から、または Azure Blob Storage アカウントからの復元がサポートされています。 SQL Server での復元と復旧の概要については、[復元と復旧の概要](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)に関する記事を参照してください。 SQL Server での単純復旧モデルの概要については、「[データベースの全体復元 (単純復旧モデル)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15)」を参照してください。
+Azure SQL Edge では、ローカル ディスク、ネットワークの場所、または Azure BLOB ストレージ アカウントから復元できます。 SQL Server での復元と回復の詳細については、「[復元と復旧の概要](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)」を参照してください。 SQL Server での単純復旧モデルの概要については、「[データベースの全体復元 (単純復旧モデル)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15)」を参照してください。
 
-### <a name="restore-from-local-disk"></a>ローカル ディスクから復元する
+### <a name="restore-from-a-local-disk"></a>ローカル ディスクから復元する
 
-この例では、前の例で実行した *IronOreSilicaPrediction* のバックアップを使用して、別の名前を持つ新しいデータベースとして復元を行います。
+この例では、前の例で作成した *IronOreSilicaPrediction* バックアップを使用します。 次に、別の名前の新しいデータベースとして復元します。
 
-1. データベースのバックアップ ファイルがコンテナー内にまだ存在していない場合は、次のコマンドを使用してコンテナー内にファイルをコピーできます。 次の例は、バックアップ ファイルがローカル ホスト上に存在し、sql1 という名前の Azure SQL Edge コンテナー内の /var/opt/mssql/backup フォルダーにコピーされることを前提としています。
+1. データベースのバックアップ ファイルがコンテナー内にまだ存在していない場合は、次のコマンドを使用してコンテナー内にファイルをコピーできます。 次の例は、バックアップ ファイルがローカル ホスト上に存在し、*sql1* という名前の Azure SQL Edge コンテナー内の /var/opt/mssql/backup フォルダーにコピーされることを前提としています。
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
     ```
 
-2. SQL Server Management Studio (SSMS) または Azure Data Studio (ADS) を使用して Azure SQL Edge インスタンスに接続し、復元コマンドを実行します。 次の例では、**IronOrePredictDB.bak** が復元され、新しいデータベース **IronOreSilicaPrediction_2** が作成されます
+2. SSMS または Azure Data Studio を使用して Azure SQL Edge インスタンスに接続し、復元コマンドを実行します。 次の例では、**IronOrePredictDB.bak** が復元され、新しいデータベース **IronOreSilicaPrediction_2** が作成されます。
 
     ```sql
     Restore FilelistOnly from disk = N'/var/opt/mssql/backup/IronOrePredictDB.bak'
@@ -166,7 +168,7 @@ Azure SQL Edge では、ローカル ディスク、ネットワークの場所�
 
 ### <a name="restore-from-url"></a>URL から復元
 
-Azure SQL Edge では、Azure Storage アカウントからのデータベースの復元もサポートされています。 復元は、ブロック BLOB またはページ BLOB のいずれかのバックアップから実行できます。 次の例では、ブロック BLOB のデータベース バックアップ ファイル *IronOreSilicaPrediction_2020_04_16.bak* を復元して、データベース *IronOreSilicaPrediction_3* が作成されます。
+Azure SQL Edge では、Azure Storage アカウントからのデータベースの復元もサポートされています。 復元は、ブロック BLOB またはページ BLOB のいずれかのバックアップから実行できます。 次の例では、ブロック BLOB のデータベース バックアップ ファイル *IronOreSilicaPrediction_2020_04_16.bak* が復元され、データベース *IronOreSilicaPrediction_3* が作成されます。
 
 ```sql
 RESTORE DATABASE IronOreSilicaPrediction_3

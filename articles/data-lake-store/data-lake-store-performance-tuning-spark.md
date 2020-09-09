@@ -3,15 +3,15 @@ title: パフォーマンス チューニング - Spark と Azure Data Lake Stor
 description: Azure HDInsight での Spark と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイドラインについて説明します。
 author: stewu
 ms.service: data-lake-store
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 665fd3bf29f0ec4d2196bd29be300ee909364e31
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856923"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Spark と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
@@ -55,26 +55,30 @@ I/O 集中型のジョブのコンカレンシーを向上させる一般的な�
 
 **ステップ 3:Executor-cores を設定する** – I/O 集中型ワークロードには複雑な操作がないため、Executor あたりの並列タスク数を増やすために、Executor-cores 数を多く設定して始めると便利です。 適切な出発点として、Executor-cores を 4 に設定します。
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 Executor-cores の数を増やすと多くの並列処理を行うことができます。Executor-cores を変えて試してみてください。 さらに複雑な操作を含むジョブの場合は、Executor あたりのコアの数を減らす必要があります。 Executor-cores を 4 より大きくすると、ガベージ コレクションが非効率的になりパフォーマンスが低下する可能性があります。
 
 **手順 4:クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。 YARN に移動し、[Configs]\(構成\) タブを表示します。YARN メモリは、このウィンドウに表示されます。
 ウィンドウには、既定の YARN コンテナーのサイズも表示されます。 YARN コンテナーのサイズは、Executor パラメーターごとのメモリと同じです。
 
-    Total YARN memory = nodes * YARN memory per node
+YARN メモリの合計 = ノード数 * ノードごとの YARN メモリ
+
 **手順 5:Num-executors を計算する**
 
 **メモリの制約を計算する** - Num-executors パラメーターは、メモリまたは CPU のいずれかで指定します。 メモリの制約は、アプリケーションで使用可能な YARN メモリの量によって決まります。 合計 YARN メモリを取得し、Executor-memory で除算します。 制約は、アプリの数に応じてスケールを小さくする必要があるため、アプリの数で除算します。
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps
+メモリの制約 = (YARN メモリの合計 / Executor メモリ) / アプリの数
+
 **CPU の制約を計算する** - CPU の制約は、Executor あたりのコアの数で除算した合計仮想コア数として計算します。 各物理コアに対して仮想コアは 2 つあります。 メモリの制約と同様に、アプリの数で除算しました。
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+仮想コア数 = (クラスター内のノード数 * ノード内の物理コア数 * 2) CPU の制約 = (仮想コア数の合計 / Executor ごとのコア数) / アプリの数
+
 **Num-executors を設定する** – Num-executors パラメーターは、最小限のメモリの制約と、CPU の制約から決定されます。 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)
-Num-executors を大きな数に設定してもパフォーマンスは必ずしも増加しません。 Executor をさらに追加すると、追加された各 Executor に余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。 Num-executors は、クラスター リソースによって制限されます。
+num-executors = Min (仮想コアの合計 / Executor ごとのコア数, 使用可能な YARN メモリ / Executor-memory) num-executors の数をより多く設定しても、パフォーマンスが向上するとは限りません。 Executor をさらに追加すると、追加された各 Executor に余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。 Num-executors は、クラスター リソースによって制限されます。
 
 ## <a name="example-calculation"></a>計算例
 
@@ -84,30 +88,28 @@ Num-executors を大きな数に設定してもパフォーマンスは必ずし
 
 **手順 2:Executor-memory を設定する** – この例では、I/O 負荷の高いジョブには、6GB の Executor-memory で十分だと判断します。
 
-    executor-memory = 6GB
+```console
+executor-memory = 6GB
+```
+
 **ステップ 3:Executor-cores を設定する** – これは I/O 負荷の高いジョブであるため、各 Executor のコア数は 4 に設定できます。 Executor あたりのコア数を 4 より大きくすると、ガベージ コレクションの問題が発生する可能性があります。
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 **手順 4:クラスターの YARN メモリの量を決定する** – 各 D4v2 が 25 GB の YARN メモリを持つことを確認するために Ambari に移動します。 8 つのノードがあるため、使用可能な YARN メモリ量は 8 を乗算して求めます。
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25 GB = 200 GB
+YARN メモリの合計 = ノード数 * ノードごとの YARN メモリ* YARN メモリの合計 = 8 ノード * 25 GB = 200 GB
+
 **手順 5:Num-executors を計算する** – Num-executors パラメーターは、最小メモリの制約と CPU の制約を Spark で実行されるアプリの数で除算して求めます。
 
 **メモリの制約を計算する** – メモリの制約は、Executor あたりのメモリで除算した YARN メモリの合計として計算します。
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps 
-    Memory constraint = (200 GB / 6 GB) / 2
-    Memory constraint = 16 (rounded)
-**CPU の制約を計算する** - CPU の制約は、Executor あたりのコアの数で除算した合計 yarn コア数として計算します。
-    
-    YARN cores = nodes in cluster * # of cores per node * 2
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+メモリの制約 = (YARN メモリの合計 / Executor メモリ) / アプリの数 メモリの制約 = (200 GB / 6 GB) / 2 メモリの合計 = 16 (丸めた値) **CPU の制約を計算する** - CPU の制約は、yarn コアの合計を Executor ごとのコア数で除算して計算します。
+
+YARN コア数 = クラスター内のノード数 * ノードごとのコア数 * 2 YARN コア数 = 8 ノード * D14 ごとの 8 コア * 2 = 128 CPU の制約 = (YARN コアの合計 / Executor ごとのコア数) / アプリの数 CPU の制約 = (128 / 4) / 2 CPU の制約 = 16
+
 **Num-executors を設定する**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16
+num-executors = Min (メモリの制約, CPU の制約) num-executors = Min (16, 16) num-executors = 16

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4541874a9e8fc4111e5c65d02f07535c4d14f9f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829875"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>プライベート クラウド環境をセキュリティで保護する方法
 
@@ -29,7 +29,7 @@ CloudSimple サービスの作成には、Azure サブスクリプションの**
 
 以後、CloudSimple サービスの表示と CloudSimple ポータルの起動は、このリソース グループの**所有者**と**共同作成者**の特権を持つユーザーに限定されます。
 
-RBAC の詳細については、「[Azure リソースのロールベースのアクセス制御 (RBAC) の概要](../role-based-access-control/overview.md)」を参照してください。
+詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>プライベート クラウドの vCenter の RBAC
 

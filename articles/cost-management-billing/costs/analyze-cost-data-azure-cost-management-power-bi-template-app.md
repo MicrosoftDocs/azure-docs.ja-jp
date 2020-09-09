@@ -3,24 +3,28 @@ title: Power BI アプリを使用して Azure のコストを分析する
 description: この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 050df590827b94888c44826ac6391ff79ada1cfc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461601"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685053"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
 この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。 このアプリは、Power BI で Azure のコストを分析および管理するのに役立ちます。 このアプリを使用して、コストや使用傾向を監視し、支出を削減するためのコスト最適化オプションを特定することができます。
 
-このアプリは Power BI Desktop にダウンロードします。 このアプリはそのまま使用することも、既定のフィルター、ビュー、視覚化を拡張して必要に応じてカスタマイズすることもできます。 次に、これを使用して追加データを結合し、カスタマイズされたレポートを作成して、全体的なビジネス コストを総合的に把握します。
+このアプリはそのまま使用することも、既定のフィルター、ビュー、視覚化を拡張して必要に応じてカスタマイズすることもできます。 次に、これを使用して追加データを結合し、カスタマイズされたレポートを作成して、全体的なビジネス コストを総合的に把握します。
 
 Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) をお持ちのお客様のみサポートしています。
+
+> [!NOTE]
+> Power BI テンプレート アプリでは、PBIX ファイルのダウンロードをサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -127,6 +131,27 @@ _[Normalized Size]\(正規化されたサイズ\)_ と _[Recommended Quantity No
 ## <a name="troubleshoot-problems"></a>問題のトラブルシューティング
 
 Power BI アプリに問題がある場合は、次のトラブルシューティング情報が役立つ場合があります。
+
+### <a name="error-processing-the-data-in-the-dataset"></a>データセット内のデータの処理中のエラー
+
+次のエラーが表示される場合があります。
+
+```
+There was an error when processing the data in the dataset.
+Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError","pbi.error":{"code":"ModelRefresh_ShortMessage_ProcessingError","parameters":{},"details":[{"code":"Message","detail":{"type":1,"value":"We cannot convert the value \"Required Field: 'Enr...\" to type List."}}],"exceptionCulprit":1}}} Table: <TableName>.
+```
+
+`<TableName>` ではなくテーブル名が表示されます。
+
+#### <a name="cause"></a>原因
+
+`Enrollment Number` の既定の **[範囲]** 値が、Cost Management への接続で変更されました。
+
+#### <a name="solution"></a>解決策
+
+Cost Management に再接続し、 **[範囲]** 値を `Enrollment Number` に設定します。 組織の登録番号を入力するのではなく、次の図に示すように正確に「`Enrollment Number`」と入力します。
+
+![EA 登録情報を入力する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
 ### <a name="budgetamount-error"></a>BudgetAmount エラー
 

@@ -1,22 +1,22 @@
 ---
-title: FAQ - Azure Synapse Analytics
-description: Azure Synapse Analytics に関する FAQ
+title: FAQ - Azure Synapse Analytics (ワークスペース プレビュー)
+description: Azure Synapse Analytics (ワークスペース プレビュー) の FAQ
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287500"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (ワークスペース プレビュー) のよく寄せられる質問
+# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (ワークスペース プレビュー) のよく寄せられる質問
 
 このガイドでは、Synapse Analytics についてよく寄せられる質問を紹介します。
 
@@ -33,14 +33,7 @@ A:Azure Synapse は、BI、AI、および継続的インテリジェンスのた
 - エンジンをまたいでメタデータを管理する。 Spark テーブルを作成すると、ご自分の Azure Synapse データベースでそれを自動的に使用できるようになります。
 - 一元的なユーザー エクスペリエンスを通じてデータを操作する。 Synapse Studio では、ビッグ データ開発者、データ エンジニア、DBA、データ アナリスト、データ サイエンティストが同じプラットフォームに集約されます。
 
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>Q:Azure Synapse Analytics の使用を開始するにはどうすればよいですか
-
-A:Azure Synapse Analytics の使用を開始するには、[Synapse ワークスペース](https://portal.azure.com) (無料) を作成して、そのワークスペースで必要なリソースを作成します。 [Synapse SQL プールの作成](quickstart-create-sql-pool.md)や[ワークスペースの作成](quickstart-create-workspace.md)など、Microsoft のいずれかのクイックスタート チュートリアルに沿って作業できます。これらでは、シンプルなユース ケースについて説明しています。 
-
-また、Microsoft の[リポジトリ](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)にあるサンプルのノートブックと SQL スクリプトもご利用いただけます。 公開されているデータセットに接続する必要がある場合は、次の属性を使用して、新しいリンクされたサービスを作成します。
-
-- azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" (write **""** )
+詳しくは、[Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is) に関する記事をご覧ください。
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>Q:Azure Synapse Analytics の主なコンポーネントは何ですか
 
@@ -57,6 +50,10 @@ A:Azure Synapse には次の機能があります。
 A:Azure Synapse Analytics は Azure SQL Data Warehouse を分析プラットフォームへと進化させたもので、SQL プールをデータ ウェアハウス ソリューションとして備えています。 このプラットフォームは、データの探索、インジェスト、変換、準備、およびサービスを提供する分析レイヤーを兼ね備えています。
 
 ## <a name="use-cases"></a>ユース ケース
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>Q:Azure Synapse では、どのように公開されているアーティファクト (データセット、ノートブック、SQL スクリプトなど) を名前変更するのですか
+
+A:公開されているアーティファクト ファイルを名前変更するには、まずファイルを複製し、新しいファイルの名前を好みの名前に変更します。 アーティファクトを参照しているすべてのファイルの名前を、手動で新しいものに更新し、古いファイルを削除する必要があります。
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>Q:Synapse SQL プールに適したユース ケースを教えてください
 
@@ -94,9 +91,9 @@ A:データ フローを使用すると、データ エンジニアは、コー�
 
 A:エンドツーエンドのシングル サインオン エクスペリエンスが、Synapse Analytics において重要な認証プロセスです。 完全な AAD 統合を通じた ID の管理とパススルーは必須です。
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>Q:ADLSg2 のファイルとフォルダーにアクセスするにはどうすればよいですか
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>Q:ADLS Gen2 のファイルとフォルダーにアクセスするにはどうすればよいですか
 
-A:ファイルとフォルダーへのアクセスは現在、ADLSg2 を通じて管理されています。 詳しくは、[Data Lake ストレージのアクセス制御](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+A:ファイルとフォルダーへのアクセスは現在、ADLS Gen2 を通じて管理されています。 詳しくは、[Data Lake ストレージのアクセス制御](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 
 ### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>Q:Azure Synapse Analytics へのアクセスにサードパーティのビジネス インテリジェンス ツールを使用できますか
 
@@ -106,6 +103,6 @@ A:はい。Tableau や Power BI など、サードパーティのビジネス �
 
 - [ワークスペースを作成する](quickstart-create-workspace.md)
 - [Synapse Studio を使用する](quickstart-synapse-studio.md)
-- [SQL プールを作成する](quickstart-create-sql-pool.md)
+- [SQL プールを作成する](quickstart-create-sql-pool-portal.md)
 - [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
-- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md) 
+- [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md) 

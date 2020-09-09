@@ -15,21 +15,21 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255472"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833319"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>1 つの Azure リージョン内での SAP HANA の可用性
-この記事では、1 つの Azure リージョン内での複数の可用性シナリオについて説明します。 Azure には多くのリージョンがあり、世界中に分散しています。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。 1 つの Azure リージョン内の VM に SAP HANA をデプロイする場合は、Microsoft から単一の VM と HANA インスタンスのデプロイが提供されています。 可用性を高める場合は、可用性のために HANA システム レプリケーションを使う 2 つの VM と 2 つの HANA インスタンスを [Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)内にデプロイできます。 
+この記事では、1 つの Azure リージョン内での複数の可用性シナリオについて説明します。 Azure には多くのリージョンがあり、世界中に分散しています。 Azure リージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。 1 つの Azure リージョン内の VM に SAP HANA をデプロイする場合は、Microsoft から単一の VM と HANA インスタンスのデプロイが提供されています。 可用性を高める場合は、可用性のために HANA システム レプリケーションを使う 2 つの VM と 2 つの HANA インスタンスを [Azure 可用性セット](../../windows/tutorial-availability-sets.md)内にデプロイできます。 
 
-現在、Azure では、[Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) を提供しています。 この記事では、Availability Zones の詳細については説明しません。 可用性セットと Availability Zones の使用に関する一般的な議論について取り上げています。
+現在、Azure では、[Azure Availability Zones](../../../availability-zones/az-overview.md) を提供しています。 この記事では、Availability Zones の詳細については説明しません。 可用性セットと Availability Zones の使用に関する一般的な議論について取り上げています。
 
 Availability Zones が提供される Azure リージョンには複数のデータ センターがあります。 データセンターは、電源、冷却装置、およびネットワークの供給からは独立しています。 1 つの Azure リージョン内で異なるゾーンを提供する理由は、提供されている 2 つまたは 3 つの Availability Zones にアプリケーションをデプロイするためです。 異なるゾーンにデプロイすることで、1 つの可用性ゾーンのインフラストラクチャのみに影響する電源やネットワークの問題が発生した場合に、Azure リージョン内のアプリケーションのデプロイは引き続き機能します。 容量は一部、減少する可能性があります。 たとえば、1 つのゾーン内の VM は失われる可能性がありますが、他の 2 つのゾーン内の VM は引き続き稼働して実行されます。 
  
-Azure 可用性セットは、論理グループ作成機能であり、この機能によって、可用性セット内に配置された VM リソースは、Azure データセンター内にデプロイされるときに、確実に互いに障害分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 一部の Azure ドキュメントでは、この構成を異なる[更新ドメインと障害ドメイン](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)への配置と呼んでいます。 通常は、1 つの Azure データ センター内に配置されます。 アプリケーションがデプロイされているデータ センターが電源やネットワークの問題の影響を受けた場合、1 つの Azure リージョン内のすべての容量が影響を受けます。
+Azure 可用性セットは、論理グループ作成機能であり、この機能によって、可用性セット内に配置された VM リソースは、Azure データセンター内にデプロイされるときに、確実に互いに障害分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 一部の Azure ドキュメントでは、この構成を異なる[更新ドメインと障害ドメイン](../../windows/manage-availability.md)への配置と呼んでいます。 通常は、1 つの Azure データ センター内に配置されます。 アプリケーションがデプロイされているデータ センターが電源やネットワークの問題の影響を受けた場合、1 つの Azure リージョン内のすべての容量が影響を受けます。
 
 Azure Availability Zones を構成するデータ センターの配置は、異なるゾーンにデプロイされたサービス間の許容できるネットワーク待機時間と、データ センター間の距離を比較検討して決定されます。 理想は、自然災害によって、1 つのリージョン内のすべての Availability Zones の電源、ネットワーク、インフラストラクチャが影響を受けないことです。 ただし、非常に大きな自然災害が発生した場合、Availability Zones は、1 つのリージョン内で必要とする可用性を必ずしも提供できない可能性があります。 2017 年 9 月 20 日にプエルトリコ島に上陸したハリケーン Maria を考えてみてください。 ハリケーンによって、幅 90 マイルの島でほぼ 100% の停電が発生しました。
 
@@ -82,7 +82,7 @@ Azure 可用性セット内の 2 つの Azure VM を使用するときに、2 �
 
 この設定は、優れた RPO (Recovery Point Objective) および RTO (Recovery Time Objective) 時間の実現には、あまり適していません。 特に RTO 時間は、コピーされたバックアップを使用して、データベース全体を完全に復元する必要があるため、困難が生じます。 ただし、このセットアップは、メイン インスタンスでの意図しないデータ削除からの復旧には役立ちます。 この設定では、特定時点への復元、データ抽出、メイン インスタンスへの削除されたデータのインポートが、いつでも可能です。 そのため、バックアップ コピーの手法を他の高可用性機能と組み合わせて使用すると、有効な場合があります。 
 
-バックアップをコピーするときは、SAP HANA インスタンスが実行されているメインの VM よりも、小さい VM を使用することもできます。 VM が小さいと、接続できる VHD の数は少なくなることに留意してください。 個別の VM タイプの制限については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)」をご覧ください。
+バックアップをコピーするときは、SAP HANA インスタンスが実行されているメインの VM よりも、小さい VM を使用することもできます。 VM が小さいと、接続できる VHD の数は少なくなることに留意してください。 個別の VM タイプの制限については、「[Azure の Linux 仮想マシンのサイズ](../../sizes.md)」をご覧ください。
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>自動フェールオーバーを伴わない SAP HANA システム レプリケーション
 
@@ -108,7 +108,7 @@ Azure 可用性セット内の 2 つの Azure VM を使用するときに、2 �
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>自動フェールオーバーを伴う SAP HANA システム レプリケーション
 
-1 つの Azure リージョン内の標準的かつ最も一般的な可用性の構成では、SLES Linux を実行する 2 つの Azure VM でフェールオーバー クラスターが定義されています。 SLES Linux クラスターは、[Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) フレームワークと [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) デバイスの組み合わせが基になっています。 
+1 つの Azure リージョン内の標準的かつ最も一般的な可用性の構成では、SLES Linux を実行する 2 つの Azure VM でフェールオーバー クラスターが定義されています。 SLES Linux クラスターは、[Pacemaker](./high-availability-guide-suse-pacemaker.md) フレームワークと [STONITH](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) デバイスの組み合わせが基になっています。 
 
 SAP HANA の観点から、使用されるレプリケーション モードは同期され、自動フェールオーバーが構成されます。 第 2 の VM では、SAP HANA インスタンスはホット スタンバイ ノードとして機能します。 スタンバイ ノードは、プライマリ SAP HANA インスタンスから変更レコードの同期ストリームを受け取ります。 HANA プライマリ ノードでアプリケーションによってトランザクションがコミットされると、プライマリ HANA ノードは、セカンダリ SAP HANA ノードがコミット レコードを受信したことを確認するまで、アプリケーションへのコミットの確認を待機します。 SAP HANA では 2 つの同期レプリケーション モードを提供しています。 これら 2 つの同期レプリケーション モード間の違いに関する詳細および説明については、SAP の記事「[Replication modes for SAP HANA System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)」(SAP HANA システム レプリケーションのレプリケーション モード) をご覧ください。
 
@@ -127,5 +127,4 @@ Azure でのこれらの構成の設定手順については、以下をご覧�
 
 複数の Azure リージョン間での SAP HANA の可用性の詳細については、以下をご覧ください。
 
-- [Azure リージョンの枠を越えた SAP HANA の可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
-
+- [Azure リージョンの枠を越えた SAP HANA の可用性](./sap-hana-availability-across-regions.md) 

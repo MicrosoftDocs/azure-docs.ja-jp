@@ -4,19 +4,19 @@ description: カスタム条件付きアクセス ポリシーを作成する
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2834fd3d4901b6394eabe000f9efc572c2efd497
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755086"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049266"
 ---
 # <a name="conditional-access-block-access"></a>条件付きアクセス:アクセスのブロック
 
@@ -38,7 +38,7 @@ ms.locfileid: "80755086"
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-次の手順では、ユーザーが信頼できるネットワークにいない場合に [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) を除くすべてのアプリへのアクセスをブロックする条件付きアクセス ポリシーを作成します。 これらのポリシーは[レポート専用モード](howto-conditional-access-report-only.md)となり、管理者が既存のユーザーに与える影響を判断できるようになります。 意図したとおりにポリシーが適用されていることを確認したら、管理者はそのポリシーを**オン**に切り替えることができます。
+次の手順では、ユーザーが信頼できるネットワークにいない場合に [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) を除くすべてのアプリへのアクセスをブロックする条件付きアクセス ポリシーを作成します。 これらのポリシーは[レポート専用モード](howto-conditional-access-insights-reporting.md)となり、管理者が既存のユーザーに与える影響を判断できるようになります。 意図したとおりにポリシーが適用されていることを確認したら、管理者はそのポリシーを**オン**に切り替えることができます。
 
 最初のポリシーでは、信頼できる場所にいない場合、Office 365 アプリケーションを除くすべてのアプリへのアクセスをブロックします。
 
@@ -84,6 +84,6 @@ ms.locfileid: "80755086"
 
 [Conditional Access common policies](concept-conditional-access-policy-common.md) (条件付きアクセスの一般的なポリシー)
 
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)

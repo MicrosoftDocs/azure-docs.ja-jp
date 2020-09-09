@@ -1,26 +1,26 @@
 ---
-title: Microsoft コマーシャル マーケットプレースで Azure アプリ オファーのレビュー フィードバックを処理する
-description: Microsoft パートナー センターのコマーシャル マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために Azure アプリ オファーのレビュー フィードバックを処理する方法。
-author: dsindona
-ms.author: dsindona
+title: Azure アプリ オファーを確認する - Microsoft コマーシャル マーケットプレース
+description: Microsoft Azure Marketplace レビュー チームからの Azure アプリケーション オファーのフィードバックを処理する方法。 Azure DevOps のフィードバックには、パートナー センターの資格情報を使用してアクセスできます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744879"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320104"
 ---
-# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>Azure Marketplace で公開する前に Azure アプリ オファーのレビュー フィードバックを処理する
+# <a name="handling-review-feedback-for-azure-application-offers"></a>Azure アプリケーション オファーのレビュー フィードバックの処理
 
-この記事では、Microsoft Azure Marketplace レビュー チームが使用する Azure DevOps 環境にアクセスする方法について説明します。 **Microsoft のレビュー** ステップで Azure アプリケーション オファーに重大な問題が見つかった場合は、このシステムにサインインして、それらの問題に関する詳細な情報 (レビュー フィードバック) を表示できます。 これらの問題をすべて修正した後、Azure Marketplace に引き続きオファーを発行するには、オファーを再送信する必要があります。 次の図は、このフィードバック プロセスと発行プロセスの関係を示しています。
+この記事では、[Azure DevOps](https://azure.microsoft.com/services/devops/) 環境で Microsoft Azure Marketplace レビュー チームからのフィードバックにアクセスする方法について説明します。 **Microsoft のレビュー** ステップで Azure アプリケーション オファーに重大な問題が見つかった場合は、このシステムにサインインして、それらの問題に関する詳細な情報 (レビュー フィードバック) を表示できます。 問題をすべて修正した後、Azure Marketplace に引き続きオファーを発行するには、オファーを再送信する必要があります。 次の図は、このフィードバック プロセスと発行プロセスの関係を示しています。
 
 ![フィードバック プロセスのレビュー](./media/review-feedback-process.png)
 
-通常、レビューの問題はプルリクエスト (PR) と呼ばれます。 各 PR は、問題に関する詳細を含むオンラインの [Azure DevOps](https://azure.microsoft.com/services/devops/) (旧称 Visual Studio Team Services (VSTS)) 項目にリンクされています。 次の図は、レビュー中に問題が見つかった場合のパートナー センターのエクスペリエンスの例を示しています。 
+通常、レビューの問題はプル リクエスト (PR) と呼ばれます。 各 PR は、問題に関する詳細を含むオンラインの Azure DevOps 項目にリンクされています。 次の図は、レビュー中に問題が見つかった場合のパートナー センターのエクスペリエンスの例を示しています。 
 
 ![発行状態](./media/publishing-status.png)
 
@@ -30,40 +30,23 @@ ms.locfileid: "82744879"
 
 パートナー センターの "開発者" ロールにアクセスできるすべてのユーザーは、フィードバックのレビューで参照されている PR 項目を表示するためのアクセス権を持ちます。
 
-<!---
-To view the PR items referenced in review feedback, publishers must first be granted proper authorization. Otherwise, new publishers receive a 401 - Not Authorized response page when trying to view PRs. To request access to this Azure DevOps repository, perform the following steps:
-
-1. Collect the following information:
-    * Your publisher name and ID
-    * Offer type (Azure app), offer name, and SKU ID
-    * The pull request link, for example: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`. This URL can be retrieved from the notification message or the address of the 401 response page.
-    * The email address(es) of the individuals from your publishing organization that you want access granted to. This list should include the owner address(es) you provided when registering as a publisher on the Cloud Partner Portal (or Partner Center??).
-1. Create a support incident. In the title bar of the Cloud Partner Portal (??), select the **Help** button, then choose **Support** from the menu. Your default web browser should launch and navigate to the Microsoft new support incident page. (You may have to sign in first.)
-1. Specify the **Problem type** as **marketplace onboarding** and **Category** as **Access problem**, then select **Start request**.
-
-    ![Create an incident](./media/create-an-incident.png)
-
-1. In **Step 1 of 2** page, supply your contact information and select **Continue**.
-1. In **Step 2 of 2** page, specify an incident title (for example Request Azure DevOps access) and supply the information you collected in the first step (above). Read and accept the agreement, then select **Submit**.
-
-If the incident creation was successful, a confirmation page is displayed. Save the confirmation information on this page for your reference. The Microsoft Support Team should reply to your access request within a few business days. --->
-
 ## <a name="reviewing-the-pull-request"></a>プルリクエストの確認
 
 プルリクエストに記述されている問題を確認するには、次の手順を使用します。
 
-1. [発行手順] フォームの **[Microsoft によるレビュー]** セクションで、PR リンクをクリックしてブラウザーを起動し、この PR の **[概要]** (ホーム) ページに移動します。 次の図は、Contoso のサンプル アプリ オファーの重大な問題のホーム ページの例を示しています。 このページには、Azure アプリで検出されたレビューの問題に関する有用な概要情報が含まれています。
+1. [発行手順] フォームの **[Microsoft によるレビュー]** セクションで、PR リンクを選択してブラウザーを起動し、この PR の **[概要]** (ホーム) ページに移動します。 次の図は、Contoso のサンプル アプリ オファーの重大な問題のホーム ページの例を示しています。 このページには、Azure アプリで検出されたレビューの問題に関する有用な概要情報が含まれています。
 
     [![pull request のホーム ページ](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
-    <br/> *拡大するには画像をクリックしてください。*
+    <br/> "*拡大するには画像をクリックしてください。* "
 
-1. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージをクリックして (この例では、**Policy Validation failed\(ポリシーの検証に失敗しました\)** )、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。 通常、エラーはログ ファイルの下部に表示されます。
+1. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージを選択して (この例では、**Policy Validation failed\(ポリシーの検証に失敗しました\)** )、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。 通常、エラーはログ ファイルの下部に表示されます。
+
 1. ホーム ページの左側にあるメニューで、**ファイル**を選択して、このオファーの技術資産を構成するリスト ファイルを表示します。 検出された重大な問題について説明するコメントが Microsoft のレビュー担当者によって追加されているはずです。 次の例では、2 つの問題が検出されました。
 
     [![pull request のホーム ページ](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
-    <br/> *拡大するには画像をクリックしてください。*
+    <br/> "*拡大するには画像をクリックしてください。* "
 
-1. 左側のツリーで各コメント ノードをクリックして、周囲のコードのコンテキスト内のコメントに移動します。 チームのプロジェクト内のソース コードを修正し、コメントで説明されている問題を修正します。
+1. 左側のツリーで各コメント ノードを選択して、周囲のコードのコンテキスト内のコメントに移動します。 チームのプロジェクト内のソース コードを修正し、コメントで説明されている問題を修正します。
 
 >[!Note]
 >レビュー チームの Azure DevOps 環境内でオファーの技術資産を編集することはできません。 パブリッシャーの場合、これは含まれているソース コードに対して読み取り専用の環境です。 ただし、Microsoft のレビュー チームのために、コメントに対する返信を残しておくことができます。

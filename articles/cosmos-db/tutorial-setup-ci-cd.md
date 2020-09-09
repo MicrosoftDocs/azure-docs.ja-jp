@@ -3,16 +3,17 @@ title: Azure Cosmos DB エミュレーター ビルド タスクを使用して 
 description: Azure DevOps で Cosmos DB エミュレーター ビルド タスクを使用してビルドとリリースのワークフローを設定する方法のチュートリアル
 author: deborahc
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 605fba03e65d4200d0f1e18219e892ec6d207bc4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410950"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019319"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -26,26 +27,26 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 ビルド タスクを使用するには、最初にそれを Azure DevOps 組織にインストールする必要があります。 [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) で拡張機能 **Azure Cosmos DB Emulator** を見つけて、 **[Get it free]\(無料で入手\)** をクリックします。
 
-![Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする](./media/tutorial-setup-ci-cd/addExtension_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする":::
 
 次に、拡張機能のインストール先となる組織を選択します。 
 
 > [!NOTE]
 > 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-![拡張機能のインストール先となる Azure DevOps 組織を選択する](./media/tutorial-setup-ci-cd/addExtension_2.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="拡張機能のインストール先となる Azure DevOps 組織を選択する":::
 
 ## <a name="create-a-build-definition"></a>ビルド定義の作成
 
-拡張機能をインストールしたら、Azure DevOps アカウントにサインインし、プロジェクト ダッシュボードから目的のプロジェクトを見つけます。 [ビルド パイプライン](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)をプロジェクトに追加するか、既存のビルド パイプラインを変更することができます。 ビルド パイプラインが既にある場合は、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
+拡張機能をインストールしたら、Azure DevOps 組織にサインインし、プロジェクト ダッシュボードから目的のプロジェクトを見つけます。 [ビルド パイプライン](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)をプロジェクトに追加するか、既存のビルド パイプラインを変更することができます。 ビルド パイプラインが既にある場合は、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
 
 1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 \> **[新しいビルド パイプライン]**
 
-   ![新しいビルド パイプラインを作成する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="新しいビルド パイプラインを作成する":::
 
 2. 目的の**ソース**、**チーム プロジェクト**、**リポジトリ**、および**手動のビルドとスケジュールされたビルドの既定のブランチ**を選択します。 必要なオプションを選択した後、 **[続行]** を選択します
 
-   ![ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する":::
 
 3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 
@@ -65,9 +66,27 @@ Start-CosmosDbEmulator
 
 1. 次に、エミュレーター ビルド タスクを追加するために、エージェント ジョブの横にある **[+]** 記号を選択します。 検索ボックスで **cosmos** を検索し、**Azure Cosmos DB Emulator** を選択してエージェント ジョブに追加します。 このビルド タスクは、Cosmos DB エミュレーターのインスタンスが既に実行されている状態でコンテナーを起動します。 Azure Cosmos DB Emulator タスクは、エミュレーターが実行状態であることを想定している他のタスクの前に配置する必要があります。
 
-   ![エミュレーター ビルド タスクをビルド定義に追加する](./media/tutorial-setup-ci-cd/addExtension_3.png)
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="エミュレーター ビルド タスクをビルド定義に追加する":::
 
 このチュートリアルでは、テストの実行前にエミュレーターを使用できるようにするために、先頭にタスクを追加します。
+
+### <a name="add-the-task-using-yaml"></a>YAML を使用してタスクを追加する
+
+この手順は省略可能ですが、YAML タスクを使用して CI/CD パイプラインを設定する場合は必須となります。 その場合は、次のコードに示すように YAML タスクを定義してください。
+
+```yml
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator'
+
+- script: yarn test
+  displayName: 'Run API tests (Cosmos DB)'
+  env:
+    HOST: $(CosmosDbEmulator.Endpoint)
+    # Hardcoded key for emulator, not a secret
+    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    # The emulator uses a self-signed cert, disable TLS auth errors
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+```
 
 ## <a name="configure-tests-to-use-the-emulator"></a>エミュレーターを使用するテストの構成
 
@@ -140,39 +159,21 @@ namespace todo.Tests
 
 Visual Studio Test タスクの [実行オプション] に移動します。 **[設定ファイル]** オプションで、 **.runsettings** ファイルを使用して構成されたテストを指定します。 **[テスト実行パラメーターのオーバーライド]** オプションで、「`-endpoint $(CosmosDbEmulator.Endpoint)`」と入力します。 これを行うことで、 **.runsettings** ファイルで定義されたエンドポイントではなく、エミュレーター ビルド タスクのエンドポイントを参照するよう、Test タスクが構成されます。  
 
-![エミュレーター ビルド タスクのエンドポイントを使ってエンドポイント変数をオーバーライドする](./media/tutorial-setup-ci-cd/addExtension_5.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="エミュレーター ビルド タスクのエンドポイントを使ってエンドポイント変数をオーバーライドする":::
 
 ## <a name="run-the-build"></a>ビルドを実行します
 
 次に、ビルドを**保存してキューに登録**します。 
 
-![ビルドを保存して実行する](./media/tutorial-setup-ci-cd/runBuild_1.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="ビルドを保存して実行する":::
 
 ビルドが開始されたら、Cosmos DB エミュレーター タスクによって、エミュレーターがインストールされた Docker イメージのプルが開始されたことを確認します。 
 
-![ビルドを保存して実行する](./media/tutorial-setup-ci-cd/runBuild_4.png)
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="ビルドを保存して実行する":::
 
 ビルドが完了したら、ビルド タスクの後に Cosmos DB エミュレーターに対してすべてのテストが実行され、成功することを確認します。
 
-![ビルドを保存して実行する](./media/tutorial-setup-ci-cd/buildComplete_1.png)
-
-## <a name="set-up-using-yaml"></a>YAML を使用して設定する
-
-YAML タスクを使用して CI/CD パイプラインを設定する場合は、次のコードに示すように YAML タスクを定義できます。
-
-```yml
-- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
-  displayName: 'Run Azure Cosmos DB Emulator'
-
-- script: yarn test
-  displayName: 'Run API tests (Cosmos DB)'
-  env:
-    HOST: $(CosmosDbEmulator.Endpoint)
-    # Hardcoded key for emulator, not a secret
-    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
-    # The emulator uses a self-signed cert, disable TLS auth errors
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
-```
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="ビルドを保存して実行する":::
 
 ## <a name="next-steps"></a>次のステップ
 

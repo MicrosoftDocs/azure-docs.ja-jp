@@ -1,18 +1,19 @@
 ---
-title: Chocolatey を使用した Azure Automation State Configuration の継続的配置
-description: Azure Automation State Configuration と Chocolatey パッケージ マネージャーを使用した DevOps の継続的配置について説明します。 完全な JSON の Resource Manager テンプレートと PowerShell ソースの例が含まれます。
+title: Chocolatey を使用した Azure Automation の継続的なデプロイを設定する
+description: この記事では、State Configuration と Chocolatey パッケージ マネージャーを使用した継続的なデプロイを設定する方法について説明します。
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: references_regions
+ms.openlocfilehash: 87504625c298c4fb858ff90430d707081e87cd5a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996119"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186573"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Automation State Configuration と Chocolatey を使用して仮想マシンに継続的配置を提供する
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Chocolatey を使用して継続的配置を設定する
 
 DevOps 環境には、継続的インテグレーション パイプラインのさまざまなポイントで役に立つ多くのツールがあります。 Azure Automation [State Configuration](automation-dsc-overview.md) は、DevOps チームが採用できる新たに追加された待望のオプションです。 
 
@@ -209,10 +210,8 @@ Get-AzAutomationDscCompilationJob `
 
 ## <a name="next-steps"></a>次のステップ
 
-- 概要については、[Azure Automation State Configuration](automation-dsc-overview.md) に関するページをご覧ください。
-- 使用を開始するには、「[Azure Automation State Configuration の使用開始](automation-dsc-getting-started.md)」をご覧ください。
-- DSC 構成をコンパイルしてターゲット ノードに割り当てることができるようにする方法の詳細については、「[Azure Automation State Configuration での構成のコンパイル](automation-dsc-compile.md)」をご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+- 概要については、[Azure Automation State Configuration の概要](automation-dsc-overview.md)に関するページを参照してください。
+- この機能の使用を開始するには、「[Azure Automation State Configuration の使用を開始する](automation-dsc-getting-started.md)」を参照してください。
+- DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
-- 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ](automation-dsc-cd-chocolatey.md)」をご覧ください。

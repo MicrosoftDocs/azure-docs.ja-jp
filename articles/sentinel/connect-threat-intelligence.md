@@ -5,19 +5,20 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: security-center
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529096"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84769875"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
@@ -70,7 +71,7 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
 2. 登録されたアプリケーションに対する [API アクセス許可を構成](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph)します。登録したアプリケーションに、Microsoft Graph アプリケーションのアクセス許可 **ThreatIndicators.ReadWrite.OwnedBy** を追加します。
 
-3. 組織に登録されているアプリケーションに対して管理者の同意を許可するよう、Azure Active Directory テナント管理者に依頼します。 Azure ポータルで次の手順を実行します。 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **\<_アプリ名_>**  >  **[API アクセス許可の表示]**  >  **[\<_テナント名_> に管理者の同意を与えます]** 。
+3. 組織に登録されているアプリケーションに対して管理者の同意を許可するよう、Azure Active Directory テナント管理者に依頼します。 Azure ポータルで次の手順を実行します。 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **\<_app name_>**  >  **[API アクセス許可の表示]**  >  **[\<_tenant name_> に管理者の同意を与えます]** 。
 
 4. 以下を指定することにより、Azure Sentinel にインジケーターを送信するように、Microsoft Graph Security tiIndicators API との直接統合を使用する TIP 製品またはアプリを構成します。
     

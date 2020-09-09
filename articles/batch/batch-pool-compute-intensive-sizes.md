@@ -3,12 +3,12 @@ title: Batch でのコンピューティング集中型 Azure VM の使用
 description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779758"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147343"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -20,9 +20,9 @@ ms.locfileid: "83779758"
 
 この記事では、Batch プールで Azure の特殊なサイズを使用するためのガイダンスと例を示します。 仕様と背景については、以下をご覧ください。
 
-* ハイ パフォーマンス コンピューティング VM のサイズ ([Linux](../virtual-machines/linux/sizes-hpc.md)、[Windows](../virtual-machines/windows/sizes-hpc.md)) 
+* ハイ パフォーマンス コンピューティング VM のサイズ ([Linux](../virtual-machines/sizes-hpc.md)、[Windows](../virtual-machines/sizes-hpc.md)) 
 
-* GPU 対応 VM サイズ ([Linux](../virtual-machines/linux/sizes-gpu.md)、[Windows](../virtual-machines/windows/sizes-gpu.md)) 
+* GPU 対応 VM サイズ ([Linux](../virtual-machines/sizes-gpu.md)、[Windows](../virtual-machines/sizes-gpu.md)) 
 
 > [!NOTE]
 > 特定の VM サイズは、Batch アカウントを作成したリージョンで使用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」および [Batch プールの VM サイズの選択](batch-pool-vm-sizes.md)に関するページをご覧ください。
@@ -35,7 +35,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
+| [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
 | [NC、NCv2、NCv3、NDv2 シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Ubuntu 16.04 LTS、または<br/>CentOS 7.3 または 7.4<br/>(Azure Marketplace) | NVIDIA CUDA または CUDA Toolkit ドライバー | 該当なし | 
 | [NV、NVv2 シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、または<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID ドライバー | 該当なし |
 
@@ -127,7 +127,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>例:Windows H16r VM プールの Microsoft MPI
 
-Azure H16r VM ノードのプールで Windows MPI アプリケーションを実行するには、HpcVmDrivers 拡張機能を構成し、[Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) をインストールする必要があります。 必要なドライバーとソフトウェアがインストールされたカスタムの Windows Server 2016 イメージをデプロイする手順の例を次に示します。
+Azure H16r VM ノードのプールで Windows MPI アプリケーションを実行するには、HpcVmDrivers 拡張機能を構成し、[Microsoft MPI](/message-passing-interface/microsoft-mpi) をインストールする必要があります。 必要なドライバーとソフトウェアがインストールされたカスタムの Windows Server 2016 イメージをデプロイする手順の例を次に示します。
 
 1. Windows Server 2016 を実行する Azure H16r VM をデプロイします。 たとえば、米国西部リージョンに VM を作成します。 
 2. Azure サブスクリプションに接続するクライアント コンピューターから [Azure PowerShell コマンドを実行して](../virtual-machines/sizes-hpc.md)、または Azure Cloud Shell を使用して、HpcVmDrivers 拡張機能を VM に追加します。 
@@ -163,6 +163,6 @@ Batch API または Azure portal で、このイメージを使い、必要な�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Batch プールで MPI ジョブを実行する方法については、[Windows](batch-mpi.md) または [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) の例を参照してください。
+* Azure Batch プールで MPI ジョブを実行する方法については、[Windows](batch-mpi.md) または [Linux](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch) の例を参照してください。
 
 * Batch の GPU ワークロードの例については、[Batch Shipyard](https://github.com/Azure/batch-shipyard/) レシピを参照してください。

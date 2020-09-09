@@ -1,6 +1,7 @@
 ---
-title: JavaScript シングルページ アプリのチュートリアル- Microsoft ID プラットフォーム | Azure
-description: JavaScript SPA アプリケーションで、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
+title: JavaScript シングルページ アプリのチュートリアル | Azure
+titleSuffix: Microsoft identity platform
+description: このチュートリアルでは、JavaScript シングルページ アプリ (SPA) で、Microsoft ID プラットフォームによって発行されるアクセス トークンを必要とする API を呼び出す方法について説明します。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: aaddev, identityplatformtop40, devx-track-javascript
+ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181564"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118197"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -25,8 +26,8 @@ ms.locfileid: "82181564"
 - アクセス トークンの取得
 - *Microsoft ID プラットフォーム エンドポイント*のアクセス トークンを必要とする Microsoft Graph API などの API の呼び出し
 
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、「[クイックスタート: JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する](quickstart-v2-javascript.md)」から始めることをお勧めします。
+>[!TIP]
+> このチュートリアルでは MSAL.js v1.x を使用します。これは、シングルページ アプリケーションに対して暗黙的な許可フローを使用するように制限されています。 すべての新しいアプリケーションでは代わりに、[PKCE および CORS がサポートされる MSAL.js 2.x と承認コード フロー](tutorial-v2-javascript-auth-code.md)を使用することをお勧めします。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -56,13 +57,26 @@ ms.locfileid: "82181564"
 
 * このガイドの手順は、Node.js で構築された Web サーバーに基づいています。 統合開発環境 (IDE) としては [Visual Studio Code](https://code.visualstudio.com/download) の使用をお勧めします。
 
+* 最新の Web ブラウザー この JavaScript サンプルでは [ES6](http://www.ecma-international.org/ecma-262/6.0/) の規約を使用しているため、**Internet Explorer** はサポート**されません**。
+
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
 [Node.js](https://nodejs.org/en/download/) がインストールされていることを確認し、アプリケーションをホストするフォルダーを作成します。 そこに、`index.html` ファイルを提供する簡単な [Express](https://expressjs.com/) Web サーバーを実装します。
 
-1. まず、Visual Studio Code 統合ターミナルを使用して、ご使用のプロジェクト フォルダーを検索し、NPM を使用して Express をインストールします。
+1. ターミナル (Visual Studio Code 統合ターミナルなど) を使用して、プロジェクト フォルダーを検索し、次のように入力します。
 
-1. 次に、`server.js` という名前の .js ファイルを作成し、次のコードを追加します。
+   ```console
+   npm init
+   ```
+
+2. 次に、必要な依存関係をインストールします。
+
+   ```console
+   npm install express --save
+   npm install morgan --save
+   ```
+
+1. `index.js` という名前の .js ファイルを作成し、次のコードを追加します。
 
    ```JavaScript
    const express = require('express');
@@ -269,7 +283,7 @@ ms.locfileid: "82181564"
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js でリダイレクト URL を設定する
 >
-> Node.js の場合は、Web サーバーのポートを *server.js* ファイルで設定できます。 このチュートリアルでは、ポート 3000 を使用しますが、使用可能なその他の任意のポートを使用できます。
+> Node.js の場合は、Web サーバーのポートを *index.js* ファイルで設定できます。 このチュートリアルでは、ポート 3000 を使用しますが、使用可能なその他の任意のポートを使用できます。
 >
 > アプリケーション登録情報の中にリダイレクト URL を設定するには、 **[アプリケーションの登録]** ウィンドウに切り替え、以下のいずれかを行います。
 >
@@ -309,8 +323,8 @@ ms.locfileid: "82181564"
 
  各値の説明:
  - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの**アプリケーション (クライアント) ID** です。
- - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)」を参照してください。
- - *\<Enter_the_Tenant_info_here>* は、次のオプションのいずれかに設定されます。
+ - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
+ - *\<Enter_the_Tenant_info_here>* には、次のオプションのいずれかを設定します。
    - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を**テナント ID** または**テナント名** (例: *contoso.microsoft.com*) に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。
@@ -412,7 +426,7 @@ ms.locfileid: "82181564"
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-`acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 最初に `loginPopup` (または `loginRedirect`) を実行した後、後続の呼び出しでは、通常、`acquireTokenSilent` メソッドを使用して、保護されたリソースにアクセスするためのトークンを取得します  (トークンを要求または更新するための呼び出しは自動的に行われます)。場合によっては、`acquireTokenSilent` が失敗することがあります。 たとえば、ユーザーのパスワードの期限が切れている場合です。 アプリケーションでは、この例外を 2 つの方法で処理できます。
+`acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 最初に `loginPopup` (または `loginRedirect`) を実行した後、後続の呼び出しでは、通常、`acquireTokenSilent` メソッドを使用して、保護されたリソースにアクセスするためのトークンを取得します (トークンを要求または更新するための呼び出しは自動的に行われます)。場合によっては、`acquireTokenSilent` が失敗することがあります。 たとえば、ユーザーのパスワードの期限が切れている場合です。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
 1. すぐに `acquireTokenPopup` を呼び出し、ユーザー サインイン プロンプトをトリガーします。 オンライン アプリケーション (ユーザーが使用できる非認証コンテンツが含まれていないアプリケーション) の場合は、一般に、この方法で処理します。 このガイドの設定で生成したサンプルでは、このパターンを使用しています。
 
@@ -433,7 +447,7 @@ ms.locfileid: "82181564"
    ```
 
    各値の説明:
-   - *\<Enter_the_Graph_Endpoint_Here>* は、MS Graph API のインスタンスです。 グローバル MS Graph API エンドポイントの場合は、この文字列を `https://graph.microsoft.com` に置き換えるだけでかまいません。 国内クラウド デプロイの場合は、[Graph API のドキュメント](https://docs.microsoft.com/graph/deployments)を参照してください。
+   - *\<Enter_the_Graph_Endpoint_Here>* は、MS Graph API のインスタンスです。 グローバル MS Graph API エンドポイントの場合は、この文字列を `https://graph.microsoft.com` に置き換えるだけでかまいません。 国内クラウド デプロイの場合は、[Graph API のドキュメント](/graph/deployments)を参照してください。
 
 1. 次に、`graph.js` という名前の .js ファイルを作成します。このファイルには、Microsoft Graph API の REST 呼び出しを記述することになります。次のコードを追加します。
 
@@ -496,7 +510,5 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 > [!NOTE]
 > スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
-
-バックエンド API でスコープを必要としない (推奨されません) 場合は、トークンを取得するための呼び出しでスコープとして *clientId* を使用できます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -1,30 +1,25 @@
 ---
 title: Windows Virtual Desktop の診断の問題 - Azure
 description: Windows Virtual Desktop の診断機能を使用して問題を診断する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.topic: troubleshooting
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cffc6393ef6f5c1a33be615d9d5d4b8729ab711f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611859"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121410"
 ---
-# <a name="identify-and-diagnose-issues"></a>問題の特定と診断
+# <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Windows Virtual Desktop 問題を特定し、診断する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトと Spring 2020 更新プログラムの組み合わせに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)を参照してください。
 
 Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Windows Virtual Desktop の診断機能の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics.md)」を参照してください。
-  
+
 診断ロール サービス自体が Windows Virtual Desktop の一部であるため、Windows Virtual Desktop に到達しない接続は診断結果に表示されません。 Windows Virtual Desktop 接続の問題は、エンドユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
 
 ## <a name="common-error-scenarios"></a>一般的なエラー シナリオ
@@ -65,6 +60,14 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 |8|ConnectionBroken|クライアントとゲートウェイまたはサーバーとの間の接続が削除されました。 予期せず発生した場合を除き、アクションは不要です。|
 |14|UnexpectedNetworkDisconnect|ネットワークへの接続が削除されました。 ユーザーにもう一度接続するよう依頼してください。|
 |24|ReverseConnectFailed|ホスト仮想マシンには、RD ゲートウェイへの直接の見通し線がありません。 ゲートウェイ IP アドレスを解決できることを確認してください。|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>エラー:アプリ グループにユーザー割り当てを追加できない
+
+アプリ グループにユーザーを割り当てた後に、"セッションが終了している" または "認証の問題が発生している (拡張機能 Microsoft_Azure_WVD)" ことを示す警告が Azure portal に表示されます。 そして、割り当てページは読み込まれず、その後、Azure portal 全体 (Azure Monitor、Log Analytics、Service Health など) でページの読み込みが停止します。
+
+**原因:** 条件付きアクセス ポリシーに問題があります。 Azure portal は、SharePoint Online に依存する Microsoft Graph のトークンを取得しようとしています。 お客様には、データ ストレージにアクセスするための使用条件に同意することをユーザーに求める "Microsoft Office 365 Data Storage Terms of Use" という条件付きアクセス ポリシーがあります。 しかし、まだサインインしていないため、Azure portal はトークンを取得できません。
+
+**解決策:** Azure portal にサインインする前に、まず、管理者が SharePoint にサインインして使用条件に同意する必要があります。 その後、通常のように Azure portal にサインインできるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: 移動エラーを解決する
 description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60e4ffb2b79fcce85fa4b316e68e191eb14f8bf0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75891271"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055089"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング
 
@@ -18,8 +18,8 @@ ms.locfileid: "75891271"
 
 実際に Azure サブスクリプションをアップグレードする場合 (無料から従量課金制への切り替えなど)、お使いのサブスクリプションを変換する必要があります。
 
-* 無料試用版をアップグレードするには、「[無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする](../../billing/billing-upgrade-azure-subscription.md)」をご覧ください。
-* 従量課金制のアカウントを変更するには、「[Azure の従量課金制サブスクリプションを別のオファーに変更する](../../billing/billing-how-to-switch-azure-offer.md)」をご覧ください。
+* 無料試用版をアップグレードするには、「[無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする](../../cost-management-billing/manage/upgrade-azure-subscription.md)」をご覧ください。
+* 従量課金制のアカウントを変更するには、「[Azure の従量課金制サブスクリプションを別のオファーに変更する](../../cost-management-billing/manage/switch-azure-offer.md)」をご覧ください。
 
 サブスクリプションを変換できない場合は、[Azure サポート要求を作成](../../azure-portal/supportability/how-to-create-azure-support-request.md)してください。 問題の種類として **[サブスクリプション管理]** を選択します。
 

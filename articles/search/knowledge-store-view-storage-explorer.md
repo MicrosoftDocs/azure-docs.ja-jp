@@ -1,24 +1,21 @@
 ---
-title: Storage Explorer を使ってナレッジ ストア (プレビュー) を表示する
+title: Storage Explorer でナレッジ ストアを表示する
 titleSuffix: Azure Cognitive Search
-description: Azure portal の Storage Explorer で Azure Cognitive Search のナレッジ ストアを表示して分析します。 ナレッジ ストアは現在、パブリック プレビューの段階です。
+description: Azure portal の Storage Explorer で Azure Cognitive Search のナレッジ ストアを表示して分析します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: ba0b02067c032f9038051c169866588ded44af73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754073"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566023"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
-
-> [!IMPORTANT] 
-> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 この記事では、Azure portal の Storage Explorer を使用してナレッジ ストアに接続し、探索する方法を例を用いて説明します。
 

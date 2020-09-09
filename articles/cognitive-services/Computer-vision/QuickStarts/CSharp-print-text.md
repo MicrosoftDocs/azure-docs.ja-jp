@@ -1,36 +1,38 @@
 ---
-title: クイック スタート:印刷されたテキストの抽出 (OCR) - REST、C#
+title: クイック スタート:Computer Vision 2.0 REST API の OCR 操作と C# を使用してテキストを抽出する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、C# と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
+description: このクイックスタートでは、Computer Vision REST API の OCR 操作と C# を使って、画像からテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/11/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 2afec329204e6ae3eb0f04fbc51acd8b4c7ca7f5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: seodec18, devx-track-dotnet
+ms.openlocfilehash: 52241972e283db1c5e000e1e9f5d655dfdd9c8a3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405130"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928192"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>クイック スタート:Computer Vision の REST API と C# を使用して印刷されたテキスト (OCR) を抽出する
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>クイック スタート:Computer Vision 2.0 REST API の OCR 操作と C# を使用してテキストを抽出する
 
-> [!NOTE]
-> 英語のテキストを抽出する場合は、新しい[読み取り操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)の使用を検討してください。 [C# のクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)を使用できます。 
+> [!IMPORTANT]
+> 英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、スペイン語、簡易字中国語 (プレビュー) のテキストを抽出する場合は、新しい [Read 操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)の使用をお勧めします。 [C# のクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)を使用できます。 
 
-このクイックスタートでは、Computer Vision の REST API を使用して、光学式文字認識 (OCR) で印刷されたテキストを抽出します。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 機能を使って画像内の印字されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
+このクイックスタートでは、Computer Vision REST API の [OCR 操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)機能を使って、印刷されたテキストを画像から抽出します。 この操作を使用すると、画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
-- Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 以降が必要です
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* キーとエンドポイント URL 用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ## <a name="create-and-run-the-sample-application"></a>サンプル アプリケーションを作成して実行する
 

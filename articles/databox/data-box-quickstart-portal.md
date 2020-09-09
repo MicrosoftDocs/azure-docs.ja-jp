@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box のクイック スタート | Microsoft Docs
-description: Azure portal からすばやく Azure Data Box をデプロイする方法の学習
+description: このクイックスタートでは、インポート注文用に Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 Azure Data Box を構成し、データをコピーして Azure にアップロードします。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 04343f684539307957cd635822ba1ba5a1ce24c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313775"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924514"
 ---
-# <a name="get-started-with-azure-data-box"></a>Azure Data Box を使ってみる 
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Azure にデータをインポートするために Azure Data Box の使用を開始する
 
 ::: zone target="docs"
 
-このクイック スタートでは、Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 手順には、ケーブル接続、構成、および Azure にアップロードするためにデータを Data Box にコピーする方法が含まれます。 クイック スタートは、Azure portal およびデバイスのローカル Web UI で行われます。
+このクイック スタートでは、インポート注文用に Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 手順には、ケーブル接続、構成、および Azure にアップロードするためにデータを Data Box にコピーする方法が含まれます。 このクイック スタートの手順は、Azure portal およびデバイスのローカル Web UI 上で実行します。
 
 デプロイと追跡に関する詳しい手順については、「[チュートリアル: Azure Data Box を注文する](data-box-deploy-ordered.md)」を参照してください
 
@@ -28,7 +28,7 @@ ms.locfileid: "76313775"
 
 ::: zone target="chromeless"
 
-このガイドでは、Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 手順には、前提条件の確認、デバイスのケーブル接続と接続、Azure にアップロードするデータのデバイスへのコピー作業が含まれます。
+このガイドでは、Azure portal を使用してインポート用に Azure Data Box をデプロイする方法について説明します。 手順には、前提条件の確認、デバイスのケーブル接続と接続、Azure にアップロードするデータのデバイスへのコピー作業が含まれます。
 
 ::: zone-end
 

@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: daa549e248668add54530e90174134c4e0059b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 17dd83ba7df469e12e0569e670d71b9068bb2a9f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76276837"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297520"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションを開始、停止、削除する
 
@@ -29,7 +30,7 @@ ms.locfileid: "76276837"
 ## <a name="using-the-azure-cli"></a>Azure CLI の使用
 
 > [!NOTE]
-> オプションのパラメーターを使用して、Azure CLI で既定値を構成できます。 Azure CLI の詳細については、[リファレンス ドキュメント](spring-cloud-cli-reference.md)を参照してください。  
+> オプションのパラメーターを使用して、Azure CLI で既定値を構成できます。 Azure CLI の詳細については、[リファレンス ドキュメント](/cli/azure/ext/spring-cloud/spring-cloud?view=azure-cli-latest)を参照してください。  
 
 まず、次のように Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします。
 

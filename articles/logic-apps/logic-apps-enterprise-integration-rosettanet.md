@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072589"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の RosettaNet メッセージを交換する
 
@@ -82,7 +82,7 @@ PIP プロセス構成を統合アカウントに追加するには、次の手�
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **名前** | はい | PIP 名 |
-   | **PIP コード** | はい | 3 桁の PIP コード。 詳細については、[RosettaNet PIP](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips) を参照してください。 |
+   | **PIP コード** | はい | 3 桁の PIP コード。 詳細については、[RosettaNet PIP](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips) を参照してください。 |
    | **PIP バージョン** | はい | 選択した PIP コードに基づいて利用可能な PIP バージョン番号 |
    ||||
 

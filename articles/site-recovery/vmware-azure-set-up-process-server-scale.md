@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228907"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292809"
 ---
 # <a name="scale-with-additional-process-servers"></a>追加のプロセス サーバーによるスケール
 
@@ -52,7 +52,7 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 次のように、プロセス サーバーのインストール ファイルをダウンロードします。
 
 1. Azure Portal にさサインインし、Recovery Services コンテナーを参照します。
-2. **[Site Recovery インフラストラクチャ]**  >  **[VMware and Physical Machines] (VMware と物理マシン)**  >  **[構成サーバー]** ([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。
+2. **[Site Recovery インフラストラクチャ]**  >  **[VMware and Physical Machines] (VMware と物理マシン)**  >  **[構成サーバー]** ([For VMware & Physical Machines] \(VMware および物理マシン\) の下) に移動します。
 3. 構成サーバーを選択して、サーバーの詳細に移動します。 次に、 **[+ プロセス サーバー]** をクリックします。
 4. **[プロセス サーバーの追加]**  >   **[プロセス サーバーのデプロイ先を選択してください]** で、 **[スケールアウト プロセス サーバーをオンプレミスにデプロイします]** を選択します。
 
@@ -74,7 +74,7 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 次のコマンドを実行してインストールします。
 
 ```
-UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMware/NonVMware>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
 ```
 
 ここで、コマンドライン パラメーターは次のとおりです。
@@ -86,7 +86,7 @@ UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCred
 ```
 MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 cd C:\Temp\Extracted
-UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
+UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMware" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
 ```
 ### <a name="create-a-proxy-settings-file"></a>プロキシ設定ファイルを作成する
 

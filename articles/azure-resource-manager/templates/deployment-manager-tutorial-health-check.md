@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 765c73a3ab8d5fa8939abe597d0141b24b59ac52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76152479"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86058029"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>チュートリアル:Azure Deployment Manager で正常性チェックを使用する (パブリック プレビュー)
 
@@ -35,7 +35,7 @@ ms.locfileid: "76152479"
 
 その他のリソース:
 
-* [Azure Deployment Manager REST API リファレンス](https://docs.microsoft.com/rest/api/deploymentmanager/)
+* [Azure Deployment Manager REST API リファレンス](/rest/api/deploymentmanager/)
 * [Azure Deployment Manager サンプル](https://github.com/Azure-Samples/adm-quickstart)。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
@@ -58,7 +58,7 @@ CreateADMRollout.Parameters.json を開き、**projectName** と **artifactSourc
 
 ## <a name="create-a-health-check-service-simulator"></a>正常性チェック サービス シミュレーターの作成
 
-運用環境では、通常 1 つまたは複数の監視プロバイダーを使用します。 Microsoft は、正常性統合を可能な限り簡単にするために、サービス正常性監視のトップ企業と連携して、正常性チェックをデプロイと統合するための簡単なコピー/貼り付けソリューションを提供しています。 これらの企業の一覧については、[正常性監視プロバイダー](./deployment-manager-health-check.md#health-monitoring-providers)に関するページを参照してください。 このチュートリアルでは、正常性監視サービスをシミュレーションするための [Azure 関数](/azure/azure-functions/)を作成します。 この関数は、状態コードを受け取り、同じコードを返します。 Azure Deployment Manager テンプレートは、その状態コードを使用して、デプロイを進める方法を決定します。
+運用環境では、通常 1 つまたは複数の監視プロバイダーを使用します。 Microsoft は、正常性統合を可能な限り簡単にするために、サービス正常性監視のトップ企業と連携して、正常性チェックをデプロイと統合するための簡単なコピー/貼り付けソリューションを提供しています。 これらの企業の一覧については、[正常性監視プロバイダー](./deployment-manager-health-check.md#health-monitoring-providers)に関するページを参照してください。 このチュートリアルでは、正常性監視サービスをシミュレーションするための [Azure 関数](../../azure-functions/index.yml)を作成します。 この関数は、状態コードを受け取り、同じコードを返します。 Azure Deployment Manager テンプレートは、その状態コードを使用して、デプロイを進める方法を決定します。
 
 次の 2 つのファイルは、Azure 関数をデプロイするために使用します。 チュートリアルを進めるためにこれらのファイルをダウンロードする必要はありません。
 
@@ -369,4 +369,4 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Deployment Manager の正常性チェック機能を使用する方法について学習しました。 詳細は、「[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)」を参照してください。
+このチュートリアルでは、Azure Deployment Manager の正常性チェック機能を使用する方法について学習しました。 詳細は、「[Azure Resource Manager のドキュメント](../index.yml)」を参照してください。

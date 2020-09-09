@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f14f006283b7430458d67d2bd3bee787c08411d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663260"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326020"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor での Agent Health ソリューション
 Azure において Agent Health ソリューションを使用すると、Azure Monitor の Log Analytics ワークスペースに対して、または Azure Monitor に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、応答していないエージェントと運用データを送信しているエージェントを把握するのに役立ちます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
 
 ## <a name="prerequisites"></a>前提条件
-このソリューションをデプロイする前に、現在サポートされている [Windows エージェント](../../log-analytics/log-analytics-windows-agent.md)が、Log Analytics ワークスペースに対して、またはワークスペースに統合されている [Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)に対して報告を行っていることを確認してください。
+このソリューションをデプロイする前に、現在サポートされている [Windows エージェント](../platform/agent-windows.md)が、Log Analytics ワークスペースに対して、またはワークスペースに統合されている [Operations Manager 管理グループ](../platform/om-agents.md)に対して報告を行っていることを確認してください。
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 このソリューションは次のリソースで構成されています。これらのリソースは、ワークスペースに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。
@@ -28,7 +28,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 * Microsoft System Center Advisor HealthAssessment Direct Channel インテリジェンス パック (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel インテリジェンス パック (Microsoft.IntelligencePacks.HealthAssessmentViaServer)  
 
-ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」を参照してください。
+ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../platform/om-agents.md)」を参照してください。
 
 ## <a name="configuration"></a>構成
 [ソリューションの追加](solutions.md)に関するページの手順に従って、Agent Health ソリューションを Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
@@ -111,3 +111,4 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 ## <a name="next-steps"></a>次のステップ
 
 * ログ クエリからのアラートの生成について詳しくは、[Azure Monitor でのアラート](../platform/alerts-overview.md)に関する記事をご覧ください。 
+

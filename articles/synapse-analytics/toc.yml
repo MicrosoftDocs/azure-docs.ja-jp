@@ -6,6 +6,26 @@
   items:
     - name: Azure Synapse Analytics とは
       href: overview-what-is.md
+    - name: 開始するには
+      items:
+        - name: はじめに
+          href: get-started.md
+        - name: 1 Synapse ワークスペースを作成する
+          href: get-started-create-workspace.md
+        - name: 2 SQL プールを使用して分析する
+          href: get-started-analyze-sql-pool.md
+        - name: 3 Spark を使用して分析する
+          href: get-started-analyze-spark.md
+        - name: 4 SQL オンデマンドを使用して分析する
+          href: get-started-analyze-sql-on-demand.md
+        - name: 5 ストレージ アカウント内のデータを分析する
+          href: get-started-analyze-storage.md
+        - name: 6 パイプラインを使用したオーケストレーション
+          href: get-started-pipelines.md
+        - name: 7 Power BI で視覚化する
+          href: get-started-visualize-power-bi.md
+        - name: 8 監視する
+          href: get-started-monitor.md
     - name: チート シート
       href: overview-cheat-sheet.md
     - name: よく寄せられる質問
@@ -14,9 +34,13 @@
       href: release-notes.md
 - name: クイックスタート
   items:
-    - name: Azure Synapse ワークスペースを作成する
+    - name: Azure portal を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace.md
-    - name: Azure Synapse Studio を使用する
+    - name: テンプレートを使用したデプロイ
+      href: quickstart-deployment-template-workspaces.md
+    - name: Azure CLI を使用して Synapse ワークスペースを作成する
+      href: quickstart-create-workspace-cli.md
+    - name: Synapse Studio を使用する
       href: quickstart-synapse-studio.md
     - name: Power BI ワークスペースをリンクする
       href: quickstart-power-bi.md
@@ -36,6 +60,8 @@
       items:
         - name: COPY ステートメント
           href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: COPY ステートメントのサンプル
+          href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Studio
           href: quickstart-load-studio-sql-pool.md
     - name: SQL オンデマンドを使用する
@@ -44,8 +70,6 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: チュートリアル
   items:
-    - name: はじめに
-      href: get-started.md
     - name: Spark プールに対して Apache Spark アプリケーションを実行する
       href: ./spark/intellij-tool-synapse.md
     - name: Spark ジョブ定義
@@ -54,10 +78,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: データ サイエンティスト
       items:
-        - name: NYC タクシーの予測のヒント
+        - name: Azure AutoML を使用して回帰実験を実行する
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Apache Spark MLlib を使用して分類モデルを作成する
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: 追加のライブラリを使用して Apache Spark を補強する
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: データ アナリスト
       items:
         - name: オンデマンドで SQL を使用して分析し、Synapse Studio を使用して視覚化する
@@ -104,6 +128,8 @@
               href: ./spark/apache-spark-history-server.md
     - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: ネットワークのセキュリティ
           items:
             - name: Synapse ワークスペースの IP ファイアウォール規則
@@ -140,20 +166,6 @@
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Bring Your Own Key を使用した TDE
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Advanced Data Security
-          items:
-            - name: SQL プール
-              items:
-                - name: 概要
-                  href: ../sql-database/sql-database-advanced-data-security.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: データの検出と分類
-                  href: ../sql-database/sql-database-data-discovery-and-classification.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 脆弱性評価
-                  href: ../sql-database/sql-vulnerability-assessment.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 高度な脅威保護
-                  href: ../sql-database/sql-database-threat-detection-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 監査
-                  href: ../sql-database/sql-database-auditing.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 統合とオーケストレーション
       items:
         - name: パイプラインとアクティビティ
@@ -194,18 +206,28 @@
               href: ./spark/apache-spark-overview.md
             - name: Apache Spark の概念
               href: ./spark/apache-spark-concepts.md
-            - name: ランタイム言語とライブラリのサポート
-              href: ./spark/apache-spark-version-support.md
             - name: Delta Lake とは
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Delta Lake 機能の概要
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark のパフォーマンス
               href: ./spark/apache-spark-performance.md
+            - name: Hyperspace のインデックスを使用した Apache Spark のパフォーマンス最適化
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Apache Spark の自動スケール動作
               href: ./spark/apache-spark-autoscale.md
         - name: 開発
           items:
+            - name: ライブラリ
+              items:
+                - name: ライブラリの追加と管理
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: ランタイム言語とライブラリのサポート
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio ノートブック
               href: ./spark/apache-spark-development-using-notebooks.md
+            - name: TokenLibrary を使用した資格情報のセキュリティ保護
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
             - name: .NET for Apache Spark
               href: ./spark/spark-dotnet.md
             - name: Apache Spark 機械学習
@@ -232,14 +254,16 @@
               href: sql/best-practices-sql-on-demand.md
             - name: SQL プールのベスト プラクティス
               href: sql/best-practices-sql-pool.md
-        - name: データの読み込み
+        - name: データの取り込みと準備
           items:
             - name: 概要
-              href: sql/data-loading-overview.md
+              href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: ベスト プラクティス
               href: sql/data-loading-best-practices.md
             - name: 列ストア圧縮
               href: sql/data-load-columnstore-compression.md
+            - name: データ読み込みの概要
+              href: sql/load-data-overview.md
         - name: 開発
           items:
             - name: 概要
@@ -256,6 +280,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 結果セットのキャッシュ
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning 予測
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: テーブル
               items:
                 - name: 概要
@@ -372,8 +398,10 @@
       items:
         - name: パイプライン実行
           href: monitoring/how-to-monitor-pipeline-runs.md
-        - name: Spark アプリケーション
+        - name: Apache Spark アプリケーション
           href: monitoring/how-to-monitor-spark-applications.md
+        - name: Apache Spark アプリケーションの詳細
+          href: monitoring/apache-spark-applications.md
         - name: Synapse SQL
           items:
             - name: Gen2 キャッシュの監視
@@ -394,7 +422,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Gen2 へのアップグレード
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: データの読み込み
+    - name: データの取り込みと準備
       items:
         - name: データ ウェアハウスへ
           items:
@@ -409,7 +437,7 @@
                 - name: SSIS
                   href: /sql/integration-services/load-data-to-sql-data-warehouse
                 - name: ニューヨークのタクシー データ
-                  href: ./sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  href: ./sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Contoso のパブリック データ
                   href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: WideWorldImporters の読み込み
@@ -426,6 +454,8 @@
               href: data-integration/data-integration-data-lake.md
     - name: データの変換と分析
       items:
+        - name: 配列と入れ子になった構造体の分析
+          href: how-to-analyze-complex-schema.md
         - name: Synapse Link
           items:
             - name: Synapse Link の構成
@@ -434,6 +464,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: ストレージ内のデータのクエリ
@@ -522,6 +554,8 @@
               href: ../data-factory/format-avro.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Blob Storage
               href: ../data-factory/connector-azure-blob-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Azure Cognitive Search
+              href: ../data-factory/connector-azure-search.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Cosmos DB SQL API
               href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Cosmos DB の MongoDB 用 API
@@ -540,13 +574,11 @@
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure File Storage
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure Search
-              href: ../data-factory/connector-azure-search.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL データベース
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL Database マネージド インスタンス
+            - name: Azure SQL Managed Instance
               href: ../data-factory/connector-azure-sql-database-managed-instance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SQL Data Warehouse
+            - name: Azure Synapse Analytics (旧称 SQL Data Warehouse)
               href: ../data-factory/connector-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Table Storage
               href: ../data-factory/connector-azure-table-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -554,6 +586,8 @@
               href: ../data-factory/format-binary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Cassandra
               href: ../data-factory/connector-cassandra.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Common Data Model 形式
+              href: ../data-factory/format-common-data-model.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Common Data Service for Apps
               href: ../data-factory/connector-dynamics-crm-office-365.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Concur
@@ -572,10 +606,14 @@
               href: ../data-factory/connector-dynamics-ax.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Dynamics CRM
               href: ../data-factory/connector-dynamics-crm-office-365.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Excel 形式
+              href: ../data-factory/format-excel.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: ファイル システム
               href: ../data-factory/connector-file-system.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: FTP
               href: ../data-factory/connector-ftp.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: GitHub
+              href: ../data-factory/connector-github.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Google AdWords
               href: ../data-factory/connector-google-adwords.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Google BigQuery
@@ -633,6 +671,8 @@
               href: ../data-factory/connector-oracle-responsys.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Oracle Service Cloud
               href: ../data-factory/connector-oracle-service-cloud.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: ORC 形式
+              href: ../data-factory/format-orc.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Parquet 形式
               href: ../data-factory/format-parquet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: PayPal
@@ -654,12 +694,11 @@
             - name: Salesforce Marketing Cloud
               href: ../data-factory/connector-salesforce-marketing-cloud.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: SAP Business Warehouse Open Hub
+              href: ../data-factory/connector-sap-business-warehouse-open-hub.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
               items:
-                - name: SAP Business Warehouse Open Hub
-                  href: ../data-factory/connector-sap-business-warehouse-open-hub.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: SAP BW データの読み込み
                   href: ../data-factory/load-sap-bw-data.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: SAP Business Warehouse
+            - name: SAP Business Warehouse MDX
               href: ../data-factory/connector-sap-business-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: SAP Cloud for Customer
               href: ../data-factory/connector-sap-cloud-for-customer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -673,8 +712,12 @@
               href: ../data-factory/connector-servicenow.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: SFTP
               href: ../data-factory/connector-sftp.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: SharePoint Online リスト
+              href: ../data-factory/connector-sharepoint-online-list.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Shopify
               href: ../data-factory/connector-shopify.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Snowflake
+              href: ../data-factory/connector-snowflake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Spark
               href: ../data-factory/connector-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: SQL Server
@@ -691,24 +734,40 @@
               href: ../data-factory/connector-web-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Xero
               href: ../data-factory/connector-xero.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: XML 形式
+              href: ../data-factory/format-xml.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Zoho
               href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: データの移動
           items:
             - name: コピー アクティビティを使用したデータのコピー
               href: ../data-factory/copy-activity-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: コピー アクティビティの監視
+              href: ../data-factory/copy-activity-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 削除アクティビティを使用したファイルの削除
               href: ../data-factory/delete-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: データのコピー ツール
               href: ../data-factory/copy-data-tool.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: パフォーマンスとチューニング
-              href: ../data-factory/copy-activity-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: フォーマットと圧縮のサポート
               href: ../data-factory/supported-file-formats-and-compression-codecs.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: コピー アクティビティのパフォーマンス
+              items:
+                - name: パフォーマンスとスケーラビリティのガイド
+                  href: ../data-factory/copy-activity-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: パフォーマンスのトラブルシューティング
+                  href: ../data-factory/copy-activity-performance-troubleshooting.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: パフォーマンス機能
+                  href: ../data-factory/copy-activity-performance-features.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: メタデータと ACL を保持する
+              href: ../data-factory/copy-activity-preserve-metadata.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: スキーマと型マッピング
               href: ../data-factory/copy-activity-schema-and-type-mapping.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: フォールト トレランス
               href: ../data-factory/copy-activity-fault-tolerance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: データ整合性の検証
+              href: ../data-factory/copy-activity-data-consistency.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: フォーマットと圧縮のサポート (レガシ)
+              href: ../data-factory/supported-file-formats-and-compression-codecs-legacy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: データを変換する
           href: ../data-factory/transform-data.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
           items:
@@ -734,9 +793,11 @@
               href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: HDInsight Streaming アクティビティ
               href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML バッチ実行アクティビティ
+            - name: Machine Learning パイプラインの実行アクティビティ
+              href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning Studio (classic) のバッチ実行アクティビティ
               href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML 更新リソース アクティビティ
+            - name: Machine Learning Studio (classic) の更新リソース アクティビティ
               href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: ストアド プロシージャ アクティビティ
               href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -788,32 +849,6 @@
               href: ../data-factory/create-azure-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: セルフホステッド統合ランタイム
               href: ../data-factory/create-self-hosted-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Azure での SSIS パッケージの実行
-          items:
-            - name: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
-              href: ../data-factory/how-to-invoke-ssis-package-ssis-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行
-              href: ../data-factory/how-to-invoke-ssis-package-stored-procedure-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure-SSIS 統合ランタイムのスケジュール設定
-              href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 仮想ネットワークへの Azure-SSIS IR の参加
-              href: ../data-factory/join-azure-ssis-integration-runtime-virtual-network.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: セルフホステッド IR を Azure-SSIS IR のプロキシとして構成する
-              href: ../data-factory/self-hosted-integration-runtime-proxy-ssis.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure-SSIS IR の Azure AD 認証の有効化
-              href: ../data-factory/enable-aad-authentication-azure-ssis-ir.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure-SSIS IR の Enterprise Edition のプロビジョニング
-              href: ../data-factory/how-to-configure-azure-ssis-ir-enterprise-edition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure-SSIS IR の設定のカスタマイズ
-              href: ../data-factory/how-to-configure-azure-ssis-ir-custom-setup.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure-SSIS IR のライセンス付きコンポーネントのインストール
-              href: ../data-factory/how-to-develop-azure-ssis-ir-licensed-components.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 高パフォーマンスを実現するための Azure-SSIS IR の構成
-              href: ../data-factory/configure-azure-ssis-integration-runtime-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure-SSIS IR のディザスター リカバリーの構成
-              href: ../data-factory/configure-bcdr-azure-ssis-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Elastic Database ジョブで SSISDB のログをクリーンアップする
-              href: ../data-factory/how-to-clean-up-ssisdb-logs-with-elastic-jobs.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: トリガーの作成
           items:
             - name: イベントベースのトリガーの作成
@@ -830,10 +865,10 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: コネクタのトラブルシューティング
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure SSIS IR の管理に関するトラブルシューティング
-              href: ../data-factory/ssis-integration-runtime-management-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
-              href: ../data-factory/ssis-integration-runtime-ssis-activity-faq.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: データ コピー ツールのトラブルシューティング
+              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: セルフホステッド統合ランタイムのトラブルシューティング
+              href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: ツールを Synapse Analytics に接続する
       items:
         - name: Synapse SQL
@@ -854,14 +889,18 @@
               href: sql/get-started-power-bi-professional.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: リファレンス
   items:
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
+    - name: Azure CLI
+      href: /cli/azure/ext/synapse/?view=azure-cli-latest
     - name: データベースの照合順序の種類
       href: sql/reference-collation-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: PowerShell コマンドレット
-      href: ./sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Go
+      href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
+    - name: PowerShell
+      href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API
-      href: ./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      href: /rest/api/synapse/
     - name: システム ビュー
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: T-SQL
@@ -885,7 +924,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 質問と回答
-      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
+      href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow
@@ -904,3 +943,7 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-data-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: データ管理
           href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: 機械学習と AI
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: パブリック プレビュー パートナー
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

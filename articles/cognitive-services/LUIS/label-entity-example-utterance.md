@@ -1,85 +1,101 @@
 ---
 title: エンティティにラベルを付ける発話例
-description: LUIS ポータルの意図の詳細ページで、発話例内にサブコンポーネントがある機械学習エンティティにラベルを付ける方法について説明します。
+description: LUIS ポータルの意図の詳細ページで、発話例内にサブエンティティがある機械学習エンティティにラベルを付ける方法について説明します。
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 05/20/2020
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382400"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610491"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>発話例内の機械学習エンティティにラベルを付ける
+# <a name="label-machine-learning-entity-in-an-example-utterance"></a>発話例内の機械学習エンティティにラベルを付ける
 
 発話例内のエンティティにラベルを付けることで、エンティティがどのようなもので、発話内のどこに出現できるかが例として LUIS に示されます。
 
-## <a name="labeling-machine-learned-entity"></a>機械学習エンティティにラベルを付ける
+機械学習エンティティとサブエンティティにラベルを付けることができます。
 
-「`hi, please I want a cheese pizza in 20 minutes`」というフレーズについて考えます。
+正規表現エンティティ、リスト エンティティ、事前構築済みエンティティにラベルを付けることはできないため、エンティティまたはサブエンティティを作成してから、それらのエンティティをフィーチャーとして (該当する場合) エンティティまたはサブエンティティに追加します。
 
-1. エンティティの左端のテキストを選択し、次に右端のテキストを選択して、ラベルを付けるエンティティ (この例では、完全な注文) を選択します。 次の画像では、_Complete Order_ にラベルが付けられています。
+## <a name="label-example-utterances-from-the-intent-detail-page"></a>意図の詳細ページから発話例にラベルを付ける
 
-    > [!div class="mx-imgBorder"]
-    > ![完全な機械学習エンティティにラベルを付ける](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+発話内のエンティティの例にラベルを付けるには、その発話の意図を選択します。
 
-1. ポップアップ ウィンドウからエンティティを選択します。 ラベル付けされた完全なピザ注文エンティティには、ラベルが付いたすべての単語が (英語では左から右へ) 含まれています。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. エンティティを抽出するためにラベル付けする発話例が含まれている意図を選択します。
+1. ラベルを付けるテキストを選択し、エンティティを選択します。
 
-## <a name="review-labeled-text"></a>ラベルが付けられたテキストをレビューする
+## <a name="two-techniques-to-label-entities"></a>エンティティにラベルを付ける 2 つの方法
 
-ラベル付けした後、発話例を確認し、選択したテキスト範囲に、選択したエンティティと下線が付加されていることを確認します。 実線は、そのテキストにラベルが付けられたことを示しています。
+意図の詳細ページでは、2 つのラベル付けの手法がサポートされています。
+* [エンティティ パレット](#label-with-the-entity-palette-visible)からエンティティまたはサブエンティティを選択し、発話例のテキスト内から選択する。 スキーマに合わせて正しいエンティティまたはサブエンティティを操作していることを視覚的に確認できるため、この方法をお勧めします。
+* 最初に発話例のテキスト内から選択する。 この操作を行うと、[ラベル付けの選択](#how-to-label-entity-from-in-place-menu)のポップアップ メニューが表示されます。
 
-> [!div class="mx-imgBorder"]
-> ![ラベルが付けられた完全な機械学習エンティティ](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+## <a name="label-with-the-entity-palette-visible"></a>エンティティ パレットが表示されているラベル
 
-## <a name="confirm-predicted-entity"></a>予測されたエンティティを確定する
+[エンティティについてスキーマを計画](luis-how-plan-your-app.md)した後は、ラベル付け中に**エンティティ パレット**を表示したままにしておきます。 **エンティティ パレット**は、どのエンティティを抽出するかについての計画のリマインダーになります。
 
-テキストの範囲が点線のボックスで囲まれていて、エンティティ名が発話の上にある場合は、テキストは予測されていますが、"_ラベルはまだ付けられていない_" ことを示します。 予測をラベルに変更するには、発話行を選択してから、 **[Confirm entity predictions]\(エンティティ予測を確定\)** を選択します。
-
-> [!div class="mx-imgBorder"]
-> ![完全な機械学習エンティティを予測する](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
-
-または、テキストの上にあるエンティティ名を選択し、表示されるメニューから **[Confirm Prediction]\(予測を確定\)** を選択することもできます。
+**エンティティ パレット**にアクセスするには、発話例の一覧の上のコンテキスト ツールバーで、 **@** 記号を選択します。
 
 > [!div class="mx-imgBorder"]
-> ![メニューを使用して完全な機械学習エンティティを予測する](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
+> ![意図の詳細ページのエンティティ パレットのスクリーンショット。](media/label-utterances/entity-palette-from-tool-bar.png)
 
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>エンティティ パレットのカーソルを使用してペイントすることでエンティティにラベルを付ける
+## <a name="how-to-label-entity-from-entity-palette"></a>エンティティ パレットからエンティティにラベルを付ける方法
 
 エンティティ パレットは、以前のラベル付けエクスペリエンスの代わりとして機能します。 これにより、テキストにブラシを適用することで、そのテキストにエンティティのラベルを瞬時に付けることができます。
 
-1. 発話テーブルの右上にある蛍光ペン アイコンを選択して、エンティティ パレットを開きます。
+1. 発話テーブルの右上にある **@** 記号を選択して、エンティティ パレットを開きます。
 
-    > [!div class="mx-imgBorder"]
-    > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
-
-2. エンティティ コンポーネントを選択します。 この操作は、新しいカーソルによって視覚的に示されます。 このカーソルは、ポータル内でマウスの動きに従います。
-
-    > [!div class="mx-imgBorder"]
-    > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
+2. パレットからラベルを付けるエンティティを選択します。 この操作は、新しいカーソルによって視覚的に示されます。 このカーソルは、LUIS ポータル内でマウスの動きに従います。
 
 3. 発話例の中で、カーソルによってエンティティに _ペイント_ します。
 
     > [!div class="mx-imgBorder"]
     > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>機械学習エンティティのサブコンポーネントにラベルを付ける
+## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>エンティティ パレットからエンティティをフィーチャーとして追加する
 
-エンティティ内のサブコンポーネントには、最上位レベルのエンティティとまったく同じようにラベルが付けられます。 テキスト選択時、ポップアップ ウィンドウで選択できるエンティティは、テキストが出現するコンテキストに関連しています。 たとえば、5 レベルの機械学習エンティティがあり、第 1 レベルおよび第 2 レベルのラベルが付いたテキスト (発話例の下のラベルが付いたエンティティ名で示されます) を選択している場合、ポップアップ ウィンドウで選択できるエンティティは、第 3 レベルのコンポーネントのコンテキストに限定されます。 テキストに他のエンティティのラベルを付けるには、 **[Label as another entity]\(別のエンティティとしてラベルを付ける\)** オプションを選択します。
+エンティティ パレットの下部セクションでは、現在選択されているエンティティにフィーチャーを追加できます。 すべて既存のエンティティとフレーズの一覧から選択することも、新しいフレーズの一覧を作成することもできます。
 
 > [!div class="mx-imgBorder"]
-> ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
-
-親にもラベルが付けられている場合にのみ、サブコンポーネントにラベルを付けることができます。
+> ![フィーチャーとしてのエンティティが表示されたエンティティ パレットのスクリーンショット](media/label-utterances/entity-palette-entity-as-a-feature.png)
 
 ## <a name="labeling-entity-roles"></a>エンティティのロールをラベル付けする
 
-エンティティのロールのラベル付けは、エンティティ パレットを使用して行います。
+エンティティのロールのラベル付けは、**エンティティ パレット**を使用して行います。
 
 1. [Intent detail]\(意図の詳細\) ページのコンテキスト ツール バーから **[Entity palette]\(エンティティ パレット\)** を選択します。
 1. エンティティ パレットが開いたら、エンティティの一覧からエンティティを選択します。
-1. **エンティティ インスペクター**に移動し、既存のロールを選択するか、または新しくロールを作成します。
+1. エンティティの一覧の下で、既存のロールを選択します。
 1. 発話の例のテキストに、エンティティのロールをラベル付けします。
+
+## <a name="how-to-label-entity-from-in-place-menu"></a>埋め込みメニューからエンティティにラベルを付ける方法
+
+埋め込みでのラベル付けにより、発話内のテキストを迅速に選択してラベルを付けることができます。 また、ラベルが付けられたテキストから機械学習エンティティまたはリスト エンティティを作成することもできます。
+
+`hi, please I want a cheese pizza in 20 minutes` という発話例があるとします。
+
+エンティティの左端のテキストを選択し、次に右端のテキストを選択して、埋め込みメニューから、ラベルを付けるエンティティを選択します。
+
+> [!div class="mx-imgBorder"]
+> ![ラベル付けが完了した機械学習エンティティ](media/label-utterances/label-steps-in-place-menu.png)
+
+## <a name="review-labeled-text"></a>ラベルが付けられたテキストをレビューする
+
+ラベル付けした後、発話例を確認し、選択したテキスト範囲に、選択したエンティティと下線が付加されていることを確認します。 実線は、そのテキストにラベルが付けられたことを示しています。
+
+> [!div class="mx-imgBorder"]
+> ![ラベルが付けられた機械学習エンティティ](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+
+## <a name="confirm-predicted-entity"></a>予測されたエンティティを確定する
+
+テキストの範囲が点線のボックスで囲まれている場合、そのテキストは予測されていますが、"_ラベルはまだ付けられていない_" ことを示します。 予測をラベルに変更するには、発話行を選択してから、コンテキスト ツールバーで **[Confirm entites]\(エンティティの確定\)** を選択します。
+
+## <a name="relabeling-over-existing-entities"></a>既存のエンティティに再度ラベルを付ける
+
+既にラベルが付けられているテキストに再度ラベルを付けると、LUIS で既存のラベルが分割またはマージされる場合があります。
 
 ## <a name="labeling-for-punctuation"></a>句読点のラベル付け
 
@@ -87,27 +103,29 @@ ms.locfileid: "81382400"
 
 ## <a name="unlabel-entities"></a>エンティティのラベルの解除
 
-エンティティのラベルを解除するには、テキストの下にあるエンティティ名を選択し、 **[Unlabel]\(ラベル解除\)** を選択します。 ラベルを解除するエンティティに、ラベル付きのサブコンポーネントがある場合、最初にサブコンポーネントのラベルを解除する必要があります。
+> [!NOTE]
+> ラベルを解除できるのは、機械学習エンティティのみです。 正規表現エンティティ、リスト エンティティ、または事前構築済みエンティティにラベルを付けたり、ラベルを解除したりすることはできません。
 
-## <a name="editing-labels-using-the-entity-palette"></a>エンティティ パレットを使用してラベルを編集する
+エンティティのラベルを解除するには、対象のエンティティを選択し、埋め込みメニューで **[Unlabel]\(ラベル解除\)** を選択します。
 
-ラベル付け中に間違えた場合、エンティティ パレットは、即時に編集できる使いやすいツールです。 たとえば、誤って余分な単語にエンティティ ラベルを適用し、そこにラベル付きのサブコンポーネントが既にある場合、エンティティ パレットを使用して、必要な短い範囲の単語にブラシを適用できます。
+> [!div class="mx-imgBorder"]
+> ![エンティティのラベル付けの解除を示すスクリーンショット](media/label-utterances/unlabel-entity-using-in-place-menu.png)
 
-次に例を示します。
+## <a name="automatic-labeling-for-parent-and-child-entities"></a>親エンティティと子エンティティの自動ラベル付け
 
-1. Pizza Type サブコンポーネントが "cheese pizza with" に適用されています。これには、余分で不適切な単語 "with" が含まれています。
+親エンティティにラベルを付けると、現在トレーニング済みのバージョンに基づいて予測できるサブエンティティにもラベルが付けられます。
 
-    > [!div class="mx-imgBorder"]
-    > ![機械学習エンティティのエンティティ パレット](media/label-utterances/edit-label-with-palette-1.png)
+サブエンティティにラベルを付けると、その親にもラベルが自動的に付けられます。
 
-2. エンティティ パレットを使用して、[Pizza Type] を選択し、"cheese pizza" にブラシを適用します。 この結果、cheese pizza にのみ Pizza Type としてラベルが付けられます。
+## <a name="automatic-labeling-for-non-machine-learned-entities"></a>非機械学習エンティティの自動ラベル付け
 
-    > [!div class="mx-imgBorder"]
-    > ![機械学習エンティティのエンティティ パレット](media/label-utterances/edit-label-with-palette-2.png)
+非機械学習エンティティには、事前構築済みエンティティ、正規表現エンティティ、リスト エンティティ、pattern.any エンティティが含まれます。 これらには LUIS によって自動的にラベルが付けられるため、ユーザーが手動でラベルを付ける必要はありません。
 
-## <a name="labels-for-matching-text-entities"></a>照合テキスト エンティティのラベル
+## <a name="intent-prediction-errors"></a>意図予測のエラー
 
-照合テキスト エンティティには、事前構築済みエンティティ、正規表現エンティティ、リスト エンティティ、および Pattern.any エンティティが含まれます。 これらには LUIS によって自動的にラベルが付けられるため、ユーザーが手動でラベルを付ける必要はありません。
+意図予測エラーは、現在のトレーニング済みアプリではその発話例が意図に対して予測されないことを示します。
+
+意図の詳細ページで[これらのエラーを表示する](luis-how-to-add-intents.md#intent-prediction-errors)方法について確認してください。
 
 ## <a name="entity-prediction-errors"></a>エンティティ予測エラー
 

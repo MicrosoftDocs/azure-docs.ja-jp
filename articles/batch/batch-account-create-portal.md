@@ -1,31 +1,29 @@
 ---
 title: Azure portal でアカウントを作成する
 description: Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します
-ms.topic: conceptual
-ms.date: 02/26/2019
+ms.topic: how-to
+ms.date: 06/10/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9349ed74111565f68a088cda95c8defcd79f7e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1205de2b800588b735aeb20d388ba4b64bc6b078
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711342"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
-[Azure portal][azure_portal] で Azure Batch アカウントを作成し、自分のコンピューティング シナリオに適したアカウント プロパティを選ぶ方法について説明します。 アクセス キーやアカウント URL のような重要なアカウント プロパティを確認できる場所を紹介します。
+このトピックでは、[Azure portal](https://portal.azure.com) で Azure Batch アカウントを作成し、自分のコンピューティング シナリオに適したアカウント プロパティを選ぶ方法について説明します。 また、アクセス キーやアカウント URL のような重要なアカウント プロパティを確認できる場所も紹介します。
 
-Batch アカウントとシナリオの背景情報については、[機能の概要](batch-api-basics.md)に関するページを参照してください。
+Batch アカウントとシナリオの背景については、[Batch サービスのワークフローとリソース](batch-service-workflow-features.md)に関する記事を参照してください。
 
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. [Azure portal][azure_portal] にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. **[リソースの作成]**  >  **[Compute]**  >  **[Batch サービス]** の順に選択します。
-
-    ![Marketplace での Batch][marketplace_portal]
+1. **[リソースの作成]** を選択し、 **[コンピューティング]** と **[Batch サービス]** を選択します。
 
 1. **[新しい Batch アカウント]** 設定を入力します。 次の詳細を確認してください。
 
@@ -39,7 +37,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     d. **[場所]** :Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
 
-    e. **ストレージ アカウント**: Batch アカウントに関連付ける省略可能な Azure ストレージ アカウント。 最適なパフォーマンスのために汎用 v2 ストレージ アカウントをお勧めします。 Batch のすべてのストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページを参照してください。 ポータルで、既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。
+    e. **ストレージ アカウント**: Batch アカウントに関連付ける省略可能な Azure ストレージ アカウント。 最適なパフォーマンスのために汎用 v2 ストレージ アカウントをお勧めします。 Batch のすべてのストレージ アカウント オプションについては、[Batch 機能の概要](accounts.md#azure-storage-accounts)に関するページを参照してください。 ポータルで、既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。
 
       ![ストレージ アカウントの作成][storage_account]
 
@@ -53,9 +51,12 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 アカウントが作成されたら、そのアカウントを選択して設定とプロパティにアクセスします。 左側のメニューを使用すると、アカウントの設定およびプロパティすべてにアクセスできます。
 
+> [!NOTE]
+> Batch アカウントの名前は ID であり、変更することはできません。 Batch アカウントの名前を変更する必要がある場合は、アカウントを削除し、目的の名前で新しいアカウントを作成する必要があります。
+
 ![Azure Portal の [Batch アカウント] ブレード][account_blade]
 
-* **Batch アカウント名、URL、およびキー**:[Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウントの URL とキーが必要です  (Batch では Azure Active Directory 認証もサポートされます)。
+* **Batch アカウント名、URL、およびキー**:[Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウントの URL とキーが必要です (Batch では Azure Active Directory 認証もサポートされます)。
 
     Batch アカウント アクセス情報を表示するには、 **[キー]** を選択します。
 
@@ -71,9 +72,9 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Azure Batch によるサブスクリプションへのアクセスを許可する (1 回限りの操作)
 
-ユーザー サブスクリプション モードで Batch アカウントを初めて作成する場合は、Batch にサブスクリプションを登録する必要があります  (既に実行済みの場合は、次のセクションに移ってください)。
+ユーザー サブスクリプション モードで Batch アカウントを初めて作成する場合は、Batch にサブスクリプションを登録する必要があります (既にこれを行っている場合は、次のセクションに進んでください)。
 
-1. [Azure portal][azure_portal] にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[すべてのサービス]**  >  **[サブスクリプション]** の順に選択し、Batch アカウントに使用するサブスクリプションを選択します。
 
@@ -85,7 +86,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     ![サブスクリプションのアクセスの制御][subscription_access]
 
-1. **[ロール割り当ての追加]** ページで、 **[共同作成者]** ロールを選択し、Batch API を探します。 API が見つかるまで、次の各文字列を検索します。
+1. **[ロール割り当ての追加]** ページで、 **[共同作成者]** または **[所有者]** ロールを選択し、Batch API を探します。 API が見つかるまで、次の各文字列を検索します。
     1. **MicrosoftAzureBatch**。
     1. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。
@@ -94,34 +95,30 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     ![Batch のアクセス許可を追加する][add_permission]
 
-### <a name="create-a-key-vault"></a>Key Vault を作成します
+### <a name="create-a-key-vault"></a>Key Vault の作成
 
-ユーザー サブスクリプション モードでは、作成する Batch アカウントと同じリソース グループに属する Azure キー コンテナーが必要です。 Batch を[利用でき](https://azure.microsoft.com/regions/services/)、お使いのサブスクリプションでサポートされているリージョンにそのリソース グループが属していることを確認してください。
+ユーザー サブスクリプション モードでは、[Azure キー コンテナー](../key-vault/general/overview.md)が必要です。 キー コンテナーは、作成する Batch アカウントと同じサブスクリプションとリージョンにある必要があります。 
 
-1. [Azure portal][azure_portal] で、 **[新規]**  >  **[セキュリティ]**  >  **[Key Vault]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) で、 **[新規]**  >  **[セキュリティ]**  >  **[Key Vault]** の順に選択します。
 
 1. **[Key Vault の作成]** ページで、キー コンテナーの名前を入力し、Batch アカウント用のリージョンでリソース グループを作成します。 残りの設定については既定値のままにして、 **[作成]** を選択します。
 
-ユーザー サブスクリプション モードで Batch アカウントを作成するときは、キー コンテナーのリソース グループを使用します。 プール割り当てモードとして **[ユーザー サブスクリプション]** を指定し、キー コンテナーを選択し、チェック ボックスをオンにして Azure Batch にそのキー コンテナーへのアクセスを許可します。 
+ユーザー サブスクリプション モードで Batch アカウントを作成するときは、プール割り当てモードとして **[ユーザー サブスクリプション]** を指定し、そのキー コンテナーを選択し、チェック ボックスをオンにして、Azure Batch にキー コンテナーへのアクセス権を付与します。
 
-キー コンテナーへのアクセス権を手動で付与する場合は、キー コンテナーの **[アクセス ポリシー]** セクションに移動して、 **[アクセス ポリシーの追加]** を選択し、 **[Microsoft Azure Batch]** を検索します。 選択したら、ドロップ ダウン メニューを使用して **[シークレットのアクセス許可]** を設定する必要があります。 Azure Batch には、少なくとも **[取得]** 、 **[一覧]** 、 **[設定]** 、および **[削除]** のアクセス許可を付与する必要があります。
+キー コンテナーへのアクセス権を手動で付与する場合は、キー コンテナーの **[アクセス ポリシー]** セクションに移動して、 **[アクセス ポリシーの追加]** を選択し、 **[Microsoft Azure Batch]** を検索します。 選択したら、ドロップダウン メニューを使用して **[シークレットのアクセス許可]** を設定する必要があります。 Azure Batch には、少なくとも **[取得]** 、 **[一覧]** 、 **[設定]** 、および **[削除]** のアクセス許可を付与する必要があります。
 
 ![Azure Batch のシークレットのアクセス許可](./media/batch-account-create-portal/secret-permissions.png)
 
-
 > [!NOTE]
 > リンクされている **Key Vault** リソースの **[アクセス ポリシー]** の下で、 **[Azure Virtual Machines (展開用)]** チェック ボックスと **[Azure Resource Manager (テンプレートの展開用)]** チェック ボックスがオンになっていることを確認します。
-> 
-> ![[Mandatory Key Vault Access Policy] (必須の Key Vault アクセス ポリシー)](./media/batch-account-create-portal/key-vault-access-policy.png) これは、Azure portal で Batch アカウントを作成する場合は必須ではありません。 既定では、このオプションが選択されています。
-
-
+>
+> ![必須の Key Vault アクセス ポリシー](./media/batch-account-create-portal/key-vault-access-policy.png)
 
 ### <a name="configure-subscription-quotas"></a>サブスクリプション クォータを構成する
 
-コア クォータは、既定ではユーザー サブスクリプションの Batch アカウントに設定されません。 標準的な Batch コア クォータは、ユーザー サブスクリプション モードのアカウントには適用されないため、コア クォータは手動で設定する必要があります。
+ユーザー サブスクリプションの Batch アカウントの場合は、コア クォータを手動で設定する必要があります。 Standard Batch コア クォータは、ユーザー サブスクリプション モードのアカウントには適用されません。
 
-1. [Azure portal][azure_portal] でユーザー サブスクリプション モードの Batch アカウントを選択し、その設定とプロパティを表示します。
-
+1. [Azure portal](https://portal.azure.com) でユーザー サブスクリプション モードの Batch アカウントを選択し、その設定とプロパティを表示します。
 1. 左側のメニューの **[クォータ]** を選択して、Batch アカウントに関連付けられているコア クォータを表示および構成します。
 
 ユーザー サブスクリプション モードのコア クォータの詳細については、「[Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
@@ -136,13 +133,9 @@ Azure portal を利用する方法に加えて、次のようなツールを使�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Batch サービスの概念と機能の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 この記事では、プール、コンピューティング ノード、ジョブ、タスクなど、主要な Batch リソースについて説明するほか、大規模なコンピューティング ワークロード向けのこのサービスの機能の概要について説明します。
+* [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 * [Batch .NET クライアント ライブラリ](quick-run-dotnet.md)または [Python](quick-run-python.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらのクイック スタートでは、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行するサンプル アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。
 
-[azure_portal]: https://portal.azure.com
-[batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
-
-[marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
 [pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png

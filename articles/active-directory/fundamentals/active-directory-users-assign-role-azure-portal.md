@@ -1,42 +1,47 @@
 ---
-title: ユーザーにディレクトリ ロールを割り当てる - Azure Active Directory | Microsoft Docs
+title: Azure AD ロールをユーザーに割り当てる - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使って、ユーザーに管理者と管理者以外のロールを割り当てる方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 09/06/2018
+ms.topic: how-to
+ms.date: 06/15/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df52969ea79e5d1af132aa82c2ec1ceedb92b82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75422891"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902356"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる
-組織内のユーザーが Azure Active Directory (Azure AD) のリソースを管理するためのアクセス許可を必要としている場合は、ユーザーが実行するアクションに基づいて、Azure AD で適切なロールをユーザーに割り当てる必要があります。
 
-使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。 ユーザーの追加について詳しくは、「[Azure Active Directory に新しいユーザーを追加する](add-users-azure-active-directory.md)」をご覧ください。
+Azure Active Directory (Azure AD) で、Azure AD リソースを管理するためのアクセス許可がユーザーの 1 人に必要な場合、必要なアクセス許可を提供するロールにユーザーを割り当てる必要があります。 どのロールが Azure リソースを管理し、どのロールが Azure AD リソースを管理するかについては、「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
+
+使用可能な Azure AD ロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。 ユーザーを追加するには、[Azure Active Directory への新しいユーザーの追加](add-users-azure-active-directory.md)に関するページを参照してください。
 
 ## <a name="assign-roles"></a>ロールを割り当てる
-ユーザーに Azure AD ロールを割り当てる一般的な方法は、ユーザーの **[ディレクトリ ロール]** ページです。
 
-Privileged Identity Management (PIM) を使用してロールを割り当てることもできます。 PIM の使用方法について詳しくは、「[Privileged Identity Management のドキュメント](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)」をご覧ください。
+ユーザーに Azure AD ロールを割り当てる一般的な方法は、ユーザーの **[Assigned roles]\(割り当てられているロール\)** ページです。 Privileged Identity Management (PIM) を使用して、ユーザーの資格を構成し、ジャストインタイムでロールに設定することもできます。 PIM の使用方法については、「[Privileged Identity Management のドキュメント](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)」をご覧ください。
 
-### <a name="to-assign-a-role-to-a-user"></a>ユーザーにロールを割り当てるには
-1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にアクセスしてログインします。 
+> [!Note]
+> Azure AD Premium P2 ライセンス プランを所有しており、既に PIM を使用している場合、すべてのロール管理タスクは [Privileged Identity Management エクスペリエンス](../users-groups-roles/directory-manage-roles-portal.md)で実行されます。
+>
+> ![既に PIM を使用していて Premium P2 ライセンスを所有しているユーザーの Azure AD ロールは PIM で管理される](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
+
+## <a name="assign-a-role-to-a-user"></a>ユーザーにロールを割り当てる
+
+1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にアクセスしてサインインします。
 
 2. **Azure Active Directory** を検索して選択します。
 
       ![Azure portal で、Azure Active Directory を検索する](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
-
 
 3. **[ユーザー]** を選択します。
 
@@ -46,16 +51,17 @@ Privileged Identity Management (PIM) を使用してロールを割り当てる�
 
 5. **[Alain Charon - プロファイル]** ページで、 **[Assigned roles]\(割り当てられているロール\)** を選択します。
 
-    **[Alain Charon - ディレクトリ ロール]** ページが表示されます。
+    **[Alain Charon - Administrative roles]\(Alain Charon - 管理者ロール\)** ページが表示されます。
 
-6. **[割り当ての追加]** を選択し、Alain に割り当てるロールを選択して (たとえば _[アプリケーション管理者]_ )、 **[選択]** を選択します。
+6. **[Add assignments]\(割り当ての追加\)** を選択し、Alain に割り当てるロールを選択して (たとえば _[アプリケーション管理者]_ )、 **[選択]** を選択します。
 
     ![[Assigned roles] (割り当てられているロール) ページ - 選択されたロールを表示中](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
-    アプリケーション管理者ロールが Alain Charon に割り当てられて、 **[Alain Charon - ディレクトリ ロール]** ページに表示されます。
+    アプリケーション管理者ロールが Alain Charon に割り当てられて、 **[Alain Charon - Administrative roles]\(Alain Charon - 管理者ロール\)** ページに表示されます。
 
 ## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
-ユーザーからロールの割り当てを削除する必要がある場合も、 **[Alain Charon - ディレクトリ ロール]** ページから行うことができます。
+
+ユーザーからロールの割り当てを削除する必要がある場合も、 **[Alain Charon - Administrative roles]\(Alain Charon - 管理者ロール\)** ページから行うことができます。
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>ユーザーからロールの割り当てを削除するには
 
@@ -65,15 +71,14 @@ Privileged Identity Management (PIM) を使用してロールを割り当てる�
 
     ![選択されたロールと削除オプションが表示された [Assigned roles] (割り当てられているロール) ページ](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
-    アプリケーション管理者ロールが Alain Charon から削除されて、 **[Alain Charon - ディレクトリ ロール]** ページに表示されなくなります。
+    アプリケーション管理者ロールが Alain Charon から削除されて、 **[Alain Charon - Administrative roles]\(Alain Charon - 管理者ロール\)** ページに表示されなくなります。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [ユーザーを追加または削除する](add-users-azure-active-directory.md)
 
 - [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 
 - [別のディレクトリからのゲスト ユーザーの追加](../b2b/what-is-b2b.md)
 
-または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
-
-
+[Azure Active Directory のユーザー管理に関するドキュメント](../users-groups-roles/index.yml)で、その他のその他のユーザー管理タスクについて確認できます。

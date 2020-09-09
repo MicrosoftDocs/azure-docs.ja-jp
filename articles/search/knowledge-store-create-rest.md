@@ -1,24 +1,21 @@
 ---
-title: REST を使用してナレッジ ストア (プレビュー) を作成する
+title: REST を使用してナレッジ ストアを作成する
 titleSuffix: Azure Cognitive Search
-description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。 現在、この機能はパブリック プレビュー段階にあります。
+description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 12/30/2019
-ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 08/02/2020
+ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77472317"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924267"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
-
-> [!IMPORTANT] 
-> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 ナレッジ ストアには、Azure Cognitive Search のエンリッチメント パイプラインからの出力が、後から下流で行われる分析などの処理に使用できるよう格納されます。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Cognitive Search を使用してそのインデックスを作成し、Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
 
@@ -39,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [HotelReviews_Free.csv をダウンロードします](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)。 このデータは CSV ファイルに保存されたホテル レビュー データ (ソースは Kaggle.com) であり、1 つのホテルに関する 19 個の顧客フィードバックが含まれています。 
 
-1. [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、ご自分の現在のサブスクリプションから[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 インポートされる生のコンテンツと最終的な結果であるナレッジ ストアの両方に Azure ストレージを使用します。
+1. [Azure Storage アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal)するか、ご自分の現在のサブスクリプションから[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 インポートされる生のコンテンツと最終的な結果であるナレッジ ストアの両方に Azure ストレージを使用します。
 
    **[StorageV2 (general purpose V2)]\(StorageV2 (汎用 V2)\)** のアカウントの種類を選択します。
 
@@ -81,7 +78,7 @@ Postman をインストールして設定します。
 | 変数    | 情報の入手元 |
 |-------------|-----------------|
 | `admin-key` | Azure Cognitive Search サービスの **[キー]** ページ上。  |
-| `api-version` | **2019-05-06-Preview** のままにします。 |
+| `api-version` | **2020-06-30** のままにします。 |
 | `datasource-name` | **hotel-reviews-ds** のままにします。 | 
 | `indexer-name` | **hotel-reviews-ixr** のままにします。 | 
 | `index-name` | **hotel-reviews-ix** のままにします。 | 

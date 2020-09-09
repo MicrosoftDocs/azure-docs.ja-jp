@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Visual Studio Code 拡張機能を設定する
+title: チュートリアル:Visual Studio Code 拡張機能 (プレビュー) を設定する
 titleSuffix: Azure Machine Learning
 description: Visual Studio Code の Azure Machine Learning 拡張機能を設定する方法について説明します。
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
-ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.date: 07/09/2020
+ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272920"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199758"
 ---
-# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Visual Studio Code の Azure Machine Learning 拡張機能を設定する
+# <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>Visual Studio Code の Azure Machine Learning (プレビュー) 拡張機能を設定する
 
 Visual Studio Code の Azure Machine Learning 拡張機能を使用して、スクリプトをインストールして実行する方法について説明します。
 
@@ -69,6 +69,9 @@ Azure でリソースをプロビジョニングし、ワークロードを実�
 
 1. コマンド パレットが展開されたら、画面の指示に従います。
 
+    > [!NOTE]
+    > 既存の Azure Machine Learning リソースがプロビジョニング済みである場合は、[VS Code で実験を実行する方法についてのガイド](./how-to-manage-resources-vscode.md#run-experiment)を参照してください。
+
     1. Azure サブスクリプションを選択します。
     1. 環境の一覧から **Conda の依存関係ファイル**を選択します。
     1. **Enter** キーを押して、Conda の依存関係ファイルを参照します。 このファイルには、スクリプトの実行に必要な依存関係が含まれています。 このケースの依存関係ファイルは、`mnist-vscode-docs-sample` ディレクトリにある `env.yml` ファイルです。
@@ -78,18 +81,18 @@ Azure でリソースをプロビジョニングし、ワークロードを実�
 
     ```json
     {
-        "workspace": "WS04131142",
-        "resourceGroup": "WS04131142-rg1",
+        "workspace": "WS06271500",
+        "resourceGroup": "WS06271500-rg2",
         "location": "South Central US",
-        "experiment": "WS04131142-exp1",
+        "experiment": "WS06271500-exp1",
         "compute": {
-            "name": "WS04131142-com1",
+            "name": "WS06271500-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS04131142-com1-rc1",
+            "filename": "WS06271500-com1-rc1",
             "environment": {
-                "name": "WS04131142-env1",
+                "name": "WS06271500-env1",
                 "conda_dependencies": [
                     "python=3.6.2",
                     "tensorflow=1.15.0",

@@ -4,16 +4,16 @@ description: Azure Import/Export サービスのソフトウェアとハード�
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228343"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276399"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -50,7 +50,7 @@ Azure Import/Export サービスでは、以下の種類のストレージ ア�
 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-account-create.md)」を参照してください。
 
 > [!IMPORTANT]
-> Azure Import/Export サービスでは、[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) 機能が有効になっているストレージ アカウントはサポートされません。 
+> [仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) 機能が有効になっているストレージ アカウントでは、Azure との間でデータのインポートまたはエクスポートを実行するために、 **[信頼された Microsoft サービスを許可]** 設定を使用して [Import/Export](/azure/storage/common/storage-network-security) サービスを有効にしてください。
 
 ## <a name="supported-storage-types"></a>サポートされているストレージの種類
 
@@ -60,7 +60,7 @@ Azure Import/Export サービスでは、次の一覧のストレージの種類
 |ジョブ  |ストレージ サービス |サポートされています  |サポートされていません  |
 |---------|---------|---------|---------|
 |[インポート]     |  Azure BLOB ストレージ <br><br> Azure File ストレージ       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
-|[エクスポート]     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
+|エクスポート     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
 
 
 ## <a name="supported-hardware"></a>サポートされるハードウェア
@@ -72,17 +72,19 @@ Azure Import/Export サービスでは、データのコピーをサポートし
 Import/Export サービスでは、次のディスクの一覧の使用がサポートされます。
 
 
-|ディスクの種類  |Size  |サポートされています |
+|ディスクの種類  |サイズ  |サポートされています |
 |---------|---------|---------|
 |SSD    |   2.5"      |SATA III          |
 |HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
 次のディスクの種類はサポートされていません。
+
 - USB。
 - USB アダプターが組み込まれた外部 HDD。
 - 外部 HDD のケース内にあるディスク。
 
 1 つのインポート/エクスポート ジョブは、以下を使用できます。
+
 - 最大 10 台の HDD/SSD。
 - 任意のサイズの HDD/SSD の組み合わせ。
 
@@ -90,9 +92,6 @@ Import/Export サービスでは、次のディスクの一覧の使用がサポ
 
 WAImportExport ツールを使用してハード ドライブの準備とデータのコピーを行うときに、外部 USB アダプターを使用できます。 市販の USB 3.0 以降のアダプターの大半が機能します。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-* [WAImportExport ツールを設定する](storage-import-export-tool-how-to.md)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
-* [Azure Import Export REST API サンプル](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

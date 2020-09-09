@@ -5,18 +5,19 @@ description: Azure Active Directory B2C で JavaScript を使用する方法に�
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
+ms.custom: devx-track-javascript
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 947111edf7741f78a40b7d3e77a1dfae22383500
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187663"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169558"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
@@ -50,7 +51,7 @@ ms.locfileid: "78187663"
 1. カスタム ポリシー ファイルを開きます。 たとえば、*SignUpOrSignin.xml* などです。
 2. **ScriptExecution** 要素を **RelyingParty** の **UserJourneyBehaviors** 要素に追加します。
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>

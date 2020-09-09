@@ -2,25 +2,21 @@
 title: チュートリアル:StarLeaf を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを StarLeaf に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68484d2047e09dc82d44e15e86b13c4c54c49b03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064293"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533795"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>チュートリアル:StarLeaf を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -36,7 +32,7 @@ ms.locfileid: "77064293"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * Azure AD テナント。
-* [StarLeaf テナント](https://www.starleaf.com/solutions/)。
+* [StarLeaf テナント](https://starleaf.com/)。
 * 管理者アクセス許可がある StarLeaf のユーザー アカウント。
 
 ## <a name="assign-users-to-starleaf"></a>ユーザーを StarLeaf に割り当てる

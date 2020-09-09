@@ -4,19 +4,20 @@ description: Windows デバイスの Enterprise State Roaming の設定に関し
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672408"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268606"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 
@@ -30,12 +31,12 @@ Enterprise State Roaming を有効にすると、組織には、Azure Informatio
 ## <a name="to-enable-enterprise-state-roaming"></a>Enterprise State Roaming を有効にするには
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
-1. **[Azure Active Directory]** &gt; **[デバイス]** &gt; **[Enterprise State Roaming]** を選択します。
-1. **[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を選択します。 詳細については、[デバイス設定の構成方法](/azure/active-directory/device-management-azure-portal)に関するページをご覧ください。
+1. **[Azure Active Directory]**  >  **[デバイス]**  >  **[Enterprise State Roaming]** を選択します。
+1. **[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を選択します。 詳細については、[デバイス設定の構成方法](./device-management-azure-portal.md)に関するページをご覧ください。
   
    ![[デバイス間での設定とアプリ データの同期が許可されるユーザー] のデバイス設定のイメージ](./media/enterprise-state-roaming-enable/device-settings.png)
   
-Windows 10 デバイスで Enterprise State Roaming サービスを使用するには、そのデバイスを Azure AD の ID で認証する必要があります。 デバイスが Azure AD に参加している場合、そのユーザーの主要なサインイン ID は Azure AD の ID です。追加の構成は必要ありません。 デバイスがオンプレミスの Active Directory を使用している場合、IT 管理者は [ハイブリッド Azure Active Directory 参加済みデバイスを構成する](hybrid-azuread-join-manual-steps.md)必要があります。 
+Windows 10 デバイスで Enterprise State Roaming サービスを使用するには、そのデバイスを Azure AD の ID で認証する必要があります。 デバイスが Azure AD に参加している場合、そのユーザーの主要なサインイン ID は Azure AD の ID です。追加の構成は必要ありません。 デバイスがオンプレミスの Active Directory を使用している場合、IT 管理者は [ハイブリッド Azure Active Directory 参加済みデバイスを構成する](./hybrid-azuread-join-plan.md)必要があります。 
 
 ## <a name="data-storage"></a>データ ストレージ
 
@@ -55,7 +56,7 @@ Enterprise State Roaming のデータは、Azure Active Directory のインス�
 次の手順に従って、ユーザーごとのデバイス同期状態のレポートを表示します。
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
-1. **[Azure Active Directory]** &gt; **[ユーザー]** &gt; **[すべてのユーザー]** を選択します。
+1. **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 1. ユーザーを選択し、 **[デバイス]** を選択します。
 1. **[表示]** で、 **[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
   

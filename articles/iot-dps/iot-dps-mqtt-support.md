@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680687"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924208"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した DPS との通信
 
@@ -82,7 +82,7 @@ Websocket 経由で接続する場合は、`mqtt` としてサブプロトコル
 
 ## <a name="next-steps"></a>次のステップ
 
-MQTT プロトコルについて詳しくは、[MQTT のドキュメント](https://mqtt.org/documentation)をご覧ください。
+MQTT プロトコルについて詳しくは、[MQTT のドキュメント](https://mqtt.org/)をご覧ください。
 
 DPS の機能を詳しく調べるには、次のリンクを使用してください。
 

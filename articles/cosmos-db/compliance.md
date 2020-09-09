@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527369"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747356"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 
@@ -20,7 +20,7 @@ Azure Cosmos DB は、すべての Azure リージョンで利用できます。
 
 * **Azure パブリック** クラウドは、グローバルに利用できます。
 
-* **Azure China 21Vianet** は、Microsoft と最大のインターネット プロバイダーの 1 つである 21Vianet との間の独自のパートナーシップを通して利用できます。
+* **Azure China 21Vianet** は、Microsoft とその国/地域の最大のインターネット プロバイダーの 1 つである 21Vianet との間の独自のパートナーシップを通して利用できます。
 
 * **Azure Germany** では、データ保護受託者モデルに沿ってサービスが提供され、お客様のデータは、ドイツ国内でデータ保護受託者の役目を務める T-Systems International GmbH (Deutsche Telekom の子会社) の管理下で、ドイツ国外に移転されないことが保証されます。
 
@@ -72,4 +72,4 @@ Azure のコンプライアンス認証の詳細については、以下の記�
 
 * Azure Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB のセキュリティ - 概要](database-security.md)」を参照してください。
 
-* マイクロソフトが取得している認証の詳細については、[Azure Security Center](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure Trust Center](https://azure.microsoft.com/support/trust-center/) に関するページを参照してください。

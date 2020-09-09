@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75980625"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のデプロイの問題:よく寄せられる質問 (FAQ)
@@ -54,7 +54,7 @@ ms.locfileid: "75980625"
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>サブスクリプションまたはサービスの制限/クォータ/制約が原因でクラウド サービスのデプロイが失敗することがあるのはなぜですか。
 クラウド サービスのデプロイは、割り振る必要のあるリソースが、リージョン/データセンター レベルでサービスに提供できる既定または最大のクォータを超えた場合に、失敗することがあります。 詳細については、「[Cloud Services の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)」を参照してください。
 
-ポータルでサブスクリプションの現在の使用量/クォータを追跡することもできます:Azure portal > [サブスクリプション] > \<該当するサブスクリプション> > [使用量 + クォータ]。
+ポータルでサブスクリプションの現在の使用量/クォータを追跡することもできます:Azure portal => [サブスクリプション] => \<appropriate subscription> => [Usage + quota] (使用量 + クォータ)。
 
 リソース使用量/消費量に関連する情報は、Azure 課金 API を使用して取得することもできます。 「[Azure Resource Usage API (プレビュー)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)」を参照してください。
 

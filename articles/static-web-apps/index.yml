@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: db4bccbc2b366cbd2997542b3b10068b0f5941a2
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701838"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86528657"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -27,13 +27,13 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 最初の Angular アプリを作成する
-      url: /azure/static-web-apps/getting-started?tabs=angular
+      url: ./getting-started.md?tabs=angular
     - text: 最初の React アプリを作成する
-      url: /azure/static-web-apps/getting-started?tabs=react
+      url: ./getting-started.md?tabs=react
     - text: 最初の Vue アプリを作成する
-      url: /azure/static-web-apps/getting-started?tabs=vue
+      url: ./getting-started.md?tabs=vue
     - text: 最初のアプリを作成する (フレームワークなし)
-      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+      url: ./getting-started.md?tabs=vanilla-javascript
   - linkListType: learn
     links:
     - text: Angular、React、Svelte、または Vue JavaScript アプリと API を公開する
@@ -52,6 +52,8 @@ landingContent:
       url: publish-hugo.md
     - text: VuePress から発行する
       url: publish-vuepress.md
+    - text: Jekyll から発行する
+      url: publish-jekyll.md
     - text: Next.js からデプロイする
       url: deploy-nextjs.md
     - text: Nuxt.js からデプロイする

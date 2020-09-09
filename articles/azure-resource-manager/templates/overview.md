@@ -2,13 +2,13 @@
 title: テンプレートの概要
 description: リソースのデプロイに Azure Resource Manager テンプレートを使用する利点について説明します。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086336"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119363"
 ---
 # <a name="what-are-arm-templates"></a>ARM テンプレートとは
 
@@ -54,7 +54,7 @@ ARM テンプレートを使用するか、他のいずれかのコードとし�
 
 * **エクスポート可能なコード**:リソース グループの現在の状態をエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。 [エクスポートしたテンプレート](export-template-portal.md)を表示すると、テンプレートの構文について理解するのに役立ちます。
 
-* **作成ツール**:[Visual Studio Code](use-vs-code-to-create-template.md) とテンプレート ツール拡張機能でテンプレートを作成できます。 Intellisense、構文の強調表示、インライン ヘルプ、その他の多くの言語機能が与えられます。 Visual Studio コードに加えて、[Visual Studio](create-visual-studio-deployment-project.md) を使用することもできます。
+* **作成ツール**:[Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) とテンプレート ツール拡張機能でテンプレートを作成できます。 Intellisense、構文の強調表示、インライン ヘルプ、その他の多くの言語機能が与えられます。 Visual Studio コードに加えて、[Visual Studio](create-visual-studio-deployment-project.md) を使用することもできます。
 
 ## <a name="template-file"></a>テンプレート ファイル
 
@@ -129,3 +129,4 @@ REQUEST BODY
 * テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての ARM テンプレートを作成してデプロイする](template-tutorial-create-first-template.md)」を参照してください。
 * テンプレート ファイルのプロパティについては、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
 * テンプレートのエクスポートの詳細については、「[クイックスタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](quickstart-create-templates-use-the-portal.md)」を参照してください。
+* 一般的な質問に対する回答については、「[ARM テンプレートに関してよく寄せられる質問](frequently-asked-questions.md)」を参照してください。

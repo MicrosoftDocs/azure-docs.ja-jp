@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Windows セキュリティ イベント データを接続する | Microsoft Docs
-description: Azure Sentinel に Windows セキュリティ イベント データを接続する方法について説明します。
+description: セキュリティ イベント コネクタを使用して、Windows システムから Azure Sentinel ワークスペースにあらゆるセキュリティ イベントをストリーム配信する方法について説明します。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 30055ba1befc68d015e3e3162d8db11a2916f3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519262"
 ---
 # <a name="connect-windows-security-events"></a>Windows セキュリティ イベントの接続 
 
@@ -87,7 +87,29 @@ Windows セキュリティ イベントを Azure Sentinel で収集するには�
 
 ログが Log Analytics に表示され始めるまで、約 20 分かかる場合があります。 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>異常な RDP ログイン検出用にセキュリティ イベント コネクタを構成する
 
+> [!IMPORTANT]
+> 異常な RDP ログイン検出は現在、パブリック プレビュー段階です。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure Sentinel はセキュリティ イベント データに機械学習 (ML) を適用して、異常なリモート デスクトップ プロトコル (RDP) ログイン アクティビティを識別できます。 シナリオには以下が含まれます。
+
+- **通常とは異なる IP** - その IP アドレスが過去 30 日間にほとんどまたはまったく確認されていない
+
+- **通常とは異なる地理的な場所** - IP アドレス、市区町村、国、および ASN が過去 30 日間にほとんどまたはまったく確認されていない
+
+- **新しいユーザー** - 新しいユーザーが、過去 30 日間のデータに基づいて予期されないか確認されていない (またはその両方の) IP アドレスおよび地理的な場所からログインしている。
+
+**構成の手順**
+
+1. **セキュリティ イベント** データ コネクタを使用して、RDP ログイン データ (イベント ID 4624) を収集している必要があります。 Azure Sentinel にストリーミングするために、[なし] 以外の[イベント セット](#event-sets)を選択したことを確認してください。
+
+1. Azure Sentinel ポータルから、 **[Analytics]\(分析\)** をクリックし、 **[Rule templates]\(規則のテンプレート\)** タブをクリックします。 **[(Preview) Anomalous RDP Login Detection]\((プレビュー) 異常な RDP ログイン検出\)** 規則を選択し、 **[状態]** スライダーを **[有効]** に移動します。
+
+    > [!NOTE]
+    > 機械学習アルゴリズムでは、ユーザー動作のベースライン プロファイルを作成するために 30 日間分のデータが必要であるため、インシデントを検出する前に、30 日間のセキュリティ イベント データの収集を許可する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Windows セキュリティ イベントを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。

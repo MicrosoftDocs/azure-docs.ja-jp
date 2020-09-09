@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: 対象範囲
       items:
+        - name: 対象範囲
+          href: geographic-coverage.md
         - name: ジオコーディングの対象範囲
           href: geocoding-coverage.md
         - name: トラフィックの対象範囲
@@ -89,6 +91,17 @@
           href: how-to-manage-account-keys.md
         - name: 認証を管理する
           href: how-to-manage-authentication.md
+          items:
+            - name: デーモン アプリケーションをセキュリティで保護する方法
+              href: how-to-secure-daemon-app.md
+            - name: 対話型サインインのシングル ページ アプリケーションをセキュリティで保護する方法
+              href: how-to-secure-spa-users.md
+            - name: Web アプリをセキュリティで保護する方法
+              href: how-to-secure-webapp-users.md
+            - name: 非対話型サインインのシングル ページ アプリケーションをセキュリティで保護する方法
+              href: how-to-secure-spa-app.md
+            - name: 入力の制約付きアプリケーションをセキュリティで保護する方法
+              href: how-to-secure-device-code.md
         - name: 価格レベルを管理する
           href: how-to-manage-pricing-tier.md
         - name: Creator の管理
@@ -177,6 +190,14 @@
               href: map-get-information-from-coordinate.md
             - name: A から B までのルートを表示する
               href: map-route.md
+        - name: Indoor Maps モジュール
+          items:
+            - name: Indoor Maps モジュール
+              href: how-to-use-indoor-module.md
+            - name: 屋内マップの動的スタイル
+              href: indoor-map-dynamic-styling.md
+            - name: 描画エラー ビジュアライザー
+              href: drawing-error-visualizer.md
         - name: 空間 IO モジュール
           items:
             - name: 空間 IO モジュールの使用
@@ -211,25 +232,37 @@
           href: how-to-add-tile-layer-android-map.md
         - name: トラフィック データを表示する
           href: how-to-show-traffic-android.md
-    - name: Creator の屋内マップを使用した開発
+    - name: Power BI で Azure Maps を使用する
       items:
-        - name: 屋内マップ モジュール
-          href: how-to-use-indoor-module.md
-        - name: 屋内マップの動的スタイル
-          href: indoor-map-dynamic-styling.md
-        - name: 描画エラー ビジュアライザー
-          href: drawing-error-visualizer.md
+        - name: 作業の開始
+          href: power-bi-visual-getting-started.md
+        - name: レイヤーの理解
+          href: power-bi-visual-understanding-layers.md
+        - name: バブル レイヤーを追加する
+          href: power-bi-visual-add-bubble-layer.md
+        - name: 横棒グラフ レイヤーを追加する
+          href: power-bi-visual-add-bar-chart-layer.md
+        - name: 参照レイヤーを追加する
+          href: power-bi-visual-add-reference-layer.md
+        - name: タイル レイヤーを追加する
+          href: power-bi-visual-add-tile-layer.md
+        - name: リアルタイム トラフィックを表示する
+          href: power-bi-visual-show-real-time-traffic.md
+        - name: アクセスを管理する
+          href: power-bi-visual-manage-access.md
     - name: データのフィードバックを提供する
       href: how-to-use-feedback-tool.md
 - name: リファレンス
   items:
     - name: API とパラメーターの拡張子
       items:
-        - name: 描画パッケージの要件
+        - name: Drawing パッケージの要件
           href: drawing-requirements.md
+        - name: 動的マップの StylesObject
+          href: schema-stateset-stylesobject.md
         - name: 車両消費モデル
           href: consumption-model.md
-        - name: GeoJSON 形式の拡張
+        - name: 拡張された GeoJSON 形式
           href: extend-geojson.md
         - name: ジオフェンスの GeoJSON 形式
           href: geofence-geojson.md
@@ -289,6 +322,8 @@
           href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.maps/accounts
+    - name: Azure CLI
+      href: /cli/azure/maps
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
@@ -314,19 +349,15 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure Maps の使用条件
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps の価格
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-maps'
-    - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-maps.html'
     - name: Azure Maps のビデオ
       href: 'https://aka.ms/AzureMapsVideos'
     - name: オープン ソース プロジェクト

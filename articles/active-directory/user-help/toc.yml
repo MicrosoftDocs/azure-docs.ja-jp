@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: 最近のサインイン アクティビティを表示する
       href: my-account-portal-sign-ins-page.md
-- name: セキュリティ情報 (プレビュー) のヘルプ
+    - name: ポータル設定を変更する
+      href: my-account-portal-settings.md
+- name: セキュリティ情報のヘルプ
   items:
     - name: サインイン中のセキュリティ情報の追加
       href: security-info-setup-signin.md

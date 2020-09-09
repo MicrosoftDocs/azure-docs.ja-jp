@@ -4,12 +4,12 @@ description: Visual Studio を使用して、出力バインドを追加して C
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74849209"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235367"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio を使用して関数を Azure Storage に接続する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74849209"
 
 この記事を読み始める前に、以下を用意する必要があります。 
 
- - [Visual Studio クイックスタートのパート 1](./functions-create-first-function-vs-code.md) を完了します。 
+ - [Visual Studio クイックスタートのパート 1](./functions-create-your-first-function-visual-studio.md) を完了します。 
 
 - Visual Studio から対象の Azure サブスクリプションにサインインします。
 

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943910"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "85921943"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
 
@@ -34,7 +34,7 @@ Bing Custom Search を使用すると、関心のあるトピックに合わせ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーを取得するには、Azure portal で [Bing Custom Search リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)してください。 [試用キー](https://azure.microsoft.com/try/cognitive-services)を使用することもできます。
+- チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーを取得するには、Azure portal で [Bing Custom Search リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)してください。
 - まだ Visual Studio 2017 以降をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。
 
 ## <a name="create-a-custom-search-instance"></a>カスタム検索インスタンスの作成
@@ -60,11 +60,11 @@ Bing Custom Search インスタンスを作成するには:
 
 特定の Web サイトや URL からの結果を含めるには、それらを **[アクティブ]** タブに追加します。
 
-1.       **[構成]** ページで **[アクティブ]** タブをクリックし、検索に含める 1 つまたは複数の Web サイトの URL を入力します。
+1. **[構成]** ページで **[アクティブ]** タブをクリックし、検索に含める 1 つまたは複数の Web サイトの URL を入力します。
 
     ![定義エディターのアクティブ タブのスクリーンショット](../media/customSrchEditor.png)
 
-2.       インスタンスが結果を返すことを確認するには、右側のプレビュー ウィンドウにクエリを入力します。 Bing は、インデックスが付けられている公開 Web サイトの結果のみを返します。
+2. インスタンスが結果を返すことを確認するには、右側のプレビュー ウィンドウにクエリを入力します。 Bing は、インデックスが付けられている公開 Web サイトの結果のみを返します。
 
 ## <a name="add-blocked-entries"></a>ブロックするエントリの追加
 
@@ -116,7 +116,7 @@ Bing Custom Search インスタンスを作成するには:
 
    ![ホステッド UI の詳細な構成手順のスクリーンショット](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. ドロップダウン リストからサブスクリプション キーを選択します。 または、サブスクリプション キーを手動で入力できます。 キーの取得方法については、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api)」を参照してください。  
+5. ドロップダウン リストからサブスクリプション キーを選択します。 または、サブスクリプション キーを手動で入力できます。
   
    ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
 

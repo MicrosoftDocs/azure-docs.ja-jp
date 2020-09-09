@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 1e86317999a34e4ab4cb94f93fb788e3e7314cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193056"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925636"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -20,8 +20,10 @@ Azure Monitor は、[ログ](data-platform-logs.md) データを Log Analytics �
 この記事では、以下のアクセスを許可する方法など、ログへのアクセスを管理する方法と、ログを含むワークスペースを管理する方法について説明します。 
 
 * ワークスペース (ワークスペースのアクセス許可を使用)
-* 特定のリソースのログ データにアクセスする必要があるユーザー (Azure のロールベースのアクセス制御 (RBAC) を使用)
+* Azure のロールベースのアクセス制御 (Azure RBAC) を使用して特定のリソースのログ データにアクセスする ([リソース コンテキスト](design-logs-deployment.md#access-mode)とも呼ばれる) 必要があるユーザー
 * ワークスペース内の特定のテーブルのログ データにアクセスする必要があるユーザー (Azure RBAC を使用)
+
+RBAC に関するログの概念とアクセス戦略を理解するには、「[Azure Monitor ログのデプロイの設計](design-logs-deployment.md)」を参照してください
 
 ## <a name="configure-access-control-mode"></a>アクセス制御モードを構成する
 
@@ -100,7 +102,7 @@ Azure Resource Manager テンプレートでアクセス モードを構成す�
 
 ## <a name="manage-access-using-workspace-permissions"></a>ワークスペースのアクセス許可を使用してアクセスを管理する
 
-各ワークスペースには、複数のアカウントを関連付けることができます。また、各アカウントは、複数のワークスペースにアクセスできます。 アクセスは、[Azure のロールベースのアクセス](../../role-based-access-control/role-assignments-portal.md)を使用して管理されます。
+各ワークスペースには、複数のアカウントを関連付けることができます。また、各アカウントは、複数のワークスペースにアクセスできます。 アクセスは、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用して管理されます。
 
 次のアクティビティにも、Azure のアクセス許可が必要です。
 
@@ -268,6 +270,18 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
+上記の例では、許可されるテーブルのホワイトリストを定義しています。 次の例は、ユーザーが _SecurityAlert_ テーブルを除くすべてのテーブルにアクセスできる場合のブラックリストの定義を示しています。
+
+```
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/*/read"
+],
+"notActions":  [
+    "Microsoft.OperationalInsights/workspaces/query/SecurityAlert/read"
+],
+```
 
 ### <a name="custom-logs"></a>カスタム ログ
 
@@ -290,12 +304,12 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
 
 * _\*/read_ アクションを含む標準の閲覧者ロールまたは共同作成者ロールを使用してグローバル読み取りアクセス許可がユーザーに付与されると、テーブルごとのアクセス制御がオーバーライドされ、ユーザーにすべてのログへのアクセス権が付与されます。
 * テーブルごとのアクセス権がユーザーに付与されるが、その他のアクセス許可は付与されない場合、ユーザーは API からログ データにアクセスできますが、Azure portal からはアクセスできません。 Azure portal からアクセス権を提供するには、基本ロールとして Log Analytics 閲覧者を使用します。
-* サブスクリプションの管理者は、他のすべてのアクセス許可設定に関係なくすべてのデータ型に対するアクセス権を持ちます。
+* サブスクリプションの管理者と所有者は、他のすべてのアクセス許可設定に関係なくすべてのデータ型に対するアクセス権を持ちます。
 * ワークスペース所有者は、テーブルとごのアクセス制御では他のすべてのユーザーと同様に扱われます。
 * 割当て数を減らすには、ロールは個々のユーザーではなくセキュリティ グループに割り当てることをお勧めします。 こうすると、既存のグループ管理ツールを使用して、アクセス権の構成と確認する際に役立ちます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
+* [Log Analytics エージェントの概要](./log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
 
-* 「[Azure Virtual Machines に関するデータの収集](../../azure-monitor/learn/quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。
+* 「[Azure Virtual Machines に関するデータの収集](../learn/quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。

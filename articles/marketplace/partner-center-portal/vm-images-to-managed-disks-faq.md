@@ -1,18 +1,18 @@
 ---
 title: 仮想マシン (VM) イメージを Azure Marketplace のマネージド ディスク ストレージに移行予定
 description: より高速で信頼性の高いストレージと、マーケットプレースの新しいフィーチャーと機能のサポートを提供するために、マーケットプレースの VM イメージをマネージド ディスク ストレージに移行します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 17b418ab82cc88b4368efe247b06c0c8bbb27453
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.openlocfilehash: 814a4012ace95e84e75bcb4071c549822b2b0633
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285114"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182430"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketplace 上の仮想マシン (VM) イメージをマネージド ディスク ストレージに移行します
 

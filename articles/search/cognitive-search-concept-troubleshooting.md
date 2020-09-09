@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/08/2020
+ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225319"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935468"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
@@ -49,7 +49,16 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>ヒント 4: エンリッチされたドキュメントの内部を確認する 
+> [!NOTE]
+> ベスト プラクティスとして、実稼働ワークロードに対して maxFailedItems、maxFailedItemsPerBatch を 0 に設定することをお勧めします。
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>ヒント 4: デバッグ セッションを使用して、スキルセットの問題を特定し、解決する 
+
+デバッグ セッションは、Azure portal の既存のスキルセットと連動するビジュアル エディターです。 デバッグ セッション内では、エラーを特定して解決し、変更を確認し、AI エンリッチメント パイプラインで運用スキルセットに対して変更を行うことができます。 これは、プレビュー機能です。[こちらのドキュメントをお読みください](./cognitive-search-debug-session.md)。 概念の詳細と概要については、[デバッグ セッション](./cognitive-search-tutorial-debug-sessions.md)に関する記事を参照してください。
+
+1 つのドキュメントでのデバッグ セッションの作業は、より複雑なエンリッチメント パイプラインを反復的にビルドするための優れた方法です。
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>ヒント 5: エンリッチされたドキュメントの内部を確認する 
 エンリッチされたドキュメントは、エンリッチメント中に作成され、プロセスが完了すると削除される、一時的な構造体です。
 
 インデックス作成時に作成されるエンリッチされたドキュメントのスナップショットをキャプチャするには、インデックスに ```enriched``` という名前のフィールドを追加します。 インデクサーは、そのドキュメントのすべてのエンリッチメントの文字列表現を、このフィールド内に自動的にダンプします。
@@ -77,15 +86,15 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>ヒント 5: 期待したコンテンツが表示されない
+## <a name="tip-6-expected-content-fails-to-appear"></a>ヒント 6: 期待したコンテンツが表示されない
 
 コンテンツの不足は、インデックス作成中にドキュメントが削除された結果である可能性があります。 Free および Basic レベルでは、ドキュメントのサイズの制限が低く設定されています。 制限を超えるファイルは、インデックス作成中に削除されます。 削除されたドキュメントは、Azure portal で確認できます。 検索サービス ダッシュボードで、インデクサーのタイルをダブルクリックします。 インデックス付けが成功したドキュメントの割合を確認します。 100% でない場合は、割合をクリックすると詳細が表示されます。 
 
-問題がファイル サイズに関連している場合は、"The blob \<file-name> has the size of \<file-size> bytes, which exceeds the maximum size for document extraction for your current service tier."(BLOB <ファイル名> のサイズが <ファイル サイズ> バイトです。現在のサービス レベルでのドキュメント抽出の最大サイズを超えています。) のようなエラーが表示されることがあります。 インデクサーの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページを参照してください。
+問題がファイル サイズに関連している場合は、"The blob \<file-name> のサイズが \<file-size> バイトです。現在のサービス レベルでのドキュメント抽出の最大サイズを超えています。" のようなエラーが表示されることがあります。 インデクサーの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページを参照してください。
 
 コンテンツが表示されない 2 つ目の理由として考えられるのは、関連する入力/出力マッピング エラーです。 たとえば、出力ターゲットの名前が "People" で、インデックス フィールド名が小文字の "people" である場合です。 システムはパイプライン全体に対して 201 成功メッセージを返す場合があるため、インデックス作成が成功したと思っても、実際にはフィールドが空になっています。 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>ヒント 6: 最大実行時間 (24 時間ウィンドウ) を超えて処理を拡張する
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>ヒント 7: 最大実行時間 (24 時間ウィンドウ) を超えて処理を拡張する
 
 画像解析は単純な場合でも計算が集中するため、画像が特に大きかったり複雑だったりする場合、処理時間が最大許容時間を超えることがあります。 
 
@@ -98,7 +107,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 ポータル ベースのインデックス作成では (クイック スタートで説明したように)、[一度だけ実行する] のインデクサー オプションを選択すると、処理が 1 時間 (`"maxRunTime": "PT1H"`) に制限されます。 処理ウィンドウをもっと長い時間に拡張したい場合があります。
 
-## <a name="tip-7-increase-indexing-throughput"></a>ヒント 7: インデックス作成のスループットを向上させる
+## <a name="tip-8-increase-indexing-throughput"></a>ヒント 8: インデックス作成のスループットを向上させる
 
 [並列インデックス作成](search-howto-large-index.md)の場合は、データを複数のコンテナーまたは同じコンテナー内の複数の仮想フォルダーに配置します。 次に、複数のデータソースとインデクサーのペアを作成します。 すべてのインデクサーは、同じスキルセットを使用して同じターゲット検索インデックスに書き込むことができるため、検索アプリはこのパーティション分割を意識する必要はありません。
 詳細については、「[大規模なデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)」を参照してください。

@@ -3,24 +3,26 @@ title: Azure Media Services v3 REST API 呼び出し用に Postman を構成す�
 description: この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように Postman を構成する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/05/2019
-ms.author: juliako
-ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75779639"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297713"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 この記事では、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
@@ -28,11 +30,11 @@ ms.locfileid: "75779639"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
-- [API へのアクセス](access-api-cli-how-to.md)に必要な情報を取得する
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
+- [API へのアクセス](./access-api-howto.md)に必要な情報を取得する
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、AMS REST チュートリアルの一部で示されている REST API を実行します。 
 
-    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用する **Visual Studio Code** や **Telerik Fiddler** です。 
+    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
 
 > [!IMPORTANT]
 > [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
@@ -99,7 +101,6 @@ AMS v3 リソースの操作を開始する前に、サービス プリンシパ
 
 ## <a name="see-also"></a>関連項目
 
-- [Media Services アカウントにファイルをアップロードする - REST](upload-files-rest-how-to.md)
 - [Media Services を使用してフィルターを作成する - REST](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 

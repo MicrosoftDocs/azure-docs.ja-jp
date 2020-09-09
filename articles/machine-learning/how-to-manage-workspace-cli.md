@@ -5,16 +5,17 @@ description: Azure CLI を使用して、新しい Azure Machine Learning ワー
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/28/2020
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617782"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167642"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 Azure Machine Learning ワークスペースは、次の Azure サービスまたはエンティティに依存しています。
 
 > [!IMPORTANT]
-> 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。
+> 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。 独自のストレージ アカウントをアタッチする場合は、次の条件を満たしていることを確認してください。
+>
+> * ストレージ アカウントが Premium アカウント (Premium_LRS と Premium_GRS) "_ではない_"
+> * Azure Blob と Azure File の両方の機能が有効になっている
+> * 階層型名前空間 (ADLS Gen 2) が無効になっている
+>
+> これらの要件は、ワークスペースによって使用される "_既定_" のストレージ アカウントにのみ使用されます。
 
 | サービス | 既存のインスタンスを指定するパラメーター |
 | ---- | ---- |
@@ -71,7 +78,7 @@ Azure Machine Learning ワークスペースは、次の Azure サービスま�
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure Machine Learning ワークスペースは、リソース グループ内に作成する必要があります。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 __新しいリソース グループを作成__するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
+Azure Machine Learning ワークスペースは、リソース グループ内に作成する必要があります。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 __新しいリソース グループを作成__ するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
 
 > [!TIP]
 > Azure Machine Learning が使用可能なリージョンを選択する必要があります。 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)」を参照してください。
@@ -103,7 +110,7 @@ az group create --name <resource-group-name> --location <location>
 __サービスが自動的に作成__される新しいワークスペースを作成するには、次のコマンドを使用します。
 
 > [!TIP]
-> このセクションのコマンドでは、Basic エディションのワークスペースが作成されます。 Enterprise ワークスペースを作成するには、`--sku enterprise` コマンドで `az ml workspace create` スイッチを使用します。 Azure Machine Learning のエディションについて詳しくは、「[Azure Machine Learning とは](overview-what-is-azure-ml.md#sku)」を参照してください。
+> このセクションのコマンドでは、Basic エディションのワークスペースが作成されます。 Enterprise ワークスペースを作成するには、`az ml workspace create` コマンドで `--sku enterprise` スイッチを使用します。 Azure Machine Learning のエディションについて詳しくは、「[Azure Machine Learning とは](overview-what-is-azure-ml.md#sku)」を参照してください。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -135,6 +142,47 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 }
 ```
 
+### <a name="virtual-network-and-private-endpoint"></a>仮想ネットワークとプライベート エンドポイント
+
+> [!IMPORTANT]
+> Azure Machine Learning ワークスペースでの Azure Private Link の使用は、現在パブリック プレビュー段階です。 この機能は**米国東部**と**米国西部 2** リージョン でのみ利用できます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+ワークスペースへのアクセスを仮想ネットワークに制限する場合、次のパラメーターを使用できます。
+
+* `--pe-name`:作成するプライベート エンドポイントの名前。
+* `--pe-auto-approval`:ワークスペースへのプライベート エンドポイント接続を自動的に承認するかどうか。
+* `--pe-resource-group`:プライベート エンドポイントを作成するリソース グループ。 仮想ネットワークが含まれているグループと同じグループでなければなりません。
+* `--pe-vnet-name`:プライベート エンドポイントを作成する既存の仮想ネットワーク。
+* `--pe-subnet-name`:プライベート エンドポイントを作成するサブネットの名前。 既定値は `default` です。
+
+お使いのワークスペースでのプライベート エンドポイントと仮想ネットワークの使用の詳細については、[ネットワークの分離とプライバシー](how-to-enable-virtual-network.md)に関する記事を参照してください。
+
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>カスタマー マネージド キーと High Business Impact ワークスペース
+
+既定では、ワークスペースのメトリックとメタデータは、Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。 
+
+__Enterprise__ バージョンの Azure Machine Learning を作成する場合は、独自のキーを使用できます。 これを行うと、Azure サブスクリプションにメトリックとメタデータを格納する Azure Cosmos DB インスタンスが作成されます。 `--cmk-keyvault` パラメーターを使用して、キーを格納する Azure Key Vault を指定し、`--resource-cmk-uri` を使用してコンテナー内のキーの URL を指定します。
+
+> [!IMPORTANT]
+> `--cmk-keyvault` と `--resource-cmk-uri` パラメーターを使用する前に、まず次のアクションを実行する必要があります。
+>
+> 1. サブスクリプションに対する共同作成者のアクセス許可を使用して、__Machine Learning アプリ__ (ID とアクセスの管理) を承認します。
+> 1. [カスタマー マネージド キーの構成](/azure/cosmos-db/how-to-setup-cmk)に関する記事の手順に従って以下を行います。
+>     * Azure Cosmos DB プロバイダーを登録する
+>     * Azure Key Vault を作成して構成する
+>     * キーを生成する
+>
+>     Azure Cosmos DB インスタンスを手動で作成する必要はありません。ワークスペースの作成時に作成されます。 この Azure Cosmos DB インスタンスは、`<your-resource-group-name>_<GUID>` というパターンに基づく名前を使用して、別のリソース グループ内に作成されます。
+>
+> ワークスペースの作成後にこの設定を変更することはできません。 ワークスペースによって使用されている Azure Cosmos DB を削除する場合は、それを使用しているワークスペースも削除する必要があります。
+
+お客様のワークスペースで Microsoft が収集するデータを制限するには、`--hbi-workspace` パラメーターを使用します。 
+
+> [!IMPORTANT]
+> High Business Impact の選択は、ワークスペースの作成時にのみ実行できます。 ワークスペースの作成後にこの設定を変更することはできません。
+
+カスタマー マネージド キーと High Business Impact ワークスペースの詳細については、「[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+
 ### <a name="use-existing-resources"></a>既存のリソースの使用
 
 既存のリソースを使用するワークスペースを作成するには、そのリソースの ID を指定する必要があります。 次のコマンドを使用して、サービスの ID を取得します。
@@ -147,6 +195,9 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     このコマンドからの応答は、次のテキストのようになり、ご使用のストレージ アカウントの ID になります。
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの "_既定_" のストレージ アカウントでは、Premium Storage と階層型名前空間のどちらもサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
 
 + **Azure Application Insights**:
 
@@ -317,7 +368,7 @@ Azure Machine Learning を使用したロールベースのアクセス制御 (R
 
 ## <a name="sync-keys-for-dependent-resources"></a>依存リソースのキーの同期
 
-ワークスペースで使用されているリソースのいずれかのアクセス キーを変更する場合は、次のコマンドを使用して、新しいキーとワークスペースを同期します。
+ワークスペースに使用されているいずれかのリソースのアクセス キーを変更すると、ワークスペースが新しいキーと同期されるまでに約 1 時間かかります。 ワークスペースで新しいキーを直ちに同期させるには、次のコマンドを使用します。
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

@@ -6,13 +6,13 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
-ms.topic: conceptual
-ms.openlocfilehash: f351f14796ec736bd5525f139a518c9a0dd3d19f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 54fe4486d43a40e54a0aeae36963c0271fae6c2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064526"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1.最新の Azure Resource Manager PowerShell コマンドレットをダウンロードします。
 
-Azure Resource Manager PowerShell コマンドレットの最新版をダウンロードしてインストールします。 PowerShell コマンドレットのダウンロードとインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
+Azure Resource Manager PowerShell コマンドレットの最新版をダウンロードしてインストールします。 PowerShell コマンドレットのダウンロードとインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/)に関するページを参照してください。
 
 ### <a name="2-connect-to-your-azure-account"></a>2.Azure アカウントに接続します。
 

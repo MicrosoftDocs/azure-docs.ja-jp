@@ -3,21 +3,22 @@ title: Azure Functions における Mobile Apps のバインド
 description: Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3f16f2ef077a1fc3c82075aaf7b7685f941d0a31
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559579"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212246"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
 > [!NOTE]
 > Azure Mobile Apps のバインドは、Azure Functions 1.x でのみ使用できます。 これらは Azure Functions 2.x 以降ではサポートされていません。
 
-この記事では、Azure Functions で [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) のバインドを操作する方法について説明します。 Azure Functions は、Mobile Apps の入力および出力バインドをサポートしています。
+この記事では、Azure Functions で [Azure Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) のバインドを操作する方法について説明します。 Azure Functions は、Mobile Apps の入力および出力バインドをサポートしています。
 
 Mobile Apps のバインドを使用すると、モバイル アプリのデータ テーブルの読み取りや更新を行うことができます。
 

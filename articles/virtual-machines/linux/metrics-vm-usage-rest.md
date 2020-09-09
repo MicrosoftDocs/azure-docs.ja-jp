@@ -5,25 +5,25 @@ author: rloutlaw
 ms.service: virtual-machines
 ms.subservice: monitoring
 ms.custom: REST
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 925246eb2adae59ca74e363c4d4a6952f11c3744
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292332"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 
-この例では、[Azure REST API](/rest/api/azure/) を使用して、[Linux 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/linux/monitor)の CPU 使用率を取得する方法を示します。
+この例では、[Azure REST API](/rest/api/azure/) を使用して、Linux 仮想マシンの CPU 使用率を取得する方法を示します。
 
 完全なリファレンス ドキュメントと REST API の他の例は、[Azure Monitor REST リファレンス](/rest/api/monitor)で確認できます。 
 
 ## <a name="build-the-request"></a>要求を作成する
 
-仮想マシンから [CPU の割合メトリック](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines)を収集するには、次の GET 要求を使用します。
+仮想マシンから [CPU の割合メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)を収集するには、次の GET 要求を使用します。
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -42,10 +42,10 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 | Name | 説明 |
 | :--- | :---------- |
-| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
+| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | resourceGroupName | リソースに関連付けられている Azure リソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |
 | vmname | Azure 仮想マシンの名前。 |
-| metricnames | 有効な[Load Balancer メトリック](/azure/load-balancer/load-balancer-standard-diagnostics)のコンマ区切りリスト。 |
+| metricnames | 有効な[Load Balancer メトリック](../../load-balancer/load-balancer-standard-diagnostics.md)のコンマ区切りリスト。 |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2018-01-01` を使用し、上記の URL に含まれています。  |
 | TimeSpan | 返されるメトリックの時間範囲を定義する次の形式の文字列: `startDateTime_ISO/endDateTime_ISO`。 この省略可能なパラメーターは、例では 1 日分のデータを返すように設定されています。 |
 | &nbsp; | &nbsp; |

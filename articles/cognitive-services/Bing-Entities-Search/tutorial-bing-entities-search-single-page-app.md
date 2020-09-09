@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Bing Entity Search 単一ページ Web アプリ'
+title: チュートリアル:Bing Entity Search シングルページ Web アプリ
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、単一ページの Web アプリケーションで Bing Entity Search API を使用する方法を説明します。
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d14681e07518188deabd9f48a04b80a489d858b8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943133"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407933"
 ---
-# <a name="tutorial-single-page-web-app"></a>チュートリアル: 単一ページの Web アプリ
+# <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
 Bing Entity Search API を使用すると、Web で*エンティティ*と*場所*に関する情報を検索できます。 特定のクエリで、いずれかの結果または両方の結果を要求することができます。 場所とエンティティの定義を以下に示します。
 
-|||
+| 結果 | 説明 |
 |-|-|
-|[エンティティ]|名前で検索する有名な人物、場所、もの|
-|場所|名前*または*種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
+|エンティティ|名前で検索する有名な人物、場所、もの|
+|Places|名前*または*種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
 
 このチュートリアルでは、Bing Entity Search API を使用する単一ページの Web アプリケーションをビルドして、検索結果をページ内に表示できるようにします。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
 
@@ -58,7 +59,12 @@ API を使用すると、場所によって結果を優先順位付けするこ�
 
 ## <a name="prerequisites"></a>前提条件
 
-チュートリアルを進めるには、Bing Maps API および Bing Search API のサブスクリプション キーが必要です。 所有していない場合は、[試用キー](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)および[基本の Bing Maps キー](https://www.microsoft.com/maps/create-a-bing-maps-key)を使用できます。
+チュートリアルを進めるには、Bing Maps API および Bing Search API のサブスクリプション キーが必要です。 
+
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを取得したら、次のようにします。
+  * Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+  * Azure portal で <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Computer Vision リソースを作成"  target="_blank">Bing Maps リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
 
 ## <a name="app-components"></a>アプリのコンポーネント
 
@@ -86,7 +92,7 @@ HTML には、検索結果が表示される区分 (HTML `<div>` タグ) も含�
 ## <a name="managing-subscription-keys"></a>サブスクリプション キーの管理
 
 > [!NOTE]
-> このアプリでは、Bing Search API と Bing Maps API の両方のサブスクリプション キーが必要です。 [試用版の Bing Search キー](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)と[基本の Bing Maps キー](https://www.microsoft.com/maps/create-a-bing-maps-key)を使用できます。
+> このアプリでは、Bing Search API と Bing Maps API の両方のサブスクリプション キーが必要です。
 
 コードに Bing Search と Bing Maps API のサブスクリプション キーを含めずに済むように、ブラウザーの永続的ストレージを使用してキーを格納します。 いずれのキーも保存されていない場合は、保存するように促し、後で使用するために保存します。 後でキーが API によって拒否された場合、格納されたキーは無効になり、ユーザーは次回の検索時にキーを求められます。
 
@@ -136,7 +142,7 @@ HTML `<body>` タグには、ページの読み込みが完了したときに `g
 
 この HTML のフォームには、次のコントロールが含まれます。
 
-| | |
+| コントロール | 説明 |
 |-|-|
 |`where`|検索で使用される市場 (場所と言語) を選択するドロップダウン メニュー。|
 |`query`|検索語句を入力するテキスト フィールド。|
@@ -406,7 +412,7 @@ Bing Entity Search API では、[指定した順序で結果を表示する必�
 
 `rankingResponse` コレクション内の各項目は、2 つの異なる (ただし同等の) 方法で実際の検索結果の項目を参照します。
 
-| | |
+| Item | 説明 |
 |-|-|
 |`id`|`id` は URL に似ていますが、リンクには使用できません。 `id` 型のランキング結果は、応答コレクション内の検索結果項目、"*または*" 応答コレクション全体 (`Entities` など) のいずれかの `id` と一致します。
 |`answerType`<br>`resultIndex`|`answerType` は、結果を含む最上位の応答コレクション (`Entities` など) を参照します。 `resultIndex` は、そのコレクション内の結果のインデックスを参照します。 `resultIndex` を省略すると、ランキング結果はコレクション全体を参照したものとなります。
@@ -447,7 +453,7 @@ searchItemRenderers = {
 
 レンダラー関数では、次のパラメーターを受け取ることができます。
 
-| | |
+| パラメーター | 説明 |
 |-|-|
 |`item`|項目のプロパティ (URL とその説明など) を含む JavaScript オブジェクト。|
 |`index`|コレクション内の結果項目のインデックス。|
@@ -531,19 +537,22 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 > [!NOTE]
 > 運用環境の Web アプリケーションでは、いずれにしても要求サーバー側を実行する必要があります。 そうしないと、Web ページに Bing Search API キーを含める必要があり、ソースを表示した人ならだれでもキーを使用できるようになってしまいます。 権限のない者によって行われた要求であっても、すべての利用に対してユーザーの API サブスクリプション キーに基づいて料金が発生するため、キーは公開しないようにする必要があります。
 
-開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 そのようなプロキシからの応答には、リスト応答ヘッダーを許可して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後に、次のコマンドを使用して、CORS プロキシを開始します。
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 

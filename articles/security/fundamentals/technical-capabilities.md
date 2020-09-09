@@ -2,25 +2,20 @@
 title: Azure でのセキュリティの技術的な機能 | Microsoft Azure
 description: クラウド内のデータ、リソース、およびアプリケーションの保護に役立つ、Azure でのセキュリティ サービスの概要。
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845348"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071591"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -157,7 +152,7 @@ Azure のアクセス制御では、最初に課金に注目します。 [Azure 
 
 サブスクリプションは、ディレクトリとも関連付けられています。 ディレクトリでは、一連のユーザーを定義します。 たとえば、ディレクトリを作成した職場や学校のユーザーや、外部ユーザー (つまり、Microsoft アカウント) として定義できます。 サブスクリプションは、サービス管理者 (SA) または共同管理者 (CA) のいずれかとして割り当てられているディレクトリ ユーザーのサブセットからアクセス可能です。唯一の例外は、従来版との兼ね合いから、Microsoft アカウント (旧 Windows Live ID) はディレクトリに存在しなくても SA または CA として割り当てることができる、という点です 。
 
-セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 [Azure のロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
+セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 [Azure のロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) は、Azure のきめ細かいアクセス管理を実現することで、この問題に対処する助けとなります。
 
 ![セキュリティで保護されたリソース アクセス](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
@@ -170,77 +165,11 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 クラウドにおけるデータ保護で重要なポイントの 1 つは、データが置かれうる状態と、その状態でどのような制御を使用できるのかを把握することです。 Azure のデータ セキュリティと暗号化のベスト プラクティスでは、次のデータの状態に関する推奨事項が定められています。
 
 - 保存: ストレージ オブジェクト、コンテナー、データ型など、物理メディア (磁気ディスクまたは光学ディスク) に静的な状態で存在しているすべての情報が該当します。
-
 - 転送中: ネットワークやサービス バスなどを経由して、コンポーネント間、場所間、プログラム間でデータが転送されているとき (オンプレミスとクラウド間の転送、ExpressRoute などのハイブリッド接続を含む)、または入出力処理の間、データが転送中であると見なされます。
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
-次のそれぞれで保存データの暗号化を実現するには:
-
-データの暗号化に、次の表に示す推奨される暗号化モデルを 1 つ以上サポートします。
-
-| 暗号化モデル |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| サーバーの暗号化 | サーバーの暗号化 | サーバーの暗号化 | クライアントの暗号化
-| サービス管理キーを使用したサーバー側暗号化 | ユーザーが管理する Azure Key Vault キーを使用したサーバー側暗号化 | オンプレミスの顧客管理キーを使用したサーバー側暗号化 |
-| • Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br> •    マイクロソフトがキーを管理する <br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する<br>• お客様が Azure Key Vault を使用してキーを制御する<br>• 完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br>• お客様がオンプレミスのキーを管理する <br> •   完全なクラウド機能| • Azure のサービスは解読されたデータを表示できない <br>• お客様がオンプレミス (または別のセキュリティで保護されたストア) にキーを保持する。 キーは Azure のサービスでは使用できません <br>• 制限されたクラウド機能|
-
-### <a name="enabling-encryption-at-rest"></a>保存時の暗号化を有効にする
-
-**データを保存するすべての場所を特定する**
-
-保存時の暗号化の目標は、すべてのデータを暗号化することです。 これにより、重要なデータや保持されているすべての場所が失われる可能性がなくなります。 アプリケーションによって格納されたすべてのデータを列挙します。
-
-> [!Note]
-> "アプリケーション データ" や "PII" だけでなく、アカウント メタデータ (サブスクリプション マッピング、コントラクト情報、PII) などのアプリケーションに関連するすべてのデータが対象です。
-
-データの格納に使用しているストアを検討します。 次に例を示します。
-
-- 外部ストレージ (例: SQL Azure、Document DB、HDInsights、Data Lake など)
-
-- 一時的なストレージ (テナントのデータを含むすべてのローカル キャッシュ)
-
-- メモリ内キャッシュ (ページ ファイルに挿入される場合がある)
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Azure で既存の保存データの暗号化サポートを活用する
-
-使用するストアごとに、既存の保存時の暗号化サポートを活用します。
-
-- Azure Storage:[保存データに対する Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)に関するページを参照してください
-
-- SQL Azure: [透過的なデータ暗号化 (TDE)、SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)に関するページを参照してください
-
-- VM とローカル ディスク ストレージ ([Azure Disk Encryption](../azure-security-disk-encryption-overview.md))
-
-サポートされている場合、VM とローカル ディスク ストレージには、Azure Disk Encryption を使用します。
-
-#### <a name="iaas"></a>IaaS
-
-IaaS VM のサービス (Windows または Linux) では、[Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) を使用して顧客データが含まれるボリュームを暗号化してください。
-
-#### <a name="paas-v2"></a>PaaS v2
-
-Service Fabric を使用して PaaS v2 で実行されているサービスでは、仮想マシン スケール セット [VMSS] 用の Azure Disk Encryption を使用して、PaaS v2 の VM を暗号化できます。
-
-#### <a name="paas-v1"></a>PaaS v1
-
-現在、Azure Disk Encryption は PaaS v1 ではサポートされていません。 このため、保持されている保存データを暗号化するには、アプリケーション レベルの暗号化を使用する必要があります。  これにはアプリケーション データ、一時ファイル、ログ、クラッシュ ダンプなどが含まれますが、これらに限られません。
-
-ほとんどのサービスはストレージ リソース プロバイダーの暗号化の活用を試行します。 一部のサービスでは明示的な暗号化を実行する必要があります。たとえば、保持されたキー マテリアル (証明書、ルート/マスター キー) はすべて Key Vault に格納する必要があります。
-
-顧客管理キーを使用したサービス側暗号化をサポートしている場合、お客様がマイクロソフトにキーを渡す手段が必要です。 サポートおよび推奨されている方法は、Azure Key Valut (AKV) を使用して統合する方法です。 この場合、Azure Key Vault を使用してキーを追加および管理できます。 AKV を使用する方法について詳しくは、「[Key Vault の概要](https://go.microsoft.com/fwlink/?linkid=521402)」をご覧ください。
-
-Azure Key Vault と統合するには、解読に必要なときに AKV からキーをリクエストするためのコードを追加します。
-
-- AKV と統合する方法について詳しくは、「[Azure Key Vault – Step by Step](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/)」 (Azure Key Vault - ステップ バイ ステップ) をご覧ください。
-
-顧客管理キーをサポートする場合、そのお客様に UX を提供して、使用する Key Vault (または Key Vault URI) を指定する必要があります。
-
-保存データの暗号化にはホスト、インフラストラクチャ、およびテナント データの暗号化が関与するため、システム エラーや悪意のある行動によってキーが失われると、暗号化データがすべて失われることがあります。 このため、保存データの暗号化ソリューションに、システム エラーや悪意のある行動に耐性がある、包括的なディザスター リカバリー ストーリーが必要です。
-
-保存データの暗号化が実装されているサービスは通常、暗号化キーやホスト ドライブ (ホスト OS のページ ファイルなど) で暗号化されずに残っているデータの影響を引き続き受けやすい状態にあります。そのため、サービスはホスト ボリュームが暗号化されていることを確認する必要があります。 これを容易にするために、Compute チームは、[BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP と DCM サービスとエージェントの拡張機能を使用してホスト ボリュームを暗号化する、ホスト暗号化のデプロイを有効にしました。
-
-ほとんどのサービスは標準の Azure VM に実装されています。 このようなサービスでは、Compute が有効にすると[ホスト暗号化](../azure-security-disk-encryption-overview.md)を自動的に入手します。 Compute 管理のクラスターで実行されているサービスでは、Windows Server 2016 がロールアウトされた段階でホスト暗号化が自動的に有効になっています。
+保存時の暗号化の詳細については、「[Azure の保存データの暗号化](encryption-atrest.md)」を参照してください。
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 

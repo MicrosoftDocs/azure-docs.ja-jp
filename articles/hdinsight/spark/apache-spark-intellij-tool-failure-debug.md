@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857417"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
@@ -90,7 +90,7 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 ジョブの送信に失敗した場合は、さらにデバッグするために、失敗したジョブのプロファイルをローカル コンピューターにダウンロードできます。
 
-1. **Microsoft Azure Storage Explorer** を開き、失敗したジョブに対するクラスターの HDInsight アカウントを見つけて、失敗したジョブのリソースを、対応する場所である **\hdp\spark2-events\\.spark-failures\\\<アプリケーション ID>** からローカル フォルダーにダウンロードします。 ダウンロードの進行状況が **[アクティビティ]** ウィンドウに表示されます。
+1. **Microsoft Azure Storage Explorer** を開き、失敗したジョブに対するクラスターの HDInsight アカウントを見つけて、失敗したジョブのリソースを、対応する場所である **\hdp\spark2-events\\.spark-failures\\\<application ID>** からローカル フォルダーにダウンロードします。 ダウンロードの進行状況が **[アクティビティ]** ウィンドウに表示されます。
 
    ![Azure Storage Explorer での失敗のダウンロード](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038275"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace イメージのセキュリティに関する推奨事項
 
@@ -27,9 +27,8 @@ ms.locfileid: "80548668"
 
 ## <a name="open-source-based-images"></a>オープン ソース ベースのイメージ
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **カテゴリ**                                                 | **確認事項**                                                                                                                                                                                                                                                                              |
+| カテゴリ | ○ |
+| -------- | ----- |
 | Security                                                     | Linux ディストリビューションの最新のセキュリティ パッチをすべてインストールします。                                                                                                                                                                                                              |
 | Security                                                     | 特定の Linux ディストリビューション用の VM イメージのセキュリティ保護に関する業界のガイドラインに従います。                                                                                                                                                                                     |
 | Security                                                     | Windows Server の役割、機能、サービス、ネットワーク ポートを必要なものだけにしてフット プリントを最小限にすることで、攻撃対象領域を制限します。                                                                                                                                               |
@@ -50,9 +49,8 @@ ms.locfileid: "80548668"
 
 ## <a name="windows-server-based-images"></a>Windows Server ベースのイメージ
 
-|||
-|-------------| -------------------------|
-| **カテゴリ**                                                     | **確認事項**                                                                                                                                                                |
+| カテゴリ | ○ |
+|--------- | ----- |
 | Security                                                         | セキュリティで保護された OS ベース イメージを使います。 Windows Server に基づくイメージのソースに使われる VHD は、Microsoft Azure によって提供される Windows Server OS イメージが基になっている必要があります。 |
 | Security                                                         | 最新のセキュリティ更新プログラムをすべてインストールします。                                                                                                                                     |
 | Security                                                         | アプリケーションは、administrator、root、admin などの制限されたユーザー名に依存してはなりません。                                                                |

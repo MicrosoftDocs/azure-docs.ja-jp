@@ -3,15 +3,15 @@ title: Azure Cosmos DB のコンテナーを照会する
 description: インパーティション クエリとクロスパーティション クエリを使用して、Azure Cosmos DB 内のコンテナーのクエリを実行する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261258"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを照会する
 

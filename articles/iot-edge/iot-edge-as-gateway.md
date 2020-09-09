@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 916eeaa60bc054301af039164ce1c14e77ceb91a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733529"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232629"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge デバイスをゲートウェイとして使用する方法
 
@@ -50,7 +50,7 @@ ID 変換を行うゲートウェイを使うと、プロトコル変換の利�
 
 透過的、非透過的 (プロトコル)、およびプロキシ ゲートウェイを使ったときの IoT Hub プリミティブを比較した簡単なチート シートを次に示します。
 
-| &nbsp; | 透過的なゲートウェイ | プロトコル変換 | ID 変換 |
+| プリミティブ | 透過的なゲートウェイ | プロトコル変換 | ID 変換 |
 |--------|-------------|--------|--------|
 | IoT Hub ID レジストリに格納されている ID | 接続されているすべてのデバイスの ID | ゲートウェイ デバイスの ID のみ | 接続されているすべてのデバイスの ID |
 | デバイス ツイン | 各接続のデバイスには、独自のデバイス ツインが含まれている | デバイスとモジュール ツインはゲートウェイにのみ含まれている | 各接続のデバイスには、独自のデバイス ツインが含まれている |

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74787371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281465"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
 
@@ -28,11 +28,11 @@ ms.locfileid: "74787371"
 
   * Swagger ファイルは、パブリックにアクセス可能な HTTPS URL でホストされている必要があります。
 
-  * Swagger ファイルでは、[クロスオリジン リソース共有 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) が有効になっている必要があります。
+  * Swagger ファイルでは、[クロスオリジン リソース共有 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) が有効になっている必要があります。
 
   参照する Swagger ファイルがホストされていない場合やセキュリティとクロスオリジンの要件を満たしていない場合は、[Azure ストレージ アカウント内の BLOB コンテナーにその Swagger ファイルをアップロード](#host-swagger)し、そのストレージ アカウントで CORS を有効にすると、そのファイルを参照できるようになります。
 
-  このトピックの例では、[Cognitive Services アカウントとアクセス キー](../cognitive-services/cognitive-services-apis-create-account.md)を必要とする [Cognitive Services Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) を使用します。
+  このトピックの例では、[Cognitive Services アカウントとアクセス キー](../cognitive-services/cognitive-services-apis-create-account.md)を必要とする [Cognitive Services Face API](../cognitive-services/face/overview.md) を使用します。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
@@ -118,7 +118,7 @@ ms.locfileid: "74787371"
 
 ホストされていない、またはセキュリティとクロスオリジンの要件を満たしていない Swagger ファイルは、Azure ストレージ アカウント内の BLOB コンテナーに Swagger ファイルをアップロードし、そのストレージ アカウントで CORS を有効にすると参照できます。 Swagger ファイルを作成および設定し、Azure Storage に保存するには、次の手順に従います。
 
-1. [Azure Storage アカウント](../storage/common/storage-create-storage-account.md)を作成します。
+1. [Azure Storage アカウント](../storage/common/storage-account-create.md)を作成します。
 
 1. ここで、BLOB に対して CORS を有効にします。 ストレージ アカウント メニューの **[CORS]** を選択します。 **[Blob service]** タブで以下の値を指定し、 **[保存]** を選択します。
 
@@ -137,9 +137,9 @@ ms.locfileid: "74787371"
 
 1. [Azure portal](https://portal.azure.com) または [Azure Storage Explorer](https://storageexplorer.com/) のいずれかから、[Swagger ファイルを BLOB コンテナーにアップロード](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)します。
 
-1. BLOB コンテナー内のファイルを参照するには、次の形式に従う HTTPS リンクを使用します。ここで、大文字と小文字は区別されます。
+1. BLOB コンテナー内のファイルを参照するには、次の形式の HTTPS URL を Azure Storage Explorer から取得します。URL の大文字と小文字は区別されます。
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
@@ -166,3 +166,4 @@ ms.locfileid: "74787371"
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

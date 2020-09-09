@@ -4,16 +4,16 @@ description: HDInsight クラスター用の Azure Resource Manager 開発ツー
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.custom: hdinsightactive, devx-track-azurecli
+ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 76eb3a135f7a32a30cfa62546a644bc77cf39998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934585"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500182"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 
@@ -93,7 +93,9 @@ HDInsight コマンドレットを使用する前に、Azure アカウントに�
 ### <a name="renamed-cmdlets"></a>名前が変更されたコマンドレット
 Windows PowerShell コンソールで HDInsight ASM コマンドレットを一覧表示するには:
 
-    help *azurehdinsight*
+```powershell
+help *azurehdinsight*
+```
 
 次の表は、ASM コマンドレットと、Resource Manager モードでの対応するコマンドレット名の一覧です。
 
@@ -149,66 +151,80 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 
 以前のコマンド (ASM): 
 
-    New-AzureHDInsightCluster `
-        -Name $clusterName `
-        -Location $location `
-        -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
-        -DefaultStorageAccountKey $storageAccountKey `
-        -DefaultStorageContainerName $containerName `
-        -ClusterSizeInNodes 2 `
-        -ClusterType Hadoop `
-        -OSType Linux `
-        -Version "3.2" `
-        -Credential $httpCredential `
-        -SshCredential $sshCredential
+```azurepowershell
+New-AzureHDInsightCluster `
+    -Name $clusterName `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainerName $containerName `
+    -ClusterSizeInNodes 2 `
+    -ClusterType Hadoop `
+    -OSType Linux `
+    -Version "3.2" `
+    -Credential $httpCredential `
+    -SshCredential $sshCredential
+```
 
 新しいコマンド:
 
-    New-AzHDInsightCluster `
-        -ClusterName $clusterName `
-        -ResourceGroupName $resourceGroupName `
-        -Location $location `
-        -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
-        -DefaultStorageAccountKey $storageAccountKey `
-        -DefaultStorageContainer $containerName  `
-        -ClusterSizeInNodes 2 `
-        -ClusterType Hadoop `
-        -OSType Linux `
-        -Version "3.2" `
-        -HttpCredential $httpcredentials `
-        -SshCredential $sshCredentials
-
+```azurepowershell
+New-AzHDInsightCluster `
+    -ClusterName $clusterName `
+    -ResourceGroupName $resourceGroupName `
+    -Location $location `
+    -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
+    -DefaultStorageAccountKey $storageAccountKey `
+    -DefaultStorageContainer $containerName  `
+    -ClusterSizeInNodes 2 `
+    -ClusterType Hadoop `
+    -OSType Linux `
+    -Version "3.2" `
+    -HttpCredential $httpcredentials `
+    -SshCredential $sshCredentials
+```
 
 **クラスターの削除**
 
 以前のコマンド (ASM):
 
-    Remove-AzureHDInsightCluster -name $clusterName 
+```azurepowershell
+Remove-AzureHDInsightCluster -name $clusterName 
+```
 
 新しいコマンド:
 
-    Remove-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
+```azurepowershell
+Remove-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+```
 
 **クラスターの一覧表示**
 
 以前のコマンド (ASM):
 
-    Get-AzureHDInsightCluster
+```azurepowershell
+Get-AzureHDInsightCluster
+```
 
 新しいコマンド:
 
-    Get-AzHDInsightCluster 
+```azurepowershell
+Get-AzHDInsightCluster
+```
 
 **クラスターの表示**
 
 以前のコマンド (ASM):
 
-    Get-AzureHDInsightCluster -Name $clusterName
+```azurepowershell
+Get-AzureHDInsightCluster -Name $clusterName
+```
 
 新しいコマンド:
 
-    Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
-
+```azurepowershell
+Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
+```
 
 #### <a name="other-samples"></a>その他のサンプル
 * [HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -243,112 +259,133 @@ ASM ベースの SDK を使用して操作を実行する方法と、Resource Ma
 **クラスターの CRUD クライアントを作成する**
 
 * 以前のコマンド (ASM):
+
+  ```azurecli
+  //Certificate auth
+  //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager
   
-        //Certificate auth
-        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager
-  
-        const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
-        var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
-        var client = HDInsightClient.Connect(cred);
+  const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
+  var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
+  var client = HDInsightClient.Connect(cred);
+  ```
 * 新しいコマンド (サービス プリンシパルの承認)
+
+  ```azurecli
+  //Service principal auth
+  //This will log the application in as itself, rather than on behalf of a specific user.
+  //For details, including how to set up the application, see:
+  //   https://azure.microsoft.com/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
   
-        //Service principal auth
-        //This will log the application in as itself, rather than on behalf of a specific user.
-        //For details, including how to set up the application, see:
-        //   https://azure.microsoft.com/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
+  var authFactory = new AuthenticationFactory();
   
-        var authFactory = new AuthenticationFactory();
+  var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
   
-        var account = new AzureAccount { Type = AzureAccount.AccountType.ServicePrincipal, Id = clientId };
+  var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
   
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+  var accessToken = authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
   
-        var accessToken = authFactory.Authenticate(account, env, tenantId, secretKey, ShowDialog.Never).AccessToken;
+  var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
-        var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
-  
-        _hdiManagementClient = new HDInsightManagementClient(creds);
+  _hdiManagementClient = new HDInsightManagementClient(creds);
+  ```
+
 * 新しいコマンド (ユーザーの承認)
+
+  ```azurecli
+  //User auth
+  //This will log the application in on behalf of the user.
+  //The end-user will see a login popup.
   
-        //User auth
-        //This will log the application in on behalf of the user.
-        //The end-user will see a login popup.
+  var authFactory = new AuthenticationFactory();
   
-        var authFactory = new AuthenticationFactory();
+  var account = new AzureAccount { Type = AzureAccount.AccountType.User, Id = username };
   
-        var account = new AzureAccount { Type = AzureAccount.AccountType.User, Id = username };
+  var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
   
-        var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+  var accessToken = authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto).AccessToken;
   
-        var accessToken = authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto).AccessToken;
+  var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
-        var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
-  
-        _hdiManagementClient = new HDInsightManagementClient(creds);
+  _hdiManagementClient = new HDInsightManagementClient(creds);
+  ```
 
 **クラスターを作成する**
 
 * 以前のコマンド (ASM):
-  
-        var clusterInfo = new ClusterCreateParameters
-                    {
-                        Name = dnsName,
-                        DefaultStorageAccountKey = key,
-                        DefaultStorageContainer = defaultStorageContainer,
-                        DefaultStorageAccountName = storageAccountDnsName,
-                        ClusterSizeInNodes = 1,
-                        ClusterType = type,
-                        Location = "West US",
-                        UserName = "admin",
-                        Password = "*******",
-                        Version = version,
-                        HeadNodeSize = NodeVMSize.Large,
-                    };
-        clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
-        client.CreateCluster(clusterInfo);
+
+  ```azurecli
+  var clusterInfo = new ClusterCreateParameters
+              {
+                  Name = dnsName,
+                  DefaultStorageAccountKey = key,
+                  DefaultStorageContainer = defaultStorageContainer,
+                  DefaultStorageAccountName = storageAccountDnsName,
+                  ClusterSizeInNodes = 1,
+                  ClusterType = type,
+                  Location = "West US",
+                  UserName = "admin",
+                  Password = "*******",
+                  Version = version,
+                  HeadNodeSize = NodeVMSize.Large,
+              };
+  clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
+  client.CreateCluster(clusterInfo);
+  ```
+
 * 新しいコマンド
-  
-        var clusterCreateParameters = new ClusterCreateParameters
-            {
-                Location = "West US",
-                ClusterType = "Hadoop",
-                Version = "3.1",
-                OSType = OSType.Linux,
-                DefaultStorageAccountName = "mystorage.blob.core.windows.net",
-                DefaultStorageAccountKey =
-                    "O9EQvp3A3AjXq/W27rst1GQfLllhp0gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==",
-                UserName = "hadoopuser",
-                Password = "*******",
-                HeadNodeSize = "ExtraLarge",
-                RdpUsername = "hdirp",
-                RdpPassword = ""*******",
-                RdpAccessExpiry = new DateTime(2025, 3, 1),
-                ClusterSizeInNodes = 5
-            };
-        var coreConfigs = new Dictionary<string, string> {{"config1", "value1"}};
-        clusterCreateParameters.Configurations.Add(ConfigurationKey.CoreSite, coreConfigs);
+
+  ```azurecli
+  var clusterCreateParameters = new ClusterCreateParameters
+      {
+          Location = "West US",
+          ClusterType = "Hadoop",
+          Version = "3.1",
+          OSType = OSType.Linux,
+          DefaultStorageAccountName = "mystorage.blob.core.windows.net",
+          DefaultStorageAccountKey =
+              "O9EQvp3A3AjXq/W27rst1GQfLllhp0gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==",
+          UserName = "hadoopuser",
+          Password = "*******",
+          HeadNodeSize = "ExtraLarge",
+          RdpUsername = "hdirp",
+          RdpPassword = ""*******",
+          RdpAccessExpiry = new DateTime(2025, 3, 1),
+          ClusterSizeInNodes = 5
+      };
+  var coreConfigs = new Dictionary<string, string> {{"config1", "value1"}};
+  clusterCreateParameters.Configurations.Add(ConfigurationKey.CoreSite, coreConfigs);
+  ```
 
 **HTTP アクセスを有効にする**
 
 * 以前のコマンド (ASM):
-  
-        client.EnableHttp(dnsName, "West US", "admin", "*******");
+
+  ```azurecli
+  client.EnableHttp(dnsName, "West US", "admin", "*******");
+  ```
+
 * 新しいコマンド
   
-        var httpParams = new HttpSettingsParameters
-        {
-               HttpUserEnabled = true,
-               HttpUsername = "admin",
-               HttpPassword = "*******",
-        };
-        client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
+  ```azurecli
+  var httpParams = new HttpSettingsParameters
+  {
+         HttpUserEnabled = true,
+         HttpUsername = "admin",
+         HttpPassword = "*******",
+  };
+  client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
+  ```
 
 **クラスターを削除する**
 
 * 以前のコマンド (ASM):
-  
-        client.DeleteCluster(dnsName);
-* 新しいコマンド
-  
-        client.Clusters.Delete(resourceGroup, dnsname);
 
+  ```azurecli
+  client.DeleteCluster(dnsName);
+  ```
+
+* 新しいコマンド
+
+  ```azurecli
+  client.Clusters.Delete(resourceGroup, dnsname);
+  ```

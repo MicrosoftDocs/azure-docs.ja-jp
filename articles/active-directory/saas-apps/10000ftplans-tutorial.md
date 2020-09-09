@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と 10,000ft Plans の統合 | Microsoft Docs'
 description: Azure Active Directory と 10,000ft Plans の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b60c955e-8fa3-4872-a897-c4e81fd7beac
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441c9345f92974c387429baac768dbccb03fc995
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ca157abf19918f72ce167e4abba4816dd7f2551
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67107604"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>チュートリアル: Azure Active Directory と 10,000ft Plans の統合
 

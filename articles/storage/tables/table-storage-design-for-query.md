@@ -1,19 +1,19 @@
 ---
 title: クエリに対応した Azure Table Storage を設計する | Microsoft Docs
-description: Azure Table Storage で、クエリに対応したテーブルを設計します。
+description: Azure Table Storage で、クエリに対応したテーブルを設計します。 適切なパーティション キーを選択し、クエリを最適化して、Table service のデータを並べ替えます。
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457646"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236337"
 ---
 # <a name="design-for-querying"></a>クエリに対応した設計
 Table service ソリューションでは、読み取り、書き込み、またはその両方の負荷が高くなることがあります。 この記事では、読み取り操作を効率的に行える Table service を設計する際に注意する必要のある事柄を中心に取り上げます。 通常は、読み取り操作を効率的にサポートする設計は、書き込み操作についても効率が高くなります。 ただし、書き込み操作をサポートする設計には、さらに考慮すべき事柄があります。「[データの変更に対応した設計](table-storage-design-for-modification.md)」の記事を参照してください。
@@ -41,7 +41,7 @@ Table service ソリューションでは、読み取り、書き込み、また
 | **RowKey** (従業員 ID) |String |
 | **FirstName** |String |
 | **LastName** |String |
-| **Age** |整数 |
+| **Age** |Integer |
 | **EmailAddress** |String |
 
 「[Azure Table Storage の概要](table-storage-overview.md)」の記事では、クエリの設計に直接影響を与える Azure Table service の主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities (エンティティの照会)](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)」をご覧ください。  

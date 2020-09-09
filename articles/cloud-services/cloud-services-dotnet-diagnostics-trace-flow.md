@@ -7,15 +7,16 @@ documentationcenter: .net
 author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: tagore
-ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8270766413729454181c461d469d49e418a1aa67
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386512"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932306"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Azure Diagnostics で Cloud Services アプリケーションのフローをトレースする
 トレースは、アプリケーションの稼働中にアプリケーションの実行を監視する手段です。 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace)、[System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug)、および [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) の各クラスを使用すると、エラーとアプリケーションの実行に関する情報をログ、テキスト ファイル、またはその他のデバイスに記録して、後で分析することができます。 トレースの詳細については、「 [アプリケーションのトレースとインストルメント](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)」を参照してください。
@@ -23,9 +24,9 @@ ms.locfileid: "75386512"
 ## <a name="use-trace-statements-and-trace-switches"></a>トレース ステートメントとトレース スイッチを使用する
 Cloud Services アプリケーションにトレース機能を実装するには、 [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) をアプリケーションの構成に追加し、アプリケーション コード内で System.Diagnostics.Trace または System.Diagnostics.Debug を呼び出します。 worker ロールでは構成ファイル *app.config* を使用し、Web ロールでは構成ファイル *web.config* を使用します。 Visual Studio テンプレートを使用して、ホストされるサービスを新規に作成する場合は、Azure Diagnostics が自動的にプロジェクトに追加され、さらに、追加したロール用の構成ファイルに DiagnosticMonitorTraceListener が追加されます。
 
-トレース ステートメントを配置する方法の詳細については、「 [トレース ステートメントをアプリケーション コードに追加する方法](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)」を参照してください。
+トレース ステートメントを配置する方法の詳細については、「[How to: Add Trace Statements to Application Code (トレース ステートメントをアプリケーション コードに追加する方法)](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)」を参照してください。
 
-[トレース スイッチ](/dotnet/framework/debug-trace-profile/trace-switches) をコード内に配置すると、トレースを行うかどうか、対象範囲をどうするかを制御することができます。 これにより、運用環境でアプリケーションの状態を監視できます。 このことは、複数のコンピューターで実行される複数のコンポーネントを使用するビジネス アプリケーションでは特に重要です。 詳細については、「 [トレース スイッチの構成方法](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches)」を参照してください。
+[トレース スイッチ](/dotnet/framework/debug-trace-profile/trace-switches) をコード内に配置すると、トレースを行うかどうか、対象範囲をどうするかを制御することができます。 これにより、運用環境でアプリケーションの状態を監視できます。 このことは、複数のコンピューターで実行される複数のコンポーネントを使用するビジネス アプリケーションでは特に重要です。 詳細については、「[トレース スイッチを構成する方法](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches)に関するページを参照してください。
 
 ## <a name="configure-the-trace-listener-in-an-azure-application"></a>Azure アプリケーションでトレース リスナーを構成する
 Trace、Debug、TraceSource では、送信されるメッセージを収集および記録するように "リスナー" をセットアップする必要があります。 リスナーでは、トレース メッセージを収集、格納、およびルーティングします。 リスナーは、トレース出力を、ログ、ウィンドウ、テキスト ファイルなど、適切なターゲットに転送します。 Azure Diagnostics では、 [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) クラスが使用されます。
@@ -70,7 +71,7 @@ Visual Studio で提供されるテンプレートを使用すると、リスナ
     ```
         using System.Diagnostics;
     ```
-3. Trace ステートメントを追加し、アプリケーションの状態に関する情報をキャプチャします。 Trace ステートメントの出力は、さまざまな方法で書式設定できます。 詳細については、「 [トレース ステートメントをアプリケーション コードに追加する方法](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)」を参照してください。
+3. Trace ステートメントを追加し、アプリケーションの状態に関する情報をキャプチャします。 Trace ステートメントの出力は、さまざまな方法で書式設定できます。 詳細については、「[Add Trace Statements to Application Code (トレース ステートメントをアプリケーション コードに追加する方法)](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)」を参照してください。
 4. ソース ファイルを保存します。
 
 

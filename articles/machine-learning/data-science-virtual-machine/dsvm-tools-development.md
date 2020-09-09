@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012385"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine の開発ツール
 
@@ -23,7 +23,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 
 ## <a name="visual-studio-community-edition"></a>Visual Studio Community エディション
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | 汎用 IDE      |
 | サポートされている DSVM バージョン      | Windows: Visual Studio 2017、Windows 2019:Visual Studio 2019      |
@@ -37,7 +37,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | 汎用 IDE      |
 | サポートされている DSVM バージョン      | Windows、Linux     |
@@ -47,7 +47,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 
 ## <a name="rstudio-desktop"></a>RStudio Desktop
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | R 言語用のクライアント IDE   |
 | サポートされている DSVM バージョン      | Windows、Linux      |
@@ -57,7 +57,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 
 ## <a name="rstudio-server"></a>RStudio Server
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | R 言語用のクライアント IDE   |
 | 紹介   | R 言語用の Web ベース IDE    |
@@ -68,7 +68,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 
 ## <a name="juno"></a>Juno 
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | Julia 言語用のクライアント IDE   |
 | サポートされている DSVM バージョン      | Windows、Linux      |
@@ -78,7 +78,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 
 ## <a name="pycharm"></a>Pycharm
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | Python 言語用のクライアント IDE    |
 | サポートされている DSVM バージョン      | Windows 2019、Linux      |

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686752"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267965"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -231,7 +231,7 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 
 これまでに説明したデータの準備作業によって、データは以下に示すように整理されています。 トレーニング、テスト、および検証データには、この論理スキーマ (この例では、日単位) が含まれています。
 
-| 資産 ID | Time | \<特徴列> | Label |
+| 資産 ID | Time | \<Feature Columns> | Label |
 | ---- | ---- | --- | --- |
 | A123 |Day 1 | 。 。 。 | 。 |
 | A123 |Day 2 | 。 。 。 | 。 |
@@ -427,12 +427,11 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 |--:|:------|-------------|
 | 2 | [Azure 予測メンテナンス ソリューション テンプレート](https://github.com/Azure/AI-PredictiveMaintenance) | IoT リモート監視における、Azure ML モデリングと、予測メンテナンス シナリオを支援できる完全な Azure インフラストラクチャを示すオープンソースのソリューション テンプレート。 |
 | 3 | [予測メンテナンスのためのディープ ラーニング](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 予測メンテナンスのために LSTM (Long Short-Term Memory) ネットワーク (再帰型ニューラル ネットワークの 1 クラス) を使用したデモ ソリューションを含む Azure Notebook です。[このサンプルに関するブログ記事](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)をご覧ください。|
-| 4 | [R での予測メンテナンスのモデリング ガイド](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | R のスクリプトを使用した PdM のモデリング ガイドです。|
-| 5 | [航空宇宙業界向けの Azure 予測メンテナンス](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 航空機メンテナンスのための、Azure ML v1.0 に基づいた最初の PdM ソリューション テンプレートの 1 つです。 本ガイドの起源はこのプロジェクトでした。 |
-| 6 | [IoT Edge 用 Azure AI ツールキット](https://github.com/Azure/ai-toolkit-iot-edge) | TensorFlow を使用した IoT edge での AI です。Azure IoT Edge と互換性のある Docker コンテナーでのディープ ラーニング モデルをまとめたツールキットが含まれます。これらのモデルは REST API として公開されます。
-| 7 | [Azure IoT 予測メンテナンス](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PCS - 構成済みソリューションです。 IoT Suite を使用した航空機メンテナンスの PdM テンプレートです。 同じプロジェクトに関連する[別のドキュメント](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview)と[チュートリアル](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough)をご覧ください。 |
-| 8 | [SQL Server R Services を使用した予測メンテナンス テンプレート](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | R Services に基づいた、残存耐用年数に関するシナリオのデモです。 |
-| 9 | [予測メンテナンスのモデリング ガイド](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | R を使用して特徴エンジニアリングを行う航空機メンテナンスのデータ セットです。[実験](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)、[データ セット](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)、[Azure notebook](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1)、AzureML v1.0 での[実験](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)を含みます。|
+| 4 | [航空宇宙業界向けの Azure 予測メンテナンス](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 航空機メンテナンスのための、Azure ML v1.0 に基づいた最初の PdM ソリューション テンプレートの 1 つです。 本ガイドの起源はこのプロジェクトでした。 |
+| 5 | [IoT Edge 用 Azure AI ツールキット](https://github.com/Azure/ai-toolkit-iot-edge) | TensorFlow を使用した IoT edge での AI です。Azure IoT Edge と互換性のある Docker コンテナーでのディープ ラーニング モデルをまとめたツールキットが含まれます。これらのモデルは REST API として公開されます。
+| 6 | [Azure IoT 予測メンテナンス](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PCS - 構成済みソリューションです。 IoT Suite を使用した航空機メンテナンスの PdM テンプレートです。 同じプロジェクトに関連する[別のドキュメント](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview)と[チュートリアル](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough)をご覧ください。 |
+| 7 | [SQL Server R Services を使用した予測メンテナンス テンプレート](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | R Services に基づいた、残存耐用年数に関するシナリオのデモです。 |
+| 8 | [予測メンテナンスのモデリング ガイド](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | R を使用して特徴エンジニアリングを行う航空機メンテナンスのデータ セットです。[実験](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)、[データ セット](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)、Azure notebook、AzureML v1.0 での[実験](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)を含みます|
 
 ## <a name="training-resources-for-predictive-maintenance"></a>予測メンテナンスのためのトレーニング リソース
 

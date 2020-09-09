@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218529"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855640"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Text Analytics API の出力でのテキスト オフセット
 
@@ -39,6 +39,16 @@ ms.locfileid: "79218529"
 .NET では、[StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) クラスを使用することを検討してください。これにより、個々の文字オブジェクトではなく、一連のテキスト要素として文字列を操作できます。 任意のソフトウェア環境で、書記素スプリッター ライブラリを検索することもできます。 
 
 Text Analytics API では、便宜上、これらのテキスト要素も返されます。
+
+## <a name="offsets-in-api-version-31-preview"></a>API バージョン 3.1-preview のオフセット
+
+API バージョン 3.1-preview.1 以降では、オフセットを返すすべての Text Analytics API エンドポイントで `stringIndexType` パラメーターがサポートされます。 このパラメーターは、要求された文字列反復スキームに一致するように、API 出力内の `offset` と `length` 属性を調整します。 現時点では以下の 3 種類がサポートされています。
+
+1. `textElement_v8` (既定値): [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) 標準の定義に従って書記素を繰り返します
+2. `unicodeCodePoint`: Python 3 の既定のスキームである[Unicode コード ポイント](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564)を繰り返します
+3. `utf16CodeUnit`: Javascript、Java、.NET の既定のスキームである[UTF-16 コード単位](https://unicode.org/faq/utf_bom.html#UTF16)を繰り返します
+
+要求された `stringIndexType` が、選択したプログラミング環境に一致する場合は、標準の substring または slice メソッドを使用して部分文字列を抽出できます。 
 
 ## <a name="see-also"></a>関連項目
 

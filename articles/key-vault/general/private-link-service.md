@@ -6,13 +6,14 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: quickstart
-ms.openlocfilehash: 678e91126c04d5b299d9234a1602580260c5aee6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421566"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585833"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -104,7 +105,7 @@ az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZU
 ```
 ### <a name="turn-on-key-vault-firewall"></a>Key Vault のファイアウォールをオンにする
 ```console
-az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION} --default-action deny
+az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --default-action deny
 ```
 ### <a name="create-a-virtual-network"></a>仮想ネットワークを作成します
 ```console
@@ -124,7 +125,18 @@ az network private-dns zone create --resource-group {RG} --name privatelink.vaul
 ```
 ### <a name="link-private-dns-zone-to-virtual-network"></a>仮想ネットワークにプライベート DNS ゾーンをリンクする 
 ```console
-az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+```
+### <a name="add-private-dns-records"></a>プライベート DNS レコードを追加する
+```console
+# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
+az network private-dns zone list -g $rg_name
+az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
+az network private-dns record-set list -g $rg_name -z "privatelink.vaultcore.azure.net"
+
+# From home/public network, you wil get a public IP. If inside a vnet with private zone, nslookup will resolve to the private ip.
+nslookup $vault_name.vault.azure.net
+nslookup $vault_name.privatelink.vaultcore.azure.net
 ```
 ### <a name="create-a-private-endpoint-automatically-approve"></a>プライベート エンドポイントを作成する (自動的に承認する) 
 ```console
@@ -223,7 +235,42 @@ Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
 
+## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+
+* プライベート エンドポイントが承認済みの状態であることを確認します。 
+    1. これの確認と修正は Azure portal で行うことができます。 Key Vault リソースを開き、[ネットワーク] オプションをクリックします。 
+    2. 次に、[プライベート エンドポイント接続] タブを選択します。 
+    3. 接続状態が承認済みで、プロビジョニングの状態が成功であることを確認します。 
+    4. また、プライベート エンドポイント リソースに移動し、そこで同じプロパティを確認して、仮想ネットワークが使用しているものと一致することを再確認することもできます。
+
+* プライベート DNS ゾーン リソースがあることを調べて確認します。 
+    1. プライベート DNS ゾーン リソースの名前は、正確に privatelink.vaultcore.azure.net である必要があります。 
+    2. これを設定する方法については、次のリンクを参照してください。 [プライベート DNS ゾーン](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* プライベート DNS ゾーンが仮想ネットワークにリンクされていないことを確認します。 パブリック IP アドレスがまだ返される場合は、これが問題である可能性があります。 
+    1. プライベート DNS ゾーンが仮想ネットワークにリンクされていない場合、仮想ネットワークから送信された DNS クエリでは、キー コンテナーのパブリック IP アドレスが返されます。 
+    2. Azure portal でプライベート DNS ゾーン リソースに移動し、仮想ネットワーク リンクのオプションをクリックします。 
+    4. キー コンテナーへの呼び出しを実行する仮想ネットワークが、一覧に表示されている必要があります。 
+    5. ない場合は追加します。 
+    6. 詳細な手順については、[プライベート DNS ゾーンへの仮想ネットワークのリンク](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)に関するドキュメントを参照してください
+
+* キー コンテナーの A レコードがプライベート DNS ゾーンから欠落していないことを確認します。 
+    1. [プライベート DNS ゾーン] ページに移動します。 
+    2. [概要] をクリックし、キー コンテナーの簡易名 (fabrikam など) の A レコードがあることを確認します。 サフィックスは指定しないでください。
+    3. スペルを確認し、A レコードを作成または修正します。 TTL には 3600 (1 時間) を使用できます。 
+    4. 指定したプライベート IP アドレスが正しいことを確認します。 
+    
+* A レコードの IP アドレスが正しいことを確認します。 
+    1. Azure portal でプライベート エンドポイント リソースを開くことにより、IP アドレスを確認できます 
+    2. (Key Vault リソースではなく) Azure portal で、Microsoft.Network/privateEndpoints リソースに移動します
+    3. [概要] ページで [ネットワーク インターフェイス] を探し、そのリンクをクリックします。 
+    4. このリンクでは NIC リソースの概要が表示され、それにはプライベート IP アドレスのプロパティが含まれます。 
+    5. これが、A レコードで指定されている正しい IP アドレスであることを確認します。
+
 ## <a name="limitations-and-design-considerations"></a>制限事項と設計に関する考慮事項
+
+> [!NOTE]
+> プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、akv-privatelink@microsoft.com まで電子メールをお送りください。 いただいたご依頼は、ケースごとの事情を考慮して承認します。
 
 **価格**: 価格情報については、[Azure Private Link の価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。
 
@@ -231,7 +278,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 **キー コンテナーあたりのプライベート エンドポイントの最大数**: 64。
 
-**プライベート エンドポイントのあるキー コンテナーのサブスクリプションあたりの最大数**: 64。
+**プライベート エンドポイントのあるキー コンテナーのサブスクリプションあたりの既定の数**:400。
 
 詳細については、[Azure Private Link サービスの制限事項](../../private-link/private-link-service-overview.md#limitations)に関するセクションを参照してください。
 

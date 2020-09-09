@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/19/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679253"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852046"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -101,7 +102,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [ワンタイム パスワード](one-time-password-technical-profile.md) |  | X |  |  |
 | ローカル ディレクトリとしての [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
 | 電子メール検証のための Azure 電子メール サブシステム |  |  | X |  |
-| [サード パーティの電子メール サービス プロバイダー](custom-email.md) |  |X  |  |  |
+| [サード パーティの電子メール サービス プロバイダー](custom-email-mailjet.md) |  |X  |  |  |
 | [複数言語のサポート](localization.md)|  |  | X |  |
 | [述語の検証](predicates.md) |  |  | X | 例: パスワードの複雑さ。 |
 | [表示コントロール](display-controls.md) |  |X  |  |  |
@@ -111,10 +112,10 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| [2.0.0](page-layout.md#200) |  | X |  |  |
-| [1.2.0](page-layout.md#120) |  | X |  |  |
-| [1.1.0](page-layout.md#110) |  |  | X |  |
-| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [2.0.0](page-layout.md) |  | X |  |  |
+| [1.2.0](page-layout.md) |  | X |  |  |
+| [1.1.0](page-layout.md) |  |  | X |  |
+| [1.0.0](page-layout.md) |  |  | X |  |
 | [JavaScript のサポート](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>アプリケーションと IEF の統合

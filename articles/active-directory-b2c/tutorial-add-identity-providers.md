@@ -1,32 +1,32 @@
 ---
 title: チュートリアル:お使いのアプリケーションに ID プロバイダーを追加する
 titleSuffix: Azure AD B2C
-description: Azure portal を使用して Azure Active Directory B2C 内のアプリケーションに ID プロバイダーを追加する方法について説明します。
+description: このチュートリアルでは、Azure portal を使用して Azure Active Directory B2C 内のアプリケーションに ID プロバイダーを追加する方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 07/08/2019
+ms.topic: tutorial
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f49061210ca8e3c106b0569f77a67d1f10757a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f9abf9105da773ec5f8321c0f8e70e20516618c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183518"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922151"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する
 
 アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure Active Directory B2C (Azure AD B2C) によってサポートされる ID プロバイダーを[ユーザー フロー](user-flow-overview.md)に追加できます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * ID プロバイダー アプリケーションを作成する
-> * ID プロバイダーをテナントに追加する
+> * Facebook と Azure Active Directory の両方の ID プロバイダーをテナントに追加する。
 > * ID プロバイダーをユーザー フローに追加する
 
 通常、アプリケーションでは ID プロバイダーを 1 つだけ使用しますが、さらに追加することもできます。 このチュートリアルでは、Azure AD の ID プロバイダーと Facebook の ID プロバイダーをアプリケーションに追加する方法を示します。 これらの ID プロバイダーを両方ともアプリケーションに追加することはオプションです。 [Amazon](identity-provider-amazon.md)、[GitHub](identity-provider-github.md)、[Google](identity-provider-google.md)、[LinkedIn](identity-provider-linkedin.md)、[Microsoft](identity-provider-microsoft-account.md)、[Twitter](identity-provider-twitter.md).などの他の ID プロバイダーを追加することもできます。
@@ -133,7 +133,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 
 前提条件の一部として完了したチュートリアルでは、*B2C_1_signupsignin1* という名前の、サインアップおよびサインイン用のユーザー フローを作成しました。 このセクションでは、ID プロバイダーを *B2C_1_signupsignin1* ユーザー フローに追加します。
 
-1. **[ユーザー フロー (ポリシー)]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
+1. **[ユーザー フロー]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
 2. **[ID プロバイダー]** を選択し、追加した **Facebook** および **Contoso Azure AD** の ID プロバイダーを選択します。
 3. **[保存]** を選択します。
 

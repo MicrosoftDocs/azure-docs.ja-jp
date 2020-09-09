@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389192"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で "サインインしたままにする (KMSI)" を有効にする
 
@@ -59,7 +59,7 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を[ペ
 1. ClaimsProviders 要素を見つけます。 要素が存在しない場合は追加します。
 1. ClaimsProviders 要素に次のクレーム プロバイダーを追加します。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -82,7 +82,7 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を[ペ
 1. まだ存在しない場合は、子ノード `<UserJourneyBehaviors>` を `<RelyingParty>` ノードに追加します。 `<DefaultUserJourney ReferenceId="User journey Id" />` の直後に配置する必要があります。たとえば、`<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` のようにします。
 1. 次のノードを `<UserJourneyBehaviors>` 要素の子として追加します。
 
-    ```XML
+    ```xml
     <UserJourneyBehaviors>
       <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
       <SessionExpiryType>Absolute</SessionExpiryType>
@@ -100,7 +100,7 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を[ペ
 
 次の例に示すように、KeepAliveInDays の値は比較的長い期間 (30 日間) に設定できますが、SessionExpiryInSeconds の値は短期間 (1200 秒) に設定することをお勧めします。
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <UserJourneyBehaviors>

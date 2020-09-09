@@ -12,6 +12,11 @@
   items:
     - name: 仮想マシン上のソリューション
       href: virtual-machine-solutions.md
+- name: 操作方法
+  expanded: true
+  items:
+    - name: Fortanix Enclave Manager
+      href: how-to-fortanix-enclave-manager.md
 - name: リソース
   expanded: true
   items:

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561951"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543284"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Grub の復旧への Linux VM の起動
 
@@ -34,8 +34,8 @@ ms.locfileid: "77561951"
 
 * **不明なファイルシステム**というエラーが表示された場合、ブート パーティション上のファイル システムが壊れているか、カーネルの構成が正しくないことがエラーの原因になっている可能性があります。
 
-   * ファイル システムの問題については、「[Linux 回復:ファイル システムのエラーのため Linux VM に SSH 接続できない (fsck, inodes)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)」という記事に記載されている手順に従ってください。
-   * カーネルの問題については、「[Linux 回復:カーネルの問題に関連する起動以外の問題を手動で修正する](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)」または「[Linux 回復:chroot を使用し、カーネルの問題に関連する起動以外の問題を修正する](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)」という記事に記載されている手順に従ってください。
+   * ファイル システムの問題については、「[Linux 回復:ファイル システムのエラーのため Linux VM に SSH 接続できない (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes)」という記事に記載されている手順に従ってください。
+   * カーネルの問題については、「[起動時のカーネルに関連する問題から、Azure の Linux 仮想マシンを回復する方法](https://support.microsoft.com/help/4091524/how-recover-azure-linux-vm-from-kernel-related-boot-related-issues)」または「[Linux 回復:chroot を使用し、カーネルの問題に関連する起動以外の問題を修正する](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)」という記事に記載されている手順に従ってください。
    
 ### <a name="error---file-not-found"></a>エラー - ファイルが見つかりません
 
@@ -51,7 +51,7 @@ ms.locfileid: "77561951"
 
 ### <a name="error---no-such-partition"></a>エラー - そのようなパーティションはありません
 
-* **そのようなパーティションはありません** というエラーが表示された場合、「[ケース シナリオ: OS ドライブの拡張試行後、VM を起動すると "そのようなパーティションはありません" というエラーが表示される](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)」という記事を参照してください。
+* **そのようなパーティションはありません** というエラーが表示された場合、「[ケース シナリオ: OS ドライブの拡張試行後、VM を起動すると "そのようなパーティションはありません" というエラーが表示される](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive)」という記事を参照してください。
 
 ### <a name="error---grubcfg-file-not-found"></a>エラー - grub.cfg ファイルが見つかりません
 
@@ -69,4 +69,3 @@ ms.locfileid: "77561951"
 
 * [Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)
 * [Windows 用の仮想マシン拡張機能とその機能](../extensions/features-windows.md)
-

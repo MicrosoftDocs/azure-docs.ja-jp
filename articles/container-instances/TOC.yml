@@ -16,6 +16,8 @@
     - name: コンテナー インスタンスのデプロイ - Resource Manager テンプレート
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
+    - name: コンテナー インスタンスのデプロイ - Docker CLI
+      href: container-instances-quickstart-docker-cli.md
 - name: チュートリアル
   items:
     - name: コンテナー イメージの作成とデプロイ
@@ -39,7 +41,7 @@
 - name: サンプル
   items:
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=container%20instance'
     - name: Resource Manager テンプレート
       href: container-instances-samples-rm.md
 - name: 概念
@@ -52,7 +54,7 @@
       href: container-instances-region-availability.md
     - name: オーケストレーターとの関係
       href: container-instances-orchestrator-relationship.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -86,14 +88,18 @@
           href: container-instances-start-command.md
         - name: コマンドの実行 (exec)
           href: container-instances-exec.md
+        - name: セットアップ コンテナーの実行 (init)
+          href: container-instances-init-container.md
         - name: マネージド ID の使用 (プレビュー)
           href: container-instances-managed-identity.md
         - name: GPU リソースの使用 (プレビュー)
           href: container-instances-gpu.md
         - name: サイドカーでの SSL エンドポイントの有効化
           href: container-instances-container-group-ssl.md
-        - name: 静的 IP アドレスの公開
+        - name: App Gateway を使用して静的 IP を公開する
           href: container-instances-application-gateway.md
+        - name: イングレスとエグレスに Azure Firewall を使用する
+          href: container-instances-egress-ip-address.md
     - name: データ ボリュームのマウント
       items:
         - name: Azure ファイル共有

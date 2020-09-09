@@ -4,18 +4,18 @@ description: Azure portal で Azure Synapse Analytics のサポート リクエ�
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/10/2020
 author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: eaa6ceded9893b278b28d517cbddb303f8469e10
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212277"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Azure Synapse Analytics のクォータの増加を要求し、サポートを受ける
 
@@ -53,59 +53,89 @@ Azure portal から Azure Synapse Analytics の新しいサポート要求を作
 
    ![クォータの種類を選択する](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. **[詳細]** ウィンドウで、 **[詳細の指定]** を選択して追加情報を入力します。
+1. **[詳細]** ウィンドウで、 **[詳細を入力]** を選択して追加情報を入力します。
 
    ![[詳細の指定] リンク](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>クォータ要求の種類
 
-**[詳細の指定]** をクリックすると、 **[クォータの詳細]** ウィンドウが表示され、追加情報を追加できるようになります。 以下のセクションでは、Azure Synapse Analytics で使用できるさまざまなクォータ要求について説明します。
+**[詳細を入力]** を選択すると、 **[クォータの詳細]** ウィンドウが表示され、追加情報を追加できるようになります。 以下のセクションでは、Azure Synapse Analytics で使用できるさまざまなクォータ要求について説明します。
 
-### <a name="data-warehouse-units-dwus-per-server"></a>サーバーあたりの Data Warehouse ユニット (DWU)
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>サーバーあたりの Synapse SQL プールの Data Warehouse ユニット (DWU)
 
 サーバーあたりの DWU の増加を要求するには、次の手順に従います。
 
-1. クォータの種類として **[サーバーあたりの Data Warehouse ユニット (DWU)]** を選択します。
+1. クォータの種類として **[Synapse SQL pool DWUs per server]** \(サーバーあたりの Synapse SQL プールの DWU\) を選択します。
 
-1. **[リソース]** リストで、ターゲットとするリソースを選択します。
+1. ドロップダウンリストを使用して、クォータの増加を適用する **[リソース]** を選択します。
 
-1. **[クォータを要求する]** フィールドに、要求する新しい DWU 制限を入力します。
+1. **[クォータの要求]** セクションに新しいクォータを入力します。
+
+1. **[Save and continue]\(保存して続行\)** を選択します。
 
    ![DWU のクォータの詳細](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
+
 ### <a name="servers-per-subscription"></a>サブスクリプションあたりのサーバー
 
-サブスクリプションあたりのサーバー数の増加を要求するには、次の手順に従います。
+サブスクリプションあたりのサーバー数の増加を要求するには、次の手順を完了する必要があります。
 
-1. クォータの種類として **[サブスクリプションあたりのサーバー]** を選択します。
+1. クォータの種類として **[サブスクリプションあたりの SQL Server]** を選択します。
 
 1. **[場所]** リストで、使用する Azure リージョンを選択します。 クォータは、各リージョンのサブスクリプション単位となります。
 
-1. **[新しいクォータ]** フィールドに、そのリージョン内で要求する最大サーバー数を入力します。
+1. **[クォータの要求]** フィールドに、そのリージョン内で要求する最大サーバー数を入力します。
 
    ![サーバー クォータの詳細](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
+
+
+1. **[Save and continue]\(保存して続行\)** を選択します。
+
+一部のオファーの種類は、すべてのリージョンで使用できるわけではありません。 次のエラーがに表示される場合があります。
+
+![リージョンへのアクセス エラー](./media/sql-data-warehouse-get-started-create-support-ticket/region-access-error.png)
+
 ### <a name="enable-subscription-access-to-a-region"></a>リージョンへのサブスクリプション アクセスを有効にする
 
-一部のオファーの種類は、すべてのリージョンで使用できるわけではありません。 次のようなエラーが表示される場合があります。
+サブスクリプションのリージョンへのアクセスを有効にするには、次の手順を完了する必要があります。  
 
-`This location is not available for subscription`
+1. クォータの種類として **[Synapse SQL プール (データ ウェアハウス) のリージョン アクセス]** を選択します。
 
-ご利用のサブスクリプションに特定のリージョンでのアクセス権が必要である場合は、 **[その他のクォータ要求]** オプションを使用してアクセス権を要求してください。 ご自分の要求内で、そのリージョンに対して有効にするオファリングと SKU の詳細を指定します。 オファリングと SKU のオプションを探索するには、[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/synapse-analytics/)に関する記事を参照してください。
+1. ドロップダウンリストから **[場所]** を選択して、リージョンを選択します。
+
+1. **[DWU 必須]** セクションで DWU のパフォーマンス要件を指定します。
+
+1. **[ビジネス要件の説明]** を入力します。 
+
+1. **[Save and continue]\(保存して続行\)** を選択します。
+
+![リージョン アクセス](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-region.png)
+
+
+### <a name="for-other-quota-requests"></a>その他のクォータ要求の場合
+
+その他のクォータ要求の種類の場合は、[クォータの種類] ドロップダウン メニューから **[その他のクォータ要求]** を選択します。
 
 ![その他のクォータの詳細](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>要求を送信する
 
-最後の手順として、SQL Database サポート リクエストの残りの詳細を入力します。 次に、 **[次のステップ: 確認と作成 >>]** を選択します。要求の詳細を確認したら、 **[作成]** をクリックして要求を送信します。
+最後の手順として、SQL Database サポート リクエストの残りの詳細を入力します。 次に、 **[次のステップ: 確認と作成 >>]** を選択します。
+
+![確認と作成の詳細](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+
+要求の詳細を確認したら、 **[作成]** を選択して要求を送信します。
+
+![チケットの作成](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>サポート チケットの状態の確認
 
-サポート要求を送信すると、Azure サポート チームから連絡があります。 要求の状態と詳細を確認するには、ダッシュボードで **[すべてのサポート要求]** をクリックします。
+サポート要求を送信すると、Azure サポート チームから連絡があります。 要求の状態と詳細を確認するには、ダッシュボードで **[すべてのサポート要求]** を選択します。
 
 ![状態の確認](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>その他のリソース
 
-[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) または [Azure SQL Data Warehouse MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/)で Azure Synapse Analytics のコミュニティとつながることもできます。
+[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) や [Azure Synapse Analytics の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)で Azure Synapse Analytics のコミュニティとつながることもできます。
 

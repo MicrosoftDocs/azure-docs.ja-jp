@@ -2,22 +2,22 @@
 title: Azure AD アプリケーション プロキシ コネクタを理解する | Microsoft Docs
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764674"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -49,7 +49,7 @@ Windows Server 2012 R2 以降が実行されていて、アプリケーション
 
 コネクタ サーバーのネットワーク要件の詳細については、[アプリケーション プロキシの概要とコネクタのインストール](application-proxy-add-on-premises-application.md)に関するページをご覧ください。
 
-## <a name="maintenance"></a>メンテナンス 
+## <a name="maintenance"></a>メンテナンス
 
 コネクタとサービスは、高可用性のすべてのタスクに対処します。 コネクタは動的に追加したり削除できます。 新しい要求は、受信するたびにその時点で使用できるコネクタのいずれかにルーティングされます。 コネクタは、一時的に使用できない場合はトラフィックに応答しません。
 
@@ -74,7 +74,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 コネクタの更新を行う際、次のような場合ダウンタイムが生じることがあります。
   
 - コネクタが 1 つしかない場合。2 つ目のコネクタをインストールして、[コネクタ グループを作成する](application-proxy-connector-groups.md)ことをお勧めします。 これにより、ダウンタイムを回避して、より高い可用性を提供します。  
-- 更新の開始時にコネクタがトランザクションの処理中であった場合:  初期トランザクションは失われますが、ブラウザーにより自動で操作が再試行されます。ページを更新しても構いません。 要求が再送信されると、トラフィックはバックアップ コネクタへルーティングされます。
+- 更新の開始時にコネクタがトランザクションの処理中であった場合: 初期トランザクションは失われますが、ブラウザーにより自動で操作が再試行されます。ページを更新しても構いません。 要求が再送信されると、トラフィックはバックアップ コネクタへルーティングされます。
 
 過去にリリースされたバージョンと変更履歴については、[アプリケーション プロキシのバージョン リリース履歴](application-proxy-release-version-history.md)に関するページを参照してください。
 
@@ -175,9 +175,9 @@ Windows パフォーマンス カウンターなど、同じ管理ツールの�
 
 ![パフォーマンス モニターを使用したコネクタへのカウンターの追加](./media/application-proxy-connectors/performance-monitor.png)
 
-コネクタには管理者ログとセッション ログがあります。 管理者ログには主要なイベントとそのエラーが含まれます。 セッション ログには、すべてのトランザクションとその処理の詳細が含まれます。
+コネクタには**管理者**ログと**セッション** ログがあります。 **管理者**ログには主要なイベントとそのエラーが含まれます。 **セッション** ログには、すべてのトランザクションとその処理の詳細が含まれます。
 
-ログを参照するには、イベント ビューアーに移動し、 **[表示]** メニューで、 **[分析およびデバッグ ログの表示]** を有効にする必要があります。 次に、ログを有効にしてイベントの収集を開始します。 コネクタはより新しいバージョンに基づいているため、Windows Server 2012 R2 の Web アプリケーション プロキシでは管理者ログとセッション ログは表示されません。
+ログを表示するには、**イベント ビューアー**を開き、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[AadApplicationProxy]**  >  **[コネクタ]** の順に移動します。 **セッション** ログを表示するには、 **[表示]** メニューの **[分析およびデバッグ ログの表示]** を選択します。 通常、**セッション** ログはトラブルシューティングに使用され、既定では無効になっています。 イベントの収集を開始するときに有効にし、その後、不要になったら無効にしてください。
 
 [サービス] ウィンドウでサービスの状態を確認することができます。 コネクタは、実際のコネクタとアップデーターという、2 つの Windows サービスで構成されています。 この両方を常に実行する必要があります。
 

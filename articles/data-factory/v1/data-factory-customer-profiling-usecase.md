@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75969287"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021893"
 ---
 # <a name="use-case---customer-profiling"></a>使用事例 - 顧客プロファイル
 Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  Cortana Intelligence の詳細については、 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)を参照してください。 このドキュメントでは、Azure Data Factory が一般的な分析の問題を解決する方法を理解するのに役立つ簡単な使用事例を説明します。
@@ -38,7 +38,7 @@ Contoso の目標は、プレーヤーのゲーム履歴プロファイルに基
 3. **[サンプル パイプライン]** ブレードで、デプロイする **[顧客プロファイリング]** をクリックします。
 
     ![サンプル パイプライン ブレード](./media/data-factory-samples/SampleTile.png)
-4. このサンプルの構成設定を指定します。 たとえば、Azure ストレージ アカウントの名前とキー、Azure SQL サーバーの名前、データベース、ユーザー ID、パスワードを指定します。
+4. このサンプルの構成設定を指定します。 たとえば、Azure ストレージ アカウントの名前とキー、論理 SQL サーバーの名前、データベース、ユーザー ID、パスワードを指定します。
 
     ![サンプル ブレード](./media/data-factory-samples/SampleBlade.png)
 5. 構成設定の指定が完了したら **[作成]** をクリックして、サンプルのパイプラインと、そのパイプラインで使用するリンクされたサービスとテーブルを作成またはデプロイします。

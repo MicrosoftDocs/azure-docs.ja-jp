@@ -1,6 +1,6 @@
 ---
 title: SQL Database の概要 | Microsoft Docs
-description: Azure Portal 内にある SQL Database の概要に関するヘルプ コンテンツ
+description: Azure portal 内にある SQL Database の概要に関するヘルプ コンテンツ
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 04/09/2019
 ms.author: ninarn
-ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6d4f0c50f57661576f97ddd3772d78b9fa293153
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "61244461"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040522"
 ---
 # <a name="sql-database-documentation"></a>SQL Database のドキュメント
 
@@ -29,7 +29,7 @@ Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を�
 
 ## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 
-SQL DB を使用してデータベースを作成、管理、移行する方法について説明します。
+SQL Database を使用してデータベースを作成、管理、移行する方法について説明します。
 
 - クイック スタート ガイドを使用して、[単一データベース](/azure/sql-database/sql-database-single-database-quickstart-guide)の使用を開始する
 - [SSMS](/azure/sql-database/sql-database-design-first-database) または [.NET](/azure/sql-database/sql-database-design-first-database-csharp) を使用して新しい単一データベースのスキーマを作成および設計する

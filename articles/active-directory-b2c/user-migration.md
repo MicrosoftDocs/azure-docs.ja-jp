@@ -1,35 +1,35 @@
 ---
 title: ユーザーの移行方法
 titleSuffix: Azure AD B2C
-description: 一括インポートまたはシームレスな移行の方法を使用して、別の ID プロバイダーのユーザー アカウントを Azure AD B2C に移行します。
+description: 事前移行またはシームレスな移行の方法を使用して、別の ID プロバイダーのユーザー アカウントを Azure AD B2C に移行します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383973"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
-別の ID プロバイダーから Azure Active Directory B2C (Azure AD B2C) に移行する場合、既存のユーザー アカウントの移行も必要になることがあります。 ここでは*一括インポート*と*シームレスな移行*という 2 つの移行方法について説明します。 どちらの方法でも、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用して Azure AD B2C にユーザー アカウントを作成するアプリケーションまたはスクリプトを記述する必要があります。
+別の ID プロバイダーから Azure Active Directory B2C (Azure AD B2C) に移行する場合、既存のユーザー アカウントの移行も必要になることがあります。 ここでは*事前移行*と*シームレスな移行*という 2 つの移行方法について説明します。 どちらの方法でも、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用して Azure AD B2C にユーザー アカウントを作成するアプリケーションまたはスクリプトを記述する必要があります。
 
-## <a name="bulk-import"></a>一括インポート
+## <a name="pre-migration"></a>事前移行
 
-一括インポート フローでは、移行アプリケーションはユーザー アカウントごとに次の手順を実行します。
+事前移行フローでは、移行アプリケーションはユーザー アカウントごとに次の手順を実行します。
 
 1. 古い ID プロバイダーから、現在の資格情報 (ユーザー名とパスワード) を含むユーザー アカウントを読み取ります。
 1. 現在の資格情報を使用して、対応するアカウントを Azure AD B2C ディレクトリに作成します。
 
-次の 2 つの状況のどちらでも、一括インポート フローを使用します。
+事前移行フローは、次の 2 つの状況のいずれかで使用します。
 
 - ユーザーのプレーンテキストの資格情報 (ユーザー名とパスワード) にアクセスできる。
 - 資格情報が暗号化されているが、復号化できる。
@@ -43,18 +43,18 @@ ms.locfileid: "80332331"
 - パスワードが (ハッシュ関数を使用した場合のように) 一方向の暗号化形式で格納されている。
 - パスワードがレガシの ID プロバイダーによって、ユーザーがアクセスできない方法で格納されている。 たとえば、ID プロバイダーが Web サービスを呼び出して資格情報を検証している場合。
 
-シームレスな移行フローではユーザー アカウントの一括移行がやはり必要ですが、その後、[カスタム ポリシー](custom-policy-get-started.md)を使用して [REST API](custom-policy-rest-api-intro.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
+シームレスな移行フローではユーザー アカウントの事前移行がやはり必要ですが、その後、[カスタム ポリシー](custom-policy-get-started.md)を使用して [REST API](custom-policy-rest-api-intro.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
 
-このため、シームレスな移行フローには、*一括インポート*と*資格情報の設定*の 2 つのフェーズがあります。
+このため、シームレスな移行フローには、*事前移行*と*資格情報の設定*の 2 つのフェーズがあります。
 
-### <a name="phase-1-bulk-import"></a>フェーズ 1:一括インポート
+### <a name="phase-1-pre-migration"></a>フェーズ 1:事前移行
 
 1. 移行アプリケーションは、古い ID プロバイダーからユーザー アカウントを読み取ります。
 1. 移行アプリケーションは、Azure AD B2C ディレクトリに対応するユーザー アカウントを作成しますが、*パスワードは設定しません*。
 
 ### <a name="phase-2-set-credentials"></a>フェーズ 2:資格情報の設定
 
-アカウントの一括移行が完了した後、カスタム ポリシーと REST API は、ユーザーがサインインしたときに次のことを実行します。
+アカウントの事前移行が完了した後、カスタム ポリシーと REST API は、ユーザーがサインインしたときに次のことを実行します。
 
 1. 入力した電子メール アドレスに対応する Azure AD B2C ユーザー アカウントを読み取ります。
 1. ブール型の拡張属性を評価して、アカウントに移行のフラグが設定されているかどうかを確認します。
@@ -69,7 +69,7 @@ ms.locfileid: "80332331"
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-### <a name="security"></a>Security
+### <a name="security"></a>セキュリティ
 
 シームレスな移行方法では、独自のカスタム REST API を使用して、レガシ ID プロバイダーに対してユーザーの資格情報を検証します。
 

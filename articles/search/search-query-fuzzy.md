@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262436"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934890"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>あいまい検索によるスペルミスと入力ミスの修正
 
@@ -86,37 +86,49 @@ Azure Cognitive Search では、用語と距離 (最大 2) 以外に、クエリ
 
 「special」のあいまい検索から始め、検索語句の強調表示を [説明] フィールドに追加します。
 
-    search=special~&highlight=Description
+```console
+search=special~&highlight=Description
+```
 
 応答では、検索語句の強調表示を追加したので、書式設定が一致用語として「special」に適用されます。
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 複数の文字 (「pe」) を取り除き「special」のスペルを間違えて、要求を再び試してみてください。
 
-    search=scial~&highlight=Description
+```console
+search=scial~&highlight=Description
+```
 
 これまでのところ、応答に変更はありません。 既定の 2 度の距離を使用して、「pe」の 2 字を「special」から削除しても、その用語での一致が正常に行われます。
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 もうひとつ要求を試し、合計 3 字を削除して検索語句をさらに変更します (「special」から「scal」に変更)。
 
-    search=scal~&highlight=Description
+```console
+search=scal~&highlight=Description
+```
 
 同じ応答が返されますが、「special」ではなく、あいまい一致は「SQL」になります。
 
-            "@search.score": 0.4232868,
-            "@search.highlights": {
-                "Description": [
-                    "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
-                ]
+```output
+        "@search.score": 0.4232868,
+        "@search.highlights": {
+            "Description": [
+                "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
+            ]
+```
 
 この展開例では、検索語句の強調表示があいまいな結果になる可能性があることを示しています。 どのような場合でも、同じドキュメントが返されます。 一致を確認するためにドキュメント ID を使用しましたが、「special」から「SQL」への変更を把握できなかった可能性があります。
 
@@ -124,5 +136,5 @@ Azure Cognitive Search では、用語と距離 (最大 2) 以外に、クエリ
 
 + [Azure Cognitive Search のフルテキスト検索のしくみ (クエリ解析アーキテクチャ)](search-lucene-query-architecture.md)
 + [Search エクスプローラー](search-explorer.md)
-+ [.NET におけるクエリの実行方法](search-query-dotnet.md)
-+ [REST におけるクエリの実行方法](search-create-index-rest-api.md)
++ [.NET におけるクエリの実行方法](./search-get-started-dotnet.md)
++ [REST におけるクエリの実行方法](./search-get-started-powershell.md)

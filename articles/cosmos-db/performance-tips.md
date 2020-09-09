@@ -1,29 +1,40 @@
 ---
-title: .NET 用の Azure Cosmos DB のパフォーマンスに関するヒント
-description: Azure Cosmos DB のパフォーマンスを向上させるためのクライアント構成オプションについて説明します。
+title: .NET SDK v2 用の Azure Cosmos DB のパフォーマンスに関するヒント
+description: Azure Cosmos DB .NET v2 SDK のパフォーマンスを向上させるためのクライアント構成オプションについて説明します。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 01/15/2020
+ms.topic: how-to
+ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546075"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008371"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB と .NET SDK v2 のパフォーマンスに関するヒント
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
-> * [.NET](performance-tips.md)
-> 
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](performance-tips-async-java.md)
+> * [Sync Java SDK v2](performance-tips-java.md)
 
 Azure Cosmos DB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 Azure Cosmos DB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しを 1 回行うだけの簡単なものです。 詳細については、[コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)または[データベースのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)に関するページを参照してください。 ただし、Azure Cosmos DB にはネットワーク呼び出しによってアクセスするため、[SQL .NET SDK](sql-api-sdk-dotnet-standard.md) を使うと、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
 
 そのため、データベースのパフォーマンスを向上させる場合は、次のオプションを検討してください。
+
+## <a name="upgrade-to-the-net-v3-sdk"></a>.NET V3 SDK へのアップグレード
+
+[.NET v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) がリリースされました。 .NET v3 SDK を使用する場合、次の情報については、[.NET v3 パフォーマンス ガイド](performance-tips-dotnet-sdk-v3-sql.md)を参照してください。
+
+- 直接 TCP モードの規定値
+- Stream API のサポート
+- System.Text.JSON の使用を許可するカスタム シリアライザーのサポート
+- バッチと一括の統合サポート
 
 ## <a name="hosting-recommendations"></a>ホスティングの推奨事項
 
@@ -54,51 +65,36 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 > [!NOTE] 
 > CPU 使用率が高いと、待ち時間が長くなり、要求タイムアウトの例外が発生する可能性があります。
 
-## <a name="networking"></a>ネットワーク
-<a id="direct-connection"></a>
+## <a name="networking"></a><a id="networking"></a>ネットワーク
 
 **接続ポリシー:直接接続モードを使用する**
 
 クライアントが Azure Cosmos DB に接続する方法は、特に監視対象となるクライアント側の待機時間について、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる 2 つの主要な構成設定として、接続 "*モード*" と接続 "*プロトコル*" があります。  次の 2 つのモードが用意されています。
 
-   * ゲートウェイ モード
+  * ゲートウェイ モード (既定値)
       
-     ゲートウェイ モードは [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) の構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。 ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントが使用されるため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 つまり、ネットワーク ホップ数が少ないため、直接モードの方がパフォーマンスが向上します。 ソケット接続の数に制限がある環境でアプリケーションを実行する場合、ゲートウェイ接続モードも推奨されます。
+    ゲートウェイ モードは [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) の構成済みの既定のモードであり、すべての SDK プラットフォームでサポートされています。 ゲートウェイ モードでは標準の HTTPS ポートと単一の DNS エンドポイントが使用されるため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢となります。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 つまり、ネットワーク ホップ数が少ないため、直接モードの方がパフォーマンスが向上します。 ソケット接続の数に制限がある環境でアプリケーションを実行する場合、ゲートウェイ接続モードも推奨されます。
 
-     Azure Functions (特に[従量課金プラン](../azure-functions/functions-scale.md#consumption-plan)) で SDK を使用する場合は、現在の[接続数の制限](../azure-functions/manage-connections.md)に注意してください。 Azure Functions アプリケーション内で他の HTTP ベースのクライアントも使用している場合は、ゲートウェイ モードの方がよい可能性があります。
+    Azure Functions (特に[従量課金プラン](../azure-functions/functions-scale.md#consumption-plan)) で SDK を使用する場合は、現在の[接続数の制限](../azure-functions/manage-connections.md)に注意してください。 Azure Functions アプリケーション内で他の HTTP ベースのクライアントも使用している場合は、ゲートウェイ モードの方がよい可能性があります。
 
-   * 直接モード
+  * 直接モード
 
-     直接モードは、[Microsoft.Azure.Cosmos/.NET V3 SDK](sql-api-sdk-dotnet-standard.md) を使用している場合は既定の接続モードであり、TCP プロトコルを介した接続がサポートされます。
-
-ゲートウェイ モードの Azure Cosmos DB では、ポート 443 が使用され、MongoDB 用の Azure Cosmos DB の API を使用している場合はポート 10250、10255、および 10256 が使用されます。 ポート 10250 は、geo レプリケーションを使用しない既定の MongoDB インスタンスにマップされます。 ポート 10255 と 10256 は、geo レプリケーションを使用する MongoDB インスタンスにマップされます。
+    直接モードは、TCP プロトコル経由の接続をサポートします。
      
-直接モードで TCP を使用する場合は、Azure Cosmos DB で動的 TCP ポートが使用されるため、ゲートウェイ ポートに加えてポート範囲 10000 から 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API に使用されるサービス ポートを示しています。
+直接モードで TCP を使用する場合は、Azure Cosmos DB で動的 TCP ポートが使用されるため、ゲートウェイ ポートに加えてポート範囲 10000 から 20000 を開いておく必要があります。 [プライベート エンドポイント](./how-to-configure-private-endpoints.md)で直接モードを使用する場合は、TCP ポートの全範囲である 0 から 65535 を開いておく必要があります。 これらのポートが開いていない場合に TCP プロトコルを使用しようとすると、[503 サービスを利用できません] エラーを受け取ります。 次の表は、さまざまな API で使用可能な接続モードと、各 API に使用されるサービス ポートを示しています。
 
 |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、MongoDB (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443)    |
-|直接    |     TCP    |  .NET SDK    | 10000 から 20000 の範囲のポート |
+|Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、MongoDB (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443) <br> ポート 10250 は、Geo レプリケーションを使用することなく、MongoDB インスタンスの既定の Azure Cosmos DB API にマップされます。 一方で、ポート 10255 と 10256 は、Geo レプリケーションを使用して、このインスタンスにマップされます。   |
+|直接    |     TCP    |  .NET SDK    | パブリック/サービス エンドポイントを使用する場合: 10000 から 20000 の範囲のポート<br>プライベート エンドポイントを使用する場合: 0 から 65535 の範囲のポート |
 
 Azure Cosmos DB では、HTTPS を介したシンプルなオープン RESTful プログラミング モデルが提供されます。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 TCP プロトコルでは、最初の認証とトラフィックの暗号化で TLS が使用されます。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
-
-SDK V3 の場合、`CosmosClientOptions` で `CosmosClient` インスタンスを作成するときに、接続モードを構成します。 直接モードが既定値であることに注意してください。
-
-```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
-CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
-new CosmosClientOptions
-{
-    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-});
-```
 
 Microsoft.Azure.DocumentDB SDK では、`ConnectionPolicy` パラメーターを使用して `DocumentClient` インスタンスを構築するときに接続モードを構成します。 直接モードを使用する場合は、`ConnectionPolicy` パラメーターを使用して `Protocol` を設定することもできます。
 
 ```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
+Uri serviceEndpoint = new Uri("https://contoso.documents.net");
+string authKey = "your authKey from the Azure portal";
 DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
 new ConnectionPolicy
 {
@@ -109,48 +105,50 @@ new ConnectionPolicy
 
 TCP は直接モードでのみサポートされるため、ゲートウェイ モードを使用する場合は、ゲートウェイとの通信に HTTPS プロトコルが常に使用され、`ConnectionPolicy` の `Protocol` の値は無視されます。
 
-![Azure Cosmos DB の接続ポリシー](./media/performance-tips/connection-policy.png)
+:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB の接続ポリシー" border="false":::
+
+**一時的なポートの不足**
+
+インスタンスで接続量が多いか、ポートの使用率が高い場合は、まず、クライアント インスタンスがシングルトンであることを確認します。 言い換えると、クライアント インスタンスは、アプリケーションの有効期間にわたって一意である必要があります。
+
+TCP プロトコルで実行されている場合、クライアントでは、非アクティブな状態が 2 分続くと接続を終了する HTTPS プロトコルとは異なり、有効期間の長い接続を使用して待機時間が最適化されます。
+
+アクセス頻度が低く、ゲートウェイ モード アクセスと比べて接続数が多い場合は、次のことが可能です。
+
+* [ConnectionPolicy.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン >= 4.6.1 および .NET core バージョン >= 2.0 で有効):このプロパティにより、SDK は異なる Azure Cosmos DB の宛先エンドポイントに対して一時的なポートの小さなプールを使用できます。
+* [ConnectionPolicy.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) プロパティを構成します。これは 10 分以上である必要があります。 推奨値は 20 分から 24 時間です。
 
 **OpenAsync を呼び出して最初の要求での開始時の待機時間を回避する**
 
-既定では、最初の要求でアドレス ルーティング テーブルを取得する必要があるため、最初の要求の待機時間が長くなります。 [SDK V2](sql-api-sdk-dotnet.md) を使用しているとき、最初の要求でこの開始時の待機時間を回避するには、初期化中に `OpenAsync()` を 1 回呼び出します。
+既定では、最初の要求でアドレス ルーティング テーブルを取得する必要があるため、最初の要求の待機時間が長くなります。 [SDK V2](sql-api-sdk-dotnet.md) を使用しているとき、最初の要求でこの開始時の待機時間を回避するには、初期化中に `OpenAsync()` を 1 回呼び出します。 呼び出しは次のようになります: `await client.OpenAsync();`
 
-    await client.OpenAsync();
-
-> [!NOTE] 
+> [!NOTE]
 > `OpenAsync` によって、アカウント内のすべてのコンテナーのアドレス ルーティング テーブルを取得する要求が生成されます。 アカウントに多数のコンテナーがあるにも関わらず、アプリケーションではそのサブセットにしかアクセスしないようなケースでは、`OpenAsync` によって必要以上のトラフィックが生成され、初期化に時間がかかることがあります。 このシナリオではアプリケーションの起動速度が低下するため、`OpenAsync` を使用しても効果がない可能性があります。
 
-   <a id="same-region"></a>
-**パフォーマンスを確保するために同じ Azure リージョン内にクライアントを併置する**
+**パフォーマンスを確保するために、同じ Azure リージョン内にクライアントを併置する**
 
 可能であれば、Azure Cosmos DB を呼び出すアプリケーションを Azure Cosmos DB データベースと同じリージョンに配置します。 大ざっぱな比較ですが、Azure Cosmos DB の呼び出しは、同じリージョン内であれば 1 から 2 ミリ秒以内で完了するのに対し、米国西部と米国東部との間では待ち時間が 50 ミリ秒を超えます。 要求がクライアントから Azure データセンターの境界まで流れるときに使用されるルートに応じて、この待機時間が要求ごとに異なる可能性があります。 最短の待機時間は、プロビジョニングされた Azure Cosmos DB エンドポイントと同じ Azure リージョン内に呼び出し元アプリケーションを配置することによって実現できます。 利用可能なリージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/#services)」をご覧ください。
 
-![Azure Cosmos DB の接続ポリシー](./media/performance-tips/same-region.png) <a id="increase-threads"></a>
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB の接続ポリシー" border="false":::
 
 **スレッドまたはタスクの数を増やす**
+<a id="increase-threads"></a>
 
 Azure Cosmos DB の呼び出しはネットワーク経由で行われるため、クライアント アプリケーションで要求間の待機時間を最短にするために、要求の並列処理の次数を変えることが必要な場合があります。 たとえば、.NET の [タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用する場合、Azure Cosmos DB に対する読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
 
 **高速ネットワークの有効化**
  
- 待機時間と CPU ジッターを減らすために、クライアントの仮想マシンでは高速ネットワークを有効にすることをお勧めします。 「[高速ネットワークを使った Windows 仮想マシンの作成](../virtual-network/create-vm-accelerated-networking-powershell.md)」または「[高速ネットワークを使った Linux 仮想マシンの作成](../virtual-network/create-vm-accelerated-networking-cli.md)」を参照してください。
+待機時間と CPU ジッターを減らすために、クライアントの仮想マシンでは高速ネットワークを有効にすることをお勧めします。 「[高速ネットワークを使った Windows 仮想マシンの作成](../virtual-network/create-vm-accelerated-networking-powershell.md)」または「[高速ネットワークを使った Linux 仮想マシンの作成](../virtual-network/create-vm-accelerated-networking-cli.md)」を参照してください。
 
 ## <a name="sdk-usage"></a>SDK の使用
+
 **最新の SDK をインストールする**
 
 Azure Cosmos DB SDK は、最適なパフォーマンスを提供するために頻繁に改善されています。 [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) のページを参照して、最新の SDK を確認し、改善点を確認してください。
 
-**ストリーム API を使用する**
-
-[.NET SDK V3](sql-api-sdk-dotnet-standard.md) には、シリアル化せずにデータを受信して返すことができるストリーム API シリーズが含まれています。 
-
-SDK からの応答を直接使用せずに他のアプリケーション層にリレーする中間層アプリケーションでは、ストリーム API を利用するメリットがあります。 ストリーム処理の例については、[項目管理](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement)のサンプルを参照してください。
-
 **アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する**
 
-各 `DocumentClient` インスタンスと `CosmosClient` インスタンスはスレッドセーフであり、直接モードで動作しているときには効率的な接続管理とアドレスのキャッシュが実行されます。 効率的な接続管理と SDK クライアントのパフォーマンス向上を実現するために、アプリケーションの有効期間中は、`AppDomain` ごとに単一のインスタンスを使用することをお勧めします。
-
-   <a id="max-connection"></a>
+各 `DocumentClient` インスタンスはスレッドセーフであり、直接モードで動作しているときには効率的な接続管理とアドレスのキャッシュが実行されます。 効率的な接続管理と SDK クライアントのパフォーマンス向上を実現するために、アプリケーションの有効期間中は、`AppDomain` ごとに単一のインスタンスを使用することをお勧めします。
 
 **ゲートウェイ モードを使用するときはホストあたりの System.Net MaxConnections を増やす**
 
@@ -164,7 +162,7 @@ SQL .NET SDK 1.9.0 以降では、並列クエリがサポートされていま�
 
 ***並列処理の次数を調整する***
 
-並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティションからのデータは、クエリごとに順番に取得されます。 そのため、[SDK V2](sql-api-sdk-dotnet.md) の `MaxDegreeOfParallelism` または [SDK V3](sql-api-sdk-dotnet-standard.md) の `MaxConcurrency` をパーティションの数に設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最善にできる可能性が最大になります。 パーティションの数がわからない場合は、並列処理の次数を高い数値に設定できます。 システムにより、並列処理の次数として最小値 (パーティションの数、ユーザー指定の入力) が選択されます。
+並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティションからのデータは、クエリごとに順番に取得されます。 そのため、[SDK V2](sql-api-sdk-dotnet.md) の `MaxDegreeOfParallelism` をパーティションの数に設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最善にできる可能性が最大になります。 パーティションの数がわからない場合は、並列処理の次数を高い数値に設定できます。 システムにより、並列処理の次数として最小値 (パーティションの数、ユーザー指定の入力) が選択されます。
 
 並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、それらのパーティションがクエリのパフォーマンスのボトルネックになります。
 
@@ -196,12 +194,11 @@ readDocument.RequestDiagnosticsString
 
 最適な読み取りパフォーマンスを実現するために、できる限りドキュメント URI をキャッシュします。 リソースを作成するときに、リソース ID をキャッシュするロジックを定義する必要があります。 リソース ID に基づく参照は名前ベースの参照よりも高速であるため、これらの値をキャッシュすると、パフォーマンスが向上します。
 
-   <a id="tune-page-size"></a>
 **パフォーマンスを向上させるために、クエリ/読み取りフィードのページ サイズを調整する**
 
 読み取りフィード機能 (`ReadDocumentFeedAsync` など) を使ってドキュメントの一括読み取りを行うときや、SQL クエリを発行するときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
 
-該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、要求に対して [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) を使用することで、ページ サイズを最大 1,000 ヘッダーまで増やすことができます。 ごく少数の結果のみを表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
+該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、要求に対して [x-ms-max-item-count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) を使用することで、ページ サイズを最大 1,000 ヘッダーまで増やすことができます。 ごく少数の結果のみを表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
 
 > [!NOTE] 
 > `maxItemCount` プロパティは、改ページ位置の自動修正のみに使用しないでください。 主な用途は、1 ページに返される項目の最大数を減らすことで、クエリのパフォーマンスを向上させることです。  
@@ -228,13 +225,12 @@ Azure Cosmos DB のインデックス作成ポリシーでは、パスのイン�
 var collection = new DocumentCollection { Id = "excludedPathCollection" };
 collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
 collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
-collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), collection);
 ```
 
 詳細については、[Azure Cosmos DB インデックス作成ポリシー](index-policy.md)に関するページをご覧ください。
 
-## <a name="throughput"></a>スループット
-<a id="measure-rus"></a>
+## <a name="throughput"></a><a id="measure-rus"></a> スループット
 
 **測定と調整によって 1 秒あたりの要求ユニットの使用量を削減する**
 
@@ -244,7 +240,7 @@ Azure Cosmos DB には、データベース操作の豊富なセットが用意�
 
 クエリの複雑さは、操作で消費される要求ユニット数に影響します。 述語の数、述語の特性、UDF 数、ソース データ セットのサイズのすべてがクエリ操作のコストに影響します。
 
-操作 (作成、更新、または削除) のオーバーヘッドを測定するには、[x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) ヘッダー (あるいは、.NET SDK の `ResourceResponse\<T>` または `FeedResponse\<T>` の同等の `RequestCharge` プロパティ) を調べて、これらの操作で使用される要求ユニット数を測定します。
+操作 (作成、更新、または削除) のオーバーヘッドを測定するには、[x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) ヘッダー (あるいは、.NET SDK の `ResourceResponse\<T>` または `FeedResponse\<T>` の同等の `RequestCharge` プロパティ) を調べて、これらの操作で使用される要求ユニット数を測定します。
 
 ```csharp
 // Measure the performance (Request Units) of writes
@@ -264,11 +260,13 @@ while (queryable.HasMoreResults)
 
 **レート制限と大きすぎる要求レートに対処する**
 
-クライアントがアカウントの予約済みスループットを超えようとしても、サーバーでパフォーマンスの低下が発生することはなく、予約済みのレベルを超えてスループット容量が使用されることもありません。 サーバーは、RequestRateTooLarge (HTTP 状態コード 429) を使用して要求をプリエンプティブに終了します。 それからは、要求を再試行する前にユーザーが待機する必要がある時間 (ミリ秒単位) を示す、[x-ms-retry-after-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) ヘッダーが返されます。
+クライアントがアカウントの予約済みスループットを超えようとしても、サーバーでパフォーマンスの低下が発生することはなく、予約済みのレベルを超えてスループット容量が使用されることもありません。 サーバーは、RequestRateTooLarge (HTTP 状態コード 429) を使用して要求をプリエンプティブに終了します。 それからは、要求を再試行する前にユーザーが待機する必要がある時間 (ミリ秒単位) を示す、[x-ms-retry-after-ms](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) ヘッダーが返されます。
 
-    HTTP Status 429,
-    Status Line: RequestRateTooLarge
-    x-ms-retry-after-ms :100
+```http
+HTTP Status 429,
+Status Line: RequestRateTooLarge
+x-ms-retry-after-ms :100
+```
 
 SDK はすべてこの応答を暗黙的にキャッチし、サーバーが指定した retry-after ヘッダーを優先して要求を再試行します。 アカウントに複数のクライアントが同時アクセスしている状況でなければ、次回の再試行は成功します。
 
@@ -283,6 +281,7 @@ SDK はすべてこの応答を暗黙的にキャッチし、サーバーが指�
 特定の操作の要求の使用量 (要求処理コスト) は、ドキュメントのサイズに直接関係します。 サイズの大きいドキュメントの操作は、サイズの小さいドキュメントの操作よりもコストがかかります。
 
 ## <a name="next-steps"></a>次のステップ
+
 少数のクライアント コンピューターでの高パフォーマンス シナリオで Azure Cosmos DB の評価に使用されるサンプル アプリケーションについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 
 スケーリングと高パフォーマンスのためのアプリケーションの設計について詳しくは、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」をご覧ください。

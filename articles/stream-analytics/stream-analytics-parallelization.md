@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 5bae53c04867233138929867c4895e7f6a2f2149
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85296323"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -279,7 +279,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 |    5,000   |   18 |  P4   |
 |    10,000  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) では、パーティション分割の継承と呼ばれる並列書き込みがサポートされていますが、既定では有効になっていません。 ただし、パーティション分割の継承と完全な並列クエリを一緒に有効にしても、高いスループットを実現するには十分でない場合があります。 SQL 書き込みスループットは、SQL Azure データベース構成およびテーブル スキーマに大きく依存しています。 [SQL 出力パフォーマンス](./stream-analytics-sql-output-perf.md)に関する記事に、書き込みスループットを最大限に高めることができるパラメーターの詳細が記載されています。 [Azure SQL Database への Azure Stream Analytics 出力](./stream-analytics-sql-output-perf.md#azure-stream-analytics)に関する記事に記載されているように、このソリューションは 8 個のパーティションを超える完全な並列パイプラインとして直線的にスケールせず、SQL 出力の前に再分割が必要な場合があります ([INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関する記事を参照してください)。 高い IO 率と、数分おきに発生するログ バックアップからのオーバーヘッドを維持するために、Premium SKU が必要です。
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) では、パーティション分割の継承と呼ばれる並列書き込みがサポートされていますが、既定では有効になっていません。 ただし、パーティション分割の継承と完全な並列クエリを一緒に有効にしても、高いスループットを実現するには十分でない場合があります。 SQL 書き込みスループットは、データベース構成およびテーブル スキーマに大きく依存します。 [SQL 出力パフォーマンス](./stream-analytics-sql-output-perf.md)に関する記事に、書き込みスループットを最大限に高めることができるパラメーターの詳細が記載されています。 [Azure SQL Database への Azure Stream Analytics 出力](./stream-analytics-sql-output-perf.md#azure-stream-analytics)に関する記事に記載されているように、このソリューションは 8 個のパーティションを超える完全な並列パイプラインとして直線的にスケールせず、SQL 出力の前に再分割が必要な場合があります ([INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関する記事を参照してください)。 高い IO 率と、数分おきに発生するログ バックアップからのオーバーヘッドを維持するために、Premium SKU が必要です。
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |取り込み率 (1 秒あたりのイベント数) | ストリーミング ユニット数 | 出力リソース  |
@@ -315,7 +315,7 @@ Azure Stream Analytics ジョブの [メトリックス] ウィンドウを使�
 
 ## <a name="get-help"></a>ヘルプの参照
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

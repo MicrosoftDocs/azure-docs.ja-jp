@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/19/2020
+ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223599"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681818"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル:Apache Kafka Producer および Consumer API の使用
 
@@ -73,7 +73,7 @@ API の詳細については、[Producer API](https://kafka.apache.org/documenta
 
 ### <a name="producerjava"></a>Producer.java
 
-プロデューサーは、Kafka ブローカー ホスト (ワーカー ノード) と通信して、Kafka トピックにデータを送信します。 次のコード スニペットは、[GitHub リポジトリ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)の [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) ファイルの抜粋です。プロデューサーのプロパティを設定する方法が示されています。
+プロデューサーは、Kafka ブローカー ホスト (ワーカー ノード) と通信して、Kafka トピックにデータを送信します。 次のコード スニペットは、[GitHub リポジトリ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)の [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) ファイルの抜粋です。プロデューサーのプロパティを設定する方法が示されています。 Enterprise セキュリティが有効なクラスターの場合は、"properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");" のように、追加のプロパティを追加する必要があります。
 
 ```java
 Properties properties = new Properties();
@@ -87,7 +87,7 @@ KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
 ### <a name="consumerjava"></a>Consumer.java
 
-コンシューマーは、Kafka ブローカー ホスト (ワーカー ノード) と通信し、ループ内のレコードを読み取ります。 次のコード スニペットは、[Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) ファイルの抜粋で、コンシューマーのプロパティを設定しています。
+コンシューマーは、Kafka ブローカー ホスト (ワーカー ノード) と通信し、ループ内のレコードを読み取ります。 次のコード スニペットは、[Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) ファイルの抜粋で、コンシューマーのプロパティを設定しています。 Enterprise セキュリティが有効なクラスターの場合は、"properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");" のように、追加のプロパティを追加する必要があります。
 
 ```java
 KafkaConsumer<String, String> consumer;
@@ -115,6 +115,16 @@ consumer = new KafkaConsumer<>(properties);
 
 ## <a name="build-and-deploy-the-example"></a>例を構築してデプロイする
 
+### <a name="use-pre-built-jar-files"></a>事前に作成した JAR ファイルを使用する
+
+[Kafka Get Started Azure サンプル](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars)から jar をダウンロードします。 クラスターで **Enterprise セキュリティ パッケージ (ESP)** が有効になっている場合は、kafka-producer-consumer-esp.jar を使用します。 以下のコマンドを使用して、クラスターに jar をコピーします。
+
+```cmd
+scp kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
+```
+
+### <a name="build-the-jar-files-from-code"></a>コードから JAR ファイルを作成する
+
 この手順をスキップする場合は、あらかじめ作成済みの jar を `Prebuilt-Jars` サブディレクトリからダウンロードできます。 kafka-producer-consumer.jar をダウンロードしてください。 クラスターで **Enterprise セキュリティ パッケージ (ESP)** が有効になっている場合は、kafka-producer-consumer-esp.jar を使用します。 jar を HDInsight クラスターにコピーするには、手順 3. を実行します。
 
 1. [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) から例をダウンロードして抽出します。
@@ -125,12 +135,12 @@ consumer = new KafkaConsumer<>(properties);
     mvn clean package
     ```
 
-    このコマンドにより、`kafka-producer-consumer-1.0-SNAPSHOT.jar` というファイルを含む `target` という名前のディレクトリが作成されます。
+    このコマンドにより、`kafka-producer-consumer-1.0-SNAPSHOT.jar` というファイルを含む `target` という名前のディレクトリが作成されます。 ESP クラスターの場合、ファイルは `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar` です
 
 3. `sshuser` は、クラスターの SSH ユーザーに置き換えます。また、`CLUSTERNAME` はクラスターの名前に置き換えます。 次のコマンドを入力して、HDInsight クラスターに `kafka-producer-consumer-1.0-SNAPSHOT.jar` ファイルをコピーします。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
     ```cmd
-    scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
+    scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
 ## <a name="run-the-example"></a><a id="run"></a>例を実行する
@@ -169,6 +179,7 @@ consumer = new KafkaConsumer<>(properties);
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
+    scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
     読み取られたレコードが、レコードの件数とともに表示されます。
@@ -203,6 +214,12 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 > コンシューマー グループに、パーティションの数よりも多いコンシューマー インスタンスを含めることはできません。 この例では、トピック内のパーティション数が 8 であるため、1 つのコンシューマー グループに最大 8 個のコンシューマーを含めることができます。 または、それぞれコンシューマーが 8 個以下の複数のコンシューマー グループを存在させることができます。
 
 Kafka に格納されたレコードは、受信した順番でパーティション内に格納されます。 *パーティション内*のレコードの順次配信順を実現するには、コンシューマー インスタンスの数がパーティションの数と同じコンシューマー グループを作成します。 *トピック内*のレコードの順次配信を実現するには、コンシューマー インスタンスが 1 つのみのコンシューマー グループを作成します。
+
+## <a name="common-issues-faced"></a>発生する一般的な問題
+
+1. **トピックの作成が失敗する** クラスターで Enterprise Security Pack が有効になっている場合は、[プロデューサーとコンシューマー用に事前に作成した JAR ファイルを使用](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)します。 ESP jar は、[`DomainJoined-Producer-Consumer` サブディレクトリ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)のコードから作成できます。 プロデューサーとコンシューマーのプロパティには、ESP が有効なクラスター用の追加のプロパティ `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` があることに注意してください。
+
+2. **ESP が有効なクラスターで問題が発生する** 生成と消費の操作が失敗し、ESP が有効なクラスターを使用している場合は、すべての Ranger ポリシーにユーザー `kafka` が存在していることを確認してください。 存在しない場合は、すべての Ranger ポリシーに追加してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/16/2019
+ms.topic: how-to
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49a5ff61e5f7a17005561e0729a9b0fcb0f954d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389566"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 
@@ -25,11 +25,11 @@ ms.locfileid: "78189619"
 
 [ユーザー フローを作成](tutorial-create-user-flows.md)して、ユーザーがアプリケーションにサインアップおよびサインインできるようにします。
 
-## <a name="configure-token-lifetime"></a>トークンの有効期間を構成する
+## <a name="configure-jwt-token-lifetime"></a>JWT トークンの有効期間を構成する
 
 トークンの有効期間は任意のユーザー フローで構成できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[ユーザー フロー (ポリシー)]** を選択します。
@@ -41,7 +41,7 @@ ms.locfileid: "78189619"
 
 8. **[保存]** をクリックします。
 
-## <a name="configure-token-compatibility"></a>トークンの互換性を構成する
+## <a name="configure-jwt-token-compatibility"></a>JWT トークンの互換性を構成する
 
 1. **[ユーザー フロー (ポリシー)]** を選択します。
 2. あらかじめ作成しておいたユーザー フローを開きます。
@@ -54,7 +54,7 @@ ms.locfileid: "78189619"
 
 ## <a name="next-steps"></a>次のステップ
 
-[アクセス トークンを使用する](access-tokens.md)方法の詳細を学習してください。
+[アクセス トークンを要求](access-tokens.md)方法の詳細を確認します。
 
 
 

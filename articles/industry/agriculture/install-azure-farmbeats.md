@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479561"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats をインストールする
@@ -124,7 +124,7 @@ PowerShell 環境を使用して、Cloud Shell インスタンスで次の手順
 
 4. このスクリプトでは、次の 3 つの入力を求められます。
 
-    - **FarmBeats Web サイト名**:これは FarmBeats Web アプリケーションの一意の URL プレフィックスです。 プレフィックスが既に取得されている場合、スクリプトはエラーを表示します。インストールが完了すると、お使いの FarmBeats のデプロイは https://\<FarmBeats-website-name>.azurewebsites.net からアクセスできるようになります。また、swagger API は、 https://\<FarmBeats-website-name>-api.azurewebsites.net にあります。
+    - **FarmBeats Web サイト名**:これは FarmBeats Web アプリケーションの一意の URL プレフィックスです。 プレフィックスが既に取得されている場合、スクリプトはエラーを表示します。インストールされると、FarmBeats のデプロイは https://\<FarmBeats-website-name>.azurewebsites.net からアクセス可能になり、Swagger API の場所は https://\<FarmBeats-website-name>-api.azurewebsites.net になります。
 
     - **Azure ログイン ID**:FarmBeats の管理者として追加するユーザーに Azure ログイン ID を入力します。 その後、このユーザーは、FarmBeats Web アプリケーションへのアクセス権を他のユーザーに付与することができます。 ログイン ID は、通常、john.doe@domain.comの形式となります。 Azure UPN もサポートされています。
 
@@ -168,7 +168,7 @@ Azure FarmBeats の設定を使用すると、欧州宇宙機関の [Sentinel-2]
 
 8. 入力した詳細が検証されたら、 **[OK]** を選択します。 利用規約ページが表示されます。 規約を確認し、 **[作成]** を選択してインストールを開始します。 インストールの進行状況を確認できるページにリダイレクトされます。
 
-インストールが完了したら、インストールを確認し、インストール中に指定した Web サイト名 (https://\<FarmBeats-website-name>.azurewebsites.net) に移動して、FarmBeats ポータルの使用を開始できます。 FarmBeats ユーザー インターフェイスと、ファームを作成するためのオプションが表示されます。
+インストールが完了したら、インストールを確認し、インストール中に指定した Web サイト名 (https://\<FarmBeats-website-name>.azurewebsites.net) に移動することによって FarmBeats ポータルの使用を開始できます。 FarmBeats ユーザー インターフェイスと、ファームを作成するためのオプションが表示されます。
 
 **データ ハブ**は、 https://\<FarmBeats-website-name>-api.azurewebsites.net/swagger にあります。 ここでは、さまざまな FarmBeats API オブジェクトを表示し、API に対して REST 操作を実行することができるようになります。
 

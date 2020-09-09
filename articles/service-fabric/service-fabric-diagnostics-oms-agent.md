@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366747"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258693"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Monitor ログを使用したパフォーマンスの監視
 
@@ -23,7 +23,7 @@ ms.locfileid: "79366747"
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Azure CLI を使用して拡張機能を追加する
 
-Log Analytics エージェントをクラスターに追加する最も良い方法は、Azure CLI で利用できる仮想マシン スケール セットの API を使用することです。 Azure CLI をまだ設定していない場合は、Azure portal に移動して [Cloud Shell](../cloud-shell/overview.md) インスタンスを開くか、[Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
+Log Analytics エージェントをクラスターに追加する最も良い方法は、Azure CLI で利用できる仮想マシン スケール セットの API を使用することです。 Azure CLI をまだ設定していない場合は、Azure portal に移動して [Cloud Shell](../cloud-shell/overview.md) インスタンスを開くか、[Azure CLI をインストール](/cli/azure/install-azure-cli)します。
 
 1. Cloud Shell を要求されたら、お使いのリソースと同じサブスクリプションで作業していることを確認します。 確認には `az account show` を使用し、"name" (名前) の値がクラスターのサブスクリプション名と一致することを確認します。
 
@@ -73,7 +73,7 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 3. **[詳細設定]** をクリックします。
 
-4. **[データ]** をクリックし、 **[Windows パフォーマンス カウンター] または [Linux パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)を参照してください。
+4. **[データ]** をクリックし、 **[Windows パフォーマンス カウンター] または [Linux パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](/windows/win32/perfctrs/specifying-a-counter-path)を参照してください。
 
 5. **[保存]** をクリックし、 **[OK]** をクリックします。
 
@@ -92,5 +92,5 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 ## <a name="next-steps"></a>次のステップ
 
 * 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを収集するように Log Analytics エージェントを構成する場合は、「[データ ソースの構成](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)」を確認してください。
-* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する
+* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../azure-monitor/platform/alerts-overview.md)を設定する
 * 代わりに、パフォーマンス カウンターの収集は、[Microsoft Azure Diagnostics の拡張機能で行い、Application Insights に送信](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)することができる。

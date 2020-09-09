@@ -4,39 +4,41 @@ description: Azure Active Directory の条件付きアクセスを使用して�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b282962cc713487b8ee5113b02b8533a1538fff
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631895"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641026"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする
 
 人々は、個人的な作業と業務上の作業のどちらにもモバイル デバイスを日常的に使用します。 組織は、スタッフの生産性を確保する一方で、安全でない可能性のあるアプリケーションによるデータ損失を防止する必要があります。 条件付きアクセスを使用すると、組織は、Intune アプリ保護ポリシーが適用された承認済み (先進認証対応) クライアント アプリのみにアクセスを制限できます。
 
-この記事では、Office 365、Exchange Online、SharePoint Online などのリソースの条件付きアクセス ポリシーを構成する 2 つのシナリオを紹介します。
+この記事では、Office 365、Exchange Online、SharePoint Online などのリソースの条件付きアクセス ポリシーを構成する 3 つのシナリオを紹介します。
 
 - [シナリオ 1: Office 365 アプリで、承認済みアプリとアプリ保護ポリシーの使用を必須にする](#scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies)
-- [シナリオ 2: Exchange Online と SharePoint Online で、承認済みクライアント アプリとアプリ保護ポリシーの使用を必須にする](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
+- [シナリオ 2: ブラウザー アプリで、承認済みアプリとアプリ保護ポリシーの使用を必須にする](#scenario-2-browser-apps-require-approved-apps-with-app-protection-policies)
+- [シナリオ 3: Exchange Online と SharePoint Online で、承認済みクライアント アプリとアプリ保護ポリシーの使用を必須にする](#scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy)
 
 条件付きアクセスでは、これらのクライアント アプリはアプリ保護ポリシーで保護されることが知られています。 アプリ保護ポリシーの詳細については、「[アプリ保護ポリシーの概要](/intune/apps/app-protection-policy)」を参照してください
 
-適格なクライアント アプリの一覧については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md)に関するページを参照してください。
+> [!WARNING]
+> 一部のアプリケーションは、承認済みアプリケーションとしてサポートされないか、アプリケーション保護ポリシーをサポートしません。 適格なクライアント アプリの一覧については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md#require-app-protection-policy)に関するページを参照してください。
 
 > [!NOTE]
->    OR 句は、ポリシー内で使用され、ユーザーが、**アプリの保護ポリシーを必須にする**または**承認済みクライアント アプリを必須にする**のいずれかの付与の制御をサポートするアプリを利用できるようにします。 **アプリ保護ポリシーを必須にする**付与の制御がサポートされているアプリの詳細については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md)に関するページを参照してください。
+> 付与の制御の [選択したコントロールのいずれかが必要] は、 OR 句と似ています。 これは、ポリシー内で使用され、ユーザーが **[アプリの保護ポリシーが必要]** または **[承認済みクライアント アプリを必須にする]** のいずれかの付与の制御をサポートするアプリを利用できるようにします。 アプリが両方のポリシーでサポートされている場合は、 **[アプリの保護ポリシーが必要]** が適用されます。 **アプリ保護ポリシーを必須にする**付与の制御がサポートされているアプリの詳細については、[アプリ保護ポリシーの要件](concept-conditional-access-grant.md#require-app-protection-policy)に関するページを参照してください。
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>シナリオ 1:Office 365 アプリで、承認済みアプリとアプリ保護ポリシーの使用を必須にする
 
-このシナリオでは、Contoso は、Office 365 リソースへのすべてのモバイル アクセスで、アクセス権の取得に先立って、アプリ保護ポリシーで保護された承認済みクライアント アプリ (Outlook Mobile、OneDrive、Microsoft Teams など) の使用を必須とすることにしました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
+このシナリオでは、Contoso は、Office 365 リソースへのすべてのモバイル アクセスで、アクセス権の取得に先立って、アプリ保護ポリシーで保護された承認済みクライアント アプリ (Outlook Mobile、OneDrive など) の使用を必須とすることにしました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
 
 組織は、モバイル デバイスで承認済みクライアント アプリの使用を必須とするために、次の手順を完了する必要があります。
 
@@ -53,9 +55,9 @@ ms.locfileid: "80631895"
 1. **[条件]** で、 **[デバイス プラットフォーム]** を選択します。
    1. **[構成]** を **[はい]** に設定します。
    1. **Android** と **iOS** を含めます。
-1. **[条件]** で、 **[クライアント アプリ (プレビュー)]** を選択します。
+1. **[条件]** で、 **[クライアント アプリ]** を選択します。
    1. **[構成]** を **[はい]** に設定します。
-   1. **[モバイル アプリとデスクトップ クライアント]** と **[先進認証クライアント]** を選択します。
+   1. **[モバイル アプリとデスクトップ クライアント]** を選択し、他のすべての選択を解除ます。
 1. **[アクセス制御]**  >  **[付与]** で、次のオプションを選択します。
    - **承認済みクライアント アプリを必須にする**
    - **アプリの保護ポリシーが必要 (プレビュー)**
@@ -74,10 +76,9 @@ ms.locfileid: "80631895"
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択するか、このポリシーを適用する特定の**ユーザーとグループ**を選択します。 
    1. **[Done]** を選択します。
 1. **[クラウド アプリまたは操作]**  >  **[Include]\(含める\)** で、 **[Office 365 Exchange Online]** を選択します。
-1. **[条件]** で、次の手順を実行します。
-   1. **[クライアント アプリ (プレビュー)]** :
-      1. **[構成]** を **[はい]** に設定します。
-      1. **[モバイル アプリとデスクトップ クライアント]** と **[Exchange ActiveSync クライアント]** を選択します。
+1. **[条件]** で、 **[クライアント アプリ]** を選択します。
+   1. **[構成]** を **[はい]** に設定します。
+   1. **[Exchange ActiveSync クライアント]** を選択し、他のすべての選択を解除します。
 1. **[アクセス制御]**  >  **[付与]** で、 **[アクセスを許可]** 、 **[Require app protection policy]\(アプリの保護ポリシーを必須にする\)** の順に選択し、 **[選択]** を選択します。
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 1. **[作成]** を選択し、ポリシーを作成して有効にします。
@@ -86,7 +87,40 @@ ms.locfileid: "80631895"
 
 Android および iOS 用のアプリ保護ポリシーを作成する手順については、記事「[アプリ保護ポリシーを作成して割り当てる方法](/intune/apps/app-protection-policies)」を参照してください。 
 
-## <a name="scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>シナリオ 2: Exchange Online と SharePoint Online で、承認済みクライアント アプリとアプリ保護ポリシーの使用を必須にする
+## <a name="scenario-2-browser-apps-require-approved-apps-with-app-protection-policies"></a>シナリオ 2: ブラウザー アプリで、承認済みアプリとアプリ保護ポリシーの使用を必須にする
+
+このシナリオでは、Contoso は、Web ブラウザーから Office 365 リソースへのすべてのモバイル アクセスで、アクセス権の取得に先立って、アプリ保護ポリシーで保護された承認済みクライアント アプリ (iOS と Android 用の Edge など) の使用を必須とすることにしました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
+
+組織は、モバイル デバイスで承認済みクライアント アプリの使用を必須とするために、次の手順を完了する必要があります。
+
+**ステップ 1:Office 365 用の Azure AD 条件付きアクセス ポリシーを構成する**
+
+1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
+1. **[新しいポリシー]** を選択します。
+1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
+1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
+   1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択するか、このポリシーを適用する特定の**ユーザーとグループ**を選択します。 
+   1. **[Done]** を選択します。
+1. **[クラウド アプリまたは操作]**  >  **[Include]\(含める\)** で、 **[Office 365 (プレビュー)]** を選択します。
+1. **[条件]** で、 **[デバイス プラットフォーム]** を選択します。
+   1. **[構成]** を **[はい]** に設定します。
+   1. **Android** と **iOS** を含めます。
+1. **[条件]** で、 **[クライアント アプリ]** を選択します。
+   1. **[構成]** を **[はい]** に設定します。
+   1. **[ブラウザー]** を選択し、他のすべての選択を解除します。
+1. **[アクセス制御]**  >  **[付与]** で、次のオプションを選択します。
+   - **承認済みクライアント アプリを必須にする**
+   - **アプリの保護ポリシーが必要 (プレビュー)**
+   - **選択したコントロールすべてが必要です**
+1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+1. **[作成]** を選択し、ポリシーを作成して有効にします。
+
+**手順 2:iOS および Android クライアント アプリケーション用の Intune アプリ保護ポリシーを構成する**
+
+Android および iOS 用のアプリ保護ポリシーを作成する手順については、記事「[アプリ保護ポリシーを作成して割り当てる方法](/intune/apps/app-protection-policies)」を参照してください。 
+
+## <a name="scenario-3-exchange-online-and-sharepoint-online-require-an-approved-client-app-and-app-protection-policy"></a>シナリオ 3: Exchange Online と SharePoint Online で、承認済みクライアント アプリとアプリ保護ポリシーの使用を必須にする
 
 このシナリオでは、Contoso は、アクセス権の取得に先立って、ユーザーがアプリ保護ポリシーで保護された Outlook Mobile などの承認済みクライアント アプリを使用している場合に限り、モバイル デバイスでメールと SharePoint データのみにアクセスできるようにすることにしました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
 
@@ -105,9 +139,9 @@ Android および iOS 用のアプリ保護ポリシーを作成する手順に�
 1. **[条件]** で、 **[デバイス プラットフォーム]** を選択します。
    1. **[構成]** を **[はい]** に設定します。
    1. **Android** と **iOS** を含めます。
-1. **[条件]** で、 **[クライアント アプリ (プレビュー)]** を選択します。
+1. **[条件]** で、 **[クライアント アプリ]** を選択します。
    1. **[構成]** を **[はい]** に設定します。
-   1. **[モバイル アプリとデスクトップ クライアント]** と **[先進認証クライアント]** を選択します。
+   1. **[モバイル アプリとデスクトップ クライアント]** を選択し、他のすべての選択を解除ます。
 1. **[アクセス制御]**  >  **[付与]** で、次のオプションを選択します。
    - **承認済みクライアント アプリを必須にする**
    - **アプリの保護ポリシーが必要 (プレビュー)**
@@ -124,10 +158,9 @@ Android および iOS 用のアプリ保護ポリシーを作成する手順に�
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択するか、このポリシーを適用する特定の**ユーザーとグループ**を選択します。 
    1. **[Done]** を選択します。
 1. **[クラウド アプリまたは操作]**  >  **[Include]\(含める\)** で、 **[Office 365 Exchange Online]** を選択します。
-1. **[条件]** で、次の手順を実行します。
-   1. **[クライアント アプリ (プレビュー)]** :
-      1. **[構成]** を **[はい]** に設定します。
-      1. **[モバイル アプリとデスクトップ クライアント]** と **[Exchange ActiveSync クライアント]** を選択します。
+1. **[条件]** で、 **[クライアント アプリ]** を選択します。
+   1. **[構成]** を **[はい]** に設定します。
+   1. **[Exchange ActiveSync クライアント]** を選択し、他のすべての選択を解除します。
 1. **[アクセス制御]**  >  **[付与]** で、 **[アクセスを許可]** 、 **[Require app protection policy]\(アプリの保護ポリシーを必須にする\)** の順に選択し、 **[選択]** を選択します。
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 1. **[作成]** を選択し、ポリシーを作成して有効にします。

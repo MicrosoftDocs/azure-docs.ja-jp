@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672729"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134820"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
 
@@ -22,7 +22,7 @@ Azure への VMware 仮想マシンと物理サーバーのディザスター �
 
 ## <a name="update-windows-license"></a>Windows ライセンスを更新する
 
-OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 中断なく使用するには、購入したライセンスで Windows をライセンス認証する必要があります。 ライセンスの更新は、スタンドアロン キーまたは KMS 標準キーのいずれかを使用して行うことができます。 ガイダンスは、[OS を実行するための DISM Windows コマンド ライン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)で入手できます。 キーを取得するには、「[KMS クライアント セットアップ キー](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)」を参照してください。
+OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 中断なく使用するには、購入したライセンスで Windows をライセンス認証する必要があります。 ライセンスの更新は、スタンドアロン キーまたは KMS 標準キーのいずれかを使用して行うことができます。 ガイダンスは、[OS を実行するための DISM Windows コマンド ライン](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)で入手できます。 キーを取得するには、「[KMS クライアント セットアップ キー](/windows-server/get-started/kmsclientkeys)」を参照してください。
 
 ## <a name="access-configuration-server"></a>構成サーバーにアクセスする
 
@@ -138,7 +138,7 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
    ```
 
     >[!NOTE]
-    >構成サーバーからスケールアウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt* を実行します。
+    >構成サーバーからスケールアウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt* を実行します
 
 8. 最後に、次のコマンドを実行して obengine を再起動します。
    ```
@@ -266,7 +266,7 @@ ProxyPassword="Password"
 
 必要に応じて、PowerShell を使って構成サーバーを削除できます。
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
+1. Azure PowerShell モジュールを[インストール](/powershell/azure/install-Az-ps)します。
 2. 次のコマンドを使用して Azure アカウントにサインインします。
 
     `Connect-AzAccount`

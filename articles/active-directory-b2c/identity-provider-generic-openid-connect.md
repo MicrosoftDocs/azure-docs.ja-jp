@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c72abf79f0a420309ebe229673be9439fd99b74c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b71a7b8ab29e8083a5f119a41ef6de312518301
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188258"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388274"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する
 
@@ -31,7 +31,7 @@ ms.locfileid: "78188258"
 
 ## <a name="configure-the-identity-provider"></a>[ID プロバイダー] を構成します。
 
-どの OpenID Connect ID プロバイダーでも、サインインを実行するために必要な情報の多くを含むメタデータ ドキュメントを記述します。 これには、使用する URL、サービスの公開署名キーの場所などの情報が含まれます。 OpenID Connect メタデータ ドキュメントは、常に `.well-known\openid-configuration` で終わるエンドポイントに配置されます。 追加する OpenID Connect ID プロバイダーについては、そのメタデータの URL を入力します。
+どの OpenID Connect ID プロバイダーでも、サインインを実行するために必要な情報の多くを含むメタデータ ドキュメントを記述します。 これには、使用する URL、サービスの公開署名キーの場所などの情報が含まれます。 OpenID Connect メタデータ ドキュメントは、常に `.well-known/openid-configuration` で終わるエンドポイントに配置されます。 追加する OpenID Connect ID プロバイダーについては、そのメタデータの URL を入力します。
 
 ## <a name="client-id-and-secret"></a>クライアントの ID とシークレット
 

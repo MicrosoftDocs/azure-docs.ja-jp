@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77168135"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232527"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Speech Devices SDK のマイク配列の推奨事項
 
@@ -27,7 +27,7 @@ Speech Devices SDK は、マイクのジオメトリとコンポーネントの�
 
 Microsoft Audio Stack で使用するために、次の配列のジオメトリをお勧めします。 音源の場所と周囲のノイズの除去は、特定のアプリケーションへの依存関係を持つマイクの数の増加、ユーザー シナリオ、およびデバイスのフォーム ファクターにより向上します。
 
-|     | 循環配列 |     | 線形配列 |     |
+| マイクとジオメトリ | 循環配列 | 循環配列 | 線形配列 | 線形配列 |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \# マイクの数 | 7 | 4 | 4 | 2 |

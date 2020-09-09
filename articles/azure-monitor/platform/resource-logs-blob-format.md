@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077121"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor プラットフォーム ログの形式変更のための準備
 
 > [!WARNING]
-> [Azure リソース ログまたはメトリックを診断設定を使用してストレージ アカウントに](resource-logs-collect-storage.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](resource-logs-collect-storage.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されました。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。
+> [Azure リソース ログまたはメトリックを診断設定を使用してストレージ アカウントに](./resource-logs.md#send-to-azure-storage)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](./resource-logs.md#send-to-azure-storage)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されました。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。
 >
 
 ## <a name="what-changed"></a>変更箇所
@@ -29,9 +29,9 @@ Azure Monitor では、Azure ストレージ アカウント、Event Hubs 名前
 * 11 月 1 日より日に診断設定が行われた場合、11 月 1 日までは現在の形式で引き続きデータが出力されました。
 * この変更はすべてのパブリック クラウド リージョンで一度に行われました。 21Vianet が運営する Microsoft Azure、Azure Germany、および Azure Government のクラウドではまだこの変更は行われません。
 * この変更は次のデータの種類に影響します。
-  * [Azure リソース ログ](archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](diagnostic-logs-schema.md))
+  * [Azure リソース ログ](./resource-logs.md#send-to-azure-storage) ([このリソースの一覧を参照してください](./resource-logs-schema.md))
   * [診断設定でエクスポートされる Azure リソース メトリック](diagnostic-settings.md)
-  * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](activity-log-collect.md)
+  * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](./activity-log.md)
 * この変更は以下のものには影響しません。
   * ネットワーク フロー ログ
   * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service のリソース ログ、ストレージ分析ログなど)
@@ -123,7 +123,7 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-この新しい形式では、Azure Monitor で[追加 BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) を使用してログ ファイルをプッシュすることができ、継続的に新しいイベント データを追加する場合により効率的です。
+この新しい形式では、Azure Monitor で[追加 BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) を使用してログ ファイルをプッシュすることができ、継続的に新しいイベント データを追加する場合により効率的です。
 
 ## <a name="how-to-update"></a>更新方法
 
@@ -133,6 +133,5 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ストレージ アカウントへのリソース ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
-* [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./../../azure-monitor/platform/archive-activity-log.md)について確認します。
-
+* [ストレージ アカウントへのリソース ログのアーカイブ](./resource-logs.md#send-to-azure-storage)について確認します。
+* [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./activity-log.md#legacy-collection-methods)について確認します。

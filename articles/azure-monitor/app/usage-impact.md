@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797901"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323708"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -28,7 +28,7 @@ ms.locfileid: "83797901"
 ![ブラウザーごとのコンバージョンのスクリーンショット](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> 影響ツールを使うには、Application Insights のリソースにページ ビューまたはカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](../../azure-monitor/app/javascript.md)。 また、相関関係を分析しているので、サンプルのサイズが問題になることにも注意してください。
+> 影響ツールを使うには、Application Insights のリソースにページ ビューまたはカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](./javascript.md)。 また、相関関係を分析しているので、サンプルのサイズが問題になることにも注意してください。
 >
 >
 
@@ -80,10 +80,11 @@ _B_ = 選択する 2 つ目のページ ビュー/カスタム イベント (**�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
+- 使用状況を把握できるようにするには、[カスタム イベント](./api-custom-events-metrics.md#trackevent)または[ページ ビュー](./api-custom-events-metrics.md#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
     - [ユーザー フロー](usage-flows.md)
-    - [ブック](../../azure-monitor/platform/workbooks-overview.md)
+    - [ブック](../platform/workbooks-overview.md)
     - [ユーザー コンテキストの追加](usage-send-user-context.md)
+

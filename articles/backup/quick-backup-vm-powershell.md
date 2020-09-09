@@ -4,17 +4,17 @@ description: このクイック スタートでは、Azure PowerShell モジュ�
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
-ms.custom: mvc
-ms.openlocfilehash: 8021ca553a1434c891bee911e85d351c61938594
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 4a97a084b11b34f97e0c020f367ec730d8dfb079
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74171959"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075734"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
 
-[Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) モジュールは、コマンド ラインやスクリプトから Azure リソースを作成および管理するために使用します。
+[Azure PowerShell AZ](/powershell/azure/new-azureps-module-az) モジュールは、コマンド ラインやスクリプトから Azure リソースを作成および管理するために使用します。
 
 [Azure Backup](backup-overview.md) では、オンプレミスのマシンとアプリ、および Azure VM をバックアップします。 この記事では、AZ モジュールを使用して Azure VM をバックアップする方法を説明します。 代わりに [Azure CLI](quick-backup-vm-cli.md) または [Azure portal](quick-backup-vm-portal.md) を使用して VM をバックアップすることもできます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74171959"
 
 - リソース グループと場所については、バックアップする VM のリソース グループと場所を指定します。
 - この[サンプル スクリプト](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)を使用して VM を作成した場合、リソース グループは **myResourceGroup**、VM は **myVM** になり、リソースは **WestEurope** リージョンに格納されます。
-- Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
+- Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
 
 それでは、コンテナーを作成します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "74171959"
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
-3. [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty)を使用して、コンテナーの記憶域冗長構成 (LRS/GRS) を次のように変更します。
+3. [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty)を使用して、コンテナーの記憶域冗長構成 (LRS/GRS) を次のように変更します。
 
     ```powershell
     Get-AzRecoveryServicesVault `

@@ -1,24 +1,25 @@
 ---
 title: Personalizer とは
-description: Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
+description: Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースのサービスです。
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 08/27/2020
+ms.custom: cog-serv-seo-aug-2020
+keywords: Personalizer, Azure Personalizer, 機械学習
+ms.openlocfilehash: 93b1f0487818cf783cc4a19f79618cfe2285cbd1
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586220"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055619"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+Azure Personalizer は、最適なコンテンツ項目をアプリケーションが選択してユーザーに表示できるよう支援するクラウドベースのサービスです。 Personalizer サービスを使用すると、買い物客に提示すべき製品を判断したり、広告の最適な表示位置を見つけ出したりすることができます。 そのコンテンツがユーザーに表示されると、システムは、リアルタイムでユーザーの行動を監視し、Personalizer サービスに報酬スコアをレポート バックします。 そうすることで機械学習モデルは継続的に改善され、また受け取ったコンテキスト情報に基づいて最適なコンテンツ項目を選択する Personalizer の能力も継続的に改善されます。
 
-Azure Personalizer とは、クラウドベースの API サービスで、クライアント アプリケーションが各ユーザーに示す最適な "_コンテンツ_" 項目を 1 つ選択する際に役立ちます。 このサービスでは、コンテンツとコンテキストに関して指定したリアルタイム情報の集合に基づき、最適な項目がコンテンツ項目から選択されます。
+> [!TIP]
+> コンテンツには、テキスト、画像、URL、メールなど、抽出してユーザーに表示するあらゆる情報単位が当てはまります。
 
-そのコンテンツ項目をユーザーに提示した後、システムは、ユーザーの行動を監視して報酬スコアを Personalizer に再度レポートし、受け取ったコンテキスト情報に基づいて最適なコンテンツを選択する能力を高めます。
-
-**コンテンツ**には、テキスト、画像、URL、メールなど、抽出してユーザーに表示するあらゆる情報単位が当てはまります。
+先に進む前に、[こちらの対話型デモで Personalizer](https://personalizationdemo.azurewebsites.net/) を自由にお試しください。
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
@@ -26,7 +27,7 @@ Azure Personalizer とは、クラウドベースの API サービスで、ク�
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>最適なコンテンツ項目を Personalizer が選択するしくみ
 
-Personalizer は**強化学習**を使用し、すべてのユーザーにわたって集めた行動と報酬スコアに基づいて最適な項目 ("_アクション_") を選択します。 アクションとは、ニュース記事、特定の映画、製品など、選択肢となるコンテンツ項目です。
+Personalizer は**強化学習**を使用し、すべてのユーザーにわたって集めた行動と報酬スコアに基づいて最適な項目 ("_アクション_") を選択します。 アクションとは、ニュース記事、特定の映画、製品などのコンテンツ項目です。
 
 **Rank** 呼び出しは、アクション項目、アクションの特徴、コンテキストの特徴を受け取って、最上位のアクション項目を選択します。
 
@@ -34,27 +35,31 @@ Personalizer は**強化学習**を使用し、すべてのユーザーにわた
 * **コンテキストの特徴** - アプリ使用時のユーザーとそのコンテキスト、環境の特徴
 
 Rank 呼び出しからは、ユーザーに表示するコンテンツ項目 (__アクション__) の ID が、**報酬アクション ID** フィールドで返されます。
-ユーザーに表示される __アクション__ は、一定期間にわたる報酬の総量が最大となるように機械学習モデルを使用して選択されます。
 
-いくつかのシナリオの例は次のとおりです。
+ユーザーに表示される__アクション__は、一定期間にわたる報酬の総量が最大となるように機械学習モデルを使用して選択されます。
 
-|Content type|**アクション (と特徴)**|**コンテキストの特徴**|返される報酬アクション ID<br>(このコンテンツが表示されます)|
+### <a name="sample-scenarios"></a>サンプル事例
+
+ユーザーに表示する最適なコンテンツを選択する際に Personalizer が利用できるシナリオをいくつか見てみましょう。
+
+|Content type|アクションと特徴|コンテキストの特徴|返される報酬アクション ID<br>(このコンテンツが表示されます)|
 |--|--|--|--|
 |ニュース リスト|a. `The president...` (国内, 政治, [テキスト])<br>b. `Premier League ...` (グローバル, スポーツ, [テキスト, 画像, ビデオ])<br> c. `Hurricane in the ...` (地域, 気象, [テキスト,画像]|ニュースの閲覧に使用するデバイス<br>月または季節<br>|a `The president...`|
 |映画リスト|1.`Star Wars` (1977, [アクション, アドベンチャー, ファンタジー], ジョージ ルーカス)<br>2.`Hoop Dreams` (1994, [ドキュメンタリー, スポーツ], スティーブ ジェームズ<br>3.`Casablanca` (1942, [ロマンス, ドラマ, 戦争], マイケル カーティス)|映画の視聴に使用するデバイス<br>画面サイズ<br>ユーザーの種類<br>|3. `Casablanca`|
 |Product 一覧|i. `Product A` (3 kg, $$$$, 24 時間以内に配送)<br>ii. `Product B` (20 kg, $$, 出荷と通関に 2 週間)<br>iii. `Product C` (3 kg, $$$, 48 時間以内に配送)|ショッピングの閲覧に使用するデバイス<br>ユーザーの支出階層<br>月または季節|ii. `Product B`|
 
-Personalizer は、次の組み合わせに基づいて "_報酬アクション ID_" と呼ばれる最適なアクションを 1 つ選択するために強化学習を使用しました。
-* トレーニング済みのモデル - Personalizer サービスが受け取った過去の情報
-* 最新のデータ - 特徴を伴う具体的なアクション、コンテキストの特徴
+Personalizer は、"_報酬アクション ID_" と呼ばれる最適なアクションを 1 つ選択するために強化学習を使用しました。 次の情報が機械学習モデルによって使用されます。 
 
-## <a name="when-to-call-personalizer"></a>Personalizer を呼び出すタイミング
+* トレーニング済みのモデル - 過去にパーソナライズ サービスから受け取った情報。機械学習モデルの改善に使用されます。
+* 最新のデータ - 特徴を伴う具体的なアクション、コンテキストの特徴。
 
-Personalizer の **Rank** [API](https://go.microsoft.com/fwlink/?linkid=2092082) は、コンテンツを提示する "_たびに_" リアルタイムで呼び出されます。 これは**イベント**と呼ばれ、"_イベント ID_" で表されます。
+## <a name="when-to-use-personalizer"></a>Personalizer が使用される状況
+
+アプリケーションがコンテンツを表示するたびに、Personalizer の **Rank** [API](https://go.microsoft.com/fwlink/?linkid=2092082) が呼び出されます。 これは**イベント**と呼ばれ、"_イベント ID_" で表されます。
 
 Personalizer の **Reward** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) は、リアルタイムで呼び出すことも、実際のインフラストラクチャに合わせて時間差で呼び出すこともできます。 報酬スコアは、ビジネス ニーズに基づいて決めます。 報酬スコアは 0 と 1 の間です。 これは、適切な場合は 1、不適切な場合は 0 というように 1 つの値になる場合があるほか、ビジネス目標や指標を考慮して作成したアルゴリズムによって生成される場合もあります。
 
-## <a name="personalizer-content-requirements"></a>Personalizer のコンテンツ要件
+## <a name="content-requirements"></a>コンテンツの要件
 
 Personalizer は、対象のコンテンツが次の条件を満たす場合に使用します。
 
@@ -67,7 +72,7 @@ Personalizer は、集まった情報をほぼリアルタイムで使用して�
 * 個々のユーザーの好みや履歴を記録する
 * クリーニング済みおよびラベル付きのコンテンツを要求する
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>クライアント アプリケーションに合わせて Personalizer を設計して実装する方法
+## <a name="how-to-design-for-and-implement-personalizer"></a>Personalizer を設計して実装する方法
 
 1. コンテンツ、"**_アクション_**"、"**_コンテキスト_**" を[設計](concepts-features.md)および計画します。 "**_報酬_**" スコア用の報酬アルゴリズムを決定します。
 1. 作成した各 [Personalizer リソース](how-to-settings.md)は、1 学習ループと見なされます。 このループでは、そのコンテンツまたはユーザー エクスペリエンスに対する Rank と Reward 両方の呼び出しを受け取ります。
@@ -94,13 +99,28 @@ Personalizer は、集まった情報をほぼリアルタイムで使用して�
         * またはオフライン システムで少し経ってから
     1. 一定期間使用した後、オフライン評価を使用して[ループを評価](concepts-offline-evaluation.md)します。 オフライン評価を使用すると、コードを変更したりユーザー エクスペリエンスに影響を与えたりすることなく、Personalizer サービスの有効性をテストして評価することができます。
 
+## <a name="complete-a-quickstart"></a>クイックスタートに取り組む
+
+クイックスタートは、C#、JavaScript、Python でご利用いただけます。 それぞれ基本的な設計パターンを学び、いずれも 10 分もかからずにコードを実行できるように作られています。 
+
+* [クイック スタート: Personalizer クライアント ライブラリを使用する方法](sdk-learning-loop.md)
+
+Personalizer サービスを使用する機会が得られたら、Web アプリケーションやチャット ボット、Azure Notebooks で Personalizer を使用する方法を、チュートリアルを通じて学びましょう。
+
+* [チュートリアル:.NET Web アプリで Personalizer を使用する](tutorial-use-personalizer-web-app.md)
+* [チュートリアル:.NET チャット ボットで Personalizer を使用する](tutorial-use-personalizer-chat-bot.md)
+* [チュートリアル:Azure Notebook で Personalizer を使用する](tutorial-use-azure-notebook-generate-loop-data.md)
+
+## <a name="reference"></a>関連項目 
+
+* [Personalizer C#/.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Personalizer Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [Personalizer JavaScript SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [Personalizer Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
+
 ## <a name="next-steps"></a>次のステップ
 
-
-* [Personalizer のしくみ](how-personalizer-works.md)
-* [強化学習とは](concepts-reinforcement-learning.md)
-* [Rank 要求の機能とアクションについて学習します](concepts-features.md)
-* [Reward 要求のスコアの特定について学習します](concept-rewards.md)
-* [クイック スタート](sdk-learning-loop.md)
-* [チュートリアル](tutorial-use-azure-notebook-generate-loop-data.md)
-* [対話型デモを使用する](https://personalizationdemo.azurewebsites.net/)
+> [!div class="nextstepaction"]
+> [Personalizer のしくみ](how-personalizer-works.md)
+> [強化学習とは](concepts-reinforcement-learning.md)

@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンス
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780336"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927513"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -43,13 +43,13 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **要件** | **VMware** 
 --- | ---
 **アクセス許可** | アプライアンス Web アプリにローカルまたはリモートでアクセスするには、ドメイン管理者であるか、またはアプライアンス マシンのローカル管理者である必要があります。
-**アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。<br/><br/> - **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **評価エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。<br/>- **DRA エージェント**:VM のレプリケーションを調整し、レプリケートされたマシンと Azure 間の通信を調整します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。<br/>- **ゲートウェイ**:レプリケートされたデータを Azure に送信します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。
+**アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。<br/><br/> - **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **コレクター エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。<br/>- **DRA エージェント**:VM のレプリケーションを調整し、レプリケートされたマシンと Azure 間の通信を調整します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。<br/>- **ゲートウェイ**:レプリケートされたデータを Azure に送信します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。
 **サポートされるデプロイ** | OVA テンプレートを使用して VMware VM としてデプロイする。<br/><br/> PowerShell インストール スクリプトを使用して、VMware VM または物理マシンとしてデプロイする。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出の制限** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは、1 つの vCenter Server に接続できます。
-**OVA テンプレート** | ポータルから、または https://aka.ms/migrate/appliance/vmware からダウンロードします。<br/><br/> ダウンロード サイズは 11.2 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
-**PowerShell スクリプト** | スクリプト [ダウンロード](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
-**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/><br/> アプライアンスを VMware VM で実行する場合、vCenter Server に、要件を満たす VM を割り当てるのに十分なリソースが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
+**OVA テンプレート** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140333)からダウンロードします<br/><br/> ダウンロード サイズは 11.6 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
+**PowerShell スクリプト** | この[記事](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)を参照してください。<br/><br/> 
+**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/><br/> アプライアンスを VMware VM で実行する場合、vCenter Server に、要件を満たす VM を割り当てるのに十分なリソースが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。
 **VMware の要件** | アプライアンスを VMware VM としてデプロイする場合は、バージョン 5.5 以降を実行している ESXi ホストにデプロイする必要があります。<br/><br/> 5\.5、6.0、6.5、または 6.7 を実行する vCenter Server。
 **VDDK (エージェントレス移行)** | アプライアンスを VMware VM としてデプロイし、エージェントレスの移行を実行している場合は、VMware vSphere VDDK をアプライアンス VM にインストールする必要があります。
 **ハッシュ値 - OVA** | OVA テンプレートのハッシュ値を[確認](tutorial-assess-vmware.md#verify-security)します。
@@ -63,13 +63,13 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **要件** | **Hyper-V** 
 --- | ---
 **アクセス許可** | アプライアンス Web アプリにローカルまたはリモートでアクセスするには、ドメイン管理者であるか、またはアプライアンス マシンのローカル管理者である必要があります。
-**アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。<br/><br/>- **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **評価エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。
+**アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。<br/><br/>- **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **コレクター エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。
 **サポートされるデプロイ** | VHD テンプレートを使用して Hyper-V VM としてデプロイする。<br/><br/> PowerShell インストール スクリプトを使用して、Hyper-V VM または物理マシンとしてデプロイする。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出の制限** | アプライアンスは、最大 5000 個の Hyper-V ホストを検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
-**VHD テンプレート** | VHD を含む zip 形式のフォルダー。 ポータルから、または https://aka.ms/migrate/appliance/hyperv からダウンロードします。<br/><br/> ダウンロード サイズは 10 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
-**PowerShell スクリプト** | スクリプト [ダウンロード](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
-**ソフトウェア/ハードウェア***   |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> アプライアンスを Hyper-V VM として実行する場合、Hyper-V ホスト上に、アプライアンス VM 用の 16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、外部スイッチを割り当てるための十分なリソースが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
+**VHD テンプレート** | VHD を含む zip 形式のフォルダー。 ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140422)からダウンロードします。<br/><br/> ダウンロード サイズは 10.4 GB です。<br/><br/> ダウンロードしたアプライアンス テンプレートには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
+**PowerShell スクリプト** | この[記事](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)を参照してください。<br/><br/> 
+**ソフトウェア/ハードウェア***   |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> アプライアンスを Hyper-V VM として実行する場合、Hyper-V ホスト上に、アプライアンス VM 用の 16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、外部スイッチを割り当てるための十分なリソースが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
 **Hyper-V の要件** | VHD テンプレートを使用してアプライアンスをデプロイする場合、Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/><br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。 
 **ハッシュ値 - VHD** | VHD テンプレートのハッシュ値を[確認](tutorial-assess-hyper-v.md#verify-security)します。
 **ハッシュ値 - PowerShell スクリプト** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
@@ -80,12 +80,12 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **要件** | **物理** 
 --- | ---
 **アクセス許可** | アプライアンス Web アプリにローカルまたはリモートでアクセスするには、ドメイン管理者であるか、またはアプライアンス マシンのローカル管理者である必要があります。
-**アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。 <br/><br/> - **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **評価エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。
+**アプライアンスのコンポーネント** | アプライアンスには、次のコンポーネントがあります。 <br/><br/> - **管理アプリ**:これは、アプライアンスのデプロイ時にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。<br/> - **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **コレクター エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。<br/>- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。
 **サポートされるデプロイ** | PowerShell インストール スクリプトを使用して、専用物理マシンまたは VM としてデプロイする。 スクリプトはポータルからダウンロードできます。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
-**検出の制限** | 1 つのアプライアンスで最大 250 台の物理サーバーを検出できます。
-**PowerShell スクリプト** | ポータルから zip 形式のフォルダーでスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-assess-physical.md#set-up-the-appliance)。 または、[直接ダウンロード](https://go.microsoft.com/fwlink/?linkid=2105112)します。<br/><br/> ダウンロード サイズは 59.7 MB です。
-**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/> Windows Server 2019 を搭載したコンピューターでのアプライアンスの実行はサポートされていません。
+**検出の制限** | 1 つのアプライアンスで最大 1000 台の物理サーバーを検出できます。
+**PowerShell スクリプト** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140334)から zip 形式のフォルダーでスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance)。<br/><br/> ダウンロード サイズは 85 MB です。
+**ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/> Windows Server 2019 を搭載したコンピューターでのアプライアンスの実行はサポートされていません。
 **ハッシュ値** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
 
 ## <a name="url-access"></a>URL アクセス
@@ -105,7 +105,7 @@ Azure Migrate アプライアンスには、インターネットへの接続が
 *.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
 management.azure.com | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
 *.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
-*.vault.azure.net | Azure Key Vault でシークレットを管理します。
+*.vault.azure.net | Azure Key Vault でシークレットを管理します。 注:レプリケートするマシンに、ここへのアクセス権があることを確認してください。
 aka.ms/* | aka リンクへのアクセスを許可します。 Azure Migrate アプライアンスの更新に使用されます。
 download.microsoft.com/download | Microsoft ダウンロードからのダウンロードを許可します。
 *.servicebus.windows.net | アプライアンスと Azure Migrate サービスの間の通信。
@@ -206,11 +206,77 @@ CPU 使用率 | cpu.usage.average | 推奨される VM サイズ/コスト
 NIC 読み取りのスループット (MB/秒) | net.received.average | VM サイズの計算
 NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |VM サイズの計算
 
+
+### <a name="installed-apps-metadata"></a>インストール済みアプリのメタデータ
+
+アプリケーションの検出は、インストール済みのアプリケーションとオペレーティング システム データを収集します。
+
+#### <a name="windows-vm-apps-data"></a>Windows VM のアプリケーション データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するインストール済みのアプリケーション データを次に示します。 このデータは Azure に送信されます。
+
+**データ** | **レジストリの場所** | **キー**
+--- | --- | ---
+アプリケーション名  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Version  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+プロバイダー  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+
+#### <a name="windows-vm-features-data"></a>Windows VM の特徴量データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集する特徴量データを次に示します。 このデータは Azure に送信されます。
+
+**データ**  | **PowerShell コマンドレット** | **プロパティ**
+--- | --- | ---
+名前  | Get-WindowsFeature  | 名前
+特徴の種類 | Get-WindowsFeature  | FeatureType
+Parent  | Get-WindowsFeature  | Parent
+
+#### <a name="windows-vm-sql-server-metadata"></a>Windows VM の SQL Server メタデータ
+
+アプリケーションの検出が有効になっている Microsoft SQL Server が実行中の VM から、アプライアンスが収集する SQL Server メタデータを次に示します。 このデータは Azure に送信されます。
+
+**データ**  | **レジストリの場所**  | **キー**
+--- | --- | ---
+名前  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Edition 
+Service Pack  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | SP
+Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version 
+
+#### <a name="windows-vm-operating-system-data"></a>Windows VM オペレーティング システム データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するオペレーティング システム データを次に示します。 このデータは Azure に送信されます。
+
+Data  | WMI クラス  | WMI クラスのプロパティ
+--- | --- | ---
+名前  | Win32_operatingsystem  | Caption
+Version  | Win32_operatingsystem  | Version
+アーキテクチャ  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Linux VM のアプリケーション データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するインストール済みのアプリケーション データを次に示します。 VM のオペレーティング システムに基づいて、1 つまたは複数のコマンドが実行されます。 このデータは Azure に送信されます。
+
+Data  | コマンド
+--- | --- 
+名前 | rpm、dpkg-query、snap
+Version | rpm、dpkg-query、snap
+プロバイダー | rpm、dpkg-query、snap
+
+#### <a name="linux-vm-operating-system-data"></a>Linux VM オペレーティング システム データ
+
+アプリケーションの検出が有効になっている各 VM から、アプライアンスが収集するオペレーティング システム データを次に示します。 このデータは Azure に送信されます。
+
+**データ**  | **コマンド** 
+--- | --- | ---
+名前 <br/> version | 次の 1 つ以上のファイルから収集されます。<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+アーキテクチャ | uname
+
+
 ### <a name="app-dependencies-metadata"></a>アプリの依存関係メタデータ
 
 エージェントレスの依存関係分析では、接続データとプロセス データを収集します。
 
-#### <a name="connection-data"></a>接続データ
+#### <a name="windows-vm-app-dependencies-data"></a>Windows VM のアプリの依存関係データ
 
 エージェントレスの依存関係分析が有効になっている各 VM から、アプライアンスが収集する接続データを次に示します。 このデータは Azure に送信されます。
 
@@ -222,9 +288,9 @@ NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |VM �
 リモート IP アドレス | netstat
 TCP 接続の状態 | netstat
 プロセス ID | netstat
-いいえ。 アクティブな接続の | netstat
+アクティブな接続の数 | netstat
 
-#### <a name="process-data"></a>データを処理する
+
 エージェントレスの依存関係分析が有効になっている各 VM から、アプライアンスが収集するプロセス データを次に示します。 このデータは Azure に送信されます。
 
 **データ** | **WMI クラス** | **WMI クラスのプロパティ**
@@ -233,7 +299,7 @@ TCP 接続の状態 | netstat
 プロセスの引数 | Win32_Process | CommandLine
 アプリケーション名 | Win32_Process | ExecutablePath プロパティの VersionInfo.ProductName パラメーター
 
-#### <a name="linux-vm-data"></a>Linux VM データ
+#### <a name="linux-vm-app-dependencies-data"></a>Linux VM のアプリの依存関係データ
 
 エージェントレスの依存関係分析が有効になっている各 Linux VM から、アプライアンスが収集する接続データとプロセス データを次に示します。 このデータは Azure に送信されます。
 
@@ -244,7 +310,7 @@ TCP 接続の状態 | netstat
 リモート ポート | netstat 
 リモート IP アドレス | netstat 
 TCP 接続の状態 | netstat 
-いいえ。 アクティブな接続の | netstat
+アクティブな接続の数 | netstat
 プロセス ID  | netstat 
 [処理名] | ps
 プロセスの引数 | ps
@@ -340,7 +406,7 @@ NIC の MAC アドレス | Win32_NetworkAdapterConfiguration | MACAddress
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
 プロセッサ コア数 |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 割り当てられたメモリ | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
-BIOS のシリアル番号 | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}’
+BIOS のシリアル番号 | lshw \| grep "serial:" \| head -n1 \| awk '{print $2}' <br/> /usr/sbin/dmidecode -t 1 \| grep 'Serial' \| awk '{ $1="" ; $2=""; print}'
 BIOS の GUID | cat /sys/class/dmi/id/product_uuid
 ブートの種類 | [ -d /sys/firmware/efi ] && echo EFI \|\| echo BIOS
 OS の名前/バージョン | OS のバージョンと名前について、以下のファイルにアクセスします。<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
@@ -399,7 +465,7 @@ NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_by
 自動更新を有効にするには、次のいずれかの方法を使用します。
 
 - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance から AutoUpdate レジストリ キーを削除することによって。
-- 検出の完了後、Appliance Configuration Manager で。
+- **[前提条件の設定]** ウィンドウで最新の更新チェックから **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、自動更新をオンにします。
 
 レジストリ キーを削除するには、次の手順を実行します。
 
@@ -409,24 +475,24 @@ NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_by
 
 検出の完了後、Appliance Configuration Manager で有効にするには、以下を行います。
 
-1. アプライアンス マシンで、Appliance Configuration Manager を開きます。
-2. **[アプライアンス サービス]**  >  **[Automatic update of Azure Migrate components is turned off] (Azure Migrate コンポーネントの自動更新がオフ)** でクリックして自動更新をオンにします。
+1. Appliance Configuration Manager で、 **[前提条件の設定]** パネルに移動します
+2. 最新の更新プログラムのチェックで、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックし、リンクをクリックして自動更新をオンにします。
 
-    ![自動更新をオンにする](./media/migrate-appliance/turn-on.png)
+    ![自動更新をオンにする](./media/migrate-appliance/autoupdate-off.png)
 
 ### <a name="check-the-appliance-services-version"></a>アプライアンス サービスのバージョンを確認する
 
 次のいずれかの方法を使用して、アプライアンス サービスのバージョンを確認できます。
 
-- 検出の完了後、Appliance Configuration Manager で。
+- アプライアンス構成マネージャーで、 **[前提条件の設定]** パネルに移動します。
 - アプライアンス マシンの **[コントロールパネル]**  >  **[プログラムと機能]** で。
 
 Appliance Configuration Manager で確認するには以下を行います。
 
-1. 検出の完了後、Appliance Configuration Manager を開きます (アプライアンス Web アプリで)。
-2. **[アプライアンス サービス]** で、アプライアンス サービスのバージョンを確認します。
+1. Appliance Configuration Manager で、 **[前提条件の設定]** パネルに移動します
+2. 最新の更新プログラムのチェックで、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックします。
 
-    ![バージョンの確認](./media/migrate-appliance/version.png)
+    ![バージョンの確認](./media/migrate-appliance/versions.png)
 
 コントロール パネルで確認するには以下を行います。
 
@@ -440,12 +506,12 @@ Appliance Configuration Manager で確認するには以下を行います。
 いずれかのコンポーネントに対して古いバージョンを実行している場合は、サービスをアンインストールし、最新バージョンに手動で更新する必要があります。
 
 1. 最新のアプライアンス サービス バージョンを確認するには、LatestComponents.json ファイルを[ダウンロード](https://aka.ms/latestapplianceservices)します。
-2.  ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
+2.    ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
 3. ファイル内の最新のサービス バージョンとそのファイルのダウンロード リンクを探します。 次に例を示します。
 
     "Name":"ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version":"6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
+4.    ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
 5. ダウンロードした後、管理者コマンド ウィンドウで次のコマンドを実行して、ダウンロードした MSI の整合性を確認します。
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```次に例を示します。C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5

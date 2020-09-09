@@ -7,12 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045779"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -46,10 +46,10 @@ Azure Resource Health を表示するには、表の上の **[Azure Resource Hea
 
    |         |          |
    | ---------------- |:-----|
-   | [**アラート**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  アラートを表示、作成、管理します。 |
-   | [**メトリック**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | メトリック ベースのデータを視覚化し、探索します。    |
-   | [**アクティビティ ログ**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Azure で発生したサブスクリプション レベルのイベント。  |
-   | [**アプリケーション マップ**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | 分散アプリケーションのトポロジを確認して、パフォーマンスのボトルネックや障害のホットスポットを特定します。 |
+   | [**アラート**](../platform/alerts-overview.md)      |  アラートを表示、作成、管理します。 |
+   | [**メトリック**](../platform/data-platform.md) | メトリック ベースのデータを視覚化し、探索します。    |
+   | [**アクティビティ ログ**](../platform/platform-logs-overview.md) | Azure で発生したサブスクリプション レベルのイベント。  |
+   | [**アプリケーション マップ**](../app/app-map.md) | 分散アプリケーションのトポロジを確認して、パフォーマンスのボトルネックや障害のホットスポットを特定します。 |
 
 ## <a name="failures-and-performance"></a>エラーとパフォーマンス
 
@@ -117,6 +117,6 @@ Azure Monitor for Resource Groups は、Azure Monitor Alerts Management シス�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
-- [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Monitor アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitor ブック](../platform/workbooks-overview.md)
+- [Azure Resource Health](../../service-health/resource-health-overview.md)
+- [Azure Monitor アラート](../platform/alerts-overview.md)

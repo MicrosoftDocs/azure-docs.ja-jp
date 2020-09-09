@@ -1,109 +1,165 @@
 ---
-title: Azure portal の基本設定を設定する | Microsoft Docs
+title: Azure portal の設定と基本設定を管理する | Microsoft Docs
 description: 独自の基本設定を実現するために Azure portal の既定の設定を変更できます。 設定には、非アクティブ セッションのタイムアウト、既定のビュー、メニュー モード、コントラスト、テーマ、通知、言語と地域の形式が含まれます
 services: azure-portal
 keywords: 設定, タイムアウト, 言語, 地域
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
-ms.topic: conceptual
+ms.date: 08/05/2020
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310681"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205689"
 ---
-# <a name="set-your-azure-portal-preferences"></a>Azure portal の基本設定を設定する
+# <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal の設定を管理する
 
-独自の基本設定を実現するために Azure portal の既定の設定を変更できます。 次の一覧に示した各設定を変更できます。
+独自の基本設定を実現するために Azure portal の既定の設定を変更できます。 ほとんどの設定は、グローバル ページ ヘッダーの **[設定]** メニューから使用できます。
 
-* [非アクティブ セッションのタイムアウト](#change-the-idle-duration-for-inactive-sign-out)
-* [既定のビュー](#choose-your-default-view)
-* [ポータルのメニュー モード](#choose-a-portal-menu-mode)
-* [配色およびハイコントラスト テーマ](#choose-a-theme)
-* [ポップアップ通知](#enable-or-disable-pop-up-notifications)
-* [言語と地域の形式](#change-language-and-regional-settings)
-
-## <a name="change-general-portal-settings"></a>ポータルの全般設定を変更する
-
-1. [Azure portal](https://portal.azure.com) にサインインする
-2. グローバル ページ ヘッダーから **[設定]** を選択します。
-
-    ![設定が強調表示されたグローバル ページ ヘッダー アイコンを示すスクリーンショット](./media/set-preferences/header-settings.png)
-
-### <a name="change-the-idle-duration-for-inactive-sign-out"></a>非アクティブ時のサインアウトのアイドル時間を変更する
-
-非アクティブ タイムアウト設定を利用すると、ワークステーションのセキュリティ保護を忘れた場合にリソースを未承認のアクセスから保護できます。 ユーザーはしばらくの間アイドル状態であった後、Azure portal セッションから自動的にサインアウトされます。
-
-**[非アクティブのときにサインアウトする]** の下のドロップダウンを選択します。 アイドル状態になっている場合に Azure portal セッションがサインアウトするまでの時間を選択します。
-
-   ![非アクティブ タイムアウト設定が強調表示されたポータル設定を示すスクリーンショット](./media/set-preferences/inactive-signout-user.png)
-
-変更は自動的に保存されます。 アイドル状態になっている場合は、設定した時間の経過後、Azure portal セッションがサインアウトします。
-
-最大アイドル時間を適用するために、管理者がディレクトリ レベルでこの設定を行うこともできます。 管理者がディレクトリ レベルのタイムアウト設定を行った場合でも、ユーザーが独自の非アクティブ時のサインアウト時間を設定できます。 ディレクトリ レベルの設定よりも短い時間設定を選択してください。
-
-管理者が非アクティブ タイムアウト ポリシーを有効にしている場合は、 **[ディレクトリの非アクティブ タイムアウト ポリシーを上書きする]** チェックボックスをオンにします。 ポリシー設定よりも短い時間間隔を設定します。
-
-   ![ディレクトリの非アクティブ タイムアウトを上書きするポリシー設定が強調表示されたポータル設定を示すスクリーンショット](./media/set-preferences/inactive-signout-override.png)
+![設定が強調表示されたグローバル ページ ヘッダー アイコンを示すスクリーンショット](./media/set-preferences/header-settings.png)
 
 
-> [!NOTE]
-> 管理者として Azure portal のすべてのユーザーに対して非アクティブ タイムアウト設定を適用する場合は、[Azure portal のユーザーにディレクトリ レベルの非アクティブ タイムアウトを設定する](admin-timeout.md)ことに関するページを参照してください
->
+## <a name="choose-your-default-subscription"></a>既定のサブスクリプションを選択する
 
-### <a name="choose-your-default-view"></a>既定のビューを選択する 
+Azure portal にサインインするときに、既定で開かれるサブスクリプションを変更できます。 これは、使用するプライマリ サブスクリプションがありますが、時々他のものを使用する場合に便利です。 
 
-Azure portal にサインインすると既定で開かれるページを変更できます。
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="サブスクリプションによってリソース リストをフィルター処理します。":::
 
-   ![既定のビューが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/default-view.png)
+1. グローバル ページ ヘッダーのディレクトリおよびサブスクリプションのフィルター アイコンを選択します。
 
-既定のビューの設定では、サインイン時にどの Azure portal ビューが表示されるかを制御します。 既定で Azure ホームを開くか、ダッシュボード ビューを開くかを選択できます。
+1. ポータルを起動するときに、既定のサブスクリプションとして使用するサブスクリプションを選択します。 
 
-* **ホーム**はカスタマイズできません。  よく使用される Azure サービスへのショートカットが表示され、最近使用したリソースが一覧表示されます。 Microsoft Learn や Azure ロードマップなどのリソースへの便利なリンクも表示されます。
-* ダッシュボードをカスタマイズし、自分専用に設計されたワークスペースを作成することができます。 たとえば、プロジェクト、タスク、またはロールに焦点を合わせたダッシュボードを作成できます。 **[ダッシュボード]** を選択した場合、既定のビューは最近使用したダッシュボードに移動します。
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="ポータルを起動するときに、既定のサブスクリプションとして使用するサブスクリプションを選択します。"::: 
 
-### <a name="choose-a-portal-menu-mode"></a>ポータルのメニュー モードを選択する
+
+## <a name="choose-your-default-view"></a>既定のビューを選択する 
+
+Azure portal にサインインするときに、既定で開かれるページを変更できます。
+
+![既定のビューが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/default-view.png)
+
+- **ホーム**はカスタマイズできません。  よく使用される Azure サービスへのショートカットが表示され、最近使用したリソースが一覧表示されます。 Microsoft Learn や Azure ロードマップなどのリソースへの便利なリンクも表示されます。
+
+- ダッシュボードをカスタマイズし、自分専用に設計されたワークスペースを作成することができます。 たとえば、プロジェクト、タスク、またはロールに焦点を合わせたダッシュボードを作成できます。 **[ダッシュボード]** を選択した場合、既定のビューは最近使用したダッシュボードに移動します。 詳細については、「[Azure Portal でのダッシュボードの作成と共有](azure-portal-dashboards.md)」を参照してください。
+
+## <a name="choose-a-portal-menu-mode"></a>ポータルのメニュー モードを選択する
 
 ポータル メニューの既定のモードでは、ページ上でポータル メニューがどれだけの領域を占めるかを制御します。
 
-* ポータル メニューは**ポップアップ** モードの場合、必要になるまで表示されません。 メニュー アイコンを選択して、メニューを開いたり閉じたりします。
-* ポータル メニューに対して**ドッキング** モードを選択した場合は、常に表示されます。 メニューを折りたためば、より広い作業領域を確保できます。 
+![テーマが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/menu-mode.png)
 
-### <a name="choose-a-theme"></a>テーマを選択する
+- ポータル メニューは**ポップアップ** モードの場合、必要になるまで表示されません。 メニュー アイコンを選択して、メニューを開いたり閉じたりします。
+
+- ポータル メニューに対して**ドッキング モード**を選択した場合は、常に表示されます。 メニューを折りたためば、より広い作業領域を確保できます。
+
+## <a name="choose-a-theme-or-enable-high-contrast"></a>テーマを選択するか、ハイ コントラストを有効にする
 
 選択するテーマは、Azure portal に表示される背景とフォント色に影響を及ぼします。 4 つのプリセット配色テーマから選択できます。 各サムネイルを選択し、最適なテーマを見つけます。
 
-   ![テーマが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/theme.png)
+または、ハイコントラスト テーマのいずれかを選択できます。 ハイ コントラスト テーマにすると、視覚障碍をお持ちの方が Azure portal を読みやすくなり、その他のテーマの選択はすべてオーバーライドされます。
 
-ハイコントラスト テーマのいずれかを代わりに選択できます。 ハイコントラストの設定にすると、視覚障碍のあるユーザーにとって Azure portal が読みやすくなり、その他すべてのテーマの選択が上書きされます。 詳細については、[ハイコントラストの有効化やテーマの変更](azure-portal-change-theme-high-contrast.md)に関するページを参照してください。
+![テーマが強調表示された Azure portal 設定を示すスクリーンショット](./media/set-preferences/theme.png)
 
-### <a name="enable-or-disable-pop-up-notifications"></a>ポップアップ通知を有効または無効にする
+## <a name="enable-or-disable-pop-up-notifications"></a>ポップアップ通知を有効または無効にする
 
 通知は、現在のセッションに関連するシステム メッセージです。 これらは、たとえば、作成したばかりのリソースが利用可能になったときや、最後のアクションを確認するときに、現在のクレジット残高のような情報を提供します。 ポップアップ通知がオンになっているときには、画面の上隅にメッセージが短時間表示されます。 
 
-ポップアップ通知を有効または無効にするには、 **[ポップアップ通知を有効にする]** チェックボックスをオンまたはオフにします。
+ポップアップ通知を有効または無効にするには、 **[ポップアップ通知を有効にする]** をオンまたはオフにします。
 
-   ![ポップアップ通知が強調表示された Azure portal の設定を示すスクリーンショット](./media/set-preferences/popup-notifications.png)
+![ポップアップ通知が強調表示された Azure portal の設定を示すスクリーンショット](./media/set-preferences/popup-notifications.png)
 
 現在のセッション中に受信したすべての通知を読むには、グローバル ヘッダーから **[通知]** を選択します。
 
-   ![通知が強調表示された Azure portal のグローバル ヘッダーを示すスクリーンショット](./media/set-preferences/read-notifications.png)
+![通知が強調表示された Azure portal のグローバル ヘッダーを示すスクリーンショット](./media/set-preferences/read-notifications.png)
 
-以前のセッションからの通知を読む場合は、アクティビティ ログでイベントを検索します。 詳細については、「[Azure アクティビティ ログ イベントを表示して取得する](/azure/azure-monitor/platform/activity-log-view)」を参照してください。
+以前のセッションからの通知を読む場合は、アクティビティ ログでイベントを検索します。 詳細については、「[アクティビティ ログを表示する](../azure-monitor/platform/activity-log.md#view-the-activity-log)」を参照してください。 
 
-### <a name="settings-under-useful-links"></a>便利なリンクの下の設定
+## <a name="change-the-inactivity-timeout-setting"></a>非アクティブ タイムアウト設定を変更する
 
-Azure portal の設定に変更を加えて、それらを破棄する場合は、 **[既定の設定に戻す]** を選択します。 ポータルの設定に加えた変更はすべて失われます。 このオプションは、ダッシュボードのカスタマイズには影響を与えません。
+非アクティブ タイムアウト設定は、ワークステーションのセキュリティ保護を忘れた場合にリソースを未承認のアクセスから保護するのに役立ちます。 ユーザーはしばらくの間アイドル状態であった後、Azure portal セッションから自動的にサインアウトされます。 個人として、自分でタイムアウト設定を変更することができます。 管理者の場合は、ディレクトリ内のすべてのユーザーに対してディレクトリ レベルで設定できます。
 
-**[すべての設定をエクスポート]** や **[すべての設定とプライベート ダッシュボードを削除]** の詳細については、「[ユーザー設定のエクスポートまたは削除](azure-portal-export-delete-settings.md)」を参照してください。
+### <a name="change-your-individual-timeout-setting-user"></a>個々のタイムアウト設定を変更する (ユーザー)
+
+**[非アクティブのときにサインアウトする]** の下のドロップダウンを選択します。 アイドル状態になっている場合に、Azure portal セッションがサインアウトするまでの時間を選択します。
+
+![非アクティブ タイムアウト設定が強調表示されたポータル設定を示すスクリーンショット](./media/set-preferences/inactive-signout-user.png)
+
+変更は自動的に保存されます。 アイドル状態になっている場合は、設定した時間が経過すると、Azure portal セッションがサインアウトします。
+
+管理者が非アクティブ タイムアウト ポリシーを有効にしている場合でも、ディレクトリ レベルの設定よりも小さい限り、独自の設定を行うことができます。 **[ディレクトリの非アクティブ タイムアウト ポリシーをオーバーライドする]** を選択してから、時間間隔を設定します。
+
+![ディレクトリの非アクティブ タイムアウトを上書きするポリシー設定が強調表示されたポータル設定を示すスクリーンショット](./media/set-preferences/inactive-signout-override.png)
+
+### <a name="change-the-directory-timeout-setting-admin"></a>ディレクトリ タイムアウト設定を変更する (管理者)
+
+[グローバル管理者ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)の管理者は、セッションがサインアウトするまでの最大アイドル時間を適用できます。非アクティブ タイムアウト ポリシーは、ディレクトリ レベルで適用されます。 この設定は、新しいセッションに対して有効になります。 既にサインインしているユーザーには、すぐには適用されません。 ディレクトリの詳細については、「[Active Directory Domain Services の概要](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)」を参照してください。
+
+グローバル管理者として、Azure portal のすべてのユーザーに対してアイドル タイムアウト設定を適用する場合は、これらの手順に従います。
+
+1. リンク テキスト「**ディレクトリ レベルのタイムアウトの構成**」を選択します。
+
+    ![リンク テキストが強調表示されたポータル設定を示すスクリーンショット](./media/set-preferences/settings-admin.png)
+
+1. **[ディレクトリ レベルの非アクティブ タイムアウトの構成]** ページで、**[Azure portal のディレクトリ レベルのアイドル タイムアウトを有効にする]** を選択して設定をオンにします。
+
+1. 次に、セッションが自動的にサインアウトになる前までのユーザーの最大アイドル時間について **[時間]** と **[分]** を入力します。
+
+1. **[適用]** を選択します。
+
+    ![ディレクトリ レベルの非アクティブ タイムアウトの設定を示すページのスクリーンショット](./media/set-preferences/configure.png)
+
+非アクティブ タイムアウト ポリシーが設定されていることを確認するには、グローバル ページ ヘッダーから **[通知]** を選択します。 成功通知が一覧表示されていることを確認します。
+
+![ディレクトリ レベルの非アクティブ タイムアウトの成功通知を示すスクリーンショット](./media/set-preferences/confirmation.png)
+
+## <a name="restore-default-settings"></a>既定の設定に戻す
+
+Azure portal の設定に変更を加えて、それらを破棄する場合は、 **[既定の設定に戻す]** を選択します。 ポータルの設定に加えた変更はすべて失われます。 このオプションは、ダッシュボードのカスタマイズには影響しません。
+
+![既定の設定の復元を示すスクリーンショット](./media/set-preferences/useful-links-restore-defaults.png)
+
+## <a name="export-user-settings"></a>ユーザー設定をエクスポートする
+
+カスタム設定に関する情報は、Azure に格納されます。 次のユーザー データをエクスポートできます。
+
+* Azure portal のプライベート ダッシュボード
+* お気に入りのサブスクリプションまたはディレクトリなどのユーザーの設定、およびディレクトリの前回のログイン
+* テーマとその他のカスタム ポータル設定
+
+設定を削除する予定の場合は、それをエクスポートして確認することをお勧めします。 ダッシュボードの再構築や設定のやり直しには、時間がかかる場合があります。
+
+ポータルの設定をエクスポートするには、 **[すべての設定をエクスポートする]** を選択します。
+
+![設定のエクスポートを示すスクリーンショット](./media/set-preferences/useful-links-export-settings.png)
+
+設定をエクスポートすると、配色テーマ、お気に入り、プライベート ダッシュボードなどのユーザー設定が含まれる *.json* ファイルが作成されます。 ユーザー設定の動的な性質とデータが破損するリスクのため、*.json* ファイルから設定をインポートすることはできません。
+
+## <a name="delete-user-settings-and-dashboards"></a>ユーザー設定とダッシュボードを削除する
+
+カスタム設定に関する情報は、Azure に格納されます。 次のユーザー データを削除できます。
+
+* Azure portal のプライベート ダッシュボード
+* お気に入りのサブスクリプションまたはディレクトリなどのユーザーの設定、およびディレクトリの前回のログイン
+* テーマとその他のカスタム ポータル設定
+
+設定を削除する前に、エクスポートして確認するのはよいことです。 ダッシュボードの再構築やカスタム設定のやり直しには、時間がかかる場合があります。
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
+
+ポータルの設定を削除するには、 **[すべての設定とプライベート ダッシュボードを削除]** を選択します。
+
+![設定の削除を示すスクリーンショット](./media/set-preferences/useful-links-delete-settings.png)
 
 ## <a name="change-language-and-regional-settings"></a>地域と言語の設定を選択する
 
-Azure portal でテキストをどのように表示するかを制御する設定は 2 つあります。 **[言語]** 設定では、Azure portal 内のテキストが表示される言語を制御します。 **[地域設定]** では、日付、時刻、数値、通貨の表示方法を制御します。
+Azure portal でテキストをどのように表示するかを制御する設定は 2 つあります。 
+- **[言語]** 設定では、Azure portal 内のテキストが表示される言語を制御します。 
+
+- **[地域設定]** では、日付、時刻、数値、通貨の表示方法を制御します。
 
 Azure portal で使用される言語を変更するには、ドロップダウンを使用して、使用可能な言語の一覧から選択します。
 
@@ -116,10 +172,13 @@ Azure portal で使用される言語を変更するには、ドロップダウ�
    ![言語と地域の形式設定が表示されたスクリーンショット](./media/set-preferences/language.png)
 
 >[!NOTE]
->これらの言語と地域の設定は、Azure portal にのみ影響を与えます。 新しいタブまたはウィンドウで開かれるドキュメント リンクでは、ブラウザーの言語設定を使用して、表示する言語が決定されます。
+>これらの言語と地域の設定は、Azure portal にのみ影響を与えます。 新しいタブまたはウィンドウで開かれるドキュメント リンクで、ブラウザーの言語設定が使用しされ、表示する言語が決定されます。
 >
 
 ## <a name="next-steps"></a>次のステップ
 
-* [カスタム ダッシュボードの作成と共有](azure-portal-dashboards.md)
-* [Azure portal の使い方に関するビデオ シリーズ](azure-portal-video-series.md)
+- [Azure portal のキーボード ショートカット](azure-portal-keyboard-shortcuts.md)
+- [サポートされているブラウザーとデバイス](azure-portal-supported-browsers-devices.md)
+- [お気に入りの追加、削除、並べ替え](azure-portal-add-remove-sort-favorites.md)
+- [カスタム ダッシュボードの作成と共有](azure-portal-dashboards.md)
+- [Azure portal の使い方に関するビデオ シリーズ](azure-portal-video-series.md)

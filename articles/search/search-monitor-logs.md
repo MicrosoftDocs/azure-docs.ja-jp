@@ -7,37 +7,37 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 192591dedb0b5519fdcecde8c8683be87237c828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127828"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935060"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Cognitive Search 用のログ データを収集して分析する
 
-診断ログまたは操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスとワークロードのプロセスの監視に役立ちます。 内部的には、ログがバックエンドに存在しているのは、ユーザーがサポート チケットを提出した場合に調査と分析が行われるのに十分な短い時間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
+診断ログまたは操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスとワークロードのプロセスの監視に役立ちます。 内部的には、一部のシステム情報がバックエンドに存在しているのは、ユーザーがサポート チケットを提出した場合に調査と分析が行われるのに十分な短い時間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
 
-ログを設定することは、診断と操作履歴の保持に役立ちます。 ログを有効にした後は、クエリを実行したり、構造化分析のためにレポートを作成したりできます。
+診断ログは、[Azure Monitor](../azure-monitor/index.yml) との統合を通じて有効になります。 
 
-次の表では、データを収集して保持するためのオプションの一覧を示します。
+診断ログを設定するときに、ストレージ メカニズムを指定するように求められます。 次の表では、データを収集して保持するためのオプションの一覧を示します。
 
 | リソース | 使用目的 |
 |----------|----------|
-| [Log Analytics ワークスペースに送信する](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | イベントとメトリックは Log Analytics ワークスペースに送信され、ポータルでそのクエリを実行して、詳細な情報を取得できます。 概要については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページを参照してください |
-| [Blob Storage でアーカイブする](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | イベントとメトリックは BLOB コンテナーにアーカイブされて、JSON ファイルに格納されます。 ログは非常に細かい単位 (時間/分ごと) で収集でき、特定のインシデントの調査には便利ですが、自由な調査には役立ちません。 未加工のログ ファイルを表示するには JSON エディターを使用し、ログ データを集計および視覚化するには Power BI を使用します。|
-| [イベント ハブへのストリーム](https://docs.microsoft.com/azure/event-hubs/) | イベントとメトリックは、Azure Event Hubs サービスにストリーム配信されます。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
-
-Azure Monitor ログと Blob Storage は、どちらも無料のサービスとして利用でき、Azure サブスクリプションの有効期間にわたって無料で試すことができます。 Application Insights は、アプリケーション データのサイズが一定の制限以下である限りは無料でサインアップして使用できます (詳しくは[価格のページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください)。
+| [Log Analytics ワークスペースに送信する](../azure-monitor/learn/tutorial-resource-logs.md) | イベントとメトリックは Log Analytics ワークスペースに送信され、ポータルでそのクエリを実行して、詳細な情報を取得できます。 概要については、[Azure Monitor ログの使用](../azure-monitor/log-query/get-started-portal.md)に関するページを参照してください |
+| [Blob Storage でアーカイブする](../storage/blobs/storage-blobs-overview.md) | イベントとメトリックは BLOB コンテナーにアーカイブされて、JSON ファイルに格納されます。 ログは非常に細かい単位 (時間/分ごと) で収集でき、特定のインシデントの調査には便利ですが、自由な調査には役立ちません。 未加工のログ ファイルを表示するには JSON エディターを使用し、ログ データを集計および視覚化するには Power BI を使用します。|
+| [イベント ハブへのストリーム](../event-hubs/index.yml) | イベントとメトリックは、Azure Event Hubs サービスにストリーム配信されます。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
 
 ## <a name="prerequisites"></a>前提条件
 
-Log Analytics または Azure Storage を使用している場合は、前もってリソースを作成できます。
+事前にリソースを作成して、診断ログを構成するときに 1 つ以上選択できるようにしておきます。
 
-+ [Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
++ [Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)
 
-+ [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [ストレージ アカウントの作成](../storage/common/storage-account-create.md)
+
++ [Event Hub を作成する](../event-hubs/event-hubs-create.md)
 
 ## <a name="enable-data-collection"></a>データ収集を有効にする
 
@@ -91,11 +91,50 @@ Blob Storage の場合は、コンテナーが Blob Storage に表示される�
 
    ![AzureDiagnostics テーブル](./media/search-monitor-usage/azurediagnostics-table.png "AzureDiagnostics テーブル")
 
+## <a name="kusto-query-examples"></a>Kusto クエリの例
+
+診断ログを有効にした場合は、**AzureDiagnostics** にクエリを実行して、サービスでいつどのような操作が実行されたかを一覧表示できます。 また、アクティビティを関連付けて、パフォーマンスの変化を調べることもできます。
+
+#### <a name="example-list-operations"></a>例:操作の一覧表示 
+
+操作と各操作の回数のリストを取得します。
+
+```
+AzureDiagnostics
+| summarize count() by OperationName
+```
+
+#### <a name="example-correlate-operations"></a>例:操作の関連付け
+
+クエリ要求をインデックス作成操作に関連付け、時間グラフにデータ ポイントをレンダリングして同時に起こった操作を表示します。
+
+```
+AzureDiagnostics
+| summarize OperationName, Count=count()
+| where OperationName in ('Query.Search', 'Indexing.Index')
+| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| render timechart
+```
+
+## <a name="logged-operations"></a>ログに記録される操作
+
+Azure Monitor によってキャプチャされたログに記録されるイベントには、インデックス作成やクエリに関連したイベントがあります。 クエリやインデックス作成に関連したオペレーショナル データは、Log Analytics の **AzureDiagnostics** テーブルに収集されます。
+
+| OperationName | 説明 |
+|---------------|-------------|
+| ServiceStats | この操作は、[サービス統計情報の取得](/rest/api/searchservice/get-service-statistics)に対するルーチン呼び出しです。直接呼び出されるか、またはポータル概要ページの内容を設定するために、その読み込み時または更新時に暗黙的に呼び出されます。 |
+| Query.Search |  インデックスに対するクエリ要求。ログに記録されるクエリについては、[クエリの監視](search-monitor-queries.md)に関するページを参照してください。|
+| Indexing.Index  | この操作は、[ドキュメントの追加、更新、削除](/rest/api/searchservice/addupdate-or-delete-documents)を行うための呼び出しです。 |
+| indexes.Prototype | これは、データ インポート ウィザードによって作成されるインデックスです。 |
+| Indexers.Create | データ インポート ウィザードを通じて暗黙的にまたは明示的にインデクサーを作成します。 |
+| Indexers.Get | インデクサーが実行されるたびにそのインデクサーの名前を返します。 |
+| Indexers.Status | インデクサーが実行されるたびにそのインデクサーの状態を返します。 |
+| DataSources.Get | インデクサーが実行されるたびにデータ ソースの名前を返します。|
+| Indexes.Get | インデクサーが実行されるたびにインデックスの名前を返します。 |
+
 ## <a name="log-schema"></a>ログのスキーマ
 
-Azure Cognitive Search のログ データが格納されるデータ構造は、次のスキーマに準拠しています。 
-
-Blob Storage の場合、各 BLOB には、ログ オブジェクトの配列が含まれる、**レコード**と呼ばれるルート オブジェクトが 1 つあります。 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
+カスタム レポートを作成する場合、Azure Cognitive Search のログ データが格納されるデータ構造は、次のスキーマに準拠しています。 Blob Storage の場合、各 BLOB には、ログ オブジェクトの配列が含まれる、**レコード**と呼ばれるルート オブジェクトが 1 つあります。 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
 次の表では、リソース ログに共通するフィールドの一部を示します。
 
@@ -104,7 +143,7 @@ Blob Storage の場合、各 BLOB には、ログ オブジェクトの配列が
 | timeGenerated |DATETIME |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
 | operationName |string |"Query.Search" |操作の名前 |
-| operationVersion |string |"2019-05-06" |使用されている API バージョン |
+| operationVersion |string |"2020-06-30" |使用されている API バージョン |
 | category |string |"OperationLogs" |定数 (constant) |
 | resultType |string |"Success" |指定できる値成功または失敗 |
 | resultSignature |INT |200 |HTTP の結果コード |
@@ -120,7 +159,7 @@ Blob Storage の場合、各 BLOB には、ログ オブジェクトの配列が
 | Description_s |string |"GET /indexes('content')/docs" |操作のエンドポイント |
 | Documents_d |INT |42 |処理されたドキュメント数 |
 | IndexName_s |string |"test-index" |操作に関連付けられているインデックスの名前 |
-| Query_s |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |クエリ パラメーター |
+| Query_s |string |"?search=AzureSearch&$count=true&api-version=2020-06-30" |クエリ パラメーター |
 
 ## <a name="metrics-schema"></a>メトリックのスキーマ
 

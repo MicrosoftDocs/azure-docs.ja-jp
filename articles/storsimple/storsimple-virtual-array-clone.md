@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60580938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070689"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array のバックアップから複製する
 
@@ -127,7 +127,7 @@ ms.locfileid: "60580938"
    * **スケジュールされたバックアップ**には、&lt;デバイス名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
    * **手動バックアップ** には、Ad-hoc-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![.backups フォルダーが表示されているファイル エクスプローラーのスクリーンショット。 そのフォルダー内で、手動バックアップ フォルダーが選択されています。](./media/storsimple-virtual-array-clone/image14.png)
 
 2. 削除されたファイルの最新バージョンが含まれたバックアップを特定します。 前の例ではフォルダー名にそれぞれの UTC タイムスタンプが含まれていますが、フォルダーの作成時刻は、バックアップが開始されたときの実際のデバイスの時刻です。 フォルダーのタイムスタンプを使用してバックアップを検索し、特定します。
 

@@ -1,29 +1,30 @@
 ---
 title: Azure portal を使用した Azure Data Box Gateway のトラブルシューティング | Microsoft Docs
-description: Azure Data Box Gateway に関する問題のトラブルシューティングを行う方法について説明します。
+description: Azure Data Box Gateway に関する問題のトラブルシューティング方法について説明します。 診断を実行し、サポートに関する情報を収集し、ログを使用してトラブルシューティングを行うことができます。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b452362744d7fbf655ea043127a15f5173d04e4c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562459"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927183"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング
 
-この記事では、Azure Data Box Gateway に関する問題のトラブルシューティングを行う方法について説明します。 この記事では、次のことについて説明します。
+この記事では、Azure Data Box Gateway に関する問題のトラブルシューティングを行う方法について説明します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * 診断の実行
 > * サポート パッケージの収集
 > * ログを使用したトラブルシューティング
-
 
 ## <a name="run-diagnostics"></a>診断の実行
 

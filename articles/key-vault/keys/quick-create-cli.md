@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Key Vault との間でキーの設定と取得を行う
+title: Azure Key Vault でキーの属性を作成し、取得する - Azure CLI
 description: Azure CLI を使用して Azure Key Vault との間でキーの設定と取得を行う方法を紹介するクイック スタート
 services: key-vault
 author: msmbaldwin
@@ -10,12 +10,13 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: defc5317c127d771786989748e404285ca0c0584
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e59482c3dbc4bd0abb20a5e9094aad5f31c358cb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497411"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でキーの設定と取得を行う
 

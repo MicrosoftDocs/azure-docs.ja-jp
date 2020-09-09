@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: b6ab34019207ccbeec5448b848e501e063707d16
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85940414"
 ---
 Bing Web Search クライアント ライブラリを使用すると、Python アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 
@@ -167,7 +167,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 1. `SUBSCRIPTION_KEY` を有効なサブスクリプション キーに置き換えます。
 
-1. `YOUR_ENDPOINT` をポータルの実際のエンドポイント url に置き換えます。
+1. `YOUR_ENDPOINT` をポータルのエンドポイント URL で置換し、エンドポイントから "bing/v7.0" セクションを削除します。
 
 1. プログラムを実行します。 (例: `python your_program.py`)。
 
@@ -318,6 +318,6 @@ Bing Web Search API の最初の呼び出しを行ったので、関数をいく
 > [!div class="nextstepaction"]
 > [Cognitive Services の Python 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure Python SDK リファレンス](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)

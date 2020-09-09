@@ -2,28 +2,48 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/27/2020
+ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460315"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002894"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
-組織が成熟してきたら、場合によっては、管理グループの[ポリシー](../../governance/policy/overview.md)や[ロールベースのアクセス制御](../../role-based-access-control/overview.md)を定義し、割り当てる必要があります。 管理グループ レベルのテンプレートがあれば、宣言という方法を用いて管理グループ レベルでポリシーを適用し、ロールを割り当てることができます。
+成熟している組織では、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイして、管理グループ レベルでリソースを作成することができます。 たとえば、場合によっては、管理グループの[ポリシー](../../governance/policy/overview.md)や [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を定義して、割り当てる必要があります。 管理グループ レベルのテンプレートがあれば、宣言という方法を用いて管理グループ レベルでポリシーを適用し、ロールを割り当てることができます。
 
 ## <a name="supported-resources"></a>サポートされているリソース
 
-管理グループ レベルでは、次のリソースの種類をデプロイできます。
+すべてのリソースの種類を管理グループ レベルにデプロイできるわけではありません。 このセクションでは、サポートされているリソースの種類を示します。
 
-* [デプロイ](/azure/templates/microsoft.resources/deployments) - サブスクリプションまたはリソース グループにデプロイする入れ子になったテンプレートの場合。
+Azure Blueprints では、以下を使用します。
+
+* [artifacts](/azure/templates/microsoft.blueprint/blueprints/artifacts)
+* [blueprints](/azure/templates/microsoft.blueprint/blueprints)
+* [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
+* [versions](/azure/templates/microsoft.blueprint/blueprints/versions)
+
+Azure ポリシーでは、以下を使用します。
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [remediations](/azure/templates/microsoft.policyinsights/remediations)
+
+ロールベースのアクセス制御では、以下を使用します。
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+サブスクリプションまたはリソース グループにデプロイする入れ子になったテンプレートでは、以下を使用します。
+
+* [deployments](/azure/templates/microsoft.resources/deployments)
+
+リソースを管理する場合は、以下を使用します。
+
+* [tags](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>スキーマ
 
@@ -75,6 +95,95 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
 
+## <a name="deployment-scopes"></a>デプロイのスコープ
+
+管理グループにデプロイする場合は、デプロイ コマンドで指定された管理グループ、またはテナント内の他の管理グループを対象にすることができます。 また、管理グループ内のサブスクリプションやリソース グループを対象にすることもできます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+テンプレートのリソース セクション内で定義されたリソースは、デプロイ コマンドで指定された管理グループに適用されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        management-group-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+別の管理グループを対象にするには、入れ子になったデプロイを追加し、`scope` プロパティを指定します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "nestedDeployment",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+管理グループ内のサブスクリプションを対象にするには、入れ子になったデプロイと `subscriptionId` プロパティを使用します。 そのサブスクリプション内のリソース グループを対象にするには、入れ子になった別のデプロイと `resourceGroup` プロパティを追加します。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "nestedSub",
+      "location": "westus2",
+      "subscriptionId": "00000000-0000-0000-0000-000000000000",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-06-01",
+              "name": "nestedRG",
+              "resourceGroup": "rg2",
+              "properties": {
+                "mode": "Incremental",
+                "template": {
+                  nested-template
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 
 管理グループ レベルのデプロイの場合、テンプレート関数の使用時にいくつかの重要な考慮事項があります。
@@ -96,7 +205,7 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
 
-## <a name="create-policies"></a>ポリシーの作成
+## <a name="azure-policy"></a>Azure Policy
 
 ### <a name="define-policy"></a>ポリシーの定義
 
@@ -166,12 +275,88 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 }
 ```
 
-## <a name="template-sample"></a>テンプレートのサンプル
+## <a name="deploy-to-subscription-and-resource-group"></a>サブスクリプションとリソース グループにデプロイする
 
-* [リソース グループ、ポリシー、およびポリシーの割り当てを作成します](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)。
+管理グループ レベルのデプロイから、管理グループ内のサブスクリプションを対象にすることができます。 次の例では、サブスクリプション内にリソース グループを作成し、ストレージ アカウントをそのリソース グループにデプロイします。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nestedsubId": {
+      "type": "string"
+    },
+    "nestedRG": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "nestedLocation": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "nestedSub",
+      "location": "[parameters('nestedLocation')]",
+      "subscriptionId": "[parameters('nestedSubId')]",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+          },
+          "variables": {
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/resourceGroups",
+              "apiVersion": "2020-06-01",
+              "name": "[parameters('nestedRG')]",
+              "location": "[parameters('nestedLocation')]",
+            },
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2020-06-01",
+              "name": "nestedSubRG",
+              "resourceGroup": "[parameters('nestedRG')]",
+              "dependsOn": [
+                "[parameters('nestedRG')]"
+              ],
+              "properties": {
+                "mode": "Incremental",
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "resources": [
+                    {
+                      "type": "Microsoft.Storage/storageAccounts",
+                      "apiVersion": "2019-04-01",
+                      "name": "[parameters('storageAccountName')]",
+                      "location": "[parameters('nestedLocation')]",
+                      "sku": {
+                        "name": "Standard_LRS"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 
-* ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
+* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
 * [サブスクリプション レベル](deploy-to-subscription.md)と[テナント レベル](deploy-to-tenant.md)でテンプレートをデプロイすることもできます。

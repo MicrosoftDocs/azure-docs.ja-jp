@@ -27,13 +27,13 @@
     - name: イベントの送受信
       items:
         - name: .NET (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
+          href: event-hubs-java-get-started-send.md
         - name: Python (azure-eventhub バージョン 5)
-          href: get-started-python-send-v2.md
+          href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs バージョン 5)
-          href: get-started-node-send-v2.md
+          href: event-hubs-node-get-started-send.md
         - name: Go
           href: event-hubs-go-get-started-send.md
         - name: C (送信のみ)
@@ -43,13 +43,9 @@
     - name: イベントの送受信 (古いバージョン/パッケージ)
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python (azure-eventhub バージョン 1)
-          href: event-hubs-python-get-started-send.md
-        - name: JavaScript (azure/event-hubs バージョン 2)
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: イベントのキャプチャ
@@ -58,9 +54,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 5)
-          href: get-started-capture-python-v2.md
-        - name: Python を使用してキャプチャ データを読み取る (azure-eventhub バージョン 1)
+        - name: Python を使用したキャプチャ データの読み取り
           href: event-hubs-capture-python.md
     - name: Apache Kafka 用 Event Hubs へのストリーム配信
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
@@ -70,20 +64,17 @@
   items:
     - name: Event Hubs データ ストリームでデータの異常を視覚化する
       href: event-hubs-tutorial-visualize-anomalies.md
-    - name: キャプチャされたデータを SQL Data Warehouse に格納する
+    - name: キャプチャされたデータを Azure Synapse Analytics に格納する
       href: store-captured-data-data-warehouse.md
     - name: Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する
       href: event-hubs-kafka-stream-analytics.md
     - name: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
-      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      href: /azure/databricks/scenarios/databricks-stream-from-eventhubs
       maintainContext: true
 - name: サンプル
   items:
     - name: コード サンプル
       href: event-hubs-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Event Hubs の用語
@@ -124,6 +115,9 @@
           href: network-security.md
         - name: 組み込みのセキュリティ制御
           href: event-hubs-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: AMQP 1.0 プロトコル ガイド
@@ -131,8 +125,12 @@
       maintainContext: true
 - name: 操作方法ガイド
   items:
-    - name: リージョン間で移動する
-      href: move-across-regions.md
+    - name: 詳細ビュー
+      items:
+        - name: 名前空間を別のリージョンに移動する
+          href: move-across-regions.md
+        - name: 専用クラスターを別のリージョンに移動する
+          href: move-cluster-across-regions.md
     - name: パーティションを動的に追加する
       href: dynamically-add-partitions.md
     - name: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する
@@ -185,6 +183,8 @@
           href: event-hubs-kafka-flink-tutorial.md
         - name: Apache Kafka Connect をハブと統合する (プレビュー)
           href: event-hubs-kafka-connect-tutorial.md
+        - name: Apache Kafka Connect (プレビュー) を Debezium と統合する
+          href: event-hubs-kafka-connect-debezium.md
         - name: Akka Streams をイベント ハブに接続する
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: FAQ - Kafka 用の Event Hubs
@@ -196,31 +196,37 @@
         - name: 診断ログの設定
           href: event-hubs-diagnostic-logs.md
         - name: Event Hubs を使用して Azure Diagnostics データをストリーミングする
-          href: event-hubs-streaming-azure-diags-data.md
+          href: ../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md
         - name: スループット単位の自動スケール
           href: event-hubs-auto-inflate.md
         - name: Event Hubs 管理ライブラリ
           href: event-hubs-management-libraries.md
     - name: セキュリティで保護
       items:
-        - name: IP ファイアウォールの構成
+        - name: 特定の IP アドレスからのアクセスの許可
           href: event-hubs-ip-filtering.md
-        - name: 仮想ネットワーク サービス エンドポイントの構成
+        - name: 特定の仮想ネットワークからのアクセスの許可
           href: event-hubs-service-endpoints.md
-        - name: プライベート エンドポイントの構成
+        - name: プライベート エンドポイント経由のアクセスの許可
           href: private-link-service.md
         - name: 顧客管理キーの構成
           href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:
-        - name: トラブルシューティング ガイド
+        - name: 接続の問題のトラブルシューティング
           href: troubleshooting-guide.md
+        - name: 認証と承認の問題のトラブルシューティング
+          href: troubleshoot-authentication-authorization.md
+        - name: Event Hubs 用 Kafka トラブルシューティング ガイド
+          href: apache-kafka-troubleshooting-guide.md
         - name: .NET の例外
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager の例外
           href: resource-manager-exceptions.md
 - name: リファレンス
   items:
+    - name: SDK
+      href: sdks.md
     - name: .NET
       items:
         - name: クライアント ライブラリ
@@ -271,12 +277,23 @@
               href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
         - name: 管理ライブラリ
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+    - name: Go
+      items:
+        - name: クライアント ライブラリ
+          href: 'https://pkg.go.dev/github.com/Azure/azure-event-hubs-go?tab=doc'
+        - name: 管理ライブラリ
+          href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/eventhub/mgmt/2017-04-01/eventhub?tab=doc'
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.eventhub/allversions
     - name: Quotas (クォータ)
       href: event-hubs-quotas.md
+    - name: Apache Kafka の構成
+      href: apache-kafka-configurations.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

@@ -4,14 +4,14 @@ description: Azure Cosmos DB でサポートされている等値演算子、比
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063568"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498839"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB の演算子
 
@@ -35,6 +35,14 @@ ms.locfileid: "80063568"
 
 スカラー式の結果が `Undefined` である場合、`Undefined` は `true` に等しくないため、項目が結果に含まれません。
 
+たとえば、次のクエリの数値と文字列値の比較では、`Undefined` が生成されます。 したがって、フィルターには結果が含まれません。
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
+
 ## <a name="logical-and-or-and-not-operators"></a>論理 (AND、OR、および NOT) 演算子
 
 論理演算子は Boolean 値に対して使用されます。 次の表に、これらの演算子の真理値表を示します。
@@ -46,8 +54,8 @@ ms.locfileid: "80063568"
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |True |False |未定義。 |
-| **Undefined** |True |未定義。 |未定義。 |
+| **False** |True |誤り |未定義。 |
+| **Undefined** |True |未定義 |未定義 |
 
 **AND 演算子**
 
@@ -55,7 +63,7 @@ ms.locfileid: "80063568"
 
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| **True** |True |False |未定義。 |
+| **True** |True |誤り |未定義。 |
 | **False** |False |False |False |
 | **Undefined** |未定義。 |False |未定義。 |
 

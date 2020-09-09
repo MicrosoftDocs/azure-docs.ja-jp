@@ -2,27 +2,21 @@
 title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422493"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208105"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
-Azure Functions ランタイムのメジャー バージョンは、そのランタイムのベースとなる .NET のバージョンに関連しています。 次の表は、ランタイムの現在のバージョン、リリース レベル、および関連する .NET バージョンを示しています。 
+現在、Azure Functions では、次の 3 つのバージョンのランタイム ホストがサポートされています。これらは、1.x、2.x、および 3.x です。 3 つのすべてのバージョンは、運用環境シナリオでサポートされています。  
 
-| ランタイム バージョン | リリース レベル<sup>1</sup> | .NET バージョン | 
-| --------------- | ------------- | ------------ |
-| 3.x | GA | .NET Core 3.1 | 
-| 2.x | GA | .NET Core 2.2 |
-| 1.x | GA<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
-
-<sup>1</sup> GA リリースは運用環境シナリオでサポートされています。   
-<sup>2</sup> バージョン 1.x はメンテナンス モードにあります。 拡張機能は、それ以降のバージョンでのみ提供されます。   
-<sup>3</sup> Azure portal または Windows コンピューター上のローカルでの開発のみをサポートします。
+> [!IMPORTANT]
+> バージョン 1.x はメンテナンス モードであり、Azure portal または Windows コンピューター上のローカルでの開発のみをサポートします。 拡張機能は、それ以降のバージョンでのみ提供されます。 
 
 この記事では、各種のバージョン間のいくつかの相違点、各バージョンを作成する方法、およびバージョンの変更方法について詳細に説明します。
 
@@ -30,7 +24,7 @@ Azure Functions ランタイムのメジャー バージョンは、そのラン
 
 バージョン 2.x から、ランタイムでは言語拡張モデルが使用されており、関数アプリ内のすべての関数が同じ言語を共有する必要があります。 関数アプリ内の関数の言語はそのアプリの作成時に選択され、[FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) 設定に保持されます。 
 
-Azure Functions 1.x の試験段階の言語は新しいモデルを使用できないため、2.x ではサポートされません。 次の表は、各ランタイム バージョンでどのプログラミング言語が現在サポートされているかを示しています。
+次の表は、各ランタイム バージョンでどのプログラミング言語が現在サポートされているかを示しています。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -98,7 +92,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 #### <a name="net"></a>.NET
 
-* [同期サーバー操作は既定では無効になっています](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
+* [同期サーバー操作は既定では無効になっています](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
 
 ### <a name="changing-version-of-apps-in-azure"></a>Azure でのアプリのバージョンの変更
 

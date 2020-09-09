@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b23bed8163ffed6a610eda7677099989e966a646
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183324"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163817"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -42,28 +42,27 @@ ms.locfileid: "78183324"
 
 ### <a name="add-a-redirect-uri-reply-url"></a>リダイレクト URI (応答 URL) を追加する
 
-現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーションを更新できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
+Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
-1. **[応答 URL]** に「`https://localhost:44316`」を追加します。
-1. **[保存]** を選択します。
-1. プロパティ ページで、アプリケーション ID を記録しておきます。これは、後の手順で Web アプリケーションを構成するときに使用します。
-
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
-1. **[認証]** 、 **[新しいエクスペリエンスを試す]** (表示されている場合) の順に選択します。
+1. **[アプリの登録]** 、 **[所有しているアプリケーション]** タブ、*webapp1* アプリケーションの順に選択します。
 1. **[Web]** で **[URI の追加]** リンクを選択し、「`https://localhost:44316`」と入力して、 **[保存]** を選択します。
 1. **[概要]** を選択します。
 1. **アプリケーション (クライアント) ID** を記録しておきます。これは、後の手順で Web アプリケーションを構成するときに使用します。
+
+#### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリケーション (レガシ)]** を選択し、*webapp1* アプリケーションを選択します。
+1. **[応答 URL]** に「`https://localhost:44316`」を追加します。
+1. **[保存]** を選択します。
+1. プロパティ ページで、アプリケーション ID を記録しておきます。これは、後の手順で Web アプリケーションを構成するときに使用します。
 
 * * *
 
@@ -93,6 +92,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 1. Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 1. **TaskWebApp** プロジェクトの **Web.config** ファイルを開きます。
     1. `ida:Tenant` および `ida:AadInstance` の値は、作成した Azure AD B2C テナントの名前に置き換えます。 たとえば、`fabrikamb2c` を `contoso` に置き換えます。
+    1. `ida:TenantId` の値をディレクトリ ID に置き換えます。これは、Azure B2C テナントのプロパティで確認できます (Azure portal の **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** )。
     1. `ida:ClientId` の値は、あなたが記録したアプリケーション ID に置き換えます。
     1. `ida:ClientSecret` の値は、実際に記録したキーに置き換えます。 クライアント シークレットに定義済みの XML エンティティ (たとえば、より小さい (`<`)、より大きい (`>`)、アンパサンド (`&`)、二重引用符 (`"`)) が含まれている場合は、Web.config に追加する前に、クライアント シークレットを XML エンコードすることでそれらの文字をエスケープする必要があります。
     1. `ida:SignUpSignInPolicyId` の値は `b2c_1_signupsignin1` に置き換えます。

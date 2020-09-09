@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70883927"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439534"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする
 GRand Unified Bootloader (GRUB) は、仮想マシン (VM) を起動したときにおそらく最初に表示されるものです。 GRUB は、オペレーティング システムが起動する前に表示されるため、SSH からはアクセスできません。 GRUB ではさまざまな設定ができ、シングル ユーザー モードで起動するようにブート構成を変更することができます。
 
 シングル ユーザー モードは、最小限の機能を持つ最小限の環境です。 ブートの問題やファイル システムの問題、ネットワークの問題を調査するのに役立ちます。 バックグラウンドで実行されるサービスが少なくなり、実行レベルによっては、ファイル システムが自動的にマウントされないこともあります。
 
-シングル ユーザー モードはまた、サインインに SSH キーのみを受け入れるように VM が構成される状況でも役立ちます。 この場合は、パスワード認証を使用するアカウントを作成するためにシングル ユーザー モードを使用することができます。 
+シングル ユーザー モードはまた、サインインに SSH キーのみを受け入れるように VM が構成される状況でも役立ちます。 この場合は、パスワード認証を使用するアカウントを作成するためにシングル ユーザー モードを使用することができます。
 
 > [!NOTE]
 > シリアル コンソール サービスでは、"*共同作成者*" レベル以上のアクセス許可を持つユーザーのみが、VM のシリアル コンソールにアクセスできます。
@@ -37,7 +37,7 @@ GRand Unified Bootloader (GRUB) は、仮想マシン (VM) を起動したとき
 ## <a name="general-grub-access"></a>GRUB の一般的なアクセス
 GRUB にアクセスするには、シリアル コンソール ウィンドウが開いている状態で VM を再起動します。 一部のディストリビューションでは GRUB を表示するのにキーボード入力が必要ですが、それ以外のディストリビューションでは数秒間 GRUB が自動的に表示されるので、ユーザーがキーボード入力を行うと、タイムアウトをキャンセルできます。
 
-シングル ユーザー モードにアクセスできるようにするには、VM 上で GRUB を確実に有効にする必要があります。 ディストリビューションによっては、GRUB を確実に有効にするために設定作業が必要になる場合があります。 ディストリビューション固有の情報については、次のセクションと、[Azure での Linux のサポート](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)に関するページを参照してください。
+シングル ユーザー モードにアクセスできるようにするには、VM 上で GRUB を確実に有効にする必要があります。 ディストリビューションによっては、GRUB を確実に有効にするために設定作業が必要になる場合があります。 ディストリビューション固有の情報については、次のセクションを参照してください。
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>シリアル コンソールで VM を再起動して GRUB にアクセスする
 シリアル コンソール内で VM を再起動するには、 **[再起動]** ボタンをポイントし、 **[VM の再起動]** を選択します。 再起動に関する通知がウィンドウの下部に表示されます。
@@ -66,6 +66,9 @@ RHEL には GRUB が付属しており、すぐに使用できます。 GRUB に
 
 **RHEL 8 の場合**
 
+>[!NOTE]
+> Red Hat では、Grubby を使用し、RHEL 8+ のカーネル コマンド ライン パラメーターを構成することを推奨しています。 現在のところ、Grubby を使用し、GRUB のタイムアウトとターミナルのパラメーターを更新することはできません。 すべてのブート エントリに対して GRUB_CMDLINE_LINUX 引数を更新するには、`grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` を実行します。 詳細は[こちら](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)をご覧ください。
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -90,8 +93,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. ルートに切り替えます。
 1. 次の手順を行って、ルート ユーザーのパスワードを有効にします。
     * `passwd root` を実行します (強力な root パスワードを設定します)。
-1. 次の手順を行って、ルート ユーザーが確実に ttyS0 経由でのみサインインできるようにします。  
-    a. `edit /etc/ssh/sshd_config` を実行し、PermitRootLogIn を確実に `no` に設定します。  
+1. 次の手順を行って、ルート ユーザーが確実に ttyS0 経由でのみサインインできるようにします。a. `edit /etc/ssh/sshd_config` を実行し、PermitRootLogIn を確実に `no` に設定します。
     b. `edit /etc/securetty file` を実行して、ttyS0 経由のサインインのみを許可します。
 
 これで、システムがシングル ユーザー モードで起動した場合、root パスワードを使用してサインインできます。
@@ -106,14 +108,14 @@ RHEL 7.4 以降または 6.9 以降の場合、代わりの方法として、GRU
 1. カーネル行を見つけます。 Azure では、"*linux16*" で始まります。
 1. Ctrl キーを押しながら E キーを押して行末に移動します。
 1. 行の末尾に、"*systemd.unit=rescue.target*" を追加します。
-    
+
     この操作により、シングル ユーザー モードで起動されます。 緊急モードを使用する場合は、"*systemd.unit=emergency.target*" ("*systemd.unit=rescue.target*" ではなく) を行の末尾に追加します。
 
 1. Ctrl キーを押しながら X キーを押して終了し、適用された設定で再起動します。
 
    シングル ユーザー モードを開始するには、管理者パスワードの入力を求められます。 このパスワードは、前の手順で作成したものです。
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![コマンドライン インターフェイスを示すアニメーション イメージ。 ユーザーは、サーバーを選択し、カーネル行の末尾を見つけて、指定されたテキストを入力します。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>RHEL で root アカウントを有効にせずにシングル ユーザー モードを開始する
 前の手順に従ってルート ユーザーを有効にしなかった場合でも、次の手順に従って root パスワードをリセットできます。
@@ -130,14 +132,14 @@ RHEL 7.4 以降または 6.9 以降の場合、代わりの方法として、GRU
     この操作により、[Red Hat のドキュメント](https://aka.ms/rhel7rootpassword)で説明されているように、コントロールが `initramfs` から `systemd` に渡される前に起動プロセスが中断されます。
 1. Ctrl キーを押しながら X キーを押して終了し、適用された設定で再起動します。
 
-   再起動すると、読み取り専用のファイル システムで緊急モードが開始されます。 
-   
+   再起動すると、読み取り専用のファイル システムで緊急モードが開始されます。
+
 1. シェルで `mount -o remount,rw /sysroot` と入力して、読み取り/書き込みアクセス許可でルート ファイル システムを再マウントします。
 1. シングル ユーザー モードで起動したら、`chroot /sysroot` と入力して `sysroot` jail に切り替えます。
-1. これで、ルートになりました。 `passwd` を入力して root パスワードをリセットしてから、前述の手順を使用してシングル ユーザー モードを開始することができます。 
+1. これで、ルートになりました。 `passwd` を入力して root パスワードをリセットしてから、前述の手順を使用してシングル ユーザー モードを開始することができます。
 1. 完了したら、`reboot -f` と入力して再起動します。
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![コマンドライン インターフェイスを示すアニメーション イメージ。 ユーザーは、サーバーを選択し、カーネル行の末尾を検索して、指定されたコマンドを入力します。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > 前述の手順を行うと、緊急シェルが開始されるので、`fstab` の編集などのタスクも実行できます。 しかしながら通常は、root パスワードをリセットしてシングル ユーザー モードの開始に使用することをお勧めします。
@@ -241,7 +243,7 @@ Oracle Linux でシングル ユーザー モードを有効にするには、�
 ## <a name="next-steps"></a>次のステップ
 シリアル コンソールの詳細については、以下を参照してください。
 * [Linux シリアル コンソールのドキュメント](serial-console-linux.md)
-* [シリアル コンソールを使用してさまざまなディストリビューションで GRUB を有効にする](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [シリアル コンソールを使用してさまざまなディストリビューションで GRUB を有効にする](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [NMI および SysRq 呼び出しにシリアル コンソールを使用する](serial-console-nmi-sysrq.md)
 * [Windows VM 用シリアル コンソール](serial-console-windows.md)
 * [ブート診断](boot-diagnostics.md)

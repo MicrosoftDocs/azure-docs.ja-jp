@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659256"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446789"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -32,7 +32,7 @@ OMS ポータルが非推奨となるのに伴い、次の変更が発表され�
 - [OMS モバイル アプリ](#oms-mobile-app)は廃止予定です。 
 - [NSG ソリューションは、Traffic Analytics ソリューションを通じて入手できる拡張機能に置き換えられます](#azure-network-security-group-analytics)。
 - System Center Operations Manager から Log Analytics への新しい接続では、[更新された管理パック](#system-center-operations-manager)が必要です。
-- [Update Management](../../automation/automation-update-management.md) への移行については、「[OMS の更新プログラムの展開を Azure に移行する](../../automation/migrate-oms-update-deployments.md)」を参照してください。
+- [Update Management](../../automation/update-management/update-mgmt-overview.md) への移行については、「[OMS の更新プログラムの展開を Azure に移行する](../../automation/migrate-oms-update-deployments.md)」を参照してください。
 
 
 ## <a name="what-should-i-do-now"></a>現時点で何をすべきか
@@ -41,7 +41,7 @@ OMS ポータルが非推奨となるのに伴い、次の変更が発表され�
 - [ユーザーのアクセス許可を Azure portal に移行](#user-access-and-role-migration)する必要があります。
 - Update Management ソリューションの移行について詳しくは、「[OMS の更新プログラムの展開を Azure に移行する](../../automation/migrate-oms-update-deployments.md)」をご覧ください。
 
-Azure portal への切り替え方法については、「[OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問](oms-portal-faq.md)」を参照してください。 
+Azure portal への切り替え方法については、「[OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問](../overview.md)」を参照してください。 
 
 ## <a name="user-access-and-role-migration"></a>ユーザー アクセスとロールの移行
 Azure portal のアクセス管理は、OMS ポータルのアクセス管理よりも機能が豊富で強力です。 Log Analytics でのアクセス管理の詳細については、「[Azure Monitor ログ ワークスペースの設計](design-logs-deployment.md)」を参照してください。
@@ -70,7 +70,7 @@ OMS ポータルを使用して新しいワークスペースを作成するこ�
 
 ### <a name="alert-extension"></a>アラートの拡張機能  
 
-アラートは [Azure portal に拡張されました](alerts-extend.md)。既存のアラートは引き続き OMS ポータルに表示されますが、Azure portal でのみこれらを管理できます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
+アラートは [Azure portal に拡張されました](./alerts-unified-log.md)。既存のアラートは引き続き OMS ポータルに表示されますが、Azure portal でのみこれらを管理できます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
 
 ### <a name="alert-management-solution"></a>アラート管理ソリューション
 以前のお知らせからの変更点として、[アラート管理ソリューション](alert-management-solution.md)は Azure portal で引き続き使用でき、完全にサポートされます。 Azure Marketplace からソリューションを引き続きインストールできます。
@@ -102,7 +102,7 @@ OMS モバイル アプリは、OMS ポータルと共に非推奨となりま�
 診断の設定を引き続き使用して、NSG ログを Log Analytics に送信できるので、保存された既存の検索、アラート、ダッシュボードを引き続き使用できます。 このソリューションを既にインストール済みのお客様は、別途通知があるまで、引き続きお使いいただけます。 9 月 5 日以降、Network Security Group Analytics ソリューションはマーケットプレースから削除され、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)としてコミュニティを通じて入手できるようになります。
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-[Operations Manager 管理グループを Log Analytics 接続している](om-agents.md)場合は、変更なしで引き続き動作します。 ただし、新しい接続の場合は、[Operations Management Suite を構成するための Microsoft System Center Operations Manager Management Pack](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/)に記載されているガイダンスに従う必要があります。
+[Operations Manager 管理グループを Log Analytics 接続している](om-agents.md)場合は、変更なしで引き続き動作します。 ただし、新しい接続の場合は、[Operations Management Suite を構成するための Microsoft System Center Operations Manager Management Pack](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog)に記載されているガイダンスに従う必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-- OMS ポータルから Azure portal への移行に関するガイダンスについては、「[Common questions for transition from OMS portal to Azure portal for Log Analytics users (OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問)](oms-portal-faq.md)」を参照してください。
+- OMS ポータルから Azure portal への移行に関するガイダンスについては、「[Common questions for transition from OMS portal to Azure portal for Log Analytics users (OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問)](../overview.md)」を参照してください。

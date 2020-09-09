@@ -4,15 +4,15 @@ description: この記事では、Azure Application Gateway で HTTP ヘッダ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248685"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Application Gateway で HTTP ヘッダーを書き換える
 

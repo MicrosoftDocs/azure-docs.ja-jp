@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701901"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256562"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -38,7 +38,7 @@ Application Insights には、取得したすべてのデータに対してク�
 
 ![Application Insights の要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Application Insights ポータルの機能についてさらに調べるには、[Application Insights ポータルに関するドキュメント](../azure-monitor/app/app-insights-dashboards.md)をご覧ください。
+Application Insights ポータルの機能についてさらに調べるには、[Application Insights ポータルに関するドキュメント](../azure-monitor/app/overview-dashboard.md)をご覧ください。
 
 ### <a name="configuring-application-insights-with-eventflow"></a>EventFlow を使用した Application Insights の構成
 
@@ -67,11 +67,11 @@ EventFlow と WAD は集計ソリューションとして使用することを�
 
 イベントとログの出力として Application Insights を構成すると、数分後に Application Insights リソースに情報が表示されます。 Application Insights リソースに移動すると、Application Insights リソースのダッシュ ボードが表示されます。 Application Insights タスク バーの **[検索]** をクリックすると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
 
-*メトリックス エクスプローラー*は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../azure-monitor/app/metrics-explorer.md)」を参照してください。
+*メトリックス エクスプローラー*は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../azure-monitor/platform/metrics-charts.md)」を参照してください。
 
-**[Analytics]** をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../azure-monitor/app/analytics.md)」をご覧ください。
+**[Analytics]** をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [AI のアラートを設定して](/azure/azure-monitor/platform/alerts-log)、パフォーマンスまたは使用状況の変化について通知を受けます
+* [AI のアラートを設定して](../azure-monitor/platform/alerts-log.md)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、Application Insights に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します

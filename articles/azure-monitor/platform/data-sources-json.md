@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662163"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111934"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Monitor での Linux 用 Log Analytics エージェントを使用したカスタム JSON データ ソースの収集
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -30,7 +30,7 @@ Azure Monitor で JSON データを収集するには、入力プラグイン内
 
 たとえば、`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 内の個別の構成ファイル `exec-json.conf` を次に示します。  これは、FluentD プラグイン `exec` を使用して 30 秒ごとに curl コマンドを実行します。  このコマンドからの出力は、JSON 出力プラグインによって収集されます。
 
-```
+```xml
 <source>
   type exec
   command 'curl localhost/json.output'
@@ -52,6 +52,7 @@ Azure Monitor で JSON データを収集するには、入力プラグイン内
   retry_wait 30s
 </match>
 ```
+
 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` の下に追加された構成ファイルは、次のコマンドを使用して所有権を変更する必要があります。
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
@@ -59,7 +60,7 @@ Azure Monitor で JSON データを収集するには、入力プラグイン内
 ### <a name="configure-output-plugin"></a>出力プラグインを構成する 
 次の出力プラグイン構成を `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 内のメインの構成に追加するか、または `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` に配置された個別の構成ファイルとして追加します
 
-```
+```xml
 <match oms.api.**>
   type out_oms_api
   log_level info
@@ -77,18 +78,22 @@ Azure Monitor で JSON データを収集するには、入力プラグイン内
 ### <a name="restart-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントを再起動する
 次のコマンドを使用して、Linux 用 Log Analytics エージェント サービスを再起動します。
 
-    sudo /opt/microsoft/omsagent/bin/service_control restart 
+```console
+sudo /opt/microsoft/omsagent/bin/service_control restart 
+```
 
 ## <a name="output"></a>出力
 データは、レコードの種類を `<FLUENTD_TAG>_CL` として、Azure Monitor に収集されます。
 
 たとえば、カスタム タグ `tag oms.api.tomcat` は `tomcat_CL` のレコードの種類を使用して Azure Monitor で収集されます。  次のログ クエリを使用すると、この種類のすべてのレコードを取得できます。
 
-    Type=tomcat_CL
+```console
+Type=tomcat_CL
+```
 
 入れ子になった JSON データ ソースはサポートされますが、親フィールドに基づいてインデックスが作成されます。 たとえば、ログ クエリ `tag_s : "[{ "a":"1", "b":"2" }]` から次の JSON データが返されます。
 
-```
+```json
 {
     "tag": [{
         "a":"1",

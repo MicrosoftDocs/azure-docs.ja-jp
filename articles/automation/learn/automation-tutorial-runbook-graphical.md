@@ -1,17 +1,17 @@
 ---
 title: Azure Automation でグラフィカル Runbook を作成する
-description: 簡単なグラフィカル Runbook を Azure Automation で作成、テスト、発行する方法を説明するチュートリアルです。
+description: この記事では、簡単なグラフィカル Runbook を Azure Automation で作成、テスト、発行する方法を説明します。
 keywords: Runbook, Runbook テンプレート, Runbook Automation, Azure Runbook
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: f87f389667043e26f066886eddcdb8061df0319f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725126"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290943"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>チュートリアル:グラフィカル Runbook を作成する
 
@@ -25,16 +25,14 @@ ms.locfileid: "81725126"
 > * Runbook ジョブの状態を実行、追跡する
 > * Runbook パラメーターと条件付きリンクで Azure 仮想マシンを起動するように Runbook を更新する
 
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
-
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* [Automation アカウント](../automation-offering-get-started.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+* [Automation アカウント](../index.yml)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 * Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
+* 必要に応じて、使用するコマンドレットに基づいて、[Azure モジュールをインストール](../shared-resources/modules.md)するか、[モジュールを更新](../automation-update-azure-modules.md)します。
 
 ## <a name="step-1---create-runbook"></a>手順 1 - Runbook を作成する
 
@@ -149,7 +147,7 @@ Runbook をテストして発行しましたが、これまでのところ Azure
 
 ## <a name="step-6---add-authentication"></a>手順 6 - 認証を追加する
 
-サブスクリプション ID を保持する変数を作成したので、サブスクリプションの実行資格情報を使用して認証を行うように Runbook を構成できます。 これを行うには、Azure 実行接続を資産として追加します。 また、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) コマンドレットと [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) コマンドレットをキャンバスに追加する必要もあります。
+サブスクリプション ID を保持する変数を作成したので、サブスクリプションの実行資格情報を使用して認証を行うように Runbook を構成できます。 これを行うには、Azure 実行接続を資産として追加します。 また、[Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) コマンドレットと [Set-AzContext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) コマンドレットをキャンバスに追加する必要もあります。
 
 >[!NOTE]
 >PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は `Connect-AzAccount` の別名です。 これらの別名は、グラフィカルな Runbook では使用できないことに注意してください。 グラフィカル Runbook で使用できるのは `Connect-AzAccount` 自体のみです。
@@ -216,7 +214,7 @@ Runbook をテストして発行しましたが、これまでのところ Azure
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>手順 7 - 仮想マシンを開始するアクティビティを追加する
 
-ここで、仮想マシンを起動する `Start-AzVM` アクティビティを追加する必要があります。 Azure サブスクリプション内の任意の仮想マシンを選択できます。ここでは、その名前を [Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm?view=azps-3.5.0) コマンドレットにハードコーディングします。
+ここで、仮想マシンを起動する `Start-AzVM` アクティビティを追加する必要があります。 Azure サブスクリプション内の任意の仮想マシンを選択できます。ここでは、その名前を [Start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0) コマンドレットにハードコーディングします。
 
 1. ライブラリ コントロールの検索フィールドに「`Start-Az`」と入力します。
 
@@ -273,7 +271,7 @@ Runbook ではこの時点で、`Start-AzVM` コマンドレットに対して�
 
 ## <a name="step-9---create-a-conditional-link"></a>手順 9 - 条件付きリンクを作成する
 
-次に、まだ起動されていない場合にのみ VM の起動を試みるように Runbook を変更できます。 これを行うには、VM のインスタンス レベルの状態を取得する [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) コマンドレットを追加します。 次に、`Get Status` という名前の PowerShell ワークフロー コード モジュールを追加できます。これには、VM の状態が実行中か停止しているかを確認するための PowerShell コード スニペットが含まれています。 `Get Status` モジュールの条件付きリンクでは、現在の実行状態が停止の場合にのみ、`Start-AzVM` が実行されます。 この手順の最後では、Runbook で`Write-Output` コマンドレットを使用して、VM が正常に起動されたかどうかを通知するメッセージを出力します。
+次に、まだ起動されていない場合にのみ VM の起動を試みるように Runbook を変更できます。 これを行うには、VM のインスタンス レベルの状態を取得する [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) コマンドレットを追加します。 次に、`Get Status` という名前の PowerShell ワークフロー コード モジュールを追加できます。これには、VM の状態が実行中か停止しているかを確認するための PowerShell コード スニペットが含まれています。 `Get Status` モジュールの条件付きリンクでは、現在の実行状態が停止の場合にのみ、`Start-AzVM` が実行されます。 この手順の最後では、Runbook で`Write-Output` コマンドレットを使用して、VM が正常に起動されたかどうかを通知するメッセージを出力します。
 
 1. グラフィカル エディターで **MyFirstRunbook-Graphical** を開きます。
 
@@ -354,8 +352,7 @@ Runbook ではこの時点で、`Start-AzVM` コマンドレットに対して�
 
 ## <a name="next-steps"></a>次のステップ
 
-* グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](../automation-graphical-authoring-intro.md)」を参照してください。
+* グラフィック作成の詳細については、[Azure Automation でのグラフィカル Runbook の作成](../automation-graphical-authoring-intro.md)に関する記事を参照してください。
 * PowerShell Runbook の使用を開始するには、「[PowerShell Runbook を作成する](automation-tutorial-runbook-textual-powershell.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)」を参照してください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。

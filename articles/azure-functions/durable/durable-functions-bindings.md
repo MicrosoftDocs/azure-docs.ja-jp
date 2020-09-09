@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functons 拡張機能のトリガーと
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081850"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -19,7 +19,7 @@ ms.locfileid: "79235391"
 
 オーケストレーション トリガーを使用して、[永続的なオーケストレーター関数](durable-functions-types-features-overview.md#orchestrator-functions)を作成できます。 このトリガーは、新しいオーケストレーター関数インスタンスの開始と、タスクのために "待機している" 既存のオーケストレーター関数インスタンスの再開をサポートします。
 
-Azure Functions 用の Visual Studio ツールを使用する場合、オーケストレーション トリガーは、[OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .NET 属性を使用して構成されます。
+Azure Functions 用の Visual Studio ツールを使用する場合、オーケストレーション トリガーは、[OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .NET 属性を使用して構成されます。
 
 オーケストレーター関数を (JavaScript や C# スクリプトなどの) スクリプト言語で記述する場合、オーケストレーション トリガーは、*function.json* ファイルの `bindings` 配列の次の JSON オブジェクトによって定義されます。
 
@@ -396,7 +396,7 @@ Azure Functions 用の Visual Studio ツールを使用する場合、エンテ�
 * **GetState\<TState>(initfunction)** : エンティティの現在の状態を取得します。 まだ存在しない場合は、指定された `initfunction` パラメーターを呼び出して作成されます。 `TState` パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。 
 * **SetState(arg)** : エンティティの状態を作成または更新します。 `arg` パラメーターは、JSON にシリアル化できるオブジェクトまたはプリミティブにする必要があります。
 * **DeleteState()** : エンティティの状態を削除します。 
-* **GetInput\<TInput>()** : 現在操作に対する入力を取得します。 `TInput` 型パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。
+* **GetInput\<TInput>()** : 現在の操作に対する入力を取得します。 `TInput` 型パラメーターは、プリミティブ型または JSON にシリアル化できる型にする必要があります。
 * **Return(arg)** : 操作を呼び出したオーケストレーションに値を返します。 `arg` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。
 * **SignalEntity(EntityId, scheduledTimeUtc, operation, input)** : エンティティに一方向のメッセージを送信します。 `operation` パラメーターは NULL 以外の文字列にする必要があります。オプションの `scheduledTimeUtc` は、操作を呼び出す UTC 日時にする必要があります。`input` パラメーターはプリミティブまたは JSON にシリアル化できるオブジェクトにする必要があります。
 * **CreateNewOrchestration(orchestratorFunctionName, input)** : 新しいオーケストレーションを開始します。 `input` パラメーターは、プリミティブ オブジェクトまたは JSON にシリアル化できるオブジェクトにする必要があります。

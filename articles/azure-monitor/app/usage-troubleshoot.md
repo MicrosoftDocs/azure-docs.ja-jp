@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670918"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323504"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
 [Application Insights のユーザー動作分析ツール](usage-overview.md): [ユーザー、セッション、イベント](usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](usage-flows.md)、[リテンション](usage-retention.md)、またはコーホートについて質問がありますか? いくつかの答えを次に示します。
@@ -19,13 +19,13 @@ ms.locfileid: "77670918"
 ## <a name="counting-users"></a>ユーザーのカウント
 **ユーザー動作分析ツールでは、アプリにはユーザー/セッションが 1 つだけあることが示されていますが、私はアプリには複数のユーザー/セッションがあることを知っています。これらの正しくないカウントを修正するにはどうすればよいですか。**
 
-Application Insights のすべてのテレメトリ イベントには、2 つの標準プロパティとして[匿名ユーザー ID](../../azure-monitor/app/data-model-context.md) と[セッション ID](../../azure-monitor/app/data-model-context.md) があります。 既定では、すべての利用状況分析ツールは、これらの ID に基づいてユーザーとセッションをカウントします。 これらの標準プロパティにアプリの各ユーザーとセッションの一意の ID が設定されていない場合、利用状況分析ツールには正しくないユーザーとセッションのカウントが表示されます。
+Application Insights のすべてのテレメトリ イベントには、2 つの標準プロパティとして[匿名ユーザー ID](./data-model-context.md) と[セッション ID](./data-model-context.md) があります。 既定では、すべての利用状況分析ツールは、これらの ID に基づいてユーザーとセッションをカウントします。 これらの標準プロパティにアプリの各ユーザーとセッションの一意の ID が設定されていない場合、利用状況分析ツールには正しくないユーザーとセッションのカウントが表示されます。
 
-Web アプリを監視している場合の最も簡単なソリューションは、[Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) をアプリに追加し、監視する各ページにスクリプト スニペットが読み込まれていることを確認することです。 JavaScript SDK は自動的に匿名ユーザーとセッション ID を生成し、アプリからテレメトリ イベントを送信するときにこれらの ID を設定します。
+Web アプリを監視している場合の最も簡単なソリューションは、[Application Insights JavaScript SDK](./javascript.md) をアプリに追加し、監視する各ページにスクリプト スニペットが読み込まれていることを確認することです。 JavaScript SDK は自動的に匿名ユーザーとセッション ID を生成し、アプリからテレメトリ イベントを送信するときにこれらの ID を設定します。
 
 ユーザー インターフェイスのない Web サービスを監視している場合は、サービスの一意のユーザーとセッションの概念に従って、[匿名ユーザー ID プロパティとセッション ID プロパティを設定するテレメトリ初期化子を作成します](usage-send-user-context.md)。
 
-アプリが[認証ユーザー ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) を送信する場合は、ユーザー ツールで認証ユーザー ID に基づいてカウントできます。 [表示] ドロップダウンで、[認証ユーザー] を選択します。
+アプリが[認証ユーザー ID](./api-custom-events-metrics.md#authenticated-users) を送信する場合は、ユーザー ツールで認証ユーザー ID に基づいてカウントできます。 [表示] ドロップダウンで、[認証ユーザー] を選択します。
 
 ユーザー動作分析ツールは、現時点では、匿名ユーザー ID、認証ユーザー ID、またはセッション ID 以外のプロパティに基づくユーザーまたはセッションのカウントはサポートしていません。
 

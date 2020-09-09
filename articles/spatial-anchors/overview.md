@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657309"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006106"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure Spatial Anchors の概要
 
@@ -26,7 +26,7 @@ Azure Spatial Anchors へようこそ。 Azure Spatial Anchors は、空間を�
 
 空間アンカーによって可能になるユース ケースの例には、以下が含まれます。
 
-- [マルチユーザー エクスペリエンス](tutorials/tutorial-share-anchors-across-devices.md)。 空間アンカーによって、同じ場所にいるユーザーがマルチユーザー対応混合現実アプリケーションに簡単にアクセスできます。 たとえば、仮想チェス ボードをテーブルに置くことで、2 人のユーザーが複合現実チェス ゲームを開始できます。 その後、テーブルで各自のデバイスをポイントすることで、仮想チェス ボードを一緒に見ながら対戦できます。
+- [マルチユーザー エクスペリエンス](tutorials/tutorial-share-anchors-across-devices.md)。 Azure Spatial Anchors によって、同じ場所にいるユーザーがマルチユーザー対応複合現実アプリケーションに簡単にアクセスできます。 たとえば、仮想チェス ボードをテーブルに置くことで、2 人のユーザーが複合現実チェス ゲームを開始できます。 その後、テーブルで各自のデバイスをポイントすることで、仮想チェス ボードを一緒に見ながら対戦できます。
 
 - [道案内](concepts/anchor-relationships-way-finding.md)。 開発者は、空間アンカーをつなげて、それらの間にリレーションシップを作成することもできます。 たとえば、あるタスクを完了するためにユーザーが対話する必要がある 2 つまたは 3 つの関心ポイントがあるエクスペリエンスをアプリに含めることができます。 これらの関心ポイントをつなげるように作成できます。 その後、アプリでは、ユーザーがマルチステップ タスクを完了すると、現在のアンカーの近くにあるアンカーが要求され、タスクの次の手順にユーザーを案内することができます。
 
@@ -36,7 +36,7 @@ Azure Spatial Anchors は、サポート対象のデバイス プラットフォ
 
 ## <a name="next-steps"></a>次のステップ
 
-Spatial Anchors を使用して初めてのアプリを作成します。
+Azure Spatial Anchors を使用して初めてのアプリを作成します。
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)

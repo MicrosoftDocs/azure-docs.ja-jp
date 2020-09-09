@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 11/1/2019
 ms.author: brendm
-ms.openlocfilehash: 36e9b272bb4648853829364b22881ab8bec1ff70
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.custom: devx-track-java
+ms.openlocfilehash: 1cea1bbe86c411e856784d38e8b7d2471a9822bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81733054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083703"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud の開発者向けリソース
 
@@ -20,7 +21,7 @@ ms.locfileid: "81733054"
 * [Azure のロードマップ](https://azure.microsoft.com/updates)
 * [よく寄せられる質問](spring-cloud-faq.md)
 * [トラブルシューティング ガイド](spring-cloud-troubleshoot.md)
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home)
+* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-spring-cloud.html)
 * [Java Spring Cloud の Web サイト](https://spring.io/)
 * [Spring Framework](https://cloud.spring.io/spring-cloud-azure/)
 * [Azure の Spring](https://docs.microsoft.com/azure/developer/java/spring-framework/)

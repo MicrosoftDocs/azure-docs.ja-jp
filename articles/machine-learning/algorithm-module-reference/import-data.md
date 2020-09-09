@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611817"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 
@@ -43,6 +43,10 @@ ms.locfileid: "79456201"
 必要なデータを定義し、ソースに接続すると、 **[データのインポート](./import-data.md)** では、列に含まれる値に基づいて各列のデータ型が推測され、デザイナー パイプラインにデータが読み込まれます。 **データのインポート**からは、あらゆるデザイナー パイプラインで使用できるデータセットが出力されます。
 
 ソース データが変更された場合、[データのインポート](./import-data.md)を再実行することでデータセットを更新し、新しいデータを追加できます。
+
+> [!WARNING]
+> ワークスペースが仮想ネットワーク内にある場合は、デザイナーのデータ視覚化機能を使用するようにデータストアを構成する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、「[プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離](../how-to-enable-virtual-network.md#machine-learning-studio)」を参照してください。
+
 
 ## <a name="how-to-configure-import-data"></a>データのインポートを構成する方法
 

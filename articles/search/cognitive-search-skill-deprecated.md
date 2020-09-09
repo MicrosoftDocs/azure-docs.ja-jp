@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85f3b9862bd8155c1a4b11860dc82d92a2f9e810
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792034"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936097"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure Cognitive Search の非推奨のコグニティブ スキル
 
@@ -38,7 +38,7 @@ ms.locfileid: "72792034"
 
 代わりに [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) を使用します。 NamedEntityRecognitionSkill のほとんどの機能を提供しており、品質も向上しています。 さらに、複合出力フィールドに詳細な情報が格納されています。
 
-[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)に移行するには、スキル定義で以下の 1 つ以上の変更を行う必要があります。 スキル定義は、[スキルセット更新 API](https://docs.microsoft.com/rest/api/searchservice/update-skillset) を使用して更新することができます。
+[エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)に移行するには、スキル定義で以下の 1 つ以上の変更を行う必要があります。 スキル定義は、[スキルセット更新 API](/rest/api/searchservice/update-skillset) を使用して更新することができます。
 
 > [!NOTE]
 > 現時点では、概念としての信頼度スコアはサポートされていません。 `EntityRecognitionSkill` には、将来的な使用と旧バージョンとの互換性のため、`minimumPrecision` パラメーターが存在しています。

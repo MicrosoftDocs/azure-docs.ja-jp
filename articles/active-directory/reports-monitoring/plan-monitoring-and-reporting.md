@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74232104"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229754"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -47,9 +47,9 @@ Azure AD の監視では、次の場所にログをルーティングできま�
 * Splunk、Sumologic、QRadar などの既存の SIEM ツールと統合できる Azure イベント ハブ。
 
 > [!NOTE]
-最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](https://docs.microsoft.com/azure/azure-monitor/azure-monitor-rebrand)に関するページをご覧ください。
+最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../../azure-monitor/platform/data-platform.md)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../../azure-monitor/terminology.md)に関するページをご覧ください。
 
-[レポート保持ポリシーの詳細を確認します](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention)。
+[レポート保持ポリシーの詳細を確認します](./reference-reports-data-retention.md)。
 
 ### <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視のライセンスと前提条件
 
@@ -115,25 +115,25 @@ Azure AD の監視では、Azure AD のアクティビティ ログを、ビジ�
 
 #### <a name="archive-logs-in-a-storage-account"></a>ログをストレージ アカウントにアーカイブする
 
-ログを Azure ストレージ アカウントにルーティングすると、[保持ポリシー](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-reports-data-retention)で規定されている既定の保持期間より長くログを保持できます。 ログをアーカイブする必要があるが SIEM システムと統合する必要はなく、継続的なクエリや分析も不要な場合は、この方法を使用します。 この場合もオンデマンド検索は実行できます。
+ログを Azure ストレージ アカウントにルーティングすると、[保持ポリシー](./reference-reports-data-retention.md)で規定されている既定の保持期間より長くログを保持できます。 ログをアーカイブする必要があるが SIEM システムと統合する必要はなく、継続的なクエリや分析も不要な場合は、この方法を使用します。 この場合もオンデマンド検索は実行できます。
 
-データをストレージ アカウントにルーティングする方法については、[こちら](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)を参照してください。
+データをストレージ アカウントにルーティングする方法については、[こちら](./quickstart-azure-monitor-route-logs-to-storage-account.md)を参照してください。
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Azure Monitor ログへのログの送信
 
-[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)は、さまざまなソースからの監視データを統合します。 アプリケーションの操作とリソースの使用に関する分析情報が得られるクエリ言語と分析エンジンも提供されます。 Azure AD のアクティビティ ログを Azure Monitor ログに送信することで、収集したデータに対する迅速な取得、監視、およびアラートを行うことができます。 データの直接の送信先となる既存の SIEM ソリューションは存在しないが、クエリや分析が必要な場合は、この方法を使用します。 データが Azure Monitor ログに記録されたら、そのデータをイベント ハブに送信し、必要に応じてそこから SIEM に送信することができます。
+[Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)は、さまざまなソースからの監視データを統合します。 アプリケーションの操作とリソースの使用に関する分析情報が得られるクエリ言語と分析エンジンも提供されます。 Azure AD のアクティビティ ログを Azure Monitor ログに送信することで、収集したデータに対する迅速な取得、監視、およびアラートを行うことができます。 データの直接の送信先となる既存の SIEM ソリューションは存在しないが、クエリや分析が必要な場合は、この方法を使用します。 データが Azure Monitor ログに記録されたら、そのデータをイベント ハブに送信し、必要に応じてそこから SIEM に送信することができます。
 
-[Azure Monitor ログにデータを送信する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)方法を学習してください。
+[Azure Monitor ログにデータを送信する](./howto-integrate-activity-logs-with-log-analytics.md)方法を学習してください。
 
 Azure AD のアクティビティ ログ用の既製のビューをインストールして、サインインと監査イベントを含む一般的なシナリオを監視することもできます。
 
-[Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)方法を学習してください。
+[Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する](./howto-install-use-log-analytics-views.md)方法を学習してください。
 
 #### <a name="stream-logs-to-your-azure-event-hub"></a>Azure イベント ハブにログをストリーム配信する
 
 Azure イベント ハブにログをルーティングすると、サードパーティ製の SIEM ツールとの統合が可能になります。 この統合によって、Azure AD のアクティビティ ログ データと、SIEM によって管理されている他のデータを組み合わせ、より豊富な環境分析情報を提供することができます。 
 
-ログをイベント ハブにストリーム配信する方法については、[こちら](https://docs.microsoft.com//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)を参照してください。
+ログをイベント ハブにストリーム配信する方法については、[こちら](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)を参照してください。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視の運用とセキュリティを計画する
 
@@ -151,9 +151,9 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 * レポート閲覧者
 
-[Azure AD 管理者ロール](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)の詳細を確認します。
+[Azure AD 管理者ロール](../users-groups-roles/directory-assign-admin-roles.md)の詳細を確認します。
 
-*アカウント侵害*のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) の実装を検討します。
+*アカウント侵害*のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
 
 ##  
 
@@ -163,27 +163,27 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 ### <a name="consume-and-archive-azure-ad-logs"></a>Azure AD ログを使用およびアーカイブする
 
-[Azure portal でアクティビティ レポートを見つける](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
+[Azure portal でアクティビティ レポートを見つける](./howto-find-activity-reports.md)
 
-[Azure AD のログを Azure Storage アカウントにアーカイブする](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
+[Azure AD のログを Azure Storage アカウントにアーカイブする](./quickstart-azure-monitor-route-logs-to-storage-account.md)
 
 ### <a name="implement-monitoring-and-analytics"></a>監視と分析を実装する
 
-[ログを Azure Monitor に送信する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+[ログを Azure Monitor に送信する](./howto-integrate-activity-logs-with-log-analytics.md)
 
-[Azure Active Directory ログ分析用のビューのインストールと使用](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)
+[Azure Active Directory ログ分析用のビューのインストールと使用](./howto-install-use-log-analytics-views.md)
 
-[Azure Monitor ログ を使用して Azure AD アクティビティ ログを分析する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)
+[Azure Monitor ログ を使用して Azure AD アクティビティ ログを分析する](./howto-analyze-activity-logs-log-analytics.md)
 
-* [Azure Monitor で監査ログのスキーマを解釈する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
+* [Azure Monitor で監査ログのスキーマを解釈する](./reference-azure-monitor-audit-log-schema.md)
 
-* [Azure Monitor でサインイン ログのスキーマを解釈する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema)
+* [Azure Monitor でサインイン ログのスキーマを解釈する](./reference-azure-monitor-sign-ins-log-schema.md)
 
- * [Azure AD のログを Azure イベント ハブにストリーム配信する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)
+ * [Azure AD のログを Azure イベント ハブにストリーム配信する](./tutorial-azure-monitor-stream-logs-to-event-hub.md)
 
-* [Azure Monitor を使用して Azure AD のログを Splunk と統合する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-integrate-activity-logs-with-splunk)
+* [Azure Monitor を使用して Azure AD のログを Splunk と統合する](./howto-integrate-activity-logs-with-splunk.md)
 
-* [Azure Monitor を使用して Azure AD のログを SumoLogic と統合する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-sumologic)
+* [Azure Monitor を使用して Azure AD のログを SumoLogic と統合する](./howto-integrate-activity-logs-with-sumologic.md)
 
  
 
@@ -191,8 +191,6 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 ## <a name="next-steps"></a>次のステップ
 
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) の実装を検討する 
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討する 
 
-[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) の実装を検討する
-
- 
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) の実装を検討する

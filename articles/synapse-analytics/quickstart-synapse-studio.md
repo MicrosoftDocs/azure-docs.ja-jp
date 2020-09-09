@@ -1,5 +1,5 @@
 ---
-title: Synapse Studio (プレビュー) を使用する
+title: クイック スタート:Synapse Studio を使用する
 description: このクイックスタートでは、Synapse Studio を使用してさまざまな種類のファイルに対するクエリを簡単に実行する方法について説明します。
 services: synapse-analytics
 author: jovanpop-msft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 8b35b281f6a70d5485004dc61563271132734a87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692421"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374152"
 ---
-# <a name="quickstart-using-synapse-studio-preview"></a>クイック スタート:Synapse Studio (プレビュー) の使用
+# <a name="quickstart-use-synapse-studio-preview"></a>クイック スタート:Synapse Studio (プレビュー) を使用する
 
 このクイックスタートでは、Synapse Studio を使用してファイルに対するクエリを実行する方法について説明します。
 
@@ -49,10 +49,10 @@ Synapse Studio を開いたら、 **[データ]** を参照し、 **[ストレ�
 ## <a name="query-files-on-storage-account"></a>ストレージ アカウントのファイルに対してクエリを実行する
 
 > [!IMPORTANT]
-> ファイルに対してクエリを実行できるようにするには、基になるストレージの `Storage Blob Reader` ロールのメンバーである必要があります。 [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可を割り当てる](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)方法について確認してください。
+> ファイルに対してクエリを実行できるようにするには、基になるストレージの `Storage Blob Reader` ロールのメンバーである必要があります。 [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可を割り当てる](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)方法について確認してください。
 
 1. いくつかの `PARQUET` ファイルをアップロードします。
-2. 1 つ以上のファイルを選択し、新しい SQL スクリプトまたは Spark ノートブックを作成して、ファイルの内容を確認します。 ノートブックを作成する場合は、[ワークスペースに Apache Spark プール](quickstart-create-apache-spark-pool.md)を作成する必要があります。
+2. 1 つ以上のファイルを選択し、新しい SQL スクリプトまたは Spark ノートブックを作成して、ファイルの内容を確認します。 ノートブックを作成する場合は、[Synapse ワークスペースに Apache Spark プール](quickstart-create-apache-spark-pool-studio.md)を作成する必要があります。
 
    ![ストレージ上のファイルに対してクエリを実行する](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
@@ -64,7 +64,7 @@ Synapse Studio を開いたら、 **[データ]** を参照し、 **[ストレ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)を割り当てることにより、Azure AD ユーザーがファイルに対してクエリを実行できるようにする
+- [Azure Storage で**ストレージ BLOB データ閲覧者**または**ストレージ BLOB データ共同作成者**の RBAC アクセス許可を割り当てる](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)ことにより、Azure AD ユーザーがファイルに対してクエリを実行できるようにする
 - [SQL オンデマンドを使用して、Azure Storage 上のファイルに対してクエリを実行する](sql/on-demand-workspace-overview.md)
-- [Azure portal を使用して Apache Spark プールを作成する](quickstart-create-apache-spark-pool.md)
+- [Azure portal を使用して Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)
 - [Azure Storage に格納されているファイルについて Power BI レポートを作成する](sql/tutorial-connect-power-bi-desktop.md)

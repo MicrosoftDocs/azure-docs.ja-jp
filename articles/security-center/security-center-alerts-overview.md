@@ -8,20 +8,20 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: 697c038a2fefdde8e488dad23a4e38e0b2b7b288
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79415848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519609"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
 Azure Security Center には、さまざまなリソースの種類に対する各種のアラートがあります。 Azure Security Center では、Azure にデプロイされたリソースに対して、またオンプレミス環境とハイブリッド クラウド環境にデプロイされたリソースに対してもアラートが生成されます。
 
-セキュリティ アラートは、高度な検出によってトリガーされ、Azure Security Center の Standard レベルでのみ使用できます。 無料試用版が提供されています。 アップグレードは、 [[セキュリティ ポリシー]](security-center-pricing.md)の [価格レベル] の選択から実行できます。 価格の詳細については、 [Security Center のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。
+セキュリティ アラートは、高度な検出によってトリガーされ、Azure Security Center の Standard レベルでのみ使用できます。 無料試用版が提供されています。 **[Pricing & settings]\(価格と設定\)** ページからアップグレードできます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
 ## <a name="responding-to-todays-threats"></a>今日の脅威への対応 <a name="respond-threats"> </a>
 
@@ -53,9 +53,9 @@ Security Center では、真の脅威を検出し、誤検知を減らすため�
 
 Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 ビッグ データや [機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) における革新的テクノロジを活かし、クラウド ファブリック全体にわたってイベントが評価されるので、手作業に頼った手法や攻撃の進化を予測する手法では特定できない脅威でも検出することができます。 こうしたセキュリティ分析の例を次に示します。
 
-* **統合された脅威インテリジェンス**:Microsoft は、膨大なグローバル脅威インテリジェンスを保有しています。 Azure、Office 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft Digital Crimes Unit (DCU)、および Microsoft セキュリティ レスポンス センター (MSRC) などの複数のソースから製品利用統計情報が送られてきます。 また研究員も、大手クラウド サービス プロバイダー間で共有されている脅威インテリジェンス情報や、サード パーティのフィードを入手しています。 Azure Security Center はこの情報を基に、既知の有害因子から生じる脅威について利用者に警告を発することができます。
+* **統合された脅威インテリジェンス**:Microsoft は、膨大なグローバル脅威インテリジェンスを保有しています。 Azure、Microsoft 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft Digital Crimes Unit (DCU)、および Microsoft セキュリティ レスポンス センター (MSRC) などの複数のソースから製品利用統計情報が送られてきます。 また研究員も、大手クラウド サービス プロバイダー間で共有されている脅威インテリジェンス情報や、サード パーティのフィードを入手しています。 Azure Security Center はこの情報を基に、既知の有害因子から生じる脅威について利用者に警告を発することができます。
 
-* **行動分析**:行動分析は、データを分析し、既知のパターンのコレクションと照らして比較する手法です。 ただし、これらのパターンはただのシグネチャではありません。 大量のデータセットに適用された複雑な機械学習アルゴリズムを通じてパターンが決定されています。 また、パターンの特定にあたっては、専門のアナリストによって悪質な行動が緻密に分析されます。 Azure Security Center は、行動分析を使用して仮想マシンのログ、仮想ネットワーク デバイスのログ、ファブリック ログ、クラッシュ ダンプ、およびその他のソースを分析し、これに基づいて侵害されたリソースを識別することができます。
+* **行動分析**:行動分析は、データを分析し、既知のパターンのコレクションと照らして比較する手法です。 ただし、これらのパターンはただのシグネチャではありません。 大量のデータセットに適用された複雑な機械学習アルゴリズムを通じてパターンが決定されています。 また、パターンの特定にあたっては、専門のアナリストによって悪質な行動が緻密に分析されます。 Azure Security Center は、行動分析を使用して仮想マシンのログ、仮想ネットワーク デバイスのログ、ファブリック ログ、およびその他のソースを分析し、これに基づいて侵害されたリソースを識別することができます。
 
 * **異常検出**:Azure Security Center での脅威の特定には、異常検出も使用されます。 行動分析は、大規模なデータセットから導いた既知のパターンに依存します。これとは対照的に、異常検出は "独自色" が強く、個々のデプロイに固有の基準に重点が置かれます。 機械学習を適用して個々の環境の正常なアクティビティを突き止めたうえで、セキュリティ イベントの可能性を示す異常な条件とは何かを定義する規則を作成します。
 

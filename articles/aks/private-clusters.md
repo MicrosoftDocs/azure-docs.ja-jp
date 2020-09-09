@@ -3,19 +3,26 @@ title: プライベート Azure Kubernetes Service クラスターを作成す�
 description: プライベート Azure Kubernetes Service (AKS) クラスターの作成方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 4f0d702a213c4c34024c043edc50d25e6696cbc1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 7/17/2020
+ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015651"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
-プライベートクラスターにおいては、コントロールプレーンまたは API サーバーは「[プライベートインターネット向けの RFC1918 アドレス割り当て](https://tools.ietf.org/html/rfc1918)」で定義される内部 IP アドレスを持っています。 プライベート クラスターを使用することで、API サーバーとノード プールの間のネットワーク トラフィックがプライベート ネットワークにのみ保持されるようにすることができます。
+プライベートクラスターにおいては、コントロールプレーンまたは API サーバーは「[プライベートインターネット向けの RFC1918 アドレス割り当て](https://tools.ietf.org/html/rfc1918)」で定義される内部 IP アドレスを持っています。 プライベート クラスターを使用することにより、API サーバーとノード プールの間のネットワーク トラフィックがプライベート ネットワークにのみ保持されるようにすることができます。
 
 コントロールプレーンまたは API サーバーは、Azure Kubernetes Service (AKS) マネージドの Azure サブスクリプションの中にあります。 カスタマーのクラスターまたはノードプールは、カスタマーのサブスクリプションの中にあります。 サーバーとクラスターまたはノードプールは、API サーバー仮想ネットワーク内の [Azure Private Link サービス][private-link-service] と、カスタマーの AKS クラスターのサブネットで公開されているプライベート エンドポイントを介して相互に通信できます。
+
+## <a name="region-availability"></a>利用可能なリージョン
+
+プライベート クラスターは、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンで利用できます。
+
+* Azure China 21Vianet は現在サポートされていません。
+* Private Link のサポートがないため、US Gov Texas は現在サポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,13 +76,13 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 
 ## <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
-前述のように、VNet ピアリングはプライベート クラスターにアクセスする方法の 1 つです。 VNet ピアリングを使用するには、仮想ネットワークとプライベート DNS ゾーンの間にリンクを設定する必要があります。
+前述のように、仮想ネットワーク ピアリングはプライベート クラスターにアクセスする方法の 1 つです。 仮想ネットワーク ピアリングを使用するには、仮想ネットワークとプライベート DNS ゾーンの間にリンクを設定する必要があります。
     
-1. Azure portal の MC_ * リソース グループに移動します。  
+1. Azure portal でノード リソース グループに移動します。  
 2. プライベート DNS ゾーンを選択します。   
 3. 左側のウィンドウで、 **[仮想ネットワーク]** リンクを選択します。  
 4. 新しいリンクを作成して、VM の仮想ネットワークをプライベート DNS ゾーンに追加します。 DNS ゾーンリンクが利用可能になるまで数分かかります。  
-5. Azure portal の MC_ * リソースグループに戻ります。  
+5. Azure portal で、クラスターの仮想ネットワークが含まれるリソース グループに移動します。  
 6. 右側のウィンドウで、仮想ネットワークを選択します。 仮想ネットワーク名は *aks-vnet-\** のフォームになっています。  
 7. 左側のウィンドウで、 **[ピアリング]** を選択します。  
 8. **[追加]** を選択して VM の仮想ネットワークを追加し、次にピアリングを作成します。  
@@ -83,7 +90,7 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>カスタム DNS を使用したハブとスポーク
 
-[ハブとスポークのアーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)は、Azure でネットワークをデプロイするためによく使用されます。 これらのデプロイの多くでは、オンプレミスと Azure ベースの DNS 解決が可能となるよう、スポーク VNet の DNS 設定は中央の DNS フォワーダーを参照するように構成されます。 このようなネットワーク環境に AKS クラスターをデプロイする場合、いくつかの特別な考慮事項を考慮する必要があります。
+[ハブとスポークのアーキテクチャ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)は、Azure でネットワークをデプロイするためによく使用されます。 これらのデプロイの多くでは、オンプレミスと Azure ベースの DNS 解決が可能となるよう、スポーク VNet の DNS 設定は中央の DNS フォワーダーを参照するように構成されます。 このようなネットワーク環境に AKS クラスターをデプロイする場合、いくつかの特別な考慮事項を考慮する必要があります。
 
 ![プライベート クラスターのハブとスポーク](media/private-clusters/aks-private-hub-spoke.png)
 
@@ -91,7 +98,7 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 
 2. プライベート DNS ゾーンは、クラスター ノードが接続されている VNet にのみリンクされます (3)。 つまり、プライベート エンドポイントは、そのリンクされた VNet 内のホストによってのみ解決できます。 VNet にカスタム DNS が一切構成されていないシナリオ (既定) では、これは問題なく機能します。リンクされているためにプライベート DNS ゾーン内のレコードを解決できる DNS の 168.63.129.16 が、ホストにより指定されるためです。
 
-3. クラスターを含む VNet にカスタム DNS 設定があるシナリオでは (4)、プライベート DNS ゾーンがカスタム DNS リゾルバーを含む VNet にリンクされていない限り (5)、クラスターのデプロイは失敗します。 このリンクは、クラスターのプロビジョニング中にプライベート ゾーンを作成した後に手動で、または Azure Policy やその他のイベントベースのデプロイ メカニズム (Azure Event Grid や Azure Functions など) を使用したゾーンの作成の検出時に自動で作成することができます。
+3. クラスターを含む VNet にカスタム DNS 設定があるシナリオでは (4)、プライベート DNS ゾーンがカスタム DNS リゾルバーを含む VNet にリンクされていない限り (5)、クラスターのデプロイは失敗します。 このリンクは、クラスターのプロビジョニング中にプライベート ゾーンを作成した後に手動で、またはイベントベースのデプロイ メカニズム (Azure Event Grid や Azure Functions など) を使用したゾーンの作成の検出時に自動で、作成することができます。
 
 ## <a name="dependencies"></a>依存関係  
 
@@ -100,15 +107,15 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 
 ## <a name="limitations"></a>制限事項 
 * 承認済み IP 範囲は、プライベート API サーバー エンドポイントには適用できません。パブリック API サーバーにのみ適用されます
-* Availability Zones は現在、特定のリージョンでサポートされています。このドキュメントの冒頭をご覧ください 
+* [Availability Zones][availability-zones] は現在、特定のリージョンでサポートされています。 
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベート クラスターに適用されます。
-* プライベート Azure 仮想ネットワーク内のプライベート Azure Container Instances (ACI) をスピンすることは、プライベート クラスター内の仮想ノードではサポートされていません
-* プライベート クラスターですぐに使用できる Azure DevOps 統合はサポートされていません
+* Azure DevOps Microsoft でホストするエージェントとプライベート クラスターの組み合わせはサポートされていません。 [セルフホステッド エージェント][devops-agents]を使用することを検討してください。 
 * Azure Container Registry をプライベート AKS で使用できるようにする必要があるカスタマーは、Container Registry 仮想ネットワークをエージェントクラスターの仮想ネットワークとピアリングしてください。
 * Azure Dev Spaces は現在サポートされていません
 * 既存の AKS クラスターからプライベートクラスターへの変換はサポートされていません
 * カスタマーのサブネット内でプライベート エンドポイントを削除または変更すると、クラスターが機能しなくなります。 
 * コンテナー用 Azure Monitor の Live Data は現在サポートされていません。
+* アップタイム SLA は現在サポートされていません。
 
 
 <!-- LINKS - internal -->
@@ -116,8 +123,9 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview#limitations
+[private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-
+[devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
+[availability-zones]: availability-zones.md

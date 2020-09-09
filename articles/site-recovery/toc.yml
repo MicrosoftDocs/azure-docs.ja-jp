@@ -62,6 +62,8 @@
           href: tutorial-dr-drill-azure.md
         - name: Azure にフェールオーバーする
           href: hyper-v-azure-failover-failback-tutorial.md
+        - name: プライベート エンドポイントを使用したオンプレミス レプリケーションを有効にする
+          href: ./hybrid-how-to-enable-replication-private-endpoints.md
     - name: Azure への移行
       items:
         - name: オンプレミスのレプリケーション用に Azure を準備する
@@ -186,6 +188,8 @@
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: 追加したディスクのレプリケーションを有効にする
               href: azure-to-azure-enable-replication-added-disk.md
+            - name: プライベート エンドポイントを使用したレプリケーションを有効にする
+              href: ./azure-to-azure-how-to-enable-replication-private-endpoints.md
             - name: ディスクを除外する
               href: azure-to-azure-exclude-disks.md
             - name: フェールオーバー後に Azure VM を再保護する
@@ -242,6 +246,8 @@
               href: vmware-azure-set-up-target.md
             - name: レプリケーションの設定を構成する
               href: vmware-azure-set-up-replication.md
+            - name: プライベート エンドポイントを使用したオンプレミス レプリケーションを有効にする
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: モビリティ サービスをデプロイする
               items:
                 - name: モビリティ サービスの概要とインストール
@@ -308,6 +314,8 @@
               href: physical-azure-set-up-source.md
             - name: ターゲット環境をセットアップする
               href: vmware-azure-set-up-target.md
+            - name: プライベート エンドポイントを使用したオンプレミス レプリケーションを有効にする
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: モビリティ サービスをデプロイする
               items:
                 - name: モビリティ サービスのインストールについて
@@ -403,9 +411,9 @@
         - name: Dynamics AX
           href: site-recovery-dynamicsax.md
         - name: RDS
-          href: 'site-recovery-workload.md#protect-remote-desktop-services'
+          href: site-recovery-workload.md#protect-remote-desktop-services
         - name: Exchange
-          href: 'site-recovery-workload.md#protect-exchange'
+          href: site-recovery-workload.md#protect-exchange
         - name: SAP
           href: site-recovery-sap.md
         - name: ファイル サーバー
@@ -415,7 +423,7 @@
         - name: Citrix XenApp と XenDesktop
           href: site-recovery-citrix-xenapp-and-xendesktop.md
         - name: その他のワークロード
-          href: 'site-recovery-workload.md#workload-summary'
+          href: site-recovery-workload.md#workload-summary
     - name: セカンダリ サイトへのディザスター リカバリー
       items:
         - name: VMware VM および物理サーバー
@@ -509,7 +517,7 @@
 - name: 関連項目
   items:
     - name: Azure Automation
-      href: /azure/automation/
+      href: ../automation/index.yml
 - name: リソース
   items:
     - name: Azure のロードマップ
@@ -517,7 +525,7 @@
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
+      href: /answers/topics/azure-site-recovery.html
     - name: ラーニング パス
       href: /learn/azure/
     - name: 価格

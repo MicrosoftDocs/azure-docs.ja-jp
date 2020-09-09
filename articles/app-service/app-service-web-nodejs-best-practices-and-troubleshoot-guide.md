@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75430559"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961892"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
-この記事では、Azure App Service で実行されている[node アプリケーション](app-service-web-get-started-nodejs.md) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
+この記事では、Azure App Service で実行されている [Windows Node.js アプリケーション](quickstart-nodejs.md?pivots=platform-windows) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
 
 > [!WARNING]
 > 運用サイトでトラブルシューティング手順を使用する場合は、注意が必要です。 ステージング スロットなどの運用環境以外のセットアップでアプリのトラブルシューティングを行い、問題が修正されたら、ステージング スロットを運用スロットと交換することをお勧めします。
@@ -170,7 +170,7 @@ http.createServer(function (req, res) {
 
 site/wwwroot ディレクトリに移動します。 次の図のようなコマンド プロンプトが表示されます。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![サイト/wwwroot ディレクトリとコマンド プロンプトを示すスクリーンショット。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 コマンド `npm install v8-profiler` を実行します。
 
@@ -203,11 +203,11 @@ http.createServer(function (req, res) {
 
 上記のコードで、WriteConsoleLog 関数はプロファイリングされ、プロファイル出力が site wwwroot の下にある 'profile.cpuprofile' ファイルに書き込まれます。 アプリケーションに要求を送信します。 'profile.cpuprofile' ファイルが site wwwroot の下に作成されたことがわかります。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![profile.cpuprofile ファイルを示すスクリーンショット。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 このファイルをダウンロードし、Chrome の F12 ツールで開きます。 Chrome で F12 キーを押し、 **[Profiles]\(プロファイル\)** タブを選択します。 **[Load]\(読み込み\)** ボタンを選択します。 ダウンロードした profile.cpuprofile ファイルを選択します。 読み込んだプロファイルをクリックします。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![読み込んだ profile.cpuprofile ファイルを示すスクリーンショット。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 95% の時間が WriteConsoleLog 関数によって消費されたことがわかります。 出力には、問題の原因となる正確な行番号とソース ファイルも表示されます。
 
@@ -273,9 +273,9 @@ NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります�
 
 Azure App Service での node.js アプリケーションの詳細については、以下のリンクを参照してください。
 
-* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-get-started-nodejs.md)
-* [Azure App Service で Node.js Web アプリをデバッグする方法](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
+* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](quickstart-nodejs.md)
+* [Azure App Service で Node.js Web アプリをデバッグする方法](/archive/blogs/azureossds/debugging-node-js-apps-on-azure-app-services)
 * [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps:Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps:Node.js](/archive/blogs/silverlining/windows-azure-websites-node-js)
 * [Node.js デベロッパー センター](../nodejs-use-node-modules-azure-apps.md)
 * [優れた Kudu デバッグ コンソールの詳細](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

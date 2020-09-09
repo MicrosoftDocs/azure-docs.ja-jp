@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:デザイナーを使用して自動車の価格を予測する
+title: チュートリアル:デザイナー (プレビュー) を使用して自動車の価格を予測する
 titleSuffix: Azure Machine Learning
 description: ドラッグ アンド ドロップ インターフェイスを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行う方法を学習します。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 1 です。
 author: peterclu
@@ -8,13 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/12/2020
-ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 06/28/2020
+ms.custom: designer
+ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389428"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812987"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -36,6 +37,8 @@ ms.locfileid: "80389428"
 >このチュートリアルの完成版をサンプル パイプラインとして入手できます。
 >
 >これを見つけるには、ワークスペースのデザイナーに移動します。 **[新しいパイプライン]** セクションで **[Sample 1 - Regression:Automobile Price Prediction(Basic)]\(サンプル 1 - 回帰: 自動車価格の予測 (Basic)\)** を選択してください。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-new-pipeline"></a>新しいパイプラインを作成する
 
@@ -76,7 +79,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
     使用できるコンピューティング先が既にある場合は、それを選択してこのパイプラインを実行できます。
 
     > [!NOTE]
-    > デザイナーは、Azure Machine Learning コンピューティング先でのみ実験を実行できます。 その他のコンピューティング先は表示されません。
+    > デザイナーは、Azure Machine Learning コンピューティングおよび Azure Machine Learning コンピューティング インスタンスでのみトレーニング実験を実行できます。その他のコンピューティング先は表示されません。
 
 1. コンピューティング リソースの名前を入力します。
 
@@ -101,13 +104,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 使用するデータセットを把握するために、データを視覚化することができます。
 
-1. **Automobile price data (Raw)** モジュールを選択します。
-
-1. キャンバスの右側にある [モジュールの詳細] ペインで **[Outputs + log]\(出力 + ログ\)** を選択します。
-
-1. グラフ アイコンを選択してデータを視覚化します。
-
-    ![データの視覚化](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
+1. **[Automobile price data (Raw)]** を右クリックし、 **[視覚化]** を選択します。
 
 1. データ ウィンドウで別の列を選択して、それぞれの情報を表示します。
 
@@ -179,8 +176,8 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 1. キャンバスの右側にある [モジュールの詳細] ペインで **[コメント]** ボックスを選択し、「*Remove missing value rows*」と入力します。 
 
     これでパイプラインは次のようになっているはずです。
-    
-    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Select-column":::
 
 ## <a name="train-a-machine-learning-model"></a>機械学習モデルのトレーニング
 
@@ -219,18 +216,16 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Regression]\(回帰\)**  >  **[Linear Regression]\(線形回帰\)** の順に選択し、パイプライン キャンバスにドラッグします。
 
-1. **[Linear Regression]\(線形回帰\)** モジュールの出力を **[Train Model]\(モデルのトレーニング\)** モジュールの左側の入力に接続します。
-
 1. モジュール パレットで **[Module training]\(モジュールのトレーニング\)** セクションを展開し、 **[Train Model]\(モデルのトレーニング\)** モジュールをキャンバスにドラッグします。
 
-1. **[Train Model]\(モデルのトレーニング\)** モジュールを選択し、パイプライン キャンバスにドラッグします。
+1. **[Linear Regression]\(線形回帰\)** モジュールの出力を **[Train Model]\(モデルのトレーニング\)** モジュールの左側の入力に接続します。
 
 1. **[Split Data]\(データの分割\)** モジュールのトレーニング データ出力 (左側のポート) を **[Train Model]\(モデルのトレーニング\)** モジュールの右側の入力に接続します。
     
     > [!IMPORTANT]
     > **[Train Model]\(モデルのトレーニング\)** には必ず、 **[Split Data]\(データの分割\)** の左側の出力ポートを接続してください。 トレーニング セットは、左側のポートに格納されます。 右側のポートには、テスト セットが格納されます。
 
-    ![Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。 Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。":::
 
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 
@@ -245,7 +240,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     パイプラインは次のようになっているはずです。
 
-    ![[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。":::
 
 ### <a name="add-the-score-model-module"></a>[Score Model]\(モデルのスコア付け\) モジュールを追加する
 
@@ -265,7 +260,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     最終的なパイプラインは次のようになっているはずです。
 
-    ![パイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="パイプラインの正しい構成を示すスクリーンショット。":::
 
 ## <a name="submit-the-pipeline"></a>パイプラインを送信する
 
@@ -290,21 +285,17 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 実行が完了したら、パイプラインの実行結果を確認できます。 まず、回帰モデルによって生成された予測に注目します。
 
-1. **[Score Model]\(モデルのスコア付け\)** モジュールを選択して、その出力を表示します。
-
-1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Outputs + logs]\(出力 + ログ\)** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
+1. **[Score Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
-    ![Scored Label (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Scored Label (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット":::
 
 ### <a name="evaluate-models"></a>モデルを評価する
 
 テスト データセットに対してトレーニング済みのモデルがどの程度の精度で実行されたかを **[Evaluate Model]\(モデルの評価\)** を使用して確認します。
 
-1. **[Evaluate Model]\(モデルの評価\)** モジュールを選択して、その出力を表示します。
-
-1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Outputs + logs]\(出力 + ログ\)** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
+1. **[Evaluate Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
 
 作成したモデルに対して、以下の統計値が表示されます。
 

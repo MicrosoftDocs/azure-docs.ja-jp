@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112288"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057358"
 ---
 コマンドの出力の `identity` セクションでは、タスクで `SystemAssigned` 型の ID が設定されたことが示されています。 `principalId` は、タスク ID のプリンシパル ID です。
 
@@ -31,7 +31,9 @@ ms.locfileid: "77112288"
 後のコマンドで使用するため、[az acr task show][az-acr-task-show] コマンドを使用して、この principalId を変数に格納します。 次のコマンドでは、タスクとレジストリの名前を置き換えます。
 
 ```azurecli
-principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show \
+  --name <task_name> --registry <registry_name> \
+  --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

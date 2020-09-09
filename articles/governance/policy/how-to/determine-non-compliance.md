@@ -1,22 +1,21 @@
 ---
 title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
-ms.date: 04/26/2019
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512029"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
 Azure リソースにポリシー ルールへのコンプライアンス違反が確認された場合は、リソースがルールのどの部分に準拠していないのかを理解することをお勧めします。 また、どのような変更によって、以前は準拠していたリソースがコンプライアンス違反となったのかを把握することも有用です。 この情報を検索するには 2 つの方法があります。
 
-> [!div class="checklist"]
-> - [コンプライアンスの詳細](#compliance-details)
-> - [変更履歴 (プレビュー)](#change-history)
+- [コンプライアンスの詳細](#compliance-details)
+- [変更履歴 (プレビュー)](#change-history)
 
 ## <a name="compliance-details"></a>コンプライアンスの詳細
 
@@ -115,7 +114,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 ポリシー準拠の詳細を表示するには、前のセクションと同じ手順に従ってください。
 
-**[ポリシー準拠状況の詳細]** ウィンドウで、 **[前回の評価済みリソース]** をクリックします。
+[ポリシー準拠状況の詳細] ウィンドウで、 **[前回の評価済みリソース]** をクリックします。
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="auditIfNotExists 定義の詳細の表示" border="false":::
 
@@ -134,7 +133,7 @@ Install-Module Az.GuestConfiguration
 次のコマンドを使用して、VM のゲストの割り当てすべての現在の状態を表示できます。
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
 ```
 
 ```output
@@ -147,7 +146,7 @@ Audit that an application is not installed inside Windows VMs.            {[Inst
 VM が "_非準拠_" である理由が説明されている "_理由_" 語句のみを表示するために、Reason 子プロパティのみを返します。
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
 ```
 
 ```output
@@ -188,9 +187,9 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="change-history-preview"></a><a name="change-history"/>変更履歴 (プレビュー)
+## <a name="change-history-preview"></a><a name="change-history"></a>変更履歴 (プレビュー)
 
-新しい**パブリック プレビュー**の一環として、[完全モードの削除](../../../azure-resource-manager/templates/complete-mode-deletion.md)をサポートするすべての Azure リソースについて、過去 14 日間の変更履歴が使用可能です。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、Resource Manager のプロパティが追加、削除、変更されるとトリガーされます。
+新しい**パブリック プレビュー**の一環として、[完全モードの削除](../../../azure-resource-manager/templates/complete-mode-deletion.md)をサポートするすべての Azure リソースについて、過去 14 日間の変更履歴が使用可能です。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、Azure Resource Manager のプロパティが追加、削除、変更されるとトリガーされます。
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 

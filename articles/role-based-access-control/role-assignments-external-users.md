@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361906"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal を使用して外部ゲスト ユーザーの Azure ロール割り当てを追加または削除する
 
@@ -89,7 +89,9 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
     ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-    ![[追加] メニュー](./media/role-assignments-external-users/add-menu.png)
+    ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
+
+    [ロールの割り当ての追加] ウィンドウが開きます。
 
 1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
 
@@ -119,7 +121,9 @@ Azure RBAC でアクセス権を付与するには、ロールを割り当てま
 
 1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。
 
-    ![[追加] メニュー](./media/role-assignments-external-users/add-menu.png)
+    ![[ロールの割り当ての追加] メニュー](./media/shared/add-role-assignment-menu.png)
+
+    [ロールの割り当ての追加] ウィンドウが開きます。
 
 1. **[ロール]**  ボックスの一覧で、 **[仮想マシン共同作成者]**  などのロールを選択します。
 

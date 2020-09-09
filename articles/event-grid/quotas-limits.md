@@ -1,20 +1,14 @@
 ---
 title: クォータと制限 - Azure Event Grid | Microsoft Docs
 description: この記事では、Azure Event Grid の制限とクォータについて説明します。 たとえば、トピックのサブスクリプションの数、サブスクリプションあたりのカスタム トピックの数などです。
-services: event-grid
-author: spelluru
-editor: ''
-ms.service: event-grid
-ms.devlang: na
 ms.topic: reference
-ms.date: 05/12/2020
-ms.author: shvija
-ms.openlocfilehash: decfc6659ea38ea35ab41615ff5077492cfa03b5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 78fb18f579eb1fa0c032b72c6d32bf56a7f0c8f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120434"
 ---
 # <a name="azure-event-grid-quotas-and-limits"></a>Azure Event Grid のクォータと制限
 この記事では、Azure Event Grid でのクォータと制限の一覧を示します。 

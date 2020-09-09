@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 4bca41effc4e9834f8c76308556facb0681717cd
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888892"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753599"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールのリソース ログ
 
@@ -42,11 +42,11 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 アクセス ログとパフォーマンス ログで使用可能なデータの収集を開始するには、これらのログを有効にする必要があります。 ログ記録を有効にするには、次の手順に従います。
 
-1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。 この値の形式は、/subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Storage/storageAccounts/\<ストレージ アカウント名\> です。 サブスクリプション内の任意のストレージ アカウントを使用できます。 この情報は、Azure Portal で確認できます。
+1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。 この値の形式は /subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Storage/storageAccounts/\<storage account name\> です。 サブスクリプション内の任意のストレージ アカウントを使用できます。 この情報は、Azure Portal で確認できます。
 
     ![ポータル: ストレージ アカウントのリソース ID](../media/web-application-firewall-logs/diagnostics1.png)
 
-2. ログを有効にするアプリケーション ゲートウェイのリソース ID をメモしておきます。 この値の形式は、/subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Network/applicationGateways/\<Application Gateway 名\> です。 この情報は、ポータルで確認できます。
+2. ログを有効にするアプリケーション ゲートウェイのリソース ID をメモしておきます。 この値の形式は /subscriptions/\<subscriptionId\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/applicationGateways/\<application gateway name\> です。 この情報は、ポータルで確認できます。
 
     ![ポータル: Application Gateway のリソース ID](../media/web-application-firewall-logs/diagnostics2.png)
 
@@ -108,7 +108,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
     "operationName": "ApplicationGatewayAccess",
-    "time": "2017-04-26T19:27:38Z",
+    "timestamp": "2017-04-26T19:27:38Z",
     "category": "ApplicationGatewayAccessLog",
     "properties": {
         "instanceId": "ApplicationGatewayRole_IN_0",

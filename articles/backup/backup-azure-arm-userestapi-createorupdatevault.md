@@ -4,16 +4,16 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74173415"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757253"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーを作成する
 
-REST API を使用して Azure Recovery Services コンテナーを作成する手順の概要は、[コンテナー作成 REST API](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) に関するドキュメントで説明されています。 このドキュメントを参考にして、"West US" に "testVault" という名前のコンテナーを作成します。
+REST API を使用して Azure Recovery Services コンテナーを作成する手順の概要は、[コンテナー作成 REST API](/rest/api/recoveryservices/vaults/createorupdate) に関するドキュメントで説明されています。 このドキュメントを参考にして、"West US" に "testVault" という名前のコンテナーを作成します。
 
 Azure Recovery Services コンテナーを作成または更新するには、次の *PUT* 操作を使用します。
 
@@ -30,7 +30,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | 要求ヘッダー   | 説明 |
 |------------------|-----------------|
 | *Content-Type:*  | 必須。 `application/json` を設定します。 |
-| *Authorization:* | 必須。 有効な `Bearer` [アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
+| *Authorization:* | 必須。 有効な `Bearer` [アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |
 
 要求の作成方法の詳細については、「[Components of a REST API request/response](/rest/api/azure/#components-of-a-rest-api-requestresponse)」(REST API 要求/応答のコンポーネント) を参照してください。
 
@@ -42,8 +42,8 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  省略可能な eTag       |
 |location     |  true       |String         |   リソースの場所      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  コンテナーのプロパティ       |
-|sku     |         |  [SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    各 Azure リソースの一意のシステム ID を示します     |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  コンテナーのプロパティ       |
+|sku     |         |  [SKU](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    各 Azure リソースの一意のシステム ID を示します     |
 |tags     |         | Object        |     リソース タグ    |
 
 コンテナー名とリソース グループ名は PUT URI で提供することに注意してください。 要求本文では場所を定義します。
@@ -68,8 +68,8 @@ Recovery Services コンテナーの作成または更新操作には、2 種類
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |   [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | [OK]        |
-|201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成済み      |
+|200 OK     |   [コンテナー](/rest/api/recoveryservices/vaults/createorupdate#vault)      | [OK]        |
+|201 Created     | [コンテナー](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成済み      |
 
 REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 

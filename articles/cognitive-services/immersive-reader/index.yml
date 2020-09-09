@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: 2ba262c7adf778099e47e636a9106f74314c2254
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 9f0ed5265bc4371169097d2fedcbfcddb62d3bff
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77108690"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86045435"
 landingContent:
 - title: Immersive Reader の概要
   linkLists:
@@ -33,14 +33,22 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ASP.NET Core
-      url: quickstart.md
-    - text: Node.js
-      url: quickstart-nodejs.md
-    - text: Swift (iOS)
-      url: ios-quickstart.md
+    - text: C# (ASP.NET Core) の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: Node.js の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-nodejs
+    - text: Java の使用 (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-java-android
+    - text: Kotlin の使用 (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
+    - text: Swift (iOS) の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
   - linkListType: tutorial
     links:
+    - text: Android
+      url: tutorial-android.md
+    - text: iOS
+      url: tutorial-ios.md
     - text: Python
       url: tutorial-python.md
     - text: 複数の Immersive Reader リソースの使用
@@ -61,6 +69,12 @@ landingContent:
       url: how-to-customize-launch-button.md
     - text: 認証トークンをキャッシュする
       url: how-to-cache-token.md
+    - text: 音声読み上げを構成する
+      url: how-to-configure-read-aloud.md
+    - text: 翻訳を構成する
+      url: how-to-configure-translation.md
+    - text: ユーザー設定を格納する
+      url: how-to-store-user-preferences.md
   - linkListType: reference
     links:
     - text: JavaScript SDK

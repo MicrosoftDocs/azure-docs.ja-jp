@@ -5,16 +5,17 @@ description: TensorBoard を起動して実験の実行履歴を視覚化し、�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
-ms.openlocfilehash: 3df37126281a6654a6113f31895ddee276784c1c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: d9a7862054d72b42e0f421eacee34dccbf6d5e1c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681466"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319662"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,7 +115,7 @@ os.environ["TEST_TMPDIR"] = data_dir
 
 # Writing logs to ./logs results in their being uploaded to Artifact Service,
 # and thus, made accessible to our TensorBoard instance.
-arguments_list = ["--log_dir", logs_dir]
+script_params = ["--log_dir", logs_dir]
 
 # Create an experiment
 exp = Experiment(ws, experiment_name)
@@ -148,13 +149,14 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 # print(compute_target.get_status().serialize())
 ```
 
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
+
 ### <a name="submit-run-with-tensorflow-estimator"></a>TensorFlow エスティメーターを使用して実行を送信する
 
 TensorFlow エスティメーターには、コンピューティング先で TensorFlow トレーニング ジョブを起動する簡単な方法が用意されています。 これは、ジェネリック [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスを介して実装されています。これは、任意のフレームワークをサポートするために使用できます。 ジェネリック エスティメーターを使用したモデルのトレーニングの詳細については、[エスティメーターを使用した Azure Machine Learning によるモデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
 
 ```Python
 from azureml.train.dnn import TensorFlow
-script_params = {"--log_dir": "./logs"}
 
 tf_estimator = TensorFlow(source_directory=exp_dir,
                           compute_target=compute_target,

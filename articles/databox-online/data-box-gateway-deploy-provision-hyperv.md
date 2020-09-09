@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561621"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196629"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>チュートリアル:Hyper-V で Azure Data Box Gateway をプロビジョニングする
 
@@ -64,8 +64,8 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 
 作業を開始する前に、次のことを行います。
 
-- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
-- インターネットの最小帯域幅が、デバイスの最適動作を可能にする 20 Mbps であることを確認します。
+* Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
+* インターネットの最小帯域幅が、デバイスの最適動作を可能にする 20 Mbps であることを確認します。
 
 ## <a name="check-the-host-system"></a>ホスト システムをチェックする
 
@@ -75,11 +75,17 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 * ホストに接続されている Microsoft Windows クライアント上の Microsoft Hyper-V マネージャー。
 * 仮想デバイスを作成している基盤となるハードウェア (ホスト システム) で、次のリソースを仮想デバイス専用に使用できることを確認します。
 
-    * 少なくとも 4 つの仮想プロセッサ。
-    * 少なくとも 8 GB の RAM。
-    * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 
-    * 250 GB の OS ディスク。
-    * システム データ用の 2 TB の仮想ディスク。
+  * 少なくとも 4 つの仮想プロセッサ。
+  * 少なくとも 8 GB の RAM。
+  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。
+  * 250 GB の OS ディスク。
+  * システム データ用の 2 TB の仮想ディスク。
+
+## <a name="bitlocker-considerations"></a>BitLocker の考慮事項
+
+* Data Box Gateway 仮想マシンの BitLocker を有効にすることをお勧めします。 既定では、BitLocker は有効になっていません。 詳細については、次を参照してください。
+  * [Hyper-V マネージャーでの暗号化サポート設定](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [仮想マシンでの BitLocker のサポート](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>ハイパーバイザーで仮想デバイスをプロビジョニングする
 
@@ -136,7 +142,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 
     ![[名前と場所の指定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
 19. **[ディスクの構成]** ページで、 **[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **2 TB** (またはそれ以上) に指定します。
-    
+
     2 TB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。 ディスクを縮小しようとすると、デバイスのローカル データすべてが失われます。 データ ディスクの拡張はサポートされていません。 **[次へ]** をクリックします。
 
     ![[ディスクの構成] ページ](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
@@ -148,9 +154,11 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
     ![[設定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>仮想デバイスを起動して IP アドレスを取得する
+
 仮想デバイスを起動して接続するには、次の手順を実行します。
 
 #### <a name="to-start-the-virtual-device"></a>仮想デバイスを起動するには
+
 1. 仮想デバイスを起動します。
 
    ![仮想デバイスを起動する](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
@@ -159,26 +167,25 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 3. デバイスの準備ができるまでに 10 から 15 分かかる場合があります。 進行状況を示すステータス メッセージがコンソールに表示されます。 デバイスの準備ができたら **[アクション]** に移動します。 `Ctrl + Alt + Delete` キーを押して、仮想デバイスにサインインします。 既定のユーザーは *EdgeUser* で、既定のパスワードは *Password1* です。
 
    ![仮想マシンにサインインする](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-   
-6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップします。 非 DHCP 環境でデバイスを起動した場合は、結果にメッセージが表示されます。
-    
-7. ネットワークを構成するには、`Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
 
-8. `Set-HcsIpAddress` コマンドレットを使用してネットワークを構成します。 次の例を参照してください。
+4. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップします。 非 DHCP 環境でデバイスを起動した場合は、結果にメッセージが表示されます。
+
+5. ネットワークを構成するには、`Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
+
+6. `Set-HcsIpAddress` コマンドレットを使用してネットワークを構成します。 次の例を参照してください。
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
-    
-9. 初期セットアップが完了し、デバイスが再起動すると、デバイスのバナー テキストが表示されます。 デバイスを管理するため、バナー テキストに表示される IP アドレスと URL をメモしておきます。 この IP アドレスを使用して、仮想デバイスの Web UI に接続し、ローカル セットアップとアクティブ化を行います。
+
+7. 初期セットアップが完了し、デバイスが再起動すると、デバイスのバナー テキストが表示されます。 デバイスを管理するため、バナー テキストに表示される IP アドレスと URL をメモしておきます。 この IP アドレスを使用して、仮想デバイスの Web UI に接続し、ローカル セットアップとアクティブ化を行います。
 
    ![IP アドレスと接続 URL が含まれている仮想デバイスのバナー](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
-      
 
 デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます。 最小要件を満たすだけのリソースにコンピューターが対応できるように、デバイスの構成を変更します。 その後、再起動し、デバイスに接続します。 「[ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#check-the-host-system)」にある最小構成要件を参照してください。
 
 ローカル Web UI を使って初期構成を行っている間に他のエラーが発生した場合は、次のワークフローを参照してください。
 
-- 診断テストを実行して [Web UI のセットアップのトラブルシューティング](data-box-gateway-troubleshoot.md#run-diagnostics)を行う。
-- [ログ パッケージを生成してログ ファイルを表示する](data-box-gateway-troubleshoot.md#collect-support-package)。
+* 診断テストを実行して [Web UI のセットアップのトラブルシューティング](data-box-gateway-troubleshoot.md#run-diagnostics)を行う。
+* [ログ パッケージを生成してログ ファイルを表示する](data-box-gateway-troubleshoot.md#collect-support-package)。
 
 ## <a name="next-steps"></a>次のステップ
 

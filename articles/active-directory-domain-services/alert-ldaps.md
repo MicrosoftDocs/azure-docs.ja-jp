@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/18/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71258044"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220254"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services の Secure LDAP アラート
 
@@ -30,20 +30,20 @@ ms.locfileid: "71258044"
 
 "*マネージド ドメインに対してインターネット経由のセキュリティで Secure LDAP が有効になっています。ただし、ポート 636 へのアクセスはネットワーク セキュリティ グループを使用してロックダウンされていません。これにより、マネージド ドメインのユーザー アカウントがパスワードの総当り攻撃の対象になる可能性があります。* "
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
-Secure LDAP を有効にする場合は、特定の IP アドレスへの受信 LDAPS アクセスを制限する追加の規則を作成することをお勧めします。 これらの規則は、Azure AD DS マネージド ドメインをブルート フォース攻撃から保護します。 Secure LDAP への TCP ポート 636 アクセスを制限するようにネットワーク セキュリティ グループを更新するには、次の手順を実行します。
+Secure LDAP を有効にする場合は、特定の IP アドレスへの受信 LDAPS アクセスを制限する追加の規則を作成することをお勧めします。 これらの規則は、マネージド ドメインをブルート フォース攻撃から保護します。 Secure LDAP への TCP ポート 636 アクセスを制限するようにネットワーク セキュリティ グループを更新するには、次の手順を実行します。
 
 1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
 1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択し、次に **[受信セキュリティ規則]** を選択します。
-1. **[+ 追加]** を選択して TCP ポート 636 用の規則を追加します。 必要に応じて、ウィンドウで **[詳細]** を選択して規則を作成します。
+1. **[+ 追加]** を選択して、TCP ポート 636 のルールを作成します。 必要に応じて、ウィンドウで **[詳細]** を選択して規則を作成します。
 1. **[Source]\(ソース\)** には、ドロップダウン メニューから *[IP アドレス]* を選択します。 Secure LDAP トラフィックのアクセス権を付与するソース IP アドレスを入力します。
 1. **[宛先]** として *[Any]\(任意\)* を選択し、 **[宛先ポート範囲]** に「*636*」を入力します。
 1. **[プロトコル]** を *[TCP]* と設定し、 **[アクション]** を *[許可]* と設定します。
 1. 規則の優先順位を指定し、名前 (*RestrictLDAPS* など) を入力します。
 1. 準備ができたら、 **[追加]** を選択して規則を作成します。
 
-Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動的に更新され、アラートが削除されます。
+マネージド ドメインの正常性が 2 時間以内に自動的に更新され、アラートが削除されます。
 
 > [!TIP]
 > Azure AD DS を円滑に実行するために必要な規則は、TCP ポート 636 だけではありません。 詳細については、[Azure AD DS ネットワーク セキュリティ グループと必要なポート](network-considerations.md#network-security-groups-and-required-ports)に関するページを参照してください。
@@ -54,7 +54,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 *マネージド ドメインのセキュリティで保護された LDAP 証明は[日付] に有効期限が切れます。*
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 交換用の Secure LDAP 証明書を作成するには、「[Secure LDAP 用の証明書を作成する](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)」の手順を実行してください。 交換用の証明書を Azure AD DS に適用し、Secure LDAP を使用して接続するすべてのクライアントにその証明書を配布します。
 

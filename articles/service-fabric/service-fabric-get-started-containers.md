@@ -3,12 +3,13 @@ title: Azure Service Fabric コンテナー アプリケーションを作成す
 description: Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。 Python アプリケーションを使用して Docker イメージをビルドし、コンテナー レジストリにイメージをプッシュしてから、コンテナーをビルドして Azure Service Fabric にデプロイします。
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229315"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844441"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -16,7 +17,7 @@ ms.locfileid: "79229315"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Azure Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
+既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Azure Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](../container-registry/index.yml) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
 
 > [!NOTE]
 > この記事は Windows 開発環境に適用されます。  Service Fabric クラスター ランタイムと Docker ランタイムが同じ OS で実行されている必要があります。  Linux クラスターで Windows コンテナーを実行することはできません。
@@ -332,7 +333,7 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 
 ## <a name="clean-up"></a>クリーンアップ
 
-クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。
+クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](./service-fabric-tutorial-delete-cluster.md)を検討してください。
 
 コンテナー レジストリにイメージをプッシュした後は、開発コンピューターからローカルのイメージを削除できます。
 
@@ -349,7 +350,7 @@ Windows Server コンテナーは、ホスト OS のすべてのバージョン�
 - Windows Server 2016 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 1709 を実行しているホスト上で Hyper-V 分離モードでのみ機能します。 
 - Windows Server 2016 を使用してビルドされた Windows Server コンテナーでは、Windows Server 2016 で実行されているホスト上でプロセス分離モードで実行しているときに、コンテナーの OS とホスト OS のリビジョンが同じであることを確認する必要がある場合があります。
  
-詳細については、「[Windows コンテナーのバージョンの互換性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。
+詳細については、「[Windows コンテナーのバージョンの互換性](/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。
 
 コンテナーをビルドして Service Fabric クラスターにデプロイする場合は、ホスト OS とコンテナーの OS の互換性を考慮してください。 次に例を示します。
 

@@ -7,15 +7,15 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 7fe68e7b1a56c22e8c0d9638408982518105888e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79536464"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185147"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
 Azure CLI を使用すると、コマンドラインまたはスクリプトで Azure リソースを作成したり管理したりすることができます。 このクイック スタートでは、Azure CLI を使用して、約 5 分で Azure Database for MariaDB サーバーを Azure リソース グループに作成する方法を説明します。
 

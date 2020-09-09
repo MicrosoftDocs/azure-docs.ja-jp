@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 10/04/2019
-  ms.openlocfilehash: f0f47c8d997a3d02ad3bae1bc4634f4c7ad2155c
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 1feb34dd87f61dc04365afeeca0eec7b8b511480
+  ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "72529688"
+  ms.lasthandoff: 06/22/2020
+  ms.locfileid: "85193245"
 landingContent:
 - title: Durable Functions について
   linkLists:
@@ -40,6 +40,8 @@ landingContent:
       url: durable-functions-create-first-csharp.md
     - text: 最初の関数の作成 (JavaScript)
       url: quickstart-js-vscode.md
+    - text: 最初の関数の作成 (Python)
+      url: quickstart-python-vscode.md
   - linkListType: learn
     links:
     - text: 実行時間の長いサーバーレス ワークフローの作成

@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 6aad01808ad155b745b614d8de6009386f0d2914
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 04/30/2020
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687960"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815812"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -26,9 +26,10 @@ ms.locfileid: "81687960"
 
 継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的デリバリーは、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
 
-Azure Data Factory では、継続的インテグレーションと継続的デリバリー (CI/CD) とは、Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動することを意味します。 CI/CD を行うために、Data Factory UX と Azure Resource Manager テンプレートの統合を使用できます。
+Azure Data Factory では、継続的インテグレーションと継続的デリバリー (CI/CD) とは、Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動することを意味します。 Azure Data Factory では [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を活用し、さまざまな ADF エンティティ (パイプライン、データセット、データ フローなど) の構成を保存します。 データ ファクトリを別の環境に昇格させる手法が 2 つ提案されています。
 
-Data Factory UX では、 **[ARM テンプレート]** ドロップダウン メニューから Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、運用) ごとに 1 つの構成ファイルを作成します。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
+-    Data Factory と [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) の統合を利用した自動化されたデプロイ
+-    Data Factory UX と Azure Resource Manager の統合を利用した Resource Manager テンプレートの手動アップロード。
 
 この機能とデモを 9 分間で紹介する、次のビデオをご覧ください。
 
@@ -42,45 +43,26 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 1.  Azure Repos Git で開発データ ファクトリが作成され、構成されます。 すべての開発者には、パイプラインやデータセットなどの Data Factory リソースを作成するためのアクセス許可が必要です。
 
-1.  開発者は、各自の機能ブランチに変更を加える過程で、各自の最新の変更を使用して各自のパイプライン実行をデバッグします。 パイプライン実行をデバッグする方法の詳細については、「[Azure Data Factory での反復開発とデバッグ](iterative-development-debugging.md)」を参照してください。
+1.  開発者は変更を行う目的で[機能ブランチを作成](source-control.md#creating-feature-branches)します。 一番新しい変更を利用し、パイプライン実行をデバッグします。 パイプライン実行をデバッグする方法の詳細については、「[Azure Data Factory での反復開発とデバッグ](iterative-development-debugging.md)」を参照してください。
 
 1.  開発者は、変更の結果に問題がなければ、各自の機能ブランチからマスターまたはコラボレーション ブランチへの pull request を作成して、同僚が変更をレビューできるようにします。
 
-1.  pull request が承認され、変更がマスター ブランチにマージされたら、変更を開発ファクトリに発行できます。
+1.  pull request が承認され、変更がマスター ブランチにマージされたら、変更が開発ファクトリに発行されます。
 
-1.  チームは、変更をテスト ファクトリに、次に運用ファクトリにデプロイする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートします。
+1.  チームは、変更をテストまたは UAT (ユーザー受け入れテスト) ファクトリにデプロイする準備ができたら、Azure Pipelines リリースに進み、望ましいバージョンの開発ファクトリを UAT にデプロイします。 このデプロイは Azure Pipelines タスクの一環として行われ、Resource Manager テンプレート パラメーターを使用し、適切な構成を適用します。
 
-1.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと運用ファクトリにデプロイされます。
+1.  テスト ファクトリで変更の妥当性が確認されたら、パイプライン リリースの次のタスクを利用し、運用環境のファクトリにデプロイします。
 
-## <a name="create-a-resource-manager-template-for-each-environment"></a>各環境用の Resource Manager テンプレートを作成する
+> [!NOTE]
+> 開発ファクトリのみ、Git リポジトリに関連付けられます。 テスト ファクトリと運用環境のファクトリには Git リポジトリを関連付けません。更新には必ず Azure DevOps パイプラインか Resource Management テンプレートを利用してください。
 
-1. **[ARM テンプレート]** 一覧から、 **[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
+下の図は、このライフサイクルのさまざまなステップを示しています。
 
-   ![Resource Manager テンプレートのエクスポート](media/continuous-integration-deployment/continuous-integration-image1.png)
-
-1. テストおよび運用データ ファクトリで、 **[Import ARM template]\(ARM テンプレートのインポート\)** を選択します。 このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートを作成する\)** を選択して、Resource Manager テンプレート エディターを開きます。
-
-   ![独自のテンプレートの作成](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
-
-1. **[ファイルの読み込み]** を選択し、生成された Resource Manager テンプレートを選択します。 これは、手順 1 でエクスポートした .zip ファイルに格納されている **arm_template.json** ファイルです。
-
-   ![テンプレートの編集](media/continuous-integration-deployment/custom-deployment-edit-template.png)
-
-1. 設定セクションで、リンクされたサービスの資格情報などの構成値を入力します。 完了したら、 **[購入]** を選択して Resource Manager テンプレートをデプロイします。
-
-   ![設定セクション](media/continuous-integration-deployment/continuous-integration-image5.png)
-
-### <a name="connection-strings"></a>Connection strings
-
-接続文字列の構成方法については、コネクタの記事を参照してください。 たとえば、Azure SQL Database の場合は、「[Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー](connector-azure-sql-database.md)」をご覧ください。 接続文字列を検証するために、Data Factory UX でリソースのコード ビューを開くことができます。 コード ビューでは、接続文字列のパスワードまたはアカウント キーの部分は削除されます。 コード ビューを開くには、以下で強調表示されているアイコンを選択します。
-
-![コード ビューを開いて接続文字列を確認する](media/continuous-integration-deployment/continuous-integration-codeview.png)
+![Azure Pipelines を使用した継続的インテグレーションの図](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ## <a name="automate-continuous-integration-by-using-azure-pipelines-releases"></a>Azure Pipelines リリースを使用して継続的インテグレーションを自動化する
 
 以下は、Azure Pipelines リリースを設定し、複数の環境へのデータ ファクトリのデプロイを自動化するためのガイドです。
-
-![Azure Pipelines を使用した継続的インテグレーションの図](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>必要条件
 
@@ -106,7 +88,7 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 1.  **[ステージ名]** ボックスに、環境の名前を入力します。
 
-1.  **[成果物の追加]** を選択し、データ ファクトリで構成したリポジトリを選択します。 **[既定のブランチ]** で **adf_publish** を選択します。 **[既定のバージョン]** では **[既定のブランチからの最新バージョン]** を選択します。
+1.  **[成果物の追加]** を選択し、開発データ ファクトリで構成した Git リポジトリを選択します。 **既定のブランチ**のリポジトリの[発行ブランチ](source-control.md#configure-publishing-settings)を選択します。 既定では、この発行ブランチは `adf_publish` です。 **[既定のバージョン]** では **[既定のブランチからの最新バージョン]** を選択します。
 
     ![アーティファクトの追加](media/continuous-integration-deployment/continuous-integration-image7.png)
 
@@ -116,28 +98,28 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
     ![ステージ ビュー](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  新しいタスクを作成します。 **[Azure リソース グループのデプロイ]** を探して **[追加]** を選択します。
+    b.  新しいタスクを作成します。 **[ARM テンプレートのデプロイ]** を探して **[追加]** を選択します。
 
     c.  デプロイ タスクでは、ターゲットのデータ ファクトリのサブスクリプション、リソース グループ、および場所を選択します。 必要であれば資格情報を指定します。
 
     d.  **[Action]\(アクション\)** 一覧で、 **[Create or update resource group]\(リソース グループの作成または更新\)** を選択します。
 
-    e.  **[テンプレート]** ボックスの横にある省略記号ボタン ( **[…]** ) を選択します。 この記事の「[各環境用の Resource Manager テンプレートを作成する](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)」セクションで **[Import ARM Template]\(ARM テンプレートのインポート\)** を使用して作成した Azure Resource Manager テンプレートを参照します。 このファイルは adf_publish ブランチの <FactoryName> フォルダーで探します。
+    e.  **[テンプレート]** ボックスの横にある省略記号ボタン ( **[…]** ) を選択します。 構成されている Git リポジトリの発行ブランチで生成される Azure Resource Manager テンプレートを参照します。 ファイル `ARMTemplateForFactory.json` は adf_publish ブランチの <FactoryName> フォルダーで探します。
 
-    f.  **[…]** を選択します ( **[Template parameters]\(テンプレート パラメーター\)** ボックスの横にあります)。これにより、パラメーター ファイルを選択します。 選択するファイルは、コピーを作成したか既定のファイル ARMTemplateParametersForFactory.json を使用しているかによって異なります。
+    f.  **[…]** を選択します ( **[Template parameters]\(テンプレート パラメーター\)** ボックスの横にあります)。これにより、パラメーター ファイルを選択します。 ファイル `ARMTemplateParametersForFactory.json` は adf_publish ブランチの <FactoryName> フォルダーで探します。
 
-    g.  **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。ターゲットのデータ ファクトリの情報を入力します。 Azure Key Vault から取得した資格情報の場合は、シークレットの名前を二重引用符で囲んで入力します。 たとえば、シークレットの名前が cred1 の場合は、この値に「 **"$ (cred1)"** 」と入力します。
+    g.  **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。ターゲットのデータ ファクトリに望ましいパラメーター値を入力します。 Azure Key Vault から取得した資格情報の場合は、シークレットの名前を二重引用符で囲んで入力します。 たとえば、シークレットの名前が cred1 の場合は、この値に「 **"$ (cred1)"** 」と入力します。
 
     h. **[配置モード]** で **[Incremental]\(増分\)** を選択します。
 
     > [!WARNING]
-    > **[配置モード]** で **[完全]** を選択すると、Resource Manager テンプレートに定義されていないターゲット リソース グループ内のすべてのリソースを含め、既存のリソースが削除される可能性があります。
+    > 完全なデプロイ モードでは、リソース グループに存在していても、新しい Resource Manager テンプレート内で指定されていないリソースは、**削除**されます。 詳細については、「[Azure Resource Manager のデプロイ モード](../azure-resource-manager/templates/deployment-modes.md)」を参照してください。
 
     ![データ ファクトリの運用環境デプロイ](media/continuous-integration-deployment/continuous-integration-image9.png)
 
 1.  リリース パイプラインを保存します。
 
-1. リリースをトリガーするには、 **[Create release]\(リリースの作成\)** を選択します。
+1. リリースをトリガーするには、 **[Create release]\(リリースの作成\)** を選択します。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](https://docs.microsoft.com/azure/devops/pipelines/release/triggers?view=azure-devops)に関するページを参照してください。
 
    ![[Create release]\(リリースの作成\) の選択](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -185,7 +167,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
 適切なアクセス許可が設定されていない場合、Azure Key Vault タスクがアクセス拒否エラーで失敗することがあります。 リリースのログをダウンロードし、Azure Pipelines エージェントにアクセス許可を与えるコマンドを含む .ps1 ファイルを探します。 コマンドは直接実行できます。 または、ファイルからプリンシパル ID をコピーし、Azure portal でアクセス ポリシーを手動で追加できます。 必要な最低限のアクセス許可は、`Get` と `List` です。
 
-### <a name="update-active-triggers"></a>アクティブなトリガーを更新する
+### <a name="updating-active-triggers"></a>アクティブなトリガーを更新する
 
 アクティブなトリガーを更新しようとした場合、デプロイは失敗します。 アクティブなトリガーを更新するには、手動でそれらを停止し、デプロイ後に再起動する必要があります。 これは、Azure Powershell タスクを使用して実行できます。
 
@@ -203,300 +185,48 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
 (`Start-AzDataFactoryV2Trigger` 関数を使用して) 同様の手順を実行することで、デプロイ後にトリガーを再起動できます。
 
-### <a name="sample-pre--and-post-deployment-script"></a>サンプルの配置前と配置後スクリプト
+データ ファクトリ チームは、この記事の最後にある[サンプルのデプロイ前スクリプトとデプロイ後スクリプト](#script)を提供しています。 
 
-次のサンプル スクリプトは、トリガーをデプロイ前に停止し、デプロイ後に再起動するために使用できます。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 Azure DevOps の git リポジトリにスクリプトを保存し、バージョン 4.* で Azure PowerShell タスクを介して参照します。
+## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>各環境用の Resource Manager テンプレートを手動でプロモートする
 
-デプロイ前スクリプトを実行する場合は、 **[スクリプトの引数]** フィールドで、次のパラメーターのバリエーションを指定する必要があります。
+1. **[ARM テンプレート]** 一覧から、 **[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
 
-`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+   ![Resource Manager テンプレートのエクスポート](media/continuous-integration-deployment/continuous-integration-image1.png)
 
+1. テストおよび運用データ ファクトリで、 **[Import ARM template]\(ARM テンプレートのインポート\)** を選択します。 このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートを作成する\)** を選択して、Resource Manager テンプレート エディターを開きます。
 
-デプロイ後スクリプトを実行する場合は、 **[スクリプトの引数]** フィールドで、次のパラメーターのバリエーションを指定する必要があります。
+   ![独自のテンプレートの作成](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+1. **[ファイルの読み込み]** を選択し、生成された Resource Manager テンプレートを選択します。 これは、手順 1 でエクスポートした .zip ファイルに格納されている **arm_template.json** ファイルです。
 
-![Azure PowerShell タスク](media/continuous-integration-deployment/continuous-integration-image11.png)
+   ![テンプレートの編集](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
-こちらがデプロイ前/後に使用できるスクリプトです。 削除されたリソースとリソース参照を示しています。
+1. 設定セクションで、リンクされたサービスの資格情報などの構成値を入力します。 完了したら、 **[購入]** を選択して Resource Manager テンプレートをデプロイします。
 
-```powershell
-param
-(
-    [parameter(Mandatory = $false)] [String] $armTemplate,
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
-    [parameter(Mandatory = $false)] [String] $DataFactoryName,
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
-    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
-)
-
-function getPipelineDependencies {
-    param([System.Object] $activity)
-    if ($activity.Pipeline) {
-        return @($activity.Pipeline.ReferenceName)
-    } elseif ($activity.Activities) {
-        $result = @()
-        $activity.Activities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
-        return $result
-    } elseif ($activity.ifFalseActivities -or $activity.ifTrueActivities) {
-        $result = @()
-        $activity.ifFalseActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
-        $activity.ifTrueActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
-        return $result
-    } elseif ($activity.defaultActivities) {
-        $result = @()
-        $activity.defaultActivities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
-        if ($activity.cases) {
-            $activity.cases | ForEach-Object{ $_.activities } | ForEach-Object{$result += getPipelineDependencies -activity $_ }
-        }
-        return $result
-    } else {
-        return @()
-    }
-}
-
-function pipelineSortUtil {
-    param([Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline]$pipeline,
-    [Hashtable] $pipelineNameResourceDict,
-    [Hashtable] $visited,
-    [System.Collections.Stack] $sortedList)
-    if ($visited[$pipeline.Name] -eq $true) {
-        return;
-    }
-    $visited[$pipeline.Name] = $true;
-    $pipeline.Activities | ForEach-Object{ getPipelineDependencies -activity $_ -pipelineNameResourceDict $pipelineNameResourceDict}  | ForEach-Object{
-        pipelineSortUtil -pipeline $pipelineNameResourceDict[$_] -pipelineNameResourceDict $pipelineNameResourceDict -visited $visited -sortedList $sortedList
-    }
-    $sortedList.Push($pipeline)
-
-}
-
-function Get-SortedPipelines {
-    param(
-        [string] $DataFactoryName,
-        [string] $ResourceGroupName
-    )
-    $pipelines = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $ppDict = @{}
-    $visited = @{}
-    $stack = new-object System.Collections.Stack
-    $pipelines | ForEach-Object{ $ppDict[$_.Name] = $_ }
-    $pipelines | ForEach-Object{ pipelineSortUtil -pipeline $_ -pipelineNameResourceDict $ppDict -visited $visited -sortedList $stack }
-    $sortedList = new-object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline]
-    
-    while ($stack.Count -gt 0) {
-        $sortedList.Add($stack.Pop())
-    }
-    $sortedList
-}
-
-function triggerSortUtil {
-    param([Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger]$trigger,
-    [Hashtable] $triggerNameResourceDict,
-    [Hashtable] $visited,
-    [System.Collections.Stack] $sortedList)
-    if ($visited[$trigger.Name] -eq $true) {
-        return;
-    }
-    $visited[$trigger.Name] = $true;
-    $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
-        triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
-    }
-    $sortedList.Push($trigger)
-}
-
-function Get-SortedTriggers {
-    param(
-        [string] $DataFactoryName,
-        [string] $ResourceGroupName
-    )
-    $triggers = Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
-    $triggerDict = @{}
-    $visited = @{}
-    $stack = new-object System.Collections.Stack
-    $triggers | ForEach-Object{ $triggerDict[$_.Name] = $_ }
-    $triggers | ForEach-Object{ triggerSortUtil -trigger $_ -triggerNameResourceDict $triggerDict -visited $visited -sortedList $stack }
-    $sortedList = new-object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger]
-    
-    while ($stack.Count -gt 0) {
-        $sortedList.Add($stack.Pop())
-    }
-    $sortedList
-}
-
-function Get-SortedLinkedServices {
-    param(
-        [string] $DataFactoryName,
-        [string] $ResourceGroupName
-    )
-    $linkedServices = Get-AzDataFactoryV2LinkedService -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
-    $LinkedServiceHasDependencies = @('HDInsightLinkedService', 'HDInsightOnDemandLinkedService', 'AzureBatchLinkedService')
-    $Akv = 'AzureKeyVaultLinkedService'
-    $HighOrderList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
-    $RegularList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
-    $AkvList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
-
-    $linkedServices | ForEach-Object {
-        if ($_.Properties.GetType().Name -in $LinkedServiceHasDependencies) {
-            $HighOrderList.Add($_)
-        }
-        elseif ($_.Properties.GetType().Name -eq $Akv) {
-            $AkvList.Add($_)
-        }
-        else {
-            $RegularList.Add($_)
-        }
-    }
-
-    $SortedList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]($HighOrderList.Count + $RegularList.Count + $AkvList.Count)
-    $SortedList.AddRange($HighOrderList)
-    $SortedList.AddRange($RegularList)
-    $SortedList.AddRange($AkvList)
-    $SortedList
-}
-
-$templateJson = Get-Content $armTemplate | ConvertFrom-Json
-$resources = $templateJson.resources
-
-#Triggers 
-Write-Host "Getting triggers"
-$triggersADF = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-$triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
-$triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$deletedtriggers = $triggersADF | Where-Object { $triggerNames -notcontains $_.Name }
-$triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).name -contains $_ }
-
-if ($predeployment -eq $true) {
-    #Stop all triggers
-    Write-Host "Stopping deployed triggers"
-    $triggerstostop | ForEach-Object { 
-        Write-host "Disabling trigger " $_
-        Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Disabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
-    }
-}
-else {
-    #Deleted resources
-    #pipelines
-    Write-Host "Getting pipelines"
-    $pipelinesADF = Get-SortedPipelines -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $pipelinesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/pipelines" }
-    $pipelinesNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-    $deletedpipelines = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
-    #dataflows
-    $dataflowsADF = Get-AzDataFactoryV2DataFlow -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $dataflowsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/dataflows" }
-    $dataflowsNames = $dataflowsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
-    $deleteddataflow = $dataflowsADF | Where-Object { $dataflowsNames -notcontains $_.Name }
-    #datasets
-    Write-Host "Getting datasets"
-    $datasetsADF = Get-AzDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $datasetsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/datasets" }
-    $datasetsNames = $datasetsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
-    $deleteddataset = $datasetsADF | Where-Object { $datasetsNames -notcontains $_.Name }
-    #linkedservices
-    Write-Host "Getting linked services"
-    $linkedservicesADF = Get-SortedLinkedServices -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $linkedservicesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/linkedservices" }
-    $linkedservicesNames = $linkedservicesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-    $deletedlinkedservices = $linkedservicesADF | Where-Object { $linkedservicesNames -notcontains $_.Name }
-    #Integrationruntimes
-    Write-Host "Getting integration runtimes"
-    $integrationruntimesADF = Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
-    $integrationruntimesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/integrationruntimes" }
-    $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-    $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
-
-    #Delete resources
-    Write-Host "Deleting triggers"
-    $deletedtriggers | ForEach-Object { 
-        Write-Host "Deleting trigger "  $_.Name
-        $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
-        if ($trig.RuntimeState -eq "Started") {
-            Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
-        }
-        Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting pipelines"
-    $deletedpipelines | ForEach-Object { 
-        Write-Host "Deleting pipeline " $_.Name
-        Remove-AzDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting dataflows"
-    $deleteddataflow | ForEach-Object { 
-        Write-Host "Deleting dataflow " $_.Name
-        Remove-AzDataFactoryV2DataFlow -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting datasets"
-    $deleteddataset | ForEach-Object { 
-        Write-Host "Deleting dataset " $_.Name
-        Remove-AzDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting linked services"
-    $deletedlinkedservices | ForEach-Object { 
-        Write-Host "Deleting Linked Service " $_.Name
-        Remove-AzDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-    Write-Host "Deleting integration runtimes"
-    $deletedintegrationruntimes | ForEach-Object { 
-        Write-Host "Deleting integration runtime " $_.Name
-        Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
-
-    if ($deleteDeployment -eq $true) {
-        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
-        $deployments = Get-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName
-        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
-        $deploymentName = $deploymentsToConsider[0].DeploymentName
-
-       Write-Host "Deployment to be deleted: " $deploymentName
-        $deploymentOperations = Get-AzResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
-        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
-
-        $deploymentsToDelete | ForEach-Object { 
-            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
-            Remove-AzResourceGroupDeployment -Id $_.properties.targetResource.id
-        }
-        Write-Host "Deleting deployment: " $deploymentName
-        Remove-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
-    }
-
-    #Start active triggers - after cleanup efforts
-    Write-Host "Starting active triggers"
-    $activeTriggerNames | ForEach-Object { 
-        Write-host "Enabling trigger " $_
-        Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
-    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    while ($status.Status -ne "Enabled"){
-            Start-Sleep -s 15
-            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
-    }
-    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
-    }
-}
-```
+   ![設定セクション](media/continuous-integration-deployment/continuous-integration-image5.png)
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager テンプレートでカスタム パラメーターを使用する
 
-GIT モードの場合は、Resource Manager テンプレートの既定のプロパティをオーバーライドして、テンプレート内のパラメーター化されたプロパティと、ハードコーディングされたプロパティを設定することができます。 既定のパラメーター化のテンプレートは、以下のシナリオでオーバーライドすることもできます。
+開発ファクトリに Git リポジトリが関連付けられている場合、テンプレートの公開やエクスポートによって生成された Resource Manager テンプレートの既定の Resource Manager テンプレート パラメーターをオーバーライドすることができます。 既定のパラメーター化のテンプレートは、以下のシナリオでオーバーライドすることもできます。
 
 * 自動化された CI/CD を使用していて、Resource Manager のデプロイ中にいくつかのプロパティを変更したいが、プロパティが既定でパラメーター化されていない。
 * ファクトリが非常に大きく、既定の Resource Manager テンプレートが許容されるパラメーターの上限 (256) よりも多いために無効である。
 
-このような条件下で既定のパラメーター化テンプレートをオーバーライドするには、データ ファクトリ Git 統合のためのルート フォルダーとして指定されたフォルダー内に **arm-template-parameters-definition.json** という名前のファイルを作成します。 正確なファイル名を使用する必要があります。 Data Factory は、コラボレーション ブランチからだけでなく、現在 Azure Data Factory ポータルにあるどのブランチからでもこのファイルを読み取ります。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。 ファイルが見つからない場合は、既定のテンプレートが使用されます。
+既定のパラメーター化テンプレートをオーバーライドするには、Git ブランチのルート フォルダーに **arm-template-parameters-definition.json** という名前のファイルを作成します。 正確なファイル名を使用する必要があります。
+
+   ![カスタム パラメーター ファイル](media/continuous-integration-deployment/custom-parameters.png)
+
+コラボレーション ブランチから発行すると、Data Factory では、このファイルを読み取り、その構成を利用してパラメーター化するプロパティが生成されます。 ファイルが見つからない場合は、既定のテンプレートが使用されます。
+
+Resource Manager テンプレートをエクスポートすると、Data Factory により、コラボレーション ブランチからだけでなく、現在作業中のどのブランチからでもこのファイルを読み取られます。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。
 
 > [!NOTE]
 > カスタム パラメーター化テンプレートでは、ARM テンプレート パラメーターの制限である 256 が変更されることはありません。 これにより、パラメーター化されたプロパティの数を選択して減らすことができます。
 
-### <a name="syntax-of-a-custom-parameters-file"></a>カスタム パラメーター ファイルの構文
+### <a name="custom-parameter-syntax"></a>カスタムのパラメーター構文
 
-カスタム パラメーター ファイルを作成する際のいくつかのガイドラインを次に示します。 ファイルは、(トリガー、パイプライン、リンクされたサービス、データセット、統合ランタイムなどの) エンティティの種類ごとのセクションで構成されています。
+カスタム パラメーター ファイル **arm-template-parameters-definition.json** を作成する際のいくつかのガイドラインを次に示します。 ファイルは、(トリガー、パイプライン、リンクされたサービス、データセット、統合ランタイム、データ フロー) エンティティの種類ごとのセクションで構成されています。
+
 * 関連するエンティティ型の下にプロパティ パスを入力します。
 * プロパティ名を  `*` に設定すると、その下 (再帰的にではなく、最初のレベルまでのみ) にあるすべてのプロパティをパラメーター化することを指示します。 また、この構成に例外を指定することもできます。
 * プロパティの値を文字列として設定すると、プロパティをパラメーター化することを指示します。  `<action>:<name>:<stype>` の形式を使用します。
@@ -631,6 +361,14 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
                         "value": "-::secureString"
                     },
                     "resourceId": "="
+                },
+                "computeProperties": {
+                    "dataFlowProperties": {
+                        "externalComputeInfo": [{
+                                "accessToken": "-::secureString"
+                            }
+                        ]
+                    }
                 }
             }
         }
@@ -665,6 +403,7 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
                     "accessKeyId": "=",
                     "servicePrincipalId": "=",
                     "userId": "=",
+                    "host": "=",
                     "clientId": "=",
                     "clusterUserName": "=",
                     "clusterSshUserName": "=",
@@ -683,7 +422,11 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "functionAppUrl":"=",
+                    "environmentUrl": "=",
                     "aadResourceId": "=",
+                    "sasUri": "|:-sasUri:secureString",
+                    "sasToken": "|",
                     "connectionString": "|:-connectionString:secureString"
                 }
             }
@@ -710,6 +453,8 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
         }}
 }
 ```
+
+### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>例: 既存の Azure Databricks 対話型クラスター ID のパラメーター化
 
 次の例は、既定のパラメーター化テンプレートに 1 つの値を追加する方法を示しています。 Databricks のリンクされたサービスの既存の Azure Databricks インタラクティブ クラスター ID をパラメーター ファイルに追加するだけです。 このファイルは、`Microsoft.DataFactory/factories/linkedServices` のプロパティ フィールドの下に `existingClusterId` が追加されていることを除き、前のファイルと同じであることに注意してください。
 
@@ -838,7 +583,7 @@ Data Factory のスクリプトは、必ず CI/CD パイプラインのデプロ
 
 Git が構成されていない場合は、 **[ARM テンプレート]** 一覧の **[ARM テンプレートのエクスポート]** を使用して、リンクされたテンプレートにアクセスできます。
 
-## <a name="hotfix-production-branch"></a>運用ブランチへの修正プログラムの適用
+## <a name="hotfix-production-environment"></a>運用環境への修正プログラムの適用
 
 ファクトリを運用環境にデプロイし、すぐに修正が必要なバグがあることが判明したが現在のコラボレーション ブランチをデプロイできない場合、修正プログラムのデプロイが必要なことがあります。 この方法は、クイック修正エンジニアリングまたは QFE と呼ばれています。
 
@@ -860,27 +605,338 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 
 9.    テストと運用ファクトリに修正プログラム リリースをデプロイします。 このリリースには、以前の運用ペイロードに加えて、手順 5 で行った修正が含まれています。
 
-10.    修正プログラムでの変更を開発ブランチに追加して、今後のリリースに同じバグが含まれないようにします。
+10.   修正プログラムでの変更を開発ブランチに追加して、今後のリリースに同じバグが含まれないようにします。
 
 ## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
 
 データ ファクトリとの Git 統合を使用していて、変更を開発からテストを経て運用環境に移行する CI/CD パイプラインがある場合は、次のベスト プラクティスをお勧めします。
 
--   **Git 統合**。 Git 統合で構成する必要があるのは開発環境のデータ ファクトリのみです。 テスト環境と運用環境への変更は CI/CD を介してデプロイされるので、Git 統合は必要ありません。
+-   **Git 統合**。 Git 統合で開発データ ファクトリのみを構成します。 テスト環境と運用環境への変更は CI/CD を介してデプロイされるので、Git 統合は必要ありません。
 
--   **データ ファクトリの CI/CD スクリプト**。 CI/CD の Resource Manager のデプロイ手順の前に、トリガーの停止と再起動やクリーンアップの実行など、特定のタスクを完了する必要があります。 デプロイの前後に PowerShell スクリプトを使用することをお勧めします。 詳細については、「[アクティブなトリガーを更新する](#update-active-triggers)」を参照してください。
+-   **デプロイ前とデプロイ後のスクリプト**。 CI/CD の Resource Manager のデプロイ手順の前に、トリガーの停止と再起動やクリーンアップの実行など、特定のタスクを完了する必要があります。 デプロイ タスクの前後に PowerShell スクリプトを使用することをお勧めします。 詳細については、「[アクティブなトリガーを更新する](#updating-active-triggers)」を参照してください。 データ ファクトリ チームは、このページの終わりに使用する[スクリプトを提供](#script)しています。
 
 -   **統合ランタイムと共有**。 統合ランタイムは頻繁には変更されず、CI/CD のすべてのステージで類似しています。 そのため、Data Factory では、CI/CD のすべてのステージで統合ランタイムの名前と種類を同じにすることが求められます。 すべてのステージで統合ランタイムを共有する場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。
 
--   **Key Vault**。 Azure Key Vault に基づいてリンクされたサービスを使用する場合は、異なる環境用に個別のキー コンテナーを保持することで、さらに有効に活用できます。 キー コンテナーごとに個別のアクセス許可レベルを構成することもできます。 たとえば、運用環境のシークレットへのアクセス許可をチーム メンバーに持たせたくない場合があります。 このアプローチに従う場合は、すべてのステージで同じシークレット名を保持することをお勧めします。 同じ名前にすると、CI/CD 環境全体で Resource Manager テンプレートを変更する必要がなくなります。なぜなら、変わる項目はキー コンテナーの名前だけであり、これは Resource Manager テンプレートのパラメーターの 1 つです。
+-   **Key Vault**。 リンクされているサービスを使用するとき、その接続情報が Azure Key Vault に格納されている場合、キー コンテナーを環境別に保持することが推奨されます。 キー コンテナーごとに個別のアクセス許可レベルを構成することもできます。 たとえば、運用環境のシークレットへのアクセス許可をチーム メンバーに持たせたくない場合があります。 このアプローチに従う場合は、すべてのステージで同じシークレット名を保持することをお勧めします。 同じシークレット名を保持する場合、CI/CD 環境全体で各接続文字列をパラメーター化する必要はありません。変わるのは別個のパラメーターであるキー コンテナーの名前だけだからです。
 
 ## <a name="unsupported-features"></a>サポートされていない機能
 
 - 設計上、Data Factory では、コミットのチェリーピックやリソースの選択的発行は許可されません。 発行には、データ ファクトリで加えられたすべての変更が含まれます
 
     - データ ファクトリのエンティティは相互に依存しています。 たとえば、トリガーはパイプラインに依存し、パイプラインはデータセットや他のパイプラインに依存しています。 リソースのサブセットを選択的に発行すると、予期しない動作やエラーにつながる可能性があります。
-    - まれに、選択的な発行が必要になった場合は、修正プログラムの使用を検討してください。 詳細については、「[運用ブランチへの修正プログラムの適用](#hotfix-production-branch)」を参照してください。
+    - まれに、選択的な発行が必要になった場合は、修正プログラムの使用を検討してください。 詳細については、「[運用環境への修正プログラムの適用](#hotfix-production-environment)」を参照してください。
 
 -   非公開のブランチから発行することはできません。
 
 -   現在、Bitbucket でプロジェクトをホストすることはできません。
+
+## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> サンプルのデプロイ前とデプロイ後のスクリプト
+
+次のサンプル スクリプトは、トリガーをデプロイ前に停止し、デプロイ後に再起動するために使用できます。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 Azure DevOps の git リポジトリにスクリプトを保存し、バージョン 4.* で Azure PowerShell タスクを介して参照します。
+
+デプロイ前スクリプトを実行する場合は、 **[スクリプトの引数]** フィールドで、次のパラメーターのバリエーションを指定する必要があります。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+デプロイ後スクリプトを実行する場合は、 **[スクリプトの引数]** フィールドで、次のパラメーターのバリエーションを指定する必要があります。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+![Azure PowerShell タスク](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+こちらがデプロイ前/後に使用できるスクリプトです。 削除されたリソースとリソース参照を示しています。
+
+  
+```powershell
+param
+(
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
+)
+
+function getPipelineDependencies {
+    param([System.Object] $activity)
+    if ($activity.Pipeline) {
+        return @($activity.Pipeline.ReferenceName)
+    } elseif ($activity.Activities) {
+        $result = @()
+        $activity.Activities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        return $result
+    } elseif ($activity.ifFalseActivities -or $activity.ifTrueActivities) {
+        $result = @()
+        $activity.ifFalseActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        $activity.ifTrueActivities | Where-Object {$_ -ne $null} | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        return $result
+    } elseif ($activity.defaultActivities) {
+        $result = @()
+        $activity.defaultActivities | ForEach-Object{ $result += getPipelineDependencies -activity $_ }
+        if ($activity.cases) {
+            $activity.cases | ForEach-Object{ $_.activities } | ForEach-Object{$result += getPipelineDependencies -activity $_ }
+        }
+        return $result
+    } else {
+        return @()
+    }
+}
+
+function pipelineSortUtil {
+    param([Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline]$pipeline,
+    [Hashtable] $pipelineNameResourceDict,
+    [Hashtable] $visited,
+    [System.Collections.Stack] $sortedList)
+    if ($visited[$pipeline.Name] -eq $true) {
+        return;
+    }
+    $visited[$pipeline.Name] = $true;
+    $pipeline.Activities | ForEach-Object{ getPipelineDependencies -activity $_ -pipelineNameResourceDict $pipelineNameResourceDict}  | ForEach-Object{
+        pipelineSortUtil -pipeline $pipelineNameResourceDict[$_] -pipelineNameResourceDict $pipelineNameResourceDict -visited $visited -sortedList $sortedList
+    }
+    $sortedList.Push($pipeline)
+
+}
+
+function Get-SortedPipelines {
+    param(
+        [string] $DataFactoryName,
+        [string] $ResourceGroupName
+    )
+    $pipelines = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $ppDict = @{}
+    $visited = @{}
+    $stack = new-object System.Collections.Stack
+    $pipelines | ForEach-Object{ $ppDict[$_.Name] = $_ }
+    $pipelines | ForEach-Object{ pipelineSortUtil -pipeline $_ -pipelineNameResourceDict $ppDict -visited $visited -sortedList $stack }
+    $sortedList = new-object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline]
+    
+    while ($stack.Count -gt 0) {
+        $sortedList.Add($stack.Pop())
+    }
+    $sortedList
+}
+
+function triggerSortUtil {
+    param([Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger]$trigger,
+    [Hashtable] $triggerNameResourceDict,
+    [Hashtable] $visited,
+    [System.Collections.Stack] $sortedList)
+    if ($visited[$trigger.Name] -eq $true) {
+        return;
+    }
+    $visited[$trigger.Name] = $true;
+    if ($trigger.Properties.DependsOn) {
+        $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
+            triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+        }
+    }
+    $sortedList.Push($trigger)
+}
+
+function Get-SortedTriggers {
+    param(
+        [string] $DataFactoryName,
+        [string] $ResourceGroupName
+    )
+    $triggers = Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+    $triggerDict = @{}
+    $visited = @{}
+    $stack = new-object System.Collections.Stack
+    $triggers | ForEach-Object{ $triggerDict[$_.Name] = $_ }
+    $triggers | ForEach-Object{ triggerSortUtil -trigger $_ -triggerNameResourceDict $triggerDict -visited $visited -sortedList $stack }
+    $sortedList = new-object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger]
+    
+    while ($stack.Count -gt 0) {
+        $sortedList.Add($stack.Pop())
+    }
+    $sortedList
+}
+
+function Get-SortedLinkedServices {
+    param(
+        [string] $DataFactoryName,
+        [string] $ResourceGroupName
+    )
+    $linkedServices = Get-AzDataFactoryV2LinkedService -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+    $LinkedServiceHasDependencies = @('HDInsightLinkedService', 'HDInsightOnDemandLinkedService', 'AzureBatchLinkedService')
+    $Akv = 'AzureKeyVaultLinkedService'
+    $HighOrderList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
+    $RegularList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
+    $AkvList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]
+
+    $linkedServices | ForEach-Object {
+        if ($_.Properties.GetType().Name -in $LinkedServiceHasDependencies) {
+            $HighOrderList.Add($_)
+        }
+        elseif ($_.Properties.GetType().Name -eq $Akv) {
+            $AkvList.Add($_)
+        }
+        else {
+            $RegularList.Add($_)
+        }
+    }
+
+    $SortedList = New-Object Collections.Generic.List[Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService]($HighOrderList.Count + $RegularList.Count + $AkvList.Count)
+    $SortedList.AddRange($HighOrderList)
+    $SortedList.AddRange($RegularList)
+    $SortedList.AddRange($AkvList)
+    $SortedList
+}
+
+$templateJson = Get-Content $armTemplate | ConvertFrom-Json
+$resources = $templateJson.resources
+
+#Triggers 
+Write-Host "Getting triggers"
+$triggersInTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
+$triggerNamesInTemplate = $triggersInTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+
+$triggersDeployed = Get-SortedTriggers -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+
+$triggersToStop = $triggersDeployed | Where-Object { $triggerNamesInTemplate -contains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToDelete = $triggersDeployed | Where-Object { $triggerNamesInTemplate -notcontains $_.Name } | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.Name
+        TriggerType = $_.Properties.GetType().Name 
+    }
+}
+$triggersToStart = $triggersInTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object { 
+    New-Object PSObject -Property @{
+        Name = $_.name.Substring(37, $_.name.Length-40)
+        TriggerType = $_.Properties.type
+    }
+}
+
+if ($predeployment -eq $true) {
+    #Stop all triggers
+    Write-Host "Stopping deployed triggers`n"
+    $triggersToStop | ForEach-Object {
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Unsubscribing" $_.Name "from events"
+            $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Disabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Stopping trigger" $_.Name
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
+    }
+}
+else {
+    #Deleted resources
+    #pipelines
+    Write-Host "Getting pipelines"
+    $pipelinesADF = Get-SortedPipelines -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $pipelinesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/pipelines" }
+    $pipelinesNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+    $deletedpipelines = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
+    #dataflows
+    $dataflowsADF = Get-AzDataFactoryV2DataFlow -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $dataflowsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/dataflows" }
+    $dataflowsNames = $dataflowsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
+    $deleteddataflow = $dataflowsADF | Where-Object { $dataflowsNames -notcontains $_.Name }
+    #datasets
+    Write-Host "Getting datasets"
+    $datasetsADF = Get-AzDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $datasetsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/datasets" }
+    $datasetsNames = $datasetsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
+    $deleteddataset = $datasetsADF | Where-Object { $datasetsNames -notcontains $_.Name }
+    #linkedservices
+    Write-Host "Getting linked services"
+    $linkedservicesADF = Get-SortedLinkedServices -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $linkedservicesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/linkedservices" }
+    $linkedservicesNames = $linkedservicesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+    $deletedlinkedservices = $linkedservicesADF | Where-Object { $linkedservicesNames -notcontains $_.Name }
+    #Integrationruntimes
+    Write-Host "Getting integration runtimes"
+    $integrationruntimesADF = Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $integrationruntimesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/integrationruntimes" }
+    $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+    $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
+
+    #Delete resources
+    Write-Host "Deleting triggers"
+    $triggersToDelete | ForEach-Object { 
+        Write-Host "Deleting trigger "  $_.Name
+        $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+        if ($trig.RuntimeState -eq "Started") {
+            if ($_.TriggerType -eq "BlobEventsTrigger") {
+                Write-Host "Unsubscribing trigger" $_.Name "from events"
+                $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                while ($status.Status -ne "Disabled"){
+                    Start-Sleep -s 15
+                    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+                }
+            }
+            Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
+        }
+        Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting pipelines"
+    $deletedpipelines | ForEach-Object { 
+        Write-Host "Deleting pipeline " $_.Name
+        Remove-AzDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting dataflows"
+    $deleteddataflow | ForEach-Object { 
+        Write-Host "Deleting dataflow " $_.Name
+        Remove-AzDataFactoryV2DataFlow -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting datasets"
+    $deleteddataset | ForEach-Object { 
+        Write-Host "Deleting dataset " $_.Name
+        Remove-AzDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting linked services"
+    $deletedlinkedservices | ForEach-Object { 
+        Write-Host "Deleting Linked Service " $_.Name
+        Remove-AzDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+    Write-Host "Deleting integration runtimes"
+    $deletedintegrationruntimes | ForEach-Object { 
+        Write-Host "Deleting integration runtime " $_.Name
+        Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start active triggers - after cleanup efforts
+    Write-Host "Starting active triggers"
+    $triggersToStart | ForEach-Object { 
+        if ($_.TriggerType -eq "BlobEventsTrigger") {
+            Write-Host "Subscribing" $_.Name "to events"
+            $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            while ($status.Status -ne "Enabled"){
+                Start-Sleep -s 15
+                $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
+            }
+        }
+        Write-Host "Starting trigger" $_.Name
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force
+    }
+}
+```

@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync のデプロイ | Microsoft Docs
-description: Azure File Sync をデプロイする方法を、開始から終了まで説明します。
+description: Azure portal、PowerShell、または Azure CLI を使用して Azure File Sync をデプロイする方法について最初から最後まで説明します。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137724"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226050"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -20,24 +20,35 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 この記事に記載されている手順を完了する前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」と「[Azure File Sync のデプロイの計画](storage-sync-files-planning.md)」を読むことを強くお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
     - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」
     - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
-* Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされている Windows Server バージョンの詳細については、[Windows Server との相互運用性](storage-sync-files-planning.md#windows-file-server-considerations)に関するページをご覧ください。
-* Az PowerShell モジュールは、PowerShell 5.1 または PowerShell 6+ のどちらでも使用できます。 Azure File Sync 用の Az PowerShell モジュールは、サポートされているすべてのシステム (Windows 以外のシステムを含む) で使用できますが、サーバー登録コマンドレットは常に、登録している Windows Server インスタンスで実行する必要があります (これは直接、または PowerShell リモート処理経由で行うことができます)。 Windows Server 2012 R2 では、 **$PSVersionTable** オブジェクトの **PSVersion** プロパティの値を調べることによって、少なくとも PowerShell 5.1.\* を実行していることを確認できます。
+1. Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされる Windows Server のバージョンと推奨されるシステム リソースの詳細については、[Windows ファイル サーバーの考慮事項](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
+    - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」
+    - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
+1. Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされる Windows Server のバージョンと推奨されるシステム リソースの詳細については、[Windows ファイル サーバーの考慮事項](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
+
+1. Az PowerShell モジュールは、PowerShell 5.1 または PowerShell 6+ のどちらでも使用できます。 Azure File Sync 用の Az PowerShell モジュールは、サポートされているすべてのシステム (Windows 以外のシステムを含む) で使用できますが、サーバー登録コマンドレットは常に、登録している Windows Server インスタンスで実行する必要があります (これは直接、または PowerShell リモート処理経由で行うことができます)。 Windows Server 2012 R2 では、 **$PSVersionTable** オブジェクトの **PSVersion** プロパティの値を調べることによって、少なくとも PowerShell 5.1.\* を実行していることを確認できます。
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    Windows Server 2012 R2 の最新のインストールのように、PSVersion の値が 5.1.\* 未満の場合は、[Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をダウンロードしてインストールすることで簡単にアップグレードできます。 Windows Server 2012 R2 でダウンロードしてインストールする適切なパッケージは、**Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu** です。 
+    Windows Server 2012 R2 の最新のインストールのように、**PSVersion** の値が 5.1.\* 未満の場合は、[Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をダウンロードしてインストールすることで簡単にアップグレードできます。 Windows Server 2012 R2 でダウンロードしてインストールする適切なパッケージは、**Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu** です。 
 
     PowerShell 6+ は、サポートされているすべてのシステムで使用でき、その [GitHub ページ](https://github.com/PowerShell/PowerShell#get-powershell)経由でダウンロードできます。 
 
     > [!Important]  
     > PowerShell から直接登録するのではなく、サーバー登録 UI を使用する予定がある場合は、PowerShell 5.1 を使用する必要があります。
 
-* PowerShell 5.1 を使用することを選択した場合は、少なくとも .NET 4.7.2 がインストールされていることを確認してください。 詳細については、使用しているシステムで「[.NET Framework のバージョンおよび依存関係](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)」を参照してください。
+1. PowerShell 5.1 を使用することを選択した場合は、少なくとも .NET 4.7.2 がインストールされていることを確認してください。 詳細については、使用しているシステムで「[.NET Framework のバージョンおよび依存関係](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)」を参照してください。
 
     > [!Important]  
     > Windows Server Core で .NET 4.7.2+ をインストールする場合は、`quiet` フラグと `norestart` フラグを指定してインストールする必要があります。そうしないと、インストールが失敗します。 たとえば、.NET 4.8 をインストールする場合、コマンドは次のようになります。
@@ -45,10 +56,51 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Az PowerShell モジュール。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
+1. Az PowerShell モジュール。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
      
     > [!Note]  
     > Az PowerShell モジュールをインストールするときに、Az.StorageSync モジュールが自動的にインストールされるようになりました。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Azure File Sync をデプロイするのと同じリージョンに Azure ファイル共有が存在すること。詳細については、次を参照してください。
+    - Azure File Sync の「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」
+    - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
+1. Azure File Sync と同期する、サポートされている Windows Server または Windows Server クラスターの少なくとも 1 つのインスタンス。サポートされる Windows Server のバージョンと推奨されるシステム リソースの詳細については、[Windows ファイル サーバーの考慮事項](storage-sync-files-planning.md#windows-file-server-considerations)に関する記事を参照してください。
+
+1. [Azure CLI のインストール](/cli/azure/install-azure-cli)
+
+   必要に応じて、Azure Cloud Shell を使用してこのチュートリアルの手順を完了することもできます。  Azure Cloud Shell は、ブラウザーを介して使用する対話型のシェル環境です。  次のいずれかの方法で Cloud Shell を起動します。
+
+   - コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[使ってみる]** によって Azure Cloud Shell が開きますが、コードが Cloud Shell に自動的にコピーされることはありません。
+
+   - [https://shell.azure.com](https://shell.azure.com) に移動して Cloud Shell を開きます
+
+   - [Azure portal](https://portal.azure.com) の右上にあるメニュー バーの **[Cloud Shell]** ボタンを選択します
+
+1. サインインします。
+
+   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
+
+   ```azurecli
+   az login
+   ```
+
+    ターミナルに表示される手順に従って、認証プロセスを完了します。
+
+1. Azure CLI 拡張機能 [az filesync](/cli/azure/ext/storagesync/storagesync) をインストールする
+
+   ```azurecli
+   az extension add --name storagesync
+   ```
+
+   拡張機能のリファレンス **storagesync** をインストールすると、次の警告が表示されます。
+
+   ```output
+   The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
+   ```
+
+---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Azure File Sync で使用する Windows Server の準備
 フェールオーバー クラスターの各サーバー ノードなど、Azure File Sync で使用する各サーバーで、**Internet Explorer セキュリティ強化の構成**を無効にします。 これは、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
@@ -87,6 +139,10 @@ if ($installType -ne "Server Core") {
     Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 }
 ``` 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
 
 ---
 
@@ -155,6 +211,10 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
+
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
@@ -207,6 +267,9 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
 
 ---
 
@@ -215,6 +278,15 @@ Windows Server をストレージ同期サービスに登録すると、サー�
 
 > [!Note]
 > サーバーの登録時には、Azure 資格情報を使ってストレージ同期サービスと Windows Server の間に信頼関係が作成されますが、その後、サーバーは独自の ID を作成して使用します。この ID は、サーバーが登録されていて、現在の Shared Access Signature トークン (ストレージ SAS) が有効な間だけ有効です。 サーバーの登録が解除されるとサーバーに新しい SAS トークンを発行できなくなるので、サーバーは Azure ファイル共有にアクセスできず、すべての同期を停止します。
+
+サーバーを登録する管理者は、特定のストレージ同期サービスに対する**所有者**または**共同作成者**の管理ロールのメンバーである必要があります。 これは、Azure portal においてストレージ同期サービスに対する **[アクセス制御 (IAM)]** で構成できます。
+
+また、サーバーを登録できる管理者と、ストレージ同期サービスで同期を構成することも許可されている管理者を、区別することもできます。 その場合、サーバーの登録のみが許可される管理者の一覧を取得するカスタム ロールを作成し、そのカスタム ロールに次のアクセス許可を付与する必要があります。
+
+* "Microsoft.StorageSync/storageSyncServices/registeredServers/write"
+* "Microsoft.StorageSync/storageSyncServices/read"
+* "Microsoft.StorageSync/storageSyncServices/workflows/read"
+* "Microsoft.StorageSync/storageSyncServices/workflows/operations/read"
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure File Sync エージェントがインストールされると、サーバー登録 UI が自動的に開きます。 開かない場合、これを次に示すファイルの場所から手動で開くことができます: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。 サーバー登録 UI が開いたら、 **[サインイン]** を選択して開始します。
@@ -233,6 +305,9 @@ Azure File Sync エージェントがインストールされると、サーバ�
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure portal または PowerShell の手順に従います。
 
 ---
 
@@ -243,6 +318,8 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 
 > [!Important]  
 > 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントで変更を行うことにより、ファイルを同期グループ内の他のエンドポイントに同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
+
+クラウド エンドポイントを作成する管理者は、クラウドエンド ポイントで参照されている Azure ファイル共有が含まれるストレージ アカウントの**所有者**管理ロールのメンバーである必要があります。 これは、Azure portal においてストレージ アカウントに対する **[アクセス制御 (IAM)]** で構成できます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 同期グループを作成するには、[Azure Portal](https://portal.azure.com/) でストレージ同期サービスに移動し、 **[+ 同期グループ]** を選びます。
@@ -301,6 +378,27 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az storagesync sync-group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) コマンドを使用して、新しい同期グループを作成します。  すべての CLI コマンドでリソース グループを既定に設定するには、[az configure](/cli/azure/reference-index#az-configure) を使用します。
+
+```azurecli
+az storagesync sync-group create --resource-group myResourceGroupName \
+                                 --name myNewSyncGroupName \
+                                 --storage-sync-service myStorageSyncServiceName \
+```
+
+[az storagesync sync-group cloud-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) コマンドを使用して、新しいクラウド エンドポイントを作成します。
+
+```azurecli
+az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
+                                                --storage-sync-service myStorageSyncServiceName \
+                                                --sync-group-name mySyncGroupName \
+                                                --name myNewCloudEndpointName \
+                                                --storage-account mystorageaccountname \
+                                                --azure-file-share-name azure-file-share-name
+```
+
 ---
 
 ## <a name="create-a-server-endpoint"></a>サーバー エンドポイントを作成する
@@ -317,16 +415,19 @@ New-AzStorageSyncCloudEndpoint `
 - **パス**:同期グループの一部として同期される Windows Server のパス。
 - **クラウドの階層化**: クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化によって、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できます。
 - **ボリュームの空き領域**: サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
+- **初期ダウンロード モード**:これは、エージェント バージョン 11 からの省略可能な選択で、Azure ファイル共有にはファイルがあるが、サーバー上にはない場合に役立ちます。 このような状況は、たとえば、別のブランチ オフィス サーバーを同期グループに追加するためにサーバー エンドポイントを作成する場合や、障害が発生したサーバーをディザスター リカバリーする場合などに起こりうる可能性があります。 クラウドを使った階層化が有効になっている場合、既定では、最初にファイルのコンテンツではなく、名前空間のみが呼び戻されます。 これは、ユーザーのアクセス要求で、サーバーにどのファイルのコンテンツを呼び戻すかを決めるべきだと考えている場合に便利です。 クラウドを使った階層化が無効になっている場合、既定では、名前空間が最初にダウンロードされた後、ローカル容量に到達するまで、最終更新タイムスタンプに基づいてファイルが呼び戻されます。 ただし、初期ダウンロード モードは名前空間のみに変更できます。 3 番目のモードは、このサーバー エンドポイントでクラウドを使った階層化が無効になっている場合にのみ使用できます。 このモードでは、最初に名前空間が呼び戻されることを回避します。 ファイルは、完全にダウンロードされた場合にのみ、ローカル サーバーに表示されます。 このモードは、例えばアプリケーションでは完全なファイルが必要とされ、名前空間に階層化されたファイルがあることが許容されない場合に便利です。
 
 サーバー エンドポイントを追加するには、 **[作成]** を選びます。 Azure ファイル共有と Windows Server でファイルの同期が維持されます。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-サーバー エンドポイントを作成するには、次の PowerShell コマンドを実行します。`<your-server-endpoint-path>` と `<your-volume-free-space>` は適切な値に置き換えてください。
+サーバー エンドポイントを作成するには、必ず `<your-server-endpoint-path>` と `<your-volume-free-space>` を適切な値に置き換え、オプションの初期ダウンロード ポリシーのオプション設定を確認して、次の PowerShell コマンドを実行します。
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -343,15 +444,46 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath 
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az storagesync sync-group server-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) コマンドを使用して、新しいサーバー エンドポイントを作成します。
+
+```azurecli
+# Create a new sync group server endpoint 
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
+                                                 --server-local-path d:\myPath
+                                                 --storage-sync-service myStorageSyncServiceNAme
+                                                 --sync-group-name mySyncGroupName
+
+# Create a new sync group server endpoint with additional optional parameters
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --storage-sync-service myStorageSyncServiceName \
+                                                 --sync-group-name mySyncGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
+                                                 --server-local-path d:\myPath \
+                                                 --cloud-tiering on \
+                                                 --volume-free-space-percent 85 \
+                                                 --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
+                                                 --offline-data-transfer on \
+                                                 --offline-data-transfer-share-name myfilesharename \
+
 ```
 
 ---
@@ -441,6 +573,40 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 ボリュームごとの VSS スナップショット最大数として 64 が適切ではない場合、[レジストリ キーでその値を変更する](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)ことができます。
 新しい制限値を有効にするには、既に有効にされている、以前のバージョンの互換性を有効にするためのコマンドレットを各ボリュームで再実行する必要があります。ボリュームごとの新しい VSS スナップショット最大数を反映するために、-Force フラグを使用します。 これにより、互換性が維持される日数が新しく計算されます。 この変更は、新しく階層化されたファイルでのみ有効になり、既に実行した VSS スケジュールへのカスタマイズはすべて上書きされることにご注意ください。
+
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>新規および変更されたファイルを Azure ファイル共有から事前に呼び戻す
+
+エージェント バージョン 11 では、サーバー エンドポイントで新しいモードが使用できるようになります。 このモードでは、世界各地に分散している企業向けに、ローカル ユーザーがファイルにアクセスする前に、リモート リージョンのサーバー キャッシュを事前に設定しておくことができます。 このモードがサーバーエンド ポイントで有効になっている場合、Azure ファイル共有で作成または変更されたファイルがこのサーバーによって呼び戻されます。
+
+### <a name="scenario"></a>シナリオ
+
+世界各地に分散しているある企業は、米国およびインドにブランチ オフィスを構えています。 朝 (米国時間)、インフォメーション ワーカーが新しいプロジェクト用の新しいフォルダーと新しいファイルを作成し、それらを使用して一日作業しました。 Azure File Sync によって、フォルダーとファイルが Azure ファイル共有 (クラウド エンドポイント) に同期されます。 インドにいるインフォメーション ワーカーは、インドのタイムゾーンでプロジェクトの作業を続行します。 彼らが朝に作業に取り掛かる際、インドにあるローカルの Azure File Sync 対応サーバーでは、インド チームが効率的にローカル キャッシュで作業できるように、これらの新しいファイルがローカルで利用できるようになっている必要があります。 このモードを有効にすることで、オンデマンドの呼び戻しによる最初のファイル アクセスが遅くなることを回避し、Azure ファイル共有でファイルが変更または作成されるとすぐにサーバーによって事前にファイルが呼び戻されるようになります。
+
+> [!IMPORTANT]
+> ここまで詳細に Azure ファイル共有の変更をサーバー上で追跡すると、エグレス トラフィックとAzure からの請求額が増加する可能性があることを認識することが重要です。 サーバーに呼び戻されたファイルが実際にはローカルで必要でない場合、サーバーへの不要な呼び戻しによって、悪影響を及ぼす可能性があります。 このモードは、クラウドの最近の変更をサーバー上のキャッシュに事前に保存しておくことで、そのサーバー上のファイルを使用しているユーザーやアプリケーションに良い影響を与えることがわかっている場合に使用します。
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>サーバー エンドポイントで Azure ファイル共有の変更内容を事前に呼び戻すよう有効にする
+
+# <a name="portal"></a>[ポータル](#tab/proactive-portal)
+
+1. [Azure portal](https://portal.azure.com/) で、ストレージ同期サービスにアクセスし、適切な同期グループを選択して、Azure ファイル共有 (クラウド エンドポイント) で変更を詳細に追跡するサーバー エンドポイントを特定します。
+1. [クラウドを使った階層化] セクションで、"Azure ファイル共有のダウンロード" トピックを探します。 現在選択されているモードが表示され、それを変更して Azure ファイル共有の変更をより詳細に追跡し、サーバーに事前に呼び戻すことができます。
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="現在有効になっているサーバー エンドポイントにおける Azure ファイル共有のダウンロード動作と、それを変更するためのメニューを開くボタンを示す画像。":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+PowerShell で [Set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) コマンドレットを使用することで、サーバー エンドポイントのプロパティを変更できます。
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>DFS レプリケーション (DFS-R) のデプロイを Azure File Sync に移行する
 DFS-R のデプロイを Azure File Sync に移行するには:

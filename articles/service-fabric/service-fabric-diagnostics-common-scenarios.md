@@ -3,12 +3,12 @@ title: Azure Service Fabric 診断の一般的なシナリオ
 description: Azure Service Fabric アプリケーション内の一般的な監視と診断のシナリオのトラブルシューティングについて説明します。
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697688"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257734"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する
 
@@ -133,9 +133,9 @@ ms.locfileid: "83697688"
 ## <a name="next-steps"></a>次のステップ
 
 * [一般的なコード パッケージのアクティブ化エラーを参照する](./service-fabric-diagnostics-code-package-errors.md)
-* [AI のアラートを設定して](/azure/azure-monitor/platform/alerts-log)、パフォーマンスまたは使用状況の変化について通知を受けます
+* [AI のアラートを設定して](../azure-monitor/platform/alerts-log.md)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../azure-monitor/app/proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
-* 検出と診断に役立つ Azure Monitor ログの[アラート](../log-analytics/log-analytics-alerts.md)についてさらに学習します。
+* 検出と診断に役立つ Azure Monitor ログの[アラート](../azure-monitor/platform/alerts-overview.md)についてさらに学習します。
 * オンプレミス クラスター向けに、Azure Monitor ログでは、データを Azure Monitor ログに送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供されています。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って Azure Monitor ログに接続する](../azure-monitor/platform/gateway.md)」を参照してください
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能の詳細を確認します
-* Azure Monitor ログとそれが提供するサービスの詳しい概要について、[Azure Monitor ログとは何か](../operations-management-suite/operations-management-suite-overview.md)に関するページで確認します
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/log-query/log-query-overview.md)機能の詳細を確認します
+* Azure Monitor ログとそれが提供するサービスの詳しい概要について、[Azure Monitor ログとは何か](../azure-monitor/overview.md)に関するページで確認します

@@ -1,41 +1,43 @@
 ---
 title: クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - Resource Manager テンプレート
-description: Resource Manager テンプレートを使用して、複数のパブリック IP アドレスを持つ Azure Firewall を作成する方法について説明します。
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、複数のパブリック IP アドレスを備えた Azure Firewall を作成する方法について説明します。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/14/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680544"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079083"
 ---
-# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - Resource Manager テンプレート
+# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - ARM テンプレート
 
-このクイックスタートでは、Resource Manager テンプレートを使用して、複数のパブリック IP アドレスを持つ Azure Firewall をデプロイします。 デプロイ後のファイアウォールには、2 つの Windows Server 2019 仮想マシンへの RDP 接続を許可する NAT 規則コレクション ルールが割り当てられます。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、複数のパブリック IP アドレスを持つ Azure Firewall をデプロイします。 デプロイ後のファイアウォールには、2 つの Windows Server 2019 仮想マシンへの RDP 接続を許可する NAT 規則コレクション ルールが割り当てられます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 複数のパブリック IP アドレスを持つ Azure Firewall の詳細については、「[Azure PowerShell を使用して複数のパブリック IP アドレスを使用する Azure Firewall をデプロイする](deploy-multi-public-ip-powershell.md)」を参照してください。
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-azure-firewall"></a>Azure Firewall を作成する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このテンプレートは、2 つのパブリック IP アドレスを持つ Azure Firewall を作成すると共に、Azure Firewall をサポートするために必要なリソースも作成します。
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/fw-docs-qs)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/fw-docs-qs)からのものです。
-
-:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
+:::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
@@ -48,9 +50,9 @@ ms.locfileid: "83680544"
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Azure への Resource Manager テンプレートのデプロイ:
+ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートは、Azure Firewall、ネットワーク インフラストラクチャ、2 つの仮想マシンを作成します。
 

@@ -5,15 +5,15 @@ description: カスタム ルート CA を使用して Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806758"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
@@ -67,7 +67,7 @@ OpenSSL を使用してルート CA 証明書を作成します。
    ```
    上のコマンドで、ルート証明書が作成されます。 これを使用して、サーバー証明書に署名します。
 
-1. プロンプトが表示されたら、ルート キーのパスワード、カスタム CA (国、都道府県、組織、OU など) の組織情報、完全修飾ドメイン名 (発行者のドメイン) を入力します。
+1. プロンプトが表示されたら、ルート キーのパスワード、カスタム CA (国または地域、都道府県、組織、OU など) の組織情報、完全修飾ドメイン名 (発行者のドメイン) を入力します。
 
    ![ルート証明書の作成](media/self-signed-certificates/root-cert.png)
 
@@ -97,7 +97,7 @@ CSR は、証明書を要求するときに CA に与えられる公開キーで
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. プロンプトが表示されたら、ルート キーのパスワードと、カスタム CA の組織情報を入力します:国、都道府県、組織、OU、および完全修飾ドメイン名。 これは Web サイトのドメインであり、発行者とは別のものにする必要があります。
+1. プロンプトが表示されたら、ルート キーのパスワードと、カスタム CA の組織情報を入力します:国または地域、都道府県、組織、OU、完全修飾ドメイン名。 これは Web サイトのドメインであり、発行者とは別のものにする必要があります。
 
    ![サーバー証明書](media/self-signed-certificates/server-cert.png)
 

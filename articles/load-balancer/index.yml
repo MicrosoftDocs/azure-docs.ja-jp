@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: 73d36c795ca4be905ac6e9bab31cfe00374bfa13
-  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+  ms.openlocfilehash: a6348b967e814a49c766388540a594987af2231e
+  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/08/2020
-  ms.locfileid: "82930626"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89296940"
 landingContent:
 - title: Load Balancer について
   linkLists:
@@ -28,14 +28,18 @@ landingContent:
       url: concepts.md
     - text: Load Balancer のコンポーネント
       url: components.md
+    - text: 新機能
+      url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
     - text: Load Balancer の SKU
       url: skus.md
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: VM の負荷を分散する Load Balancer を作成する
+    - text: VM の負荷を分散するパブリック ロード バランサーを作成する
       url: quickstart-load-balancer-standard-public-portal.md
+    - text: VM の負荷を分散する内部ロード バランサーを作成する
+      url: quickstart-load-balancer-standard-internal-portal.md
   - linkListType: tutorial
     links:
     - text: VM へのインターネット トラフィックの負荷分散を行う
@@ -90,6 +94,8 @@ landingContent:
       url: load-balancer-troubleshoot.md
     - text: 一般的な Azure Load Balancer のエラー
       url: load-balancer-common-deployment-errors.md
+    - text: 送信接続に関する一般的な問題の解決
+      url: troubleshoot-outbound-connection.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

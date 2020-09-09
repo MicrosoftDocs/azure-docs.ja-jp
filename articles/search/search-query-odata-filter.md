@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236827"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934856"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $filter 構文
 
@@ -84,20 +84,28 @@ variable ::= identifier | field_path
 
 上記の表で上位にある演算子は、他の演算子よりもオペランドに "より緊密にバインドされます"。 たとえば、`and` は `or` よりも優先順位が高く、比較演算子はそのどちらよりも優先順位が高いため、次の 2 つの式は等価です。
 
+```odata-filter-expr
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
+```
 
 `not` 演算子はすべての中で最も高い優先順位を持ちます (比較演算子よりもさらに優先度が高くなります)。 そのため、フィルターを次のように作成しようとした場合:
 
+```odata-filter-expr
     not Rating gt 5
+```
 
 次のようなエラー メッセージが表示されます。
 
+```text
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
+```
 
 このエラーが発生するのは、演算子が `Rating` フィールド (`Edm.Int32` 型) にのみ関連付けられていて、比較式全体には関連付けられていないためです。 修正するには、`not` のオペランドをかっこで囲みます。
 
+```odata-filter-expr
     not (Rating gt 5)
+```
 
 <a name="bkmk_limits"></a>
 
@@ -112,91 +120,133 @@ Azure Cognitive Search に送信できるフィルター式のサイズと複雑
 
 基本料金が $200 未満の部屋が少なくとも 1 つある 4 つ星以上のホテルをすべて探します。
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/BaseRate lt 200.0) and Rating ge 4
+```
 
 "Sea View Motel" 以外で 2010 年以降に改装されているホテルをすべて探します。
 
+```odata-filter-expr
     $filter=HotelName ne 'Sea View Motel' and LastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
 2010 年以降に改装されたホテルをすべて探します。 datetime リテラルには、太平洋標準時のタイム ゾーン情報が含まれています。  
 
+```odata-filter-expr
     $filter=LastRenovationDate ge 2010-01-01T00:00:00-08:00
+```
 
 駐車場を備え、すべての部屋が禁煙になっているホテルをすべて探します。
 
+```odata-filter-expr
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
+```
 
  \- または -  
 
+```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
+```
 
 高級ホテルをすべて探すか、駐車場を備えた 5 つ星以上のホテルをすべて探します。  
 
+```odata-filter-expr
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
+```
 
 少なくとも 1 つの部屋に "wifi" というタグが付いたホテルをすべて検索します (各部屋のタグは `Collection(Edm.String)` フィールドに格納されています)。  
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
+```
 
 何らかの部屋が用意されているすべてのホテルを探します。  
 
+```odata-filter-expr
     $filter=Rooms/any()
+```
 
 部屋が用意されていないすべてのホテルを探します。
 
+```odata-filter-expr
     $filter=not Rooms/any()
+```
 
 指定された参照ポイントの 10 キロメートル内にあるホテルをすべて探します (`Location` は型 `Edm.GeographyPoint` のフィールドです)。
 
+```odata-filter-expr
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
-多角形として表現された所与のビューポート内にあるホテルをすべて探します (`Location` は型 Edm.GeographyPoint のフィールドです)。 多角形は閉じられている必要があります。つまり、最初と最後のポイント セットを同じにする必要があります。 また、[ポイントは反時計回り順にリストする必要があります](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+多角形として表現された所与のビューポート内にあるホテルをすべて探します (`Location` は型 Edm.GeographyPoint のフィールドです)。 多角形は閉じられている必要があります。つまり、最初と最後のポイント セットを同じにする必要があります。 また、[ポイントは反時計回り順にリストする必要があります](/rest/api/searchservice/supported-data-types#Anchor_1)。
 
+```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 [説明] フィールドが null になっているホテルをすべて探します。 フィールドが null になるのは、それが設定されていない場合、または明示的に null に設定されている場合です。  
 
+```odata-filter-expr
     $filter=Description eq null
+```
 
 "Sea View motel" または "Budget hotel" と同じ名前のすべてのホテルを探します。 これらの語句にはスペースを含めます。スペースは既定の区切り記号です。 3 番目の文字列パラメーターとして、単一引用符で囲まれた代替区切り記号を指定できます。  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 "Sea View motel" または "Budget hotel" と同じ名前のすべてのホテルを探します。区切り記号として '|' を使用します。  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 すべての部屋に "wifi" または "tub" というタグが付いているすべてのホテルを探します。
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub'))
+```
 
 タグ内の 'heated towel racks' (タオル ウォーマー ラック) や 'hairdryer included' (ヘアドライヤーあり) など、コレクション内の語句との一致を探します。
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
-"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは `search=waterfront` を指定した[検索要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)と同じになります。
+"waterfront" という言葉の付いたドキュメントを探します。 このフィルターは `search=waterfront` を指定した[検索要求](/rest/api/searchservice/search-documents)と同じになります。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
+```
 
 "hostel" という言葉を含み、評価が 4 以上のドキュメントを探すか、"motel" という言葉を含み、評価が 5 のドキュメントを探します。 この要求は、`or` を使用してフルテキスト検索とフィルター操作を組み合わせたものであるため、`search.ismatchscoring` 関数なしでは表現できませんでした。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+```
 
 "luxury" という言葉のないドキュメントを探します。
 
+```odata-filter-expr
     $filter=not search.ismatch('luxury')
+```
 
 "ocean view" というフレーズを含むか、評価が 5 のドキュメントを探します。 `search.ismatchscoring` クエリは `HotelName` フィールドと `Description` フィールドに対してのみ実行されます。 論理和演算の 2 つ目の句にのみ一致するドキュメントも返されることに注意してください。`Rating` が 5 のホテルです。 式のスコア部分にこれらのドキュメントが一致しなかったことをはっきりさせるため、スコア 0 で返されます。
 
+```odata-filter-expr
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
+```
 
 説明の中で "hotel" という言葉と "airport" という言葉の間隔が 5 単語以内であり、かつ全室禁煙であるホテルを探します。 このクエリでは、[完全 Lucene クエリ言語](query-lucene-syntax.md)が使用されます。
 
+```odata-filter-expr
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

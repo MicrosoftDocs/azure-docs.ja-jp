@@ -4,15 +4,15 @@ description: Azure Front Door Service 上の Azure Web アプリケーション 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.topic: overview
-ms.date: 02/01/2020
+ms.topic: conceptual
+ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77915641"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231437"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上の Azure Web アプリケーション ファイアウォール
 
@@ -20,13 +20,13 @@ Azure Front Door の Azure Web アプリケーション ファイアウォール
 
 Front Door 上の WAF は、グローバルな一元的ソリューションです。 デプロイされる場所は、世界中の Azure ネットワーク エッジです。 WAF 対応の Web アプリケーションは、ネットワーク エッジの Front Door によって配信されたすべての受信要求を検査します。 
 
-WAF は仮想ネットワークに入る前の攻撃ソースの近くで悪意のある攻撃を防ぐことができます。 パフォーマンスを損なうことなく大規模でグローバルな保護機能を利用することができます。 WAF のポリシーはサブスクリプション内の任意の Front Door プロファイルに簡単にリンクできます。 新しいルールを数分でデプロイできるので、脅威のパターンの変化にすばやく対応できます。
+WAF は仮想ネットワークに入る前の攻撃ソースの近くで悪意のある攻撃を防ぐことができます。 パフォーマンスを損なうことなく大規模でグローバルな保護機能を利用することができます。 WAF のポリシーはサブスクリプション内の任意の Front Door プロファイルに簡単にリンクできます。 新しいルールを数分で展開できるので、脅威のパターンの変化にすばやく対応できます。
 
 ![Azure Web アプリケーション ファイアウォール](../media/overview/wafoverview.png)
 
 ## <a name="waf-policy-and-rules"></a>WAF のポリシーと規則
 
-WAF ポリシーを構成し、保護のためにそのポリシーを 1 つ以上の Front Door フロントエンドと関連付けることができます。 WAF ポリシーは、2 種類のセキュリティ規則で構成されます。
+[WAF ポリシー](waf-front-door-create-portal.md)を構成し、保護のためにそのポリシーを 1 つ以上の Front Door フロントエンドと関連付けることができます。 WAF ポリシーは、2 種類のセキュリティ規則で構成されます。
 
 - お客様によって作成されたカスタム規則。
 

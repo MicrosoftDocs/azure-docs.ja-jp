@@ -1,26 +1,14 @@
 ---
 title: Azure Service Bus 診断ログ | Microsoft Docs
 description: この記事では、Azure Service Bus で使用可能なすべての操作と診断ログの概要について説明します。
-keywords: ''
-documentationcenter: .net
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.date: 06/23/2020
+ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618727"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064436"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus の診断ログを有効にする
 
@@ -113,7 +101,7 @@ Azure Service Bus は現在、Azure Service Bus 名前空間上で実行され�
 
 新しい設定は、10 分ほどで有効になります。 構成されたアーカイブ ターゲットの **[診断ログ]** ペインにログが表示されます。
 
-診断設定の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)に関するページを参照してください。
+診断設定の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204820"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254505"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する
 
@@ -204,7 +204,7 @@ kubectl rollout restart deployment/<deployment-name>
 kubectl logs <pod-name>
 ```
 
-セルフホステッド ゲートウェイが Azure Kubernetes Service にデプロイされている場合は、[コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) を有効にして、ワークロードから `stdout` と `stderr` を収集し、Log Analytics でログを表示することができます。 
+セルフホステッド ゲートウェイが Azure Kubernetes Service にデプロイされている場合は、[コンテナーに対する Azure Monitor](../azure-monitor/insights/container-insights-overview.md) を有効にして、ワークロードから `stdout` と `stderr` を収集し、Log Analytics でログを表示することができます。 
 
 セルフホステッド ゲートウェイでは、`localsyslog`、`rfc5424`、`journal` などの多数のプロトコルもサポートされています。 次の表に、サポートされているすべてのオプションの概要を示します。 
 
@@ -236,4 +236,3 @@ kubectl logs <pod-name>
 
 * セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください
 * [クラウドでログを構成して永続化する](how-to-configure-local-metrics-logs.md)ことについて学習する
-

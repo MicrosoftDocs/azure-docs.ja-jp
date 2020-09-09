@@ -2,15 +2,16 @@
 title: クイックスタート - Maven と Jib を使用して Java コンテナー イメージを作成し Azure Container Registry にプッシュする
 description: Maven Jib プラグインを使用して、コンテナー化された Java アプリを作成し、Azure Container Registry にプッシュします。
 author: KarlErickson
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 561c45bd13648f5f17273b478f320e9fd3d71331
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 42200fe61b0ac73a63b9f8a3317687fac60c5c02
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857597"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078582"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>クイック スタート:Java コンテナー イメージを作成して Azure Container Registry にプッシュする
 
@@ -177,4 +178,4 @@ Spring および Azure の詳細については、Azure ドキュメント セ�
 * [Docker での Spring Boot の使用開始](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
 * [Spring Boot アプリケーションを Azure App Service にデプロイする](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
-* [Azure Web App on Linux 向けのカスタム Docker イメージを使用する](/azure/app-service-web/app-service-linux-using-custom-docker-image)
+* [Azure Web App on Linux 向けのカスタム Docker イメージを使用する](../app-service/tutorial-custom-container.md)

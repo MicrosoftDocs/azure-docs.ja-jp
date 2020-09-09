@@ -4,14 +4,15 @@ description: Azure portal を使用して Azure Database for PostgreSQL 単一�
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: 07e103c3e1f56e8a46ea24e750d83e719abab3d5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 831c50fe608e3f7de18b4d8917bb2f98a0e78308
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457979"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502003"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -22,13 +23,13 @@ Azure portal を使用して Azure Database for PostgreSQL 単一サーバーの
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
 * Azure Key Vault で、カスタマー マネージド キーに使用するキー コンテナーとキーを作成します。
 * カスタマー マネージド キーとして使用するには、キー コンテナーに次のプロパティが必要です。
-  * [論理的な削除](../key-vault/general/overview-soft-delete.md)
+  * [論理的な削除](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [消去保護](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

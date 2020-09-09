@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678953"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893096"
 ---
 # <a name="material-mapping-for-model-formats"></a>モデル形式の素材マッピング
 
@@ -54,7 +54,6 @@ glTF の各テクスチャには `texCoord` 値を指定することができま
 基本機能セットに加え、Azure Remote Rendering では次の glTF 拡張機能がサポートされます。
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
-* [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
 * [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md):[色素材](../overview/features/color-materials.md)に対応します。 "*発色*" 素材の場合は、この拡張機能を使用することをお勧めします。
 * [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md):metallic-roughness テクスチャの代わりに、diffuse-specular-glossiness テクスチャを指定できます。 Azure Remote Rendering 実装では、拡張機能からの変換式に直接従います。
 
@@ -114,7 +113,7 @@ SpecularIntensity 式は、[ここ](https://en.wikipedia.org/wiki/Luma_(video))�
 
 `Roughness` は、[この数式](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)を使用して、`Specular` と `ShininessExponent` から計算されます。 この数式は、Phong 反射指数からの粗さの近似値です。
 
-```Cpp
+```cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
@@ -125,6 +124,7 @@ Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ここでの考え方は、次の式を解くことです: Ax<sup>2</sup> + Bx + C = 0。
 基本的に、誘電体表面では、反射方向に約 4% の光を反射し、残りは拡散となります。 金属表面では拡散方向に光を反射しませんが、すべて反射方向に反射します。
 この数式にはいくつかの欠点があります。光沢のあるプラスチックと光沢のある金属の表面を区別する方法がないためです。 ほとんどの場合、表面には金属プロパティがあり、その結果、光沢のあるプラスチックやゴムの表面は予期したとおりに見えない場合があると想定しています。
+
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -144,7 +144,7 @@ Metalness = clamp(value, 0.0, 1.0);
 「Metalness」セクションで説明したように、誘電体表面では約 4% の光を反射します。  
 ここでの考え方は、`Metalness` 値を因子として使用し、`Dielectric` と `Metal` の色の間を線形補間することです。 metalness が `0.0` の場合、反射に応じて、濃い色になるか (反射が高い場合)、拡散が変化しません (反射がない場合)。 metalness が大きな値の場合、反射色が優先されるため、拡散色は消えます。
 
-```Cpp
+```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
 

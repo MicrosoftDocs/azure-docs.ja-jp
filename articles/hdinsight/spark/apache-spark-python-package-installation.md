@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.custom: seoapr2020
+ms.topic: how-to
+ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583954"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873757"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -41,17 +41,17 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!IMPORTANT]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や `https://stackoverflow.com` などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには `https://apache.org` にプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)や `https://stackoverflow.com` などの多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには `https://apache.org` にプロジェクト サイトもあります。
 
 ## <a name="understand-default-python-installation"></a>Python の既定のインストールを理解する
 
 HDInsight Spark クラスターは、Anaconda のインストール付きで作成されます。 クラスターには 2 つの Python インストールが存在します (Anaconda Python 2.7 と Python 3.5)。 次の表に、Spark、Livy、および Jupyter 向けの既定の Python 設定を示します。
 
-| |Python 2.7|Python 3.5|
+|設定 |Python 2.7|Python 3.5|
 |----|----|----|
 |Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|既定で 2.7 に設定|該当なし|
-|Livy|既定で 2.7 に設定|該当なし|
+|Spark のバージョン|既定で 2.7 に設定|該当なし|
+|Livy バージョン|既定で 2.7 に設定|該当なし|
 |Jupyter|PySpark カーネル|PySpark3 カーネル|
 
 ## <a name="safely-install-external-python-packages"></a>外部 Python パッケージを安全にインストールする
@@ -146,7 +146,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
 ## <a name="known-issue"></a>既知の問題
 
-Anaconda のバージョン `4.7.11`、`4.7.12`、`4.8.0` には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` でハングし、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
+Anaconda のバージョン `4.7.11`、`4.7.12`、`4.8.0` には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` で応答を停止し、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
 
 Anaconda のバージョンを確認するには、クラスターのヘッダー ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda --v` を実行します。
 

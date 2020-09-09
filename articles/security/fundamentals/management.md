@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981309"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921930"
 ---
 # <a name="security-management-in-azure"></a>Azure のセキュリティ管理
 Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。 管理作業は、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) など、Web ベースのコンソールを介して実行する場合もあれば、 オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。 また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
 
 このように多彩なアクセスと管理が可能であることによって豊富な選択肢が存在する反面、そのばらつきがクラウド デプロイに深刻なリスクをもたらすこともあり、 管理、追跡、監査という管理上の工程が困難になる可能性があります。 そうした選択肢の多さから、クラウド サービスの管理用クライアント エンドポイントの利用に監視の目が行き届かず、セキュリティ上の脅威を招く場合もあります。 インフラストラクチャの開発と管理に共用ワークステーションや個人用ワークステーションを使用することは、Web 閲覧 (水飲み場型攻撃など) や電子メール (ソーシャル エンジニアリング、フィッシングなど) などの予測不可能な脅威要因にさらされる原因となります。
 
-![](./media/management/typical-management-network-topology.png)
+![ある脅威が攻撃を仕掛けるさまざまな方法を示す図。](./media/management/typical-management-network-topology.png)
 
 Azure のインターフェイス (SMAPI など) に対する多種多様なエンドポイントからのアクセスを適切に管理するセキュリティ ポリシーやセキュリティ メカニズムを構築することは困難であるため、この種の環境は攻撃のリスクが大きくなります。
 
@@ -66,7 +66,7 @@ Azure のインターフェイス (SMAPI など) に対する多種多様なエ�
 ### <a name="providing-security-for-azure-remote-management"></a>Azure のリモート管理に対するセキュリティの確保
 Azure には、そのクラウド サービスと仮想マシンの管理者を支援するセキュリティ メカニズムが備わっています。 その例を次に示します。
 
-* 認証と[ロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)。
+* 認証と [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。
 * 監視、ログ、監査。
 * 証明書と通信の暗号化。
 * Web 管理ポータル。
@@ -157,12 +157,12 @@ Azure にデプロイされるアプリケーションやサービスには、�
 
 スタンドアロン ワークステーションの堅牢化のシナリオ (下図) では、Windows ファイアウォール (またはサードパーティのクライアント ファイアウォール) のローカル インスタンスが、RDP などの受信接続をブロックするように構成されています。 管理者は、堅牢化されたワークステーションにログオンし、Azure Virtual Network との VPN 接続を確立した後で、Azure に接続する RDP セッションを開始できます。一方、企業 PC にログオンし、RDP を使用して、堅牢化されたワークステーションに接続することはできません。
 
-![](./media/management/stand-alone-hardened-workstation-topology.png)
+![スタンドアロンのワークステーションを堅牢化するシナリオを示す図。](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>仮想マシンとしての企業 PC
 専用のスタンドアロン ワークステーションを堅牢化することがコスト面で難しい場合や都合が悪い場合は、堅牢化したワークステーションで仮想マシンをホストし、非管理タスクはそこで実行するようにします。
 
-![](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![非管理タスクを実行する仮想マシンをホストしている堅牢化されたワークステーションを示す図。](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 システムの管理とその他の日常的な作業とに 1 台のワークステーションを使用することで発生しうるさまざまなセキュリティ リスクを回避するため、堅牢化したワークステーションには Windows Hyper-V 仮想マシンをデプロイします。 この仮想マシンを企業 PC として使用することができます。 企業 PC 環境は、ホストから隔離されたままなので、攻撃対象領域を小さくし、ユーザーの日常的な作業 (電子メールなど) と機微な管理タスクとの共存を避けることができます。
 

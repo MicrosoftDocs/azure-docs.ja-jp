@@ -1,24 +1,22 @@
 ---
-title: 新しいセッション ホストで既存のホスト プールを拡張する - Azure
-description: Windows Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
-services: virtual-desktop
+title: 新しいセッション ホストを使用して既存の Windows Virtual Desktop (クラシック) ホスト プールを拡張する - Azure
+description: Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4313f36a0b250be9646c6658b98f15037374729
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614300"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009173"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>新しいセッション ホストで既存のホスト プールを拡張する
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../expand-existing-host-pool.md)をご覧ください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../expand-existing-host-pool.md)を参照してください。
 
 ホスト プール内の使用率を上げた場合、新しいセッション ホストで既存のホスト プールを拡張して、新しい負荷を処理する必要がある場合があります。
 
@@ -57,12 +55,12 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
      - Azure Marketplace オファリングを使用して元のホスト プールを作成した場合は、**rds.wvd-provision-host-pool** で始まるデプロイを選択します。
      - GitHub の Azure Resource Manager テンプレートを使用して元のホスト プールを作成した場合は、**Microsoft.Template** という名前のデプロイを選択します。
 6. **[再デプロイ]** を選択します。
-     
+
      >[!NOTE]
      >**[再デプロイ]** を選択してもテンプレートが自動的に再デプロイされない場合は、ブラウザーの左側のパネルで **[テンプレート]** を選択し、 **[デプロイ]** を選択します。
 
 7. 既存のホスト プール内の現在のセッション ホスト VM を含むリソース グループを選択します。
-     
+
      >[!NOTE]
      >入力したリソース グループが正しいにもかかわらず別のリソース グループを選択するように求めるエラーが表示される場合は、別のリソース グループを選択し、元のリソース グループを選択します。
 
@@ -96,7 +94,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 このセクションのすべてのパラメーター値は、VM の合計数を除き、ホスト プールおよびセッション ホスト VM を最初に作成したときに指定したものと一致する必要があります。 入力する VM 数は、拡張ホスト プール内の VM の数になります。
 
 1. 既存のセッション ホスト VM と一致する VM サイズを選択します。
-    
+
     >[!NOTE]
     >お探しの VM サイズが VM サイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。 特定の VM サイズを要求するには、[Windows Virtual Desktop UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)で要求を作成するか、既存の要求に賛成票を投じてください。
 
@@ -130,7 +128,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 
 既存のホスト プールを拡張したので、Windows Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
 
-- [Windows デスクトップ クライアントを使用して接続する](../connect-windows-7-and-10.md)
+- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10-2019.md)
 - [Web クライアントに接続する](connect-web-2019.md)
 - [Android クライアントに接続する](connect-android-2019.md)
 - [macOS クライアントに接続する](connect-macos-2019.md)

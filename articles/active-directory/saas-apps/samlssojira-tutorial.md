@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合 | Microsoft Docs
 description: Azure Active Directory と SAML SSO for Jira by resolution GmbH の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 20e18819-e330-4e40-bd8d-2ff3b98e035f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202657"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -304,10 +299,12 @@ SSO リダイレクトを有効にするには、**お使いの Jira インス�
 
 1. Jira で SAML SSO プラグインの構成ページにアクセスします。
 1. 左側のパネルで **[Redirection]\(リダイレクト\)** をクリックします。
-![](./media/samlssojira-tutorial/ssore1.png)
+
+   ![Jira の SAML SingleSignOn プラグインの構成ページの断片的なスクリーンショット (左側のナビゲーションにある [Redirection]\(リダイレクト\) リンクを強調表示したところ)。](./media/samlssojira-tutorial/ssore1.png)
 
 1. **[Enable SSO Redirect]\(SSO リダイレクトを有効にする\)** をオンにします。
-![](./media/samlssojira-tutorial/ssore2.png) 
+
+   ![Jira の SAML SingleSignOn プラグインの構成ページの断片的なスクリーンショット ([Enable SSO Redirect]\(SSO リダイレクトを有効にする\) チェック ボックスのオン状態を強調表示したところ)。](./media/samlssojira-tutorial/ssore2.png) 
 
 1. 右上隅の **[Save Settings]\(設定の保存\)** ボタンをクリックします。
 

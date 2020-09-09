@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79501881"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219154"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>チュートリアル:データ コピー サービスを使用してデータを Azure Data Box にコピーする (プレビュー)
 
@@ -50,7 +50,8 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
 
 * データ コピー サービスによる読み取りの過程でデータが変更されている場合、エラーやデータの破損が生じる可能性があります。
 
-* Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
+> [!IMPORTANT]
+> Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
 
 データ コピー サービスを使用してデータをコピーするには、ジョブを作成する必要があります。
 
@@ -61,9 +62,9 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
 
 3. **[ジョブの構成と開始]** ダイアログ ボックスで、以下のフィールドを入力します。
     
-    |フィールド                          |Value    |
+    |フィールド                          |値    |
     |-------------------------------|---------|
-    |**ジョブ名**                       |ジョブの一意の名前を 230 文字未満で指定します。 \<、\>、\|、\?、\*、\\、\:、\/、\\\.の各文字は、ジョブの名前には使用できません。         |
+    |**ジョブ名**                       |ジョブの一意の名前を 230 文字未満で指定します。 \<, \>、\|、\?、\*、\\\:、\/、および \\ の各文字は、ジョブの名前には使用できません\.         |
     |**ソースの場所**                |データ ソースの SMB パスを `\\<ServerIPAddress>\<ShareName>` 形式または `\\<ServerName>\<ShareName>` 形式で指定します。        |
     |**ユーザー名**                       |データ ソースにアクセスするための `\\<DomainName><UserName>` 形式のユーザー名。 ローカルの管理者が接続する場合は、明示的なセキュリティ アクセス許可が必要です。 フォルダーを右クリックし、 **[プロパティ]** を選択して、 **[セキュリティ]** を選択します。 これで、 **[セキュリティ]** タブでローカル管理者が追加されます。       |
     |**パスワード**                       |データ ソースにアクセスするためのパスワード。           |
@@ -150,4 +151,3 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
 
 > [!div class="nextstepaction"]
 > [Azure Data Box デバイスを Microsoft に発送する](./data-box-deploy-picked-up.md)
-

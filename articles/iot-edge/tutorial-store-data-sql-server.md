@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/28/2019
+ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c239c16103dc0c1f847c5d4354aed89a143a28c6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: 5de5224ca85d2421182c9721d3b6394e10b43863
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745506"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997950"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -71,13 +71,15 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
    | Provide a solution name (ソリューション名の指定) | **SqlSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Azure Functions - C#]** を選択します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **sqlFunction** という名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>文字列は最終的に、\<レジストリ名\>.azurecr.io/sqlfunction のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>文字列は最終的に、\<registry name\>.azurecr.io/sqlfunction のようになります。 |
 
    VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。
 
 ### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
 
 コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでご自身のプライベート イメージを IoT Edge デバイスにプルするとき、ランタイムではこれらの資格情報が必要になります。
+
+IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、.env ファイルを開きます。
 2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
@@ -93,9 +95,19 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 ### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
-1. VS Code エクスプローラーで、 **[モジュール]**  >  **[sqlFunction]**  >  **[sqlFunction.cs]** の順に開きます。
+1. VS Code エクスプローラーで、 **[モジュール]**  > **sqlFunction** > **sqlFunction.csproj** の順に開きます。
 
-2. ファイルの内容全体を次のコードに置き換えます。
+2. パッケージ参照のグループを見つけ、SqlClient をインクルードするための新しいものを追加します。
+
+   ```csproj
+   <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
+   ```
+
+3. **sqlFunction.csproj** ファイルを保存します。
+
+4. **sqlFunction.cs** ファイルを開きます。
+
+5. ファイルの内容全体を次のコードに置き換えます。
 
    ```csharp
    using System;
@@ -184,23 +196,13 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
    }
    ```
 
-3. 行 35 で、文字列 **\<sql connection string\>** を次の文字列に置き換えます。 **Data Source** プロパティは SQL Server コンテナーを参照します。これはまだ存在しません。 次のセクションで **SQL** という名前でこれを作成します。
+6. 35 行目で、文字列 **\<sql connection string\>** を次の文字列に置き換えます。 **Data Source** プロパティは SQL Server コンテナーを参照します。これはまだ存在しません。 次のセクションで **SQL** という名前でこれを作成します。
 
    ```csharp
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
-4. **sqlFunction.cs** ファイルを保存します。
-
-5. **sqlFunction.csproj** ファイルを開きます。
-
-6. パッケージ参照のグループを見つけ、SqlClient をインクルードするための新しいものを追加します。
-
-   ```csproj
-   <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
-   ```
-
-7. **sqlFunction.csproj** ファイルを保存します。
+7. **sqlFunction.cs** ファイルを保存します。
 
 ## <a name="add-the-sql-server-container"></a>SQL Server コンテナーの追加
 
@@ -212,7 +214,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
    | フィールド | 値 |
    | ----- | ----- |
-   | Select deployment template file (配置テンプレート ファイルの選択) | コマンド パレットで、現在のソリューション フォルダー内の deployment.template.json ファイルが強調表示されます。 そのファイルを選択します。  |
+   | Select deployment template file (配置テンプレート ファイルの選択) | コマンド パレットで、現在のソリューション フォルダー内の **deployment.template.json** ファイルが強調表示されます。 そのファイルを選択します。  |
    | Select module template (モジュール テンプレートの選択) | **[Module from Azure Marketplace]\(Azure Marketplace のモジュール\)** を選択します。 |
 
 3. Azure IoT Edge モジュール マーケットプレースで、**SQL Server モジュール**を検索して選択します。
@@ -246,29 +248,31 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 1. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。
 
-ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、**config** という名前の新しいフォルダーに deployment.json ファイルが生成されます。次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 build コマンドにより、コードがビルドされ、モジュールがコンテナー化されます。 次に、push コマンドにより、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。
+   ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
 
-sqlFunction モジュールがコンテナー レジストリに正常にプッシュされたことを確認できます。 Azure ポータルで、自分のコンテナー レジストリに移動します。 **[リポジトリ]** を選択し、**sqlFunction** を検索します。 他の 2 つのモジュール SimulatedTemperatureSensor と sql は、既に Microsoft レジストリ内にそのリポジトリがあるため、コンテナーのレジストリにプッシュされません。
+   このプロセスは、初回は数分間かかる可能性がありますが、次回これらのコマンドを実行するときは、それより速くなります。
+
+   sqlFunction モジュールがコンテナー レジストリに正常にプッシュされたことを確認できます。 Azure ポータルで、自分のコンテナー レジストリに移動します。 **[リポジトリ]** を選択し、**sqlFunction** を検索します。 他の 2 つのモジュール SimulatedTemperatureSensor と sql は、既に Microsoft レジストリ内にそのリポジトリがあるため、コンテナーのレジストリにプッシュされません。
 
 ## <a name="deploy-the-solution-to-a-device"></a>デバイスへのソリューションの配置
 
 IoT ハブを通じてデバイスにモジュールを設定できますが、Visual Studio Code を通じて IoT ハブとデバイスにアクセスすることもできます。 このセクションでは、IoT ハブへのアクセスを設定してから、VS Code を使用してソリューションを IoT Edge デバイスに配置します。
 
-1. VS Code エクスプローラーで、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1.  Visual Studio Code エクスプローラーの **[Azure IoT Hub]** セクションで、 **[デバイス]** を展開して IoT デバイスの一覧を表示します。
 
-2. 配置でターゲットにするデバイスを右クリックし、 **[Create deployment for single device]\(単一デバイスのデプロイの作成\)** を選択します。
+2. 配置でターゲットにするデバイスを右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
-3. エクスプローラーで、ソリューション内の **config** フォルダーに移動して、**deployment.amd64** を選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。
+3. **config** フォルダーで **deployment.amd64.json** ファイルを選択し、 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 deployment.template.json ファイルは使用しないでください。
 
-   deployment.template.json ファイルを配置マニフェストとして使用しないでください。
+4. お使いのデバイスの **[モジュール]** を展開し、デプロイされて実行中のモジュールの一覧を表示します。 更新ボタンをクリックします。 新しい **sql** モジュールと **sqlFunction** モジュールが、**SimulatedTemperatureSensor** モジュール、 **$edgeAgent**、および **$edgeHub** と一緒に実行されていることがわかります。
 
-デプロイが成功すると、確認メッセージが VS Code の出力に表示されます。
-
-VS Code の Azure IoT Hub Devices セクションのデバイスの状態を更新します。 新しいモジュールが一覧表示されます。コンテナーがインストールされ、開始されてから数分間実行されると、レポートが開始されます。 デバイス上ですべてのモジュールが実行されているのを確認することもできます。 IoT Edge デバイスで、次のコマンドを実行してモジュールの状態を表示します。
+    デバイス上ですべてのモジュールが実行されているのを確認することもできます。 IoT Edge デバイスで、次のコマンドを実行してモジュールの状態を表示します。
 
    ```cmd/sh
    iotedge list
    ```
+
+    両方のモジュールが開始するまでに数分かかる場合があります。 IoT Edge ランタイムは、新しい配置マニフェストを受け取り、コンテナー ランタイムからモジュール イメージを取得して、それぞれの新しいモジュールを開始する必要があります。
 
 ## <a name="create-the-sql-database"></a>SQL データベースの作成
 

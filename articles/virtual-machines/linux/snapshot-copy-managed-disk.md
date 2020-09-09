@@ -5,16 +5,16 @@ author: roygara
 manager: twooley
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f2d905d041198bd35c4657052bf18d981904dc44
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659951"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成 
 

@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158467"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659356"
 ---
 # <a name="configure-rules"></a>ルールを構成する
-
-
 
 *この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
@@ -37,6 +35,12 @@ IoT Central のルールは、接続されているデバイスからアクテ�
 
 ![条件](media/howto-configure-rules/conditions.png)
 
+### <a name="use-a-cloud-property-in-a-value-field"></a>値フィールドでクラウド プロパティを使用する
+
+クラウド プロパティは、条件の**値**フィールドにあるデバイス テンプレートから参照できます。 クラウド プロパティとテレメトリ値は、類似した型である必要があります。 たとえば、**温度**が double の場合、 **[値]** ドロップダウンには、double 型のクラウド プロパティのみがオプションとして表示されます。
+
+イベントの種類のテレメトリ値を選択する場合、 **[値]** ドロップダウンには、 **[任意]** オプションが表示されます。 **[任意]** オプションは、ペイロードの内容にかかわらず、アプリケーションがその種類のイベントを受信するときに規則が適用されることを意味します。
+
 ## <a name="use-aggregate-windowing"></a>集計ウィンドウを使用する
 
 ルールは、集計時間枠をタンブリング ウィンドウとして評価します。 次のスクリーンショットでは、時間枠は 5 分です。 5 分ごとに、このルールは最後の 5 分間のデータを評価します。 データは、対応するウィンドウ内で 1 回だけ評価されます。
@@ -49,7 +53,4 @@ IoT Edge モジュールに適用されるルールには制限が適用され�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure IoT Central アプリケーションでルールを構成する方法を習得したので、次を実行できます。
-
-> [!div class="nextstepaction"]
-> [データをすばやく分析する](howto-create-analytics.md)
+これで、Azure IoT Central アプリケーションでルールを構成する方法を習得したことになるため、Power Automate または Azure Logic Apps を使用して、[高度なルールを構成](howto-configure-rules-advanced.md)する方法を参照してください。

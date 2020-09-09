@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
-  ms.date: 09/13/2019
-  ms.openlocfilehash: 66350050a84617b789c6a73c38170dc25dad331d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 08/11/2020
+  ms.openlocfilehash: 43de19b3caa87bf410ad30a237c2c9e91beba63f
+  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73802902"
+  ms.lasthandoff: 08/12/2020
+  ms.locfileid: "88136373"
 landingContent:
 - title: Azure Data Share について
   linkLists:
@@ -24,13 +24,17 @@ landingContent:
     links:
     - text: Azure Data Share とは
       url: overview.md
+    - text: サポートされているデータ ストア
+      url: supported-data-stores.md
   - linkListType: concept
     links:
-    - text: Azure Data Share の概念
+    - text: Azure Data Share の用語
       url: terminology.md
     - text: Azure Data Share のロールと要件
       url: concepts-roles-permissions.md
-- title: データの共有
+    - text: 価格について
+      url: concepts-pricing.md
+- title: データの共有と受信
   linkLists:
   - linkListType: tutorial
     links:
@@ -40,21 +44,25 @@ landingContent:
       url: subscribe-to-data-share.md
   - linkListType: how-to-guide
     links:
-    - text: データセット マッピングの構成
-      url: how-to-configure-mapping.md
     - text: データセットの追加
       url: how-to-add-datasets.md
+    - text: データセット マッピングの構成
+      url: how-to-configure-mapping.md
 - title: 監視と管理
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Data Share の監視
+    - text: 共有の監視
       url: how-to-monitor.md
     - text: 一般的な問題のトラブルシューティング
       url: data-share-troubleshoot.md
-    - text: データセットの追加
-      url: how-to-add-datasets.md
+    - text: 受信者の追加
+      url: how-to-add-recipients.md
     - text: 招待の削除
       url: how-to-delete-invitation.md
     - text: 共有サブスクリプションの取り消し
       url: how-to-revoke-share-subscription.md
+    - text: Azure Data Share のセキュリティの概要
+      url: security.md
+    - text: 障害復旧
+      url: disaster-recovery.md

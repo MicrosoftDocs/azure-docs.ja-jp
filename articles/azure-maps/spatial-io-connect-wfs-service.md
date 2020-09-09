@@ -1,19 +1,20 @@
 ---
 title: Web Feature Service (WFS) サービスに接続する | Microsoft Azure Maps
 description: WFS サービスに接続し、Azure Maps Web SDK と空間 IO モジュールを使用して WFS サービスにクエリを実行する方法について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 890bf60ac794740716817094a60f2b4cb4ba5835
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334201"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282791"
 ---
 # <a name="connect-to-a-wfs-service"></a>WFS サービスへの接続
 
@@ -26,7 +27,7 @@ Web Feature Service (WFS) とは空間データに対してクエリを実行す
 - 要求は `HTTP GET` のみを使用して作成されます。
 - サポートされている操作:
 
-    | | |
+    | 操作 | 説明 |
     | :-- | :-- |
     | GetCapabilities | 有効な WFS 操作とパラメーターを使用してメタデータ ドキュメントを生成します |
     | GetFeature | データ ソースからフィーチャーの選択を返します |

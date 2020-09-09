@@ -7,12 +7,12 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: 仮想ハブのセキュリティ保護
+    - name: 仮想ハブのセキュリティ保護 - ARM テンプレート
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
 - name: チュートリアル
   items:
-    - name: 仮想 WAN のセキュリティ保護 - ポータル
+    - name: 仮想ハブのセキュリティ保護 - ポータル
       href: secure-cloud-network.md
     - name: ハブ仮想ネットワークのセキュリティ保護 - ポータル
       href: secure-hybrid-network.md
@@ -24,24 +24,36 @@
       href: secured-virtual-hub.md
     - name: 一般的なデプロイ プロセス
       href: deployment-overview.md
-    - name: 信頼されたセキュリティ パートナー
+    - name: セキュリティ パートナー プロバイダー
       href: trusted-security-partners.md
+    - name: IP グループ
+      href: ip-groups.md
     - name: ルール処理ロジック
       href: rule-processing.md
     - name: アーキテクチャ オプション
       href: vhubs-and-vnets.md
+    - name: 脅威インテリジェンスの設定
+      href: threat-intelligence-settings.md
+    - name: ネットワーク規則内の FQDN
+      href: fqdn-filtering-network-rules.md
 - name: 操作方法ガイド
   items:
-    - name: 信頼されたセキュリティ パートナーのデプロイ
+    - name: セキュリティ パートナー プロバイダーのデプロイ
       href: deploy-trusted-security-partner.md
     - name: ファイアウォール ポリシーへの移行 - PowerShell
       href: migrate-to-policy.md
+    - name: DNS の設定
+      href: dns-settings.md
+    - name: 複数のパブリック IP のデプロイ - PowerShell
+      href: multiple-public-ip-powershell.md
+    - name: ルール階層の定義
+      href: rule-hierarchy.md
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall
+      href: /cli/azure/ext/azure-firewall/network/firewall/policy
     - name: Azure PowerShell
-      href: /powershell/module/az.network/new-azfirewall
+      href: /powershell/module/az.network/new-azfirewallpolicy
     - name: .NET
       href: /dotnet/api
     - name: Java
@@ -51,7 +63,7 @@
     - name: Python
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
-      href: /rest/api/firewall
+      href: /rest/api/virtualnetwork/firewallpolicies
     - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
 - name: リソース

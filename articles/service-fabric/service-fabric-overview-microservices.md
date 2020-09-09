@@ -4,12 +4,12 @@ description: マイクロサービスでクラウド アプリケーションを
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792870"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246022"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法を使用してアプリケーションを構築する理由は何ですか
 
@@ -131,7 +131,7 @@ DNS で特定の URL を特定のマシンに解決するのと同様に、マ�
 
 ## <a name="guidance-for-designing-microservices-on-azure"></a>Azure でのマイクロサービスの設計指針
 
-[Azure でのマイクロサービスの設計と構築](https://docs.microsoft.com/azure/architecture/microservices/)に関するガイダンスについては、Azure アーキテクチャ センターをご覧ください。
+[Azure でのマイクロサービスの設計と構築](/azure/architecture/microservices/)に関するガイダンスについては、Azure アーキテクチャ センターをご覧ください。
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>マイクロサービス プラットフォームとしての Service Fabric
 
@@ -191,7 +191,7 @@ Service Fabric の目的は、マイクロサービス アプリケーション�
 ## <a name="next-steps"></a>次のステップ
 
 * [マイクロサービス:クラウドによって実現されるアプリケーションの革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure アーキテクチャ センター: Azure でのマイクロサービスの構築](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Azure アーキテクチャ センター: Azure でのマイクロサービスの構築](/azure/architecture/microservices/)
 * [Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](service-fabric-best-practices-overview.md)
 * [Service Fabric の用語の概要](service-fabric-technical-overview.md)
 

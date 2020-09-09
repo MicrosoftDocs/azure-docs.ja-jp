@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: e1718ac9a7b7fcaab096595ea7341fcc90c2ddd6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161692"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422336"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベース、コンテナー、項目の操作
 
@@ -20,7 +20,7 @@ Azure サブスクリプションで [Azure Cosmos DB アカウント](account-o
 
 次の画像は、Azure Cosmos DB アカウントのさまざまなエンティティの階層を示しています。
 
-![Azure Cosmos アカウントのエンティティ](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントのエンティティ" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos データベース
 
@@ -37,7 +37,7 @@ Azure サブスクリプションで [Azure Cosmos DB アカウント](account-o
 
 Azure Cosmos API を使用して、次の表で示しているように Azure Cosmos データベースとやりとりできます。
 
-| Operation | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
+| 操作 | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- |
 |すべてのデータベースを列挙する| はい | はい | はい (データベースはキースペースにマップされる) | はい | NA | NA |
 |データベースを読み込む| はい | はい | はい (データベースはキースペースにマップされる) | はい | NA | NA |
@@ -99,7 +99,7 @@ Azure Cosmos コンテナーには、一連のシステム定義のプロパテ�
 
 Azure Cosmos コンテナーでは、いずれかの Azure Cosmos API を使用する場合、以下の操作をサポートします。
 
-| Operation | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
+| 操作 | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- |
 | データベース内のコンテナーを列挙する | はい | はい | はい | はい | NA | NA |
 | コンテナーを読み取る | はい | はい | はい | はい | NA | NA |
@@ -113,7 +113,7 @@ Azure Cosmos コンテナーでは、いずれかの Azure Cosmos API を使用�
 
 | Cosmos エンティティ | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 項目 | ドキュメント | 行 | ドキュメント | ノードまたはエッジ | Item |
+|Azure Cosmos 項目 | Item | 行 | ドキュメント | ノードまたはエッジ | Item |
 
 ### <a name="properties-of-an-item"></a>項目のプロパティ
 
@@ -135,7 +135,7 @@ Azure Cosmos のどの項目にも、以下のシステム定義プロパティ�
 
 Azure Cosmos 項目では、次の操作をサポートします。 Azure Cosmos API のいずれかを使用して操作を実行できます。
 
-| Operation | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
+| 操作 | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- |
 | 挿入、置換、削除、アップサート、読み取り | いいえ | はい | はい | はい | はい | はい |
 

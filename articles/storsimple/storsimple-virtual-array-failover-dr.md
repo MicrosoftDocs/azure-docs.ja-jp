@@ -1,6 +1,6 @@
 ---
 title: StorSimple Virtual Array のフェールオーバーとディザスター リカバリー
-description: StorSimple Virtual Array をフェールオーバーする方法の詳細を確認します。
+description: Microsoft Azure StorSimple Virtual Array のディザスター リカバリー、たとえば、他の仮想アレイへの詳細なフェールオーバー手順について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77467217"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184722"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー
 
@@ -122,12 +122,12 @@ DR が正常に完了すると、ソース デバイスのクラウド データ
 
 5. **[非アクティブ化]** ブレードで、確認を求めるメッセージが表示されます。 デバイスの非アクティブ化は "*永続的*" な操作であるため、元に戻すことはできません。 ホスト上の共有/ボリュームもオフラインにするよう通知されます。 デバイス名を入力して確認し、 **[非アクティブ化]** をクリックします。
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![非アクティブ化ブレードのスクリーンショット。 デバイス名ボックスに入力され、[非アクティブ化] ボタンが強調表示されています。](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. 非アクティブ化が開始されます。 非アクティブ化が正常に完了すると、その旨が通知されます。
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![デバイスが非アクティブ化されていることを示す進行状況バーのスクリーンショット。](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. [デバイス] ページで、デバイスの状態が "**非アクティブ**" に変わります。
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    ![[デバイス] ページのスクリーンショット。 状態を含む非アクティブ化されたデバイスのプロパティが表示され、[非アクティブ化] と一覧表示されます。](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. **[デバイス]** ブレードで、フェールオーバーする非アクティブ化されたソース デバイスを選択してクリックします。 
 9. **[Device dashboard (デバイス ダッシュボード)]** ブレードで、 **[フェールオーバー]** をクリックします。 
 10. **[デバイスのフェールオーバー]** ブレードで、次の操作を行います。
@@ -140,22 +140,22 @@ DR が正常に完了すると、ソース デバイスのクラウド データ
 
     4. **[フェールオーバー]** をクリックします。
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![フェールオーバー デバイス ブレードのスクリーンショット。ソースとターゲットのデバイスが入力され、オプションがオンになっており、[フェールオーバー] ボタンが強調表示されています。](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. フェールオーバー ジョブが開始され、その旨が通知されます。 **[デバイス] > [ジョブ]** に移動して、フェールオーバーを監視します。
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![デバイスがフェールオーバーしていることを示す進行状況バーのスクリーンショット。](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. **[ジョブ]** ブレードに、ソース デバイス用に作成されたフェールオーバー ジョブが表示されます。 このジョブによって DR 事前チェックが実行されます。
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![フェールオーバー ジョブが正常に開始されたことを示すスクリーンショット。](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      DR 事前チェックが正常に完了したら、フェールオーバー ジョブによって、ソース デバイス上に存在する各共有またはボリュームの復元ジョブが生成されます。
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![状態、デバイス、期間など、フェールオーバー ジョブの詳細を示すスクリーンショット。](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. フェールオーバーが完了したら、 **[デバイス]** ブレードに移動します。
     
     1. フェールオーバー プロセスのターゲット デバイスとして使用された StorSimple デバイスを選択してクリックします。
     2. **[設定] > [管理] > [共有]** (iSCSI サーバーの場合は **[ボリューム]** ) に移動します。 **[共有]** ブレードでは、以前のデバイスの共有 (ボリューム) すべてを確認できます。
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![[デバイス] ブレードのスクリーンショット。 ターゲット デバイスが [オンライン] の状態で一覧表示されています。](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. 接続しようとしているアプリケーションすべてが新しいデバイスにリダイレクトされるように、[DNS エイリアスを作成](https://support.microsoft.com/kb/168322)する必要があります。
 
 ## <a name="errors-during-dr"></a>DR 時のエラー

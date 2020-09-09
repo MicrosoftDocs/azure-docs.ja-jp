@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314171"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075554"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の UI にアクセスする
 
@@ -64,16 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 このコマンドは、ローカル ポート 9876 へのトラフィックを SSH 経由でクラスターにルーティングする接続を作成します。 オプションは次のとおりです。
 
-    |オプション |説明 |
-    |---|---|
-    |D 9876|トンネル経由でトラフィックをルーティングするローカル ポートです。|
-    |C|すべてのデータを圧縮します (Web トラフィックの大部分はテキストであるため)。|
-    |2|SSH でプロトコル バージョン 2 のみを強制的に試行します。|
-    |q|非表示モードです。|
-    |T|pseudo-tty の割り当てを無効にします (ポートの転送だけを行うため)。|
-    |n|STDIN を読み取らないようにします (ポートの転送だけを行うため)。|
-    |N|リモート コマンドを実行しません (ポートの転送だけを行うため)。|
-    |f|バックグラウンドで実行します。|
+|オプション |説明 |
+|---|---|
+|D 9876|トンネル経由でトラフィックをルーティングするローカル ポートです。|
+|C|すべてのデータを圧縮します (Web トラフィックの大部分はテキストであるため)。|
+|2|SSH でプロトコル バージョン 2 のみを強制的に試行します。|
+|q|非表示モードです。|
+|T|pseudo-tty の割り当てを無効にします (ポートの転送だけを行うため)。|
+|n|STDIN を読み取らないようにします (ポートの転送だけを行うため)。|
+|N|リモート コマンドを実行しません (ポートの転送だけを行うため)。|
+|f|バックグラウンドで実行します。|
 
 コマンドが完了すると、ローカル コンピューターのポート 9876 に送信されるトラフィックは、クラスターのヘッド ノードにルーティングされるようになります。
 

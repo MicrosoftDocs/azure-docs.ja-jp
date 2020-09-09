@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597920"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962164"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ ms.locfileid: "82597920"
    
     ![デプロイ スロットのタイトル](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    ステージング スロットには、他の App Service アプリと同様に管理ページがあります。 スロットの構成を変更することができます。 デプロイ スロットを表示していることを知らせるため、アプリ名は **\<app-name>/\<slot-name>** と表示され、アプリの種類は **App Service (スロット)** です。 また、同じ指定先を使用して、リソース グループ内の別のアプリとしてスロットを表示することもできます。
+    ステージング スロットには、他の App Service アプリと同様に管理ページがあります。 スロットの構成を変更することができます。 デプロイ スロットを表示していることがわかるように、アプリ名は **\<app-name>/\<slot-name>** と表示され、アプリの種類は **App Service (スロット)** となります。 また、同じ指定先を使用して、リソース グループ内の別のアプリとしてスロットを表示することもできます。
 
 6. スロットのリソース ページで、アプリの URL を選択します。 デプロイ スロットは独自のホスト名を持ち、ライブ アプリでもあります。 デプロイ スロットへのパブリック アクセスを制限するには、[Azure App Service の IP 制限](app-service-ip-restrictions.md)に関するページをご覧ください。
 
-別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](app-service-deploy-local-git.md)ことができます。 スロットには、異なるリポジトリ分岐、または異なるリポジトリからデプロイできます。
+別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](./deploy-local-git.md)ことができます。 スロットには、異なるリポジトリ分岐、または異なるリポジトリからデプロイできます。
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ ms.locfileid: "82597920"
 
 1. [ローカル キャッシュ](overview-local-cache.md)が有効になっている場合は、ソース スロットの各インスタンスのアプリケーション ルート ("/") に対して HTTP 要求を行うことで、ローカル キャッシュの初期化をトリガーします。 各インスタンスが何らかの HTTP 応答を返すまで待機します。 ローカル キャッシュの初期化により、各インスタンスでもう一度再起動が発生します。
 
-1. [カスタム ウォームアップ](#Warm-up)によって[自動スワップ](#Auto-Swap)が有効になっている場合は、ソース スロットの各インスタンスのアプリケーション ルート ("/") に対して HTTP 要求を行うことで、[アプリケーションの初期化](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)をトリガーします。
+1. [カスタム ウォームアップ](#Warm-up)によって[自動スワップ](#Auto-Swap)が有効になっている場合は、ソース スロットの各インスタンスのアプリケーション ルート ("/") に対して HTTP 要求を行うことで、[アプリケーションの初期化](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)をトリガーします。
 
     `applicationInitialization` が指定されていない場合は、各インスタンスのソース スロットのアプリケーション ルートへの HTTP 要求をトリガーします。 
     
@@ -183,7 +183,7 @@ ms.locfileid: "82597920"
 
 自動スワップを構成するには:
 
-1. アプリのリソース ページに移動します。 **[デプロイ スロット]**  >  *[\<目的のソース スロット>]*  >  **[構成]**  >  **[全般設定]** と選択します。
+1. アプリのリソース ページに移動します。 **[デプロイ スロット]**  >  *\<desired source slot>*  >  **[構成]**  >  **[全般設定]** の順に選択します。
    
 2. **[Auto swap enabled]\(自動スワップ有効化\)** で、 **[オン]** を選択します。 **[Auto swap deployment slot]\(自動スワップのデプロイ スロット\)** で目的のターゲット スロットを選択し、コマンド バーで **[保存]** を選択します。 
    
@@ -199,12 +199,14 @@ ms.locfileid: "82597920"
 
 一部のアプリでは、スワップ前のカスタム ウォームアップ アクションが必要な場合があります。 web.config の `applicationInitialization` 構成要素を使用して、カスタム初期化アクションを指定できます。 [スワップ操作](#AboutConfiguration)では、このカスタム ウォームアップの終了を待ってから、ターゲット スロットとのスワップが行われます。 以下に、サンプルの web.config フラグメントを示します。
 
-    <system.webServer>
-        <applicationInitialization>
-            <add initializationPage="/" hostName="[app hostname]" />
-            <add initializationPage="/Home/About" hostName="[app hostname]" />
-        </applicationInitialization>
-    </system.webServer>
+```xml
+<system.webServer>
+    <applicationInitialization>
+        <add initializationPage="/" hostName="[app hostname]" />
+        <add initializationPage="/Home/About" hostName="[app hostname]" />
+    </applicationInitialization>
+</system.webServer>
+```
 
 `applicationInitialization` 要素のカスタマイズの詳細については、「[Most common deployment slot swap failures and how to fix them (最も一般的なデプロイ スロットのスワップ エラーとその修正方法)](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)」を参照してください。
 
@@ -220,7 +222,7 @@ ms.locfileid: "82597920"
 
 ## <a name="monitor-a-swap"></a>スワップを監視する
 
-[スワップ操作](#AboutConfiguration)が完了するまで長い時間がかかる場合、[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)でスワップ操作に関する情報を取得できます。
+[スワップ操作](#AboutConfiguration)が完了するまで長い時間がかかる場合、[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)でスワップ操作に関する情報を取得できます。
 
 ポータルのアプリのリソース ページで、左側のウィンドウの **[アクティビティ ログ]** を選択します。
 
@@ -254,7 +256,7 @@ App Service では、トラフィックの自動ルーティングだけでな�
 
 ベータ版アプリの利用をユーザーが拒否できるようにするには、たとえば次のようなリンクを Web ページに配置します。
 
-```HTML
+```html
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
@@ -272,7 +274,7 @@ App Service では、トラフィックの自動ルーティングだけでな�
 
 ## <a name="delete-a-slot"></a>スロットを削除する
 
-アプリを検索して選択します。 **[デプロイ スロット]**  > \<*削除するスロット>*  >  **[概要]** の順に選択します。 アプリの種類は **App Service (スロット)** として表示され、デプロイ スロットが表示されていることを知らせます。 コマンド バーの **[削除]** を選択します。  
+アプリを検索して選択します。 **[デプロイ スロット]**  >  *\<slot to delete>*  >  **[概要]** の順に選択します。 アプリの種類は **App Service (スロット)** として表示され、デプロイ スロットが表示されていることを知らせます。 コマンド バーの **[削除]** を選択します。  
 
 ![デプロイ スロットの削除](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -286,7 +288,7 @@ App Service では、トラフィックの自動ルーティングだけでな�
 
 Azure PowerShell は、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです (Azure App Service のデプロイ スロットを管理するためのサポートなど)。
 
-Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「 [Microsoft Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。  
+Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「 [Microsoft Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。  
 
 ---
 ### <a name="create-a-web-app"></a>Web アプリを作成する
@@ -333,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Resource Manager テンプレートで自動化する
 
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 Resource Manager テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 Resource Manager テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
 
 - `buildVersion`: これは、スロットにデプロイされているアプリの現在のバージョンを表す文字列プロパティです。 たとえば、"v1"、"1.0.0.1"、または "2019-09-20T11:53:25.2887393-07:00" のようになります。
 - `targetBuildVersion`: これは、スロットに必要な `buildVersion` を指定する文字列プロパティです。 targetBuildVersion が現在の `buildVersion` と等しくない場合は、指定された `buildVersion` を持つスロットを検索することによってスワップ操作がトリガーされます。
@@ -421,7 +423,6 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
       ...
     </conditions>
     ```
-- 一部の [IP 制限ルール](app-service-ip-restrictions.md)により、スワップ操作でのアプリへの HTTP 要求の送信が妨げられる可能性があります。 `10.` および `100.` で始まる IPv4 アドレスの範囲は、デプロイに対して内側です。 これらにアプリへの接続を許可する必要があります。
 
 - スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット*で[`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作*しません*。
 

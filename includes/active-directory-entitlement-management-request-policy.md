@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655929"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156498"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -194,7 +194,7 @@ ms.locfileid: "80655929"
 
 1. **[Forward to alternate approver(s) after how many days]\(別の承認者へ転送するまでの日数\)** ボックスに、承認者が要求を承認または拒否する必要がある日数を入力します。 要求期間内に承認者が要求を承認または拒否しなかった場合、要求の有効期限が切れ (タイムアウト)、ユーザーはアクセス パッケージに対する別の要求を送信する必要が生じます。 
 
-    要求期間の半分に達した翌日以降からのみ、代理承認者へ要求を転送できるようになります。 この例では、要求の期間は 14 日です。 そして、要求期間が半分に達するのは 7 日目になります。 そのため、8 日目以降にしか要求を転送することはできません。 また、要求期間の最終日にも、要求を転送することはできません。 そのため、例では、最後に要求を転送できる日は 13 日目です。
+    要求を別の承認者に転送できるのは、要求期間が半分に達した日の翌日になります。また、メインの承認者の決定は、少なくとも 4 日後にタイムアウトになる必要があります。 要求のタイムアウトが 3 以下の場合は、要求を別の承認者に転送するのに十分な時間がありません。 この例では、要求の期間は 14 日です。 そして、要求期間が半分に達するのは 7 日目になります。 そのため、8 日目以降にしか要求を転送することはできません。 また、要求期間の最終日にも、要求を転送することはできません。 そのため、例では、最後に要求を転送できる日は 13 日目です。
 
 ## <a name="enable-requests"></a>要求の有効化
 

@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bdaa823a14d99a16aa0f2e71483086d883b0515f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227079"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263775"
 ---
-# <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
+# <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
@@ -34,7 +37,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES または DRM 暗号化によってコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と JSON Web トークン ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) 形式のトークンがサポートされます。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) 形式と JSON Web トークン ([JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3)) 形式のトークンがサポートされます。
 
 Media Services は STS を提供しません。 カスタム STS を作成するか、Azure Access Control Service を使用してトークンを発行することができます。 STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定した要求を発行するよう構成する必要があります (この記事の説明を参照)。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
@@ -439,4 +442,3 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
 
 ## <a name="next-steps"></a>次のステップ
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)に関する記事をご覧ください。
-

@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/10/2020
+ms.topic: how-to
+ms.date: 07/30/2020
+ms.custom: project-no-code, devx-track-javascript
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 23d345ea9f22be5c4dac20e6e8784a8de079bccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58ddca6bb7844288aae0370f035bc4dfa2dc942f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78185840"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481685"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C における JavaScript とページ レイアウトのバージョン
 
@@ -40,7 +41,7 @@ Azure AD B2C では、ユーザー フローとカスタム ポリシーのユ�
 
 ## <a name="select-a-page-layout-version"></a>ページ レイアウトのバージョンを選択する
 
-ユーザー フローのプロパティで JavaScript を有効にするかどうかに関係なく、ユーザー フローのページに対するページ レイアウトのバージョンを指定できます。 ユーザー フローを開き、 **[ページ レイアウト]** を選択します。 **[LAYOUT NAME]\(レイアウト名\)** で、ユーザー フローのページを選択して、 **[Page Layout Version]\(ページ レイアウトのバージョン\)** を選択します。
+ユーザー フローのプロパティで JavaScript を有効にするかどうかに関係なく、ユーザー フローのページに対するページ レイアウトのバージョンを指定できます。 ユーザー フローを開き、 **[ページ レイアウト]** を選択します。 **[レイアウト名]** で、ユーザー フローのページを選択して、 **[ページ レイアウト バージョン (プレビュー)]** を選択します。
 
 さまざまなページ レイアウトのバージョンの詳細については、[ページ レイアウトのバージョン変更ログ](page-layout.md)に関する記事を参照してください。
 

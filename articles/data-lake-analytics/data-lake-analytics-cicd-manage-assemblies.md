@@ -1,17 +1,17 @@
 ---
 title: CI/CD パイプラインでの U-SQL アセンブリの管理 - Azure Data Lake
 description: Azure DevOps を使用して CI/CD パイプラインで U-SQL C# アセンブリを管理するためのベスト プラクティスについて学習します。
-author: yanancai
-ms.author: yanacai
+author: liudan66
+ms.author: liud
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2018
-ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315844"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132145"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>CI/CD パイプラインで U-SQL アセンブリを管理するためのベスト プラクティス
 

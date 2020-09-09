@@ -1,6 +1,6 @@
 ---
 title: 'チュートリアル:Resource Manager テンプレートを使用してパイプラインを作成する '
-description: このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Data Factory パイプラインを作成します。 このパイプラインは、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
+description: このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Data Factory パイプラインを作成します。 このパイプラインは、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dd559a8dd0bd59b50f4a3fa663f57874d948bf71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 831da4153eebc798265493441ee72c041901904f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438856"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053907"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル:Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ ms.locfileid: "75438856"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に目を通し、**前提条件**の手順を完了します。
-* 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。 このチュートリアルでは、PowerShell を使用して Data Factory エンティティをデプロイします。 
+* 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。 このチュートリアルでは、PowerShell を使用して Data Factory エンティティをデプロイします。 
 * (省略可能)「[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
@@ -56,11 +56,11 @@ ms.locfileid: "75438856"
 
 | Entity | 説明 |
 | --- | --- |
-| Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 このチュートリアルのコピー アクティビティでは、Azure Storage がソース データ ストアであり、Azure SQL データベースがシンク データ ストアです。 コピー アクティビティの入力データを格納するストレージ アカウントを指定します。 |
-| Azure SQL Database のリンクされたサービス |Azure SQL データベースをデータ ファクトリにリンクします。 コピー アクティビティの出力データを保持する Azure SQL データベースを指定します。 |
+| Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 このチュートリアルのコピー アクティビティでは、Azure Storage がソース データ ストアであり、Azure SQL Database がシンク データ ストアです。 コピー アクティビティの入力データを格納するストレージ アカウントを指定します。 |
+| Azure SQL Database のリンクされたサービス |Azure SQL Database のデータベースをデータ ファクトリにリンクします。 コピー アクティビティの出力データを保持するデータベースを指定します。 |
 | Azure BLOB の入力データセット |Azure Storage のリンクされたサービスを参照します。 リンクされたサービスは、Azure Storage アカウントを参照します。Azure BLOB データセットは、入力データを保持するストレージ内のコンテナー、フォルダー、ファイルの名前を指定します。 |
-| Azure SQL の出力データセット |Azure SQL のリンクされたサービスを参照します。 Azure SQL のリンクされたサービスは、Azure SQL サーバーを参照します。Azure SQL データセットは、出力データを保持するテーブルの名前を指定します。 |
-| データ パイプライン |パイプラインには、Azure BLOB データセットを入力として取得し、Azure SQL データセットを出力として取得する Copy 型のアクティビティが 1 つ含まれます。 コピー アクティビティでは、Azure BLOB から Azure SQL データベースのテーブルにデータをコピーします。 |
+| Azure SQL の出力データセット |Azure SQL のリンクされたサービスを参照します。 Azure SQL のリンクされたサービスは、論理 SQL サーバーを参照します。Azure SQL データセットは、出力データを保持するテーブルの名前を指定します。 |
+| データ パイプライン |パイプラインには、Azure BLOB データセットを入力として取得し、Azure SQL データセットを出力として取得する Copy 型のアクティビティが 1 つ含まれます。 コピー アクティビティでは、Azure BLOB から Azure SQL Database のテーブルにデータをコピーします。 |
 
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 アクティビティには、[データ移動アクティビティ](data-factory-data-movement-activities.md)と[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 2 種類があります。 このチュートリアルでは、アクティビティ (コピー アクティビティ) を 1 つ含むパイプラインを作成します。
 
@@ -106,9 +106,9 @@ ms.locfileid: "75438856"
       "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
       "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
       "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
+      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the logical SQL server that will hold the output/copied data." } },
+      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the logical SQL server." } },
+      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the logical SQL server." } },
       "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
       "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
       } 
@@ -288,7 +288,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
 > [!IMPORTANT]
 > storageAccountName パラメーターと storageAccountKey パラメーターに、Azure Storage アカウントの名前とキーを指定します。  
 > 
-> sqlServerName、databaseName、sqlServerUserName、sqlServerPassword の各パラメーターに、Azure SQL サーバー、データベース、ユーザー、パスワードを指定します。  
+> sqlServerName、databaseName、sqlServerUserName、sqlServerPassword の各パラメーターに、論理 SQL サーバー、データベース、ユーザー、パスワードを指定します。  
 
 ```json
 {
@@ -301,9 +301,9 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
         },
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
-        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
+        "sqlServerName": { "value": "<Name of the logical SQL server>" },
+        "databaseName": { "value": "<Name of the database>" },
+        "sqlServerUserName": { "value": "<Name of the user who has access to the database>" },
         "sqlServerPassword": { "value": "<password for the user>" },
         "targetSQLTable": { "value": "emp" }
     }
@@ -351,7 +351,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFCop
    
     ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
 6. [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションの手順に従って、このチュートリアルで作成したパイプラインとデータセットを監視します。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。
-7. スライスが**準備完了**状態になったら、Azure SQL データベースの **emp** テーブルにデータがコピーされていることを確認します。
+7. スライスが**準備完了**状態になったら、Azure SQL Database の **emp** テーブルにデータがコピーされていることを確認します。
 
 
 Azure Portal のブレードを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法の詳細については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
@@ -413,7 +413,7 @@ AzureStorageLinkedService は、Azure ストレージ アカウントをデー�
 connectionString では、storageAccountName パラメーターと storageAccountKey パラメーターを使用しています。 これらのパラメーターの値は、構成ファイルを使用して渡されます。 この定義では、テンプレートで定義された azureStorageLinkedService、dataFactoryName の各変数も使用しています。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
-AzureSqlLinkedService は、Azure SQL データベースをデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに emp テーブルを作成しました。 このセクションで、Azure SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#linked-service-properties)に関するセクションをご覧ください。  
+AzureSqlLinkedService は、Azure SQL Database のデータベースをデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに emp テーブルを作成しました。 このセクションで、論理 SQL サーバー名、データベース名、ユーザー名、ユーザー パスワードを指定します。 Azure SQL のリンクされたサービスの定義に使用する JSON プロパティの詳細については、[Azure SQL のリンクされたサービス](data-factory-azure-sql-connector.md#linked-service-properties)に関するセクションをご覧ください。  
 
 ```json
 {
@@ -478,7 +478,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL データセット
-Azure Blob Storage からコピーしたデータを保持する、Azure SQL データベースのテーブルの名前を指定します。 Azure SQL データセットの定義に使用する JSON プロパティの詳細については、[Azure SQL データセットのプロパティ](data-factory-azure-sql-connector.md#dataset-properties)に関するセクションをご覧ください。 
+Azure Blob Storage からコピーしたデータを保持する、Azure SQL Database のテーブルの名前を指定します。 Azure SQL データセットの定義に使用する JSON プロパティの詳細については、[Azure SQL データセットのプロパティ](data-factory-azure-sql-connector.md#dataset-properties)に関するセクションをご覧ください。 
 
 ```json
 {
@@ -572,7 +572,7 @@ Azure BLOB データセットから Azure SQL データセットにデータを�
 ```
 
 ## <a name="reuse-the-template"></a>テンプレートの再利用
-このチュートリアルでは、Data Factory エンティティを定義するためのテンプレートと、パラメーターの値を渡すためのテンプレートを作成しました。 パイプラインでは、パラメーターで指定された Azure Storage アカウントから Azure SQL データベースにデータをコピーします。 同じテンプレートを使用して、Data Factory エンティティをさまざまな環境にデプロイするには、環境ごとにパラメーター ファイルを作成し、その環境にデプロイするときに使用します。     
+このチュートリアルでは、Data Factory エンティティを定義するためのテンプレートと、パラメーターの値を渡すためのテンプレートを作成しました。 パイプラインでは、パラメーターで指定された Azure Storage アカウントから Azure SQL Database にデータをコピーします。 同じテンプレートを使用して、Data Factory エンティティをさまざまな環境にデプロイするには、環境ごとにパラメーター ファイルを作成し、その環境にデプロイするときに使用します。     
 
 例:  
 
@@ -591,7 +591,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 テンプレートを再利用して、繰り返されるタスクを実行することもできます。 たとえば、1 つ以上のパイプラインを持つ多数のデータ ファクトリを作成する必要があるとします。各データ ファクトリは同じロジックを実装しますが、それぞれ異なる Storage アカウントと SQL Database アカウントを使用します。 このシナリオでは、1 つの環境 (開発、テスト、または運用) で同じテンプレートと異なるパラメーター ファイルを使用してデータ ファクトリを作成します。   
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL データベースをターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
+このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL Database をターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

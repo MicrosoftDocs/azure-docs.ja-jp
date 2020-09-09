@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836381"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533276"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、DevOps エンジニア) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
+チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、DevOps エンジニア) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに組み込みの監視 Azure ロールをすばやく適用したり、限定的な監視アクセス許可を必要とするユーザーのために独自のカスタム ロールを作成したりする方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
 
 ## <a name="built-in-monitoring-roles"></a>組み込みの監視の役割
 Azure Monitor に組み込まれた役割は、サブスクリプションのリソースへのアクセスを制限しながら、インフラストラクチャの監視担当者が引き続き、必要なデータを取得して構成できるように設計されています。 Azure Monitor には、すぐに使用できる役割として、監視閲覧者と監視共同作成者の 2 つが用意されています。
@@ -28,10 +28,10 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 
 * ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
 * [Azure アラート](alerts-overview.md)に定義されているアラート ルールを表示する。
-* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](powershell-quickstart-samples.md)、または[クロスプラットフォーム CLI](../samples/cli-samples.md) を使用して、メトリックにクエリを実行する。
+* [Azure Monitor REST API](/rest/api/monitor/metrics)、[PowerShell コマンドレット](../samples/powershell-samples.md)、または[クロスプラットフォーム CLI](../samples/cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
 * リソースの [診断設定](diagnostic-settings.md) を表示する。
-* サブスクリプションの [ログ プロファイル](activity-log-export.md) を表示する。
+* サブスクリプションの [ログ プロファイル](./activity-log.md#legacy-collection-methods) を表示する。
 * 自動スケールの設定を表示する。
 * アラート アクティビティと設定を表示する。
 * Application Insights データにアクセスし、AI Analytics のデータを表示する。
@@ -52,7 +52,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
 * リソースの[診断設定](diagnostic-settings.md)を設定する。\*
-* サブスクリプションの[ログ プロファイル](activity-log-export.md)を設定する。\*
+* サブスクリプションの[ログ プロファイル](./activity-log.md#legacy-collection-methods)を設定する。\*
 * [Azure アラート](alerts-overview.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
 * Log Analytics ワークスペースの共有キーを一覧表示する。
@@ -67,8 +67,8 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>アクセス許可とカスタムの RBAC 役割の監視
-上記の組み込みの役割がチームの正確なニーズに対応していない場合は、 [カスタム RBAC 役割を作成](../../role-based-access-control/custom-roles.md) して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
+## <a name="monitoring-permissions-and-azure-custom-roles"></a>アクセス許可と Azure カスタム ロールの監視
+上記の組み込みの役割がチームの正確なニーズに対応していない場合は、[Azure カスタム ロールを作成](../../role-based-access-control/custom-roles.md)して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
 
 | 操作 | 説明 |
 | --- | --- |
@@ -97,7 +97,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 > 
 > 
 
-たとえば、上記の表を使用すると、"アクティビティ ログ閲覧者" に対して、次のようなカスタム RBAC 役割を作成できます。
+たとえば、上記の表を使用すると、"アクティビティ ログ閲覧者" に対して、次のような Azure カスタム ロールを作成できます。
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -126,7 +126,7 @@ New-AzRoleDefinition -Role $role
 * ユーザーによるアクセス対象が監視データだけの場合、ListKeys アクセス許可は、サブスクリプション スコープでストレージ アカウントまたはイベント ハブに付与しないでください。 代わりに、このアクセス許可は、リソースまたはリソース グループ (専用監視リソース グループの場合) スコープでユーザーに付与します。
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>監視関連のストレージ アカウントに対するアクセスの制限
-ユーザーまたはアプリケーションがストレージ アカウントの監視データにアクセスする必要がある場合は、Blob Storage へのサービス レベルの読み取り専用アクセスが付与されている、監視データが含まれるストレージ アカウントで、 [アカウント SAS を生成](https://msdn.microsoft.com/library/azure/mt584140.aspx) します。 PowerShell では次のようになります。
+ユーザーまたはアプリケーションがストレージ アカウントの監視データにアクセスする必要がある場合は、Blob Storage へのサービス レベルの読み取り専用アクセスが付与されている、監視データが含まれるストレージ アカウントで、 [アカウント SAS を生成](/rest/api/storageservices/create-account-sas) します。 PowerShell では次のようになります。
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 その後、ストレージ アカウントからの読み取りが必要なエンティティにトークンを割り当てることができます。これにより、そのストレージ アカウントのすべての BLOB からの表示と読み取りが可能になります。
 
-また、このアクセス許可を RBAC で制御する必要がある場合は、そのエンティティに、特定のストレージ アカウントの Microsoft.Storage/storageAccounts/listkeys/action 権限を付与します。 これは、診断設定またはログ プロファイルを、ストレージ アカウントにアーカイブされるように設定しなければならないユーザーに必要です。 たとえば、1 つのストレージ アカウントからの読み取りのみが必要なユーザーまたはアプリケーションに対しては、次のカスタム RBAC 役割を作成できます。
+また、このアクセス許可を RBAC で制御する必要がある場合は、そのエンティティに、特定のストレージ アカウントの Microsoft.Storage/storageAccounts/listkeys/action 権限を付与します。 これは、診断設定またはログ プロファイルを、ストレージ アカウントにアーカイブされるように設定しなければならないユーザーに必要です。 たとえば、1 つのストレージ アカウントからの読み取りのみが必要なユーザーまたはアプリケーションに対しては、次の Azure カスタム ロールを作成できます。
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -188,6 +188,5 @@ New-AzRoleDefinition -Role $role
 
 ## <a name="next-steps"></a>次のステップ
 * [Resource Manager で RBAC とアクセス許可を確認します](../../role-based-access-control/overview.md)
-* [Azure で監視の概要を確認します](../../azure-monitor/overview.md)
-
+* [Azure で監視の概要を確認します](../overview.md)
 

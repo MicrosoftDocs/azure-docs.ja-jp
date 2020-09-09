@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 361e8c63dc036443e527d1027fe3fd0cca784d9a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747204"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422999"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>ユーザー名として電話番号を使用する (プレビュー)
 
@@ -52,11 +52,11 @@ ms.locfileid: "83747204"
 
 1. SMS サインインが利用可能になると、SMS サインイン用に電話番号を有効にするかどうかを確認するバナーが表示されます。
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-banner.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    [![電話番号での SMS サインインを有効化するためのバナー。](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
 
 1. また、電話の方法のタイルにあるキャレットを選択すると、 **[有効化]** ボタンが表示されます。
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-phone-method.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
+    [![電話番号での SMS サインインを有効化するためのバナー。](media/sms-sign-in-explainer/sms-sign-in-phone-method.png)](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
 
 1. 方法を有効にするには、 **[有効化]** を選択します。 操作の確認を求めるメッセージが表示されます。
 
@@ -68,7 +68,7 @@ ms.locfileid: "83747204"
 
 1. 電話番号を削除するには、SMS サインインの電話の方法のタイルにある削除ボタンを選択します。
 
-    [![](media/sms-sign-in-explainer/sms-sign-in-delete-method.png "Banner to delete SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
+    [![電話番号での SMS サインインを削除するためのバナー。](media/sms-sign-in-explainer/sms-sign-in-delete-method.png)](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
 
 2. 操作の確認を求めるメッセージが表示されたら、 **[OK]** を選択します。
 

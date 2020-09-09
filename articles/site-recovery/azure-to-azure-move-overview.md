@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498055"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86130623"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンに移動する
 
@@ -51,11 +51,11 @@ VM の移動には、次の手順が伴います。
 
      ![階層への単一インスタンスの VM のデプロイ](media/move-vm-overview/regular-deployment.png)
 
-* **各階層の VM を可用性セットにデプロイ**: 階層内の各 VM は可用性セットに構成されます。 [可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)を使うことで、Azure にデプロイする VM は、クラスター内で切り離された複数のハードウェア ノードに確実に分散されます。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。
+* **各階層の VM を可用性セットにデプロイ**: 階層内の各 VM は可用性セットに構成されます。 [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)を使うことで、Azure にデプロイする VM は、クラスター内で切り離された複数のハードウェア ノードに確実に分散されます。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。
 
      ![可用性セットへの VM のデプロイ](media/move-vm-overview/avset.png)
 
-* **各階層の VM を Availability Zones にデプロイ**: 階層内の各 VM は [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) に構成されます。 Azure リージョン内の可用性ゾーンは、障害ドメインと更新ドメインを組み合わせたものです。 たとえば、Azure リージョンの 3 つのゾーンに 3 つ以上の VM を作成する場合、VM は実際には 3 つの障害ドメインと 3 つの更新ドメインに分散されます。 Azure プラットフォームは更新ドメインへのこの分散を認識し、異なるゾーン内の VM が同時に更新されないようにします。
+* **各階層の VM を Availability Zones にデプロイ**: 階層内の各 VM は [Availability Zones](../availability-zones/az-overview.md) に構成されます。 Azure リージョン内の可用性ゾーンは、障害ドメインと更新ドメインを組み合わせたものです。 たとえば、Azure リージョンの 3 つのゾーンに 3 つ以上の VM を作成する場合、VM は実際には 3 つの障害ドメインと 3 つの更新ドメインに分散されます。 Azure プラットフォームは更新ドメインへのこの分散を認識し、異なるゾーン内の VM が同時に更新されないようにします。
 
      ![可用性ゾーンのデプロイ](media/move-vm-overview/zone.png)
 

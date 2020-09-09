@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231691"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962521"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "79231691"
 このチュートリアルでは、[App Service Environment v1](app-service-app-service-environment-intro.md) (ASE) で Web アプリと App Service プランを作成する方法について説明します。 
 
 > [!NOTE]
-> Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「 [.NET web アプリを作成する](../app-service-web-get-started-dotnet.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
+> Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「 [.NET web アプリを作成する](../quickstart-dotnetcore.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
 > 
 > 
 
@@ -34,20 +34,20 @@ ms.locfileid: "79231691"
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
    
-    ![][1]
+    ![Azure portal で Web アプリを作成する場所を示すスクリーンショット。][1]
 2. サブスクリプションを選択します。  
    
     サブスクリプションを複数保有している場合、App Service 環境でアプリを作成するには、App Service 環境を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
 3. リソース グループを選択または作成します。
    
-    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
+    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に *Azure のロールベースのアクセス制御 (Azure RBAC)* 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
 4. App Service プランを選択または作成します。
    
     *App Service プラン*は、管理された Web アプリのセットです。  通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。 ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。  Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。  サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。  詳細については、「[Azure App Service プランの概要](../overview-hosting-plans.md)」を参照してください。
    
     ASE で App Service プランを識別するには、プラン名の下に表示されている場所を確認します。  
    
-    ![][5]
+    ![ASE の App Service プランが表示される場所を示すスクリーンショット。][5]
    
     App Service 環境に既に存在する App Service プランを使用する場合は、そのプランを選択します。 App Service プランを新たに作成する場合は、このチュートリアルの次のセクション「 [App Service 環境で App Service プランを作成する](#createplan)」を参照してください。
 5. Web アプリの名前を入力し、 **[作成]** をクリックします。 
@@ -69,18 +69,18 @@ App Service 環境でホストされる App Service プランに関するもう 
    
     App Service 環境は、実質的にプライベートなデプロイの場所であるため、[場所] に表示されます。 
    
-    ![][2]
+    ![目的の ASE を選択するための場所の選択コントロールを示すスクリーンショット。][2]
    
     場所の選択コントロールで ASE を選択すると、App Service プランの作成用 UI が更新されます。  場所に ASE システムの名前とそのリージョンが表示され、価格プランの選択コントロールがワーカー プールの選択コントロールに置き換えられます。  
    
-    ![][3]
+    ![場所の選択コントロールで ASE を選択した後の ASE システムの詳細を示すスクリーンショット。][3]
 
 ### <a name="selecting-a-worker-pool"></a>ワーカー プールの選択
 Azure App Service 内の App Service 環境以外の通常の操作では、3 つのコンピューティング サイズが専用の価格プランで選択できるようになっています。  これと似た方法として、ASE では、ワーカーのプールを 3 つまで定義し、そのワーカー プールで使用するコンピューティング サイズを指定できます。  ASE のテナントから見れば、App Service プランの価格プランとコンピューティング サイズを選択する代わりに、 *ワーカー プール*と呼ばれるものを選択することになります。  
 
 ワーカー プールの選択 UI では、そのワーカー プールに使用されるコンピューティング サイズがその名の下に表示されます。  "使用可能" な数は、そのプールで使用できるコンピューティング インスタンスの数を示します。  プール全体ではこの数を超えるインスタンスが実際に含まれている可能性がありますが、この値は単に使用されていないインスタンスの数を表します。  App Service 環境を調整してコンピューティング リソースを追加する必要がある場合は、「 [App Service Environment の構成](app-service-web-configure-an-app-service-environment.md)」を参照してください。
 
-![][4]
+![ASE のワーカー プールを選択できる [ワーカー プール] ウィンドウを示すスクリーンショット。][4]
 
 この例では、使用できるワーカー プールが 2 つしかありません。 これは、ASE 管理者によってこれらの 2 つのワーカー プールのみにホストが割り当てられているためです。  3 つ目のワーカー プールは、VM が割り当てられているときに表示されます。  
 
@@ -105,4 +105,4 @@ Web アプリと App Service プランを作成した後は、これをスケー
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/management/overview.md
-[AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[AzurePowershell]: /powershell/azure/?view=azps-3.8.0

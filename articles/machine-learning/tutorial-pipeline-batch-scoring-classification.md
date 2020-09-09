@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
+author: lobrien
+ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 5b6b58cb205c769feeed011c0a2ba2ec569d667a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: contperfq4, devx-track-python
+ms.openlocfilehash: 600b19ffac61f8f7c7336f114c6b52c6bc88b5ad
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857771"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489512"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
@@ -45,23 +45,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Azure Machine Learning ワークスペースまたはノートブック仮想マシンがまだない場合は、[セットアップのチュートリアルのパート 1](tutorial-1st-experiment-sdk-setup.md) を済ませておいてください。
 * セットアップのチュートリアルが完了したら、同じノートブック サーバーを使用して、*tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* ノートブックを開きます。
 
-独自の[ローカル環境](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)でセットアップのチュートリアルを実行したい場合は、[GitHub](how-to-configure-environment.md#local) 上のチュートリアルを利用できます。 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` を実行して必要なパッケージを取得してください。
+独自の[ローカル環境](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)でセットアップのチュートリアルを実行したい場合は、[GitHub](how-to-configure-environment.md#local) 上のチュートリアルを利用できます。 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` を実行して必要なパッケージを取得してください。
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>ワークスペースを構成してデータストアを作成する
 
 既存の Azure Machine Learning ワークスペースからワークスペース オブジェクトを作成します。
-
-- [ワークスペース](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)は、Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、モデルの実行を監視して追跡する際に使用できるクラウド リソースもワークスペースによって作成されます。 
-- `Workspace.from_config()` では `config.json` ファイルを読み取って、`ws` という名前のオブジェクトに認証情報を読み込みます。 `ws` オブジェクトは、このチュートリアルのコード全体で使用されています。
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
+> [!IMPORTANT]
+> このコード スニペットでは、ワークスペースの構成が現在のディレクトリまたはその親に保存されていることを想定しています。 ワークスペースの作成方法について詳しくは、[Azure Machine Learning ワークスペースを作成し、管理する](how-to-manage-workspace.md)方法に関するページを参照してください。 構成をファイルに保存する方法について詳しくは、「[ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)」を参照してください。
+
 ## <a name="create-a-datastore-for-sample-images"></a>サンプル画像のデータストアを作成する
 
 `pipelinedata` アカウントのパブリック BLOB コンテナー `sampledata` から、ImageNet のパブリック評価データ サンプルを入手します。 そのデータに `images_datastore` という名前のワークスペースからアクセスできるよう、`register_azure_blob_container()` を呼び出します。 そのうえで、ワークスペースの既定のデータストアを出力データストアとして設定します。 この出力データストアを使用して、パイプラインにおける出力のスコアリングを実行します。
+
+データへのアクセスの詳細については、[データへのアクセス方法](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#python-sdk)に関するページを参照してください。
 
 ```python
 from azureml.core.datastore import Datastore
@@ -93,7 +95,7 @@ from azureml.core.dataset import Dataset
 from azureml.pipeline.core import PipelineData
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
-label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/*.txt"))
+label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
 output_dir = PipelineData(name="scores", 
                           datastore=def_data_store, 
                           output_path_on_compute="batchscoring/results")
@@ -168,7 +170,7 @@ except ComputeTargetException:
 `batch_scoring.py` スクリプトは次のパラメーターを受け取ります。これらは後ほど作成する `ParallelRunStep` から渡されます。
 
 - `--model_name`:使用するモデルの名前。
-- `--labels_name`:`labels.txt` ファイルを保持する `Dataset` の名前。
+- `--labels_dir`:`labels.txt` ファイルの場所。
 
 パイプライン ステップにパラメーターを渡すために、このパイプラインのインフラストラクチャでは `ArgumentParser` クラスを使用しています。 たとえば、以下のコードでは、最初の引数 `--model_name` に `model_name` というプロパティ識別子が割り当てられています。 `init()` 関数の中では、`Model.get_model_path(args.model_name)` を使用して、このプロパティにアクセスしています。
 
@@ -196,9 +198,10 @@ image_size = 299
 num_channel = 3
 
 
-def get_class_label_dict():
+def get_class_label_dict(labels_dir):
     label = []
-    proto_as_ascii_lines = tf.gfile.GFile("labels.txt").readlines()
+    labels_path = os.path.join(labels_dir, 'labels.txt')
+    proto_as_ascii_lines = tf.gfile.GFile(labels_path).readlines()
     for l in proto_as_ascii_lines:
         label.append(l.rstrip())
     return label
@@ -209,14 +212,10 @@ def init():
 
     parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
     parser.add_argument('--model_name', dest="model_name", required=True)
-    parser.add_argument('--labels_name', dest="labels_name", required=True)
+    parser.add_argument('--labels_dir', dest="labels_dir", required=True)
     args, _ = parser.parse_known_args()
 
-    workspace = Run.get_context(allow_offline=False).experiment.workspace
-    label_ds = Dataset.get_by_name(workspace=workspace, name=args.labels_name)
-    label_ds.download(target_path='.', overwrite=True)
-
-    label_dict = get_class_label_dict()
+    label_dict = get_class_label_dict(args.labels_dir)
     classes_num = len(label_dict)
 
     with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
@@ -263,14 +262,15 @@ def run(mini_batch):
 
 ## <a name="build-the-pipeline"></a>パイプラインを構築する
 
-パイプラインを実行する前に、Python 環境を定義するオブジェクトを作成し、`batch_scoring.py` スクリプトに必要な依存関係を作成します。 主な依存関係として Tensorflow が必要となるほか、バックグラウンド処理用に `azureml-defaults` もインストールします。 それらの依存関係を使用して `RunConfiguration` オブジェクトを作成します。 さらに Docker および Docker-GPU のサポートを指定します。
+パイプラインを実行する前に、Python 環境を定義するオブジェクトを作成し、`batch_scoring.py` スクリプトに必要な依存関係を作成します。 主な依存関係として Tensorflow が必要となるほか、ParallelRunStep に必要な `azureml-core` および `azureml-dataprep[fuse]` もインストールします。 さらに Docker および Docker-GPU のサポートを指定します。
 
 ```python
 from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.13.1", "azureml-defaults"])
+cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.15.2",
+                                            "azureml-core", "azureml-dataprep[fuse]"])
 env = Environment(name="parallelenv")
 env.python.conda_dependencies = cd
 env.docker.base_image = DEFAULT_GPU_IMAGE
@@ -281,7 +281,7 @@ env.docker.base_image = DEFAULT_GPU_IMAGE
 スクリプト、環境構成、およびパラメーターを使用して、パイプラインのステップを作成します。 既にワークスペースに関連付けたコンピューティング ターゲットを指定します。
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     environment=env,
@@ -310,15 +310,20 @@ parallel_run_config = ParallelRunConfig(
 複数のステップが存在するシナリオでは、`outputs` 配列のオブジェクト参照が後続のパイプライン ステップの "*入力*" として使用できるようになります。
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
+from datetime import datetime
+
+parallel_step_name = "batchscoring-" + datetime.now().strftime("%Y%m%d%H%M")
+
+label_config = label_ds.as_named_input("labels_input")
 
 batch_score_step = ParallelRunStep(
-    name="parallel-step-test",
+    name=parallel_step_name,
     inputs=[input_images.as_named_input("input_images")],
     output=output_dir,
-    models=[model],
     arguments=["--model_name", "inception",
-               "--labels_name", "label_ds"],
+               "--labels_dir", label_config],
+    side_inputs=[label_config],
     parallel_run_config=parallel_run_config,
     allow_reuse=False
 )
@@ -330,7 +335,7 @@ batch_score_step = ParallelRunStep(
 
 次に、パイプラインを実行します。 まず、自分のワークスペースの参照および作成したパイプライン ステップを使用して `Pipeline` オブジェクトを作成します。 `steps` パラメーターは、ステップの配列です。 この場合、バッチ スコアリング用のステップは 1 つだけです。 複数のステップが含まれたパイプラインを作成する場合は、この配列内にステップを順に配置します。
 
-次に、`Experiment.submit()` 関数を使用して、実行するパイプラインを送信します。 カスタム パラメーター `param_batch_size` も指定します。 パイプラインの作成プロセス中は、`wait_for_completion` 関数からログが出力されます。 ログを使用して、最新の進行状況を確認することができます。
+次に、`Experiment.submit()` 関数を使用して、実行するパイプラインを送信します。 パイプラインの作成プロセス中は、`wait_for_completion` 関数からログが出力されます。 ログを使用して、最新の進行状況を確認することができます。
 
 > [!IMPORTANT]
 > パイプラインの初回実行には約 "*15 分*" かかります。 依存関係をすべてダウンロードする必要があるほか、Docker イメージの作成と Python 環境のプロビジョニングおよび作成が行われます。 パイプラインを再度実行する際は、それらのリソースが作成されるのではなく再利用されるので、時間が大幅に短縮されます。 ただし、パイプラインの総実行時間は、実際のスクリプトのワークロードと、各パイプライン ステップで実行される処理によって異なります。
@@ -394,7 +399,7 @@ auth_header = interactive_auth.get_authentication_header()
 
 REST URL は、発行済みのパイプライン オブジェクトの `endpoint` プロパティから取得します。 REST URL は、Azure Machine Learning Studio のワークスペースでも確認できます。 
 
-このエンドポイントに対する HTTP POST 要求を作成します。 要求には、認証ヘッダーを指定します。 実験の名前とバッチ サイズ パラメーターが含まれた JSON ペイロード オブジェクトを追加します。 このチュートリアルで前に述べたように、`param_batch_size` は、ステップの構成で `PipelineParameter` オブジェクトとして定義したため、`batch_scoring.py` スクリプトに渡されます。
+このエンドポイントに対する HTTP POST 要求を作成します。 要求には、認証ヘッダーを指定します。 実験の名前が含まれた JSON ペイロード オブジェクトを追加します。
 
 実行をトリガーするための要求を作成します。 応答ディクショナリの `Id` キーにアクセスして実行 ID の値を取得するコードを追加します。
 
@@ -405,7 +410,7 @@ rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
                          json={"ExperimentName": "batch_scoring",
-                               "ParameterAssignments": {"param_batch_size": 50}})
+                               "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
 

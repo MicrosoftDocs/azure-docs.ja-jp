@@ -4,15 +4,15 @@ description: スポット VM とスケール セットのインスタンスを�
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 5a34dc2b9468c6c5af4af0e0addfd8b9ebb7e792
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 3e151145bd3c4d1db87ef5d1b0d553555a580279
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547812"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816747"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>スポット VM とスケール セットのエラー メッセージ
 
@@ -21,7 +21,7 @@ ms.locfileid: "80547812"
 
 | Key | Message | 説明 |
 |-----|---------|-------------|
-| SkuNotAvailable | リソース '\<resource\>' に要求された階層は、場所 '\<location\>' ではサブスクリプション '\<subscriptionID\>' に対して現在使用できません。 別の階層を試すか、別の場所にデプロイしてください。 | この場所には、VM またはスケール セットのインスタンスを作成するための十分な Azure スポットの容量がありません。 |
+| SkuNotAvailable | リソース "\<resource\>" に要求された階層は、場所 "\<location\>" ではサブスクリプション "\<subscriptionID\>" に対して現在使用できません。 別の階層を試すか、別の場所にデプロイしてください。 | この場所には、VM またはスケール セットのインスタンスを作成するための十分な Azure スポットの容量がありません。 |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  排除ポリシーは、Azure Spot Virtual Machines のみで設定できます。 | この VM はスポット VM ではないため、排除ポリシーを設定することはできません。 |
 | AzureSpotVMNotSupportedInAvailabilitySet  |  Azure Spot Virtual Machine は、可用性セットではサポートされていません。 | スポット VM を使用するか、可用性セット内の VM を使用するかを選択する必要があります。両方を選択することはできません。 |
 | AzureSpotFeatureNotEnabledForSubscription  |  Azure スポット機能でサブスクリプションが有効になっていません。 | スポット VM をサポートするサブスクリプションを使用してください。 |
@@ -31,12 +31,11 @@ ms.locfileid: "80547812"
 | MaxPriceChangeNotAllowedForAllocatedVMs | VM '{0}' が現在割り当てられている場合、最大価格の変更は許可されません。 割り当てを解除してから、もう一度お試しください。 | VM を停止 / 割り当て解除して、最大価格を変更できるようにします。 |
 | MaxPriceChangeNotAllowed | 最大価格の変更は許可されていません。 | この VM の最大価格を変更することはできません。 |
 | AzureSpotIsNotSupportedForThisAPIVersion  |  Azure スポットは、この API バージョンではサポートされていません。 | API バージョンは 2019-03-01 である必要があります。 |
-| AzureSpotIsNotSupportedForThisVMSize  |  この VM サイズ {0} に対しては Azure スポットはサポートされていません。 | 別の VM サイズを選択してください。 詳細については、[Spot Virtual Machines](./linux/spot-vms.md) に関するページを参照してください。 |
-| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  最大価格は、Azure Spot Virtual Machines のみでサポートされています。 | 詳細については、[Spot Virtual Machines](./linux/spot-vms.md) に関するページを参照してください。 |
+| AzureSpotIsNotSupportedForThisVMSize  |  この VM サイズ {0} に対しては Azure スポットはサポートされていません。 | 別の VM サイズを選択してください。 詳細については、[Spot Virtual Machines](./spot-vms.md) に関するページを参照してください。 |
+| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  最大価格は、Azure Spot Virtual Machines のみでサポートされています。 | 詳細については、[Spot Virtual Machines](./spot-vms.md) に関するページを参照してください。 |
 | MoveResourcesWithAzureSpotVMNotSupported  |  リソースの移動要求に、Azure スポット仮想マシンが含まれています。 現在これはサポートされていません。 仮想マシン ID のエラーの詳細を確認してください。 | スポット VM を移動することはできません。 |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  リソースの移動要求に、Azure スポット仮想マシン スケール セットが含まれています。 現在これはサポートされていません。 仮想マシン スケール セット ID のエラーの詳細を確認してください。 | スポット スケール セットのインスタンスを移動することはできません。 |
-| EphemeralOSDisksNotSupportedForSpotVMs | 一時 OS ディスクは、スポット VM ではサポートされていません。 | スポット VM には、通常の OS ディスクを使用してください。 |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | VM オーケストレーション モードの仮想マシン スケール セットでは、Azure Spot Virtual Machine はサポートされていません。 | スポット インスタンスを使用するには、オーケストレーション モードを仮想マシン スケール セットに設定します。 |
 
 
-**次の手順** の詳細については、「[Spot Virtual Machines](./linux/spot-vms.md)」を参照してください。
+**次の手順** の詳細については、「[Spot Virtual Machines](./spot-vms.md)」を参照してください。

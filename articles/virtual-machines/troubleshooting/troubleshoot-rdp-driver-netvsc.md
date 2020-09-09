@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71057987"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509003"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>netvsc.sys のために Azure 内の Windows 10 または Windows Server 2016 VM にリモート接続できない
 
@@ -69,7 +69,7 @@ ms.locfileid: "71057987"
 
 ### <a name="repair-the-vm-offline"></a>VM をオフライン修復する
 
-1. [復旧 VM にシステム ディスクを取り付ける](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [復旧 VM にシステム ディスクを取り付ける](./troubleshoot-recovery-disks-portal-windows.md)。
 
 2. 復旧 VM へのリモート デスクトップ接続を開始します。
 
@@ -114,7 +114,7 @@ ms.locfileid: "71057987"
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [システム ディスクをデタッチして、VM を再度作成します](../windows/troubleshoot-recovery-disks-portal.md)。
+16. [システム ディスクをデタッチして、VM を再度作成します](./troubleshoot-recovery-disks-portal-windows.md)。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

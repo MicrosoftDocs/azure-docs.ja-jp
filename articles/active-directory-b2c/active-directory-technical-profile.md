@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201516"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -41,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 次の例は、**AAD-Common** 技術プロファイルを示しています。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -96,7 +96,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 新しいローカル アカウントを作成する **AAD-UserWriteUsingLogonEmail** 技術プロファイルは、以下の要求を保持します。
 
-```XML
+```xml
   <PersistedClaims>
     <!-- Required claims -->
     <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
@@ -126,7 +126,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 **読み取り**操作は、単一のユーザー アカウントに関するデータを読み取ります。 以下の技術プロファイルは、ユーザーの objectId を使用してユーザー アカウントに関するデータを読み取ります。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -156,7 +156,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 **書き込み**操作は、単一のユーザー アカウントを作成または更新します。 以下の技術プロファイルは、新しいソーシャル アカウントを作成します。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Write</Item>
@@ -196,7 +196,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 **DeleteClaims** 操作は、提供された要求の一覧から情報を消去します。 以下の技術プロファイルは、要求を削除します。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaims</Item>
@@ -217,7 +217,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 **DeleteClaimsPrincipal** 操作は、ディレクトリから単一のユーザー アカウントを削除します。 以下の技術プロファイルは、ユーザー プリンシパル名を使用してディレクトリからユーザー アカウントを削除します。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -232,7 +232,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 以下の技術プロファイルは、**alternativeSecurityId** を使用してソーシャル ユーザー アカウントを削除します。
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>

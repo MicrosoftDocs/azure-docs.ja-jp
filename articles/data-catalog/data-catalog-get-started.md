@@ -1,17 +1,17 @@
 ---
-title: Azure データ カタログを作成する
+title: クイック スタート:Azure データ カタログを作成する
 description: このクイックスタートでは、Azure portal を使用して Azure Data Catalog を作成する方法について説明します。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 08/01/2019
-ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/26/2020
+ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68976855"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118792"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>クイック スタート:Azure データ カタログを作成する
 
@@ -22,6 +22,9 @@ Azure Data Catalog は、フル マネージドのクラウド サービスで�
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+> [!Note]
+> Azure のセキュリティ要件により、Azure Data Catalog にはトランスポート層セキュリティ (TLS) 1.2 が適用されています。 TLS 1.0 と TLS 1.1 が無効になっています。 コンピューターが TLS 1.2 用に更新されていない場合、登録ツールの実行中にエラーが発生することがあります。 TLS 1.2 用にコンピューターを更新するには、[Transport Layer Security (1.2) の有効化](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2)に関するページを参照してください。
 
 開始するには、以下が必要です。
 

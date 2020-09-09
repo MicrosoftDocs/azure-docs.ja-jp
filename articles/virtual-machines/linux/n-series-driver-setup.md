@@ -2,18 +2,18 @@
 title: Linux 用 Azure N シリーズ GPU ドライバーのセットアップ
 description: Azure で Linux を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法を説明します。
 services: virtual-machines-linux
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: e4ee760acb441cdf70e588004d2f380ead07cd34
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 02fbe721f1bf5737ad1d10d656ea75ed1372b484
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779351"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284882"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -21,7 +21,7 @@ NVIDIA GPU を動力源とする Azure N シリーズ VM の GPU 機能を利用
 
 NVIDIA GPU ドライバーを手動でインストールすることを選択した場合、この記事では、サポートされるディストリビューション、ドライバー、インストールおよび検証手順について説明します。 手動でのドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
 
-N シリーズ VM の仕様、ストレージの容量、およびディスクの詳細については、「[GPU Linux VM のサイズ](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 
+N シリーズ VM の仕様、ストレージの容量、およびディスクの詳細については、「[GPU Linux VM のサイズ](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json)」を参照してください。 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -355,7 +355,7 @@ fi
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * カードを照会する必要があるときにコマンドがより高速に出力されるように、`nvidia-smi` を使って永続化モードを設定できます。 永続化モードを設定するには、`nvidia-smi -pm 1` を実行します。 VM を再起動すると、モード設定は消失することに注意してください。 常にスタートアップ時に実行するように、モード設定をスクリプト処理できます。
-* NVIDIA CUDA ドライバーを最新バージョンに更新して、RDMA 接続が動作しなくなっていることが判明した場合は、[RDMA ドライバーを再インストールして](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)、その接続を再確立してください。 
+* NVIDIA CUDA ドライバーを最新バージョンに更新して、RDMA 接続が動作しなくなっていることが判明した場合は、[RDMA ドライバーを再インストールして](#rdma-network-connectivity)、その接続を再確立してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

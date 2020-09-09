@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290110"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750188"
 ---
 # <a name="durable-orchestrations"></a>持続的オーケストレーション
 
@@ -25,7 +25,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 ## <a name="orchestration-identity"></a>オーケストレーション ID
 
-オーケストレーションの各 "*インスタンス*" にはインスタンス ID あります ("*インスタンス ID*" とも呼ばれます)。 既定では、各インスタンス ID は自動生成される GUID です。 ただし、ユーザーが生成した文字列値をインスタンス ID にすることもできます。 各オーケストレーション インスタンス ID は、[タスク ハブ](durable-functions-task-hubs.md)内で一意である必要があります。
+オーケストレーションの各 "*インスタンス*" にはインスタンスの識別子があります ("*インスタンス ID*" とも呼ばれます)。 既定では、各インスタンス ID は自動生成される GUID です。 ただし、ユーザーが生成した文字列値をインスタンス ID にすることもできます。 各オーケストレーション インスタンス ID は、[タスク ハブ](durable-functions-task-hubs.md)内で一意である必要があります。
 
 インスタンス ID に関するいくつかのルールを次に示します。
 
@@ -41,9 +41,9 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 ## <a name="reliability"></a>[信頼性]
 
-オーケストレーター関数は、[イベント ソーシング](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)設計パターンを使用して、この関数の実行状態を確実に管理します。 Durable Task Framework では、オーケストレーションの現在の状態を直接格納する代わりに、追加専用ストアを使用して、関数オーケストレーションによって実行されるすべてのアクションが記録されます。 追加専用ストアには、実行時のすべての状態の "ダンプ" に比べて、多くのメリットがあります。 メリットには、パフォーマンス、スケーラビリティ、および応答性の向上が含まれます。 トランザクション データの最終的な一貫性、完全な監査証跡、および監査履歴も取得できます。 監査証跡では、信頼性の高い補正アクションがサポートされます。
+オーケストレーター関数は、[イベント ソーシング](/azure/architecture/patterns/event-sourcing)設計パターンを使用して、この関数の実行状態を確実に管理します。 Durable Task Framework では、オーケストレーションの現在の状態を直接格納する代わりに、追加専用ストアを使用して、関数オーケストレーションによって実行されるすべてのアクションが記録されます。 追加専用ストアには、実行時のすべての状態の "ダンプ" に比べて、多くのメリットがあります。 メリットには、パフォーマンス、スケーラビリティ、および応答性の向上が含まれます。 トランザクション データの最終的な一貫性、完全な監査証跡、および監査履歴も取得できます。 監査証跡では、信頼性の高い補正アクションがサポートされます。
 
-Durable Functions では、イベント ソーシングが透過的に使用されます。 バックグラウンドで、オーケストレーター関数内の `await` (C#) または `yield` (JavaScript) 演算子によって、オーケストレーター スレッドのコントロールが Durable Task Framework ディスパッチャーに戻されます。 次に、このディスパッチャーは、オーケストレーター関数がスケジュールした新しいアクション (1 つ以上の子関数を呼び出す、永続タイマーをスケジュールする、など) をストレージにコミットします。 この透過的なコミット アクションが、オーケストレーション インスタンスの実行履歴に追加されます。 この履歴はストレージ テーブルに格納されます。 次に、このコミット アクションはキューにメッセージを追加して実際の作業をスケジュールします。 この時点では、メモリからオーケストレーター関数をアンロードできます。
+Durable Functions では、イベント ソーシングが透過的に使用されます。 バックグラウンドで、オーケストレーター関数内の `await` (C#) または `yield` (JavaScript/Python) 演算子によって、オーケストレーター スレッドの制御が Durable Task Framework ディスパッチャーに戻ります。 次に、このディスパッチャーは、オーケストレーター関数がスケジュールした新しいアクション (1 つ以上の子関数を呼び出す、永続タイマーをスケジュールする、など) をストレージにコミットします。 この透過的なコミット アクションが、オーケストレーション インスタンスの実行履歴に追加されます。 この履歴はストレージ テーブルに格納されます。 次に、このコミット アクションはキューにメッセージを追加して実際の作業をスケジュールします。 この時点では、メモリからオーケストレーター関数をアンロードできます。
 
 オーケストレーション関数にさらに処理すべき作業 (応答メッセージの受信や永続タイマーの終了など) が与えられると、オーケストレーターが起動し、関数全体が始めから再実行され、ローカルの状態が再構築されます。 このリプレイ中にコードが関数を呼び出そうとする (または他の非同期作業を行おうとする) と、Durable Task Framework によって現在のオーケストレーションの実行履歴が確認されます。 [アクティビティ関数](durable-functions-types-features-overview.md#activity-functions)が既に実行され、いくつかの結果が生成されていることがわかった場合は、関数の結果をリプレイし、オーケストレーター コードの実行を続行します。 リプレイは、関数コードが完了するまで、または新しい非同期作業がスケジュールされるまで続行されます。
 
@@ -51,7 +51,7 @@ Durable Functions では、イベント ソーシングが透過的に使用さ�
 > リプレイ パターンが正常かつ確実に動作するためには、オーケストレーター関数のコードが "*決定論的*" である必要があります。 オーケストレーター関数のコードの制限について詳しくは、[オーケストレーター関数のコードの制約](durable-functions-code-constraints.md)に関するトピックをご覧ください。
 
 > [!NOTE]
-> オーケストレーター関数によってログ メッセージを出力される場合、リプレイ動作によって重複するログ メッセージが生成される可能性があります。 この動作が発生する理由とそれを回避する方法の詳細については、「[ログの記録](durable-functions-diagnostics.md#logging)」トピックをご覧ください。
+> オーケストレーター関数によってログ メッセージを出力される場合、リプレイ動作によって重複するログ メッセージが生成される可能性があります。 この動作が発生する理由とそれを回避する方法の詳細については、[ログ記録](durable-functions-diagnostics.md#app-logging)に関するセクションをご覧ください。
 
 ## <a name="orchestration-history"></a>オーケストレーションの履歴
 
@@ -91,9 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
-Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ステートメントごとに、関数の実行状態のチェックポイントが、持続的なストレージ バックエンド (通常は Azure Table Storage) に記録されます。 この状態は、"*オーケストレーションの履歴*" と呼ばれます。
+Durable Task Framework では、`await` (C#) または `yield` (JavaScript/Python) ステートメントごとに、関数の実行状態のチェックポイントが、持続的なストレージ バックエンド (通常は Azure Table Storage) に記録されます。 この状態は、"*オーケストレーションの履歴*" と呼ばれます。
 
 ### <a name="history-table"></a>履歴テーブル
 
@@ -110,7 +124,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 完了すると、Azure Table Storage の上記の関数の履歴は次の表のようになります (わかりやすくするために一部省略されています)。
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | Name             | 結果                                                    | Status |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | 名前             | 結果                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
@@ -127,31 +141,31 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | [完了]           |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 完了           |
 
 列の値に関する注意点:
 
-* **PartitionKey**: オーケストレーションのインスタンス ID が含まれます。
-* **EventType**: イベントの種類を表します。 次のいずれかの種類です。
-  * **OrchestrationStarted**: オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、`CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) API の決定論的な値を設定するために使用されます。
-  * **ExecutionStarted**: オーケストレーター関数は初めて実行を開始しました。 このイベントには、`Input` 列の関数入力も含まれています。
-  * **TaskScheduled**: アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
-  * **TaskCompleted**: アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
-  * **TimerCreated**: 持続的タイマーが作成されました。 `FireAt` 列には、タイマーが期限切れになるスケジュールされた UTC 時間が含まれます。
-  * **TimerFired**: 持続的タイマーが開始されました。
-  * **EventRaised**: 外部イベントがオーケストレーション インスタンスに送信されました。 `Name` 列は、イベントの名前をキャプチャし、`Input` 列は、イベントのペイロードをキャプチャします。
-  * **OrchestratorCompleted**: オーケストレーター関数が待機状態になりました。
-  * **ContinueAsNew**: オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
-  * **ExecutionCompleted**: オーケストレーター関数が実行され、完了 (または失敗) しました。 関数またはエラーの詳細の出力は `Result` 列に格納されます。
-* **Timestamp**: 履歴イベントの UTC タイムスタンプ。
-* **Name**: 呼び出された関数の名前。
-* **Input**: 関数の JSON 形式の入力。
-* **Result**: 関数の出力、つまり、戻り値。
+* **PartitionKey**:オーケストレーションのインスタンス ID が含まれます。
+* **EventType**:イベントの種類を表します。 次のいずれかの種類です。
+  * **OrchestrationStarted**:オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、`CurrentUtcDateTime` (.NET)、`currentUtcDateTime` (JavaScript)、および `current_utc_datetime` (Python) API の決定論的な値を設定するために使用されます。
+  * **ExecutionStarted**:オーケストレーター関数は初めて実行を開始しました。 このイベントには、`Input` 列の関数入力も含まれています。
+  * **TaskScheduled**:アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
+  * **TaskCompleted**:アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
+  * **TimerCreated**:持続的タイマーが作成されました。 `FireAt` 列には、タイマーが期限切れになるスケジュールされた UTC 時間が含まれます。
+  * **TimerFired**:持続的タイマーが開始されました。
+  * **EventRaised**:外部イベントがオーケストレーション インスタンスに送信されました。 `Name` 列は、イベントの名前をキャプチャし、`Input` 列は、イベントのペイロードをキャプチャします。
+  * **OrchestratorCompleted**:オーケストレーター関数が待機状態になりました。
+  * **ContinueAsNew**:オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
+  * **ExecutionCompleted**:オーケストレーター関数が実行され、完了 (または失敗) しました。 関数またはエラーの詳細の出力は `Result` 列に格納されます。
+* **[タイムスタンプ]** : 履歴イベントの UTC タイムスタンプ。
+* **Name**:呼び出された関数の名前。
+* **入力**:関数の JSON 形式の入力。
+* **Result**:関数の出力、つまり、戻り値。
 
 > [!WARNING]
 > これはデバッグ ツールとしては便利ですが、このテーブルにあまり依存しないようにしてください。 Durable Functions 拡張機能の刷新に伴って変更される可能性があります。
 
-`await` (C#) または `yield` (JavaScript) から関数が再実行されるたびに、Durable Task Framework は、オーケストレーター関数をゼロから再実行し、 再実行のたびに、実行履歴が調べられて、現在の非同期操作が実行されているかどうかが確認されます。  操作が実行されている場合、フレームワークはその操作の出力をすぐに再生し、次の `await` (C#) または `yield` (JavaScript) に移動します。 履歴全体がリプレイされるまで、このプロセスが続けられます。 現在の履歴がリプレイされると、ローカル変数が以前の値に復元されます。
+`await` (C#) または `yield` (JavaScript/Python) から関数が再実行されるたびに、Durable Task Framework は、オーケストレーター関数をゼロから再実行します。 再実行のたびに、実行履歴が調べられて、現在の非同期操作が実行されているかどうかが確認されます。  操作が実行されている場合、フレームワークはその操作の出力をすぐに再生し、次の `await` (C#) または `yield` (JavaScript/Python) に移動します。 履歴全体がリプレイされるまで、このプロセスが続けられます。 現在の履歴がリプレイされると、ローカル変数が以前の値に復元されます。
 
 ## <a name="features-and-patterns"></a>機能とパターン
 
@@ -165,7 +179,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 ### <a name="durable-timers"></a>持続的タイマー
 
-オーケストレーションでは、*持続的タイマー*をスケジュールして、遅延を実装したり、非同期アクションに対するタイムアウト処理を設定したりすることができます。 オーケストレーター関数の持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript) の代わりに使用します。
+オーケストレーションでは、*持続的タイマー*をスケジュールして、遅延を実装したり、非同期アクションに対するタイムアウト処理を設定したりすることができます。 オーケストレーター関数の持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript)、または `time.sleep()` (Python) の代わりに使用します。
 
 詳細と例については、[持続的タイマー](durable-functions-timers.md)に関する記事をご覧ください。
 
@@ -252,6 +266,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
 ---
 
 基本的な要求と応答のパターンのサポートに加えて、このメソッドでは、一般的な非同期 HTTP 202 ポーリング パターンの自動処理がサポートされており、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用した外部サービスによる認証もサポートされています。
@@ -267,7 +293,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-.NET では、[ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) の新機能を使用しています。
+.NET では、[ValueTuples](/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](/dotnet/csharp/tuples) の新機能を使用しています。
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -322,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="activity"></a>アクティビティ
+#### <a name="getweather-activity"></a>`GetWeather` の利用状況
 
 ```javascript
 module.exports = async function (context, location) {
@@ -330,6 +356,36 @@ module.exports = async function (context, location) {
 
     // ...
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>オーケストレーター
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather` の利用状況
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
 ```
 
 ---

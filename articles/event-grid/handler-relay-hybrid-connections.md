@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid イベントに対するイベント ハンドラーとしての Relay ハイブリッド接続
 description: Azure Event Grid イベントのイベント ハンドラーとして Azure Relay ハイブリッド接続を使用する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 0631724e688a71d7e9685f5f0ad738d81e2a8034
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 38233a2e103600f07837ce9a1ad8d63fe7e4fb99
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596111"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105713"
 ---
 # <a name="relay-hybrid-connection-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしての Relay ハイブリッド接続
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Relay** はその 1 つです。 
@@ -25,6 +21,25 @@ Azure **Relay ハイブリッド接続**を使用して、エンタープライ�
 |タイトル  |説明  |
 |---------|---------|
 | [チュートリアル: ハイブリッド接続にイベントを送信する](custom-event-to-hybrid-connection.md) | リスナー アプリケーションで処理するために既存のハイブリッド接続にカスタム イベントを送信します。 |
+
+## <a name="rest-example-for-put"></a>REST の例 (PUT 用)
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "HybridConnection",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Relay/namespaces/<RELAY NAMESPACE NAME>/hybridconnections/<HYBRID CONNECTION NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。 

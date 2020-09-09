@@ -4,22 +4,41 @@ description: Azure アクティビティ ログ内の各カテゴリのイベン
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 12/04/2019
+ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c2f171c79423e0cfe8b57c05b8248679f9ada9f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472743"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829511"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
-[Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、カテゴリごとにイベント スキーマを説明します。 
+[Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、アクティビティ ログのカテゴリとそれぞれのスキーマについて説明します。 
 
-次の例は、ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合のスキーマを示しています。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](resource-logs-stream-event-hubs.md)場合、スキーマは異なります。 [リソース ログ スキーマ](diagnostic-logs-schema.md)へのプロパティのマッピングについては、この記事の最後で紹介します。
+スキーマは、ログへのアクセス方法によって異なります。
+ 
+- この記事で説明するスキーマは、[REST API](/rest/api/monitor/activitylogs) からアクティビティ ログにアクセスするときに使用します。 これは、Azure portal でイベントを表示するときに **JSON** オプションを選択した場合に使用されるスキーマでもあります。
+- [診断設定](diagnostic-settings.md)を使用して Azure Storage または Azure Event Hubs にアクティビティ ログを送信する場合は、スキーマについて最後の「[ストレージ アカウントとイベント ハブからのスキーマ](#schema-from-storage-account-and-event-hubs)」セクションを参照してください。
+- [診断設定](diagnostic-settings.md)を使用して Log Analytics ワークスペースにアクティビティ ログを送信する場合は、スキーマについて [Azure Monitor データ参照](/azure/azure-monitor/reference/)を参照してください。
 
-## <a name="administrative"></a>管理
+
+## <a name="categories"></a>Categories
+アクティビティ ログの各イベントには、次の表に示す特定のカテゴリがあります。 ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合は、各カテゴリとそのスキーマの詳細について、以下のセクションを参照してください。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](./resource-logs.md#send-to-azure-event-hubs)場合、スキーマは異なります。 [リソース ログ スキーマ](./resource-logs-schema.md)へのプロパティのマッピングについては、この記事の最後のセクションで紹介します。
+
+| カテゴリ | 説明 |
+|:---|:---|
+| [管理](#administrative-category) | Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれます。 管理イベントの例としては、_仮想マシンの作成_、_ネットワーク セキュリティ グループの削除_ があります。<br><br>Resource Manager を使用してユーザーまたはアプリケーションが実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデル化されています。 操作の種類が  _書き込み_、_削除_、または _アクション_ の場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理イベントには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。 |
+| [サービス正常性](#service-health-category) | Azure で発生した任意のサービス正常性インシデントのレコードが含まれます。 サービス正常性イベントの例としては、"_SQL Azure in East US is experiencing downtime_" (米国東部の SQL Azure でダウンタイムが発生しています) があります。 <br><br>Service Health のイベントは 6 種類に分かれます。"_要対応_"、"_支援復旧_"、"_インシデント_"、"_メンテナンス_"、"_情報_"、または "_セキュリティ_"。 これらのイベントが作成されるのは、サブスクリプション内にイベントの影響を受けるリソースがある場合のみです。
+| [Resource Health](#resource-health-category) | Azure リソースで発生したすべてのリソース正常性イベントのレコードが含まれます。 リソース正常性イベントの例としては、"_Virtual Machine health status changed to unavailable_" (仮想マシンの正常性状態が使用不可に変更されました) があります。<br><br>リソース正常性イベントは、次の 4 つの正常性状態のいずれかを示す可能性があります。"_使用可能_"、"_使用不可_"、"_デグレード_"、および "_不明_"。 さらに、リソース正常性イベントは、"_Platform Initiated_" (プラットフォーム開始) または "_User Initiated_" (ユーザー開始) のいずれかのカテゴリに分けることができます。 |
+| [Alert](#alert-category) | Azure アラートのアクティブ化のレコードが含まれます。 アラート イベントの例としては、"_CPU % on myVM has been over 80 for the past 5 minutes_" (myVM の CPU % が過去 5 分間で 80 を超えています) があります。|
+| [Autoscale](#autoscale-category) | サブスクリプションで定義したすべての自動スケーリング設定に基づいて、自動スケーリング エンジンの操作に関連するすべてのイベントのレコードが含まれます。 自動スケーリングの例としては、"_Autoscale scale up action failed_" (自動スケーリングのスケールアップ アクションが失敗しました) があります。 |
+| [推奨](#recommendation-category) | Azure Advisor からの推奨イベントが含まれます。 |
+| [Security](#security-category) | Azure Security Center によって生成されたアラートのレコードが含まれます。 セキュリティ イベントの例としては、"_Suspicious double extension file executed_" (疑わしい二重拡張子ファイルが実行されました) があります。 |
+| [ポリシー](#policy-category) | Azure Policy によって実行されるすべての効果アクション操作のレコードが含まれます。 ポリシー イベントの例としては、"_監査_" と "_拒否_" があります。 Policy によって実行されるすべてのアクションは、リソースに対する操作としてモデル化されます。 |
+
+## <a name="administrative-category"></a>管理カテゴリ
 このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、アクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -137,7 +156,7 @@ ms.locfileid: "79472743"
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 
-## <a name="service-health"></a>サービス正常性
+## <a name="service-health-category"></a>サービス正常性カテゴリ
 このカテゴリには、Azure で発生した任意のサービス正常性インシデントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"SQL Azure in East US is experiencing downtime" (米国東部の SQL Azure でダウンタイムが発生しています) などがあります。 サービス正常性イベントには、要対応、支援復旧、インシデント、メンテナンス、情報、またはセキュリティの 6 種類があり、イベントの影響を受けるリソースがサブスクリプション内にある場合にのみ表示されます。
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -195,9 +214,9 @@ ms.locfileid: "79472743"
   }
 }
 ```
-プロパティの値に関するドキュメントについては、[サービスの正常性通知](./../../azure-monitor/platform/service-notifications.md)に関する記事を参照してください。
+プロパティの値に関するドキュメントについては、[サービスの正常性通知](../../service-health/service-notifications.md)に関する記事を参照してください。
 
-## <a name="resource-health"></a>リソース ヘルス
+## <a name="resource-health-category"></a>リソース正常性カテゴリ
 このカテゴリには、Azure リソースで発生したすべてのリソース正常性イベントのレコードが含まれます。 このカテゴリに表示されるイベントの種類として、[Virtual Machine health status changed to unavailable]\(仮想マシンの正常性状態が使用不可に変わりました\) などがあります。 リソース正常性イベントでは、次の 4 つのヘルス状態のいずれかを表すことができます。Available、Unavailable、Degraded、および Unknown。 さらに、リソース正常性イベントは、プラットフォーム開始またはユーザー開始のいずれかのカテゴリーに分けることができます。
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -286,8 +305,8 @@ ms.locfileid: "79472743"
 | properties.cause | リソース正常性イベントの原因の説明。 "UserInitiated" または "PlatformInitiated" のいずれか。 |
 
 
-## <a name="alert"></a>アラート:
-このカテゴリには、Azure アラートの全アクティビティのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"CPU % on myVM has been over 80 for the past 5 minutes" (過去 5 分間の myVM の CPU % が 80 を超えました) などがあります。 多様な Azure システムにアラートの概念があります。また、何らかのルールを定義し、条件がそのルールと一致するときに通知を受け取ることができます。 サポートされる Azure のアラートの種類が "アクティブになる" たびに、または通知を生成する条件を満たすたびに、アクティブ化のレコードもこのカテゴリのアクティビティ ログにプッシュされます。
+## <a name="alert-category"></a>警告カテゴリ
+このカテゴリには、従来の Azure アラートの全アクティビティのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"CPU % on myVM has been over 80 for the past 5 minutes" (過去 5 分間の myVM の CPU % が 80 を超えました) などがあります。 多様な Azure システムにアラートの概念があります。また、何らかのルールを定義し、条件がそのルールと一致するときに通知を受け取ることができます。 サポートされる Azure のアラートの種類が "アクティブになる" たびに、または通知を生成する条件を満たすたびに、アクティブ化のレコードもこのカテゴリのアクティビティ ログにプッシュされます。
 
 ### <a name="sample-event"></a>サンプル イベント
 
@@ -400,7 +419,7 @@ ms.locfileid: "79472743"
 | properties.MetricName | メトリック アラート ルールの評価で使用されるメトリックのメトリック名。 |
 | properties.MetricUnit | メトリック アラート ルールの評価で使用されるメトリックのメトリック単位。 |
 
-## <a name="autoscale"></a>自動スケール
+## <a name="autoscale-category"></a>自動スケール カテゴリ
 このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -487,7 +506,7 @@ ms.locfileid: "79472743"
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 
-## <a name="security"></a>Security
+## <a name="security-category"></a>セキュリティ カテゴリ
 このカテゴリには、Azure Security Center によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -575,7 +594,7 @@ ms.locfileid: "79472743"
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 
-## <a name="recommendation"></a>推奨
+## <a name="recommendation-category"></a>推奨事項カテゴリ
 このカテゴリには、サービスに対して生成されている新しい推奨のすべてのレコードが含まれています。 推奨の例として、「フォールト トレランスの改善のための可用性セットの使用」が挙げられます。 生成される可能性がある推奨事項イベントには、次の 4 種類があります。High Availability、Performance、Security、および Cost Optimization。 
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -655,7 +674,7 @@ ms.locfileid: "79472743"
 | properties.recommendationImpact| 推奨の影響。 指定できる値は "High"、"Medium"、"Low" です。 |
 | properties.recommendationRisk| 推奨のリスク。 指定できる値は "Error"、"Warning"、"None" です。 |
 
-## <a name="policy"></a>ポリシー
+## <a name="policy-category"></a>ポリシー カテゴリ
 
 このカテゴリには、[Azure Policy](../../governance/policy/overview.md) によって実行されるすべての効果アクション操作のレコードが含まれます。 このカテゴリで表示されるイベントの種類の例として、_Audit_ と _Deny_ があります。 Policy によって実行されるすべてのアクションは、リソースに対する操作としてモデル化されます。
 
@@ -774,10 +793,10 @@ ms.locfileid: "79472743"
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>ストレージ アカウントとイベント ハブからのスキーマ
-Azure アクティビティ ログをストレージ アカウントまたはイベント ハブにストリーミングする場合、データは[リソース ログ スキーマ](diagnostic-logs-schema.md)に従います。 上記のスキーマからリソース ログ スキーマへのプロパティのマッピングを次の表に示します。
+Azure アクティビティ ログをストレージ アカウントまたはイベント ハブにストリーミングする場合、データは[リソース ログ スキーマ](./resource-logs-schema.md)に従います。 上記のスキーマからリソース ログ スキーマへのプロパティのマッピングを次の表に示します。
 
 > [!IMPORTANT]
-> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](diagnostic-logs-append-blobs.md)」を参照してください。
+> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](./resource-logs-blob-format.md)」を参照してください。
 
 
 | リソース ログのスキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | Notes |
@@ -807,7 +826,7 @@ Azure アクティビティ ログをストレージ アカウントまたはイ
 {
     "records": [
         {
-            "time": "2015-01-21T22:14:26.9792776Z",
+            "time": "2019-01-21T22:14:26.9792776Z",
             "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
             "operationName": "microsoft.support/supporttickets/write",
             "category": "Write",
@@ -831,7 +850,7 @@ Azure アクティビティ ログをストレージ アカウントまたはイ
                     "nbf": "1421876371",
                     "exp": "1421880271",
                     "ver": "1.0",
-                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "00000000-0000-0000-0000-000000000000",
                     "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
                     "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
                     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
@@ -866,4 +885,3 @@ Azure アクティビティ ログをストレージ アカウントまたはイ
 ## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログについて詳しく学習します](platform-logs-overview.md)
 * [アクティビティ ログを Log Analytics ワークスペース、Azure Storage、またはイベントハブに送信するための診断設定を作成する](diagnostic-settings.md)
-

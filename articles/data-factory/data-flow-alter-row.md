@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729133"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982651"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>マッピング データ フローでの行の変更変換
 
@@ -24,6 +24,8 @@ ms.locfileid: "81729133"
 ![行の変更の設定](media/data-flow/alter-row1.png "行の変更の設定")
 
 行の変更変換は、自分のデータ フローのデータベース シンクまたは Cosmos DB シンクでのみ動作します。 行に割り当てるアクション (挿入、更新、削除、upsert) は、デバッグ セッション中に発生することはありません。 データ フローの実行アクティビティをパイプラインで実行し、データベース テーブルに行の変更ポリシーを適用します。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
 ## <a name="specify-a-default-row-policy"></a>既定の行ポリシーを指定する
 
@@ -54,6 +56,20 @@ ms.locfileid: "81729133"
 > 挿入、更新、または upsert によりシンクのターゲット テーブルのスキーマが変更される場合、データ フローは失敗します。 データベース内のターゲット スキーマを変更するには、テーブル アクションとして **[Recreate table]\(テーブルの再作成\)** を選択します。 これにより、新しいスキーマ定義でご利用のテーブルがドロップされ、再作成されます。
 
 シンク変換では、一意の行 ID を表す 1 つのキーまたは一連のキーがターゲット データベースに必要です。 SQL シンクの場合、それらのキーの設定は、シンク設定タブで行います。CosmosDB の場合は、それらの設定にパーティション キーを設定したうえで、CosmosDB のシステム フィールド "id" をシンクのマッピングで設定します。 CosmosDB で update、upsert、delete を行う場合は、システム列である "id" を含める必要があります。
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Azure SQL Database と Synapse を使用したマージと upsert
+
+ADF データフローでは、upsert オプションを使用して、Azure SQL Database と Synapse データベース プール (データ ウェアハウス) に対するマージをサポートしています。
+
+しかし、ターゲット データベース スキーマでキー列の ID プロパティが使用されているシナリオが発生する場合があります。 ADF では、更新と upsert の行の値を一致させるために使用するキーを識別する必要があります。 しかし、ターゲット列に ID プロパティが設定されていて、upsert ポリシーを使用している場合、ターゲット データベースでは列への書き込みが許可されません。 分散テーブルのディストリビューション列に対して upsert を実行しようとすると、エラーが発生する場合もあります。
+
+これを修正する方法を次に示します。
+
+1. シンク変換の設定に移動し、"キー列の書き込みのスキップ" を設定します。 これにより、ADF によってマッピングのキー値として選択した列が書き込まれないように指示されます。
+
+2. このキー列が ID 列の問題の原因となっている列でない場合は、シンク変換の前処理の SQL オプション ```SET IDENTITY_INSERT tbl_content ON``` を使用できます。 次に、後処理の SQL プロパティ ```SET IDENTITY_INSERT tbl_content OFF``` を指定してこれをオフにします。
+
+3. ID ケースとディストリビューション列ケースの両方について、条件分割変換を使用して別の更新条件と別の挿入条件を使用する Upsert からロジックを切り替えることができます。 この方法では、更新パスにマッピングを設定して、キー列のマッピングを無視できます。
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 

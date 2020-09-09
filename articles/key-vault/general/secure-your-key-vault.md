@@ -2,20 +2,20 @@
 title: キー コンテナーへのアクセスをセキュリティで保護する - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault、キー、シークレットのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法について説明します。
 services: key-vault
-author: amitbapat
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: ambapat
-ms.openlocfilehash: 0ae1b26bb2e01d388f3f91d94134bb9723a5a305
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 05/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: f9995b82c1dc437cdaa2f9f987abba3e9681454a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427691"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926758"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -54,18 +54,18 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 | アクセス&nbsp; プレーン | アクセス エンドポイント | 操作 | アクセス制御メカニズム&nbsp; |
 | --- | --- | --- | --- |
-| 管理プレーン | **グローバル:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | キー コンテナーの作成、読み取り、更新、削除<br><br>Key Vault アクセス ポリシーの設定<br><br>Key Vault タグの設定 | Azure Resource Manager RBAC |
+| 管理プレーン | **グローバル:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | キー コンテナーの作成、読み取り、更新、削除<br><br>Key Vault アクセス ポリシーの設定<br><br>Key Vault タグの設定 | Azure RBAC |
 | データ プレーン | **グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | キー: 暗号化の解除、暗号化、<br> ラップ解除、ラップ、確認、サイン、<br> 取得、一覧表示、更新、作成、<br> インポート、削除、バックアップ、復元<br><br> シークレット: 取得、一覧表示、設定、削除 | Key Vault アクセス ポリシー |
 
 ## <a name="management-plane-and-rbac"></a>管理プレーンと RBAC
 
-管理プレーンでは、RBAC (ロールベースのアクセス制御) を使用して、呼び出し元が実行できる操作を承認します。 RBAC モデルでは、各 Azure サブスクリプションに Azure AD のインスタンスが用意されています。 このディレクトリからユーザー、グループ、アプリケーションにアクセス権を付与します。 Azure サブスクリプションに含まれていて Azure Resource Manager デプロイ モデルを使用しているリソースを管理するためのアクセス権が付与されます。 アクセス権を付与するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用します。
+管理プレーンでは、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、呼び出し元が実行できる操作を承認します。 RBAC モデルでは、各 Azure サブスクリプションに Azure AD のインスタンスが用意されています。 このディレクトリからユーザー、グループ、アプリケーションにアクセス権を付与します。 Azure サブスクリプションに含まれていて Azure Resource Manager デプロイ モデルを使用しているリソースを管理するためのアクセス権が付与されます。 アクセス権を付与するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用します。
 
-リソース グループ内にキー コンテナーを作成し、Azure AD を使用してアクセスを管理します。 リソース グループ内のキー コンテナーを管理する権限をユーザーまたはグループに付与します。 適切な RBAC ロールを割り当てることにより、特定のスコープ レベルでアクセス権を付与します。 キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みの `key vault Contributor` ロールを特定のスコープでそのユーザーに割り当てます。 RBAC ロールには、次のスコープ レベルを割り当てることができます。
+リソース グループ内にキー コンテナーを作成し、Azure AD を使用してアクセスを管理します。 リソース グループ内のキー コンテナーを管理する権限をユーザーまたはグループに付与します。 適切な Azure ロールを割り当てることにより、特定のスコープ レベルでアクセス権を付与します。 キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みの `key vault Contributor` ロールを特定のスコープでそのユーザーに割り当てます。 Azure ロールには以下のスコープ レベルを割り当てることができます。
 
-- **サブスクリプション**:サブスクリプション レベルで割り当てられた RBAC ロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。
-- **[リソース グループ]** :リソース グループ レベルで割り当てられた RBAC ロールは、そのリソース グループ内のすべてのリソースに適用されます。
-- **特定のリソース**: 特定のリソースに対して割り当てられた RBAC ロールは、そのリソースに適用されます。 この場合、リソースは特定のキー コンテナーです。
+- **サブスクリプション**:サブスクリプション レベルで割り当てられた Azure ロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。
+- **[リソース グループ]** :リソース グループ レベルで割り当てられた Azure ロールは、そのリソース グループ内のすべてのリソースに適用されます。
+- **特定のリソース**: 特定のリソースに対して割り当てられた Azure ロールは、そのリソースに適用されます。 この場合、リソースは特定のキー コンテナーです。
 
 定義済みのロールが複数あります。 定義済みのロールがニーズに合わない場合は、独自のロールを定義できます。 詳細については、[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。
 
@@ -80,7 +80,9 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 ユーザー、グループ、またはアプリケーションには、キー コンテナー内のキーやシークレットに対して特定の操作を行うためのアクセス権を付与します。 Key Vault では、1 つのキー コンテナーに対して最大 1,024 個のアクセス ポリシー エントリがサポートされています。 データ プレーンのアクセス権を複数のユーザーに付与するには、Azure AD セキュリティ グループを作成し、そのグループにユーザーを追加します。
 
-<a id="key-vault-access-policies"></a> Key Vault アクセス ポリシーでは、キー、シークレット、および証明書へのアクセス許可が個別に付与されます。 ユーザーに対してはキーへのアクセス権のみ付与でき、シークレットへのアクセス権は付与できません。 キー、シークレット、証明書へのアクセス許可は、コンテナー レベルになります。 Key Vault アクセス ポリシーでは、特定のキー、シークレット、証明書など、細かいオブジェクト レベルのアクセス許可はサポートされていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用します。
+コンテナーとシークレットの操作の完全なリストを確認し、キー コンテナー アクセス ポリシーを構成するときに許可される操作を理解するには、次のリファレンスを参照してください。 [Key Vault 操作のリファレンス](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
+
+<a id="key-vault-access-policies"></a> Key Vault アクセス ポリシーでは、キー、シークレット、および証明書へのアクセス許可が個別に付与されます。 ユーザーに対してはキーへのアクセス権のみ付与でき、シークレットへのアクセス権は付与できません。 キー、シークレット、証明書へのアクセス許可は、コンテナー レベルになります。 Key Vault アクセス ポリシーでは、特定のキー、シークレット、証明書など、細かいオブジェクト レベルのアクセス許可はサポートされていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用します。
 
 > [!IMPORTANT]
 > Key Vault アクセス ポリシーはコンテナー レベルで適用されます。 キーを作成および削除するためのアクセス許可を付与されたユーザーは、そのキー コンテナー内のすべてのキーに対してそれらの操作を実行できます。
@@ -135,7 +137,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 証明書、アクセス キー、およびシークレットをプログラムでデプロイする方法の詳細については:
 - [顧客マネージド キー コンテナーから VM への証明書のデプロイ](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)に関するブログ記事を参照してください。
-- [Azure Key Vault クライアント サンプル](https://www.microsoft.com/download/details.aspx?id=45343)をダウンロードしてください。 このコンテンツでは、ブートストラップ証明書を使用して、キー コンテナーにアクセスするための認証を Azure AD に対して行う方法が示されています。
+- [Azure Key Vault クライアント サンプル](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)を参照してください。 このコンテンツでは、ブートストラップ証明書を使用して、キー コンテナーにアクセスするための認証を Azure AD に対して行う方法が示されています。
 
 アクセス許可の多くは Azure portal を使用して付与することができます。 きめ細かいアクセス許可を付与するには、Azure PowerShell または Azure CLI を使用します。
 
@@ -195,7 +197,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 ## <a name="resources"></a>リソース
 
-* [Azure AD RBAC](../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 * [RBAC:組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
@@ -233,4 +235,4 @@ Key Vault のログ記録の使用について詳しくは、[Azure Key Vault �
 
 Azure Key Vault でキーとシークレットを使用する方法の詳細については、[キーとシークレット](https://msdn.microsoft.com/library/azure/dn903623.aspx)に関する記事をご覧ください。
 
-Key Vault に関する質問がある場合は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
+Key Vault に関する質問がある場合は、[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-key-vault.html)にアクセスしてください。

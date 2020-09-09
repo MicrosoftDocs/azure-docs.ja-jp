@@ -3,15 +3,19 @@ title: Application Insights で SharePoint を監視する
 description: 新しいインストルメンテーション キーで新しいアプリケーションの監視を開始します。
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 392c0e0ee46e8acd540d498cbda1d240611d182e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671445"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326530"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Application Insights で SharePoint を監視する
+
 Azure Application Insights を使うと、アプリの可用性、パフォーマンス、使用状況を監視できます。 ここでは、SharePoint サイトのために Application Insights を設定する方法について学習します。
+
+> [!NOTE]
+> セキュリティ上の問題により、この記事で説明されているスクリプトを SharePoint の最新 UX の Web ページに直接追加することはできません。 別の方法として、[SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) を使用して、SharePoint サイトに Application Insights をインストールするために使用できるカスタム拡張機能を作成することもできます。 詳細については、「[How to create a SPFx extension solution with AppInsights installed from scratch (AppInsights がインストールされた SPFx 拡張機能ソリューションを最初から作成する方法)](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch)」を参照するか、[サンプルを表示](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)してください。 
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 [Azure ポータル](https://portal.azure.com)で、Application Insights の新しいリソースを作成します。 アプリケーションの種類として ASP.NET を選択します。
@@ -49,18 +53,18 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 マスター ページを確認し、SharePoint Designer またはその他のエディターを使用して編集します。
 
-![](./media/sharepoint/03-master.png)
+![SharePoint Designer または別のエディターを使用してマスターページを編集する方法を示すスクリーンショット。](./media/sharepoint/03-master.png)
 
-</head> タグの直前にコードを追加します。 
+タグの直前にコードを追加 </head> します。 
 
-![](./media/sharepoint/04-code.png)
+![コードをサイト ページに追加する場所を示すスクリーンショット。](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>あるいは個別ページで
 ページを限定して監視するには、ページ別にスクリプトを追加します。 
 
 Web パーツを挿入し、コード スニペットをそれに埋め込みます。
 
-![](./media/sharepoint/05-page.png)
+![限られたページのセットを監視するスクリプトの追加を示すスクリーンショット。](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>アプリに関するデータを表示する
 アプリケーションを再デプロイします。
@@ -69,7 +73,7 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 検索に最初のイベントが表示されます。 
 
-![](./media/sharepoint/09-search.png)
+![アプリに表示できる新しいデータを示すスクリーンショット。](./media/sharepoint/09-search.png)
 
 大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
 
@@ -78,7 +82,7 @@ Web ページの標準のコード スニペットでは SharePoint からユー
 
 1. Application Insights の [要点] ドロップダウンから、アプリのインストルメンテーション キーをコピーします。 
 
-    ![](./media/sharepoint/02-props.png)
+    ![Application Insights の [要点] ドロップダウンからのアプリのインストルメンテーションのコピーを示すスクリーンショット。](./media/sharepoint/02-props.png)
 
 1. 次のスニペットで "XXXX" のインストルメンテーション キーを置き換えます。 
 2. ポータルから取得したスニペットの代わりに、スクリプトを SharePoint アプリに埋め込みます。
@@ -133,9 +137,8 @@ function onRequestFail(sender, args) {
 
 
 ## <a name="next-steps"></a>次の手順
-* [Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) はサイトの可用性を監視します。
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md) 。
+* [Web テスト](./monitor-web-app-availability.md) はサイトの可用性を監視します。
+* [Application Insights](./app-insights-overview.md) 。
 
 <!--Link references-->
-
 

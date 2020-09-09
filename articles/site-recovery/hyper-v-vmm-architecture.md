@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74133018"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496000"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>アーキテクチャ - セカンダリ サイトへの Hyper-V のレプリケーション
 
@@ -32,11 +32,11 @@ a
 
 **オンプレミス間のレプリケーション**
 
-![オンプレミス間](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![オンプレミス間の保護を示す図。](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>レプリケーション プロセス
 
-1. 初期レプリケーションがトリガーされると、[Hyper-V VM スナップショット](https://technet.microsoft.com/library/dd560637.aspx)が作成されます。
+1. 初期レプリケーションがトリガーされると、[Hyper-V VM スナップショット](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))が作成されます。
 2. VM の仮想ハード ディスクが 1 つずつセカンダリの場所にレプリケーションされます。
 3. 初期レプリケーションの進行中にディスクの変更が発生した場合、Hyper-V レプリカ レプリケーション トラッカーはそれらの変更を Hyper-V レプリケーション ログ (.hrl) として追跡します。 これらのログ ファイルは、ディスクと同じフォルダーに配置されます。 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリの場所に送信されます。 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。
 4. 初期レプリケーションが完了すると、VM スナップショットは削除され、デルタ レプリケーションが開始されます。

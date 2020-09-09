@@ -4,19 +4,19 @@ description: Azure 内に Linux VM 用の SSH 公開キーと秘密キーのペ�
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: af18a32143ebc9db7be923b09de106b79022321f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969052"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513691"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
-Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、サインインするためのパスワードが不要になります。 この記事では、Linux VM 用の SSH 公開キー ファイルと秘密キー ファイルのペアを短時間で生成して使用する方法について説明します。 これらの手順は、Azure Cloud Shell、macOS または Linux ホスト、Windows Subsystem for Linux、および OpenSSH をサポートするその他のツールを使用して完了できます。 
+Secure Shell (SSH) キーの組を使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成できます。 この記事では、Linux VM 用の SSH 公開キー ファイルと秘密キー ファイルのペアを短時間で生成して使用する方法について説明します。 この手順は、Azure Cloud Shell の macOS または Linux ホストで実行できます。 
 
 > [!NOTE]
 > 既定では、SSH キーを使用して作成された VM は、パスワードが無効にされます。そのため、推測によるブルート フォース攻撃が大幅に困難になります。 
@@ -37,10 +37,10 @@ Windows コンピューター上で、SSH キーを生成して使用するそ�
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-[Azure CLI](/cli/azure) を使用して [az vm create](/cli/azure/vm#az-vm-create) コマンドで VM を作成する場合は、必要に応じて `--generate-ssh-keys` オプションを使用して、SSH 公開キー ファイルと秘密キー ファイルを生成できます。 `--ssh-dest-key-path` オプションで指定されない限り、キー ファイルは ~/.ssh ディレクトリに格納されます。 `--generate-ssh-keys` オプションでは、既存のキー ファイルを上書きすることはありません。代わりにエラーを返します。 次のコマンドで、*VMname* と *RGname* を独自の値に置き換えます。
+[Azure CLI](/cli/azure) を使用して [az vm create](/cli/azure/vm#az-vm-create) コマンドで VM を作成する場合は、必要に応じて `--generate-ssh-keys` オプションを使用して、SSH 公開キー ファイルと秘密キー ファイルを生成できます。 `--ssh-dest-key-path` オプションで指定されない限り、キー ファイルは ~/.ssh ディレクトリに格納されます。 SSH キーの組が既に存在していて、`--generate-ssh-keys` オプションが使用されている場合は、新しいキーの組は生成されず、代わりに既存のキーの組が使用されます。 次のコマンドで、*VMname* と *RGname* を独自の値に置き換えます。
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --generate-ssh-keys 
+az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
 ```
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>VM をデプロイするときに SSH 公開キーを提供する
@@ -65,10 +65,16 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 公開キー ファイルの内容をコピーし、Azure portal または Resource Manager テンプレートに貼り付けて使用する場合は、行末の空白スペースをコピーしないように注意してください。 macOS で公開キーをコピーするには、公開キー ファイルを `pbcopy` にパイプすることができます。 Linux と同様に、`xclip` などのプログラムに公開キー ファイルをパイプすることができます。
 
-キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-values` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドで、*VMname*、*RGname*、*keyFile* を独自の値に置き換えます。
+キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-values` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドでは、*myVM*、*myResourceGroup*、*UbuntuLTS*、*azureuser*、*mysshkey.pub* を実際の値に置き換えます。
+
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --ssh-key-values mysshkey.pub
 ```
 
 VM で複数の SSH キーを使用する場合は、この `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub` のように、スペース区切りの一覧で入力できます。
@@ -90,4 +96,4 @@ VM が Just-In-Time アクセス ポリシーを使用している場合、VM �
 
 * SSH キー ペアを操作する詳細については、[SSH キー ペアを作成して管理する詳細な手順](create-ssh-keys-detailed.md)に関するページを参照してください。
 
-* Azure VM への SSH 接続が困難な場合は、[Azure Linux VM への SSH 接続に関するトラブルシューティング](troubleshoot-ssh-connection.md)に関するページを参照してください。
+* Azure VM への SSH 接続が困難な場合は、[Azure Linux VM への SSH 接続に関するトラブルシューティング](../troubleshooting/troubleshoot-ssh-connection.md)に関するページを参照してください。

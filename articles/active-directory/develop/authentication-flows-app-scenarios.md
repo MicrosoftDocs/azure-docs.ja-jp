@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593167"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115647"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -154,9 +154,9 @@ MSAL iOS と MSAL Android では、既定でシステム Web ブラウザーが�
 詳細については、[Web API を呼び出すモバイル アプリ](scenario-mobile-overview.md)に関するページを参照してください。
 
 > [!NOTE]
-> MSAL.iOS、MSAL.Android、または MSAL.NET on Xamarin を使用しているモバイル アプリでは、アプリ保護ポリシーを適用できます。 このポリシーを使うと、保護されているテキストをユーザーがコピーできないようにしたりすることができます。 モバイル アプリは Intune によって管理され、Intune によりマネージド アプリとして認識されます。 詳細については、「[Microsoft Intune App SDK の概要](https://docs.microsoft.com/intune/app-sdk)」を参照してください。
+> MSAL.iOS、MSAL.Android、または MSAL.NET on Xamarin を使用しているモバイル アプリでは、アプリ保護ポリシーを適用できます。 このポリシーを使うと、保護されているテキストをユーザーがコピーできないようにしたりすることができます。 モバイル アプリは Intune によって管理され、Intune によりマネージド アプリとして認識されます。 詳細については、「[Microsoft Intune App SDK の概要](/intune/app-sdk)」を参照してください。
 >
-> [Intune SDK](https://docs.microsoft.com/intune/app-sdk-get-started) は MSAL ライブラリとは別のものであり、独自に Azure AD と対話します。
+> [Intune SDK](/intune/app-sdk-get-started) は MSAL ライブラリとは別のものであり、独自に Azure AD と対話します。
 
 ### <a name="protected-web-api"></a>保護された Web API
 
@@ -305,5 +305,5 @@ Microsoft の認証ライブラリは、さまざまなプラットフォーム�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [認証の基本](authentication-scenarios.md)と [Microsoft ID プラットフォームのアクセス トークン](access-tokens.md)の詳細を学習します。
+* [認証の基本](./authentication-vs-authorization.md)と [Microsoft ID プラットフォームのアクセス トークン](access-tokens.md)の詳細を学習します。
 * [IoT アプリへのアクセスのセキュリティ保護](/azure/architecture/example-scenario/iot-aad/iot-aad)に関する詳細を学習します。

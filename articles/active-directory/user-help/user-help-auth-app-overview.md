@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741182"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799436"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリとは
 
@@ -33,7 +33,7 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 > [!Important]
 > Microsoft Authenticator アプリは、2 要素認証を使用し、時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
 >
->この記事は、セキュリティ検証の方法として Microsoft Authenticator アプリをダウンロードして使用するユーザーを対象としています。 従業員その他のユーザーに対して Authenticator アプリを使用してパスワードなしのサインインを有効にする方法に関する情報を探している管理者の方は、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)」を参照してください。
+>この記事は、セキュリティ検証の方法として Microsoft Authenticator アプリをダウンロードして使用するユーザーを対象としています。 従業員その他のユーザーに対して Authenticator アプリを使用してパスワードなしのサインインを有効にする方法に関する情報を探している管理者の方は、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)](../authentication/howto-authentication-passwordless-phone.md)」を参照してください。
 
 ## <a name="terminology"></a>用語
 

@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用して Azure VM を別のリージョンに移動する
 description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移動します。
 services: site-recovery
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 11767e7369648ad2f4dec4480fbad0f6218446fb
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303921"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425417"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンに移動する
 
@@ -35,7 +35,7 @@ ms.locfileid: "78303921"
 ## <a name="prerequisites"></a>前提条件
 
 - "*移動元*" のソース Azure リージョンに Azure VM が存在する。
-- 選択した[ソース リージョンとターゲット リージョンの組み合わせがサポート対象](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)であることを確認し、ターゲット リージョンを慎重に選択する。
+- 選択した[ソース リージョンとターゲット リージョンの組み合わせがサポート対象](./azure-to-azure-support-matrix.md#region-support)であることを確認し、ターゲット リージョンを慎重に選択する。
 - [シナリオのアーキテクチャとコンポーネント](azure-to-azure-architecture.md)を理解している。
 - [サポートの制限と要件](azure-to-azure-support-matrix.md)を確認する。
 - アカウントのアクセス許可を確認する。 無料の Azure アカウントを作成したばかりであれば、"*自分*" がサブスクリプションの管理者です。 管理者でなければ、必要なアクセス許可の割り当てを管理者に依頼します。
@@ -66,13 +66,13 @@ ms.locfileid: "78303921"
 
    ソース VM のレプリケーションを有効にすると、Azure Site Recovery によって仮想ネットワークとストレージ アカウントが自動的に検出されて作成されます。 レプリケーションを有効にする手順の一環として、このようなリソースを事前に作成して VM に割り当てることもできます。 ただし、その他のリソースについては、ターゲット リージョンに手動で作成する必要があります。 最も一般的に使用されるネットワーク リソースについては、次のドキュメントを参照して、実際のソース VM の構成に基づいて作成してください。
 
-   - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-   - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer)
+   - [ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)
+   - [ロード バランサー](../load-balancer/index.yml)
    - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   その他のネットワーク コンポーネントについては、[Azure ネットワークに関するドキュメント](https://docs.microsoft.com/azure/?pivot=products&panel=network)を参照してください。 
+   その他のネットワーク コンポーネントについては、[Azure ネットワークに関するドキュメント](../index.yml?pivot=products&panel=network)を参照してください。 
 
-4. 移動を行う前に構成をテストする場合は、ターゲット リージョンに手動で[非運用ネットワークを作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)します。 セットアップのテストは運用環境への影響が最小限で済むため、この方法をお勧めします。
+4. 移動を行う前に構成をテストする場合は、ターゲット リージョンに手動で[非運用ネットワークを作成](../virtual-network/quick-create-portal.md)します。 セットアップのテストは運用環境への影響が最小限で済むため、この方法をお勧めします。
     
 ## <a name="copy-data-to-the-target-region"></a>ターゲット リージョンにデータをコピーする
 以下の手順では、Azure Site Recovery を使用してターゲット リージョンにデータをコピーします。
@@ -149,4 +149,3 @@ Site Recovery は、サブスクリプションとリソース グループに�
 
 > [!div class="nextstepaction"]
 > [移行後のディザスター リカバリーのセットアップ](azure-to-azure-quickstart.md)
-

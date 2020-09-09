@@ -1,25 +1,24 @@
 ---
 title: Windows Virtual Desktop の MSIX アプリのアタッチ - Azure
 description: Windows Virtual Desktop の MSIX アプリのアタッチを設定する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 12/14/2019
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128323"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010159"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
 > [!IMPORTANT]
 > 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このトピックでは、Windows Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
 
@@ -28,31 +27,50 @@ ms.locfileid: "79128323"
 開始する前に、MSIX アプリのアタッチを構成するために必要な項目を示します。
 
 - Windows Insider ポータルにアクセスして、MSIX アプリのアタッチ API をサポートする Windows 10 のバージョンを取得する。
-- 機能する Windows Virtual Desktop のデプロイ。 詳細については、「[Windows Virtual Desktop でテナントを作成する](tenant-setup-azure-active-directory.md)」を参照してください。
-- MSIX パッケージ作成ツール
-- MSIX パッケージが保存される Windows Virtual Desktop のデプロイのネットワーク共有
+- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+- MSIX パッケージ化ツール。
+- MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のネットワーク共有。
 
 ## <a name="get-the-os-image"></a>OS ディスク名を取得する
 
-まず、MSIX アプリに使用する OS イメージを取得する必要があります。 OS ディスク名を取得するには、次の手順に従います。
+まず、OS イメージを取得する必要があります。 OS イメージは、Azure portal から取得できます。 ただし、Windows Insider プログラムのメンバーである場合は、代わりに Windows Insider ポータルを使用するオプションがあります。
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal から OS イメージを取得する
+
+Azure portal から OS イメージを取得するには、次のようにします。
+
+1. [Azure portal](https://portal.azure.com) を開き、サインインします。
+
+2. **[仮想マシンの作成]** に移動します。
+
+3. **[基本]** タブで、 **[Windows 10 enterprise multi-session, version 2004]** を選択します。
+
+4. 残りの手順に従って、仮想マシンの作成を完了します。
+
+     >[!NOTE]
+     >この VM を使用して、MSIX アプリのアタッチを直接テストできます。 詳細については、「[MSIX 用の VHD または VHDX パッケージを生成する](#generate-a-vhd-or-vhdx-package-for-msix)」に進んでください。 それ以外の場合は、このセクションを読み続けてください。
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Windows Insider ポータルから OS イメージを取得する
+
+Windows Insider ポータルから OS イメージを取得するには、次のようにします。
 
 1. [Windows Insider ポータル](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)を開き、サインインします。
 
      >[!NOTE]
      >Windows Insider ポータルにアクセスするには、Windows Insider Program のメンバーである必要があります。 Windows Insider Program の詳細については、[Windows Insider のドキュメント](/windows-insider/at-home/)を参照してください。
 
-2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19035]** 以降のビルドを選択します。
+2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19041]** 以降のビルドを選択します。
 
 3. **[確認]** を選択し、使用する言語を選択してから、 **[確認]** をもう一度選択します。
-    
+
      >[!NOTE]
      >現時点では、この機能でテストされた言語は英語のみです。 他の言語は、選択はできますが、意図したとおりに表示されない場合があります。
-    
+
 4. ダウンロード リンクが生成されたら、 **[64 ビットのダウンロード]** を選択し、ローカル ハード ディスクに保存します。
 
-## <a name="prepare-the-vhd-image-for-azure"></a>Azure の VHD イメージを準備する 
+## <a name="prepare-the-vhd-image-for-azure"></a>Azure の VHD イメージを準備する
 
-手順を開始する前に、マスター VHD イメージを作成する必要があります。 マスター VHD イメージをまだ作成していない場合は、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」に進んで、記載されている手順に従ってください。 
+次に、マスター VHD イメージを作成する必要があります。 マスター VHD イメージをまだ作成していない場合は、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」に進んで、記載されている手順に従ってください。
 
 マスター VHD イメージを作成した後は、MSIX アプリのアタッチ アプリケーションの自動更新を無効にする必要があります。 自動更新を無効にするには、管理者特権でのコマンド プロンプトで次のコマンドを実行する必要があります。
 
@@ -74,11 +92,19 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
+自動更新を無効にしたら、後で Mount-VHD コマンドを使用したステージングや Dismount-VHD を使用したステージング解除を行うため、Hyper-V を有効にする必要があります。
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+>[!NOTE]
+>この変更には、仮想マシンの再起動が必要です。
+
 次に、Azure 用の VM VHD を準備し、結果の VHD ディスクを Azure にアップロードします。 詳細については、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」を参照してください。
 
 VHD を Azure にアップロードしたら、チュートリアル「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順に従って、この新しいイメージに基づくホスト プールを作成します。
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>MSIX アプリのアタッチ用のアプリケーションを準備する 
+## <a name="prepare-the-application-for-msix-app-attach"></a>MSIX アプリのアタッチ用のアプリケーションを準備する
 
 既に MSIX パッケージがある場合は、「[Windows Virtual Desktop インフラストラクチャの構成](#configure-windows-virtual-desktop-infrastructure)」に進んでください。 レガシ アプリケーションをテストする場合は、「[VM 上でデスクトップ インストーラーからの MSIX パッケージを作成する](/windows/msix/packaging-tool/create-app-package-msi-vm/)」の手順に従って、レガシ アプリケーションを MSIX パッケージに変換します。
 
@@ -161,7 +187,7 @@ MSIX 用の VHD または VHDX パッケージを生成するには、次の手�
 - 共有は SMB と互換性があります。
 - セッション ホスト プールの一部である VM には、共有に対する NTFS アクセス許可があります。
 
-### <a name="set-up-an-msix-app-attach-share"></a>MSIX アプリのアタッチの共有を設定する 
+### <a name="set-up-an-msix-app-attach-share"></a>MSIX アプリのアタッチの共有を設定する
 
 Windows Virtual Desktop 環境で、ネットワーク共有を作成し、パッケージをそこに移動します。
 
@@ -174,12 +200,12 @@ Windows Virtual Desktop 環境で、ネットワーク共有を作成し、パ�
 
 1. パッケージを右クリックし、 **[プロパティ]** を選択します。
 2. 表示されるウィンドウで、 **[デジタル署名]** タブを選択します。次の図に示すように、タブの一覧には項目が 1 つだけ表示されます。 その項目を選択して強調表示した後、 **[削除]** を選択します。
-3. デジタル署名の詳細ウィンドウが表示されたら、 **[全般]** タブを選択し、 **[証明書のインストール]** を選択します。
+3. デジタル署名の詳細ウィンドウが表示されたら、 **[全般]** タブを選択し、 **[証明書の表示]** を選択して、 **[証明書のインストール]** を選択します。
 4. インストーラーが開いたら、保存場所として **[ローカル コンピューター]** を選択し、 **[次へ]** を選択します。
 5. アプリがデバイスに変更を加えることを許可するかどうかを確認するメッセージが表示されたら、 **[はい]** を選択します。
 6. **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** を選択します。
 7. 証明書ストアの選択ウィンドウで、 **[信頼されたユーザー]** を選択して、 **[OK]** をクリックします。
-8. **[完了]** を選択します。
+8. **[次へ]** 、 **[完了]** の順に選択します。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを準備する
 
@@ -192,7 +218,7 @@ MSIX アプリのアタッチには、次の順序で実行する必要がある
 
 各フェーズでは、PowerShell スクリプトを作成します。 各フェーズのサンプル スクリプトについては、[こちら](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)を参照してください。
 
-### <a name="stage-the-powershell-script"></a>PowerShell スクリプトをステージングする
+### <a name="stage-powershell-script"></a>PowerShell スクリプトのステージング
 
 PowerShell スクリプトを更新する前に、VHD にボリュームのボリューム GUID があることを確認してください。 ボリューム GUID を取得するには、次の手順に従います。
 
@@ -236,88 +262,48 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
     #MSIX app attach staging sample
 
     #region variables
-
     $vhdSrc="<path to vhd>"
-
     $packageName = "<package name>"
-
     $parentFolder = "<package parent folder>"
-
     $parentFolder = "\" + $parentFolder + "\"
-
     $volumeGuid = "<vol guid>"
-
     $msixJunction = "C:\temp\AppAttach\"
-
     #endregion
 
     #region mountvhd
-
     try
-
     {
-
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
-
-    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
-
+          Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+          Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
     }
-
     catch
-
     {
-
-    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
-
+          Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
     }
-
     #endregion
 
     #region makelink
-
     $msixDest = "\\?\Volume{" + $volumeGuid + "}\"
-
     if (!(Test-Path $msixJunction))
-
     {
-
-    md $msixJunction
-
+         md $msixJunction
     }
 
     $msixJunction = $msixJunction + $packageName
-
     cmd.exe /c mklink /j $msixJunction $msixDest
-
     #endregion
 
     #region stage
-
-    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime]
-    | Out-Null
-
+    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime] | Out-Null
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
-
-    $asTaskAsyncOperation =
-    $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
-    [Windows.Management.Deployment.DeploymentProgress])
-
+    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
+    $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-
     $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
-
     $path = ([System.Uri]$path).AbsoluteUri
-
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
-
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
-
     $task
-
     #endregion
     ```
 
@@ -329,17 +315,12 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
 #MSIX app attach registration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
-
 #endregion
 
 #region register
-
 Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
-
 #endregion
 ```
 
@@ -351,15 +332,11 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 #MSIX app attach deregistration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -PreserveRoamableApplicationData $packageName
-
 #endregion
 ```
 
@@ -371,21 +348,14 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #MSIX app attach de staging sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $msixJunction = "C:\temp\AppAttach\"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -AllUsers -Package $packageName
-
 cd $msixJunction
-
 rmdir $packageName -Force -Verbose
-
 #endregion
 ```
 
@@ -402,17 +372,17 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="use-packages-offline"></a>パッケージをオフラインで使用する
 
-ネットワーク内、またはインターネットに接続されていないデバイス上の[ビジネス向け Microsoft Store](https://businessstore.microsoft.com/) または [教育機関向け Microsoft Store](https://educationstore.microsoft.com/) のパッケージを使用する場合、アプリを正常に実行するには、Microsoft Store からパッケージ ライセンスを取得して、デバイス上にインストールする必要があります。 デバイスがオンラインであり、ビジネス向け Microsoft Store に接続できる場合は、必要なライセンスが自動的にダウンロードされますが、オフラインになっている場合はライセンスを手動で設定する必要があります。 
+ネットワーク内、またはインターネットに接続されていないデバイス上の[ビジネス向け Microsoft Store](https://businessstore.microsoft.com/) または [教育機関向け Microsoft Store](https://educationstore.microsoft.com/) のパッケージを使用する場合、アプリを正常に実行するには、Microsoft Store からパッケージ ライセンスを取得して、デバイス上にインストールする必要があります。 デバイスがオンラインであり、ビジネス向け Microsoft Store に接続できる場合は、必要なライセンスが自動的にダウンロードされますが、オフラインになっている場合はライセンスを手動で設定する必要があります。
 
-ライセンス ファイルをインストールするには、WMI ブリッジプロバイダーで MDM_EnterpriseModernAppManagement_StoreLicenses02_01 クラスを呼び出す PowerShell スクリプトを使用する必要があります。  
+ライセンス ファイルをインストールするには、WMI ブリッジプロバイダーで MDM_EnterpriseModernAppManagement_StoreLicenses02_01 クラスを呼び出す PowerShell スクリプトを使用する必要があります。
 
-オフラインで使用するためにライセンスを設定するには、次の手順を実行します。 
+オフラインで使用するためにライセンスを設定するには、次の手順を実行します。
 
 1. アプリ パッケージ、ライセンス、および必要なフレームワークをビジネス向け Microsoft Store からダウンロードします。 エンコードされたライセンス ファイルとエンコードされていないライセンス ファイルの両方が必要です。 ダウンロードの詳細な手順については、[こちら](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)を確認してください。
 2. 手順 3 のスクリプトで次の変数を更新します。
       1. `$contentID` は、エンコードされていないライセンス ファイル (.xml) の ContentID 値です。 ライセンス ファイルは任意のテキスト エディターで開くことができます。
-      2. `$licenseBlob` は、エンコードされたライセンス ファイル (.bin) のライセンス BLOB の文字列全体です。 エンコードされたライセンス ファイルは、任意のテキスト エディターで開くことができます。 
-3. 管理者 PowerShell プロンプトから次のスクリプトを実行します。 ライセンスのインストールを実行するのに適した場所は、[ステージング スクリプト](#stage-the-powershell-script)の最後です。これも管理者プロンプトから実行する必要があります。
+      2. `$licenseBlob` は、エンコードされたライセンス ファイル (.bin) のライセンス BLOB の文字列全体です。 エンコードされたライセンス ファイルは、任意のテキスト エディターで開くことができます。
+3. 管理者 PowerShell プロンプトから次のスクリプトを実行します。 ライセンスのインストールを実行するのに適した場所は、[ステージング スクリプト](#stage-powershell-script)の最後です。これも管理者プロンプトから実行する必要があります。
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"
@@ -426,14 +396,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -445,11 +415,11 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
 この機能は現在サポートされていませんが、[Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) でコミュニティに質問することができます。
 
-[Windows Virtual Desktop フィードバック ハブ](https://aka.ms/MRSFeedbackHub)で Windows Virtual Desktop に関するフィードバックを残すことも、[MSIX アプリのアタッチのフィードバック ハブ](https://aka.ms/msixappattachfeedback)および [MSIX パッケージ作成ツールのフィードバック ハブ](https://aka.ms/msixtoolfeedback)で MSIX アプリとパッケージ作成ツールに関するフィードバックを残すこともできます。
+また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。

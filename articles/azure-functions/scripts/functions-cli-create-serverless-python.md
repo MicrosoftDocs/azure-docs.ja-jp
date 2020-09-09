@@ -4,12 +4,13 @@ description: Azure CLI を使用してサーバーレス Python 関数アプリ�
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 11/23/2019
-ms.openlocfilehash: c55934c42db6bb7248db107b97fb8998163fae8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: bbc302194d4dc1922344138e057b456b63c18bbf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75922623"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848113"
 ---
 # <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Azure CLI を使用してサーバーレス Python 関数アプリを作成する
 

@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77589455"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006892"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -52,7 +52,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するセクションを参照してください。 このセクションでは、CSharp 言語を使用して、関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-create-first-azure-function.md#create-function)する方法について説明します。  
 
-2. **run.csx** 関数を参照します。 これを以下のコードで更新します **"\<your Azure Cache for Redis connection string goes here (ここに、ご利用の Azure Cache for Redis 接続文字列が入ります)\>"** を前のセクションで取得した Azure Cache for Redis のプライマリ接続文字列に必ず置き換えます。 
+2. **run.csx** 関数を参照します。 これを以下のコードで更新します **"\<your Azure Cache for Redis connection string goes here\>"** を、前のセクションで取得した Azure Cache for Redis のプライマリ接続文字列に置き換えます。 
 
     ```csharp
     using System;

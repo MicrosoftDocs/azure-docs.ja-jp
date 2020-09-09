@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113604"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>プロビジョニングされたスループットのグローバルなスケーリング 
 
 Azure Cosmos DB では、プロビジョニングされたスループットは要求ユニット/秒 (RU/s、複数形は RUs) として表現されます。 次の図に示すように、RU は Cosmos コンテナーに対する読み書き両方の操作のコストを測定します。
 
-![要求ユニット](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="要求ユニット" border="false":::
 
 RU は Cosmos コンテナーまたは Cosmos データベースにプロビジョニングできます。 コンテナーにプロビジョニングされた RU は、そのコンテナーに対して実行される操作についてのみ使用できます。 データベースにプロビジョニングされた RU は、そのデータベース内のすべてのコンテナー間で共有されます (排他的に割り当てられた RU を持つコンテナーを除く)。
 

@@ -4,21 +4,18 @@ description: この記事では、Azure portal から Azure Database for MySQL �
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.topic: how-to
+ms.date: 6/24/2020
+ms.openlocfilehash: 508e2d229c067ac84d4c8d6338e658df8d3fa932
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380295"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113209"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Azure portal での Azure Database for MySQL の監査ログの構成とアクセス
 
 [Azure Database for MySQL の監査ログ](concepts-audit-logs.md)と診断設定を Azure portal から構成することができます。
-
-> [!IMPORTANT]
-> 監査ログ機能は現在、プレビュー段階です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,6 +24,9 @@ ms.locfileid: "81380295"
 - [Azure Database for MySQL サーバー](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>監査ログを構成する
+
+>[!IMPORTANT]
+> サーバーのパフォーマンスに大きな影響を与えないように、監査のために必要なイベントの種類とユーザーのみをログに記録することをお勧めします。
 
 監査ログを有効化および構成します。
 

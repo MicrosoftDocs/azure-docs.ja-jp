@@ -5,14 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 05/05/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.custom: references_regions
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836667"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236099"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -72,7 +73,13 @@ v2 SKU の場合は、パブリック IP リソースを開き、 **[構成]** �
 
 *キープアライブ タイムアウト*では、固定接続が再利用されるか、または閉じられる前に、クライアントによってその接続上で別の HTTP 要求が送信されるまでの Application Gateway の待機時間が制御されます。 *TCP アイドル タイムアウト*では、アクティビティがない場合に TCP 接続が開いた状態になる時間の長さが制御されます。 
 
-Application Gateway v1 SKU での*キープアライブ タイムアウト*は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト*は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 これらの値は変更できません。
+Application Gateway v1 SKU での*キープアライブ タイムアウト*は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト*は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 v1 および v2 Application Gateway での TCP アイドル タイムアウト値は、4 分から 30 分までの範囲で構成できます。 v1 と v2 どちらの Application Gateway でも、ポータルで Application Gateway のパブリック IP に移動し、パブリック IP の [構成] ブレードで TCP アイドル タイムアウトを変更する必要があります。 次のコマンドを実行して、PowerShell からパブリック IP の TCP アイドル タイムアウト値を設定できます。 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>アプリケーション ゲートウェイの有効期間内に IP や DNS 名が変わることはありますか?
 
@@ -94,7 +101,7 @@ Application Gateway V1 SKU では、アプリケーション ゲートウェイ�
 
 はい。 特定の Application Gateway のデプロイの複数のインスタンスに加え、別の Application Gateway リソースを含む既存のサブネットに別の一意の Application Gateway リソースをプロビジョニングできます。
 
-1 つのサブネットで Standard_v2 と Standard の両方の Application Gateway を混在させることはできません。
+1 つのサブネットで v2 と v1 両方の Application Gateway SKU をサポートすることはできません。
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Application Gateway v2 はユーザー定義ルート (UDR) をサポートしていますか?
 
@@ -211,7 +218,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>カスタム プローブの [ホスト] フィールドは何を表しているのでしょうか?
 
-Application Gateway 上でマルチサイトを構成した場合には、[ホスト] フィールドにプローブの送信先の名前を指定します。 それ以外の場合には、"127.0.0.1" を使用します。 この値は、仮想マシンのホスト名とは異なります。 形式は、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> です。
+Application Gateway 上でマルチサイトを構成した場合には、[ホスト] フィールドにプローブの送信先の名前を指定します。 それ以外の場合には、"127.0.0.1" を使用します。 この値は、仮想マシンのホスト名とは異なります。 形式は \<protocol\>://\<host\>:\<port\>\<path\>です。
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Application Gateway に対するアクセスを少数のソース IP アドレスだけに限定することはできますか?
 
@@ -252,7 +259,7 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Application Gateway はどのような証明書をサポートしていますか?
 
-Application Gateway は、自己署名証明書、証明機関 (CA) の証明書、Extended Validation (EV) 証明書、ワイルドカード証明書をサポートしています。
+Application Gateway は、自己署名証明書、証明機関 (CA) の証明書、Extended Validation (EV) 証明書、複数ドメイン (SAN) 証明書、ワイルドカード証明書をサポートしています。
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Application Gateway はどのような暗号スイートをサポートしていますか?
 
@@ -330,18 +337,90 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 
 いいえ、.pfx ファイルのパスワードには英数字のみを使用してください。
 
+### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>EV 証明書は DigiCert によって発行され、中間証明書は失効しています。 Application Gateway で証明書を更新するには、どうすればよいですか?
+
+証明機関 (CA) ブラウザーのメンバーが最近公開したレポートでは、お客様、Microsoft、大規模のテクノロジ コミュニティが使用する CA ベンダーが発行している、公的に信頼されている CA の業界標準に準拠していない複数の証明書について詳しく説明しています。 準拠していない CA に関するレポートは、こちらで確認できます。  
+
+* [バグ 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
+* [バグ 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
+
+業界のコンプライアンス要件に従って、CA ベンダーは非準拠の CA の失効と準拠 CA の発行を開始しました。お客様の証明書を再発行する必要があります。 Microsoft は、Azure サービスへの潜在的な影響を最小限に抑えるために、これらのベンダーと密接に連携しています。**ただし、BYOC ("Bring Your Own Certificate") シナリオで使用される証明書は、今もなお予期せずに失効するリスクがあります。**
+
+アプリケーションによって使用されている証明書が失効しているかどうかを確認するには、[DigiCert の発表](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement)と [Certificate Revocation Tracker](https://misissued.com/#revoked) を参照してください。 証明書が失効している場合、または失効する場合は、アプリケーションで使用されている CA ベンダーから新しい証明書を要求する必要があります。 証明書が予期せず失効していることが原因でアプリケーションの可用性が中断されないようにする場合、または失効した証明書を更新する場合は、BYOC をサポートするさまざまな Azure サービスの修復リンクについて、Azure の最新情報に関する投稿を参照してください。 https://azure.microsoft.com/updates/certificateauthorityrevocation/
+
+Application Gateway 固有の情報については、以下を参照してください。
+
+失効した ICA のいずれかによって発行された証明書を使用している場合、アプリケーションの可用性が中断し、アプリケーションによっては、次のようなさまざまなエラーメッセージが表示されることがあります。 
+
+1.  無効な証明書/失効した証明書
+2.  接続がタイムアウトしました
+3.  HTTP 502
+
+この問題によってアプリケーションが中断されないようにする、または失効した CA を再発行するには、次の操作を行う必要があります。 
+
+1.  証明書を再発行する方法については、証明書プロバイダーに問い合わせてください
+2.  再発行後、完全な[信頼チェーン](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (リーフ、中間、ルート証明書) を使用して、Azure Application Gateway/WAF で証明書を更新します。 証明書を使用している場所に基づいて、Application Gateway のリスナーまたは HTTP 設定で、次の手順に従って証明書を更新します。詳細については、記載されているドキュメントのリンクを確認してください。
+3.  再発行された証明書を使用するようにバックエンド アプリケーション サーバーを更新します。 使用しているバックエンド サーバーによっては、証明書の更新手順が異なる場合があります。 ベンダーからのドキュメントを確認してください。
+
+リスナーで証明書を更新するには、次の操作を行います。
+
+1.  [Azure Portal](https://portal.azure.com/) で、Application Gateway リソースを開きます。
+2.  証明書に関連付けられているリスナー設定を開きます。
+3.  [選択した証明書の更新または編集] をクリックします。
+4.  新しい PFX 証明書をパスワード付きでアップロードし、[保存] をクリックします。
+5.  Web サイトにアクセスして、サイトが想定どおりに動作しているかどうかを確認します。詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/renew-certificates)を参照してください。
+
+Application Gateway リスナーで Azure KeyVault からの証明書を参照している場合は、次の手順に従って簡単な変更を行うことをお勧めします。
+
+1.  [Azure portal](https://portal.azure.com/) で、Application Gateway に関連付けられている Azure KeyVault の設定に移動します。
+2.  再発行された証明書をストアに追加またはインポートします。 詳しくは、[こちらのドキュメントをご覧ください](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)。
+3.  証明書がインポートされたら、Application Gateway リスナー設定に移動し、[キー コンテナーから証明書を選択する] で [証明書] ドロップダウンをクリックし、最近追加した証明書を選択します。
+4.  [保存] をクリックします。キー コンテナー証明書による Application Gateway での TLS 終端の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)を参照してください。
+
+
+HTTP 設定で証明書を更新するには、次の操作を行います。
+
+Application Gateway/WAF サービスの V1 SKU を使用している場合は、バックエンド認証証明書として新しい証明書をアップロードする必要があります。
+1.  [Azure Portal](https://portal.azure.com/) で、Application Gateway リソースを開きます。
+2.  証明書に関連付けられている HTTP 設定を開きます。
+3.  [証明書の追加] をクリックして、再発行された証明書をアップロードし、[保存] をクリックします。
+4.  後で古い証明書を削除できます。[...] [オプション] ボタン (古い証明書の横にある) をクリックし、[削除] を選択して [保存] をクリックします。
+詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)を参照してください。
+
+Application Gateway/WAF サービスの V2 SKU を使用している場合、HTTP 設定で新しい証明書をアップロードする必要はありません。V2 SKU では "信頼されたルート証明書" が使用され、ここでアクションを実行する必要がないためです。
+
 ## <a name="configuration---ingress-controller-for-aks"></a>構成 - AKS のイングレス コントローラー
 
-### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか? 
+### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか?
 
 Kubernetes を使用すると、`deployment` リソースおよび `service` リソースを作成して、クラスター内のポッドのグループを内部で公開できます。 同じサービスを外部で公開するには、[`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) リソースを定義します。これは、負荷分散、TLS 終端、および名前ベースの仮想ホスティングを提供します。
 この `Ingress` リソースを満たすには、`Ingress` リソースの変更をリスンし、ロード バランサー ポリシーを構成するイングレス コントローラーが必要です。
 
-Application Gateway のイングレス コントローラーを使用すると、AKS クラスターとも呼ばれる [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) に対するイングレスとして [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) を使用できます。
+Application Gateway イングレス コントローラー (AGIC) を使用すると、AKS クラスターとも呼ばれる [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) に対するイングレスとして [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) を使用できます。
 
-### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>イングレス コントローラーの単一のインスタンスで複数の Application Gateway を管理できますか? 
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>イングレス コントローラーの単一のインスタンスで複数の Application Gateway を管理できますか?
 
 現在、イングレス コントローラーの 1 つのインスタンスは、1 つの Application Gateway にのみ関連付けることができます。
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>AKS クラスターと kubenet が AGIC で機能しないのはなぜですか?
+
+AGIC はルート テーブル リソースを Application Gateway サブネットに自動的に関連付けようとしますが、AGIC からのアクセス許可がないため、関連付けに失敗する場合があります。 AGIC がルート テーブルを Application Gateway サブネットに関連付けることができない場合、そのことを示すエラーが AGIC ログに記録されます。その場合、AKS クラスターによって作成されたルート テーブルを Application Gateway のサブネットに手動で関連付ける必要があります。 詳細については、[こちら](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)の手順を参照してください。
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>AKS クラスターと Application Gateway を別々の仮想ネットワークに接続できますか? 
+
+はい。ただし、仮想ネットワークがピアリングされていて、アドレス空間が重複していないことが条件です。 kubenet と共に AKS を実行している場合は必ず、AKS によって生成されたルート テーブルを Application Gateway サブネットに関連付けてください。 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>AGIC アドオンでサポートされていない機能は何ですか? 
+
+Helm 経由でデプロイされる AGIC と、AKS アドオンとしてデプロイされる AGIC の違いについて、[こちら](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)を参照してください。
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>アドオンと Helm デプロイのどちらを使用すればよいですか? 
+
+Helm 経由でデプロイされる AGIC と、AKS アドオンとしてデプロイされる AGIC の違いについて、[こちら](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)を参照してください。特に、AKS アドオンではなく Helm 経由でデプロイされる AGIC でサポートされているシナリオについて説明した表を参照してください。 一般に、Helm 経由でデプロイすると、正式リリースよりも前にベータ機能とリリース候補をテストできます。 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>どのバージョンの AGIC がアドオンでデプロイされるかを制御できますか?
+
+いいえ。AGIC アドオンはマネージド サービスであり、アドオンは Microsoft によって自動的に最新の安定バージョンに更新されます。 
 
 ## <a name="diagnostics-and-logging"></a>診断とログ記録
 
@@ -387,32 +466,6 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 - Application Gateway v2 をデプロイした
 - アプリケーション ゲートウェイ サブネットに NSG がある
 - その NSG 上で NSG フロー ログを有効にした
-
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>プライベート フロントエンド IP アドレスのみで Application Gateway V2 を使用するにはどうすればよいですか?
-
-Application Gateway V2 は現在、プライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
-* プライベート IP とパブリック IP
-* パブリック IP のみ
-
-ただし、プライベート IP のみで Application Gateway V2 を使用する場合は、次の手順に従うことができます。
-1. パブリックとプライベートの両方のフロントエンド IP アドレスを使用して Application Gateway を作成する
-2. パブリック フロントエンド IP アドレスのリスナーは作成しないでください。 リスナーが作成されていない場合、Application Gateway ではパブリック IP アドレスのトラフィックがリッスンされません。
-3. Application Gateway サブネットの[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を作成し、次の構成を使用して優先度順にアタッチします。
-    
-    a. [ソース] には **GatewayManager** サービス タグ、[宛先] には **[すべて]** 、[宛先のポート] には **65200-65535** を指定してトラフィックを許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、証明書の認証によって保護 (ロック ダウン) されます。 ゲートウェイ ユーザー管理者を含む外部エンティティは、適切な証明書が配置されていないと、このようなエンドポイントに対する変更を開始できません。
-    
-    b. ソースに **AzureLoadBalancer** サービス タグが付いており、宛先ポートが **[すべて]** のトラフィックを許可します。
-    
-    c. ソースに **Internet** サービス タグが付いており、宛先ポートが **[すべて]** のすべての受信トラフィックを拒否します。 この規則には、受信規則で*最小の優先順位*を指定します。
-    
-    d. プライベート IP アドレスでのアクセスがブロックされないように、VirtualNetwork の受信の許可などの既定の規則を保持します。
-    
-    e. 送信インターネット接続はブロックできません。 そうしないと、ログ記録やメトリックなどで問題が発生します。
-
-プライベート IP のみのアクセスの NSG 構成の例:![プライベート IP アクセスのみの Application Gateway V2 NSG 構成](./media/application-gateway-faq/appgw-privip-nsg.png)
-
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
-はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

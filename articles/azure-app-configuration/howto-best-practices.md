@@ -1,6 +1,6 @@
 ---
 title: Azure App Configuration のベスト プラクティス | Microsoft Docs
-description: Azure App Configuration の最適な使い方について説明します。
+description: Azure App Configuration の使用におけるベスト プラクティスについて説明します。 ここでは、キーのグループ化、キー値の構成、App Configuration の準備などのトピックについて説明します。
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -11,13 +11,13 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348673"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588060"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -81,11 +81,15 @@ App Configuration に過剰な要求があると、調整や超過分料金が�
 
 * 個々のキーを監視するのではなく、1 つの "*センチネル キー*" を監視します。 そのセンチネル キーが変更された場合にのみ、すべての構成を更新します。 例については、「[ASP.NET Core アプリで動的な構成を使用する](enable-dynamic-configuration-aspnet-core.md)」を参照してください。
 
-* 変更を常にポーリングするのではなく、Azure Event Grid を使用して、構成が変更されたときに通知を受信します。 詳細については、[Azure App Configuration イベントの Web エンドポイントへのルーティング](./howto-app-configuration-event.md)に関する記事を参照してください
+* 変更を常にポーリングするのではなく、Azure Event Grid を使用して、構成が変更されたときに通知を受信します。 詳細については、[Azure App Configuration イベントの Web エンドポイントへのルーティング](./howto-app-configuration-event.md)に関する記事を参照してください。
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>App Configuration への構成データのインポート
 
 App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](https://aka.ms/azconfig-importexport1)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration から値をエクスポートすることもできます。 GitHub リポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](https://aka.ms/azconfig-gha2) を使用できます。これにより、App Configuration のメリットを得ながら、既存のソース管理手法を引き続き使用できます。
+
+## <a name="multi-region-deployment-in-app-configuration"></a>App Configuration での複数リージョンのデプロイ
+
+App Configuration はリージョン単位のサービスです。 リージョンごとに構成が異なるアプリケーションでは、これらの構成を 1 つのインスタンスに格納すると、単一障害点が形成される可能性があります。 リージョンごとに 1 つの App Configuration インスタンスを複数のリージョンにデプロイするのが、より良いオプションである場合があります。 これは、リージョン単位のディザスター リカバリー、パフォーマンス、セキュリティ サイロ化に役立ちます。 リージョンごとに構成すると、調整がインスタンス単位で行われるため、待機時間が短縮され、個別の調整クォータが使用されます。 ディザスター リカバリーの軽減策を適用するには、[複数の構成ストア](./concept-disaster-recovery.md)を使用できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

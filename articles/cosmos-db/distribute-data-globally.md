@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: fba6943adb18675bc804a3881042fe9d68f5b331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982125"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114743"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
 
@@ -23,7 +23,7 @@ Azure Cosmos DB は、待機時間の短縮、スループットのエラステ�
 
 Azure Cosmos DB に関してご利用のアカウントに関連付けられるリージョンは、いつでも追加したり削除したりすることができます。 リージョンの追加や削除のために、アプリケーションを一時停止したり再デプロイしたりする必要はありません。 サービスでネイティブに提供されるマルチホーム機能により、高い可用性が常に維持されます。
 
-![高可用性デプロイ トポロジ](./media/distribute-data-globally/deployment-topology.png)
+:::image type="content" source="./media/distribute-data-globally/deployment-topology.png" alt-text="高可用性デプロイ トポロジ" border="false":::
 
 ## <a name="key-benefits-of-global-distribution"></a>グローバル分散の主な利点
 

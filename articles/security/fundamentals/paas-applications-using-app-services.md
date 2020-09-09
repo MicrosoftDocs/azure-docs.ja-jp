@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc273c2e6e27c191b4407ffae86a4ba227ee642b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461669"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131040"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Azure App Service を使用して PaaS の Web アプリケーションを保護するベスト プラクティス
 
@@ -33,7 +33,7 @@ PaaS (platform-as-a-service) である Azure App Service を使用すると、�
 App Service は、ID プロバイダーに対して OAuth 2.0 サービスを提供します。 OAuth 2.0 は、Web アプリケーション、デスクトップ アプリケーション、および携帯電話に特定の認証フローを提供しながら、クライアント開発者のシンプル性を実現することに焦点を当てています。 Azure AD が OAuth 2.0 を使用することにより、ユーザーはモバイル アプリケーションと Web アプリケーションへのアクセスを承認することができます。 詳細については、「 [Azure App Service での認証および認可](../../app-service/overview-authentication-authorization.md)」を参照してください。
 
 ## <a name="restrict-access-based-on-role"></a>役割に基づいてアクセスを制限する
-アクセスの制限は、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 知る必要性と最低限の特権セキュリティなど、ユーザー、グループ、および特定のスコープ内のアプリケーションに権限を割り当てるには、ロールベースのアクセス制御 (RBAC) を使用できます。 アプリケーションへのアクセスをユーザーに付与する方法の詳細については[ロールベースのアクセス制御とは](/azure/role-based-access-control/overview)を参照してください。
+アクセスの制限は、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。 知る必要性と最低限の特権セキュリティなど、ユーザー、グループ、および特定のスコープ内のアプリケーションに権限を割り当てるには、ロールベースのアクセス制御 (RBAC) を使用できます。 アプリケーションへのアクセスをユーザーに付与する方法の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](/azure/role-based-access-control/overview)」を参照してください。
 
 ## <a name="protect-your-keys"></a>キーを保護します
 サブスクリプション キーを紛失してしまえば、いかにセキュリティが優れていても関係ありません。 Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。 さらに安心感を高めたい場合には、HSM でキーのインポートや生成を行うことができます。 Key Vault を使用して、自動更新で TLS 証明書の管理することもできます。 詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」を参照してください。

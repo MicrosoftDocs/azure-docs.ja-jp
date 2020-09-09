@@ -2,17 +2,18 @@
 title: .NET アプリ向け Azure Application Insights スナップショット デバッガー
 description: 例外が運用 .NET アプリでスローされるときにデバッグ スナップショットが自動的に収集される
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab142b4e0a2d5486727ffc71fc94ae4944513052
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234635"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935808"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
-例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のスナップショット デバッガーにより、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](../../azure-monitor/app/asp-net-exceptions.md)に表示されます。
+例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](./app-insights-overview.md) のスナップショット デバッガーにより、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](./asp-net-exceptions.md)に表示されます。
 
 ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 ソース コードによるデバッグ エクスペリエンスをさらに向上させるには、Visual Studio 2019 Enterprise でスナップショットを開きます。 Visual Studio では、例外を待たずに[スナップポイントを設定し、対話形式でスナップショットを取得](https://aka.ms/snappoint)できます。
 
@@ -62,7 +63,7 @@ ms.locfileid: "79234635"
 
 ![[失敗] ページ](./media/snapshot-debugger/failures-page.png)
 
-右側のウィンドウで操作または例外を選択して、 **[エンドツーエンド トランザクション詳細]** ウィンドウを開き、次に例外イベントを選択します。 特定の例外のスナップショットが使用可能な場合、[例外](../../azure-monitor/app/asp-net-exceptions.md)の詳細と共に右側のウィンドウに **[デバッグ スナップショットを開く]** ボタンが表示されます。
+右側のウィンドウで操作または例外を選択して、 **[エンドツーエンド トランザクション詳細]** ウィンドウを開き、次に例外イベントを選択します。 特定の例外のスナップショットが使用可能な場合、[例外](./asp-net-exceptions.md)の詳細と共に右側のウィンドウに **[デバッグ スナップショットを開く]** ボタンが表示されます。
 
 ![例外の [Debug Snapshot (デバッグ スナップショット)] ボタンを開く](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -85,11 +86,11 @@ ms.locfileid: "79234635"
 
 ## <a name="how-snapshots-work"></a>スナップショットのしくみ
 
-Snapshot Collector は、[Application Insights Telemetry Processor](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet) として実装されています。 アプリケーションが実行されると、Snapshot Collector Telemetry Processor がアプリケーションのテレメトリ パイプラインに追加されます。
-アプリケーションが [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions) を呼び出すたびに、Snapshot Collector はスローされる例外の種類とスロー方法から問題 ID を計算します。
+Snapshot Collector は、[Application Insights Telemetry Processor](./configuration-with-applicationinsights-config.md#telemetry-processors-aspnet) として実装されています。 アプリケーションが実行されると、Snapshot Collector Telemetry Processor がアプリケーションのテレメトリ パイプラインに追加されます。
+アプリケーションが [TrackException](./asp-net-exceptions.md#exceptions) を呼び出すたびに、Snapshot Collector はスローされる例外の種類とスロー方法から問題 ID を計算します。
 アプリケーションが TrackException を呼び出すたびに、該当する問題 ID のカウンターが増分されます。 カウンターが `ThresholdForSnapshotting` 値に達すると、問題 ID が収集計画に追加されます。
 
-[AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) イベントにサブスクライブすることで例外がスローされるので、Snapshot Collector は例外も監視します。 そのイベントが発生すると、例外の問題 ID が計算され、収集計画の問題 ID と比較されます。
+[AppDomain.CurrentDomain.FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) イベントにサブスクライブすることで例外がスローされるので、Snapshot Collector は例外も監視します。 そのイベントが発生すると、例外の問題 ID が計算され、収集計画の問題 ID と比較されます。
 一致する ID があれば、実行中のプロセスのスナップショットが作成されます。 スナップショットには一意の識別子が割り当てられ、例外にはその識別子を使用してスタンプされます。 FirstChanceException ハンドラーが戻った後、スローされた例外は通常どおり処理されます。 最終的に、例外は TrackException メソッドに再び到達し、スナップショット識別子と共に Application Insights に報告されます。
 
 メイン プロセスは引き続き実行され、ユーザーへのトラフィックが処理されます。中断をほとんど発生しません。 その間、スナップショットは Snapshot Uploader プロセスに渡されます。 Snapshot Uploader からミニダンプが作成され、関連するシンボル (.pdb) ファイルと共に Application Insights にアップロードされます。
@@ -117,7 +118,7 @@ Visual Studio 2017 のバージョン 15.2 (またはそれ以上) では、App 
 Azure Compute や他の種類の場合、シンボル ファイルがメイン アプリケーション .dll (通常は `wwwroot/bin`) の同じフォルダーにあるか、現在のパスで使用できることを確認してください。
 
 > [!NOTE]
-> 使用できるさまざまなシンボル オプションについて詳しくは、[Visual Studio のドキュメント](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> 使用できるさまざまなシンボル オプションについて詳しくは、[Visual Studio のドキュメント](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 )をご覧ください。 最良の結果を得るために、"Full"、"ポータブル"、または "埋め込み" を使用することをお勧めします。
 
 ### <a name="optimized-builds"></a>最適化されたビルド
@@ -138,6 +139,7 @@ Azure Compute や他の種類の場合、シンボル ファイルがメイン �
 
 Application Insights スナップショット デバッガーを有効にした後:
  
-* [コードでスナップポイントを設定](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
-* [Web アプリの例外の診断](../../azure-monitor/app/asp-net-exceptions.md)に関する記事では、Application Insights に表示される例外を増やす方法を説明しています。
-* [スマート検出](../../azure-monitor/app/proactive-diagnostics.md)は、パフォーマンスの異常を自動的に検出します。
+* [コードでスナップポイントを設定](/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
+* [Web アプリの例外の診断](./asp-net-exceptions.md)に関する記事では、Application Insights に表示される例外を増やす方法を説明しています。
+* [スマート検出](./proactive-diagnostics.md)は、パフォーマンスの異常を自動的に検出します。
+

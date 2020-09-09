@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536158"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193668"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -108,7 +108,7 @@ Data Lake Storage Gen1 でデータが利用できるようになったら、サ
 ## <a name="download-data-from-data-lake-storage-gen1"></a>Data Lake Storage Gen1 からデータをダウンロードする
 次のようなシナリオでは、Azure Data Lake Storage Gen1 からデータをダウンロードしたり、移動したりすることもできます。
 
-* 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Storage Gen1 から Azure SQL Database またはオンプレミスの SQL Server にデータを移動できます。
+* 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Storage Gen1 から Azure SQL Database または SQL Server にデータを移動できます。
 * アプリケーション プロトタイプの作成中に IDE 環境で処理するために、ローカル コンピューターにデータをダウンロードする。
 
 ![Data Lake Storage Gen1 からデータを送信する](./media/data-lake-store-data-scenarios/egress-data.png "Data Lake Storage Gen1 からデータを送信する")

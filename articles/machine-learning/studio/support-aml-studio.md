@@ -1,24 +1,26 @@
 ---
-title: サポートとトレーニングを利用する
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic) のチュートリアル サポート とトレーニング - Azure
 description: Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用してフィードバックを提供する
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6962198fbce3b46a8310d39cf3aa3f78ed0a130b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209436"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690733"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) のサポートとトレーニングを利用する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
+
+
 
 この記事では、Azure Machine Learning Studio (クラシック) の詳細と、お客様の問題や疑問点を解決するためのサポートを受ける方法について説明します。
 
@@ -38,7 +40,7 @@ ms.locfileid: "82209436"
 
 + **Azure ユーザー向けテクニカル サポート**:Azure portal による[サポート要求の作成と管理](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
-+ **ユーザー フォーラム**:[MSDN の Azure Machine Learning Studio (クラシック) サポート フォーラム](https://aka.ms/aml-forum-studio)では、質問したり質問に回答したりして他のユーザーとつながることができます。
++ **ユーザー フォーラム**:[Azure Machine Learning Studio (クラシック) サポート フォーラム](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)では、質問したり質問に回答したりして他のユーザーとつながることができます。
 
 + **Stack Overflow**:"Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
 

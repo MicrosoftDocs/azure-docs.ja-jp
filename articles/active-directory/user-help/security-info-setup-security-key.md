@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744410"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797668"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>セキュリティ キーを検証方法として設定する
 
@@ -31,7 +31,7 @@ ms.locfileid: "83744410"
 
 セキュリティ情報の方法は、2 要素セキュリティ認証とパスワードのリセットの両方に使用されます。 ただし、すべてのメソッドを両方に使用できるわけではありません。
 
-| 方法 | 使用目的 |
+| Method | 使用目的 |
 | ------ | -------- |
 | Authenticator アプリ | 2 要素認証とパスワードのリセット認証。 |
 | テキスト メッセージ | 2 要素認証とパスワードのリセット認証。 |
@@ -63,7 +63,7 @@ ms.locfileid: "83744410"
 
 セキュリティ キーを使用して職場または学校アカウントにサインインするには、事前にセキュリティ キーを作成し、一意の PIN を与える必要があります。 お使いのアカウントには、最大で 10 個のキーを登録できます。 
 
-1. [https://myprofile.microsoft.com]( **) で** [マイ プロファイル]https://myaccount.microsoft.com ページにアクセスし、まだサインインしていない場合はサインインします。
+1. [https://myprofile.microsoft.com](https://myaccount.microsoft.com ) で **[マイ プロファイル]** ページにアクセスし、まだサインインしていない場合はサインインします。
 
 2. **[セキュリティ情報]** 、 **[方法の追加]** の順に選択し、 **[方法を追加します]** ドロップダウン リストで **[セキュリティ キー]** を選択します。
 
@@ -158,13 +158,13 @@ ms.locfileid: "83744410"
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
 
-セキュリティ キーを登録するには、少なくとも 1 つの追加のセキュリティ検証方法を登録しておく必要があります。 詳細については、[概要](security-info-add-update-methods-overview.md)に関するページを参照してください。 
+セキュリティ キーを登録するには、少なくとも 1 つの追加のセキュリティ検証方法を登録しておく必要があります。 詳細については、[概要](./security-info-setup-auth-app.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
 - パスワードなしの検証方法の詳細については、[Microsoft の Azure AD での FIDO2 セキュリティ キーのパブリック プレビューの開始 (パスワードなしのログインの有効化)](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) に関するブログ、または「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」および [Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関する記事を参照してください。
 
-- [Microsoft と互換性のあるセキュリティ キー](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)に関する詳細情報を確認する。
+- [Microsoft と互換性のあるセキュリティ キー](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)に関する詳細情報を確認する。
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 

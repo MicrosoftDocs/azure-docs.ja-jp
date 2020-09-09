@@ -3,16 +3,16 @@ title: SMB を使用して Linux VM に Azure File Storage をマウントする
 description: Azure CLI で SMB を使用して Linux VM に Azure File Storage をマウントする方法
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085488"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT\<random number>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
+[az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT\<random number>* という名前のストレージ アカウントを作成し、ストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
 
 ```azurecli
 STORAGEACCT=$(az storage account create \
@@ -63,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 [az storage share create](/cli/azure/storage/share) を使用して、File Storage 共有を作成します。 
 
-共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
+共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)」を参照してください。
 
 この例では、10-GiB クォータを使用して、*myshare* という名前の共有を作成します。 
 
@@ -111,4 +111,3 @@ Linux VM を再起動すると、マウントされた SMB 共有はシャット
 - [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md)
 - [Linux VM へのディスクの追加](add-disk.md)
 - [Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)
-

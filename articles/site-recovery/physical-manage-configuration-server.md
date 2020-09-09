@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478969"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132493"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -35,8 +35,8 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | オペレーティング システムのロケール | 英語 (米国)|
 | VMware vSphere PowerCLI のバージョン | 必要なし|
 | Windows Server の役割 | これらの役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V |
-| グループ ポリシー| これらのグループ ポリシーを有効にしないでください。 <br> - コマンド プロンプトへのアクセス禁止 <br> - レジストリ編集ツールへのアクセス禁止 <br> - ファイル添付の信頼ロジック <br> - スクリプト実行の有効化 <br> [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | - 既存の Web サイトが存在しない <br> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない<br>|
+| グループ ポリシー| これらのグループ ポリシーを有効にしないでください。 <br> - コマンド プロンプトへのアクセス禁止 <br> - レジストリ編集ツールへのアクセス禁止 <br> - ファイル添付の信頼ロジック <br> - スクリプト実行の有効化 <br> [詳細情報](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | - 既存の Web サイトが存在しない <br> - [匿名認証](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10))を有効にする <br> - [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない<br>|
 | NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) |
 | IP アドレスの種類 | 静的 |
 | インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (スケールアウト プロセス サーバーには必要なし) <br> - time.nist.gov <br> - time.windows.com |
@@ -267,7 +267,7 @@ ProxyPassword="Password"
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>構成サーバーの削除または登録解除 (PowerShell)
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
+1. Azure PowerShell モジュールを[インストール](/powershell/azure/install-Az-ps)します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
     
     `Connect-AzAccount`
@@ -315,5 +315,4 @@ ProxyPassword="Password"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure への[物理サーバー](tutorial-physical-to-azure.md)のディザスター リカバリーの設定に関するチュートリアルをご覧ください。
-
+Azure への[物理サーバー](./physical-azure-disaster-recovery.md)のディザスター リカバリーの設定に関するチュートリアルをご覧ください。

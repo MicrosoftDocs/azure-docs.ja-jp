@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61465662"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266529"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>方法:ダウンロードによってアセットを配信する  
+# <a name="how-to-deliver-an-asset-by-download"></a>方法:ダウンロードによってアセットを配信する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 この記事では、Media Services にアップロードされたメディア アセットを配信するためのオプションについて説明します。 メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。 エンコード後、生成されたメディア アセットをダウンロードするか、ストリーミング ロケーターを使用してアクセスします。 パフォーマンスとスケーラビリティを高めるために、Content Delivery Network (CDN) を使用してコンテンツを配信することもできます。
 
 この例では、メディア アセットを Media Services からローカル コンピューターにダウンロードする方法を紹介しています。 このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、 **OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。 この例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。

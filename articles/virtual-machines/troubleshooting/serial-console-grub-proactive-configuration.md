@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262895"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831364"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>事前に GRUB と sysrq に確実にアクセスできるようにすることでダウンタイムを大幅に短縮する
 
@@ -37,11 +37,11 @@ VM の復旧を実行する理由は多数あり、次のようなシナリオ�
    - 破損した sshd 構成ファイル
    - ネットワークの構成
 
- 他の多くのシナリオについて詳しくは、[こちら](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console)をご覧ください
+ 他の多くのシナリオについて詳しくは、[こちら](./serial-console-linux.md#common-scenarios-for-accessing-the-serial-console)をご覧ください
 
 Azure にデプロイされている VM で GRUB とシリアル コンソールにアクセスできることを確認します。 
 
-シリアル コンソールを初めて使用する場合は、[こちらのリンク](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/)をご覧ください。
+シリアル コンソールを初めて使用する場合は、[こちらのリンク](./serial-console-linux.md)をご覧ください。
 
 > [!TIP]
 > 変更を行う前に、ファイルのバックアップを作成してください
@@ -76,7 +76,7 @@ Azure シリアル コンソールと GRUB にアクセスできるようにす�
 
 - ディスク スワップ – 次のいずれかを使用して自動化できます。
 
-   - [Power Shell の復旧スクリプト](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+   - [PowerShell の復旧スクリプト](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
    - [bash の復旧スクリプト](https://github.com/sribs/azure-support-scripts)
 
 - 従来の方法
@@ -98,7 +98,7 @@ GRUB にアクセスできない場合は、[こちら](https://youtu.be/m5t0GZ5
 Sysrq キーは、一部の新しい Linux ディストリビューションでは既定で有効になりますが、他のディストリビューションでは、特定の SysRq 関数に対する値のみを受け入れるように構成されている場合があります。
 古いディストリビューションでは、完全に無効になっている可能性があります。
 
-SysRq 機能は、クラッシュまたはハングした VM を Azure シリアル コンソールから直接再起動する場合に役立ちます。また、GRUB メニューにアクセスする場合にも便利です。代わりに、別のポータル ウィンドウや SSH セッションから VM を再起動すると、現在のコンソール接続が切断され、そのために GRUB メニューの表示に使用される GRUB タイムアウトが切れる可能性があります。
+SysRq 機能は、クラッシュまたは応答しない VM を Azure シリアル コンソールから直接再起動する場合に役立ちます。また、GRUB メニューにアクセスする場合にも便利です。代わりに、別のポータル ウィンドウや SSH セッションから VM を再起動すると、現在のコンソール接続が切断され、そのために GRUB メニューの表示に使用される GRUB タイムアウトが切れる可能性があります。
 VM は、カーネル パラメーターの値として、sysrq のすべての関数が有効になる 1、または再起動と電源オフのみが可能な 128 を受け入れるように、構成する必要があります
 
 
@@ -346,7 +346,7 @@ Esc キーを押さなくても、GRUB メニューは構成されている time
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 sp1
-公式の[ドキュメント](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)に従って、yast ブートローダーを使用します
+公式の[ドキュメント](./serial-console-grub-single-user-mode.md#grub-access-in-suse-sles)に従って、YaST ブートローダーを使用します
 
 または、/etc/default/grub に次のパラメーターを追加または変更します。
 
@@ -430,11 +430,11 @@ GRUB にアクセスできるようにすると、初期化プロセスを中断
 または、シングル ユーザー モードまたは緊急モードで VM にアクセスすることが必要になる場合もあります。 方向キーを使用して、起動または中断するカーネルを選択します。
 カーネル起動行にキーワード **single** または **1** を追加して、目的のモードにします。 RHEL システムでは、**rd.break** を追加することもできます。
 
-シングル ユーザー モードにアクセスする方法について詳しくは、[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access)をご覧ください 
+シングル ユーザー モードにアクセスする方法について詳しくは、[こちらのドキュメント](./serial-console-grub-single-user-mode.md#general-single-user-mode-access)をご覧ください 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)
 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure シリアル コンソール]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)についてさらに詳しく学習します
+[Azure シリアル コンソール]( ./serial-console-linux.md)についてさらに詳しく学習します

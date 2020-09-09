@@ -1,27 +1,27 @@
 ---
 title: Azure Resource Manager テンプレートのサンプル - Azure Front Door
-description: Azure Front Door のための Azure Resource Manager テンプレートのサンプル
+description: Azure Front Door に使用される Resource Manager テンプレートのサンプルについて説明します。基本的な Front Door を作成するためのテンプレートや Front Door のレート制限を構成するためのテンプレートなどを取り上げます。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
-ms.author: sharadag
-ms.openlocfilehash: 61ce63b15d2126a25b444e97acc8a3ea3964296b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.author: duau
+ms.openlocfilehash: 961214b3a815eb8ae9b0fcb283599b3474d4706e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985815"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399363"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door のための Azure Resource Manager デプロイ モデル テンプレート
 
 次の表は、Azure Front Door のための Azure Resource Manager デプロイ モデル テンプレートのリンク一覧です。 
 
-| | |
+| Template | 説明 |
 | ---| ---|
 | [基本的な Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| 1 つのバックエンドを備えた基本的な Front Door 構成を作成します。 |
 | [複数のバック エンドおよびバックエンド プールと URL ベースのルーティングを備えた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| 複数のバックエンドおよびバックエンド プール用に負荷分散が構成され、URL パスに基づくバックエンド プール間の Front Door を作成します。 |

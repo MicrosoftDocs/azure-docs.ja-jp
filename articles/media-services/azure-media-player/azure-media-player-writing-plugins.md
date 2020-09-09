@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: devx-track-javascript
+ms.openlocfilehash: da827b994685e95baf28e3ad34072642c24fa510
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857414"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422608"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Azure Media Player のプラグインの作成 #
 

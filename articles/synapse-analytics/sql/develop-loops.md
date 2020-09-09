@@ -1,23 +1,23 @@
 ---
-title: T-SQL ループの使用
+title: T-SQL ループを使用する
 description: Synapse SQL の SQL プールによる T-SQL ループの使用、カーソルの置換、関連ソリューションの開発のヒント。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427055"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495303"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>Synapse SQL での T-SQL ループの使用
+# <a name="use-t-sql-loops-in-synapse-sql"></a>Synapse SQL で T-SQL ループを使用する
 この記事では、Synapse SQL の SQL プールによる T-SQL ループの使用、カーソルの置換、関連ソリューションの開発に関する重要なヒントを提供します。
 
 ## <a name="purpose-of-while-loops"></a>WHILE ループの目的
@@ -26,7 +26,7 @@ Synapse SQL では、ステートメント ブロックを繰り返し実行す�
 
 SQL プールのループは、SQL コードで定義されているカーソルを置き換えるために便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、[WHILE] ループはカーソルの置換の優れた代替手段です。
 
-## <a name="replacing-cursors-in-sql-pool"></a>SQL プールでのカーソルの置換
+## <a name="replace-cursors-in-sql-pool"></a>SQL プール内のカーソルを置換する
 
 詳細に入る前に、次の質問について考慮する必要があります。"セット ベースの操作を使用するよう、このカーソルを書き換えることができますか?" 多くの場合、答えは "はい" であり、この方法が最適です。 セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも速く実行されます。
 

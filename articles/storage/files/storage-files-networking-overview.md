@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067160"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464812"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files のネットワークに関する考慮事項 
 Azure ファイル共有には、次の 2 つの方法で接続できます。
 
 - SMB または FileREST プロトコル経由で直接共有にアクセスします。 このアクセス パターンは主に、できるだけ多くのオンプレミス サーバーを排除するために使用されます。
-- Azure File Sync を使用してオンプレミス サーバー上に Azure ファイル共有のキャッシュを作成し、ユース ケースに合った任意のプロトコル (SMB、NFS、FTPS など) を使用してオンプレミス サーバーからファイル共有のデータにアクセスします。 このアクセス パターンは、オンプレミスのパフォーマンスとクラウド スケールの両方、およびサーバーレスの接続可能なサービス (Azure Backup など) のメリットが組み合わされるために非常に便利です。
+- Azure File Sync を使用してオンプレミス サーバー上 (Azure VM 上) に Azure ファイル共有のキャッシュを作成し、ユース ケースに合った任意のプロトコル (SMB、NFS、FTPS など) を使用してオンプレミス サーバーからファイル共有のデータにアクセスします。 このアクセス パターンは、オンプレミスのパフォーマンスとクラウド スケールの両方、およびサーバーレスの接続可能なサービス (Azure Backup など) のメリットが組み合わされるために非常に便利です。
 
-この記事では、Azure File Sync を使用するのではなく、直接 Azure ファイル共有にアクセスするためにユース ケースに必要となるネットワークの構成方法に重点を置いています。Azure File Sync のデプロイのネットワークに関する考慮事項の詳細については、[Azure File Sync のプロキシとファイアウォールの設定の構成](storage-sync-files-firewall-and-proxy.md)に関するページを参照してください。
+この記事では、Azure File Sync を使用するのではなく、直接 Azure ファイル共有にアクセスするためにユース ケースに必要となるネットワークの構成方法に重点を置いています。Azure File Sync のデプロイのネットワークに関する考慮事項の詳細については、「[Azure File Sync のネットワークに関する考慮事項](storage-sync-files-networking-overview.md)」を参照してください。
 
 Azure ファイル共有のネットワーク構成は Azure ストレージ アカウントで行います。 ストレージ アカウントは、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 ストレージ アカウントには、ネットワーク エンドポイント、ストレージ アカウントのファイアウォール設定、転送中の暗号化など、ファイル共有へのネットワーク アクセスをセキュリティで保護するうえで役立つ多数の設定が公開されています。 
 
@@ -51,7 +51,7 @@ Azure ファイル共有のネットワーク構成は Azure ストレージ ア
 
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): VPN ゲートウェイは、暗号化されたトラフィックをインターネット経由で Azure 仮想ネットワークと別の場所 (オンプレミスなど) の間で送信するために使用される特定の種類の仮想ネットワーク ゲートウェイです。 Azure VPN Gateway は、ストレージ アカウントまたはその他の Azure リソースと共にリソース グループにデプロイできる Azure リソースです。 VPN ゲートウェイは、次の 2 つの異なる種類の接続を公開します。
     - [ポイント対サイト (P2S) VPN](../../vpn-gateway/point-to-site-about.md) ゲートウェイ接続。これは、Azure と個々のクライアントの間の VPN 接続です。 このソリューションは主に、自宅、コーヒー ショップ、または出先のホテルから自分の Azure ファイル共有をマウントできるようにしたい在宅勤務者などの、組織のオンプレミス ネットワークの一部ではないデバイスに役立ちます。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 P2S VPN 接続のデプロイを簡略化するには、「[Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する](storage-files-configure-p2s-vpn-windows.md)」および「[Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する](storage-files-configure-p2s-vpn-linux.md)」を参照してください。
-    - [サイト間 (S2S) VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)。これは、Azure と組織のネットワークの間の VPN 接続です。 S2S VPN 接続を使用すると、Azure ファイル共有にアクセスする必要のあるクライアント デバイスごとにではなく、組織のネットワークでホストされている VPN サーバーまたはデバイスについて 1 回 VPN 接続を構成するだけで済みます。 S2S VPN 接続のデプロイを簡略化するには、[Azure Files で使用するサイト間 (S2S) VPN の構成](storage-files-configure-s2s-vpn.md)に関するページを参照してください。
+    - [サイト間 (S2S) VPN](../../vpn-gateway/design.md#s2smulti)。これは、Azure と組織のネットワークの間の VPN 接続です。 S2S VPN 接続を使用すると、Azure ファイル共有にアクセスする必要のあるクライアント デバイスごとにではなく、組織のネットワークでホストされている VPN サーバーまたはデバイスについて 1 回 VPN 接続を構成するだけで済みます。 S2S VPN 接続のデプロイを簡略化するには、[Azure Files で使用するサイト間 (S2S) VPN の構成](storage-files-configure-s2s-vpn.md)に関するページを参照してください。
 - [ExpressRoute](../../expressroute/expressroute-introduction.md)。これにより、Azure とインターネットを経由しないオンプレミス ネットワークの間に定義されたルートを作成できます。 ExpressRoute はオンプレミスのデータセンターと Azure の間の専用のパスを提供するため、ExpressRoute は、ネットワーク パフォーマンスが考慮事項であるときに役立つことがあります。 ExpressRoute はまた、組織のポリシーまたは規制要件にクラウド内のリソースへの確定的なパスが必要な場合の適切なオプションでもあります。
 
 Azure ファイル共有へのアクセスに使用するトンネリング方法に関係なく、ストレージ アカウントへのトラフィックを、通常のインターネット接続ではなく、確実にトンネルに通すためのメカニズムは必要です。 ストレージ アカウントのパブリック エンドポイントにルーティングすることは技術的には可能ですが、そのためには、特定のリージョン内にある Azure ストレージ クラスターの IP アドレスをすべてハードコーディングする必要があります。これは、ストレージ アカウントはストレージ クラスター間で随時移動される可能性があるためです。 また、新しいクラスターが常時追加されるので、IP アドレスのマッピングも絶えず更新する必要があります。

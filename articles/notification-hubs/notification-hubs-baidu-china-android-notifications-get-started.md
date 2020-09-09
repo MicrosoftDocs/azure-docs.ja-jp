@@ -14,12 +14,13 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java, devx-track-csharp
+ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536991"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003968"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
@@ -415,8 +416,8 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 以下の画面に示すように、通知ハブの構成画面にある **[送信]** ボタンを使用して、[Azure Portal] から通知の受信テストをすばやく行うことができます。
 
-![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
-![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![赤の矢印の先に [テスト送信] オプションが赤枠で囲まれた Azure portal のスクリーンショット。](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+![Baidu の [テスト送信] ページを示す Azure portal のスクリーンショット。](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。 バックエンドでライブラリを利用できない場合、REST API を直接使用して通知メッセージを送信できます。
 
@@ -424,10 +425,10 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 通知を送信するためのさまざまな手法を次に示します。
 
-* **REST インターフェイス**: [REST インターフェイス](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用すると、任意のバックエンド プラットフォームの通知をサポートできます。
+* **REST インターフェイス**: [REST インターフェイス](/previous-versions/azure/reference/dn223264(v=azure.100))を使用すると、任意のバックエンド プラットフォームの通知をサポートできます。
 * **Microsoft Azure Notification Hubs .NET SDK**: Visual Studio 用の NuGet パッケージ マネージャーで、[Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を実行します。
 * **Node.js**:[Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
-* **Mobile Apps**: Notification Hubs に統合されている Azure App Service Mobile Apps のバックエンドから通知を送信する方法の例については、[モバイル アプリにプッシュ通知を追加](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)する方法を説明したページを参照してください。
+* **Mobile Apps**: Notification Hubs に統合されている Azure App Service Mobile Apps のバックエンドから通知を送信する方法の例については、[モバイル アプリにプッシュ通知を追加](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)する方法を説明したページを参照してください。
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(省略可能) .NET コンソール アプリケーションから通知を送信する
@@ -436,7 +437,7 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
 1. Visual C# の新しいコンソール アプリケーションを作成します。
 
-    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![[コンソール アプリケーション] Visual C# オプションが強調表示されている [新しいプロジェクト] ダイアログ ボックスのスクリーンショット。](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
 
@@ -446,7 +447,7 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 
     この手順により、[Microsoft.Azure.Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を利用して Azure Notification Hubs SDK に参照が追加されます。
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![[SendToNotificationHub] オプションが赤の楕円で囲まれた [パッケージ マネージャー コンソール] ダイアログ ボックスのスクリーンショット。](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. `Program.cs` ファイルを開き、次の using ステートメントを追加します。
 

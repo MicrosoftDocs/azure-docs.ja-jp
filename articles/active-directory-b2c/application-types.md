@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190145"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295424"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C で使用できるアプリケーションの種類
 
@@ -119,9 +119,11 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリケーションは、OAuth 2.0 クライアント資格情報フローを使用することで、(ユーザーの委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。 クライアント資格情報フローは、On-Behalf-Of フローと同じではなく、On-Behalf-Of フローは、サーバー対サーバー認証には使用しないようにする必要があります。
 
-クライアント資格情報フローは現在 Azure AD B2C によってサポートされていませんが、Azure AD を使用してクライアント資格情報フローを設定することができます。 Azure AD B2C テナントは、Azure AD のエンタープライズ テナントと同じいくつかの機能を持っています。  クライアント資格情報フローは、Azure AD B2C テナントの Azure AD の機能を使用してサポートされています。
+OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C 認証サービスによって直接サポートされていませんが、Azure AD B2C テナント内のアプリケーション向けに Azure AD と Microsoft ID プラットフォーム/トークンエンド ポイントを使用して、クライアント資格情報フローを設定できます。 Azure AD B2C テナントは、Azure AD のエンタープライズ テナントと同じいくつかの機能を持っています。
 
 クライアント資格情報フローを設定するには、「[Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)」を参照してください。 認証に成功した結果として、書式設定されたトークンを受信し、「[Azure AD トークン リファレンス](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)」で説明されているように Azure AD でそれを使用することができます。
+
+管理アプリケーションの登録手順については、[Microsoft Graph を使用した Azure AD B2C の管理](microsoft-graph-get-started.md)に関する記事をご覧ください。
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API チェーン (On-Behalf-Of フロー)
 

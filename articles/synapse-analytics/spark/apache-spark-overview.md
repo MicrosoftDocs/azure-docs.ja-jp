@@ -1,22 +1,22 @@
 ---
-title: Azure Synapse Analytics の Apache Spark とは
+title: Apache Spark とは
 description: この記事では、Azure Synapse Analytics における Apache Spark の概要と、Spark を使用できるさまざまなシナリオについて説明します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644667"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498924"
 ---
-# <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Apache Spark とは
+# <a name="apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Apache Spark
 
 Apache Spark は、ビッグデータ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする並列処理フレームワークです。 Azure Synapse Analytics の Apache Spark は、Apache Spark を Microsoft がクラウドに実装したものです。 Azure Synapse では、Spark プール (プレビュー) を Azure に簡単に作成して構成することができます。 Azure Synapse の Spark プールは、Azure Storage および Azure Data Lake Generation 2 ストレージと互換性があります。 そのため、Azure Spark プールを使用して、Azure に格納されているデータを処理することができます。
 
@@ -32,16 +32,16 @@ Apache Spark には、クラスターの計算処理をインメモリで行う�
 
 Azure Synapse の Spark プールでは、フル マネージドの Spark サービスを利用できます。 以下の一覧は、Synapse Analytics で Spark プールを作成する利点をまとめたものです。
 
-| 機能 | 説明 |
+| 特徴量 | 説明 |
 | --- | --- |
 | スピードと効率 |Spark インスタンスの起動時間は、60 ノード未満の場合で約 2 分、それより多いの場合には約 5 分となります。 インスタンスの既定のシャットダウン時間は、ノートブック接続によって生存状態になっている場合を除き、最後のジョブが実行されてから 5 分です。 |
 | 作成のしやすさ |Azure Synapse には、Azure portal、Azure PowerShell、Synapse Analytics .NET SDK のいずれかを使用して新しい Spark プールを数分で作成できます。 [Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool-studio.md)に関するページを参照してください。 |
 | 使いやすさ |Synapse Analytics には、[Nteract](https://nteract.io/) から派生したカスタム ノートブックが含まれています。 対話型のデータ処理と視覚化にこれらの Notebook を使用できます。|
 | REST API |Synapse Analytics の Spark には、ジョブの送信と監視をリモートで実行する REST API ベースの Spark ジョブ サーバーである [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) が含まれています。 |
 | Azure Data Lake Storage Generation 2 のサポート| Azure Synapse の Spark プールは、Blob Storage に加え、Azure Data Lake Storage Generation 2 も使用できます。 Data Lake Store の詳細については、「[Azure Data Lake Store の概要](../../data-lake-store/data-lake-store-overview.md)」を参照してください。 |
-| サード パーティ製 IDE との統合 | Azure Synapse には、アプリケーションを作成して Spark プールに送信するうえで役立つ [Jetbrains の IntelliJ IDEA](https://www.jetbrains.com/idea/) 用 IDE プラグインが用意されています。 |
+| サード パーティ製 IDE との統合 | Azure Synapse には、アプリケーションを作成して Spark プールに送信するうえで役立つ [JetBrains の IntelliJ IDEA](https://www.jetbrains.com/idea/) 用 IDE プラグインが用意されています。 |
 | 読み込み済みの Anaconda ライブラリ |Azure Synapse の Spark プールには、プレインストールされた Anaconda ライブラリが付属します。 [Anaconda](https://docs.continuum.io/anaconda/) は、機械学習、データ分析、視覚化などのための 200 個近いライブラリを提供します。 |
-| スケーラビリティ | Azure Synapse プールの Apache Spark は自動スケールを有効にすることで、必要に応じてプールをスケールアップしたりスケールダウンしたりすることができます。 また、すべてのデータは Azure Storage または Data Lake Storage に格納されるため、Spark プールはデータの損失なしでシャットダウンできます。 |
+| スケーラビリティ | Azure Synapse プールの Apache Spark で自動スケールを有効にすると、必要に応じてノードを追加したり削除したりすることによって、プールをスケーリングすることができます。 また、すべてのデータは Azure Storage または Data Lake Storage に格納されるため、Spark プールはデータの損失なしでシャットダウンできます。 |
 
 Azure Synapse の Spark プールには、そのプールで利用できる次のコンポーネントが既定で含まれています。
 
@@ -60,7 +60,7 @@ SparkContext は、アプリケーション間でリソースを割り当てる�
 
 SparkContext は、ユーザーの main 関数を実行し、ノードでさまざまな並列処理を実行します。 その後、SparkContext は操作の結果を収集します。 ノードによるデータの読み取りと書き込みは、ファイル システムとの間で行われます。 また、ノードは、変換後のデータを Resilient Distributed Dataset (RDD) としてメモリ内にキャッシュします。
 
-SparkContext は Spark プールに接続し、有向グラフ (DAG) にアプリケーションを変換する処理を担います。 グラフは、ノードの Executor プロセス内で実行される個々のタスクから成ります。 アプリケーションはそれぞれ独自の Executor プロセスを取得し、そのプロセスが、アプリケーション全体が終了するまで稼働し続けながら、複数のスレッドでタスクを実行します。
+SparkContext は Spark プールに接続し、有向非巡回グラフ (DAG) にアプリケーションを変換する処理を担います。 グラフは、ノードの Executor プロセス内で実行される個々のタスクから成ります。 アプリケーションはそれぞれ独自の Executor プロセスを取得し、そのプロセスが、アプリケーション全体が終了するまで稼働し続けながら、複数のスレッドでタスクを実行します。
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Synapse Analytics の Apache Spark のユース ケース
 

@@ -3,12 +3,13 @@ title: オフライン バックアップの概要
 description: オフライン バックアップのコンポーネントについて説明します。 これには、Azure Data Box に基づくオフライン バックアップと Azure Import/Export サービスに基づくオフライン バックアップが含まれます。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: references_regions
+ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160923"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503627"
 ---
 # <a name="overview-of-offline-backup"></a>オフライン バックアップの概要
 
@@ -44,7 +45,7 @@ Azure Data Box に基づいてオフライン バックアップを使用する�
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Azure Import/Export サービスに基づくオフライン バックアップ
 
-このオプションは、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) DPM A、および MARS エージェントでサポートされています。 [Azure Import/Export サービス](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)が使用されます。 Azure と互換性のある独自のディスクとコネクタを使用して、Azure に初期バックアップ データを転送できます。 この方法では、ステージング場所と呼ばれる一時的ストレージをプロビジョニングし、事前に構築されたユーティリティを使用してバックアップ データをフォーマットし、お客様が所有するディスクにコピーする必要があります。
+このオプションは、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) DPM A、および MARS エージェントでサポートされています。 [Azure Import/Export サービス](../storage/common/storage-import-export-service.md)が使用されます。 Azure と互換性のある独自のディスクとコネクタを使用して、Azure に初期バックアップ データを転送できます。 この方法では、ステージング場所と呼ばれる一時的ストレージをプロビジョニングし、事前に構築されたユーティリティを使用してバックアップ データをフォーマットし、お客様が所有するディスクにコピーする必要があります。
 
 このオプションを使用したバックアップ データの移動について説明するアーキテクチャを次に示します。
 
@@ -58,9 +59,9 @@ Azure Data Box に基づいてオフライン バックアップを使用する�
 4. Azure データセンターでは、ディスク上のデータが Azure ストレージ アカウントにコピーされます。
 5. Azure Backup によってストレージ アカウントから Recovery Services コンテナーにバックアップ データがコピーされます。 増分バックアップがスケジュールされます。
 
-MARS エージェントで Azure Import/Export サービスに基づくオフライン バックアップを使用するには、「[Azure Backup でのオフライン バックアップのワークフロー](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)」を参照してください。
+MARS エージェントで Azure Import/Export サービスに基づくオフライン バックアップを使用するには、「[Azure Backup でのオフライン バックアップのワークフロー](./backup-azure-backup-import-export.md)」を参照してください。
 
-MABS または DPM-A と共に同じものを使用するには、「[DPM と Azure Backup Server のオフライン バックアップのワークフロー](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)」を参照してください。
+MABS または DPM-A と共に同じものを使用するには、「[DPM と Azure Backup Server のオフライン バックアップのワークフロー](./backup-azure-backup-server-import-export.md)」を参照してください。
 
 ## <a name="offline-backup-support-summary"></a>オフライン バックアップのサポートの概要
 
@@ -69,18 +70,18 @@ MABS または DPM-A と共に同じものを使用するには、「[DPM と Az
 | **考慮事項**                                            | **Azure Data Box に基づくオフライン バックアップ**                     | **Azure Import/Export サービスに基づくオフライン バックアップ**                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Azure Backup のデプロイ モデル                              | MARS エージェント (プレビュー)                                              | MARS エージェント、MABS、DPM-A                                           |
-| サーバー (MARS) 1 台あたり、または保護グループ (MABS、DPM-A) 1 つあたりの最大バックアップ データ | [Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) - 7.2 TB <br> [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) - 80 TB       | 80 TB (それぞれ 8 TB のディスクが最大 10 個)                          |
-| セキュリティ (データ、デバイス、およびサービス)                           | [データ](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) - AES-256 ビットで暗号化 <br> [デバイス](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) - 堅牢なケースで、データをコピーするための独自の資格情報ベースのインターフェイス <br> [サービス](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) - Azure セキュリティ機能によって保護 | データ - BitLocker で暗号化                                 |
+| サーバー (MARS) 1 台あたり、または保護グループ (MABS、DPM-A) 1 つあたりの最大バックアップ データ | [Azure Data Box Disk](../databox/data-box-disk-overview.md) - 7.2 TB <br> [Azure Data Box](../databox/data-box-overview.md) - 80 TB       | 80 TB (それぞれ 8 TB のディスクが最大 10 個)                          |
+| セキュリティ (データ、デバイス、およびサービス)                           | [データ](../databox/data-box-security.md#data-box-data-protection) - AES-256 ビットで暗号化 <br> [デバイス](../databox/data-box-security.md#data-box-device-protection) - 堅牢なケースで、データをコピーするための独自の資格情報ベースのインターフェイス <br> [サービス](../databox/data-box-security.md#data-box-service-protection) - Azure セキュリティ機能によって保護 | データ - BitLocker で暗号化                                 |
 | 一時的なステージング場所のプロビジョニング                     | 必要なし                                                | バックアップ データの推定サイズ以上        |
-| サポートされているリージョン                                           | [Azure Data Box Disk のリージョン](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box のリージョン](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure Import/Export サービスのリージョン](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| 国外への発送                                     | サポートされていません  <br>    Azure データセンターの発送元の住所と宛先は同一国内でなければなりません* | サポートされています                                                    |
+| サポートされているリージョン                                           | [Azure Data Box Disk のリージョン](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box のリージョン](../databox/data-box-disk-overview.md#region-availability) | [Azure Import/Export サービスのリージョン](../storage/common/storage-import-export-service.md#region-availability) |
+| 国外への発送                                     | サポートされていません  <br>    Azure データセンターの発送元の住所と宛先は同一国/地域内でなければなりません* | サポートされています                                                    |
 | 転送ロジスティック (配送、輸送、集荷)           | Microsoft が完全に管理                                     | お客様による管理                                            |
 | 価格                                                      | [Azure Data Box の価格](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box Disk の価格](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure Import/Export サービスの価格](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-*お住まいの国に Azure データセンターがない場合は、別の国の Azure データセンターにディスクを発送する必要があります。
+*お住まいの国/地域に Azure データセンターがない場合は、別の国/地域の Azure データセンターにディスクを発送する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Box を使用した Azure Backup のオフライン バックアップ](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)
-- [DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export-.md)
+- [DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export.md)

@@ -4,14 +4,15 @@ description: Azure SignalR を使用するうえでの一般的なユース ケ�
 author: sffamily
 ms.service: signalr
 ms.topic: overview
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 31cb4570dd0952f60fbff2fa1131b3af36c278cb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 92da400616ace9f24da121d81798d5ebd9222e35
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74157576"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921887"
 ---
 # <a name="what-is-azure-signalr-service"></a>Azure SignalR サービスとは
 

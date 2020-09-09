@@ -1,18 +1,18 @@
 ---
 title: Azure 仮想マシンの技術資産を作成する
 description: Azure Marketplace 向けの仮想マシン (VM) オファーの技術資産を作成および構成する方法について説明します。
-author: dannyevers
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 3c4e5fa4ce960f8113504b52aa0d5055bf1bf85a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: afc012329d0d9e337dfca93a88615ba7c28f1754
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722713"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460373"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure 仮想マシンの技術資産を作成する
 
@@ -43,14 +43,14 @@ VM イメージには、1 個のオペレーティング システム ディス�
 
 VM と VHD の管理に役立つ次のスクリプト環境のいずれかを利用することを検討してください。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 また、開発環境に次のツールを追加することを検討してください。
 
-* [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/)
-  * 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  * 拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   * 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
   * 拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
@@ -63,10 +63,10 @@ VM と VHD の管理に役立つ次のスクリプト環境のいずれかを利
 
 このセクションでは、リモート デスクトップ プロトコル (RDP) の使用、VM サイズの選択、最新の Windows 更新プログラムのインストール、VHD イメージの一般化など、承認済みのベースを使用するさまざまな側面について説明します。
 
-以下のセクションでは、主に Windows ベースの VHD に焦点を当てています。 Linux ベースの VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。
+以下のセクションでは、主に Windows ベースの VHD に焦点を当てています。 Linux ベースの VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](../../virtual-machines/linux/endorsed-distros.md)」を参照してください。
 
 > [!WARNING]
-> Azure を使用して、事前に構成された動作保証済みのオペレーティング システムを含む VM を作成するには、このトピックのガイダンスに従います。 これがお使いのソリューションと互換性がない場合は、承認済みのオペレーティング システムを使用して、オンプレミスの VM を作成して構成することができます。 その場合は、「[Azure にアップロードする Windows VHD または VHDX を準備する](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)」で説明されている方法で、アップロードのための構成と準備を行うことができます。
+> Azure を使用して、事前に構成された動作保証済みのオペレーティング システムを含む VM を作成するには、このトピックのガイダンスに従います。 これがお使いのソリューションと互換性がない場合は、承認済みのオペレーティング システムを使用して、オンプレミスの VM を作成して構成することができます。 その場合は、「[Azure にアップロードする Windows VHD または VHDX を準備する](../../virtual-machines/windows/prepare-for-upload-vhd-image.md)」で説明されている方法で、アップロードのための構成と準備を行うことができます。
 
 ### <a name="select-an-approved-base"></a>承認済みのベースを選択する
 
@@ -76,23 +76,24 @@ VM と VHD の管理に役立つ次のスクリプト環境のいずれかを利
 
 Windows ベースの VM イメージのオペレーティング システム VHD は、Windows Server またはSQL Server を含む Azure 承認済みベース イメージに基づいている必要があります。 始めに、Azure portal で次のイメージのいずれかから VM を作成します。
 
-* Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
-* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise、Standard、Web)
-* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise、Standard、Web)
+* Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2012 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+* [Windows 10 IoT Enterprise](/windows/iot-core/windows-iot-enterprise)
+* [SQL Server 2014](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise、Standard、Web)
+* [SQL Server 2012 SP2](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise、Standard、Web)
 
 > [!NOTE]
 > 現行の Azure portal または Azure PowerShell を使用している場合は、2014 年 9 月 8 日以降に発行された Windows Server イメージが承認されます。
 
 #### <a name="linux"></a>Linux
 
-さまざまな承認済みの Linux ディストリビューションが Azure から提供されています。 現在のリストについては、「[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)」を参照してください。
+さまざまな承認済みの Linux ディストリビューションが Azure から提供されています。 現在のリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../../virtual-machines/linux/endorsed-distros.md)」を参照してください。
 
 ### <a name="create-vm-in-the-azure-portal"></a>Azure portal で VM を作成する
 
 次の手順に従って、[Azure portal](https://ms.portal.azure.com/) でベース VM イメージを作成します。
 
 1. VM オファーの公開に使用する Azure サブスクリプションに関連付けられている Microsoft アカウントで [Azure portal](https://ms.portal.azure.com/) にサインインします。
-2. 新しいリソース グループを作成して、 **リソース グループ名**、**サブスクリプション**、**リソース グループの場所**を指定します。 詳細については、[リソースの管理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)に関する記事を参照してください。
+2. 新しいリソース グループを作成して、 **リソース グループ名**、**サブスクリプション**、**リソース グループの場所**を指定します。 詳細については、[リソースの管理](../../azure-resource-manager/resource-group-portal.md)に関する記事を参照してください。
 3. 左側にある **[Virtual Machines]** をクリックして、仮想マシンの詳細ページを表示します。
 4. **[+ 追加]** を選択して、 **[Create a virtual machine experience]\(仮想マシン エクスペリエンスの作成\)** を開きます。
 5. ドロップダウン リストからイメージを選択するか、 **[すべてのパブリックおよびプライベート イメージを参照する]** をクリックして、使用可能なすべての仮想マシ イメージを検索または参照します。
@@ -106,7 +107,7 @@ Windows ベースの VM イメージのオペレーティング システム VHD
 
 Azure で、指定した仮想マシンのプロビジョニングが開始されます。 左側の **[Virtual Machines]** タブを選択して、進捗状況を追跡できます。 作成後に、状態は **[実行中]** に変わります。
 
-Azure ベースの新しい VHD の作成で問題が発生した場合は、「[VHD 作成における一般的な問題 (FAQ)](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)」を参照してください。
+Azure ベースの新しい VHD の作成で問題が発生した場合は、「[VHD 作成における一般的な問題 (FAQ)](common-issues-during-vhd-creation.md)」を参照してください。
 
 ### <a name="connect-to-your-azure-vm"></a>Azure VM に接続する
 
@@ -116,7 +117,7 @@ Azure ベースの新しい VHD の作成で問題が発生した場合は、「
 
 Azure でホストされている Windows ベースの VM への接続には、リモート デスクトップ クライアントを使用します。 ほとんどのバージョンの Windows は、リモート デスクトップ プロトコル (RDP) をネイティブでサポートしています。 その他のオペレーティング システムについては、「[リモート デスクトップ クライアント](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)」でクライアントの詳細を確認できます。
 
-次の記事では、組み込みの Windows RDP サポートを使用して VM に接続する方法について詳しく説明しています。[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)。
+次の記事では、組み込みの Windows RDP サポートを使用して VM に接続する方法について詳しく説明しています。[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](../../virtual-machines/windows/connect-logon.md)。
 
 > [!TIP]
 > このプロセス中にセキュリティ警告が表示されることがあります。 たとえば、"The .rdp file is from an unknown publisher" (.rdp ファイルの発行元が不明です) や "Your user credentials cannot be verified." (ユーザーの資格情報を確認できません) などの警告です。 これらの警告は無視しても問題ありません。
@@ -130,7 +131,7 @@ Linux ベースの VM に接続するには、Secure Shell プロトコル (SSH)
 3. 接続先の VM を選択します。
 4. その VM がまだ実行されていない場合は、それを起動します。
 5. VM の名前を選択して、その **[概要]** ページを開きます。
-6. VM のパブリック IP アドレスと DNS 名をメモしておきます (これらの値が設定されていない場合は、[ネットワーク インターフェイスを作成する](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)必要があります)。
+6. お使いの VM のパブリック IP アドレスと DNS 名をメモします (これらの値が設定されていない場合は、[ネットワーク インターフェイスを作成](../../virtual-network/virtual-network-network-interface.md#create-a-network-interface)) する必要があります)。
 7. PuTTY アプリケーションを開きます。
 8. [PuTTY Configuration]\(PuTTY 構成\) ダイアログで、VM の IP アドレスまたは DNS 名を入力します。
 
@@ -141,7 +142,7 @@ Linux ベースの VM に接続するには、Secure Shell プロトコル (SSH)
 
 接続に問題がある場合は、SSH クライアントのドキュメントを参照してください。 たとえば、「[Chapter 10:Common error messages (第 10 章: 一般的なエラー メッセージ)](https://www.ssh.com/ssh/putty/putty-manuals)」を参照してください。
 
-プロビジョニング済みの Linux VM にデスクトップを追加する方法など、詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)」を参照してください。
+プロビジョニング済みの Linux VM にデスクトップを追加する方法など、詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。
 
 ## <a name="create-a-vm-using-your-own-image"></a>独自のイメージを使用して VM を作成する
 
@@ -170,7 +171,7 @@ Azure portal または Azure PowerShell を使用してイメージを作成し�
 
     :::image type="content" source="media/avm-custom-deployment.png" alt-text="[カスタム デプロイ] ページの画像。":::
 
-3. この [JSON テンプレート](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template)をエディターに貼り付け、 **[保存]** を選択します。
+3. この [JSON テンプレート](../partner-center-portal/azure-vm-image-certification.md)をエディターに貼り付け、 **[保存]** を選択します。
 4. 表示されている**カスタム デプロイ**のプロパティ ページのパラメーター値を指定します。
 
     | パラメーター | 説明 |
@@ -183,7 +184,7 @@ Azure portal または Azure PowerShell を使用してイメージを作成し�
     | OS の種類 | VM のオペレーティング システム:Windows または Linux |
     | サブスクリプション ID | 選択したサブスクリプションの識別子 |
     | 場所 | デプロイの地理的な場所 |
-    | [VM サイズ] | [Azure VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。Standard_A2 など |
+    | [VM サイズ] | [Azure VM サイズ](../../virtual-machines/windows/sizes.md)。Standard_A2 など |
     | パブリック IP アドレス名 | パブリック IP アドレスの名前 |
     | VM 名 | 新しい VM の名前 |
     | 仮想ネットワーク名 | VM で使用する仮想ネットワークの名前 |
@@ -209,8 +210,8 @@ Azure でデプロイが開始されます。 これにより、指定のスト�
 
 お使いのアプローチに適合する次の手順を使用してください。
 
-* Azure PowerShell:[Azure VM から非管理対象 VM イメージを作成する方法](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
-* Azure CLI:[仮想マシンまたは VHD のイメージを作成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+* Azure PowerShell:[Azure VM から非管理対象 VM イメージを作成する方法](../../virtual-machines/windows/capture-image-resource.md)
+* Azure CLI:[仮想マシンまたは VHD のイメージを作成する方法](../../virtual-machines/linux/capture-image.md)
 * API:[Virtual Machines - キャプチャ](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 ## <a name="configure-the-virtual-machine"></a>仮想マシンを構成する
@@ -238,7 +239,7 @@ Linux ディストリビューションの場合、更新プログラムは通�
 
 ### <a name="perform-additional-security-checks"></a>追加のセキュリティ チェックを実行する
 
-Azure Marketplace のソリューション イメージのセキュリティは、高いレベルに維持してください。 次の記事には、セキュリティ構成と手順の役立つチェックリストが記載されています。(「[Azure Marketplace イメージのセキュリティに関する推奨事項](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)」)。 これらの推奨事項の一部は Linux ベースのイメージに固有ですが、ほとんどの事項はすべての VM イメージに当てはまります。
+Azure Marketplace のソリューション イメージのセキュリティは、高いレベルに維持してください。 次の記事には、セキュリティ構成と手順の役立つチェックリストが記載されています。(「[Azure Marketplace イメージのセキュリティに関する推奨事項](../../security/security-recommendations-azure-marketplace-images.md)」)。 これらの推奨事項の一部は Linux ベースのイメージに固有ですが、ほとんどの事項はすべての VM イメージに当てはまります。
 
 ### <a name="perform-custom-configuration-and-scheduled-tasks"></a>カスタム構成とスケジュールされたタスクを実行する
 
@@ -247,7 +248,7 @@ Azure Marketplace のソリューション イメージのセキュリティは�
 * 一度だけ実行されるタスクの場合、タスクは正常に完了した後に自身を削除する必要があります。
 * 構成は、C と D 以外のドライブに依存しないようにする必要があります。これは、存在が必ず保証されるドライブがこれら 2 つのみのためです (ドライブ C はオペレーティング システム ディスク、ドライブ D は一時ローカル ディスクです)。
 
-拡張機能の詳細については、「[Linux 用の仮想マシンの拡張機能とその機能](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)」を参照してください。
+拡張機能の詳細については、「[Linux 用の仮想マシンの拡張機能とその機能](../../virtual-machines/extensions/features-linux.md)」を参照してください。
 
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -258,11 +259,11 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 Windows OS ディスクは [sysprep ツール](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)を使用して汎用化されます。 OS を後で更新または再構成する場合、sysprep を再実行する必要があります。
 
 > [!WARNING]
-> 更新プログラムは自動的に実行されることがあるため、sysprep の実行後、デプロイされるまで VM をオフにしてください。 このシャットダウンで、以降の更新プログラムによるオペレーティング システムまたはインストール済みサービスへのインスタンス固有の変更が行われなくなります。 sysprep の実行に関する詳細については、[VHD を一般化する手順](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)に関する記事を参照してください。
+> 更新プログラムは自動的に実行されることがあるため、sysprep の実行後、デプロイされるまで VM をオフにしてください。 このシャットダウンで、以降の更新プログラムによるオペレーティング システムまたはインストール済みサービスへのインスタンス固有の変更が行われなくなります。 sysprep の実行の詳細については、[VHD の一般化の手順](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)に関するページを参照してください。
 
 ### <a name="linux"></a>Linux
 
-次のプロセスでは、Linux VM を一般化して別の VM として再デプロイします。 詳細については、「[仮想マシンまたは VHD のイメージを作成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)」を参照してください。 「キャプチャしたイメージから VM を作成する」セクションまで進んだところでやめることができます。
+次のプロセスでは、Linux VM を一般化して別の VM として再デプロイします。 詳細については、「[仮想マシンまたは VHD のイメージを作成する方法](../../virtual-machines/linux/capture-image.md)」を参照してください。 「キャプチャしたイメージから VM を作成する」セクションまで進んだところでやめることができます。
 
 1. **Azure Linux エージェントを削除します**
 
@@ -278,8 +279,8 @@ Windows OS ディスクは [sysprep ツール](https://docs.microsoft.com/window
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure ベースの新しい VHD の作成で問題が発生した場合は、「[VHD 作成における一般的な問題](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)」を参照してください。
+Azure ベースの新しい VHD の作成で問題が発生した場合は、「[VHD 作成における一般的な問題](common-issues-during-vhd-creation.md)」を参照してください。
 
 それ以外の場合:
 
-* 「[VM イメージを認定する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri)」では、*Certification Test Tool for Azure Certified* ツールを入手する場所や、VM イメージを認定するためにそれを使用する方法など、Azure Marketplace 認定のために VM イメージをテストして送信する方法について説明しています。
+* [VHD からデプロイされた仮想マシン (VM) のテスト](azure-vm-image-certification.md)に関するページでは、*Certification Test Tool for Azure Certified* ツールを入手する場所や、VM イメージを認定するためにそれを使用する方法など、Azure Marketplace 認定のために VM イメージをテストして送信する方法について説明しています。

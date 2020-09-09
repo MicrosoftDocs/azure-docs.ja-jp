@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668015"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958439"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
@@ -131,7 +131,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 #### <a name="solution"></a>解決策
 
 - サブスクリプションの管理者に問い合わせて、アプリにホスト名を追加する権限があることを確認します。
-- さらに多くのサブドメインが必要な場合は、ドメイン ホスティングを Azure ドメイン ネーム サービス (DNS) に変更することをお勧めします。 Azure DNS を使用すると、アプリに 500 のホスト名を追加できます。 詳細については、[サブドメインの追加](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)に関するページを参照してください。
+- さらに多くのサブドメインが必要な場合は、ドメイン ホスティングを Azure ドメイン ネーム サービス (DNS) に変更することをお勧めします。 Azure DNS を使用すると、アプリに 500 のホスト名を追加できます。 詳細については、[サブドメインの追加](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website)に関するページを参照してください。
 
 ### <a name="dns-cant-be-resolved"></a>DNS を解決できない
 
@@ -310,7 +310,7 @@ Azure Portal 経由でドメインを購入した場合は、追加コストな�
 
 **ドメインをあるサブスクリプションから別のサブスクリプションに転送できますか**
 
-[Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell コマンドレットを使用して、ドメインを別のサブスクリプションやリソース グループに移動できます。
+[Move-AzResource](/powershell/module/az.Resources/Move-azResource) PowerShell コマンドレットを使用して、ドメインを別のサブスクリプションやリソース グループに移動できます。
 
 **現在 Azure App Service アプリがない場合、カスタム ドメインを管理するにはどうすればよいですか**
 

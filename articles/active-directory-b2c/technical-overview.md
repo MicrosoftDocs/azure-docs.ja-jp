@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80332547"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921675"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -36,7 +36,7 @@ Azure AD B2C テナントで使用する主なリソースは次のとおりで�
   * アプリケーションでサポートする Facebook、LinkedIn、Twitter などの "*ソーシャル*" ID プロバイダー。
   * OAuth 2.0、OpenID Connect などの標準的な ID プロトコルをサポートする "*外部*" ID プロバイダー。
   * ユーザーがユーザー名 (またはメール アドレスや他の ID) とパスワードを使用してサインアップおよびサインインできるようにする "*ローカル*" アカウント。
-* **キー** - トークンの署名と検証のための暗号化キーを追加および管理します。
+* **キー** - クライアント シークレット、証明書、パスワード、トークンの署名と検証のための暗号化キーを追加および管理します。
 
 Azure AD B2C テナントは、Azure AD B2C の使用を始めるために最初に作成する必要があるリソースです。 「[チュートリアル: Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)」の手順に従って作成できます。
 
@@ -63,19 +63,19 @@ Azure AD B2C では、複数の種類のユーザー アカウントが定義さ
 
 ![コンシューマーアカウントの ID](media/technical-overview/identities.png)<br/>*図:Azure AD B2C に複数の ID を持つ単一のコンシューマー アカウント*
 
-Azure AD B2C を使用すると、表示名、姓、特定の名前、都市など、コンシューマー アカウント プロファイルの一般的な属性を管理できます。 また、ユーザーに関する追加情報を格納するように、Azure AD スキーマを拡張することもできます。 たとえば、国や居住地、優先する言語、およびニュースレターを購読するか、多要素認証を有効にするか、といった設定などです。
+Azure AD B2C を使用すると、表示名、姓、特定の名前、都市など、コンシューマー アカウント プロファイルの一般的な属性を管理できます。 また、ユーザーに関する追加情報を格納するように、Azure AD スキーマを拡張することもできます。 たとえば、国/地域や居住地、優先する言語、ニュースレターを購読するか、多要素認証を有効にするか、といった設定などです。
 
 Azure AD B2C でのユーザー アカウントの種類について詳しくは、「[Azure Active Directory B2C のユーザー アカウントの概要](user-overview.md)」をご覧ください。
 
 ## <a name="external-identity-providers"></a>外部 ID プロバイダー
 
-ユーザーが外部のソーシャル ID プロバイダー (IDP) またはエンタープライズ ID プロバイダーの資格情報を使用してアプリケーションにサインインできるように、Azure AD B2C を構成できます。 Azure AD B2C では、Facebook、Microsoft アカウント、Google、Twitter などの外部 ID プロバイダー、および OAuth 1.0、OAuth 2.0、OpenID Connect、SAML、または WS-FEDERATION の各プロトコルに対応するすべての ID プロバイダーが、サポートされています。
+ユーザーが外部のソーシャル ID プロバイダー (IDP) またはエンタープライズ ID プロバイダーの資格情報を使用してアプリケーションにサインインできるように、Azure AD B2C を構成できます。 Azure AD B2C では、Facebook、Microsoft アカウント、Google、Twitter などの外部 ID プロバイダー、および OAuth 1.0、OAuth 2.0、OpenID Connect、SAML の各プロトコルに対応するすべての ID プロバイダーがサポートされています。
 
 ![外部 ID プロバイダー](media/technical-overview/external-idps.png)
 
 外部 ID プロバイダーのフェデレーションを使用すると、アプリケーション用だけに新しいアカウントを作成する必要なしに、既存のソーシャルまたはエンタープライズ アカウントを使用してサインインする機能を、コンシューマーに提供できます。
 
-サインアップまたはサインイン ページには、Azure AD B2C によって、ユーザーがサインインのために選択できる外部 ID プロバイダーの一覧が表示されます。 外部 ID プロバイダーの 1 つを選択すると、選択したプロバイダーの Web サイトに誘導 (リダイレクト) されるので、そこでサインイン プロセスを完了します。 正常にサインインしたユーザーは、アプリケーションでのアカウントの認証のために Azure AD B2C に戻されます。
+サインアップまたはサインイン ページには、Azure AD B2C によって、ユーザーがサインインのために選択できる外部 ID プロバイダーの一覧が表示されます。 外部 ID プロバイダーの 1 つを選択すると、選択したプロバイダーの Web サイトに誘導 (リダイレクト) されるので、そこでサインイン プロセスを完了します。 正常にサインインしたユーザーは、お使いのアプリケーションでアカウントを認証するために、Azure AD B2C に戻されます。
 
 ![ソーシャル アカウント (Facebook) でのモバイル サインインの例](media/technical-overview/external-idp.png)
 
@@ -100,7 +100,7 @@ Azure AD B2C には、これらの ID エクスペリエンスを提供するた
 アプリケーションでの ID エクスペリエンスの動作を制御するため、次のようなユーザー フロー設定を構成できます。
 
 * サインインに使用するアカウントの種類 (Facebook などのソーシャル アカウント、またはメール アドレスとパスワードをサインインに使用するローカル アカウント)
-* コンシューマーから収集される属性 (名、郵便番号、居住国など)
+* コンシューマーから収集される属性 (名、郵便番号、居住地の国/地域など)
 * Azure Multi-Factor Authentication (MFA)
 * ユーザー インターフェイスのカスタマイズ
 * ユーザーがユーザー フローを完了した後でアプリケーションが受け取るトークン内の要求のセット
@@ -134,15 +134,13 @@ Identity Experience Framework を使用すると、手順を自由に組み合�
 
 ## <a name="protocols-and-tokens"></a>プロトコルとトークン
 
-Azure AD B2C では、ユーザー体験に対して、[OpenID Connect プロトコルと OAuth 2.0 プロトコル](protocols-overview.md)がサポートされています。 Azure AD B2C の OpenID Connect の実装では、アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。
+- アプリケーションのユーザー体験に関して、Azure AD B2C では、[OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md)、[SAML プロトコル](connect-with-saml-service-providers.md)がサポートされています。 アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。 Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](tokens-overview.md)、SAML トークンなどのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、アプリケーションにおけるユーザーの ID が定義されています。
 
-Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](tokens-overview.md)などのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、ユーザーの ID が定義されています。 トークンは、`/token` や `/authorize` などの Azure AD B2C エンドポイントから受信します。 これらのトークンを使用して、ID の検証や、セキュリティ保護されたリソースへのアクセスの許可に使用できる要求にアクセスできます。
+- 外部 ID の場合、Azure AD B2C では、OAuth 1.0、OAuth 2.0、OpenID Connect、SAML ID プロバイダーとのフェデレーションがサポートされています。
 
-外部 ID の場合、Azure AD B2C では、OAuth 1.0、OAuth 2.0、OpenID Connect、SAML、および WS-Fed ID プロバイダーとのフェデレーションがサポートされています。
+次の図では、Azure AD B2C が同じ認証フローでさまざまなプロトコルを使用して通信する方法が示されています。
 
 ![SAML ベースの IDP との OIDC ベースのクライアント アプリのフェデレーションの図](media/technical-overview/protocols.png)
-
-上の図では、Azure AD B2C が同じ認証フローでさまざまなプロトコルを使用して通信する方法が示されています。
 
 1. 証明書利用者アプリケーションでは、OpenID Connect を使用して Azure AD B2C への認可要求が開始されます。
 1. アプリケーションのユーザーが、SAML プロトコルを使用する外部 ID プロバイダーでのサインインを選択すると、Azure AD B2C によって、その ID プロバイダーと通信するために SAML プロトコルが呼び出されます。
@@ -199,7 +197,7 @@ Azure AD B2C で RESTful API 統合に対してカスタム ポリシーを使�
 
 ## <a name="protect-customer-identities"></a>顧客の ID を保護する
 
-Azure AD B2C は、[Microsoft Azure Security Center](https://www.microsoft.com/trustcenter/cloudservices/azure)で説明されているセキュリティ、プライバシー、その他のコミットメントに準拠しています。
+Azure AD B2C は、[Microsoft Azure セキュリティ センター](https://www.microsoft.com/trustcenter/cloudservices/azure)で説明されているセキュリティ、プライバシー、その他のコミットメントに準拠しています。
 
 セッションは暗号化されたデータとしてモデル化され、解読キーは Azure AD B2C のセキュリティ トークン サービスのみが認識しています。 強力な暗号化アルゴリズムである AES-192 が使用されます。 すべての通信パスは、機密性と整合性のために TLS で保護されます。 セキュリティ トークン サービスでは、TLS に拡張検証 (EV) 証明書が使用されます。 一般に、セキュリティ トークン サービスにより、信頼されていない入力を提供しないことでクロスサイト スクリプティング (XSS) 攻撃が軽減されます。
 
@@ -264,7 +262,4 @@ Azure AD B2C では、ユーザーが Web アプリにいつサインアップ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory B2C の機能と技術的な側面について詳しく見てきたので、B2C テナントを作成してサービスを開始してください。
-
-> [!div class="nextstepaction"]
-> [チュートリアル:Azure Active Directory B2C テナントを作成する >](tutorial-create-tenant.md)
+Azure Active Directory B2C の機能と技術的な側面について詳しく見てきたので、[Azure Active Directory B2C テナントの作成に関するチュートリアル](tutorial-create-tenant.md)に取り組んでみましょう。

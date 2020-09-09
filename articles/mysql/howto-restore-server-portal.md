@@ -4,14 +4,14 @@ description: この記事では、Azure Portal を使用して Azure Database fo
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: 619dc05d709f41941d16764bf32b49a0d2a11958
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/30/2020
+ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372988"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119227"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -62,10 +62,10 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
 3. [復元] フォームに必要な情報を入力します。
 
    ![Azure Database for MySQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
-   - **復元ポイント**: 復元先の特定の時点を選択します。
-   - **対象サーバー**: 新しいサーバーの名前を指定します。
-   - **場所**: リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
-   - **価格レベル**: ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
+   - **復元ポイント**:復元先の特定の時点を選択します。
+   - **対象サーバー**:新しいサーバーの名前を指定します。
+   - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 
@@ -80,16 +80,39 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
 
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。 **[データベース]**  >  **[Azure Database for MySQL]** の順に選択します。
 
-   !["Azure Database for MySQL" オプション](./media/howto-restore-server-portal/2_navigate-to-mysql.png)
+   :::image type="content" source="./media/howto-restore-server-portal/1_navigate-to-mysql.png" alt-text="Azure Database for MySQL に移動します。":::
+ 
+2. 新しいサーバーのサブスクリプション、リソース グループ、および名前を指定します。 
 
-2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
-   ![ソースの選択: バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
-
+3. **[データ ソース]** として **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧を示すドロップダウンが表示されます。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="データ ソースを選択する。":::
+    
    > [!NOTE]
    > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
    >
 
-3. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。 場所を選択したら、 **[価格レベル]** を選択できます。 既定では、復元元の既存のサーバーのパラメーターが表示されます。 これらの設定を継承するには、変更を加えずに **[OK]** をクリックします。 または、**コンピューティング世代** (選択したリージョンで使用できる場合)、**仮想コア**の数、**バックアップのリテンション期間**、および**バックアップ冗長性オプション**を変更することもできます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+4. **[バックアップ]** ドロップダウンを選択します。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="[バックアップ] ドロップダウンを選択する。":::
+
+5. 復元元のソース サーバーを選択します。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="バックアップを選択する。":::
+
+6. サーバーでは、**仮想コア**の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および**管理者資格情報**が規定値に設定されます。 **[続行]** をクリックします。 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="バックアップを続行する。":::
+
+7. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。
+
+    場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア**の数、**バックアップ保有期間**、および**バックアップ冗長オプション**を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="フォームに入力する。"::: 
+
+8. **[確認および作成]** を選択して、選択内容を確認します。 
+
+9. **[作成]** を選択して、サーバーをプロビジョニングします。 この操作には数分かかることがあります。
 
 geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 

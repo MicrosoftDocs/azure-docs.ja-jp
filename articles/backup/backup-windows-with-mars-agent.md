@@ -3,18 +3,18 @@ title: MARS エージェントを使用して Windows マシンをバックア�
 description: Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップします。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193294"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182090"
 ---
-# <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントを使用して Windows マシンをバックアップする
+# <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server ファイルおよびフォルダーを Azure にバックアップする
 
 この記事では、[Azure Backup](backup-overview.md) サービスと Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップする方法について説明します。 MARS は Azure Backup エージェントとも呼ばれます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 >
@@ -104,7 +104,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 1. ステージングの場所にバックアップ データを書き込みます。
 1. AzureOfflineBackupDiskPrep ツールを使用して、ステージングの場所から 1 つまたは複数の SATA ディスクにデータをコピーします。
 
-    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)」を参照してください。
+    このツールでは、Azure インポート ジョブが作成されます。 詳細については、「[Azure Import/Export サービスとは](../storage/common/storage-import-export-service.md)」を参照してください。
 1. SATA ディスクを Azure データセンターに送信します。
 
     Azure データセンターでは、ディスク データが Azure ストレージ アカウントにコピーされます。 Azure Backup によってストレージ アカウントからコンテナーにデータがコピーされ、増分バックアップがスケジュールされます。
@@ -115,7 +115,7 @@ Azure Backup では、夏時間 (DST) は自動的には考慮されません。
 
 ネットワーク調整を有効にすることで、MARS エージェントがネットワーク帯域幅を使用する方法を制御できます。 調整は、作業時間中にデータをバックアップする必要がある一方で、バックアップと復元のアクティビティに使用される帯域幅の量を制御したい場合に便利です。
 
-Azure Backup のネットワーク調整では、ローカル オペレーティング システムの[サービス品質 (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) が使用されます。
+Azure Backup のネットワーク調整では、ローカル オペレーティング システムの[サービス品質 (QoS)](/windows-server/networking/technologies/qos/qos-policy-top) が使用されます。
 
 バックアップのネットワーク調整は、Windows Server 2012 以降と、Windows 8 以降で利用できます。 オペレーティング システムでは、最新の Service Pack が実行されている必要があります。
 

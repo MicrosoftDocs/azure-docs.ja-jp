@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882541"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121036"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>モバイル アプリを実稼働用に準備する
 
@@ -36,7 +36,7 @@ Microsoft Authentication Library (MSAL) の種類ごとに、エラー状態の�
 
 ## <a name="mitigate-and-investigate-issues"></a>問題の軽減と調査
 
-アプリの問題をより的確に診断するには、データを収集します。 収集できるデータの種類については、「[MSAL アプリケーションでのログ記録](https://docs.microsoft.com/azure/active-directory/develop/msal-logging)」を参照してください。
+アプリの問題をより的確に診断するには、データを収集します。 収集できるデータの種類については、「[MSAL アプリケーションでのログ記録](./msal-logging.md)」を参照してください。
 
 データ収集に関する推奨事項を次に示します。
 

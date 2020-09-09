@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836792"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540164"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
 ライブ サイトの問題や機能停止が発生した場合は、根本的な原因を迅速に特定することが重要です。 標準的な監視ソリューションでは、問題が警告される場合があります。 障害が発生しているコンポーネントが示される場合もあります。 ただし、この警告が障害の原因を直接的に説明しているとは限りません。 サイトは 5 分前には機能していたことがわかっています。そして今は機能していません。 この 5 分間でどのような変更があったのでしょうか。 これは、Azure Monitor でアプリケーション変更分析から回答が得られるように設計されている問題です。
 
-変更分析は、[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) を基にして構築されており、Azure アプリケーションの変更に関する分析情報を提供し、可観測性を高めて MTTR (平均修理時間) を短縮します。
+変更分析は、[Azure Resource Graph](../../governance/resource-graph/overview.md) を基にして構築されており、Azure アプリケーションの変更に関する分析情報を提供し、可観測性を高めて MTTR (平均修理時間) を短縮します。
 
 > [!IMPORTANT]
 > 変更分析は現在プレビュー段階です。 このプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 このバージョンは運用環境のワークロードにはお勧めできません。 一部の機能はサポート対象ではなく、機能が制限されることがあります。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "82836792"
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure Resource Manager の追跡プロパティの変更
 
-変更分析では、[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) が使用され、アプリケーションをホストしている Azure リソースが時間と共にどのように変更されたかを示す履歴の記録が提供されます。 マネージド ID、プラットフォーム OS のアップグレード、ホスト名などの追跡設定を検出できます。
+変更分析では、[Azure Resource Graph](../../governance/resource-graph/overview.md) が使用され、アプリケーションをホストしている Azure リソースが時間と共にどのように変更されたかを示す履歴の記録が提供されます。 マネージド ID、プラットフォーム OS のアップグレード、ホスト名などの追跡設定を検出できます。
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure Resource Manager のプロキシ設定の変更
 
@@ -59,7 +59,7 @@ IP 構成ルール、TLS 設定、拡張機能のバージョンなどの設定�
 
 アプリケーション変更分析サービスは、前述のデータ ソースから変更データを計算して集計します。 これには、ユーザーがすべてのリソースの変更参照したり、トラブルシューティングや監視のコンテキストに関係する変更を特定したりするための一連の分析機能が用意されています。
 Azure Resource Manager の追跡プロパティとプロキシ設定の変更データが利用できるようになるには、"Microsoft.ChangeAnalysis" リソース プロバイダーがサブスクリプションに登録されている必要があります。 Web アプリの問題の診断と解決ツールに入る、または [変更分析] スタンドアロン タブを起動すると、このリソース プロバイダーが自動的に登録されます。 サブスクリプションに対するパフォーマンスまたはコストの実装はありません。 Web アプリの変更分析を有効にすると (あるいは、問題の診断と解決ツールを有効にすると)、Web アプリのパフォーマンスに影響が出ますが、それは無視しても構わない程度であり、また、課金コストは発生しません。
-Web アプリのゲスト内の変更については、Web アプリ内でコード ファイルをスキャンするには別個の有効化が必要です。 詳細については、この記事の後半の[問題の診断と解決ツールの変更分析](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#application-change-analysis-in-the-diagnose-and-solve-problems-tool)に関するセクションを参照してください。
+Web アプリのゲスト内の変更については、Web アプリ内でコード ファイルをスキャンするには別個の有効化が必要です。 詳細については、この記事の後半の[問題の診断と解決ツールの変更分析](#application-change-analysis-in-the-diagnose-and-solve-problems-tool)に関するセクションを参照してください。
 
 ## <a name="visualizations-for-application-change-analysis"></a>アプリケーション変更分析の視覚化
 
@@ -119,7 +119,7 @@ Azure Monitor では、変更分析はセルフサービスの**問題の診断�
 
 前提条件:
 
-- PowerShell Az モジュール。 「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0)」の手順に従います
+- PowerShell Az モジュール。 「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps?view=azps-2.6.0)」の手順に従います
 
 次のスクリプトを実行します。
 
@@ -159,4 +159,4 @@ foreach ($webapp in $webapp_list)
 
 - [Azure App Service アプリ](azure-web-apps.md)の Application Insights を有効にします。
 - [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](azure-vm-vmss-apps.md)の Application Insights を有効にします。
-- [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) の詳細を参照してください。変更分析の強化に役立ちます。
+- [Azure Resource Graph](../../governance/resource-graph/overview.md) の詳細を参照してください。変更分析の強化に役立ちます。

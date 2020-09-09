@@ -6,14 +6,15 @@ ms.author: banders
 ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 030ae5dcac85a88309b317be1edfab11d0da051a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 28f9369d044cf9b2713cb2f2ad42f744e517918b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878461"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683285"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル:推奨事項に従ってコストを最適化する
 

@@ -1,7 +1,7 @@
 ---
 title: Azure CLI スクリプト サンプル - IPv6 フロントエンドを構成する
 titlesuffix: Azure Virtual Network
-description: Azure Virtual Network で Azure CLI を使用して IPv6 エンドポイントを有効にします。
+description: Azure CLI スクリプト サンプルを使用して、IPv6 エンドポイントを構成し、デュアル スタック (IPv4 と IPv6) アプリケーションを Azure にデプロイします。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4036bc50b08c93de768760aa4c0d3aaba398df92
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235025"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492702"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>仮想ネットワークのサンプル スクリプト (プレビュー) で IPv6 エンドポイントを構成する
 

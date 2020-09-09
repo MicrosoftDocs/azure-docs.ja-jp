@@ -10,24 +10,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800607"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
-Azure Security Center は、コンテナー セキュリティ用の Azure ネイティブ ソリューションです。 また、Security Center は、クラウドのワークロード、VM、サーバー、コンテナーのセキュリティにとって最適な単一ウィンドウ ビューのエクスペリエンスでもあります。
+Azure Security Center は、コンテナーをセキュリティ保護するための Azure ネイティブ ソリューションです。 Security Center では、次のコンテナー リソースの種類を保護できます。
 
-この記事では、コンテナーとそのアプリのセキュリティの改善、監視、保守管理に Security Center がどのように役立つかを説明します。 ここでは、コンテナーのセキュリティのこうした主要な側面について、Security Center がどのように役立つかを説明します。
 
-* 脆弱性の管理
-* コンテナーの環境のセキュリティ強化
-* 実行時の保護
+
+|リソース |名前  |詳細  |
+|:---------:|---------|---------|
+|![コンテナー ホスト](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|コンテナー ホスト (Docker を実行している仮想マシン)|Security Center は、Docker 構成をスキャンし、評価されたすべての失敗したルールの一覧を提供することによって、構成の誤りに対する可視性を提供します。 これらの問題を迅速に解決して時間を節約するのに役立つガイドラインが Security Center から提供されます。 Security Center は、Docker 構成を継続的に評価し、それらの最新の状態をユーザーに提供します。|
+|![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|Azure Kubernetes Service (AKS) クラスター|Standard レベル ユーザー向けの [Security Center のオプションの AKS バンドル](azure-kubernetes-service-integration.md)を使用すると、AKS ノード、クラウド トラフィック、およびセキュリティ制御に対する可視性が高まります。|
+|![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)|Azure Container Registry (ACR) レジストリ|Standard レベル ユーザー向けの [Security Center のオプションの ACR バンドル](azure-kubernetes-service-integration.md)を使用すると、ARM ベースの ACR レジストリ内のイメージの脆弱性に対する可視性が高まります。|
+||||
+
+
+この記事では、これらのバンドルを使用して、コンテナーとそのアプリのセキュリティを向上、監視、および管理する方法について説明します。 ここでは、コンテナーのセキュリティのこうした主要な側面について、Security Center がどのように役立つかを説明します。
+
+- [脆弱性管理 - コンテナー イメージのスキャン](#vulnerability-management---scanning-container-images)
+- [環境の強化 - Docker の構成と Kubernetes クラスターの継続的な監視](#environment-hardening)
+- [実行時保護 - リアルタイムの脅威検出](#run-time-protection---real-time-threat-detection)
 
 [![Azure Security Center のコンテナーのセキュリティ タブ](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
@@ -65,36 +75,13 @@ AKS には、クラスターのセキュリティ体制をセキュリティで�
 
 ## <a name="run-time-protection---real-time-threat-detection"></a>実行時保護 - リアルタイムの脅威検出
 
-Security Center は、コンテナー化された環境に対するリアルタイムの脅威検出機能を備えており、不審なアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
-
-脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナーに対する脅威の検出](threat-protection.md#azure-containers)に関する記事を参照してください。
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
-## <a name="container-security-faq"></a>コンテナー セキュリティに関してよく寄せられる質問
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure Security Center ではどのような種類のイメージをスキャンできますか。
-Security Center では、シェル アクセスを与える Linux OS ベースのイメージがスキャンされます。 
-
-Qualys スキャナーでは、[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、OS は含まれない、"ディストリビューションレス" イメージは、サポートされていません。
-
-### <a name="how-does-azure-security-center-scan-an-image"></a>Azure Security Center ではどのような方法でイメージがスキャンされますか。
-イメージがレジストリから抽出されます。 その後、隔離されたサンドボックスの中で、既知の脆弱性の一覧を抽出する Qualys スキャナーによって実行されます。
-
-Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
-
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure Security Center ではどのくらいの頻度でイメージがスキャンされますか。
-イメージ スキャンはプッシュのたびにトリガーされます。
-
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>REST API 経由でスキャン結果を取得できますか。
-はい。 結果は [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) の下にあります。 また、Azure Resource Graph (ARG) を利用できます。これはすべてのリソースを対象とする Kusto のような API であり、1 つのクエリで特定のスキャンをフェッチできます。
- 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Security Center のコンテナー セキュリティの詳細については、次の関連記事を参照してください。
-
-* コンテナー関連リソースのセキュリティ状態を表示する方法については、「[マシンとアプリケーションを保護する](security-center-virtual-machine-protection.md#containers)」の「コンテナー」セクションを参照してください。
-
-* [Azure Kubernetes Service との統合](azure-kubernetes-service-integration.md)の詳細
-
-* [Azure Container Registry との統合](azure-container-registry-integration.md)の詳細
+この概要では、Azure Security Center でのコンテナー セキュリティの中核となる要素について説明しました。 [コンテナーのセキュリティを監視する方法](monitor-container-security.md)に進んでください。
+> [!div class="nextstepaction"]
+> [コンテナーのセキュリティの監視](monitor-container-security.md)

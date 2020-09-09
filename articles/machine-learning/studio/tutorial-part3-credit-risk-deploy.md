@@ -1,25 +1,25 @@
 ---
-title: チュートリアル 3:信用リスク モデルをデプロイする
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 'Machine Learning Studio (classic) チュートリアル 3: 信用リスク モデルをデプロイする - Azure'
 description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズのパート 3 です。 モデルを Web サービスとしてデプロイする方法を示します。
 keywords: 信用リスク, 予測分析ソリューション, リスク評価, デプロイ, Web サービス
-author: sdgilley
-ms.author: sgilley
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fb0b59374edf322e5e2221b90e912ee2c665bac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/27/2020
+ms.openlocfilehash: 116d939368626cadab7be8b5295b1c74f446ac27
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204155"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431734"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio (クラシック)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 3** です。
 
@@ -227,7 +227,10 @@ Web サービスのパフォーマンスを監視するには:
 Web サービスは、次の 2 つの方法のいずれかで、REST API を使用してデータを受信して返すことができる Azure Web サービスです。  
 
 * **要求/応答** - ユーザーが HTTP プロトコルを使用して 1 行以上のクレジット データをサービスに送信し、サービスが 1 つ以上の結果のセットを返します。
-* **バッチ実行** - ユーザーが Azure BLOB に 1 行以上のクレジット データを格納し、そのBLOB の場所をサービスに送信します。 サービスは、入力 BLOB 内のデータのすべての行にスコアを付け、結果を別の BLOB に格納し、この BLOB のURL を返します。  
+* **バッチ実行** - ユーザーが Azure BLOB に 1 行以上のクレジット データを格納し、そのBLOB の場所をサービスに送信します。 サービスは、入力 BLOB 内のデータのすべての行にスコアを付け、結果を別の BLOB に格納し、この BLOB のURL を返します。 
+
+> [!NOTE]
+> Studio (classic) の特徴の列名では、**大文字と小文字が区別されます**。 Web サービスを呼び出すための入力データの列名が、トレーニング データセットのものと同じであることを確認します。
 
 Web サービスのアクセスと利用について詳しくは、[Web アプリ テンプレートで Azure Machine Learning Web サービスを使用する方法](/azure/machine-learning/studio/consume-web-services)に関するページを参照してください。
 

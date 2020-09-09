@@ -3,14 +3,15 @@ title: Azure Functions における Notification Hubs のバインド
 description: Azure Functions で Azure Notification Hub のバインドを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235103"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212231"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
@@ -255,7 +256,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 |**tagExpression** |**TagExpression** | タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。  詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。 |
 |**hubName** | **HubName** | Azure Portal 内の通知ハブ リソースの名前。 |
 |**connection** | **ConnectionStringSetting** | Notification Hubs 接続文字列を含むアプリ設定の名前。  この接続文字列は、使用している通知ハブの *DefaultFullSharedAccessSignature* 値に設定される必要があります。 この記事で後述する「[接続文字列の設定](#connection-string-setup)」をご覧ください。|
-|**platform** | **プラットフォーム** | platform プロパティは、通知の対象となるクライアント プラットフォームを示します。 既定では、プラットフォームのプロパティが出力バインドから省略されている場合、テンプレート通知は、Azure 通知ハブで構成されている任意のプラットフォームを対象として使用できます。 Azure Notification Hub でテンプレートを使用してクロスプラットフォームの通知を送信する一般的な方法の詳細については、「[Templates (テンプレート)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。 設定されている場合、**platform** には、次のいずれかの値を指定する必要があります。 <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 APNS 向けに Notification Hub を構成する方法と、クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から iOS へのプッシュ通知の送信](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)」を参照してください。</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 ADM 向けに Notification Hub を構成する方法と、Kindle アプリで通知を受信する方法の詳細については、「[Notification Hubs の使用 (Kindle アプリ)](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)」を参照してください。</li><li><code>wns</code>&mdash;Windows プラットフォーム向けの [Windows Push Notification Services](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS では Windows Phone 8.1 以降もサポートされます。 詳細については、「[Notification Hubs の使用 (Windows ユニバーサル プラットフォーム アプリ)](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」を参照してください。</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](/previous-versions/windows/apps/ff402558(v=vs.105))。 このプラットフォームでは、Windows Phone 8 およびそれ以前の Windows Phone プラットフォームがサポートされます。 詳細については、「[Windows Phone での Azure Notification Hubs を使用したプッシュ通知の送信](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)」を参照してください。</li></ul> |
+|**platform** | **プラットフォーム** | platform プロパティは、通知の対象となるクライアント プラットフォームを示します。 既定では、プラットフォームのプロパティが出力バインドから省略されている場合、テンプレート通知は、Azure 通知ハブで構成されている任意のプラットフォームを対象として使用できます。 Azure Notification Hub でテンプレートを使用してクロスプラットフォームの通知を送信する一般的な方法の詳細については、「[Templates (テンプレート)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。 設定されている場合、**platform** には、次のいずれかの値を指定する必要があります。 <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 APNS 向けに Notification Hub を構成する方法と、クライアント アプリで通知を受信する方法の詳細については、「[Azure Notification Hubs から iOS へのプッシュ通知の送信](../notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md)」を参照してください。</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 ADM 向けに Notification Hub を構成する方法と、Kindle アプリで通知を受信する方法の詳細については、「[Notification Hubs の使用 (Kindle アプリ)](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。</li><li><code>wns</code>&mdash;Windows プラットフォーム向けの [Windows Push Notification Services](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS では Windows Phone 8.1 以降もサポートされます。 詳細については、「[Notification Hubs の使用 (Windows ユニバーサル プラットフォーム アプリ)](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」を参照してください。</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](/previous-versions/windows/apps/ff402558(v=vs.105))。 このプラットフォームでは、Windows Phone 8 およびそれ以前の Windows Phone プラットフォームがサポートされます。 詳細については、「[Windows Phone での Azure Notification Hubs を使用したプッシュ通知の送信](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)」を参照してください。</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -298,10 +299,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 | バインド | リファレンス |
 |---|---|
-| Notification Hub | [運用ガイド](https://docs.microsoft.com/rest/api/notificationhubs/) |
+| Notification Hub | [運用ガイド](/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
-

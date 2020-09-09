@@ -5,15 +5,16 @@ author: v-miegge
 ms.reviewerr: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 03/06/2020
+ms.subservice: billing
+ms.topic: troubleshooting
+ms.date: 08/20/2020
 ms.author: jaserano
-ms.openlocfilehash: 59cad232ae4d16b8f74942e1e6026171ae1b8269
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: adc3874ba211de270589d8ea36a04b9431e9e12a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408414"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684917"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure の支払いに関する問題のトラブルシューティング
 

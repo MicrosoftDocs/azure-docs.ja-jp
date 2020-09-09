@@ -1,35 +1,35 @@
 ---
 title: Marketplace の測定サービスの認証方法 |Azure Marketplace
 description: Azure Marketplace でサポートされている測定サービスの認証方法。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/13/2020
-ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319968"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace の測定サービスの認証方法
 
 Marketplace の測定サービスでは、次の 2 つの認証方法をサポートしています。
 
-* [Azure AD セキュリティ トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Azure AD セキュリティ トークン](../../active-directory/develop/access-tokens.md)
+* [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) 
 
 Marketplace の測定サービスで各種認証方法を使用してカスタム メーターを安全に送信するタイミングとその方法について説明します。
 
 ## <a name="using-the-azure-ad-security-token"></a>Azure AD セキュリティ トークンの使用
 
-適用可能なプランの種類は、SaaS と、マネージド アプリケーション プラン タイプ対応の Azure アプリケーションです。  
+適用可能なオファーの種類は、処理可能な SaaS と、マネージド アプリケーション プラン タイプ対応の Azure アプリケーションです。  
 
-カスタム メーターを送信するには、定義済みの固定アプリケーション ID を使用して認証を行います。
+カスタム メーターを送信するには、定義済みの固定 Azure AD アプリケーション ID を使用して認証を行います。
 
-SaaS プランの場合、使用可能なオプションは Azure AD のみです。
+SaaS オファーの場合は、これが唯一使用可能なオプションです。 これは、「[SaaS アプリケーションを登録する](./pc-saas-registration.md)」で説明されているように、SaaS オファーを発行するための必須の手順です。
 
 マネージド アプリケーション プラン対応の Azure アプリケーションの場合、次のケースでこの方法の使用を検討する必要があります。
 
@@ -38,7 +38,7 @@ SaaS プランの場合、使用可能なオプションは Azure AD のみで�
 
 アプリケーションを登録したら、Azure AD セキュリティ トークンをプログラムで要求できます。 発行元は、このトークンを使用し、それを解決するための要求を行うことが期待されます。
 
-これらのトークンの詳細については、「[Azure Active Directory アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)」を参照してください。
+これらのトークンの詳細については、「[Azure Active Directory アクセス トークン](../../active-directory/develop/access-tokens.md)」を参照してください。
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>Azure AD アプリに基づいたトークンの取得
 
@@ -68,10 +68,10 @@ SaaS プランの場合、使用可能なオプションは Azure AD のみで�
 
 |  **プロパティ名**  |  **必須**  |  **説明**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | 付与タイプ。 既定値は `client_credentials` です。 |
+|  `Grant_type`       |   True         | 付与タイプ。 `client_credentials`を使用します。 |
 |  `Client_id`        |   True         | Azure AD アプリに関連付けられているクライアントまたはアプリの識別子。|
-|  `client_secret`    |   True         | Azure AD アプリに関連付けられているパスワード。  |
-|  `Resource`         |   True         | トークンを要求されたターゲット リソース。 既定値は `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` です。  |
+|  `client_secret`    |   True         | Azure AD アプリに関連付けられているシークレット。  |
+|  `Resource`         |   True         | トークンを要求されたターゲット リソース。 `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`を使用します。 |
 | | | |
 
 #### <a name="response"></a>*Response*
@@ -106,17 +106,17 @@ SaaS プランの場合、使用可能なオプションは Azure AD のみで�
 >[!Note]
 >発行元は、使用状況を出力するリソースがロックされていることを確認し、リソースが改ざんされないようにする必要があります。
 
-マネージド アプリケーションには、Virtual Machines から Azure Functions まで、さまざまな種類のリソースを含めることができます。  さまざまなサービスでマネージド ID を使用して認証する方法について詳しくは、「[Azure リソースのマネージド ID を使用する方法](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-can-i-use-managed-identities-for-azure-resources)」をご覧ください。
+マネージド アプリケーションには、Virtual Machines から Azure Functions まで、さまざまな種類のリソースを含めることができます。  さまざまなサービスでマネージド ID を使用して認証する方法の詳細については、[Azure リソース用マネージド ID を使用する方法](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources)に関するセクションを参照してください)。
 
 たとえば、Windows VM を使用して認証を行うには、次の手順に従います。
 
 1. 次のいずれかの方法を使用して、マネージド ID が構成されていることを確認します。
-    * [Azure portal UI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-    * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-    * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
-    * [Azure SDK](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+    * [Azure portal UI](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+    * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+    * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+    * [Azure Resource Manager テンプレート](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
+    * [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. システム ID を使用して Marketplace の測定サービス アプリケーション ID (`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`) 用のアクセス トークンを取得し、RDP で VM に接続し、PowerShell コンソールを開いて、次のコマンドを実行します
 
@@ -145,7 +145,7 @@ SaaS プランの場合、使用可能なオプションは Azure AD のみで�
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,3 +156,4 @@ SaaS プランの場合、使用可能なオプションは Azure AD のみで�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure アプリケーション オファーを作成する](./create-new-azure-apps-offer.md)
+* [処理可能な SaaS オファーを作成する](./offer-creation-checklist.md)

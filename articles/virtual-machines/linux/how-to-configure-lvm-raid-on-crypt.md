@@ -3,16 +3,16 @@ title: 暗号化されたデバイスで LVM と RAID を構成する - Azure Di
 description: この記事では、Linux VM 用の暗号化されたデバイスで LVM と RAID を構成する手順について説明します。
 author: jofrance
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 746243336d74aefc55df48872fe9dd21e9cd99a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657439"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87268222"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>暗号化されたデバイスで LVM と RAID を構成する
 
@@ -45,11 +45,11 @@ ms.locfileid: "80657439"
 
 LVM-on-crypt を使用することをお勧めします。 RAID は、特定のアプリケーションまたは環境の制限のために LVM を使用できない場合のオプションです。
 
-**EncryptFormatAll** オプションを使用します。 このオプションの詳細については、「[Linux VM 上のデータ ディスクに対して EncryptFormatAll 機能を使用する](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms)」を参照してください。
+**EncryptFormatAll** オプションを使用します。 このオプションの詳細については、「[Linux VM 上のデータ ディスクに対して EncryptFormatAll 機能を使用する](./disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)」を参照してください。
 
 OS も暗号化しているときにこの方法を使用できますが、ここではデータ ドライブを暗号化するだけです。
 
-この手順では、「[Linux VM での Azure Disk Encryption シナリオ](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux)」と「[クイックスタート: Azure CLI を使用して Linux VM を作成、暗号化する](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart)」で前提条件を既に確認していることを前提としています。
+この手順では、「[Linux VM での Azure Disk Encryption シナリオ](./disk-encryption-linux.md)」と「[クイックスタート: Azure CLI を使用して Linux VM を作成、暗号化する](./disk-encryption-cli-quickstart.md)」で前提条件を既に確認していることを前提としています。
 
 Azure Disk Encryption のデュアルパス バージョンは非推奨のパスにあり、新しい暗号化では使用できません。
 
@@ -460,4 +460,3 @@ df -h
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Disk Encryption のトラブルシューティング](disk-encryption-troubleshooting.md)
-

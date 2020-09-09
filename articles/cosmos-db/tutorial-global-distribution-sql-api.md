@@ -1,22 +1,23 @@
 ---
 title: チュートリアル:SQL API 用の Azure Cosmos DB グローバル分散チュートリアル
-description: チュートリアル:.Net、Java、Python など各種 SDK から SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
+description: チュートリアル:.NET、Java、Python など各種 SDK で SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: dbfb90abcf301cb22a84ba28359c6cb0bfaacfd6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80295524"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021087"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>チュートリアル:SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 
-この記事では、Azure Portal を使用して Azure Cosmos DB グローバル分散をセットアップし、SQL API を使用して接続する方法を説明します。
+この記事では、Azure portal を使用して Azure Cosmos DB グローバル分散をセットアップし、SQL API を使用して接続する方法を説明します。
 
 この記事に含まれるタスクは次のとおりです。 
 
@@ -27,34 +28,35 @@ ms.locfileid: "80295524"
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> SQL API を使用して優先リージョンに接続する
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>SQL API を使用して優先リージョンに接続する
+[グローバル分散](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SQL SDK によって最適なエンドポイントが選択されます。
 
-[グローバル分散](distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。 これは、接続ポリシーを設定して行います。 Azure Cosmos DB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SQL SDK によって最適なエンドポイントが選択されます。
+この優先リストは、SQL SDK を使用して接続を初期化する際に指定されます。 SDK は、Azure リージョンの順序指定済みリストである省略可能なパラメーター `PreferredLocations` を受け取ります。
 
-この優先リストは、SQL SDK を使用して接続を初期化する際に指定されます。 SDK は、Azure リージョンの順序付きリストである省略可能なパラメーター "PreferredLocations" を受け取ります。
+SDK は、すべての書き込みを現在の書き込みリージョンに自動的に送信します。 すべての読み取りは、優先される場所リストの最初の利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストにある次のリージョンを試します。
 
-SDK は、すべての書き込みを現在の書き込みリージョンに自動的に送信します。
+SDK は、優先される場所で指定されたリージョンからの読み取りのみを試みます。 このため、4 つのリージョンで Azure Cosmos アカウントが利用できるものの、クライアントが `PreferredLocations` 内で読み取り (非書き込み) リージョンを 2 つだけ指定している場合には、`PreferredLocations` で指定されていない読み取りリージョンからは読み取りが行われません。 `PreferredLocations` リストで指定された読み取りリージョンが利用できない場合は、書き込みリージョンから読み取りが行われます。
 
-すべての読み取りは、PreferredLocations リストの最初の利用可能なリージョンに送信されます。 要求が失敗すると、クライアントはリストにある次のリージョンを試します。これが繰り返されます。
+アプリケーションは、`WriteEndpoint` と `ReadEndpoint` の 2 つのプロパティをチェックすることで、SDK によって選択された現在の書き込みエンドポイントと読み取りエンドポイントを確認できます。これらのプロパティは SDK バージョン 1.8 以上で利用可能です。 `PreferredLocations` プロパティが設定されていない場合、すべての要求が現在の書き込みリージョンから処理されます。
 
-SDK は、PreferredLocations で指定されたリージョンからの読み取りのみを試みます。 このため、4 つのリージョンでデータベース アカウントが利用できるものの、クライアントが PreferredLocations の読み取り (非書き込み) リージョンを 2 つだけ指定している場合などには、PreferredLocations で指定されていない読み取りリージョンからは読み取りが処理されません。 PreferredLocations で指定された読み取りリージョンが利用できない場合は、書き込みリージョンから読み取りが処理されます。
-
-アプリケーションは、WriteEndpoint と ReadEndpoint の 2 つのプロパティをチェックすることで、SDK によって選択された現在の書き込みエンドポイントと読み取りエンドポイントを確認できます。これらのプロパティは SDK バージョン 1.8 以上で利用可能です。
-
-PreferredLocations プロパティが設定されていない場合、すべての要求が現在の書き込みリージョンから処理されます。
+優先される場所を指定せずに `setCurrentLocation` メソッドを使用すると、SDK は、クライアントが実行されている現在のリージョンに基づいて、優先される場所を自動的に設定します。 SDK は、各リージョンを、現在のリージョンとの距離に基づいて並べ替えます。
 
 ## <a name="net-sdk"></a>.NET SDK
+
 SDK はコードに変更を加えることなく使用できます。 この場合、SDK は読み取りと書き込みの両方を現在の書き込みリージョンに自動的に転送します。
 
-.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。 このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。 文字列値は、「[Azure のリージョン][regions]」ページのリージョン名の列に従って書式設定されます。先頭と末尾の文字のそれぞれ前後にはスペースはありません。
+.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。 このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。 文字列値は、「[Azure のリージョン][regions]」ページのリージョン名の列に従って書式設定されます。先頭文字の前と末尾の文字の後ろにはスペースはありません。
 
 現在の書き込みエンドポイントと読み取りエンドポイントはそれぞれ、DocumentClient.WriteEndpoint と DocumentClient.ReadEndpoint で確認することができます。
 
 > [!NOTE]
 > エンドポイントの URL は、有効期間が長い定数と見なさないでください。 これらは任意のタイミングでサービスによって更新される可能性があります。 SDK はこの変更を自動的に処理します。
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET V2 SDK を使用している場合は、`PreferredLocations` プロパティを使用して、優先リージョンを設定します。
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -77,6 +79,54 @@ DocumentClient docClient = new DocumentClient(
 // connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
+
+または、`SetCurrentLocation` プロパティを使用して、近接度に基づいて優先される場所が選択されるようにすることもできます。
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET V3 SDK を使用している場合は、`ApplicationPreferredRegions` プロパティを使用して、優先リージョンを設定します。
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+または、`ApplicationRegion` プロパティを使用して、近接度に基づいて優先される場所が選択されるようにすることもできます。
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
 
 ## <a name="nodejsjavascript"></a>Node.js と JavaScript
 
@@ -103,68 +153,69 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 次のコードは、Python SDK を使用して優先される場所を設定する方法を示しています。
 
 ```python
-
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
 client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
 
 ```
 
-## <a name="java-v2-sdk"></a>Java V2 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a> Java V4 SDK
 
 次のコードは、Java SDK を使用して優先される場所を設定する方法を示しています。
 
-```java
-ConnectionPolicy policy = new ConnectionPolicy();
-policy.setUsingMultipleWriteLocations(true);
-policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
-AsyncDocumentClient client =
-        new AsyncDocumentClient.Builder()
-                .withMasterKeyOrResourceToken(this.accountKey)
-                .withServiceEndpoint(this.accountEndpoint)
-                .withConnectionPolicy(policy)
-                .build();
-```
+# <a name="async"></a>[非同期](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 非同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
+
+# <a name="sync"></a>[同期](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同期 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=TutorialGlobalDistributionPreferredLocationSync)]
+
+--- 
 
 ## <a name="rest"></a>REST
-データベース アカウントが複数リージョンで利用できるようになったら、クライアントは次の URI に対して GET 要求を実行してその可用性を照会できます。
 
-    https://{databaseaccount}.documents.azure.com/
+データベース アカウントが複数リージョンで利用できるようになったら、クライアントは URI `https://{databaseaccount}.documents.azure.com/` に対して GET 要求を実行してその可用性を照会できます。
 
 リージョンのほか、そのリージョンに対応するレプリカの Azure Cosmos DB エンドポイント URI がリストとしてサービスによって返されます。 現在の書き込みリージョンが応答に示されます。 クライアントはその後、次のようにそれ以降のすべての REST API 要求に対して適切なエンドポイントを選択できます。
 
 応答の例
 
-    {
-        "_dbs": "//dbs/",
-        "media": "//media/",
-        "writableLocations": [
-            {
-                "Name": "West US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
-            }
-        ],
-        "readableLocations": [
-            {
-                "Name": "East US",
-                "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
-            }
-        ],
-        "MaxMediaStorageUsageInMB": 2048,
-        "MediaStorageUsageInMB": 0,
-        "ConsistencyPolicy": {
-            "defaultConsistencyLevel": "Session",
-            "maxStalenessPrefix": 100,
-            "maxIntervalInSeconds": 5
-        },
-        "addresses": "//addresses/",
-        "id": "globaldbexample",
-        "_rid": "globaldbexample.documents.azure.com",
-        "_self": "",
-        "_ts": 0,
-        "_etag": null
-    }
-
+```json
+{
+    "_dbs": "//dbs/",
+    "media": "//media/",
+    "writableLocations": [
+        {
+            "Name": "West US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
+        }
+    ],
+    "readableLocations": [
+        {
+            "Name": "East US",
+            "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
+        }
+    ],
+    "MaxMediaStorageUsageInMB": 2048,
+    "MediaStorageUsageInMB": 0,
+    "ConsistencyPolicy": {
+        "defaultConsistencyLevel": "Session",
+        "maxStalenessPrefix": 100,
+        "maxIntervalInSeconds": 5
+    },
+    "addresses": "//addresses/",
+    "id": "globaldbexample",
+    "_rid": "globaldbexample.documents.azure.com",
+    "_self": "",
+    "_ts": 0,
+    "_etag": null
+}
+```
 
 * PUT 要求、POST 要求、DELETE 要求はすべて、示された書き込み URI に送信されます。
 * すべての GET 要求とその他の読み取り専用の要求 (クエリなど) は、クライアントによって選択された任意のエンドポイントに送信できます。

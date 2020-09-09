@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77911738"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483831"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -30,11 +30,14 @@ Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 �
 - **デバイスに接続されるクライアント/ホスト** – お客様のインフラストラクチャにおいて保護の対象となるデータを格納しているクライアント。Data Box デバイスに接続されます。
 - **クラウド ストレージ** – Azure クラウド内のデータの保存先となる場所。 通常は、お客様が作成した Azure Data Box リソースにリンクされたストレージ アカウントです。
 
-次の図は、Azure Data Box ソリューションを通じてオンプレミスから Azure に向かうデータのフローを示します。
+次の図は、Azure Data Box ソリューションを通じてオンプレミスから Azure に向かうデータのフローを示します。 このフローは Data Box のインポート注文に関するものです。
 
 ![Data Box のセキュリティ](media/data-box-security/data-box-security-2.png)
 
-データがこのソリューションを通過すると、イベントがログに記録され、ログが生成されます。 詳細については、[Azure Data Box の追跡とイベントのログ記録](data-box-logs.md)に関する記事を参照してください。
+データがこのソリューションを通過すると、イベントがログに記録され、ログが生成されます。 詳細については、次を参照してください。
+
+- [Azure Data Box インポート注文の追跡とイベントのログ記録](data-box-logs.md)に関するページ
+- [Azure Data Box エクスポート注文の追跡とイベントのログ記録](data-box-export-logs.md)に関するページ
 
 ## <a name="security-features"></a>セキュリティ機能
 
@@ -45,7 +48,6 @@ Data Box は、承認済みのエンティティ以外データの閲覧、変�
 Data Box デバイスは、次の機能によって保護されます。
 
 - 衝撃や、劣悪な輸送および環境条件に耐える頑丈なデバイス梱包。 
-- 輸送中のデバイス不正開封を示す不正開封証拠シール。
 - ハードウェアおよびソフトウェアの不正開封を検出し、デバイスに対するそれ以上の操作を防ぎます。
 - Data Box 固有のソフトウェアのみを実行します。
 - ロック状態で起動します。
@@ -57,7 +59,7 @@ Data Box デバイスは、次の機能によって保護されます。
 Data Box に対する入出力データは、次の機能によって保護されます。
 
 - 保存データの AES 256 ビット暗号化。
-- 輸送中データのための暗号化プロトコルを使用できます。
+- 輸送中データのための暗号化プロトコルを使用できます。 データ サーバーからデータをコピーする場合は、そのデータを保護するために暗号化付き SMB 3.0 を使用することをお勧めします。
 - Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データ消去は、[NIST 800-88r1 標準の ATA ハード ディスク ドライブに関する付録 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) のガイドラインに従っています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
 
 ### <a name="data-box-service-protection"></a>Data Box サービスの保護
@@ -65,8 +67,8 @@ Data Box に対する入出力データは、次の機能によって保護さ�
 Data Box サービスは、次の機能によって保護されます。
 
 - Data Box サービスにアクセスするには、Data Box を含む Azure サブスクリプションを会社が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。
-- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure Security Center](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
-- Data Box の注文へのアクセスは、ロールベースのアクセス制御 (RBAC) ロールを使用して制御できます。 詳細については、[Data Box の注文のアクセス制御の設定](data-box-logs.md#set-up-access-control-on-the-order)に関する記事を参照してください
+- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
+- Data Box の注文へのアクセスは、Azure ロールを使用して制御できます。 詳細については、[Data Box の注文のアクセス制御の設定](data-box-logs.md#set-up-access-control-on-the-order)に関する記事を参照してください
 - Data Box サービスでは、サービスでデバイスのロックを解除するために使用されるロック解除パスワードを保存します。
 - Data Box サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。
 
@@ -93,7 +95,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
 - **配送先住所** - Data Box サービスは、注文を受けると、サード パーティの運送業者 (UPS、DHL など) に配送先住所を提供します。 
 
-詳細については、[Security Center](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 
 ## <a name="security-guidelines-reference"></a>セキュリティ ガイドラインのリファレンス

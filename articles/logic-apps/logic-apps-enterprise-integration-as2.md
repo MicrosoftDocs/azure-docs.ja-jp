@@ -7,18 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/27/2020
-ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/24/2020
+ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115501"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078636"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 
 > [!IMPORTANT]
-> 元の AS2 コネクタは非推奨になっているため、代わりに **AS2 (v2)** コネクタを使用するようにしてください。 このバージョンでは、元のバージョンと同じ機能が提供され、Logic Apps ランタイムにとってネイティブであり、スループットとメッセージ サイズに関して大幅なパフォーマンスの向上を実現します。 また、ネイティブ v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリに統合アカウントがリンクされていることを確認してください。
+> 元の AS2 コネクタは非推奨になっているため、追跡機能が必要な場合を除き、代わりに **AS2 (v2)** コネクタを使用するようにしてください。 v2 コネクタでは追跡機能を除き、元のバージョンと同じ機能を提供します。このコネクタは、Logic Apps ランタイムにとってネイティブであり、メッセージ サイズ、スループット、および待ち時間について大幅なパフォーマンスの向上を実現します。 また、v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリに統合アカウントがリンクされていることを確認してください。
 
 Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタを使用できます。これには、AS2 通信を管理するためのトリガーとアクションが用意されています。 たとえば、メッセージの送信時にセキュリティと信頼性を確立するには、以下のアクションを使用できます。
 
@@ -119,7 +119,7 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、アクションや制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/as2/)を参照してください。 
+コネクタの Swagger ファイルに記述される、アクションや制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](/connectors/as2/)を参照してください。 
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE の B2B メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)が使用されます。

@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74895774"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265900"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services テレメトリ  
 
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Media Services (AMS) を使用して、サービスのテレメトリ/メトリック データにアクセスできます。 現在のバージョンの AMS では、ライブ **チャネル** エンティティ、**ストリーミング ポイント** エンティ、およびライブ **アーカイブ** エンティティのテレメトリ データを取得できます。 
 
@@ -51,7 +52,7 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 
 テレメトリ データは、次のいずれかの方法で使用できます。
 
-- Azure Table Storage から直接データを読み取ります (Storage SDK の使用など)。 テレメトリのストレージ テーブルの説明については、 **こちら** のトピックの「 [Consuming telemetry information (テレメトリ情報の使用)](https://msdn.microsoft.com/library/mt742089.aspx) 」を参照してください。
+- Azure Table Storage から直接データを読み取ります (Storage SDK の使用など)。 テレメトリのストレージ テーブルの説明については、 **こちら** のトピックの「 [Consuming telemetry information (テレメトリ情報の使用)](/previous-versions/azure/mt742089(v=azure.100)) 」を参照してください。
 
 または
 

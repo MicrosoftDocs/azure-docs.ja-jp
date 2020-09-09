@@ -5,16 +5,14 @@ author: arduppal
 manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 12/13/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086611"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462022"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>チュートリアル:IoT Edge で Blob Storage イベントに対応する (プレビュー)
 この記事では、Azure BLOB ストレージを IoT モジュールにデプロイする方法について説明します。これは、BLOB の作成および削除時に Event Grid にイベントを送信する Event Grid パブリッシャーとして機能します。  
@@ -343,12 +341,12 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 | -------- | ---- | ----------- |
 | api | string | イベントのトリガーとなった操作。 次のいずれかの値を指定できます。 <ul><li>BlobCreated: 使用できる値は、`PutBlob` と `PutBlockList` です</li><li>BlobDeleted: 使用できる値は、`DeleteBlob`、`DeleteAfterUpload`、および `AutoDelete` です。 <p>DeleteAfterUpload の必要なプロパティが true に設定されているために BLOB が自動的に削除されると、`DeleteAfterUpload` イベントが生成されます。 </p><p>deleteAfterMinutes の必要なプロパティ値の期限が過ぎたために BLOB が自動的に削除されると、`AutoDelete` イベントが生成されます。</p></li></ul>|
 | clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 詳細については、[ログの形式](/rest/api/storageservices/storage-analytics-log-format)に関するページを参照してください。 |
-| requestId | string | ストレージ API 操作に対するサービスで生成された要求 ID です。 ログの "request-id-header" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、開始 API 呼び出しから "x-ms-request-id" ヘッダーで返されます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
+| requestId | string | ストレージ API 操作に対するサービスで生成された要求 ID です。 ログの "request-id-header" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、開始 API 呼び出しから "x-ms-request-id" ヘッダーで返されます。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
 | eTag | string | この値を使用することで、条件に応じて操作を実行することができます。 |
 | contentType | string | BLOB に関して指定されたコンテンツの種類。 |
 | contentLength | 整数 (integer) | BLOB のサイズ (単位: バイト)。 |
 | blobType | string | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
-| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* という構造になります。 <br>クライアントが Data Lake Storage REST API を使用する場合、url は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* という構造になります。 |
+| url | string | BLOB へのパス。 <br>クライアントが BLOB REST API を使用する場合、url の構造は *\<storage-account-name\>.blob.core.windows.net/\<container-name\>/\<file-name\>* です。 <br>クライアントが Data Lake Storage REST API を使用する場合、url の構造は *\<storage-account-name\>.dfs.core.windows.net/\<file-system-name\>/\<file-name\>* です。 |
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 033b4967d3da382057c2651457f7792e760d8bc3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791818"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247617"
 ---
 # <a name="monitoring-the-cluster"></a>クラスターの監視
 
@@ -81,7 +81,7 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 クラスターのパフォーマンス データの収集は、次の 2 とおりの方法で設定できます。
 
 * **エージェントの使用**  
-エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集または変更するメトリックを選択することは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 Azure Monitor ログを提供している Azure Monitor の詳細については、Service Fabric の [Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md)に関する記事と [Log Analytics エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事を参照してください。Log Analytics エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
+エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集または変更するメトリックを選択することは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 Azure Monitor ログを提供している Azure Monitor の詳細については、Service Fabric の [Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md)に関する記事と [Log Analytics エージェントの設定](../azure-monitor/platform/agent-windows.md)に関する記事を参照してください。Log Analytics エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
 
 * **Azure Table Storage に対するパフォーマンス カウンター**  
 パフォーマンス メトリックは、イベントと同じテーブル ストレージに送信することもできます。 この場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure Diagnostics の構成を変更し、コンテナーをデプロイする場合は Azure Diagnostics が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。

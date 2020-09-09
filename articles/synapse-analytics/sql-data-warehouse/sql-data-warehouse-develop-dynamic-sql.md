@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9280bb8153204f86096cf8249ff053bee3f71cc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: bce79b8e18b3ec6f1fd139af280086281bbdda98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633521"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213467"
 ---
 # <a name="dynamic-sql-in-synapse-sql-pool"></a>Synapse SQL プールの動的 SQL
 

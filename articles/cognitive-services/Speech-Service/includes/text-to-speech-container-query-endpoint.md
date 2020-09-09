@@ -27,7 +27,7 @@ ms.locfileid: "81275080"
 </speak>
 ```
 
-ただし、"*カスタムのテキスト読み上げ*" では、**カスタム音声ポータル**から[音声やモデル](https://aka.ms/custom-voice-portal)を取得する必要があります。 カスタム モデル名は、音声名と同義です。 **[トレーニング]** ページに移動し、 **引数として使用する**音声やモデル`{VOICE_NAME}`をコピーします。
+ただし、"*カスタムのテキスト読み上げ*" では、[カスタム音声ポータル](https://aka.ms/custom-voice-portal)から**音声やモデル**を取得する必要があります。 カスタム モデル名は、音声名と同義です。 **[トレーニング]** ページに移動し、`{VOICE_NAME}` 引数として使用する**音声やモデル**をコピーします。
 <br><br>
 :::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="カスタム音声モデル - 音声名":::
 
@@ -54,7 +54,7 @@ curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 
 このコマンドは、次の操作を行います。
 
 * `speech/synthesize/cognitiveservices/v1` エンドポイントの HTTP POST 要求を作成します。
-* `Accept` の `audio/*` ヘッダーを指定します。
-* `Content-Type` の `application/ssml+xml` ヘッダーを指定します。詳細については、[要求本文](../rest-text-to-speech.md#request-body)を参照してください。
-* `X-Microsoft-OutputFormat` の `riff-16khz-16bit-mono-pcm` ヘッダーを指定します。その他のオプションについては、「[オーディオ出力](../rest-text-to-speech.md#audio-outputs)」を参照してください。
-* [ が指定された](../speech-synthesis-markup.md)音声合成マークアップ言語 (SSML)`{VOICE_NAME}` 要求をエンドポイントに送信します。
+* `audio/*` の `Accept` ヘッダーを指定します。
+* `application/ssml+xml` の `Content-Type` ヘッダーを指定します。詳細については、[要求本文](../rest-text-to-speech.md#request-body)を参照してください。
+* `riff-16khz-16bit-mono-pcm` の `X-Microsoft-OutputFormat` ヘッダーを指定します。その他のオプションについては、「[オーディオ出力](../rest-text-to-speech.md#audio-outputs)」を参照してください。
+* `{VOICE_NAME}` が指定された[音声合成マークアップ言語 (SSML)](../speech-synthesis-markup.md) 要求をエンドポイントに送信します。

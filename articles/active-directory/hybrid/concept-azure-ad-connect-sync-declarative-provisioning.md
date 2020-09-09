@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: 宣言型プロビジョニングについて | Microsoft Docs'
+title: Azure AD Connect:宣言型プロビジョニングについて | Microsoft Docs
 description: Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -42,13 +42,13 @@ ms.locfileid: "60246263"
 * [Precedence (優先順位)](#precedence): 属性のコントリビューションの競合を解決
 * Target (ターゲット): ターゲット オブジェクト
 
-## <a name="scope"></a>スコープ
+## <a name="scope"></a>Scope
 スコープ モジュールはオブジェクトを評価し、スコープ内にあり、処理に含める必要のある規則を決定します。 オブジェクトの属性値に応じて、各種同期規則がスコープ内にあるかどうか評価されます。 たとえば、Exchange のメールボックスを持たない無効なユーザーには、メールボックスを持つ有効なユーザーとは異なる規則が適用されます。  
-![スコープ](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 スコープはグループおよび句として定義されます。 句はグループ内にあります。 グループ内のすべての句の間で論理 AND が使用されます。 たとえば、(department = IT AND country = Denmark) などです。 グループ間では 論理 OR が使用されます。
 
-![スコープ](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
 この図のスコープは、(department = IT AND country = Denmark) OR (country=Sweden) となっています。 グループ 1 とグループ 2 のいずれかが true に評価される場合、規則はスコープに含まれています。
 
 スコープ モジュールでは、次の演算がサポートされています。
@@ -66,7 +66,7 @@ ms.locfileid: "60246263"
 | ISBITSET、ISNOTBITSET |特定のビットが設定されているかどうかを評価します。 たとえば、userAccountControl 内のビットを評価して、ユーザーが有効であるか無効であるかを確認するために使用できます。 |
 | ISMEMBEROF、ISNOTMEMBEROF |この値には、コネクタ スペース内のグループに対する DN が含まれている必要があります。 オブジェクトが指定されたグループのメンバーである場合、規則はスコープに含まれます。 |
 
-## <a name="join"></a>結合
+## <a name="join"></a>Join
 同期パイプライン内の結合モジュールは、ソース内のオブジェクトとターゲット内のオブジェクトの関係を特定するためのものです。 受信規則では、この関係は、メタバース内のオブジェクトに対する関係を見つけるためのコネクタ スペース内のオブジェクトです。  
 ![Join between cs and mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
 その目的は、関連付ける必要のある、別のコネクタによって作成されたオブジェクトが既にメタバースに存在するかどうかを確認することです。 たとえば、account-resource フォレストでは、account フォレストのユーザーを resource フォレストのユーザーと結合する必要があります。
@@ -128,7 +128,7 @@ ms.locfileid: "60246263"
 
 ### <a name="importedvalue"></a>ImportedValue
 ImportedValue 関数は、属性名を角かっこではなく引用符で囲む必要がある点で、他のすべての関数とは異なっています。次に例を示します。  
-[https://login.microsoftonline.com/consumers/](`ImportedValue("proxyAddresses")`)
+`ImportedValue("proxyAddresses")`.
 
 通常、同期する際は、まだエクスポートされていない場合であっても、エクスポート中にエラーが発生した場合であっても、属性では予想される値を使用します ("top of the tower")。 受信同期では、接続されたディレクトリにまだ届いていない属性も最終的には届くと見なされます。 また、接続されたディレクトリで確認された値のみを同期することが重要です ("hologram and delta import tower")。
 
@@ -159,9 +159,9 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 
 **参照トピック**
 
-* [Azure AD Connect Sync: 関数リファレンス](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同期:関数参照](reference-connect-sync-functions-reference.md)

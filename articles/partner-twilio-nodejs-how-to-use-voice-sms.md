@@ -1,28 +1,25 @@
 ---
 title: Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
 description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Node.js で記述されています。
-services: ''
 documentationcenter: nodejs
 author: georgewallace
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4b1c506ff0e78e5e304ceb1682c73f9cd784c95
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69637265"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080543"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
 このガイドでは、Azure で Twilio と node.js によって通信するアプリケーションを構築する方法を示します。
 
-<a id="whatis"/>
+<a name="whatis"></a>
 
 ## <a name="what-is-twilio"></a>Twilio とは
 Twilio は、開発者が簡単に音声通話の発着信処理、テキスト メッセージの送受信、およびブラウザー ベースでネイティブのモバイル アプリケーションへの VoIP 通話の埋め込みができるようにする API プラットフォームです。 ここでは、詳細について説明する前に、そのしくみを簡単に解説します。
@@ -36,12 +33,12 @@ Twilio Web サービス API に対する HTTP 要求を作成することで、�
 ### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>UI コード (JavaScript、iOS、または Android) への VoIP 機能の埋め込み
 Twilio にはクライアント側 SDK が用意されており、デスクトップ Web ブラウザー、iOS アプリ、または Android アプリを VoIP 電話にすることができます。 この記事では、主にブラウザーで VoIP 通話を使用する方法について説明します。 ブラウザーで実行される *Twilio JavaScript SDK* のほかに、サーバー側アプリケーション (node.js アプリケーション) を使用して、JavaScript クライアントに "機能トークン" を発行する必要があります。 node.js での VoIP の使用については、[Twilio 開発ブログ][voipnode]で詳細を読むことができます。
 
-<a id="signup"/>
+<a name="signup"></a>
 
 ## <a name="sign-up-for-twilio-microsoft-discount"></a>Twilio へのサインアップ (Microsoft ディスカウント)
 Twilio サービスを使用する前に、まず、[アカウントにサインアップ][signup]する必要があります。 Microsoft Azure のお客様は特別割引をご利用いただけます。[こちらからサインアップ][signup]してください。
 
-<a id="azuresite"/>
+<a name="azuresite"></a>
 
 ## <a name="create-and-deploy-a-nodejs-azure-website"></a>node.js Azure Web サイトの作成およびデプロイ
 次に、Azure 上で実行される node.js Web サイトを作成する必要があります。 [そのための公式なドキュメントは、ここにあります][azure_new_site]。 大まかには、次の作業を行います。
@@ -52,7 +49,7 @@ Twilio サービスを使用する前に、まず、[アカウントにサイン
 * シンプルな node.js Web アプリケーションでファイル `server.js` を作成する
 * このシンプルなアプリケーションを Azure にデプロイする
 
-<a id="twiliomodule"/>
+<a name="twiliomodule"></a>
 
 ## <a name="configure-the-twilio-module"></a>Twilio モジュールの構成
 次に、Twilio API を使用するシンプルな node.js アプリケーションの記述を開始します。 その前に、Twilio アカウント資格情報を構成する必要があります。
@@ -90,7 +87,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 
 このコードは、一般的な [Express Web フレームワーク][express]および EJS テンプレート エンジンと共に、Twilio モジュールを依存関係として宣言します。  これで設定はすべて終わりました。コードの記述を始めましょう。
 
-<a id="makecall"/>
+<a name="makecall"></a>
 
 ## <a name="make-an-outbound-call"></a>発信通話の実行
 選択した番号に電話をかける単純なフォームを作成しましょう。 `server.js` を開き、次のコードを入力します。 "CHANGE_ME" と記述されている個所は、自分の Azure Web サイトの名前に置き換えてください。
@@ -189,7 +186,7 @@ app.listen(app.get('port'), function(){
 
 ここで、Web サイトを Azure に展開し、ホームを開きます 自分の電話番号をテキスト フィールドに入力し、Twilio 番号からの通話を着信できるはずです。
 
-<a id="sendmessage"/>
+<a name="sendmessage"></a>
 
 ## <a name="send-an-sms-message"></a>SMS メッセージの送信
 ここでは、テキスト メッセージの送信ロジックを処理するユーザー インターフェイスとフォームをセットアップします。 `server.js` を開いて、最後の `app.post` の呼び出しの後に次のコードを追加します。
@@ -230,7 +227,7 @@ app.post('/sms', (request, response) => {
 
 アプリケーションを Azure に再デプロイします。今度は、そのフォームを送信し、テキスト メッセージを自分 (または親しい友人) に送ることができるはずです。
 
-<a id="nextsteps"/>
+<a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>次の手順
 これで、通信するアプリケーションを node.js と Twilio を使用して構築する方法の基本を学習できました。 ただし、これらは、Twilio と node.js でできることの初歩的な例にすぎません。 Node.js と Twilio の使用方法の詳細については、次のリソースをご覧ください。
@@ -245,7 +242,7 @@ Azure で node.js と Twilio を活用してください。
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml
 [signup]: https://ahoy.twilio.com/azure
-[azure_new_site]: app-service/app-service-web-get-started-nodejs.md
+[azure_new_site]: app-service/quickstart-nodejs.md
 [twilio_console]: https://www.twilio.com/console
 [npm]: https://npmjs.org
 [express]: https://expressjs.com

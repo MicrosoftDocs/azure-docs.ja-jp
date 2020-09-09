@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982192"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195994"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -47,7 +47,7 @@ ms.locfileid: "75982192"
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
 * **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
-* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースを**ソース** データ ストアとして使用します。
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
 この手順では、Azure Portal を使用して **ADFTutorialOnPremDF**という名前の Azure Data Factory インスタンスを作成します。
@@ -152,9 +152,9 @@ ms.locfileid: "75982192"
 12. 左側のツリービューの **[データ ゲートウェイ]** に **[adftutorialgateway]** と表示されます。  クリックすると、関連する JSON が表示されます。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-この手順では、2 つのリンクされたサービスを作成します (**AzureStorageLinkedService**、**SqlServerLinkedService**)。 **SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**AzureStorageLinkedService** リンク サービスは Azure BLOB ストアを Data Factory にリンクします。 このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+この手順では、2 つのリンクされたサービスを作成します (**AzureStorageLinkedService**、**SqlServerLinkedService**)。 **SqlServerLinkedService** は SQL Server Database をリンクし、**AzureStorageLinkedService** リンク サービスは Azure BLOB ストアを Data Factory にリンクします。 このチュートリアルの後半で、SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server Database にリンクされたサービスを追加する
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>SQL Server Database にリンクされたサービスを追加する
 1. **Data Factory エディター**のツール バーにある **[新しいデータ ストア]** をクリックし、 **[SQL Server]** を選択します。
 
    ![SQL Server のリンクされているサービス](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +189,7 @@ ms.locfileid: "75982192"
 * Data Factory にリンクされたサービスとして追加した Azure BLOB ストレージ アカウントに **adftutorial** という名前の BLOB コンテナーを作成します。
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>チュートリアル用にオンプレミスの SQL Server を用意します。
-1. オンプレミスの SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
+1. SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
 
     ```SQL   
     CREATE TABLE dbo.emp

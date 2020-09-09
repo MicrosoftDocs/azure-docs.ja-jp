@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/05/2020
-ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/05/2020
+ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78395267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488632"
 ---
 # <a name="apply-transformation-module"></a>変換の適用モジュール
 
@@ -32,13 +32,13 @@ ms.locfileid: "78395267"
 
 1. **[出力 + ログ]** タブを選択します。
 
-1. **[保存アイコン]** を選択して、 **[結果変換]** を保存します。
+1. 変換出力を検索し、 **[データセットの登録]** を選択して、モジュール パレットの **[データセット]** カテゴリにモジュールとして保存します。
 
 ## <a name="how-to-use-apply-transformation"></a>変換の適用の使用方法  
   
 1. **Apply Transformation (変換の適用)** モジュールをパイプラインに追加します。 このモジュールは、モジュール パレットの **[モデルのスコアリングと評価]** セクションにあります。 
   
-1. モジュール パレットで **Datasets** > **My Datasets**で使用する保存済みの変換を検出します。
+1. モジュール パレットの **[データセット]** で使用する保存済みの変換を検出します。
 
 1. 保存した変換の出力を **Apply Transformation (変換の適用)** の左側の入力ポートに接続します。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065247"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
 
@@ -47,7 +47,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 1 つの場所にあるハードウェアは、複数の更新ドメインと障害ドメインに分割されます。 **更新ドメイン**は、VM と、同時に再起動できる基になる物理ハードウェアのグループです。 同じ**障害ドメイン**内の VM は、共通の電源とネットワーク スイッチだけでなく、共通のストレージも共有します。  
 
-可用性セットは、[New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) を使用して作成します。 この例では、更新ドメインと障害ドメインの数はどちらも *2* であり、可用性セットの名前は *myAvailabilitySet* です。
+可用性セットは、[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) を使用して作成します。 この例では、更新ドメインと障害ドメインの数はどちらも *2* であり、可用性セットの名前は *myAvailabilitySet* です。
 
 リソース グループを作成します。
 
@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-`-sku aligned` パラメーターを指定した [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) を使用して、マネージド可用性セットを作成します。
+`-sku aligned` パラメーターを指定した [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) を使用して、マネージド可用性セットを作成します。
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -73,15 +73,15 @@ New-AzAvailabilitySet `
 VM がハードウェア全体に適切に分散されるようにするには、VM を可用性セット内に作成する必要があります。 可用性セットを作成した後で、既存の VM を追加することはできません。 
 
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して VM を作成するときに、`-AvailabilitySetName` パラメーターを使用して可用性セットの名前を指定します。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成するときに、`-AvailabilitySetName` パラメーターを使用して可用性セットの名前を指定します。
 
-まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-ここで、[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) を使用して、可用性セットに 2 つの VM を作成します。
+ここで、[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、可用性セットに 2 つの VM を作成します。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -107,7 +107,7 @@ VM 2 台分の作成と構成が終わるまでには、数分かかります。
 
 ## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック 
 
-可用性セット内に VM を作成する場合、ハードウェアで使用可能な VM のサイズを把握しておく必要があります。 可用性セットにデプロイできる仮想マシンの使用可能なすべてのサイズを取得するには、[Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) コマンドを使用します。
+可用性セット内に VM を作成する場合、ハードウェアで使用可能な VM のサイズを把握しておく必要があります。 可用性セットにデプロイできる仮想マシンの使用可能なすべてのサイズを取得するには、[Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) コマンドを使用します。
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -136,5 +136,3 @@ Azure Advisor を使用して、VM の可用性を向上させる方法につい
 
 > [!div class="nextstepaction"]
 > [VM スケール セットの作成](tutorial-create-vmss.md)
-
-

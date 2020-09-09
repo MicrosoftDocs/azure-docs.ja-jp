@@ -1,6 +1,6 @@
 ---
 title: Azure API Management ポリシーでの名前付きの値の使用方法
-description: Azure API Management ポリシーでの名前付きの値の使用方法を説明します。
+description: Azure API Management ポリシーでの名前付きの値の使用方法を説明します。 名前付きの値には、リテラル文字列とポリシー式を含めることができます。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649201"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852193"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 
@@ -25,7 +25,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 それぞれの API Management サービスインスタンスには、サービスインスタンスに対してグローバルなキーと値のペアのコレクションがあり、これは名前付きの値と呼ばれます。 コレクション内の項目の数に制限はありません。 名前付きの値を利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各名前付きの値は、次の属性を持つことができます。
 
-| 属性      | Type            | 説明                                                                                                                            |
+| 属性      | Type            | Description                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | string          | ポリシー内の名前付きの値を参照するために使用されます。 1 から 256 文字の文字列。 文字、数字、ドット、ダッシュのみを使用できます。 |
 | `Value`        | string          | 実際の値。 空にしたり、空白のみで構成したりすることはできません。 最大文字数は 4,096 文字です。                                        |
@@ -34,7 +34,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 ![名前付きの値](./media/api-management-howto-properties/named-values.png)
 
-名前付きの値には、リテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`Expression` の値は、現在の日時を含む文字列を返すポリシー式です。 名前付きの値 `Credential` はシークレットとしてマークされているので、既定では、その値は表示されません。
+名前付きの値には、リテラル文字列と[ポリシー式](./api-management-policy-expressions.md)を含めることができます。 たとえば、`Expression` の値は、現在の日時を含む文字列を返すポリシー式です。 名前付きの値 `Credential` はシークレットとしてマークされているので、既定では、その値は表示されません。
 
 | 名前       | 値                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
@@ -110,8 +110,8 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 -   ポリシーの使用に関する説明
     -   [API Management のポリシー](api-management-howto-policies.md)
-    -   [Policy reference (ポリシー リファレンス)](/azure/api-management/api-management-policies)
-    -   [ポリシー式](/azure/api-management/api-management-policy-expressions)
+    -   [Policy reference (ポリシー リファレンス)](./api-management-policies.md)
+    -   [ポリシー式](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

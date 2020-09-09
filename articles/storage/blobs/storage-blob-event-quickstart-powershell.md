@@ -1,6 +1,6 @@
 ---
 title: Azure Blob Storage のイベントを Web エンドポイントに送信する - PowerShell | Microsoft Docs
-description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
+description: Azure Event Grid を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。 Azure PowerShell を使用して、ストレージ イベントを Web エンドポイントにルーティングします。
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,14 +8,15 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 06be168ff9dfd55a56578b3afcdab8d984416756
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68847162"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078012"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>クイック スタート:PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>クイック スタート: PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。 
 
@@ -31,7 +32,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 この記事では、Azure PowerShell の最新バージョンを実行している必要があります。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="sign-in-to-azure"></a>Azure にサインインする
 
 `Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って認証を行います。
 
@@ -58,7 +59,7 @@ $resourceGroup = "gridResourceGroup"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+## <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
 Blob Storage のイベントは、汎用 v2 ストレージ アカウントおよび BLOB ストレージ アカウントで使用できます。 **汎用 v2** ストレージ アカウントでは、BLOB、ファイル、キュー、テーブルをはじめとするすべてのストレージ サービスに対するすべての機能がサポートされます。 **BLOB ストレージ アカウント**とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
@@ -168,7 +169,7 @@ Set-AzStorageBlobContent -File gridTestFile.txt -Container $containerName -Conte
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Blob Storage のイベントについて、また Event Grid でできることについて、さらに情報を収集しましょう。
 

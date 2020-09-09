@@ -2,23 +2,23 @@
 title: REST API を使用した一時停止、再開、スケーリング
 description: REST API を介して、Azure Synapse Analytics データ ウェアハウスでコンピューティング能力を管理します。
 services: synapse-analytics
-author: kevinvngo
+author: antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/29/2019
-ms.author: kevin
+ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213280"
 ---
-# <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の REST API
+# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>Azure Synapse Analytics データ ウェアハウス用の REST API シリーズ
 
 Azure Synapse Analytics データ ウェアハウスでコンピューティング能力を管理するための REST API について説明します。
 

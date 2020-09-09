@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 09/06/2019
-  ms.openlocfilehash: f4d186169998aad628dc8efa4781dc55f457edd4
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.date: 06/23/2020
+  ms.openlocfilehash: 6b326ef6337d24324d3b21a16a7ae649f5d4c85f
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83202916"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85314809"
 landingContent:
 - title: Azure Relay について
   linkLists:

@@ -4,6 +4,8 @@
       href: networking-overview.md
     - name: Architecture
       items:
+        - name: ネットワーク エンジニア向けの Azure
+          href: azure-for-network-engineers.md
         - name: 仮想データセンター
           href: /azure/architecture/vdc/networking-virtual-datacenter
         - name: 複数のネットワーク パスを使用した非対称ルーティング

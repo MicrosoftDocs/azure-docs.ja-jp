@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e5adf007294ea4be0f5716a4614e0639f840fa75
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199859"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684934"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure 用にクレジット カードを追加、更新、または削除する
 
@@ -29,9 +30,9 @@ Microsoft 顧客契約を結んでいる場合、支払い方法は課金プロ�
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Azure サブスクリプションのクレジット カードを管理する
 
-以降のセクションは、Microsoft Online Services Program 課金アカウントを持つお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 課金アカウントの種類が Microsoft Online Services Program である場合、支払い方法は個別の Azure サブスクリプションに関連付けられています。
+以降のセクションは、Microsoft Online Services Program 課金アカウントを持つお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 課金アカウントの種類が Microsoft Online Services Program である場合、支払い方法は個別の Azure サブスクリプションに関連付けられています。 クレジット カードを追加したあとでエラーが発生する場合は、「[Azure へのサインアップ時にクレジット カード拒否される](../../billing/billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
 
-### <a name="change-credit-card-for-a-subscription"></a>サブスクリプションのクレジット カードを変更する
+### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>新しいクレジット カードを追加してサブスクリプションのクレジット カードを変更する
 
 Azure サブスクリプションの既定のクレジット カードを、新しいクレジット カードまたは Azure portal で以前に保存したクレジット カードに変更できます。 クレジット カードを変更するには、アカウント管理者である必要があります。 複数のサブスクリプションに同じアクティブな支払い方法が指定されている場合は、これらのうちのいずれかのサブスクリプションのアクティブな支払い方法を変更すると、それ以外のサブスクリプションのアクティブな支払い方法も更新されます。
 
@@ -57,7 +58,7 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 
 1. **[次へ]** を選択します。
 
-クレジット カードを追加したあとでエラーが発生する場合は、「[Azure へのサインアップ時にクレジット カード拒否される](../../billing/billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
+### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>サブスクリプションのクレジット カードを以前保存したクレジット カードに変更する
 
 また、次の手順に従って、サブスクリプションの既定のクレジット カードをアカウントに保存済みのものに変更することもできます。
 
@@ -116,13 +117,14 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 以降のセクションは、Microsoft 顧客契約を締結し、クレジット カードを使用して Azure にオンラインでサインアップしたお客様に適用されます。 [Microsoft 顧客契約にアクセスできるかどうかを確認する方法をご覧ください](#check-the-type-of-your-account)。
 
 ### <a name="change-default-credit-card"></a>既定のクレジット カードを変更する
+
 Microsoft 顧客契約を結んでいる場合、クレジット カードは課金プロファイルに関連付けられています。 課金プロファイルの支払い方法を変更するには、Azure にサインアップして課金アカウントを作成したユーザーである必要があります。
 
 課金プロファイルの既定の支払い方法を小切手/電信送金に変更する場合は、[Azure サブスクリプションの請求書による支払い](pay-by-invoice.md)に関する記事を参照してください。
 
 クレジット カードを変更するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
 1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
 1. 課金プロファイルを選択します。
@@ -142,7 +144,7 @@ Azure portal で、クレジット カードの詳細を編集したり (有効�
 
 クレジット カードを編集または削除するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
 1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
 1. 課金プロファイルを選択します。
@@ -159,9 +161,11 @@ Azure portal で、クレジット カードの詳細を編集したり (有効�
 1. クレジット カードを削除するには、コンテキスト メニューから **[削除]** を選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
 バーチャル カードやプリペイド カードはサポートされません。 有効なクレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
 次のセクションでは、クレジット カードの情報の変更についてよく寄せられる質問に回答します。
 
 ### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>使用しているサブスクリプションが無効です。 現在、クレジット カードを削除できないのはなぜですか。
@@ -189,6 +193,7 @@ Azure portal で、クレジット カードの詳細を編集したり (有効�
 税 ID を追加または更新するには、[Azure アカウント センター](https://account.azure.com/Profile)のプロファイルを更新し、 **[納税記録]** を選択します。 この税 ID は、免税の計算に使用され、請求書に表示されます。
 
 ## <a name="check-the-type-of-your-account"></a>アカウントの種類を確認する
+
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
@@ -196,4 +201,5 @@ Azure portal で、クレジット カードの詳細を編集したり (有効�
 ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure の予約](../reservations/save-compute-costs-reservations.md)について学習し、コストを節約できるかどうか確認してください。

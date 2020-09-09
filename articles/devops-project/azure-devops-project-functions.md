@@ -8,12 +8,13 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233172"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163681"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>DevOps Starter を使用して Azure Functions にデプロイする
 

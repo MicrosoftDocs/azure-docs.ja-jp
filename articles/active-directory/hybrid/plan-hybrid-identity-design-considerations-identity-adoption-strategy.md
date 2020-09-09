@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67109331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555386"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -63,7 +63,7 @@ ms.locfileid: "67109331"
 
 **ドメインに参加しているプライベート ネットワーク アプリケーション**:
 
-|  | 同期済み ID | フェデレーション ID |
+| Application | 同期済み ID | フェデレーション ID |
 | --- | --- | --- |
 | Web ブラウザー |フォーム ベース認証 |シングル サインオン。組織 ID の提示が必要な場合があります |
 | Outlook |資格情報の要求 |資格情報の要求 |
@@ -73,7 +73,7 @@ ms.locfileid: "67109331"
 
 **外部ソースまたは信頼されていないソース**:
 
-|  | 同期済み ID | フェデレーション ID |
+| Application | 同期済み ID | フェデレーション ID |
 | --- | --- | --- |
 | Web ブラウザー |フォーム ベース認証 |フォーム ベース認証 |
 | Outlook、Skype for Business (Lync)、OneDrive for Business、Office サブスクリプション |資格情報の要求 |資格情報の要求 |
@@ -185,8 +185,8 @@ ms.locfileid: "67109331"
 | Microsoft アプリ |はい |はい |
 | アプリ ギャラリー内の SaaS アプリ |はい |はい |
 | Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション |はい |はい |
-| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |いいえ |はい |
-| VPN、RDG などのリモート アクセス |いいえ |はい |
+| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |no |はい |
+| VPN、RDG などのリモート アクセス |no |はい |
 
 戦略のソリューションが決定した場合でも、さらに上記の評価を使用して、ユーザーの配置を検討する必要があります。  これにより、ソリューションが変更される可能性があります。  次の表を使用すると、この決定に役立ちます。
 
@@ -213,6 +213,6 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 ## <a name="next-steps"></a>次のステップ
 [データ保護要件の決定](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

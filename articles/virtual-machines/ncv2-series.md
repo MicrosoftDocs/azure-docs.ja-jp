@@ -1,22 +1,22 @@
 ---
 title: NCv2 シリーズ - Azure Virtual Machines
 description: NCv2 シリーズ VM の仕様。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
-ms.topic: article
+ms.subservice: sizes
+ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 3643fbabef08d890ce121d41a9bc1eb40c88459d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: f7d4403fa480aa03868df5a0daa09e54ce8ecda7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273928"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286225"
 ---
 # <a name="ncv2-series"></a>NCv2 シリーズ
 
-NCv2 シリーズ VM は [NVIDIA Tesla P100](https://www.nvidia.com/data-center/tesla-p100/) GPU を備えています。 これらの GPU は、NC シリーズの 2 倍以上の計算性能を有しています。 貯留層モデリング、DNA シーケンシング、タンパク質解析、モンテ カルロ シミュレーションをはじめとする従来の HPC ワークロードに、これらの最新の GPU を活用することができます。 GPU に加えて、NCv2 シリーズ VM は Intel Xeon E5-2690 v4 (Broadwell) CPU も搭載しています。
+NCv2 シリーズ VM は NVIDIA Tesla P100 GPU を備えています。 これらの GPU は、NC シリーズの 2 倍以上の計算性能を有しています。 貯留層モデリング、DNA シーケンシング、タンパク質解析、モンテ カルロ シミュレーションをはじめとする従来の HPC ワークロードに、これらの最新の GPU を活用することができます。 GPU に加えて、NCv2 シリーズ VM は Intel Xeon E5-2690 v4 (Broadwell) CPU も搭載しています。
 
 NC24rs v2 構成には、密結合並列コンピューティングのワークロード向けに最適化された、低待機時間かつ高スループットのネットワーク インターフェイスが搭載されています。
 
@@ -29,7 +29,7 @@ Premium Storage キャッシュ:サポートされています
 メモリ保持更新: サポートされていません
 
 > [!IMPORTANT]
-> この VM シリーズでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このシリーズについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../azure-supportability/resource-manager-core-quotas-request.md)してください。
+> この VM シリーズでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このシリーズについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)してください。
 >
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|

@@ -1,43 +1,36 @@
 ---
-title: Azure Automation の Start/Stop VMs during off hours ソリューションを構成する
-description: この記事では、さまざまなユース ケースまたはシナリオをサポートするように Start/Stop VMs during off-hours ソリューションを構成する方法について説明します。
+title: Azure Automation の Start/Stop VMs during off-hours を構成する
+description: この記事では、さまざまなユース ケースまたはシナリオをサポートするように Start/Stop VMs during off-hours 機能を構成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 241866129aa36d67af18fab86a26d9cbf7ce42d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582457"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266717"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off hours ソリューションの構成方法
+# <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を構成する
 
-**Start/Stop VMs during off hours** ソリューションを使用して、以下のことを行うことができます。
-
-- [VM の起動と停止をスケジュール](#schedule)する。
-- [Azure タグ](#tags)を使用して昇順で VM の起動および停止をスケジュールする (クラシック VM ではサポートされません)。
-- [CPU 使用率の低さ](#cpuutil)に基づいて VM を自動停止する。
-
-この記事では、これらのシナリオをサポートするようにソリューションを適切に構成する方法について説明します。 次のようなソリューションの他の一般的な構成設定を実行する方法も説明します。
+この記事では、記載されているシナリオをサポートするように [Start/Stop VMs during off-hours](automation-solution-vm-management.md) 機能を構成する方法について説明します。 その他の学習内容は次のとおりです。
 
 * [電子メール通知を構成する](#configure-email-notifications)
-
 * [VM を追加する](#add-a-vm)
-
 * [VM を除外する](#exclude-a-vm)
-
 * [起動および停止スケジュールを変更する](#modify-the-startup-and-shutdown-schedules)
 
 ## <a name="scenario-1-startstop-vms-on-a-schedule"></a><a name="schedule"></a>シナリオ 1:スケジュールに従って VM を開始/停止する
 
-このシナリオは、ソリューションを最初にデプロイするときの既定の構成です。 たとえば、夕方退社するときにサブスクリプション全体のすべての VM を停止し、朝の出社時に VM を起動するように構成できます。 デプロイ中にスケジュール **Scheduled-StartVM** と **Scheduled-StopVM** を構成すると、対象の VM が起動および停止します。 VM の停止のみを行うようにこのソリューションを構成できます。カスタム スケジュールを構成する方法については、「[起動および停止スケジュールを変更する](#modify-the-startup-and-shutdown-schedules)」を参照してください。
+このシナリオは、初めて Start/Stop VMs during off-hours をデプロイするときの既定の構成です。 たとえば、夕方退社するときにサブスクリプション全体のすべての VM を停止し、朝の出社時に VM を起動するようにこの機能を構成できます。 デプロイ中にスケジュール **Scheduled-StartVM** と **Scheduled-StopVM** を構成すると、対象の VM が起動および停止します。 
+
+VM の停止のみを行うようにこの機能を構成できます。 カスタム スケジュールを構成する方法については、「[起動および停止スケジュールを変更する](#modify-the-startup-and-shutdown-schedules)」を参照してください。
 
 > [!NOTE]
-> スケジュール タイム パラメーターを構成するとき、タイム ゾーンは現在のタイム ゾーンになります。 ただし、Azure Automation では UTC 形式で格納されます。 これはデプロイ中に処理されるので、タイム ゾーンの変換を行う必要はありません。
+> スケジュール タイム パラメーターを構成するとき、現在ご利用のタイム ゾーンが、この機能で使用されるタイム ゾーンになります。 ただし、Azure Automation では、その格納に UTC 形式が使用されます。 タイム ゾーンの変換はマシンのデプロイ中に処理されるので、自分で行う必要はありません。
 
-次の変数を構成することで、どの VM を対象にするかを制御します: **External_Start_ResourceGroupNames**、**External_Stop_ResourceGroupNames**、および **External_ExcludeVMNames**。
+対象とする VM を制御するには、`External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames`、`External_ExcludeVMNames` の各変数を構成します。
 
 サブスクリプションおよびリソース グループに対するアクション、または特定の VM リストのいずれかを対象にできますが、両方を有効にすることはできません。
 
@@ -51,46 +44,54 @@ ms.locfileid: "82582457"
 
 ### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM リストによる起動および停止アクションを対象にする
 
-1. **ACTION** を **start** に設定して **ScheduledStartStop_Parent** Runbook を実行し、**VMList** パラメーター フィールドに VM のコンマ区切りリストを追加して、**WHATIF** パラメーター フィールドを True に設定します。 変更をプレビューします。
+1. **ACTION** を **start** に設定し、**ScheduledStartStop_Parent** Runbook を実行します。
 
-2. VM のコンマ区切りリスト (VM1, VM2, VM3) を使用して、`External_ExcludeVMNames` 変数を構成します。
+2. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-3. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、「[Azure Automation の Runbook をスケジュール設定する](../automation/automation-schedules.md)」を参照してください。
+3. **WHATIF** パラメーター フィールドを True に設定します。
+
+4. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリスト (VM1,VM2,VM3) で `External_ExcludeVMNames` 変数を構成します。
+
+5. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、[Azure Automation の Runbook をスケジュールする](shared-resources/schedules.md)方法に関するページを参照してください。
 
     > [!NOTE]
     > **[ターゲット ResourceGroup 名]** の値は、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupNames` の両方の値として格納されます。 粒度を高めるためには、これらの変数をそれぞれ変更して、異なるリソース グループを対象にします。 開始アクションでは `External_Start_ResourceGroupNames` を使用し、停止アクションでは `External_Stop_ResourceGroupNames` を使用します。 VM が起動スケジュールと停止スケジュールに自動的に追加されます。
 
 ## <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a><a name="tags"></a>シナリオ 2:タグを使用して VM を順番に起動/停止する
 
-分散ワークロードをサポートする複数の VM のコンポーネントを 2 つ以上含む環境では、コンポーネントの起動および停止順序を指定できることが重要です。 このシナリオを実現するには、次の手順を実行します。
+分散ワークロードをサポートする複数の VM のコンポーネントを 2 つ以上含む環境では、コンポーネントの起動および停止順序を指定できることが重要です。 
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>サブスクリプションとリソース グループに対する起動および停止アクションを対象にする
 
-1. `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` 変数で対象となる VM に、正の整数値を持つ `sequencestart` と `sequencestop` タグを追加します。 起動アクションと停止アクションは昇順で実行されます。 VM にタグを付ける方法については、[Azure で Windows 仮想マシンにタグを付ける方法](../virtual-machines/windows/tag.md)と [Azure で Linux 仮想マシンにタグを付ける方法](../virtual-machines/linux/tag.md)に関するページをご覧ください。
+1. `External_Start_ResourceGroupNames` および `External_Stop_ResourceGroupNames` 変数で対象となる VM に、正の整数値を持つ `sequencestart` と `sequencestop` タグを追加します。 起動アクションと停止アクションは昇順で実行されます。 VM にタグを付ける方法については、[Azure で Windows 仮想マシンにタグを付ける方法](../virtual-machines/windows/tag.md)と [Azure で Linux 仮想マシンにタグを付ける方法](../virtual-machines/linux/tag.md)に関するページを参照してください。
 
 2. スケジュール **Sequenced-StartVM** と **Sequenced-StopVM** を、要件を満たす日付と時刻に変更し、スケジュールを有効にします。
 
 3. **ACTION** を **start** に設定し、**WHATIF** を True に設定して、**SequencedStartStop_Parent** Runbook を実行し、ご自身の変更をプレビューします。
 
-4. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** に設定して手動で Runbook を実行するか、Automation のスケジュール `Sequenced-StartVM` と `Sequenced-StopVM` が、指定されたスケジュールに従って自動的に実行されるようにします。
+4. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** にセットして手動で Runbook を実行するか、Automation のスケジュール **Sequenced-StartVM** と **Sequenced-StopVM** が、指定されたスケジュールに従って自動的に実行されるようにします。
 
-### <a name="target-the-start-and-stop-action-by-vm-list"></a>VM リストによる起動および停止アクションを対象にする
+### <a name="target-the-start-and-stop-actions-by-vm-list"></a>起動および停止アクションの対象を VM リストで指定する
 
 1. `VMList` パラメーターに追加する予定の VM に、正の整数値を持つ `sequencestart` および `sequencestop` タグを追加します。
 
-2. **ACTION** を **start** に設定して **SequencedStartStop_Parent** Runbook を実行し、**VMList** パラメーター フィールドに VM のコンマ区切りリストを追加して、**WHATIF** を True に設定します。 変更をプレビューします。
+2. **ACTION** を **start** に設定し、**SequencedStartStop_Parent** Runbook を実行します。
 
-3. VM のコンマ区切りリスト (VM1, VM2, VM3) を使用して、`External_ExcludeVMNames` 変数を構成します。
+3. VM のコンマ区切りリスト(スペースなし) を **VMList** パラメーター フィールドに追加します。 リストの例は `vm1,vm2,vm3`です。
 
-4. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、「[Azure Automation の Runbook をスケジュール設定する](../automation/automation-schedules.md)」を参照してください。
+4. **WHATIF** を True に設定します。 
 
-5. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** に設定して、**monitoring-and-diagnostics/monitoring-action-groupsrunbook** を手動で実行します。 または、指定したスケジュールに従って、Automation のスケジュール `Sequenced-StartVM` と `Sequenced-StopVM` が自動的に実行されるようにします。
+5. コンマ区切り値の間にスペースを入れずに、VM のコンマ区切りリストで `External_ExcludeVMNames` 変数を構成します。
 
-## <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>シナリオ 3:CPU 使用率に基づいて自動的に開始/停止する
+6. このシナリオでは、`External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupnames` の変数は考慮されません。 このシナリオでは、独自の Automation のスケジュールを作成する必要があります。 詳細については、[Azure Automation の Runbook をスケジュールする](shared-resources/schedules.md)方法に関するページを参照してください。
 
-このソリューションは、営業時間外などの非ピーク期間中に使用されていない VM を評価し、プロセッサ使用率が指定されたパーセンテージ未満の場合は自動的にシャットダウンすることで、サブスクリプションで実行中の Azure Resource Manager および Classic 仮想マシンのコストを管理する上で役立ちます。
+7. アクションをプレビューし、運用 VM に対して実装する前に、必要な変更を行います。 準備ができたら、パラメーターを **False** に設定して、**monitoring-and-diagnostics/monitoring-action-groupsrunbook** を手動で実行します。 または、指定したスケジュールに従って、Automation のスケジュール **Sequenced-StartVM** と **Sequenced-StopVM** が自動的に実行されるようにします。
 
-既定では、ソリューションは、CPU 割合メトリックを評価して、平均使用率が 5% 以下であるかどうかを確認するように事前構成されています。 このシナリオは次の変数によって制御され、既定値が要件を満たしていない場合は変更できます。
+## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>シナリオ 3:CPU 使用率に基づいて自動的に開始または停止する
+
+Start/Stop VMs during off-hours は、営業時間外などの非ピーク期間中に使用されていないマシンを評価し、プロセッサ使用率が指定されたパーセンテージ未満の場合は自動的にシャットダウンすることで、サブスクリプションで実行中の Azure Resource Manager およびクラシック VM のコストを管理する上で役立ちます。
+
+既定では、CPU 割合メトリックを評価して、平均使用率が 5% 以下であるかどうかを確認するように機能が事前構成されています。 このシナリオは次の変数によって制御され、既定値が要件を満たしていない場合は変更できます。
 
 * `External_AutoStop_MetricName`
 * `External_AutoStop_Threshold`
@@ -101,80 +102,80 @@ ms.locfileid: "82582457"
 
 サブスクリプションおよびリソース グループに対するアクションを有効にして対象にするか、特定の VM リストを対象にすることができます。
 
-**AutoStop_CreateAlert_Parent** runbook を実行すると、対象となるサブスクリプション、リソース グループ、および VM が存在することが確認されます。 VM が存在する場合、Runbook では、親 Runbook によって確認された VM ごとに **AutoStop_CreateAlert_Child** Runbook を呼び出します。 この子 runbook は以下を実行します。
+**AutoStop_CreateAlert_Parent** Runbook を実行すると、対象となるサブスクリプション、リソース グループ、および VM が存在することが確認されます。 VM が存在する場合、Runbook では、親 Runbook によって確認された VM ごとに **AutoStop_CreateAlert_Child** Runbook を呼び出します。 この子 Runbook は次のことを実行します。
 
 * 確認された VM ごとにメトリック アラート ルールを作成します。
+* 指定された時間間隔で CPU が構成済みのしきい値を下回った場合は、特定の VM で **AutoStop_VM_Child** Runbook をトリガーします。 
+* VM の停止を試みます。
 
-* 指定された時間間隔で CPU が構成済みのしきい値を下回った場合は、特定の VM で **AutoStop_VM_Child** Runbook をトリガーします。 その後、この runbook は VM を停止しようとします。
-
-### <a name="to-target-the-auto-stop-action-against-all-vms-in-a-subscription"></a>サブスクリプション内のすべての VM で自動停止アクションを対象にするには以下を行ってください。
+### <a name="target-the-autostop-action-against-all-vms-in-a-subscription"></a>サブスクリプション内のすべての VM を自動停止アクションの対象にする
 
 1. 確実に、`External_Stop_ResourceGroupNames` 変数が空であるか、* (ワイルドカード) に設定されるようにします。
 
-2. (省略可能な手順) 一部の VM を自動シャットダウンから除外する場合は、VM 名のコンマ区切りリストを `External_ExcludeVMNames` 変数に追加できます。
+2. (省略可) VM の一部を自動停止アクションから除外する場合は、VM 名のコンマ区切りリストを `External_ExcludeVMNames` 変数に追加できます。
 
-3. `Schedule_AutoStop_CreateAlert_Parent` スケジュールを有効にして、サブスクリプション内のすべての VM で必要な VM の停止メトリック アラート ルールを作成します。 この種類のスケジュールを実行すると、新しい VM がサブスクリプションに追加されたときに新しいメトリック アラート ルールを作成できます。
+3. **Schedule_AutoStop_CreateAlert_Parent** スケジュールを有効にして、サブスクリプション内のすべての VM で必要な VM の停止メトリック アラート ルールを作成します。 この種類のスケジュールを実行すると、新しい VM がサブスクリプションに追加されたときに新しいメトリック アラート ルールを作成できます。
 
-### <a name="to-target-the-auto-stop-action-against-all-vms-in-a-resource-group-or-multiple-resource-groups"></a>リソース グループまたは複数のリソース グループ内のすべての VM に対して、自動停止アクションを対象にするには
+### <a name="target-the-autostop-action-against-all-vms-in-a-resource-group-or-multiple-resource-groups"></a>リソース グループまたは複数のリソース グループ内のすべての VM を自動停止アクションの対象にする
 
 1. リソース グループ名のコンマ区切りリストを、`External_Stop_ResourceGroupNames` 変数に追加します。
 
-2. 一部の VM を自動シャットダウンから除外する場合は、VM 名のコンマ区切りリストを `External_ExcludeVMNames` 変数に追加することができます。
+2. 一部の VM を自動停止から除外する場合は、VM 名のコンマ区切りリストを `External_ExcludeVMNames` 変数に追加することができます。
 
 3. **Schedule_AutoStop_CreateAlert_Parent** スケジュールを有効にして実行し、リソース グループのすべての VM で必要な VM 停止メトリック アラート ルールを作成します。 この操作をスケジュールに従って実行すると、新しい VM がリソース グループに追加されたときに新しいメトリック アラート ルールを作成できます。
 
-### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>VM の一覧に対して自動停止アクションを対象にするには
+### <a name="target-the-autostop-action-to-a-list-of-vms"></a>VM のリストを自動停止アクションの対象にする
 
 1. 新しい[スケジュール](shared-resources/schedules.md#create-a-schedule)を作成し、**AutoStop_CreateAlert_Parent** Runbook にリンクして、VM 名のコンマ区切りリストを `VMList` パラメーターに追加します。
 
-2. 必要に応じて、VM の一部を自動シャットダウンから除外する場合は、VM 名のコンマ区切りリストを `External_ExcludeVMNames` 変数に追加できます。
+2. (省略可) VM の一部を自動停止アクションから除外する場合、VM 名のコンマ区切りリスト (スペースなし) を `External_ExcludeVMNames` 変数に追加できます。
 
 ## <a name="configure-email-notifications"></a>電子メール通知の構成
 
-ソリューションのデプロイ後に電子メール通知を変更するには、デプロイ時に作成されたアクション グループを変更します。  
+Start/Stop VMs during off-hours のデプロイ後に電子メール通知を変更するには、デプロイ時に作成されたアクション グループを変更します。  
 
 > [!NOTE]
-> Azure Government Cloud のサブスクリプションでは、このソリューションの電子メール機能はサポートされません。
+> Azure Government Cloud のサブスクリプションでは、この機能の電子メール機能はサポートされません。
 
 1. Azure portal で、 **[監視]** 、 **[アクション グループ]** の順に移動します。 **StartStop_VM_Notication** というアクション グループを選択します。
 
-    ![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/azure-monitor.png)
+    ![Automation Update Management ページ](media/automation-solution-vm-management/azure-monitor.png)
 
-2. **[StartStop_VM_Notification]** ページで、 **[詳細]** の **[詳細の編集]** をクリックします。 これで、 **[電子メール/SMS/プッシュ/音声]** ページが開きます。 メール アドレスを更新し、 **[OK]** をクリックして変更を保存します。
+2. [StartStop_VM_Notification] ページで、 **[詳細]** の **[詳細の編集]** をクリックします。 これで、[電子メール/SMS/プッシュ/音声] ページが開きます。 メール アドレスを更新し、 **[OK]** をクリックして変更を保存します。
 
-    ![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/change-email.png)
+    ![Automation Update Management ページ](media/automation-solution-vm-management/change-email.png)
 
     アクション グループにさらにアクションを追加することもできます。アクション グループの詳細については、「[アクション グループ](../azure-monitor/platform/action-groups.md)」を参照してください。
 
-ソリューションで仮想マシンがシャットダウンされたときに送信されるメールの例を以下に示します。
+この機能によって仮想マシンがシャットダウンされたときに送信されるメールの例を以下に示します。
 
-![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/email.png)
+![Automation Update Management ページ](media/automation-solution-vm-management/email.png)
 
-## <a name="addexclude-vms"></a><a name="add-exclude-vms"></a>VM を追加/除外する
+## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>VM を追加または除外する
 
-ソリューションには、ソリューションの対象となる VM を追加する機能、ソリューションからマシンを除外する機能があります。
+この機能を使用すると、VM を対象に追加したり、対象から除外したりすることができます。 
 
 ### <a name="add-a-vm"></a>VM を追加する
 
-実行時に VM が開始/停止ソリューションに含まれるようにするためのオプションは 2 つあります。
+この機能の実行対象に VM を含めるには、次の 2 とおりの方法があります。
 
-* ソリューションの親 [Runbook](automation-solution-vm-management.md#runbooks) のそれぞれに `VMList` パラメーターがあります。 状況に合わせて適切な親 Runbook をスケジュールするときに、このパラメーターに VM 名のコンマ区切りリストを渡すことができ、これらの VM はソリューションが実行されるときに含まれます。
+* この機能の親 [Runbook](automation-solution-vm-management.md#runbooks) のそれぞれに `VMList` パラメーターがあります。 状況に合わせて適切な親 Runbook をスケジュールするときに、このパラメーターに VM 名のコンマ区切りリスト (スペースなし) を渡すことができ、これらの VM は機能が実行されるときに含まれます。
 
-* 複数の VM を選択するには、開始または停止する VM が含まれているリソース グループ名で `External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupNames` を設定します。 サブスクリプションのすべてのリソース グループに対してソリューションを実行するように、変数を `*` の値に設定することもできます。
+* 複数の VM を選択するには、開始または停止する VM が含まれているリソース グループ名で `External_Start_ResourceGroupNames` と `External_Stop_ResourceGroupNames` を設定します。 サブスクリプションのすべてのリソース グループに対して機能を実行するように、変数を `*` の値に設定することもできます。
 
 ### <a name="exclude-a-vm"></a>VM を除外する
 
-VM をソリューションから除外するには、それを `External_ExcludeVMNames` 変数に追加します。 この変数は、開始/停止ソリューションから除外する特定の VM のコンマ区切りリストです。 このリストは 140 個の VM までに制限されています。 このコンマ区切りリストに 140 を超える VM を追加した場合は、除外されるように設定された VM が誤って起動または停止される可能性があります。
+Stop/start VMs during off-hours から VM を除外するには、その名前を `External_ExcludeVMNames` 変数に追加します。 この変数は、機能から除外する特定の VM のコンマ区切りリスト (スペースなし) です。 このリストは 140 個の VM までに制限されています。 このリストに 140 個を超える VM を追加すると、除外するように設定した VM が誤って開始または停止される可能性があります。
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>起動および停止スケジュールを変更する
 
-このソリューションの起動および停止スケジュールを管理するには、「[Azure Automation の Runbook をスケジュール設定する](automation-schedules.md)」で説明されている手順に従います。 VM の開始と停止それぞれについて、個別のスケジュールが存在する必要があります。
+この機能の起動および停止スケジュールを管理するには、[Azure Automation の Runbook をスケジュールする](shared-resources/schedules.md)方法に関するページで説明されている手順に従います。 VM の開始と停止それぞれについて、個別のスケジュールが必要となります。
 
-特定の時刻に VM の停止のみを行うようにソリューションを構成できます。 このシナリオでは、**停止**スケジュールを作成するだけで、対応する**開始**スケジュールは作成しません。 そのためには、次の手順を実行する必要があります。
+特定の時刻に VM の停止のみを行うように機能を構成できます。 このシナリオでは、停止スケジュールを作成するだけで、対応する開始スケジュールは作成しません。 
 
-1. 確実に、シャットダウンする VM のリソース グループが `External_Stop_ResourceGroupNames` 変数に追加されるようにします。
+1. シャットダウンする VM のリソース グループが `External_Stop_ResourceGroupNames` 変数に追加されていることを確認します。
 
-2. VM をシャットダウンする時刻の独自のスケジュールを作成します。
+2. VM をシャットダウンする時刻のスケジュールを独自に作成します。
 
 3. **ScheduledStartStop_Parent** Runbook に移動し、 **[スケジュール]** をクリックします。 これにより、前の手順で作成したスケジュールを選択できます。
 
@@ -184,6 +185,5 @@ VM をソリューションから除外するには、それを `External_Exclud
 
 ## <a name="next-steps"></a>次のステップ
 
-* Start/Stop VMs during off-hours のトラブルシューティング方法については、「 [Start/Stop VMs のトラブルシューティング](troubleshoot/start-stop-vm.md)」を参照してください。
-
-* Azure Monitor ログに書き込まれた Automation レコードとサンプル ログ検索クエリを[確認](automation-solution-vm-management-logs.md)して、Start/Stop VM から Automation runbook ジョブの状態を分析します。
+* 動作中に機能を監視する方法については、「[Start/Stop VMs during off-hours からログを照会する](automation-solution-vm-management-logs.md)」を参照してください。
+* VM の管理中に発生した問題への対応については、「[Start/Stop VMs during off-hours の問題のトラブルシューティング](troubleshoot/start-stop-vm.md)」を参照してください。

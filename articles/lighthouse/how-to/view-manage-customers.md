@@ -1,24 +1,27 @@
 ---
 title: 顧客と委任されたリソースを表示し、管理する
-description: Azure の委任されたリソース管理を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] を使用して、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
-ms.date: 01/22/2020
-ms.topic: conceptual
-ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+description: Azure Lighthouse を使用するサービス プロバイダーまたはエンタープライズとして、Azure portal の [マイ カスタマー] にアクセスすることで、自社に委任されたリソースとサブスクリプションをすべて表示できます。
+ms.date: 08/12/2020
+ms.topic: how-to
+ms.openlocfilehash: 165110556282e90bbacf4ce3b3c59e34b203a528
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76543428"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167200"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>顧客と委任されたリソースを表示し、管理する
 
-[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーは、[Azure portal](https://portal.azure.com) の **[マイ カスタマー]** ページを使用して、委任された顧客のリソースとサブスクリプションを表示できます。 ここではサービス プロバイダーと顧客に言及しますが、複数のテナントを管理している企業では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
+[Azure Lighthouse](../overview.md) を使用するサービス プロバイダーは、[Azure portal](https://portal.azure.com) の **[マイ カスタマー]** ページを使用して、委任された顧客のリソースとサブスクリプションを表示できます。 
+
+> [!TIP]
+> ここではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
 
 Azure portal の **[マイ カスタマー]** ページにアクセスするには、 **[すべてのサービス]** を選択し、 **[マイ カスタマー]** を探して選択します。 Azure portal の上部付近にある検索ボックスに「マイ カスタマー」と入力して見つけることもできます。
 
-**[マイ カスタマー]** ページの先頭の **[顧客]** セクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 連携しているのが他の顧客 ([クラウド ソリューション プロバイダー プログラム](https://docs.microsoft.com/partner-center/csp-overview)などを通じた販売先など) である場合、それらの顧客に関する情報は、そのリソースを Azure の委任されたリソース管理用にオンボードしていない限り、 **[顧客]** セクションに表示されません。
+**[マイ カスタマー]** ページの先頭の **[顧客]** セクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 他の顧客と連携する場合 ([クラウド ソリューション プロバイダー プログラム](/partner-center/csp-overview)を使用する場合など)、それらの顧客に関する情報は、[そのリソースを Azure Lighthouse にオンボード](onboard-customer.md)していない限り、 **[顧客]** セクションに表示されません。
 
-ページの下の方に、 **[クラウド ソリューション プロバイダー (プレビュー)]** と呼ばれる別のセクションがあり、[Microsoft 顧客契約 (MCA) に署名](https://docs.microsoft.com/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](https://docs.microsoft.com/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../billing/mpa-overview.md)」をご覧ください。 そのような CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることに注意してください。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
+ページの下の方に、 **[クラウド ソリューション プロバイダー (プレビュー)]** と呼ばれる別のセクションがあり、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../cost-management-billing/understand/mpa-overview.md)」をご覧ください。 そのような CSP 顧客は、Azure Lighthouse にもオンボードしているかどうかにかかわらず、このセクションに表示されることに注意してください。 同様に、CSP 顧客は、Azure Lighthouse にオンボードするために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
 
 > [!NOTE]
 > 顧客は、Azure portal の **[サービス プロバイダー]** に移動して、サービス プロバイダーの情報を表示できます。 詳細については、「[サービス プロバイダーを表示し、管理する](view-manage-service-providers.md)」を参照してください。
@@ -52,8 +55,7 @@ Azure portal の **[マイ カスタマー]** ページにアクセスするに�
 
 ### <a name="remove-delegations"></a>委任を削除する
 
-Azure の委任されたリソース管理に顧客をオンボードするときに、[マネージド サービスの登録割り当ての削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)をユーザーに付与すると、そのユーザーは、委任の行に表示されたごみ箱アイコンを選択することで委任を削除できます。 これが行われると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
-
+Azure Lighthouse に顧客をオンボードするときに、[マネージド サービスの登録割り当ての削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)をユーザーに付与した場合、そのユーザーは、委任の行に表示されるごみ箱アイコンを選択することで委任を削除できます。 これが行われると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>委任されたサブスクリプションのコンテキストで作業する
 

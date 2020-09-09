@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010921"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004765"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Cache for Redis インスタンスでクラスタリングを構成する方法について説明します。
-
-Premium キャッシュのその他の機能については、「[Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## <a name="what-is-redis-cluster"></a>Redis クラスターとは
 Azure Cache for Redis では、 [Redis での実装](https://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。 Redis クラスターには、次の利点があります。 
@@ -26,7 +24,7 @@ Azure Cache for Redis では、 [Redis での実装](https://redis.io/topics/clu
 * より多くのスループット: シャードの数を増やすと、スループットは比例して増加します。 
 * より多くのメモリ サイズ: シャードの数を増やすと比例的に増加します。  
 
-クラスタリングでは、クラスター化されたキャッシュで使用できる接続の数は増加しません。 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」を参照してください。
+クラスタリングでは、クラスター化されたキャッシュで使用できる接続の数は増加しません。 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[適切なレベルの選択](cache-overview.md#choosing-the-right-tier)」を参照してください。
 
 Azure では、Redis クラスターは、各シャードがプライマリ/レプリカ ペアを持つプライマリ/レプリカ モデルとして提供され、レプリケーションは Azure Cache for Redis によって管理されます。 
 
@@ -91,7 +89,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
   詳細については、「 [Redis Cluster Specification - Implemented subset (Redis クラスターの仕様 - 実装済みのサブセット)](https://redis.io/topics/cluster-spec#implemented-subset)」を参照してください。
 * [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)を使用する場合は、1.0.481 以降を使用する必要があります。 クラスタリングが有効になっていないキャッシュに接続するときに使用するものと同じ [エンドポイント、ポート、キー](cache-configure.md#properties) を使用して、キャッシュに接続します。 唯一の違いは、すべての読み取りと書き込みをデータベース 0 に対して実行する必要があることです。
   
-  * 他のクライアントの要件は異なる場合があります。 「 [すべての Redis クライアントがクラスタリングをサポートしますか](#do-all-redis-clients-support-clustering)
+  他のクライアントの要件は異なる場合があります。 「 [すべての Redis クライアントがクラスタリングをサポートしますか](#do-all-redis-clients-support-clustering)
 * アプリケーションで 1 つのコマンドにバッチ処理された複数のキー操作を使用する場合は、すべてのキーを同じシャードに配置する必要があります。 キーを同じシャードに配置するには、「[クラスターにはキーはどのように配布されるのですか](#how-are-keys-distributed-in-a-cluster)」を参照してください。
 * Redis ASP.NET セッション状態プロバイダーを使用する場合は、2.0.1 以降を使用する必要があります。 「 [Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
@@ -127,11 +125,13 @@ Redis クラスタリング プロトコルでは、各クライアントがク�
 
 TLS 以外の場合は、次のコマンドを使用します。
 
-    Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
-    Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
-    Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
-    ...
-    Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```bash
+Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
+Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
+Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
+...
+Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+```
 
 TLS の場合は、`1300N` を `1500N` に置き換えます。
 
@@ -154,9 +154,9 @@ TLS の場合は、`1300N` を `1500N` に置き換えます。
 クラスタリングを使用しているときに StackExchange.Redis を使うと、`MOVE` 例外が発生することがあります。この場合は、[StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) 以降を使用しているかどうかを確認してください。 StackExchange.Redis を使用するための .NET アプリケーションの構成手順については、「[キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Premium キャッシュ機能をさらに使用する方法を学習します。
+Azure Cache for Redis 機能について詳しく確認します。
 
-* [Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)
+* [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

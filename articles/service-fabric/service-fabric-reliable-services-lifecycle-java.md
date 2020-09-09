@@ -4,13 +4,14 @@ description: ステートフル サービス向け、およびステートレス
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
+ms.custom: devx-track-java
 ms.author: pakunapa
-ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b22c78a0259e4430ac6bfae1c0a9379c4a832cd4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324609"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services のライフサイクル
 > [!div class="op_single_selector"]
@@ -115,7 +116,7 @@ Service Fabric は、複数の理由でステートフル サービスのプラ�
 
 サービスがステートフルなため、サービスが [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) を使う可能性も高くなります。 Service Fabric では、プライマリが降格されたときに最初に発生することの 1 つは、基になる状態への書き込みアクセスの取り消しです。 これは、サービスのライフサイクルに影響を与える第 2 の一連の問題につながります。 レプリカが移動中なのかあるいはシャットダウンされているのかと、そのタイミングに基づいて、コレクションが例外を返します。 これらの例外を正しく処理することが重要です。 
 
-Service Fabric によってスローされる例外には、永続的なもの [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) と一時的なもの [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception) があります。 永続的な例外は、ログに記録されてスローされる必要があります。 一時的な例外は、再試行ロジックに基づいて再試行できます。
+Service Fabric によってスローされる例外には、永続的なもの [(`FabricException`)](/java/api/system.fabric.exception) と一時的なもの [(`FabricTransientException`)](/java/api/system.fabric.exception.fabrictransientexception) があります。 永続的な例外は、ログに記録されてスローされる必要があります。 一時的な例外は、再試行ロジックに基づいて再試行できます。
 
 Reliable Services のテストと検証の重要な部分は、`ReliableCollections` とサービスのライフサイクル イベントを組み合わせて使ったことによる例外を処理することです。 負荷がかかった状態で常にサービスを実行することをお勧めします。 また、運用環境にデプロイする前に、アップグレードと[混乱テスト](service-fabric-controlled-chaos.md)を実行する必要もあります。 これらの基本手順を行うことで、サービスが正しく実装され、ライフサイクル イベントが正しく処理されるようになります。
 
@@ -130,4 +131,3 @@ Reliable Services のテストと検証の重要な部分は、`ReliableCollecti
 ## <a name="next-steps"></a>次のステップ
 * [Reliable Services 入門](service-fabric-reliable-services-introduction.md)
 * [Reliable Services の概要](service-fabric-reliable-services-quick-start-java.md)
-

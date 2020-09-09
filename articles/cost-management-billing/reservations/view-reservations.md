@@ -1,22 +1,23 @@
 ---
 title: Azure リソースの予約を表示する | Microsoft Docs
-description: Azure portal で Azure の予約を表示する方法について説明します。
+description: Azure portal で Azure の予約を表示する方法について説明します。 API、PowerShell、CLI、Power BI を使用して予約と使用率を参照してください。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 03/31/2020
+ms.subservice: reservations
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: ec91d0997717d536c3b47ce7b276f75b21d1baa1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633844"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681653"
 ---
 # <a name="view-azure-reservations"></a>Azure の予約を表示する
 
-購入した予約は、Azure portal で表示して管理することができます。   
+購入した予約は、Azure portal で表示して管理することができます。
 
 ## <a name="permissions-to-view-a-reservation"></a>予約を表示するためのアクセス許可
 
@@ -24,7 +25,7 @@ ms.locfileid: "80633844"
 
 詳細については、「[予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。
 
-## <a name="view-reservation-and-utilization-in-azure-portal"></a>Azure portal で予約と使用率を表示する
+## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>Azure portal で予約と使用率を表示する
 
 所有者または閲覧者として予約を表示するには
 

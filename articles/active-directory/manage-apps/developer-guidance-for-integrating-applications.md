@@ -3,22 +3,21 @@ title: Azure Active Directory を使用するようにアプリケーション�
 description: IT プロフェッショナル向けに記述されたこの記事では、Azure アプリケーションを Active Directory を統合するためのガイドラインを示します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: mimart
-ms.custom: seohack1
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67108283"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640448"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory 用の基幹業務アプリをの開発する
 このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。Active Directory/Office 365 のグローバル管理者向けに記述されています。
@@ -59,7 +58,7 @@ Azure Active Directory を使用するようにアプリケーションを登録
 SaaS アプリに対してアプリケーションごとのアクセス規則を構成します。 たとえば、MFA を必須とするか、信頼されたネットワークでのみユーザーのアクセスを許可することができます。 この詳細については、 [アクセス規則の構成](../conditional-access/app-based-mfa.md)に関するドキュメントをご覧ください。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>ユーザー割り当てを必要とするようにアプリを構成し、ユーザーを割り当てる
-既定では、ユーザーは割り当てなしにアプリケーションにアクセスできます。 ただし、アプリケーションがロールを公開している場合、またはアプリケーションをユーザーのアクセス パネルに表示する場合は、ユーザー割り当てが必要です。
+既定では、ユーザーは割り当てなしにアプリケーションにアクセスできます。 ただし、アプリケーションがロールを公開している場合、またはアプリケーションをユーザーのマイ アプリに表示する場合は、ユーザー割り当てが必要です。
 
 Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライバーの場合は、グループを使用することを強くお勧めします。 グループをアプリケーションに割り当てると、グループの所有者に継続的にアクセスの管理を委任できます。 自分でグループを作成するか、グループ管理機能を使用して組織の責任者にグループの作成を依頼できます。
 

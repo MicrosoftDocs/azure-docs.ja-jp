@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229227"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256256"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -132,7 +132,7 @@ Service Fabric Explorer には、[バックアップと復元](./service-fabric-
 * パーティションのバックアップをトリガーして追跡します。
 * パーティションの復元をトリガーして追跡します。
 
-バックアップと復元サービスの詳細については、[REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)に関するページを参照してください。
+バックアップと復元サービスの詳細については、[REST API リファレンス](/rest/api/servicefabric/sfclient-index-backuprestore)に関するページを参照してください。
 ## <a name="next-steps"></a>次のステップ
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 * [PowerShell を使用した Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)

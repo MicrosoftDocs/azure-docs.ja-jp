@@ -178,7 +178,7 @@ az vmss update \
   --protect-from-scale-set-actions true
 ```
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 ### <a name="no-protectionpolicy-on-scale-set-model"></a>スケール セット モデル対して protectionPolicy がない
 インスタンス保護は、スケール セット インスタンスにのみ適用され、スケール セット モデルには適用されません。
 

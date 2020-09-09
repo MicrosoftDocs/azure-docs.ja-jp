@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325374"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -43,7 +43,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
  追加の構成 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >Azure portal でワークスペースに対する [Log Analytics の [詳細設定] の [データ] メニュー](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)からコレクションを構成した場合、パフォーマンス カウンターおよび Syslog に関する構成ファイルの編集が上書きされます。 すべてのエージェントの構成を無効にするには、Log Analytics の **[詳細設定]** でコレクションを無効にします。1 つのエージェントの場合は、次を実行します。  
+ >Azure portal でワークスペースに対する [Log Analytics の [詳細設定] の [データ] メニュー](./agent-data-sources.md#configuring-data-sources)からコレクションを構成した場合、パフォーマンス カウンターおよび Syslog に関する構成ファイルの編集が上書きされます。 すべてのエージェントの構成を無効にするには、Log Analytics の **[詳細設定]** でコレクションを無効にします。1 つのエージェントの場合は、次を実行します。  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>インストール エラー コード
@@ -53,7 +53,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 | NOT_DEFINED | 必要な依存関係がインストールされていないため、auoms auditd プラグインはインストールされません | auoms のインストールが失敗しました。パッケージ auditd をインストールします。 |
 | 2 | シェル バンドルに提供されたオプションが無効です。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください |
 | 3 | シェル バンドルにオプションが提供されていません。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください。 |
-| 4 | パッケージの種類またはプロキシの設定が無効です。omsagent-*rpm*.sh パッケージは RPM ベースのシステムにのみインストールでき、omsagent-*deb*.sh パッケージは Debian ベースのシステムにのみインストールできます。 [最新リリース](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)のユニバーサル インストーラーを使うことをお勧めします。 また、プロキシの設定を確認してください。 |
+| 4 | パッケージの種類またはプロキシの設定が無効です。omsagent-*rpm*.sh パッケージは RPM ベースのシステムにのみインストールでき、omsagent-*deb*.sh パッケージは Debian ベースのシステムにのみインストールできます。 [最新リリース](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)のユニバーサル インストーラーを使うことをお勧めします。 また、プロキシの設定を確認してください。 |
 | 5 | シェル バンドルはルートとして実行する必要があります。または、オンボード中に 403 エラーが返されました。 `sudo` を使用してコマンドを実行してください。 |
 | 6 | パッケージのアーキテクチャが無効であるか、または、オンボード中に 200 エラーが返されました。omsagent-*x64.sh パッケージは 64 ビット システムにのみインストールでき、omsagent-* x86.sh パッケージは 32 ビット システムにのみインストールできます。 アーキテクチャに合った適切なパッケージを、[最新リリース](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)からダウンロードしてください。 |
 | 17 | OMS パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
@@ -228,7 +228,7 @@ nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/n
 * 1 秒あたりに転送されるメッセージの数が多すぎて、Linux 用 Log Analytics エージェントの基本構成では処理できません
 
 ### <a name="resolution"></a>解像度
-* Log Analytics ワークスペースでの Syslog の構成にすべてのファシリティと正しいログ レベルが含まれていることを確認します。 [Azure portal での Syslog コレクションの構成](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)に関するページを確認してください
+* Log Analytics ワークスペースでの Syslog の構成にすべてのファシリティと正しいログ レベルが含まれていることを確認します。 [Azure portal での Syslog コレクションの構成](./data-sources-syslog.md#configure-syslog-in-the-azure-portal)に関するページを確認してください
 * 転送されたメッセージをネイティブの syslog メッセージング デーモン (`rsyslog`、`syslog-ng`) が受信できることを確認します
 * Syslog サーバーのファイアウォール設定をチェックして、メッセージがブロックされていないことを確認します
 * `logger` コマンドを使用して、Log Analytics に対する Syslog メッセージをシミュレートします
@@ -422,7 +422,7 @@ sudo sh ./onboard_agent.sh --purge
 ### <a name="resolution"></a>解像度 
 問題を修正するには次の手順を実行します。
 1. Azure portal から拡張機能を削除します。
-2. [指示](../../azure-monitor/learn/quick-collect-linux-computer.md)に従ってエージェントをインストールします。
+2. [指示](../learn/quick-collect-linux-computer.md)に従ってエージェントをインストールします。
 3. 次のコマンドを実行してエージェントを再起動します。`sudo /opt/microsoft/omsagent/bin/service_control restart`
 * 数分待つと、プロビジョニングの状態が**プロビジョニング成功**に変わります。
 
@@ -444,3 +444,4 @@ sudo sh ./onboard_agent.sh --purge
     ```
 
 3. `sudo sh ./omsagent-*.universal.x64.sh --upgrade` を実行してパッケージをアップグレードします。
+

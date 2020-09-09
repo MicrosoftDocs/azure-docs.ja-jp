@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: 5a67ebbf0f83f2dc3a340f52cab7437bbfaa350e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277575"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299169"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -74,7 +75,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 2. 監視するアプリケーションを指定するには、**App=** フィルターを追加します。
 3. **インスタンス**ごとにメトリックを分割します。
 
-"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、「[チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
+"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
 
 "*一部のインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、インスタンスの状態とその検出状態を確認します。
 
@@ -137,7 +138,7 @@ Azure portal または Resource Manager テンプレートを使用して、JAR 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](spring-cloud-quickstart-launch-app-portal.md)」および「[Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)」をご覧ください。
+ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](spring-cloud-quickstart.md)」および「[Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)」をご覧ください。
 
 ### <a name="my-application-cant-be-registered"></a>アプリケーションを登録できない
 
@@ -198,7 +199,9 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 **[アプリの管理]** に移動し、アプリケーションの状態が _[実行中]_ かつ _[稼働中]_ であることを確認します。
 
-_JVM_ のメトリックは表示されるが、_Tomcat_ のメトリックは表示されない場合は、アプリケーション パッケージで `spring-boot-actuator` 依存関係が有効になっており、正常に起動しているかどうかを確認します。
+アプリケーション パッケージで _JMX_ が有効になっているか確認します。 この機能は構成プロパティ `spring.jmx.enabled=true` で有効にできます。  
+
+アプリケーション パッケージで `spring-boot-actuator` 依存関係が有効になっており、正常に起動しているかどうかを確認します。
 
 ```xml
 <dependency>

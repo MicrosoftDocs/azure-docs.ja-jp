@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: fd50e649257ba8849f49cd3aae85e3228b9eb94c
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520671"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612216"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -40,7 +41,7 @@ Azure Table Storage の入力バインドを使用して、Azure Storage アカ�
 
 ### <a name="one-entity"></a>1 つのエンティティ
 
-次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 テーブルに挿入されるすべてのレコードについて、関数がトリガーされます。
+次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 キューに送信されるすべてのメッセージについて、関数がトリガーされます。
 
 行キー値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 
@@ -99,7 +100,7 @@ public class TableStorage
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
-using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Threading.Tasks;
 
@@ -139,7 +140,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/tutorial-develop-table-dotnet.md)ページをご覧ください。
 
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
@@ -227,8 +228,8 @@ public class Person
 この C# スクリプト コードは、エンティティ型が `TableEntity`から派生できるように、Azure Storage SDK に参照を追加します。
 
 ```csharp
-#r "Microsoft.WindowsAzure.Storage"
-using Microsoft.WindowsAzure.Storage.Table;
+#r "Microsoft.Azure.Cosmos"
+using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Extensions.Logging;
 
 public static void Run(string myQueueItem, IQueryable<Person> tableBinding, ILogger log)
@@ -272,8 +273,8 @@ public class Person : TableEntity
 ```
 
 ```csharp
-#r "Microsoft.WindowsAzure.Storage"
-using Microsoft.WindowsAzure.Storage.Table;
+#r "Microsoft.Azure.Cosmos"
+using Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -305,7 +306,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/tutorial-develop-table-dotnet.md)ページをご覧ください。
 
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
@@ -606,7 +607,7 @@ public Person[] get(
 
 # <a name="java"></a>[Java](#tab/java)
 
-[TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput) 属性を使用すると、関数をトリガーしたテーブル行にアクセスできます。
+[TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) 属性を使用すると、関数をトリガーしたテーブル行にアクセスできます。
 
 ---
 
@@ -977,15 +978,15 @@ public static MyPoco TableOutput(
 
 - **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Table Storage 行として永続化されます。
 
-- **命令型**:[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
+- **命令型**:[Out](/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) 注釈を使用して関数から Table Storage 行を出力するには、次の 2 つのオプションがあります。
+[TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) 注釈を使用して関数から Table Storage 行を出力するには、次の 2 つのオプションがあります。
 
 - **戻り値**:関数自体に注釈を適用すると、関数の戻り値が Table Storage 行として永続化されます。
 
-- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 型の特定のパラメーターに注釈を適用します。この場合、`T` には `PartitionKey` と `RowKey` のプロパティが含まれます。 多くの場合、これらのプロパティには `ITableEntity` の実装や `TableEntity` の継承が伴います。
+- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 型の特定のパラメーターに注釈を適用します。この場合、`T` には `PartitionKey` と `RowKey` のプロパティが含まれます。 多くの場合、これらのプロパティには `ITableEntity` の実装や `TableEntity` の継承が伴います。
 
 ---
 
@@ -993,9 +994,9 @@ public static MyPoco TableOutput(
 
 | バインド | リファレンス |
 |---|---|
-| テーブル | [テーブル エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| BLOB、テーブル、キュー | [ストレージ エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| BLOB、テーブル、キュー | [トラブルシューティング](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| テーブル | [テーブル エラー コード](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| BLOB、テーブル、キュー | [ストレージ エラー コード](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB、テーブル、キュー | [トラブルシューティング](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>次のステップ
 

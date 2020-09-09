@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer の仕様 | Microsoft Docs
-description: Azure FXT Edge Filer ハードウェアの物理仕様と環境仕様
+description: Microsoft Azure FXT Edge Filer ハードウェアの物理仕様と環境仕様について説明します。
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231239"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184688"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer の仕様
 
@@ -46,7 +46,7 @@ Azure FXT Edge Filer は標準の 19 インチの機器ラックに収まるよ�
 
 <!-- 10x2.5 inches version -->
 
-| フィラーの寸法           |                          |
+| フィラーの寸法            | 値                    |
 |-----------------------------|--------------------------|
 | [高さ]                      | 42.8 mm (1.68 インチ)    |
 | 幅 (ラック イヤーを含む) | 482.0 mm (18.97 インチ)  |
@@ -56,7 +56,7 @@ Azure FXT Edge Filer は標準の 19 インチの機器ラックに収まるよ�
 | 奥行き - ラック イヤーから背面の最遠端の突起まで (ベゼルなし) | 22.0 mm (0.87 インチ)  |
 | 奥行き - ラック イヤーから背面の最遠端の突起まで (ベゼルあり)    | 35.84 mm (1.41 インチ) |
 
-| Weight | |
+| Weight | 値 |
 |-----------------|----------------------|
 | ノード重量 (梱包なし、アクセサリなし) | 18.1 kg (40 ポンド) |
 | 正味の重量 (梱包なし、アクセサリを含む) | 23.1 kg (51 ポンド)|

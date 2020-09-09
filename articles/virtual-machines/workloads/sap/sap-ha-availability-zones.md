@@ -16,26 +16,26 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78675606"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653598"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
-[Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。
+[Azure Availability Zones](../../../availability-zones/az-overview.md) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。
 
 SAP の高可用性の基本的なアーキテクチャを次の図に示します。
 
 ![標準の高可用性構成](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP のアプリケーション レイヤーは、1 つの Azure [可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)にデプロイされます。 SAP セントラル サービスの高可用性を確保するために、別々の可用性セットに 2 つの VM をデプロイできます。 インフラストラクチャやソフトウェアの問題に備える自動フェールオーバーの高可用性フレームワークとして、Windows Server フェールオーバー クラスタリングまたは Pacemaker (Linux) を使用します。 このようなデプロイの詳細については、以下を参照してください。
+SAP のアプリケーション レイヤーは、1 つの Azure [可用性セット](../../windows/manage-availability.md)にデプロイされます。 SAP セントラル サービスの高可用性を確保するために、別々の可用性セットに 2 つの VM をデプロイできます。 インフラストラクチャやソフトウェアの問題に備える自動フェールオーバーの高可用性フレームワークとして、Windows Server フェールオーバー クラスタリングまたは Pacemaker (Linux) を使用します。 このようなデプロイの詳細については、以下を参照してください。
 
-- [クラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [ファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+- [クラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)
+- [ファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-file-share.md)
+- [SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)
+- [Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](./high-availability-guide-rhel.md)
 
 同様のアーキテクチャが、SAP NetWeaver、S/4HANA、または Hybris システムの DBMS レイヤーにも適用されます。 インフラストラクチャーまたはソフトウェアの障害から保護するために、フェールオーバー クラスター ソリューションを使用して、アクティブ/パッシブ モードで DBMS レイヤーをデプロイします。 このフェールオーバー クラスター ソリューションは、DBMS 固有のフェールオーバー フレームワーク、Windows Server フェールオーバー クラスタリング、または Pacemaker の場合があります。
 
@@ -57,8 +57,8 @@ Azure VM を複数の Availability Zones にデプロイして、同じ Azure �
 
 - Azure Availability Zones にデプロイするときは [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 
 - 物理ゾーンに対するゾーン列挙のマッピングは、Azure サブスクリプションごとに固定されています。 さまざまなサブスクリプションを使用して SAP システムをデプロイする場合は、サブスクリプションごとに最適なゾーンを定義する必要があります。
-- [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用しない場合、1 つの Azure Availability Zone 内に Azure 可用性セットをデプロイすることはできません。 SAP DBMS レイヤーとセントラル サービスを複数のゾーンにわたってデプロイすると同時に、可用性セットを使用して SAP アプリケーション レイヤーをデプロイし、さらに VM の近接通信も実現する方法については、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明しています。 Azure 近接通信配置グループを利用していない場合は、仮想マシンのデプロイ フレームワークとして、いずれかを選択する必要があります。
-- [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) を使用して Windows Server フェールオーバー クラスタリングまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。
+- [Azure 近接通信配置グループ](../../linux/co-location.md)を使用しない場合、1 つの Azure Availability Zone 内に Azure 可用性セットをデプロイすることはできません。 SAP DBMS レイヤーとセントラル サービスを複数のゾーンにわたってデプロイすると同時に、可用性セットを使用して SAP アプリケーション レイヤーをデプロイし、さらに VM の近接通信も実現する方法については、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明しています。 Azure 近接通信配置グループを利用していない場合は、仮想マシンのデプロイ フレームワークとして、いずれかを選択する必要があります。
+- [Azure Basic Load Balancer](../../../load-balancer/load-balancer-overview.md) を使用して Windows Server フェールオーバー クラスタリングまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります。
 
 
 
@@ -91,7 +91,7 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 
 
 > [!IMPORTANT]
-> 前述の測定は、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) をサポートするすべての Azure リージョンで異なる結果になることが予想されます。 ネットワーク待ち時間の要件が同じでも、ゾーン間でネットワーク待ち時間が異なる可能性があるため、異なる Azure リージョンでは異なるデプロイ戦略の採用が必要になる場合があります。 一部の Azure リージョンでは、3 つの異なるゾーン間のネットワーク待ち時間が大きく異なる可能性があります。 他のリージョンでは、3 つの異なるゾーン間のネットワーク待ち時間がより均一になる可能性があります。 常に 1 ～ 2 ミリ秒のネットワーク待ち時間があるという主張は正しくありません。 Azure リージョン内の Availability Zones 間のネットワーク待ち時間を一般化することはできません。
+> 前述の測定は、[Availability Zones](../../../availability-zones/az-overview.md) をサポートするすべての Azure リージョンで異なる結果になることが予想されます。 ネットワーク待ち時間の要件が同じでも、ゾーン間でネットワーク待ち時間が異なる可能性があるため、異なる Azure リージョンでは異なるデプロイ戦略の採用が必要になる場合があります。 一部の Azure リージョンでは、3 つの異なるゾーン間のネットワーク待ち時間が大きく異なる可能性があります。 他のリージョンでは、3 つの異なるゾーン間のネットワーク待ち時間がより均一になる可能性があります。 常に 1 ～ 2 ミリ秒のネットワーク待ち時間があるという主張は正しくありません。 Azure リージョン内の Availability Zones 間のネットワーク待ち時間を一般化することはできません。
 
 ## <a name="activeactive-deployment"></a>アクティブ/アクティブのデプロイ
 このデプロイ アーキテクチャがアクティブ/アクティブと呼ばれるのは、2 つまたは 3 つのゾーンにアクティブな SAP アプリケーション サーバーをデプロイするためです。 エンキュー レプリケーションを使用する SAP セントラル サービス インスタンスは、2 つのゾーン間にデプロイされます。 DBMS レイヤーについても同じで、SAP セントラル サービスと同じゾーンにデプロイされます。
@@ -104,18 +104,18 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 
 この構成には、次の考慮事項が適用されます。
 
-- [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用しない場合、可用性セットは Azure Availability Zones にデプロイできないため、Azure Availability Zones をすべての VM に対する障害ドメインおよび更新ドメインとして扱います。
+- [Azure 近接通信配置グループ](../../linux/co-location.md)を使用しない場合、可用性セットは Azure Availability Zones にデプロイできないため、Azure Availability Zones をすべての VM に対する障害ドメインおよび更新ドメインとして扱います。
 - DBMS レイヤーとセントラル サービス用にゾーン デプロイを組み合わせたい一方で、アプリケーション レイヤーには Azure 可用性セットを使用したい場合は、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明しているように、Azure 近接通信グループを使用する必要があります。
-- SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
+- SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
-- Azure Premium Storage と [Ultra SSD ストレージ](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
+- Azure Premium Storage と [Ultra SSD ストレージ](../../disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
 - 共有ディスク (Windows)、CIFS 共有 (Windows)、または NFS 共有 (Linux)である共有 sapmnt ディレクトリについても同じです。 ゾーン間でこれらの共有ディスクまたは共有をレプリケートするテクノロジを使用する必要があります。 次のテクノロジがサポートされています。
-  - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
-  - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」に記載されているように構築された NFS 共有。
+  - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
+  - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)」に記載されているように構築された NFS 共有。
     
-    現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
-- 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
+    現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](./sap-high-availability-infrastructure-wsfc-file-share.md)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
+- 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
 - 重要なビジネス プロセスの実行時間の整合性を達成するには、SAP バッチ サーバー グループ、SAP ログオン グループ、または RFC グループを使用して、アクティブな DBMS インスタンスを含むゾーン内のアプリケーション インスタンスに、特定のバッチ ジョブとユーザーを直接送ることができます。 ただし、ゾーン ベースのフェールオーバーの場合は、アクティブ DB VM を含むゾーン内の VM で実行されているインスタンスにこれらのグループを手動で移動する必要があります。  
 - 各ゾーンに休止状態のダイアログ インスタンスをデプロイすることをお勧めします。 これは、アプリケーション インスタンスの一部で使用されているゾーンが稼働していない場合に、以前のリソース容量にすぐに回復できるようにするためです。
 
@@ -134,16 +134,16 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 
 - 可用性セットを Azure Availability Zones にデプロイすることはできません。 それを補うために、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明されているように Azure 近接通信配置グループを使用できます。
 - このアーキテクチャを使用する場合は、状態を注意深く監視し、デプロイしたアプリケーション レイヤーと同じゾーン内にアクティブな DBMS と SAP セントラル サービスのインスタンスを維持する必要があります。 SAP セントラル サービスまたは DBMS インスタンスのフェールオーバーの場合は、できるだけ早く SAP アプリケーション レイヤーがデプロイされたゾーンに手動でフェールバックできるようにする必要があります。
-- SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
+- SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
-- Azure Premium Storage と [Ultra SSD ストレージ](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
+- Azure Premium Storage と [Ultra SSD ストレージ](../../disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
 - 共有ディスク (Windows)、CIFS 共有 (Windows)、または NFS 共有 (Linux)である共有 sapmnt ディレクトリについても同じです。 ゾーン間でこれらの共有ディスクまたは共有をレプリケートするテクノロジを使用する必要があります。 次のテクノロジがサポートされています。
-    - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
-    - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」に記載されているように構築された NFS 共有。
+    - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
+    - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)」に記載されているように構築された NFS 共有。
     
-  現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
-- 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
+  現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](./sap-high-availability-infrastructure-wsfc-file-share.md)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
+- 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
 - ゾーンで障害が発生した場合にアプリケーション リソースを開始できるよう、(DBMS の観点から) パッシブ ゾーンに休止中の VM をデプロイする必要があります。
     - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) は現在、ゾーン間で休止中の VM にアクティブな VM をレプリケートすることはできません。 
 - ゾーン障害が発生した場合に 2 番目のゾーンで SAP アプリケーション レイヤーを自動的に開始できるオートメーションに投資する必要があります。
@@ -164,16 +164,16 @@ Microsoft は、Azure リージョン内のさまざまな Azure Availability Zo
 - このアーキテクチャを使用する場合は、状態を注意深く監視し、デプロイしたアプリケーション レイヤーと同じゾーン内にアクティブな DBMS と SAP セントラル サービスのインスタンスを維持する必要があります。 SAP セントラル サービスまたは DBMS インスタンスのフェールオーバーの場合は、できるだけ早く SAP アプリケーション レイヤーがデプロイされたゾーンに手動でフェールバックできるようにする必要があります。
 - アクティブな QA アプリケーション インスタンスを実行する VM に、運用アプリケーションのインスタンスがプレインストールされている必要があります。
 - ゾーンの障害が発生した場合は、QA アプリケーションのインスタンスをシャットダウンし、代わりに運用インスタンスを開始します。 これを行うには、アプリケーション インスタンスの仮想名を使用する必要があることに注意してください。
-- SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
+- SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
-- Azure Premium Storage と [Ultra SSD ストレージ](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
+- Azure Premium Storage と [Ultra SSD ストレージ](../../disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
 - 共有ディスク (Windows)、CIFS 共有 (Windows)、または NFS 共有 (Linux)である共有 sapmnt ディレクトリについても同じです。 ゾーン間でこれらの共有ディスクまたは共有をレプリケートするテクノロジを使用する必要があります。 次のテクノロジがサポートされています。
-    - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
-    - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」に記載されているように構築された NFS 共有。
+    - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
+    - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)」に記載されているように構築された NFS 共有。
 
-  現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
-- 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
+  現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](./sap-high-availability-infrastructure-wsfc-file-share.md)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
+- 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
 
 
 
@@ -182,11 +182,5 @@ Microsoft は、Azure リージョン内のさまざまな Azure Availability Zo
 ## <a name="next-steps"></a>次のステップ
 以下に、Azure Availability Zones 間でデプロイするための次の手順を示します。
 
-- [Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
-
-
-
-
-
-
+- [Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)
+- [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](./sap-high-availability-infrastructure-wsfc-file-share.md)

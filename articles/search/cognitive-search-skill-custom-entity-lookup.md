@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 06/17/2020
+ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085741"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936114"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>カスタム エンティティの参照認知スキル (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "82085741"
 
 **カスタム エンティティの参照**スキルを使うと、ユーザーが定義したカスタムの単語と語句の一覧からテキストを検索できます。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。  
 
-このスキルは Cognitive Services API にバインドされていないため、プレビュー期間中は無料で使用できます。 ただし、1 日の強化の制限を上書きするには、[Cognitive Services リソースを接続する](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)ようにします。 Azure Cognitive Search 経由でアクセスする場合、1 日あたりの制限が Cognitive Services への無料のアクセスに適用されます。
+このスキルは Cognitive Services API にバインドされていないため、プレビュー期間中は無料で使用できます。 ただし、1 日の強化の制限を上書きするには、[Cognitive Services リソースを接続する](./cognitive-search-attach-cognitive-services.md)ようにします。 Azure Cognitive Search 経由でアクセスする場合、1 日あたりの制限が Cognitive Services への無料のアクセスに適用されます。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 
@@ -38,17 +38,17 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| entitiesDefinitionUri    | 照合対象のすべてのターゲット テキストを含む JSON ファイルまたは CSV ファイルのパス。 このエンティティ定義は、インデクサー実行の開始時に読み取られます。このファイルの実行中に行われた更新は、後続の実行まで反映されません。 この構成には、HTTPS 経由でアクセスできる必要があります。 想定される CSV または JSON スキーマについては、後述する「[カスタム エンティティ定義の形式](#custom-entity-definition-format)」を参照してください。|
-|inlineEntitiesDefinition | インライン JSON エンティティの定義。 このパラメーターは、entitiesDefinitionUri パラメーター (存在する場合) よりも優先されます。 10 KB を超える構成をインラインで指定することはできません。 想定される JSON スキーマについては、後述する「[カスタム エンティティ定義の形式](#custom-entity-definition-format)」を参照してください。 |
-|defaultLanguageCode |    (省略可能) 入力テキストのトークン化と記述に使用される入力テキストの言語コード。 次の言語がサポートされます。`da, de, en, es, fi, fr, it, ko, pt` 既定値は英語 (`en`) です。 languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。  |
+| `entitiesDefinitionUri`    | 照合対象のすべてのターゲット テキストを含む JSON ファイルまたは CSV ファイルのパス。 このエンティティ定義は、インデクサー実行の開始時に読み取られます。このファイルの実行中に行われた更新は、後続の実行まで反映されません。 この構成には、HTTPS 経由でアクセスできる必要があります。 想定される CSV または JSON スキーマについては、後述する「[カスタム エンティティ定義の形式](#custom-entity-definition-format)」を参照してください。|
+|`inlineEntitiesDefinition` | インライン JSON エンティティの定義。 このパラメーターは、entitiesDefinitionUri パラメーター (存在する場合) よりも優先されます。 10 KB を超える構成をインラインで指定することはできません。 想定される JSON スキーマについては、後述する「[カスタム エンティティ定義の形式](#custom-entity-definition-format)」を参照してください。 |
+|`defaultLanguageCode` |    (省略可能) 入力テキストのトークン化と記述に使用される入力テキストの言語コード。 次の言語がサポートされます。`da, de, en, es, fi, fr, it, ko, pt` 既定値は英語 (`en`) です。 languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。  |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 | 入力名      | 説明                   |
 |---------------|-------------------------------|
-| text          | 分析するテキスト。          |
-| languageCode    | 省略可能。 既定値は `"en"` です。  |
+| `text`          | 分析するテキスト。          |
+| `languageCode`    | 省略可能。 既定値は `"en"` です。  |
 
 
 ## <a name="skill-outputs"></a>スキルの出力
@@ -56,7 +56,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 | 出力名      | 説明                   |
 |---------------|-------------------------------|
-| entities | 検出された一致に関する情報と、関連するメタデータが格納されるオブジェクトの配列。 識別される各エンティティには、次のフィールドが含まれる場合があります。  <ul> <li> *name*:識別される最上位のエンティティ。 エンティティは、"正規化された" 形式を表します。 </li> <li> *id*:"カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティの一意の識別子。</li> <li> *description*:"カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティの説明。 </li> <li> *type:* "カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティ型。</li> <li> *subtype:* "カスタム エンティティ定義形式" でユーザーによって定義されたサブ エンティティ型。</li>  <li> *matches*:ソース テキストのそのエンティティの各一致を記述するコレクション。 各一致には次のメンバーが含まれます。 </li> <ul> <li> *text*:ソース ドキュメントからの未加工のテキスト一致。 </li> <li> *offset*:一致が見つかったテキスト内の場所。 </li> <li> *length*:一致したテキストの長さ。 </li> <li> *matchDistance*:この一致と異なる文字数は、元のエンティティ名または別名に由来します。  </li> </ul> </ul>
+| `entities` | 検出された一致に関する情報と、関連するメタデータが格納されるオブジェクトの配列。 識別される各エンティティには、次のフィールドが含まれる場合があります。  <ul> <li> *name*:識別される最上位のエンティティ。 エンティティは、"正規化された" 形式を表します。 </li> <li> *id*:"カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティの一意の識別子。</li> <li> *description*:"カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティの説明。 </li> <li> *type:* "カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティ型。</li> <li> *subtype:* "カスタム エンティティ定義形式" でユーザーによって定義されたサブ エンティティ型。</li>  <li> *matches*:ソース テキストのそのエンティティの各一致を記述するコレクション。 各一致には次のメンバーが含まれます。 </li> <ul> <li> *text*:ソース ドキュメントからの未加工のテキスト一致。 </li> <li> *offset*:一致が見つかったテキスト内の場所。 </li> <li> *length*:一致したテキストの長さ。 </li> <li> *matchDistance*:この一致と異なる文字数は、元のエンティティ名または別名に由来します。  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>カスタム エンティティ定義の形式
@@ -145,22 +145,22 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
 
 |  フィールド名  |        説明  |
 |--------------|----------------------|
-| name | 最上位のエンティティ記述子。 スキル出力内の一致は、この名前でグループ化されます。これは、検出されるテキストの "正規化された" 形式を表します。  |
-| description  | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
-| type | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
-| subtype | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
-| id | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
-| caseSensitive | (省略可能) 既定値は false です。 エンティティ名との比較で大文字と小文字を区別するかどうかを示すブール値。 "Microsoft" の大文字と小文字を区別しない一致の例として、microsoft、microSoft、MICROSOFT があります |
-| fuzzyEditDistance | (省略可能) 既定値は 0 です。 最大値は 5 です。 エンティティ名との一致を構成する上で、許容する不一致文字の数を指定します。 指定した一致に対して可能な限り最小のあいまいさが返されます。  たとえば、編集距離が 3 に設定されている場合、"Windows 10" は "Windows"、"Windows10"、"windows 7" と一致します。 <br/> 大文字と小文字の区別が false に設定されている場合、大文字と小文字の違いはあいまいさの許容値にはカウントされませんが、それ以外の場合はカウントされます。 |
-| defaultCaseSensitive | (省略可能) このエンティティの既定の大文字と小文字の区別の値を変更します。 すべてのエイリアスの caseSensitive 値の既定値を変更するために使用されます。 |
-| defaultFuzzyEditDistance | (省略可能) このエンティティの既定のあいまい編集距離値を変更します。 すべての別名の fuzzyEditDistance 値の既定値を変更するために使用できます。 |
-| aliases | (省略可能) ルート エンティティ名の代替のスペルまたは同義語を指定するために使用できる複雑なオブジェクトの配列。 |
+| `name` | 最上位のエンティティ記述子。 スキル出力内の一致は、この名前でグループ化されます。これは、検出されるテキストの "正規化された" 形式を表します。  |
+| `description`  | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
+| `type` | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
+| `subtype` | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
+| `id` | (省略可能) このフィールドは、一致したテキストに関するカスタム メタデータのパススルーとして使用できます。 このフィールドの値は、スキル出力内でエンティティが一致するたびに表示されます。 |
+| `caseSensitive` | (省略可能) 既定値は false です。 エンティティ名との比較で大文字と小文字を区別するかどうかを示すブール値。 "Microsoft" の大文字と小文字を区別しない一致の例として、microsoft、microSoft、MICROSOFT があります |
+| `fuzzyEditDistance` | (省略可能) 既定値は 0 です。 最大値は 5 です。 エンティティ名との一致を構成する上で、許容する不一致文字の数を指定します。 指定した一致に対して可能な限り最小のあいまいさが返されます。  たとえば、編集距離が 3 に設定されている場合、"Windows 10" は "Windows"、"Windows10"、"windows 7" と一致します。 <br/> 大文字と小文字の区別が false に設定されている場合、大文字と小文字の違いはあいまいさの許容値にはカウントされませんが、それ以外の場合はカウントされます。 |
+| `defaultCaseSensitive` | (省略可能) このエンティティの既定の大文字と小文字の区別の値を変更します。 すべてのエイリアスの caseSensitive 値の既定値を変更するために使用されます。 |
+| `defaultFuzzyEditDistance` | (省略可能) このエンティティの既定のあいまい編集距離値を変更します。 すべての別名の fuzzyEditDistance 値の既定値を変更するために使用できます。 |
+| `aliases` | (省略可能) ルート エンティティ名の代替のスペルまたは同義語を指定するために使用できる複雑なオブジェクトの配列。 |
 
 | 別名のプロパティ | 説明 |
 |------------------|-------------|
-| text  | 一部のターゲット エンティティ名の代替のスペルまたは表現。  |
-| caseSensitive | (省略可能) 前述のルート エンティティ "caseSensitive" パラメーターと同じように機能しますが、この別名のみに適用されます。 |
-| fuzzyEditDistance | (省略可能) 前述のルート エンティティ "fuzzyEditDistance" パラメーターと同じように機能しますが、この別名のみに適用されます。 |
+| `text`  | 一部のターゲット エンティティ名の代替のスペルまたは表現。  |
+| `caseSensitive` | (省略可能) 前述のルート エンティティ "caseSensitive" パラメーターと同じように機能しますが、この別名のみに適用されます。 |
+| `fuzzyEditDistance` | (省略可能) 前述のルート エンティティ "fuzzyEditDistance" パラメーターと同じように機能しますが、この別名のみに適用されます。 |
 
 
 ### <a name="inline-format"></a>インライン形式
@@ -188,7 +188,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
       }, 
       { 
         "name" : "Xbox One", 
-        "type": "Harware",
+        "type": "Hardware",
         "subtype" : "Gaming Device",
         "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
         "description" : "The Xbox One product"
@@ -208,7 +208,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
     ]
   }
 ```
-また、エンティティ定義ファイルへのポインターを指定する場合の、entitiesDefinitionUri 形式を使用したスキル定義例を次に示します。
+また、エンティティ定義ファイルへのポインターを指定する場合の、`entitiesDefinitionUri` 形式を使用したスキル定義例を次に示します。
 
 ```json
   {
@@ -240,7 +240,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
         "recordId": "1",
         "data":
            {
-             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "text": "The company, Microsoft, was founded by Bill Gates. Microsoft's gaming console is called Xbox",
              "languageCode": "en"
            }
       }

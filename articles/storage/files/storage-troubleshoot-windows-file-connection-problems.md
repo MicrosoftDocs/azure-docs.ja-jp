@@ -1,22 +1,22 @@
 ---
 title: Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
-description: Windows での Azure Files に関する問題のトラブルシューティング
+description: Windows での Azure Files に関する問題のトラブルシューティング。 Windows クライアントから接続する場合の Azure Files に関連する一般的な問題と、考えられる解決方法を参照してください。
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
-ms.date: 01/02/2019
+ms.topic: troubleshooting
+ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383901"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797787"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
-この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
+この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Azure ファイル共有をマウントするときに、エラー 5 が発生する
@@ -65,32 +65,36 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 ポート 445 から Azure Files データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
 
-ファイアウォールまたは ISP がポート 445 をブロックしているかどうかを確認するには、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ツールまたは `Test-NetConnection` コマンドレットを使用してください。 
+ファイアウォールまたは ISP がポート 445 をブロックしているかどうかを確認するには、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ツールまたは `Test-NetConnection` コマンドレットを使用してください。 
 
 `Test-NetConnection` コマンドレットを使用するには、Azure PowerShell モジュールがインストール済みである必要があります。詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
    
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
+```azurepowershell
+$resourceGroupName = "<your-resource-group-name>"
+$storageAccountName = "<your-storage-account-name>"
 
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+# This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
+# already logged in.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+# The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+# $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
+# or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+```
     
 接続に成功した場合、次の出力結果が表示されます。
     
   
-    ComputerName     : <your-storage-account-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
+```azurepowershell
+ComputerName     : <your-storage-account-name>
+RemoteAddress    : <storage-account-ip-address>
+RemotePort       : 445
+InterfaceAlias   : <your-network-interface>
+SourceAddress    : <your-ip-address>
+TcpTestSucceeded : True
+```
  
 
 > [!Note]  
@@ -127,11 +131,11 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>Azure ファイル共有にコピーすると、エラー 1816 "このコマンドを実行するための十分なクォータがありません" が発生する
+## <a name="error-1816---not-enough-quota-is-available-to-process-this-command"></a>エラー 1816 - このコマンドを実行するのに十分なクォータがありません
 
 ### <a name="cause"></a>原因
 
-エラー 1816 は、ファイル共有がマウントされているコンピューター上のファイルに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。
+エラー 1816 は、Azure ファイル共有上のファイルまたはディレクトリに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。 詳細については、「[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)」をご覧ください。
 
 ### <a name="solution"></a>解決策
 
@@ -301,27 +305,27 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
  
 たとえば、これを 0x100000 に設定して、パフォーマンスが向上するかどうかを確認することができます。
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Azure Files に対して Azure Active Directory Domain Service (AAD DS) 認証を有効にするときに AadDsTenantNotFound エラーが発生し、"Unable to locate active tenants with tenant Id aad-tenant-id" (テナント ID aad-tenant-id のアクティブなテナントを見つけることができません) というメッセージが表示される
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効にするときに AadDsTenantNotFound エラーが発生し、"Unable to locate active tenants with tenant Id aad-tenant-id" (テナント ID aad-tenant-id のアクティブなテナントを見つけることができません) というメッセージが表示される
 
 ### <a name="cause"></a>原因
 
-関連するサブスクリプションの AAD テナント上で [AAD ドメイン サービス (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) が作成されていない場合、ストレージ アカウント上で [Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効](storage-files-identity-auth-active-directory-domain-service-enable.md)にしようとすると、AadDsTenantNotFound エラーが発生します。  
+関連するサブスクリプションの Azure AD テナント上で [Azure AD Domain Services (Azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) が作成されていない場合、ストレージ アカウント上で [Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効](storage-files-identity-auth-active-directory-domain-service-enable.md)にしようとすると、AadDsTenantNotFound エラーが発生します。  
 
 ### <a name="solution"></a>解決策
 
-ストレージ アカウントがデプロイされているサブスクリプションの ADD テナント上で AAD DS を有効にします。 マネージド ドメインを作成するには、AAD テナントの管理者特権が必要です。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)に関する記事に書かれている手順を実行します。
+ストレージ アカウントがデプロイされているサブスクリプションの Azure AD テナント上で Azure AD DS を有効にします。 マネージド ドメインを作成するには、Azure AD テナントの管理者特権が必要です。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)に関する記事に書かれている手順を実行します。
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>エラー "システム エラー 1359 が発生しました。 内部エラー" が、Azure Active Directory Domain Service (AAD DS) 認証が有効なときにファイル共有への SMB アクセスで発生した
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>エラー "システム エラー 1359 が発生しました。 内部エラー" が、Azure Active Directory Domain Service (Azure AD DS) 認証が有効なときにファイル共有への SMB アクセスで発生した
 
 ### <a name="cause"></a>原因
 
-エラー "システム エラー 1359 が発生しました。 内部エラー" は、数字で始まるドメイン DNS 名を使用して AAD DS に対して AAD DS 認証を有効にしてファイル共有に接続しようとしたときに発生します。 たとえば、AAD DS のドメイン DNS 名が "1domain" の場合、AAD の資格情報を使用してファイル共有をマウントしようとすると、このエラーが発生します。 
+エラー "システム エラー 1359 が発生しました。 内部エラー" は、数字で始まるドメイン DNS 名を使用する Azure AD DS に対して Azure AD DS 認証を有効にしてファイル共有に接続しようとしたときに発生します。 たとえば、Azure AD DS のドメイン DNS 名が "1domain" の場合、Azure AD の資格情報を使用してファイル共有をマウントしようとすると、このエラーが発生します。 
 
 ### <a name="solution"></a>解決策
 
-現時点では、次の規則に該当する新しいドメイン DNS 名を使用して、AAD DS を再デプロイすることを検討してください。
+現時点では、次の規則に適合する新しいドメイン DNS 名を使用して、Azure AD DS を再デプロイすることを検討してください。
 - 名前の先頭を数字にすることはできない。
 - 名前の長さを 3 から 63 文字にする必要がある。
 
@@ -330,7 +334,7 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 ### <a name="self-diagnostics-steps"></a>自己診断の手順
 最初に、[Azure Files AD 認証を有効にする](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)ための 4 つのステップをすべて実行していることを確認します。
 
-次に、[ストレージ アカウント キーを使用して Azure ファイル共有をマウント](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)してみます。 マウントできない場合は、[AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) をダウンロードして、クライアントの実行環境を検証し、自己修正に関する規範的なガイダンスが提供される、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出し、診断トレースを収集します。
+次に、[ストレージ アカウント キーを使用して Azure ファイル共有をマウント](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)してみます。 マウントできない場合は、[AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) をダウンロードして、クライアントの実行環境を検証し、自己修正に関する規範的なガイダンスが提供される、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出し、診断トレースを収集します。
 
 その後、Debug-AzStorageAccountAuth コマンドレットを実行し、ログオンした AD ユーザーで AD の構成に対する一連の基本的なチェックを実行します。 このコマンドレットは、[AzFilesHybrid バージョン 0.1.2 以降](https://github.com/Azure-Samples/azure-files-samples/releases)でサポートされています。 このコマンドレットは、対象のストレージ アカウントに対する所有者アクセス許可を持っている AD ユーザーで実行する必要があります。  
 ```PowerShell
@@ -340,14 +344,36 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 コマンドレットでは、以下のチェックが順番に実行されて、障害に関するガイダンスが提供されます。
-1. CheckPort445Connectivity: SMB 接続に対してポート 445 が開かれていることがチェックされます
-2. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることが検証されます
-3. CheckADObject: ログオンしているユーザーに対し、ストレージ アカウントが関連付けられた有効な表現が AD ドメイン内にあることが確認されます
-4. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得が試みられます 
-5. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb キーのパスワードと一致していることが確認されます
-6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることが確認されます
+1. CheckPort445Connectivity: SMB 接続に対してポート 445 が開いていることを確認します。
+2. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します
+3. CheckADObject: ストレージ アカウントを表すオブジェクトが Active Directory にあり、正しい SPN (サービス プリンシパル名) を持っていることを確認します。
+4. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 
+5. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。
+6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。
+7. CheckAadUserHasSid: Azure AD ユーザーが AD の SID を持っているかどうかを確認します。この確認を行う際、ユーザーは、パラメーター -ObjectId を使用して Azure AD ユーザーのオブジェクト ID を入力する必要があります。 
+8. CheckStorageAccountDomainJoined: ストレージ アカウントのプロパティを確認して、AD 認証が有効になっており、アカウントの AD プロパティが設定されていることを確認します。
 
-よりよいトラブルシューティングのガイダンスが提供されるよう、この診断コマンドレットの拡張作業が行われています。
+## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない
+
+### <a name="symptom"></a>症状
+
+マウントされたファイル共有でエクスプローラーを使用して Windows ACL を構成しようとすると、次に示すどちらかの現象が発生する可能性があります。
+- [セキュリティ] タブの [アクセス許可の編集] をクリックした後、アクセス許可ウィザードが読み込まれない。 
+- 新しいユーザーまたはグループを選択しようとすると、ドメインの場所に正しい AD DS ドメインが表示されない。 
+
+### <a name="solution"></a>解決策
+
+回避策として、[icacls tool](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) を使用してディレクトリまたはファイル レベルのアクセス許可を構成することをお勧めします。 
+
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Join-AzStorageAccountForAuth コマンドレットの実行中にエラーが発生した
+
+### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>エラー:"ディレクトリ サービスは、相対 ID を割り当てられませんでした"
+
+このエラーは、RID マスタ FSMO の役割を保持しているドメイン コントローラーが利用できないか、ドメインから削除され、バックアップから復元された場合に発生する可能性があります。  すべてのドメイン コントローラーが実行されていて、使用可能であることを確認します。
+
+### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>エラー: "名前が指定されていないため、位置指定パラメーターをバインドできません"
+
+このエラーは、通常、Join-AzStorageAccountforAuth コマンドの構文エラーによってトリガーされます。  コマンドでスペルミスや構文エラーを確認し、最新バージョンの AzFilesHybrid モジュール (https://github.com/Azure-Samples/azure-files-samples/releases) ) がインストールされていることを確認します。  
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

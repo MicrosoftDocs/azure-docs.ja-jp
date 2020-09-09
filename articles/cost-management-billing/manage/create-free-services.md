@@ -1,17 +1,18 @@
 ---
 title: Azure 無料アカウントを使用して無料サービスを作成する
-description: Azure の無料アカウントに含まれるサービスを作成する方法を説明します。
+description: Azure の無料アカウントに含まれるサービスを作成する方法を説明します。 これらのサービスは、利用可能な任意のリージョンで作成できます。
 author: amberbhargava
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 1d2c4ed141aeff97f5987b0b23ff1e6201e53c6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e08a3e09a0db7620d65b349243cd39540fae144
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200882"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690002"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Azure の無料アカウントに含まれるサービスを作成する
 

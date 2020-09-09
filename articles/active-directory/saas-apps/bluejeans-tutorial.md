@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と BlueJeans for Azure AD の統合 | Microsoft Docs
 description: Azure Active Directory と BlueJeans for Azure AD の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 06/09/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72595047"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545405"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BlueJeans for Azure AD の統合
 
@@ -39,6 +34,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * BlueJeans for Azure AD でのシングル サインオン (SSO) が有効になったサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -88,10 +86,25 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[サインオン URL]** ボックスに、`https://<companyname>.bluejeans.com` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.bluejeans.com` という形式で URL を入力します。
+
+    a. **[識別子 (エンティティ ID)]** ボックスに、`http://samlsp.bluejeans.com` という URL を入力します。
+
+    a. **[応答 URL]** ボックスに、`https://bluejeans.com/sso/saml2/` という URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[BlueJeans for Azure AD クライアント サポート チーム](https://support.bluejeans.com/contact)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[BlueJeans for Azure AD クライアント サポート チーム](https://support.bluejeans.com/contact)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+
+1. BlueJeans アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+
+    ![image](common/default-attributes.png)
+
+1. その他に、BlueJeans アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+
+    | 名前 |  ソース属性|
+    | ---------| --------- |
+    | Phone | user.telephonenumber |
+    | title | user.jobtitle |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -228,4 +241,3 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で BlueJeans for Azure AD を試す](https://aad.portal.azure.com/)
-

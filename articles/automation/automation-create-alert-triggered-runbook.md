@@ -1,16 +1,16 @@
 ---
 title: Azure Automation Runbook をトリガーするアラートを使用する
-description: Azure のアラートが発生したときに Runbook の実行をトリガーする方法について説明します。
+description: この記事では、Azure のアラートが発生したときに Runbook の実行をトリガーする方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: eb7a1cc0cb589fa3d2fe605913d47be4444516e8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: acf31af6d3ba3d78a6435210fa17562aaddac0a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996863"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186607"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
@@ -45,7 +45,7 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 この例では、VM からのアラートを使用します。 ペイロードから VM のデータを取得し、その情報を使用して VM を停止します。 接続は、Runbook が実行される Automation アカウントで設定する必要があります。 アラートを使用して Runbook をトリガーする場合は、トリガーされる Runbook でアラートの状態を確認することが重要です。 アラートの状態が変化するたびに、Runbook がトリガーされます。 アラートには複数の状態があります。最も一般的な 2 つの状態は "アクティブ" と "解決済み" です。 Runbook が複数回実行されないことを確実にするために、Runbook ロジックの状態を確認します。 この記事の例では、状態がアクティブのアラートのみを検索する方法を示しています。
 
-Runbook では、VM に対する管理アクションを実行するために、接続資産の `AzureRunAsConnection` [実行アカウント](automation-create-runas-account.md)を使用して Azure を認証します。
+Runbook では、VM に対する管理アクションを実行するために、接続資産の `AzureRunAsConnection` [実行アカウント](./manage-runas-account.md)を使用して Azure を認証します。
 
 この例を使用して**Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
 
@@ -191,9 +191,8 @@ Runbook では、VM に対する管理アクションを実行するために、
 
 ## <a name="next-steps"></a>次のステップ
 
-* webhook を使用して Automation Runbook を開始する方法の詳細については、[webhook を使用した Runbook の開始](automation-webhooks.md)に関する記事をご覧ください。
-* Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
-* アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)」をご覧ください。
+* Webhook を使用して Runbook を開始するには、「[Webhook から Runbook を開始する](automation-webhooks.md)」を参照してください。
+* Runbook を開始するさまざまな方法については、[Runbook の開始](./start-runbooks.md)に関する記事をご覧ください。
+* アクティビティ ログ アラートの構成方法は、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)」をご覧ください。
 * ほぼリアルタイムのアラートの作成方法については、「[Azure Portal でアラート ルールを作成する](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)」をご覧ください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。

@@ -7,12 +7,13 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 59a5308d2c0a1fa2e1f38f2fe3da3a2cc29448be
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f2d740184c160faa241e3c0267ec39e1309725a8
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78199786"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431321"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>クイック スタート:JavaScript 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -28,7 +29,12 @@ JavaScript 用 Azure Queue storage クライアント ライブラリ v12 を使
 * キューからメッセージを削除する
 * キューを削除する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [パッケージ (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/storage-queue/)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
+* [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-queue)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -158,7 +164,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 // connection string is stored in an environment variable on the machine
 // running the application called AZURE_STORAGE_CONNECTION_STRING. If the
 // environment variable is created after the application is launched in a
-// console or with Visual Studio, the shell or application needs to be 
+// console or with Visual Studio, the shell or application needs to be
 // closed and reloaded to take the environment variable into account.
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING;
 ```
@@ -348,7 +354,7 @@ Done
 チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript のドキュメント](https://docs.microsoft.com/azure/javascript/)
+> [Azure for JavaScript のドキュメント](https://docs.microsoft.com/azure/developer/javascript/)
 
 * 詳細については、[JavaScript 用 Azure Storage キュー クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)に関するページを参照してください。
 * その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples) ページを参照してください。

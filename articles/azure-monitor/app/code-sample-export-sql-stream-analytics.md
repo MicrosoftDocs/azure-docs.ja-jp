@@ -3,15 +3,15 @@ title: Azure Application Insights から SQL へのエクスポート | Microsof
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536915"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311230"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
-この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL データベースに移動する方法について説明します。 
+この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法について説明します。 
 
 連続エクスポートにより、JSON 形式でテレメトリ データが Azure Storage に移動されます。 Azure Stream Analytics を使って JSON オブジェクトを解析し、データベース テーブルに行を作成します。
 
@@ -24,9 +24,9 @@ ms.locfileid: "81536915"
 ## <a name="add-application-insights-to-your-application"></a>Application Insights をアプリケーションに追加する
 作業を開始するには:
 
-1. [Web ページに Application Insights を設定する](../../azure-monitor/app/javascript.md) 
+1. [Web ページに Application Insights を設定する](./javascript.md) 
    
-    (この例では、クライアント ブラウザーからのページ ビュー データの処理を取り上げますが、サーバー側の [Java](../../azure-monitor/app/java-get-started.md) または [ASP.NET](../../azure-monitor/app/asp-net.md) アプリに Application Insights を設定し、要求、依存関係、その他のサーバー テレメトリを処理することもできます。)
+    (この例では、クライアント ブラウザーからのページ ビュー データの処理を取り上げますが、サーバー側の [Java](./java-get-started.md) または [ASP.NET](./asp-net.md) アプリに Application Insights を設定し、要求、依存関係、その他のサーバー テレメトリを処理することもできます。)
 2. アプリを発行して Application Insights のリソースに表示されるテレメトリ データを確認します。
 
 ## <a name="create-storage-in-azure"></a>Azure でのストレージの作成
@@ -61,7 +61,7 @@ ms.locfileid: "81536915"
     ![イベントの種類の選択](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
+1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](./diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
 2. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、 **[参照]** 、ストレージ アカウント、 **[コンテナー]** の順に選択します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
@@ -70,21 +70,21 @@ ms.locfileid: "81536915"
    
     パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。 
 
-イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して行えることはありますが、今日の計画は、Stream Analytics を使用してデータを SQL database に移動することです。 それにより、興味深い多くのクエリを実行しやすくなります。
+イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して行えることはありますが、今日の計画は、Stream Analytics を使用してデータを SQL Database に移動することです。 それにより、興味深い多くのクエリを実行しやすくなります。
 
 ## <a name="create-an-azure-sql-database"></a>Azure SQL Database の作成
 再度、[Azure portal][portal] でサブスクリプションから始め、データを書き込むデータベース (および、まだ保有していない場合は新しいサーバー) を作成します。
 
 ![[新規]、[データ]、[SQL]](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
-データベース サーバーに Azure サービスがアクセス可能であることをご確認ください。
+サーバーに Azure サービスがアクセス可能であることをご確認ください。
 
 ![[参照]、[サーバー]、[使用するサーバー]、[設定]、[ファイアウォール]、[Azure へのアクセスの許可]](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Azure SQL DB でのテーブルの作成
-任意の管理ツールを使って前のセクションで作成したデータベースに接続します。 このチュートリアルでは、 [SQL Server Management Tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS) を使用します。
+## <a name="create-a-table-in-azure-sql-database"></a>Azure SQL Database にテーブルを作成する
+任意の管理ツールを使って前のセクションで作成したデータベースに接続します。 このチュートリアルでは、 [SQL Server Management Tools](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) を使用します。
 
-![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Azure SQL Database に接続する](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 新しいクエリを作成し、次の T-SQL を実行します。
 
@@ -126,16 +126,16 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ```
 
-![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
+![PageViewsTable の作成](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-このサンプルでは、ページ ビューからデータを使用します。 使用可能なその他のデータを確認するには、JSON 出力を検査し、「 [Application Insights エクスポート データ モデル](../../azure-monitor/app/export-data-model.md)」を参照してください。
+このサンプルでは、ページ ビューからデータを使用します。 使用可能なその他のデータを確認するには、JSON 出力を検査し、「 [Application Insights エクスポート データ モデル](./export-data-model.md)」を参照してください。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
 [Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
 
 ![Stream Analytics の設定](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![新しい Stream Analytics ジョブ](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 新しいジョブが作成されたら、 **[リソースに移動]** を選びます。
 
@@ -157,13 +157,15 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する方法を指定します。 連続エクスポートによるデータ格納方法と一致するように設定する必要があります。 次のように設定します。
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```sql
+webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```
 
 次の点に注意してください。
 
 * `webapplication27` は Application Insights リソースの名前です。**すべて小文字で指定します**。 
 * `1234...` は Application Insights リソースのインストルメンテーション キーです。**ダッシュは削除します**。 
-* `PageViews` は分析するデータの種類です。 使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。 エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](../../azure-monitor/app/export-data-model.md)」をご覧ください。
+* `PageViews` は分析するデータの種類です。 使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。 エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](./export-data-model.md)」をご覧ください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
@@ -213,14 +215,14 @@ Application Insights リソースの名前と iKey を取得するには、概�
 
 ```
 
-最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。 他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。 [プロパティの種類と値についての詳細なデータ モデル リファレンス](../../azure-monitor/app/export-data-model.md)
+最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。 他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。 [プロパティの種類と値についての詳細なデータ モデル リファレンス](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>データベースへの出力のセットアップ
 SQL を出力として選択します。
 
 ![ストリーム分析で、[出力] を選択します](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-SQL データベースを指定します。
+データベースを指定します。
 
 ![データベースの詳細を入力します](./media/code-sample-export-sql-stream-analytics/SA007.png)
 
@@ -235,21 +237,22 @@ SQL データベースを指定します。
 
 数分後、SQL Server Management Tools に戻り、流れているデータを監視します。 たとえば、次のようなクエリを使用します。
 
-    SELECT TOP 100 *
-    FROM [dbo].[PageViewsTable]
-
+```sql
+SELECT TOP 100 *
+FROM [dbo].[PageViewsTable]
+```
 
 ## <a name="related-articles"></a>関連記事
-* [Stream Analytics を使用して Power BI にエクスポートする](../../azure-monitor/app/export-power-bi.md )
-* [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](../../azure-monitor/app/export-data-model.md)
-* [Application Insights での連続エクスポート](../../azure-monitor/app/export-telemetry.md)
+* [Stream Analytics を使用して Power BI にエクスポートする](./export-power-bi.md)
+* [プロパティの種類と値についての詳細なデータ モデル リファレンス](./export-data-model.md)
+* [Application Insights での連続エクスポート](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
 

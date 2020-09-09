@@ -9,12 +9,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
-ms.openlocfilehash: 3844313aa35626ffbae3580d6f7031967d557a2f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 97d2760decbeb36c9601a0cb7c35f6703e551188
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241828"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925426"
 ---
 [!INCLUDE [uwp](./uwp.md)]
 

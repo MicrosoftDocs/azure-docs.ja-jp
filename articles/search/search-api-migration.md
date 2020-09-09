@@ -7,92 +7,91 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112160"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927138"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>最新の Azure Cognitive Search サービス REST API バージョンへのアップグレード
 
-[Search REST API](https://docs.microsoft.com/rest/api/searchservice/) の以前のバージョンを使用している場合、この記事が、一般公開された最新の API バージョン 2019-05-06 を使用するように、アプリケーションをアップグレードするのに役立ちます。
+以前のバージョンの [Search REST API](/rest/api/searchservice/) を使用している場合は、一般公開された最新の API バージョン 2020-06-30 を使用するようにアプリケーションをアップグレードするのに、この記事が役立ちます。
 
-バージョン 2019-05-06 の REST API には、前のバージョンからの変更点がいくつか含まれています。 大半は下位互換性を保つための変更であるため、使用していたバージョンに応じて、コードの変更は最小限で済むはずです。 新機能を使用するために必要なコードの変更については、「[アップグレードの手順](#UpgradeSteps)」で概説しています。
+バージョン 2020-06-30 の REST API には、以前のバージョンからの変更点がいくつか含まれています。 大半は下位互換性を保つための変更であるため、使用していたバージョンに応じて、コードの変更は最小限で済むはずです。 新機能を使用するために必要なコードの変更については、「[アップグレードの手順](#UpgradeSteps)」で概説しています。
 
 > [!NOTE]
 > Azure Cognitive Search のサービス インスタンスでは、以前のバージョンを含む REST API バージョンの範囲がサポートされます。 それらの API バージョンを引き続き使用することもできますが、最新のバージョンに移行して、新機能を利用できるようにすることをお勧めします。
 
-<a name="WhatsNew"></a>
-
-## <a name="whats-new-in-version-2019-05-06"></a>バージョン 2019-05-06 の新機能
-バージョン 2019-05-06 は、REST API の最新の一般公開リリースです。 この API バージョンで一般公開状態に移行した機能を次に示します。
-
-* [オートコンプリート](index-add-suggesters.md)。用語の一部を入力するだけでその用語全体が表示される先行入力機能です。
-
-* [複合型](search-howto-complex-data-types.md)。検索インデックス内で構造化オブジェクト データがネイティブでサポートされます。
-
-* [JsonLines 解析モード](search-howto-index-json-blobs.md)。Azure BLOB インデックスの一部で、JSON エンティティごとに 1 つの検索ドキュメントが新規行として作成されます。
-
-* [AI エンリッチメント](cognitive-search-concept-intro.md)では、Cognitive Services の AI エンリッチメント エンジンを利用してインデックスが提供されます。
-
-プレビュー機能リリースのいくつかが、この一般公開の更新プログラムに組み込まれています。 新しいプレビュー機能の一覧を確認するには、[Search REST api-version 2019-05-06 プレビューに関するページ](search-api-preview.md)を参照してください。
-
-## <a name="breaking-changes"></a>重大な変更
-
-api-version=2019-05-06 では、次の機能を含む既存のコードは中断されます。
-
-### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB のインデクサー - 現在のデータソースは "type": "cosmosdb"
-
-[Cosmos DB インデクサー](search-howto-index-cosmosdb.md )を使用している場合は、 `"type": "documentdb"` を `"type": "cosmosdb"` に変更する必要があります。
-
-### <a name="indexer-execution-result-errors-no-longer-have-status"></a>インデクサーの実行結果のエラー状態が表示されなくなりました
-
-以前、インデクサー実行のエラー構造には、`status` 要素が含まれていました。 この要素は、有用な情報を提供しないため、削除されました。
-
-### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>インデクサーのデータ ソース API で接続文字列が返されなくなりました
-
-API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、データ ソース API では、REST 操作の応答として、接続文字列が返されなくなりました。 以前の API バージョンで、データ ソースの作成に POST が使用されていた場合は、Azure Cognitive Search で **201** に続いて、プレーンテキストの接続文字列を含む OData 応答が返されました。
-
-### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>名前付きエンティティの認識コグニティブ スキルは廃止されました
-
-コード内で[名前付きエンティティの認識](cognitive-search-skill-named-entity-recognition.md)スキルを呼び出しても、呼び出しは失敗します。 これに代わる機能は、[エンティティの認識](cognitive-search-skill-entity-recognition.md)です。 他の変更を行うことなく、スキルの参照を置換できる必要があります。 API の署名は、両方のバージョンで同じです。 
-
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>アップグレードの手順
-以前の GA バージョンの 2017-11-11 または 2016-09-01 からアップグレードする場合、コードの変更は、バージョン番号の変更以外はほぼ必要ありません。 次の状況に該当する場合のみ、コードを変更する必要があります。
+## <a name="how-to-upgrade"></a>アップグレードする方法
+
+新しいバージョンにアップグレードするときには、バージョン番号の変更以外、コードに対する変更はおそらく一切不要です。 次の状況に該当する場合のみ、コードを変更する必要があります。
 
 * API 応答で認識できないプロパティが返されるとコードが失敗する。 既定では、アプリケーションは、認識できないプロパティを無視する必要があります。
 
-* コードが API 要求を保持し、新しい API バージョンへの再送信を試行する。 たとえば、この状況は、アプリケーションが Search API から返される継続トークンを保持する場合に発生する可能性があります (詳細については、[Search API リファレンス](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)のページの `@search.nextPageParameters` を参照してください)。
+* コードが API 要求を保持し、新しい API バージョンへの再送信を試行する。 たとえば、この状況は、アプリケーションが Search API から返される継続トークンを保持する場合に発生する可能性があります (詳細については、[Search API リファレンス](/rest/api/searchservice/Search-Documents)のページの `@search.nextPageParameters` を参照してください)。
 
-このような状況のいずれかが当てはまる場合は、それに応じてコードを変更する必要があります。 それ以外の場合は、バージョン 2019-05-06 の[新機能](#WhatsNew)の使用を開始するのでない限り、変更する必要はありません。
+* コードで 2019-05-06 以前の API バージョンを参照していて、そのリリースで 1 つ以上の破壊的変更の対象となっている。 「[2019-05-06 へのアップグレード](#upgrade-to-2019-05-06)」セクションに詳細が記載されています。 
 
-プレビュー版の API からアップグレードする場合も上記の説明が適用されますが、バージョン 2019-05-06 では使用できないプレビュー機能があることにも注意する必要があります。
+これらの状況のいずれかに該当する場合は、それに応じてコードを変更する必要が生じる可能性があります。 それ以外の場合は、新しいバージョンで追加された新機能の使用を開始するのでない限り、変更は不要です。
 
-* ["More like this" クエリ](search-more-like-this.md)
-* [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-* [Cosmos DB インデクサーの MongoDB API サポート](search-howto-index-cosmosdb.md)
+## <a name="upgrade-to-2020-06-30"></a>2020-06-30 へのアップグレード
 
-コードでこれらの機能を使用している場合は、それらの使用を削除しないと、API バージョン 2019-05-06 にアップグレードすることはできません。
+バージョン 2020-06-30 は、REST API の新しい一般公開リリースです。 破壊的変更はありませんが、動作の違いがいくつかあります。 
 
-> [!IMPORTANT]
-> プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
-> 
+この API バージョンで一般公開されるようになった機能には、以下が含まれます。
+
+* [ナレッジ ストア](knowledge-store-concept-intro.md)は、スキルセットを通して作成される充実したコンテンツから成る永続的ストレージで、ダウンストリーム分析や他のアプリケーションを通した処理のために作成されます。 この機能を使用すると、インデクサー駆動型の AI エンリッチメント パイプラインにより、検索インデックスに加えてナレッジ ストアにデータを格納できます。 この機能のプレビュー バージョンを使用していた場合、それは一般公開されたバージョンと同等です。 必要とされるコード変更は、API バージョンの変更のみです。
+
+動作の変更には、以下が含まれます。
+
+* [BM25 ランク付けアルゴリズム](index-ranking-similarity.md)では、前のランク付けアルゴリズムがより新しいテクノロジに置き換えられます。 新しいサービスはこのアルゴリズムを自動的に使用します。 既存のサービスについては、新しいアルゴリズムを使用するようにパラメーターを設定する必要があります。
+
+* このバージョンでは、順序付けされた null 値の結果が変更されていて、null 値は、並べ替えが `asc` の場合は最初に、並べ替えが `desc` の場合は最後に表示されます。 null 値を並べ替える方法を扱うコードを記述した場合は、この変更に注意してください。
+
+## <a name="upgrade-to-2019-05-06"></a>2019-05-06 へのアップグレード
+
+バージョン 2019-05-06 は、前に一般公開された REST API のリリースです。 この API バージョンで一般公開された機能には、以下が含まれます。
+
+* [オートコンプリート](index-add-suggesters.md)。用語の一部を入力するだけでその用語全体が表示される先行入力機能です。
+* [複合型](search-howto-complex-data-types.md)。検索インデックス内で構造化オブジェクト データがネイティブでサポートされます。
+* [JsonLines 解析モード](search-howto-index-json-blobs.md)。Azure BLOB インデックスの一部で、JSON エンティティごとに 1 つの検索ドキュメントが新規行として作成されます。
+* [AI エンリッチメント](cognitive-search-concept-intro.md)では、Cognitive Services の AI エンリッチメント エンジンを利用してインデックスが提供されます。
+
+### <a name="breaking-changes"></a>重大な変更
+
+以前の API バージョンに基づいて記述された既存のコードは、コードに以下の機能が含まれる場合には API バージョンが 2019-05-06 のときに中断します。
+
+#### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB のインデクサー - 現在のデータソースは "type": "cosmosdb"
+
+[Cosmos DB インデクサー](search-howto-index-cosmosdb.md )を使用している場合は、 `"type": "documentdb"` を `"type": "cosmosdb"` に変更する必要があります。
+
+#### <a name="indexer-execution-result-errors-no-longer-have-status"></a>インデクサーの実行結果のエラー状態が表示されなくなりました
+
+以前、インデクサー実行のエラー構造には、`status` 要素が含まれていました。 この要素は、有用な情報を提供しないため、削除されました。
+
+#### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>インデクサーのデータ ソース API で接続文字列が返されなくなりました
+
+API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、データ ソース API では、REST 操作の応答として、接続文字列が返されなくなりました。 以前の API バージョンで、データ ソースの作成に POST が使用されていた場合は、Azure Cognitive Search で **201** に続いて、プレーンテキストの接続文字列を含む OData 応答が返されました。
+
+#### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>名前付きエンティティの認識コグニティブ スキルは廃止されました
+
+コード内で[名前付きエンティティの認識](cognitive-search-skill-named-entity-recognition.md)スキルを呼び出した場合、その呼び出しは失敗します。 これに代わる機能は、[エンティティの認識](cognitive-search-skill-entity-recognition.md)です。 他の変更を行うことなく、スキルの参照を置換できる必要があります。 API の署名は、両方のバージョンで同じです。 
 
 ### <a name="upgrading-complex-types"></a>複合型のアップグレード
 
-以前のプレビュー版 API である 2017-11-11 プレビューまたは 2016-09-01 プレビューに対して、コードで複合型が使用されている場合は、バージョン 2019-05-06 で、いくつかの新しい制限や変更された制限があることに注意する必要があります。
+API バージョン 2019-05-06 では、複合型の正式なサポートが追加されました。 コードで、2017-11-11-Preview または 2016-09-01-Preview での複合型の等価性に関する以前の推奨事項を実装した場合、バージョン 2019-05-06 以降では、注意が必要な、変更された新しい制限がいくつか追加されています。
 
 + サブ フィールドの深さとインデックスあたりの複合コレクションの数に関する制限が低くなりました。 プレビュー版の API を使用してこれらの制限を超えるインデックスを作成した場合、API バージョン 2019-05-06 を使用してインデックスを更新または再作成しようとしても失敗します。 これが当てはまる場合は、新しい制限内に収まるようにスキーマを再設計してから、インデックスをリビルドする必要があります。
 
-+ API バージョン 2019-05-06 では、ドキュメントあたりの複合コレクションの数に関して新しい制限があります。 プレビュー版の API を使用して、これらの制限を超えるドキュメントのインデックスを作成した場合、API バージョン 2019-05-06 を使用してそのデータのインデックスを再作成しようとしても失敗します。 これが当てはまる場合は、ドキュメントあたりの複合コレクション要素の数を減らしてから、データのインデックスを再作成する必要があります。
++ API バージョン 2019-05-06 以降では、ドキュメントあたりの複合コレクションの要素数について、新しい制限があります。 プレビュー版の API を使用して、これらの制限を超えるドキュメントのインデックスを作成した場合、API バージョン 2019-05-06 を使用してそのデータのインデックスを再作成しようとしても失敗します。 これが当てはまる場合は、ドキュメントあたりの複合コレクション要素の数を減らしてから、データのインデックスを再作成する必要があります。
 
 詳細については、[Azure Cognitive Search サービスの制限](search-limits-quotas-capacity.md)に関する記事を参照してください。
 
-### <a name="how-to-upgrade-an-old-complex-type-structure"></a>以前の複合型の構造をアップグレードする方法
+#### <a name="how-to-upgrade-an-old-complex-type-structure"></a>以前の複合型の構造をアップグレードする方法
 
 以前のいずれかのプレビュー版の API に対して、コードで複合型が使用されている場合、使用されているインデックス定義の形式は、次のようになります。
 
@@ -144,8 +143,7 @@ API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、デ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Search REST API リファレンス ドキュメントを確認します。 問題が発生した場合は、[StackOverflow](https://stackoverflow.com/) または[サポートへの問い合わせ](https://azure.microsoft.com/support/community/?product=search)でサポートを依頼してください。
+Search REST API リファレンス ドキュメントを確認します。 問題が発生する場合は、[Stack Overflow](https://stackoverflow.com/) で助けを求めるか、[サポートに問い合わせ](https://azure.microsoft.com/support/community/?product=search)てください。
 
 > [!div class="nextstepaction"]
-> [Search Service REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)
-
+> [Search Service REST API リファレンス](/rest/api/searchservice/)

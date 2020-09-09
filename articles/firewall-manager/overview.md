@@ -1,24 +1,22 @@
 ---
-title: Azure Firewall Manager プレビューとは
+title: Azure Firewall Manager とは
 description: Azure Firewall Manager の機能について説明します
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/13/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79366276"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855046"
 ---
-# <a name="what-is-azure-firewall-manager-preview"></a>Azure Firewall Manager プレビューとは
+# <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Firewall Manager プレビューは、クラウドベースのセキュリティ境界に対して、集約型セキュリティ ポリシーとルート管理を提供するセキュリティ管理サービスです。 
+Azure Firewall Manager は、クラウドベースのセキュリティ境界に対して、集約型セキュリティ ポリシーとルート管理を提供するセキュリティ管理サービスです。 
 
 Firewall Manager は、次の 2 種類のネットワーク アーキテクチャのセキュリティ管理機能を備えています。
 
@@ -31,11 +29,11 @@ Firewall Manager は、次の 2 種類のネットワーク アーキテクチ�
 
 "*セキュリティ保護付き仮想ハブ*" と "*ハブ仮想ネットワーク*" アーキテクチャの種類の詳しい比較については、「[Azure Firewall Manager のアーキテクチャ オプション](vhubs-and-vnets.md)」を参照してください。
 
-![Firewall Manager](media/overview/firewallmanagerv5.png)
+![Firewall Manager](media/overview/trusted-security-partners.png)
 
-## <a name="azure-firewall-manager-preview-features"></a>Azure Firewall Manager プレビューの機能
+## <a name="azure-firewall-manager-features"></a>Azure Firewall Manager の機能
 
-Azure Firewall Manager プレビューには、次の機能が用意されています。
+Azure Firewall Manager には、次の機能が用意されています。
 
 ### <a name="central-azure-firewall-deployment-and-configuration"></a>一元的な Azure Firewall のデプロイと構成
 
@@ -43,7 +41,7 @@ Azure Firewall Manager プレビューには、次の機能が用意されてい
 
 ### <a name="hierarchical-policies-global-and-local"></a>階層型ポリシー (グローバルおよびローカル)
 
-Azure Firewall Manager プレビューを使用して、複数のセキュリティで保護された仮想ハブにまたがる Azure Firewall ポリシーを一元的に管理できます。 中央の IT チームは、グローバル ファイアウォール ポリシーを作成し、チームを越えて組織全体のファイアウォール ポリシーを適用することができます。 ローカルで作成されたファイアウォール ポリシーを使用すると、DevOps のセルフサービス モデルで機敏性を向上させることができます。
+Azure Firewall Manager を使用して、複数のセキュリティで保護された仮想ハブにまたがる Azure Firewall ポリシーを一元的に管理できます。 中央の IT チームは、グローバル ファイアウォール ポリシーを作成し、チームを越えて組織全体のファイアウォール ポリシーを適用することができます。 ローカルで作成されたファイアウォール ポリシーを使用すると、DevOps のセルフサービス モデルで機敏性を向上させることができます。
 
 ### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>セキュリティを強化するためのサードパーティのサービスとしてのセキュリティとの統合
 
@@ -60,7 +58,7 @@ Azure Firewall だけでなく、サードパーティのサービスとして�
 
    Azure の接続とグローバル分散を利用して、ブランチからインターネットへのシナリオにサードパーティのフィルター処理を簡単に追加できます。
 
-信頼されたセキュリティ プロバイダーの詳細については、[Azure Firewall Manager の信頼されたセキュリティ パートナー (プレビュー)](trusted-security-partners.md) に関するページを参照してください。
+セキュリティ プロバイダーの詳細については、[Azure Firewall Manager のセキュリティ パートナー プロバイダー](trusted-security-partners.md)に関するページを参照してください。
 
 ### <a name="centralized-route-management"></a>一元的なルート管理
 
@@ -76,20 +74,21 @@ Azure Firewall ポリシーは、複数のリージョンで使用できます�
 
 ## <a name="known-issues"></a>既知の問題
 
-Azure Firewall Manager プレビューには、次の既知の問題があります。
+Azure Firewall Manager には、次の既知の問題があります。
 
 |問題  |説明  |対応策  |
 |---------|---------|---------|
-|サードパーティのフィルター処理の制限事項。|Azure Firewall B2V と V2V では、サードパーティ プロバイダーによる V2I トラフィックのフィルター処理はサポートされていません。|調査中|
-|トラフィックの分割が現在サポートされていない。|Office 365 と Azure パブリック PaaS トラフィックの分割は現在サポートされていません。 そのため、V2I または B2I にサードパーティ プロバイダーを選択すると、パートナー サービスを介してすべての Azure Public PaaS および Office 365 トラフィックも送信されます。|ハブでのトラフィックの分割を調査中です。
-|セキュリティ保護付き仮想ハブがリージョンごとに 1 つである。|1 つのリージョンで複数のセキュリティ保護付き仮想ハブを使用することはできません。|1 つのリージョンに複数の仮想 WAN を作成します。|
-|基本ポリシーがローカル ポリシーと同じリージョンにある必要がある。|基本ポリシーと同じリージョンにすべてのローカル ポリシーを作成します。 セキュリティ保護付きハブ上の 1 つのリージョンで作成されたポリシーを、別のリージョンから適用することもできます。|調査中|
-|セキュリティ保護付き仮想ハブで、ハブ間の通信が機能しない|セキュリティ保護付き仮想ハブからセキュリティ保護付き仮想ハブへの通信はまだサポートされていません。|調査中|
+|トラフィックの分割|Office 365 と Azure パブリック PaaS トラフィックの分割は現在サポートされていません。 そのため、V2I または B2I にサードパーティ プロバイダーを選択すると、パートナー サービスを介してすべての Azure Public PaaS および Office 365 トラフィックも送信されます。|ハブでのトラフィックの分割を調査中です。
+|セキュリティ保護付き仮想ハブがリージョンごとに 1 つである|1 つのリージョンで複数のセキュリティ保護付き仮想ハブを使用することはできません。|1 つのリージョンに複数の仮想 WAN を作成します。|
+|基本ポリシーがローカル ポリシーと同じリージョンにある必要がある|基本ポリシーと同じリージョンにすべてのローカル ポリシーを作成します。 セキュリティ保護付きハブ上の 1 つのリージョンで作成されたポリシーを、別のリージョンから適用することもできます。|調査中|
+|セキュリティで保護された仮想ハブ デプロイでのハブ間トラフィックのフィルター処理|セキュリティ保護付き仮想ハブからセキュリティ保護付き仮想ハブへの通信のフィルター処理は、まだサポートされていません。 ただし、Azure Firewall によるプライベート トラフィックのフィルター処理が有効になっていない場合は、ハブからハブへの通信は引き続き機能します。|調査中|
+|仮想ハブとは異なるリージョンにあるスポーク|仮想ハブとは異なるリージョンにあるスポークはサポートされていません。|調査中<br><br>リージョンごとにハブを作成し、ハブと同じリージョンの VNet をピアリングします。|
+|プライベート トラフィック フィルターが有効になっている場合のブランチ間のトラフィック|プライベート トラフィック フィルターが有効になっている場合、ブランチ間のトラフィックはサポートされていません。 |調査中。<br><br>ブランチ間の接続が重要である場合は、プライベート トラフィックをセキュリティで保護しないでください。|
 |同じ Virtual WAN を共有するすべてのセキュリティ保護付き仮想ハブは同じリソース グループに存在する必要がある|この動作は、今日の Virtual WAN ハブに合わせたものです。|複数の異なるリソース グループにセキュリティ保護付き仮想ハブを作成できるようにするには、複数の Virtual WAN を作成します。|
-|ファイアウォール ポリシーでは IP グループはサポートされていません。|IP グループはパブリック プレビュー段階であり、現在は、従来のファイアウォール規則でのみサポートされます。|修正の進行中です。
-|クラウド ソリューション プロバイダー (CSP) サブスクリプションがサポートされていない。|現在、[CSP サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0145p/)には対応していません。|調査中
+|一括 IP アドレス追加が失敗する|複数のパブリック IP アドレスを追加すると、セキュリティで保護されたハブ ファイアウォールがエラー状態になります。|より少ない増分のパブリック IP アドレスを追加します。 たとえば、一度に 10 個を追加します。|
+|カスタム DNS (プレビュー) が構成されているセキュリティで保護されたハブでは、アプリケーション ルールが失敗します。|強制トンネリングが有効にされている、セキュリティで保護されたハブ デプロイとハブ仮想ネットワーク デプロイ環境では、カスタム DNS (プレビュー) が正しく機能しません。|修正方法は調査中です。|
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Firewall Manager プレビューのデプロイの概要](deployment-overview.md)を確認します
+- [Azure Firewall Manager のデプロイ概要](deployment-overview.md)を確認する
 - [セキュリティで保護された仮想ハブ](secured-virtual-hub.md)について学習します。

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 43825728da34c027557f6e6d722e39d494451e55
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562000"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255933"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -110,7 +110,7 @@ ms.locfileid: "82562000"
 
 
 > [!NOTE]
-> [拇印](https://en.wikipedia.org/wiki/Public_key_fingerprint) は、証明書のプライマリ ID です。 作成する証明書の拇印を確認するには、「[証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695.aspx)」をご覧ください。
+> [拇印](https://en.wikipedia.org/wiki/Public_key_fingerprint) は、証明書のプライマリ ID です。 作成する証明書の拇印を確認するには、「[証明書のサムプリントを取得する](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)」をご覧ください。
 > 
 > 
 
@@ -125,7 +125,7 @@ ms.locfileid: "82562000"
 | ServerCertificateCommonNames |運用環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 CertificateIssuerThumbprint は、この証明書の発行者の拇印に対応します。 同じ共通名の証明書が複数使用されている場合、複数の発行者の拇印を指定できます。 利便性を考えて、ClusterCertificateCommonNames と ServerCertificateCommonNames に同じ証明書を使用することもできます。 1 つまたは 2 つのサーバー証明書の共通名を使用することができます。 |
 | ServerCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はサーバー証明書の発行者と対応します。 ServerCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、サーバー発行者の証明書のロールオーバーが簡単になります。 複数のサーバー証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
 | ClientCertificateThumbprints |この証明書のセットを認証されたクライアントにインストールします。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は CertificateThumbprint 変数で設定します。 IsAdmin を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 IsAdmin が *false* の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 ロールについて詳しくは、「[ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)」をご覧ください。 |
-| ClientCertificateCommonNames |CertificateCommonName には、最初のクライアント証明書の共通名を設定します。 CertificateIssuerThumbprint は、この証明書の発行者の拇印です。 共通名と発行者について詳しくは、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」をご覧ください。 |
+| ClientCertificateCommonNames |CertificateCommonName には、最初のクライアント証明書の共通名を設定します。 CertificateIssuerThumbprint は、この証明書の発行者の拇印です。 共通名と発行者について詳しくは、「[証明書の使用](/dotnet/framework/wcf/feature-details/working-with-certificates)」をご覧ください。 |
 | ClientCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書は、クライアント証明書の発行者と対応します (管理者ロールと非管理者ロールの両方)。 ClientCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クライアント発行者の証明書のロールオーバーが簡単になります。 複数のクライアント証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
 | ReverseProxyCertificate |テスト環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護する場合に指定できる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
 | ReverseProxyCertificateCommonNames |運用環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護する場合に指定できる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
@@ -248,9 +248,21 @@ ms.locfileid: "82562000"
 ## <a name="acquire-the-x509-certificates"></a>X.509 証明書を取得します。
 クラスター内の通信をセキュリティで保護するには、最初にクラスター ノード用の X.509 証明書を取得する必要があります。 さらに、承認されたコンピューターまたはユーザーだけがそのクラスターに接続できるように制限するには、クライアント コンピューター用に証明書を取得し、インストールする必要があります。
 
-運用ワークロードを実行するクラスターの場合、 [証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された X.509 証明書を使用してクラスターをセキュリティで保護します。 これらの証明書を取得する方法について詳しくは、[証明書の取得方法](https://msdn.microsoft.com/library/aa702761.aspx)に関する記事をご覧ください。
+運用ワークロードを実行するクラスターの場合、 [証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された X.509 証明書を使用してクラスターをセキュリティで保護します。 これらの証明書を取得する方法について詳しくは、[証明書の取得方法](/dotnet/framework/wcf/feature-details/how-to-obtain-a-certificate-wcf)に関する記事をご覧ください。 
+
+証明書が正常に機能するには、次のようないくつかの特性を備えている必要があります。
+
+* 証明書のプロバイダーが **Microsoft Enhanced RSA and AES Cryptographic Provider** でなければならない。
+
+* RSA キーを作成するときは、キーが **2048 ビット**である必要がある。
+
+* キー使用法拡張機能に、**Digital Signature, Key Encipherment (a0)** の値が含まれている。
+
+* 拡張キー使用法拡張機能に、**サーバー認証** (OID: 1.3.6.1.5.5.7.3.1) および**クライアント認証** (OID: 1.3.6.1.5.5.7.3.2) の値が含まれている。
 
 テスト目的で使用するクラスターの場合は、自己署名証明書を選択することができます。
+
+その他の質問については、[証明書に関するよく寄せられる質問](./cluster-security-certificate-management.md#troubleshooting-and-frequently-asked-questions)を参照してください。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>省略可能:自己署名証明書の作成
 正しく保護できる自己署名証明書を作成する方法の 1 つが、C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure ディレクトリの Service Fabric SDK フォルダーにある CertSetup.ps1 スクリプトを使用する方法です。 このファイルを編集して証明書の既定の名前を変更します。 (値 CN=ServiceFabricDevClusterCert を探します。)このスクリプトを `.\CertSetup.ps1 -Install` として実行します。
@@ -345,7 +357,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、[Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
+これでこのクラスターで動作する他の PowerShell コマンドを実行できます。 たとえば、[Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) を実行すると、セキュリティで保護されたこのクラスターのノードが一覧表示されます。
 
 
 クラスターを削除するには、Service Fabric パッケージをダウンロードしたクラスターのノードに接続し、コマンド ラインを開いてパッケージ フォルダーに移動します。 そして次のコマンドを実行します。
@@ -358,4 +370,3 @@ Connect-ServiceFabricCluster $ConnectArgs
 > 証明書の構成が正しくないと、デプロイ中にクラスターを起動できない場合があります。 セキュリティの問題を自己診断するには、イベント ビューアーのグループ **[アプリケーションとサービス ログ]**  >  **[Microsoft Service Fabric]** を参照してください。
 > 
 > 
-

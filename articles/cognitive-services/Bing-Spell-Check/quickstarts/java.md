@@ -8,30 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 56a5215daea9289a481e0a51575ef0ee3cbdb3a0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735115"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322076"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
 
-このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Java アプリケーションは、API に要求を送信して、一連の修正候補を返します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) で入手できます。
+このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Java アプリケーションは、API に要求を送信して、一連の修正候補を返します。 
+
+このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Java Development Kit(JDK) 7 以降
 
-* [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) または最新バージョンの [Gson](https://github.com/google/gson) をインポートします。 コマンド ライン実行の場合は、main クラスがある Java フォルダーに `.jar` を追加します。
+* [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) または最新バージョンの [Gson](https://github.com/google/gson) をインポートします。 コマンドライン実行の場合は、メイン クラスがある Java フォルダーに `.jar` を追加します。
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-an-application"></a>アプリケーションを作成して初期化する
 
-1. 普段使用している IDE またはエディターで、任意のクラス名を使用して、新しい Java プロジェクトを作成し、以下のパッケージをインポートします。
+1. 好みの IDE またはエディターで、選択したクラス名を使用して新しい Java プロジェクトを作成し、以下のパッケージをインポートします。
 
     ```java
     import java.io.*;
@@ -40,7 +43,7 @@ ms.locfileid: "82735115"
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。 市場、スペル チェック対象のテキスト、スペル チェック モードの文字列に使用する変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。 その後、市場、スペル チェック対象のテキスト、スペル チェック モードの文字列に使用する変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -55,7 +58,11 @@ ms.locfileid: "82735115"
 
 ## <a name="create-and-send-an-api-request"></a>API 要求を作成して送信する
 
-1. API 要求を作成して送信する `check()` という関数を作成します。 その中で、次の手順に従います。 要求のパラメーターの文字列を作成します。 該当する市場文字列に `?mkt=` パラメーターを、スペル チェック モードに `&mode=` パラメーターを追加します。  
+1. API 要求を作成して送信する `check()` という関数を作成します。 この関数内で、次の手順で指定したコードを追加します。 要求パラメーターの文字列を作成します。
+
+   1. `=` 演算子を使用して、`mkt` パラメーターに市場コードを割り当てます。 
+
+   1. `&` 演算子を使用して `mode` パラメーターを追加し、スペルチェック モードを割り当てます。 
 
    ```java
    public static void check () throws Exception {
@@ -71,7 +78,7 @@ ms.locfileid: "82735115"
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. その URL への接続を開きます。 要求メソッドを `POST` に設定します。 要求のパラメーターを追加します。 `Ocp-Apim-Subscription-Key` ヘッダーには必ずサブスクリプション キーを追加してください。
+3. その URL への接続を開きます。 要求メソッドを `POST` に設定し、要求パラメーターを追加します。 `Ocp-Apim-Subscription-Key` ヘッダーには必ずサブスクリプション キーを追加してください。
 
     ```java
     connection.setRequestMethod("POST");
@@ -91,7 +98,7 @@ ms.locfileid: "82735115"
 
 ## <a name="format-and-read-the-api-response"></a>API の応答を書式設定して読み取る
 
-1. このメソッドをクラスに追加します。 出力を判読しやすいよう JSON が書式設定されます。
+1. `prettify()` メソッドをクラスに追加します。これにより、読み取りやすい出力の JSON に書式設定されます。
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +124,7 @@ ms.locfileid: "82735115"
 
 ## <a name="call-the-api"></a>API を呼び出す
 
-アプリケーションの main 関数で、上で作成した check() メソッドを呼び出します。
+アプリケーションの main 関数で、前に作成した `check()` メソッドを呼び出します。
 ```java
         public static void main(String[] args) {
             try {
@@ -131,19 +138,19 @@ ms.locfileid: "82735115"
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-プロジェクトをビルドして実行します。
+プロジェクトをビルドして実行します。 コマンド ラインを使用している場合は、次のコマンドを使用して、アプリケーションをビルドおよび実行します。
 
-コマンド ラインを使用している場合は、次のコマンドを使用して、アプリケーションをビルド、実行します。
+1. アプリケーションをビルドします。
 
-**ビルド:**
-```bash
-javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
-```
+   ```bash
+   javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+   ```
 
-**実行:**
-```bash
-java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
-```
+2. アプリケーションを実行します。
+
+   ```bash
+   java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+   ```
 
 ## <a name="example-json-response"></a>JSON の応答例
 

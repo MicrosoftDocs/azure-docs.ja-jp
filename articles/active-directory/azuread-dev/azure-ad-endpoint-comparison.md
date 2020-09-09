@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154918"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116395"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 
@@ -33,9 +33,9 @@ ms.locfileid: "80154918"
 
 * v1.0 エンドポイントでは、職場と学校のアカウント (Azure AD) でのみ、ご利用のアプリケーションにサインインすることができます。
 * Microsoft ID プラットフォーム エンドポイントでは、Azure AD からの職場と学校のアカウント、および個人の Microsoft アカウント (MSA) (hotmail.com、outlook.com、msn.com など) でサインインできます。
-* 両方のエンドポイントで、 *[シングルテナント](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの *[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* によるサインインも受け入れられます。
+* 両方のエンドポイントで、 *[シングルテナント](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの *[ゲスト ユーザー](../external-identities/what-is-b2b.md)* によるサインインも受け入れられます。
 
-Microsoft ID プラットフォーム エンドポイントを使用した場合は、個人の Microsoft アカウントに加え、職場や学校のアカウントからのサインインを受け付けるアプリを記述することができます。 そのため、完全にアカウント非依存のアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、SharePoint サイトやディレクトリ データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
+Microsoft ID プラットフォーム エンドポイントを使用した場合は、個人の Microsoft アカウントに加え、職場や学校のアカウントからのサインインを受け付けるアプリを記述することができます。 そのため、完全にアカウント非依存のアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、SharePoint サイトやディレクトリ データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](/graph/api/user-list-messages?view=graph-rest-1.0)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
 
 Microsoft ID プラットフォーム エンドポイントの場合、Microsoft Authentication Library (MSAL) を使用して、コンシューマー向け、教育向け、エンタープライズ向けのいずれの環境にもアクセスできます。 Azure AD v1.0 エンドポイントでは、職場と学校のアカウントのみからのサインインが受け入れられます。
 
@@ -141,34 +141,7 @@ Microsoft ID プラットフォーム エンドポイントと統合するアプ
 
 ### <a name="restrictions-on-redirect-urls"></a>リダイレクト URL に関する制限事項
 
-Microsoft ID プラットフォーム用に登録されるアプリは、限られたリダイレクト URL 値に限定されています。 Web アプリおよびサービスのリダイレクト URL はスキーム `https` で始める必要があり、すべてのリダイレクト URL 値で単一の DNS ドメインを共有する必要があります。  登録システムによって、既存のリダイレクト URL の DNS 名全体と、追加するリダイレクト URL の DNS 名が比較されます。 `http://localhost` はリダイレクト URL としてもサポートされます。  
-
-次のいずれかの条件に当てはまる場合、DNS 名を追加する要求は失敗します。  
-
-* 新しいリダイレクト URL の DNS 名全体が、既存のリダイレクト URL の DNS 名と一致しない。
-* 新しいリダイレクト URL の DNS 名全体が、既存のリダイレクト URL のサブドメインではない。
-
-#### <a name="example-1"></a>例 1
-
-アプリに `https://login.contoso.com` のリダイレクト URL がある場合は、次の例のように、DNS 名が完全に一致するリダイレクト URL を追加することができます。
-
-`https://login.contoso.com/new`
-
-また、次の例のように、login.contoso.com の DNS サブドメインを参照することもできます。
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>例 2
-
-リダイレクト URL として `login-east.contoso.com` と `login-west.contoso.com` を含むアプリが必要な場合は、それらのリダイレクト URL を次の順序で追加する必要があります。
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-後の 2 つを追加できるのは、それらが 1 つ目の contoso.com というリダイレクト URL のサブドメインであるためです。
-
-特定のアプリケーションに対して使用できる応答 URL は 20 個のみです。この制限は、登録でサポートされるすべての種類のアプリ (シングルページ アプリケーション (SPA)、ネイティブ クライアント、Web アプリ、およびサービス) に適用されます。  
+Microsoft ID プラットフォームに登録されている、アプリのリダイレクト URL の制限に関する最新情報については、Microsoft ID プラットフォームのドキュメントで、[リダイレクト URI/応答 URL における制約と制限](../develop/reply-url.md)に関するページを参照してください。
 
 Microsoft ID プラットフォームで使用するアプリを登録する方法については、[新しいアプリ登録エクスペリエンスを使用したアプリの登録](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)に関するページを参照してください。
 

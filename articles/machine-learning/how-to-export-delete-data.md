@@ -5,24 +5,24 @@ description: Azure Machine Learning Studio、CLI、SDK、および認証済み R
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
-ms.custom: seodec18
-ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: fd3abdfd9b0bc0e658caa1cc5ab5c5a7edfda453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191636"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494021"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning では、認証済み REST API を使用してワークスペース データをエクスポートまたは削除することができます。 この記事では、その方法について説明します。
+Azure Machine Learning では、ポータルのグラフィカル インターフェイスまたは Python SDK を使用して、ワークスペース データをエクスポートまたは削除できます。 この記事では、両方のオプションについて説明します。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -30,225 +30,62 @@ Azure Machine Learning では、認証済み REST API を使用してワーク�
 
 ## <a name="control-your-workspace-data"></a>ワークスペース データを制御する
 
-Azure Machine Learning によって格納された製品内データは、Azure Machine Learning Studio、CLI、SDK、および認証済み REST API を使用してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
+Azure Machine Learning によって保存された製品内のデータは、エクスポートおよび削除することができます。 エクスポートと削除は、Azure Machine Learning Studio、CLI、および SDK を使用して行うことができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
 
-Azure Machine Learning では、個人データは、実行履歴ドキュメント内のユーザー情報と、ユーザーのサービスとの対話のテレメトリ レコードで構成されます。
+Azure Machine Learning では、個人データは実行履歴ドキュメント内のユーザー情報で構成されます。 
 
-## <a name="delete-workspace-data-with-the-rest-api"></a>REST API を使用してワークスペース データを削除する
+## <a name="delete-high-level-resources-using-the-portal"></a>ポータルを使用して高レベル リソースを削除する
 
-データを削除するには、HTTP DELETE 動詞を使用して次の API 呼び出しを実行できます。 これらは、要求内に `Authorization: Bearer <arm-token>` ヘッダーがあることで承認されます (`<arm-token>` は `https://management.core.windows.net/` エンドポイントの AAD アクセス トークンです)。  
+ワークスペースを作成すると、Azure によってリソース グループ内に次の多数のリソースが作成されます。
 
-このトークンを取得して Azure エンドポイントを呼び出す方法については、[REST を使用した ML リソースの管理](how-to-manage-rest.md)に関する記事と [Azure REST API に関するドキュメント](https://docs.microsoft.com/rest/api/azure/)を参照してください。  
+- ワークスペース自体
+- ストレージ アカウント
+- コンテナー レジストリ
+- Application Insights インスタンス
+- キー コンテナー
 
-以下の例では、{} 内のテキストを、関連付けられているリソースを決定するインスタンス名に置き換えてください。
+これらのリソースを削除するには、一覧から選択し、 **[削除]** を選択します 
 
-### <a name="delete-an-entire-workspace"></a>ワークスペース全体を削除する
+:::image type="content" source="media/how-to-export-delete-data/delete-resource-group-resources.png" alt-text="削除アイコンが強調表示されているポータルのスクリーンショット":::
 
-ワークスペース全体を削除するには、次の呼び出しを使用します。  
-> [!WARNING]
-> すべての情報が削除され、ワークスペースは使用できなくなります。
+個人のユーザー情報が含まれている可能性がある実行履歴ドキュメントは、ストレージ アカウントの BLOB ストレージ (`/azureml` のサブフォルダー) に格納されます。 データは、ポータルからダウンロードおよび削除することができます。
 
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="ポータル内のストレージ アカウントの中にある azureml ディレクトリのスクリーンショット":::
 
-### <a name="delete-models"></a>モデルを削除する
+## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用して機械学習リソースをエクスポートおよび削除する
 
-モデルとその ID の一覧を取得するには、次の呼び出しを使用します。
+Azure Machine Learning Studio は、ノートブック、データセット、モデル、実験などの機械学習リソースの統合ビューを提供します。 Azure Machine Learning Studio では、データと実験の記録を保持することに注力しています。 パイプラインやコンピューティング リソースなどの計算リソースは、ブラウザーを使用して削除できます。 これらのリソースについては、問題のリソースに移動し、 **[削除]** を選択します。 
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
+データセットの登録は解除でき、実験はアーカイブできますが、これらの操作によってデータが削除されることはありません。 データを完全に削除するには、データセットと実行データをストレージ レベルで削除する必要があります。 ストレージ レベルでの削除は、前に説明したように、ポータルを使用して行います。
 
-個々のモデルは、次の呼び出しで削除できます。
+Studio を使用して、実験の実行からトレーニング アーティファクトをダウンロードできます。 目的の **[実験]** と **[実行]** を選択します。 **[Output + logs]\(出力とログ\)** を選択し、ダウンロードする特定のアーティファクトに移動します。 **...** 、 **[ダウンロード]** の順に選択します。
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
+登録済みのモデルをダウンロードするには、目的の **[モデル]** に移動し、 **[ダウンロード]** を選択します。 
 
-### <a name="delete-assets"></a>アセットを削除する
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="[ダウンロード] オプションが強調表示されている Studio モデル ページのスクリーンショット":::
 
-アセットとその ID のリストを取得するには、次の呼び出しを使用します。
+## <a name="export-and-delete-resources-using-the-python-sdk"></a>Python SDK を使用してリソースをエクスポートおよび削除する
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
+以下を使用して、特定の実行の出力をダウンロードできます。 
 
-個々のアセットは、次の呼び出しで削除できます。
+```python
+# Retrieved from Azure Machine Learning web UI
+run_id = 'aaaaaaaa-bbbb-cccc-dddd-0123456789AB'
+experiment = ws.experiments['my-experiment']
+run = next(run for run in ex.get_runs() if run.id == run_id)
+metrics_output_port = run.get_pipeline_output('metrics_output')
+model_output_port = run.get_pipeline_output('model_output')
 
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
+metrics_output_port.download('.', show_progress=True)
+model_output_port.download('.', show_progress=True)
+```
 
-### <a name="delete-images"></a>イメージを削除する
+次の機械学習リソースは、Python SDK を使用して削除できます。 
 
-イメージとその ID のリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
-
-個々のイメージは、次の呼び出しで削除できます。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
-
-### <a name="delete-services"></a>サービスを削除する
-
-サービスとその ID のリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
-
-個々のサービスは、次の呼び出しで削除できます。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
-
-## <a name="export-service-data-with-the-rest-api"></a>REST API を使用してサービス データをエクスポートする
-
-データをエクスポートするには、HTTP GET 動詞を使用して次の API 呼び出しを実行できます。 これらは、要求内に `Authorization: Bearer <arm-token>` ヘッダー があることで承認されます (`<arm-token>` は `https://management.core.windows.net/` エンドポイントの AAD アクセス トークンです)。  
-
-このトークンを取得して Azure エンドポイントを呼び出す方法については、[REST を使用した ML リソースの管理](how-to-manage-rest.md)に関する記事と [Azure REST API に関するドキュメント](https://docs.microsoft.com/rest/api/azure/)を参照してください。   
-
-以下の例では、{} 内のテキストを、関連付けられているリソースを決定するインスタンス名に置き換えてください。
-
-### <a name="export-workspace-information"></a>ワークスペース情報をエクスポートする
-
-すべてのワークスペースのリストを取得するには、次の呼び出しを使用します。
-
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces?api-version=2019-11-01
-
-個々のワークスペースの情報は、次の呼び出しで取得できます。
-
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
-
-### <a name="export-compute-information"></a>コンピューティング情報をエクスポートする
-
-ワークロードに接続されているすべてのコンピューティング ターゲットは、次の呼び出しで取得できます。
-
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2019-11-01
-
-単一のコンピューティング ターゲットに関する情報は、次の呼び出しで取得できます。
-
-    https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2019-11-01
-
-### <a name="export-run-history-data"></a>実行履歴データをエクスポートする
-
-すべての実験とその情報のリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments 
-
-特定の実験に関するすべての実行は、次の呼び出しで取得できます。
-
-    https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs 
-
-実行履歴項目は、次の呼び出しで取得できます。
-
-    https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs/{runId} 
-
-実験に関するすべての実行メトリックは、次の呼び出しで取得できます。
-
-    https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics 
-
-単一の実行メトリックは、次の呼び出しで取得できます。
-
-    https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics/{metricId}
-
-### <a name="export-artifacts"></a>成果物をエクスポートする
-
-成果物とそのパスの一覧を取得するには、次の呼び出しを使用します。
-
-    https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/artifacts/origins/ExperimentRun/containers/{runId}
-
-### <a name="export-notifications"></a>通知をエクスポートする
-
-格納されているタスクのリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/tasks
-
-単一タスクに関する通知は、次の呼び出しで取得できます。
-
-    https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}tasks/{taskId}
-
-### <a name="export-data-stores"></a>データ ストアをエクスポートする
-
-データ ストアのリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores
-
-個々のデータ ストアは、次の呼び出しで取得できます。
-
-    https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}
-
-### <a name="export-models"></a>モデルをエクスポートする
-
-モデルとその ID の一覧を取得するには、次の呼び出しを使用します。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
-
-個々のモデルは、次の呼び出しで取得できます。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
-
-### <a name="export-assets"></a>アセットをエクスポートする
-
-アセットとその ID のリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
-
-個々のアセットは、次の呼び出しで取得できます。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
-
-### <a name="export-images"></a>イメージをエクスポートする
-
-イメージとその ID のリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
-
-個々のイメージは、次の呼び出しで取得できます。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
-
-### <a name="export-services"></a>サービスをエクスポートする
-
-サービスとその ID のリストを取得するには、次の呼び出しを使用します。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
-
-個々のサービスは、次の呼び出しで取得できます。
-
-    https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
-
-### <a name="export-pipeline-experiments"></a>パイプライン実験をエクスポートする
-
-個々の実験は、次の呼び出しで取得できます。
-
-    https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Experiments/{experimentId}
-
-### <a name="export-pipeline-graphs"></a>パイプライン グラフをエクスポートする
-
-個々のグラフは、次の呼び出しで取得できます。
-
-    https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Graphs/{graphId}
-
-### <a name="export-pipeline-modules"></a>パイプライン モジュールをエクスポートする
-
-モジュールは次の呼び出しで取得できます。
-
-    https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Modules/{id}
-
-### <a name="export-pipeline-templates"></a>パイプライン テンプレートをエクスポートする
-
-テンプレートは次の呼び出しで取得できます。
-
-    https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Templates/{templateId}
-
-### <a name="export-pipeline-data-sources"></a>パイプライン データ ソースをエクスポートする
-
-データ ソースは次の呼び出しで取得できます。
-
-    https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
-
-## <a name="delete-assets-in-the-designer"></a>デザイナーでアセットを削除する
-
-実験で作成したデザイナーで、個々のアセットを削除します。
-
-1. デザイナーに移動します。
-
-    ![アセットを削除する](./media/how-to-export-delete-data/delete-experiment.png)
-
-1. 一覧で、削除する個々のパイプラインのドラフトを選択します。
-
-1. **[削除]** を選択します。
-
-### <a name="delete-datasets-in-the-designer"></a>デザイナーでデータセットを削除する
-
-デザイナーでデータセットを削除するには、Azure portal または Storage Explorer を使用して接続ストレージ アカウントに移動し、そこでデータセットを削除します。 デザイナーでデータセットの登録を解除した場合、ストレージから削除されるのは参照ポイントだけです。
+| Type | 関数呼び出し | Notes | 
+| --- | --- | --- |
+| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#delete-delete-dependent-resources-false--no-wait-false-) | `delete-dependent-resources` を使用して削除を連鎖させる |
+| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#delete--) | | 
+| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#delete--) | |
+| `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py) | | 
 

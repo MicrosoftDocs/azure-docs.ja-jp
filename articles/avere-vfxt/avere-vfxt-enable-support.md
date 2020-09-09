@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT のサポートを有効にする - Azure
-description: Avere vFXT for Azure からのサポートのアップロードを有効にする方法
+description: Avere vFXT for Azure のクラスターに関するサポート データの自動アップロードを有効にして、サポートによる顧客サービスの提供に役立てる方法について説明します。
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: d12bbd1708ceb948aea982f9ed1ab36879e3751c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75415367"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272730"
 ---
 # <a name="enable-support-uploads"></a>サポートのアップロードを有効にする
 

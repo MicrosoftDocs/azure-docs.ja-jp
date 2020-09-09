@@ -3,17 +3,17 @@ title: Azure Batch 分析
 description: 一括分析のトピックには、Batch サービスのリソースで使用できるイベントとアラートに関するリファレンス情報が含まれています。
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: b07d362c3cc2d3b086cf0a82325025604907a393
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726861"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958108"
 ---
 # <a name="batch-analytics"></a>一括分析
 一括分析のトピックには、Batch サービスのリソースで使用できるイベントとアラートに関するリファレンス情報が含まれています。
 
-Batch 診断ログの有効化と利用の詳細については「[Azure Batch 診断ログ](https://azure.microsoft.com/documentation/articles/batch-diagnostics/)」を参照してください。
+Batch 診断ログの有効化と利用の詳細については「[Azure Batch 診断ログ](./batch-diagnostics.md)」を参照してください。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 

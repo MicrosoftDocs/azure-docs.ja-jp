@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: 780d3ab5047bff321d0c554880ba2995bcf25524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d2ef02ea77ad2bca37f1e397b784d06481538fa
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70102910"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264013"
 ---
 # <a name="scaling-media-processing-overview"></a>メディア処理のスケール設定の概要 
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 このページでは、メディア処理のスケールを設定する方法と、スケール設定を行う理由の概要について説明します。 
 
 ## <a name="overview"></a>概要
@@ -59,13 +62,13 @@ Media Services アカウントは、メディア処理タスクを処理する�
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [ポータル](media-services-portal-scale-media-processing.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [REST](/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 
 > [!NOTE]
-> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)」を参照してください。 <br/>
+> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](./media-services-java-how-to-use.md)」を参照してください。 <br/>
 > Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowAzure パッケージを検索してください。  
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
@@ -73,4 +76,3 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

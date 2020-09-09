@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721253"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process での個々の共同作成者のタスク
@@ -55,7 +55,7 @@ ms.locfileid: "76721253"
 
 リポジトリをローカルで操作し、共有チームとプロジェクトのリポジトリに変更内容をプッシュするには、まず、ローカル コンピューターにリポジトリをコピーまたは*クローン*します。 
 
-1. Azure DevOps で、*https:\//\<サーバー名>/\<組織名>/\<チーム名>* (例: **https:\//dev.azure.com/DataScienceUnit/MyTeam**) にあるチームのプロジェクトまとめページに移動します。
+1. Azure DevOps で、*https:\//\<server name>/\<organization name>/\<team name>* (例: **https:\//dev.azure.com/DataScienceUnit/MyTeam**) にあるチームのプロジェクトまとめページに移動します。
    
 1. 左側のナビゲーションで **[リポジトリ]** を選択し、ページの上部で、クローンするリポジトリを選択します。
    

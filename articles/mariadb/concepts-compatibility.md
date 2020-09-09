@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79c91fff837e3869eda0f45ce892e63b6611a1d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107208"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Azure Database for MariaDB と互換性がある MariaDB ドライバーと管理ツール
 
@@ -23,7 +23,7 @@ Azure Database for MariaDB では、MariaDB サーバーのコミュニティ �
 
 目標は、MariaDB ドライバーの 3 つの最新バージョンと、常に MariaDB ドライバーの機能と使いやすさを向上させ続けているオープン ソース コミュニティの作成者の努力をサポートすることです。 テストによって Azure Database for MariaDB 10.2 と互換性のあることがわかっているドライバーの一覧を次の表に示します。
 
-**[ドライバー]** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **注**
+**[ドライバー]** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ**
 ---|---|---|---|---
 PHP | https://secure.php.net/downloads.php | 5.5、5.6、7.x | 5.3 | SSL MySQLi との PHP 7.0 接続では、接続文字列に MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT を追加します。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO の設定: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` オプションを false に設定します。
 .NET | [GitHub 上の MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget のインストール パッケージ](https://www.nuget.org/packages/MySqlConnector/) | 0.27 以降 | 0.26.5 以前 |
@@ -37,7 +37,7 @@ Java | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 �
 
 互換性の利点は、データベース管理ツールにも拡張されています。 データベース操作がユーザーのアクセス許可の範囲内で動作する限り、既存のツールは引き続き Azure Database for MariaDB でも機能します。 テストによって Azure Database for MariaDB 10.2 と互換性のあることがわかっている 3 つの一般的なデータベース管理ツールの一覧を次の表に示します。
 
-| | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降**
+| アクション | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降**
 ---|---|---|---
 作成、更新、読み取り、書き込み、削除 | X | X | X
 SSL 接続 | X | X | X

@@ -6,12 +6,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7a524d34fcf8e629914d4fbc4669caada210866b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666997"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019190"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
 
@@ -21,9 +22,9 @@ Azure Cosmos DB は、ネイティブの [JSON](https://www.json.org) データ 
 
 ## <a name="storing-datetimes"></a>DateTimes の格納
 
-Azure Cosmos DB は、string、number、boolean、null、array、object などの JSON 型をサポートしています。 DateTime 型は直接サポートされません。 現在、Azure Cosmos DB では、日付のローカリゼーションはサポートされません。 そのため、DateTimes を文字列として格納する必要があります。 Azure Cosmos DB の DateTime 文字列に推奨される形式は、ISO 8601 UTC 標準に準拠した `YYYY-MM-DDThh:mm:ss.fffffffZ` です。 Azure Cosmos DB のすべての日付を UTC として格納することをお勧めします。 日付文字列をこの形式に変換すると、日付を辞書式で並べ替えることができます。 UTC 以外の日付が格納されている場合は、クライアント側でロジックを処理する必要があります。 現地の DateTime を UTC に変換するには、オフセットが JSON のプロパティとして認識および格納されている必要があります。また、クライアントでオフセットを使用して UTC の DateTime 値を計算できます。
+Azure Cosmos DB は、string、number、boolean、null、array、object などの JSON 型をサポートしています。 DateTime 型は直接サポートされません。 現在、Azure Cosmos DB では、日付のローカリゼーションはサポートされません。 そのため、DateTimes を文字列として格納する必要があります。 Azure Cosmos DB の DateTime 文字列に推奨される形式は、ISO 8601 UTC 標準に準拠した `yyyy-MM-ddTHH:mm:ss.fffffffZ` です。 Azure Cosmos DB のすべての日付を UTC として格納することをお勧めします。 日付文字列をこの形式に変換すると、日付を辞書式で並べ替えることができます。 UTC 以外の日付が格納されている場合は、クライアント側でロジックを処理する必要があります。 現地の DateTime を UTC に変換するには、オフセットが JSON のプロパティとして認識および格納されている必要があります。また、クライアントでオフセットを使用して UTC の DateTime 値を計算できます。
 
-DateTime 文字列をフィルターとして使用する範囲クエリは、DateTime 文字列がすべて UTC にあり、長さが同じ場合にのみサポートされます。 Azure Cosmos DB では、[GetCurrentDateTime](sql-query-getcurrentdatetime.md) システム関数は、`YYYY-MM-DDThh:mm:ss.fffffffZ` の形式で現在の UTC 日時 ISO 8601 文字列値を返します。
+DateTime 文字列をフィルターとして使用する範囲クエリは、DateTime 文字列がすべて UTC にあり、長さが同じ場合にのみサポートされます。 Azure Cosmos DB では、[GetCurrentDateTime](sql-query-getcurrentdatetime.md) システム関数は、`yyyy-MM-ddTHH:mm:ss.fffffffZ` の形式で現在の UTC 日時 ISO 8601 文字列値を返します。
 
 ほとんどのアプリケーションは、次に示す理由から、DateTime の既定の文字列表現を使用できます。
 

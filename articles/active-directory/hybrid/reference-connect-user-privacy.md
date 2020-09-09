@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60455786"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279569"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
 
@@ -43,7 +43,7 @@ Azure AD Connect 同期サーバーは、次のユーザーのプライバシー
 
 Azure AD Connect のお客様は、ユーザー データを削除するときに次のガイドラインに従ってください。
 1.  Azure AD Connect のインストール ログ ファイルが置かれているフォルダーの内容を、定期的に (少なくとも 48 時間おきに) 削除する
-2.  この製品では、イベント ログが作成されることもあります。  イベント ログについて詳しくは、[こちらのドキュメント](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx)をご覧ください。
+2.  この製品では、イベント ログが作成されることもあります。  イベント ログについて詳しくは、[こちらのドキュメント](/windows/win32/wes/windows-event-log)をご覧ください。
 
 個人に関するデータは、その個人のデータが元々置かれていたソース システムから削除されると、Azure AD Connect データベースからも自動的に削除されます。 GDPR に準拠するために、管理者が特定の操作を行う必要はありません。  ただし、Azure AD Connect のデータは、少なくとも 2 日おきにデータ ソースと同期される必要があります。
 

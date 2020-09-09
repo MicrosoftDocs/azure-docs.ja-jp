@@ -1,20 +1,17 @@
 ---
 title: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 description: このチュートリアルでは、トピックとサブスクリプションからメッセージを送受信する方法と、.NET を使用してフィルター ルールを追加および使用する方法について説明します。
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 01/21/2020
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 811777fff28cf56d7732461924b14e9e4b619c0c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76310120"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000174"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -55,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 名前空間とトピック/サブスクリプションがプロビジョニングされ、必要な資格情報を持っている場合、サブスクリプションに対してフィルター ルールを作成し、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
 
-### <a name="send-and-receive-messages"></a>メッセージを送受信する
+## <a name="send-and-receive-messages"></a>メッセージを送受信する
 
 コードを実行するには、次の手順を実行します。
 
@@ -413,7 +410,7 @@ private async Task ReceiveMessages(string subscription)
 Service Bus の公開/サブスクライブ機能の使用方法の詳細については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [PowerShell とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-powershell.md)
+> [Event Grid を使用したイベントへの応答](service-bus-to-event-grid-integration-example.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

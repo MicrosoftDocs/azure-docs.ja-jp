@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662266"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321260"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 
 この記事では、Azure リソースのカスタム メトリックを REST API 経由で Azure Monitor メトリック ストアに送信する方法について説明します。 メトリックが Azure Monitor に送信されたら、それらを使用して、標準メトリックを使用して実行できるすべての処理を実行できます。 例として、グラフ作成、アラート設定、他の外部ツールへの転送などです。  
 
 >[!NOTE]  
->REST API では、Azure リソースのカスタム メトリックの送信のみを許可します。 異なる環境またはオンプレミスにあるリソースのメトリックを送信するには、[Application Insights](../../azure-monitor/app/api-custom-events-metrics.md) を使用できます。    
+>REST API では、Azure リソースのカスタム メトリックの送信のみを許可します。 異なる環境またはオンプレミスにあるリソースのメトリックを送信するには、[Application Insights](../app/api-custom-events-metrics.md) を使用できます。    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>メトリックを出力するためのサービス プリンシパルを作成および承認する 
@@ -93,7 +93,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 1. サブスクリプションまたはリソース グループに対して、Azure リソースとしてメトリックを発行することはできません。 
 1. 出力からの時間が 20 分を超えたメトリックはストアに保存できません。 メトリック ストアは、アラート設定やリアルタイムでのグラフ作成に最適化されています。 
 2. ディメンション名の数は値と一致する必要があり、逆も同様です。 値を確認してください。 
-2. カスタム メトリックをサポートしていないリージョンに対してメトリックを出力している可能性があります。 「[サポートされているリージョン](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions)」を参照してください。 
+2. カスタム メトリックをサポートしていないリージョンに対してメトリックを出力している可能性があります。 「[サポートされているリージョン](./metrics-custom-overview.md#supported-regions)」を参照してください。 
 
 
 
@@ -117,5 +117,5 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
  
 ## <a name="next-steps"></a>次のステップ
-- [カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)の詳細を確認します。
+- [カスタム メトリック](./metrics-custom-overview.md)の詳細を確認します。
 

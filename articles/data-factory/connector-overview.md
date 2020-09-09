@@ -6,20 +6,21 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 07/16/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 334d5b5113dba17c5abc2b4f2520bde0d16e4c06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007447"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory コネクタの概要
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory は、コピー、データ フロー、ルックアップ、メタデータの取得、および削除アクティビティを使用して、次のデータ ストアおよび形式をサポートします。 各データ ストアをクリックすると、サポートされている機能と対応する構成の詳細を確認できます。
+Azure Data Factory では、コピー、データ フロー、ルックアップ、メタデータの取得、および削除アクティビティを介して、次のデータ ストアおよび形式がサポートされます。 各データ ストアをクリックすると、サポートされている機能と対応する構成の詳細を確認できます。
 
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
@@ -27,7 +28,18 @@ Azure Data Factory は、コピー、データ フロー、ルックアップ、
 
 ## <a name="supported-file-formats"></a>サポートされるファイル形式
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)]
+Azure Data Factory では次のファイル形式がサポートされます。 形式ベースの設定については、各記事を参照してください。
+
+- [Avro 形式](format-avro.md)
+- [バイナリ形式](format-binary.md)
+- [Common Data Model 形式](format-common-data-model.md)
+- [区切りテキスト形式](format-delimited-text.md)
+- [差分形式](format-delta.md)
+- [Excel 形式](format-excel.md)
+- [JSON 形式](format-json.md)
+- [ORC 形式](format-orc.md)
+- [Parquet 形式](format-parquet.md)
+- [XML 形式](format-xml.md)
 
 ## <a name="next-steps"></a>次のステップ
 

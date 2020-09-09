@@ -4,12 +4,12 @@ description: Service Fabric クラスターでの証明書ベースの認証と�
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426967"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259031"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric クラスターでの X.509 証明書ベースの認証
 
@@ -180,7 +180,7 @@ Service Fabric クラスターのセキュリティ設定では、原則とし�
 
 前述のように、証明書検証には、常に証明書のチェーンの構築と評価という意味が含まれます。 CA によって発行された証明書の場合、この明らかにシンプルな OS API 呼び出しでは通常、発行元 PKI のさまざまなエンドポイントへのいくつかの送信呼び出し、応答のキャッシュなどを必要とします。 Service Fabric クラスターでの証明書検証呼び出しの普及により、PKI のエンドポイントでの何らかの問題によって、クラスターの可用性が低下したり、完全な機能停止が発生したりする可能性があります。 送信呼び出しを抑制することはできません (この詳細については、下記の FAQ のセクションを参照してください) が、次の設定を使用して、CRL 呼び出しの失敗によって発生する検証エラーをマスクすることができます。
 
-  * CrlCheckingFlag - 'Security' セクションで、UINT に変換される文字列。 この設定の値は、Service Fabric によって、チェーン構築の動作を変更して、証明書チェーンの状態エラーをマスクするために使用されます。これは、'dwFlags' パラメーターとして Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 呼び出しに渡され、この関数で受け入れられる任意の有効なフラグの組み合わせに設定できます。 0 の値によって、Service Fabric ランタイムで信頼状態エラーを強制的に無視させますが、これは推奨されません。その使用によってセキュリティが著しく侵害されることがあるためです。 既定値は 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) です。
+  * CrlCheckingFlag - 'Security' セクションで、UINT に変換される文字列。 この設定の値は、Service Fabric によって、チェーン構築の動作を変更して、証明書チェーンの状態エラーをマスクするために使用されます。これは、'dwFlags' パラメーターとして Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 呼び出しに渡され、この関数で受け入れられる任意の有効なフラグの組み合わせに設定できます。 0 の値によって、Service Fabric ランタイムで信頼状態エラーを強制的に無視させますが、これは推奨されません。その使用によってセキュリティが著しく侵害されることがあるためです。 既定値は 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) です。
 
   使用するタイミング: 完全に形成されていないか、証明書をサポートするための適切な公開キー インフラストラクチャがない自己署名証明書または開発者証明書を使用したローカル テストの場合。 エアギャップ環境で、PKI 間の移行時に軽減策として使用することもできます。
 
@@ -257,7 +257,7 @@ Nk: {P:{TP=A}, V:{TP=A}}、ここで:
 別の記事で、証明書の管理と Service Fabric クラスターへのプロビジョニングのトピックを取り上げます。
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>トラブルシューティングとよく寄せられる質問
-Service Fabric クラスターで認証に関連した問題のデバッグは簡単ではありませんが、次のヒントや助言が役に立つものと考えます。 調査を開始する最も簡単な方法は、クラスターのノード (必ずしも兆候を示しているノードだけではなく、稼働しているが近隣のいずれかのノードに接続できないノードも) の Service Fabric イベント ログを調べることです。 Windows では、重要なイベントは通常、'Applications and Services Logs\Microsoft-ServiceFabric\Admin' または 'Operational' チャネルの下にそれぞれ記録されます。 場合によっては、[CAPI2 ログを有効にして](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)、証明書検証、CRL/CTL の取得などに関する詳細をキャプチャすることが役に立つ場合があります。(再現を完了したら、それを無効にすることを忘れないでください。それは詳細になりすぎる可能性があります)。
+Service Fabric クラスターで認証に関連した問題のデバッグは簡単ではありませんが、次のヒントや助言が役に立つものと考えます。 調査を開始する最も簡単な方法は、クラスターのノード (必ずしも兆候を示しているノードだけではなく、稼働しているが近隣のいずれかのノードに接続できないノードも) の Service Fabric イベント ログを調べることです。 Windows では、重要なイベントは通常、'Applications and Services Logs\Microsoft-ServiceFabric\Admin' または 'Operational' チャネルの下にそれぞれ記録されます。 場合によっては、[CAPI2 ログを有効にして](/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)、証明書検証、CRL/CTL の取得などに関する詳細をキャプチャすることが役に立つ場合があります。(再現を完了したら、それを無効にすることを忘れないでください。それは詳細になりすぎる可能性があります)。
 
 認証の問題が発生しているクラスターで現れる一般的な兆候は: 
   - ノードがダウンしている/循環している 
@@ -300,5 +300,4 @@ Service Fabric クラスターで認証に関連した問題のデバッグは�
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    解決するには、CAPI1 (例:"Microsoft Enhanced RSA and AES Cryptographic Provider") プロバイダーを使用してクラスター証明書を再作成します。 暗号化プロバイダーの詳細については、「[暗号化プロバイダーについて](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers)」を参照してください
-
+    解決するには、CAPI1 (例:"Microsoft Enhanced RSA and AES Cryptographic Provider") プロバイダーを使用してクラスター証明書を再作成します。 暗号化プロバイダーの詳細については、「[暗号化プロバイダーについて](/windows/win32/seccertenroll/understanding-cryptographic-providers)」を参照してください

@@ -9,10 +9,10 @@ ms.date: 01/22/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: ebc23ce4238c736442fbc4507e858876f9192fd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76021103"
 ---
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>IoT Hub への Azure Storage アカウントの関連付け

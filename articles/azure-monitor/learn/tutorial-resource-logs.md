@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78269190"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505841"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>チュートリアル:Azure リソースからリソース ログを収集して分析する
 
@@ -86,7 +86,7 @@ Log Analytics ワークスペースからデータを取得するには、Kusto 
    
     ![ログ](media/tutorial-resource-logs/logs.png)
 
-4. 例で示されているサービスでは、**AzureDiagnostics** テーブルにリソース ログが書き込まれますが、他のサービスでは他のテーブルに書き込むことができます。 さまざまな Azure サービスで使用されるテーブルについては、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/diagnostic-logs-schema.md)」を参照してください。
+4. 例で示されているサービスでは、**AzureDiagnostics** テーブルにリソース ログが書き込まれますが、他のサービスでは他のテーブルに書き込むことができます。 さまざまな Azure サービスで使用されるテーブルについては、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/resource-logs-schema.md)」を参照してください。
 
     > [!NOTE]
     > AzureDiagnostics テーブルには、複数のサービスからリソース ログが書き込まれます。 Azure Monitor のメニューから Log Analytics を開始した場合は、`ResourceProvider` 列に `where` ステートメントを追加して、特定のサービスを指定する必要があります。 リソースのメニューから Log Analytics を開始すると、スコープはこのリソースのレコードのみに設定されるので、この列は必要ありません。 クエリのサンプルについては、サービスのドキュメントを参照してください。

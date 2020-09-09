@@ -3,19 +3,19 @@ title: 概要 - Azure Logic Apps のデプロイを自動化する
 description: Azure Logic Apps のデプロイを自動化するための Azure Resource Manager テンプレートについて説明します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.date: 08/17/2020
+ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641829"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871464"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
-ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)に展開することができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
+ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)にデプロイすることができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
 
 たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を使用すると効果的です。 異なる接続文字列を受け取るテンプレート パラメーターを宣言した後、それらの文字列を別々の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納することができます。 こうすることで、テンプレートを更新して再デプロイしなくても、これらの値を変更することができます。 パスワードやシークレットのような機密性の高いまたはセキュリティ保護が必要なパラメーター値を使用しているシナリオでは、これらの値を [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) に格納し、パラメーター ファイルによってこれらの値を取得することができます。 ただし、このようなシナリオでは、再デプロイを行って現在の値を取得することをお勧めします。
 
@@ -39,7 +39,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 * このトピックのサンプルで使用されている[完全なテンプレート](#full-example-template)
 * GitHub にある[サンプルのクイックスタート ロジック アプリ テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
 
-ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)」をご覧ください。
+ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](/azure/templates/microsoft.logic/allversions)」をご覧ください。
 
 <a name="template-structure"></a>
 
@@ -237,7 +237,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ## <a name="template-resources"></a>Template resources
 
-テンプレートには `resources` オブジェクトがあります。これは、[ロジック アプリのリソース定義](#logic-app-resource-definition)、[接続リソースの定義](#connection-resource-definitions)、ロジック アプリのデプロイに必要なその他のリソースなど、Azure で作成およびデプロイする各リソースの定義を含んだ配列です。
+テンプレートには `resources` オブジェクトがあります。これは、[ロジック アプリのリソース定義](#logic-app-resource-definition)、[接続リソースの定義](#connection-resource-definitions)、ロジック アプリのデプロイに必要なその他すべてのリソースなど、Azure で作成してデプロイする各リソースの定義が格納された配列です。
 
 ```json
 {
@@ -264,6 +264,12 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 > [!NOTE]
 > テンプレートには複数のロジック アプリのリソース定義を含めることができるため、すべてのロジック アプリ リソースで同じ Azure リソース グループが指定されていることを確認してください。 Visual Studio を使ってテンプレートを Azure リソース グループにデプロイすると、どのロジック アプリを開くかを尋ねるメッセージが表示されます。 また、Azure リソース グループ プロジェクトには複数のテンプレートを含めることができるので、メッセージが表示されたら、正しいパラメーター ファイルを選択していることを確認してください。
+
+<a name="view-resource-definitions"></a>
+
+### <a name="view-resource-definitions"></a>リソース定義を表示する
+
+Azure リソース グループ内のすべてのリソースのリソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
 
 テンプレート リソースとその属性に関する一般的な情報については、次のトピックをご覧ください。
 
@@ -319,7 +325,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ロジック アプリのリソース定義に固有の属性は次のとおりです。
 
-| 属性 | 必須 | Type | 説明 |
+| 属性 | 必須 | 種類 | 説明 |
 |-----------|----------|------|-------------|
 | `state` | はい | String | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
 | `integrationAccount` | いいえ | Object | 企業間 (B2B) のシナリオで成果物を格納する統合アカウントをロジック アプリで使用している場合、このオブジェクトには、統合アカウントの ID を指定する `id` 属性が含まれます。 |
@@ -328,7 +334,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 | `accessControl` | いいえ | Object | 要求トリガーまたは実行履歴の入出力に対する IP アクセスの制限など、ロジック アプリのセキュリティ属性を指定します。 詳細については、[ロジック アプリへのアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)に関するページをご覧ください。 |
 ||||
 
-ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)」をご覧ください。
+ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](/azure/templates/microsoft.logic/allversions)」をご覧ください。
 
 <a name="workflow-definition-parameters"></a>
 
@@ -568,7 +574,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ## <a name="connection-resource-definitions"></a>接続リソースの定義
 
-ロジック アプリで[マネージド コネクタ](../connectors/apis-list.md)を使って他のサービスやシステムへの接続を作成および使用している場合、テンプレートの `resources` オブジェクトには、それらの接続のリソース定義が含まれます。
+ロジック アプリで[マネージド コネクタ](../connectors/apis-list.md)を使って他のサービスやシステムへの接続を作成および使用している場合、テンプレートの `resources` オブジェクトには、それらの接続のリソース定義が含まれます。 ロジック アプリ内から接続を作成しますが、接続は独自のリソース定義を持つ個別の Azure リソースです。 これらの接続リソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
 
 ```json
 {
@@ -910,7 +916,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 
 ### <a name="authenticate-connections"></a>接続の認証
 
-デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。 ただし、引き続き OAuth 接続を承認し、[資格情報を認証する](../active-directory/develop/authentication-scenarios.md)ための有効なアクセス トークンを生成する必要があります。 詳しくは、「[Authorize OAuth connections (OAuth 接続の承認)](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)」をご覧ください。
+デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。 ただし、引き続き OAuth 接続を承認し、[資格情報を認証する](../active-directory/develop/authentication-vs-authorization.md)ための有効なアクセス トークンを生成する必要があります。 詳しくは、「[Authorize OAuth connections (OAuth 接続の承認)](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)」をご覧ください。
 
 一部の接続では、[Azure AD に登録](../active-directory/develop/quickstart-register-app.md)されているロジック アプリの接続を承認するために、Azure Active Directory (Azure AD) [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の使用がサポートされています。 たとえば、この Azure Data Lake 接続リソース定義は、サービス プリンシパルの情報を扱うテンプレート パラメーターを参照する方法と、テンプレートでこれらのパラメーターを宣言する方法を示しています。
 
@@ -1006,14 +1012,14 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 サービス プリンシパルの使用方法について詳しくは、次のトピックをご覧ください。
 
 * [Azure Portal を使用してサービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Azure PowerShell を使用して Azure サービス プリンシパルを作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Azure PowerShell を使用して Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)
 * [Azure PowerShell を使用して証明書でのサービス プリンシパルを作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>
 
 ## <a name="references-to-parameters"></a>パラメーターの参照
 
-テンプレート パラメーターを参照するには、デプロイ時に評価されるテンプレート式と[テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用できます。 テンプレート式では、角かっこ ( **[]** ) を使用します。
+テンプレート パラメーターを参照するには、デプロイ時に評価されるテンプレート式と[テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用できます。 テンプレート式では、角かっこ (**[]**) を使用します。
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
@@ -1248,4 +1254,4 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ロジック アプリ テンプレートを作成する](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+> [Logic Apps テンプレートの作成](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)

@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Service の概要
 description: Azure Blockchain Service の概要です
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80529153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076955"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -59,7 +59,7 @@ Azure Log Analytics により、ユーザーは、Quorum 台帳に関するロ�
 
 ## <a name="develop-using-familiar-development-tools"></a>使い慣れた開発ツールを使用して開発する
 
-オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Development Kit 拡張機能を使用すると、開発者は、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドとデプロイのすべてを 1 つの IDE から実行できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain 開発キット](https://aka.ms/vscodebcextension)のページと [Azure Blockchain 開発キットのユーザー ガイド](https://aka.ms/vscodebcextensionwiki)を参照してください。
+オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain 開発キット](https://aka.ms/vscodebcextension)のページと [Azure Blockchain 開発キットのユーザー ガイド](https://aka.ms/vscodebcextensionwiki)を参照してください。
 
 ## <a name="publish-blockchain-data"></a>ブロックチェーン データの公開
 
@@ -69,13 +69,13 @@ Azure Blockchain Service の Blockchain Data Manager は、Azure Blockchain Serv
 
 Azure Blockchain の最新情報については、[Azure Blockchain のブログ](https://azure.microsoft.com/blog/topics/blockchain/)をご覧ください。Azure Blockchain エンジニアリング チームからの情報やブロックチェーン サービスの内容に関する最新の情報を把握することができます。
 
-製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)でアイデアに投票してください。
+製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)で投稿またはアイデアに投票してください。
 
 ### <a name="community-support"></a>コミュニティ サポート
 
 Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
 
-* [Azure Blockchain MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure Blockchain Service に関する Microsoft Q&A 質問ページ](/answers/topics/azure-blockchain-service.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 

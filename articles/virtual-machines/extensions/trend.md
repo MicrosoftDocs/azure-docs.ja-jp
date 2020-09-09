@@ -1,25 +1,19 @@
 ---
 title: VM に Trend Micro Deep Security をインストールする
 description: この記事では、Azure でクラシック デプロイ モデルを使用して作成された VM で Trend Micro のセキュリティをインストールして構成する方法について説明します。
-services: virtual-machines-windows
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919925"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288519"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 
@@ -38,7 +32,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 [Azure ポータル](https://portal.azure.com) を使用すると、**Marketplace** のイメージを使用して仮想マシンを作成するときに、Trend Micro のセキュリティ拡張機能をインストールできます。 仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
 
-この **Marketplace** のエントリを使用すると、仮想マシンの設定を支援するウィザードが起動します。 ウィザードの 3 番目のパネルの **[設定]** ブレードを使用して、Trend Micro のセキュリティ拡張機能をインストールします。  一般的な手順については、「[Windows を実行する仮想マシンを Azure ポータルで作成する](../windows/classic/tutorial.md)」をご覧ください。
+この **Marketplace** のエントリを使用すると、仮想マシンの設定を支援するウィザードが起動します。 ウィザードの 3 番目のパネルの **[設定]** ブレードを使用して、Trend Micro のセキュリティ拡張機能をインストールします。  一般的な手順については、「[Windows を実行する仮想マシンを Azure ポータルで作成する](../windows/quick-create-portal.md)」をご覧ください。
 
 ウィザードの **[設定]** ブレードに移動して、次の手順を実行します。
 
@@ -57,15 +51,17 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>既存の VM に Deep Security Agent をインストールする
 既存の VM にエージェントをインストールするには、次の条件が必要です。
 
-* Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。 インストールした Azure PowerShell のバージョンは、 **Get-Module azure | format-table version** コマンドを使用して確認できます。 最新バージョンの説明とダウンロード用リンクについては、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 `Add-AzureAccount`を使用して Azure サブスクリプションにログインします。
+* Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。 インストールした Azure PowerShell のバージョンは、 **Get-Module azure | format-table version** コマンドを使用して確認できます。 最新バージョンの説明とダウンロード用リンクについては、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。 `Add-AzureAccount`を使用して Azure サブスクリプションにログインします。
 * VM エージェントがターゲットの仮想マシンにインストールされていること。
 
 最初に、VM エージェントがインストールされていることを確認します。 クラウド サービス名と仮想マシン名を入力して、管理者レベルの Azure PowerShell のコマンド プロンプトで、次のコマンドを実行します。 引用符内のすべての文字 (< および > を含む) を置き換えます。
 
-    $CSName = "<cloud service name>"
-    $VMName = "<virtual machine name>"
-    $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
-    write-host $vm.VM.ProvisionGuestAgent
+```azurepowershell
+$CSName = "<cloud service name>"
+$VMName = "<virtual machine name>"
+$vm = Get-AzureVM -ServiceName $CSName -Name $VMName
+write-host $vm.VM.ProvisionGuestAgent
+```
 
 クラウド サービスや仮想マシンの名前がわからない場合は、**Get-AzureVM** を実行します。現在のサブスクリプションのすべての仮想マシンの情報が表示されます。
 
@@ -73,9 +69,11 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 VM エージェントがインストールされている場合は、次のコマンドを実行します。
 
-    $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
+```azurepowershell
+$Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
-    Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>次のステップ
 エージェントがインストールされると、起動までに数分かかります。 起動後、仮想マシン上で Deep Security をアクティブにする必要があります。これは Deep Security Manager で管理できるようにするためです。 詳しくは、次の記事をご覧ください。
@@ -96,4 +94,4 @@ VM エージェントがインストールされている場合は、次のコ�
 
 <!-- Link references -->
 [Windows Server が実行されている仮想マシンにログオンする方法]:../windows/classic/connect-logon.md
-[Azure VM 拡張機能とその機能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Azure VM 拡張機能とその機能]: features-windows.md

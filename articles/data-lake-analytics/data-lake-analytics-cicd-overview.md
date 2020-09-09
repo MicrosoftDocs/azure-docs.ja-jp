@@ -2,20 +2,20 @@
 title: Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法
 description: Azure Data Lake Analytics の継続的インテグレーションと継続的デプロイをセットアップする方法について説明します。
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60333862"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496119"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -35,7 +35,7 @@ U-SQL プロジェクトは、Microsoft Build Engine (MSBuild) で対応する�
 
 U-SQL プロジェクトのビルド タスクを設定する前に、U-SQL プロジェクトの最新バージョンを使用していることを確認します。 エディターで U-SQL プロジェクト ファイルを開き、次のインポート項目があることを確認します。
 
-```   
+```xml
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
 <Import Project="UsqlSDKBuild.targets" Condition="Exists('UsqlSDKBuild.targets')" />
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
@@ -44,7 +44,7 @@ U-SQL プロジェクトのビルド タスクを設定する前に、U-SQL プ�
 ない場合、プロジェクトを移行する 2 つのオプションがあります。
 
 - オプション 1: 古いインポート項目を前述の項目に変更します。
-- オプション 2: 古いプロジェクトを Azure Data Lake Tools for Visual Studio で開きます。 2\.3.3000.0 よりも新しいバージョンを使用します。 古いプロジェクト テンプレートが自動的に最新バージョンにアップグレードされます。 2\.3.3000.0 より新しいバージョンで作成された新しいプロジェクトでは、新しいテンプレートが使用されます。
+- オプション 2:古いプロジェクトを Azure Data Lake Tools for Visual Studio で開きます。 2\.3.3000.0 よりも新しいバージョンを使用します。 古いプロジェクト テンプレートが自動的に最新バージョンにアップグレードされます。 2\.3.3000.0 より新しいバージョンで作成された新しいプロジェクトでは、新しいテンプレートが使用されます。
 
 ### <a name="get-nuget"></a>NuGet を入手する
 
@@ -66,14 +66,14 @@ U-SQL プロジェクトの U-SQL スクリプトには、U-SQL データベー�
 詳細については、[U-SQL データベース プロジェクト](data-lake-analytics-data-lake-tools-develop-usql-database.md)に関するページを参照してください。
 
 >[!NOTE]
->DROP ステートメントでは、意図しない削除の問題が発生することがあります。 DROP ステートメントを有効にするには、MSBuild 引数を明示的に指定する必要があります。 **AllowDropStatement** では、アセンブリのドロップやテーブル値関数のドロップなど、非データ関連の DROP 操作を有効にします。 **AllowDataDropStatement** では、テーブルのドロップやスキーマのドロップなど、データ関連の DROP 操作を有効にします。 AllowDataDropStatement を使用する前に、AllowDropStatement を有効にする必要があります。
+> DROP ステートメントは、誤削除の原因となる場合があります。 DROP ステートメントを有効にするには、MSBuild 引数を明示的に指定する必要があります。 **AllowDropStatement** では、アセンブリのドロップやテーブル値関数のドロップなど、非データ関連の DROP 操作を有効にします。 **AllowDataDropStatement** では、テーブルのドロップやスキーマのドロップなど、データ関連の DROP 操作を有効にします。 AllowDataDropStatement を使用する前に、AllowDropStatement を有効にする必要があります。
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>MSBuild コマンド ラインを使用して U-SQL プロジェクトをビルドする
 
 まずプロジェクトを移行し、NuGet パッケージを入手します。 次に、以下の引数を追加して標準の MSBuild コマンド ラインを呼び出し、U-SQL プロジェクトをビルドします。 
 
-``` 
+```console
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
@@ -83,7 +83,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 * **USQLTargetType=Merge or SyntaxCheck**:
     * **Merge**。 マージ モードでコードビハインド ファイルをコンパイルします。 たとえば、 **.cs**、 **.py**、 **.r** などのファイルです。 結果のユーザー定義コード ライブラリを U-SQL スクリプトにインライン展開します。 たとえば、dll バイナリ、Python、R などのコードです。
     * **SyntaxCheck**。 SyntaxCheck モードでは、まずコードビハインド ファイルが U-SQL スクリプトにマージされます。 次に、U-SQL スクリプトがコンパイルされ、コードが検証されます。
-* **DataRoot=\<DataRoot パス>** 。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
+* **DataRoot=\<DataRoot path>** 。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
 * **EnableDeployment=true** または **false**。 EnableDeployment は、ビルド処理中に参照されている U-SQL データベースをデプロイできるかどうかを示します。 U-SQL データベース プロジェクトを参照し、U-SQL スクリプトでデータベース オブジェクトを使用する場合は、このパラメーターを **true** に設定します。
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Azure Pipelines を使用した継続的インテグレーション
@@ -100,7 +100,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
     ![U-SQL プロジェクトの CI/CD MSBuild 変数を定義する](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
-    ```
+    ```console
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
@@ -109,9 +109,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 ビルドの実行後、U-SQL プロジェクト内のすべてのスクリプトがビルドされ、`USQLProjectName.usqlpack` という名前の zip ファイルに出力されます。 プロジェクトのフォルダー構造は、zip 形式のビルド出力でも維持されます。
 
 > [!NOTE]
->
 > 各 U-SQL スクリプトの分離コード ファイルは、インライン ステートメントとしてスクリプトのビルド出力にマージされます。
->
 
 ## <a name="test-u-sql-scripts"></a>U-SQL スクリプトのテスト
 
@@ -230,6 +228,10 @@ Function Main()
 Main
 ```
 
+>[!NOTE]
+> `Submit-AzDataLakeAnalyticsJob` および `Wait-AzDataLakeAnalyticsJob` コマンドは、どちらも Azure Resource Manager フレームワークに含まれる Azure Data Lake Analytics の Azure PowerShell コマンドレットです。 Azure PowerShell がインストールされているワークステーションが必要です。 その他のコマンドと例については、[コマンド一覧](https://docs.microsoft.com/powershell/module/Az.DataLakeAnalytics/?view=azps-4.3.0)を参照してください。
+>
+
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Azure Data Factory を通じた U-SQL ジョブのデプロイ
 
 Azure Pipelines から直接、U-SQL ジョブを送信することができます。 また、ビルドしたスクリプトを Azure Data Lake Store または Azure Blob Storage にアップロードし、[スケジュールされたジョブを Azure Data Factory を使用して実行する](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)こともできます。
@@ -315,7 +317,7 @@ NuGet パッケージ参照を追加するには、Visual Studio のソリュー
 
 U-SQL データベース プロジェクトをビルドするには、標準の MSBuild コマンド ラインを呼び出して、U-SQL SDK NuGet パッケージ参照を追加引数として渡します。 次の例を参照してください。 
 
-```
+```console
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
 ```
 
@@ -325,8 +327,7 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
 コマンド ラインに加えて、Visual Studio Build または MSBuild タスクを使用して、Azure Pipelines で U-SQL データベース プロジェクトをビルドできます。 ビルド タスクを設定するには、ビルド パイプラインに NuGet 復元タスクと MSBuild タスクという 2 つのタスクを追加します。
 
-   ![U-SQL プロジェクトの CI/CD MSBuild タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
-
+   ![U-SQL プロジェクトの CI/CD MSBuild タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
 1. `Azure.DataLake.USQL.SDK` を含むソリューションで参照する NuGet パッケージを取得する NuGet 復元タスクを追加して、MSBuild で U-SQL 言語ターゲットを見つけられるようにします。 手順 2 で直接 MSBuild 引数サンプルを使用する場合は、 **[詳細設定]**  >  **[宛先ディレクトリ]** を `$(Build.SourcesDirectory)/packages` に設定します。
 
@@ -334,12 +335,12 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
 2. 次の例に示すように、Visual Studio ビルド ツールまたは MSBuild タスクで MSBuild 引数を設定します。 または、Azure Pipelines ビルド パイプラインで、これらの引数の変数を定義することもできます。
 
-   ![U-SQL データベース プロジェクトの CI/CD MSBuild 変数を定義する](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
+   ![U-SQL データベース プロジェクトの CI/CD MSBuild 変数を定義する](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png)
 
-   ```
+   ```console
    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
    ```
- 
+
 ### <a name="u-sql-database-project-build-output"></a>U-SQL データベース プロジェクトのビルド出力
 
 U-SQL データベース プロジェクトのビルド出力は、名前に `.usqldbpack` というサフィックスのついた U-SQL データベース展開パッケージです。 `.usqldbpack` パッケージは、DDL フォルダー内の単一の U-SQL スクリプトにすべての DDL ステートメントを含む zip ファイルです。 また、一時フォルダー内にあるアセンブリ用のすべての **.dlls** と追加のファイルが含まれています。
@@ -369,7 +370,7 @@ Azure Pipelines でデータベース デプロイ タスクを設定するに�
     <#
         This script is used for getting dependencies and SDKs for U-SQL database deployment.
         PowerShell command line support for deploying U-SQL database package(.usqldbpack file) will come soon.
-        
+
         Example :
             GetUSQLDBDeploymentSDK.ps1 -AzureSDK "AzureSDKFolderPath" -DBDeploymentTool "DBDeploymentToolFolderPath"
     #>
@@ -459,7 +460,7 @@ Azure Pipelines でデータベース デプロイ タスクを設定するに�
 |Package|デプロイする U-SQL データベース デプロイ パッケージのパス。|null|true|
 |データベース|デプロイまたは作成されるデータベース名。|master|false|
 |LogFile|ログ用のファイルのパス。 既定では標準出力 (コンソール) です。|null|false|
-|LogLevel|ログ レベル: 詳細、標準、警告、エラー。|LogLevel.Normal|false|
+|LogLevel|ログ レベル:詳細、標準、警告、エラー。|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>ローカル デプロイのパラメーター
 

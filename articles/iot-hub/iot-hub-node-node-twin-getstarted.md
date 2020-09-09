@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.custom: mqtt
-ms.openlocfilehash: e65c781bd5cb62bdaa693b854caafd5f91fd497e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: 874e9dd0454fa4f0a0877d949a34058baa711b83
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732276"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420721"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>デバイス ツインの使用 (Node.js)
 
@@ -167,7 +167,7 @@ ms.locfileid: "81732276"
 
 3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
 
-4. 次のコードを **ReportConnectivity.js** ファイルに追加します。 `{device connection string}` を、「**IoT ハブに新しいデバイスを登録する**」で [myDeviceId](#register-a-new-device-in-the-iot-hub) デバイス ID を作成するときにコピーしておいたデバイス接続文字列に置き換えます。
+4. 次のコードを **ReportConnectivity.js** ファイルに追加します。 `{device connection string}` を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で **myDeviceId** デバイス ID を作成するときにコピーしておいたデバイス接続文字列に置き換えます。
 
     ```javascript
         'use strict';

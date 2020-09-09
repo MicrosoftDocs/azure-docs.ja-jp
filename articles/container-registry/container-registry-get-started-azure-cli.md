@@ -2,14 +2,14 @@
 title: クイックスタート - レジストリの作成 - Azure CLI
 description: Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 ms.topic: quickstart
-ms.date: 01/22/2019
-ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/12/2020
+ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
+ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74455155"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486546"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用したプライベート コンテナー レジストリの作成
 
@@ -33,12 +33,13 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
+このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリのサービス レベル][container-registry-skus]に関するページを参照してください。
 
 [az acr create][az-acr-create] コマンドを使用して ACR インスタンスを作成します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 次の例では、*myContainerRegistry007* を使用します。 これを一意の値に更新します。
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry007 --sku Basic
 ```
 
 レジストリが作成されると、出力は次のようになります。
@@ -64,14 +65,14 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry007 --s
 }
 ```
 
-出力の `loginServer` をメモしておいてください。これは、完全修飾レジストリ名です (すべて小文字)。 このクイック スタートの残りの部分では、コンテナー レジストリ名のプレースホルダーとして `<acrName>` を使用します。
+出力の `loginServer` をメモしておいてください。これは、完全修飾レジストリ名です (すべて小文字)。 以降このクイックスタートでは、コンテナー レジストリ名のプレースホルダーとして `<registry-name>` を、レジストリのログイン サーバー名のプレースホルダーとして `<login-server>` を使用します。
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
 コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 そのためには、[az acr login][az-acr-login] コマンドを使用します。
 
 ```azurecli
-az acr login --name <acrName>
+az acr login --name <registry-name>
 ```
 
 このコマンドが完了すると、`Login Succeeded` というメッセージが返されます。
@@ -83,7 +84,7 @@ az acr login --name <acrName>
 次の例は、レジストリ内のリポジトリを一覧表示します。
 
 ```azurecli
-az acr repository list --name <acrName> --output table
+az acr repository list --name <registry-name> --output table
 ```
 
 出力:
@@ -97,7 +98,7 @@ hello-world
 次の例は、**hello-world** リポジトリのタグを一覧表示します。
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository hello-world --output table
+az acr repository show-tags --name <registry-name> --repository hello-world --output table
 ```
 
 出力:
@@ -123,7 +124,10 @@ az group delete --name myResourceGroup
 このクイック スタートでは、Azure CLI を使って Azure Container Registry を作成し、レジストリにコンテナー イメージをプッシュしてから、レジストリからイメージをプルして実行しました。 Azure Container Registry のチュートリアルに進んで、ACR についての理解を深めましょう。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry のチュートリアル][container-registry-tutorial-quick-task]
+> [Azure Container Registry のチュートリアル][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Azure Container Registry タスクのチュートリアル][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -143,3 +147,4 @@ az group delete --name myResourceGroup
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

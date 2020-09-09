@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 のセキュリティの概要 | Microsoft Docs
-description: Azure Data Lake Storage Gen1 が、セキュリティが強化されたビッグ データ ストアであることを学習します
+description: 認証、承認、ネットワーク分離、データ保護、監査など、Azure Data Lake Storage Gen1 のセキュリティ機能について説明します。
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086574"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192825"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 のセキュリティ
 
@@ -39,14 +39,14 @@ Azure サブスクリプションはそれぞれ、Azure Active Directory のイ
 
 Azure Active Directory の認証によってユーザーが Data Lake Storage Gen1 にアクセスできるようになった後は、承認によって Data Lake Storage Gen1 のアクセス許可を制御します。 Data Lake Storage Gen1 では、アカウント関連アクティビティとデータ関連アクティビティの承認が次のように区別されます。
 
-* [ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC)
+* アカウント管理のための [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)
 * ストア内のデータにアクセスするための POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>RBAC を使用したアカウント管理
 
 Data Lake Storage Gen1 には既定で基本のロールが 4 つ定義されています。 これらのロールでは、Azure portal、PowerShell コマンドレット、REST API を使用して Data Lake Storage Gen1 アカウントに実行できる操作が異なります。 所有者ロールと共同作成者ロールは、アカウントに対してさまざまな管理機能を実行できます。 アカウント管理データを表示するだけのユーザーには閲覧者ロールを割り当てることができます。
 
-![RBAC のロール](./media/data-lake-store-security-overview/rbac-roles.png "RBAC のロール")
+![Azure ロール](./media/data-lake-store-security-overview/rbac-roles.png "Azure ロール")
 
 ロールはアカウント管理のために割り当てられるものですが、一部のロールはデータへのアクセスにも影響しますので注意してください。 ユーザーがファイル システムに対して実行できる操作へのアクセス制御には、ACL を使用する必要があります。 以下の表は、既定のロールの管理権限とデータ アクセス権限の概要を示したものです。
 

@@ -4,22 +4,25 @@
   items:
     - name: Azure Blueprint とは
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: クイックスタート
   expanded: true
   items:
     - name: ブループリントの作成 - ポータル
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: ブループリントの作成 - PowerShell
+      href: ./create-blueprint-portal.md
+    - name: ブループリントの作成 - Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: ブループリントの作成 - Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: ブループリントの作成 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
     - name: ブループリントの作成 - Resource Manager テンプレート
       displayName: 'assign, compliance, resource manager'
-      href: ../../azure-resource-manager/templates/deploy-to-subscription.md??toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json
+      href: ../../azure-resource-manager/templates/deploy-to-subscription.md?toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json#azure-blueprints
 - name: チュートリアル
   items:
     - name: ブループリントのサンプルからの作成
@@ -34,16 +37,8 @@
       displayName: 'list, examples'
       href: ./samples/index.md
     - name: Azure セキュリティ ベンチマーク
-      items:
-        - name: 概要
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/index.md
-        - name: コントロール マッピング
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/control-mapping.md
-        - name: デプロイ手順
-          displayName: 'standards, azure, benchmark'
-          href: ./samples/azure-security-benchmark/deploy.md
+      displayName: 'standards, azure, benchmark'
+      href: ./samples/azure-security-benchmark.md
     - name: Australian Government ISM PROTECTED
       items:
         - name: コントロール マッピング
@@ -61,16 +56,8 @@
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure Foundations Benchmark
-      items:
-        - name: 概要
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/index.md
-        - name: 推奨マッピング
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/control-mapping.md
-        - name: デプロイ手順
-          displayName: 'standards, cis'
-          href: ./samples/cis-azure-1.1.0/deploy.md
+      displayName: 'standards, cis'
+      href: ./samples/cis-azure-1-1-0.md
     - name: DoD 影響レベル 4
       items:
         - name: 概要
@@ -82,6 +69,17 @@
         - name: デプロイ手順
           displayName: 'standards, DoD, IL4'
           href: ./samples/dod-impact-level-4/deploy.md
+    - name: DoD 影響レベル 5
+      items:
+        - name: 概要
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/index.md
+        - name: コントロール マッピング
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/deploy.md
     - name: FedRAMP Moderate
       items:
         - name: 概要
@@ -104,17 +102,9 @@
         - name: デプロイ手順
           displayName: 'standards, fedramp, high'
           href: ./samples/fedramp-h/deploy.md
-    - name: HIPAA HITRUST
-      items:
-        - name: 概要
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/index.md
-        - name: コントロール マッピング
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/control-mapping.md
-        - name: デプロイ手順
-          displayName: 'standards, HIPAA HITRUST'
-          href: ./samples/HIPAA-HITRUST/deploy.md
+    - name: HIPAA HITRUST 9.2
+      displayName: 'standards, HIPAA HITRUST'
+      href: ./samples/hipaa-hitrust-9-2.md
     - name: IRS 1075
       items:
         - name: 概要
@@ -170,17 +160,12 @@
         - name: デプロイ手順
           displayName: 'standards, Media'
           href: ./samples/media/deploy.md
-    - name: NIST SP 800-53 Rev4
-      items:
-        - name: 概要
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/index.md
-        - name: コントロール マッピング
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/control-mapping.md
-        - name: デプロイ手順
-          displayName: 'standards, nist, 800-53, rev 4'
-          href: ./samples/nist-sp-800-53-rev4/deploy.md
+    - name: NIST SP 800-53 R4
+      displayName: 'standards, nist, 800-53, rev 4'
+      href: ./samples/nist-sp-800-53-r4.md
+    - name: NIST SP 800-171 R2
+      displayName: 'standards, nist, 800-171, rev 2'
+      href: ./samples/nist-sp-800-171-r2.md
     - name: PCI-DSS v3.2.1
       items:
         - name: 概要
@@ -268,8 +253,10 @@
   href: ./troubleshoot/general.md
 - name: リファレンス
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
-      href: '/powershell/module/az.blueprint/#blueprint'
+      href: /powershell/module/az.blueprint/#blueprint
     - name: Azure SDK for .NET
       href: /dotnet/api/overview/azure/blueprints/management
     - name: REST
@@ -285,7 +272,7 @@
     - name: GitHub - Azure Blueprints サンプル
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Azure Blueprints 用の Microsoft Q&A
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: ガバナンスに関する YouTube チャンネル
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday - Azure Blueprints の概要

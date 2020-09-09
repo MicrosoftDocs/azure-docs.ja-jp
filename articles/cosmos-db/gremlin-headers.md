@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390858"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin サーバーの応答ヘッダー
 この記事では、要求の実行時に Cosmos DB Gremlin サーバーから呼び出し元に返されるヘッダーについて説明します。 これらのヘッダーは、要求パフォーマンスのトラブルシューティング、Cosmos DB サービスとネイティブに統合されるアプリケーションの構築、カスタマー サポートの簡素化に役立ちます。
@@ -107,6 +107,6 @@ try {
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Cosmos DB の HTTP 状態コード](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [Azure Cosmos DB の一般的な REST 応答ヘッダー](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+* [Azure Cosmos DB の HTTP 状態コード](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
+* [Azure Cosmos DB の一般的な REST 応答ヘッダー](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [TinkerPop Graph Driver Provider の要件]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

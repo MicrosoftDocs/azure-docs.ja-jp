@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71211873"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223314"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
@@ -36,21 +34,21 @@ ms.locfileid: "71211873"
 
 1. MainStoryboard_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
 
-   * **ラベル**: "Push to User with Notification Hubs"
-   * **ラベル**: "InstallationId"
-   * **ラベル**: "User"
+   * **ラベル**:"Push to User with Notification Hubs"
+   * **ラベル**:"InstallationId"
+   * **ラベル**:"User"
    * **テキスト フィールド**: "User"
-   * **ラベル**: "Password"
+   * **ラベル**:"Password"
    * **テキスト フィールド**: "Password"
    * **ボタン**: "Login"
 
      この時点で、ストーリーボードは次のようになります。
 
-     ![][0]
+     ![コンポーネントが追加された MainStoryboard_iPhone.storyboard アプリのスクリーンショット。][0]
 
 2. アシスタント エディターで、すべての switched コントロールのアウトレットを作成してそれらを呼び出し、テキスト フィールドとビュー コントローラー (デリゲート) を接続して、**ログイン** ボタンの**アクション**を作成します。
 
-    ![][1]
+    ![MainStoryboard_iPhone.storyboard アプリのアシスタント エディターのスクリーンショット][1]
 
     この時点で、BreakingNewsViewController.h ファイルには次のコードが含まれています。
 
@@ -124,7 +122,7 @@ ms.locfileid: "71211873"
     これにより、要求のデバイス トークンが設定されます。
 
    > [!NOTE]
-   > この時点では、このメソッドに他のコードは存在しません。 [Notification Hubs の使用の開始](notification-hubs-ios-apple-push-notification-apns-get-started.md)に関するチュートリアルを完了したときに追加された `registerNativeWithDeviceToken` メソッドへの呼び出しが既にある場合は、その呼び出しをコメント解除するか、削除する必要があります。
+   > この時点では、このメソッドに他のコードは存在しません。 「[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)」チュートリアルを行ったときに追加した `registerNativeWithDeviceToken` メソッドへの呼び出しが既にある場合は、その呼び出しをコメント解除するか、削除する必要があります。
 
 8. `PushToUserAppDelegate.m` ファイルに次のハンドラー メソッドを追加します。
 
@@ -258,4 +256,4 @@ ms.locfileid: "71211873"
 
 <!-- URLs. -->
 [Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[Notification Hubs の使用]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Notification Hubs の使用]: ios-sdk-get-started.md

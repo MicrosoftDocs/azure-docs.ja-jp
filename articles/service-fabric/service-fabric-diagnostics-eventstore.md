@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645737"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247644"
 ---
 # <a name="eventstore-overview"></a>EventStore の概要
 
@@ -46,7 +46,7 @@ EventStore サービスでは、クラスター内のエンティティとエン
 * パーティション レプリカ: `partitionId` によって示される特定のパーティション内のすべてのレプリカ/インスタンスからのイベント
 * パーティション レプリカ: `replicaId` および `partitionId` によって示される特定のレプリカ/インスタンスのイベント
 
-API について詳しくは、[EventStore API のリファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)に関するページをご覧ください。
+API について詳しくは、[EventStore API のリファレンス](/rest/api/servicefabric/sfclient-index-eventsstore)に関するページをご覧ください。
 
 EventStore サービスは、クラスター内のイベントを関連付ける機能も備えています。 EventStore サービスは、相互に影響を与えた可能性がある異なるエンティティから同時に書き込まれたイベントを調べてそれらのイベントをリンクし、クラスター内で発生したアクティビティの原因の識別に役立てることができます。 たとえば、いずれかのアプリケーションが、誘発された変更を伴わず正常に動作しなくなった場合、EventStore で、プラットフォームによって公開されている他のイベントも調べて、これを `Error` または `Warning` イベントと関連付けることができます。 これは、より迅速な障害の検出と根本原因の分析に役立ちます。
 
@@ -126,5 +126,5 @@ Azure クラスターをバージョン 6.5 以降にアップグレードした
 * EventStore API の概要 - [Azure Service Fabric クラスターでの EventStore API の使用](service-fabric-diagnostics-eventstore-query.md)
 * EventStore によって提供されるイベントの一覧の詳細 - [Service Fabric イベント](service-fabric-diagnostics-event-generation-operational.md)
 * Service Fabric での監視と診断の概要 - [Service Fabric の監視と診断に関するページ](service-fabric-diagnostics-overview.md)
-* API 呼び出しの完全な一覧の表示 - [EventStore REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* API 呼び出しの完全な一覧の表示 - [EventStore REST API リファレンス](/rest/api/servicefabric/sfclient-index-eventsstore)
 * クラスターの監視についての詳細を表示 - [クラスターとプラットフォームの監視](service-fabric-diagnostics-event-generation-infra.md)。

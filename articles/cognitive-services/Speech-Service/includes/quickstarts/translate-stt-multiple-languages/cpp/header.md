@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 9534d277dc65534c0f65a23ae2f249fc70ae12b0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 35a79ad13cc9f7178c183fec6cb96e6abc1c8a07
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466539"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102810"
 ---
-すぐに使用できるようにするには、GitHub ですべての <a href="https://aka.ms/speech/github-cpp">Speech SDK C++ サンプル</a>を表示またはダウンロードします。 それ以外の場合は、始めましょう。
+GitHub で、すべての <a href="https://aka.ms/speech/github-cpp">Speech SDK C++ サンプル</a>を表示またはダウンロードできます。 

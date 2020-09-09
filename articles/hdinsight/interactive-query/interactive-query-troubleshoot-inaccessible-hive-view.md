@@ -30,7 +30,7 @@ ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:check
 
 Hive からZookeeper への接続を確立できないことがあります。これにより、Hive ビューを起動できません。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 1. Zookeeper サービスが正常であることを確認します。
 

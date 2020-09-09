@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418084"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533412"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "81418084"
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) からデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、[「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)の詳細手順、比較、およびガイダンスを参照してください。
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な概要、比較、およびガイダンスが記載された「[SAP data integration using Azure Data Factory whitepaper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)」 (「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー) を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -38,10 +38,11 @@ SAP Business Warehouse のデータは、オープン ハブを介して、サ�
 
 具体的には、この SAP Business Warehouse オープン ハブ コネクタは以下をサポートします。
 
-- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)** 。
+- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)** 。 このコネクタでは、SAP BW4/HANA はサポートされていません。
 - オープン ハブ宛先の、DSO、InfoCube、MultiProvider、DataSource などがその下にある可能性があるローカル テーブルを介したデータのコピー。
 - 基本認証を使用したデータのコピー。
-- アプリケーション サーバーへの接続。
+- SAP アプリケーション サーバーまたは SAP メッセージ サーバーへの接続。
+- RFC を介したデータの取得。
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW オープン ハブの統合 
 
@@ -110,6 +111,10 @@ SAP Business Warehouse オープン ハブのリンクされたサービスで�
 | type | type プロパティは、次のように設定する必要があります:**SapOpenHub** | はい |
 | server | SAP BW インスタンスが存在するサーバーの名前。 | はい |
 | systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | はい |
+| messageServer | SAP メッセージ サーバーのホスト名。<br/>SAP メッセージ サーバーへの接続に使用されます。 | いいえ |
+| messageServerService | メッセージ サーバーのサービス名またはポート番号。<br/>SAP メッセージ サーバーへの接続に使用されます。 | いいえ |
+| systemId | テーブルが配置されている SAP システムの ID。<br/>SAP メッセージ サーバーへの接続に使用されます。 | いいえ |
+| logonGroup | SAP システムのログオン グループ。<br/>SAP メッセージ サーバーへの接続に使用されます。 | いいえ |
 | clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | はい |
 | language | SAP システムで使用する言語。 | いいえ (既定値は **EN**)|
 | userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |

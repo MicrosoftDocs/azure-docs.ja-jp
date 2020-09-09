@@ -2,16 +2,17 @@
 title: Azure Application Insights における分散トレース | Microsoft Docs
 description: OpenCensus プロジェクトでパートナーシップを使用した分散トレースに対する Microsoft のサポートに関する情報を提供します
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 5c1e6f3f6c4ee0abe1a25d5a9182f6e4e1a9d0f4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892259"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929229"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 
@@ -21,9 +22,9 @@ ms.locfileid: "80892259"
 
 ここで分散トレースの出番です。  
 
-分散トレースは、スローされたシンプルなパフォーマンス プロファイラーを加えた、最新のクラウドとマイクロサービス アーキテクチャ向けの呼び出し履歴に相当するものです。 Azure Monitor では、分散トレース データを使用するために 2 つのエクスペリエンスを提供します。 1 つ目は[トランザクション診断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)ビューで、時間ディメンションが追加された呼び出し履歴に似ています。 トランザクション診断ビューでは、1 つのトランザクション/要求に表示が提供され、要求ごとに基づいて信頼性の問題とパフォーマンスのボトルネックの根本原因を見つけるのに役立ちます。
+分散トレースは、スローされたシンプルなパフォーマンス プロファイラーを加えた、最新のクラウドとマイクロサービス アーキテクチャ向けの呼び出し履歴に相当するものです。 Azure Monitor では、分散トレース データを使用するために 2 つのエクスペリエンスを提供します。 1 つ目は[トランザクション診断](./transaction-diagnostics.md)ビューで、時間ディメンションが追加された呼び出し履歴に似ています。 トランザクション診断ビューでは、1 つのトランザクション/要求に表示が提供され、要求ごとに基づいて信頼性の問題とパフォーマンスのボトルネックの根本原因を見つけるのに役立ちます。
 
-Azure Monitor では、[アプリケーション マップ](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) ビューも提供されており、システムでどのようにやりとりするかのトポロジ ビュー、および平均パフォーマンスとエラー率の内容を示すために、多くのトランザクションを集計します。 
+Azure Monitor では、[アプリケーション マップ](./app-map.md) ビューも提供されており、システムでどのようにやりとりするかのトポロジ ビュー、および平均パフォーマンスとエラー率の内容を示すために、多くのトランザクションを集計します。 
 
 ## <a name="how-to-enable-distributed-tracing"></a>分散トレースを有効にする方法
 
@@ -33,16 +34,16 @@ Azure Monitor では、[アプリケーション マップ](https://docs.microso
 
 .NET、.NET Core、Java、Node.js、JavaScript 用の Application Insights エージェントや SDK はすべて、分散トレースをネイティブにサポートしています。 各 Application Insights SDK をインストールおよび構成する手順については、以下から入手できます。
 
-* [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
-* [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [.NET](../learn/quick-monitor-portal.md)
+* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [Java](./java-in-process-agent.md)
+* [Node.js](../learn/nodejs-quick-start.md)
+* [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
-適切な Application Insights SDK がインストールおよび構成されると、トレース情報は、SDK 依存関係の自動コレクターによって一般的なフレームワーク、ライブラリ、テクノロジが自動収集されます。 サポートされるテクノロジの完全なリストは、「[依存関係の自動収集](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)」で利用できます。
+適切な Application Insights SDK がインストールおよび構成されると、トレース情報は、SDK 依存関係の自動コレクターによって一般的なフレームワーク、ライブラリ、テクノロジが自動収集されます。 サポートされるテクノロジの完全なリストは、「[依存関係の自動収集](./auto-collect-dependencies.md)」で利用できます。
 
- さらに、任意のテクノロジは、[TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 上の [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) への呼び出しによって手動で追跡できます。
+ さらに、任意のテクノロジは、[TelemetryClient](./api-custom-events-metrics.md) 上の [TrackDependency](./api-custom-events-metrics.md) への呼び出しによって手動で追跡できます。
 
 ## <a name="enable-via-opencensus"></a>OpenCensus を使用して有効にする
 
@@ -55,5 +56,6 @@ OpenCensus Web サイトには、[Python](https://opencensus.io/api/python/trace
 ## <a name="next-steps"></a>次のステップ
 
 * [OpenCensus Python の使用ガイド](https://opencensus.io/api/python/trace/usage.html)
-* [アプリケーション マップ](./../../azure-monitor/app/app-map.md)
-* [エンドツーエンドのパフォーマンスの監視](./../../azure-monitor/learn/tutorial-performance.md)
+* [アプリケーション マップ](./app-map.md)
+* [エンドツーエンドのパフォーマンスの監視](../learn/tutorial-performance.md)
+

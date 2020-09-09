@@ -1,25 +1,14 @@
 ---
 title: AMQP 1.0 での Azure Service Bus と .NET | Microsoft Docs
 description: この記事では、AMQP (Advanced Messaging Queuing Protocol) を使用して .NET アプリケーションから Azure Service Bus を使用する方法について説明します。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 8157efac5ff1fc135659a84b4f4825ff36307480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297665"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067105"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 
@@ -27,7 +16,7 @@ AMQP 1.0 は、Service Bus パッケージ バージョン 2.1 以降でサポ�
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
 
-既定では、Service Bus .NET クライアント ライブラリは SOAP ベースの専用プロトコルを使ってサービス バス サービスと通信します。 既定のプロトコルの代わりに AMQP 1.0 を使用するには、次のセクションの説明に従って、Service Bus 接続文字列を明示的に構成する必要があります。 AMQP 1.0 を使用する場合、アプリケーション コードはこの変更以外は変更されません。
+既定では、Service Bus .NET クライアント ライブラリは AMQP プロトコルを使ってサービス バス サービスと通信します。 次のセクションで示すように、トランスポートの種類として AMQP を明示的に指定することもできます。 
 
 現在のリリースでは、AMQP を使用する際にサポートされていない API 機能がいくつかあります。 これらのサポートされていない機能については、「[動作の違い](#behavioral-differences)」をご覧ください。 そのほか、AMQP を使用すると意味が変わる詳細な構成設定もいくつかあります。
 
@@ -120,7 +109,7 @@ Service Bus .NET API の動作は、AMQP を使用する場合と既定のプロ
 * [AMQP 1.0 プロトコル ガイド]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
@@ -128,4 +117,3 @@ Service Bus .NET API の動作は、AMQP を使用する場合と既定のプロ
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [AMQP 1.0 プロトコル ガイド]: service-bus-amqp-protocol-guide.md
-

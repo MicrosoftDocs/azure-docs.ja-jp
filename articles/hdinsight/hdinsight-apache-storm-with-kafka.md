@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494366"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963531"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -406,7 +406,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
    1. 次の情報に従って、 **[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
 
-      | 設定 | Value |
+      | 設定 | 値 |
       | --- | --- |
       | サブスクリプション | お使いの Azure サブスクリプション |
       | Resource group | リソースが含まれるリソース グループ。 |
@@ -500,7 +500,9 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
     次のテキストのような値が返されます。
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > クラスターに 2 つ以上の Zookeeper ホストがある場合でも、すべてのホストの完全な一覧をクライアントに提供する必要はありません。 1 つまたは 2 つで十分です。
@@ -509,9 +511,11 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
 3. プロジェクトのルートにある `dev.properties` ファイルを編集します。 このファイルの該当する行に、__Kafka__ クラスターの Broker ホストと Zookeeper ホストの情報を追加します。 次の例は、前の手順のサンプルの値を使用して構成されています。
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
     > `hdfs.url` エントリは、Azure ストレージ アカウントを使用するクラスター用に構成されています。 Data Lake Storage を使用する Storm クラスターでこのトポロジを使用するには、この値を `wasb` から `adl` に変更します。
@@ -590,11 +594,13 @@ Kafka では、"_トピック_" にデータが格納されます。 Storm ト�
 
     出力は次のテキストのようになります。
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. ファイルの内容を表示するには、次のコマンドを使用します。 `filename.txt` をファイル名に置き換えます。
 
@@ -604,13 +610,19 @@ Kafka では、"_トピック_" にデータが格納されます。 Storm ト�
 
     次のテキストはファイルの内容の一例です。
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > 87 年前
+    >
+    > 白雪姫と 7 人の小人
+    >
+    > 私の本質は 2 才児です
+    >
+    > 白雪姫と 7 人の小人
+    >
+    > 私の本質は 2 才児です
+    >
+    > 87 年前
+    >
+    > 1 日 1 個のリンゴで医者いらず
 
 ## <a name="stop-the-topologies"></a>トポロジの停止
 

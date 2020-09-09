@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373290"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509105"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows STOP エラー - #0x000000EF "Critical Process Died"
 
@@ -27,13 +27,13 @@ ms.locfileid: "80373290"
 
 ## <a name="symptom"></a>症状
 
-[起動診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を利用して VM のスクリーンショットを表示すると、スクリーンショットにエラー *#0x000000EF* と共に *「Critical Process Died」* (重要なプロセスが停止しました) というメッセージが表示されます。
+[起動診断](./boot-diagnostics.md)を利用して VM のスクリーンショットを表示すると、スクリーンショットにエラー *#0x000000EF* と共に *「Critical Process Died」* (重要なプロセスが停止しました) というメッセージが表示されます。
 
 !["問題が発生したため、PC を再起動する必要があります。 エラー情報を収集しています。再起動できます。 (##% 完了) 詳細については、次のエラーを後からオンラインで検索してください:0x000000EF"](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>原因
 
-通常、これは、起動時に障害が発生した重要なシステム プロセスが原因です。 重要なプロセスの問題の詳細については、[バグチェック 0xEF:CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died) に関するページをご覧ください。
+通常、これは、起動時に障害が発生した重要なシステム プロセスが原因です。 重要なプロセスの問題の詳細については、[バグチェック 0xEF:CRITICAL_PROCESS_DIED](/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died) に関するページをご覧ください。
 
 ## <a name="solution"></a>解決策
 
@@ -49,7 +49,7 @@ ms.locfileid: "80373290"
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [VM 修復コマンドの手順 1 から 3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) を使用して、修復 VM を準備します。
+1. [VM 修復コマンドの手順 1 から 3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) を使用して、修復 VM を準備します。
 2. リモート デスクトップ接続を使用し、修復 VM に接続します。
 
 ### <a name="fix-any-os-corruption"></a>OS の破損がある場合は修正する
@@ -61,7 +61,7 @@ ms.locfileid: "80373290"
 
    * < BOOT DISK DRIVE > は修復 VM のブート ボリューム (通常は "C:") であり、< BROKEN DISK DRIVE > は破損した VM から接続されているディスクのドライブ文字になります。 不等号記号と、その中に含まれるテキスト (例: "< text >") を適切な文字に置き換えます。
 
-3. 次に、[VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、VM を再構成し、起動するかどうか確認します。
+3. 次に、[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構成し、起動するかどうか確認します。
 4. それでも VM が起動しない場合は、引き続きメモリ ダンプ ファイルの収集を行います。
 
 ### <a name="collect-the-memory-dump-file"></a>メモリ ダンプ ファイルを収集する
@@ -70,7 +70,7 @@ SFC の実行後も問題が解決しない場合は、問題の原因を特定�
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>新しい修復 VM に OS ディスクを接続する
 
-1. [VM 修復コマンドの手順 1 から 3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) を使用して、新しい修復 VM を準備します。
+1. [VM 修復コマンドの手順 1 から 3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) を使用して、新しい修復 VM を準備します。
 2. リモート デスクトップ接続を使用し、修復 VM に接続します。
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
@@ -128,4 +128,4 @@ OS ディスクに十分な領域がない場合、メモリ ダンプ ファイ
 
 ### <a name="rebuild-the-original-vm"></a>元の VM を再構築する
 
-[VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、VM を再構成します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構成します。

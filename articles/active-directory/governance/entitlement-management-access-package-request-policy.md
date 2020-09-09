@@ -3,25 +3,25 @@ title: Azure AD エンタイトルメント管理でアクセス パッケージ
 description: Azure Active Directory エンタイトルメント管理でアクセス パッケージの要求と承認の設定を変更する方法を説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/30/2020
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0eae4f53283c33f3d7372a606f8c0a3ac27d079
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edf38013efb14e412fbcd43e06dcf17e61c3bc4a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655968"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798768"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求と承認の設定を変更する
 

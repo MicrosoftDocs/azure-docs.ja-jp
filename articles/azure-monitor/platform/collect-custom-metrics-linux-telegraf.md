@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186443"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207811"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -25,7 +25,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
  ![Telegraph エージェントの概要](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> カスタム メトリックは、すべてのリージョンでサポートされているわけではありません。 サポートされているリージョンについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions)の一覧を参照してください
+> カスタム メトリックは、すべてのリージョンでサポートされているわけではありません。 サポートされているリージョンについては、[こちら](./metrics-custom-overview.md#supported-regions)の一覧を参照してください
 
 ## <a name="send-custom-metrics"></a>カスタム メトリックを送信する 
 
@@ -127,7 +127,7 @@ sudo systemctl start telegraf
 
 ## <a name="additional-configuration"></a>追加構成 
 
-上記のチュートリアルは、少数の基本的な入力プラグインからメトリックを収集するように Telegraf エージェントを構成する方法に関する情報を示しています。Telegraf エージェントは 150 を超える入力プラグインをサポートしており、その一部は追加構成オプションをサポートしています。 InfluxData では、[サポートしているプラグインの一覧](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/)と[それらの構成方法](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/)に関する手順を公開しています。  
+上記のチュートリアルは、少数の基本的な入力プラグインからメトリックを収集するように Telegraf エージェントを構成する方法に関する情報を示しています。Telegraf エージェントは 150 を超える入力プラグインをサポートしており、その一部は追加構成オプションをサポートしています。 InfluxData では、[サポートしているプラグインの一覧](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/)と[それらの構成方法](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/)に関する手順を公開しています。  
 
 さらに、このチュートリアルでは、Telegraf エージェントを使用して、エージェントがデプロイされている VM に関するメトリックを出力しました。 Telegraf エージェントは、他のリソースのメトリックのコレクターとフォワーダーとして使用することもできます。 他の Azure リソースのメトリックを出力するようにエージェントを構成する方法については、「[Azure Monitor Custom Metrics Output for Telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)」(Telegraf による Azure Monitor へのカスタム メトリックの出力) を参照してください。  
 
@@ -137,6 +137,3 @@ sudo systemctl start telegraf
 
 ## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
-
-
-

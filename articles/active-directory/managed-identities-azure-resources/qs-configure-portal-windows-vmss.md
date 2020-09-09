@@ -3,24 +3,24 @@ title: Azure VMSS でマネージド ID を構成する - Azure AD
 description: Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d8944b55794412eb322697469933030e2fbb56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184033"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89262675"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -32,12 +32,12 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- この記事の管理操作を実行するアカウントには、次の Azure のロール ベースのアクセス制御の割り当てが必要です。
+- この記事の管理操作を実行するアカウントには、次の Azure ロールの割り当てが必要です。
 
     > [!NOTE]
     > Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
-    - 仮想マシン スケール セットからシステム割り当てマネージド ID を有効化および削除するための[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
+    - 仮想マシン スケール セットからシステム割り当てマネージド ID を有効化および削除するための[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 
@@ -105,5 +105,3 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 ## <a name="next-steps"></a>次のステップ
 
 - Azure portal を使用して、Azure 仮想マシン スケール セットのマネージド ID に[別の Azure リソースへのアクセス](howto-assign-access-portal.md)を許可します。
-
-

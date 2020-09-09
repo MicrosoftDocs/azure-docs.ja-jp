@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3afc19e93e400894a66e659d79d834b8a83132a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384153"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319288"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>クイック スタート:Java を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -25,8 +26,8 @@ ms.locfileid: "75384153"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
-* [Gson ライブラリ](https://github.com/google/gson)
+* [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)。
+* [Gson ライブラリ](https://github.com/google/gson)。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -50,7 +51,7 @@ ms.locfileid: "75384153"
    import com.google.gson.JsonParser;
    ```
 
-2. 新しいクラスで、API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. 新しいクラスで、API エンドポイント、サブスクリプション キー、および検索クエリのための変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
    ```java
    public class EntitySearch {
@@ -68,7 +69,7 @@ ms.locfileid: "75384153"
 
 ## <a name="construct-a-search-request-string"></a>検索要求の文字列を作成する
 
-1. JSON の `String` を返す `search()` という名前の関数を作成します。 検索クエリを URL でエンコードし、`&q=` でパラメーター文字列に追加します。 `?mkt=` を使用して文字列に市場を追加します。
+1. JSON の `String` を返す `search()` という名前の関数を作成します。 検索クエリを URL でエンコードし、`&q=` でパラメーター文字列に追加します。 `?mkt=` を使用してパラメーター文字列に市場を追加します。
  
 2. ホスト、パス、パラメーターの文字列を使用して、URL オブジェクトを作成します。
     
@@ -119,9 +120,9 @@ ms.locfileid: "75384153"
 
 ## <a name="format-the-json-response"></a>JSON 応答の書式を設定する
 
-1. JSON 応答の書式を設定するために、`prettify` という新しい関数を作成します。 新しい `JsonParser` を作成して、JSON テキストで `parse()` を呼び出し、それを JSON オブジェクトとして格納します。 
+1. JSON 応答の書式を設定するために、`prettify` という新しい関数を作成します。 新しい `JsonParser` を作成し、JSON テキストで `parse()` を呼び出し、それを JSON オブジェクトとして格納します。 
 
-2. Gson ライブラリを使用して新しい `GsonBuilder()` を作成し、`setPrettyPrinting().create()` を使用して JSON の書式を設定します。 次に、それを返します。    
+2. Gson ライブラリを使用して新しい `GsonBuilder()` を作成し、`setPrettyPrinting().create()` を使用して JSON の書式を設定し、それを返します。    
   
    ```java
    //...
@@ -136,7 +137,7 @@ ms.locfileid: "75384153"
 
 ## <a name="call-the-search-function"></a>検索関数を呼び出す
 
-1. プロジェクトの main メソッドから `search()` を呼び出し、`prettify()` を使用してテキストの書式を設定します。
+- プロジェクトの main メソッドから `search()` を呼び出し、`prettify()` を使用してテキストの書式を設定します。
     
     ```java
         public static void main(String[] args) {
@@ -220,5 +221,5 @@ ms.locfileid: "75384153"
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Entity Search API とは](../overview.md)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

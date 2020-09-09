@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.date: 05/07/2020
+ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886995"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714748"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -84,7 +84,6 @@ Azure Storage には何らかの[容量制限](../azure-resource-manager/managem
 
 > [!NOTE]  
 > クラスターが削除されると、既定の Hive metastore も削除されます。 クラスターを次回再作成するために metastore を保持するには、Azure Database や [Apache Oozie](https://oozie.apache.org/) などの外部メタデータ ストアを使用します。
-<!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>クラスターのジョブ エラーの分離
 
@@ -92,40 +91,7 @@ Azure Storage には何らかの[容量制限](../azure-resource-manager/managem
 
 ## <a name="quotas"></a>Quotas (クォータ)
 
-ターゲット クラスターの VM サイズ、スケール、種類を決定したら、サブスクリプションの現在のクォータの容量制限を確認します。 クォータ制限に達した場合は、新しいクラスターをデプロイできません。 または、ワーカー ノードを追加することによって、既存のクラスターをスケールアウトします。 唯一のクォータ制限は CPU コア クォータに関するものであり、サブスクリプションごとにリージョン レベルで存在します。 たとえば、ご利用のサブスクリプションは、米国東部リージョンにおいてコア数が 30 に制限されます。
-
-使用可能なコアを確認するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. HDInsight クラスターの **[概要]** ページに移動します。
-3. 左側のメニューで、 **[クォータ制限]** を選択します。
-
-   このページには、使用中のコア数、使用可能なコア数、およびコアの合計が表示されます。
-
-クォータの増加を要求する必要がある場合は、次の手順を行います。
-
-1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ページの左下にある **[ヘルプとサポート]** を選択します。
-1. **[新しいサポート リクエスト]** を選択します。
-1. **[新しいサポート要求]** ページの **[基本]** タブで、次のオプションを選択します。
-
-   - **問題の種類**: **サービスとサブスクリプションの制限 (クォータ)**
-   - **サブスクリプション**: 使用するサブスクリプション
-   - **クォータの種類**: **HDInsight**
-
-     ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
-
-1. **ソリューション >>** を選択します。
-1. **[詳細]** ページで、問題に関する説明を入力し、問題の重大度、希望する連絡方法、およびその他の必須フィールドを選択します。
-1. **確認と作成 >>** を選択します。
-1. **[確認および作成]** タブで、 **[作成]** を選択します。
-
-> [!NOTE]  
-> プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[ホワイト リストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
-
-[サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)できます。
-
-固定のクォータ制限がいくつか存在します。 たとえば、1 つの Azure サブスクリプションに許可されるコアの数は最大 10,000 です。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
+サブスクリプション クォータの管理の詳細については、[クォータの増加要求](quota-increase-request.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

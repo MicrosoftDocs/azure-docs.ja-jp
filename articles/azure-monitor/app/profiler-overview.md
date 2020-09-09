@@ -1,19 +1,19 @@
 ---
-title: Application Insights Profiler を使用した Azure の運用アプリのプロファイル
+title: Application Insights Profiler を使用した Azure のプロファイル運用アプリ
 description: フットプリントの小さいプロファイラーを使用して Web サーバー コードのホット パスを特定できます。
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671649"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499394"
 ---
-# <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure の運用アプリケーションのプロファイル
+# <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
 ## <a name="enable-application-insights-profiler-for-your-application"></a>アプリケーションに対して Application Insights Profiler を有効にする
 
 Azure Application Insights Profiler は、Azure の運用環境で稼働しているアプリケーションのパフォーマンス トレースを提供します。 Profiler は、ユーザーに悪影響を及ぼすことなく、自動的に大量のデータをキャプチャします。 Profiler を使用すると、特定の Web 要求の処理時に最も時間が長くなる "ホットな" コード パスを特定できます。 
@@ -30,7 +30,7 @@ Profiler を有効にして、トレースが表示されない場合は、[ト�
 
 ## <a name="view-profiler-data"></a>Profiler データを表示する
 
-Profiler がトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[ **[Profiler Settings]\(Profiler の設定\)** ウィンドウ](profiler-settings.md)の **[Profile Now]\(今すぐプロファイル\)** ボタンを選択します。 Profiler が実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
+Profiler がトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[ **[Profiler Settings]\(Profiler の設定\)** ウィンドウ](profiler-settings.md)の **[Profile Now]\(今すぐプロファイル\)** ボタンを選択します。 Profiler が実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
 
 アプリケーションでトラフィックを受け取り、Profiler にトレースをアップロードする時間があった場合、表示するトレースがあります。 このプロセスには 5 分から 10 分かかる可能性があります。 トレースを表示するには、 **[パフォーマンス]** ウィンドウで **[Take Actions]\(アクションの実行\)** を選択して、 **[Profiler トレース]** ボタンを選択します。
 

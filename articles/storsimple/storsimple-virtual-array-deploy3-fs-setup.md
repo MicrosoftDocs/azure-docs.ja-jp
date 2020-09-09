@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006298"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
-![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
+![仮想アレイをデプロイするために必要な手順を示す図。 3 番目の手順の最初の部分は「ファイル サーバーとして設定」で、強調表示されています。](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
 ## <a name="introduction"></a>はじめに
 
@@ -51,16 +51,16 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
    前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 **[この Web ページの閲覧を続ける]** をクリックして、この Web ページに進みます。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. 仮想アレイの Web UI に **StorSimpleAdmin** としてサインインします。 デバイス管理者のパスワード ([Hyper-V での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-hyperv.md)に関する記事または [VMware での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-vmware.md)に関する記事の手順 3 の仮想アレイの起動に関するセクションで変更したもの) を入力します。
+   ![セキュリティ証明書に問題があることを示すブラウザー ウィンドウのスクリーンショット。 2 つのリンクが表示されます。1 つは Web サイト用で、もう 1 つはユーザーのホームページ用です。](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
+2. 仮想アレイの Web UI に **StorSimpleAdmin** としてサインインします。 [Hyper-V での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-hyperv.md)に関する記事または[VMware での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-vmware.md)に関する記事の手順 3: 仮想アレイの起動に関するページで変更したデバイス管理者のパスワードを入力します。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
+   ![StorSimple のサインイン ページのスクリーンショット。 StorSimpleAdmin ユーザー名が表示され、パスワード入力ボックスには不確定の文字が入力されています。](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. **[ホーム]** ページが表示されます。 このページは、仮想アレイを構成し、StorSimple デバイス マネージャー サービスに登録するうえで必要なさまざまな設定を掲載しています。 **ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
+   ![ホーム ページのスクリーンショット。 デバイスが構成されていないことを示すテキストが表示されています。 さまざまな要素を設定するためのリンクが表示されています。](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
 4. **[ネットワークの設定]** ページの **[ネットワーク インターフェイス]** で、DATA 0 が自動的に構成されます。 各ネットワーク インターフェイスは、既定で IP アドレスを自動的に取得するように設定されます (DHCP)。 そのため、IP アドレス、サブネット、およびゲートウェイは自動的に割り当てられます (IPv4 と IPv6 の両方に対して)。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
+   ![[ネットワークの設定] ページのスクリーンショット。さまざまなバージョンのインターネット プロトコル用に設定された IP アドレスが示されています。](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
    デバイスのプロビジョニング中に複数のネットワーク インターフェイスを追加した場合は、それらをここで構成できます。 ネットワーク インターフェイスは IPv4 だけで構成するか、IPv4 と IPv6 の両方で構成することができます。 IPv6 だけで構成することはできません。
 5. DNS サーバーは必須です。これは、デバイスがクラウド ストレージのサービス プロバイダーとやり取りしたり、デバイスがファイル サーバーとして構成されている場合にデバイスを名前により解決したりする際に使用されます。 **[ネットワークの設定]** ページの **[DNS サーバー]** で、次の操作を行います。
@@ -70,15 +70,15 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 6. **[デバイスの設定]** ページで次の操作を行います。
    
    1. デバイスに一意の **名前** を割り当てます。 この名前は 1 ～ 15 文字を指定でき、文字、数字、ハイフンを含めることができます。
-   2. 作成するデバイスの**種類**として、 **[ファイル サーバー]** アイコン ![](./media/storsimple-virtual-array-deploy3-fs-setup/image6.png) をクリックします。 ファイル サーバーにより、共有フォルダーを作成できるようになります。
+   2. 作成するデバイスの**種類**として、 **[ファイル サーバー]** アイコン :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png"::: をクリックします。 ファイル サーバーにより、共有フォルダーを作成できるようになります。
    3. デバイスの種類がファイル サーバーなので、そのデバイスをドメインに参加させる必要があります。 **[ドメイン名]** を入力します。
    4. **[Apply]** をクリックします。
 7. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 チェック マーク アイコンをクリックします。 ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
+   ![ユーザー名とパスワードが入力されたダイアログ ボックスを示すスクリーンショット。](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
 8. **[Apply]** をクリックします。 これにより、デバイスの設定が適用、検証されます。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
+   ![[デバイスの設定] ページのスクリーンショット。 デバイス名とドメイン名が入力されています。](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
    
    > [!NOTE]
    > 仮想アレイが Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用または継承されていないことを確認します。 グループ ポリシーにより、StorSimple Virtual Array にウイルス対策ソフトウェアなどのアプリケーションがインストールされる場合があります。 追加のソフトウェアのインストールはサポートされていないので、データが破損するおそれがあります。 
@@ -86,7 +86,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    > 
 9. (省略可能) Web プロキシ サーバーを構成します。 Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
+   ![[Web プロキシの設定] ページのスクリーンショット。 [Enable web proxy]\(Web プロキシを有効にする\) オプションがオフになっており、[認証] が [None]\(なし\)に設定されています。 その他の値は設定されていません。](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
    
    **[Web プロキシ]** ページで、以下のことを実行します。
    
@@ -96,7 +96,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    4. **[Apply]** をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
 10. (省略可能) デバイスの時刻設定を構成します (タイム ゾーン、プライマリおよびセカンダリ NTP サーバーなど)。 デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
     
-    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
+    ![[時刻の設定] ページのスクリーンショット。 タイム ゾーンとプライマリ NTP サーバーが入力されています。 セカンダリ NTP サーバーは空白になっています。](./media/storsimple-virtual-array-deploy3-fs-setup/image10.png)
     
     **[時刻の設定]** ページで、次の操作を行います。
     
@@ -112,10 +112,10 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
        このサービスに登録する最初のデバイスでない場合は、サービス データ暗号化キーを指定する必要があります。 詳しくは、ローカル Web UI の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」を参照してください。
     3. **[登録]** をクリックします。 これにより、デバイスが再起動します。 デバイスが正常に登録されるまでに、2 ～ 3 分間待機する必要がある場合があります。 デバイスが再起動したら、サインイン ページが表示されます。
        
-       ![](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
+       ![[クラウドの設定] ページのスクリーンショット。 登録キーのボックスと 暗号化キーのボックスには入力されていますが、値は編集されています。](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. Azure Portal に戻ります。 **[すべてのリソース]** に移動して、StorSimple デバイス マネージャー サービスを検索します。
     
-    ![](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
+    ![Azure portal の [すべてのリソース] ページのスクリーンショット。 デバイス マネージャー サービスが強調表示されています。](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. フィルター処理された一覧で、StorSimple デバイス マネージャー サービスを選択し、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、デバイスが正常にサービスに接続されていること、および**セットアップの準備が完了している**状態であることを確認します。
     
     ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
@@ -203,12 +203,12 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 次に、前の手順で作成した 1 つ以上の共有に接続する必要があります。 StorSimple Virtual Array に接続されている Windows Server ホストで、次の手順を実行します。
 
 #### <a name="to-connect-to-the-share"></a>共有に接続するには
-1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 **[OK]** をクリックします。
+1. :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image22.png"::: + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 **[OK]** をクリックします。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
+   ![[ファイル名を指定して実行] ダイアログ ボックスのスクリーンショット。 [名前:] ボックスには、ファイル サーバーへのパスが入力されています。](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. これによりファイル エクスプローラーが開きます。 フォルダーとして作成した共有が表示されます。 コンテンツを表示するには、共有 (フォルダー) を選択してダブルクリックします。
    
-   ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
+   ![ファイル エクスプローラーのスクリーンショット。 新しく作成された共有を表す複数のフォルダーが表示されています。](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. これらの共有にファイルを追加して、バックアップを作成することができます。
 
 ## <a name="next-steps"></a>次のステップ

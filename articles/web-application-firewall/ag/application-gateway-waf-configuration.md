@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84752484"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォールの要求サイズの制限と除外リスト
 
@@ -31,7 +31,6 @@ WAF の除外リストを使用すると、WAF の評価から特定の要求属
 * 要求の属性名 (引数) は、次のような除外要素として追加できます。
 
    * フォーム フィールド名
-   * XML エンティティ
    * JSON エンティティ
    * URL クエリ文字列引数
 

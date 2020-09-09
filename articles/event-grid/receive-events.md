@@ -1,19 +1,15 @@
 ---
 title: Azure Event Grid から HTTP エンドポイントへのイベントの受信
 description: HTTP エンドポイントを検証した後、Azure Event Grid からのイベントを受信して逆シリアル化する方法について説明します
-services: event-grid
-author: banisadr
-manager: darosa
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.author: babanisa
-ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 07/07/2020
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 9e89c6920c76914ccab6298b1404b0cae698b532
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116970"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006076"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
 

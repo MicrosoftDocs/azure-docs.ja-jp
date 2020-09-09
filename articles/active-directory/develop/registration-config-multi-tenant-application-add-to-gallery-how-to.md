@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: b8d998d40b9920ccbdaf0079c32a0feb84bba87b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 37f305a7564382b9c6c5a031340d81a22cfedbf2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680274"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120713"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションを追加する
 
@@ -29,9 +29,9 @@ Azure Active Directory (Azure AD) は、クラウド ベースの ID サービ�
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>SAML または OpenIDConnect がアプリケーションでサポートされている場合
 Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションの一覧を表示したい場合は、次のいずれかのシングル サインオン テクノロジがそのアプリケーションでサポートされていることを最初に確認する必要があります。
 
-- **OpenID Connect**:アプリの一覧を表示するには、Azure AD でマルチテナント アプリケーションを作成し、アプリケーションに [Azure AD 同意フレームワーク](https://docs.microsoft.com/azure/active-directory/develop/consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」で説明するプロセスを使用して、アプリケーションを送信します。
+- **OpenID Connect**:アプリの一覧を表示するには、Azure AD でマルチテナント アプリケーションを作成し、アプリケーションに [Azure AD 同意フレームワーク](./consent-framework.md)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」で説明するプロセスを使用して、アプリケーションを送信します。
 
-- **SAML**: アプリケーションが SAML 2.0 をサポートしている場合は、ギャラリーにアプリの一覧を表示できます。 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」の手順に従ってください。
+- **SAML**: アプリケーションが SAML 2.0 をサポートしている場合は、ギャラリーにアプリの一覧を表示できます。 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」の手順に従ってください。
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>SAML または OpenIDConnect がアプリケーションでサポートされていない場合
 SAML または OpenIDConnect をサポートしていないアプリケーションでも、パスワード シングル サインオン テクノロジによって、アプリ ギャラリーに統合することができます。
@@ -39,12 +39,12 @@ SAML または OpenIDConnect をサポートしていないアプリケーショ
 パスワード シングル サインオン (パスワード保管とも呼ばれます) を使用すると、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
 
 このテクノロジを使用してアプリケーションの一覧を表示するには:
-1. HTML サインイン ページがある Web アプリケーションを作成して、[パスワード シングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)を構成します。 
-2. 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」の説明に従って、要求を送信します。
+1. HTML サインイン ページがある Web アプリケーションを作成して、[パスワード シングル サインオン](../manage-apps/what-is-single-sign-on.md)を構成します。 
+2. 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](../azuread-dev/howto-app-gallery-listing.md)」の説明に従って、要求を送信します。
 
 ## <a name="escalations"></a>エスカレーション
 
 すべてのエスカレーションについて、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にメールでご連絡いただけば、できるだけ早く折り返しご連絡いたします。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Active Directory アプリケーション ギャラリーにアプリケーションを表示する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)方法を確認します。
+[Azure Active Directory アプリケーション ギャラリーにアプリケーションを表示する](../azuread-dev/howto-app-gallery-listing.md)方法を確認します。

@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff304b0866092badc515df7201fb4873acc298e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e6ee5af5d7489835f125319050d291a89ab252a6
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582923"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797124"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory で静的なグループメンバーシップを動的に変更する
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) で、グループのメンバーシップを�
 ## <a name="change-membership-type-for-a-group-powershell"></a>グループのメンバーシップの種類を変更する (PowerShell)
 
 > [!NOTE]
-> 動的なグループ プロパティを変更するには、[Azure AD PowerShell バージョン 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) の**プレビュー バージョン**のコマンドレットを使用する必要があります。 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview)からプレビューをインストールできます。
+> 動的なグループ プロパティを変更するには、[Azure AD PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) の**プレビュー バージョン**のコマンドレットを使用する必要があります。 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview)からプレビューをインストールできます。
 
 既存のグループにおいてメンバーシップの管理を切り替える関数を次に示します。 この例では、GroupTypes プロパティを正しく操作し、動的なメンバーシップに関係のない値を保持するようにしてください。
 

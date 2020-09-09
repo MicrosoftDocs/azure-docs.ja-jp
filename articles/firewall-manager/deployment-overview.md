@@ -1,24 +1,22 @@
 ---
-title: Azure Firewall Manager プレビューのデプロイの概要
-description: Azure Firewall Manager プレビューに必要なデプロイ手順の概要について説明します。
+title: Azure Firewall Manager のデプロイ概要
+description: Azure Firewall Manager に必要なデプロイ手順の概要について説明します。
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: overview
-ms.date: 02/18/2020
+ms.topic: conceptual
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ceb6e84b31067f7289b9e003a4fb273ce717de33
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77443127"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079100"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Firewall Manager プレビューのデプロイの概要
+# <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager のデプロイ概要
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Firewall Manager プレビューをデプロイする方法は複数ありますが、次の一般的な手順をお勧めします。
+Azure Firewall Manager をデプロイする方法は複数ありますが、次の一般的な手順をお勧めします。
 
 ## <a name="general-deployment-process"></a>一般的なデプロイ プロセス
 
@@ -67,7 +65,16 @@ Azure Firewall Manager プレビューをデプロイする方法は複数あり
 > - 1 つのリージョンで仮想 WAN ごとに複数のハブを使用することはできません。 ただし、リージョンに複数の仮想 WAN を追加して、これを実現することができます。
 > - vWAN のハブの IP 空間を重複させることはできません。
 > - ハブ VNet 接続は、ハブと同じリージョンにある必要があります。
+>
+> その他の既知の問題については、「[Azure Firewall Manager とは](overview.md#known-issues)」を参照してください。
+
+## <a name="convert-virtual-networks"></a>仮想ネットワークの変換
+
+既存の仮想ネットワークをハブ仮想ネットワークに変換する場合、次の情報が当てはまります。
+
+- 仮想ネットワークに既に Azure Firewall がある場合、既存のファイアウォールに関連付けるファイアウォール ポリシーを選択します。 ファイアウォール ポリシーによってファイアウォール規則が置き換えられている間、ファイアウォール プロビジョニング状態は更新中になります。 プロビジョニング状態中も、ファイアウォールはトラフィックを処理し続けるので、ダウンタイムは発生しません。 Firewall Manager または Azure PowerShell を使用して既存の規則をファイアウォール ポリシーにインポートできます。
+- 仮想ネットワークに Azure Firewall が関連付けられていない場合、ファイアウォールがデプロイされ、新しいファイアウォールにファイアウォール ポリシーが関連付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル:Azure portal を使用して Azure Firewall Manager Preview でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)
+- [チュートリアル:Azure portal を使用して Azure Firewall Manager でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)

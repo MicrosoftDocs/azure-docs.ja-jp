@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74795366"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227867"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>チュートリアル:Active Directory の基本的な環境
 
@@ -28,8 +28,8 @@ ms.locfileid: "74795366"
 このチュートリアルは次のもので構成されます。
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するために必要な前提条件を次に示します。
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) がインストールされたコンピューター。  これは、[Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) または [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) コンピューターに対して行うことをお勧めします。
-- 仮想マシンがインターネットで通信できるようにするための[外部ネットワーク アダプター](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
+- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) がインストールされたコンピューター。  これは、[Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) または [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) コンピューターに対して行うことをお勧めします。
+- 仮想マシンがインターネットで通信できるようにするための[外部ネットワーク アダプター](/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
 - [Azure サブスクリプション](https://azure.microsoft.com/free)
 - Windows Server 2016 のコピー
 - [Microsoft .NET framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)

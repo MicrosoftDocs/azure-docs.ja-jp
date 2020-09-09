@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 0219940a4ac60e4a6187d13802c36e8bff1925b3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7fad90cf47591b5ffab4232c2be3180138738f01
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587325"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992834"
 ---
 # <a name="how-the-translator-counts-characters"></a>Translator での文字数のカウント方法
 

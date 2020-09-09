@@ -1,19 +1,19 @@
 ---
 title: 天気の対象範囲 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps の天気の対象範囲について説明します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6e08f53fa6c5fbfa8e7f4569b7475c21e40dc05
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80333584"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133216"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps の天気の対象範囲
 
@@ -45,7 +45,7 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | ボネール島                                  | ✓ |   |  ✓| 
 | ブラジル                                   | ✓ |   |  ✓| 
 | 英領バージン諸島                   | ✓ |   |  ✓| 
-| カナダ                                   | ✓ | ✓ |  ✓| 
+| Canada                                   | ✓ | ✓ |  ✓| 
 | ケイマン諸島                           | ✓ |   |  ✓| 
 | チリ                                    | ✓ |   |  ✓| 
 | コロンビア                                 | ✓ |   |  ✓| 
@@ -88,7 +88,7 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | タークス・カイコス諸島                 | ✓ |   |  ✓| 
 | 米国領有小離島                    | ✓ |   |  ✓| 
 | 米国バージン諸島                      | ✓ |   |  ✓| 
-| 米国                            | ✓ | ✓ |  ✓| 
+| United States                            | ✓ | ✓ |  ✓| 
 | ウルグアイ                                  | ✓ |   |  ✓| 
 | ベネズエラ                                | ✓ |   |  ✓| 
 
@@ -166,7 +166,6 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | チュニジア                     | ✓               |                              |        ✓| 
 | ウガンダ                      | ✓               |                              |        ✓| 
 | アラブ首長国連邦        | ✓               |                              |        ✓| 
-| 西サハラ              | ✓               |                              |        ✓| 
 | イエメン                       | ✓               |                              |        ✓| 
 | ザンビア                      | ✓               |                              |        ✓| 
 | ジンバブエ                    | ✓               |                              |        ✓| 

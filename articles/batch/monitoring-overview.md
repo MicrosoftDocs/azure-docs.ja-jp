@@ -3,26 +3,26 @@ title: Azure Batch の監視
 description: Azure Batch の Azure 監視サービス、メトリック、診断ログ、その他の監視機能について説明します。
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723529"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144933"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
 Azure と Batch サービスには、Batch ソリューションを監視するためのさまざまなサービス、ツール、API が用意されています。 この概要記事は、ニーズに合った監視アプローチの選択に役立ちます。
 
-Azure リソースの監視に使用できる Azure のコンポーネントとサービスの概要については、「[Azure のアプリケーションおよびリソースの監視](../monitoring-and-diagnostics/monitoring-overview.md)」をご覧ください。
+Azure リソースの監視に使用できる Azure のコンポーネントとサービスの概要については、「[Azure のアプリケーションおよびリソースの監視](../azure-monitor/overview.md)」をご覧ください。
 
 ## <a name="subscription-level-monitoring"></a>サブスクリプション レベルの監視
 
-Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log)の運用イベント データが収集されます。
+Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-log.md#view-the-activity-log)の運用イベント データが収集されます。
 
 具体的に Batch アカウントでは、アクティビティ ログによってアカウントの作成と削除やキー管理に関連するイベントが収集されます。
 
-アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]**  >  **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)を構成したりすることもできます。
+アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]**  >  **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../azure-monitor/platform/alerts-activity-log.md)を構成したりすることもできます。
 
 ## <a name="batch-account-level-monitoring"></a>Batch アカウント レベルの監視
 

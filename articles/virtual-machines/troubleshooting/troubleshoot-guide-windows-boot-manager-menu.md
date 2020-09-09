@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526541"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows ブート マネージャーが原因で Windows VM を起動できない
 
@@ -29,7 +29,7 @@ ms.locfileid: "80373286"
 
 VM がユーザー プロンプトで待機していて、手動で指示しない限り起動しない。
 
-次のスクリーンショットのように、[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM を確認すると、Windows ブート マネージャーにより "*開始するオペレーティング システムを選択するか、TAB キーを押してツールを選択してください:* " というメッセージが表示されます。
+次のスクリーンショットのように、[ブート診断](./boot-diagnostics.md)を使用して VM を確認すると、Windows ブート マネージャーにより "*開始するオペレーティング システムを選択するか、TAB キーを押してツールを選択してください:* " というメッセージが表示されます。
 
 図 1
  
@@ -53,7 +53,7 @@ VM がユーザー プロンプトで待機していて、手動で指示しな�
 
 シリアル コンソールへのアクセス権がある場合、起動時間を短縮する方法は 2 つあります。 *displaybootmenu* の待機時間を短縮するか、このフラグを完全に削除します。
 
-1. 指示に従って [Windows 用 Azure シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)にアクセスし、テキストベースのコンソールにアクセスできるようにします。
+1. 指示に従って [Windows 用 Azure シリアル コンソール](./serial-console-windows.md)にアクセスし、テキストベースのコンソールにアクセスできるようにします。
 
    > [!NOTE]
    > シリアル コンソールにアクセスできない場合は、「[修復 VM を作成してアクセスする](#create-and-access-a-repair-vm)」に進んでください。
@@ -77,7 +77,7 @@ VM がユーザー プロンプトで待機していて、手動で指示しな�
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [VM 修復コマンドの手順 1 から 3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) を使用して、修復 VM を準備します。
+1. [VM 修復コマンドの手順 1 から 3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) を使用して、修復 VM を準備します。
 2. リモート デスクトップ接続を使用して、修復 VM に接続します。
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>修復 VM でより短い起動時間を構成する
@@ -154,4 +154,4 @@ VM がユーザー プロンプトで待機していて、手動で指示しな�
 
 ### <a name="rebuild-the-original-vm"></a>元の VM を再構築する
 
-[VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使用して、VM を再構成します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構成します。

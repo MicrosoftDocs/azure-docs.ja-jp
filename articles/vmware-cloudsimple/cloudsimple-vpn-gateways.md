@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple - VPN ゲートウェイ
-description: CloudSimple サイト間 VPN とポイント対サイト VPN の概念について説明します
+description: CloudSimple のサイト間 VPN ゲートウェイとポイント対サイト VPN ゲートウェイについて説明します。これらは、CloudSimple リージョンとその他のリソースとの間で、暗号化されたトラフィックを送信するために使用されます。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024859"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140634"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ゲートウェイの概要
 

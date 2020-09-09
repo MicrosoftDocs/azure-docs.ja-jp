@@ -5,12 +5,13 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7614cec43fd9b2f294a04ed266cb0614f6cde872
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889666"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291842"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -59,25 +60,6 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
 また、ルート フォルダーには、package.json ファイルが作成されます。
 
-### <a name="enable-compatibility-mode"></a>互換モードを有効にする
-
-現時点では、JavaScript Durable Functions で Azure Functions V2 互換モードを有効にする必要があります。
-
-1. アプリをローカルで実行するときに使用される設定を編集するために、*local.settings.json* を開きます。
-
-1. `FUNCTIONS_V2_COMPATIBILITY_MODE` という名前で値が `true` の設定を追加します。
-
-    ```json
-    {
-        "IsEncrypted": false,
-        "Values": {
-            "AzureWebJobsStorage": "",
-            "FUNCTIONS_WORKER_RUNTIME": "node",
-            "FUNCTIONS_V2_COMPATIBILITY_MODE": "true"
-        }
-    }
-    ```
-
 ## <a name="install-the-durable-functions-npm-package"></a>Durable Functions npm パッケージをインストールする
 
 Node.js 関数アプリで Durable Functions を使用して作業するには、`durable-functions` というライブラリを使用します。
@@ -92,7 +74,7 @@ Node.js 関数アプリで Durable Functions を使用して作業するには�
 
 * "*オーケストレーター関数*" - 他の関数を調整するワークフローを記述します。
 * "*アクティビティ関数*" - オーケストレーター関数によって呼び出され、作業を実行し、必要に応じて値を返します。
-* *クライアント関数* - オーケストレーター関数を開始する通常の Azure Functions。 この例では、HTTP によってトリガーされる関数を使用しています。
+* *クライアント関数* - オーケストレーター関数を開始する通常の Azure 関数。 この例では、HTTP によってトリガーされる関数を使用しています。
 
 ### <a name="orchestrator-function"></a>オーケストレーター関数
 
@@ -169,7 +151,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
     ![Azure のローカル出力](media/quickstart-js-vscode/functions-f5.png)
 
-1. [Postman](https://www.getpostman.com/) または [cURL](https://curl.haxx.se/) のようなツールを使用して、HTTP POST 要求を URL エンドポイントに送信します。 最後のセグメントをオーケストレーター関数の名前 (`HelloOrchestrator`) に置き換えます。 この URL は `http://localhost:7071/api/orchestrators/HelloOrchestrator` のようになります。
+1. ブラウザーもしくは、[Postman](https://www.getpostman.com/) または [cURL](https://curl.haxx.se/) のようなツールを使用して、HTTP POST 要求を URL エンドポイントに送信します。 最後のセグメントをオーケストレーター関数の名前 (`HelloOrchestrator`) に置き換えます。 この URL は `http://localhost:7071/api/orchestrators/HelloOrchestrator` のようになります。
 
    応答は、永続的なオーケストレーションが正常に開始されたことを示す HTTP 関数の最初の結果です。 これはまだオーケストレーションの最終的な結果ではありません。 応答には、いくつかの便利な URL が含まれています。 ここでは、オーケストレーションの状態を照会してみましょう。
 
@@ -202,23 +184,9 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-compatibility-mode"></a>互換モードを有効にする
-
-ローカルで有効にしたのと同じ Azure Functions V2 互換性が Azure のアプリで有効になっている必要があります。
-
-1. コマンド パレットを使用して、`Azure Functions: Edit Setting...` を検索して選択します。
-
-1. プロンプトに従って、お使いの Azure サブスクリプション内で関数アプリを見つけます。
-
-1. [`Create new App Setting...`] を選択します。
-
-1. `FUNCTIONS_V2_COMPATIBILITY_MODE` の新しい設定キーを入力します。
-
-1. `true` の設定値を入力します。
-
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 

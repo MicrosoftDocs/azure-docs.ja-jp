@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp, H1Hack27Feb2017
+ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76715061"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206623"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions の Twilio バインド
 
@@ -241,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-次の例では、[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を使用して SMS メッセージを送信する方法を示します。 `to`、`from`、および `body` の値は、プログラムによってオーバーライドされた場合でも、属性定義に必要です。
+次の例では、[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を使用して SMS メッセージを送信する方法を示します。 `to`、`from`、および `body` の値は、プログラムによってオーバーライドされた場合でも、属性定義に必要です。
 
 ```java
 package com.function;
@@ -319,7 +319,7 @@ public static CreateMessageOptions Run(
 
 # <a name="java"></a>[Java](#tab/java)
 
-`T` が `int`、`String`、`byte[]`、POJO 型などのネイティブ Java 型である場合は、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding)パラメーターに [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を配置します。
+`T` が `int`、`String`、`byte[]`、POJO 型などのネイティブ Java 型である場合は、[`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding)パラメーターに [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 注釈を配置します。
 
 ---
 

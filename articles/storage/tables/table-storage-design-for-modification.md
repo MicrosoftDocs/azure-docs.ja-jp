@@ -1,19 +1,19 @@
 ---
 title: データの変更に対応した Azure Table Storage を設計する | Microsoft Docs
-description: Azure Table Storage で、データの変更に対応したテーブルを設計します。
+description: Azure Table Storage で、データの変更に対応したテーブルを設計します。 挿入、更新、削除操作を最適化します。 格納されたエンティティの一貫性を確保します。
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25785bc4b945f469e67f2a71eb6676940e091d56
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771548"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236762"
 ---
 # <a name="design-for-data-modification"></a>データの変更に対応した設計
 この記事では、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 「テーブルの設計パターン」セクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エンティティの変更にも適していることがおわかりになると思います。  
@@ -34,7 +34,7 @@ ms.locfileid: "75771548"
 記事「[Table design patterns](table-storage-design-patterns.md)」(テーブル設計パターン) の以下のパターンは、一貫性の管理に対応しています。  
 
 * [パーティション内のセカンダリ インデックス パターン](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) -異なる **RowKey** 値 (同じパーティション) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用して効果的な検索と代替的な並べ替え順序を可能にします。  
-* [パーティション内のセカンダリ インデックス パターン](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 異なる別個のテーブルの別個のパーティションの RowKey 値を使用して複数のコピーを格納し、高速で効率的な参照とを使用して、 異なる **RowKey** 値による代替の並べ替え順序を可能にします。  
+* [パーティション内のセカンダリ インデックス パターン](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 別個のパーティションまたは別個のテーブルの異なる RowKey 値を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用して高速で効率的な検索と代替的な並べ替え順序を可能にします。  
 * [最終的に一貫性のあるトランザクション パターン](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) -Azure キューを使用してパーティションの境界または記憶域システムの境界にまたがる一貫した動作を最終的に有効にします。
 * [インデックス エンティティのパターン](table-storage-design-patterns.md#index-entities-pattern) - エンティティ一の一覧を返す効率的な検索ができるように、インデックス エンティティを管理します。  
 * [非正規化パターン](table-storage-design-patterns.md#denormalization-pattern) -関連するデータを単一のエンティティに結合し、必要なすべてのデータを1 つのポイント クエリで取得することを可能にします。  

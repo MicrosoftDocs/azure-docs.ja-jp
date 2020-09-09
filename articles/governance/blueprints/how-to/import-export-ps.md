@@ -1,14 +1,14 @@
 ---
 title: PowerShell を使用してブループリント定義のインポートとエクスポートを行う
 description: ブループリント定義をコードとして使用する方法について説明します。 export コマンドと import コマンドを使用して、それらの共有、ソース管理、および管理を行います。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 87e8f00013fec3abb8132f92c1c717f152d1e264
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864047"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051442"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell を使用したブループリント定義のインポートとエクスポート
 

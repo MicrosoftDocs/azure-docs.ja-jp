@@ -5,12 +5,12 @@ description: サービスを Azure Kubernetes Service (AKS) を使用して公�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790611"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285885"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
@@ -25,7 +25,9 @@ Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを�
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可が必要です。 一般に、委任されたリソースのサービス プリンシパルには*ネットワーク共同作成者*ロールを割り当てます。 サービス プリンシパルの代わりに、システム割り当てのマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
+既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可が必要です。 詳細については、「[Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する][use-kubenet]」または「[Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する][advanced-networking]」を参照してください。 [別のサブネット内の IP アドレス][different-subnet]を使用するようにロード バランサーを構成している場合は、AKS クラスターのサービス プリンシパルにもそのサブネットへの読み取りアクセスがあることを確認します。
+
+サービス プリンシパルの代わりに、システム割り当てのマネージド ID もアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
 
 ## <a name="create-an-internal-load-balancer"></a>内部ロード バランサーを作成します。
 
@@ -54,7 +56,7 @@ kubectl apply -f internal-lb.yaml
 
 ノード リソース グループ内にAzure ロード バランサーが作成され、AKS クラスターと同じ仮想ネットワークに接続されます。
 
-サービスの詳細を表示すると、内部ロード バランサーの IP アドレスが *EXTERNAL-IP* 列に示されます。 このコンテキストでは、"*外部*" はロード バランサーの外部インスタンスに対するものであり、パブリックな外部 IP アドレスに対するものではありません。 次の例に示すように、IP アドレスが *\<[保留中]\>* から実際の内部 IP アドレスに変わるには 1 ～ 2 分かかることがあります。
+サービスの詳細を表示すると、内部ロード バランサーの IP アドレスが *EXTERNAL-IP* 列に示されます。 このコンテキストでは、"*外部*" はロード バランサーの外部インスタンスに対するものであり、パブリックな外部 IP アドレスに対するものではありません。 次の例に示すように、IP アドレスが *\<pending\>* から実際の内部 IP アドレスに変わるには 1 ～ 2 分かかることがあります。
 
 ```
 $ kubectl get service internal-app
@@ -65,7 +67,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>IP アドレスを指定する
 
-内部ロード バランサーに特定の IP アドレスを使用する場合は、ロード バランサーの YAML マニフェストに *loadBalancerIP* プロパティを追加します。 指定した IP アドレスは AKS クラスターと同じサブネットに存在し、まだリソースに割り当てられていない必要があります。
+内部ロード バランサーに特定の IP アドレスを使用する場合は、ロード バランサーの YAML マニフェストに *loadBalancerIP* プロパティを追加します。 このシナリオでは、指定された IP アドレスは AKS クラスターと同じサブネットに存在し、まだリソースに割り当てられていない必要があります。 たとえば、Kubernetes サブネットに指定された範囲内の IP アドレスを使用してはいけません。
 
 ```yaml
 apiVersion: v1
@@ -91,6 +93,8 @@ $ kubectl get service internal-app
 NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
+
+別のサブネットでのロード バランサーの構成の詳細については、「[別のサブネットを指定する][different-subnet]」を参照してください。
 
 ## <a name="use-private-networks"></a>プライベート ネットワークを使用する
 
@@ -153,3 +157,4 @@ spec:
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
+[different-subnet]: #specify-a-different-subnet

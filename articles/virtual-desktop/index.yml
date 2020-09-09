@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: 2f00d7b0b1c0bdf78a4908e945dd0f8a890ded1b
-  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+  ms.openlocfilehash: 26cba2d46a8d203bd16551702b4af6069b23008c
+  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/30/2020
-  ms.locfileid: "82611519"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87285120"
 landingContent:
 - title: Windows Virtual Desktop について
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: Windows Virtual Desktop とは
       url: overview.md
-- title: Windows Virtual Desktop Spring 2020 リリースの概要
+- title: Windows Virtual Desktop の概要
   linkLists:
   - linkListType: tutorial
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: create-validation-host-pool.md
     - text: サービス アラートを設定する
       url: set-up-service-alerts.md
-- title: Windows Virtual Desktop Fall 2019 リリースの概要
+- title: Windows Virtual Desktop (クラシック) の概要
   linkLists:
   - linkListType: tutorial
     links:
@@ -53,7 +53,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Windows デスクトップ クライアント
-      url: connect-windows-7-and-10.md
+      url: connect-windows-7-10.md
     - text: Web クライアント
       url: connect-web.md
     - text: Android クライアント

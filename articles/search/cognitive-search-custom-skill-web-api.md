@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74484112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982120"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search の強化パイプラインのカスタム Web API スキル
 
@@ -36,12 +36,12 @@ Microsoft.Skills.Custom.WebApiSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| uri | _JSON_ ペイロードの送信先となる Web API の URI です。 **https** URI スキームのみが許可されます |
-| httpMethod | ペイロードの送信時に使用されるメソッドです。 許可されるメソッドは `PUT` または `POST` です |
-| httpHeaders | キー/値ペアのコレクションです。キーはヘッダーの名前と値を表し、値はペイロードと共に Web API に送信されるヘッダー値を表します。 次のヘッダーは、このコレクションに含めることはできません: `Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
-| timeout | (省略可能) 指定した場合は、API 呼び出しを行う http クライアントのタイムアウト値を示します。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 たとえば、60 秒の場合は `PT60S` とします。 設定しなかった場合は、既定値の 30 秒が選択されます。 タイムアウトは、最大で 230 秒、最小で 1 秒に設定できます。 |
-| batchSize | (省略可能) 1 回の API 呼び出しにつき、どれだけの "データ レコード" が送信されるかを示します (後述の _JSON_ ペイロードの構造を参照してください)。 設定しなかった場合は、既定値の 1000 が選択されます。 このパラメーターを使用して、インデックス作成のスループットと API への負荷の適切なトレードオフを確保することをお勧めします |
-| degreeOfParallelism | (省略可能) 指定した場合は、指定したエンドポイントに対してインデクサーが並列で行う呼び出しの数を示します。 エンドポイントが要求の負荷が高すぎるために失敗する場合は、この値を小さくできます。エンドポイントがより多くの要求を受け入れることができるため、インデクサーのパフォーマンスを向上させたい場合は、この値を上げることができます。  設定しない場合は、既定値の 5 が使用されます。 degreeOfParallelism には、最大値として 10、最小値として 1 を設定できます。 |
+| `uri` | _JSON_ ペイロードの送信先となる Web API の URI です。 **https** URI スキームのみが許可されます |
+| `httpMethod` | ペイロードの送信時に使用されるメソッドです。 許可されるメソッドは `PUT` または `POST` です |
+| `httpHeaders` | キー/値ペアのコレクションです。キーはヘッダーの名前と値を表し、値はペイロードと共に Web API に送信されるヘッダー値を表します。 次のヘッダーは、このコレクションに含めることはできません: `Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
+| `timeout` | (省略可能) 指定した場合は、API 呼び出しを行う http クライアントのタイムアウト値を示します。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 たとえば、60 秒の場合は `PT60S` とします。 設定しなかった場合は、既定値の 30 秒が選択されます。 タイムアウトは、最大で 230 秒、最小で 1 秒に設定できます。 |
+| `batchSize` | (省略可能) 1 回の API 呼び出しにつき、どれだけの "データ レコード" が送信されるかを示します (後述の _JSON_ ペイロードの構造を参照してください)。 設定しなかった場合は、既定値の 1000 が選択されます。 このパラメーターを使用して、インデックス作成のスループットと API への負荷の適切なトレードオフを確保することをお勧めします |
+| `degreeOfParallelism` | (省略可能) 指定した場合は、指定したエンドポイントに対してインデクサーが並列で行う呼び出しの数を示します。 エンドポイントが要求の負荷が高すぎるために失敗する場合は、この値を小さくできます。エンドポイントがより多くの要求を受け入れることができるため、インデクサーのパフォーマンスを向上させたい場合は、この値を上げることができます。  設定しない場合は、既定値の 5 が使用されます。 `degreeOfParallelism` には、最大値として 10、最小値として 1 を設定できます。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
 

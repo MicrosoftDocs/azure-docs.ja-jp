@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bf8fe68c28457fd01704762e537fe259a96a6bce
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116229"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
@@ -39,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 1. *TrustFrameworkExtensions.xml* ファイルを開きます。
 2. まだ存在しない場合は、**ClaimsSchema** 要素とその子要素を、**BuildingBlocks** 要素の下の最初の要素として追加します。
 
-    ```XML
+    ```xml
     <ClaimsSchema>
       <ClaimType Id="logonIdentifier">
         <DisplayName>User name or email address that the user can use to sign in</DisplayName>
@@ -62,7 +62,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 
 3. **BuildingBlocks** 要素の **ClaimsSchema** 要素の後に、**ClaimsTransformations** 要素とその子要素を追加します。
 
-    ```XML
+    ```xml
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateSubjectClaimFromObjectID" TransformationMethod="CreateStringClaim">
         <InputParameters>
@@ -88,7 +88,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 
 4. **DisplayName** が `Local Account SignIn` である **ClaimsProvider** 要素を探して、次の技術プロファイルを追加します。
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
       <DisplayName>Local Account SignIn</DisplayName>
       <Protocol Name="OpenIdConnect" />
@@ -103,6 +103,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
         <Item Key="response_types">id_token</Item>
         <Item Key="response_mode">query</Item>
         <Item Key="scope">email openid</Item>
+        <Item Key="grant_type">password</Item>
       </Metadata>
       <InputClaims>
         <InputClaim ClaimTypeReferenceId="logonIdentifier" PartnerClaimType="username" Required="true" DefaultValue="{OIDC:Username}"/>
@@ -110,8 +111,8 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
         <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
         <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
         <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="00000000-0000-0000-0000-000000000000" />
-        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="00000000-0000-0000-0000-000000000000" />
+        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppId" />
+        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppId" />
       </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
@@ -128,7 +129,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 
 5. 次の **ClaimsProvider** 要素とその技術プロファイルを、**ClaimsProviders** 要素に追加します。
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -182,7 +183,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 
 6. **UserJourneys** 要素とその子要素を、**TrustFrameworkPolicy** 要素に追加します。
 
-    ```XML
+    ```xml
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
       <OrchestrationSteps>
@@ -230,7 +231,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 3. **DefaultUserJourney** の **ReferenceId** 属性の値を `ResourceOwnerPasswordCredentials` に変更します。
 4. **OutputClaims** 要素を、次の要求だけを含むように変更します。
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
     <OutputClaim ClaimTypeReferenceId="displayName" DefaultValue="" />
@@ -267,7 +268,7 @@ Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パス�
 
 実際の POST 要求は次の例のようになります。
 
-```HTTPS
+```https
 POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -277,7 +278,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 オフライン アクセスで成功した応答は、次の例のようになります。
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
     "token_type": "Bearer",
@@ -309,7 +310,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 成功した応答は、次の例のようになります。
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhT...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQn...",

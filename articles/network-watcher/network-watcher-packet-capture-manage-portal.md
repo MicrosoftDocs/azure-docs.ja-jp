@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: d7a61438187534a05a7d3f0307a1a4ded89fc147
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736732"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する
 

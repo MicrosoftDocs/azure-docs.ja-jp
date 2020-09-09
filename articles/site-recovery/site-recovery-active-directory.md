@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
-ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546513"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132331"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -25,7 +25,7 @@ SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケー
 ## <a name="prerequisites"></a>前提条件
 
 - Azure にレプリケートする場合、サブスクリプション、Azure Virtual Network、ストレージ アカウント、Recovery Services コンテナーなどの [Azure リソースを準備](tutorial-prepare-azure.md)する。
-- すべてのコンポーネントの[サポート要件](site-recovery-support-matrix-to-azure.md)を確認する。
+- すべてのコンポーネントの[サポート要件](./vmware-physical-azure-support-matrix.md)を確認する。
 
 ## <a name="replicate-the-domain-controller"></a>ドメイン コントローラーのレプリケート
 

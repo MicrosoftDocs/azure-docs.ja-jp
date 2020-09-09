@@ -1,24 +1,25 @@
 ---
 title: BLOB Storage の Azure CLI サンプル | Microsoft Docs
-description: Azure Blob Storage を使用する場合の Azure CLI サンプル
+description: ストレージ アカウントの作成、特定のプレフィックスを含むコンテナーの削除など、Azure Blob Storage を操作するための Azure CLI サンプルへのリンクをご覧ください。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 79ff7b3d174407da929f201bdce691cecf9b9a89
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68721942"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035044"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure CLI サンプル
 
 次の表は、Azure CLI を使用して構築された、Azure Storage の作成およびデプロイを行う Bash スクリプトへのリンク一覧です。
 
-| | |
+| スクリプト | 説明 |
 |---|---|
 |**ストレージ アカウント**||
 | [Create a storage account and retrieve/rotate the access keys](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) (ストレージ アカウントを作成し、アクセス キーの取得とローテーションを行う) | Azure Storage アカウントを作成し、アクセス キーの取得とローテーションを行います。 |

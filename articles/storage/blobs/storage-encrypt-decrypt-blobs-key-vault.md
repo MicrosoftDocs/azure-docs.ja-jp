@@ -8,14 +8,15 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81456891"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458384"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 
@@ -210,7 +211,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 SymmetricKey として使用できるシークレットを Key Vault に作成する PowerShell の例を次に示します。
 ハードコーディングされた値 $key は、デモのみを目的としています。 独自のコードでこのキーを生成できます。
 
-```csharp
+```powershell
 // Here we are making a 128-bit key so we have 16 characters.
 //     The characters are in the ASCII range of UTF8 so they are
 //    each 1 byte. 16 x 8 = 128.
@@ -239,4 +240,4 @@ C# での Microsoft Azure Storage の使用について詳しくは、「[.NET �
 
 BLOB REST API について詳しくは、「[BLOB サービス REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)」をご覧ください。
 
-Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)をご覧ください。
+Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)をご覧ください。

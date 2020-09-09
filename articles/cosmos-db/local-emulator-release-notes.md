@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77168642"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083459"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 
@@ -25,6 +25,23 @@ ms.locfileid: "77168642"
 |**開始するには**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2112-07072020"></a>2.11.2 (2020 年 7 月 7 日)
+
+- このリリースでは、Cosmos エミュレーターのトラブルシューティング時に必要となる ETL トレースの収集方法が変更されています。 WPR (Windows Performance Runtime ツール) が ETL ベース トレースのキャプチャ用の既定のツールとなり、以前の LOGMAN ベースのキャプチャは非推奨になりました。 この変更が必要となった 1 つの理由は、Cosmos エミュレーターを介して LOGMAN を実行した場合の動作に、最新の Windows セキュリティ更新プログラムが予期しない影響を与えたためです。
+
+### <a name="2111-06102020"></a>2.11.1 (2020 年 6 月 10 日)
+
+- このリリースでは、エミュレーターのデータ エクスプローラーに関連して、2 つのバグが修正されています。 Web ブラウザーからエミュレーターのデータ エクスプローラーを使用しているとき、一部のケースで、Cosmos エミュレーターのエンドポイントへの接続に失敗し、関連するすべてのアクション (データベースの作成など) が失敗するか、またはコンテナーのエラーが発生することがあります。 また、データ エクスプローラーのアップロード アクションを使用して JSON ファイルからアイテムを作成する際の問題も解決されています。
+
+### <a name="2110"></a>2.11.0
+
+- このリリースでは、プロビジョニング済みスループットの自動スケーリングがサポートされました。 これらの新機能には、プロビジョニング済みスループットのカスタム最大レベルを要求ユニット (RU/秒) で設定する機能、既存のデータベースとコンテナーで自動スケーリングを有効にする機能、および Azure Cosmos DB SDK を介したプログラムによるサポートが含まれます。
+- 大量のドキュメント (1 GB 以上) でクエリを実行しているときに、エミュレーターが内部エラー状態コード 500 で失敗する問題が修正されました。
+
+### <a name="292"></a>2.9.2
+
+- このリリースでは、MongoDB エンドポイント バージョン 3.2 のサポートを有効にする際のバグが修正されました。 また、LOGMAN ではなく WPR を使用して、トラブルシューティング用の ETL トレースを生成できるようになりました。
 
 ### <a name="291"></a>2.9.1
 

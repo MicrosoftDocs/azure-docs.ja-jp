@@ -15,14 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641101"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268307"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > 2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
@@ -360,11 +362,10 @@ Media Services のラーニング パスを確認します。
 
 [.NET SDK でシングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[REST API でチャネルを管理する](https://docs.microsoft.com/rest/api/media/operations/channel)
+[REST API でチャネルを管理する](/rest/api/media/operations/channel)
 
 [Media Services の概念](media-services-concepts.md)
 
 [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-

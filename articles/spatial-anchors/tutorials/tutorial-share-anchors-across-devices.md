@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77615487"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810177"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間での Azure Spatial Anchors の共有
 
@@ -34,7 +34,7 @@ Azure Spatial Anchors は、クロスプラットフォーム対応の開発者�
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-このチュートリアルでは Unity と ASP.NET Core Web App を使用しますが、これは Azure Spatial Anchors 識別子を複数デバイス間で共有する方法の一例に過ぎないことに注意してください。 同じ目的を実現するために、他の言語やバックエンド テクノロジを使用することもできます。 また、このチュートリアルで使用する ASP.NET Core Web アプリは .NET Core 2.2 SDK に依存しています。 通常の (Windows 向け) Azure Web Apps では正常に動作しますが、現在、Azure Web Apps for Linux では動作しません。
+このチュートリアルでは Unity と ASP.NET Core Web App を使用しますが、これは Azure Spatial Anchors 識別子を複数デバイス間で共有する方法の一例に過ぎないことに注意してください。 同じ目的を実現するために、他の言語やバックエンド テクノロジを使用することもできます。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -54,9 +54,9 @@ Visual Studio を開き、`Sharing\SharingServiceSample` フォルダーのプ�
 
 VS Code でサービスをデプロイする前に、リソース グループと App Service プランを作成する必要があります。
 
-### <a name="sign-in-to-azure"></a>Azure へのサインイン
+### <a name="sign-in-to-azure"></a>Azure にサインインする
 
-<a href="https://portal.azure.com/" target="_blank">Azure portal</a> に移動し、自分の Azure サブスクリプションにサインインします。
+<a href="https://portal.azure.com/" target="_blank">Azure portal</a> に移動し、Azure サブスクリプションにサインインします。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -64,7 +64,7 @@ VS Code でサービスをデプロイする前に、リソース グループ�
 
 **[リソース グループ]** の横にある **[新規]** をクリックします。
 
-リソース グループに **myResourceGroup** という名前を付けて、 **[OK]** をクリックします。
+リソース グループに **myResourceGroup** という名前を付けて、**[OK]** をクリックします。
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
@@ -82,19 +82,13 @@ VS Code でサービスをデプロイする前に、リソース グループ�
 
 **[OK]** を選択します。
 
-Visual Studio Code を開き、`Sharing\SharingServiceSample` フォルダーのプロジェクトを開きます。 Visual Studio Code を使用して共有サービスをデプロイするには、<a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">こちらのチュートリアル</a>に従ってください。 「Visual Studio Code でプロジェクトを開く」セクションから手順を実行できます。 デプロイして公開する必要があるプロジェクト SharingServiceSample が既に存在しているため、前の手順で説明されているように別の mvc プロジェクトを作成しないでください。
+Visual Studio Code を開き、`Sharing\SharingServiceSample` フォルダーのプロジェクトを開きます。 Visual Studio Code を使用して共有サービスをデプロイするには、<a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">こちらのチュートリアル</a>に従ってください。 「Visual Studio Code でプロジェクトを開く」セクションから手順を実行できます。 デプロイして公開する必要があるプロジェクト SharingServiceSample が既に存在しているため、前の手順で説明されているように別の ASP.NET プロジェクトを作成しないでください。
 
 ---
 
 ## <a name="deploy-the-sample-app"></a>サンプル アプリのデプロイ
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
-
-## <a name="troubleshooting"></a>トラブルシューティング
-
-### <a name="unity-20193"></a>Unity 2019.3
-
-破壊的変更のため、Unity 2019.3 は現在、サポートされていません。 Unity 2019.1 または 2019.2 を使用してください。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

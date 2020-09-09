@@ -1,15 +1,15 @@
 ---
-title: コンピューティング ノードへのアプリケーション パッケージのインストール
+title: コンピューティング ノードへのアプリケーション パッケージのデプロイ
 description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: d847dd926d157e455a6ef4e0c58c9dd204a1ecc7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115620"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146472"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -57,7 +57,7 @@ Batch 内のアプリケーションは、1 つ以上のアプリケーション
 ### <a name="benefits-of-application-packages"></a>アプリケーション パッケージの利点
 アプリケーション パッケージは、Batch ソリューションのコードを簡略化すると共に、タスクが実行されるアプリケーションの管理に必要なオーバーヘッドを軽減します。
 
-アプリケーション パッケージでは、ノードにインストールする多数のリソース ファイルをプールの開始タスクで指定する必要がありません。 Azure Storage やノードで、アプリケーション ファイルの複数のバージョンを手動で管理する必要もありません。 さらに、ストレージ アカウント内のファイルへのアクセスを提供する [SAS URL](../storage/common/storage-dotnet-shared-access-signature-part-1.md) の生成に苦労することもありません。 Batch は、バックグラウンドで Azure Storage と連携して、アプリケーション パッケージを保存し、コンピューティング ノードにデプロイします。
+アプリケーション パッケージでは、ノードにインストールする多数のリソース ファイルをプールの開始タスクで指定する必要がありません。 Azure Storage やノードで、アプリケーション ファイルの複数のバージョンを手動で管理する必要もありません。 さらに、ストレージ アカウント内のファイルへのアクセスを提供する [SAS URL](../storage/common/storage-sas-overview.md) の生成に苦労することもありません。 Batch は、バックグラウンドで Azure Storage と連携して、アプリケーション パッケージを保存し、コンピューティング ノードにデプロイします。
 
 > [!NOTE] 
 > 開始タスクの合計サイズは、リソース ファイルと環境変数を含め、32,768 文字以下であることが必要です。 開始タスクがこの制限を超える場合は、別のオプションとしてアプリケーション パッケージの使用があります。 リソース ファイルを含む zip アーカイブを作成し、Azure Storage に BLOB としてアップロードし、開始タスクのコマンド ラインから解凍することもできます。 
@@ -68,7 +68,7 @@ Batch 内のアプリケーションは、1 つ以上のアプリケーション
 [Azure portal][portal] または Batch Management API を使用して、Batch アカウントのアプリケーション パッケージを管理できます。 次のいくつかのセクションでは、まずストレージ アカウントのリンク方法を示してから、アプリケーションとパッケージの追加とポータルを使った管理について説明します。
 
 ### <a name="link-a-storage-account"></a>ストレージ アカウントのリンク
-アプリケーション パッケージを使用するには、最初に [Azure Storage アカウント](batch-api-basics.md#azure-storage-account)を Batch アカウントにリンクする必要があります。 ストレージ アカウントをまだ構成していない場合は、Batch アカウントで初めて **[アプリケーション]** をクリックしたときに、Azure Portal に警告が表示されます。
+アプリケーション パッケージを使用するには、最初に [Azure Storage アカウント](accounts.md#azure-storage-accounts)を Batch アカウントにリンクする必要があります。 ストレージ アカウントをまだ構成していない場合は、Batch アカウントで初めて **[アプリケーション]** をクリックしたときに、Azure Portal に警告が表示されます。
 
 
 
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> コンピューティング ノードの環境設定の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページの「[タスクの環境設定](batch-api-basics.md#environment-settings-for-tasks)」を参照してください。
-> 
-> 
+> コンピューティング ノードの環境設定の詳細については、[タスクの環境設定](jobs-and-tasks.md#environment-settings-for-tasks)に関する記事を参照してください。 
 
 ## <a name="update-a-pools-application-packages"></a>プールに含まれるアプリケーション パッケージの更新
 アプリケーション パッケージで構成済みの既存プールに対して、新しいパッケージを指定することができます。 プールに対して新しいパッケージ参照を指定すると、次のようになります。
@@ -336,24 +334,24 @@ foreach (ApplicationSummary app in applications)
 * [Batch REST API][api_rest] も、アプリケーション パッケージの運用をサポートしています。 たとえば、REST API を使用したインストール パッケージの指定方法については、[アカウントへのプールの追加][rest_add_pool]に関する記事の [applicationPackageReferences][rest_add_pool_with_packages] 要素を参照してください。 Batch REST API を使用したアプリケーション情報の取得方法の詳細については、「[アプリケーション][rest_applications]」をご覧ください。
 * [Batch Management .NET でプログラムを使用して Azure Batch アカウントとクォータを管理する](batch-management-dotnet.md)方法を学習してください。 [Batch Management .NET][api_net_mgmt] ライブラリで、Batch アプリケーションやサービス用のアカウント作成機能と削除機能を有効にできます。
 
-[api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet
-[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
+[api_net]: /dotnet/api/overview/azure/batch/client
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management
+[api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [storage_pricing]: https://azure.microsoft.com/pricing/details/storage/
-[net_appops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.aspx
-[net_appops_listappsummaries]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.listapplicationsummaries.aspx
-[net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_cloudpool_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.applicationpackagereferences.aspx
-[net_cloudtask]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.aspx
-[net_cloudtask_pkgref]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.applicationpackagereferences.aspx
-[net_nodestate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.state.aspx
-[net_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationpackagereference.aspx
+[net_appops]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_appops_listappsummaries]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudpool_pkgref]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_cloudtask_pkgref]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_nodestate]: /dotnet/api/microsoft.azure.batch.computenode
+[net_pkgref]: /dotnet/api/microsoft.azure.batch.applicationpackagereference
 [portal]: https://portal.azure.com
-[rest_applications]: https://msdn.microsoft.com/library/azure/mt643945.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-[rest_add_pool_with_packages]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_apkgreference
+[rest_applications]: /rest/api/batchservice/application
+[rest_add_pool]: /rest/api/batchservice/pool/add
+[rest_add_pool_with_packages]: /rest/api/batchservice/pool/add#bk_apkgreference
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "Application packages high-level diagram"
 [2]: ./media/batch-application-packages/app_pkg_02.png "Applications tile in Azure portal"

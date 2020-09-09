@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628795"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080713"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
 > [!NOTE]
-> ローカル キャッシュは、Function アプリでもコンテナー化された App Service アプリ ([Windows コンテナー](app-service-web-get-started-windows-container.md)内または [App Service on Linux](containers/app-service-linux-intro.md)上など) ではサポートされません。
+> ローカル キャッシュは、Function アプリでもコンテナー化された App Service アプリ ([Windows コンテナー](quickstart-custom-container.md?pivots=container-windows)内または [App Service on Linux](overview.md#app-service-on-linux)上など) ではサポートされません。
 
 
 Azure App Service のコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。 これは多様なアプリが機能するための設計であり、次の特徴があります。  
@@ -36,7 +36,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>ローカル キャッシュによる App Service の動作の変化
 * _D:\home_ は、アプリの起動時に VM インスタンス上に作成されるローカル キャッシュを指します。 _D:\local_ は、一時的な VM 固有の記憶域を引き続き指します。
-* 共有コンテンツ ストアの _/site_ および _/siteextensions_ フォルダーの 1 回限りのコピーが、ローカル キャッシュの _D:\home\site_ および _D:\home\siteextensions_ のそれぞれに格納されます。 ファイルは、アプリの起動時にローカル キャッシュにコピーされます。 各アプリの 2 つのフォルダーのサイズは既定で上限が 1 GB ですが、最大 2 GB まで増やすことができます。 キャッシュ サイズが大きくなると、読み込みにかかる時間が長くなることにご注意ください。 コピーしたファイルがローカル キャッシュのサイズを超える場合、App Service ではローカル キャッシュは無視され、リモート ファイル共有から読み取られます。
+* 共有コンテンツ ストアの _/site_ および _/siteextensions_ フォルダーの 1 回限りのコピーが、ローカル キャッシュの _D:\home\site_ および _D:\home\siteextensions_ のそれぞれに格納されます。 ファイルは、アプリの起動時にローカル キャッシュにコピーされます。 各アプリの 2 つのフォルダーのサイズは既定で上限が 1 GB ですが、最大 2 GB まで増やすことができます。 キャッシュ サイズが大きくなると、読み込みにかかる時間が長くなることにご注意ください。 ローカル キャッシュの上限を 2 GB に増加していて、コピーされたファイルが最大サイズの 2 GB を超えると、App Service は通知なしにローカル キャッシュを無視して、リモート ファイル共有から読み取りを行います。 上限が定義されていない場合、または上限が 2 GB 未満に設定されていて、コピーされたファイルがその上限を超えると、デプロイまたはスワップがエラーで失敗することがあります。
 * ローカル キャッシュは読み取り/書き込み対応です。 ただし、アプリが仮想マシンを移動した場合や再起動された場合、変更は破棄されます。 コンテンツ ストアにミッション クリティカルなデータを保存するアプリには、ローカル キャッシュを使用しないでください。
 * _D:\home\LogFiles_ と _D:\home\Data_ には、ログ ファイルとアプリ データが格納されます。 この 2 つのサブフォルダーは、VM インスタンスにローカルに格納され、共有コンテンツ ストアに定期的にコピーされます。 アプリは、これらのフォルダーに書き込むことによって、ログ ファイルとデータを保持できます。 ただし、共有コンテンツ ストアへのコピーはベストエフォートで行われるため、VM インスタンスが突然クラッシュした場合はログ ファイルおよびデータが失われる可能性があります。
 * [ログのストリーミング](troubleshoot-diagnostic-logs.md#stream-logs)は、ベストエフォート コピーの影響を受けます。 ストリーム配信されるログにおいて最大で 1 分間の遅延が発生する可能性があります。
@@ -104,6 +104,9 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>新しい変更を発行してもアプリに反映されないのは なぜですか?
 アプリがローカル キャッシュを使用している場合、最新の変更を反映するには、サイトを再起動する必要があります。 運用サイトに変更を発行したくない場合は、 前述のベスト プラクティス セクションのスロットのオプションを参照してください。
+
+> [!NOTE]
+> [パッケージから実行](deploy-run-package.md)するデプロイ オプションは、ローカル キャッシュに対応していません。
 
 ### <a name="where-are-my-logs"></a>ログはどこにありますか?
 ローカル キャッシュのログ フォルダーとデータ フォルダーの見た目は少し違いますが、 サブフォルダーの構造は、"一意の VM 識別子" + タイムスタンプという形式のサブフォルダー以下に入れ子になっている点を除くと同じです。

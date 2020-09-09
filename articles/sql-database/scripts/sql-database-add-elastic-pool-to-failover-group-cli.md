@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 965e6fe3546630713f3fee2774c70aebd1ed2ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086083"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>CLI を使用してフェールオーバー グループに Azure SQL Database エラスティック プールを追加する
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| | |
+| コマンド | 説明 |
 |---|---|
 | [az sql elastic-pool](/cli/azure/sql/elastic-pool) | エラスティック プールのコマンド。 |
 | [az sql failover-group ](/cli/azure/sql/failover-group) | フェールオーバー グループのコマンド。 |
@@ -61,4 +61,4 @@ az group delete --name $resource
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/overview)のページをご覧ください。
 
-その他の SQL Database 用の Azure CLI サンプル スクリプトは、[Azure SQL Database 用の Azure CLI スクリプト](../sql-database-cli-samples.md)のページにあります。
+その他の SQL Database 用の Azure CLI サンプル スクリプトは、[Azure SQL Database 用の Azure CLI スクリプト](../../azure-sql/database/az-cli-script-samples-content-guide.md)のページにあります。

@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604870"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218219"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -41,7 +41,7 @@ ms.locfileid: "81604870"
 同じリージョンの VNet との VNet 統合を使用する場合、いくつかの制限があります。
 
 * グローバル ピアリング接続にまたがるリソースには到達できません。
-* この機能は、PremiumV2 の App Service プランをサポートするより新しい Azure App Service スケール ユニットからのみ使用できます。
+* この機能は、PremiumV2 の App Service プランをサポートするより新しい Azure App Service スケール ユニットからのみ使用できます。 "*これは、アプリを PremiumV2 価格レベルで実行しなければならないということではなく*"、単に PremiumV2 オプションを使用できる App Service プランでアプリを実行する必要があるということにご注意ください (これは、この VNet 統合機能も使用可能な新しいスケール ユニットであることを意味します)。
 * 統合サブネットは、1 つの App Service プランでしか使用できません。
 * この機能は、App Service Environment にある Isolated プランのアプリでは使用できません。
 * この機能には、Azure Resource Manager VNet 内に 32 個以上のアドレスを含む /27 である未使用のサブネットが必要です。
@@ -56,11 +56,7 @@ ms.locfileid: "81604870"
 
 別のプラン内のご自身のアプリが、別のプラン内のアプリから既に接続されている VNet にアクセスできるようにしたい場合は、既存の VNet 統合によって使用されているものとは異なるサブネットを選択します。
 
-この機能は、Linux ではプレビュー段階にあります。 Linux 形式の機能では、RFC 1918 アドレス (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) への呼び出しのみがサポートされます。
-
-### <a name="web-or-function-app-for-containers"></a>Web App for Containers または Function App for Containers
-
-Linux 上のアプリを組み込みイメージでホストする場合、リージョン VNet 統合は追加の変更なしで機能します。 Web App for Containers または Function App for Containers を使用している場合は、VNet 統合を使用するために docker イメージを変更する必要があります。 docker イメージでは、ハードコーディングされたポート番号を使用するのではなく、メイン Web サーバーのリスニング ポートとして PORT 環境変数を使用します。 PORT 環境変数は、コンテナーの起動時にプラットフォームによって自動的に設定されます。 SSH を使用する場合は、リージョン VNet 統合を使用するときに SSH_PORT 環境変数で指定されたポート番号でリッスンするように SSH デーモンを構成する必要があります。 Linux 上では、ゲートウェイが必要な VNet 統合はサポートされていません。
+この機能は、Windows と Linux の両方の Web アプリで完全にサポートされています。 すべての動作は、Windows アプリと Linux アプリ間で同じです。
 
 ### <a name="service-endpoints"></a>サービス エンドポイント
 

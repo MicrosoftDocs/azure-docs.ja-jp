@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/17/2020
+ms.openlocfilehash: 544fabf9a32eaa7ef7457fc26ae9212b9fce9872
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75965837"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837212"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -25,8 +25,9 @@ ms.locfileid: "75965837"
 > この機能は、Azure Database for PostgreSQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure パブリック クラウドのすべてのリージョンで利用できます。
 > VNet ピアリングでは、トラフィックがサービス エンドポイントを含む共通 VNet Gateway を通過して、ピアにフローするようになっている場合は、ACL/VNet ルールを作成して、Gateway VNet 内の Azure Virtual Machines が Azure Database for PostgreSQL サーバーにアクセスできるようにしてください。
 
-<a name="anch-terminology-and-description-82f" />
+また、接続に [Private Link](concepts-data-access-and-security-private-link.md) の使用を検討することもできます。 Private Link を使用すると、VNet 内のプライベート IP アドレスが Azure Database for PostgreSQL サーバーに提供されます。
 
+<a name="anch-terminology-and-description-82f"></a>
 ## <a name="terminology-and-description"></a>用語と説明
 
 **仮想ネットワーク:** ご自分の Azure サブスクリプションに仮想ネットワークを関連付けることができます。
@@ -39,13 +40,7 @@ ms.locfileid: "75965837"
 
 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、Azure Database for PostgreSQL サーバーに指示します。
 
-
-
-
-
-
-
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>仮想ネットワーク規則の利点
 
@@ -63,13 +58,8 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
-### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. サービス エンドポイントを定義せずにサブネット上に Azure Database for PostgreSQL を保持することは、まだできません
 
-**Microsoft.Sql** サーバーが仮想ネットワーク内のサブネット上のノードであった場合、仮想ネットワーク内のすべてのノードは Azure Database for PostgreSQL サーバーと通信できました。 この場合、仮想ネットワーク規則や IP ルールがなくても、VM は Azure Database for PostgreSQL と通信できました。
-
-しかし、2018 年 8 月時点ではまだ、Azure Database for PostgreSQL サービスは、サブネットに直接割り当てることができるサービスではありません。
-
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>仮想ネットワーク規則の詳細
 
@@ -96,13 +86,13 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 
 ネットワーク管理およびデータベース管理のロールには、仮想ネットワーク規則の管理に必要とされる機能以外もあります。 それらの機能のうち 1 つのサブネットだけが必要になります。
 
-必要な機能のサブネットのみを保持する単一のカスタム ロールを作成するために、Azure には[ロールベースのアクセス制御 (RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
+必要な機能のサブセットのみを保持する単一のカスタム ロールを作成するために、Azure には [Azure ロールベースのアクセス制御 (Azure RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
 
 > [!NOTE]
 > Azure Database for PostgreSQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
 > - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
 > - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
-> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
+> - 両方のサブスクリプションに **Microsoft.Sql** および **Microsoft.DBforPostgreSQL** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="limitations"></a>制限事項
 
@@ -120,6 +110,8 @@ Azure Database for PostgreSQL の場合、仮想ネットワーク規則機能�
 
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 
+- サブネットで **Microsoft.Sql** が有効になっている場合は、VNet 規則のみを使用して接続することを指定します。 このサブネット内のリソースの [VNet 以外のファイアウォール規則](concepts-firewall-rules.md)は機能しません。
+
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
     - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
     - [ExpressRoute][expressroute-indexmd-744v] 経由のオンプレミス
@@ -132,7 +124,7 @@ Azure Database for PostgreSQL の場合、仮想ネットワーク規則機能�
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
 
-単にファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを**オン**にする必要もあります。 サービス エンドポイントを**オン**にする場合、**オフ**から**オン**への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
+単に VNet ファイアウォール規則を設定するだけでは、VNet へのサーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントを**オン**にする必要もあります。 サービス エンドポイントを**オン**にする場合、**オフ**から**オン**への切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
 
 **IgnoreMissingServiceEndpoint** フラグは、Azure CLI またはポータルを使用して設定できます。
 

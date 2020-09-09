@@ -1,6 +1,5 @@
 ---
-title: チュートリアル 2:信用リスク モデルをトレーニングする
-titleSuffix: ML Studio (classic) - Azure
+title: 'Machine Learning Studio (classic) チュートリアル 2: 信用リスク モデルをトレーニングする - Azure'
 description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズのパート 2 です。 モデルをトレーニングして評価する方法について説明します。
 keywords: 信用リスク, 予測分析ソリューション,リスク評価
 author: sdgilley
@@ -10,16 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8feca17f10bb891f0ca5577b2363f95901da4a46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f768d9cef0eb68084a472a7b7b867b1cb1528cf6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79217863"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429190"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>チュートリアル 2:信用リスク モデルをトレーニングする - Azure Machine Learning Studio (クラシック)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 2** です。
 
@@ -69,7 +69,7 @@ Azure Machine Learning Studio (クラシック) を使用して機械学習モ�
    
    [2 クラス ブースト デシジョン ツリー][two-class-boosted-decision-tree] モジュールは汎用モデルを初期化し、[トレーニング モデル][train-model] モジュールはトレーニング データを使用してモデルをトレーニングします。 
 
-1. 左側の [R スクリプトの実行][execute-r-script]モジュールの左側の出力を、[モデルのトレーニング][train-model] モジュールの右側の入力ポートに接続します (このチュートリアルでは、データの分割モジュールの[左側から出力されるデータをトレーニング用に使用しました](#train))。
+1. [R スクリプトの実行][execute-r-script]モジュールの左側の出力を、[モデルのトレーニング][train-model] モジュールの右側の入力ポートに接続します (このチュートリアルでは、データの分割モジュールの[左側から出力されるデータをトレーニング用に使用](#train)しました)。
    
    > [!TIP]
    > この実験では、[R スクリプトの実行][execute-r-script]モジュールの入力 2 つと出力 1 つは必要ないため、そのままにしておきます。 
@@ -106,7 +106,7 @@ SVM モデルを設定するには、次の操作を行います。
 
 1. [データの正規化][normalize-data]モジュールを見つけ、キャンバスにドラッグします。
 
-1. 左側の [R スクリプトの実行][execute-r-script]モジュールの左側の出力を、このモジュールの入力に接続します (モジュールの出力ポートは、複数のモジュールに接続できることに注意してください)。
+1. 左側の [R スクリプトの実行][execute-r-script]モジュールの左側の出力を、このモジュールの入力に接続します (モジュールの出力ポートは複数のモジュールに接続できます)。
 
 1. [データの正規化][normalize-data]モジュールの左側の出力ポートを、2 つ目の[モデルのトレーニング][train-model] モジュールの右側の入力ポートに接続します。
 
@@ -183,7 +183,7 @@ SVM モデルを設定するには、次の操作を行います。
 
 [モデルの評価][evaluate-model]モジュールによって生成される曲線と測定値のペアを使用して、スコア付けされた 2 つのモデルの結果を比較できるようになります。 結果は、Receiver Operator Characteristic (ROC) 曲線、Precision/Recall 曲線、または Lift 曲線で表示できます。 表示されるその他の情報には、混同行列、累積の AUC (曲線下面積) 値、その他の測定値があります。 スライダーを左右に移動してしきい値を変更することで、変更が測定値に与える影響を確認することもできます。  
 
-グラフの右側の **[スコア付けされたデータセット]** または **[スコア付けされた比較対象のデータセット]** をクリックすると、関連付けられた曲線が強調表示され、関連する測定値が下に表示されます。 曲線の凡例では、[スコア付けされたデータセット] は、[モデルの評価][evaluate-model]モジュールの左側の入力ポート (ここでは、ブースト デシジョン ツリー モデル) に対応しています。 [スコア付けされた比較対象のデータセット] は、右側の入力ポート (この場合、SVM モデル) に対応しています。 いずれかのラベルをクリックすると、そのモデルの曲線が強調表示され、次の図に示すように、関連する測定値が表示されます。  
+グラフの右側の **[スコア付けされたデータセット]** または **[スコア付けされた比較対象のデータセット]** をクリックすると、関連付けられた曲線が強調表示され、関連する測定値が下に表示されます。 曲線の凡例では、[スコア付けされたデータセット] は、[モデルの評価][evaluate-model]モジュールの左側の入力ポート (この場合、ブースト デシジョン ツリー モデル) に対応しています。 [スコア付けされた比較対象のデータセット] は、右側の入力ポート (この場合、SVM モデル) に対応しています。 いずれかのラベルをクリックすると、そのモデルの曲線が強調表示され、次の図に示すように、関連する測定値が表示されます。  
 
 ![モデルの ROC 曲線](./media/tutorial-part2-credit-risk-train/roc-curves.png)
 

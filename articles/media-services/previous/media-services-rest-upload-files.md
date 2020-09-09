@@ -13,21 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68968cdbc512df527b70d0a314c90ce45ebaf7e2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73888598"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264183"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする  
+# <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
 > * [ポータル](media-services-portal-upload-files.md)
 > 
 
-Media Services で、デジタル ファイルを資産にアップロードします。 [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
+Media Services で、デジタル ファイルを資産にアップロードします。 [Asset](/rest/api/media/operations/asset) エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。 
 
 このチュートリアルでは、ファイルのアップロードと関連するその他の操作を行う方法を学習します。
 
@@ -45,7 +48,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 - [Azure Portal を使用して Azure Media Services アカウントを作成](media-services-portal-create-account.md)します。
 - [AAD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
-- また、詳細については、「[Azure AD 認証を使用して REST で Media Services API にアクセスする](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad)」の記事を確認してください。
+- また、詳細については、「[Azure AD 認証を使用して REST で Media Services API にアクセスする](./media-services-rest-connect-with-aad.md)」の記事を確認してください。
 - 「[Configure Postman for Media Services REST API calls](media-rest-apis-with-postman.md)」 (Media Services REST API 呼び出しの Postman の構成) に説明されているように、**Postman** を構成してください。
 
 ## <a name="considerations"></a>考慮事項
@@ -106,7 +109,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
 
-すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。 そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。 作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。 AccessPolicies について詳しくは、[AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) をご覧ください。
+すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。 そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。 作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。 AccessPolicies について詳しくは、[AccessPolicy](/rest/api/media/operations/accesspolicy) をご覧ください。
 
 ### <a name="create-an-access-policy"></a>アクセス ポリシーを作成します。
 
@@ -121,7 +124,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 ### <a name="overview"></a>概要
 
-[資産](https://docs.microsoft.com/rest/api/media/operations/asset)は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。 REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
+[資産](/rest/api/media/operations/asset)は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。 REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
 資産を作成するときに追加できるプロパティの 1 つは **Options** です。 次の暗号化オプションのいずれかを指定できます。 **[None]** (既定、暗号化は使用されない)、 **[StorageEncrypted]** (クライアント側のストレージ暗号化を使って事前に暗号化されたコンテンツに対応)、 **[CommonEncryptionProtected]** 、または **[EnvelopeEncryptionProtected]** 。 暗号化された資産がある場合は、配信ポリシーを構成する必要があります。 詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
 
@@ -144,13 +147,13 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。 ファイルはブロック BLOB としてをアップロードする必要があります。 ページ BLOB は Azure Media Services ではサポートされていません。  
 
-Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)をご覧ください。
+Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](/rest/api/storageservices/blob-service-rest-api)をご覧ください。
 
-実際のアップロード URL を受信するには、SAS ロケーターを作成します (以降を参照)。 Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。 特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。 これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。 詳細については、「 [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)」をご覧ください。
+実際のアップロード URL を受信するには、SAS ロケーターを作成します (以降を参照)。 Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。 特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。 これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。 詳細については、「 [Locator](/rest/api/media/operations/locator)」をご覧ください。
 
 SAS URL には次の形式があります。
 
-    {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
+`{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
 ### <a name="considerations"></a>考慮事項
 
@@ -175,9 +178,9 @@ SAS URL には次の形式があります。
 
 アップロード URL を作成し終えたら、Azure BLOB API を使用して直接コードを記述し、SAS コンテナーにファイルをアップロードする必要があります。 詳細については、次の記事を参照してください。
 
-- [Azure Storage REST API の使用](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [PUT Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [BLOB を Blob Storage にアップロードする](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Azure Storage REST API の使用](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [PUT Blob](/rest/api/storageservices/put-blob)
+- [BLOB を Blob Storage にアップロードする](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Postman を使用してファイルをアップロードする
 
@@ -209,22 +212,23 @@ SAS URL には次の形式があります。
 
 ## <a name="validate"></a>検証
 
-ファイルが正常にアップロードされたことを検証するために、[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) を照会して、**ContentFileSize** (または他の詳細項目) と新しい資産で確認できる項目を比較します。 
+ファイルが正常にアップロードされたことを検証するために、[AssetFile](/rest/api/media/operations/assetfile) を照会して、**ContentFileSize** (または他の詳細項目) と新しい資産で確認できる項目を比較します。 
 
 たとえば、次の **GET** 操作では、資産ファイル (ここでは、BigBuckBunny.mp4 ファイル) のファイル データを取得します。 クエリでは、以前に設定した[環境変数](postman-environment.md)を使用しています。
 
-    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
+`{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 
 応答には、サイズ、名前などの情報が含まれます。
 
-    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
-    "Name": "BigBuckBunny.mp4",
-    "ContentFileSize": "3186542",
-    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
-            
+```console
+"Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+"Name": "BigBuckBunny.mp4",
+"ContentFileSize": "3186542",
+"ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+```
+  
 ## <a name="next-steps"></a>次のステップ
 
 これで、アップロードした資産をエンコードできます。 詳細については、 [資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。
 
 また、Azure Functions を使用すると、構成したコンテナーに到着するファイルに基づいてエンコード ジョブをトリガーすることもできます。 詳細については、[このサンプル](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )を参照してください。
-

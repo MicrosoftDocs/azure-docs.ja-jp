@@ -3,15 +3,15 @@ title: StorSimple 8000 シリーズ　サポート パッケージの作成
 description: StorSimple 8000 シリーズ デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182017"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -98,9 +98,11 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
     ![サポート パッケージの編集](./media/storsimple-8000-create-manage-support-package/IC750706.png)
 5. 暗号化パスフレーズの入力を求められたら、サポート パッケージの作成時に使用したパスフレーズを入力します。
    
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
-   
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Open-HcsSupportPackage at command pipeline position 1
+
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 6. ログ ファイルが格納されているフォルダーに移動します。 ログ ファイルが展開され、暗号化が解除されているので、元のファイル拡張子が表示されます。 これらのファイルを変更し、ユーザー固有の情報 (ボリューム名やデバイスの IP アドレスなど) があれば削除して、ファイルを保存します。
 7. ファイルを閉じて gzip で圧縮し、AES-256 で暗号化します。 これは、サポート パッケージをネットワーク経由で転送するときの速度とセキュリティのためです。 ファイルを圧縮して暗号化するには、次のコマンドを入力します。
    
@@ -109,33 +111,37 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
     ![サポート パッケージの編集](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. 入力を求められたら、変更したサポート パッケージの暗号化パスフレーズを入力します。
    
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Close-HcsSupportPackage at command pipeline position 1
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 9. 要求されたときに Microsoft サポートと共有できるように、新しいパスフレーズを書き留めます。
 
 ### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>例: パスワードで保護された共有でサポート パッケージ内のファイルを編集する
 
 次に、サポート パッケージの復号化、編集、再暗号化の例を示します。
 
-        PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
+```powershell
+PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
-        PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
+cmdlet Open-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
+cmdlet Close-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32>
+```
 
 ## <a name="next-steps"></a>次のステップ
 

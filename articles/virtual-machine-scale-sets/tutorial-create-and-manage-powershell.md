@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure 仮想マシン スケール セットを作成および管理する
+title: チュートリアル:Azure VM スケール セットの作成と管理 - Azure PowerShell
 description: Azure PowerShell を使用して仮想マシン スケール セットを作成するための方法と一般的な管理タスク (インスタンスの起動と停止、スケール セット容量の変更の方法など) について説明します。
 author: ju-shim
 ms.author: jushiman
@@ -8,15 +8,15 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 1ab52c197ee57351a53919291f1c2e41108396ec
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195189"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078539"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットの作成および管理
 
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM インスタンスの管理者のユーザー名とパスワードを設定します。
+まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、VM インスタンスの管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -67,6 +67,9 @@ New-AzVmss `
 
 すべてのスケール セット リソースと VM インスタンスを作成して構成するには数分かかります。
 
+> [!IMPORTANT]
+> スケール セットに接続できないときは、 *[-SecurityGroupName "mySecurityGroup"](/powershell/module/az.compute/new-azvmss)* パラメーターを追加して、ネットワーク セキュリティ グループを作成することが必要になる場合があります。
+
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>スケール セット内の VM インスタンスを表示する
 スケール セット内の VM インスタンスの一覧を表示するには、次のように [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) を使用します。
@@ -84,7 +87,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、`-InstanceId`Get-AzVmssVM[ に ](/powershell/module/az.compute/get-azvmssvm) パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
+特定の VM インスタンスに関する追加情報を表示するには、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) に `-InstanceId` パラメーターを追加します。 次の例では、VM インスタンス *1* に関する情報を表示しています。
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -191,6 +194,8 @@ New-AzVmss `
   -Credential $cred
 ```
 
+> [!IMPORTANT]
+> "*最新*" のイメージ バージョンを使用することをお勧めします。 デプロイ時に使用可能な最新バージョンのイメージを使用するには、'latest' を指定します。 "latest" を使用する場合でも、デプロイ後に新しいバージョンが使用可能になったとしても、VM イメージが自動的に更新されないことに注意してください。
 
 ## <a name="understand-vm-instance-sizes"></a>VM インスタンス サイズについて
 VM インスタンス サイズ (または *SKU*) により、CPU、GPU、メモリなど、VM インスタンスで利用できるコンピューティング リソースの量が決定されます。 スケール セット内の VM インスタンスのサイズは、予定のワーク ロードに合ったものにする必要があります。
@@ -198,14 +203,14 @@ VM インスタンス サイズ (または *SKU*) により、CPU、GPU、メモ
 ### <a name="vm-instance-sizes"></a>VM インスタンス サイズ
 次の表は、ユース ケース別に一般的な VM サイズを分類したものです。
 
-| 種類                     | 一般的なサイズ           |    説明       |
+| Type                     | 一般的なサイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [汎用](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
-| [コンピューティングの最適化](../virtual-machines/windows/sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
-| [メモリの最適化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
-| [ストレージの最適化](../virtual-machines/windows/sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック レンダリングやビデオ編集に特化した VM です。       |
-| [高性能](../virtual-machines/windows/sizes-hpc.md) | H、A8 ～ 11          | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 
+| [汎用](../virtual-machines/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
+| [コンピューティングの最適化](../virtual-machines/sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
+| [メモリの最適化](../virtual-machines/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
+| [ストレージの最適化](../virtual-machines/sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV、NC            | 負荷の高いグラフィック レンダリングやビデオ編集に特化した VM です。       |
+| [高性能](../virtual-machines/sizes-hpc.md) | H、A8 ～ 11          | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 
 
 ### <a name="find-available-vm-instance-sizes"></a>利用可能な VM インスタンス サイズを確認する
 特定のリージョンで利用可能な VM インスタンス サイズのリストを確認するには、[Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) コマンドを使用します。 

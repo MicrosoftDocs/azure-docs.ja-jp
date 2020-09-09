@@ -9,12 +9,12 @@ ms.subservice: visual-studio
 ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124365"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503083"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "83124365"
 
 [Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) は、自動スケーリングと負荷分散機能を使用して、一連の類似する仮想マシンをデプロイし、管理するための Azure コンピューティング リソースです。 仮想マシン スケール セットのプロビジョニングとデプロイは、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を使用して実行できます。 Azure Resource Manager テンプレートは、Azure CLI、PowerShell、REST を使用してデプロイでき、Visual Studio から直接デプロイすることもできます。 Visual Studio には、Azure リソース グループの配置プロジェクトの一部としてデプロイできる一連のサンプル テンプレートが用意されています。
 
-Azure リソース グループの配置を使用すると、関連する一連の Azure リソースをグループ化し、1 回のデプロイ操作で発行できます。 詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
+Azure リソース グループの配置を使用すると、関連する一連の Azure リソースをグループ化し、1 回のデプロイ操作で発行できます。 詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

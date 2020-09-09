@@ -1,18 +1,18 @@
 ---
 title: Microsoft コマーシャル マーケットプレースで Azure アプリをオンボードするためのパートナー センター申請 API
 description: Microsoft パートナー センターのコマーシャル マーケットプレースで Azure アプリ用のパートナー センター申請 API を使用するための前提条件について説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: fec52caa3cb7565a86a6c50d300fe448b6518457
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744891"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320070"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>パートナー センターで Azure アプリをオンボードするためのパートナー センター申請 API
 
@@ -29,7 +29,7 @@ Azure 製品向けのパートナー センター API を使用するには、�
 
 パートナー センター申請 API を呼び出すコードを書き始める前に、次の前提条件が満たされていることを確認してください。
 
-- 自分 (または自分の組織) に Azure AD ディレクトリがあり、自分がそのディレクトリに対する[グローバル管理者](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)のアクセス許可を持っている必要があります。 Office 365 または Microsoft の他のビジネス サービスをすでに使用している場合、Azure AD ディレクトリをすでに所有しています。 そうでなければ、[パートナー センターで新しい Azure AD を無料で作成](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)できます。
+- 自分 (または自分の組織) に Azure AD ディレクトリがあり、自分がそのディレクトリに対する[グローバル管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)のアクセス許可を持っている必要があります。 Microsoft 365 または Microsoft の他のビジネス サービスをすでに使用している場合、Azure AD ディレクトリをすでに所有しています。 そうでなければ、[パートナー センターで新しい Azure AD を無料で作成](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)できます。
 
 - [Azure AD アプリケーションをパートナー センター アカウントと関連付け](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account)、テナント ID、クライアント ID、キーを取得する必要があります。 Azure AD アクセス トークンを取得するにはこれらの値が必要です。Microsoft Store 申請 API への呼び出しにこれらを使用します。
 

@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Zendesk の統合 | Microsoft Docs
 description: Azure Active Directory と Zendesk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 9d7c91e5-78f5-4016-862f-0f3242b00680
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70e7067a78b439d3dcaf0b83460296cad7b4485
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585799"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815074"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zendesk の統合
 
@@ -58,7 +54,7 @@ Azure AD への Zendesk の統合を構成するには、ギャラリーから�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zendesk**」と入力します。
 1. 結果のパネルから **[Zendesk]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zendesk"></a>Zendesk の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>Zendesk の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Zendesk に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Zendesk の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -143,52 +139,39 @@ Zendesk で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-zendesk-sso"></a>Zendesk の SSO の構成
 
+1. **Zendesk** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Zendesk のセットアップ]** をクリックすると、Zendesk アプリケーションに移動します。 そこから、管理者資格情報を提供して Zendesk にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
 1. Zendesk を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Zendesk 企業サイトにサインインして、次の手順を実行します。
 
-2. **[Admin]** をクリックします。
+1. **Zendesk 管理センター**で、 **[Security]\(セキュリティ\)** タブの **[Security settings]\(セキュリティ設定\)** をクリックします。
 
-3. 左側のナビゲーション ウィンドウで、 **[設定]** 、 **[セキュリティ]** の順にクリックします。
+    ![Security](./media/zendesk-tutorial/settings.png "Security")
 
-4. **[Security]\(セキュリティ\)** ページで、次の手順に従います。
+1. **[Single sign-on]\(シングル サインオン\)** ページにアクセスし、 **[SAML]** で **[Edit]\(編集\)** をクリックします。
 
-    ![Security](./media/zendesk-tutorial/ic773089.png "Security")
+    ![Security](./media/zendesk-tutorial/saml-sso.png "Security")
 
-    ![シングル サインオン](./media/zendesk-tutorial/ic773090.png "シングル サインオン")
+1. **[SSO]** ページで次の手順を実行します。
 
-    a. **[Admin & Agents]\(管理者とエージェント\)** タブをクリックします。
+    ![シングル サインオン](./media/zendesk-tutorial/saml-configuration.png "シングル サインオン")
 
-    b. **[シングルサインオン (SSO) と SAML]** を選択し、 **[SAML]** を選択します。
+    a. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    c. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
-    d. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
-
-    f. **[保存]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-zendesk-test-user"></a>Zendesk のテスト ユーザーの作成
 
 このセクションの目的は、ZendeskにBritta Simon というユーザーを作成することです。 Zendesk では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](Zendesk-provisioning-tutorial.md)をご覧ください。
-
-**ユーザーを手動で作成する必要がある場合、次の手順を実行します。**
-
-> [!NOTE]
-> **エンドユーザー** アカウントは、サインインするときに自動的にプロビジョニングされます。 **エージェント**と**管理者**のアカウントは、サインインの前に **Zendesk** で手動でプロビジョニングする必要があります。
-
-1. **Zendesk** テナントにサインインします。
-
-2. **[顧客リスト]** タブを選択します。
-
-3. **[ユーザー]** タブを選択し、 **[追加]** をクリックします。
-
-    ![ユーザーの追加](./media/zendesk-tutorial/ic773632.png "ユーザーの追加")
-4. プロビジョニングする既存の Azure AD アカウントの**名前**と**電子メール アドレス**を入力し、 **[Save]\(保存\)** をクリックします。
-
-    ![新しいユーザー](./media/zendesk-tutorial/ic773633.png "新しいユーザー")
-
-> [!NOTE]
-> 他の Zendesk ユーザー アカウント作成ツールや、Zendesk から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

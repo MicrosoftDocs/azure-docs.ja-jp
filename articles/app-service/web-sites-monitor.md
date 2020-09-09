@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 888118d227529110c209d7c8d5a3bb79cfcf3a9a
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738101"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88959793"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
@@ -58,11 +58,15 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 ## <a name="understand-metrics"></a>メトリックを理解する
 
 > [!NOTE]
-> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューのホワイトリストに登録されていない場合、データは表示されません。
+> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューへのアクセスが付与されていない場合、データは表示されません。
 > 
 
 > [!IMPORTANT]
 > **平均応答時間**は、メトリック集計との混同を避けるために非推奨です。 代わりに**応答時間**を使用してください。
+
+> [!NOTE]
+> アプリのメトリックには、そのアプリの SCM サイト (Kudu) に対する要求が含まれます。  これには、Kudu を使用してサイトの logstream を表示する要求が含まれます。  logstream 要求は数分間にわたる可能性があり、要求時間メトリックに影響を与えます。  これらのメトリックを自動スケーリング ロジックで使用する場合、ユーザーはこの関係に注意する必要があります。
+> 
 
 メトリックを利用すると、アプリまたは App Service プランの動作に関する情報が得られます。
 
@@ -148,14 +152,14 @@ CPU の使用状況を反映するメトリックには、次の 2 つがあり�
 
 これらのグラフのいずれかをクリックするとメトリック ビューが表示され、そこでカスタム グラフの作成や別のメトリックへのクエリ実行などのさまざまな操作を実行できます。 
 
-メトリックについて詳しくは、「[サービス メトリックの監視](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)」をご覧ください。
+メトリックについて詳しくは、「[サービス メトリックの監視](../azure-monitor/platform/data-platform.md)」をご覧ください。
 
 ## <a name="alerts-and-autoscale"></a>アラートと自動スケーリング
-アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳細については、[アラート通知の受信](../monitoring-and-diagnostics/insights-alerts-portal.md)に関するページをご覧ください。
+アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳細については、[アラート通知の受信](../azure-monitor/platform/alerts-classic-portal.md)に関するページをご覧ください。
 
 Basic 以上の App Service プランでホストされている App Service アプリでは自動スケーリングがサポートされます。 自動スケーリングでは、App Service プランのメトリックを監視するルールを構成することができます。 ルールによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリがオーバー プロビジョニングされたときのコスト削減にも役立ちます。
 
-自動スケーリングについて詳しくは、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関する記事と [Azure Monitor の自動スケーリングのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関する記事をご覧ください。
+自動スケーリングについて詳しくは、[スケールの方法](../azure-monitor/platform/autoscale-get-started.md)に関する記事と [Azure Monitor の自動スケーリングのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関する記事をご覧ください。
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

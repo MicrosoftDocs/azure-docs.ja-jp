@@ -4,15 +4,15 @@ description: Azure で実行されている仮想マシンのメンテナンス�
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 11/19/2019
+ms.topic: conceptual
+ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 68159577cb31145be5063bb19af6db71ca1727bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77115685"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182170"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
 
@@ -25,7 +25,7 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 再起動が必要な計画メンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
-- 段階はお客様への通知で始まります。 既定では、通知はサービス管理者と共同管理者に送信されます。 [アクティビティ ログ アラート](../service-health/alerts-activity-log-service-notifications.md)を使用して、通知の受信者や、電子メール、SMS、Webhook などのメッセージング オプションを追加できます。  
+- 段階はお客様への通知で始まります。 既定では、通知はサービス管理者と共同管理者に送信されます。 [アクティビティ ログ アラート](../service-health/alerts-activity-log-service-notifications-portal.md)を使用して、通知の受信者や、電子メール、SMS、Webhook などのメッセージング オプションを追加できます。  
 - 通知が送信されたら、*セルフサービス期間*を確認できます。 この期間中、どの仮想マシンが影響を受けるかを照会し、独自のスケジュールのニーズに基づいてメンテナンスを開始することができます。 セルフサービス期間は通常、約 35 日間です。
 - セルフサービス期間が過ぎると、"*予定メンテナンス期間*" が始まります。 この期間のある時点で、Azure は、仮想マシンに対して必要なメンテナンスをスケジュールし、適用します。 
 
@@ -76,7 +76,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンには、更新ドメイン (UD) の概念があります。 メンテナンスを実行するときに、Azure では UD の制約が遵守され、(同じ可用性セット内の) 別の UD の仮想マシンは再起動されません。  また、Azure は仮想マシンの次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、[Azure の仮想マシンの可用性](./linux/availability.md)に関するページを参照してください。
+高可用性の詳細については、[Azure の仮想マシンの可用性](availability.md)に関するページを参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
@@ -107,7 +107,8 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 **A:** VM のメンテナンス情報が表示されない理由はいくつかあります。
 1.  Microsoft 社内としてマークされたサブスクリプションを使用している。
 2.  VM のメンテナンスがスケジュールされていない。 メンテナンス ウェーブが終了しているか、取り消しまたは変更が行われたため、VM が影響を受けなくなっていると考えられます。
-3.  VM リスト ビューに **[メンテナンス]** 列が追加されていない。 この列は既定のビューに追加されていますが、既定以外の列を表示するように構成しているお客様は、VM リスト ビューに **[メンテナンス]** 列を手動で追加する必要があります。
+3. あなたは VM の割り当てを解除し、その後、VM を起動しました。 それを行うと、メンテナンス ウェーブを計画していない場所に VM が移動する可能性があります。 そのため、VM にはメンテナンス情報が表示されません。 
+4.  VM リスト ビューに **[メンテナンス]** 列が追加されていない。 この列は既定のビューに追加されていますが、既定以外の列を表示するように構成しているお客様は、VM リスト ビューに **[メンテナンス]** 列を手動で追加する必要があります。
 
 **Q:VM の 2 回目のメンテナンスがスケジュールされています。なぜですか?**
 
@@ -122,4 +123,3 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 ## <a name="next-steps"></a>次のステップ
 
 [Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用して計画メンテナンスを処理できます。
-

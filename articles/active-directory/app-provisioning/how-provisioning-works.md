@@ -2,21 +2,21 @@
 title: Azure AD プロビジョニングのしくみについて | Microsoft Docs
 description: Azure AD プロビジョニングのしくみについて
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
-ms.author: mimart
+ms.date: 05/20/2020
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593728"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235725"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -44,7 +44,7 @@ Azure AD プロビジョニング サービスでは、自動プロビジョニ�
 
 Azure AD をアプリケーションのユーザー管理 API に接続するには、資格情報が必要です。 アプリケーションの自動ユーザー プロビジョニングを構成している間に、有効な資格情報を入力する必要があります。 アプリケーションの資格情報の種類と要件については、アプリのチュートリアルを参照してください。 Azure portal で、資格情報をテストできます (Azure AD により、指定された資格情報を使用してアプリのプロビジョニング アプリへの接続が試行されます)。
 
-アプリケーションに対して SAML ベースのシングル サインオンも構成されている場合、Azure AD の内部のアプリケーションごとのストレージ制限は 1024 バイトです。 この制限には、アプリケーションの単一のインスタンスに関連付けられているすべての証明書、シークレット トークン、資格情報、および関連構成データ (Azure AD のサービス プリンシパル レコードとも呼ばれます) が含まれます。 SAML ベースのシングル サインオンが構成されている場合、SAML トークンの署名に使われる証明書により、通常、領域の 50% 以上が消費されます。 ユーザー プロビジョニングの設定時に入力される追加の項目 (シークレット トークン、URI、通知メール アドレス、ユーザー名、およびパスワード) により、ストレージ制限を超える可能性があります。 詳細については、[ユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題](../manage-apps/application-provisioning-config-problem-storage-limit.md)に関するページを参照してください。
+アプリケーションに対して SAML ベースのシングル サインオンも構成されている場合、Azure AD の内部のアプリケーションごとのストレージ制限は 1024 バイトです。 この制限には、アプリケーションの単一のインスタンスに関連付けられているすべての証明書、シークレット トークン、資格情報、および関連構成データ (Azure AD のサービス プリンシパル レコードとも呼ばれます) が含まれます。 SAML ベースのシングル サインオンが構成されている場合、SAML トークンの署名に使われる証明書により、通常、領域の 50% 以上が消費されます。 ユーザー プロビジョニングの設定時に入力される追加の項目 (シークレット トークン、URI、通知メール アドレス、ユーザー名、およびパスワード) により、ストレージ制限を超える可能性があります。 詳細については、[ユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題](./application-provisioning-config-problem-storage-limit.md)に関するページを参照してください。
 
 ## <a name="mapping-attributes"></a>属性のマッピング
 
@@ -54,7 +54,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 プロビジョニングを設定するときは、どのユーザー (またはグループ) プロパティが Azure AD からアプリケーションに提供されるかを定義する属性マッピングとワークフローを確認して構成することが重要です。 2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される照合プロパティ (**この属性を使用してオブジェクトを照合します**) を確認して構成します。
 
-既定の属性マッピングをビジネスのニーズに合わせてカスタマイズできます。 そのため、既存の属性マッピングを変更、削除したり、新規の属性マッピングを作成したりすることができます。 詳細については、[SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](../manage-apps/customize-application-attributes.md)に関するページを参照してください。
+既定の属性マッピングをビジネスのニーズに合わせてカスタマイズできます。 そのため、既存の属性マッピングを変更、削除したり、新規の属性マッピングを作成したりすることができます。 詳細については、[SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](./customize-application-attributes.md)に関するページを参照してください。
 
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 これらのマッピングでは、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。 詳細については、[属性マッピングの式の書き方](functions-for-customizing-application-data.md)に関するページを参照してください。
 
@@ -63,7 +63,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 Azure AD から SaaS アプリケーションへの送信プロビジョニングでは、[ユーザーまたはグループの割り当て](../manage-apps/assign-user-or-group-access-portal.md)に依存することが、プロビジョニングの対象となるユーザーを特定する最も一般的な方法です。 ユーザー割り当てはシングル サインオンの有効化にも使用されるため、アクセスとプロビジョニングの両方を管理するのに同じ方法を使用できます。 割り当てベースのスコープは、Workday や Successfactors などの受信プロビジョニング シナリオには適用されません。
 
-* **[グループ]。** Azure AD Premium ライセンス プランを利用すると、グループを使用して SaaS アプリケーションにアクセスを割り当てることができます。 プロビジョニング スコープが、**割り当てられているユーザーおよびグループのみを同期する**ように設定されている場合、Azure AD プロビジョニング サービスでは、アプリケーションに割り当てられているグループのメンバーであるかどうかに基づいてユーザーがプロビジョニングまたはプロビジョニング解除されます。 アプリケーションでグループ オブジェクトがサポートされていない場合、グループ オブジェクト自体はプロビジョニングされません。 アプリケーションに割り当てられているグループで、プロパティ "SecurityEnabled" が "False" に設定されていることを確認します。
+* **[グループ]。** Azure AD Premium ライセンス プランを利用すると、グループを使用して SaaS アプリケーションにアクセスを割り当てることができます。 プロビジョニング スコープが、**割り当てられているユーザーおよびグループのみを同期する**ように設定されている場合、Azure AD プロビジョニング サービスでは、アプリケーションに割り当てられているグループのメンバーであるかどうかに基づいてユーザーがプロビジョニングまたはプロビジョニング解除されます。 アプリケーションでグループ オブジェクトがサポートされていない場合、グループ オブジェクト自体はプロビジョニングされません。 アプリケーションに割り当てられているグループで、プロパティ "SecurityEnabled" が "True" に設定されていることを確認します。
 
 * **動的グループ。** Azure AD ユーザー プロビジョニング サービスでは、[動的グループ](../users-groups-roles/groups-create-rule.md)のユーザーの読み取りとプロビジョニングを行うことができます。 次の注意事項と推奨事項に留意してください。
 
@@ -81,13 +81,13 @@ Azure AD から SaaS アプリケーションへの送信プロビジョニン�
 
 ### <a name="b2b-guest-users"></a>B2B (ゲスト) ユーザー
 
-Azure AD ユーザー プロビジョニング サービスを使って、Azure AD の B2B (またはゲスト) ユーザーを SaaS アプリケーションにプロビジョニングすることは可能です。 ただし、B2B ユーザーが、Azure AD を使用して SaaS アプリケーションにサインインするには、SaaS アプリケーションで、SAML ベースのシングル サインオン機能が特定の方法で構成されている必要があります。 B2B ユーザーからのサインインをサポートするように SaaS アプリケーションを構成する方法の詳細については、「[B2B コラボレーション用の SaaS アプリの構成](../b2b/configure-saas-apps.md)」を参照してください。
+Azure AD ユーザー プロビジョニング サービスを使って、Azure AD の B2B (またはゲスト) ユーザーを SaaS アプリケーションにプロビジョニングすることは可能です。 ただし、B2B ユーザーが、Azure AD を使用して SaaS アプリケーションにサインインするには、SaaS アプリケーションで、SAML ベースのシングル サインオン機能が特定の方法で構成されている必要があります。 B2B ユーザーからのサインインをサポートするように SaaS アプリケーションを構成する方法の詳細については、「[B2B コラボレーション用の SaaS アプリの構成](../external-identities/configure-saas-apps.md)」を参照してください。
 
 ゲスト ユーザーの userPrincipalName は、多くの場合、"alias#EXT#@domain.com" として格納されることに注意してください。 userPrincipalName がソース属性として属性マッピングに含まれている場合、#EXT# は userPrincipalName から削除されます。 #EXT# が存在する必要がある場合は、ソース属性としての userPrincipalName を originalUserPrincipalName に置き換えてください。 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>プロビジョニング サイクル:初回と増分
 
-Azure AD がソース システムである場合、プロビジョニング サービスは「[デルタ クエリを使用して、Microsoft Graph データの変更を追跡する](https://docs.microsoft.com/graph/delta-query-overview)」を使用してユーザーとグループを監視します。 プロビジョニング サービスは、ソース システムとターゲット システムに対して初回サイクルを実行した後、増分サイクルを定期的に行います。
+Azure AD がソース システムである場合、プロビジョニング サービスは「[デルタ クエリを使用して、Microsoft Graph データの変更を追跡する](/graph/delta-query-overview)」を使用してユーザーとグループを監視します。 プロビジョニング サービスは、ソース システムとターゲット システムに対して初回サイクルを実行した後、増分サイクルを定期的に行います。
 
 ### <a name="initial-cycle"></a>初回サイクル
 
@@ -154,19 +154,19 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 
 ### <a name="quarantine"></a>検疫
 
-ターゲット システムに対する呼び出しのほとんどまたはすべてが、常にエラー (管理者の資格情報が無効である場合など) が原因で失敗する場合、プロビジョニング ジョブは "検疫" 状態になります。 この状態は、[プロビジョニング概要レポート](../manage-apps/check-status-user-account-provisioning.md)、または電子メール (電子メール通知が Azure portal で構成されている場合) で示されます。
+ターゲット システムに対する呼び出しのほとんどまたはすべてが、常にエラー (管理者の資格情報が無効である場合など) が原因で失敗する場合、プロビジョニング ジョブは "検疫" 状態になります。 この状態は、[プロビジョニング概要レポート](./check-status-user-account-provisioning.md)、または電子メール (電子メール通知が Azure portal で構成されている場合) で示されます。
 
 検疫状態であると、増分サイクルの頻度は徐々に減少し、最終的には 1 日 1 回になります。
 
-問題を引き起こしているすべてのエラーが修正されたら、プロビジョニング ジョブは検疫から削除され、次の同期サイクルが開始されます。 プロビジョニング ジョブが検疫にとどまっている期間が 4 週間を超えると、そのプロビジョニング ジョブは無効になります。 検疫の状態の詳細については、[こちら](../manage-apps/application-provisioning-quarantine-status.md)を参照してください。
+問題を引き起こしているすべてのエラーが修正されたら、プロビジョニング ジョブは検疫から削除され、次の同期サイクルが開始されます。 プロビジョニング ジョブが検疫にとどまっている期間が 4 週間を超えると、そのプロビジョニング ジョブは無効になります。 検疫の状態の詳細については、[こちら](./application-provisioning-quarantine-status.md)を参照してください。
 
 ### <a name="how-long-provisioning-takes"></a>プロビジョニングにかかる時間
 
-プロビジョニング ジョブで実行されているのが初期プロビジョニング サイクルか増分サイクルかによって、パフォーマンスが異なります。 プロビジョニングにかかる時間、およびプロビジョニング サービスの状態を監視する方法について詳しくは、[ユーザー プロビジョニングの状態の確認](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)に関するページをご覧ください。
+プロビジョニング ジョブで実行されているのが初期プロビジョニング サイクルか増分サイクルかによって、パフォーマンスが異なります。 プロビジョニングにかかる時間、およびプロビジョニング サービスの状態を監視する方法について詳しくは、[ユーザー プロビジョニングの状態の確認](application-provisioning-when-will-provisioning-finish-specific-user.md)に関するページをご覧ください。
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>ユーザーが正しくプロビジョニングされているかどうかを確認する方法
 
-ユーザー プロビジョニング サービスによって実行された操作はすべて、Azure AD の[プロビジョニング ログ (プレビュー)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) に記録されます。 このログには、ソース システムとターゲット システムに対して実行されたすべての読み取りおよび書き込み操作と、各操作の際に読み取られたり書き込まれたりしたユーザー データが含まれます。 Azure portal でプロビジョニング ログを確認する方法については、[プロビジョニング レポートに関するガイド](../manage-apps/check-status-user-account-provisioning.md)を参照してください。
+ユーザー プロビジョニング サービスによって実行された操作はすべて、Azure AD の[プロビジョニング ログ (プレビュー)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) に記録されます。 このログには、ソース システムとターゲット システムに対して実行されたすべての読み取りおよび書き込み操作と、各操作の際に読み取られたり書き込まれたりしたユーザー データが含まれます。 Azure portal でプロビジョニング ログを確認する方法については、[プロビジョニング レポートに関するガイド](./check-status-user-account-provisioning.md)を参照してください。
 
 ## <a name="de-provisioning"></a>プロビジョニング解除
 
@@ -190,8 +190,8 @@ Azure AD でユーザーが削除されてから 30 日後に、テナントか�
 
 [自動ユーザー プロビジョニングのデプロイを計画する](../app-provisioning/plan-auto-user-provisioning.md)
 
-[ギャラリー アプリのプロビジョニングを構成する](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[ギャラリー アプリのプロビジョニングを構成する](./configure-automatic-user-provisioning-portal.md)
 
 [独自のアプリを作成するときに SCIM エンドポイントを構築してプロビジョニングを構成する](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[アプリケーションに対するユーザーの構成およびプロビジョニングに関する問題のトラブルシューティング](../manage-apps/application-provisioning-config-problem.md)
+[アプリケーションに対するユーザーの構成およびプロビジョニングに関する問題のトラブルシューティング](./application-provisioning-config-problem.md)

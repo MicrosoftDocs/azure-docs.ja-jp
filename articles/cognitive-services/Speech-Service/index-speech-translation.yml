@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2020
   ms.author: trbye
-  ms.openlocfilehash: 5d5c1cdae695b68f45d55b51b76d88c2f93c50d1
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 8fa1b62b193fff2a0ca8f4825ece228f156e5318
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81401420"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800846"
 landingContent:
 - title: 音声翻訳について
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
       url: speech-translation.md
     - text: 音声翻訳の基本
       url: speech-translation-basics.md
+    - text: Speech CLI を使用して、コードを書かずに音声を翻訳する
+      url: spx-overview.md
   - linkListType: quickstart
     links:
     - text: 音声テキスト変換の翻訳

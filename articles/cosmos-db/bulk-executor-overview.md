@@ -3,16 +3,16 @@ title: Azure Cosmos DB Bulk Executor ライブラリの概要
 description: Bulk Executor ライブラリによって提供される一括インポート API と一括更新 API を通じて、Azure Cosmos DB で一括操作を実行します。
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260612"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
  
@@ -42,7 +42,7 @@ Bulk Executor ライブラリは、このような大きなスループットと
 
 ドキュメントをインポートまたは更新する一括操作がエンティティのバッチでトリガーされると、最初に、その Azure Cosmos DB パーティション キーの範囲に対応するバケットにシャッフルされます。 パーティション キーの範囲に対応する各バケット内では、バケットがミニバッチに分割され、各ミニバッチはサーバー側でコミットされるペイロードとして機能します。 Bulk Executor ライブラリには、これらのミニバッチをパーティション キーの範囲内と範囲間の両方で同時実行するための最適化が組み込まれています。 次の図では、Bulk Executor が異なるパーティション キーにデータをバッチ処理する方法を示しています。  
 
-![BulkExecutor のアーキテクチャ](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="バルク エグゼキューターのアーキテクチャ" :::
 
 Bulk Executor ライブラリは、コレクションに割り当てられているスループットを最大限に活用します。 Azure Cosmos DB の各パーティション キー範囲に対して  [AIMD スタイルの輻輳制御メカニズム](https://tools.ietf.org/html/rfc5681)を使用し、レートの制限とタイムアウトを効率的に処理します。 
 

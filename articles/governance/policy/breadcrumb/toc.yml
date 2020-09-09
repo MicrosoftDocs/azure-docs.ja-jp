@@ -15,3 +15,6 @@
         - name: ポリシー
           tocHref: /azure/key-vault
           topicHref: /azure/governance/policy
+        - name: ポリシー
+          tocHref: /azure/aks
+          topicHref: /azure/governance/policy

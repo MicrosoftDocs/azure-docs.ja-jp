@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Infor Retail - Information Management の統合 | Microsoft Docs'
 description: Azure Active Directory と Infor Retail - Information Management の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5ff49168-ef81-4169-8e5e-dc86e24dd5e5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6572560833e6336495b3bec782a096b584be1ec0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8724bb332e48bb9e458550b312fb9c1d41da2477
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100286"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>チュートリアル: Azure Active Directory と Infor Retail - Information Management の統合
 
@@ -108,10 +103,10 @@ Infor Retail - Information Management との Azure AD シングル サインオ�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
     
-    | |
-    |--|
-    | `https://<company name>.mingle.infor.com` |
-    | `http://<company name>.mingledev.infor.com` |
+    ```http
+    https://<company name>.mingle.infor.com
+    http://<company name>.mingledev.infor.com
+    ```
 
     b. **[応答 URL]** ボックスに、`https://<company name>.mingle.infor.com/sp/ACS.saml2` のパターンを使用して URL を入力します
 

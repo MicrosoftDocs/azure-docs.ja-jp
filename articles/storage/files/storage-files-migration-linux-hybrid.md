@@ -3,16 +3,16 @@ title: Linux の Azure File Sync への移行
 description: Linux サーバーの場所から、Azure File Sync と Azure ファイル共有によるハイブリッド クラウド デプロイに、ファイルを移行する方法について説明します。
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 3131d6a7e3675027968eadd5f3e3ca8a7f2449c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510371"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
@@ -118,7 +118,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG:\<ファイル名\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       状態を Unicode 形式でログ ファイルに出力します (既存のログを上書きします)。

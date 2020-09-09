@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 455f611b57cf11e29d35e617df4fd9c09aff2906
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 309582464d85923823b3779338f288bfb5519c6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79463783"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88687843"
 ---
 # <a name="tutorial-forecast-future-spending"></a>チュートリアル:将来の支出の予測
 

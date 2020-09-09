@@ -1,25 +1,25 @@
 ---
-title: Azure AD でユーザーのエクスペリエンスからアプリケーションを非表示にする
-description: Azure Active Directory アクセス パネルまたは Office 365 ランチャーでユーザーのエクスペリエンスからアプリケーションを非表示にする方法
+title: Azure AD でユーザーのエクスペリエンスからエンタープライズ アプリケーションを非表示にする
+description: Azure Active Directory アクセス パネルまたは Office 365 ランチャーでユーザーのエクスペリエンスからエンタープライズ アプリケーションを非表示にする方法
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5718adf4fd76e2fbd0ff793dd2fa33ee08f7c0fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295045"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367701"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory のエンドユーザーに対してアプリケーションを非表示にする
+# <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory のエンドユーザーに対してエンタープライズ アプリケーションを非表示にする
 
 エンドユーザーの MyApps パネルや Office 365 ランチャーにアプリケーションが表示されないようにする方法について説明します。 アプリケーションを非表示にしても、アプリケーションに対するユーザーのアクセス許可は維持されます。 
 
@@ -42,6 +42,9 @@ MyApps パネルと Office 365 アプリケーション ランチャーにアプ
 7.  **[ユーザーに表示しますか?]** という質問に対し、 **[いいえ]** をクリックします。
 8.  **[保存]** をクリックします。
 
+> [!NOTE]
+> これらの手順は、エンタープライズ アプリケーションにのみ適用されます。
+
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Azure AD PowerShell を使用してアプリケーションを非表示にする
 
 MyApps パネルからアプリケーションを非表示にするには、アプリケーションのサービス プリンシパルに HideApp タグを手動で追加します。 次の [AzureAD PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) コマンドを実行して、アプリケーションの **[ユーザーに表示しますか?]** プロパティを **[いいえ]** に設定します。 
@@ -62,10 +65,11 @@ MyApps パネルに一切の Office 365 アプリケーションが表示され�
 
 1.  ディレクトリのグローバル管理者として [Azure portal](https://portal.azure.com) にサインインします。
 2.  **[Azure Active Directory]** を選択します。
-3.  **[ユーザー設定]** を選択します。
-4.  **[エンタープライズ アプリケーション]** で、 **[エンド ユーザーがアプリケーションを起動して表示する方法を管理する]** をクリックします。
-5.  **[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** で、 **[はい]** をクリックします。
-6.  **[保存]** をクリックします。
+3.  **[ユーザー]** を選択します。
+4.  **[ユーザー設定]** を選択します。
+5.  **[エンタープライズ アプリケーション]** で、 **[エンド ユーザーがアプリケーションを起動して表示する方法を管理する]** をクリックします。
+6.  **[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** で、 **[はい]** をクリックします。
+7.  **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 * [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)

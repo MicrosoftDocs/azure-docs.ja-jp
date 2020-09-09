@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 9eae210818cf623078090503deefc6295dab7164
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076361"
 ---
 # <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center と Windows Admin Center の統合
 

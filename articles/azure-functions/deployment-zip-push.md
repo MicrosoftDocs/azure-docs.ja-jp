@@ -3,12 +3,12 @@ title: Azure Functions の zip プッシュ デプロイ
 description: Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75769671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833054"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -56,7 +56,9 @@ Azure Functions には、Azure App Service によって提供されている、�
 
     `<function_app>` プロジェクトからファイルをダウンロードするには、以下の展開の GET API を使用します。 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
     `/site/wwwroot/` を含めると、zip ファイルには関数アプリ プロジェクト ファイルのみが含まれ、サイト全体は含まれません。 Azure にまだサインインしていない場合は、サインインするように求められます。  
 

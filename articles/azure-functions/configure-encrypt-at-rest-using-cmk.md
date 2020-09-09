@@ -3,19 +3,19 @@ title: 保存時にアプリケーション ソースを暗号化する
 description: Azure Storage でアプリケーション データを暗号化し、パッケージ ファイルとしてデプロイします。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408726"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282332"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した保存時の暗号化
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用し、保存中のアプリケーション データを暗号化する
 
 関数アプリのアプリケーション データを保存時に暗号化するには、Azure Storage アカウントと Azure Key Vault が必要です。 これらのサービスは、デプロイ パッケージからアプリを実行するときに使用されます。
 
   - [Azure Storage では保存時に暗号化を行うことができます](../storage/common/storage-service-encryption.md)。 システムによって提供されるキー、または独自のカスタマー マネージド キーを使用できます。 これは、Azure の関数アプリで実行されていないアプリケーション データが格納される場所です。
-  - [デプロイ パッケージからの実行]((run-functions-from-deployment-package.md) は、App Service のデプロイ機能です。 これにより、Shared Access Signature (SAS) URL を使用して、Azure Storage アカウントからサイト コンテンツをデプロイできます。
+  - [デプロイ パッケージからの実行](run-functions-from-deployment-package.md)は、App Service のデプロイ機能です。 これにより、Shared Access Signature (SAS) URL を使用して、Azure Storage アカウントからサイト コンテンツをデプロイできます。
   - [Key Vault 参照](../app-service/app-service-key-vault-references.md)は、App Service のセキュリティ機能です。 これにより、実行時にアプリケーション設定としてシークレットをインポートできます。 これを使用して、Azure Storage アカウントの SAS URL を暗号化します。
 
 ## <a name="set-up-encryption-at-rest"></a>保存時の暗号化の設定
@@ -109,7 +109,7 @@ Key Vault への関数アプリのアクセス権を無効にすることで、�
 
 ### <a name="is-there-any-additional-charge-for-running-my-function-app-from-the-deployment-package"></a>デプロイ パッケージから関数アプリを実行する場合、追加料金は発生しますか?
 
-Azure Storage アカウントに関連するコストと、該当する送信料金のみです。
+Azure Storage アカウントに関連するコストと、該当するエグレス料金のみです。
 
 ### <a name="how-does-running-from-the-deployment-package-affect-my-function-app"></a>デプロイ パッケージからの実行は、関数アプリにどのように影響しますか?
 

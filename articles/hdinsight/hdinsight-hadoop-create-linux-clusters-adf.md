@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 41482af619ad94ee059fc11a74581fa30c2e7011
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7353366af14ca785c5635e1bde8101c1d71cd47f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079105"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/overview)。
+* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/)。
 
 * Azure Active Directory サービス プリンシパル。 サービス プリンシパルを作成したら、リンク先の記事の手順に従って、**アプリケーション ID** と**認証キー**を必ず取得してください。 このチュートリアルで、後ほどこれらの値が必要になります。 また、サービス プリンシパルが、サブスクリプションまたはクラスターが作成されるリソース グループの*共同作成者*ロールのメンバーであることを確認してください。 必要な値を取得し、適切なロールを割り当てる手順については、[Azure Active Directory サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事をご覧ください。
 
@@ -168,8 +168,8 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 Azure Data Factory では、データ ファクトリに 1 つまたは複数のデータ パイプラインを設定できます。 データ パイプラインには、1 つ以上のアクティビティがあります。 次の 2 種類のアクティビティがあります。
 
-* [データ移動アクティビティ](../data-factory/copy-activity-overview.md) -  データ移動アクティビティを使用して、ソース データ ストアから宛先データ ストアにデータを移動します。
-* [データ変換アクティビティ](../data-factory/transform-data.md) -  データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。
+* [データ移動アクティビティ](../data-factory/copy-activity-overview.md) - データ移動アクティビティを使用して、ソース データ ストアから宛先データ ストアにデータを移動します。
+* [データ変換アクティビティ](../data-factory/transform-data.md) - データ変換アクティビティは、データを変換/処理するために使用します。 HDInsight Hive アクティビティは、Data Factory でサポートされるデータ変換アクティビティの 1 つです。 このチュートリアルでは、Hive 変換アクティビティを使用します。
 
 この記事では、オンデマンドの HDInsight Hadoop クラスターを作成するように Hive アクティビティを構成します。 アクティビティを実行してデータ を処理するときには、次のことが行われます。
 
@@ -339,7 +339,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     * パイプラインの一部として実行された Hive スクリプトの出力が含まれた **adfgerstarted/outputfolder** が表示されます。
 
-    * **adfhdidatafactory-\<リンクされたサービスの名前>-\<タイムスタンプ>** コンテナーが表示されます。 このコンテナーは、パイプライン実行の一環として作成された HDInsight クラスターの既定のストレージの場所です。
+    * **adfhdidatafactory-\<linked-service-name>-\<timestamp>** コンテナーが表示されます。 このコンテナーは、パイプライン実行の一環として作成された HDInsight クラスターの既定のストレージの場所です。
 
     * Azure Data Factory のジョブ ログがある **adfjobs** コンテナーが表示されます。  
 

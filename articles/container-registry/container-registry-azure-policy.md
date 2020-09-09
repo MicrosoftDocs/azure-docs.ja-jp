@@ -2,32 +2,29 @@
 title: Azure Policy を使用したコンプライアンス
 description: Azure Policy で組み込みポリシーを割り当て、Azure コンテナー レジストリのコンプライアンスを監査します
 ms.topic: article
-ms.date: 02/26/2020
-ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 26c56616bcc411063d0ebfda28ba1e6fdf44c7fb
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144999"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291019"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査
 
 [Azure Policy](../governance/policy/overview.md) は、ポリシーの作成、割り当て、管理に使用する Azure のサービスです。 これらのポリシーは、リソースにさまざまなルールと効果を適用して、それらのリソースが会社の標準とサービス レベル アグリーメントに準拠した状態に保たれるようにします。
 
-この記事では、Azure Container Registry の組み込みポリシー (プレビュー) について説明します。 これらのポリシーを使用し、新しいレジストリと既存のレジストリのコンプライアンスを監査します。
+この記事では、Azure Container Registry の組み込みポリシーについて説明します。 これらのポリシーを使用し、新しいレジストリと既存のレジストリのコンプライアンスを監査します。
 
 Azure Policy を使用するのに料金は一切かかりません。
-
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 ## <a name="built-in-policy-definitions"></a>組み込みのポリシー定義
 
 次の組み込みのポリシー定義は Azure Container Registry に固有となります。
 
-[!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
+[!INCLUDE [azure-policy-reference-policies-container-registry](../../includes/policy/reference/bycat/policies-container-registry.md)]
 
-組み込みネットワーク ポリシー定義の「[[プレビュー] Container Registry では仮想ネットワーク サービス エンドポイントを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)」もご覧ください。
+組み込みのネットワーク ポリシー定義(「[コンテナー レジストリは仮想ネットワーク サービス エンドポイントを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)」)も参照してください。
 
 ## <a name="assign-policies"></a>ポリシーの割り当て
 
@@ -48,7 +45,10 @@ Azure portal、Azure コマンドライン ツール、または Azure Policy SD
 
 1. **[すべてのサービス]** を選択し、**ポリシー**を検索します。
 1. **[コンプライアンス]** を選択します。
-1. フィルターを使用し、コンプライアンスの状態を限定するか、ポリシーを検索します ![ポータルのポリシー コンプライアンス](./media/container-registry-azure-policy/azure-policy-compliance.png)。
+1. フィルターを使用し、コンプライアンスの状態を限定するか、ポリシーを検索します。
+
+    ![ポータルのポリシーのコンプライアンス](./media/container-registry-azure-policy/azure-policy-compliance.png)
+    
 1. ポリシーを選択し、集約コンプライアンスの詳細とイベントを確認します。 必要であれば、リソース コンプライアンスに対して特定のレジストリを選択します。
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI のポリシー コンプライアンス
@@ -64,8 +64,8 @@ az policy assignment list --query "[?contains(displayName,'Container Registries'
 ```
 Name                                                                                   ID
 -------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
-[Preview]: Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
-[Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
+Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
+Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
 次に [az policy state list](/cli/azure/policy/state#az-policy-state-list) を実行すると、特定のポリシー ID の下にあるすべてのリソースに関して JSON で書式設定されたコンプライアンスの状態が返されます。
@@ -87,12 +87,8 @@ az policy state list \
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Policy の[定義](../governance/policy/concepts/definition-structure.md)と[効果](../governance/policy/concepts/effects.md)について知る
+* Azure Policy の[定義](../governance/policy/concepts/definition-structure.md)と[効果](../governance/policy/concepts/effects.md)について知る。
 
-* [カスタム ポリシー定義](../governance/policy/tutorials/create-custom-policy-definition.md)を作成する
+* [カスタム ポリシー定義](../governance/policy/tutorials/create-custom-policy-definition.md)を作成する。
 
-* Azure の[ガバナンス機能](../governance/index.yml)について知る
-
-
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+* Azure の[ガバナンス機能](../governance/index.yml)について知る。

@@ -3,25 +3,25 @@ title: フェデレーション シングル サインオンのギャラリー �
 description: Azure AD での SAML ベースのフェデレーション シングル サインオン用に構成されたアプリケーションにサインインするときに発生する特定のエラーのためのガイダンス
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/18/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68dc90cdb096849df17bc25ac185b1239b46ec72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77367902"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413146"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題
 
@@ -241,7 +241,7 @@ Azure AD によって、HTTP 要求の URL パラメーター内から SAML 要�
 
 **考えられる原因**
 
-シングル サインオン中に、サインイン要求に明示的な応答 URL (Assertion Consumer Service URL) が含まれていない場合、Azure AD はそのアプリケーションに対して構成されているいずれかの URL を選択します。 アプリケーションに明示的な応答 URL が構成されている場合でも、ユーザーは https://127.0.0.1:444 にリダイレクトされる可能性があります。 
+シングル サインオン中に、サインイン要求に明示的な応答 URL (Assertion Consumer Service URL) が含まれていない場合、Azure AD によって、そのアプリケーションに対して構成されているいずれかの応答 URL が選択されます。 アプリケーションに明示的な応答 URL が構成されている場合でも、ユーザーは https://127.0.0.1:444 にリダイレクトされる可能性があります。 
 
 アプリケーションがギャラリー以外のアプリとして追加されたときに、Azure Active Directory によって、既定値としてこの応答 URL が作成されていました。 この動作が変更され、Azure Active Directory によってこの URL が既定で追加されることはなくなりました。 
 

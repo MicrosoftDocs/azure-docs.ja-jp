@@ -23,13 +23,15 @@
               href: quick-create-simulated-device-symm-key.md
             - name: Java
               href: quick-create-simulated-device-symmetric-key-java.md
+            - name: Python
+              href: quick-create-device-symmetric-key-python.md
         - name: X.509 証明書の構成証明
           items:
             - name: C
               href: quick-create-simulated-device-x509.md
             - name: Java
               href: quick-create-simulated-device-x509-java.md
-            - name: 'C#'
+            - name: C#
               href: quick-create-simulated-device-x509-csharp.md
             - name: Node.js
               href: quick-create-simulated-device-x509-node.md
@@ -41,7 +43,7 @@
               href: quick-create-simulated-device.md
             - name: Java
               href: quick-create-simulated-device-tpm-java.md
-            - name: 'C#'
+            - name: C#
               href: quick-create-simulated-device-tpm-csharp.md
             - name: Node.js
               href: quick-create-simulated-device-tpm-node.md
@@ -53,7 +55,7 @@
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
-            - name: 'C#'
+            - name: C#
               href: quick-enroll-device-x509-csharp.md
             - name: Node.js
               href: quick-enroll-device-x509-node.md
@@ -63,7 +65,7 @@
           items:
             - name: Java
               href: quick-enroll-device-tpm-java.md
-            - name: 'C#'
+            - name: C#
               href: quick-enroll-device-tpm-csharp.md
             - name: Node.js
               href: quick-enroll-device-tpm-node.md
@@ -79,7 +81,7 @@
       items:
         - name: C
           href: tutorial-provision-device-to-hub.md
-        - name: 'C#'
+        - name: C#
           href: tutorial-net-provision-device-to-hub.md
     - name: 4 - デバイスを複数のハブにプロビジョニングする
       href: tutorial-provision-multiple-hubs.md
@@ -93,8 +95,12 @@
       href: concepts-device-reprovision.md
     - name: デバイス
       href: concepts-device.md
-    - name: Security
+    - name: セキュリティ
       href: concepts-security.md
+    - name: TLS サポート
+      href: tls-support.md
+    - name: 仮想ネットワークのサポート
+      href: virtual-network-support.md
     - name: サービス
       href: concepts-service.md
     - name: DPS IP アドレスについて
@@ -173,6 +179,8 @@
       href: 'https://github.com/Azure/azure-iot-sdk-java'
     - name: Azure IoT SDK for .NET
       href: 'https://github.com/Azure/azure-iot-sdk-csharp'
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
@@ -198,12 +206,12 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT サンプル
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
@@ -225,16 +233,12 @@
       href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics ツール
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-iot-hub.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: ビデオ

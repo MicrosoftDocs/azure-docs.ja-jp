@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure Data Box のシステム要件 | Microsoft Docs
-description: Azure Data Box のソフトウェア要件とネットワーキング要件について説明します。
+description: Azure Data Box と Data Box に接続するクライアントの重要なシステム要件について学習します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71f499e1cdd7ccf22d90b21ce04299798978a828
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229771"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926605"
 ---
 # <a name="azure-data-box-system-requirements"></a>Data Box のシステム要件
 
@@ -33,13 +33,19 @@ ms.locfileid: "79229771"
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Linux クライアントでサポートされるファイル システム
+
+### <a name="supported-filesystems-for-linux-clients"></a>Linux クライアントでサポートされるファイル システム
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
+
+
+> [!IMPORTANT] 
+> エクスポート注文については、Data Box 共有への接続は REST 経由でサポートされていません。 
 
 ### <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
+
 
 ### <a name="supported-storage-types"></a>サポートされているストレージの種類
 

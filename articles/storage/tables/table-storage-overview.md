@@ -2,21 +2,21 @@
 title: Table Storage の概要 - Azure のオブジェクト ストレージ | Microsoft Docs
 description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.devlang: dotnet
 ms.topic: overview
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2670d9ce568195fd97350bf678059ac89610422f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "62129786"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236167"
 ---
-# <a name="introduction-to-table-storage-in-azure"></a>Azure の Table Storage の概要
+# <a name="what-is-azure-table-storage-"></a>Azure Table Storage とは 
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 

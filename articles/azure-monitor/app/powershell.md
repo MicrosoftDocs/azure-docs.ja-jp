@@ -3,18 +3,18 @@ title: PowerShell での Azure Application Insights の自動化 | Microsoft Doc
 description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成および管理を自動化します。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697923"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322484"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、Azure Resource 管理を使用して [Application Insights](../../azure-monitor/app/app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)の作成、[アラート](../../azure-monitor/platform/alerts-log.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
+この記事では、Azure Resource 管理を使用して [Application Insights](./app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](./monitor-web-app-availability.md)の作成、[アラート](../platform/alerts-log.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
 
 これらのリソースを作成する際に重要となるのが、[Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md) の JSON テンプレートです。 基本的な手順は、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するといった手順になります。 いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。 パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
 
@@ -26,7 +26,7 @@ ms.locfileid: "83697923"
 1. [Microsoft Web Platform Installer (v5 以上)](https://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
 2. これを使用して Microsoft Azure PowerShell をインストールします。
 
-Resource Manager テンプレートの使用に加えて、[Application Insights PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)の豊富なセットが用意されています。これにより、Application Insights リソースをプログラムによって簡単に構成できます。 コマンドレットによって有効になる機能は次のとおりです。
+Resource Manager テンプレートの使用に加えて、[Application Insights PowerShell コマンドレット](/powershell/module/az.applicationinsights)の豊富なセットが用意されています。これにより、Application Insights リソースをプログラムによって簡単に構成できます。 コマンドレットによって有効になる機能は次のとおりです。
 
 * Application Insights リソースの作成と削除
 * Application Insights リソースとそのプロパティの一覧の取得
@@ -37,7 +37,7 @@ Resource Manager テンプレートの使用に加えて、[Application Insights
 
 ## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>PowerShell コマンドレットを使用して Application Insights リソースを作成する
 
-[New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) コマンドレットを使用して、Azure 米国東部データセンターに新しい Application Insights リソースを作成する方法を次に示します。
+[New-AzApplicationInsights](/powershell/module/az.applicationinsights/new-azapplicationinsights) コマンドレットを使用して、Azure 米国東部データセンターに新しい Application Insights リソースを作成する方法を次に示します。
 
 ```PS
 New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
@@ -227,7 +227,7 @@ Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Forma
 * `Get-AzApplicationInsightsApiKey`
 * `Get-AzApplicationInsightsContinuousExport`
 
-これらのコマンドレットのパラメーターについては、[詳細なドキュメント](https://docs.microsoft.com/powershell/module/az.applicationinsights)を参照してください。  
+これらのコマンドレットのパラメーターについては、[詳細なドキュメント](/powershell/module/az.applicationinsights)を参照してください。  
 
 ## <a name="set-the-data-retention"></a>データ保有期間を設定する
 
@@ -330,7 +330,7 @@ Set-ApplicationInsightsRetention `
 
 ## <a name="set-the-daily-cap"></a>1 日の上限を設定する
 
-1 日あたりの上限のプロパティを取得するには、[Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) コマンドレットを使用します。 
+1 日あたりの上限のプロパティを取得するには、[Set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) コマンドレットを使用します。 
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -359,7 +359,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>料金プランを設定する 
 
-現在の料金プランを取得するには、[Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) コマンドレットを使用します。
+現在の料金プランを取得するには、[Set-AzApplicationInsightsPricingPlan](/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan) コマンドレットを使用します。
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -404,12 +404,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="add-a-metric-alert"></a>メトリック アラートの追加
 
-メトリック アラートの作成を自動化するには、[メトリック アラート テンプレートに関する記事](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)を参照してください
+メトリック アラートの作成を自動化するには、[メトリック アラート テンプレートに関する記事](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)を参照してください
 
 
 ## <a name="add-an-availability-test"></a>可用性テストの追加
 
-可用性テストを自動化するには、[メトリック アラート テンプレートに関する記事](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)を参照してください。
+可用性テストを自動化するには、[メトリック アラート テンプレートに関する記事](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)を参照してください。
 
 ## <a name="add-more-resources"></a>リソースの追加
 
@@ -469,9 +469,9 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 ## <a name="next-steps"></a>次のステップ
 自動化に関するその他の記事:
 
-* [Application Insights リソースを作成するための PowerShell スクリプト](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) - テンプレートを使用しない簡単な方法
+* [Application Insights リソースを作成するための PowerShell スクリプト](./create-new-resource.md#creating-a-resource-automatically) - テンプレートを使用しない簡単な方法
 * [PowerShell を使用して Application Insights のアラートを設定する](powershell-alerts.md)
 * [Web テストを作成する](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Azure Diagnostics を Application Insights に送信する](powershell-azure-diagnostics.md)
-* [GitHub から Azure にデプロイする](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: IoT プラグ アンド プレイのプレビューのドキュメント
-summary: IoT プラグ アンド プレイのプレビューを使用すると、デバイス モデルを定義することができます。デバイス モデルを使用すると、デバイス コードを記述することなく、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。
+title: IoT プラグ アンド プレイ プレビュー更新版のドキュメント
+summary: IoT プラグ アンド プレイを使用すると、デバイス モデルを定義することができます。デバイス モデルを使用すると、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。
 metadata:
-  title: IoT プラグ アンド プレイのプレビューのドキュメント
-  description: IoT プラグ アンド プレイのプレビューを使用すると、デバイス モデルを定義することができます。デバイス モデルを使用すると、デバイス コードを記述することなく、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。
+  title: IoT プラグ アンド プレイ プレビューのアーキテクチャ
+  description: IoT プラグ アンド プレイ プレビューにより、ソリューション ビルダーは手動で構成することなくデバイスをソリューションに統合できます。 この記事では、これを実現する主要なアーキテクチャ要素について説明します。
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 9469adb901c2da5f814088aa8eb59121889a0b78
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998286"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337366"
 landingContent:
 - title: IoT プラグ アンド プレイ
   linkLists:
@@ -24,51 +24,41 @@ landingContent:
     links:
     - text: IoT プラグ アンド プレイとは
       url: overview-iot-plug-and-play.md
-  - linkListType: video
-    links:
-    - text: IoT プラグ アンド プレイの概要
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
-- title: デバイスの開発
+    - text: プレビュー更新版の更新内容 (2020)
+      url: overview-iot-plug-and-play-preview-updates.md
+- title: デバイスを構築する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: IoT Hub にサンプル デバイスを接続する
-      url: quickstart-connect-pnp-device-c-windows.md
-    - text: IoT Central にサンプル デバイスを接続する
-      url: ../iot-central/core/tutorial-connect-pnp-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - text: デバイス機能モデルを使用してデバイスを作成する
-      url: quickstart-create-pnp-device-windows.md
-  - linkListType: tutorial
-    links:
-    - text: Visual Studio Code を使用してデバイス機能モデルを作成し、テストする
-      url: tutorial-pnp-visual-studio-code.md
-    - text: 認定の準備が整ったデバイスを構築する
-      url: tutorial-build-device-certification.md
-    - text: デバイスの認定を受ける
-      url: tutorial-certification-test.md
-  - linkListType: how-to-guide
-    links:
-    - text: Visual Studio Code 用 Azure IoT Tools を使用する
-      url: howto-develop-with-vs-vscode.md
-    - text: Azure Certified for IoT ポータルにオンボードする
-      url: howto-onboard-portal.md
+    - text: IoT Hub にサンプル デバイスを接続する (C)
+      url: quickstart-connect-device-c.md
+    - text: IoT Hub にサンプル デバイスを接続する (C#)
+      url: quickstart-connect-device-csharp.md
+    - text: IoT Hub にサンプル デバイスを接続する (Java)
+      url: quickstart-connect-device-java.md
+    - text: IoT Hub にサンプル デバイスを接続する (Node.js)
+      url: quickstart-connect-device-node.md
+    - text: IoT Hub にサンプル デバイスを接続する (Python)
+      url: quickstart-connect-device-python.md
   - linkListType: concept
     links:
-    - text: 共通インターフェイス
-      url: concepts-common-interfaces.md
+    - text: 開発者ガイド
+      url: concepts-developer-guide.md
+    - text: IoT プラグ アンド プレイの規則
+      url: concepts-convention.md
+    - text: コンポーネント
+      url: concepts-components.md
 - title: ソリューションを構築する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ご利用のソリューションに接続されているデバイスを操作する
-      url: quickstart-connect-pnp-device-solution-node.md
+    - text: ソリューションからデバイスを操作する (node.js)
+      url: quickstart-service-node.md
+    - text: ソリューションからデバイスを操作する (Python)
+      url: quickstart-service-python.md
   - linkListType: concept
     links:
-    - text: モデル検出
-      url: concepts-model-discovery.md
-    - text: 共通インターフェイス
-      url: concepts-common-interfaces.md
-  - linkListType: how-to-guide
-    links:
-    - text: ソリューションからデバイスに接続する
-      url: howto-develop-solution.md
+    - text: アーキテクチャ
+      url: concepts-architecture.md
+    - text: Digital Twins
+      url: concepts-digital-twin.md

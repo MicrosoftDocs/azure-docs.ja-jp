@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 09d51de3ae0bd4baca585d2abdd936b1a29567d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319069"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -24,7 +24,7 @@ ms.locfileid: "80065024"
 > [!NOTE]
 > この記事は、Azure Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[Data Factory におけるセルフホステッド IR ](../create-self-hosted-integration-runtime.md) に関するページを参照してください。
 
-ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」を参照してください。 ゲートウェイを使用してオンプレミスの SQL Server データベースから Microsoft Azure Blob Storage にデータを移動する方法のチュートリアルについては、[オンプレミスとクラウドの間のデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
+ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」を参照してください。 ゲートウェイを使用して SQL Server データベースから Microsoft Azure Blob Storage にデータを移動する方法のチュートリアルについては、[オンプレミスとクラウドの間のデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
 
 ## <a name="failed-to-install-or-register-gateway"></a>ゲートウェイをインストールまたは登録できない
 ### <a name="1-problem"></a>1.問題
@@ -35,7 +35,7 @@ ms.locfileid: "80065024"
 #### <a name="cause"></a>原因
 ネットワーク上の問題により、ゲートウェイをインストールしようとしているコンピューターがダウンロード センターから最新のゲートウェイ インストール ファイルをダウンロードできませんでした。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 ファイアウォール プロキシ サーバーの設定を調べ、コンピューターから[ダウンロード センター](https://download.microsoft.com/)へのネットワーク接続をブロックしている設定があれば適切に更新します。
 
 または、ダウンロード センターにアクセスできる別のコンピューターで、[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新のゲートウェイのインストール ファイルをダウンロードすることができます。 次に、インストーラー ファイルをゲートウェイ ホスト コンピューターにコピーし、手動で実行してゲートウェイをインストールおよび更新することができます。
@@ -48,7 +48,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="cause"></a>原因
 ゲートウェイが既にコンピューターにインストールされています。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 コンピューター上の既存のゲートウェイをアンインストールしてから、 **[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
 
 ### <a name="3-problem"></a>3.問題
@@ -63,7 +63,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 * ゲートウェイ キーが無効になっている。
 * ゲートウェイ キーがポータルで再生成された。  
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 ポータルから取得した正しいゲートウェイ キーを使用しているかどうかを確認します。 必要に応じて、キーを再生成し、そのキーを使用してゲートウェイを登録します。
 
 ### <a name="4-problem"></a>4.問題
@@ -78,7 +78,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="cause"></a>原因
 入力したゲートウェイ キーの内容または形式が正しくありません。 その理由として、ポータルからコピーしたキーの一部が欠落しているか、無効なキーを使用している可能性があります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 ポータルでゲートウェイ キーを生成した後、コピー ボタンを使用してキー全体をコピーします。 その後、キーをこのウィンドウに貼り付けてゲートウェイを登録します。
 
 ### <a name="5-problem"></a>5.問題
@@ -91,7 +91,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="cause"></a>原因
 Azure Portal でゲートウェイ キーが再生成されているか、ゲートウェイが削除されています。 Data Management Gateway セットアップが最新でない場合にも発生することがあります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 Data Management Gateway セットアップのバージョンが最新かどうかを確認してください。最新バージョンは、Microsoft [ダウンロード センター](https://go.microsoft.com/fwlink/p/?LinkId=271260)から入手できます。
 
 セットアップが最新で、ゲートウェイがまだポータルに存在している場合は、Azure Portal でゲートウェイ キーを再生成した後、コピー ボタンを使用してキー全体をコピーし、キーをこのウィンドウに貼り付けてゲートウェイを登録します。 それ以外の場合は、ゲートウェイを再作成して最初からやり直します。
@@ -106,7 +106,7 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 #### <a name="cause"></a>原因
 このエラーは、ゲートウェイが削除されているか、関連付けられているゲートウェイ キーが再生成されている場合に発生する可能性があります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 ゲートウェイが削除されている場合は、ポータルでゲートウェイを再作成し、 **[登録]** をクリックします。ポータルからキーをコピーして貼り付け、ゲートウェイを登録します。
 
 ゲートウェイが存在している一方でそのキーが再生成されている場合、新しいキーを使用してゲートウェイを登録します。 キーがない場合は、ポータルでもう一度キーを生成します。
@@ -123,7 +123,7 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 
 別のホスト コンピューター上のゲートウェイを復元するとき、以前にこの証明書を使用して暗号化された資格情報の暗号化を解除するために、登録ウィザードによってこの証明書が要求されます。  この証明書がない場合、新しいゲートウェイで資格情報の暗号化を解除できず、この新しいゲートウェイに関連付けられている後続のコピー アクティビティの実行に失敗します。  
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 Data Management Gateway Configuration Manager の **[設定]** タブにある **[エクスポート]** を使用して元のゲートウェイ コンピューターの資格情報証明書をエクスポートしている場合は、ここでその証明書を使用します。
 
 ゲートウェイを回復させるうえでこのステージをスキップすることはできません。 証明書がない場合は、ポータルからゲートウェイを削除し、新しいゲートウェイを再作成する必要があります。  さらに、資格情報を再入力して、ゲートウェイに関係するすべてのリンクされたサービスを更新します。
@@ -136,7 +136,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 #### <a name="cause"></a>原因
 このエラーは、インターネット リソースにアクセスするために HTTP プロキシを必要とする環境にゲートウェイが配置されている場合や、プロキシの認証パスワードが変更されているにもかかわらずゲートウェイでその情報が更新されていない場合に発生します。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 この記事のプロキシ サーバーに関する考慮事項セクションの手順に従い、Data Management Gateway Configuration Manager でプロキシ設定を構成します。
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>ゲートウェイはオンラインだが機能が制限されている
@@ -151,7 +151,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 
 ゲートウェイがオンラインだが機能が制限されている場合、Data Factory コピー ウィザードを使用してオンプレミスのデータ ストアとの間でデータをコピーするためのデータ パイプラインを作成できない可能性があります。 回避策として、ポータル、Visual Studio、または Azure PowerShell で、Data Factory エディターを使用することができます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 この問題 (オンラインだが機能が制限されている) の解決策は、ゲートウェイからクラウド サービスに接続できないのか、その逆かによって異なります。 次のセクションでそれぞれの解決策を説明します。
 
 ### <a name="2-problem"></a>2.問題
@@ -164,7 +164,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 #### <a name="cause"></a>原因
 ゲートウェイから Service Bus 経由でクラウド サービスに接続できない。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
 1. ゲートウェイ コンピューターと会社のファイアウォールで IP アドレスの送信規則を許可します。 Windows イベント ログ (ID == 401) の"An attempt was made to access a socket in a way forbidden by its access permissions XX.XX.XX.XX:9350 (アクセス許可 XX.XX.XX.XX:9350 によって禁止されている方法でソケットへのアクセスが試みられました)" というメッセージから、IP アドレスを検出できます。
@@ -179,7 +179,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 #### <a name="cause"></a>原因
 ネットワーク接続の一時的なエラーです。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
 1. 数分待ちます。エラーが解決すると、接続が自動的に回復します。
@@ -200,7 +200,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 この問題を解決するには、次の手順に従います。
 
 1. Data Management Gateway Configuration Manager を起動します。
@@ -221,10 +221,10 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 #### <a name="cause"></a>原因
 このエラーはさまざまな理由で発生するため、対応策もそれに応じて異なります。
 
-#### <a name="resolution"></a>解像度
-SQL データベースに接続する前に、Data Management Gateway クライアント側でポート TCP/1433 での送信 TCP 接続を許可します。
+#### <a name="resolution"></a>解決方法
+SQL データベースに接続する前に、Data Management Gateway のクライアント側でポート TCP/1433 での送信 TCP 接続を許可します。
 
-ターゲット データベースが Azure SQL データベースの場合は、SQL Server の Azure 用のファイアウォールの設定も確認します。
+ターゲット データベースが Azure SQL Database 内にある場合は、SQL Server の Azure 用のファイアウォールの設定も確認します。
 
 次のセクションを参照して、オンプレミスのデータ ストアへの接続をテストします。
 

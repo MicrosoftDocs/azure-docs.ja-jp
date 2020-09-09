@@ -4,12 +4,12 @@ description: Azure Backup と PowerShell を使用して Azure VM 内の SQL Dat
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 9608b02869b1d41d901ec77a42cfaa6d882040e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fe3af3b2a12cf6fdfc0e71d36d36046858c50af
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131827"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892424"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM で SQL データベースをバックアップおよび復元する
 
@@ -88,13 +88,13 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 Recovery Services コンテナーは Resource Manager のリソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、**New-AzResourceGroup** コマンドレットを使ってリソース グループを作成することもできます。 リソース グループを作成するときは、リソース グループの名前と場所を指定します。
 
-1. コンテナーはリソース グループに配置されます。 既存のリソース グループがない場合は、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) を使用して新しいリソース グループを作成します。 この例では、新しいリソース グループを米国西部リージョンに作成します。
+1. コンテナーはリソース グループに配置されます。 既存のリソース グループがない場合は、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して新しいリソース グループを作成します。 この例では、新しいリソース グループを米国西部リージョンに作成します。
 
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
 
-2. [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
+2. [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
@@ -102,8 +102,8 @@ Recovery Services コンテナーは Resource Manager のリソースである�
 
 3. コンテナー ストレージに使用する冗長性の種類を指定します。
 
-    * [ローカル冗長ストレージ](../storage/common/storage-redundancy-lrs.md)または [geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md)を使用できます。
-    * 次の例では、**testvault** に対する [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) コマンドの **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
+    * [ローカル冗長ストレージ](../storage/common/storage-redundancy.md)または [geo 冗長ストレージ](../storage/common/storage-redundancy.md)を使用できます。
+    * 次の例では、**testvault** に対する [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) コマンドの **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -112,7 +112,7 @@ Recovery Services コンテナーは Resource Manager のリソースである�
 
 ### <a name="view-the-vaults-in-a-subscription"></a>サブスクリプション内のコンテナーの表示
 
-サブスクリプション内のコンテナーをすべて表示するには、[Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0) を使用します。
+サブスクリプション内のコンテナーをすべて表示するには、[Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault) を使用します。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -135,7 +135,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 このコンテナー オブジェクトを変数に格納し、そのコンテナーのコンテキストを設定します。
 
 * Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要とするので、コンテナー オブジェクトを変数に格納すると便利です。
-* コンテナーのコンテキストとは、コンテナーで保護されるデータの種類です。 これを、[Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) を使用して設定します。 コンテキストが設定されると、それが後続のすべてのコマンドレットに適用されます。
+* コンテナーのコンテキストとは、コンテナーで保護されるデータの種類です。 これを、[Set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext) を使用して設定します。 コンテキストが設定されると、それが後続のすべてのコマンドレットに適用されます。
 
 次の例では、**testvault** のコンテナーのコンテキストを設定します。
 
@@ -156,9 +156,9 @@ $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Nam
 バックアップ ポリシーは、バックアップのスケジュール、およびバックアップの復旧ポイントを保持する期間を指定します。
 
 * バックアップ ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられています。 アイテム保持ポリシーでは、復旧ポイントが削除される前に保持される期間が定義されています。
-* [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー リテンション期間を表示します。
-* [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー スケジュールを表示します。
-* 新しいバックアップ ポリシーを作成するには、[New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) コマンドレットを使用します。 スケジュール ポリシー オブジェクトとアイテム保持ポリシー オブジェクトを入力します。
+* [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) を使用して、既定のバックアップ ポリシー リテンション期間を表示します。
+* [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) を使用して、既定のバックアップ ポリシー スケジュールを表示します。
+* 新しいバックアップ ポリシーを作成するには、[New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) コマンドレットを使用します。 スケジュール ポリシー オブジェクトとアイテム保持ポリシー オブジェクトを入力します。
 
 既定では、開始時刻はスケジュール ポリシー オブジェクトで定義されます。 開始時刻を希望の時刻に変更するには、次の例を使用します。 希望の開始時刻も、UTC で指定する必要があります。 次の例では、毎日のバックアップの希望の開始時刻が午前 01:00 UTC であるものとします。
 
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>SQL VM を登録する
 
-Azure VM バックアップおよび Azure File 共有では、バックアップ サービスはそれらの Azure Resource Manager リソースに接続して、関連する詳細をフェッチすることができます。 SQL は Azure VM 内のアプリケーションであるため、バックアップ サービスがアプリケーションにアクセスして必要な詳細をフェッチするにはアクセス許可が必要です。 そのためには、SQL アプリケーションを含む Azure VM を Recovery Services コンテナーに "*登録*" する必要があります。 SQL VM をコンテナーに登録すると、そのコンテナーでのみ SQL DB を保護できます。 [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS コマンドレットを使用して VM を登録します。
+Azure VM バックアップおよび Azure File 共有では、バックアップ サービスはそれらの Azure Resource Manager リソースに接続して、関連する詳細をフェッチすることができます。 SQL は Azure VM 内のアプリケーションであるため、バックアップ サービスがアプリケーションにアクセスして必要な詳細をフェッチするにはアクセス許可が必要です。 そのためには、SQL アプリケーションを含む Azure VM を Recovery Services コンテナーに "*登録*" する必要があります。 SQL VM をコンテナーに登録すると、そのコンテナーでのみ SQL DB を保護できます。 [Register-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) PowerShell コマンドレットを使用して VM を登録します。
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -207,7 +207,7 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 
 ### <a name="fetching-sql-dbs"></a>SQL DB をフェッチする
 
-登録が完了すると、バックアップ サービスが VM 内の使用可能なすべての SQL コンポーネントを一覧表示できるようになります。 このコンテナーにこれからバックアップできるすべての SQL コンテナーを表示するには、[Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS コマンドレットを使用します。
+登録が完了すると、バックアップ サービスが VM 内の使用可能なすべての SQL コンポーネントを一覧表示できるようになります。 このコンテナーにこれからバックアップできるすべての SQL コンテナーを表示するには、[Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PowerShell コマンドレットを使用します。
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $targetVault.ID
@@ -221,7 +221,7 @@ $SQLDB = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemTy
 
 ### <a name="configuring-backup"></a>バックアップを構成する
 
-必要な SQL DB とバックアップのために必要なポリシーが用意できたところで、[Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) コマンドレットを使用して、この SQL DB のバックアップを構成できます。
+必要な SQL DB とバックアップのために必要なポリシーが用意できたところで、[Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) コマンドレットを使用して、この SQL DB のバックアップを構成できます。
 
 ```output
 Enable-AzRecoveryServicesBackupProtection -ProtectableItem $SQLDB -Policy $NewSQLPolicy
@@ -237,7 +237,7 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 
 ### <a name="fetching-new-sql-dbs"></a>新しい SQL DB をフェッチする
 
-マシンを登録すると、バックアップ サービスはその時点で入手できる DB の詳細をフェッチします。 ユーザーが SQL DB/SQL インスタンスを登録済みマシンに後から追加した場合は、バックアップ サービスを手動でトリガーして新たな照会を実行し、保護されていないすべての DB (新たに追加されたものを含む) を取得する必要があります。 [Initialize-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Initialize-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS コマンドレットを SQL VM 上で使用して、新しい照会を実行します。 このコマンドが操作が完了するまで待機します。 その後、[Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS コマンドレットを使用して、保護されていない SQL コンポーネントの最新リストを取得します。
+マシンを登録すると、バックアップ サービスはその時点で入手できる DB の詳細をフェッチします。 SQL DB または SQL インスタンスを登録済みマシンに後から追加した場合は、バックアップ サービスを手動でトリガーして新たな照会を実行し、保護されていない**すべての** DB (新たに追加されたものを含む) を再度取得する必要があります。 [Initialize-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) PowerShell コマンドレットを SQL VM 上で使用して、新しい照会を実行します。 このコマンドが操作が完了するまで待機します。 その後、[Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PowerShell コマンドレットを使用して、保護されていない SQL コンポーネントの最新リストを取得します。
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -250,7 +250,7 @@ Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDat
 
 ## <a name="enable-autoprotection"></a>自動保護を有効にする
 
-ユーザーは、特定のポリシーを使用して、将来追加されるすべての DB を自動的に保護するようにバックアップを構成できます。 自動保護を有効にするには、[Enable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS コマンドレットを使用します。
+特定のポリシーを使用して、将来追加されるすべての DB を自動的に保護するようにバックアップを構成できます。 自動保護を有効にするには、[Enable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection) PowerShell コマンドレットを使用します。
 
 この命令では将来のすべての DB がバックアップされるため、処理は SQLInstance レベルで行われます。
 
@@ -270,7 +270,7 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 SQL DB を復元する前に、[ここ](restore-sql-database-azure-vm.md#prerequisites)に示されている前提条件を確認してください。
 
-最初に、[Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS コマンドレットを使用して、該当するバックアップ済みの SQL DB をフェッチします。
+最初に、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PowerShell コマンドレットを使用して、該当するバックアップ済みの SQL DB をフェッチします。
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -278,11 +278,11 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 
 ### <a name="fetch-the-relevant-restore-time"></a>関連する復元時間をフェッチする
 
-前述したように、ユーザーはバックアップ対象の SQL DB を完全/差分コピーに復元、**または**ログの特定の時点に復元できます。
+前述したように、バックアップ対象の SQL DB を完全または差分コピーに復元するか、**または**ログの特定の時点に復元できます。
 
 #### <a name="fetch-distinct-recovery-points"></a>個別の復旧ポイントをフェッチする
 
-[Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryPoint?view=azps-1.5.0) を使用して、バックアップ対象 SQL DB の個別の (完全/差分) 復旧ポイントをフェッチします。
+[Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) を使用して、バックアップ対象 SQL DB の個別の (完全/差分) 復旧ポイントをフェッチします。
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
@@ -307,7 +307,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 
 #### <a name="fetch-point-in-time-recovery-point"></a>特定の時点の復旧ポイントをフェッチする
 
-特定の時点に DB を復元したい場合は、[Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS コマンドレットを使用します。 このコマンドレットでは、SQL バックアップ項目の途切れずに続いているログ チェーンの開始時刻と終了時刻を表す日付の一覧が返されます。 必要な時点はこの範囲内にあります。
+特定の時点に DB を復元したい場合は、[Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) PowerShell コマンドレットを使用します。 このコマンドレットでは、SQL バックアップ項目の途切れずに続いているログ チェーンの開始時刻と終了時刻を表す日付の一覧が返されます。 必要な時点はこの範囲内にあります。
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
@@ -321,7 +321,7 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-上記の出力は、表示されている開始時刻と終了時刻の間の任意の時点にユーザーが復元できることを意味します。 時刻は UTC 形式です。 上記の範囲内の任意の時点を PS に設定します。
+上記の出力は、表示されている開始時刻と終了時刻の間の任意の時点に復元できることを意味します。 時刻は UTC 形式です。 上記の範囲内の任意の時点を PowerShell で設定します。
 
 > [!NOTE]
 > 復元のためにログの特定の時点を選択した場合は、開始地点 (つまり DB の復元に使用する完全バックアップ) を指定する必要はありません。 Azure Backup サービスによって、どの完全バックアップを選択するか、どのログ バックアップを適用するかなど、復旧プラン全体が処理されます。
@@ -335,7 +335,7 @@ SQL DB の復元では、次の復元シナリオがサポートされます。
 * 別の SQL VM 内の別の SQL インスタンスの新規 DB として SQL DB を復旧する - AlternateWorkloadRestore
 * .bak ファイルとして SQL DB を復元する -RestoreAsFiles
 
-関連する復旧ポイント (個別の復旧ポイントまたは特定の時点) をフェッチしたら、[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS コマンドレットを使用し、必要な復旧プランに従って復旧構成オブジェクトをフェッチします。
+関連する復旧ポイント (個別の復旧ポイントまたは特定の時点) をフェッチしたら、[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PowerShell コマンドレットを使用し、必要な復旧プランに従って復旧構成オブジェクトをフェッチします。
 
 #### <a name="original-workload-restore"></a>元のワークロードの復元
 
@@ -406,7 +406,7 @@ $FileRestoreWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -
 $FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
 ```
 
-[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS コマンドレットから取得した最終復旧ポイントの構成オブジェクトには、次に示すように復元に関連するすべての情報が含まれます。
+[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PowerShell コマンドレットから取得した最終復旧ポイントの構成オブジェクトには、次に示すように復元に関連するすべての情報が含まれます。
 
 ```output
 TargetServer         : <SQL server name>
@@ -435,7 +435,7 @@ Data        azurebackup1      F:\Data\azurebackup1.mdf    F:\Data\azurebackup1_1
 Log         azurebackup1_log  F:\Log\azurebackup1_log.ldf F:\Log\azurebackup1_log_1553001753.ldf
 ```
 
-次に示すように、文字列値として関連する PS プロパティを設定します。
+次に示すように、文字列値として関連する PowerShell プロパティを設定します。
 
 ```powershell
 $AnotherInstanceWithFullConfig.OverwriteWLIfpresent = "Yes"
@@ -461,7 +461,7 @@ PointInTime          : 1/1/0001 12:00:00 AM
 
 ### <a name="restore-with-relevant-configuration"></a>関連する構成を使用して復元する
 
-関連する復旧構成オブジェクトを取得して確認したら、[Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Restore-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS コマンドレットを使用して復元プロセスを開始します。
+関連する復旧構成オブジェクトを取得して確認したら、[Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) PowerShell コマンドレットを使用して復元プロセスを開始します。
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $targetVault.ID
@@ -479,7 +479,7 @@ MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM
 
 ### <a name="on-demand-backup"></a>オンデマンド バックアップ
 
-DB のバックアップをいったん有効にすると、ユーザーは [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Backup-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS コマンドレットを使用して DB のオンデマンド バックアップをトリガーすることもできます。 次の例では、圧縮を有効にして SQL DB に対する完全バックアップをトリガーします。完全バックアップは 60 日間保持する必要があります。
+DB のバックアップをいったん有効にすると、[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) PowerShell コマンドレットを使用して DB のオンデマンド バックアップをトリガーすることもできます。 次の例では、圧縮を有効にして SQL DB に対する完全バックアップをトリガーします。完全バックアップは 60 日間保持する必要があります。
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>バックアップ項目のポリシーを変更する
 
-ユーザーは既存のポリシーを変更したり、バックアップ対象項目のポリシーを Policy1 から Policy2 に変えたりすることができます。 バックアップ対象項目のポリシーを切り替えるには、該当するポリシーとバックアップ項目をフェッチして、バックアップ項目をパラメーターに指定して [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) コマンドを使用します。
+バックアップ対象項目のポリシーを *Policy1* から *Policy2* に変更できます。 バックアップ対象項目のポリシーを切り替えるには、該当するポリシーとバックアップ項目をフェッチして、バックアップ項目をパラメーターに指定して [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) コマンドを使用します。
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -513,6 +513,20 @@ Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetP
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
+```
+
+### <a name="edit-an-existing-backup-policy"></a>既存のバックアップ ポリシーを編集する
+
+既存のポリシーを編集するには、[Set-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) コマンドを使用します。
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```
+
+しばらくしてからバックアップジョブを確認し、障害を追跡します。 存在する場合は、問題を解決する必要があります。 その後、**FixForInconsistentItems** パラメーターを指定してポリシー編集コマンドを再実行し、操作が以前に失敗したすべてのバックアップ項目のポリシーの編集を再試行します。
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentItems
 ```
 
 ### <a name="re-register-sql-vms"></a>SQL VM の再登録
@@ -531,7 +545,7 @@ Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManag
 
 #### <a name="retain-data"></a>データの保持
 
-ユーザーが保護を停止しようとするとき、[Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS コマンドレットを使用できます。 これによって、スケジュールされているバックアップは停止されますが、それまでにバックアップされたデータは永続的に保持されます。
+保護を停止する場合は、[Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell コマンドレットを使用できます。 これによって、スケジュールされているバックアップは停止されますが、それまでにバックアップされたデータは永続的に保持されます。
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -548,7 +562,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="disable-auto-protection"></a>自動保護の無効化
 
-自動保護が SQLInstance で構成されていた場合は、[Disable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS コマンドレットを使用して無効にすることができます。
+自動保護が SQLInstance で構成されていた場合は、[Disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) PowerShell コマンドレットを使用して無効にすることができます。
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
@@ -557,7 +571,7 @@ Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMa
 
 #### <a name="unregister-sql-vm"></a>SQL VM の登録解除
 
-SQL サーバーのすべての DB が[保護されなくなり、バックアップ データが存在しなくなったら](#delete-backup-data)、ユーザーはその SQL VM をこのコンテナーから登録解除できます。 その後でないと、別のコンテナーで DB を保護することはできません。 [Unregister-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS コマンドレットを使用して SQL VM を登録解除します。
+SQL サーバーのすべての DB が[保護されなくなり、バックアップ データが存在しなくなったら](#delete-backup-data)、その SQL VM をこのコンテナーから登録解除できます。 その後でないと、別のコンテナーで DB を保護することはできません。 [Unregister-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) PowerShell コマンドレットを使用して SQL VM を登録解除します。
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -566,27 +580,27 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 ### <a name="track-azure-backup-jobs"></a>Azure Backup ジョブを追跡する
 
-Azure Backup はユーザーがトリガーしたジョブしか SQL バックアップで追跡できないことに注意してください。 スケジュールされたバックアップ (ログ バックアップを含む) はポータル/powershell には表示されません。 ただし、スケジュールされたジョブが失敗した場合は、[バックアップ アラート](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)が生成されてポータルに表示されます。 スケジュールされたすべてのジョブとその他の関連情報を追跡するには、[Azure Monitor を使用](backup-azure-monitoring-use-azuremonitor.md)します。
+Azure Backup ではユーザーがトリガーしたジョブしか SQL バックアップで追跡できないことに注意してください。 スケジュールされたバックアップ (ログ バックアップを含む) はポータルまたは PowerShell には表示されません。 ただし、スケジュールされたジョブが失敗した場合は、[バックアップ アラート](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)が生成されてポータルに表示されます。 スケジュールされたすべてのジョブとその他の関連情報を追跡するには、[Azure Monitor を使用](backup-azure-monitoring-use-azuremonitor.md)します。
 
-ユーザーは、バックアップなどの非同期ジョブの[出力](#on-demand-backup)で返される JobID を使用して、オンデマンド操作やユーザーがトリガーした操作を追跡できます。 [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS コマンドレットを使用して、ジョブとその詳細を追跡します。
+ユーザーは、バックアップなどの非同期ジョブの[出力](#on-demand-backup)で返される JobID を使用して、オンデマンド操作やユーザーがトリガーした操作を追跡できます。 [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PowerShell コマンドレットを使用して、ジョブとその詳細を追跡します。
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ```
 
-Azure Backup サービスからオンデマンド ジョブとその状態の一覧を取得するには、[Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS コマンドレットを使用します。 次の例は、進行中のすべての SQL ジョブを返します。
+Azure Backup サービスからオンデマンド ジョブとその状態の一覧を取得するには、[Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) PowerShell コマンドレットを使用します。 次の例は、進行中のすべての SQL ジョブを返します。
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
 ```
 
-進行中のジョブをキャンセルするには、[Stop-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Stop-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS コマンドレットを使用します。
+進行中のジョブをキャンセルするには、[Stop-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) PowerShell コマンドレットを使用します。
 
 ## <a name="managing-sql-always-on-availability-groups"></a>SQL Always On 可用性グループを管理する
 
 SQL Always On 可用性グループでは、必ず可用性グループ (AG) の[すべてのノードを登録](#registering-the-sql-vm)してください。 すべてのノードの登録が完了すると、SQL 可用性グループ オブジェクトが保護可能項目の下に論理的に作成されます。 SQL AG の下のデータベースは SQLDatabase として表示されます。 ノードはスタンドアロン インスタンスとして表示され、それらの下にある既定の SQL データベース SQL データベースとして一覧表示されます。
 
-たとえば、SQL AG に sql-server-0 と sql-server-1 という 2 つのノードと、1 つの SQL AG DB があるとします。 両方のノードが登録された後で、ユーザーが[保護可能な項目を一覧表示](#fetching-sql-dbs)すると、次のコンポーネントが表示されます。
+たとえば、SQL AG に *sql-server-0* と *sql-server-1* という 2 つのノードと、1 つの SQL AG DB があるとします。 これら両方のノードが登録された後で、[保護可能な項目を一覧表示](#fetching-sql-dbs)すると、次のコンポーネントが表示されます。
 
 * SQL AG オブジェクト - 保護可能な項目の種類: SQLAvailabilityGroup
 * SQL AG DB - 保護可能な項目の種類: SQLDatabase
@@ -595,6 +609,6 @@ SQL Always On 可用性グループでは、必ず可用性グループ (AG) の
 * sql-server-0 内のすべての既定 SQL DB (master、model、msdb) - 保護可能な項目の種類: SQLDatabase
 * sql-server-1 内のすべての既定 SQL DB (master、model、msdb) - 保護可能な項目の種類: SQLDatabase
 
-sql-server-0 と sql-server-1 は、[バックアップ コンテナーが一覧表示される](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)ときは "AzureVMAppContainer" としても一覧表示されます。
+sql-server-0 と sql-server-1 は、[バックアップ コンテナーが一覧表示される](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer)ときは "AzureVMAppContainer" としても一覧表示されます。
 
-該当する SQL データベースを単にフェッチして[バックアップを有効に](#configuring-backup)してください。[オンデマンド バックアップ](#on-demand-backup)と[復元の PS コマンドレット](#restore-sql-dbs)は同じです。
+該当するデータベースを単にフェッチして[バックアップを有効に](#configuring-backup)してください。[オンデマンド バックアップ](#on-demand-backup)と[復元の PowerShell コマンドレット](#restore-sql-dbs)は同じです。

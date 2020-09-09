@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 38e5e253c32a2f85e18c80bdefa7d3b640da2e50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: de0fd1a27ca97545ccdd534908eb802993514017
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79464444"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690172"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>アマゾン ウェブ サービス アカウントの接続
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233571"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997559"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -67,7 +67,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 * 1 つまたは複数のクラスターからログを収集する方法を検討し、監査、監視、計画、アラートなどの目的と照合します。 カスタム ソリューションを使って定期的にログ ファイルにアクセスしてダウンロードし、それらを結合および分析してダッシュボードの表示を提供します。 また、セキュリティや障害検出の警告用に他の機能を追加することもできます。 PowerShell、HDInsight SDK、または Azure クラシック デプロイ モデルにアクセスするコードを使って、これらのユーティリティを作成できます。
 
-* ソリューションまたはサービスを監視することに有用なメリットがあるかどうかを検討します。 Microsoft System Center では、[HDInsight 管理パック](https://www.microsoft.com/download/details.aspx?id=42521)が提供されています。 また、Apache Chukwa や Ganglia などのサードパーティ製ツールを使って、ログを収集および一元管理することもできます。 多くの企業から Hadoop ベースのビッグ データ ソリューションを監視するサービスが提供されています (例: Centerity、Compuware APM、Sematext SPM、Zettaset Orchestrator)。
+* ソリューションまたはサービスを監視することに有用なメリットがあるかどうかを検討します。 Microsoft System Center では、[HDInsight 管理パック](https://systemcenter.wiki/?Get_ManagementPackBundle=Microsoft.HDInsight.mpb&FileMD5=10C7D975C6096FFAA22C84626D211259)が提供されています。 また、Apache Chukwa や Ganglia などのサードパーティ製ツールを使って、ログを収集および一元管理することもできます。 多くの企業から Hadoop ベースのビッグ データ ソリューションを監視するサービスが提供されています (例: Centerity、Compuware APM、Sematext SPM、Zettaset Orchestrator)。
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>手順 2:クラスター サービスのバージョンを管理し、ログを表示する
 

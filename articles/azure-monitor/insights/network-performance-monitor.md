@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480880"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798909"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -32,13 +32,15 @@ Network Performance Monitor では、次の 3 つの広範な機能が提供さ�
 
 * [ExpressRoute モニター](network-performance-monitor-expressroute.md): Azure ExpressRoute 経由での、お客様のブランチ オフィスと Azure の間のエンド ツー エンド接続とパフォーマンスを監視します。  
 
-[Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) がサポートするさまざまな機能の詳細は、オンラインで参照できます。
+[Network Performance Monitor](../../networking/network-monitoring-overview.md) がサポートするさまざまな機能の詳細は、オンラインで参照できます。
  
 ## <a name="supported-regions"></a>サポートされているリージョン
 NPM は、次のリージョンのいずれかでホストされているワークスペースから、世界の任意の部分のネットワークまたはアプリケーション間の接続を監視できます。
 * 北ヨーロッパ
 * 西ヨーロッパ
+* スイス北部
 * フランス中部
+* 南アフリカ北部
 * カナダ中部
 * 米国西部
 * 米国中西部
@@ -58,13 +60,17 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 韓国中部
 * インド中部
 * 米国政府バージニア州
+* 米国政府アリゾナ州
 * 中国東部 2
 
 
-ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)で確認できます。
+ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](../../expressroute/how-to-npm.md?utm_swu=8117)で確認できます。
 
 
 ## <a name="set-up-and-configure"></a>セットアップと構成
+
+> [!NOTE]
+> Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) または OMS Linux エージェントとも呼ばれます。
 
 ### <a name="install-and-configure-agents"></a>エージェントのインストールと構成 
 
@@ -110,7 +116,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成 
 
-1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順も使用できます。 
+1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されている手順も使用できます。 
 2. Log Analytics ワークスペースを開いて、 **[概要]** タイルを選びます。 
 3. "*このソリューションにはさらに構成が必要です*" というメッセージが表示されている **[Network Performance Monitor]** タイルを選択します。
 
@@ -256,9 +262,9 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 
 ## <a name="alerts"></a>警告
 
-Network Performance Monitor は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) のアラート機能を使用します。
+Network Performance Monitor は、[Azure Monitor](../platform/alerts-overview.md) のアラート機能を使用します。
 
-これは、すべての通知が[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)を使用して管理されることを意味します。  
+これは、すべての通知が[アクション グループ](../platform/action-groups.md)を使用して管理されることを意味します。  
 
 Log Analytics を介してアラートを作成する NPM ユーザーの場合: 
 1. Azure portal にリダイレクトするリンクが表示されます。 それをクリックしてポータルにアクセスします。
@@ -269,7 +275,7 @@ Log Analytics を介してアラートを作成する NPM ユーザーの場合:
 Azure portal を介してアラートを作成する NPM ユーザーの場合:  
 1. 電子メール アドレスを直接入力することも、アクション グループを使用してアラートを作成することもできます。
 2. 電子メール アドレスを直接入力する場合、**NPM Email ActionGroup** という名前のアクション グループが作成され、そのアクション グループに電子メール ID が追加されます。
-3. アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法については、[ここ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)を参照してください。 
+3. アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法については、[ここ](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)を参照してください。 
 4. アラートが正常に作成されると、[アラートの管理] リンクを使用してアラートを管理できます。 
 
 アラートを作成するたびに NPM によって Azure Monitor 上でクエリ ベースのログ アラート ルールが作成されます。 このクエリは、既定では 5 分ごとにトリガーされます。 Azure Monitor では、最初に作成された 250 件のログ アラート ルールには課金されず、250 件のログ アラート ルール制限を超えるアラート ルールは [Azure Monitor の価格ページのアラートの価格](https://azure.microsoft.com/pricing/details/monitor/)に従って課金されます。
@@ -288,3 +294,4 @@ Azure portal を介してアラートを作成する NPM ユーザーの場合:
 
 ## <a name="next-steps"></a>次のステップ 
 [パフォーマンスの監視](network-performance-monitor-performance-monitor.md)、[サービス接続の監視](network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](network-performance-monitor-expressroute.md)の詳細情報を確認します。 
+

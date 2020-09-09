@@ -8,29 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec2018, devx-track-java
+ms.openlocfilehash: a1347364066f4b36256782dd8891390a47bae020
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326768"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>クイック スタート:Java と Bing News Search REST API を使用してニュース検索を実行する
 
-このクイック スタートを使用すると、Bing News Search API への最初の呼び出しを行い、JSON 応答を表示することができます。 このシンプルな Java アプリケーションは、新しい検索クエリを API に送信してその応答を表示します。
+このクイックスタートを使用して、Bing News Search API を呼び出してみましょう。 このシンプルな Java アプリケーションは、ニュース検索クエリを API に送信して JSON 応答を表示します。
 
 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-このサンプルのソース コードは、[GitHub で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java)入手できます。 
+このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) で入手できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit(JDK) 7 または 8](https://aka.ms/azure-jdks)
-
-* [Gson ライブラリ](https://github.com/google/gson)
+* [Java Development Kit(JDK) 7 または 8](https://aka.ms/azure-jdks)。
+* [Gson ライブラリ](https://github.com/google/gson)。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
@@ -50,7 +49,7 @@ ms.locfileid: "75383614"
     import com.google.gson.JsonParser;
     ```
 
-2. 新しいクラスを作成し、API エンドポイント、サブスクリプション キー、検索用語の変数を記述します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. 新しいクラスを作成します。 API エンドポイント、サブスクリプション キー、および検索用語の変数を追加します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -64,7 +63,7 @@ ms.locfileid: "75383614"
 
 ## <a name="construct-the-search-request-and-receive-a-json-response"></a>検索要求を構築して JSON 応答を受信する
 
-1. 最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 検索用語は、要求に付加する前に URL エンコードする必要があるので注意してください。
+1. 前の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 要求に追加する前に、検索語句を URL エンコードします。
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
@@ -88,6 +87,7 @@ ms.locfileid: "75383614"
 ## <a name="process-the-json-response"></a>JSON 応答を処理する
 
 1. Bing 関連の HTTP ヘッダーを JSON 本文から分離し、ストリームを閉じて API の応答を返します。
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -101,7 +101,8 @@ ms.locfileid: "75383614"
     return results;
     ```
 
-2. JSON を解析して再シリアル化するためのメソッドを作成します。
+2. JSON の結果を解析して再シリアル化するためのメソッドを作成します。
+
     ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
@@ -113,7 +114,8 @@ ms.locfileid: "75383614"
     ```
 
 3. アプリケーションのメイン メソッドで、検索メソッドを呼び出して結果を表示します。
-    ```csharp
+
+    ```java
    public static void main (String[] args) {
        System.out.println("Searching the Web for: " + searchTerm);
        SearchResults result = SearchNews(searchTerm);
@@ -126,7 +128,7 @@ ms.locfileid: "75383614"
     }
     ```
 
-## <a name="json-response"></a>JSON 応答
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。
 

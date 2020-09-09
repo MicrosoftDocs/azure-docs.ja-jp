@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425970"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044415"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics ジョブの入力と出力のログイン資格情報の交換
 
@@ -49,11 +49,11 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 
 ### <a name="sql-database"></a>SQL Database
 
-既存ユーザーのログイン資格情報を更新するには、SQL データベースに接続する必要があります。 Azure Portal または SQL Server Management Studio などのクライアント側ツールを使って、資格情報を更新することができます。 このセクションでは、Azure Portal を使って資格情報を更新する手順を示します。
+既存ユーザーのログイン資格情報を更新するには、SQL Database に接続する必要があります。 Azure Portal または SQL Server Management Studio などのクライアント側ツールを使って、資格情報を更新することができます。 このセクションでは、Azure Portal を使って資格情報を更新する手順を示します。
 
 1. Azure Portal にサインインし、Stream Analytics ジョブの出力として使った SQL データベースを参照します。    
 2. **データ エクスプローラー**でデータベースにログイン/接続し、[承認の種類] として **[SQL Server 認証]** を選び、 **[ログイン]** と **[パスワード]** の詳細を入力して、 **[OK]** を選びます。  
-   ![SQL データベースの資格情報を再生成する](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
+   ![SQL Database の資格情報を再生成する](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. クエリ タブで、次のクエリを実行して、いずれかのユーザーのパスワードを変更します (`<user_name>` はお使いのユーザー名に、`<new_password>` は新しいパスワードに置き換えてください)。  
 
@@ -64,7 +64,7 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 
 4. 新しいパスワードを書き留めておきます。    
 5. Azure Portal で Stream Analytics ジョブを参照し、 **[停止]** を選んで、ジョブが停止するまで待ちます。    
-6. 資格情報を交換する SQL データベースの出力を探します。 パスワードを更新して変更を保存します。    
+6. 資格情報を交換する SQL Database の出力を探します。 パスワードを更新して変更を保存します。    
 7. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。    
 8. 「[最終停止時刻からジョブを開始する](#start-your-job-from-the-last-stopped-time)」セクションに進みます。
 

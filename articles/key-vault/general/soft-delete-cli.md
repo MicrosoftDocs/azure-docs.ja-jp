@@ -1,20 +1,20 @@
 ---
 title: Azure Key Vault - CLI で論理的な削除を使用する方法
-description: CLI コード スニペットを使用した論理的な削除のユース ケース
+description: Azure CLI を使用して、キー コンテナーとキー コンテナー オブジェクトの回復を可能にする Azure Key Vault の論理的な削除機能を使用する方法について説明します。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.topic: how-to
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616585"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585663"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -33,7 +33,7 @@ Key Vault のCLI に関する具体的なリファレンス情報については
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| Operation | 説明 | ユーザーのアクセス許可 |
+| 操作 | 説明 | ユーザーのアクセス許可 |
 |:--|:--|:--|
 |List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>新しいキー コンテナー
 
-新しいキー コンテナーの論理的な削除は、作成時に create コマンドに論理的な削除を有効にするフラグを追加することで有効にできます。
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+論理的な削除は、既定ですべてのキー コンテナーで自動的に有効になります。 2020 年 12 月 31 日までに、論理的な削除を有効にしていない新しいキー コンテナーを作成することはできなくなります。
 
 ### <a name="verify-soft-delete-enablement"></a>論理的な削除が有効になっていることを確認する
 
@@ -229,7 +225,7 @@ az keyvault purge --location westus --name ContosoVault
 
 消去保護をオンにすると、削除状態のコンテナーまたはオブジェクトは、90 日間の保持期間が経過するまで消去できません。 このようなコンテナーまたはオブジェクトは回復することもできます。 この機能は、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます。
 
-論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 
+論理的な削除も有効にする場合にのみ、消去保護を有効にできます。 消去保護を無効にすることはサポートされていません。
 
 コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
 
@@ -245,6 +241,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>その他のリソース
 
-- Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](overview-soft-delete.md)」をご覧ください。
+- Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](soft-delete-overview.md)」をご覧ください。
 - Azure Key Vault の使用方法の概要については、「[Azure Key Vault とは](overview.md)」をご覧ください。
 

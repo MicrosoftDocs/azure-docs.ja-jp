@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - WAF カスタム ルールの作成
+title: WAF カスタム ルールを使用する Azure PowerShell のサンプル スクリプト
 description: Azure PowerShell のサンプル スクリプト - Application Gateway のカスタム ルールに基づいて Web アプリケーション ファイアウォールを作成する
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,13 @@ services: web-application-firewall
 ms.topic: sample
 ms.date: 09/30/2019
 ms.author: victorh
-ms.openlocfilehash: 950f71c284268a9aa2773eb57213e266622d85bd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8d800e77ed0e609091d31d9b3177af447ac06f5b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73509556"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079508"
 ---
 # <a name="create-waf-custom-rules-with-azure-powershell"></a>Azure PowerShell での WAF カスタム ルールの作成
 
@@ -71,4 +72,4 @@ Remove-AzResourceGroup -Name CustomRulesTest
 ## <a name="next-steps"></a>次のステップ
 
 - WAF のカスタム ルールの詳細については、[Web アプリケーション ファイアウォールのカスタム ルール](../ag/custom-waf-rules-overview.md)に関するページを参照してください。
-- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。

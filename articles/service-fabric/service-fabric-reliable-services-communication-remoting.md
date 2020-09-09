@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 246b1456c05605c4015c19e1a139e9ad65f6eaba
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75433881"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022158"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>C# での Reliable Services を使用したサービスのリモート処理
 
@@ -65,7 +66,7 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> サービス インターフェイスの引数と戻り値の型は、単純型、複合型、またはカスタム型のいずれかにできますが、.NET の [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) によってシリアル化できる必要があります。
+> サービス インターフェイスの引数と戻り値の型は、単純型、複合型、またはカスタム型のいずれかにできますが、.NET の [DataContractSerializer](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) によってシリアル化できる必要があります。
 >
 >
 
@@ -89,19 +90,19 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="service-proxy-factory-lifetime"></a>サービス プロキシ ファクトリの有効期間
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 API `ServiceProxyFactory.CreateServiceProxy` を使用してプロキシを作成する場合、フレームワークによってシングルトン サービス プロキシが作成されます。
-手動での作成は、[IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
+[ServiceProxyFactory](/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 API `ServiceProxyFactory.CreateServiceProxy` を使用してプロキシを作成する場合、フレームワークによってシングルトン サービス プロキシが作成されます。
+手動での作成は、[IServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) プロパティをオーバーライドする必要があるときに効果的です。
 ファクトリの作成は負荷の高い操作です。 サービス プロキシ ファクトリは、通信クライアントの内部キャッシュを管理します。
 サービス プロキシ ファクトリは、できるだけ長くキャッシュすることがベスト プラクティスです。
 
 ## <a name="remoting-exception-handling"></a>リモート処理の例外処理
 
-サービス API によってスローされるリモート処理の例外はすべて、AggregateException としてクライアントに返されます。 リモート処理の例外は、DataContract によってシリアル化できる必要があります。 そうでない場合、プロキシ API はその内部のシリアル化エラーによって [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) をスローします。
+サービス API によってスローされるリモート処理の例外はすべて、AggregateException としてクライアントに返されます。 リモート処理の例外は、DataContract によってシリアル化できる必要があります。 そうでない場合、プロキシ API はその内部のシリアル化エラーによって [ServiceException](/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) をスローします。
 
 サービス プロキシは、それが作成されたサービス パーティションのすべてのフェールオーバー例外を処理します。 フェールオーバー例外 (一時的ではない例外) が発生した場合、エンドポイントを再度解決し、正しいエンドポイントでの呼び出しを再試行します。 フェールオーバー例外の再試行回数に上限はありません。
 一時的な例外が発生した場合、プロキシは呼び出しを再試行します。
 
-既定の再試行パラメーターは、[OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。
+既定の再試行パラメーターは、[OperationRetrySettings](/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。
 
 ユーザーは、ServiceProxyFactory コンストラクターに OperationRetrySettings オブジェクトを渡すことによって、これらの値を構成できます。
 
@@ -161,7 +162,7 @@ V2 スタックを有効にするには、次の方法を使用できます。
    </Resources>
    ```
 
-2. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 名前空間の [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) を使用します。
+2. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 名前空間の [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) を使用します。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -177,7 +178,7 @@ V2 スタックを有効にするには、次の方法を使用できます。
     }
    ```
 
-3. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 名前空間の [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) を使用してクライアントを作成します。
+3. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 名前空間の [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) を使用してクライアントを作成します。
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -256,7 +257,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
     }
    ```
 
-3. リモート処理インターフェイスに[アセンブリ属性](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)を追加します。
+3. リモート処理インターフェイスに[アセンブリ属性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)を追加します。
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -280,7 +281,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
    </Resources>
    ```
 
-2. [リモート処理 V2 リスナーを使用します](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 使用される既定のサービス エンドポイント リソース名は、"ServiceEndpointV2_1" です。 これはサービス マニフェストで定義されている必要があります。
+2. [リモート処理 V2 リスナーを使用します](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 使用される既定のサービス エンドポイント リソース名は、"ServiceEndpointV2_1" です。 これはサービス マニフェストで定義されている必要があります。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -298,7 +299,7 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
     }
    ```
 
-3. V2 [クライアント ファクトリ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)を使用します。
+3. V2 [クライアント ファクトリ](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)を使用します。
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -549,6 +550,6 @@ V1 から V2 (インターフェイス互換、V2_1 と呼ばれます) にア�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services の OWIN 対応 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services との Windows Communication Foundation 通信](service-fabric-reliable-services-communication-wcf.md)
 * [Reliable Services のためのセキュリティ保護された通信](service-fabric-reliable-services-secure-communication.md)

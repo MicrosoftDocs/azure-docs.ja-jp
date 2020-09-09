@@ -3,13 +3,13 @@ title: Kestrel を使用して HTTPS エンドポイントを追加する
 description: このチュートリアルでは、Kestrel を使用して ASP.NET Core フロントエンド Web サービスに HTTPS エンドポイントを追加し、アプリケーションをクラスターにデプロイする方法を学習します。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: b9e1800d07d418ff385f2c5e7af112b170e3fd44
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780200"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441529"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -238,7 +238,7 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 **SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで PowerShell.exe を実行します。 最初に、バッチ ファイルをサービス プロジェクトに追加します。  ソリューション エクスプローラーで、 **[VotingWeb]** を右クリックし、 **[追加]** -> **[新しい項目]** の順に選択し、"Setup.bat" という名前の新しいファイルを追加します。  *Setup.bat* ファイルを編集して、次のコマンドを追加します。
 
-```bat
+```cmd
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 

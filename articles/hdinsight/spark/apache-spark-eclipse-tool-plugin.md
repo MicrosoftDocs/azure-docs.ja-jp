@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: 5ae9190213f753f8b9440ced52e4d04626af13f9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732993"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082218"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -50,8 +50,8 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 1. **[インストール]** タブを選択します。
 
 1. 少なくとも次のように表示する必要があります:
-    * Azure Toolkit for Eclipse \<バージョン >。
-    * Scala IDE \<バージョン>。
+    * Azure Toolkit for Eclipse \<version>。
+    * Scala IDE \<version>。
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 

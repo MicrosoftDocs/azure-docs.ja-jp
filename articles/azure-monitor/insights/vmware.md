@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664781"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322909"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
 
@@ -27,7 +27,7 @@ Azure Monitor の VMware Monitoring ソリューションは、大規模な VMwa
 ## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-* [監視ソリューションのインストール](../insights/solutions.md#install-a-monitoring-solution)に関するページで説明されている手順を使って、VMware Monitoring ソリューションをサブスクリプションに追加します。
+* [監視ソリューションのインストール](./solutions.md#install-a-monitoring-solution)に関するページで説明されている手順を使って、VMware Monitoring ソリューションをサブスクリプションに追加します。
 
 #### <a name="supported-vmware-esxi-hosts"></a>サポートされる VMware ESXi ホスト
 vSphere ESXi Host 5.5、6.0、6.5
@@ -156,7 +156,7 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>クエリからのアラートの作成
-クエリを作成したら、そのクエリを使用して、特定のイベントが発生したときにアラートを受け取ることもできます。 アラートの作成方法については、「[Log Analytics のアラート](../platform/alerts-overview.md)」をご覧ください。 アラート クエリおよびその他のクエリの例については、ブログ記事「[Monitor VMware using Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics)」(Log Analytics を使用した VMware の監視) をご覧ください。
+クエリを作成したら、そのクエリを使用して、特定のイベントが発生したときにアラートを受け取ることもできます。 アラートの作成方法については、「[Log Analytics のアラート](../platform/alerts-overview.md)」をご覧ください。 アラート クエリおよびその他のクエリの例については、ブログ記事「[Monitor VMware using Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics)」(Log Analytics を使用した VMware の監視) をご覧ください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>ESXi ホストの設定で必要なことは何ですか。 現在の環境にどのような影響がありますか。
@@ -200,3 +200,4 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
 * Log Analytics の[ログ クエリ](../log-query/log-query-overview.md)を使用して、VMware ホストの詳細データを表示します。
 * VMware ホストのデータを表示する[独自のダッシュ ボードを作成](../learn/tutorial-logs-dashboards.md)します。
 * VMware ホストの特定のイベントが発生した場合の[アラートを作成](../platform/alerts-overview.md)します。
+

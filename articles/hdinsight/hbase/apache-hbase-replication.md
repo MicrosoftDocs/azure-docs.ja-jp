@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085614"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
@@ -180,7 +180,9 @@ Bind をインストールするには、次の手順に従います。
 
     このコマンドにより、次のテキストのような値が返されます。
 
-        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```output
+    vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```
 
     `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__ です。 この値を保存します。これは後で使用します。
 
@@ -227,7 +229,7 @@ Bind をインストールするには、次の手順に従います。
 
     次のテキストのような応答が表示されます。
 
-    ```
+    ```output
     Server:         10.2.0.4
     Address:        10.2.0.4#53
     
@@ -296,7 +298,7 @@ sudo service bind9 status
    3. **ヘッド**: これが選択されていることを確認します。 他のノード タイプをオフにします。
    4. **パラメーター**: 次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
-          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+    `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
       > [!NOTE]
       > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
@@ -336,19 +338,19 @@ sudo service bind9 status
 
 - **2 つのクラスター間ですべてのテーブルのレプリケーションを有効にする**。 このシナリオでは、テーブルの既存のデータのコピー/移行は不要であり、Phoenix テーブルは使用しません。 次のパラメーターを使用します。
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
 - **特定のテーブルのレプリケーションを有効にする**。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
 - **特定のテーブルのレプリケーションを有効にし、既存のデータをコピーする**。 table1、table2、および table3 のレプリケーションを有効にするには、次のパラメーターを使用します。
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
 - **ソースからデスティネーションに Phoenix メタデータをレプリケートして、すべてのテーブルのレプリケーションを有効にする**。 Phoenix メタデータのレプリケーションは完璧ではありません。 慎重に使用してください。 次のパラメーターを使用します。
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
 ## <a name="copy-and-migrate-data"></a>データのコピーと移行
 
@@ -360,7 +362,7 @@ sudo service bind9 status
 
 「[レプリケーションを有効にする](#enable-replication)」と同じ手順でスクリプト アクションを呼び出すことができます。 次のパラメーターを使用します。
 
-    -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
+`-m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]`
 
 [スクリプト](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) の `print_usage()` セクションに、パラメーターの詳細な説明が用意されています。
 
@@ -368,22 +370,21 @@ sudo service bind9 status
 
 - **特定のテーブル (test1、test2、および test3) の現在のタイムスタンプまでに編集されたすべての行をコピーする**:
 
-        -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
+  `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
+
   または:
 
-        -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-
+  `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
 - **特定のテーブルの指定した時間範囲のデータをコピーする**:
 
-        -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
-
+  `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
 ## <a name="disable-replication"></a>レプリケーションを無効にする
 
 レプリケーションを無効にするには、[GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) にある別のスクリプト アクションのスクリプトを使用します。 「[レプリケーションを有効にする](#enable-replication)」と同じ手順でスクリプト アクションを呼び出すことができます。 次のパラメーターを使用します。
 
-    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+`-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">`
 
 [スクリプト](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) の `print_usage()` セクションに、パラメーターの詳細な説明が用意されています。
 
@@ -391,14 +392,15 @@ sudo service bind9 status
 
 - **すべてのテーブルのレプリケーションを無効にする**:
 
-        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
+  `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
+
   or
 
-        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+  `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
 - **指定したテーブル (table1、table2、および table3) のレプリケーションを無効にする**:
 
-        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 
 > [!NOTE]
 > 宛先クラスターを削除しようとしている場合は、ソース クラスターのピアの一覧から削除するようにしてください。 これを行うには、ソース クラスターの hbase シェルでコマンド remove_peer '1' を実行します。 これが失敗する場合は、ソース クラスターが正しく機能していない可能性があります。

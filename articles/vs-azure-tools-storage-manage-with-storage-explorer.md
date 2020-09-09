@@ -1,6 +1,6 @@
 ---
 title: Storage Explorer の概要 | Microsoft Docs
-description: Storage Explorer を使用して Azure Storage リソースを管理する
+description: Storage Explorer を使用して Azure Storage リソースの管理を始めます。 Azure Storage Explorer のダウンロードとインストール、ストレージ アカウントまたはサービスへの接続などについて説明します。
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235875"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235247"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -33,7 +33,7 @@ Storage Explorer は次のバージョンの Windows でサポートされてい
 * Windows 8
 * Windows 7
 
-Storage Explorer を使用するには、すべてのバージョンの Windows で .NET Framework 4.6.2 以降が必要です。
+Storage Explorer を使用するには、すべてのバージョンの Windows で .NET Framework 4.7.2 以降が必要です。
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -55,9 +55,9 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 Storage Explorer は、 *.tar.gz* ダウンロードとして入手することもできます。 依存関係は手動でインストールする必要があります。 *.tar.gz* のインストールは次のディストリビューションの Linux でサポートされています。
 
+* Ubuntu 20.04 x64
 * Ubuntu 18.04 x64
 * Ubuntu 16.04 x64
-* Ubuntu 14.04 x64
 
 *.tar.gz* のインストールは他のディストリビューションでも機能する可能性がありますが、正式にサポートされているのは、こちらの一覧に表示されているものだけです。
 
@@ -108,7 +108,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 * [Azure AD 経由でリソースを追加する](#add-a-resource-via-azure-ad)。 データ レイヤーのみのアクセス許可を持っている場合は、このオプションを使用して、BLOB コンテナーまたは Azure Data Lake Storage Gen2 BLOB ストレージ コンテナーを追加します。
 * [接続文字列を使用する](#use-a-connection-string)。 ストレージ アカウントへの接続文字列がある場合は、このオプションを使用します。 Storage Explorer では、キーと [Shared Access Signature](storage/common/storage-dotnet-shared-access-signature-part-1.md) 接続文字列の両方がサポートされています。
 * [Shared Access Signature URI を使用する](#use-a-shared-access-signature-uri)。 BLOB コンテナー、ファイル共有、キュー、またはテーブルへの [Shared Access Signature URI](storage/common/storage-dotnet-shared-access-signature-part-1.md) がある場合は、それを使用してリソースにアタッチします。 Shared Access Signature URI を取得するには、[Storage Explorer](#generate-a-sas-in-storage-explorer) または [Azure portal](https://portal.azure.com) のいずれかを使用できます。
-* [名前とキーを使用する](#use-a-name-and-key)。 ストレージ アカウントへのいずれかのアカウント キーがわかっている場合は、このオプションを使用してすばやく接続することができます。 [Azure portal](https://portal.azure.com) で、**[設定]** > **[アクセス キー]** を選択して、ストレージ アカウント ページでお使いのキーを探します。
+* [名前とキーを使用する](#use-a-name-and-key)。 ストレージ アカウントへのいずれかのアカウント キーがわかっている場合は、このオプションを使用してすばやく接続することができます。 [Azure portal](https://portal.azure.com) で、 **[設定]**  >  **[アクセス キー]** を選択して、ストレージ アカウント ページでお使いのキーを探します。
 * [ローカル エミュレーターにアタッチする](#attach-to-a-local-emulator)。 使用可能な Azure Storage エミュレーターのいずれかを使用している場合は、このオプションを使用して簡単にエミュレーターに接続することができます。
 * [接続文字列を使って Azure Cosmos DB アカウントに接続する](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)。 CosmosDB インスタンスへの接続文字列がある場合は、このオプションを使用します。
 * [Azure Data Lake Store に URI で接続する](#connect-to-azure-data-lake-store-by-uri)。 Azure Data Lake Store への URI がある場合は、このオプションを使用します。
@@ -186,7 +186,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 * [Azure ストレージ エミュレーター](storage/common/storage-use-emulator.md) (Windows のみ)
 * [Azurite](https://github.com/azure/azurite) (Windows、macOS、または Linux)
 
-エミュレーターが既定のポートでリッスンしている場合は、**エミュレーター - 既定のポート** ノードを使用して、エミュレーターにアクセスできます。 **[Local & Attached]\(ローカルで接続済み\)** > **[ストレージ アカウント]** の下で、**エミュレーター - 既定のポート**を探します。
+エミュレーターが既定のポートでリッスンしている場合は、**エミュレーター - 既定のポート** ノードを使用して、エミュレーターにアクセスできます。 **[Local & Attached]\(ローカルで接続済み\)**  >  **[ストレージ アカウント]** の下で、**エミュレーター - 既定のポート**を探します。
 
 接続に別の名前を使用する場合、またはエミュレーターが既定のポートで実行されていない場合は、次の手順に従います。
 

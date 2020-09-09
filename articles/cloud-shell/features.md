@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 7490eef7b6203b6bb2623efa4518c7bee5400fb3
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ea11dddd83651e233f008197ffa23a3becd978de
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610770"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642352"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -49,19 +49,19 @@ Azure ドライブを使用すると、ファイル システムのナビゲー�
 使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使用してこれらのリソースを管理できます。
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。
 
-![](media/features-powershell/azure-drive.png)
+![初期化中の Azure Cloud Shell とディレクトリ リソースの一覧のスクリーンショット。](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>Manage Exchange Online
 
 Cloud Shell の PowerShell には、Exchange Online モジュールのプライベート ビルドが含まれています。  Exchange コマンドレットを取得するには、`Connect-EXOPSSession`を実行します。
 
-![](media/features-powershell/exchangeonline.png)
+![Connect-EXOPSSession コマンドと Get-User コマンドを実行している Azure Cloud Shell のスクリーンショット。](media/features-powershell/exchangeonline.png)
 
  `Get-Command -Module tmp_*` を実行します。
 > [!NOTE]
 > 同じプレフィックスを持つモジュールをインストールした場合、モジュール名の先頭には`tmp_`が付き、そのコマンドレットも表面化します。 
 
-![](media/features-powershell/exchangeonlinecmdlets.png)
+![Get-Command -Module tmp_* コマンドを実行している Azure Cloud Shell のスクリーンショット。](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>オープンソース ツールとの緊密な統合
 
@@ -78,13 +78,13 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 |ビルド ツール            |make<br> maven<br> npm<br> pip         |
 |Containers             |[Docker マシン](https://github.com/docker/machine)<br> [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |データベース              |MySQL クライアント<br> PostgreSql クライアント<br> [sqlcmd Utility](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|その他                  |iPython クライアント<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet Bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
+|その他                  |iPython クライアント<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet Bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)<br> [Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>言語のサポート
 
 |Language   |Version   |
 |---|---|
-|.NET Core  |2.2.402       |
+|.NET Core  |[3.1.302](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.6/3.1.302-download.md)       |
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |

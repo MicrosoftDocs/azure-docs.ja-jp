@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66388564"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310582"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing Custom Search API の言語と地域のサポート
 
@@ -36,7 +36,7 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |オーストリア|AT|
 |ベルギー|BE|
 |ブラジル|BR|
-|カナダ|CA|
+|Canada|CA|
 |チリ|CL|
 |デンマーク|DK|
 |フィンランド|FI|
@@ -66,27 +66,27 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|米国|US|
+|United States|US|
 
 
 ## <a name="markets"></a>市場
 
-|国/リージョン|言語|市場コード|
+|国/リージョン|Language|市場コード|
 |-------|--------|-----------|
 |アルゼンチン|スペイン語|es-AR|
 |オーストラリア|英語|en-AU|
 |オーストリア|ドイツ語|de-AT|
 |ベルギー|オランダ語|nl-BE|
 |ベルギー|フランス語|fr-BE|
-|ブラジル|ポルトガル語|pt-BR|
-|カナダ|英語|en-CA|
-|カナダ|フランス語|fr-CA|
+|ブラジル|Portuguese|pt-BR|
+|Canada|英語|en-CA|
+|Canada|フランス語|fr-CA|
 |チリ|スペイン語|es-CL|
 |デンマーク|デンマーク語|da-DK|
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|Traditional Chinese|zh-HK|
+|香港特別行政区|繁体字中国語|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -97,9 +97,9 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |オランダ|オランダ語|nl-NL|
 |ニュージーランド|英語|en-NZ|
 |ノルウェー|ノルウェー語|no-NO|
-|中国|中国語|zh-CN|
+|中国|Chinese|zh-CN|
 |ポーランド|ポーランド語|pl-PL|
-|ポルトガル|ポルトガル語|pt-PT|
+|ポルトガル|Portuguese|pt-PT|
 |フィリピン|英語|en-PH|
 |ロシア|ロシア語|ru-RU|
 |サウジアラビア|アラビア語|ar-SA|
@@ -108,8 +108,8 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|Traditional Chinese|zh-TW|
+|台湾|繁体字中国語|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|米国|英語|en-US|
-|米国|スペイン語|es-US|
+|United States|英語|ja-JP|
+|United States|スペイン語|es-US|

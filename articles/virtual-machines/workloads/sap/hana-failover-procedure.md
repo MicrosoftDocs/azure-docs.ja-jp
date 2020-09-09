@@ -42,7 +42,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 実際のレプリケーション リレーションシップに影響を与えずに、DR フェールオーバーをテストすることもできます。 テスト フェールオーバーを実行するには、[SAP HANA on Azure 用の Microsoft スナップショット ツールに関するページ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)の「Perform a test DR failover - azure_hana_test_dr_failover (テスト DR フェールオーバーの実行 - azure_hana_test_dr_failover)」の手順に従います。 
 
 >[!IMPORTANT]
->*フェールオーバー テスト*のプロセスによって DR サイト内に作成したインスタンス上では、運用トランザクションは実行 "**しないでください**"。 azure_hana_test_dr_failover コマンドでは、プライマリ サイトへのリレーションシップを持たない一連のボリュームが作成されます。 そのため、プライマリ サイトに同期することは*できません*。 
+>**フェールオーバー テスト**のプロセスによって DR サイト内に作成したインスタンス上では、運用トランザクションは実行 "*しないでください*"。 azure_hana_test_dr_failover コマンドでは、プライマリ サイトへのリレーションシップを持たない一連のボリュームが作成されます。 そのため、プライマリ サイトに同期することは*できません*。 
 
 複数の SAP HANA インスタンスをテストする場合は、スクリプトを複数回実行します。 要求されたら、フェールオーバーをテストするインスタンスの SAP HANA SID を入力します。 
 
@@ -52,7 +52,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 1. 実行しているHANA L インスタンスのディザスター リカバリー ユニットで、HANA の非運用インスタンスをシャットダウンします。 休止中の HANA 運用インスタンスはプレインストールされています。
 1. SAP HANA プロセスが実行されていないことを確認します。 この確認には、次のコマンドを使用します。
 
-      [https://login.microsoftonline.com/consumers/](`/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`)
+      `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`
 
       出力では、**hdbdaemon** プロセスが停止状態であり、実行中または開始済み状態の他の HANA プロセスが存在しないことが示されます。
 1. ディザスター リカバリー サイトをどのスナップショット名やどの SAP HANA バックアップ ID に復元するかを確認します。 実際のディザスター リカバリーの場合、通常、このスナップショットは最新のスナップショットです。 失われたデータを復旧する必要がある場合は、古いスナップショットを選択します。

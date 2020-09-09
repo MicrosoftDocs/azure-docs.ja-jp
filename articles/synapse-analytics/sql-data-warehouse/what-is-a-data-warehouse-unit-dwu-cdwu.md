@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408066"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374135"
 ---
 # <a name="data-warehouse-units-dwus"></a>Data Warehouse ユニット (DWU)
 
@@ -72,7 +72,7 @@ CREATE DATABASE mySQLDW
 
 DWU と cDWU はいずれも、コンピューティングのスケール アップとスケール ダウン、データ ウェアハウスの使用が不要になった場合のコンピューティングの一時停止をサポートしています。 これらの操作はすべて、オンデマンドで実行できます。 Gen2 では、パフォーマンス向上のためにコンピューティング ノードでのローカル ディスク ベースのキャッシュを使用します。 スケール操作やシステムの一時停止を行うと、このキャッシュが無効化されるため、最適なパフォーマンスを実現する前にキャッシュの準備期間が必要となります。  
 
-各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) クォータがあります。 詳細については、[ワークロード管理の容量制限](sql-data-warehouse-service-capacity-limits.md#workload-management)に関する記事を参照してください。
+各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) クォータがあります。 詳細については、[ワークロード管理の容量制限](sql-data-warehouse-service-capacity-limits.md#workload-management)に関する記事を参照してください。
 
 ## <a name="capacity-limits"></a>容量制限
 
@@ -100,14 +100,14 @@ SQL プールは、大量のコンピューティングをプロビジョニン�
 
 Data Warehouse ユニットを変更するには、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」で説明されているアクセス許可が必要です。
 
-SQL DB 共同作成者や SQL Server 共同作成者などの Azure リソースの組み込みロールで DWU 設定を変更できます。
+SQL DB 共同作成者や SQL Server 共同作成者などの Azure 組み込みロールで DWU 設定を変更できます。
 
 ## <a name="view-current-dwu-settings"></a>現在の DWU 設定の表示
 
 現在の DWU 設定を表示するには、次の手順に従います。
 
 1. Visual Studio で SQL Server オブジェクト エクスプローラーを開きます。
-2. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+2. 論理 SQL サーバーに関連付けられている master データベースに接続します。
 3. sys.database_service_objectives 動的管理ビューから選択します。 たとえば次のようになります。
 
 ```sql
@@ -149,7 +149,7 @@ T-SQL で現在の DWU の設定を表示したり、設定を変更したり、
 
 DWU を変更するには、次の手順に従います。
 
-1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+1. サーバーに関連付けられている master データベースに接続します。
 2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000c に設定します。
 
 ```Sql
@@ -185,7 +185,7 @@ Azure Portal でスケールアウト操作のデータベースの状態を確�
 
 DWU の変更の状態を確認するには、次の手順に従います。
 
-1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
+1. サーバーに関連付けられている master データベースに接続します。
 2. 次のクエリを送信して、データベースの状態を確認します。
 
 ```sql

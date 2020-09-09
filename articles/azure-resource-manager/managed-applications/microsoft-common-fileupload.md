@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61e1c9fe07fdd29ebc00e7e3491472d073bc4e5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004284"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 要素
 
@@ -18,7 +18,7 @@ ms.locfileid: "75649823"
 
 ## <a name="ui-sample"></a>UI サンプル
 
-![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
+![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft-common-fileupload.png)
 
 ## <a name="schema"></a>スキーマ
 
@@ -83,7 +83,7 @@ CreateUiDefinition をテストする際、一部のブラウザー (Google Chro
 - `constraints.accept` は、ブラウザーのファイル ダイアログに表示されるファイルの種類を指定します。 [HTML5 の仕様](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)を参照して、使用できる値を確認します。 既定値は **null** です。
 - `options.multiple` が **true** に設定されている場合、ユーザーはブラウザーのファイル ダイアログ内の複数のファイルを選択できます。 既定値は **false** です。
 - この要素は、`options.uploadMode` の値に基づいた 2 つのモードでのファイルのアップロードをサポートしています。 **file** を指定すると、出力にファイルの内容が BLOB として含まれます。 **url** を指定すると、ファイルは一時的な場所にアップロードされ、出力には BLOB の URL が含まれます。 一時的な BLOB は 24 時間後に消去されます。 既定値は **file** です。
-- アップロードされたファイルは保護されます。 出力 URL には、デプロイ中にファイルにアクセスするための [SAS トークン](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)が含まれています。
+- アップロードされたファイルは保護されます。 出力 URL には、デプロイ中にファイルにアクセスするための [SAS トークン](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json)が含まれています。
 - `options.openMode` の値はファイルの読み取り方法を決定します。 ファイルがプレーン テキストである場合は **text** を指定し、そうでない場合は **binary** を指定します。 既定値は **text** です。
 - `options.uploadMode` が **file** に設定され、`options.openMode` が **binary** に設定されている場合、出力は Base64 でエンコードされます。
 - `options.encoding` はファイルを読み取る際に使用するエンコード方法を指定します。 既定値は **UTF-8** であり、これは `options.openMode` が **text** に設定されている場合にのみ使用されます。

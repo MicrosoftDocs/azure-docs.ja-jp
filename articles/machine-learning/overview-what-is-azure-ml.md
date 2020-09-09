@@ -8,18 +8,19 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-python
+ms.openlocfilehash: 2c043ab535504a02a151d308de0562debdba950a
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593020"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145894"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
 この記事では、ML モデルのトレーニング、デプロイ、自動化、管理、追跡に使用できるクラウドベースの環境である Azure Machine Learning について説明します。 
 
-Azure Machine Learning は、従来の ML からディープ ラーニング、教師あり学習と教師なし学習まで、あらゆる種類の機械学習に使用できます。 Python または R のコードを記述するか、または[デザイナー](tutorial-designer-automobile-price-train-score.md)などのコード不要 (またはローコード) オプションを使用するかにかかわらず、Azure Machine Learning ワークスペースできわめて正確な機械学習およびディープ ラーニング モデルを構築、トレーニング、および追跡できます。 
+Azure Machine Learning は、従来の ML からディープ ラーニング、教師あり学習と教師なし学習まで、あらゆる種類の機械学習に使用できます。 SDK を使用して Python または R のコードを記述するか、または [Studio](#build-ml-models-in-the-studio) でのコード不要 (またはローコード) オプションを使用するかにかかわらず、Azure Machine Learning ワークスペースで機械学習およびディープ ラーニング モデルを構築、トレーニング、追跡できます。 
 
 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 
 
@@ -42,9 +43,11 @@ Azure Machine Learning は、従来の ML からディープ ラーニング、�
 Azure Machine Learning には、次のような、開発者やデータ科学者が機械学習ワークフロー用に必要とするすべてのツールが用意されています。
 + [Azure Machine Learning デザイナー](tutorial-designer-automobile-price-train-score.md) (プレビュー): ドラッグアンドドロップ モジュールを使用して実験を構築し、パイプラインをデプロイします。
 
-+ Jupyter Notebook: [サンプル ノートブック](https://aka.ms/aml-notebooks)を使用するか、独自のノートブックを作成して、<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
++ Jupyter Notebook: [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を使用するか、独自のノートブックを作成して、<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
 
 + R スクリプトまたはノートブックでは、<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK for R</a> を使用して独自のコードを書いたり、デザイナーで R モジュールを使用したりします。
+
++ + [多くのモデルのソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
 + [Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)
 
@@ -60,32 +63,36 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 Azure Machine Learning の <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> または <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> を使用してローカル コンピューターでトレーニングを開始します。 その後、クラウドにスケールアウトすることができます。 
 
-クラウドのパワーと、Azure Machine Learning コンピューティングや [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) などの利用可能な多数の[コンピューティング先](how-to-set-up-training-targets.md)と[高度なハイパーパラメーター調整サービス](how-to-tune-hyperparameters.md)を活用することで、高品質のモデルを手早く構築できます。
+クラウドのパワーと、Azure Machine Learning コンピューティングや [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) などの利用可能な多数の[コンピューティング先](how-to-create-attach-compute-sdk.md)と[高度なハイパーパラメーター調整サービス](how-to-tune-hyperparameters.md)を活用することで、高品質のモデルを手早く構築できます。
 
 SDK を使用して、[モデルのトレーニングと調整を自動化](tutorial-auto-train-models.md)することもできます。
 
-## <a name="build-ml-models-with-no-code-tools"></a>コード不要ツールで ML モデルを構築する
+## <a name="build-ml-models-in-the-studio"></a>Studio で ML モデルを構築する
 
-コード不要またはわずかなコードしか使用しないトレーニングとデプロイを行うには、以下をお試しください。
+[Azure Machine Learning Studio](https://www.ml.azure.com) は Azure Machine Learning 内の Web ポータルであり、モデルのトレーニング、デプロイ、アセット管理を少量のコードで、またはコードを一切記述することなく行うことができます。 Studio は Azure Machine Learning SDK と統合され、シームレスなエクスペリエンスが実現されています。 詳細については、「[Azure Machine Learning Studio とは](overview-what-is-machine-learning-studio.md)」を参照してください。
 
 + **Azure Machine Learning デザイナー (プレビュー)**
 
-  デザイナーを使用すると、コードを書かなくても、データの準備、機械学習モデルのトレーニング、テスト、デプロイ、管理、追跡を行うことができます。 プログラミングは必要ありません。データセットとモジュールを視覚的に接続してモデルを構築します。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
+  [デザイナー](concept-designer.md)を使用すると、コードを書かなくても、機械学習モデルのトレーニングとデプロイを行うことができます。 まずは、[デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。 
 
-  詳細については、[Azure Machine Learning デザイナーの概要に関する記事](concept-designer.md)を参照してください。 
+  ![Azure Machine Learning デザイナーのドラッグ アンド ドロップ インターフェイスのアニメーション GIF](media/concept-designer/designer-drag-and-drop.gif)
 
-  ![Azure Machine Learning デザイナーの例](./media/overview-what-is-azure-ml/designer-drag-and-drop.gif)
++ **実験を追跡する**
 
-+ **自動化された機械学習の UI**
+  Studio で[データ サイエンスの実験を追跡して視覚化](tutorial-first-experiment-automated-ml.md)する方法をご覧ください。 
 
-  使いやすいインターフェイスで[自動化された ML 実験](tutorial-first-experiment-automated-ml.md)を作成する方法を学ぶことができます。 
+    ![Azure Machine Learning Studio での実行の詳細](media/how-to-track-experiments/experimentation-tab.gif)
 
-  [![Azure Machine Learning Studio のナビゲーション パネル](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)](./media/overview-what-is-azure-ml/azure-machine-learning-automated-ml-ui.jpg)
+
++ **その他にもたくさんあります。**
+
+  Azure Machine Learning Studio ([ml.azure.com](https://www.ml.azure.com)) にアクセスしてください。 
+
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps:デプロイとライフサイクル管理
 適切なモデルがあれば、Web サービス、IoT デバイス、または Power BI で簡単に使用できます。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関する記事を参照してください。
 
-デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk)、[Azure Machine Learning Studio](https://ml.azure.com)、または [Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用して管理できます。
+デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)、[Azure Machine Learning Studio](https://ml.azure.com)、または [Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用して管理できます。
 
 これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](how-to-use-parallel-run-step.md)予測を返したりすることができます。
 
@@ -107,7 +114,7 @@ Azure Machine Learning は、Azure プラットフォーム上の他のサービ
 + コンピューティング先 (__Azure Kubernetes Service__、__Azure Container Instances__、__Azure Databricks__、__Azure Data Lake Analytics__、__Azure HDInsight__ など)。 コンピューティング先の詳細については、[コンピューティング先の概要](concept-compute-target.md)に関するページを参照してください。
 + __Azure Event Grid__。 詳細については、[Azure Machine Learning イベントを使用する方法](concept-event-grid-integration.md)に関するページを参照してください。
 + __Azure Monitor__。 詳細については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
-+ データ ストア (__Azure Storage アカウント__、__Azure Data Lake Storage__、__Azure SQL Database__、__Azure Database for PostgreSQL__、__Azure Open Datasets__ など)。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md)」および「[Azure Open Datasets を使用してデータセットを作成する](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)」を参照してください。
++ データ ストア (__Azure Storage アカウント__、__Azure Data Lake Storage__、__Azure SQL Database__、__Azure Database for PostgreSQL__、__Azure Open Datasets__ など)。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md)」および「[Azure Open Datasets を使用してデータセットを作成する](how-to-create-register-datasets.md)」を参照してください。
 + __Azure Virtual Networks__。 詳細については、[仮想ネットワークでの実験と推論の安全な実行](how-to-enable-virtual-network.md)に関するページを参照してください。
 + __Azure Pipelines__。 詳細については、「[機械学習モデルのトレーニングとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)」を参照してください。
 + __Git リポジトリのログ__。 詳細については、「[Git 統合](concept-train-model-git-integration.md)」を参照してください。
@@ -121,16 +128,11 @@ Azure Storage アカウントやコンピューティング先などのリソー
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic Edition と Enterprise Edition
 
 Azure Machine Learning には、機械学習のニーズに合わせて調整された 2 つのエディションがあります。
-+ Basic (一般公開)
-+ Enterprise (プレビュー)
++ **Basic**:コードファースト エクスペリエンスによるクラウド規模のオープンソース開発に最適です。
 
-これらのエディションによって、開発者やデータ科学者が自分のワークスペースから利用可能な機械学習ツールはどれかが決定します。   
++ **エンタープライズ**:Basic の全機能に加え、Web インターフェイス (Studio) およびすべてのスキル レベルに対応する安全で包括的な ML ライフサイクル管理が利用できます。
 
-Basic のワークスペースでは、Azure Machine Learning を継続して使用し、機械学習プロセス中に使用した Azure リソースに対してのみ料金を支払うことができます。 Enterprise Edition のワークスペースでは、エディションがプレビュー段階にある間は、Azure の使用量に対してのみ課金されます。 Azure Machine Learning で何が利用可能かについては、[エディションの概要と価格のページ](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。 
-
-ワークスペースを作成するときは必ずエディションを割り当てます。 また、既存のワークスペースは自動的に Basic Edition に変換されています。 Basic Edition には、2019 年 10 月の時点で一般公開されていたすべての機能が含まれています。 それらのワークスペースで Enterprise Edition の機能を使用して構築された実験は、Enterprise にアップグレードするまで、読み取り専用で引き続き使用できます。 Basic のワークスペースを Enterprise Edition にアップグレードする方法については、[こちら](how-to-manage-workspace.md#upgrade)を参照してください。 
-
-この期間中、コンピューティングやその他の Azure リソースで発生するコストは、お客様の負担になります。
+これらのエディションと提供される機能の詳細については、["Azure Machine Learning のエディション" に関する記事](concept-editions.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

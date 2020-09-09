@@ -1,35 +1,34 @@
 ---
 title: Azure Cosmos DB での SELECT 句
 description: Azure Cosmos DB の SQL SELECT 句について説明します。 Azure Cosmos DB JSON クエリ言語として SQL を使用します。
-author: ginarobinson
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: girobins
-ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/08/2020
+ms.author: tisande
+ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77469937"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005948"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での SELECT 句
 
-すべてのクエリは ANSI SQL 標準に従って SELECT 句とオプションの [FROM](sql-query-from.md) および [WHERE](sql-query-where.md) 句で構成されます。 通常、FROM 句のソースが列挙され、JSON 項目のサブセットを取得するためにそのソースに WHERE 句のフィルターが適用されます。 SELECT 句は、要求された JSON 値を選択リストにプロジェクションします。
+すべてのクエリは ANSI SQL 標準に従って `SELECT` 句とオプションの [FROM](sql-query-from.md) および [WHERE](sql-query-where.md) 句で構成されます。 通常、`FROM` 句のソースが列挙され、JSON 項目のサブセットを取得するためにそのソースに `WHERE` 句のフィルターが適用されます。 `SELECT` 句は、要求された JSON 値を選択リストにプロジェクションします。
 
 ## <a name="syntax"></a>構文
 
 ```sql
 SELECT <select_specification>  
 
-<select_specification> ::=   
-      '*'   
-      | [DISTINCT] <object_property_list>   
+<select_specification> ::=
+      '*'
+      | [DISTINCT] <object_property_list>
       | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
   
-<object_property_list> ::=   
+<object_property_list> ::=
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
-  
 ```  
   
 ## <a name="arguments"></a>引数
@@ -49,7 +48,7 @@ SELECT <select_specification>
 - `VALUE`  
 
   完全な JSON オブジェクトではなく JSON 値を取得することを指定します。 これは、`<property_list>` とは異なり、オブジェクト内の投影された値をラップしません。  
- 
+
 - `DISTINCT`
   
   投影されたプロパティの重複を削除するよう指定します。  
@@ -78,7 +77,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>例
 
-次の SELECT クエリの例は、`address` が `Families` と一致する `id` から `AndersenFamily` を返します。
+次の SELECT クエリの例は、`id` が `AndersenFamily` と一致する `Families` から `address` を返します。
 
 ```sql
     SELECT f.address
@@ -96,122 +95,6 @@ SELECT <select_specification>
         "city": "Seattle"
       }
     }]
-```
-
-### <a name="quoted-property-accessor"></a>引用符で囲まれたプロパティのアクセサー
-プロパティは、引用符で囲まれたプロパティの演算子 [] を使用してアクセスすることができます。 たとえば、 `SELECT c.grade` and `SELECT c["grade"]` は同等です。 この構文はスペース、特殊文字を含むプロパティや、SQL キーワードや予約語と同じ名前を持つプロパティをエスケープする場合に役立ちます。
-
-```sql
-    SELECT f["lastName"]
-    FROM Families f
-    WHERE f["id"] = "AndersenFamily"
-```
-
-### <a name="nested-properties"></a>入れ子になったプロパティ
-
-以下の例では、2 つの入れ子になったプロパティ `f.address.state` と `f.address.city` をプロジェクションしています。
-
-```sql
-    SELECT f.address.state, f.address.city
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-結果は次のようになります。
-
-```json
-    [{
-      "state": "WA",
-      "city": "Seattle"
-    }]
-```
-### <a name="json-expressions"></a>JSON 式
-
-プロジェクションは、以下の例のように JSON 式もサポートします。
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-結果は次のようになります。
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle",
-        "name": "AndersenFamily"
-      }
-    }]
-```
-
-前の例では、SELECT 句で JSON オブジェクトを作成する必要があり、サンプルはキーを提供していないため、句で暗黙的な引数変数名 `$1` を使用しています。 次のクエリは `$1` と `$2` の 2 つの暗黙的な引数の変数を返します。
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city },
-           { "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-結果は次のようになります。
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle"
-      }, 
-      "$2": {
-        "name": "AndersenFamily"
-      }
-    }]
-```
-## <a name="reserved-keywords-and-special-characters"></a>予約済みキーワードと特殊文字
-
-データに "order" や "Group" などの予約済みキーワードと同じ名前のプロパティが含まれている場合、これらのドキュメントに対するクエリは構文エラーになります。 クエリを正常に実行するには、プロパティを `[]` 文字で明示的に囲む必要があります。
-
-たとえば、`order` という名前のプロパティと、特殊文字を含むプロパティ `price($)` を持つドキュメントを次に示します。
-
-```json
-{
-  "id": "AndersenFamily",
-  "order": [
-     {
-         "orderId": "12345",
-         "productId": "A17849",
-         "price($)": 59.33
-     }
-  ],
-  "creationDate": 1431620472,
-  "isRegistered": true
-}
-```
-
-`order` プロパティまたは `price($)` プロパティを含むクエリを実行すると、構文エラーが発生します。
-
-```sql
-SELECT * FROM c where c.order.orderid = "12345"
-```
-```sql
-SELECT * FROM c where c.order.price($) > 50
-```
-結果は次のとおりです。
-
-`
-Syntax error, incorrect syntax near 'order'
-`
-
-同じクエリを次のように書き換える必要があります。
-
-```sql
-SELECT * FROM c WHERE c["order"].orderId = "12345"
-```
-
-```sql
-SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: f7f460b01674359847427296e4526fc5771658f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191959"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084717"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル
 
@@ -59,8 +59,10 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 
     そのため、コンテキストを設定するための次のようなステートメントを実行する必要は**ありません**。
 
-         sc = SparkContext('yarn-client')
-         sqlContext = HiveContext(sc)
+    ```sql
+    sc = SparkContext('yarn-client')
+    sqlContext = HiveContext(sc)
+    ```
 
     代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
@@ -98,8 +100,10 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 
 **例:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2
-    SELECT * FROM hivesampletable
+```sql
+%%sql -q -m sample -r 0.1 -n 500 -o query2
+SELECT * FROM hivesampletable
+```
 
 上記のステートメントは、次のアクションを実行します。
 
@@ -121,9 +125,11 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 
 Notebook がストレージ アカウントに保存される方法は、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) と互換性があります。 クラスターに SSH で接続している場合、次のようなファイル管理コマンドを使用できます。
 
-    hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it's visible from Jupyter
+| コマンド | 説明 |
+|---------|-------------|
+| `hdfs dfs -ls /HdiNotebooks` | # ルート ディレクトリのすべてを一覧表示する - このディレクトリ内のすべてのものが、ホーム ページから Jupyter に表示されます |
+| `hdfs dfs –copyToLocal /HdiNotebooks` | # HdiNotebooks フォルダーの内容をダウンロードする|
+| `hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks` | # ノートブック example.ipynb をルート フォルダーにアップロードして、Jupyter から表示できるようにする |
 
 クラスターが既定のストレージ アカウントとして使用しているのが Azure Storage か Azure Data Lake Storage かにかかわらず、Notebook は `/var/lib/jupyter` のクラスター ヘッド ノードにも保存されます。
 
@@ -131,7 +137,7 @@ Notebook がストレージ アカウントに保存される方法は、[Apache
 
 Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome でのみサポートされます。
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 したがって、カーネルが成熟するにつれて、API が変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 フィードバックは、これらのカーネルの最終リリースを形作るのに役立ちます。 ご意見やフィードバックは、この記事の下部にある **フィードバック**のセクションからお寄せください。
 

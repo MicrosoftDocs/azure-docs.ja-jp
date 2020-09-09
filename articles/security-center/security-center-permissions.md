@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106221"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067224"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
-Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) が使用されています。RBAC が提供する[組み込みのロール](../role-based-access-control/built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
+Azure Security Center では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) が使用されており、これによって提供される[組み込みのロール](../role-based-access-control/built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
 
 Security Center は、リソースの構成を評価して、セキュリティの問題と脆弱性を特定します。 Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。
 
@@ -35,21 +35,20 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 > [!NOTE]
 > セキュリティ閲覧者とセキュリティ管理者という 2 つのセキュリティ ロールには、Security Center のみでのアクセス権が付与されています。 ストレージ、Web + モバイル、モノのインターネットなど、Azure の他のサービス領域へのアクセス権はありません。
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>ルールと許可されているアクション
 
 次の表では、Security Center のロールと許可されているアクションが表示します。
 
-| Role | セキュリティ ポリシーを編集する | セキュリティに関する推奨事項をリソースに適用する</br> ("クイック修復" を含む) | アラートと推奨事項を無視する | アラートと推奨事項を表示する |
-|:--- |:---:|:---:|:---:|:---:|
-| サブスクリプションの所有者 | ✔ | ✔ | ✔ | ✔ |
-| サブスクリプションの共同作成者 | -- | ✔ | ✔ | ✔ |
-| リソース グループの所有者 | -- | ✔ | -- | ✔ |
-| リソース グループの共同作成者 | -- | ✔ | -- | ✔ |
-| Reader | -- | -- | -- | ✔ |
-| セキュリティ管理者 | ✔ | -- | ✔ | ✔ |
-| セキュリティ閲覧者 | -- | -- | -- | ✔ |
+|アクション|セキュリティ閲覧者または <br> Reader |セキュリティ管理者  |リソース グループの共同作成者または <br> リソース グループの所有者  |サブスクリプションの共同作成者  |サブスクリプションの所有者  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|セキュリティ ポリシーを編集する|-|✔|-|-|✔|
+|イニシアティブを追加する、または割り当てる (規制コンプライアンス標準を含む)|-|-|-|-|✔|
+|サブスクリプション価格レベルを変更する|-|✔|-|-|✔|
+|自動プロビジョニングを有効または無効にする|-|✔|-|✔|✔|
+|セキュリティに関する推奨事項をリソースに適用する</br> (および[クイック修復](security-center-remediate-recommendations.md#quick-fix-remediation)を使用する)|-|-|✔|✔|✔|
+|アラートを無視する|-|✔|-|✔|✔|
+|アラートと推奨事項を表示する|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > タスクを実行するために必要となる最小限の権限ロールをユーザーに割り当てることをお勧めします。 たとえば、リソースのセキュリティ正常性に関する情報の表示のみが必要で、推奨事項の適用やポリシーの編集などの操作を行う必要がないユーザーには、閲覧者ロールを割り当ててください。

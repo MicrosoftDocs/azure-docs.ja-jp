@@ -1,20 +1,20 @@
 ---
-title: 拡張された Spark History Server を使用してアプリをデバッグする - Azure Synapse の Apache Spark
+title: 拡張された Spark History Server を使用してアプリをデバッグする
 description: 拡張された Spark History Server を使用して、Azure Synapse Analytics で Spark アプリケーションのデバッグと診断を行います。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426827"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059986"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 

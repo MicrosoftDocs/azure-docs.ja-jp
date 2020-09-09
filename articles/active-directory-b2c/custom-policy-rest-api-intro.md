@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388937"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合
 
@@ -32,6 +32,9 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 - **カスタム ビジネス ロジックを実行します**。 プッシュ通知の送信、企業データベースの更新、ユーザーの移行プロセスの実行、アクセス許可の管理、データベースの監査、およびその他のワークフローを実行できます。
 
 ![RESTful サービスの要求交換の図](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> RESTful サービスから Azure AD B2C への応答が遅い場合または応答がない場合、タイムアウトは 30 秒であり、再試行回数は 2 回です (つまり、合計 3 回試行されます)。 タイムアウトと再試行回数の設定は現在構成できません。
 
 ## <a name="calling-a-restful-service"></a>RESTful サービスの呼び出し
 
@@ -142,7 +145,7 @@ REST API は、セキュリティで保護され、[RESTful 技術プロファ�
 ## <a name="localize-the-rest-api"></a>REST API をローカライズする
 RESTful 技術プロファイルでは、現在のセッションの言語/ロケールを送信し、必要に応じて、ローカライズされたエラー メッセージを生成することができます。 [要求リゾルバー](claim-resolver-overview.md)を使用すると、ユーザー言語などのコンテキスト要求を送信できます。 このシナリオを示す RESTful 技術プロファイルの例を次に示します。
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -162,7 +165,7 @@ RESTful 技術プロファイルでは、現在のセッションの言語/ロ�
 
 ## <a name="handling-error-messages"></a>エラー メッセージの処理
 
-REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は HTTP 409 エラー メッセージ (応答状態コードの競合) を返すことになります。 詳細については、「[RESTful 技術プロファイル](restful-technical-profile.md#returning-error-message)」を参照してください。
+REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は HTTP 409 エラー メッセージ (応答状態コードの競合) を返すことになります。 詳細については、「[RESTful 技術プロファイル](restful-technical-profile.md#returning-validation-error-message)」を参照してください。
 
 これは、検証技術プロファイルから REST API 技術プロファイルを呼び出すことによってのみ実現できます。 これにより、ユーザーはページのデータを修正して、ページの送信時に検証を再度実行できます。
 

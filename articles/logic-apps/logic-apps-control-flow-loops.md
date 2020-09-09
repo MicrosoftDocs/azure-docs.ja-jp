@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233039"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495609"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "79233039"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
@@ -32,11 +32,11 @@ ms.locfileid: "79233039"
 
 ## <a name="foreach-loop"></a>"Foreach" ループ
 
-"Foreach" ループは、配列項目ごとに 1 つ以上のアクションを繰り返し、配列でのみ動作します。 "Foreach" ループのイテレーションは並列で実行します。 ただし、[シーケンシャル "Foreach" ループ](#sequential-foreach-loop)を設定することにより、一度に 1 つのイテレーションを実行できます。 
+"Foreach" ループは、配列項目ごとに 1 つ以上のアクションを繰り返し、配列でのみ動作します。 "Foreach" ループを使用する場合の考慮事項のいくつかを次に示します。
 
-"Foreach" ループを使用する場合の考慮事項のいくつかを次に示します。
+* 既定では、"Foreach" ループ内のイテレーションは同時または並列に実行されます。 この動作は、[Power Automate の **Apply to each** ループ](/power-automate/apply-to-each)とは異なっています。このループ内では、イテレーションは一度に 1 つずつ、つまり順番に実行されます。 ただし、[シーケンシャル "Foreach" ループ イテレーションを設定する](#sequential-foreach-loop)こともできます。 たとえば、"Foreach" ループ内の次のイテレーションを[遅延アクション](../connectors/connectors-native-delay.md)を使用して一時停止するには、そのループが順番に実行されるように設定する必要があります。
 
-* 入れ子になったループでは、イテレーションは常に、並列ではなく順番に実行します。 入れ子になったループ内の項目に対して並列で操作を実行するには、[子ロジック アプリ](../logic-apps/logic-apps-http-endpoint.md)を作成して呼び出します。
+  この既定の動作の例外は、入れ子になったループです。このループでは、イテレーションは常に、並列ではなく順番に実行されます。 入れ子になったループ内の項目に対して並列で操作を実行するには、[子ロジック アプリ](../logic-apps/logic-apps-http-endpoint.md)を作成して呼び出します。
 
 * 各ループ イテレーション中での変数に対する操作の予測可能な結果を取得するには、これらのループを順番に実行します。 たとえば、同時実行ループが終了すると、変数操作に対する増分、減分、追加で予測可能な結果が返されます。 ただし、同時実行ループでの各イテレーション中に、これらの操作で予期しない結果が返される可能性があります。 
 
@@ -162,7 +162,7 @@ ms.locfileid: "79233039"
 
 > [!NOTE]
 > これらの手順では Office 365 Outlook を使用できますが、Logic Apps がサポートするどの電子メール プロバイダーでも使用できます。 
-> [こちらからコネクタの一覧を確認してください](https://docs.microsoft.com/connectors/)。 別の電子メール アカウントを使用する場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。 
+> [こちらからコネクタの一覧を確認してください](/connectors/)。 別の電子メール アカウントを使用する場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。 
 
 1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーの検索ボックスの下で、 **[すべて]** を選択します。 「定期的」を検索します。 
    トリガーの一覧から、 **[定期的なスケジュール]** を選択します。
@@ -335,7 +335,7 @@ ms.locfileid: "79233039"
 
 ## <a name="get-support"></a>サポートを受ける
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ

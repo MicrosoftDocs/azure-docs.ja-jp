@@ -3,12 +3,12 @@ title: 正常性チェックのエラー リファレンス
 description: Azure Container Registry で az acr check-health 診断コマンドを実行することによって検出された問題のエラー コードと考えられる解決策
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289143"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978316"
 ---
 # <a name="health-check-error-reference"></a>正常性チェックのエラー リファレンス
 
@@ -58,7 +58,7 @@ ms.locfileid: "80289143"
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-このエラーは、指定されたレジストリのチャレンジ エンドポイントが HTTP ステータス 403 Forbidden で応答したことを意味します。 このエラーは、おそらく仮想ネットワーク構成が原因で、ユーザーがレジストリにアクセスできないことを意味します。 現在構成されているファイアウォール規則を確認するには、`az acr show --query networkRuleSet --name <registry>` を実行します。
+このエラーは、指定されたレジストリのチャレンジ エンドポイントが HTTP ステータス 403 Forbidden で応答したことを意味します。 このエラーは、ユーザーがレジストリにアクセスできないことを意味し、おそらく、仮想ネットワークの構成、またはレジストリのパブリック エンドポイントへのアクセスが許可されていないことが原因であると考えられます。 現在構成されているファイアウォール規則を確認するには、`az acr show --query networkRuleSet --name <registry>` を実行します。
 
 *考えられる解決策*: 仮想ネットワーク規則を削除するか、現在のクライアント IP アドレスを許可リストに追加します。
 

@@ -1,18 +1,18 @@
 ---
 title: StorSimple Linux ホスト上の MPIO の構成
-description: CentOS 6.6 を実行している Linux ホストに接続されている StorSimple で MPIO を構成します。
+description: StorSimple Linux (Centos 6.6) ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278360"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183635"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -70,35 +70,37 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
    
     次の例は、2 つのネットワーク インターフェイス (`eth0` と `eth1`) がホスト上に存在する場合の出力を示しています。
    
-        [root@centosSS ~]# ifconfig
-        eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
-          inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-         RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
-   
-        eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
-          inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
-   
-        loLink encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:12 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0
-          RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```output
+    [root@centosSS ~]# ifconfig
+    eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
+        inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
+
+    eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
+        inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
+
+    loLink encap:Local Loopback  
+        inet addr:127.0.0.1  Mask:255.0.0.0
+        inet6 addr: ::1/128 Scope:Host
+        UP LOOPBACK RUNNING  MTU:65536  Metric:1
+        RX packets:12 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:0
+        RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```
 1. CentOS サーバーに *iSCSI-initiator-utils* をインストールします。 次の手順を実行して、 *iSCSI-initiator-utils*をインストールします。
    
    1. CentOS ホストに `root` としてログオンします。
@@ -119,8 +121,10 @@ Linux ホストに接続されている StorSimple デバイスを構成して�
       
        サンプル出力を次に示します。
       
-           iscsi   0:off   1:off   2:on3:on4:on5:on6:off
-           iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```output
+        iscsi   0:off   1:off   2:on3:on4:on5:on6:off
+        iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```
       
        上の例から、iSCSI 環境では、2、3、4、5 の実行レベルでのブート時に実行されることが確認できます。
 1. *device-mapper-multipath*をインストールします。 型:
@@ -149,9 +153,11 @@ StorSimple デバイスに必要なものは次のとおりです。
 * StorSimple デバイスの iSCSI インターフェイスは、CentOS サーバーから到達できる必要があります。
       これを確認するには、ホスト サーバーの StorSimple iSCSI 対応ネットワーク インターフェイスの IP アドレスを指定する必要があります。 使用するコマンドと DATA2 (10.126.162.25) および DATA3 (10.126.162.26) の対応する出力を次に示します。
   
-        [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
-        10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
-        10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```console
+    [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
+    10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```
 
 ### <a name="hardware-configuration"></a>ハードウェア構成
 冗長性実現のために別のパスで 2 つの iSCSI ネットワーク インターフェイスを接続することをお勧めします。 次の図は、CentOS サーバーと StorSimple デバイスにおける高可用性と負荷分散のマルチパスのための推奨ハードウェア構成を示しています。
@@ -197,11 +203,13 @@ StorSimple デバイスに必要なものは次のとおりです。
    
     これによって、 `multipath.conf` の既定値のセクションが次のように変更されます。
    
-        defaults {
-        find_multipaths yes
-        user_friendly_names yes
-        path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+    find_multipaths yes
+    user_friendly_names yes
+    path_grouping_policy multibus
+    }
+    ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>手順 2:マルチパスを StorSimple ボリューム用に構成する
 既定では、すべてのデバイスが multipath.conf ファイルのブラック リストに記載されており、バイパスされます。 ブラックリストの例外を作成して、StorSimple デバイスのボリュームのマルチパスを許可する必要があります。
@@ -211,16 +219,18 @@ StorSimple デバイスに必要なものは次のとおりです。
     `vi /etc/multipath.conf`
 1. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブラックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
    
-        blacklist_exceptions {
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8100*"
-            }
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8600*"
-            }
-           }
+    ```config
+    blacklist_exceptions {
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8100*"
+        }
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8600*"
+        }
+    }
+    ```
 
 ### <a name="step-3-configure-round-robin-multipathing"></a>手順 3:ラウンド ロビン マルチパスを構成する
 この負荷分散アルゴリズムは、バランスの取れたラウンド ロビン方式で、アクティブ コントローラーへの使用可能なすべてのマルチパスを使用します。
@@ -230,10 +240,12 @@ StorSimple デバイスに必要なものは次のとおりです。
     `vi /etc/multipath.conf`
 1. `defaults` セクションの `path_grouping_policy` を `multibus` に設定します。 `path_grouping_policy` では、指定されていないマルチパスに適用する既定のパスグループ化ポリシーを指定します。 既定値のセクションは次のようになります。
    
-        defaults {
-                user_friendly_names yes
-                path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+            user_friendly_names yes
+            path_grouping_policy multibus
+    }
+    ```
 
 > [!NOTE]
 > `path_grouping_policy` の最も一般的な値は次のとおりです。
@@ -249,21 +261,21 @@ StorSimple デバイスに必要なものは次のとおりです。
     `service multipathd restart`
 1. 出力は次のようになります。
    
-        [root@centosSS ~]# service multipathd start
-        Starting multipathd daemon:  [OK]
+    ```output
+    [root@centosSS ~]# service multipathd start
+    Starting multipathd daemon:  [OK]
+    ```
 
 ### <a name="step-5-verify-multipathing"></a>手順 5:マルチパスを確認する
 1. まず、iSCSI 接続が、StorSimple デバイスで次のように確立されていることを確認します。
    
    a. StorSimple デバイスを検出します。 型:
       
-    ```
-    iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
-    ```
+    `iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>`
     
     DATA0 の IP アドレスが 10.126.162.25 であり、StorSimple デバイスで送信 iSCSI トラフィック用にポート 3260 が開いているとき、出力は次のようになります。
     
-    ```
+    ```output
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
@@ -272,13 +284,11 @@ StorSimple デバイスに必要なものは次のとおりです。
 
    b. ターゲット IQN を使用してデバイスに接続します。 ここでは StorSimple デバイスが iSCSI ターゲットです。 型:
 
-    ```
-    iscsiadm -m node --login -T <IQN of iSCSI target>
-    ```
+      `iscsiadm -m node --login -T <IQN of iSCSI target>`
 
     次の例は、 `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`のターゲット IQN を使用した出力を示します。 この出力は、デバイスの 2 つの iSCSI 対応ネットワーク インターフェイスに正常に接続されていることを示しています。
 
-    ```
+    ```output
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
@@ -295,33 +305,31 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 1. 使用可能なパスを確認します。 型:
 
-      ```
-      multipath -l
-      ```
+    `multipath -l`
 
       次の例は、2 つの使用可能なパスで 1 つのホスト ネットワーク インターフェイスに接続されている StorSimple デバイスの、2 つのネットワーク インターフェイスの出力を示しています。
 
-        ```
-        mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 7:0:0:1 sdc 8:32 active undef running
-        `- 6:0:0:1 sdd 8:48 active undef running
-        ```
+    ```output
+    mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 7:0:0:1 sdc 8:32 active undef running
+    `- 6:0:0:1 sdd 8:48 active undef running
+    ```
 
-        The following example shows the output for two network interfaces on a StorSimple device connected to two host network interfaces with four available paths.
+    次の例は、4 つの使用可能なパスで 2 つのホスト ネットワーク インターフェイスに接続されている StorSimple デバイスの、2 つのネットワーク インターフェイスの出力を示しています。
 
-        ```
-        mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 17:0:0:0 sdb 8:16 active undef running
-        |- 15:0:0:0 sdd 8:48 active undef running
-        |- 14:0:0:0 sdc 8:32 active undef running
-        `- 16:0:0:0 sde 8:64 active undef running
-        ```
+    ```output
+    mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 17:0:0:0 sdb 8:16 active undef running
+    |- 15:0:0:0 sdd 8:48 active undef running
+    |- 14:0:0:0 sdc 8:32 active undef running
+    `- 16:0:0:0 sde 8:64 active undef running
+    ```
 
-        After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
+    パスを構成した後で、このボリュームをマウントしてフォーマットするには、ホスト オペレーティング システム (Centos 6.6) の具体的な手順を参照してください。
 
 ## <a name="troubleshoot-multipathing"></a>マルチパスのトラブルシューティング
 このセクションでは、マルチパスの構成中に問題が発生した場合に役に立つヒントを紹介します。
@@ -330,7 +338,7 @@ Q. `multipath.conf` ファイルの変更内容が有効かどうかがわかり
 
 A. `multipath.conf` ファイルに変更を加えた場合は、マルチパス サービスを再起動する必要があります。 次のコマンドを入力します。
 
-    service multipathd restart
+`service multipathd restart`
 
 Q. StorSimple デバイスの 2 つのネットワーク インターフェイスと、ホストの 2 つのネットワーク インターフェイスを有効にしました。 使用可能なパスの一覧を取得すると、表示されるのは 2 つのパスのみです。 使用可能なパスは 4 つ表示されると予想していました。
 
@@ -362,58 +370,60 @@ A. 通常、マルチパスのパスが表示されないのはマルチパス �
 
 比較的可能性は低いですが、古い iscsid pid も原因として考えられます。 次のコマンドを使用して iSCSI セッションからログオフします。
 
-    iscsiadm -m node --logout -p <Target_IP>
+`iscsiadm -m node --logout -p <Target_IP>`
 
 ご使用の StorSimple デバイスである iSCSI ターゲットの、接続されているすべてのネットワーク インターフェイスにこのコマンドを繰り返します。 すべての iSCSI セッションからログオフした後で、iSCSI ターゲット IQN を使用して、iSCSI セッションを再確立します。 次のコマンドを入力します。
 
-    iscsiadm -m node --login -T <TARGET_IQN>
+`iscsiadm -m node --login -T <TARGET_IQN>`
 
 
 Q. 自分のデバイスがホワイトリストに登録されているかどうかわかりません。
 
 A. ご使用のデバイスがホワイトリストに登録されているかどうかを確認するには、次のトラブルシューティング用の対話型コマンドを使用します。
 
-    multipathd -k
-    multipathd> show devices
-    available block devices:
-    ram0 devnode blacklisted, unmonitored
-    ram1 devnode blacklisted, unmonitored
-    ram2 devnode blacklisted, unmonitored
-    ram3 devnode blacklisted, unmonitored
-    ram4 devnode blacklisted, unmonitored
-    ram5 devnode blacklisted, unmonitored
-    ram6 devnode blacklisted, unmonitored
-    ram7 devnode blacklisted, unmonitored
-    ram8 devnode blacklisted, unmonitored
-    ram9 devnode blacklisted, unmonitored
-    ram10 devnode blacklisted, unmonitored
-    ram11 devnode blacklisted, unmonitored
-    ram12 devnode blacklisted, unmonitored
-    ram13 devnode blacklisted, unmonitored
-    ram14 devnode blacklisted, unmonitored
-    ram15 devnode blacklisted, unmonitored
-    loop0 devnode blacklisted, unmonitored
-    loop1 devnode blacklisted, unmonitored
-    loop2 devnode blacklisted, unmonitored
-    loop3 devnode blacklisted, unmonitored
-    loop4 devnode blacklisted, unmonitored
-    loop5 devnode blacklisted, unmonitored
-    loop6 devnode blacklisted, unmonitored
-    loop7 devnode blacklisted, unmonitored
-    sr0 devnode blacklisted, unmonitored
-    sda devnode whitelisted, monitored
-    dm-0 devnode blacklisted, unmonitored
-    dm-1 devnode blacklisted, unmonitored
-    dm-2 devnode blacklisted, unmonitored
-    sdb devnode whitelisted, monitored
-    sdc devnode whitelisted, monitored
-    dm-3 devnode blacklisted, unmonitored
+```console
+multipathd -k
+multipathd> show devices
+available block devices:
+ram0 devnode blacklisted, unmonitored
+ram1 devnode blacklisted, unmonitored
+ram2 devnode blacklisted, unmonitored
+ram3 devnode blacklisted, unmonitored
+ram4 devnode blacklisted, unmonitored
+ram5 devnode blacklisted, unmonitored
+ram6 devnode blacklisted, unmonitored
+ram7 devnode blacklisted, unmonitored
+ram8 devnode blacklisted, unmonitored
+ram9 devnode blacklisted, unmonitored
+ram10 devnode blacklisted, unmonitored
+ram11 devnode blacklisted, unmonitored
+ram12 devnode blacklisted, unmonitored
+ram13 devnode blacklisted, unmonitored
+ram14 devnode blacklisted, unmonitored
+ram15 devnode blacklisted, unmonitored
+loop0 devnode blacklisted, unmonitored
+loop1 devnode blacklisted, unmonitored
+loop2 devnode blacklisted, unmonitored
+loop3 devnode blacklisted, unmonitored
+loop4 devnode blacklisted, unmonitored
+loop5 devnode blacklisted, unmonitored
+loop6 devnode blacklisted, unmonitored
+loop7 devnode blacklisted, unmonitored
+sr0 devnode blacklisted, unmonitored
+sda devnode whitelisted, monitored
+dm-0 devnode blacklisted, unmonitored
+dm-1 devnode blacklisted, unmonitored
+dm-2 devnode blacklisted, unmonitored
+sdb devnode whitelisted, monitored
+sdc devnode whitelisted, monitored
+dm-3 devnode blacklisted, unmonitored
+```
 
 
 詳細については、[マルチパスのトラブルシューティング](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)に関するページを参照してください。
 
 ## <a name="list-of-useful-commands"></a>便利なコマンドの一覧
-| Type | command | 説明 |
+| Type | コマンド | 説明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |iSCSI サービスを開始する |
 | &nbsp; |`service iscsid stop` |iSCSI サービスを停止する |

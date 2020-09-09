@@ -1,11 +1,13 @@
 - name: Translator のドキュメント
   href: index.yml
-- name: Translator
+- name: 'Translator'
   items:
     - name: 概要
       items:
         - name: Translator とは
           href: translator-info-overview.md
+        - name: 言語サポート
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: クイックスタート
       items:
         - name: テキストを翻訳する
@@ -22,7 +24,7 @@
           href: quickstart-sentences.md
     - name: チュートリアル
       items:
-        - name: 'Translator の WPF アプリの作成 (C#)'
+        - name: Translator の WPF アプリの作成 (C#)
           href: tutorial-wpf-translation-csharp.md
         - name: Flask 翻訳アプリの作成 (Python)
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -50,7 +52,7 @@
           href: firewalls.md
     - name: サンプル
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -92,22 +94,20 @@
               href: ctf-reporting.md
             - name: N-Best の翻訳結果を返す
               href: return-n-best-translations.md
+        - name: 要求の制限
+          href: request-limits.md
     - name: リソース
       items:
         - name: コード サンプル (GitHub)
           href: 'https://aka.ms/TranslatorGitHub'
         - name: よく寄せられる質問
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: 言語のサポート
-          href: language-support.md
         - name: 価格
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: リージョン別の提供状況
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: コンプライアンス
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: 要求の制限
-          href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
@@ -162,8 +162,6 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: リソース
       items:
-        - name: 言語サポート
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: 用語集
           href: custom-translator/glossary.md
         - name: よく寄せられる質問

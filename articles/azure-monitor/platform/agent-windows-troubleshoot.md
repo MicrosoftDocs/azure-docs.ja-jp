@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80333504"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927319"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -37,8 +37,9 @@ Azure Monitor の Windows 用 Log Analytics エージェントで発生する可
 |*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
 |*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
 |*.blob.core.windows.net |ポート 443 |送信|はい |  
+|*.agentsvc.azure-automation.net |ポート 443 |送信|はい |  
 
-Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)に関するトピックを参照してください。 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
+Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)に関するトピックを参照してください。 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
 
 エージェントが Azure Monitor と正常に通信しているかどうかを確認する方法はいくつかあります。
 
@@ -58,9 +59,9 @@ Azure Government に必要なファイアウォールの情報については、
 
     ![TestCloudConnection ツールの実行結果](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- **イベント ソース** - *Health Service Modules*、*HealthService*、*Service Connector* で *Operations Manager* イベント ログを絞り込み、**イベント レベル**の*警告*と*エラー*で絞り込んで、次の表のイベントが書き込まれたかどうかを確認します。 その場合は、発生する可能性がある各イベントについて記載されている解決手順を確認します。
+- **イベント ソース** - *Health Service Modules*、*HealthService*、*Service Connector* で *Operations Manager* イベント ログを絞り込み、**イベント レベルの** *警告*と*エラー*で絞り込んで、次の表のイベントが書き込まれたかどうかを確認します。 その場合は、発生する可能性がある各イベントについて記載されている解決手順を確認します。
 
-    |イベント ID |source |説明 |解像度 |
+    |イベント ID |source |説明 |解決方法 |
     |---------|-------|------------|-----------|
     |2133 と 2129 |Health Service |エージェントからサービスへの接続に失敗しました |このエラーは、エージェントが Azure Monitor サービスと直接またはファイアウォール/プロキシ サーバーを介して通信できない場合に発生する可能性があります。 エージェントのプロキシ設定、またはネットワーク ファイアウォール/プロキシでコンピューターからサービスへの TCP トラフィックが許可されていることを確認します。|
     |2138 |Health Service Modules |プロキシに認証が必要です |エージェント プロキシ設定を構成し、プロキシ サーバーとの認証に必要なユーザー名/パスワードを指定します。 |
@@ -68,7 +69,7 @@ Azure Government に必要なファイアウォールの情報については、
     |2127 |Health Service Modules |データ送信失敗によるエラー コードの受信 |1 日にときおり発生するだけの場合は、無視することができる単なる偶然の異常の可能性があります。 監視して発生する頻度を把握します。 1 日中頻繁に発生する場合は、まずネットワーク構成とプロキシ設定を確認します。 説明に HTTP エラー コード 404 が含まれていて、エージェントからサービスにデータを送信しようとしたのが初めての場合、内部 404 エラー コードには 500 エラーが含まれます。 404 は見つからないことを意味します。つまり、新しいワークスペース用のストレージ領域がまだプロビジョニング中であることを示します。 次回の再試行時に、データはワークスペースに正常に書き込まれます。 HTTP エラー 403 は、アクセス許可または資格情報の問題を示している可能性があります。 403 エラーには、問題の解決に役立つ詳しい情報が含まれています。|
     |4000 |Service Connector |DNS の名前解決に失敗しました |マシンで、サービスにデータを送信するときに使用されるインターネット アドレスを解決できませんでした。 これは、マシン上の DNS リゾルバーの設定、不適切なプロキシの設定、またはプロバイダーとの一時的な DNS 問題の場合があります。 ときおり発生する場合は、一時的なネットワーク関連の問題が原因の可能性があります。|
     |4001 |Service Connector |サービスへの接続に失敗しました。 |このエラーは、エージェントが Azure Monitor サービスと直接またはファイアウォール/プロキシ サーバーを介して通信できない場合に発生する可能性があります。 エージェントのプロキシ設定、またはネットワーク ファイアウォール/プロキシでコンピューターからサービスへの TCP トラフィックが許可されていることを確認します。|
-    |4002 |Service Connector |クエリに応答してサービスから HTTP 状態コード 403 が返されました。 サービスの状態についてサービス管理者に確認してください。 クエリは後で再試行されます。 |このエラーはエージェントの初期登録の段階で書き込まれ、*https://\<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest* のような URL が表示されます。 エラー コード 403 は禁止されていることを意味し、誤入力されたワークスペース ID またはキー、またはコンピューターの日時が不適切なことが原因で発生する可能性があります。 時刻が現在の時刻より 15 分後または前である場合、オンボードは失敗します。 これを修正するには、Windows コンピューターの日付やタイムゾーンを更新します。|
+    |4002 |Service Connector |クエリに応答してサービスから HTTP 状態コード 403 が返されました。 サービスの状態についてサービス管理者に確認してください。 クエリは後で再試行されます。 |このエラーはエージェントの初期登録フェーズ中に書き込まれ、*https://\<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest* のような URL が表示されます。 エラー コード 403 は禁止されていることを意味し、誤入力されたワークスペース ID またはキー、またはコンピューターの日時が不適切なことが原因で発生する可能性があります。 時刻が現在の時刻より 15 分後または前である場合、オンボードは失敗します。 これを修正するには、Windows コンピューターの日付やタイムゾーンを更新します。|
 
 ## <a name="data-collection-issues"></a>データ収集の問題
 
@@ -96,11 +97,10 @@ Heartbeat
 
     ![イベント ID 1210 の説明](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. 数分経ってもクエリ結果または視覚化に想定されるデータが表示されない場合は、*Operations Manager* イベント ログの解決策と分析情報のどちらのデータを表示しているかに応じて、**イベント ソース**の *HealthService* と *Health Service Modules* を検索します。また、**イベント レベル**の*警告*と*エラー* で絞り込み、次の表のイベントが書き込まれたかどうかを確認します。
+3. 数分経ってもクエリ結果または視覚化に想定されるデータが表示されない場合は、*Operations Manager* イベント ログの解決策と分析情報のどちらのデータを表示しているかに応じて、**イベント ソースの**  *HealthService* と *Health Service Modules* を検索します。また、**イベント レベルの** *警告*と*エラー* で絞り込み、次の表のイベントが書き込まれたかどうかを確認します。
 
-    |イベント ID |source |説明 |解像度 |
+    |イベント ID |source |説明 |解決方法 |
     |---------|-------|------------|
     |8000 |HealthService |このイベントは、パフォーマンス、イベント、または収集されたその他のデータ型に関連するワークフローを、ワークスペースへの取り込みのためにサービスに転送できないかどうかを示します。 | ソース HealthService からのイベント ID 2136 がこのイベントと共に書き込まれます。また、プロキシと認証設定の不適切な構成、ネットワークの停止、またはネットワーク ファイアウォール/プロキシでコンピューターからサービスへの TCP トラフィックが許可されていないことが原因で、エージェントがサービスと通信できないことを示します。| 
     |10102 と 10103 |Health Service Modules |ワークフローでデータ ソースを解決できませんでした。 |これは、指定されたパフォーマンス カウンターまたはインスタンスがコンピューター上に存在しないか、ワークスペース データ設定で誤って定義されている場合に発生する可能性があります。 これがユーザー指定の[パフォーマンス カウンター](data-sources-performance-counters.md#configuring-performance-counters)である場合は、指定されている情報が正しい形式であり、ターゲット コンピューター上に存在することを確認します。 |
     |26002 |Health Service Modules |ワークフローでデータ ソースを解決できませんでした。 |これは、指定された Windows イベント ログがコンピューター上に存在しない場合に発生する可能性があります。 コンピューターにこのイベント ログが登録されていないと想定される場合はこのエラーを無視しても問題ありません。それ以外の場合、これはユーザー指定の[イベント ログ](data-sources-windows-events.md#configuring-windows-event-logs)であり、指定された情報が正しいことを確認します。 |
-

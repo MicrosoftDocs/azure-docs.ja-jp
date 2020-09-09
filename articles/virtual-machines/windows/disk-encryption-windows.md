@@ -4,16 +4,16 @@ description: この記事では、さまざまなシナリオで Windows VM に�
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4509c62b15eb06c89fe80555a26773fdd3876e66
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 951c1fd89f9e943b72c32492ff40dae3bd07bb61
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790900"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794496"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM での Azure Disk Encryption シナリオ
 
@@ -140,6 +140,33 @@ Azure Disk Encryption は、ディスクの暗号化キーとシークレット�
 | resizeOSDisk | OS パーティションは、システム ボリュームを分割する前に、完全な OS VHD が占有できるようにサイズ変更する必要があります。 |
 | location | すべてのリソースの場所。 |
 
+## <a name="enable-encryption-on-nvme-disks-for-lsv2-vms"></a>Lsv2 VM の NVMe ディスクで暗号化を有効にする
+
+このシナリオでは、Lsv2 シリーズ VM の NVMe ディスクで Azure Disk Encryption を有効にする方法について説明します。  Lsv2 シリーズは、ローカル NVMe ストレージを特徴としています。 ローカル NVMe ディスクは一時的なものであり、VM を停止/割り当て解除した場合にこれらのディスク上のデータは失われます (参照: [LSv2 シリーズ](../lsv2-series.md))。
+
+NVMe ディスクで暗号化を有効にするには、次の操作を実行します。
+
+1. NVMe ディスクを初期化し、NTFS ボリュームを作成します。
+1. VolumeType パラメーターを "All" に設定して、VM での暗号化を有効にします。 これにより、NVMe ディスクによってサポートされるボリュームを含め、すべての OS とデータ ディスクで暗号化が有効になります。 詳細については、「[既存または実行中の Windows VM に対して暗号化を有効にする](#enable-encryption-on-an-existing-or-running-windows-vm)」を参照してください。
+
+次のシナリオでは、暗号化は NVMe ディスクに保持されます。
+- VM の再起動
+- VMSS の再イメージ化
+- OS のスワップ
+
+次のシナリオでは、NVMe ディスクは初期化前の状態に戻ります。
+
+- 割り当て解除後での VM の起動
+- サービス復旧
+- バックアップ
+
+これらのシナリオでは、VM の起動後に NVMe ディスクを初期化する必要があります。 NVMe ディスクで暗号化を有効にするには、NVMe ディスクが初期化された後にコマンドを実行して、Azure Disk Encryption を再び有効にします。
+
+「[サポートされていないシナリオ](#unsupported-scenarios)」に記載されているシナリオに加え、次については NVMe ディスクの暗号化がサポートされていません。
+
+- AAD で Azure Disk Encryption を使用して暗号化された VM (以前のリリース)
+- 記憶域スペースを備えた NVMe ディスク
+- NVMe ディスクを使用した SKU の Azure Site Recovery ([「Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス」の「レプリケートされるマシン - ストレージ」](../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)を参照してください)。
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>お客様が暗号化した VHD と暗号化キーから作成された新しい IaaS VM
 
@@ -217,22 +244,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 
 ## <a name="disable-encryption"></a>暗号化を無効にする
-Azure PowerShell、Azure CLI、または Resource Manager テンプレートを使用して暗号化を無効にすることができます。 OS とデータ ディスクの両方が暗号化されている場合は、Windows VM におけるデータ ディスクの暗号化の無効化が想定どおりに機能しません。 代わりに、すべてのディスクで暗号化を無効にしてください。
-
-- **Azure PowerShell を使用してディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。 
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' -VolumeType "all"
-     ```
-
-- **Azure CLI を使用して暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
-     ```
-- **Resource Manager テンプレートを使用して暗号化を無効にする:** 
-
-    1. [実行中の Windows VM でディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad)ためのテンプレートで **[Azure に配置する]** をクリックします。
-    2. サブスクリプション、リソース グループ、場所、VM、ボリュームの種類、法律条項、および契約を選択します。
-    3.  **[購入]** をクリックして、実行中の Windows VM でディスク暗号化を無効にします。 
+[!INCLUDE [disk-encryption-disable-encryption-powershell](../../../includes/disk-encryption-disable-powershell.md)]
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
@@ -248,9 +260,12 @@ Azure Disk Encryption は、次のシナリオ、機能、およびテクノロ�
 - Windows Server コンテナー。これにより、コンテナーごとに動的ボリュームが作成されます。
 - エフェメラル OS ディスク。
 - DFS、GFS、DRDB、CephFS を含む (ただし、これだけではありません) 共有/分散ファイル システムの暗号化。
-- 暗号化された VM を別のサブスクリプションに移動する。
+- 暗号化された VM を別のサブスクリプションまたはリージョンに移動する。
+- 暗号化された VM のイメージまたはスナップショットを作成し、それを使用して追加の VM をデプロイする。
 - Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)
-- Lsv2 シリーズ VM (「[Lsv2 シリーズ](../lsv2-series.md)」を参照)
+- 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
+- [カスタマー マネージド キーを使用したサーバー側暗号化](disk-encryption.md) (SSE + CMK) で暗号化されたディスクがある VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
+- ADE で暗号化されている、または ADE で暗号化**されたことがある** VM を、[カスタマー マネージド キーを使用したサーバー側暗号化](disk-encryption.md)に移行する。
 
 ## <a name="next-steps"></a>次のステップ
 

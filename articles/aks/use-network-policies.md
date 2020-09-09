@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク �
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: ca0b6d4acd48dde0ea381ab37080fb6af1fb936c
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050477"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -81,7 +81,7 @@ Azure ネットワーク ポリシーを使用するには、[Azure CNI プラ�
 * AKS クラスターで使用するための Azure Active Directory (Azure AD) サービス プリンシパルを作成します。
 * 仮想ネットワーク上の AKS クラスター サービス プリンシパルに*共同作成者*のアクセス許可を割り当てます。
 * 定義された仮想ネットワーク内に AKS クラスターを作成し、ネットワーク ポリシーを有効にします。
-    * *azure* ネットワーク ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。 注:Calico は `--network-plugin azure` または `--network-plugin kubenet` で使用できます。
+    * "_Azure ネットワーク_" ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。 注:Calico は `--network-plugin azure` または `--network-plugin kubenet` で使用できます。
 
 なお、サービス プリンシパルを使用する代わりに、マネージド ID をアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
@@ -146,7 +146,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>ポッドへのすべての受信トラフィックを拒否する
 
-特定のネットワーク トラフィックを許可するルールを定義する前に、まずすべてのトラフィックを拒否するネットワーク ポリシーを作成します。 このポリシーにより、目的のトラフィックのみをホワイトリストに登録し始めるための出発点が提供されます。 また、ネットワーク ポリシーの適用時にトラフィックがドロップされることを明確に確認できます。
+特定のネットワーク トラフィックを許可するルールを定義する前に、まずすべてのトラフィックを拒否するネットワーク ポリシーを作成します。 このポリシーは、目的のトラフィックのみの許可リストを作成開始するための出発点になります。 また、ネットワーク ポリシーの適用時にトラフィックがドロップされることを明確に確認できます。
 
 サンプルのアプリケーション環境とトラフィック ルールのために、まずポッドの例を実行するための *development* という名前の名前空間を作成しましょう。
 
@@ -158,13 +158,13 @@ kubectl label namespace/development purpose=development
 NGINX を実行するバックエンド ポッドの例を作成します。 このバックエンド ポッドは、サンプルのバックエンド Web ベース アプリケーションをシミュレートするために使用できます。 このポッドを *development* 名前空間に作成し、ポート *80* を開いて Web トラフィックを処理します。 次のセクションでネットワーク ポリシーを使用してターゲットに指定できるように、ポッドに *app=webapp,role=backend* のラベルを付けます。
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
+kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 既定の NGINX Web ページに正常にアクセスできることをテストするために、別のポッドを作成し、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできることを確認します。
@@ -220,7 +220,7 @@ kubectl apply -f backend-policy.yaml
 再びバックエンド ポッドで NGINX Web ページを使用できるかどうかを確認しましょう。 別のテスト ポッドを作成してターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 今回は、タイムアウト値を *2* 秒に設定します。 ネットワーク ポリシーがすべての受信トラフィックをブロックするようになったため、次の例に示すように、ページを読み込めません。
@@ -277,7 +277,7 @@ kubectl apply -f backend-policy.yaml
 *app=webapp,role=frontend* のラベルが付いたポッドをスケジュールし、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。
@@ -307,7 +307,7 @@ exit
 ネットワーク ポリシーは、*app: webapp,role: frontend* というラベルの付いたポッドからのトラフィックを許可しますが、その他のトラフィックはすべて拒否する必要があります。 これらのラベルのない別のポッドがバックエンド NGINX ポッドにアクセスできるかどうかをテストして確認しましょう。 別のテスト ポッドを作成してターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 ネットワーク ポリシーが受信トラフィックをブロックするため、次の例に示すように、ページを読み込めません。
@@ -340,7 +340,7 @@ kubectl label namespace/production purpose=production
 *app=webapp,role=frontend* とラベル付けされた *production* 名前空間でテスト ポッドをスケジュールします。 ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできることを確認します。
@@ -404,7 +404,7 @@ kubectl apply -f backend-policy.yaml
 *production* 名前空間で別のポッドをスケジュールし、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 シェル プロンプトで `wget` を使用して、ネットワーク ポリシーがトラフィックを拒否するようになったことを確認します。
@@ -426,7 +426,7 @@ exit
 *production* 名前空間からのトラフィックが拒否されたら、*development* 名前空間に戻ってテスト ポッドをスケジュールし、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、ネットワーク ポリシーがトラフィックを許可することを確認します。
@@ -474,9 +474,9 @@ kubectl delete namespace development
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/reference/calicoctl/
 [calico-support]: https://www.tigera.io/tigera-products/calico/
-[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/maintenance/troubleshoot/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

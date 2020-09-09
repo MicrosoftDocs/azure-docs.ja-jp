@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/30/2018
+ms.topic: how-to
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79219d7a7b59818d54acc6a2b0b4c8093ead3a6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385231"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で Android アプリケーションを使用してサインインする
 
@@ -72,10 +72,10 @@ Azure AD B2C との通信は、探索 URI を指定するか、承認エンド�
 * テナント ID (例: contoso.onmicrosoft.com)
 * ユーザー フロー名 (例: B2C\_1\_SignUpIn)
 
-承認 URI とトークン エンドポイント URI を自動的に検出することを選択した場合は、探索 URI から情報を取得する必要があります。 探索 URI は、次の URL の Tenant\_ID と Policy\_Name を置き換えることで生成できます。
+承認 URI とトークン エンドポイント URI を自動的に検出することを選択した場合は、探索 URI から情報を取得する必要があります。 探索 URI は、次の URL の `<tenant-id>` と `<policy-name>` を置き換えることで生成できます。
 
 ```java
-String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/v2.0/.well-known/openid-configuration";
 ```
 
 承認 URI とトークン エンドポイント URI を取得し、次を実行することで AuthorizationServiceConfiguration オブジェクトを作成できます。
@@ -99,12 +99,12 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-探索を使用して承認 URI とトークン エンドポイント URI を取得する代わりに、次の URL のTenant\_ID と Policy\_Name を置き換えることで、それらを明示的に指定することもできます。
+探索を使用して承認 URI とトークン エンドポイント URI を取得する代わりに、次の URL の `<tenant-id>` と `<policy-name>` を置き換えることで、それらを明示的に指定することもできます。
 
 ```java
-String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/authorize";
 
-String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/token";
 ```
 
 AuthorizationServiceConfiguration オブジェクトを作成するには、次のコードを実行します。

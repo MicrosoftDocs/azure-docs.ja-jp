@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Panopto の統合 | Microsoft Docs
 description: Azure Active Directory と Panopto の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 89c88e23-93ce-4970-9baa-1104c4e8fe4a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a1d4836586bac359c3208147ec7bf59061cf0928
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa7a93776d5dfd1d8ad60a08c2df2d773fb1ec21
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648592"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル:Azure Active Directory と Panopto の統合
 

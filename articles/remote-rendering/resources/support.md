@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8c471687579dfe30b913197c6f080a450f5f3449
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82107603"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782519"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Azure Remote Rendering のサポート オプション
 
@@ -52,6 +52,11 @@ Azure portal 内で Azure Remote Rendering のテクニカル サポート チ�
 ## <a name="provide-product-feedback"></a>製品フィードバックの提供
 
 フィードバックを提供するには、Azure Remote Rendering に関するアイデアや提案を共有したり、他のユーザーが送信したアイデアに投票したり、[Azure Remote Rendering Feedback Forum](https://feedback.azure.com/forums/928696-azure-remote-rendering) にアクセスしたりすることができます。
+
+
+## <a name="microsoft-qa"></a>Microsoft Q&A
+
+製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236703"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247525"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -92,4 +92,4 @@ Service Fabric では、Reliable Services および Reliable Actors の各プロ
 * コンテナーを監視するために Azure Monitor ログを設定する方法については、「[Azure Service Fabric での Windows コンテナーの監視と診断](service-fabric-tutorial-monitoring-wincontainers.md)」をご覧ください。
 * Service Fabric での診断の問題と解決策の例については、[一般的なシナリオの診断](service-fabric-diagnostics-common-scenarios.md)に関する記事をご覧ください
 * Service Fabric と統合する他の診断製品については、[Service Fabric 診断パートナー](service-fabric-diagnostics-partners.md)に関する記事をご覧ください
-* Azure リソースの一般的な監視の推奨事項については、[監視と診断のベスト プラクティス](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)に関するページを参照してください。 
+* Azure リソースの一般的な監視の推奨事項については、[監視と診断のベスト プラクティス](/azure/architecture/best-practices/monitoring)に関するページを参照してください。 

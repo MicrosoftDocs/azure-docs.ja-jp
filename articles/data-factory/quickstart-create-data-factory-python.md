@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 85b61e03f1545b8a0e8263b799ac7a5b347be181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, devx-track-python
+ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419138"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873298"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -44,7 +44,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (省略可)。
 
-* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。
+* [Azure Active Directory のアプリケーション](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。
 
 ## <a name="create-and-upload-an-input-file"></a>入力ファイルを作成およびアップロードする
 

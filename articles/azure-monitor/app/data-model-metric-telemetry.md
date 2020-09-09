@@ -4,16 +4,16 @@ description: メトリック テレメトリ用の Application Insights デー�
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671972"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320580"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
+[Application Insights](./app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
 
 事前集計メトリック テレメトリは、その集計期間が 1 分間であることを前提としています。
 
@@ -24,7 +24,7 @@ Application Insights でサポートされているよく知られているい�
 | **.NET の名前**             | **プラットフォームに依存しない名前** | **REST API の名前** | **説明**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 作業中... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | コンピューターの CPU の合計
-| `\Memory\Available Bytes`                 | 作業中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | コンピューターで実行されているプロセスが利用できる物理メモリの量をバイト単位で表示します。 これは、ゼロ メモリ、空きメモリ、スタンバイ メモリの一覧の領域を合計することで計算されます。 空きメモリはメモリを使用する準備が整っているメモリです。ゼロ メモリはゼロで満たされたメモリのページで構成されており、後続のプロセスが、前のプロセスによって使用されたデータを見ることができないようにします。スタンバイ メモリは、ディスクへのルート上でプロセスのワーキング セット (プロセスの物理メモリ) から削除されたメモリですが、引き続き再度呼び出すことができます。 「[Memory Object (メモリ オブジェクト)](https://msdn.microsoft.com/library/ms804008.aspx)」を参照してください
+| `\Memory\Available Bytes`                 | 作業中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | コンピューターで実行されているプロセスが利用できる物理メモリの量をバイト単位で表示します。 これは、ゼロ メモリ、空きメモリ、スタンバイ メモリの一覧の領域を合計することで計算されます。 空きメモリはメモリを使用する準備が整っているメモリです。ゼロ メモリはゼロで満たされたメモリのページで構成されており、後続のプロセスが、前のプロセスによって使用されたデータを見ることができないようにします。スタンバイ メモリは、ディスクへのルート上でプロセスのワーキング セット (プロセスの物理メモリ) から削除されたメモリですが、引き続き再度呼び出すことができます。 「[Memory Object (メモリ オブジェクト)](/previous-versions/ms804008(v=msdn.10))」を参照してください
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | 作業中... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | アプリケーションをホストするプロセスの CPU
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | 作業中... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | アプリケーションをホストするプロセスで使用されるメモリ
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | 作業中... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | アプリケーションをホストしているプロセスで実行される I/O 操作の速度
@@ -65,6 +65,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [カスタムのイベントとメトリックのための Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
+- [カスタムのイベントとメトリックのための Application Insights API](./api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

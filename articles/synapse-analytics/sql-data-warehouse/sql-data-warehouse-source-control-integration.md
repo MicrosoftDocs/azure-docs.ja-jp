@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: afb1108bacadd16007e1f53186107ea8458d96e9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415096"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205120"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL プールのためのソース管理の統合
 
@@ -37,15 +37,15 @@ ms.locfileid: "81415096"
 
    ![接続の管理](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "接続の管理")
 
-   ![接続する](./media/sql-data-warehouse-source-control-integration/3-connect.png "接続する")
+   ![のインスタンスに接続するときには、](./media/sql-data-warehouse-source-control-integration/3-connect.png "接続する")
 
-3. プロジェクトからお使いのローカル コンピューターに Azure Repo リポジトリを複製します
+3. プロジェクトからお使いのローカル コンピューターに Azure Repo リポジトリをクローンします
 
-   ![リポジトリの複製](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "リポジトリをクローンする")
+   ![リポジトリのクローン](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "リポジトリをクローンする")
 
 ## <a name="create-and-connect-your-project"></a>プロジェクトを作成して接続する
 
-1. Visual Studio で、**ローカルの複製されたリポジトリ**に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します
+1. Visual Studio で、**ローカルのクローンされたリポジトリ**に、ディレクトリとローカル Git リポジトリの両方を含む新しい SQL Server データベース プロジェクトを作成します
 
    ![新しいプロジェクトの作成](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "新しいプロジェクトの作成")  
 
@@ -57,7 +57,7 @@ ms.locfileid: "81415096"
 
    ![コミット](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
-4. これで、複製されたリポジトリで変更がローカルにコミットされたので、Azure DevOps プロジェクトの Azure Repo リポジトリに変更を同期してプッシュします。
+4. これで、クローンされたリポジトリで変更がローカルにコミットされたので、Azure DevOps プロジェクトの Azure Repo リポジトリに変更を同期してプッシュします。
 
    ![同期とプッシュ - ステージング](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "同期とプッシュ - ステージング")
 

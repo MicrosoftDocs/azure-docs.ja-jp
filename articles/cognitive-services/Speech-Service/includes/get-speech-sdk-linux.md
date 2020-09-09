@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a93c478f0621bf62b710f58f3e6f06298bad9954
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399907"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673052"
 ---
 :::row:::
     :::column span="3":::
-        Speech SDKは、Linuxで使用する際、**Ubuntu 16.04/18.04**,**Debian 9**, **Red Hat Enterprise Linux (RHEL) 7/8**,**CentOS 7/8**のみサポートしています：
-        - x64
+        音声SDKは、Linuxで使用する際、**Ubuntu 16.04/18.04**,**Debian 9**, **Red Hat Enterprise Linux (RHEL) 7/8**,**CentOS 7/8**のみサポートしています：
     :::column-end:::
     :::column:::
         <br>
@@ -24,15 +23,17 @@ ms.locfileid: "81399907"
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> Linux ARM64 を対象とする場合C# 、およびを使用する場合は、.net Core 3.x (dotnet-sdk-3.x パッケージ) が必要です。 ARM32 または ARM64 を対象としている場合、Python はサポートされていません。
+- C++ 開発用の x86 (Debian/Ubuntu)、x64、ARM32 (Debian/Ubuntu)、および ARM64 (Debian/Ubuntu)
+- Java 用 x64、ARM32 (Debian/Ubuntu)、および ARM64 (Debian/Ubuntu)
+- .NET Core 用 x64、ARM32 (Debian/Ubuntu)、および ARM64 (Debian/Ubuntu)
+- Python 用の x64
 
-> [!NOTE]
-> Ubuntu 16.04、Ubuntu 18.04、Debian 9 の x86 アーキテクチャでは、音声C++ SDK による開発のみがサポートされています。
+> [!IMPORTANT]
+> Linux ARM64 上の C# については、.NET Core 3.x (dotnet-sdk-3.x パッケージ) が必要です。
 
 ### <a name="system-requirements"></a>システム要件
 
-ネイティブアプリケーションの場合、Speech SDK は`libMicrosoft.CognitiveServices.Speech.core.so`に依存します。 ターゲットアーキテクチャ (x86、x64) がアプリケーションと一致していることを確認します。 Linux のバージョンによっては、追加の依存関係が必要になる場合があります。
+ネイティブアプリケーションの場合、音声SDK は`libMicrosoft.CognitiveServices.Speech.core.so`に依存します。 ターゲットアーキテクチャ (x86、x64) がアプリケーションと一致していることを確認します。 Linux のバージョンによっては、追加の依存関係が必要になる場合があります。
 
 - GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
 - OpenSSL ライブラリ (`libssl.so.1.0.0` または `libssl.so.1.0.2`)
@@ -60,10 +61,8 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> Speech SDKのRHELまたはCentOS　7構成方法について、[次の手順に従ってください](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
-
-> [!TIP]
-> RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](../how-to-configure-openssl-linux.md)」の手順に従います。
+> - RHEL または CentOS 7 の場合、「[Speech SDK 用に RHEL/CentOS 7 を構成する](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)」の手順に従います。
+> - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 ---
 

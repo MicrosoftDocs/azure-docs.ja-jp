@@ -3,17 +3,17 @@ title: スケーリングとパフォーマンスのために Azure Cosmos DB �
 description: Azure Table storage の設計ガイドAzure Cosmos DB と Azure Table storage の、スケーラビリティとパフォーマンスに優れたテーブル
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: conceptual
-ms.date: 05/21/2019
+ms.topic: how-to
+ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: seodec18
-ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651929"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002178"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル
 
@@ -312,7 +312,7 @@ Table storage でのキーは文字列値です。 数値が正しく並べ替�
 
 部署および従業員のエンティティが何万とある、多国籍の大企業の例を考えてみましょう。 各部署には多数の従業員が在籍し、各従業員は 1 つの特定の部署に関連付けられています。 次のように、部署のエンティティと従業員のエンティティを分けて格納する方法もあります。  
 
-![部署エンティティと従業員エンティティを示す図][1]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE01.png" alt-text="部署エンティティと従業員エンティティを示す図":::
 
 この例は、`PartitionKey` 値に基づいて、各種類における暗黙の一対多のリレーションシップを示しています。 各部署に多数の従業員が存在する可能性があります。  
 
@@ -320,7 +320,7 @@ Table storage でのキーは文字列値です。 数値が正しく並べ替�
 
 別の方法として、次の例に示すように、データを非正規化し、非正規化された部署データと共に従業員エンティティのみを格納する方法もあります。 このシナリオで部署のマネージャーの詳細を変更できるようにする必要がある場合は、この非正規化の方法は最適ではない可能性があります。 これを行うには、部署内のすべての従業員を更新する必要があります。  
 
-![従業員エンティティの図][2]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE02.png" alt-text="従業員エンティティの図":::
 
 詳細については、 このガイドで後述する [非正規化パターン](#denormalization-pattern) を参照してください。  
 
@@ -397,18 +397,18 @@ Table storage でのリレーションシップのモデル化には何とおり
 ### <a name="inheritance-relationships"></a>継承リレーションシップ
 クライアント アプリケーションでビジネス エンティティを表す継承リレーションシップの一部を構成するクラスのセットを使用する場合は、それらのエンティティを Table storage で簡単に保持できます。 たとえば、`Person` が抽象クラスとなっているクライアント アプリケーションにはクラスセットが定義されている可能性があります。
 
-![継承リレーションシップの図][3]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE03.png" alt-text="継承リレーションシップの図":::
 
 1 つの `Person` テーブルを使用して、2 つの具象クラスのインスタンスを Table storage に永続化できます。 次のようなエンティティを使用します。  
 
-![顧客エンティティと従業員エンティティを示す図][4]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE04.png" alt-text="顧客エンティティと従業員エンティティを示す図":::
 
 クライアント コードの同じテーブル内の複数のエンティティ種類の詳細については、このガイド内の「[異種のエンティティ種類を使用する](#work-with-heterogeneous-entity-types)」を参照してください。 クライアント コードでエンティティの種類を認識する方法の例が示されています。  
 
 ## <a name="table-design-patterns"></a>テーブルの設計パターン
 以前のセクションでは、クエリを使用してエンティティ データを取得する場合と、エンティティ データを挿入、更新、削除する場合の両方のテーブル設計を最適化する方法について説明しました。 このセクションでは、Table storage で使用するのに適したパターンをいくつか紹介します。 また、このガイドで前に提起された問題とトレードオフの一部に実際に対処する方法を説明しています。 次の図は、さまざまなパターン間の関係をまとめたものです。  
 
-![テーブル設計パターンの図][5]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="テーブル設計パターンの図":::
 
 パターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 もちろん、検討する価値があるパターンは他にもたくさんあります。 たとえば、Table storage 向けの主なシナリオの 1 つに、[コマンド クエリ責務分離](https://msdn.microsoft.com/library/azure/jj554200.aspx)パターンの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
 
@@ -418,14 +418,14 @@ Table storage でのリレーションシップのモデル化には何とおり
 #### <a name="context-and-problem"></a>コンテキストと問題
 Table storage では、`PartitionKey` と `RowKey` 値を使用してエンティティのインデックスを自動的に作成します。 そのため、クライアント アプリケーションでは、これらの値を使用してエンティティを効率的に取得できます。 たとえば、次のテーブル構造を使用することにより、クライアント アプリケーションでは、ポイント クエリを使用して部署名と従業員 ID (`PartitionKey` と `RowKey` 値) から、個々の従業員エンティティを取得できます。 また、各部署内の従業員 ID で並べ替えたエンティティを取得することも可能です。
 
-![従業員エンティティの図][6]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE06.png" alt-text="従業員エンティティの図":::
 
 また、電子メール アドレスなど、他のプロパティの値に基づいて従業員エンティティを検索する場合は、効率の劣るパーティション スキャンを使用して、一致するエンティティを検索する必要があります。 これは、Table storage ではセカンダリ インデックスが提供されないためです。 さらに、`RowKey` 順以外の順序で並べ替えられた従業員の一覧を要求するオプションはありません。  
 
 #### <a name="solution"></a>解決策
 セカンダリ インデックスの不足を回避するには、異なる `RowKey` 値を使用して各コピーの複数コピーを格納します。 次の構造体を持つエンティティを格納する場合は、電子メール アドレスや従業員 ID に基づく複数の 従業員エンティティを効率的に取得できます。 `RowKey` のプレフィックス値、`empid_`、`email_` で、1 人の従業員をクエリするか電子メール アドレスまたは従業員 ID の範囲を使用して、ある特定の範囲の従業員をクエリできます。  
 
-![RowKey 値が変化する従業員エンティティを示す図][7]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE07.png" alt-text="RowKey 値が変化する従業員エンティティを示す図":::
 
 次の 2 つのフィルター条件 (従業員 ID で検索するフィルター条件とメール アドレスで検索するフィルター条件) ではどちらもポイント クエリを指定しています。  
 
@@ -449,7 +449,7 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 * 数値を `RowKey` (たとえば、従業員 ID 000223) にパディングすると、上限と下限に基づき正確な並べ替えとフィルタリングが可能になります。  
 * 必ずしもエンティティのすべてのプロパティを複製する必要はありません。 たとえば、電子メールアドレスを使用してエンティティを `RowKey` で検索するクエリの場合、従業員の年齢は不要です。このようなエンティティは、次のような構造になっている可能性があります。
 
-  ![従業員エンティティの図][8]
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE08.png" alt-text="従業員エンティティの図":::
 
 * 通常は、エンティティの検索と必要なデータの検索にそれぞれ異なるクエリを使用するよりも、重複するデータを格納し、必要なすべてのデータを単一のクエリで取得できるようにすることをお勧めします。  
 
@@ -476,7 +476,7 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 #### <a name="context-and-problem"></a>コンテキストと問題
 Table storage では、`PartitionKey` と `RowKey` 値を使用してエンティティのインデックスを自動的に作成します。 そのため、クライアント アプリケーションでは、これらの値を使用してエンティティを効率的に取得できます。 たとえば、次のテーブル構造を使用することにより、クライアント アプリケーションでは、ポイント クエリを使用して部署名と従業員 ID (`PartitionKey` と `RowKey` 値) から、個々の従業員エンティティを取得できます。 また、各部署内の従業員 ID で並べ替えたエンティティを取得することも可能です。  
 
-![従業員エンティティの図][9]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="従業員エンティティの図":::[9]
 
 また、電子メール アドレスなど、他のプロパティの値に基づいて従業員エンティティを検索できるようにする場合は、効率の劣るパーティション スキャンを使用して、一致するエンティティを検索する必要があります。 これは、Table storage ではセカンダリ インデックスが提供されないためです。 さらに、`RowKey` 順以外の順序で並べ替えられた従業員の一覧を要求するオプションはありません。  
 
@@ -485,7 +485,7 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 #### <a name="solution"></a>解決策
 セカンダリ インデックスの不足を回避するには、異なる `PartitionKey` と `RowKey` 値を使用して各コピーの複数コピーを格納します。 次の構造体を持つエンティティを格納する場合は、電子メール アドレスや従業員 ID に基づく複数の 従業員エンティティを効率的に取得できます。 `PartitionKey` のプレフィックスの値、`empid_`、`email_` で、クエリに使用するインデックスを特定することができます。  
 
-![プライマリ インデックスを持つ従業員エンティティとセカンダリ インデックスを持つ従業員エンティティを示す図][10]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE10.png" alt-text="プライマリ インデックスを持つ従業員エンティティとセカンダリ インデックスを持つ従業員エンティティを示す図":::
 
 次の 2 つのフィルター条件 (従業員 ID で検索するフィルター条件とメール アドレスで検索するフィルター条件) ではどちらもポイント クエリを指定しています。  
 
@@ -508,7 +508,8 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 * 数値を `RowKey` (たとえば、従業員 ID 000223) にパディングすると、上限と下限に基づき正確な並べ替えとフィルタリングが可能になります。  
 * 必ずしもエンティティのすべてのプロパティを複製する必要はありません。 たとえば、電子メールアドレスを使用してエンティティを `RowKey` で検索するクエリの場合、従業員の年齢は不要です。このようなエンティティは、次のような構造になっている可能性があります。
   
-  ![セカンダリ インデックスを持つ従業員エンティティを示す図][11]
+  :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE11.png" alt-text="セカンダリ インデックスを持つ従業員エンティティを示す図":::
+
 * 通常は、セカンダリ インデックスを使用したエンティティの検索とプライマリ インデックス内の必要なデータの検索にそれぞれ異なるクエリを使用するよりも、重複するデータを格納し、必要なすべてのデータを単一のクエリで取得できるようにすることをお勧めします。  
 
 #### <a name="when-to-use-this-pattern"></a>このパターンを使用する状況
@@ -547,7 +548,7 @@ Azure キューを使用すると、2 つ以上のパーティションまたは
 
 しかし、EGT を使用してこれら 2 つの操作を実行することはできません。 エンティティが両方のテーブルに表示されることや、どちらのテーブルにも表示されないことがないように、アーカイブ操作は最終的に一貫性が確保される必要があります。 次のシーケンス図は、この操作の大まかな手順を示しています。  
 
-![最終的整合性を考慮したソリューションの図][12]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="最終的整合性を考慮したソリューションの図":::
 
 クライアントは、Azure キューにメッセージを配置することによって、アーカイブ操作を開始します (この例では、ID が 456 の従業員をアーカイブします)。 worker ロールは、キューをポーリングして新しいメッセージの有無を確認します。メッセージを見つけると、そのメッセージを読み取り、隠しコピーをキューに残します。 worker ロールは、次に、**現在**テーブルからコピーをフェッチし、**アーカイブ** テーブルにコピーを挿入し、その後、元のデータを**現在**テーブルから削除します。 最後に、前の手順でエラーが発生しなければ、worker ロールはキューから隠しメッセージを削除します。  
 
@@ -587,7 +588,7 @@ Table storage と Queue storage のエラーには一時的なエラーもあり
 #### <a name="context-and-problem"></a>コンテキストと問題
 Table storage では、`PartitionKey` と `RowKey` 値を使用してエンティティのインデックスを自動的に作成します。 そうすると、クライアント アプリケーションでポイント クエリを使用してエンティティを効率的に取得できます。 たとえば、次のテーブル構造を使用することにより、クライアント アプリケーションでは、部署名と従業員 ID (`PartitionKey` と `RowKey`) から、個々の従業員エンティティを効率的に取得できます。  
 
-![従業員エンティティの図][13]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE13.png" alt-text="従業員エンティティの図":::
 
 また、姓など、一意ではない他のプロパティの値に基づいて従業員エンティティの一覧を取得できるようにする場合は、効率の劣るパーティション スキャンを使用する必要があります。 このスキャンでは、インデックスを使用して直接参照するのではなく、一致を検索します。 これは、Table storage ではセカンダリ インデックスが提供されないためです。  
 
@@ -606,7 +607,7 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 
 次のデータを格納するインデックス エンティティを使用します。  
 
-![従業員エンティティと、同じ姓を持つ従業員 ID の一覧を含む文字列を示した図][14]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE14.png" alt-text="従業員エンティティと、同じ姓を持つ従業員 ID の一覧を含む文字列を示した図":::
 
 `EmployeeIDs` プロパティには、`RowKey` に格納されている姓を持つ従業員の従業員 ID リストが含まれています。  
 
@@ -628,9 +629,9 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 
 この方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
-![従業員エンティティと、同じ姓を持つ従業員 ID の一覧を含む文字列を示した図][15]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="従業員エンティティと、同じ姓を持つ従業員 ID の一覧を含む文字列を示した図":::
 
-`EmployeeIDs` プロパティには、`RowKey` に格納されている姓を持つ従業員の従業員 ID リストが含まれています。  
+`EmployeeIDs` プロパティには、`RowKey` と `PartitionKey` に格納されている姓を持つ従業員の従業員 ID リストが含まれています。  
 
 インデックス エンティティが従業員エンティティとは別のパーティションにあるため、EGT を使用して一貫性を保つことはできません。 インデックス エンティティが従業員エンティティと最終的に一貫していることを確認してください。  
 
@@ -660,12 +661,12 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 #### <a name="context-and-problem"></a>コンテキストと問題
 リレーショナル データベースでは、通常、クエリで複数のテーブルからデータを取得するときに発生する重複を排除するためにデータを正規化します。 Azure テーブルのデータを正規化した場合、関連するデータを取得するには、クライアント アプリケーションとサーバー間のラウンド トリップを複数回行う必要があります。 たとえば、次のテーブル構造では、部署の詳細を取得するために 2 回のラウンド トリップが必要です。 1 回目でマネージャーの ID を含む部署エンティティをフェッチし、2 回目でマネージャーの詳細を従業員エンティティにフェッチします。  
 
-![部署エンティティと従業員エンティティの図][16]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="部署エンティティと従業員エンティティの図":::
 
 #### <a name="solution"></a>解決策
 データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 次に例を示します。  
 
-![非正規化され、結合された部署エンティティの図][17]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="非正規化され、結合された部署エンティティの図":::
 
 格納されている部署エンティティにはこれらのプロパティがあるため、ポイント クエリを使用して、部署に関して必要なすべての詳細を取得できます。  
 
@@ -693,18 +694,18 @@ Table storage では、`PartitionKey` と `RowKey` 値を使用してエンテ�
 
 次の構造を使用して Table storage に従業員エンティティを格納しているとします。  
 
-![従業員エンティティの図][18]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE18.png" alt-text="従業員エンティティの図":::
 
 また、各年度の従業員の評価と業績に関する履歴データを格納し、この情報に年度別でアクセスできる必要もあります。 それには、次の構造でエンティティを格納する別のテーブルを作成するという方法があります。  
 
-![従業員レビュー エンティティの図][19]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE19.png" alt-text="従業員レビュー エンティティの図":::
 
 この方法では、単一の要求でデータを取得できるようにするには、一部の情報 (姓や名など) を新しいエンティティに複製する必要があります。 ただし、EGT を使用しても 2 つのエンティティをアトミックには更新できないため、厳密な一貫性を保つことはできません。  
 
 #### <a name="solution"></a>解決策
 次の構造のエンティティを使用して、元のテーブルに新しい種類のエンティティを格納します。  
 
-![複合キーを持つ従業員エンティティの図][20]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE20.png" alt-text="複合キーを持つ従業員エンティティの図":::
 
 `RowKey` が複合キーになっていることに注目してください。これは、従業員 ID とレビュー データの年で構成されています。 これにより、1 つのエンティティに対する 1 つの要求で、従業員のパフォーマンスを取得し、データを確認することができます。  
 
@@ -776,7 +777,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 
 1 つ候補となるのは、`RowKey` でサインイン要求の日付と時刻を使用する設計です。  
 
-![ログイン試行エンティティの図][21]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE21.png" alt-text="ログイン試行エンティティの図":::
 
 この方法では、アプリケーションが別のパーティションで各ユーザーのサインイン エンティティを挿入したり削除したりできるため、パーティションのホット スポットを回避できます。 ただし、多数のエンティティがある場合、このアプローチはコストが高く、時間がかかる可能性があります。 まず、削除するすべてのエンティティを識別するためにテーブル スキャンを実行する必要があり、次に、古いエンティティをそれぞれ削除する必要があります。 複数の削除要求をバッチ処理として EGT にまとめることで、古いエンティティを削除するのに必要なサーバーへのラウンド トリップの回数を減らすことができます。  
 
@@ -806,14 +807,14 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 #### <a name="context-and-problem"></a>コンテキストと問題
 一般的なシナリオとして、通常、アプリケーションで一度にすべて取得する必要があるデータ系列を格納するというものがあります。 たとえば、アプリケーションで 1 時間ごとに各従業員が送信した IM メッセージの数を記録し、後でその情報を使用して、各ユーザーが過去 24 時間以内に送信したメッセージの数をプロットするとします。 設計の 1 つとして、従業員ごとに 24 個のエンティティを格納します。  
 
-![メッセージ統計情報エンティティの図][22]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE22.png" alt-text="メッセージ統計情報エンティティの図":::
 
 この設計では、アプリケーションでメッセージのカウント値を更新する必要があるときに、各従業員の更新するエンティティを簡単に検索して更新できます。 ただし、情報を取得して、過去 24 時間の活動のグラフをプロットするためには、24 個のエンティティを取得する必要があります。  
 
 #### <a name="solution"></a>解決策
 次の設計を使用し、各時間のメッセージ数をそれぞれ別のプロパティに格納します。  
 
-![区切られたプロパティのメッセージ統計情報エンティティを示す図][23]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE23.png" alt-text="区切られたプロパティのメッセージ統計情報エンティティを示す図":::
 
 この設計では、マージ操作を使用して、特定の時間の従業員のメッセージ数を更新できます。 これで、単一のエンティティに対する単一の要求を使用して、チャートをプロットするために必要なすべての情報を取得できます。  
 
@@ -842,7 +843,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 #### <a name="solution"></a>解決策
 Table storage を使用することで、複数のエンティティを格納して、252 を超えるプロパティを持つ単一の大きなビジネス オブジェクトを作成できます。 たとえば、過去 365 日の間に各従業員が送信した IM メッセージの数を格納する場合は、スキーマの異なる 2 つのエンティティを使用する次のデザインを使用できます。  
 
-![Rowkey 01 のメッセージ統計情報エンティティと Rowkey 02 のメッセージ統計情報エンティティを示す図][24]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE24.png" alt-text="Rowkey 01 のメッセージ統計情報エンティティと Rowkey 02 のメッセージ統計情報エンティティを示す図":::
 
 両方のエンティティを更新しないとエンティティどうしの同期が維持されない変更を加える必要がある場合は、EGT を使用できます。 それ以外の場合は、単一のマージ操作を使用して、特定の日のメッセージ数を更新できます。 個々の従業員のすべてのデータを取得するには、両方のエンティティを取得する必要があります。 これは、`PartitionKey` と `RowKey` 値の両方を使用する 2 つの効率的な要求で行うことができます。  
 
@@ -869,7 +870,7 @@ Table storage を使用することで、複数のエンティティを格納し
 #### <a name="solution"></a>解決策
 1 つ以上のプロパティに大量のデータが含まれているためにエンティティのサイズが 1 MB を超える場合は、BLOB ストレージにデータを格納し、エンティティのプロパティに BLOB のアドレスを格納できます。 たとえば、従業員の写真を BLOB ストレージに格納し、写真へのリンクを従業員エンティティの `Photo` プロパティに格納できます。  
 
-![Photo が BLOB ストレージを指す文字列の従業員エンティティを示す図][25]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE25.png" alt-text="Photo が BLOB ストレージを指す文字列の従業員エンティティを示す図":::
 
 #### <a name="issues-and-considerations"></a>問題と注意事項
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
@@ -894,12 +895,12 @@ Table storage を使用することで、複数のエンティティを格納し
 #### <a name="context-and-problem"></a>コンテキストと問題
 格納されているエンティティの先頭または末尾にエンティティを追加すると、通常は、連続するパーティションの最初または最後のパーティションに新しいエンティティが追加されます。 この場合、特定の時点におけるすべての挿入が同じパーティションで発生し、ホットスポットになります。 これは、Table storage が挿入を複数のノードに負荷分散することを妨げ、アプリケーションがパーティションのスケーラビリティ ターゲットに達する原因となる可能性があります。 たとえば、従業員によるネットワークとリソースへのアクセスをログに記録するアプリケーションの場合を考えてみます。 トランザクションの量が個々のパーティションのスケーラビリティ ターゲットに達した場合、次のようなエンティティ構造が原因で、現在の時間のパーティションがホットスポットになる可能性があります。  
 
-![従業員エンティティの図][26]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE26.png" alt-text="従業員エンティティの図":::
 
 #### <a name="solution"></a>解決策
 代わりに次のエンティティ構造を使用すると、アプリケーションでイベントをログに記録する際に特定のパーティションのホットスポットを回避できます。  
 
-![年、月、日、時間、イベント ID から構成される RowKey の従業員エンティティを示す図][27]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE27.png" alt-text="年、月、日、時間、イベント ID から構成される RowKey の従業員エンティティを示す図":::
 
 次の例では 2 つのキー `PartitionKey` と `RowKey` がどのように複合キーになっているか注意してください。 `PartitionKey` は部署と従業員の両方の ID を使用して複数のパーティションにログを配布します。  
 
@@ -925,13 +926,13 @@ Table storage を使用することで、複数のエンティティを格納し
 #### <a name="context-and-problem"></a>コンテキストと問題
 ログ データの一般的なユース ケースは、特定の日付/時刻範囲のログ エントリを選択して取得するというものです。 たとえば、特定の日付の 15:04 から 15:06 までの間にアプリケーションがログに記録したすべてのエラー メッセージと重大なメッセージを検索するとします。 ログ エンティティを保存するパーティションを決定するために、ログ メッセージの日付と時刻を使用することは望まないものとします。 その結果、どの特定の時点においても、すべてのログ エンティティが同じ `PartitionKey` 値を共有するため、ホット パーティションが発生します (「[先頭または末尾に追加するアンチパターン](#prepend-append-anti-pattern)」を参照)。 たとえば、ログ メッセージに関する以下のエンティティ スキーマでは、アプリケーションが現在の日付や時刻についてパーティションにあらゆるログ メッセージを書き込むことになるため、ホット パーティションの問題が発生します。  
 
-![ログ メッセージ エンティティの図][28]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE28.png" alt-text="ログ メッセージ エンティティの図":::
 
 この例では、ログ メッセージが日付/時刻の順序で並べ替えられるように、`RowKey` にはログ メッセージの日付と時刻が含まれています。 複数のログメッセージが同じ日付と時刻を共有する場合、`RowKey` にはメッセージ ID も含まれます。  
 
 別の方法は、アプリケーションに確実に パーティション範囲にわたってメッセージを書き込ませる `PartitionKey` の使用です。 たとえば、ログ メッセージのソースで多数のパーティションにメッセージを配信できるようになっている場合には、以下のエンティティ スキーマを使用できます。  
 
-![ログ メッセージ エンティティの図][29]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE29.png" alt-text="ログ メッセージ エンティティの図":::
 
 ただし、このスキーマには問題があります。特定のタイム スパンに記録されたログ メッセージをすべて取得するときには、テーブル内のパーティションを逐一検索する必要があるからです。
 
@@ -1528,35 +1529,4 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 * メソッドは、`Execute` メソッドを呼び出してエンティティを更新する代わりに、`ExecuteAsync` メソッドを呼び出すようになりました。 メソッドは `await` 修飾子を使用して結果を非同期に取得します。  
 
 クライアント アプリケーションは、これと同じように非同期メソッドを複数回呼び出すことができます。各メソッドの呼び出しは別々のスレッドで実行されます。  
-
-
-[1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
-[2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png
-[3]: ./media/storage-table-design-guide/storage-table-design-IMAGE03.png
-[4]: ./media/storage-table-design-guide/storage-table-design-IMAGE04.png
-[5]: ./media/storage-table-design-guide/storage-table-design-IMAGE05.png
-[6]: ./media/storage-table-design-guide/storage-table-design-IMAGE06.png
-[7]: ./media/storage-table-design-guide/storage-table-design-IMAGE07.png
-[8]: ./media/storage-table-design-guide/storage-table-design-IMAGE08.png
-[9]: ./media/storage-table-design-guide/storage-table-design-IMAGE09.png
-[10]: ./media/storage-table-design-guide/storage-table-design-IMAGE10.png
-[11]: ./media/storage-table-design-guide/storage-table-design-IMAGE11.png
-[12]: ./media/storage-table-design-guide/storage-table-design-IMAGE12.png
-[13]: ./media/storage-table-design-guide/storage-table-design-IMAGE13.png
-[14]: ./media/storage-table-design-guide/storage-table-design-IMAGE14.png
-[15]: ./media/storage-table-design-guide/storage-table-design-IMAGE15.png
-[16]: ./media/storage-table-design-guide/storage-table-design-IMAGE16.png
-[17]: ./media/storage-table-design-guide/storage-table-design-IMAGE17.png
-[18]: ./media/storage-table-design-guide/storage-table-design-IMAGE18.png
-[19]: ./media/storage-table-design-guide/storage-table-design-IMAGE19.png
-[20]: ./media/storage-table-design-guide/storage-table-design-IMAGE20.png
-[21]: ./media/storage-table-design-guide/storage-table-design-IMAGE21.png
-[22]: ./media/storage-table-design-guide/storage-table-design-IMAGE22.png
-[23]: ./media/storage-table-design-guide/storage-table-design-IMAGE23.png
-[24]: ./media/storage-table-design-guide/storage-table-design-IMAGE24.png
-[25]: ./media/storage-table-design-guide/storage-table-design-IMAGE25.png
-[26]: ./media/storage-table-design-guide/storage-table-design-IMAGE26.png
-[27]: ./media/storage-table-design-guide/storage-table-design-IMAGE27.png
-[28]: ./media/storage-table-design-guide/storage-table-design-IMAGE28.png
-[29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
 

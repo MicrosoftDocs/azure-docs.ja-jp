@@ -1,25 +1,15 @@
 ---
 title: Azure Relay ハイブリッド接続 - ノードの WebSocket
 description: Azure Relay ハイブリッド接続 Websocket 用の Node.js コンソール アプリケーションを作成します
-services: service-bus-relay
-documentationcenter: node
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
-ms.service: service-bus-relay
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: node
-ms.workload: na
-ms.date: 11/01/2018
-ms.author: spelluru
-ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204606"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386301"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Node.js での Relay ハイブリッド接続 WebSocket の概要
 

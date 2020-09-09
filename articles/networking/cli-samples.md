@@ -1,6 +1,6 @@
 ---
 title: Azure CLI のサンプル - ネットワーク
-description: Azure CLI のサンプル
+description: Azure リソース間の接続のサンプル、負荷分散とトラフィック方向のサンプルなど、ネットワーク用の Azure CLI のサンプルについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: kumud
-ms.openlocfilehash: 84754a61bfe9537e928759aefbcb5dcddce33089
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c038f0d238646f43b93ba2a2c6a1120ab5feccee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457962"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497292"
 ---
 # <a name="azure-cli-samples-for-networking"></a>ネットワーク用の Azure CLI サンプル
 
 次の表には、Azure CLI を使用して構築された Bash スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |-|-|
 |**Azure リソースの間の接続**||
 | [多層アプリケーション用の仮想ネットワークの作成](./scripts/virtual-network-cli-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへのトラフィックは HTTP と SSH に制限され、バックエンド サブネットへのトラフィックは MySQL、ポート 3306 に制限されます。 |

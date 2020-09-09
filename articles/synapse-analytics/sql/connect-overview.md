@@ -9,21 +9,25 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a9a9b8b9ed3e65ae9b8500017b838dc320ecbaac
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420876"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005022"
 ---
 # <a name="connect-to-synapse-sql"></a>Synapse SQL に接続する
 Azure Synapse Analytics の Synapse SQL 機能に接続します。
 
 ## <a name="supported-tools-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) でサポートされるツール
 
-完全にサポートされているツールは Azure Data Studio (プレビュー) です。
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) は、バージョン 1.18.0 以降で完全にサポートされます。 SSMS は、バージョン 18.5 以降で部分的にサポートされ、接続してクエリを実行する場合にのみ使用できます。
 
-SQL Server Management Studio は、バージョン 18.4 から部分的にサポートされています。 接続やクエリなどの機能には制限があります。
+> [!NOTE]
+> クエリの実行時に AAD ログインの接続が 1 時間以上開いたままになっていると、AAD に依存するクエリは失敗します。 これには、AAD パススルーと、AAD とやり取りするステートメント (CREATE EXTERNAL PROVIDER など) を使用したストレージのクエリが含まれます。 これは、SSMS や ADS のクエリ エディターなど、接続を開いたまま保持するすべてのツールに影響します。 Synapse Studio のようにクエリを実行するために新しい接続を開くツールには影響しません。
+
+> この問題を軽減するには、SSMS を再起動するか、ADS で接続および切断します。 
 
 ## <a name="find-your-server-name"></a>サーバー名を検索する
 

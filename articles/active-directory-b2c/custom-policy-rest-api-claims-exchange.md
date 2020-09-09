@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 997a6941e2ccc26dabe1a593fe938094099bc98d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388988"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
@@ -123,7 +123,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 1. `<ClaimsProviders>` 要素を閉じた後、拡張ファイルに `<UserJourneys>` を貼り付けます。
 1. `<UserJourney Id="SignUpOrSignIn">` を見つけて、最後のオーケストレーション ステップの前に次のオーケストレーション ステップを追加します。
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
@@ -133,7 +133,7 @@ REST API エンドポイントの設定は、この記事では扱っていま�
 
 1. `Order` を `8` に変更して、最後のオーケストレーション ステップをリファクターします。 お使いの最後の 2 つのオーケストレーション ステップは次のようになります。
 
-    ```XML
+    ```xml
     <OrchestrationStep Order="7" Type="ClaimsExchange">
       <ClaimsExchanges>
         <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />

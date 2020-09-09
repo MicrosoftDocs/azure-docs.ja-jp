@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100789"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231165"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -40,7 +40,7 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 - ユーザーに次回のサインインで自分のパスワードを安全にリセットすることを要求する
 - 修復アクションを行わずにユーザーのリスクを無視する。
 
-詳細については、[リスクのフラグ付きユーザー セキュリティ レポート](concept-user-at-risk.md)に関するページを参照してください。
+詳細については、[リスクのフラグ付きユーザー セキュリティ レポート](../identity-protection/overview-identity-protection.md)に関するページを参照してください。
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 のお客様の Azure AD サブスクリプション
 
@@ -91,5 +91,5 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-* [リスクのフラグ付きユーザー](concept-user-at-risk.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
+* [リスクのフラグ付きユーザー](../identity-protection/overview-identity-protection.md)

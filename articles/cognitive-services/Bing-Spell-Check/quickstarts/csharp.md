@@ -8,33 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df77ea73338f37925c0b59a8838c31617ff22ad8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382952"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919405"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
 
-このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな C# アプリケーションは、API に要求を送信して、一連の修正候補を返します。 このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) で入手できます。
+このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな C# アプリケーションは、API に要求を送信して、一連の修正候補を返します。 
+
+このアプリケーションは C# で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション。
-* Visual Studio の NuGet パッケージとして `Newtonsoft.Json` をインストールするには:
-    1. **ソリューション エクスプローラー**で、ソリューション ファイルを右クリックします。
-    1. **[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. `Newtonsoft.Json` を探して、パッケージをインストールします。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+* Newtonsoft.Json NuGet パッケージ。 
+     
+   Visual Studio にこのパッケージをインストールするには
+
+     1. **ソリューション エクスプローラー**で、ソリューション ファイルを右クリックします。
+     1. **[ソリューションの NuGet パッケージの管理]** を選択します。
+     1. *Newtonsoft.json* を探してパッケージをインストールします。
+
+* Linux または MacOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. Visual Studio で、`SpellCheckSample` という新しいコンソール ソリューションを作成します。 次に、メイン コード ファイルに次の名前空間を追加します。
+1. Visual Studio で、SpellCheckSample という新しいコンソール ソリューションを作成します。 次に、メイン コード ファイルに次の名前空間を追加します。
     
     ```csharp
     using System;
@@ -46,7 +53,7 @@ ms.locfileid: "75382952"
     using Newtonsoft.Json;
     ```
 
-2. API エンドポイント、サブスクリプション キー、スペル チェックの対象テキストのための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. API エンドポイント、サブスクリプション キー、スペル チェックの対象テキストのための変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +69,11 @@ ms.locfileid: "75382952"
     }
     ```
 
-3. 検索パラメーターの変数を作成します。 `mkt=` の後に市場コードを追加します。 市場コードは、要求の送信元となる国です。 さらに、スペルチェック モードを `&mode=` の後に追加します。 モードは `proof` (ほとんどのスペル/文法の誤りが検出されます) または `spell` (スペルの誤りはほとんど検出されますが、文法の誤りの検出数は相対的に少なくなります) のどちらかです。
+3. 検索パラメーターの文字列を作成します。 
+
+   1. `=` 演算子を使用して、`mkt` パラメーターに市場コードを割り当てます。 市場コードは、要求の送信元となる国/地域のコードです。 
+
+   1. `&` 演算子を使用して `mode` パラメーターを追加し、スペルチェック モードを割り当てます。 モードは `proof` (スペルまたは文法のほとんどのエラーが検出されます)、または `spell` (スペル ミスはほとんど検出されますが、文法エラーの検出数は相対的に少なくなります) のいずれかにすることができます。
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +81,7 @@ ms.locfileid: "75382952"
 
 ## <a name="create-and-send-a-spell-check-request"></a>スペル チェック要求を作成して送信する
 
-1. API に要求を送信するための `SpellCheck()` という非同期関数を作成します。 `HttpClient` を作成し、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。 この関数内で、次の手順を実行します。
+1. API に要求を送信するための `SpellCheck()` という非同期関数を作成します。 `HttpClient` を作成し、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。 この関数内で、次の手順に従います。
 
     ```csharp
     async static void SpellCheck()
@@ -127,7 +138,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>スペル チェック関数を呼び出す
 
-プロジェクトの Main 関数で `SpellCheck()` を呼び出します。
+プロジェクトの `Main()` 関数で `SpellCheck()` を呼び出します。
 
 ```csharp
 static void Main(string[] args)

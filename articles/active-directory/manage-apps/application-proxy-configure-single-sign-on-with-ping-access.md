@@ -3,25 +3,25 @@ title: Azure AD アプリケーション プロキシ用 PingAccess を使用し
 description: ヘッダーベースの認証に対応するには、PingAccess とアプリケーション プロキシを使ってアプリケーションを発行します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: celested
-ms.reviewer: harshja
+ms.author: kenwith
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3fb94629262519f8cfa5da72ee343726aa7d1c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77367983"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431078"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -100,7 +100,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 
 次に、アプリケーション テストのユーザーを割り当て、ヘッダーベースのシングル サインオンを選択します。
 
-1. アプリケーションのサイドバーから、 **[ユーザーとグループ]**  >  **[ユーザーの追加]**  >  **[ユーザーとグループ] (選択された \<数>)** の順に選択します。 選択するためのユーザーとグループの一覧が表示されます。
+1. アプリケーションのサイドバーから、 **[ユーザーとグループ]**  >  **[ユーザーの追加]**  >  **[ユーザーとグループ] (\<Number> 個選択されています)** の順に選択します。 選択するためのユーザーとグループの一覧が表示されます。
 
    ![ユーザーとグループのリストを示しています](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
@@ -119,8 +119,13 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 
 1. **[Azure Active Directory 管理センター]** サイドバーから **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。 アプリケーションの一覧を表示します。
 1. アプリケーションを選択します。
-1. Web およびパブリック クライアントに対して設定されたリダイレクト URI の数を表示した、 **[リダイレクト URI]** の横にあるリンクを選択します。 **[\<アプリケーション名> - 認証]** ページが表示されます。
+1. Web およびパブリック クライアントに対して設定されたリダイレクト URI の数を表示した、 **[リダイレクト URI]** の横にあるリンクを選択します。 **[\<application name> - 認証]** ページが表示されます。
 1. 以前にアプリケーションに割り当てた外部 URL が **[リダイレクト URI]** の一覧にあるかどうかを確認します。 ない場合は、**Web** のリダイレクト URI の種類を使用して外部 URL を追加し、 **[保存]** を選択します。
+
+外部 URL に加えて、外部 URL 上の Azure Active Directory の承認エンドポイントを [リダイレクト URI] の一覧に追加する必要があります。
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 最後に、ユーザーに読み取りアクセス権を、他のアプリケーションに読み取り/書き込みアクセス権を与えるように、オンプレミス アプリケーションを設定します。
 
@@ -131,7 +136,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 1. **[委任されたアクセス許可]**  >  **[ユーザー]**  >  **[User.Read]** の順に選択します。
 1. **[アプリケーションのアクセス許可]**  >  **[アプリケーション]**  >  **[Application.ReadWrite.All]** の順に選択します。
 1. **[アクセス許可の追加]** を選択します.
-1. **[API のアクセス許可]** ページで、 **[\<ディレクトリ名> に管理者の同意を与えます]** を選択します。
+1. **[API のアクセス許可]** ページで、 **[\<your directory name> に管理者の同意を与えます]** を選択します。
 
 #### <a name="collect-information-for-the-pingaccess-steps"></a>PingAccess の手順で使う情報の収集
 
@@ -218,7 +223,7 @@ PingAccess でカスタム要求を使用できるようにすることは省略
 
 これで、Azure Active Directory のすべてのセットアップ手順が完了したので、PingAccess の構成に進むことができます。
 
-このシナリオの PingAccess に関連した領域の詳しい手順については、Ping Identity のドキュメントを参照してください。 Ping Identity の Web サイトの [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)に関するページの手順に従ってください。
+このシナリオの PingAccess に関連した領域の詳しい手順については、Ping Identity のドキュメントを参照してください。 Ping Identity Web サイトの [Microsoft Azure AD アプリケーション プロキシを使用して発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)に関するページの手順に従って、[最新バージョンの PingAccess](https://www.pingidentity.com/en/lp/azure-download.html?) をダウンロードします。
 
 これらの手順では、PingAccess をインストールして PingAccess アカウント (まだない場合) を設定できます。 続いて Azure AD OpenID Connect (OIDC) 接続を作成するには、Azure AD ポータルからコピーした **[ディレクトリ (テナント) ID]** 値でトークン プロバイダーを設定します。 次に、PingAccess に Web セッションを作成するために、 **[アプリケーション (クライアント) ID]** および `PingAccess key` の値を使用します。 その後、ID のマッピングをセットアップし、仮想ホスト、サイト、アプリケーションを作成することができます。
 

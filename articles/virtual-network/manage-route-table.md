@@ -1,23 +1,23 @@
 ---
 title: Azure ルート テーブルを作成、変更、削除する
 titlesuffix: Azure Virtual Network
-description: ルート テーブルの作成、変更、削除の方法について説明します。
+description: 仮想ネットワーク トラフィックのルーティングに関する情報の参照先、およびルートテーブルを作成、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: b30c912319104726069ae98920f0bc825d7358cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290998"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801775"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934924"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
 この記事では、一致するドキュメントの合計数、ページ分割された結果、並べ替えられた結果、検索結果が強調表示された用語と共に返されるクエリ応答を取得する方法について説明します。
 
-応答の構造は、クエリ内のパラメーター、つまり REST API での[検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)または .NET SDK での [DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)によって決定されます。
+応答の構造は、クエリ内のパラメーター、つまり REST API での[検索ドキュメント](/rest/api/searchservice/Search-Documents)または .NET SDK での [DocumentSearchResult クラス](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)によって決定されます。
 
 ## <a name="result-composition"></a>結果の構成
 
@@ -28,7 +28,7 @@ ms.locfileid: "82801775"
 最適に機能するフィールドには、各ドキュメントを比較対照して区別することにより、ユーザーの側にクリックスルー応答を誘うための十分な情報を提供するフィールドが含まれます。 eコマース サイトでは、それは製品名、説明、ブランド、色、サイズ、価格、評価などである場合があります。 hotels-sample-index という組み込みのサンプルの場合、それは次の例のフィールドのようになります。
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",
       "select": "HotelId, HotelName, Description, Rating, Address/City"
@@ -55,20 +55,26 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
  
 次の例は、重複がどのように発生するかを示しています。 4 つのドキュメントを含む次のインデックスがあるとします。
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 ここでは、結果を一度に 2 つ、評価の順序で返してもらいたいとします。 結果の最初のページを取得するために `$top=2&$skip=0&$orderby=rating desc` というクエリを実行すると、次の結果が生成されます。
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 このサービスでは、クエリ呼び出しの間に `{ "id": "5", "rating": 4 }` という 5 番目のドキュメントがインデックスに追加されたとします。  その後すぐに、2 ページ目をフェッチするために `$top=2&$skip=2&$orderby=rating desc` というクエリを実行すると、次の結果が得られます。
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 ドキュメント 2 が 2 回フェッチされることに注意してください。 これは、新しいドキュメント 5 の方が評価の値が大きいため、ドキュメント 2 の前に並べ替えられ、最初のページに割り当てられるためです。 この動作は予期されない可能性がありますが、検索エンジンの動作としては一般的なものです。
 
@@ -92,7 +98,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 ## <a name="hit-highlighting"></a>検索結果の強調表示
 
-検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関する記事で説明しています。 
+検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](/rest/api/searchservice/search-documents)に関する記事で説明しています。 
 
 ヒットの強調表示を有効にするには、`highlight=[comma-delimited list of string fields]` を追加して、強調表示を使用するフィールドを指定します。 強調表示は、説明フィールドなど、一致が一目ではわかりにくい、長いコンテンツ フィールドに対して便利です。 **検索可能**として属性付けされたフィールド定義だけが、ヒットの強調表示に使用できます。
 
@@ -103,11 +109,11 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 次の例では、[説明] フィールド内で見つかった用語 "sandy"、"sand"、"beaches"、"beach" に強調表示のタグが付けられます。 エンジンのクエリ拡張をトリガーするクエリ (あいまい検索やワイルドカード検索など) では、検索結果の強調表示のサポートが制限されています。
 
 ```http
-GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2020-06-30 
 ```
 
 ```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30 
     {  
       "search": "sandy beaches",  
       "highlight": "Description"
@@ -126,8 +132,6 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   用語 *bowl of chips*はフル フレーズと一致しないため、強調表示されていないことに注意してください。
-  
-* 強調表示用に返されるフラグメント サイズも指定できるようになります。 フラグメント サイズは文字数として指定します (最大 1000 文字)。
 
 ヒットの強調表示を実装するクライアント コードを記述する場合は、この変更点に注意してください。 まったく新しい検索サービスを作成しない限り、この変更の影響を受けることはありません。
 

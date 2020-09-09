@@ -4,18 +4,18 @@ description: この記事では、Azure Stream Analytics の使用時に発生�
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 5c5da26935e489a1b9489f63b83af176921c3a5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: troubleshooting
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133800"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053152"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics データ エラー
 
-データ エラーは、データの処理中に発生するエラーです。  これらのエラーはほとんどの場合、データの逆シリアル化、シリアル化、および書き込み操作が実行されている間に発生します。  データ エラーが発生すると、Stream Analytics により、そのリソース ログに詳しい情報とサンプル イベントが書き込まれます。  場合によっては、この情報の概要もポータル通知を介して提供されます。
+データ エラーは、データの処理中に発生するエラーです。  これらのエラーはほとんどの場合、データの逆シリアル化、シリアル化、および書き込み操作が実行されている間に発生します。  データ エラーが発生すると、Stream Analytics により、そのリソース ログに詳しい情報とサンプル イベントが書き込まれます。 これらの追加の詳細を取得するには、ジョブ内で診断ログを有効にします。 場合によっては、ポータル通知を介してこの情報の概要が提供されます。
 
 この記事では、入力および出力データ エラーについて、さまざまなエラーの種類、原因、リソース ログの詳細を説明します。
 
@@ -287,7 +287,7 @@ ms.locfileid: "82133800"
 "BriefMessage": "Column 'devicePartitionKey' is being mapped to multiple columns."
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)
 

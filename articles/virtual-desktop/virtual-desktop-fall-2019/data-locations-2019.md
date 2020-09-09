@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop のデータの場所 - Azure
-description: Windows Virtual Desktop のデータとメタデータが格納される場所についての簡単な概要。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) のデータの場所 - Azure
+description: Windows Virtual Desktop (クラシック) のデータとメタデータが格納される場所についての簡単な概要。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8cbee74a8f9639fc2c3838f38dabf2a62cf339e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 869defde657c9cb4c8bea6bbacebb9458e5a2b96
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613968"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008816"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Windows Virtual Desktop のデータの場所
+# <a name="data-locations-for-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) のデータの場所
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../data-locations.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../data-locations.md)を参照してください。
 
 現在、Windows Virtual Desktop はすべての地理的な場所で使用できます。 最初は、サービス メタデータは米国 (US) の地域にのみ格納できます。 管理者は、ホスト プールの仮想マシンと関連するサービス (ファイル サーバーなど) を作成するときに、ユーザー データを格納する場所を選択できます。 Azure の地域の詳細については、[Azure データセンターのマップ](https://azuredatacentermap.azurewebsites.net/)を参照してください。
 

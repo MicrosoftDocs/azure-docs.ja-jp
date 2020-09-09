@@ -1,6 +1,6 @@
 ---
 title: クラウド サービスの割り当てエラーのトラブルシューティング | Microsoft Docs
-description: Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
+description: Azure Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング。 割り当てのしくみと、なぜ割り当てが失敗することがあるかについて説明します。
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225951"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142487"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
 ## <a name="summary"></a>まとめ
@@ -41,7 +41,7 @@ Azure データセンターのサーバーは、クラスターにパーティ�
 ### <a name="error-message"></a>エラー メッセージ
 次のようなエラー メッセージが表示されることがあります。
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+> "Azure 操作 '{操作 ID}' がコード Compute.ConstrainedAllocationFailed で失敗しました。 詳細:割り当てに失敗しました。要求の制約条件を満たしていません。 要求されている新しいサービスのデプロイがアフィニティ グループにバインドされているか、仮想ネットワークを対象としています。または、このホストされるサービスに既存のデプロイがあります。 ここに挙げた条件に該当する場合には、新しいデプロイが特定の Azure リソースに制限されます。 後でもう一度やり直すか、VM サイズを小さくするか、ロール インスタンスの数を減らしてください。 可能な場合には、上に挙げた制約条件を削除することや、別のリージョンにデプロイすることもできます。"
 
 ### <a name="common-issues"></a>一般的な問題
 以下に、割り当て要求が単一のクラスターに固定される原因となる一般的な割り当てシナリオを示します。

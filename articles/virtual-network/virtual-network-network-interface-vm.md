@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85480135"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>仮想マシンのネットワーク インターフェイスの追加と削除
 
@@ -50,7 +50,7 @@ Azure アカウントをお持ちでない場合は、アクティブなサブ�
 
 VM を作成する前に、[ネットワーク インターフェイス](virtual-network-network-interface.md#create-a-network-interface)を作成します。
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -78,7 +78,7 @@ VM を作成する前に、[ネットワーク インターフェイス](virtual
 
 ### <a name="commands"></a>コマンド
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (参照)[手順詳細](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (参照)、[手順詳細](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
@@ -100,7 +100,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 ### <a name="commands"></a>コマンド
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az vm nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
 |PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -124,7 +124,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 ### <a name="commands"></a>コマンド
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (参照)、[手順詳細](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (参照)、[手順詳細](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
@@ -151,7 +151,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 - VM を削除してもそれに接続されたネットワーク インターフェイスは削除されません。 VM を削除すると、ネットワーク インターフェイスは VM からデタッチされます。 それらのネットワーク インターフェイスは、別の VM に追加することも削除することもできます。
 
-- IPv6 と同様、VM の作成後は、高速ネットワークが有効になっているネットワーク インターフェイスを VM に接続できません。 また、高速ネットワークを利用するには、VM オペレーティング システムで手順を実行する必要もあります。 高速ネットワークの詳細、および使用時の他の制約については、[Windows](create-vm-accelerated-networking-powershell.md) または [Linux](create-vm-accelerated-networking-cli.md) 仮想マシンに関するページをご覧ください。
+- ドキュメントに記載されている最適なパフォーマンスを実現するには、高速ネットワークが必要です。 場合によっては、[Windows](create-vm-accelerated-networking-powershell.md) または [Linux](create-vm-accelerated-networking-cli.md) 仮想マシンの高速ネットワークを明示的に有効にする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

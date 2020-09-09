@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: 6b8d520a539f69889b1e1bd23d255f3fe19b8717
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 197e5c7bed569e67376f9c28fe0d2e050016cce8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222529"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922406"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
 
@@ -60,9 +60,12 @@ az acr login --name <acrName>
 
 現在のローカル イメージの一覧を表示するには、[docker images][docker-images] コマンドを使用します。
 
-```
+```azurecli
 $ docker images
+```
+上のコマンド出力には、現在のローカル イメージの一覧が表示されます。
 
+```
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
 redis                        latest              a1b99da73d05        7 days ago          106MB
@@ -83,11 +86,15 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-タグが適用されたことを確認するには、[docker イメージ][docker-images]を再実行します。 イメージに ACR インスタンスのアドレスとバージョン番号でタグが付けられています。
+タグが適用されたことを確認するには、[docker イメージ][docker-images]を再実行します。 
+
+```azurecli
+$ docker images
+```
+
+イメージに ACR インスタンスのアドレスとバージョン番号でタグが付けられています。
 
 ```
-$ docker images
-
 REPOSITORY                                           TAG           IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest        eaf2b9c57e5e        8 minutes ago       716 MB
 mycontainerregistry.azurecr.io/azure-vote-front      v1            eaf2b9c57e5e        8 minutes ago       716 MB
@@ -139,7 +146,7 @@ v1
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Container Registry を作成し、AKS クラスターで使用するためのイメージをプッシュしました。 以下の方法を学習しました。
+このチュートリアルでは、Azure Container Registry を作成し、AKS クラスターで使用するためのイメージをプッシュしました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * Azure Container Registry (ACR) インスタンスを作成する
@@ -159,8 +166,8 @@ Azure に Kubernetes クラスターをデプロイする方法については�
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr
 [az-acr-list]: /cli/azure/acr
-[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az-acr-login
-[az-acr-list]: https://docs.microsoft.com/cli/azure/acr#az-acr-list
+[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-list]: /cli/azure/acr#az-acr-list
 [az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository
 [az-group-create]: /cli/azure/group#az-group-create

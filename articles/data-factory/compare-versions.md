@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ea625fbe28dad08ec2c3e2a64bada96460a04225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415565"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231235"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 
@@ -26,7 +26,7 @@ ms.locfileid: "81415565"
 ## <a name="feature-comparison"></a>機能の比較
 次の表では、Data Factory の機能と Data Factory バージョン 1 の機能を比較します。 
 
-| 機能 | Version 1 | 現在のバージョン | 
+| 特徴量 | Version 1 | 現在のバージョン | 
 | ------- | --------- | --------- | 
 | データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性**で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの**可用性**スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
 | リンクされたサービス | リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 | リンクされたサービスは Data Factory V1 と同じですが、現在のバージョン の Data Factory の Integration Runtime コンピューティング環境を利用するための新しい **connectVia** プロパティがあります。 詳細については、[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)に関するページと、[Azure Blob Storage のリンクされたサービスのプロパティ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。 |
@@ -130,14 +130,14 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 
 ## <a name="authoring-experience"></a>作成のエクスペリエンス
 
-| &nbsp; | V2 | V1 |
+| | Version 2 | Version 1 |
 | ------ | -- | -- | 
-| Azure portal | [はい](quickstart-create-data-factory-portal.md) | いいえ |
-| Azure PowerShell | [はい](quickstart-create-data-factory-powershell.md) | [はい](data-factory-build-your-first-pipeline-using-powershell.md) |
-| .NET SDK | [はい](quickstart-create-data-factory-dot-net.md) | [はい](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [はい](quickstart-create-data-factory-rest-api.md) | [はい](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK | [はい](quickstart-create-data-factory-python.md) | いいえ |
-| Resource Manager テンプレート | [はい](quickstart-create-data-factory-resource-manager-template.md) | [はい](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Azure Portal** | [はい](quickstart-create-data-factory-portal.md) | いいえ |
+| **Azure PowerShell** | [はい](quickstart-create-data-factory-powershell.md) | [はい](data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [はい](quickstart-create-data-factory-dot-net.md) | [はい](data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [はい](quickstart-create-data-factory-rest-api.md) | [はい](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Python SDK** | [はい](quickstart-create-data-factory-python.md) | いいえ |
+| **Resource Manager テンプレート** | [はい](quickstart-create-data-factory-resource-manager-template.md) | [はい](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 

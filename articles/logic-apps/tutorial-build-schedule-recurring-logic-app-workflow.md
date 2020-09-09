@@ -3,16 +3,16 @@ title: スケジュールに基づいて自動化されたワークフローを�
 description: チュートリアル - スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146516"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124852"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>チュートリアル:スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
 
@@ -36,18 +36,16 @@ ms.locfileid: "82146516"
 
 * Azure サブスクリプション。 サブスクリプションがない場合は、始める前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。 このクイックスタートでは、Office 365 Outlook のアカウントを使用します。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI がやや異なることがあります。
+* Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](/connectors/)してください。 このクイックスタートでは、Office 365 Outlook のアカウントを使用します。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI がやや異なることがあります。
 
   > [!IMPORTANT]
-  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
-* ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、[Bing 地図のキーを取得する方法](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)に関するページの手順に従ってください。
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
-
-Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
+* ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、[Bing 地図のキーを取得する方法](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)に関するページの手順に従ってください。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
+
+1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
 1. Azure のメイン メニューで、 **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** の順に選択します。
 
@@ -57,7 +55,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![ロジック アプリに関する情報を入力する](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | [値] | 説明 |
    |----------|-------|-------------|
    | **名前** | LA-TravelTime | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"LA-TravelTime" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | お使いの Azure サブスクリプション名 |
@@ -110,7 +108,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![スケジュールと定期実行の詳細を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | [値] | 説明 |
    |----------|-------|-------------|
    | **設定曜日** | 月曜日,火曜日,水曜日,木曜日,金曜日 | **[頻度]** を "週" に設定したときにのみ選択できます。 |
    | **設定時刻 (時間)** | 7,8,9 | **[頻度]** を "週" または "日" に設定したときにのみ選択できます。 この定期実行の時刻 (時) を選択します。 この例では、7 時、8 時、9 時に実行されます。 |
@@ -144,7 +142,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | BingMapsConnection | 接続の名前を指定します。 この例では、"BingMapsConnection" を使用しています。 |
-   | **API キー** | はい | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、[キーの取得方法](https://msdn.microsoft.com/library/ff428642.aspx)に関するページを参照してください。 |
+   | **API キー** | はい | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、[キーの取得方法](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)に関するページを参照してください。 |
    |||||
 
 1. アクションの名前をわかりやすく「`Get route and travel time with traffic`」に変更します。
@@ -170,7 +168,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | **Travel mode (移動手段)** | いいえ | Driving (車) | ルートの移動手段。 [Driving]\(車\) モードを選択します。 |
    ||||
 
-   これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route)」を参照してください。
+   これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](/bingmaps/rest-services/routes/calculate-a-route)」を参照してください。
 
 1. ロジック アプリを保存します。
 

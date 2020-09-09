@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 06/01/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e73686629de8481f6a37e5bfafc9b723206b4853
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351028"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259203"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>予約容量を使用して BLOB ストレージのコストを最適化する
 
@@ -35,7 +35,7 @@ Azure Storage の予約容量は、1 年間または 3 年間の期間につい�
 
 Azure Storage の予約容量は、単一サブスクリプションまたは複数のサブスクリプション (共有スコープ) に対して使用できます。 単一サブスクリプションを範囲としている場合、予約割引は選択したサブスクリプションにのみ適用されます。 複数のサブスクリプションを範囲としている場合、予約割引は顧客の請求コンテキスト内のサブスクリプションとの間で共有されます。
 
-Azure Storage の予約容量を購入すると、ブロック BLOB と Azure Data Lake Storage Gen2 データの両方に対して予約を使用できます。 予約は購入済み範囲内の使用量に対して適用され、サブスクリプション内の特定のストレージ アカウント、コンテナー、オブジェクトに限定されるものではありません。 予約を複数のサブスクリプション間で分割することはできません。
+Azure Storage の予約容量を購入すると、ブロック BLOB と Azure Data Lake Storage Gen2 データの両方に対して予約を使用できます。 予約は購入済み範囲内の使用量に対して適用され、サブスクリプション内の特定のストレージ アカウント、コンテナー、オブジェクトに限定されるものではありません。
 
 Azure Storage の予約は、サブスクリプションまたは共有リソース グループに格納されているデータ量のみを対象としています。 早期削除、操作、帯域幅、およびデータ転送の料金は予約に含まれていません。 予約を購入するとすぐに、予約の属性に一致する容量料金は、従量課金制ではなく割引価格で課金されます。 Azure の予約の詳細については、「[Azure の予約とは](/azure/billing/billing-save-compute-costs-reservations)」を参照してください。
 
@@ -84,7 +84,7 @@ Azure Storage の予約容量は [Azure portal](https://portal.azure.com) を使
    |**サブスクリプション**  | Azure Storage の予約の支払いに使用するサブスクリプションです。 選択したサブスクリプションの支払方法が、コストの課金で使用されます。 サブスクリプションは、次のいずれかの種類である必要があります。 <br/><br/>  マイクロソフト エンタープライズ契約 (オファー番号:MS-AZR-0017P または MS-AZR-0148P):エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 <br/><br/> 従量課金制料金の個別サブスクリプション (オファー番号:MS-AZR-0003P または MS-AZR-0023P):従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。    |
    | **リージョン** | 予約が有効になっているリージョン。 |
    | **アクセス層** | 予約が有効になっているアクセス層。 オプションには、*ホット*、*クール*、*アーカイブ* があります。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。 |
-   | **冗長性** | 予約の冗長オプション。 オプションには、*LRS*、*ZRS*、*GRS*、*RA-GZRS* があります。 冗長オプションの詳細については、[Azure Storage の冗長性](../common/storage-redundancy.md)に関する記事を参照してください。 |
+   | **冗長性** | 予約の冗長オプション。 オプションには、*LRS*、*ZRS*、*GRS*、*GZRS*、*RA-GRS*、*RA- GZRS* があります。 冗長オプションの詳細については、[Azure Storage の冗長性](../common/storage-redundancy.md)に関する記事を参照してください。 |
    | **請求頻度** | アカウントが予約に対して課金される頻度を示します。 オプションには *[月 1 回]* または *[前払い]* があります。 |
    | **[サイズ]** | 予約が有効になっているリージョン。 |
    |**用語**  | 1 年間または 3 年間。   |

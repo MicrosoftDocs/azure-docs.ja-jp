@@ -7,15 +7,15 @@ metadata:
   services: frontdoor
   ms.service: frontdoor
   ms.topic: landing-page
-  author: vhorne
-  ms.author: victorh
+  author: duongau
+  ms.author: duau
   ms.date: 03/03/2020
-  ms.openlocfilehash: 4bdb7c1765bdbd170d06eaef44b7578d1ddebedc
-  ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+  ms.openlocfilehash: 9ecba8b92524ec6494cd210e53392bdadf228fa0
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82509637"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89398717"
 landingContent:
 - title: Azure Front Door について
   linkLists:
@@ -85,3 +85,5 @@ landingContent:
     links:
     - text: ルール エンジンの構成を設定する
       url: front-door-tutorial-rules-engine.md
+    - text: ルール エンジンを使用してセキュリティ ヘッダーを追加する
+      url: front-door-security-headers.md

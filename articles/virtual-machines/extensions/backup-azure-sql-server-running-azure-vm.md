@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247386"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511179"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup
 
@@ -26,7 +26,7 @@ ms.locfileid: "80247386"
 
 ## <a name="network-connectivity"></a>ネットワーク接続
 
-Azure Backup では、NSG タグ、プロキシ サーバーの展開、またはリストされた IP 範囲がサポートされます。各方法について詳しくは、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity)をご覧ください。
+Azure Backup では、NSG タグ、プロキシ サーバーの展開、またはリストされた IP 範囲がサポートされます。各方法について詳しくは、こちらの[記事](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity)をご覧ください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -102,7 +102,7 @@ AzureBackupWindowsWorkload 拡張機能を仮想マシンに追加する推奨�
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-SQL アプリケーションが含まれる Azure VM を、Recovery Services コンテナーに "登録" する必要があります。 登録の間に、AzureBackupWindowsWorkload 拡張機能が VM にインストールされます。 VM を登録するには、 [Register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) コマンドレットを使います。
+SQL アプリケーションが含まれる Azure VM を、Recovery Services コンテナーに "登録" する必要があります。 登録の間に、AzureBackupWindowsWorkload 拡張機能が VM にインストールされます。 VM を登録するには、 [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) コマンドレットを使います。
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -113,5 +113,5 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure SQL Server VM のバックアップに関するトラブルシューティングのガイドラインについての[詳細](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot)
-- Azure 仮想マシン (VM) 上で実行され、Azure Backup サービスを使用する SQL Server データベースのバックアップに関する[一般的な質問](https://docs.microsoft.com/azure/backup/faq-backup-sql-server)。
+- Azure SQL Server VM のバックアップに関するトラブルシューティングのガイドラインについての[詳細](../../backup/backup-sql-server-azure-troubleshoot.md)
+- Azure 仮想マシン (VM) 上で実行され、Azure Backup サービスを使用する SQL Server データベースのバックアップに関する[一般的な質問](../../backup/faq-backup-sql-server.md)。

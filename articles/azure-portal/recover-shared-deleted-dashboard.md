@@ -5,15 +5,15 @@ services: azure-portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/21/2020
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b3cc088a87731d2a118a4fe5183831e4d1bd6cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763977"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Azure portal で削除されたダッシュボードを復旧する
 
@@ -21,7 +21,7 @@ ms.locfileid: "77133290"
 
 1. [Azure portal] メニューで、 **[リソース グループ]** を選択し、ダッシュボードを発行したリソース グループを選択します (既定では、**ダッシュボード**という名前です)。
 
-1. **[アクティビティ ログ]** で、 **[ダッシュボードの削除]** 操作を展開します。 **[Change history]/(変更履歴/)** タブを選択し、 **\<[deleted resource]/(削除されたリソース/)\>** を選択します。
+1. **[アクティビティ ログ]** で、 **[ダッシュボードの削除]** 操作を展開します。 **[変更履歴]** タブを選択し、 **[\<deleted resource\>]** を選択します。
 
     ![変更履歴タブのスクリーンショット](media/recover-shared-deleted-dashboard/change-history-tab.png)
 

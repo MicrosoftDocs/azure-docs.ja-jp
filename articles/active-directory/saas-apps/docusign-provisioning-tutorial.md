@@ -1,28 +1,23 @@
 ---
-title: 'チュートリアル: DocuSign を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:DocuSign を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory と DocuSign の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 294cd6b8-74d7-44bc-92bc-020ccd13ff12
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058180"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535936"
 ---
-# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル: DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル:DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から DocuSign にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで DocuSign と Azure AD で実行する必要がある手順について説明します。
 
@@ -77,6 +72,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     a. **[管理ユーザー名]** テキストボックスに、DocuSign の**システム管理者**プロファイルが割り当てられている DocuSign アカウント名を入力します。
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
+
+> [!NOTE]
+> SSO とユーザー プロビジョニングの両方が設定されている場合、プロビジョニングに使用される認証資格情報は、SSO およびユーザー名/パスワードの両方で有効になるように構成される必要があります。
 
 1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が DocuSign アプリに接続できることを確認します。
 

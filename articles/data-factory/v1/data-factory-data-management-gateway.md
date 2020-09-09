@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1340c205477b256e3d96ff7ccacb64e575725c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065401"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087080"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "80065401"
 
 データ管理ゲートウェイは、クラウドと、オンプレミスのデータ ストアとの間でデータをコピーするために、オンプレミスの環境にインストールする必要があるクライアント エージェントです。 Data Factory でサポートされているオンプレミスのデータ ストアは、 [サポートされるデータ ソース](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関するセクションに示されています。
 
-この記事は、 [オンプレミスとクラウドのデータ ストアの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md) ためのチュートリアルを補完します。 チュートリアルでは、ゲートウェイを使用して、オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。 この記事では、データ管理ゲートウェイについて詳しく取り上げます。
+この記事は、 [オンプレミスとクラウドのデータ ストアの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md) ためのチュートリアルを補完します。 チュートリアルでは、ゲートウェイを使用して、SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。 この記事では、データ管理ゲートウェイについて詳しく取り上げます。
 
 データ管理ゲートウェイは、複数のオンプレミス コンピューターをゲートウェイに関連付けることによって、スケールアウトできます。 1 つのノードで同時に実行できるデータ移動ジョブ数を増やすことで、スケールアップできます。 この機能は、単一のノードを持つ論理ゲートウェイでも使用できます。 詳細については、[Azure Data Factory でのデータ管理ゲートウェイのスケーリング](data-factory-data-management-gateway-high-availability-scalability.md)に関する記事をご覧ください。
 
@@ -161,10 +161,10 @@ Windows のファイアウォール レベルでは、通常これらの送信�
 たとえば、 **Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにオンプレミスのデータ ストア**からコピーするには、以下の手順を実行します。
 
 * 送信 **TCP** 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート **1433** 上で許可します。
-* ゲートウェイ コンピューターの IP アドレスが、許可された IP アドレスの一覧に追加されるように、Azure SQL サーバーのファイアウォール設定を構成します。
+* ゲートウェイ マシンの IP アドレスが、許可された IP アドレスの一覧に追加されるように、論理 SQL サーバーのファイアウォール設定を構成します。
 
 > [!NOTE]
-> ファイアウォールで送信ポート 1433 を許可していない場合、ゲートウェイは Azure SQL に直接アクセスすることはできません。 この場合は、SQL Azure データベースや SQL Azure DW に[ステージング コピー](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) が必要になるだけです。
+> ファイアウォールで送信ポート 1433 を許可していない場合、ゲートウェイは Azure SQL に直接アクセスすることはできません。 この場合は、SQL データベース、SQL Managed Instance、または SQL Azure DW に[ステージング コピー](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) が必要になるだけです。
 >
 >
 
@@ -247,7 +247,9 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
 サードパーティ製のファイアウォールを使用する場合は、ポート 8050 を手動で開くことができます。 ゲートウェイの設定中にファイアウォールの問題が発生した場合は、次のコマンドを使用すると、ファイアウォールを構成せずにゲートウェイをインストールできます。
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、「資格情報とセキュリティの設定」に関するセクションを参照してください。
 
@@ -543,4 +545,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [オンプレミスとクラウド データ ストアの間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md) に関するページを参照してください。 チュートリアルでは、ゲートウェイを使用して、オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。
+* [オンプレミスとクラウド データ ストアの間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md) に関するページを参照してください。 チュートリアルでは、ゲートウェイを使用して、SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。

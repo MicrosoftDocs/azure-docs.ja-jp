@@ -3,24 +3,26 @@ title: Azure Media Services と Azure CLI を使用して動画ファイルを�
 description: このチュートリアルの手順に従って、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 keywords: Azure Media Services, ストリーム配信
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: ''
-ms.date: 08/19/2019
-ms.author: juliako
-ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.custom: devx-track-azurecli
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8c8db31ae51e1fb80ae9baad6a5d6329cd963bab
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382785"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267413"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - Azure CLI
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このチュートリアルでは、Azure Media Services と Azure CLI を使用して、さまざまなブラウザーおよびデバイスを対象とした動画のエンコードとストリーム配信を簡単に行う方法を示します。 HTTPS URL、SAS URL、または Azure Blob Storage 内のファイルのパスを使用して、入力コンテンツを指定できます。
 

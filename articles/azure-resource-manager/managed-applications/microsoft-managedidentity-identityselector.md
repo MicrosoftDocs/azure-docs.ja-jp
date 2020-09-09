@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
-ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77088955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063364"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft.ManagedIdentity.IdentitySelector UI 要素
 
@@ -20,15 +20,15 @@ ms.locfileid: "77088955"
 
 このコントロールは次の要素で構成されます。
 
-![Microsoft.ManagedIdentity.IdentitySelector の 1 番目のステップ](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+![Microsoft.ManagedIdentity.IdentitySelector の 1 番目のステップ](./media/managed-application-elements/microsoft-managedidentity-identityselector-1.png)
 
 ユーザーが **[追加]** 選択すると、次のフォームが開きます。 ユーザーは、リソースに対して 1 つまたは複数のユーザー割り当て ID を選択できます。
 
-![Microsoft.ManagedIdentity.IdentitySelector の 2 番目のステップ](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+![Microsoft.ManagedIdentity.IdentitySelector の 2 番目のステップ](./media/managed-application-elements/microsoft-managedidentity-identityselector-2.png)
 
 選択した ID がテーブルに表示されます。 ユーザーは、このテーブルの項目を追加または削除できます。
 
-![Microsoft.ManagedIdentity.IdentitySelector の 3 番目のステップ](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+![Microsoft.ManagedIdentity.IdentitySelector の 3 番目のステップ](./media/managed-application-elements/microsoft-managedidentity-identityselector-3.png)
 
 ## <a name="schema"></a>スキーマ
 

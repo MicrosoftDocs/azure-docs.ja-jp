@@ -3,15 +3,15 @@ title: ストレージのファイアウォール設定を回避する
 description: Azure HPC Cache に Azure Blob ストレージ ターゲットを作成するとき、ストレージ アカウントのネットワーク ファイアウォール設定によってエラーが発生することがあります。 この記事では、ソフトウェア修正プログラムが整うまでの間、この制限を回避する方法について説明します。
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.author: rohogue
-ms.openlocfilehash: 6643662d498db8cbcffcb120a9ceabc46cfc04cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: v-erkel
+ms.openlocfilehash: 6916c79e9110a88beff65d487fac72441382c2f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174184"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092372"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>BLOB ストレージ アカウントのファイアウォール設定を回避する
 

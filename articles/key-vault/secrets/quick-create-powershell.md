@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3bac3cc2a5cedbd4b963a0759e6c8b940d2ca924
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e3f5e37462b30b0201be5350dedc103a49bb39a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039295"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -63,7 +63,12 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 資格情報コンテナーを作成した後は、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
 
-![キー コンテナー作成コマンドの実行後の出力](../media/quick-create-powershell/output-after-creating-keyvault.png)
+## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Key Vault でシークレットを管理するアクセス許可をユーザー アカウントに付与する
+
+Azure PowerShell の Set-AzKeyVaultAccessPolicy コマンドレットを使用して、Key Vault アクセス ポリシーを更新し、シークレットのアクセス許可をユーザー アカウントに付与します。
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@domain.com' -PermissionsToSecrets get,set,delete
+```
 
 ## <a name="adding-a-secret-to-key-vault"></a>Key Vault へのシークレットの追加
 

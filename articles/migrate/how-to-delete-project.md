@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73510252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109877"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate プロジェクトの削除
 
-この記事では、[Azure Migrate](migrate-overview.md) プロジェクトを削除する方法について説明します。
+この記事では、[Azure Migrate](./migrate-services-overview.md) プロジェクトを削除する方法について説明します。
 
 
 ## <a name="before-you-start"></a>開始する前に

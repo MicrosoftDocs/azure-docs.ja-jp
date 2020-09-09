@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a44e32efa3e38cf9c4df7dc00e3189c129db418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72886842"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736502"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection ポリシー
 
@@ -41,7 +41,7 @@ Identity Protection では、リアルタイムとオフラインの両方で各
 
 ### <a name="custom-conditional-access-policy"></a>カスタム条件付きアクセス ポリシー
 
-管理者は、割り当て条件としてサインイン リスクが含まれるカスタム条件付きアクセス ポリシーを作成することもできます。 条件付きアクセスの詳細については、「[条件付きアクセスとは](../conditional-access/overview.md)」を参照してください。
+管理者は、割り当て条件としてサインイン リスクが含まれるカスタム条件付きアクセス ポリシーを作成することもできます。 条件付きアクセス ポリシーの条件としてのリスクの詳細については、次の記事で説明されています: [条件付きアクセス: 条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)
 
 ![カスタム条件付きアクセスのサインイン リスク ポリシー](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 

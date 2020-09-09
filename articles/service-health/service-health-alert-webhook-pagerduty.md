@@ -3,12 +3,12 @@ title: PagerDuty で Azure サービス正常性アラートを送信する
 description: PagerDuty インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091540"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>PagerDuty で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "77654071"
 
     a. **[Integration Type]\(統合の種類\)** :Microsoft Azure
 
-    b. **[Integration Name]\(統合の種類\)** :\<名前\>
+    b. **[Integration Name]\(統合の名前\)** : \<Name\>
 
     ![PagerDuty に表示された [Integration Settings]](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "77654071"
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Azure Portal で PagerDuty を使用してアラートを作成する
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:
-1. 「[Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する](../azure-monitor/platform/alerts-activity-log-service-notifications.md)」の手順 1 から 8 を実行します。
+1. 「[Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する](./alerts-activity-log-service-notifications-portal.md)」の手順 1 から 8 を実行します。
 
 1. **[アクション]** の一覧で以下を定義します。
 
@@ -87,5 +87,5 @@ ms.locfileid: "77654071"
 ## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
-- [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
+- [サービス正常性の通知](./service-notifications.md)について学習します。
 - [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

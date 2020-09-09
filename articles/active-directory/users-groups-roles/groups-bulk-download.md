@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59983678c1b14d6aa87a7b500605e3abeb6a9b85
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 46c0fccf965f4a4c9d05d82601d75e314aba7d73
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533542"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421690"
 ---
 # <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>Azure Active Directory でグループの一覧を一括ダウンロードする
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) ポータルを利用し、組織の全グル�
 
 **[一括操作の結果]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
-[![](media/groups-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download/bulk-center.png#lightbox)
+[![[一括操作の結果] ページで状態を確認します。](media/groups-bulk-download/bulk-center.png)](media/groups-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>一括ダウンロード サービスの制限
 

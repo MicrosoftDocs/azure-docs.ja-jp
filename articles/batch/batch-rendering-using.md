@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079243"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
 
@@ -19,8 +19,8 @@ Azure Batch のレンダリングを使用する方法はいくつかありま�
 * API:
   * Batch の API のいずれかを使用してコードを記述します。  開発者は、クラウドかオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch 機能を統合できます。
 * コマンド ライン ツール:
-  * [Azure コマンド ライン](https://docs.microsoft.com/cli/azure/)または [PowerShell](https://docs.microsoft.com/powershell/azure/overview) を使用すると、Batch の使用のスクリプトを作成できます。
-  * 特に、[Batch CLI テンプレートのサポート](https://docs.microsoft.com/azure/batch/batch-cli-templates)により、プールの作成とジョブの送信がかなり容易になっています。
+  * [Azure コマンド ライン](/cli/azure/)または [PowerShell](/powershell/azure/) を使用すると、Batch の使用のスクリプトを作成できます。
+  * 特に、[Batch CLI テンプレートのサポート](./batch-cli-templates.md)により、プールの作成とジョブの送信がかなり容易になっています。
 * Batch Explorer UI:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) は Batch のアカウントも管理および監視できるクロス プラットフォームのクライアント ツールです。
   * 各レンダリング アプリケーションには、簡単にプールを作成してジョブを送信できる数多くのプール テンプレートやジョブ テンプレートが用意されています。  一連のテンプレートはアプリケーション UI に表示され、テンプレート ファイルは GitHub からアクセスできます。
@@ -32,7 +32,7 @@ Azure Batch のレンダリングを使用する方法はいくつかありま�
 
 ## <a name="using-batch-explorer"></a>Batch Explorer を使用する
 
-Batch Explorer を使用してレンダリングを実行するステップ バイ ステップ チュートリアルについては、[Blender のチュートリアル](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)をご覧ください。
+Batch Explorer を使用してレンダリングを実行するステップ バイ ステップ チュートリアルについては、[Blender のチュートリアル](./tutorial-rendering-batchexplorer-blender.md)をご覧ください。
 
 ### <a name="download-and-install"></a>ダウンロードおよびインストールする
 
@@ -65,5 +65,5 @@ Batch Explorer の [データ] セクションでは、ローカル ファイル
 
 Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
 
-* [Azure CLI を使用したレンダリング](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Batch Explorer を使用したレンダリング](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Azure CLI を使用したレンダリング](./tutorial-rendering-cli.md)
+* [Batch Explorer を使用したレンダリング](./tutorial-rendering-batchexplorer-blender.md)

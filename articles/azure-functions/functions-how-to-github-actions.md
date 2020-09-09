@@ -3,14 +3,15 @@ title: GitHub Actions を使用した Azure Functions のコードの更新
 description: GitHub Actions を使用し、GitHub に Azure Functions プロジェクトをビルドおよびデプロイするワークフローを定義する方法について説明します。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 02f5399e89900a438fb94f973c497a54dc05cfee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878206"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210166"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
@@ -22,7 +23,7 @@ GitHub Actions の[ワークフロー](https://help.github.com/articles/about-gi
 
 Azure Functions のワークフロー ファイルには、次の 3 つのセクションがあります。 
 
-| Section | 処理手順 |
+| Section | タスク |
 | ------- | ----- |
 | **認証** | <ol><li>サービス プリンシパルを定義します。</li><li>発行プロファイルをダウンロードします。</li><li>GitHub シークレットを作成します。</li></ol>|
 | **ビルド** | <ol><li>環境を設定します。</li><li>関数アプリを構築します。</li></ol> |
@@ -33,7 +34,7 @@ Azure Functions のワークフロー ファイルには、次の 3 つのセク
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-[Azure CLI](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](/cli/azure/)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
+[Azure CLI](/cli/azure/) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com) を使用するか、 **[使ってみる]** ボタンを選択して実行できます。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
@@ -46,22 +47,24 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="download-the-publishing-profile"></a>発行プロファイルのダウンロード
 
-関数アプリの発行プロファイルをダウンロードするには、アプリの **[概要]** ページに移動し、 **[発行プロファイルの取得]** をクリックします。
+関数アプリの発行プロファイルをダウンロードするには、次を操作を行います。
 
-   ![[発行プロファイルのダウンロード]](media/functions-how-to-github-actions/get-publish-profile.png)
+1. 関数アプリの **[概要]** ページを選択し、 **[発行プロファイルの取得]** を選択します。
 
-ファイルの内容をコピーします。
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="発行プロファイルのダウンロード":::
+
+1. 発行設定ファイルの内容を保存し、コピーします。
 
 ## <a name="configure-the-github-secret"></a>GitHub シークレットの構成
 
 1. [GitHub](https://github.com) でご自分のリポジトリを参照し、 **[設定]**  >  **[シークレット]**  >  **[Add a new secret]** \(新しいシークレットの追加\) を選択します。
 
-   ![シークレットの追加](media/functions-how-to-github-actions/add-secret.png)
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="シークレットの追加":::
 
 1. 新しいシークレットを追加します。
 
-   * Azure CLI を使用して作成したサービス プリンシパルを使用している場合は、`AZURE_CREDENTIALS`[名前]**に** を使用します。 次に、コピーした JSON オブジェクト出力を **[値]** に貼り付け、 **[Add secret]\(シークレットの追加\)** を選択します。
-   * 発行プロファイルを使用している場合は、`SCM_CREDENTIALS`[名前]**に** を使用します。 次に、発行プロファイルのファイルの内容を **[値]** に使用し、 **[Add secret]\(シークレットの追加\)** を選択します。
+   * Azure CLI を使用して作成したサービス プリンシパルを使用している場合は、 **[名前]** に `AZURE_CREDENTIALS` を使用します。 次に、コピーした JSON オブジェクト出力を **[値]** に貼り付け、 **[シークレットの追加]** を選択します。
+   * 発行プロファイルを使用している場合は、`SCM_CREDENTIALS`[名前]**に** を使用します。 次に、発行プロファイルのファイルの内容を **[値]** に使用し、 **[シークレットの追加]** を選択します。
 
 これで GitHub は、お使いの Azure の関数アプリに認証できるようになりました。
 
@@ -217,7 +220,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ## <a name="next-steps"></a>次のステップ
 
-.yaml の完全なワークフローを確認するには、[Azure GitHub Actions ワークフローのサンプルのリポジトリ](https://aka.ms/functions-actions-samples) 名前に `functionapp` があるファイルのうち 1 つを参照してください。 これらのサンプルは、ご自分のワークフローの出発点として使用できます。
+.yaml ファイルの完全なワークフローを確認するには、[Azure GitHub Actions ワークフローのサンプル リポジトリ](https://aka.ms/functions-actions-samples)にあるファイルで、名前に `functionapp` が含まれるもののうち 1 つを参照してください。 これらのサンプルは、ご自分のワークフローの出発点として使用できます。
 
 > [!div class="nextstepaction"]
 > [GitHub Actions について](https://help.github.com/en/articles/about-github-actions)

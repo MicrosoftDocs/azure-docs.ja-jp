@@ -3,17 +3,17 @@ title: Azure portal を使用してレガシの Exchange ピアリングを Azur
 titleSuffix: Azure
 description: Azure portal を使用してレガシの Exchange ピアリングを Azure リソースに変換する
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
-ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 87a7a6bca608f1748d3b659eabdc3e941b537377
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 5/21/2020
+ms.author: derekol
+ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700163"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Azure portal を使用してレガシの Exchange ピアリングを Azure リソースに変換する
 
@@ -26,15 +26,30 @@ ms.locfileid: "81678514"
 
 ## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>レガシの Exchange ピアリングを Azure リソースに変換する
 
-### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>ポータルにサインインしてサブスクリプションを選択する
-[!INCLUDE [Account](./includes/account-portal.md)]
+インターネット交換プロバイダーは、[ピアリングを作成]( https://go.microsoft.com/fwlink/?linkid=2129593)することにより、Exchange ピアリング要求を作成できます。
 
-### <a name="convert-legacy-exchange-peering"></a><a name=create></a>従来の Exchange ピアリングを変換する
+1. **[ピアリングの作成]** ページの **[基本]** タブで、次のようにボックスに入力します。
 
-**Peering** リソースを使用して、レガシのピアリング接続を変換できます。
+   ![Peering Service の登録](./media/setup-basics-tab.png)
 
-#### <a name="launch-the-resource-and-configure-basic-settings"></a>リソースを起動して基本設定を構成する
-[!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
+* お使いの Azure サブスクリプションを選択します。
+
+* [リソース グループ] では、ボックスの一覧から既存のリソース グループを選択するか、[新規作成] を選択して新しいグループを作成します。 この例では、新しいリソース グループを作成します。
+
+* [名前] は、リソース名に対応し、任意の名前を選択できます。
+
+* 既存のリソース グループを選択した場合、[リージョン] は自動的に選択されます。 新しいリソース グループの作成を選択した場合は、リソースを配置する Azure リージョンも選択する必要があります。
+
+  >[!NOTE]
+  >リソース グループを配置するリージョンは、Microsoft とのピアリングを作成する場所とは関係ありません。 ただし、最も近い Azure リージョンにリソース グループを配置して、使用するピアリング リソースをそこで整理することをお勧めします。 たとえば、Ashburn でのピアリングの場合、米国東部または米国東部 2 にリソース グループを作成できます。
+
+* **[PeerASN]** ボックスで、使用する ASN を選択します。
+
+  >[!IMPORTANT]  
+  >選択できるのは、ピアリング要求を送信する前に ValidationState が "Approved" になっている ASN だけです。 PeerAsn 要求を送信した直後であれば、ASN の関連付けが承認されるまで 12 時間程度かかります。 選択した ASN が検証待ちの場合、エラー メッセージが表示されます。 選択する必要がある ASN が表示されない場合は、適切なサブスクリプションを選択しているかどうかを確認します。 選択している場合は、「 **[ピア ASN を Azure サブスクリプションに関連付ける](https://go.microsoft.com/fwlink/?linkid=2129592)** 」を参照して、PeerAsn を既に作成したかどうかを確認します。
+
+* **次へ:構成** を選択して、続行します。
+
 
 #### <a name="configure-connections-and-submit"></a>接続を構成して送信する
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration-legacy.md)]

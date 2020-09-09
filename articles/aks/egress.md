@@ -5,24 +5,29 @@ description: Azure Kubernetes Service (AKS) クラスターでエグレス ト�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803384"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563247"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で *Basic* SKU ロード バランサーと共に、エグレス トラフィックに静的パブリック IP アドレスを使用する
 
-既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 場合によっては､サービスへのアクセスのホワイト リストに登録できる静的 IP アドレスの割り当てが必要なことがあります｡
+既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 代わりに、サービス アクセスの許可リストに追加される静的 IP アドレスを割り当てる必要がある場合があります。
 
 この記事では、AKS クラスターでエグレス トラフィックに使用する静的パブリック IP アドレスを作成して使用する方法を示します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
+この記事では、Azure Basic Load Balancer を使用していることを前提としています。  [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md) の使用をお勧めします。より高度な機能を使用して、[AKS エグレス トラフィックを制御](./limit-egress-traffic.md)できます。
+
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+
+> [!IMPORTANT]
+> この記事では、*Basic* SKU のロード バランサーと単一のノード プールを使用します。 複数のノード プールでは *Basic* SKU のロード バランサーがサポートされないため、この構成は利用できません。 *Standard* SKU のロード バランサーの使用について詳しくは、「[Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する][slb]」を参照してください。
 
 ## <a name="egress-traffic-overview"></a>エグレス トラフィックの概要
 
@@ -93,7 +98,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-このサービスを作成すると、Azure Load Balancer に新しいフロントエンド IP が構成されます。 他の IP が構成されていない場合は、**すべての**エグレス トラフィックがこのアドレスを使用するようになります。 Azure Load Balancer に複数のアドレスが構成されている場合、エグレスはそのロード バランサーの最初の IP を使用します。
+このサービスを作成すると、Azure Load Balancer に新しいフロントエンド IP が構成されます。 他の IP が構成されていない場合は、**すべての**エグレス トラフィックがこのアドレスを使用するようになります。 複数のアドレスが Azure Load Balancer 上で構成されている場合、それらのパブリック IP アドレスはどれもアウトバウンド フローの候補になり、その 1 つがランダムに選択されます。
 
 ## <a name="verify-egress-address"></a>エグレス アドレスを確認する
 
@@ -102,7 +107,7 @@ kubectl apply -f egress-service.yaml
 基本的な*Debian* pod を起動してアタッチします｡
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 コンテナー内から web サイトにアクセスするには、`apt-get` を使用して､コンテナーに `curl` をインストールします｡
@@ -134,3 +139,4 @@ Azure Load Balancer に複数のパブリック IP アドレスを保持しな�
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

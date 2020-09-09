@@ -3,16 +3,16 @@ title: エンド ユーザー認証 - Data Lake Storage Gen1 で Azure AD を使
 description: Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511308"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
     ![AAD ドメインの取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」を参照してください。
+* Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」を参照してください。
 
 ## <a name="end-user-authentication"></a>エンドユーザー認証
 この認証メカニズムは、エンド ユーザーに Azure AD 経由でアプリケーションにサインインしてもらう場合に推奨される方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
@@ -78,7 +78,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2:アプリケーション ID とリダイレクト URI を取得する
 
-アプリケーション ID の取得については、[アプリケーション ID の取得](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)に関するページをご覧ください。
+アプリケーション ID の取得については、[アプリケーション ID の取得](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)に関するページをご覧ください。
 
 リダイレクト URI を取得するには、次の手順を実行します。
 

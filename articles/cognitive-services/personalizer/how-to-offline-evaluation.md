@@ -3,19 +3,17 @@ title: オフライン評価の実行方法 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: この記事では、オフライン評価を使用してご利用のアプリの有用性を測定し、学習ループを分析する方法について示します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: ce85c2d264b2b4849a4a36ed757150292fdf39f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77622780"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244841"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>オフライン評価で学習ループを分析する
 
@@ -32,7 +30,7 @@ ms.locfileid: "77622780"
 
 ## <a name="run-an-offline-evaluation"></a>オフライン評価を実行する
 
-1. [Azure portal](https://azure.microsoft.com/free/) で、Personalizer リソースを見つけます。
+1. [Azure portal](https://azure.microsoft.com/free/cognitive-services) で、Personalizer リソースを見つけます。
 1. Azure portal で、 **[評価]** セクションに移動し、 **[評価の作成]** を選択します。
     ![Azure portal で、**[評価]** セクションに移動し、**[評価の作成]** を選択します。](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. 次の値を構成します。

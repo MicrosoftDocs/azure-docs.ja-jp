@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e921f0a40f53b1d08831047d1cb89ca26de41402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057286"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738559"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) B2C ディレクトリのユーザー プロ�
 |jobTitle        |String|ユーザーの役職。 最大長 128。|はい|はい|Persisted、Output|
 |immutableId     |String|オンプレミスの Active Directory から移行されたユーザーに通常使用される識別子。|いいえ|いいえ|Persisted、Output|
 |legalAgeGroupClassification|String|法的年齢グループの分類。 読み取り専用で、ageGroup および consentProvidedForMinor プロパティに基づいて計算されます。 使用可能な値: null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult、および adult。|はい|いいえ|Persisted、Output|
-|legalCountry<sup>1</sup>  |String|国 (法的な目的)。|いいえ|いいえ|Persisted、Output|
+|legalCountry<sup>1</sup>  |String|国またはリージョン (法的な目的)。|いいえ|いいえ|Persisted、Output|
 |mail            |String|ユーザーの SMTP アドレス (例 "bob@contoso.com")。 読み取り専用です。|いいえ|いいえ|Persisted、Output|
 |mailNickName    |String|ユーザーのメール エイリアス。 最大長 64。|いいえ|いいえ|Persisted、Output|
 |mobile (mobilePhone) |String|ユーザーのメインの携帯電話番号。 最大長 64。|はい|いいえ|Persisted、Output|
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) B2C ディレクトリのユーザー プロ�
 |surname         |String|ユーザーの姓。 最大長 64。|はい|はい|Persisted、Output|
 |telephoneNumber (businessPhones の最初のエントリ)|String|ユーザーの勤務地の 1 次電話番号。|はい|いいえ|Persisted、Output|
 |userPrincipalName    |String|ユーザーのユーザー プリンシパル名 (UPN)。 UPN は、インターネット標準 RFC 822 に基づくユーザーのインターネット形式のログイン名です。 ドメインがテナントの確認済みドメインのコレクションに存在している必要があります。 このプロパティは、アカウントを作成するときに必要です。 変更不可。|いいえ|いいえ|Input、Persisted、Output|
-|usageLocation   |String|法的な要請のためにライセンスを割り当てられるユーザーが、各国でサービスを利用できるかどうかを確認するのに必要です。 NULL 値は許可されません。 2 文字の国番号 (ISO 標準 3166)。 例 :"US"、"JP"、"GB"。|はい|いいえ|Persisted、Output|
+|usageLocation   |String|法的な要請のためにライセンスを割り当てられるユーザーが、各国またはリージョンでサービスを利用できるかどうかを確認するのに必要です。 NULL 値は許可されません。 2 文字の国またはリージョン番号 (ISO 標準 3166)。 例 :"US"、"JP"、"GB"。|はい|いいえ|Persisted、Output|
 |userType        |String|ディレクトリ内のユーザー タイプを分類するために使用できる文字列値。 値は Member にする必要があります。 読み取り専用です。|読み取り専用|いいえ|Persisted、Output|
 |userState (externalUserState)<sup>2</sup>|String|Azure AD B2B アカウント専用。招待が PendingAcceptance であるか Accepted であるかを示します。|いいえ|いいえ|Persisted、Output|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|UserState プロパティに対する最新の変更のタイムスタンプを示します。|いいえ|いいえ|Persisted、Output|

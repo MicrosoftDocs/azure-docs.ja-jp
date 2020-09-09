@@ -3,12 +3,12 @@ title: クライアント認証用に Azure Active Directory をセットアッ�
 description: Service Fabric クラスターのクライアントを認証するための Azure Active Directory (Azure AD) の設定方法について学習します。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193384"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258778"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
@@ -125,7 +125,7 @@ Service Fabric クラスターに接続するには、次の PowerShell コマ�
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-詳細については、[Connect-ServiceFabricCluster コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)に関するページを参照してください。
+詳細については、[Connect-ServiceFabricCluster コマンドレット](/powershell/module/servicefabric/connect-servicefabriccluster)に関するページを参照してください。
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>複数のクラスターで同じ Azure AD テナントを再利用できますか?
 はい。 ただし、Service Fabric Explorer の URL をクラスター (Web) アプリケーションに追加することを忘れないでください。 そうしないと、Service Fabric Explorer は動作しません。

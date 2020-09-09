@@ -1,29 +1,29 @@
 ---
-title: オンプレミスの SQL Server
-titleSuffix: ML Studio (classic) - Azure
-description: オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning Studio (クラシック) で高度な分析を実行します。
+title: ML Studio (classic):オンプレミスの SQL Server - Azure
+description: SQL Server データベースのデータを使用して Azure Machine Learning Studio (クラシック) で高度な分析を実行します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 133de2c6b4fd4f970595a0e46c24167ab10c0aea
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204184"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432127"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースを使用して Azure Machine Learning Studio (クラシック) で分析を実行する
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server データベースを使用して Azure Machine Learning Studio (クラシック) で分析を実行する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
-多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio (クラシック) では、現在、オンプレミスの SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio (クラシック) の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのためにオンプレミス SQL Server データベースから直接読み取ることができます。
 
-この記事では、オンプレミスの SQL サーバー データを Azure Machine Learning Studio (クラシック) で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Studio (クラシック) の概念を理解していることが前提となっています。
+多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Azure Machine Learning Studio (クラシック) では、現在、SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Azure Machine Learning Studio (クラシック) の**データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのために SQL Server データベースから直接読み取ることができます。
+
+この記事では、SQL Server データを Azure Machine Learning Studio (クラシック) で受け取る方法の概要について説明します。 ワークスペース、モジュール、データセット、実験 "*など*" の Studio (クラシック) の概念を理解していることが前提となっています。
 
 > [!NOTE]
 > この機能は、無料のワークスペースでは使用できません。 Machine Learning の価格とレベルの詳細については、 [Azure Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)に関するページを参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "79204184"
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Data Factory セルフホステッド統合ランタイムをインストールする
-Azure Machine Learning Studio (クラシック) でオンプレミス SQL Server データベースにアクセスするには、Data Factory セルフホステッド統合ランタイム (旧称 Data Management Gateway) をダウンロードしてインストールする必要があります。 Machine Learning Studio (クラシック) で接続を構成するときに、後で説明する **[データ ゲートウェイをダウンロードして登録]** ダイアログを使用して、統合ランタイム (IR) をダウンロードしてインストールできます。
+Azure Machine Learning Studio (クラシック) で SQL Server データベースにアクセスするには、Data Factory セルフホステッド統合ランタイム (旧称 Data Management Gateway) をダウンロードしてインストールする必要があります。 Machine Learning Studio (クラシック) で接続を構成するときに、後で説明する **[データ ゲートウェイをダウンロードして登録]** ダイアログを使用して、統合ランタイム (IR) をダウンロードしてインストールできます。
 
 
 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードして実行することにより、IR を事前にインストールすることもできます。MSI を使うと、すべての設定を保持したまま、既存の IR を最新バージョンにアップグレードすることもできます。
@@ -66,8 +66,8 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 
 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Azure Data Factory の統合ランタイム](../../data-factory/concepts-integration-runtime.md)」をご覧ください。
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>オンプレミスの SQL Server データベースから Azure Machine Learning にデータを受信する
-このチュートリアルでは、Azure Machine Learning ワークスペースに Azure Data Factory Integration Runtime を設定して構成し、オンプレミスの SQL Server データベースからデータを読み取ります。
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>SQL Server データベースから Azure Machine Learning にデータを受信する
+このチュートリアルでは、Azure Machine Learning ワークスペースに Azure Data Factory Integration Runtime を設定して構成し、SQL Server データベースからデータを読み取ります。
 
 > [!TIP]
 > 開始する前に、`studio.azureml.net` に対するブラウザーのポップアップ ブロックを無効にしてください。 Google Chrome ブラウザーを使用している場合は、Google Chrome WebStore の [Click Once アプリ拡張機能](https://chrome.google.com/webstore/search/clickonce?_category=extensions)にあるプラグインのいずれかをダウンロードしてインストールしてください。
@@ -76,7 +76,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 > Azure Data Factory セルフホステッド統合ランタイムは、以前は Data Management Gateway と呼ばれていました。 ステップ バイ ステップ チュートリアルでは、引き続きゲートウェイと呼ばれています。  
 
 ### <a name="step-1-create-a-gateway"></a>手順 1:ゲートウェイを作成する
-最初の手順は、オンプレミス SQL データベースにアクセスするゲートウェイを作成し、セットアップすることです。
+最初の手順は、SQL データベースにアクセスするゲートウェイを作成し、セットアップすることです。
 
 1. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/Home/) にログインし、作業するワークスペースを選択します。
 2. 左側の **[設定]** ブレードをクリックし、上部の **[データ ゲートウェイ]** タブをクリックします。
@@ -123,7 +123,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 Studio (クラシック) で各ワークスペースに対して複数のゲートウェイを作成してセットアップできます。 たとえば、開発中はテスト データ ソースに接続するゲートウェイを使用し、運用データ ソース用には別のゲートウェイを使う場合があります。 Azure Machine Learning Studio (クラシック) では、企業の環境に応じて、複数のゲートウェイを柔軟にセットアップできます。 現在、複数のワークスペースでゲートウェイを共有することはできず、1 台のコンピューターには 1 つのゲートウェイだけをインストールできます。 詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」を参照してください。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>手順 2:ゲートウェイを使用してオンプレミス データ ソースからデータを読み取る
-ゲートウェイをセットアップした後は、オンプレミス SQL Server データベースからデータを入力する実験に **データのインポート** モジュールを追加できます。
+ゲートウェイをセットアップした後は、SQL Server データベースからデータを入力する実験に**データのインポート** モジュールを追加できます。
 
 1. Machine Learning Studio (クラシック) で **[実験]** タブを選択し、左下隅の **[+ 新規]** をクリックして、 **[Blank Experiment]\(空の実験\)** を選択します (または使用可能ないくつかのサンプル実験のいずれかを選択します)。
 2. **データのインポート** モジュールを見つけて、実験キャンバスにドラッグします。
@@ -135,7 +135,7 @@ Studio (クラシック) で各ワークスペースに対して複数のゲー�
 
    ![データのインポート モジュールのデータ ゲートウェイを選択](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
 6. SQL **データベース サーバー名**と**データベース名**を、実行する SQL **データベース クエリ**と共に入力します。
-7. **[ユーザー名とパスワード]** の下の **[Enter values (値の入力)]** をクリックし、データベース資格情報を入力します。 オンプレミス SQL Server の構成方法に応じて、Windows 統合認証または SQL Server 認証を使用することができます。
+7. **[ユーザー名とパスワード]** の下の **[Enter values (値の入力)]** をクリックし、データベース資格情報を入力します。 SQL Server の構成方法に応じて、Windows 統合認証または SQL Server 認証を使用できます。
 
    ![データベースの資格情報を入力](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
@@ -146,4 +146,4 @@ Studio (クラシック) で各ワークスペースに対して複数のゲー�
 
 実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、 **[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
 
-実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。 **データのインポート** モジュールで構成されているオンプレミス SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。 オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](excel-add-in-for-web-services.md) を使用することをお勧めします。 現時点では、 **データのエクスポート** によるオンプレミス SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。
+実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。 **データのインポート** モジュールで構成されている SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。 オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](excel-add-in-for-web-services.md) を使用することをお勧めします。 現時点では、 **データのエクスポート** による SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。

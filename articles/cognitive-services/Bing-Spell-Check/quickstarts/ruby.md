@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 89a2a345e2a4e3ca1be31297e614e86f800e6316
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fae466124244f5d2b04ad6e59681011b9c5ba974
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448432"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993526"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>クイック スタート:Bing Spell Check REST API と Ruby を使用してスペルをチェックする
 
-このクイック スタートを使用して、Bing Spell Check の REST API を Ruby から呼び出してみましょう。 このシンプルなアプリケーションは、API に要求を送信して、認識されなかった一連の単語と修正候補を返します。 このアプリケーションは Ruby で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) で入手できます。
+このクイック スタートを使用して、Bing Spell Check の REST API を Ruby から呼び出してみましょう。 このシンプルなアプリケーションは、API に要求を送信して、一連の修正候補を返します。 
+
+このアプリケーションは Ruby で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +40,11 @@ ms.locfileid: "75448432"
     require 'json'
     ```
 
-2. サブスクリプション キー、エンドポイントの URL、パスの変数を作成します。 該当する市場に `mkt=` パラメーターを、`proof` proof モードに `&mode` を追加して要求のパラメーターを作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+2. サブスクリプション キー、エンドポイントの URI、パスの変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。 要求のパラメーターを作成します。
+
+   1. `=` 演算子を使用して、`mkt` パラメーターに市場コードを割り当てます。 市場コードは、要求の送信元となる国/地域のコードです。 
+
+   1. `&` 演算子を使用して `mode` パラメーターを追加し、スペルチェック モードを割り当てます。 モードは `proof` (スペルまたは文法のほとんどのエラーが検出されます)、または `spell` (スペル ミスはほとんど検出されますが、文法エラーの検出数は相対的に少なくなります) のいずれかにすることができます。 
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -59,7 +65,7 @@ ms.locfileid: "75448432"
    })
    ```
 
-2. 上で作成した URI を使用して要求を作成します。 お使いのキーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。
+2. 前に作成した URI を使用して要求を作成します。 お使いのキーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。
 
     ```ruby
     request = Net::HTTP::Post.new(uri)
@@ -84,13 +90,11 @@ ms.locfileid: "75448432"
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-プロジェクトをビルドして実行します。
+プロジェクトをビルドして実行します。 コマンド ラインを使用している場合は、次のコマンドを使用してアプリケーションを実行します。
 
-コマンド ラインを使用している場合は、次のコマンドを使用してアプリケーションを実行します。
-
-```bash
-ruby <FILE_NAME>.rb
-```
+   ```bash
+   ruby <FILE_NAME>.rb
+   ```
 
 ## <a name="example-json-response"></a>JSON の応答例
 
@@ -137,7 +141,7 @@ ruby <FILE_NAME>.rb
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)
+> [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
 - [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

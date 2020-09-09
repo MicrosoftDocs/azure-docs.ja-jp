@@ -4,20 +4,23 @@ description: Azure Analysis Services のサーバー管理者ロールに自動�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015410"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 
- 無人の PowerShell タスクを自動化するには、管理対象の Analysis Services サーバー上で、サービス プリンシパルに**サーバー管理者**権限が付与されている必要があります。 この記事では、Azure AS サーバー上のサーバー管理者ロールにサービス プリンシパルを追加する方法について説明します。 これは、SQL Server Management Studio または Resource Manager テンプレートを使用して行うことができます。
+ 無人の PowerShell タスクを自動化するには、管理対象の Analysis Services サーバー上で、サービス プリンシパルに**サーバー管理者**権限が付与されている必要があります。 この記事では、Azure AS サーバー上のサーバー管理者ロールにサービス プリンシパルを追加する方法について説明します。 これは、SQL Server Management Studio または Resource Manager テンプレートを使用して行うことができます。 
+
+> [!NOTE]
+> サービス プリンシパルは、サーバー管理者ロールに直接追加する必要があります。 サービス プリンシパルをセキュリティ グループに追加してから、そのセキュリティ グループをサーバー管理者ロールに追加することはサポートされていません。 
 
 ## <a name="before-you-begin"></a>開始する前に
 このタスクを完了するには、Azure Active Directory にサービス プリンシパルが登録されている必要があります。
@@ -41,7 +44,7 @@ ms.locfileid: "83697520"
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager テンプレートの使用
 
-Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、**Azure ロールベースのアクセス制御 (RBAC)** の[共同作成者](../role-based-access-control/overview.md)ロールに属している必要があります。
+Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) の**共同作成者**ロールに属している必要があります。
 
 > [!IMPORTANT]
 > サービス プリンシパルは `app:{service-principal-client-id}@{azure-ad-tenant-id}` の書式を使用して追加します。
@@ -116,5 +119,3 @@ PowerShell を使用することもできます。
 
 * [SQL Server PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [SSMS のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

@@ -1,22 +1,22 @@
 ---
-title: チュートリアル:REST API を使用して Blob Storage にコピーする
+title: チュートリアル:REST API を使用して BLOB ストレージにコピーする
 titleSuffix: Azure Data Box
-description: REST API 経由でお客様の Azure Data Box BLOB ストレージにデータをコピーする方法について説明します
+description: このチュートリアルでは、REST API を使用して Azure Data Box の Blob Storage に http または https で接続し、Azure Data Box からデータをコピーする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/09/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 7642c009a5bcd1d00efb432975fff5a65c7ba340
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 71f966cd62ffd2c735259dcfa98b9b97f87d9a19
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80297198"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926197"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
+# <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>チュートリアル:REST API を使用して Azure Data Box BLOB ストレージにデータをコピーする  
 
 このチュートリアルでは、*http* または *https* を使用して REST API 経由で Azure Data Box BLOB ストレージに接続する手順について説明します。 接続後、Data Box BLOB ストレージにデータをコピーして Data Box の発送を準備するために必要な手順についても説明します。
 
@@ -36,17 +36,16 @@ ms.locfileid: "80297198"
 2. Data Box の受け取りが済んでいて、ポータル内での注文の状態が **[配信済み]** であること。
 3. [Data Box BLOB ストレージのシステム要件](data-box-system-requirements-rest.md)を確認済みであり、API、SDK、ツールのサポートされているバージョンを熟知していること。
 4. Data Box に対してコピーしたいデータがあるホスト コンピューターにアクセスできること。 このホスト コンピューターは次の条件を満たしている必要があります。
-    - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
-    - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。
+    * [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
+    * 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。
 5. お客様のホスト コンピューターに [AzCopy 7.1.0 をダウンロードする](https://aka.ms/azcopyforazurestack20170417)。 お客様のホスト コンピューターから Azure Data Box BLOB ストレージにデータをコピーするために、AzCopy を使用します。
-
 
 ## <a name="connect-via-http-or-https"></a>http または https 経由で接続する
 
 Data Box BLOB ストレージには *http* または *https* を使用して接続できます。
 
-- Data Box BLOB ストレージへの接続に推奨される安全な方法は *https* です。
-- *http* は、信頼されたネットワークにおける接続に使用されます。
+* Data Box BLOB ストレージへの接続に推奨される安全な方法は *https* です。
+* *http* は、信頼されたネットワークにおける接続に使用されます。
 
 Data Box BLOB ストレージに接続するための手順は、*http* 経由の場合と *https* 経由の場合とで異なります。
 
@@ -54,8 +53,8 @@ Data Box BLOB ストレージに接続するための手順は、*http* 経由�
 
 *http* 経由の Data Box BLOB ストレージ REST API への接続では、以下の手順が必要になります。
 
-- デバイス IP と BLOB サービス エンドポイントをリモート ホストに追加する
-- サードパーティ製ソフトウェアを構成し、接続を確認する
+* デバイス IP と BLOB サービス エンドポイントをリモート ホストに追加する
+* サードパーティ製ソフトウェアを構成し、接続を確認する
 
 以下のセクションでは、これらの各手順について説明します。
 
@@ -63,7 +62,7 @@ Data Box BLOB ストレージに接続するための手順は、*http* 経由�
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
-### <a name="configure-partner-software-and-verify-connection"></a>パートナー ソフトウェアを構成し、接続を確認する
+### <a name="verify-connection-and-configure-partner-software"></a>接続を確認し、パートナー ソフトウェアを構成する
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
@@ -73,10 +72,10 @@ Data Box BLOB ストレージに接続するための手順は、*http* 経由�
 
 https 経由の Azure Blob Storage REST API への接続では、以下の手順が必要になります。
 
-- Azure portal から証明書をダウンロードする
-- クライアントまたはリモート ホストで証明書をインポートする
-- デバイス IP と Blob service エンドポイントをクライアントまたはリモート ホストに追加する
-- サードパーティ製ソフトウェアを構成し、接続を確認する
+* Azure portal から証明書をダウンロードする
+* クライアントまたはリモート ホストで証明書をインポートする
+* デバイス IP と Blob service エンドポイントをクライアントまたはリモート ホストに追加する
+* サードパーティ製ソフトウェアを構成し、接続を確認する
 
 以下のセクションでは、これらの各手順について説明します。
 
@@ -86,11 +85,11 @@ Azure portal を使用して証明書をダウンロードします。
 
 1. Azure portal にサインインします。
 2. お客様の Data Box の注文に移動し、 **[全般]、[デバイスの詳細]** の順に移動します。
-3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、 **\<注文名>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
+3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、 **\<your order name>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
 
     ![Azure portal での証明書のダウンロード](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
- 
-### <a name="import-certificate"></a>証明書のインポート 
+
+### <a name="import-certificate"></a>証明書のインポート
 
 HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デバイスの TLS/SSL 証明書が必要です。 この証明書をクライアント アプリケーションで利用できるようにする方法は、アプリケーション、オペレーティング システム、およびディストリビューションによって異なります。 システムの証明書ストアにインポートされた証明書にアクセスできるアプリケーションもあれば、そのメカニズムを利用しないアプリケーションもあります。
 
@@ -109,16 +108,16 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 
 #### <a name="use-windows-server-ui"></a>Windows Server UI を使用する
 
-1.   `.cer` ファイルを右クリックし、 **[証明書のインストール]** を選択します。 このアクションにより、証明書のインポート ウィザードが開始されます。
-2.   **[ストアの場所]** で **[ローカル マシン]** を選択し、 **[次へ]** をクリックします。
+1. `.cer` ファイルを右クリックし、 **[証明書のインストール]** を選択します。 このアクションにより、証明書のインポート ウィザードが開始されます。
+2. **[ストアの場所]** で **[ローカル マシン]** を選択し、 **[次へ]** をクリックします。
 
     ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.   **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
+3. **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
 
     ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.   **[完了]** をクリックします。 インポートが成功したことを通知するメッセージが表示されます。
+4. **[完了]** をクリックします。 インポートが成功したことを通知するメッセージが表示されます。
 
     ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -128,13 +127,13 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 
 Ubuntu や Debian などのいくつかのディストリビューションでは、`update-ca-certificates` コマンドを使用します。  
 
-- Base64 エンコードの証明書ファイルの名前を変更して拡張子 `.crt` を付け、それを `/usr/local/share/ca-certificates directory` にコピーします。
-- コマンド `update-ca-certificates` を実行します。
+* Base64 エンコードの証明書ファイルの名前を変更して拡張子 `.crt` を付け、それを `/usr/local/share/ca-certificates directory` にコピーします。
+* コマンド `update-ca-certificates` を実行します。
 
 RHEL、Fedora、および CentOS の最近のバージョンでは、`update-ca-trust` コマンドを使用します。
 
-- 証明書ファイルを `/etc/pki/ca-trust/source/anchors` ディレクトリにコピーします。
-- `update-ca-trust` を実行します。
+* 証明書ファイルを `/etc/pki/ca-trust/source/anchors` ディレクトリにコピーします。
+* `update-ca-trust` を実行します。
 
 詳細については、お使いのディストリビューションに固有のドキュメントを参照してください。
 
@@ -144,7 +143,7 @@ RHEL、Fedora、および CentOS の最近のバージョンでは、`update-ca-
 
 ### <a name="configure-partner-software-and-verify-connection"></a>パートナー ソフトウェアを構成し、接続を確認する
 
-[*http* 経由での接続時に使用したパートナー ソフトウェアの構成](#configure-partner-software-and-verify-connection)手順に従います。 唯一の違いは、*http を使用するオプション*をオフにしておく必要があることです。
+[*http* 経由での接続時に使用したパートナー ソフトウェアの構成](#verify-connection-and-configure-partner-software)手順に従います。 唯一の違いは、*http を使用するオプション*をオフにしておく必要があることです。
 
 ## <a name="copy-data-to-data-box"></a>Data Box にデータをコピーする
 
@@ -152,15 +151,17 @@ Data Box BLOB ストレージに接続したら、次の手順はデータをコ
 
 * データのコピー中は、そのサイズが [Azure Storage と Data Box の制限](data-box-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。
 * Data Box によってアップロード中のデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
-* Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
+
+> [!IMPORTANT]
+> Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
 
 このチュートリアルでは、Data Box BLOB ストレージにデータをコピーするために AzCopy が使用されます。 Azure Storage Explorer (GUI ベースのツールが望ましい場合)、またはパートナー ソフトウェアを使用してデータをコピーすることもできます。
 
 コピーの手順は次のとおりです。
 
-- コンテナーを作成する
-- フォルダーの内容を Data Box BLOB ストレージにアップロードする
-- 変更されたファイルを Data Box BLOB ストレージにアップロードする
+* コンテナーを作成する
+* フォルダーの内容を Data Box BLOB ストレージにアップロードする
+* 変更されたファイルを Data Box BLOB ストレージにアップロードする
 
 以下のセクションでは、これらの各手順について詳しく説明します。
 
@@ -185,16 +186,19 @@ AzCopy を使用して、フォルダー内のすべてのファイルを Window
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
-
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 `<key>` はお客様のアカウント キーで置き換えてください。 お客様のアカウント キーを取得するには、Azure portal でお客様のストレージ アカウントに移動します。 **[設定]、[アクセス キー]** の順に移動し、キーを選択して AzCopy コマンドに貼り付けます。
 
@@ -209,16 +213,21 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
 宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに `--exclude-older` と `--exclude-newer` (Linux) または `/XO` と `/XN` (Windows) の両方のパラメーターを指定します。 AzCopy は、タイムスタンプに基づいて、更新されたデータのみをアップロードします。
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 接続またはコピー操作中にエラーが発生する場合は、[Data Box BLOB ストレージの問題のトラブルシューティング](data-box-troubleshoot-rest.md)に関するページを参照してください。
 
@@ -229,10 +238,10 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
+>
 > * 前提条件
 > * *http* 経由または *https* 経由で Data Box BLOB ストレージに接続する
 > * Data Box にデータをコピーする
-
 
 次のチュートリアルに進み、お客様の Data Box を Microsoft に返送する方法を学習してください。
 

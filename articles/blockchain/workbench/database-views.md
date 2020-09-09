@@ -4,16 +4,16 @@ description: Azure Blockchain Workbench Preview で使用可能な SQL DB デー
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: 585084b4c85c48533bdad96d4f99813ef2e418b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74325990"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003323"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Azure Blockchain Workbench のデータベース ビュー
 
-Azure Blockchain Workbench Preview は、分散型台帳から*オフチェーン* SQL DB データベースにデータを配信します。 オフチェーン データベースにより、SQL や既存のツール ([SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) など) を使用して、ブロックチェーン データと対話できるようになります。
+Azure Blockchain Workbench Preview は、分散型台帳から*オフチェーン* SQL DB データベースにデータを配信します。 オフチェーン データベースにより、SQL や既存のツール ([SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) など) を使用して、ブロックチェーン データと対話できるようになります。
 
 Azure Blockchain Workbench に備わった一連のデータベース ビューを使用すると、クエリの実行時に役立つデータにアクセスできます。 これらのビューは、迅速なレポートの作成や分析を簡単にするために頻繁に非正規化され、それ以外の場合は、既存のツールを使ってブロックチェーン データを使用し、データベースを再トレーニングする必要がありません。
 

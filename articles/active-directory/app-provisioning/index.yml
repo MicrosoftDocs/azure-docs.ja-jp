@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 0b6b3829f4111c57e20f495be962357832a5bfcd
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 0972d7fe35932aa880a63d1de77a1e8361c95689
+  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77522468"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88235657"
 landingContent:
 - title: ユーザーとグループをクラウド アプリにプロビジョニングする
   linkLists:
@@ -30,11 +30,11 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: SAP Cloud Platform Identity Authentication のプロビジョニング
-      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      url: ../saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - text: Oracle Fusion ERP のプロビジョニング
-      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      url: ../saas-apps/oracle-fusion-erp-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - text: Atlassian Cloud のプロビジョニング
-      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      url: ../saas-apps/atlassian-cloud-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
   - linkListType: how-to-guide
     links:
     - text: ギャラリー アプリを追加しますか? アプリへのプロビジョニングを構成する
@@ -62,6 +62,6 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Workday のプロビジョニング
-      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      url: ../saas-apps/workday-inbound-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - text: SAP SuccessFactors のプロビジョニング
-      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      url: ../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context

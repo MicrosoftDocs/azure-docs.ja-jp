@@ -2,92 +2,101 @@
 title: Azure Migrate での移行に向けてマシンを準備する
 description: Azure Migrate での移行に向けてオンプレミス マシンを準備する方法について説明します。
 ms.topic: tutorial
-ms.date: 02/17/2020
+ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: eba177a254606bb847e0866ae48281a889c53f9b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78927471"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606828"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
-この記事では、オンプレミスのマシンを Azure に移行する前にマシンに対して必要になる準備作業の手順を紹介します (移行には、[Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用)。
+この記事では、[Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用してオンプレミスのマシンを Azure に移行する前にマシンに対して必要になる準備作業の手順を紹介します。
 
 この記事では、次の内容について説明します。
 > [!div class="checklist"]
 > * 移行に関する制約を確認する。
-> * オペレーティング システムの要件とサポートに関する制約を確認する。
+> * VMware VM を移行するための方法を選択する
+> * 移行するマシンのハイパーバイザーとオペレーティング システムの要件を確認する。
 > * 移行するマシンの URL およびポートへのアクセスを確認する。
 > * 移行を開始する前に必要になることがある変更を確認する。
-> * 移行後もドライブ文字が保持されるように設定を構成する。
+> * 移行されたマシンに対する Azure VM の要件を確認する
 > * 移行後の Azure VM に接続できるようにマシンの準備を整える。
+
+
 
 ## <a name="verify-migration-limitations"></a>移行に関する制約を確認する
 
-- Azure Migrate Server Migration を使用した Azure Migrate プロジェクトでは、プロジェクト 1 件につき VMware VM または Hyper-V VM を 35,000 台まで評価できます。 VMware VM と Hyper-V VM は、それぞれの上限に達するまでは任意に組み合わせてプロジェクトに含めることができます。
-- 1 回の移行の対象として選択できる VM の数は 10 台までです。 レプリケートが必要な数がこれよりも多い場合には、10 台のグループ単位でレプリケートしてください。
-- VMware のエージェントレス移行では、最大 100 個のレプリケーションを同時に実行できます。
+次の表は、Azure Migrate での検出、評価、移行の制限をまとめたものです。 移行前にマシンを評価することをお勧めしますが、必須ではありません。
+
+**シナリオ** | **プロジェクト** | **検出と評価** | **移行**
+--- | --- | --- | ---
+**VMware VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 1 つの VMware 用 [Azure Migrate アプライアンス](common-questions-appliance.md)を使用して最大 10,000 台の VMware VM を検出します。 | **エージェントレス移行**: 最大 300 台の VM を同時にレプリケートできます。 最大限のパフォーマンスを確保するために、VM が 50 台を超える場合は、複数のバッチを作成するようお勧めします。<br/><br/> **エージェントベース移行**: [レプリケーション アプライアンス](migrate-replication-appliance.md)を[スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数の VM をレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
+**Hyper-V VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 単一の Azure Migrate アプライアンスで最大 5,000 台の Hyper-V VM を検出します。 | Hyper-V の移行にアプライアンスは使用されません。 代わりに、それぞれの Hyper-V ホスト上で Hyper-V レプリケーション プロバイダーが実行されます。<br/><br/> レプリケーション容量は、パフォーマンス要因 (VM のチャーンなど) とレプリケーション データのアップロード帯域幅に左右されます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
+**物理マシン** | 1 つの Azure Migrate プロジェクトで最大 35,000 台のマシンを検出して評価します。 | 物理サーバー用の 1 つの Azure Migrate アプライアンスを使用して最大 250 台の物理サーバーを検出します。 | [レプリケーション アプライアンス](migrate-replication-appliance.md)を[スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数のサーバーをレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
+
+## <a name="select-a-vmware-migration-method"></a>VMware の移行方法を選択する
+
+VMware VM を Azure に移行する場合、エージェントレス移行方式とエージェントベース移行方式を[比較](server-migrate-overview.md#compare-migration-methods)して、どちらが実情に合っているかを判断してください。
+
+## <a name="verify-hypervisor-requirements"></a>ハイパーバイザーの要件を確認する
+
+- [VMware のエージェントレス](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless)の要件または [VMware のエージェントベース](migrate-support-matrix-vmware-migration.md#vmware-requirements-agent-based)の要件を確認します。
+- [Hyper-V ホスト](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements)の要件を確認します。
+
 
 ## <a name="verify-operating-system-requirements"></a>オペレーティング システムの要件を確認する
 
-- お使いの [Windows オペレーティング システム](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)が Azure でサポートされていることを確認します。
-- お使いの [Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)が Azure でサポートされていることを確認します。
+移行がサポートされているオペレーティング システムを確認します。
 
-## <a name="see-whats-supported"></a>サポート対象
-
-VMware VM については、Server Migration で[エージェントレスとエージェントベースの 2 種類の移行](server-migrate-overview.md)がサポートされています。
-
-- **VMware VM**:VMware VM の[移行の要件とサポート](migrate-support-matrix-vmware-migration.md)を確認してください。
-- **Hyper-V VM**:Hyper-V VM については、[移行の要件とサポート](migrate-support-matrix-hyper-v-migration.md)を確認してください。
-- **物理マシン**: オンプレミスの物理マシンおよび他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical-migration.md)を確認してください。 
+- VMware VM または Hyper-V VM を移行する場合は、VMware VM の[エージェントレス](migrate-support-matrix-vmware-migration.md#vm-requirements-agentless)移行と[エージェントベース](migrate-support-matrix-vmware-migration.md#vm-requirements-agent-based)移行に関する要件、および [Hyper-V VM](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) の要件を確認します。
+- [Windows オペレーティング システム](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)が Azure でサポートされていることを確認します。
+- [Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)が Azure でサポートされていることを確認します。
 
 ## <a name="review-url-and-port-access"></a>URL およびポートに対するアクセスを確認する
 
-移行中にマシンがインターネットにアクセスすることが必要になることがあります。
+移行中にアクセスされる URL とポートを確認します。
 
-- **Azure Migrate アプライアンス**: エージェントレス移行中に Azure Migrate アプライアンスがアクセスする必要がある [URL](migrate-appliance.md#url-access) と[ポート](migrate-support-matrix-vmware-migration.md#agentless-ports)を確認してください。
-- **VMware VM エージェントベースの移行**: VMware VM エージェントベースの移行中にレプリケーション アプライアンスが使用する [URL](migrate-replication-appliance.md#url-access) と[ポート](migrate-replication-appliance.md#port-access)を確認します。 
-- **Hyper-V ホスト**: 移行中に Hyper-V ホストがアクセスする必要がある [URL とポート](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)を確認します。 
-- **物理サーバー**:物理サーバーの移行中にレプリケーション アプライアンスが使用する [URL](migrate-replication-appliance.md#url-access) と[ポート](migrate-replication-appliance.md#port-access)を確認します。
+**シナリオ** | **詳細** |  **URL** | **ポート**
+--- | --- | --- | ---
+**VMware のエージェントレス移行** | 移行には [Azure Migrate アプライアンス](migrate-appliance-architecture.md)を使用します。 VMware VM には何もインストールされません。 | アプライアンスを使用した検出、評価、移行に必要な、パブリック クラウドと政府機関向けクラウドの [URL](migrate-appliance.md#url-access) を確認します。 | エージェントレス移行に関するポートの要件を[確認](migrate-support-matrix-vmware-migration.md#port-requirements-agentless)します。
+**VMware のエージェントベース移行** | 移行には、[レプリケーション アプライアンス](migrate-replication-appliance.md)を使用します。 VM に Mobility Service エージェントがインストールされます。 | レプリケーション アプライアンスからアクセスする必要のある[パブリック クラウド](migrate-replication-appliance.md#url-access)と [Azure Government](migrate-replication-appliance.md#azure-government-url-access) の URL を確認します。 | エージェントベース移行時に使用されるポートを[確認](migrate-replication-appliance.md#port-access)します。
+**Hyper-V の移行** | 移行には、Hyper-V ホストにインストールされたプロバイダーを使用します。 Hyper-V VM には何もインストールされません。 | ホスト上で実行されているレプリケーション プロバイダーからアクセスする必要のある[パブリック クラウド](migrate-support-matrix-hyper-v-migration.md#url-access-public-cloud)と [Azure Government](migrate-support-matrix-hyper-v-migration.md#url-access-azure-government) の URL を確認します。 | Hyper-V ホスト上のレプリケーション プロバイダーは、HTTPS ポート 443 のアウトバウンド接続を使用して VM のレプリケーション データを送信します。
+**物理マシン** | 移行には、[レプリケーション アプライアンス](migrate-replication-appliance.md)を使用します。 物理マシンに Mobility Service エージェントがインストールされます。 | レプリケーション アプライアンスからアクセスする必要のある[パブリック クラウド](migrate-replication-appliance.md#url-access)と [Azure Government](migrate-replication-appliance.md#azure-government-url-access) の URL を確認します。 | 物理移行時に使用されるポートを[確認](migrate-replication-appliance.md#port-access)します。
 
 ## <a name="verify-required-changes-before-migrating"></a>移行前に必要な変更を確認する
 
-一部の VM は、Azure で実行できるように変更が必要な場合があります。 ここに挙げたオペレーティング システムが稼働している VM では、必要な変更が Azure Migrate によって自動的に行われます。
+Azure に VM を移行する前に、それらに対していくつかの変更を行う必要があります。
 
-- Red Hat Enterprise Linux 7.0+、6.5+
-- CentOS 7.0+、6.5+
-- SUSE Linux Enterprise Server 12 SP1+
-- Ubuntu 18.04LTS、16.04LTS、14.04LTS
-- Debian 8、7
+- 一部のオペレーティング システムでは、レプリケーションまたは移行プロセス中に、変更が Azure Migrate によって自動的に行われます。
+- その他のオペレーティング システムでは、設定を手動で構成する必要があります。
+- 設定の手動構成は、移行を開始する前に行うことが重要です。 変更を行う前に VM を移行すると、Azure で VM が起動しない可能性があります。
 
-その他のオペレーティング システムについては、移行前に手動でマシンの準備を整える必要があります。 
+表をご覧のうえ、行うべき変更を確認してください。
 
-### <a name="prepare-windows-machines"></a>Windows マシンの準備作業
+### <a name="windows-machines"></a>Windows マシン
 
-Windows マシンを移行する場合は、移行の前に次の変更を行ってください。 これらの変更せずに VM を移行すると、Azure で VM が起動しなくなることがあります。
+必要な変更を表にまとめます。
 
-1. Azure VM の [Azure シリアル コンソールを有効](../virtual-machines/troubleshooting/serial-console-windows.md)にします。 コンソールを有効にすることはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。 
-2. Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
+**操作** | **VMware (エージェントレス移行)** | **VMware (エージェントベース)/物理マシン** | **Hyper-V 上の Windows** 
+--- | --- | --- | ---
+**SAN ポリシーを Online All に構成する**<br/><br/> Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されます。 | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。<br/><br/> それより前のオペレーティング システムでは、手動で構成します。 | ほとんどの場合、自動的に設定されます。 | 手動で構成します。
+**Hyper-V ゲスト統合をインストールする** | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-vmware-vms)します。 | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-vmware-vms)します。 | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms)します。
+**Azure シリアル コンソールを有効にする**<br/><br/>トラブルシューティングのために、Azure VM の[コンソールを有効](../virtual-machines/troubleshooting/serial-console-windows.md)にします。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。 | 手動で有効にします。 | 手動で有効にします。 | 手動で有効にします。
+**移行後に接続する**<br/><br/> 移行後に接続するためには、移行前に行うべき手順が数多くあります。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。
 
-### <a name="prepare-linux-machines"></a>Linux マシンの準備作業
 
-1. Hyper-V Linux 統合サービスをインストールします。 新しいバージョンの Linux ディストリビューションには、ほとんどの場合、Hyper-V Linux 統合サービスが既定で含まれています。
-2. 必要な Hyper-V ドライバーが含まれるように Linux の init イメージをリビルドします。 init イメージをリビルドすることにより、Azure で確実に VM が起動します。これが必要なのは一部のディストリビューションだけです。
-3. [Azure シリアル コンソールのログ記録を有効にします](../virtual-machines/troubleshooting/serial-console-linux.md)。 コンソールのログ記録を有効にすることはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。
-4. 永続的なデバイス識別子を使用するよう、デバイス名とボリュームの関連付けが含まれているデバイスのマップ ファイルを更新します。
-5. 永続的なボリューム識別子を使用するよう、fstab ファイルのエントリを更新します。
-6. MAC アドレスなどに基づいてインターフェイス名を予約する udev ルールを削除します。
-7. DHCP から IP アドレスを受け取るよう、ネットワーク インターフェイスを更新します。
+#### <a name="configure-san-policy"></a>SAN のポリシーを構成する
 
-詳細については、[Azure 上で Linux VM を稼働させるための手順](../virtual-machines/linux/create-upload-generic.md)のページを参照してください。同ページでは、一部の人気 Linux ディストリビューションを対象とした手順も紹介しています。
+既定では、Azure VM に一時ストレージとして使用するドライブ D が割り当てられます。
 
-## <a name="preserve-drive-letters-after-migration"></a>移行後もドライブ文字を保持する
+- このドライブが割り当てられると、アタッチされている他のストレージ ドライブに割り当てられている文字が 1 文字ずつ後ろにずれることになります。
+- たとえば、オンプレミスのインストールでデータ ディスクを使用しており、そのディスクにアプリケーションのインストール用にドライブ D が割り当てられていた場合に、その VM を Azure に移行すると、ドライブに割り当てられている文字が 1 つ後ろにずれ、ドライブ E に変わります。 
+- この自動的な割り当てを回避し、Azure により一時ボリュームに割り当てられるドライブ文字を未使用のアルファベットのうち順番が最も前のものにするには、記憶域ネットワーク (SAN) ポリシーを **OnlineAll** に設定します。
 
-オンプレミスのマシンを Microsoft Azure に移行すると、追加のデータ ディスクのドライブ文字が元の値から変化することがあります。 
-
-既定では、Azure VM に一時ストレージとして使用するドライブ D が割り当てられます。 このドライブが割り当てられると、アタッチされている他のストレージ ドライブに割り当てられている文字が 1 文字ずつ後ろにずれることになります。 たとえば、オンプレミスのインストールでデータ ディスクを使用しており、そのディスクにアプリケーションのインストール用にドライブ D が割り当てられていた場合に、その VM を Azure に移行すると、ドライブに割り当てられている文字が 1 つ後ろにずれ、ドライブ E に変わります。 この自動的な割り当てを回避し、Azure により一時ボリュームに割り当てられるドライブ文字を未使用のアルファベットのうち順番が最も前のものにするには、記憶域ネットワーク (SAN) ポリシーを **OnlineAll** に設定します。
+この設定は、次の手順に従って手動で構成します。
 
 1. (ホストサーバーではなく) オンプレミスのマシンで、管理者特権でのコマンド プロンプトを開きます。
 2. 「**diskpart**」と入力します。
@@ -95,9 +104,53 @@ Windows マシンを移行する場合は、移行の前に次の変更を行っ
 4. **DISKPART** プロンプトで、「**SAN Policy=OnlineAll**」と入力します。 この設定により、ディスクがオンラインになり、両方のディスクの読み取りと書き込みが可能になります。
 5. テスト移行中に、ドライブ文字が保持されていることを確認できます。
 
+
+### <a name="linux-machines"></a>Linux マシン
+
+次のバージョンについては、各アクションが Azure Migrate によって自動的に実行されます。
+
+- Red Hat Enterprise Linux 7.0+、6.5+
+- CentOS 7.0+、6.5+
+- SUSE Linux Enterprise Server 12 SP1+
+- Ubuntu 18.04LTS、16.04LTS、14.04LTS
+- Debian 8、7
+
+その他のバージョンでは、表に記載された情報に従ってマシンを準備してください。  
+
+
+**操作** | **詳細** | **Linux バージョン**
+--- | --- | ---
+**Hyper-V Linux 統合サービスをインストールする** | 必要な Hyper-V ドライバーが含まれるように Linux の init イメージをリビルドします。 init イメージをリビルドすることにより、Azure で確実に VM が起動します。 | Linux ディストリビューションの新しいバージョンには、ほとんどの場合、既定でこれが含まれています。<br/><br/> 前述したバージョンを除くすべてのバージョンについては、これが含まれていない場合、手動でインストールしてください。
+**Azure シリアル コンソールのログ記録を有効にする** | コンソールのログ記録を有効にすることはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。<br/><br/> [これらの手順](../virtual-machines/troubleshooting/serial-console-linux.md)に従って、有効化してください。
+**デバイスのマップ ファイルを更新する** | 永続的なデバイス識別子を使用するよう、デバイス名とボリュームの関連付けが含まれているデバイスのマップ ファイルを更新します。 | 前述したバージョンを除くすべてのバージョンについては、手動でインストールしてください。 (エージェントベースの VMware シナリオでのみ適用可能)
+**fstab エントリを更新する** |  永続的なボリューム識別子を使用するよう、エントリを更新します。    | 前述したバージョンを除くすべてのバージョンについては、手動で更新してください。
+**Udev ルールを削除する** | MAC アドレスなどに基づいてインターフェイス名を予約する Udev ルールを削除します。 | 前述したバージョンを除くすべてのバージョンについては、手動で削除してください。
+**ネットワーク インターフェイスを更新する** | DHCP.nst に基づいて IP アドレスを受け取るよう、ネットワーク インターフェイスを更新します。 | 前述したバージョンを除くすべてのバージョンについては、手動で更新してください。
+**SSH を有効にする** | SSH を有効にして、再起動時に自動的に開始するよう sshd サービスを設定してください。<br/><br/> 受信 SSH 接続要求が、OS ファイアウォールまたはスクリプト実行可能なルールによってブロックされないようにします。| 前述したバージョンを除くすべてのバージョンについては、手動で有効にしてください。
+
+次の表は、上記のオペレーティング システムに対して自動的に実行される手順をまとめたものです。
+
+
+| アクション                                      | エージェントベースの VMware 移行 | エージェントレスの VMware 移行 | Hyper\-V   |
+|---------------------------------------------|-------------------------------|----------------------------|------------|
+| Hyper\-V Linux 統合サービスをインストールする | はい                           | はい                        | 不要 |
+| Azure シリアル コンソールのログ記録を有効にする         | はい                           | はい                        | いいえ         |
+| デバイスのマップ ファイルを更新する                      | はい                           | いいえ                         | いいえ         |
+| fstab エントリを更新する                        | はい                           | はい                        | いいえ         |
+| Udev ルールを削除する                            | はい                           | はい                        | いいえ         |
+| ネットワーク インターフェイスを更新する                   | はい                           | はい                        | いいえ         |
+| SSH を有効にする                                  | いいえ                            | いいえ                         | いいえ         |
+
+詳細については、[Azure 上で Linux VM を稼働させる](../virtual-machines/linux/create-upload-generic.md)ための手順のページを参照してください。同ページでは、一部の人気 Linux ディストリビューションを対象とした手順も紹介しています。
+
+
 ## <a name="check-azure-vm-requirements"></a>Azure VM の要件を確認する
 
-オンプレミスのマシンを Azure にレプリケートする場合には、オペレーティング システムとアーキテクチャ、ディスク、ネットワーク設定、および VM 名に関する Azure VM の要件を順守している必要があります。 移行前に、[VMware VM と物理サーバー](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)の要件および [Hyper-V VM](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) の要件を確認してください。
+オンプレミスのマシンを Azure にレプリケートする場合には、オペレーティング システムとアーキテクチャ、ディスク、ネットワーク設定、および VM 名に関する Azure VM の要件を順守している必要があります。
+
+移行前に、[VMware](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)、[Hyper-V](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)、[物理サーバー](migrate-support-matrix-physical-migration.md#azure-vm-requirements)の移行に関する Azure VM の要件を確認してください。
+
+
 
 ## <a name="prepare-to-connect-after-migration"></a>移行後に接続するための準備を整える
 
@@ -114,6 +167,7 @@ Azure への移行中には、Azure VM が作成されます。 移行後に、�
 5. 移行後にサイト間 VPN 経由で Azure VM にアクセスする場合は、オンプレミスのマシンの Windows ファイアウォールにおいて、ドメイン プロファイルとプライベート プロファイルで RDP を許可します。 [RDP トラフィックを許可する](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)方法に関するページを参照してください。 
 6. 移行する際は、オンプレミスの VM に保留中の Windows 更新プログラムがないことを確認してください。 更新プログラムがあると、移行後に Azure VM 上で更新プログラムのインストールが始まることがあり、更新が完了するまで VM にサインインできなくなります。
 
+
 ### <a name="prepare-to-connect-with-linux-azure-vms"></a>Linux の Azure VM に対する接続を準備する
 
 オンプレミスの Linux マシンで、次の手順を実行します。
@@ -129,9 +183,15 @@ Azure への移行中には、Azure VM が作成されます。 移行後に、�
 2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの受信接続が許可されていることを確認します。
 3. [[ブート診断]](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
 
-> [!NOTE]
-> Azure Bastion サービスでは、Azure VM へのプライベート RDP および SSH アクセスが提供されます。 このサービスの詳細については、[こちら](../bastion/bastion-overview.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure に [VMware VM を移行する](server-migrate-overview.md)のか、[Hyper-V VM ](tutorial-migrate-hyper-v.md) を移行するのか、あるいは[物理サーバー、仮想化された VM、またはクラウドの VM](tutorial-migrate-physical-virtual-machines.md) を移行するのかに応じて、使用する方法を決めます。
+
+## <a name="see-whats-supported"></a>サポート対象
+
+VMware VM については、Server Migration で[エージェントレスとエージェントベースの 2 種類の移行](server-migrate-overview.md)がサポートされています。
+
+- **VMware VM**:VMware VM の[移行の要件とサポート](migrate-support-matrix-vmware-migration.md)を確認してください。
+- **Hyper-V VM**:Hyper-V VM については、[移行の要件とサポート](migrate-support-matrix-hyper-v-migration.md)を確認してください。
+- **物理マシン**: オンプレミスの物理マシンおよび他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical-migration.md)を確認してください。 

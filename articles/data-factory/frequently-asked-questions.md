@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81412953"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187289"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -83,11 +83,11 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 
 -    プロジェクトやパッケージの SSIS データベース (SSISDB) をホストする、Azure SQL Database の次の 3 つの追加構成およびバリアントのサポート。
 -    仮想ネットワーク サービス エンドポイントを使用する SQL Database
--    マネージド インスタンス
+-    SQL Managed Instance
 -    エラスティック プール
 -    将来廃止されるクラシック仮想ネットワーク上の Azure Resource Manager 仮想ネットワークに対するサポート。これにより、仮想ネットワーク サービス エンドポイント/MI/オンプレミス データ アクセスを使用する SQL Database 用に構成された仮想ネットワークに対して、Azure-SSIS 統合ランタイムを挿入したり、参加させたりできます。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」も参照してください。
 -    SSISDB に接続する際の Azure Active Directory (Azure AD) 認証および SQL 認証のサポート。これにより、Azure リソース用の Data Factory マネージド ID で Azure AD 認証を行うことができます。
--    独自のオンプレミスの SQL Server ライセンスの利用のサポート。Azure ハイブリッド特典オプションから実質的なコスト削減を得られます。
+-    既存の SQL Server ライセンスの利用のサポート。Azure ハイブリッド特典オプションから実質的なコスト削減を得られます。
 -    Azure-SSIS 統合ランタイムのエンタープライズ エディションのサポート。これにより、高度な機能やプレミアム機能、追加のコンポーネントや拡張機能をインストールするカスタム セットアップ インターフェイス、およびパートナーのエコシステムを使用できます。 詳細については、「[Enterprise Edition, Custom Setup, and 3rd Party Extensibility for SSIS in ADF (ADF の SSIS 用のエンタープライズ エディション、カスタム セットアップ、およびサード パーティの拡張性)](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)」を参照してください。 
 -    Data Factory と SSIS のより深い統合。これにより、Data Factory パイプラインのファースト クラスの SSIS パッケージ実行アクティビティを呼び出し/トリガーし、SSMS でそれらのスケジュールを設定できます。 詳細については、「[Modernize and extend your ETL/ELT workflows with SSIS activities in ADF pipelines (ADF パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張)](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)」を参照してください。
 
@@ -126,7 +126,7 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 
 Data Factory では、リンクされたサービスは 2 つの目的に使用されます。
 
-- オンプレミスの SQL Server インスタンス、Oracle データベース インスタンス、ファイル共有、Azure Blob Storage アカウント、その他の "*データ ストア*" を表すため。 サポートされるデータ ストアの一覧については、「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を参照してください。
+- SQL Server インスタンス、Oracle データベース インスタンス、ファイル共有、Azure Blob Storage アカウント、その他の "*データ ストア*" を表すため。 サポートされるデータ ストアの一覧については、「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を参照してください。
 - アクティビティの実行をホストできる *コンピューティング リソース* を表すため。 たとえば、HDInsight Hive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[Azure Data Factory でデータを変換する](transform-data.md)」を参照してください。
 
 ### <a name="triggers"></a>トリガー

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
+ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: affdbfba125b7e9b3f3fe250a56af30e9efe816e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 508d054bc4eed88867bb6e3282edbafaae9a5247
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611008"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298047"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
@@ -42,6 +42,9 @@ REST プロキシ エンドポイント要求の場合、クライアント ア�
 > [!NOTE]
 > AAD セキュリティ グループの詳細については、「[Azure Active Directory グループを使用したアプリとリソース アクセスの管理](../../active-directory/fundamentals/active-directory-manage-groups.md)」を参照してください。 OAuth トークンのしくみについては、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。
 
+## <a name="kafka-rest-proxy-with-network-security-groups"></a>ネットワーク セキュリティ グループを使用した Kafka REST プロキシ
+独自の VNet を利用し、ネットワーク セキュリティ グループを使用してネットワーク トラフィックを制御する場合は、ポート 443 に加えてポート **9400** で**受信**トラフィックを許可します。 これにより、Kafka REST プロキシ サーバーにアクセスできるようになります。
+
 ## <a name="prerequisites"></a>前提条件
 
 1. アプリケーションを Azure AD に登録する。 Kafka REST プロキシを操作するために記述するクライアント アプリケーションは、このアプリケーションの ID とシークレットを使用して Azure に対する認証を行います。
@@ -55,6 +58,8 @@ REST プロキシ エンドポイント要求の場合、クライアント ア�
     ![メンバーシップの確認](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST プロキシが有効な Kafka クラスターを作成する
+
+以下の手順では、Azure portal を使用します。 Azure CLI の使用例については、[Azure CLI を使用した Apache Kafka REST プロキシ クラスターの作成](tutorial-cli-rest-proxy.md)に関するページを参照してください。
 
 1. Kafka クラスター作成ワークフローの実行中に、 **[セキュリティとネットワーク]** タブで、 **[Enable Kafka REST proxy]\(Kafka REST プロキシを有効にする\)** オプションをオンにします。
 
@@ -98,7 +103,30 @@ Python での OAuth トークンの取得の詳細については、[Python の 
 #Required python packages
 #pip3 install msal
 
+import json
 import msal
+import random
+import requests
+import string
+import sys
+import time
+
+def get_custom_value_json_object():
+
+    custom_value_json_object = {
+        "static_value": "welcome to HDI Kafka REST proxy",
+        "random_value": get_random_string(),
+    }
+
+    return custom_value_json_object
+
+
+def get_random_string():
+    letters = string.ascii_letters
+    random_string = ''.join(random.choice(letters) for i in range(7))
+
+    return random_string
+
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -111,32 +139,126 @@ client_secret = 'password'
 kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
 #--------------------------Configure these properties-------------------------------#
 
+# Get access token
 # Scope
 scope = 'https://hib.azurehdinsight.net/.default'
 #Authority
 authority = 'https://login.microsoftonline.com/' + tenant_id
 
-# Create a preferably long-lived app instance which maintains a token cache.
 app = msal.ConfidentialClientApplication(
     client_id , client_secret, authority,
     #cache - For details on how look at this example: https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py
-    )
+)
 
 # The pattern to acquire a token looks like this.
 result = None
-
 result = app.acquire_token_for_client(scopes=[scope])
-
-print(result)
 accessToken = result['access_token']
+verify_https = True
+request_timeout = 10
 
-# relative url
-getstatus = "/v1/metadata/topics"
-request_url = kafkarest_endpoint + getstatus
+# Print access token
+print("Access token: " + accessToken)
 
-# sending get request and saving the response as response object
-response = requests.get(request_url, headers={'Authorization': accessToken})
+# API format
+api_version = 'v1'
+api_format = kafkarest_endpoint + '/{api_version}/{rest_api}'
+get_topic_api = 'metadata/topics'
+topic_api_format = 'topics/{topic_name}'
+producer_api_format = 'producer/topics/{topic_name}'
+consumer_api_format = 'consumer/topics/{topic_name}/partitions/{partition_id}/offsets/{offset}?count={count}'  # by default count = 1
+
+# Request header
+headers = {
+    'Authorization': 'Bearer ' + accessToken,
+    'Content-type': 'application/json'          # set Content-type to 'application/json'
+}
+
+# New topic
+new_topic = 'hello_topic_' + get_random_string()
+print("Topic " + new_topic + " is going to be used for demo.")
+
+topics = []
+
+# Create a  new topic
+# Example of topic config
+topic_config = {
+    "partition_count": 1,
+    "replication_factor": 1,
+    "topic_properties": {
+        "retention.ms": 604800000,
+        "min.insync.replicas": "1"
+    }
+}
+
+create_topic_url = api_format.format(api_version=api_version, rest_api=topic_api_format.format(topic_name=new_topic))
+response = requests.put(create_topic_url, headers=headers, json=topic_config, timeout=request_timeout, verify=verify_https)
 print(response.content)
+
+if response.ok:
+    while new_topic not in topics:
+        print("The new topic " + new_topic + " is not visible yet. sleep 30 seconds...")
+        time.sleep(30)
+        # List Topic
+        get_topic_url = api_format.format(api_version=api_version, rest_api=get_topic_api)
+
+        response = requests.get(get_topic_url, headers={'Authorization': 'Bearer ' + accessToken}, timeout=request_timeout, verify=verify_https)
+        topic_list = response.json()
+        topics = topic_list.get("topics", [])
+else:
+    print("Topic " + new_topic + " was created. Exit.")
+    sys.exit(1)
+
+# Produce messages to new_topic
+# Example payload of Producer REST API
+payload_json = {
+    "records": [
+        {
+            "key": "key1",
+            "value": "**********"
+        },
+        {
+            "value": "5"
+        },
+        {
+            "partition": 0,
+            "value": json.dumps(get_custom_value_json_object())  # need to be a serialized string. For example, "{\"static_value\": \"welcome to HDI Kafka REST proxy\", \"random_value\": \"pAPrgPk\"}"
+        },
+        {
+            "value": json.dumps(get_custom_value_json_object())  # need to be a serialized string. For example, "{\"static_value\": \"welcome to HDI Kafka REST proxy\", \"random_value\": \"pAPrgPk\"}"
+        }
+    ]
+}
+
+print("Producing 4 messages in a request: \n", payload_json)
+producer_url = api_format.format(api_version=api_version, rest_api=producer_api_format.format(topic_name=new_topic))
+response = requests.post(producer_url, headers=headers, json=payload_json, timeout=request_timeout, verify=verify_https)
+print(response.content)
+
+# Consume messages from the topic
+partition_id = 0
+offset = 0
+count = 2
+
+while True:
+    consumer_url = api_format.format(api_version=api_version, rest_api=consumer_api_format.format(topic_name=new_topic, partition_id=partition_id, offset=offset, count=count))
+    print("Consuming " + str(count) + " messages from offset " + str(offset))
+
+    response = requests.get(consumer_url, headers=headers, timeout=request_timeout, verify=verify_https)
+
+    if response.ok:
+        messages = response.json()
+        print("Consumed messages: \n" + json.dumps(messages, indent=2))
+        next_offset = response.headers.get("NextOffset")
+        if offset == next_offset or not messages.get("records", []):
+            print("Consumer caught up with producer. Exit for now...")
+            break
+
+        offset = next_offset
+
+    else:
+        print("Error " + str(response.status_code))
+        break
 ```
 
 curl コマンドを使用して REST プロキシ用のトークンを Azure から取得する方法については、以下の別のサンプルを参照してください。 **トークンの取得中に指定された `scope=https://hib.azurehdinsight.net/.default` が必要であることに注意してください。**

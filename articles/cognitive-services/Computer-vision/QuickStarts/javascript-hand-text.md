@@ -8,197 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 907b3ead8e39268bc73604599bd2c37b18ddfa21
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: 75c5b8fa8542de2bb3d7bed438d6025303f75cb0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676114"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407389"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>クイック スタート:Computer Vision の REST API と JavaScript を使用して印刷されたテキストと手書きテキストを抽出する
 
-このクイックスタートでは、Computer Vision の REST API を使って、印刷されたテキストや手書きテキストを画像から抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドと[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)メソッドを使うと、画像内のテキストを検出し、認識した文字をマシンで読み取り可能な文字ストリームに抽出することができます。 API では、各テキスト行に対してどの認識モデルを使用するかが決定されるため、印刷されたテキストと手書きのテキストの両方を含む画像がサポートされます。
-
-この機能は、v2.1 API と v3.0 パブリック プレビュー API の両方で使用できます。 v2.1 と比較すると、3.0 の API には次の特徴があります。
-
-* 精度の向上
-* 単語の信頼スコア
-* 追加の `language` パラメーターによるスペイン語および英語のサポート
-* 別の出力形式
-
-使用するバージョンのタブを下で選択してください。
-
-#### <a name="version-2"></a>[Version 2](#tab/version-2)
+このクイックスタートでは、Computer Vision の REST API を使って、印刷および手書きのテキストを画像から抽出します。 [読み取り](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)と[読み取り結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)メソッドを使うと、画像内のテキストを検出し、認識した文字をマシンで読み取り可能な文字ストリームに抽出することができます。 
 
 > [!IMPORTANT]
-> [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドは、非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドは、`Operation-Location` 応答ヘッダー フィールドの値に URI を返します。 その後、[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を表したこの URI を呼び出して、状態をチェックし、バッチ読み取りメソッドの呼び出しの結果を返すことができます。
-
-#### <a name="version-3-public-preview"></a>[バージョン 3 (パブリック プレビュー)](#tab/version-3)
-
-> [!IMPORTANT]
-> [バッチ読み取り](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d986960601faab4bf452005)メソッドは、非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドは、`Operation-Location` 応答ヘッダー フィールドの値に URI を返します。 その後、[読み取り操作結果](https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6/operations/5d9869604be85dee480c8750) API を表したこの URI を呼び出して、状態をチェックし、バッチ読み取りメソッドの呼び出しの結果を返すことができます。
-
----
+> [読み取り](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)メソッドは、非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドは、`Operation-Location` 応答ヘッダー フィールドの値に URI を返します。 その後、[読み取り結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) API を表すこの URI を呼び出して、状態をチェックし、読み取りメソッド呼び出しの結果を返すことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
-
-Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 サブスクリプション キーとエンドポイント URL を一時的な場所に保存します。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Computer Vision サービスに接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
-#### <a name="version-2"></a>[Version 2](#tab/version-2)
-
-このサンプルを作成して実行するには、次の手順を実行します。
-
-1. _get-text.html_ という名前のファイルを作成し、テキスト エディターで開き、次のコードをコピーします。
-1. 必要に応じて、テキストを抽出したい別の画像の URL で、`inputImage` コントロールの `value` 属性の値を置き換えます。
-1. ブラウザー ウィンドウを開きます。
-1. ブラウザーで、ブラウザー ウィンドウにファイルをドラッグ アンド ドロップします。
-1. Web ページがブラウザーに表示されたら、サブスクリプション キーとエンドポイント URL を適切な入力ボックスに貼り付けます。
-1. **[Read image]\(画像の読み取り\)** ボタンを選択します。
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Text Recognition Sample</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-</head>
-<body>
-
-<script type="text/javascript">
-    function processImage() {
-        // Fetch your Computer Vision key and endpoint for this sample.
-        var subscriptionKey = document.getElementById("subscriptionKey").value;
-        var endpoint = document.getElementById("endpointUrl").value;
-        
-        var uriBase = endpoint + "vision/v2.1/read/core/asyncBatchAnalyze";
-
-        // Display the image.
-        var sourceImageUrl = document.getElementById("inputImage").value;
-        document.querySelector("#sourceImage").src = sourceImageUrl;
-
-        // This operation requires two REST API calls. One to submit the image
-        // for processing, the other to retrieve the text found in the image.
-        //
-        // Make the first REST API call to submit the image for processing.
-        $.ajax({
-            url: uriBase,
-
-            // Request headers.
-            beforeSend: function(jqXHR){
-                jqXHR.setRequestHeader("Content-Type","application/json");
-                jqXHR.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-
-            type: "POST",
-
-            // Request body.
-            data: '{"url": ' + '"' + sourceImageUrl + '"}',
-        })
-
-        .done(function(data, textStatus, jqXHR) {
-            // Show progress.
-            $("#responseTextArea").val("Text submitted. " +
-                "Waiting 10 seconds to retrieve the recognized text.");
-
-            // Note: The response may not be immediately available. Text
-            // recognition is an asynchronous operation that can take a variable
-            // amount of time depending on the length of the text you want to
-            // recognize. You may need to wait or retry the GET operation.
-            //
-            // Wait ten seconds before making the second REST API call.
-            setTimeout(function () {
-                // "Operation-Location" in the response contains the URI
-                // to retrieve the recognized text.
-                var operationLocation = jqXHR.getResponseHeader("Operation-Location");
-
-                // Make the second REST API call and get the response.
-                $.ajax({
-                    url: operationLocation,
-
-                    // Request headers.
-                    beforeSend: function(jqXHR){
-                        jqXHR.setRequestHeader("Content-Type","application/json");
-                        jqXHR.setRequestHeader(
-                            "Ocp-Apim-Subscription-Key", subscriptionKey);
-                    },
-
-                    type: "GET",
-                })
-
-                .done(function(data) {
-                    // Show formatted JSON on webpage.
-                    $("#responseTextArea").val(JSON.stringify(data, null, 2));
-                })
-
-                .fail(function(jqXHR, textStatus, errorThrown) {
-                    // Display error message.
-                    var errorString = (errorThrown === "") ? "Error. " :
-                        errorThrown + " (" + jqXHR.status + "): ";
-                    errorString += (jqXHR.responseText === "") ? "" :
-                        (jQuery.parseJSON(jqXHR.responseText).message) ?
-                            jQuery.parseJSON(jqXHR.responseText).message :
-                            jQuery.parseJSON(jqXHR.responseText).error.message;
-                    alert(errorString);
-                });
-            }, 10000);
-        })
-
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            // Put the JSON description into the text area.
-            $("#responseTextArea").val(JSON.stringify(jqXHR, null, 2));
-
-            // Display error message.
-            var errorString = (errorThrown === "") ? "Error. " :
-                errorThrown + " (" + jqXHR.status + "): ";
-            errorString += (jqXHR.responseText === "") ? "" :
-                (jQuery.parseJSON(jqXHR.responseText).message) ?
-                    jQuery.parseJSON(jqXHR.responseText).message :
-                    jQuery.parseJSON(jqXHR.responseText).error.message;
-            alert(errorString);
-        });
-    };
-</script>
-<h1>Read text from image:</h1>
-Enter the URL to an image of text, then click
-the <strong>Read image</strong> button.
-<br><br>
-Subscription key: 
-<input type="text" name="subscriptionKey" id="subscriptionKey"
-    value="" /> 
-Endpoint URL:
-<input type="text" name="endpointUrl" id="endpointUrl"
-    value="" />
-<br><br>
-Image to read:
-<input type="text" name="inputImage" id="inputImage"
-    value="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg" />
-<button onclick="processImage()">Read image</button>
-<br><br>
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:
-        <br><br>
-        <textarea id="responseTextArea" class="UIInput"
-                  style="width:580px; height:400px;"></textarea>
-    </div>
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-        Source image:
-        <br><br>
-        <img id="sourceImage" width="400" />
-    </div>
-</div>
-</body>
-</html>
-```
-
-#### <a name="version-3-public-preview"></a>[バージョン 3 (パブリック プレビュー)](#tab/version-3)
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
@@ -225,27 +60,21 @@ Image to read:
 
         let subscriptionKey = document.getElementById("key").value;
         let endpoint = document.getElementById("endpoint").value;
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
-        let language = document.getElementById("language").value;
+        if (!subscriptionKey) { throw new Error('Please enter your subscription key and endpoint.'); }
         
-        var uriBase = endpoint + "/vision/v3.0-preview/read/analyze";
+        var uriBase = endpoint + "/vision/v3.0/read/analyze";
 
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
 
-        const params = {
-            language: language,
-        };
-
-        const searchParams = new URLSearchParams(params);
 
         // This operation requires two REST API calls. One to submit the image
         // for processing, the other to retrieve the text found in the image.
         //
         // Make the first REST API call to submit the image for processing.
         $.ajax({
-            url: uriBase + "?" + searchParams.toString(),
+            url: uriBase,
 
             // Request headers.
             beforeSend: function(jqXHR){
@@ -332,15 +161,10 @@ Endpoint:
 Subscription Key:    
 <input type="text" name="key" id="key" value="" style="width: 300px;"/>
 <br><br>
-Language: 
-<input type="text" name="language" id="language"
-    value="en" />
-<div style="margin: 20px;">Accepted values are &quot;en&quot; and &quot;es&quot;</div>
 
-<br><br>
 Image to read:
 <input type="text" name="inputImage" id="inputImage"
-    value="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg" />
+    value="https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg" />
 <button onclick="processImage()">Read image</button>
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">
@@ -357,418 +181,199 @@ Image to read:
     </div>
 </div>
 </body>
-</html>
 ```
 
----
+
 
 ## <a name="examine-the-response"></a>結果の確認
 
 成功応答が JSON で返されます。 サンプル Web ページによって成功応答が解析され、次の例のようにブラウザー ウィンドウに表示されます。
 
-#### <a name="version-2"></a>[Version 2](#tab/version-2)
-
-```json
-{
-  "status": "Succeeded",
-  "recognitionResults": [
-    {
-      "page": 1,
-      "clockwiseOrientation": 349.59,
-      "width": 3200,
-      "height": 3200,
-      "unit": "pixel",
-      "lines": [
-        {
-          "boundingBox": [202,618,2047,643,2046,840,200,813],
-          "text": "Our greatest glory is not",
-          "words": [
-            {
-              "boundingBox": [204,627,481,628,481,830,204,829],
-              "text": "Our"
-            },
-            {
-              "boundingBox": [519,628,1057,630,1057,832,518,830],
-              "text": "greatest"
-            },
-            {
-              "boundingBox": [1114,630,1549,631,1548,833,1114,832],
-              "text": "glory"
-            },
-            {
-              "boundingBox": [1586,631,1785,632,1784,834,1586,833],
-              "text": "is"
-            },
-            {
-              "boundingBox": [1822,632,2115,633,2115,835,1822,834],
-              "text": "not"
-            }
-          ]
-        },
-        {
-          "boundingBox": [420,1273,2954,1250,2958,1488,422,1511],
-          "text": "but in rising every time we fall",
-          "words": [
-            {
-              "boundingBox": [423,1269,634,1268,635,1507,424,1508],
-              "text": "but"
-            },
-            {
-              "boundingBox": [667,1268,808,1268,809,1506,668,1507],
-              "text": "in"
-            },
-            {
-              "boundingBox": [874,1267,1289,1265,1290,1504,875,1506],
-              "text": "rising"
-            },
-            {
-              "boundingBox": [1331,1265,1771,1263,1772,1502,1332,1504],
-              "text": "every"
-            },
-            {
-              "boundingBox": [1812, 1263, 2178, 1261, 2179, 1500, 1813, 1502],
-              "text": "time"
-            },
-            {
-              "boundingBox": [2219, 1261, 2510, 1260, 2511, 1498, 2220, 1500],
-              "text": "we"
-            },
-            {
-              "boundingBox": [2551, 1260, 3016, 1258, 3017, 1496, 2552, 1498],
-              "text": "fall"
-            }
-          ]
-        },
-        {
-          "boundingBox": [1612, 903, 2744, 935, 2738, 1139, 1607, 1107],
-          "text": "in never failing ,",
-          "words": [
-            {
-              "boundingBox": [1611, 934, 1707, 933, 1708, 1147, 1613, 1147],
-              "text": "in"
-            },
-            {
-              "boundingBox": [1753, 933, 2132, 930, 2133, 1144, 1754, 1146],
-              "text": "never"
-            },
-            {
-              "boundingBox": [2162, 930, 2673, 927, 2674, 1140, 2164, 1144],
-              "text": "failing"
-            },
-            {
-              "boundingBox": [2703, 926, 2788, 926, 2790, 1139, 2705, 1140],
-              "text": ",",
-              "confidence": "Low"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
-
-#### <a name="version-3-public-preview"></a>[バージョン 3 (パブリック プレビュー)](#tab/version-3)
 
 ```json
 {
   "status": "succeeded",
-  "createdDateTime": "2020-02-11T20:56:33Z",
-  "lastUpdatedDateTime": "2020-02-11T20:56:34Z",
+  "createdDateTime": "2020-05-28T05:13:21Z",
+  "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
   "analyzeResult": {
     "version": "3.0.0",
     "readResults": [
       {
         "page": 1,
         "language": "en",
-        "angle": 0.8206,
-        "width": 800,
-        "height": 154,
+        "angle": 0.8551,
+        "width": 2661,
+        "height": 1901,
         "unit": "pixel",
         "lines": [
           {
-            "language": "en",
             "boundingBox": [
-              6,
-              4,
-              774,
-              14,
-              773,
-              61,
-              5,
-              49
+              67,
+              646,
+              2582,
+              713,
+              2580,
+              876,
+              67,
+              821
             ],
-            "text": "The quick brown fox jumps over the lazy",
+            "text": "The quick brown fox jumps",
             "words": [
               {
                 "boundingBox": [
-                  14,
-                  5,
-                  76,
-                  6,
-                  74,
-                  49,
-                  12,
-                  48
+                  143,
+                  650,
+                  435,
+                  661,
+                  436,
+                  823,
+                  144,
+                  824
                 ],
                 "text": "The",
-                "confidence": 0.83
+                "confidence": 0.958
               },
               {
                 "boundingBox": [
-                  84,
-                  6,
-                  182,
-                  7,
-                  180,
-                  51,
-                  82,
-                  49
+                  540,
+                  665,
+                  926,
+                  679,
+                  926,
+                  825,
+                  541,
+                  823
                 ],
                 "text": "quick",
-                "confidence": 0.762
+                "confidence": 0.57
               },
               {
                 "boundingBox": [
-                  191,
-                  7,
-                  312,
-                  9,
-                  309,
-                  54,
-                  189,
-                  51
+                  1125,
+                  686,
+                  1569,
+                  700,
+                  1569,
+                  838,
+                  1125,
+                  828
                 ],
                 "text": "brown",
-                "confidence": 0.67
-              },
-              {
-                "boundingBox": [
-                  320,
-                  9,
-                  382,
-                  10,
-                  379,
-                  55,
-                  317,
-                  54
-                ],
-                "text": "fox",
-                "confidence": 0.849
-              },
-              {
-                "boundingBox": [
-                  390,
-                  10,
-                  497,
-                  11,
-                  493,
-                  57,
-                  387,
-                  55
-                ],
-                "text": "jumps",
-                "confidence": 0.703
-              },
-              {
-                "boundingBox": [
-                  506,
-                  11,
-                  596,
-                  12,
-                  591,
-                  59,
-                  502,
-                  57
-                ],
-                "text": "over",
                 "confidence": 0.799
               },
               {
                 "boundingBox": [
-                  604,
-                  12,
-                  666,
-                  13,
-                  661,
-                  60,
-                  600,
-                  59
+                  1674,
+                  703,
+                  1966,
+                  711,
+                  1966,
+                  851,
+                  1674,
+                  841
+                ],
+                "text": "fox",
+                "confidence": 0.442
+              },
+              {
+                "boundingBox": [
+                  2083,
+                  714,
+                  2580,
+                  725,
+                  2579,
+                  876,
+                  2083,
+                  855
+                ],
+                "text": "jumps",
+                "confidence": 0.878
+              }
+            ]
+          },
+          {
+            "boundingBox": [
+              187,
+              1062,
+              485,
+              1056,
+              486,
+              1120,
+              189,
+              1126
+            ],
+            "text": "over",
+            "words": [
+              {
+                "boundingBox": [
+                  190,
+                  1064,
+                  439,
+                  1059,
+                  441,
+                  1122,
+                  192,
+                  1126
+                ],
+                "text": "over",
+                "confidence": 0.37
+              }
+            ]
+          },
+          {
+            "boundingBox": [
+              664,
+              1008,
+              1973,
+              1023,
+              1969,
+              1178,
+              664,
+              1154
+            ],
+            "text": "the lazy dog!",
+            "words": [
+              {
+                "boundingBox": [
+                  668,
+                  1008,
+                  923,
+                  1015,
+                  923,
+                  1146,
+                  669,
+                  1117
                 ],
                 "text": "the",
-                "confidence": 0.923
+                "confidence": 0.909
               },
               {
                 "boundingBox": [
-                  674,
-                  13,
-                  773,
-                  14,
-                  768,
-                  62,
-                  670,
-                  60
+                  1107,
+                  1018,
+                  1447,
+                  1023,
+                  1445,
+                  1178,
+                  1107,
+                  1162
                 ],
                 "text": "lazy",
-                "confidence": 0.863
-              }
-            ]
-          },
-          {
-            "language": "en",
-            "boundingBox": [
-              5,
-              53,
-              79,
-              56,
-              77,
-              95,
-              4,
-              92
-            ],
-            "text": "dog",
-            "words": [
-              {
-                "boundingBox": [
-                  6,
-                  53,
-                  74,
-                  56,
-                  72,
-                  95,
-                  5,
-                  92
-                ],
-                "text": "dog",
-                "confidence": 0.418
-              }
-            ]
-          },
-          {
-            "language": "en",
-            "boundingBox": [
-              0,
-              90,
-              787,
-              95,
-              787,
-              145,
-              0,
-              136
-            ],
-            "text": "Pack my box with five dozen liquor jugs",
-            "words": [
-              {
-                "boundingBox": [
-                  1,
-                  96,
-                  79,
-                  93,
-                  79,
-                  135,
-                  0,
-                  136
-                ],
-                "text": "Pack",
-                "confidence": 0.835
+                "confidence": 0.853
               },
               {
                 "boundingBox": [
-                  87,
-                  93,
-                  151,
-                  92,
-                  151,
-                  135,
-                  87,
-                  135
+                  1639,
+                  1024,
+                  1974,
+                  1023,
+                  1971,
+                  1170,
+                  1636,
+                  1178
                 ],
-                "text": "my",
-                "confidence": 0.88
-              },
-              {
-                "boundingBox": [
-                  162,
-                  92,
-                  226,
-                  91,
-                  225,
-                  135,
-                  161,
-                  135
-                ],
-                "text": "box",
-                "confidence": 0.301
-              },
-              {
-                "boundingBox": [
-                  234,
-                  91,
-                  335,
-                  90,
-                  335,
-                  135,
-                  233,
-                  135
-                ],
-                "text": "with",
-                "confidence": 0.959
-              },
-              {
-                "boundingBox": [
-                  346,
-                  91,
-                  418,
-                  91,
-                  417,
-                  136,
-                  345,
-                  135
-                ],
-                "text": "five",
-                "confidence": 0.489
-              },
-              {
-                "boundingBox": [
-                  426,
-                  91,
-                  527,
-                  93,
-                  527,
-                  138,
-                  425,
-                  136
-                ],
-                "text": "dozen",
-                "confidence": 0.727
-              },
-              {
-                "boundingBox": [
-                  554,
-                  94,
-                  687,
-                  98,
-                  687,
-                  143,
-                  553,
-                  139
-                ],
-                "text": "liquor",
-                "confidence": 0.377
-              },
-              {
-                "boundingBox": [
-                  701,
-                  99,
-                  787,
-                  103,
-                  787,
-                  146,
-                  700,
-                  143
-                ],
-                "text": "jugs",
-                "confidence": 0.693
+                "text": "dog!",
+                "confidence": 0.41
               }
             ]
           }
@@ -779,7 +384,6 @@ Image to read:
 }
 ```
 
----
 
 ## <a name="next-steps"></a>次のステップ
 

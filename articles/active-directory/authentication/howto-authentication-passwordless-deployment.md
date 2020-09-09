@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451433"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717151"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -43,9 +43,9 @@ ms.locfileid: "81451433"
 ## <a name="passwordless-authentication-methods"></a>パスワードレス認証方法
 Microsoft では、多くのシナリオに対応する 3 つのパスワードなし認証オプションが提供されています。 これらの方法は、同時に使用することができます。
 
-- [Windows Hello for Business](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) は、専用の Windows コンピューターを使用するユーザーに最適です。
-- [FIDO2 セキュリティ キー](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless)でのセキュリティ キー サインインは、キオスクなどの共有マシンにサインインするユーザー、電話の使用が制限されている状況、および高い特権を持つ ID に対して特に便利です。
-- [Microsoft Authenticator アプリ](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless)での電話サインインは、モバイル デバイスを使用するユーザーにパスワードなしのオプションを提供する場合に便利です。 Authenticator アプリは、ユーザーが任意のプラットフォームまたはブラウザーにサインインできるようにすることで、iOS または Android の電話を強力なパスワードなしの資格情報に変えます。 ユーザーは電話で通知を受け取り、画面に表示されている番号を自分の電話の番号と照合し、生体認証データまたは PIN を使用することで、サインインします。
+- [Windows Hello for Business](./concept-authentication-passwordless.md) は、専用の Windows コンピューターを使用するユーザーに最適です。
+- [FIDO2 セキュリティ キー](./concept-authentication-passwordless.md)でのセキュリティ キー サインインは、キオスクなどの共有マシンにサインインするユーザー、電話の使用が制限されている状況、および高い特権を持つ ID に対して特に便利です。
+- [Microsoft Authenticator アプリ](./concept-authentication-passwordless.md)での電話サインインは、モバイル デバイスを使用するユーザーにパスワードなしのオプションを提供する場合に便利です。 Authenticator アプリは、ユーザーが任意のプラットフォームまたはブラウザーにサインインできるようにすることで、iOS または Android の電話を強力なパスワードなしの資格情報に変えます。 ユーザーは電話で通知を受け取り、画面に表示されている番号を自分の電話の番号と照合し、生体認証データまたは PIN を使用することで、サインインします。
 
 ### <a name="passwordless-authentication-scenarios"></a>パスワードなし認証のシナリオ
 
@@ -59,7 +59,7 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 | **Web アプリのサインイン**: <br> モバイル デバイスまたは Windows 以外のデバイスから | **はい** | **いいえ** | **いいえ** |
 | **コンピューターでのサインイン**:  <br> Windows 以外のコンピューター | **いいえ** | **いいえ** | **いいえ** |
 
-ご自分の組織に最適な方法を選択する詳細については、「[パスワードレスの方法を決定する](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)」を参照してください。
+ご自分の組織に最適な方法を選択する詳細については、「[パスワードレスの方法を決定する](./concept-authentication-passwordless.md#choose-a-passwordless-method)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,11 +72,11 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 | [ユーザーが Azure Multi-Factor Authentication と SSPR の登録をしている](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [ユーザーがモバイル デバイスを Azure Active Directory に登録している](../devices/overview.md) | √ |   |
 | Microsoft Edge や Mozilla Firefox などのサポートされているブラウザーを使用している Windows 10 バージョン 1809 以降 <br> (バージョン 67 以降)。 <br> *ネイティブ サポートには 1903 以降のバージョンをお勧めします*。 |   | √ |
-| 互換性のある FIDO2 セキュリティ キー。 [Microsoft でテストおよび検証済み](howto-authentication-passwordless-enable.md)の FIDO2 セキュリティ デバイスまたは他の互換性のある FIDO2 セキュリティ デバイスを確実に使用します。 |   | √ |
+| 互換性のある FIDO2 セキュリティ キー。 [Microsoft でテストおよび検証済み](./concept-authentication-passwordless.md)の FIDO2 セキュリティ デバイスまたは他の互換性のある FIDO2 セキュリティ デバイスを確実に使用します。 |   | √ |
 
 ### <a name="prerequisites-for-windows-hello-for-business"></a>Windows Hello for Business の前提条件
 
-Windows Hello の前提条件は、オンプレミス、ハイブリッド、クラウドのみのどの構成にデプロイするかに大きく依存します。 詳細については、[Windows Hello for Business の前提条件の完全な一覧](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)を参照してください。
+Windows Hello の前提条件は、オンプレミス、ハイブリッド、クラウドのみのどの構成にデプロイするかに大きく依存します。 詳細については、[Windows Hello for Business の前提条件の完全な一覧](/windows/security/identity-protection/hello-for-business/hello-identity-verification)を参照してください。
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -132,7 +132,7 @@ Microsoft では、伝達方法の原案として役立つ Azure Multi-Factor Au
 
 Microsoft Authenticator アプリは Google Play または Apple App Store から無償でダウンロードできます。 Microsoft Authenticator アプリのダウンロードの詳細については、[こちら](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)を参照してください。 ユーザーに Microsoft Authenticator アプリをダウンロードしてもらい、 指示に従って電話によるサインインを有効にしてもらいます。 
 
-これにより任意の iOS や Android フォンが、強力なパスワードレスの資格情報に変わります。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証または PIN を使用することで、任意のプラットフォームまたはブラウザーにサインインします。 Microsoft Authenticator アプリのしくみについて詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app)を参照してください。
+これにより任意の iOS や Android フォンが、強力なパスワードレスの資格情報に変わります。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証または PIN を使用することで、任意のプラットフォームまたはブラウザーにサインインします。 Microsoft Authenticator アプリのしくみについて詳しくは、[こちら](./concept-authentication-passwordless.md#microsoft-authenticator-app)を参照してください。
 
 ![Authenticator アプリを使用したサインイン](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 
@@ -150,7 +150,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 -    サポートされているブラウザーでの Azure Active Directory Web アプリ
 -    Azure Active Directory 参加済み Windows 10 デバイス
 -    ハイブリッド Azure Active Directory 参加済み Windows 10 デバイス (プレビュー)
-     -    クラウドベースとオンプレミスの両方のリソースへのアクセスを提供します。 オンプレミスのリソースへのアクセスの詳細については、「[FIDO2 キーを使用したオンプレミスのリソースへの SSO](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)」を参照してください。
+     -    クラウドベースとオンプレミスの両方のリソースへのアクセスを提供します。 オンプレミスのリソースへのアクセスの詳細については、「[FIDO2 キーを使用したオンプレミスのリソースへの SSO](./howto-authentication-passwordless-security-key-on-premises.md)」を参照してください。
 
 **互換性のある FIDO2 セキュリティ キー**を有効にする必要があります。 Microsoft は、[FIDO2 キー ベンダーとの重要なパートナーシップ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493)を発表しました。
 
@@ -164,7 +164,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 -    Windows Server 2016 または 2019 を実行している、完全にパッチが適用されたドメイン サーバー。
 -    最新バージョンの Azure AD Connect
 
-要件の完全な一覧については、「[Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-windows#requirements)」を参照してください。
+要件の完全な一覧については、「[Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする](./howto-authentication-passwordless-security-key-windows.md#requirements)」を参照してください。
 
 
 ### <a name="security-key-life-cycle"></a>セキュリティ キーのライフサイクル
@@ -320,7 +320,7 @@ FIDO2 セキュリティ デバイスを既に登録しているユーザーに�
 | --- | --- |
 | ユーザーが、統合された登録を実行できない。 | [統合された登録](concept-registration-mfa-sspr-combined.md)が有効になっていることを確認します。 |
 | ユーザーが[セキュリティの設定](https://aka.ms/mysecurityinfo)でセキュリティ キーを追加できない。 | [セキュリティ キー](howto-authentication-passwordless-security-key.md)が有効になっていることを確認します。 |
-| ユーザーが Windows 10 のサインイン オプションでセキュリティ キーを追加できない。 | [Windows サインイン用のセキュリティ キーを確認します](howto-authentication-passwordless-enable.md) |
+| ユーザーが Windows 10 のサインイン オプションでセキュリティ キーを追加できない。 | [Windows サインイン用のセキュリティ キーを確認します](./concept-authentication-passwordless.md) |
 | **エラー メッセージ**:We detected that this browser or OS doesn't support FIDO2 security keys. (このブラウザーまたは OS では FIDO2 セキュリティ キーがサポートされていないことが検出されました。) | パスワードなしの FIDO2 セキュリティ デバイスは、Windows 10 バージョン 1809 以降のサポートされているブラウザー (Microsoft Edge、Firefox バージョン 67) でのみ登録できます。 |
 | **エラー メッセージ**:会社のポリシーでは、別の方法を使用してサインインする必要があります。 | テナントでセキュリティ キーが有効になっているかどうか不明です。 |
 | ユーザーが Windows 10 バージョン 1809 でセキュリティ キーを管理できない | バージョン 1809 では、FIDO2 キー ベンダーによって提供されるセキュリティ キー管理ソフトウェアを使用する必要があります。 ベンダーにサポートについてお問い合わせください。 |
@@ -331,4 +331,3 @@ FIDO2 セキュリティ デバイスを既に登録しているユーザーに�
 - [Azure AD へのパスワードなしのセキュリティ キー サインインを有効にする](howto-authentication-passwordless-security-key.md)
 - [Microsoft Authenticator アプリでパスワードなしのサインインを有効にする](howto-authentication-passwordless-phone.md)
 - [認証方法の使用状況と分析情報の詳細を確認する](howto-authentication-methods-usage-insights.md)
-

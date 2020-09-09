@@ -1,25 +1,25 @@
 ---
 title: Apache Hadoop での Apache Sqoop - Azure HDInsight
-description: Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。
+description: Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と Azure SQL Database の間でインポートとエクスポートを行う方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0761ea059350369a363ee1022b21c9da2702b396
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74769389"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076115"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と Azure SQL Database の間でデータをインポートおよびエクスポートする
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database または Microsoft SQL Server データベースの間のインポートとエクスポートに Apache Sqoop を使用する方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。 この記事は、「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の続きです。
+Apache Sqoop を使用して、Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database または Microsoft SQL Server の間でインポートとエクスポートを行う方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。 この記事は、「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の続きです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,9 +51,9 @@ Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database ま�
 
 ## <a name="sqoop-export"></a>Sqoop のエクスポート
 
-Hive から SQL Server へ
+Hive から SQL へ。
 
-1. Sqoop が SQL Database を認識できることを確認するには、開いた SSH 接続に次のコマンドを入力します。 このコマンドはデータベースの一覧を返します。
+1. Sqoop でデータベースを認識できることを確認するには、開いている SSH 接続に次のコマンドを入力します。 このコマンドはデータベースの一覧を返します。
 
     ```bash
     sqoop list-databases --connect $serverConnect
@@ -65,7 +65,7 @@ Hive から SQL Server へ
     sqoop list-tables --connect $serverDbConnect
     ```
 
-1. Hive `hivesampletable` テーブルから `mobiledata` SQL Database 内のテーブルにデータをエクスポートするには、開いた SSH 接続に次のコマンドを入力します。
+1. Hive `hivesampletable` テーブルからデータベース内の `mobiledata` テーブルにデータをエクスポートするには、開いている SSH 接続に次のコマンドを入力します。
 
     ```bash
     sqoop export --connect $serverDbConnect \
@@ -86,9 +86,9 @@ Hive から SQL Server へ
 
 ## <a name="sqoop-import"></a>Sqoop のインポート
 
-SQL Server から Azure Storage へ
+SQL から Azure のストレージへ。
 
-1. 開いた SSH 接続に次のコマンドを入力して、SQL Database 内の `mobiledata` テーブルから HDInsight 上の `wasbs:///tutorials/usesqoop/importeddata` ディレクトリにデータをインポートします。 データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
+1. 開いている SSH 接続に次のコマンドを入力して、SQL 内の `mobiledata` テーブルから HDInsight 上の `wasbs:///tutorials/usesqoop/importeddata` ディレクトリにデータをインポートします。 データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -138,7 +138,7 @@ SQL Server から Azure Storage へ
 
 ## <a name="limitations"></a>制限事項
 
-* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは一括挿入をサポートしません。
+* 一括エクスポート - Linux ベースの HDInsight を使用する場合、SQL にデータをエクスポートするために使用する Sqoop コネクタでは、一括挿入はサポートされません。
 
 * バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を行います。
 
@@ -159,5 +159,5 @@ SQL Server から Azure Storage へ
 ここでは Sqoop の使用方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie-linux-mac.md):Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析](../interactive-query/interactive-query-tutorial-analyze-flight-data.md):Interactive Query を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
+* [HDInsight を使用したフライト遅延データの分析](../interactive-query/interactive-query-tutorial-analyze-flight-data.md):Interactive Query を使用してフライト遅延データを分析してから、Sqoop を使用して Azure のデータベースにデータをエクスポートします。
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。

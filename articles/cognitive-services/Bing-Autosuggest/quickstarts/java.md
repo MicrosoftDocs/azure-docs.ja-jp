@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: b3f279ea50e9923e63f7d6090f4dbaca939eb16c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4850daf8544129e29333be6a807c91106cc11f05
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238967"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321090"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>クイック スタート:Bing Autosuggest REST API と Java で検索クエリの候補を表示する
 
-
-このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Java アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)入手できます。
+このクイックスタートでは、Bing Autosuggest API を呼び出して JSON 応答を読み取る方法について説明します。 このシンプルな Java アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -73,7 +73,7 @@ public static String prettify(String json_text) {
 
 1. `get_suggestions()` という名前の新しいメソッドを作成して次の手順を実行します。
 
-   1. API のホストとパス、検索クエリのエンコーディングを組み合わせて要求の URL を作成します。 クエリは必ず URL エンコードしたうえで追加してください。 `mkt=` パラメーターに市場コードを、`q=` パラメーターに目的のクエリを付加して、クエリのパラメーター文字列を作成します。
+   1. API のホストとパス、検索クエリのエンコードを組み合わせて要求の URL を作成します。 クエリは必ず URL エンコードしたうえで追加してください。 `mkt=` パラメーターに市場コードを、`q=` パラメーターに目的のクエリを付加して、クエリのパラメーター文字列を作成します。
     
       ```java
   
@@ -84,7 +84,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. 先に作成しておいた API のホストとパス、パラメーターで、要求の新しい URL を作成します。 
+   2. 前の手順で作成しておいた API のホストとパス、パラメーターで、要求の新しい URL を作成します。 
     
        ```java
        //...
@@ -103,7 +103,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. API 応答を `StringBuilder` に読み込みます。 応答がキャプチャされたら、`InputStreamReader` ストリームを閉じて応答を返します。
+   4. API の応答を `StringBuilder` に格納します。 応答がキャプチャされたら、`InputStreamReader` ストリームを閉じて応答を返します。
 
        ```java
        //...

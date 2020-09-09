@@ -3,15 +3,15 @@ title: Azure PowerShell を使用して Azure ネットワーク セキュリテ
 description: Azure PowerShell を使用して Azure ネットワーク セキュリティ グループを Azure リージョン間で移動するには、Azure Resource Manager テンプレートを使用します。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75641470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688451"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure ネットワーク セキュリティ グループ (NSG) を別のリージョンに移動する
 
@@ -106,7 +106,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
     Get-AzLocation | format-table
     
     ```
-8. また、必要に応じて、 **\<リソース グループ名>.json** 内の他のパラメーターも変更できます。これは要件に基づくものであり、自由選択です。
+8. また、必要に応じて、 **\<resource-group-name>.json** 内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
 
     * **セキュリティ規則** - **\<resource-group-name>.json** ファイルの **securityRules** セクションで規則を追加または削除することで、移動先 NSG にデプロイされた規則を編集できます。
 

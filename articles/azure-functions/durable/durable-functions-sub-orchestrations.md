@@ -4,12 +4,12 @@ description: Azure Functions の拡張機能である Durable Functions のオ�
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5625bc2ddfa4b6f527ca16f19f33d257a1834d4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76261519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340820"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのサブオーケストレーション
 
@@ -18,6 +18,10 @@ ms.locfileid: "76261519"
 オーケストレーター関数からは、.NET の `CallSubOrchestratorAsync` または `CallSubOrchestratorWithRetryAsync` メソッド、または JavaScript の `callSubOrchestrator` または `callSubOrchestratorWithRetry` メソッドを使用して、別のオーケストレーター関数を呼び出すことができます。 [エラー処理と補正](durable-functions-error-handling.md#automatic-retry-on-failure)の記事で自動再試行の詳細について説明しています。
 
 呼び出し元から見ると、サブオーケストレーター関数はアクティビティ関数と同じように動作します。 それらは値を返したり、例外をスローしたり、親のオーケストレーター関数によって待機させたりすることができます。 
+
+> [!NOTE]
+> サブオーケストレーションは現在、.NET と JavaScript でサポートされています。
+
 ## <a name="example"></a>例
 
 次の例では、プロビジョニングが必要な複数のデバイスがある IoT ("モノのインターネット") シナリオについて説明しています。 次の関数は、各デバイスに対して実行する必要があるプロビジョニング ワークフローを表します。

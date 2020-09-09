@@ -4,12 +4,12 @@ description: Linux クラスター上の Service Fabric ランタイムを使用
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a97c8b8315fe3be405aed9c6570004afb8fafd1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236731"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258668"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux クラスター上の証明書とセキュリティ
 
@@ -21,11 +21,11 @@ Service Fabric では通常、X.509 証明書が Linux クラスター ノード
 
 Linux クラスターの場合、Service Fabric が証明書として受け付けるのは、証明書と秘密キーの両方を格納した .pem ファイルか、証明書を格納した .crt ファイルと秘密キーを格納した .key ファイルのセットです。 すべてのファイルを PEM 形式にする必要があります。 
 
-[Resource Manager テンプレート](./service-fabric-cluster-creation-create-template.md)または [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) コマンドを使って Azure Key Vault から証明書をインストールした場合、証明書は各ノードの */var/lib/sfcerts* ディレクトリに正しい形式でインストールされます。 その他の方法で証明書をインストールした場合は、クラスター ノード上で証明書が正しくインストールされていることを確認する必要があります。
+[Resource Manager テンプレート](./service-fabric-cluster-creation-create-template.md)または [PowerShell](/powershell/module/az.servicefabric/?view=azps-2.6.0) コマンドを使って Azure Key Vault から証明書をインストールした場合、証明書は各ノードの */var/lib/sfcerts* ディレクトリに正しい形式でインストールされます。 その他の方法で証明書をインストールした場合は、クラスター ノード上で証明書が正しくインストールされていることを確認する必要があります。
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>アプリケーション マニフェストで参照される証明書
 
-[**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 要素や [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) 要素を使用してアプリケーション マニフェスト内に指定された証明書は、 */var/lib/sfcerts* ディレクトリに置かれている必要があります。 アプリケーション マニフェスト内で証明書を指定するために使用される要素はパス属性を取らないため、証明書は既定のディレクトリに置かれる必要があります。 これらの要素は、オプションの **X509StoreName** 属性を取ります。 既定値は "My" です。これは、Linux ノード上の */var/lib/sfcerts* ディレクトリを指します。 その他の値は、Linux クラスター上では定義されません。 Linux クラスター上で実行されるアプリについては、**X509StoreName** 属性を省略することをお勧めします。 
+[**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) 要素や [**EndpointCertificate**](./service-fabric-service-model-schema-elements.md#endpointcertificate-element) 要素を使用してアプリケーション マニフェスト内に指定された証明書は、 */var/lib/sfcerts* ディレクトリに置かれている必要があります。 アプリケーション マニフェスト内で証明書を指定するために使用される要素はパス属性を取らないため、証明書は既定のディレクトリに置かれる必要があります。 これらの要素は、オプションの **X509StoreName** 属性を取ります。 既定値は "My" です。これは、Linux ノード上の */var/lib/sfcerts* ディレクトリを指します。 その他の値は、Linux クラスター上では定義されません。 Linux クラスター上で実行されるアプリについては、**X509StoreName** 属性を省略することをお勧めします。 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>構成パッケージ (Settings.xml) で参照される証明書
 
@@ -33,7 +33,7 @@ Linux クラスターの場合、Service Fabric が証明書として受け付�
 
 ### <a name="using-x509-securitycredentialstype"></a>X509 SecurityCredentialsType の使用
 
-.NET と Java SDK では、**SecurityCredentialsType** に対して **X509** を指定できます。 これは、`SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) の `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) タイプに対応します。
+.NET と Java SDK では、**SecurityCredentialsType** に対して **X509** を指定できます。 これは、`SecurityCredentials` ([.NET](/previous-versions/azure/reference/mt124894(v=azure.100))/[Java](/java/api/system.fabric.securitycredentials)) の `X509Credentials` ([.NET](/previous-versions/azure/reference/mt124925(v=azure.100))/[Java](/java/api/system.fabric.x509credentials)) タイプに対応します。
 
 **X509** 参照では、証明書ストア内の証明書の場所が特定されます。 次の XML は、証明書の場所を指定するためのパラメーターを示したものです。
 
@@ -64,7 +64,7 @@ Linux 上で実行されるサービスの場合、**LocalMachine**/**My** は�
 
 ### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType の使用
 
-Java SDK では、**SecurityCredentialsType** に **X509_2** を指定することができます。 これは、`SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) の `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) タイプに対応します。 
+Java SDK では、**SecurityCredentialsType** に **X509_2** を指定することができます。 これは、`SecurityCredentials` ([Java](/java/api/system.fabric.securitycredentials)) の `X509Credentials2` ([Java](/java/api/system.fabric.x509credentials2)) タイプに対応します。 
 
 **X509_2** 参照では、パスのパラメーターを指定するので、 */var/lib/sfcerts* 以外のディレクトリにある証明書を特定することができます。  次の XML は、証明書の場所を指定するためのパラメーターを示したものです。 
 
@@ -94,7 +94,7 @@ Java SDK では、**SecurityCredentialsType** に **X509_2** を指定するこ�
 
 Service Fabric SDK では、Service Fabric ランタイム API と通信して、プラットフォームを利用することができます。 セキュリティで保護された Linux クラスター上でこの機能を使ったアプリケーションを実行する場合は、Service Fabric ランタイムに対する検証に使用できる証明書を使って、アプリケーションを構成する必要があります。 .NET Core または Java SDK を使って記述された Service Fabric Reliable Service サービスを含むアプリケーションでは、この構成が必要になります。 
 
-アプリケーションを構成するには、*ApplicationManifest.xml* ファイル内の **ApplicationManifest** タグの下にある、**Certificates** タグの下に [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 要素を追加します。 次の XML は、サムプリントによって参照される証明書を示したものです。 
+アプリケーションを構成するには、*ApplicationManifest.xml* ファイル内の **ApplicationManifest** タグの下にある、**Certificates** タグの下に [**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) 要素を追加します。 次の XML は、サムプリントによって参照される証明書を示したものです。 
 
 ```xml
    <Certificates>
@@ -103,6 +103,3 @@ Service Fabric SDK では、Service Fabric ランタイム API と通信して�
 ```
 
 参照できるのは、クラスター証明書か、各クラスター ノードにインストールされた証明書です。 Linux では、証明書ファイルは */var/lib/sfcerts* ディレクトリに置かれる必要があります。 詳しくは、「[Linux ノード上の X.509 証明書の場所と形式](#location-and-format-of-x509-certificates-on-linux-nodes)」をご覧ください。
-
-
-

@@ -14,14 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 11902e363428a45bc158a99d251343e13b62540d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 6ac638d9062f31b68d3e1954688dde7ed40c4d2c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836432"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258301"
 ---
-# <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
+# <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 この Azure Media Services (AMS) コミュニティ ページでは、AMS に関する最新情報を取得するさまざまな方法が話し合われています。 新しいビデオとポッドキャストを参照したり、質問してフィードバックをもらったりすることができます。   
 
@@ -48,7 +50,7 @@ Twitter ハンドル [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) を�
 
 現在、Media Services チームの主要なコミュニティ フォーラムは MSDN です。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 また同チームでは、Stack Overflow に "azure-media-services" タグで投稿された質問をモニタリングしています。
 

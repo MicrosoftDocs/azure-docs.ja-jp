@@ -5,15 +5,15 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261768"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割されたグラフの使用
 
@@ -21,7 +21,7 @@ Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケ
 
 コンテナーに格納されるサイズが 20 GB を超えることが予想される場合、または 1 秒間に 10,000 を超える数の要求ユニット (RU) を割り当てたい場合は、**パーティション分割が必要です**。 [Azure Cosmos DB のパーティション分割メカニズム](partition-data.md)と同じ一般原則が、以下で説明するグラフ固有の最適化でも適用されます。
 
-![グラフのパーティション分割](./media/graph-partitioning/graph-partitioning.png)
+:::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="グラフのパーティション分割" border="false":::
 
 ## <a name="graph-partitioning-mechanism"></a>グラフのパーティション分割メカニズム
 

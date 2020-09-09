@@ -5,12 +5,12 @@ author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610150"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261226"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 
@@ -158,23 +158,23 @@ Service fabric では、アプリケーション、サービス、およびパ�
 
 これらのデータのバックアップ要件に対処するには、バックアップ ポリシー BP_1 から BP_5 を作成し、以下のようにバックアップを有効にします。
 1. MyApp_A
-    1. バックアップ ポリシー _BP_1_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API を使用して、アプリケーション _MyApp_A_ に対してこのポリシーを有効にします。 このアクションによって、アプリケーション _MyApp_A_ に属する _Reliable Stateful Services_ と _Reliable Actors_ のすべてのパーティションに対して、バックアップ ポリシー _BP_1_ を使用したデータのバックアップが有効になります。
+    1. バックアップ ポリシー _BP_1_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API を使用して、アプリケーション _MyApp_A_ に対してこのポリシーを有効にします。 このアクションによって、アプリケーション _MyApp_A_ に属する _Reliable Stateful Services_ と _Reliable Actors_ のすべてのパーティションに対して、バックアップ ポリシー _BP_1_ を使用したデータのバックアップが有効になります。
 
-    2. バックアップ ポリシー _BP_2_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 1 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcA3_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー _BP_1_ が、サービス _SvcA3_ のすべてのパーティションに対して明示的に有効化されたバックアップ ポリシー _BP_2_ によって上書きされ、これらのパーティションでバックアップ ポリシー _BP_2_ が使用されるようになります。
+    2. バックアップ ポリシー _BP_2_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 1 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcA3_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー _BP_1_ が、サービス _SvcA3_ のすべてのパーティションに対して明示的に有効化されたバックアップ ポリシー _BP_2_ によって上書きされ、これらのパーティションでバックアップ ポリシー _BP_2_ が使用されるようになります。
 
-    3. バックアップ ポリシー _BP_3_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore2_ を使用するように構成されます。 [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcA1_P2_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー _BP_1_ が、パーティション _SvcA1_P2_ に対して明示的に有効化されたバックアップ ポリシー _BP_3_ によって上書きされます。
+    3. バックアップ ポリシー _BP_3_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore2_ を使用するように構成されます。 [Enable Partition Backup](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcA1_P2_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー _BP_1_ が、パーティション _SvcA1_P2_ に対して明示的に有効化されたバックアップ ポリシー _BP_3_ によって上書きされます。
 
 2. MyApp_B
-    1. バックアップ ポリシー _BP_4_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は週次に設定され、実行日は日曜日に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcB1_ に対してこのポリシーを有効にします。 このアクションによって、サービス _SvcB1_ のすべてのパーティションに対して、バックアップ ポリシー _BP_4_ を使用したデータのバックアップが有効になります。
+    1. バックアップ ポリシー _BP_4_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は週次に設定され、実行日は日曜日に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcB1_ に対してこのポリシーを有効にします。 このアクションによって、サービス _SvcB1_ のすべてのパーティションに対して、バックアップ ポリシー _BP_4_ を使用したデータのバックアップが有効になります。
 
-    2. バックアップ ポリシー _BP_5_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は日次に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcB2_P1_ に対してこのポリシーを有効にします。 このアクションによって、パーティション _SvcB2_P1_ に対して、バックアップ ポリシー _BP_5_ を使用したデータのバックアップが有効になります。
+    2. バックアップ ポリシー _BP_5_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は日次に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Partition Backup](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcB2_P1_ に対してこのポリシーを有効にします。 このアクションによって、パーティション _SvcB2_P1_ に対して、バックアップ ポリシー _BP_5_ を使用したデータのバックアップが有効になります。
 
 次の図は、明示的に有効になっているバックアップ ポリシーと、伝達されたバックアップ ポリシーを示しています。
 
 ![Service Fabric アプリケーションの階層][0]
 
 ## <a name="disable-backup"></a>バックアップを無効にする
-データをバックアップする必要がない場合は、バックアップ ポリシーを無効にできます。 "_アプリケーション_" で有効なバックアップ ポリシーは、[Disable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API を使用して、同じ "_アプリケーション_" でのみ無効にでき、"_サービス_" で有効なバックアップ ポリシーは、[Disable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API を使用して、同じ "_サービス_" で無効にでき、"_パーティション_" で有効なバックアップ ポリシーは、 [Disable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API を使用して、同じ "_パーティション_" で無効にできます。
+データをバックアップする必要がない場合は、バックアップ ポリシーを無効にできます。 "_アプリケーション_" で有効なバックアップ ポリシーは、[Disable Application Backup](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API を使用して、同じ "_アプリケーション_" でのみ無効にでき、"_サービス_" で有効なバックアップ ポリシーは、[Disable Service Backup](/rest/api/servicefabric/sfclient-api-disableservicebackup) API を使用して、同じ "_サービス_" で無効にでき、"_パーティション_" で有効なバックアップ ポリシーは、 [Disable Partition Backup](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API を使用して、同じ "_パーティション_" で無効にできます。
 
 * "_アプリケーション_" に対するバックアップ ポリシーを無効にすると、Reliable Stateful Services パーティションまたは Reliable Actors パーティションへのバックアップ ポリシーの伝達の結果発生するすべてのデータの定期バックアップが停止します。
 
@@ -192,19 +192,19 @@ Service fabric では、アプリケーション、サービス、およびパ�
 ## <a name="suspend--resume-backup"></a>バックアップの中断と再開
 データの定期バックアップを一時的に中断しなければならない特定の状況が発生する場合があります。 このような状況では、要件に応じて、"_アプリケーション_"、"_サービス_"、または "_パーティション_" で Suspend Backup API を使用できます。 定期バックアップの中断は、中断が適用されたアプリケーションの階層からサブツリーに伝達されます。 
 
-* [Suspend Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API を使用して "_アプリケーション_" に中断を適用した場合は、そのアプリケーションの下のすべてのサービスとパーティションで、データの定期バックアップが中断されます。
+* [Suspend Application Backup](/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) API を使用して "_アプリケーション_" に中断を適用した場合は、そのアプリケーションの下のすべてのサービスとパーティションで、データの定期バックアップが中断されます。
 
-* [Suspend Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) API を使用して "_サービス_" に中断を適用した場合は、そのサービスの下のすべてのパーティションで、データの定期バックアップが中断されます。
+* [Suspend Service Backup](/rest/api/servicefabric/sfclient-api-suspendservicebackup) API を使用して "_サービス_" に中断を適用した場合は、そのサービスの下のすべてのパーティションで、データの定期バックアップが中断されます。
 
-* [Suspend Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API を使用して "_パーティション_" に中断を適用した場合は、そのサービスの下のパーティションで、データの定期バックアップが中断されます。
+* [Suspend Partition Backup](/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) API を使用して "_パーティション_" に中断を適用した場合は、そのサービスの下のパーティションで、データの定期バックアップが中断されます。
 
 中断する必要がなくなったら、該当する Resume Backup API を使用して、データの定期バックアップを復元できます。 定期バックアップは、中断された "_アプリケーション_"、"_サービス_"、または "_パーティション_ " で再開する必要があります。
 
-* 中断が "_アプリケーション_" に適用された場合は、[Resume Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API を使用して再開する必要があります。 
+* 中断が "_アプリケーション_" に適用された場合は、[Resume Application Backup](/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) API を使用して再開する必要があります。 
 
-* 中断が "_サービス_" に適用された場合は、[Resume Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API を使用して再開する必要があります。
+* 中断が "_サービス_" に適用された場合は、[Resume Service Backup](/rest/api/servicefabric/sfclient-api-resumeservicebackup) API を使用して再開する必要があります。
 
-* 中断が "_パーティション_" に適用された場合は、[Resume Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API を使用して再開する必要があります。
+* 中断が "_パーティション_" に適用された場合は、[Resume Partition Backup](/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API を使用して再開する必要があります。
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>中断とバックアップの無効化の違い
 バックアップの無効化は、特定のアプリケーション、サービスまたはパーティションでバックアップが不要となった場合に使用する必要があります。 クリーン バックアップ パラメーターを true に (既存のバックアップもすべて削除されるように) 設定すると共に、バックアップの無効化要求を呼び出すことができます。 しかし、ローカル ディスクがいっぱいになった場合や、既知のネットワークの問題などによりバックアップのアンロードが失敗する場合など、バックアップを一時的に無効にするシナリオでは中断を使用する必要があります。 
@@ -217,7 +217,7 @@ Service fabric では、アプリケーション、サービス、およびパ�
 Service Fabric は、パーティションでデータ損失が発生したことを検出すると、パーティションで `OnDataLossAsync` インターフェイス メソッドを呼び出して、パーティションで必要なアクションを実行してデータ損失の状態を脱することを期待します。 この状況では、パーティションの有効なバックアップ ポリシーで `AutoRestoreOnDataLoss` フラグが `true` に設定されている場合、このパーティションに対して利用できる最新のバックアップを使用して、復元が自動的にトリガーされます。
 
 ## <a name="get-backup-configuration"></a>バックアップ構成を取得する
-"_アプリケーション_"、"_サービス_"、および "_パーティション_" スコープでのバックアップ構成情報を取得するための API を使用できます。 [Get Application Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)[Get Service Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)および [Get Partition Backup Configuration Info](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) が、それぞれに該当する API です。 主に、これらの API は、適切なバックアップ ポリシー、バックアップ ポリシーが適用されるスコープ、およびバックアップの中断の詳細を返します。 これらの API から返される結果についての簡単な説明を次に示します。
+"_アプリケーション_"、"_サービス_"、および "_パーティション_" スコープでのバックアップ構成情報を取得するための API を使用できます。 [Get Application Backup Configuration Info](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)[Get Service Backup Configuration Info](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)および [Get Partition Backup Configuration Info](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) が、それぞれに該当する API です。 主に、これらの API は、適切なバックアップ ポリシー、バックアップ ポリシーが適用されるスコープ、およびバックアップの中断の詳細を返します。 これらの API から返される結果についての簡単な説明を次に示します。
 
 - アプリケーションのバックアップ情報: アプリケーションに適用されたバックアップ ポリシーと、そのアプリケーションに属するサービスとパーティションのすべての上書きポリシーの詳細を示します。 アプリケーション、サービス、およびパーティションの中断情報も含まれます。
 
@@ -233,13 +233,13 @@ Get Backup List API を使用して、使用可能なバックアップを表示
 
 サポートされているバリエーションに関する簡単な情報を次に示します。
 
-- [アプリケーション バックアップ リストの取得](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): 特定の Service Fabric アプリケーションに属するすべてのパーティションで使用できるバックアップの一覧を返します。
+- [アプリケーション バックアップ リストの取得](/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): 特定の Service Fabric アプリケーションに属するすべてのパーティションで使用できるバックアップの一覧を返します。
 
-- [サービス バックアップ リストの取得](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): 特定の Service Fabric サービスに属するすべてのサービスで使用できるバックアップの一覧を返します。
+- [サービス バックアップ リストの取得](/rest/api/servicefabric/sfclient-api-getservicebackuplist): 特定の Service Fabric サービスに属するすべてのサービスで使用できるバックアップの一覧を返します。
  
-- [パーティション バックアップ リストの取得](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist):指定されたパーティションで使用できるバックアップの一覧を返します。
+- [パーティション バックアップ リストの取得](/rest/api/servicefabric/sfclient-api-getpartitionbackuplist):指定されたパーティションで使用できるバックアップの一覧を返します。
 
 ## <a name="next-steps"></a>次のステップ
-- [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [バックアップと復元用の REST API リファレンス](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

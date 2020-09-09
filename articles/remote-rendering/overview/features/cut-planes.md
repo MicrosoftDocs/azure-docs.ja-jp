@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b92bfad99c854f75c945121d352a7122d8c6db89
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759083"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011601"
 ---
 # <a name="cut-planes"></a>切断面
 
@@ -47,11 +48,11 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
 {
     ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
-    cutPlane->Normal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
+    cutPlane->SetNormal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
     Color4Ub fadeColor;
     fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
-    cutPlane->FadeColor(fadeColor);
-    cutPlane->FadeLength(0.05f); // gradient width: 5cm
+    cutPlane->SetFadeColor(fadeColor);
+    cutPlane->SetFadeLength(0.05f); // gradient width: 5cm
 }
 ```
 
@@ -60,11 +61,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 次のプロパティは、切断面コンポーネントで公開されます。
 
-* **有効:** コンポーネントを無効にすることで、切断面を一時的にオフにすることができます。 無効化された切断面は、レンダリング オーバーヘッドを発生させず、グローバルな切断面の制限にもカウントされません。
+* `Enabled`:コンポーネントを無効にすることで、切断面を一時的にオフにすることができます。 無効化された切断面は、レンダリング オーバーヘッドを発生させず、グローバルな切断面の制限にもカウントされません。
 
-* **Normal:** 面法線として使用される方向 (+X、-X、+Y、-Y、+Z、-Z) を指定します。 この方向は、所有者のエンティティの向きに対して相対的です。 正確に配置するため、所有者エンティティを移動および回転します。
+* `Normal`:面法線として使用される方向 (+X、-X、+Y、-Y、+Z、-Z) を指定します。 この方向は、所有者のエンティティの向きに対して相対的です。 正確に配置するため、所有者エンティティを移動および回転します。
 
-* **FadeColor** と **FadeLength:**
+* `FadeColor` および `FadeLength`:
 
   *FadeColor* のアルファ値が 0 以外の場合、切断面に近いピクセルは、FadeColor の RGB 部分の色へフェードします。 アルファ チャネルの強度によって、フェードの色に完全にフェードするか、部分的にフェードするかが決まります。 このフェードが行われる距離は、*FadeLength* によって定義されます。
 

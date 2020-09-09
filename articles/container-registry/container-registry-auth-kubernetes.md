@@ -5,13 +5,13 @@ ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 02/10/2020
-ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/28/2020
+ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77154778"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309817"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Azure コンテナー レジストリから Kubernetes クラスターにイメージをプルする
 
@@ -40,10 +40,10 @@ Kubernetes では、*イメージのプル シークレット*を使用して、
 
 ```console
 kubectl create secret docker-registry <secret-name> \
-  --namespace <namespace> \
-  --docker-server=https://<container-registry-name>.azurecr.io \
-  --docker-username=<service-principal-ID> \
-  --docker-password=<service-principal-password>
+    --namespace <namespace> \
+    --docker-server=<container-registry-name>.azurecr.io \
+    --docker-username=<service-principal-ID> \
+    --docker-password=<service-principal-password>
 ```
 各値の説明:
 
@@ -51,7 +51,7 @@ kubectl create secret docker-registry <secret-name> \
 | :--- | :--- |
 | `secret-name` | イメージのプル シークレットの名前 (例: *acr-secret)* |
 | `namespace` | シークレット格納先の Kubernetes 名前空間 <br/> シークレットを、既定の名前空間以外の名前空間に配置する場合にのみ必要 |
-| `container-registry-name` | Azure コンテナー レジストリの名前 |
+| `container-registry-name` | Azure コンテナー レジストリの名前。例: *myregistry*<br/><br/>`--docker-server` はレジストリ ログイン サーバーの完全修飾名です  |
 | `service-principal-ID` | レジストリにアクセスするために Kubernetes によって使用されるサービス プリンシパルの ID |
 | `service-principal-password` | サービス プリンシパルのパスワード |
 
@@ -63,18 +63,18 @@ kubectl create secret docker-registry <secret-name> \
 apiVersion: v1
 kind: Pod
 metadata:
-  name: your-awesome-app-pod
+  name: my-awesome-app-pod
   namespace: awesomeapps
 spec:
   containers:
     - name: main-app-container
-      image: your-awesome-app:v1
+      image: myregistry.azurecr.io/my-awesome-app:v1
       imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: acr-secret
 ```
 
-前の例では、`your-awesome-app:v1` は、Azure コンテナー レジストリからプルするイメージの名前であり、`acr-secret` は、レジストリにアクセスするために作成したプル シークレットの名前です。 ポッドをデプロイすると、イメージがクラスター上にまだ存在しない場合、Kubernetes によって、レジストリからイメージが自動的にプルされます。
+前の例では、`my-awesome-app:v1` は、Azure コンテナー レジストリからプルするイメージの名前であり、`acr-secret` は、レジストリにアクセスするために作成したプル シークレットの名前です。 ポッドをデプロイすると、イメージがクラスター上にまだ存在しない場合、Kubernetes によって、レジストリからイメージが自動的にプルされます。
 
 
 ## <a name="next-steps"></a>次のステップ

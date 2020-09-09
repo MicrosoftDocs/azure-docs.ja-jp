@@ -4,14 +4,14 @@ description: Azure リージョン間で移動できる Azure リソースの種
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 07/21/2020
 ms.author: raynew
-ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040957"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動のサポート
 
@@ -186,7 +186,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | サービス (service) |  はい | 
+> | サービス (service) |  はい (テンプレートを使用) <br/><br/> [Azure API Management をリージョン間で移行する](../../api-management/api-management-howto-migrate.md)。 | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -200,7 +200,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | apiapps | いいえ | 
+> | apiapps | はい (テンプレートを使用)<br/><br/> [App Service アプリを別のリージョンに移動する](../../app-service/manage-move-across-regions.md) | 
 > | appidentities | いいえ | 
 > | gateways | いいえ | 
 
@@ -217,7 +217,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | automationaccounts | いいえ | 
+> | automationaccounts | はい (テンプレートを使用) <br/><br/> [geo レプリケーションを使用する](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts/configurations | いいえ | 
 > | automationaccounts/runbooks | いいえ | 
 
@@ -249,14 +249,14 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | batchaccounts | いいえ |
+> | batchaccounts |  Batch アカウントを別のリージョンに直接移行することはできませんが、テンプレートを使用し、テンプレートをエクスポートしてそれを変更し、テンプレートを新しいリージョンにデプロイすることはできます。 <br/><br/> [リージョン間で Batch アカウントを移行する](../../batch/best-practices.md#moving-batch-accounts-across-regions)方法を参照してください。 |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | clusters | いいえ | 
+> | clusters | いいえ <br/><br/> Azure Batch AI サービスは[廃止](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai)されました。
 > | fileservers | いいえ | 
 > | jobs | いいえ | 
 > | workspaces | いいえ | 
@@ -280,7 +280,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | blockchainmembers | いいえ |
+> | blockchainmembers | いいえ <br/><br/> ブロックチェーン ネットワークでは、異なるリージョンにノードを持つことはできません。 
 > | watchers | いいえ | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
@@ -327,7 +327,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | domainnames | いいえ |  
+> | domainnames | クラシック サービスについては作業が予定されていません。
 > | virtualmachines | いいえ | 
 
 
@@ -337,7 +337,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | networksecuritygroups | いいえ |
+> | networksecuritygroups | クラシック サービスについては作業が予定されていません。
 > | reservedips | いいえ | 
 > | virtualnetworks | いいえ | 
 
@@ -355,6 +355,7 @@ ms.locfileid: "76760710"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | accounts | いいえ | 
+> | Cognitive Search | 手動の手順でサポートされています。<br/><br/> [Azure Cognitive Search サービスを別のリージョンに移行する](../../search/search-howto-move-across-regions.md)方法を参照してください。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -409,7 +410,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | containerservices | いいえ | 
+> | containerservices | いいえ。<br/><br/> サービスは[廃止](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)されました。
 > | managedclusters | いいえ | 
 > | openshiftmanagedclusters | いいえ | 
 
@@ -542,14 +543,14 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | servers | いいえ |  
+> | servers | リージョン間の読み取りレプリカを使用して、既存のサーバーを移動できます。 [詳細については、こちらを参照してください](../../postgresql/howto-move-regions-portal.md)。<br/><br/> サービスが geo 冗長バックアップ ストレージを使用してプロビジョニングされている場合、geo リストアを使用して他のリージョンで復元できます。 [詳細については、こちらを参照してください](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)。
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | servers | いいえ |  
+> | servers | リージョン間の読み取りレプリカを使用して、既存のサーバーを移動できます。 [詳細については、こちらを参照してください](../../mysql/howto-move-regions-portal.md)。
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
@@ -557,7 +558,7 @@ ms.locfileid: "76760710"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | servergroups | いいえ | 
-> | servers | いいえ |  
+> | servers | リージョン間の読み取りレプリカを使用して、既存のサーバーを移動できます。 [詳細については、こちらを参照してください](../../postgresql/howto-move-regions-portal.md)。
 > | serversv2 | いいえ | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
@@ -577,9 +578,9 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | elasticpools | いいえ | 
-> | elasticpools/iothubtenants | いいえ | 
-> | iothubs | はい | 
+> | elasticpools | いいえ。 リソースは公開されていません。
+> | elasticpools/iothubtenants | いいえ。 リソースは公開されていません。
+> | iothubs | はい。 [詳細情報](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | いいえ | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
@@ -588,6 +589,7 @@ ms.locfileid: "76760710"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | controllers | いいえ | 
+> | AKS クラスター | いいえ<br/><br/> 別リージョンへの移行の[詳細をご覧ください](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region)。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -636,7 +638,7 @@ ms.locfileid: "76760710"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | clusters | いいえ |  
-> | namespaces | いいえ | 
+> | namespaces | はい (テンプレートを使用)<br/><br/> [Event Hub 名前空間を別のリージョンに移動する](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
@@ -713,7 +715,15 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | iotapps |  いいえ |  
+> | checknameavailability |  いいえ。<br/><br/> IoT Central はリージョンではなく、地域で機能しています。
+> | graph | いいえ
+
+## <a name="microsoftiothub"></a>Microsoft.IoTHub
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | リージョンの移動 | 
+> | ------------- | ----------- |
+> |  iothub |  はい (ハブを複製) <br/><br/> [IoT ハブを別のリージョンに複製する](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
@@ -758,7 +768,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | accounts | いいえ | 
+> | accounts | いいえ。グローバル サービスです。
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -832,14 +842,14 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | accounts |  いいえ |  
+> | accounts |  いいえ。Azure Maps は地理空間サービスです。 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | classicdevservices | いいえ | 
+> | classicdevservices | クラシック サービスについては作業が予定されていません。 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -897,7 +907,7 @@ ms.locfileid: "76760710"
 > | expressrouteports | いいえ | 
 > | frontdoors | いいえ | 
 > | frontdoorwebapplicationfirewallpolicies | いいえ | 
-> | loadbalancers | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br> はい - Standard SKU |
+> | loadbalancers | はい <br/><br/> 既存の構成をテンプレートとしてエクスポートし、そのテンプレートを新しいリージョンにデプロイすることができます。 [外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)または[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)のロード バランサーを移動する方法をご覧ください。 |
 > | localnetworkgateways |  いいえ | 
 > | natgateways |  いいえ | 
 > | networkintentpolicies |  いいえ | 
@@ -913,7 +923,7 @@ ms.locfileid: "76760710"
 > | privatednszones/virtualnetworklinks |  いいえ |  
 > | privateendpoints | いいえ | 
 > | privatelinkservices | いいえ | 
-> | publicipaddresses | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
+> | publicipaddresses | はい<br/><br/> 既存のパブリック IP アドレス構成をテンプレートとしてエクスポートし、そのテンプレートを新しいリージョンにデプロイすることができます。 パブリック IP アドレスの移動の[詳細をご覧ください](../../virtual-network/move-across-regions-publicip-portal.md)。 |
 > | publicipprefixes | いいえ | 
 > | routefilters | いいえ | 
 > | routetables |  いいえ | 
@@ -1001,7 +1011,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | vaults | いいえ。 [コンテナーを無効にして、Site Recovery 用に再作成](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)  | 
+> | vaults | いいえ。<br/><br/> Azure リージョン間で Azure Backup 用の Recovery Services コンテナーを移動することはできません。<br/><br/> Azure Site Recovery 用の Recovery Services コンテナーでは、[そのコンテナーを無効にして、ターゲット リージョンで再作成する](../../site-recovery/move-vaults-across-regions.md)ことができます。 | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1142,7 +1152,7 @@ ms.locfileid: "76760710"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | storageaccounts | はい | 
+> | storageaccounts | はい<br/><br/> [Azure ストレージ アカウントを別のリージョンに移動する](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 

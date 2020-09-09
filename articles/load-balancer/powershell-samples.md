@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
-ms.openlocfilehash: 4311c1dca2ad299ac8b064769db5eb928e6a4513
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bb42bf1a1a7e80a141d2476ead62a29f8c7188c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74048709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201568"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Load Balancer に関する Azure PowerShell のサンプル
 
 次の表には、Azure PowerShell を使って構築されたスクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |-|-|
 | [高可用性を確保するための、VM へのトラフィックの負荷分散](./scripts/load-balancer-windows-powershell-sample-nlb.md) | 可用性が高く、負荷分散がされた構成で仮想マシンを複数作成します。 |
 | [VM 上の複数の Web サイトの負荷分散](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Azure 可用性セットに接続され、Azure Load Balancer 経由でアクセス可能な、複数の IP 構成を持つ仮想マシンを 2 つ作成します。 |

@@ -2,15 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: cc4cd4b099a37ef103e2da79b8c15269008e7423
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 08/17/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837869"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511363"
 ---
-この記事では、Custom Vision SDK と Node.js を使用して物体検出モデルを構築する基本的な方法について説明します。 作成後は、タグ付きのリージョンの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Node.js アプリケーションを構築するためのテンプレートとしてご利用ください。
+この記事では、Custom Vision クライアント ライブラリと Node.js を使用して物体検出モデルを構築する基本的な方法について説明します。 作成後は、タグ付きのリージョンの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Node.js アプリケーションを構築するためのテンプレートとしてご利用ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,9 +24,9 @@ ms.locfileid: "83837869"
 [!INCLUDE [node-get-images](../../includes/node-get-images.md)]
 
 
-## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
+## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-プロジェクトに Custom Vision Service SDK for Node.js をインストールするには、次のコマンドを実行します。
+プロジェクトに Node.js 用 Custom Vision Service クライアント ライブラリをインストールするには、次のコマンドを実行します。
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

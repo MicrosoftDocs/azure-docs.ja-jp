@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc,seoapr2020
-ms.date: 04/17/2020
-ms.openlocfilehash: 4da8fd4c2b5d736f0b384db306c62304384b2766
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: contperfq1
+ms.date: 08/21/2020
+ms.openlocfilehash: cfdb02b0a5942536a608fbc957ed69d1efd97e8e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82194025"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756896"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
@@ -133,42 +133,49 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 18. 既存のサンプル コードを次のコードに置き換え、変更を保存します。 このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取ります。 6 番目の列から 1 桁の数字のみが含まれる行を取得し、 クラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に出力を書き込みます。
 
-        package com.microsoft.spark.example
-   
-        import org.apache.spark.SparkConf
-        import org.apache.spark.SparkContext
-   
-        /**
-          * Test IO to wasb
-          */
-        object WasbIOTest {
-          def main (arg: Array[String]): Unit = {
+    ```scala
+    package com.microsoft.spark.example
+
+    import org.apache.spark.SparkConf
+    import org.apache.spark.SparkContext
+
+    /**
+      * Test IO to wasb
+      */
+    object WasbIOTest {
+        def main (arg: Array[String]): Unit = {
             val conf = new SparkConf().setAppName("WASBIOTest")
             val sc = new SparkContext(conf)
-   
+    
             val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-   
+    
             //find the rows which have only one digit in the 7th column in the CSV
             val rdd1 = rdd.filter(s => s.split(",")(6).length() == 1)
-   
+    
             rdd1.saveAsTextFile("wasb:///HVACout")
-          }
         }
+    }
+    ```
+
 19. 左ウィンドウで **pom.xml** をダブルクリックします。  
 
 20. `<project>\<properties>` に、以下のセグメントを追加します。
 
-          <scala.version>2.11.8</scala.version>
-          <scala.compat.version>2.11.8</scala.compat.version>
-          <scala.binary.version>2.11</scala.binary.version>
+    ```xml
+    <scala.version>2.11.8</scala.version>
+    <scala.compat.version>2.11.8</scala.compat.version>
+    <scala.binary.version>2.11</scala.binary.version>
+    ```
 
 21. `<project>\<dependencies>` に、以下のセグメントを追加します。
 
-           <dependency>
-             <groupId>org.apache.spark</groupId>
-             <artifactId>spark-core_${scala.binary.version}</artifactId>
-             <version>2.3.0</version>
-           </dependency>
+    ```xml
+    <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-core_${scala.binary.version}</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    ```
 
     Pom.xml に変更内容を保存します。
 

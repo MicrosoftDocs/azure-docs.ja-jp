@@ -1,20 +1,20 @@
 ---
-title: VPN ユーザー用の MFA を有効にする：Azure AD 認証
+title: Azure AD 認証を使用して VPN ユーザーの MFA を有効にする
 description: VPN ユーザー用の多要素認証を有効にします。
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
 ms.author: alzam
-ms.openlocfilehash: 13f012af95bb2b6098317e59e5293fb72804a6a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7adcdcf00f22020daf66192e777b1aca151349e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082122"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN ユーザーの Azure 多要素認証 (MFA)を有効にします。
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users-by-using-azure-ad-authentication"></a>Azure AD 認証を使用して VPN ユーザーの Azure 多要素認証 (MFA) を有効にする
 
 [!INCLUDE [overview](../../includes/vpn-gateway-vwan-openvpn-enable-mfa-overview.md)]
 

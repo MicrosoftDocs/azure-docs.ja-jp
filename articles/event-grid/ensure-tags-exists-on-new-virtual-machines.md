@@ -2,20 +2,19 @@
 title: Azure Automation を Event Grid と統合する | Microsoft Docs
 description: 新しい VM を作成するときに自動的にタグを追加し、Microsoft Teams に通知を送信する方法について説明します。
 keywords: Automation, Runbook, チーム, Event Grid, 仮想マシン, VM
-services: automation
+services: automation,event-grid
 author: eamonoreilly
-manager: ''
 ms.service: automation
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "65521421"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462005"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>チュートリアル:Azure Automation を Event Grid および Microsoft Teams と統合する
 
@@ -34,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-このチュートリアルを行うには、Azure Event Grid のサブスクリプションからトリガーされる Runbook を保持するために [Azure Automation アカウント](../automation/automation-offering-get-started.md)が必要です。
+このチュートリアルを行うには、Azure Event Grid のサブスクリプションからトリガーされる Runbook を保持するために [Azure Automation アカウント](../automation/index.yml)が必要です。
 
 * `AzureRM.Tags` モジュールは Automation アカウントに読み込む必要があります。モジュールを Azure Automation にインポートする方法については、[Azure Automation にモジュールをインポートする方法](../automation/automation-update-azure-modules.md)に関するページを参照してください。
 

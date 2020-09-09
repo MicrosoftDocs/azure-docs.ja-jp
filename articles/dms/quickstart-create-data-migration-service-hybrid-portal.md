@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: dd3e77610749eb5d146b0c0b7cf9d307fba0dd83
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370238"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195686"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>クイック スタート:Azure portal と Azure Database Migration Service を使用してハイブリッド モード インスタンスを作成する
 
@@ -26,7 +26,7 @@ Azure Database Migration Service のハイブリッド モードを使うと、�
 >[!NOTE]
 >現在、ハイブリッド モードで動作する Azure Database Migration Service は、次のデータベースへの SQL Server 移行をサポートします。
 >
->- Azure SQL Database Managed Instance。ダウンタイムはほぼゼロです (オンライン)。
+>- Azure SQL Managed Instance。ダウンタイムはほぼゼロです (オンライン)。
 >- Azure SQL Database 単一データベース。多少のダウンタイムを伴います (オフライン)。
 >- MongoDb から Azure CosmosDB。ダウンタイムはほぼゼロです (オンライン)。
 >- MongoDb から Azure CosmosDB。多少のダウンタイムを伴います (オフライン)。
@@ -191,5 +191,5 @@ Azure Database Migration Service のハイブリッド worker のインストー
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [SQL Server を Azure SQL Database マネージド インスタンスにオンラインで移行する](tutorial-sql-server-managed-instance-online.md)
-> [SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオフラインで移行する](tutorial-sql-server-to-azure-sql.md)
+> [SQL Server を Azure SQL Managed Instance にオンラインで移行する](tutorial-sql-server-managed-instance-online.md)
+> [SQL Server を Azure SQL Database にオフラインで移行する](tutorial-sql-server-to-azure-sql.md)

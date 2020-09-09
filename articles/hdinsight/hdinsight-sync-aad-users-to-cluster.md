@@ -5,19 +5,19 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75744861"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004413"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
-[Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター](hdinsight-domain-joined-introduction.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、*ロールベースのアクセス制御* (RBAC) ポリシーを使用したりできます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
+[Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター](hdinsight-domain-joined-introduction.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、"*Azure ロールベースのアクセス制御 (Azure RBAC)* " ポリシーを使用したりすることができます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
 
 ## <a name="prerequisites"></a>前提条件
 

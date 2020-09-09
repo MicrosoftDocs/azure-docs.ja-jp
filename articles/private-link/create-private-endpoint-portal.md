@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1bdc089bb89a732e329bf7d3ffd3d5b5c09ba408
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: ef6d49c9046ba04bbac40ec9bf555e12d2faa8f6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637244"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021706"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>クイック スタート:Azure portal を使用してプライベート エンドポイントを作成する
 
-プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイックスタートでは、Azure portal を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM から SQL Database サーバーに安全にアクセスできます。
+プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイックスタートでは、Azure portal を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む論理 SQL サーバーを作成する方法を説明します。 その後、VM から SQL Database に安全にアクセスできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -93,8 +93,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
 
-## <a name="create-a-sql-database-server"></a>SQL データベース サーバーの作成
-このセクションでは、Azure で SQL データベース サーバーを作成します。 
+## <a name="create-a-logical-sql-server"></a>論理 SQL サーバーの作成
+
+このセクションでは、Azure に論理 SQL サーバーを作成します。 
 
 1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[データベース]**  >  **[SQL データベース]** を選択します。
 
@@ -193,7 +194,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. VM デスクトップが表示されたら最小化してローカル デスクトップに戻ります。  
 
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>VM から SQL データベース サーバーにプライベートにアクセスする
+## <a name="access-sql-database-privately-from-the-vm"></a>VM から SQL Database にプライベートにアクセスする
 
 1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
@@ -233,4 +234,4 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、仮想ネットワーク上の VM と SQL データベース サーバー、プライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用して SQL データベース サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。
+このクイックスタートでは、仮想ネットワーク上の VM と論理 SQL サーバー、プライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用して SQL Database と安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。

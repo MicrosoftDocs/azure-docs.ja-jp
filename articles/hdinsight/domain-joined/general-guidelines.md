@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77465664"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530267"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight でのエンタープライズ セキュリティの一般情報とガイドライン
 
@@ -62,7 +62,7 @@ ms.locfileid: "77465664"
 階層型名前空間が有効になっていない場合:
 
 * 継承されたアクセス許可はありません。
-* 唯一動作するファイルシステムのアクセス許可は**ストレージ データ XXXX** RBAC ロールで、Azure portal でユーザーに直接割り当てられます。
+* ファイル システムのアクセス許可のうち、唯一機能するのは**ストレージ データ XXXX** Azure ロールで、Azure portal でユーザーに直接割り当てられます。
 
 ### <a name="default-hdfs-permissions"></a>既定の HDFS アクセス許可
 
@@ -159,6 +159,17 @@ Active Directory 管理ツールを Windows Server VM にインストールす�
 * NSG の制限が厳しすぎるため、ドメイン参加が阻止される。
 * マネージド ID に十分なアクセス許可がない。
 * (別のライブ クラスターまたは削除されたクラスターに対して) クラスター名の最初の 6 文字が一意ではない。
+
+## <a name="authentication-setup-and-configuration"></a>認証のセットアップと構成
+
+### <a name="user-principal-name-upn"></a>ユーザー プリンシパル名 (UPN)
+
+* すべてのサービスに小文字を使用してください。UPN は ESP クラスターでは大文字と小文字が区別されませんが、
+* Azure AD-DS では、UPN プレフィックスが両方の SAMAccountName に一致する必要があります。 メール フィールドとの一致は必要ありません。
+
+### <a name="ldap-properties-in-ambari-configuration"></a>Ambari 構成での LDAP プロパティ
+
+HDInsight クラスター構成に影響を与える Ambari プロパティの完全な一覧については、[Ambari LDAP 認証のセットアップ](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

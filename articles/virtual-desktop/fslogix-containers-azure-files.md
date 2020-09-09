@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop FSLogix プロファイル コンテナー ファイル - Azure
 description: この記事では、Windows Virtual Desktop での FSLogix プロファイル コンテナーと Azure のファイルについて説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611978"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002386"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -57,7 +55,7 @@ UPD と RUP は、リモート デスクトップ セッション ホスト (RDS
 
 #### <a name="performance"></a>パフォーマンス
 
-UPD では、パフォーマンス要件に対応するために[記憶域スペース ダイレクト (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) が必要です。 UPD ではサーバー メッセージ ブロック (SMB) プロトコルが使用されます。 これによって、ユーザーがログインする VM にプロファイルがコピーされます。 S2D と UPD の組み合わせは、Windows Virtual Desktop 用に推奨されるソリューションです。  
+UPD では、パフォーマンス要件に対応するために[記憶域スペース ダイレクト (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) が必要です。 UPD ではサーバー メッセージ ブロック (SMB) プロトコルが使用されます。 これによって、ユーザーがログインする VM にプロファイルがコピーされます。 S2D と UPD の組み合わせは、Windows Virtual Desktop 用に推奨されるソリューションです。
 
 #### <a name="cost"></a>コスト
 

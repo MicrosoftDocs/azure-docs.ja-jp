@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/30/2020
-ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 07/27/2020
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780115"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141927"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
 
@@ -48,25 +48,27 @@ Azure Machine Learning では、異なるコンピューティング リソー�
 
 マネージド コンピューティング リソースは、Azure Machine Learning によって作成され、管理されます。 このコンピューティングは、機械学習ワークロード向けに最適化されています。 Azure Machine Learning コンピューティング クラスターと[コンピューティング インスタンス](concept-compute-instance.md)だけがマネージド コンピューティングです。 今後、他のマネージド コンピューティング リソースが追加される予定です。
 
-Azure Machine Learning コンピューティング インスタンス (プレビュー) またはコンピューティング クラスターは次の場所から作成できます。
+Azure Machine Learning コンピューティング インスタンスまたはコンピューティング クラスターは次の場所から作成できます。
 * Azure Machine Learning Studio
 * Azure portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) と [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) クラス
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
-* Resource Manager テンプレート
-
-また、[Azure CLI 用の機械学習拡張機能](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)を使用してコンピューティング クラスターを作成することもできます。
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (プレビュー)
+* Resource Manager テンプレート。 テンプレートの例については、[Azure Machine Learning コンピューティング テンプレートの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)に関する記事を参照してください。
+* 機械学習の [Azure CLI 用拡張機能](reference-azure-machine-learning-cli.md#resource-management)。  
 
 作成されると、これらのコンピューティング リソースは、他の種類のコンピューティング ターゲットとは異なり、自動的にワークスペースの一部になります。
 
-### <a name="compute-clusters"></a>コンピューティング クラスター
 
-Azure Machine Learning コンピューティング クラスターをトレーニングやバッチ推論 (プレビュー) に使用できます。  このコンピューティング リソースは、次のものを備えています。
+|機能  |コンピューティング クラスター  |コンピューティング インスタンス  |
+|---------|---------|---------|
+|シングルノードまたはマルチノード クラスター     |    **&check;**       |         |
+|実行を送信するたびに自動スケーリング     |     **&check;**      |         |
+|自動でのクラスター管理とジョブ スケジューリング     |   **&check;**        |     **&check;**      |
+|CPU と GPU の両方のリソースをサポートします     |  **&check;**         |    **&check;**       |
 
-* シングルノードまたはマルチノード クラスター
-* 実行を送信するたびに自動スケーリング 
-* 自動でのクラスター管理とジョブ スケジューリング 
-* CPU と GPU の両方のリソースをサポートします
+
+> [!NOTE]
+> コンピューティング クラスターがアイドル状態の場合、ノードは 0 に自動スケーリングされるため、使用されていないときは料金がかかりません。  ただし、コンピューティング *インスタンス*は常にオンであり、自動スケーリングされません。  追加コストを回避するには、使用していないときに[コンピューティング インスタンスを停止](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)します。
 
 ### <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
 
@@ -83,7 +85,9 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | D | なし |
 | Dv2 | なし |  
 | DSv2 | なし |  
-| FSv2 | なし |  
+| FSv2 | なし | 
+| HBv2 | 承認が必要 |  
+| HCS | 承認が必要 |  
 | M | 承認が必要 |
 | NC | なし |    
 | NCsv2 | 承認が必要 |
@@ -94,7 +98,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | NVv3 | 承認が必要 | 
 
 
-これらの VM シリーズは Azure Machine Learning でサポートされていますが、すべての Azure リージョンで使用できるとは限りません。 VM シリーズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)」を参照してください。
+これらの VM シリーズは Azure Machine Learning でサポートされていますが、すべての Azure リージョンで使用できるとは限りません。 VM シリーズが使用可能かどうかを確認するには、次のページを参照してください。「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)」。
 
 ## <a name="unmanaged-compute"></a>アンマネージド コンピューティング
 

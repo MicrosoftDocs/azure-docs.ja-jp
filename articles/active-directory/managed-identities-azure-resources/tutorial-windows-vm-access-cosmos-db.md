@@ -3,7 +3,7 @@ title: チュートリアル:マネージド ID を使用して Azure Cosmos DB 
 description: Windows VM 上でシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583065"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263073"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -84,7 +84,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 このセクションでは、Windows VM のシステム割り当てマネージド ID のアクセス トークンを使用して、Azure Resource Manager を呼び出す方法を説明します。 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。 
 
-最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を Windows VM にインストールする必要があります。
+最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) を Windows VM にインストールする必要があります。
 
 
 
@@ -204,6 +204,4 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 このチュートリアルでは、Cosmos DB にアクセスするための Windows VM のシステム割り当て ID の使用方法について説明しました。  Cosmos DB の詳細については、以下を参照してください：
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB の概要 ](/azure/cosmos-db/introduction)
-
-
+>[Azure Cosmos DB の概要 ](../../cosmos-db/introduction.md)

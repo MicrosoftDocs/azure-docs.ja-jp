@@ -1,20 +1,15 @@
 ---
 title: パーティション分割された Azure Service Bus のキューおよびトピックの作成 | Microsoft Docs
 description: 複数のメッセージ ブローカーを使用して Service Bus のキューとトピックをパーティション分割する方法について説明します。
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2020
-ms.author: aschhab
-ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11cc76b0dd0125c7b54438d3f991069b7c44db59
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230075"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007963"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -30,6 +25,8 @@ Azure Service Bus では、メッセージを処理する複数のメッセー�
 パーティション分割されたキューまたはトピックはそれぞれ、複数のパーティションで構成されます。 パーティションはそれぞれ別々のメッセージング ストアに格納され、別々のメッセージ ブローカーで処理されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのパーティションに割り当てます。 対象のフラグメントは、Service Bus によってランダムに選択されるか、送信側で指定できるパーティション キーによって選択されます。
 
 クライアントがパーティション分割されたキューからのメッセージまたはサブスクリプションからパーティション分割されたトピックへのメッセージを受信する場合、Service Bus はすべてのパーティションを照会してメッセージを探し、いずれかのメッセージング ストアから取得された最初のメッセージを受信側に返します。 Service Bus は、追加の受信要求を受信すると、他のメッセージをキャッシュして返します。 受信側クライアントはパーティション分割を認識しません。パーティション分割されたキューやトピックの動作 (読み込み、完了、遅延、配信不能、プリフェッチなど) は、クライアント側には通常のエンティティの動作と同じに見えます。
+
+パーティション分割されていないエンティティに対するピーク操作では、常に最も古いメッセージが返されますが、パーティション分割されたエンティティでは返されません。 代わりに、メッセージ ブローカーが最初に応答したパーティションのうち、最も古いメッセージが返されます。 返されたメッセージが、すべてのパーティションで最も古いメッセージであることは保証されません。 
 
 パーティション分割されたキューやトピックとのメッセージの送受信に追加費用は発生しません。
 
@@ -153,4 +150,4 @@ Service Bus では、パーティション分割されたエンティティを�
 [QueueDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
 [TopicDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablepartitioning
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto
-[AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP 1.0 support for Service Bus partitioned queues and topics]: ./service-bus-amqp-protocol-guide.md

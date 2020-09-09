@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72436053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082394"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 
@@ -1476,6 +1476,6 @@ OFManager では、Web 環境での OpenFrame の運用と管理の機能が提�
 
 メインフレームの移行を検討している場合は、当社の拡大しているパートナー エコシステムを使用すると役に立ちます。 パートナー ソリューションの選択に関する詳細なガイダンスについては、「[Platform Modernization Alliance (プラットフォーム最新化アライアンス)](https://datamigration.microsoft.com/)」を参照してください。
 
--   [Azure を使ってみる](https://docs.microsoft.com/azure/)
--   [Host Integration Server (HIS) のドキュメント](https://docs.microsoft.com/host-integration-server/)
--   [Azure 仮想データ センターのリフトアンドシフト ガイド](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Azure を使ってみる](../../../../index.yml)
+-   [Host Integration Server (HIS) のドキュメント](/host-integration-server/)
+-   [Azure 仮想データ センターのリフトアンドシフト ガイド](/archive/blogs/azurecat/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide)

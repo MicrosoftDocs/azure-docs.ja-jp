@@ -17,7 +17,7 @@ ms.locfileid: "83116357"
 ---
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 
-1. **[新規]** ページで、 **[計算]**  >  **[関数アプリ]** の順に選択します。
+1. **[新規]** ページで、 **[計算]** 、 >  **[関数アプリ]** の順に選択します。
 
 1. **[基本]** ページで、下の表で指定されている関数アプリの設定を使用します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "83116357"
 
     | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Default | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開するか、 **[新規作成]** を選択することによって、Application Insights 名を変更するか、データを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別のリージョンを選択することができます。 |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Default | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開するか、 **[新規作成]** を選択することによって、Application Insights 名を変更するか、データを格納する [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)内の別のリージョンを選択することができます。 |
 
     ![監視](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 

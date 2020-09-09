@@ -1,6 +1,6 @@
 ---
 title: よく寄せられる質問 - Azure 専用 HSM | Microsoft Docs
-description: Azure 専用 HSM に関するさまざまなトピックに対応したよく寄せられる質問
+description: 基本情報、相互運用性、高可用性、サポートなど、Azure 専用ハードウェア セキュリティ モジュールについてよく寄せられる質問の答えが見つかります。
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683324"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189871"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -115,7 +115,7 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Q:専用 HSM クライアント ソフトウェアでは、どのようなオペレーティング システムがサポートされますか。
 
 * Windows、Linux、Solaris、AIX、HP-UX、FreeBSD
-* 仮想: VMware、hyperv、Xen、KVM
+* 仮想: VMware、Hyper-V、Xen、KVM
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>Q:複数の HSM の複数のパーティションで高可用性構成を作成するようにクライアント アプリケーションを構成するにはどのようにしたらよいですか。
 
@@ -242,7 +242,7 @@ Microsoft では、お客様に割り当てられている HSM に接続する�
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Q:HSM を再起動する必要が生じたらどうすればよいですか。
 
-HSM にはコマンド ラインの再起動オプションがありますが、断続的に再起動の停止の問題が発生しているため、安全に再起動できるように、Microsoft にサポート リクエストを送信してデバイスの物理的な再起動を依頼することをお勧めします。 
+HSM にはコマンド ラインの再起動オプションがありますが、再起動が断続的に応答を停止する問題が発生しているため、安全に再起動できるように、Microsoft にサポート リクエストを送信してデバイスの物理的な再起動を依頼することをお勧めします。 
 
 ## <a name="cryptography-and-standards"></a>暗号化と標準
 

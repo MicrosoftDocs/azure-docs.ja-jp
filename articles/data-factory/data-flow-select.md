@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/18/2020
-ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/02/2020
+ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322092"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>マッピング データ フローでの選択変換
 
@@ -38,6 +38,9 @@ ms.locfileid: "81686492"
 ![階層マッピング](media/data-flow/select-hierarchy.png "階層マッピング")
 
 ## <a name="rule-based-mapping"></a>ルールベースのマッピング
+
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xiXz]
 
 一度に多数の列をマップする場合や、誤差の列を下流に渡す場合は、ルールベース マッピングを使用し、列パターンによってマッピングを定義します。 列の `name`、`type`、`stream`、および `position` に基づいて照合されます。 フィールドとルールベースの両方のマッピングを任意に組み合わせることもできます。 既定では、50 列を超えるすべてのプロジェクションは、既定ではルールベースのマッピングになり、すべての列に対して照合され、入力された名前が出力されます。 
 

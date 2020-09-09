@@ -2,14 +2,14 @@
 title: クイックスタート - コンテナー インスタンスに Docker コンテナーをデプロイする - ポータル
 description: このクイック スタートでは、Azure portal を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 08/24/2020
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 0decfdbc468cbf267260ef80634eb8ecb5e710b7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79087963"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870810"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してコンテナー インスタンスを Azure 内にデプロイする
 
@@ -17,7 +17,7 @@ ms.locfileid: "79087963"
 
 このクイック スタートでは、Azure portal を使用して、分離された Docker コンテナーをデプロイし、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 いくつかの設定を構成し、コンテナーをデプロイした後は、実行中のアプリケーションを参照できます。
 
-![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-portal-07]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-07.png" alt-text="Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示":::
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **[リソースの作成]**  >  **[コンテナー]**  >  **[Container Instances]** を選択します。
 
-![Azure ポータルで新しいコンテナー インスタンスの作成を開始][aci-portal-01]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="Azure ポータルで新しいコンテナー インスタンスの作成を開始":::
 
 **[基本]** ページで、 **[リソース グループ]** 、 **[コンテナー名]** 、および **[コンテナー イメージ]** の各ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
 
@@ -38,29 +38,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * イメージのソース: **クイックスタートのイメージ**
 * コンテナー イメージ: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
-![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="Azure ポータルで新しいコンテナー インスタンスの基本設定を構成":::
 
 このクイックスタートでは、既定の設定を使用して、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 このサンプル Linux イメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージ化されています。 また、Azure Container Registry、Docker Hub、または他のレジストリに格納されている独自のコンテナー イメージを使用することもできます。
 
 **[Networking]\(ネットワーク\)** ページで、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 
-![Azure portal で新しいコンテナー インスタンスのネットワーク設定を構成する][aci-portal-04]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="Azure portal で新しいコンテナー インスタンスのネットワーク設定を構成する":::
 
 他の設定は既定値のままにして、 **[確認と作成]** を選択します。
 
 検証が完了すると、コンテナーの設定の概要が表示されます。 **[作成]** を選択して、コンテナーのデプロイ要求を送信します。
 
-![Azure ポータルでの新しいコンテナー インスタンスの設定概要][aci-portal-05]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="Azure ポータルでの新しいコンテナー インスタンスの設定概要":::
 
 デプロイが開始されると、デプロイが進行中であることを示す通知が表示されます。 コンテナー グループがデプロイされると、別の通知が表示されます。
 
 **[リソース グループ]**  >  **[myresourcegroup]**  >  **[mycontainer]** の順に移動して、コンテナー グループの概要を開きます。 コンテナー インスタンスの **FQDN** (完全修飾ドメイン名) を書き留め、インスタンスの **[状態]** を確認します。
 
-![Azure ポータルでのコンテナー グループ概要][aci-portal-06]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="Azure ポータルでのコンテナー グループ概要":::
 
 **[状態]** が *[実行中]* になったら、ブラウザーでコンテナーの FQDN に移動します。
 
-![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][aci-portal-07]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-07.png" alt-text="Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示":::
 
 お疲れさまでした。 いくつかの設定を構成するだけで、パブリックにアクセスできるアプリケーションが Azure Container Instances にデプロイされました。
 
@@ -70,17 +70,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 コンテナーのログを表示するには、 **[設定]** で **[コンテナー]** を選択し、 **[ログ]** を選択します。 ブラウザーでアプリケーションを表示したときに生成された HTTP GET 要求が表示されます。
 
-![Azure portal のコンテナー ログ][aci-portal-11]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="Azure portal のコンテナー ログ":::
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 コンテナーを使い終えたら、*mycontainer* コンテナー インスタンスの **[概要]** を選択し、 **[削除]** を選択します。
 
-![Azure Portal でのコンテナー インスタンスの削除][aci-portal-09]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="Azure portal でのコンテナー インスタンスの削除":::
 
 確認のダイアログが表示されたら、 **[はい]** を選択します。
 
-![Azure Portal でのコンテナー インスタンスの削除の確認][aci-portal-10]
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Azure portal でのコンテナー インスタンスの削除の確認":::
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -88,18 +89,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル](./container-instances-tutorial-prepare-app.md)
-
-<!-- IMAGES -->
-[aci-portal-01]: ./media/container-instances-quickstart-portal/qs-portal-01.png
-[aci-portal-03]: ./media/container-instances-quickstart-portal/qs-portal-03.png
-[aci-portal-04]: ./media/container-instances-quickstart-portal/qs-portal-04.png
-[aci-portal-05]: ./media/container-instances-quickstart-portal/qs-portal-05.png
-[aci-portal-06]: ./media/container-instances-quickstart-portal/qs-portal-06.png
-[aci-portal-07]: ./media/container-instances-quickstart-portal/qs-portal-07.png
-[aci-portal-08]: ./media/container-instances-quickstart-portal/qs-portal-08.png
-[aci-portal-09]: ./media/container-instances-quickstart-portal/qs-portal-09.png
-[aci-portal-10]: ./media/container-instances-quickstart-portal/qs-portal-10.png
-[aci-portal-11]: ./media/container-instances-quickstart-portal/qs-portal-11.png
 
 <!-- LINKS - External -->
 [azure-free-account]: https://azure.microsoft.com/free/

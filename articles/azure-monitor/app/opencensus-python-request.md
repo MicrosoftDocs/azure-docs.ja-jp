@@ -5,18 +5,19 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: c94bc949f13ee19a9d2150c9d3c1b6a2bdb959b2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77669949"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850068"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python を使用した受信要求の追跡
 
 受信要求データは、OpenCensus Python とそのさまざまな統合を使用して収集されます。 一般的な Web フレームワーク `django`、`flask` および `pyramid` 上に構築された Web アプリケーションに送信された受信要求データを追跡します。 その後、データは Azure Monitor の Application Insights に `requests` テレメトリとして送信されます。
 
-まず、最新の [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
+まず、最新の [OpenCensus Python SDK](./opencensus-python.md) を使用して Python アプリケーションをインストルメント化します。
 
 ## <a name="tracking-django-applications"></a>Django アプリケーションの追跡
 
@@ -32,7 +33,7 @@ ms.locfileid: "77669949"
     )
     ```
 
-3. `settings.py` の `OPENCENSUS` に AzureExporter が正しく構成されていることを確認します。
+3. `settings.py` の `OPENCENSUS` に AzureExporter が正しく構成されていることを確認します。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
 
     ```python
     OPENCENSUS = {
@@ -41,20 +42,7 @@ ms.locfileid: "77669949"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-        }
-    }
-    ```
-
-4. また、追跡したくない要求については、`settings.py` の `BLACKLIST_PATHS` に URL を追加することもできます。
-
-    ```python
-    OPENCENSUS = {
-        'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
-            'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                connection_string="InstrumentationKey=<your-ikey-here>",
-            )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -86,7 +74,7 @@ ms.locfileid: "77669949"
     
     ```
 
-2. コードで直接 `flask` ミドルウェアを構成できます。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
+2. `app.config` を使用して `flask` アプリケーションを構成することもできます。 追跡したくない URL からの要求については、その URL を `BLACKLIST_PATHS` に追加します。
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -131,8 +119,9 @@ ms.locfileid: "77669949"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アプリケーション マップ](../../azure-monitor/app/app-map.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [検索](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) のクエリ](../../azure-monitor/log-query/log-query-overview.md)
-* [トランザクションの診断](../../azure-monitor/app/transaction-diagnostics.md)
+* [アプリケーション マップ](./app-map.md)
+* [可用性](./monitor-web-app-availability.md)
+* [Search](./diagnostic-search.md)
+* [Log (Analytics) のクエリ](../log-query/log-query-overview.md)
+* [トランザクションの診断](./transaction-diagnostics.md)
+

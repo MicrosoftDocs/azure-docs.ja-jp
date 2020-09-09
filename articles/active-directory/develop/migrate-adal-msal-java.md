@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
-ms.custom: aaddev
-ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, devx-track-java
+ms.openlocfilehash: ec4103251d27114b8fe40101c0e78c259106a440
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128003"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120883"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java 用 ADAL から MSAL への移行ガイド
 
@@ -37,15 +37,15 @@ MSAL for Java は、Microsoft ID プラットフォームで使用すること�
 
 ## <a name="differences"></a>相違点
 
-開発者向け Azure AD (v1.0) エンドポイント (および ADAL4J) を使用している場合は、「[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)」に関するページを読むことをお勧めします。
+開発者向け Azure AD (v1.0) エンドポイント (および ADAL4J) を使用している場合は、「[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](../azuread-dev/azure-ad-endpoint-comparison.md)」に関するページを読むことをお勧めします。
 
 ## <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-ADAL4J はリソースのトークンを取得しますが、MSAL for Java はスコープのトークンを取得します。 多くの MSAL for Java クラスには、スコープ パラメーターが必要です。 このパラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 スコープの例については、「[Microsoft Graph のスコープ](https://docs.microsoft.com/graph/permissions-reference)」に関するページを参照してください。
+ADAL4J はリソースのトークンを取得しますが、MSAL for Java はスコープのトークンを取得します。 多くの MSAL for Java クラスには、スコープ パラメーターが必要です。 このパラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 スコープの例については、「[Microsoft Graph のスコープ](/graph/permissions-reference)」に関するページを参照してください。
 
 `/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
 
-さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関する記事および記事「[v1.0 トークンを受け入れる Web API のスコープ](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)」を参照してください。
+さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)に関する記事および記事「[v1.0 トークンを受け入れる Web API のスコープ](./msal-v1-app-scopes.md)」を参照してください。
 
 ## <a name="core-classes"></a>コア クラス
 
@@ -86,9 +86,9 @@ V2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合�
 
 v1.0 エンドポイント (ADAL で使用) では、v1.0 トークンのみが出力されます。
 
-V2.0 エンドポイント (MSAL で使用) では、v1.0 と v2.0 のトークンを出力できます。 Web API のアプリケーション マニフェストのプロパティでは、開発者は、受け入れられるトークンのバージョンを選択することができます。 [アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に関するリファレンス ドキュメントの `accessTokenAcceptedVersion` についての記事を参照してください。
+V2.0 エンドポイント (MSAL で使用) では、v1.0 と v2.0 のトークンを出力できます。 Web API のアプリケーション マニフェストのプロパティでは、開発者は、受け入れられるトークンのバージョンを選択することができます。 [アプリケーション マニフェスト](./reference-app-manifest.md)に関するリファレンス ドキュメントの `accessTokenAcceptedVersion` についての記事を参照してください。
 
-v1.0 トークンと v2.0 トークンの詳細については、[Azure Active Directory アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)に関するページを参照してください。
+v1.0 トークンと v2.0 トークンの詳細については、[Azure Active Directory アクセス トークン](./access-tokens.md)に関するページを参照してください。
 
 ## <a name="adal-to-msal-migration"></a>ADAL から MSAL への移行
 

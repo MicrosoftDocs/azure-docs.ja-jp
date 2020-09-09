@@ -7,14 +7,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237451"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511944"
 ---
-# <a name="use-ip-filters"></a>IP フィルターの使用
+# <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS の IP 接続フィルターを使用する
 
 セキュリティは IoT ソリューションの重要な 1 つの側面です。 場合によっては、セキュリティ構成の一部として、デバイスが接続できる IP アドレスを明示的に指定する必要があります。 Azure IoT Hub Device Provisioning Service (DPS) の *IP フィルター*機能を使用すると、特定の IPv4 アドレスからのトラフィックを拒否または許可するための規則を構成できます。
 

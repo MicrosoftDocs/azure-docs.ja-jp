@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591024"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518324"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
@@ -24,16 +24,16 @@ ms.locfileid: "83591024"
 Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 4 つの異なるコンテナーを利用できます。 2 つの標準コンテナーは、**音声テキスト変換**と**テキスト読み上げ**です。 2 つのカスタム コンテナーは、**カスタム音声変換**と**カスタム テキスト読み上げ**です。 Speech コンテナーの[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)は、クラウド ベースの Azure Speech サービスと同じです。
 
 > [!IMPORTANT]
-> 現在のところ、音声コンテナーはすべて、[パブリック "ゲート付き" プレビュー](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)の一部として提供されています。 音声コンテナーが一般公開 (GA) になるときは告知があります。
+> 現在のところ、音声コンテナーはすべて、[パブリック "ゲート付き" プレビュー](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)の一部として提供されています。 音声コンテナーが一般公開 (GA) になるときは告知があります。
 
 | 機能 | 特徴 | 最新 |
 |--|--|--|
-| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.2.0 |
-| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.2.0 |
-| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.3.0 |
-| カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.3.0 |
+| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.3.1 |
+| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.3.1 |
+| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.5.0 |
+| カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.5.0 |
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,8 @@ Speech コンテナーを使用する前の前提条件は次のとおりです�
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
-コンテナーへのアクセスを要求するには、[Cognitive Services コンテナー要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。
+コンテナーへのアクセスを要求するには、[要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 
+
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -164,7 +165,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 次のタグは、この形式の例です。
 
 ```
-2.2.0-amd64-en-us-preview
+2.3.1-amd64-en-us-preview
 ```
 
 **音声テキスト変換**コンテナーのサポートされている全ロケールについては、「[音声テキスト変換イメージ タグ](../containers/container-image-tags.md#speech-to-text)」を参照してください。
@@ -193,7 +194,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> `latest` タグにより、`en-US` ロケールと `jessarus` 音声がプルされます。 追加のロケールについては、「[テキスト読み上げロケール](#text-to-speech-locales)」を参照してください。
+> `latest` タグにより、`en-US` ロケールと `ariarus` 音声がプルされます。 追加のロケールについては、「[テキスト読み上げロケール](#text-to-speech-locales)」を参照してください。
 
 #### <a name="text-to-speech-locales"></a>テキスト読み上げロケール
 
@@ -206,13 +207,13 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 次のタグは、この形式の例です。
 
 ```
-1.3.0-amd64-en-us-jessarus-preview
+1.5.0-amd64-en-us-ariarus-preview
 ```
 
 サポートされているロケールと**テキスト読み上げ**コンテナーの対応音声についてはすべて、「[テキスト読み上げイメージ タグ](../containers/container-image-tags.md#text-to-speech)」を参照してください。
 
 > [!IMPORTANT]
-> *標準 Text-to-speech* HTTP POST を構築するとき、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#standard-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-JessaRUS` という音声名が与えられます。
+> *標準 Text-to-speech* HTTP POST を構築するとき、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#standard-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-AriaRUS` という音声名が与えられます。
 
 # <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
 
@@ -353,7 +354,7 @@ ApiKey={API_KEY}
 このコマンドは、次の操作を行います。
 
 * コンテナー イメージから *Text-to-speech* コンテナーを実行します
-* 2 つの CPU コアと 1 ギガバイト (GB) のメモリを割り当てます。
+* 1 つの CPU コアと 2 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
@@ -393,7 +394,7 @@ ApiKey={API_KEY}
 このコマンドは、次の操作を行います。
 
 * コンテナー イメージから*カスタム テキスト読み上げ* コンテナーを実行します
-* 2 つの CPU コアと 1 ギガバイト (GB) のメモリを割り当てます。
+* 1 つの CPU コアと 2 ギガバイト (GB) のメモリを割り当てます。
 * *カスタム テキスト読み上げ* モデルをボリューム入力マウント (*C:\CustomVoice* など) から読み込みます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * `ModelId` が指定されたモデルをダウンロードします (ボリューム マウントで見つからない場合)。

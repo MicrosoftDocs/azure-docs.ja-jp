@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 6850012272251c910362b61363dacd9090976680
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75946050"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918419"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>認証トークンをキャッシュする方法
 

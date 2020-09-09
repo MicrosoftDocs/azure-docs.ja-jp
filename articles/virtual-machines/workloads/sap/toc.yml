@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -84,6 +84,8 @@
           href: hana-setup-smt.md
         - name: HLI から Azure VM への移行
           href: hana-large-instance-virtual-machine-migration.md
+        - name: SAP HANA Large Instances の予約の購入
+          href: ../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
 - name: Azure Virtual Machines 上の SAP HANA
   items:
     - name: Azure VM への SAP HANA のインストール
@@ -106,6 +108,8 @@
           href: sap-hana-high-availability.md
         - name: RHEL での SAP HANA システム レプリケーションの設定
           href: sap-hana-high-availability-rhel.md
+        - name: RHEL での ANF を使用した SAP HANA システム レプリケーションの設定
+          href: sap-hana-high-availability-netapp-files-red-hat.md
         - name: SLES での SAP HANA スケールアウトと Pacemaker のトラブルシューティング
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: SLES で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
@@ -123,6 +127,8 @@
     - name: Azure での SAP NetWeaver の計画と実装
       href: planning-guide.md
       items:
+        - name: SAP ワークロードの Azure Storage の種類
+          href: planning-guide-storage.md
         - name: Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
           href: sap-planning-supported-configurations.md
         - name: Azure デプロイでサポートされている SAP ソフトウェア
@@ -221,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP マルチ SID
           items:
+            - name: (A)SCS インスタンス用の Azure 共有ディスクを使用した Windows
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
@@ -230,35 +238,71 @@
             - name: A(SCS) インスタンス用の Pacemaker マルチ SID を使用した RHEL
               href: high-availability-guide-rhel-multi-sid.md
     - name: SAP のディザスター リカバリーのための Azure Site Recovery
-      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+      href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
       href: sap-proximity-placement-scenarios.md
-- name: AAD SAP ID 統合およびシングル サインオン
+- name: Azure AD と SAP アプリケーションの統合
   items:
-    - name: SAP Cloud との統合
-      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP Cloud Platform Identity Authentication の統合
+    - name: SAP SuccessFactors から Active Directory へのユーザーのプロビジョニング
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP SuccessFactors から Azure AD へのユーザーのプロビジョニング
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: Azure AD から SAP SuccessFactors へのユーザーの書き戻し
+      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Cloud Platform Identity Authentication サービスへのユーザーのプロビジョニング
+      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Cloud Platform Identity Authentication サービスとの SSO の構成
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: SAP Cloud Platform でのシングル サインオンの設定
+    - name: SAP SuccessFactors との SSO の構成
+      href: ../../../active-directory/saas-apps/successfactors-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Analytics Cloud との SSO の構成
+      href: ../../../active-directory/saas-apps/sapboc-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Fiori との SSO の構成
+      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Qualtrics との SSO の構成
+      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Ariba との SSO の構成
+      href: ../../../active-directory/saas-apps/ariba-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Concur Travel and Expense との SSO の構成
+      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Cloud Platform との SSO の構成
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP NetWeaver の統合
+    - name: SAP NetWeaver との SSO の構成
       href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP Business ByDesign の統合
+    - name: SAP Business ByDesign との SSO の構成
       href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD と SAP HANA DBMS の統合
+    - name: SAP HANA との SSO の構成
       href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: Azure AD を使用した SAP Fiori Launchpad SAML シングル サインオン
+    - name: SAP Cloud for Customer との SSO の構成
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAP Fiori Launchpad との SSO の構成
       href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: SAP への Azure サービスの統合
   items:
     - name: Power BI Desktop での SAP HANA の使用
-      href: 'https://docs.microsoft.com/power-bi/desktop-sap-hana'
+      href: /power-bi/desktop-sap-hana
     - name: DirectQuery と SAP HANA
-      href: 'https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana'
+      href: /power-bi/desktop-directquery-sap-hana
     - name: Power BI Desktop での SAP BW コネクタの使用
-      href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
+      href: /power-bi/desktop-sap-bw-connector
     - name: Azure Data Factory による SAP HANA と Business Warehouse データの統合
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+- name: SAP ソリューション向け Azure Monitor
+  items:
+    - name: SAP ソリューション向け Azure Monitor の概要
+      href: azure-monitor-overview.md
+    - name: SAP ソリューション向け Azure Monitor のプロバイダー
+      href: azure-monitor-providers.md
+    - name: SAP ソリューション向け Azure Monitor の構成
+      href: azure-monitor-sap-quickstart.md
+    - name: SAP ソリューション向け Azure Monitor に関する FAQ
+      href: azure-monitor-faq.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/sap-hana/hanainstance
+    - name: Azure PowerShell
+      href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: リソース
   items:
     - name: Azure のロードマップ

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75941588"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133820"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定   
 
@@ -69,7 +69,7 @@ Dynamics AX アプリケーションが機能するには、ディザスター �
 SQL 層を保護するための推奨されるオプションの技術的なガイダンスについては、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3.Dynamics AX クライアントと Application Object Server VM の保護を有効にする
-VM が[HYPER-V](site-recovery-hyper-v-site-to-azure.md) または [VMware](site-recovery-vmware-to-azure.md) のどちらにデプロイされるかに基づいて、関連する Site Recovery 構成を実行します。
+VM が[HYPER-V](./hyper-v-azure-tutorial.md) または [VMware](./vmware-azure-tutorial.md) のどちらにデプロイされるかに基づいて、関連する Site Recovery 構成を実行します。
 
 > [!TIP]
 > クラッシュ整合性の頻度を 15 分に構成することをお勧めします。
@@ -176,7 +176,7 @@ Application Object Server VM グループが立ち上がった後、そのグル
 6. **[✓]** をクリックして、フェールバック プロセスを開始します。
 
 
-フェールバックの実行の詳細については、[VMware VM の Azure からオンプレミスへのフェールバック](site-recovery-failback-azure-to-vmware.md)に関する記事を参照してください。
+フェールバックの実行の詳細については、[VMware VM の Azure からオンプレミスへのフェールバック](./vmware-azure-failback.md)に関する記事を参照してください。
 
 ## <a name="summary"></a>まとめ
 Site Recovery を使用することで、Dynamics AX アプリケーション用の完全に自動されたディザスター リカバリー計画を作成できます。 障害発生時には、任意の場所から数秒以内にフェールオーバーを開始し、数分以内にアプリケーションを稼働させることができます。

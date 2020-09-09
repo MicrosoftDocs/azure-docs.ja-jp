@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer ユニットをシャットダウンする方法
-description: Azure FXT Edge Filer ノードの起動と安全なシャットダウンのための手順
+description: クラスター コントロール パネル ソフトウェアを使用し、Azure FXT Edge Filer を起動し、安全にシャットダウンする手順について説明します。
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 91445c4219abaa67385105f52515f52c87e2cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72255993"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184875"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Azure FXT Edge Filer ハードウェアの電源を安全に切る方法
 

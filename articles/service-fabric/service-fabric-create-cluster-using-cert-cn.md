@@ -3,12 +3,12 @@ title: 証明書の共通名を使用してクラスターを作成する
 description: テンプレートから、証明書共通名を使用する Service Fabric クラスターを作成する方法を説明します。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614555"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246437"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  証明書共通名を使用するクラスターにより、証明書の管理が大幅に単純化されます。 この記事では、Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するようにデプロイする方法について説明します。
@@ -17,7 +17,7 @@ ms.locfileid: "75614555"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>証明書を取得する
-最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書の共通名は、貴社が所有するカスタム ドメインを対象とし、かつドメイン レジストラーから購入したものであることが必要です。 たとえば、"azureservicefabricbestpractices.com" とします。Microsoft の従業員以外は、MS ドメインの証明書をプロビジョニングできません。そのため、ご利用の LB や Traffic Manager の DNS 名を証明書の共通名として使用することはできません。また、カスタム ドメインを Azure で解決可能にするためには、[Azure DNS ゾーン](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)をプロビジョニングする必要があります。 また、ご利用のクラスターのカスタム ドメイン エイリアスをポータルに反映したい場合は、貴社が所有するカスタム ドメインをクラスターの "managementEndpoint" として宣言する必要があります。
+最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書の共通名は、貴社が所有するカスタム ドメインを対象とし、かつドメイン レジストラーから購入したものであることが必要です。 たとえば、"azureservicefabricbestpractices.com" とします。Microsoft の従業員以外は、MS ドメインの証明書をプロビジョニングできません。そのため、ご利用の LB や Traffic Manager の DNS 名を証明書の共通名として使用することはできません。また、カスタム ドメインを Azure で解決可能にするためには、[Azure DNS ゾーン](../dns/dns-delegate-domain-azure-dns.md)をプロビジョニングする必要があります。 また、ご利用のクラスターのカスタム ドメイン エイリアスをポータルに反映したい場合は、貴社が所有するカスタム ドメインをクラスターの "managementEndpoint" として宣言する必要があります。
 
 テスト目的の場合は、無料またはオープンな証明機関から CA の署名証明書を取得できます。
 

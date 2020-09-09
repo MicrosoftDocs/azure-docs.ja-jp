@@ -4,6 +4,8 @@
   items:
     - name: Azure Blockchain Service について
       href: overview.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -11,7 +13,8 @@
       href: create-member.md
     - name: CLI を使用してメンバーを作成する
       href: create-member-cli.md
-    - name: テンプレートを使用してメンバーを作成する
+    - name: ARM テンプレートを使用してメンバーを作成する
+      displayName: Resource Manager
       href: create-member-template.md
     - name: トランザクション ノードに接続する
       items:
@@ -59,18 +62,22 @@
       href: ethereum-logic-app.md
     - name: Azure Blockchain Service の監視
       href: monitor-azure-blockchain-service.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blockchain/blockchain
 - name: リソース
   items:
     - name: Azure Blockchain 開発キット
       href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Blockchain REST API
-      href: 'https://docs.microsoft.com/rest/api/blockchain/'
+      href: /rest/api/blockchain/
     - name: コード サンプル
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-service.html'
+      href: /answers/topics/azure-blockchain-service.html
     - name: コミュニティ サポート
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow サポート

@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と 23 Video の統合 | Microsoft Docs
 description: Azure Active Directory と 23 Video の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5e73dd1d-3995-4a73-b9cf-1b2318d49cb3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5061c2e4c627e7919683bbf00970b626554df43
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68879814"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538826"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>チュートリアル:23 Video と Azure Active Directory の統合
 

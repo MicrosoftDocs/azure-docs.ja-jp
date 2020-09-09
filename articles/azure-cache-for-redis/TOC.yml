@@ -29,71 +29,77 @@
           href: cache-python-get-started.md
 - name: チュートリアル
   items:
-    - name: ランキングに基づくキャッシュを使用する
+    - name: ASP.NET
+      items:
+        - name: セッション状態プロバイダーの使用
+          href: cache-aspnet-session-state-provider.md
+        - name: 出力キャッシュ プロバイダーの使用
+          href: cache-aspnet-output-cache-provider.md
+    - name: Java Spring
+      items:
+        - name: Spring Boot Initializer の使用
+          href: cache-java-spring-boot-initializer-with-redis-cache.md
+    - name: ランキングの作成
       href: cache-web-app-cache-aside-leaderboard.md
-- name: サンプル
-  items:
-    - name: Azure Cache for Redis のサンプル
-      href: cache-redis-samples.md
-    - name: Azure
+    - name: Azure PowerShell を使用して管理する
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: Azure CLI で管理する
       href: cli-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: Security
-      items:
-        - name: セキュリティ ベースライン
-          href: security-baseline.md
     - name: フェールオーバーと修正プログラムの適用
       href: cache-failover.md
     - name: ベスト プラクティス
       href: cache-best-practices.md
-    - name: キャッシュに関するアーキテクチャのベスト プラクティス
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+    - name: キャッシュ アーキテクチャ
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: 操作方法ガイド
   items:
     - name: プラン
       items:
         - name: キャッシュ レベルを選択する
-          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
+          href: cache-overview.md#choosing-the-right-tier
         - name: クラスタリングによってキャッシュを分散する
           href: cache-how-to-premium-clustering.md
         - name: Redis データ永続化でキャッシュを保持する
           href: cache-how-to-premium-persistence.md
         - name: 仮想ネットワークでキャッシュをセキュリティ保護する
           href: cache-how-to-premium-vnet.md
+        - name: キャッシュに非公開で接続する
+          href: cache-private-link.md
         - name: geo レプリケーションの設定
           href: cache-how-to-geo-replication.md
         - name: 予約容量で保存する
           href: cache-reserved-pricing.md
-        - name: Managed Cache Service から移行する
+        - name: Azure Cache for Redis への移行
+          href: cache-migration-guide.md
+        - name: Managed Cache Service からの移行 (非推奨)
           href: cache-migrate-to-redis.md
+        - name: 計画に関する FAQ
+          href: cache-planning-faq.md
+    - name: ビルド
+      items:
+        - name: 開発に関する FAQ
+          href: cache-development-faq.md
     - name: 自動化
       items:
         - name: Azure PowerShell を使用したデプロイと管理
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Azure CLI でデプロイして管理する
           href: cli-samples.md
-        - name: Azure Cache for Redis をプロビジョニングする
+        - name: Redis キャッシュを作成する - ARM テンプレート
+          displayName: Resource Manager
           href: cache-redis-cache-arm-provision.md
-        - name: Azure Cache for Redis で Web アプリをプロビジョニングする
+        - name: Redis キャッシュで Web アプリを作成する - ARM テンプレート
+          displayName: Resource Manager
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: アプリケーションと統合する
-      items:
-        - name: ASP.NET
-          items:
-            - name: セッション状態プロバイダーの使用
-              href: cache-aspnet-session-state-provider.md
-            - name: 出力キャッシュ プロバイダーの使用
-              href: cache-aspnet-output-cache-provider.md
-        - name: Java Spring
-          items:
-            - name: Spring Boot Initializer の使用
-              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: 管理する
       items:
         - name: Azure Portal での構成
@@ -101,19 +107,29 @@
         - name: データをインポート/エクスポートする
           href: cache-how-to-import-export-data.md
         - name: 再起動
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: 更新のスケジュール
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: redis-cli.exe アクセスの構成
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 および 1.1 の削除
           href: cache-remove-tls-10-11.md
+        - name: 管理に関する FAQ
+          href: cache-management-faq.md
     - name: モニター
       items:
         - name: Azure Portal での監視
           href: cache-how-to-monitor.md
         - name: 例外のアラートを設定する
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
+        - name: 監視に関する FAQ
+          href: cache-monitor-troubleshoot-faq.md
+    - name: スケール
+      items:
+        - name: 別のサイズとレベルに更新する
+          href: cache-how-to-scale.md
+        - name: Redis クラスターを使用してスケールイン/スケールアウトする
+          href: cache-how-to-premium-clustering.md
     - name: 診断とトラブルシューティング
       items:
         - name: Redis サーバーに関するトラブルシューティング
@@ -124,43 +140,42 @@
           href: cache-troubleshoot-timeouts.md
         - name: データ損失に関するトラブルシューティング
           href: cache-troubleshoot-data-loss.md
-    - name: スケール
-      items:
-        - name: 別のサイズとレベルに更新する
-          href: cache-how-to-scale.md
-        - name: Redis クラスターを使用してスケールイン/スケールアウトする
-          href: cache-how-to-premium-clustering.md
+        - name: トラブルシューティングに関する FAQ
+          href: cache-monitor-troubleshoot-faq.md
 - name: リファレンス
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
-    - name: Azure PowerShell
-      href: /powershell/module/az.rediscache
-    - name: Azure CLI
-      href: /cli/azure/redis
+    - name: Azure Cache for Redis のサンプル
+      href: cache-redis-samples.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
       href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis クライアント
       href: 'https://redis.io/clients'
-    - name: Redis コマンド
-      href: 'https://redis.io/commands#'
+    - name: Azure PowerShell
+      href: /powershell/module/az.rediscache
+    - name: Azure CLI
+      href: /cli/azure/redis
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/redis/'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.cache/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
+    - name: Redis コマンド
+      href: 'https://redis.io/commands#'
 - name: リソース
   items:
-    - name: Microsoft Learn でスキルを身に付ける
-      href: /learn/browse/?products=azure-redis-cache
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Azure Cache for Redis に関する FAQ
       href: cache-faq.md
     - name: ビデオ
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Q&A 質問ページ
       href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-redis-cache
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'

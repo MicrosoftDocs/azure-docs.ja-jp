@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457435"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384873"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>カスタマー マネージド キーを使用して App Configuration データを暗号化する
 Azure App Configuration では、[保存されている機密情報を暗号化](../security/fundamentals/encryption-atrest.md)します。 カスタマー マネージド キーを使用すると、暗号化キーを管理できるため、データ保護が強化されます。  マネージド キー暗号化が使用されている場合、App Configuration 内のすべての機密情報が、ユーザー指定の Azure Key Vault キーで暗号化されます。  これにより、必要に応じて暗号化キーを交換することができます。  また、App Configuration インスタンスのキーへのアクセスを取り消すことによって、機密情報への Azure App Configuration のアクセスを取り消すことができます。
@@ -20,7 +20,7 @@ Azure App Configuration では、[保存されている機密情報を暗号化]
 Azure App Configuration では、Microsoft によって提供される 256 ビットの AES 暗号化キーを使用して、保存されている機密情報を暗号化します。 すべての App Configuration インスタンスには、サービスによって管理され、機密情報を暗号化するために使用される独自の暗号化キーがあります。 機密情報には、キーと値のペアで検出された値が含まれます。  カスタマー マネージド キーの機能が有効になっている場合、App Configuration では、App Configuration インスタンスに割り当てられたマネージド ID を使用して Azure Active Directory で認証を行います。 その後、マネージド ID で Azure Key Vault が呼び出され、App Configuration インスタンスの暗号化キーがラップされます。 ラップされた暗号化キーはその後、格納され、ラップされていない暗号化キーは App Configuration 内に 1 時間キャッシュされます。 App Configuration では、ラップされていないバージョンの App Configuration インスタンスの暗号化キーが 1 時間ごとに更新されます。 これにより、通常の運用条件下の可用性が保証されます。 
 
 >[!IMPORTANT]
-> App Configuration インスタンスに割り当てられた ID でインスタンスの暗号化キーのラップを解除することが承認されなくなった場合、またはマネージド キーが完全に削除されている場合は、App Configuration インスタンスに格納されている機密情報の暗号化を解除できなくなります。 Azure Key Vault の[論理的な削除](../key-vault/general/overview-soft-delete.md)機能を使用すると、暗号化キーを誤って削除する可能性が少なくなります。
+> App Configuration インスタンスに割り当てられた ID でインスタンスの暗号化キーのラップを解除することが承認されなくなった場合、またはマネージド キーが完全に削除されている場合は、App Configuration インスタンスに格納されている機密情報の暗号化を解除できなくなります。 Azure Key Vault の[論理的な削除](../key-vault/general/soft-delete-overview.md)機能を使用すると、暗号化キーを誤って削除する可能性が少なくなります。
 
 ユーザーは、Azure App Configuration インスタンスでマネージド キー機能を有効にした場合、機密情報にアクセスするサービスの機能を制御することができます。 マネージド キーはルート暗号化キーとして機能します。 ユーザーは、キー コンテナーのアクセス ポリシーを変更することで、App Configuration インスタンスのマネージド キーへのアクセスを取り消すことができます。 このアクセスが取り消されると、App Configuration では 1 時間以内にユーザー データの暗号化を解除できなくなります。 この時点で、App Configuration インスタンスではすべてのアクセス試行を禁止します。 この状況は、もう一度サービスにマネージド キーへのアクセスを許可することで回復できます。  1 時間以内に、App Configuration ではユーザー データの暗号化を解除し、通常の条件下で動作できるようになります。
 
@@ -75,10 +75,10 @@ Azure App Configuration に対するカスタマー マネージド キー機能
 1. Azure CLI を使用して、システム割り当てマネージド ID を作成します。その際に、前の手順で使用された App Configuration インスタンスとリソース グループの名前に置き換えます。 マネージド ID は、マネージド キーにアクセスするために使用されます。 App Configuration インスタンスの名前を示すために、`contoso-app-config` を使用しています。
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    このコマンドの出力には、システム割り当て ID のプリンシパル ID ("principalId") とテナント ID ("tenandId") が含まれます。  これは、マネージド キーへの ID によるアクセスを許可するために使用されます。
+    このコマンドの出力には、システム割り当て ID のプリンシパル ID ("principalId") とテナント ID ("tenandId") が含まれます。  これらの ID は、マネージド キーへの ID によるアクセスを許可するために使用されます。
 
     ```json
     {
@@ -89,7 +89,7 @@ Azure App Configuration に対するカスタマー マネージド キー機能
     }
     ```
 
-1. キーの検証、暗号化とその解除を行うには、Azure App Configuration インスタンスのマネージド ID でキーにアクセスできる必要があります。 アクセスが必要な特定のアクション セットには、キーの `GET`、`WRAP`、および `UNWRAP` が含まれます。  アクセスを許可するには、App Configuration インスタンスのマネージド ID のプリンシパル ID が必要です。 この値は前の手順で取得されたものです。 以下のように、`contoso-principalId` として示されます。 コマンド ラインを使用して、マネージド キーへのアクセス許可を付与します。
+1. キーの検証、暗号化、暗号化解除を行うには、Azure App Configuration インスタンスのマネージド ID でキーにアクセスできる必要があります。 アクセスが必要な特定のアクション セットには、キーの `GET`、`WRAP`、および `UNWRAP` が含まれます。  アクセスを許可するには、App Configuration インスタンスのマネージド ID のプリンシパル ID が必要です。 この値は前の手順で取得されたものです。 以下のように、`contoso-principalId` として示されます。 コマンド ラインを使用して、マネージド キーへのアクセス許可を付与します。
 
     ```azurecli
     az keyvault set-policy -n contoso-vault --object-id contoso-principalId --key-permissions get wrapKey unwrapKey

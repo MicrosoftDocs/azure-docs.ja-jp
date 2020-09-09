@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7ae54d1d1c649da510c9653acbd7f118069d366c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403361"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833914"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 
@@ -23,10 +23,13 @@ ms.locfileid: "81403361"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。
-- コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
-- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) パッケージ。
-- PHP 対応の Web ブラウザー。 設定していない場合は、マシンに [XAMPP](https://www.apachefriends.org/) をインストールして設定することで、これを設定できます。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
+* PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) パッケージ。
+* PHP 対応の Web ブラウザー。 設定していない場合は、マシンに [XAMPP](https://www.apachefriends.org/) をインストールして設定することで、これを設定できます。
 
 ## <a name="initialize-the-html-file"></a>HTML ファイルを初期化する
 

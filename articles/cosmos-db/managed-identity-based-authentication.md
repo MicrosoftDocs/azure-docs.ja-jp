@@ -3,16 +3,17 @@ title: システム割り当てマネージド ID を使用して Azure Cosmos D
 description: Azure Cosmos DB のキーにアクセスするように Azure Active Directory (Azure AD) システム割り当てマネージド ID (マネージド サービス ID) を構成する方法について説明します。
 author: j-patrick
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641224"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997729"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 
@@ -30,11 +31,11 @@ ms.locfileid: "81641224"
 
 1. **[プラットフォーム機能]**  >  **[ID]** タブの順に開きます。 
 
-   ![関数アプリのプラットフォーム機能と ID オプションを示すスクリーンショット。](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="関数アプリのプラットフォーム機能と ID オプションを示すスクリーンショット。":::
 
 1. **[ID]** タブで、システム ID の **[状態]** を **[オン]** にし、 **[保存]** を選択します。 **[ID]** ウィンドウは次のようになります。  
 
-   ![システム ID の [状態] が [オン] に設定されている場合のスクリーンショット。](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="システム ID の [状態] が [オン] に設定されていることを示すスクリーンショット。":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Azure Cosmos アカウントへのアクセスを許可する
 
@@ -43,7 +44,7 @@ ms.locfileid: "81641224"
 |組み込みのロール  |説明  |
 |---------|---------|
 |[DocumentDB Account Contributor](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Azure Cosmos DB アカウントを管理できます。 読み取り/書き込みキーの取得を許可します。 |
-|[Cosmos DB アカウント閲覧者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。 読み取りキーの取得を許可します。 |
+|[Cosmos DB アカウントの閲覧者ロール](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Cosmos DB アカウントのデータを読み取ることができます。 読み取りキーの取得を許可します。 |
 
 > [!IMPORTANT]
 > Azure Cosmos DB でのロールベースのアクセス制御のサポートは、コントロール プレーン操作にのみ適用されます。 データ プレーン操作は、マスター キーまたはリソース トークンを使用してセキュリティで保護されています。 詳細については、「[データへのアクセスをセキュリティで保護する](secure-access-to-data.md)」の記事を参照してください。
@@ -53,32 +54,47 @@ ms.locfileid: "81641224"
 
 このシナリオでは、関数アプリによって水族館の気温が読み取られ、Azure Cosmos DB のコンテナーにそのデータが書き戻されます。 関数アプリによってデータを書き込む必要があるため、**DocumentDB アカウント共同作成者**ロールを割り当てる必要があります。 
 
+### <a name="assign-the-role-using-azure-portal"></a>Azure portal を使用してロールを割り当てる
+
 1. Azure portal にサインインし、Azure Cosmos DB アカウントに移動します。 **[アクセス管理 (IAM)]** ウィンドウ、 **[ロールの割り当て]** タブの順に開きます。
 
-   ![[アクセス制御] ウィンドウと [ロールの割り当て] タブを示すスクリーンショット。](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="[アクセス制御] ウィンドウと [ロールの割り当て] タブを示すスクリーンショット。":::
 
 1. **[+ 追加]**  >  **[ロール割り当ての追加]** の順に選択します。
 
 1. **[ロールの割り当ての追加]** ウィンドウが右側に表示されます。
 
-   ![[役割の割り当ての追加] ウィンドウを示すスクリーンショット。](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="[ロールの割り当ての追加] ウィンドウを示すスクリーンショット。":::
 
    * **ロール**: **[DocumentDB Account Contributor]** を選択します。
    * **アクセスの割り当て先**: **[システム割り当てマネージド ID]** の選択のサブセクションで、 **[関数アプリ]** を選択します。
    * **Select**:このウィンドウには、サブスクリプション内の、 **[マネージド システム ID]** を持つすべての関数アプリが表示されます。 この場合は、 **[FishTankTemperatureService]** 関数アプリを選択します。 
 
-      ![例が表示された [ロールの割り当ての追加] ウィンドウを示すスクリーンショット。](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="例が表示された [ロールの割り当ての追加] ウィンドウを示すスクリーンショット。":::
 
 1. 関数アプリを選択したら、 **[保存]** を選択します。
+
+### <a name="assign-the-role-using-azure-cli"></a>Azure CLI を使用してロールを割り当てる
+
+Azure CLI を使用してロールを割り当てるには、Azure Cloud Shell を開き、次のコマンドを実行します。
+
+```azurecli-interactive
+
+scope=$(az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id)
+
+principalId=$(az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId)
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>プログラムを使用して Azure Cosmos DB キーにアクセスする
 
 これで、Azure Cosmos DB のアクセス許可で **DocumentDB アカウント共同作成者**ロールが割り当てられた、システム割り当てマネージド ID を持つ関数アプリが作成されました。 次の関数アプリ コードでは、Azure Cosmos DB キーが取得され、CosmosClient オブジェクトが作成され、水族館の気温が取得されて Azure Cosmos DB に保存されます。
 
-このサンプルでは、[List Keys API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) を使用して、Azure Cosmos DB アカウント キーにアクセスします。
+このサンプルでは、[List Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) を使用して、Azure Cosmos DB アカウント キーにアクセスします。
 
 > [!IMPORTANT] 
-> [Cosmos DB アカウントの閲覧者](#grant-access-to-your-azure-cosmos-account)ロールを割り当てるには、[List Read Only Keys API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) を使用する必要があります。 これにより、読み取り専用キーのみが設定されます。
+> [Cosmos DB アカウントの閲覧者](#grant-access-to-your-azure-cosmos-account)ロールを割り当てるには、[List Read Only Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys) を使用する必要があります。 これにより、読み取り専用キーのみが設定されます。
 
 List Keys API は `DatabaseAccountListKeysResult` オブジェクトを返します。 この型は C# ライブラリで定義されていません。 次のコードは、このクラスを実装する方法を示しています。  
 

@@ -3,12 +3,12 @@ title: SharePoint ファイル - QnA Maker
 description: ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294879"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660300"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
@@ -32,7 +32,7 @@ SharePoint サイトからご自分のサポート情報に、QnA Maker でサ�
 
    ![ファイルの省略記号メニューを選択してから URL をコピーして、SharePoint ファイルの URL を取得します。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. QnA Maker ポータルの **[設定]** ページでサポート情報に [URL を追加](manage-knowledge-bases.md#edit-knowledge-base)します。
+1. QnA Maker ポータルの **[設定]** ページで、ナレッジ ベースに URL を追加します。
 
 ### <a name="images-with-sharepoint-files"></a>SharePoint ファイルでのイメージ
 

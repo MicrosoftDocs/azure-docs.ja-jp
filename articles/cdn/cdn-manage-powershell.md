@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用した Azure CDN の管理 | Microsoft Docs
-description: Azure PowerShell コマンドレットを使用して、Azure CDN を管理する方法について説明します。
+description: このチュートリアルでは、PowerShell を使用し、Azure Content Delivery Network のエンドポイント プロファイルとエンドポイントを管理する方法について説明します。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: 22602a1ea64e3dbca34d0c366cf6aa0dc6f35662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5fa1cedf4cc5e87d11dc4b5c453d9cb2a307c3c
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260549"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192656"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>PowerShell を使用した Azure CDN の管理
 PowerShell により、Azure CDN プロファイルとエンドポイントを柔軟に管理することができます。  この PowerShell は対話的に使用することも、スクリプトを記述して、管理タスクを自動化することもできます。  このチュートリアルでは、Azure CDN のプロファイルとエンドポイントを管理するために、PowerShell で実行できる一般的なタスクをいくつか紹介します。
@@ -28,7 +28,7 @@ PowerShell により、Azure CDN プロファイルとエンドポイントを�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell を使用して Azure CDN のプロファイルとエンドポイントを管理するには、Azure PowerShell モジュールをインストールする必要があります。  `Connect-AzAccount` コマンドレットを使用して Azure PowerShell をインストールし、Azure に接続する方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
+PowerShell を使用して Azure CDN のプロファイルとエンドポイントを管理するには、Azure PowerShell モジュールをインストールする必要があります。  `Connect-AzAccount` コマンドレットを使用して Azure PowerShell をインストールし、Azure に接続する方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
 > [!IMPORTANT]
 > Azure PowerShell コマンドレットを実行する前に、`Connect-AzAccount` でログインする必要があります。

@@ -13,17 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db2e583515d948f455e1d2129684f97347a07403
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594935"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998341"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
 
@@ -65,7 +65,7 @@ ms.locfileid: "82594935"
     これでハブが作成され、Windows Phone に向けて非認証通知を送信するように構成されました。
 
     > [!NOTE]
-    > このチュートリアルでは、非認証モードで MPNS を使用します。 MPNS 非認証モードでは、各チャネルに送信できる通知に制限があります。 Notification Hubs では、証明書のアップロードを可能にすることで、 [MPNS 認証モード](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) をサポートします。
+    > このチュートリアルでは、非認証モードで MPNS を使用します。 MPNS 非認証モードでは、各チャネルに送信できる通知に制限があります。 Notification Hubs では、証明書のアップロードを可能にすることで、 [MPNS 認証モード](/previous-versions/windows/apps/ff941099(v=vs.105)) をサポートします。
 
 ## <a name="create-a-windows-phone-application"></a>Windows Phone アプリケーションを作成する
 
@@ -84,8 +84,11 @@ ms.locfileid: "82594935"
     ![Visual Studio - NuGet Package Manager][20]
 4. App.xaml.cs ファイルを開き、次の `using` ステートメントを追加します。
 
-        using Microsoft.Phone.Notification;
-        using Microsoft.WindowsAzure.Messaging;
+    ```csharp
+    using Microsoft.Phone.Notification;
+    using Microsoft.WindowsAzure.Messaging;
+    ```
+
 5. `App.xaml.cs` の `Application_Launching` メソッドの先頭に次のコードを追加します。
 
     ```csharp
@@ -114,7 +117,7 @@ ms.locfileid: "82594935"
     ```
 
    > [!NOTE]
-   > 値 `MyPushChannel` は、[HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) コレクションで既存のチャネルを参照するために使用されるインデックスです。 ない場合は、その名前で新しいエントリを作成します。
+   > 値 `MyPushChannel` は、[HttpNotificationChannel](/previous-versions/ff402781(v=vs.110)) コレクションで既存のチャネルを参照するために使用されるインデックスです。 ない場合は、その名前で新しいエントリを作成します。
 
     ハブの名前と、前のセクションでメモした `DefaultListenSharedAccessSignature` という接続文字列を挿入します。
     このコードにより、MPNS からアプリケーションのチャネル URI が取得され、そのチャネル URI が通知ハブに登録されます。 これにより、アプリケーションが起動するたびに必ずチャネル URI も通知ハブに登録されます。
@@ -171,10 +174,10 @@ ms.locfileid: "82594935"
 [213]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[MPNS authenticated mode]: https://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[MPNS authenticated mode]: /previous-versions/windows/apps/ff941099(v=vs.105)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[toast catalog]: https://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[tile catalog]: https://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[toast catalog]: /previous-versions/windows/apps/jj662938(v=vs.105)
+[tile catalog]: /previous-versions/windows/apps/hh202948(v=vs.105)
 [Notification Hubs - Windows Phone Silverlight チュートリアル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari

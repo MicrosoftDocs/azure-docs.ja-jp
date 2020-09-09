@@ -3,17 +3,17 @@ title: クイックスタート - シミュレートされたデバイスを Azu
 description: このクイックスタートでは、デバイス テンプレートを作成し、IoT Central アプリケーションにシミュレートされたデバイスを追加する方法を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 25e1742612c6fc8c326f2918a4d69c55a9888c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81001131"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001955"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>クイック スタート:IoT Central アプリケーションにシミュレートされたデバイスを追加する
 
@@ -64,7 +64,7 @@ IoT Central アプリケーションにデバイス機能モデルを追加す�
 
 ### <a name="add-cloud-properties"></a>クラウド プロパティを追加する
 
-デバイス テンプレートにはクラウド プロパティを含めることができます。 クラウド プロパティは IoT Central アプリケーション内のみに存在しており、デバイスとの間で送受信されることはありません。
+デバイス テンプレートにはクラウド プロパティを含めることができます。 クラウド プロパティは IoT Central アプリケーション内のみに存在しており、デバイスとの間で送受信されることはありません。 クラウド プロパティを追加するには、次のようにします。
 
 1. **[クラウド プロパティ]** 、 **[+ クラウド プロパティの追加]** の順に選択します。 下表の情報に従って、デバイス テンプレートに 2 つのクラウド プロパティを追加します。
 
@@ -134,17 +134,19 @@ IoT Central アプリケーションにデバイス機能モデルを追加す�
 
 これで、ビルダーがデバイス テンプレート用に作成したビューを、シミュレートされたデータを使用して操作できるようになりました。
 
-1. **[デバイス]** ページで、シミュレートされたデバイスを選択します。
+1. **[デバイス]** ページで、シミュレートされたデバイスを選択します
 
-1. **[概要]** ビューには、シミュレートされたテレメトリのプロットが表示されます。
+    * **[概要]** ビューには、シミュレートされたテレメトリのプロットが表示されます。
 
-    ![[概要] ビュー](./media/quick-create-simulated-device/simulated-telemetry.png)
+        ![[概要] ビュー](./media/quick-create-simulated-device/simulated-telemetry.png)
 
-1. **[詳細]** ビューには、ビューに追加したクラウド プロパティを含むプロパティ値が表示されます。
+    * **[詳細]** ビューには、ビューに追加したクラウド プロパティを含むプロパティ値が表示されます。
 
-1. **[コマンド]** ビューでは、デバイスでの**点滅**などのコマンドを実行できます。
+    * **[コマンド]** ビューでは、デバイスでの**点滅**などのコマンドを実行できます。
 
-1. **[デバイスの管理]** ビューは、オペレーターがデバイスを管理できるようにするために作成したフォームです。
+    * **[デバイスの管理]** ビューは、オペレーターがデバイスを管理できるようにするために作成したフォームです。
+
+    * **[生データ]** ビューには、デバイスから送信されてきた未加工のテレメトリ値とプロパティ値を表示できます。 このビューは、デバイスのデバッグに役立ちます。
 
 ## <a name="use-a-simulated-device-to-improve-views"></a>シミュレートされたデバイスを使用してビューを改善する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116169"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279221"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple:よく寄せられる質問
 
@@ -63,7 +63,7 @@ CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能な�
 - パートナーは管理されたサービスを提供することで、新しいビジネス モデルを発見することもできます。
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>StorSimple CSP パートナーが受けられるインセンティブは何ですか。 自分に CSP プログラムのインセンティブを受ける資格があるか知りたいのですが。
-インセンティブの詳細については、[CSP プログラムのインセンティブ](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details)に関するページを参照してください。
+インセンティブの詳細については、[CSP プログラムのインセンティブ](https://partner.microsoft.com/cloud-solution-provider/program-details)に関するページを参照してください。
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>パートナーとしての StorSimple のデプロイと管理

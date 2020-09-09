@@ -10,12 +10,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/06/2019
   ms.author: magoedte
-  ms.openlocfilehash: d154705e17a51453648a8e1d3dd14bcdc6881917
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 8a4f090ae8f4dfe7efe525a21d1c6a724aaa3647
+  ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77208670"
+  ms.lasthandoff: 07/30/2020
+  ms.locfileid: "87447767"
 landingContent:
 - title: Azure オートメーションの使用
   linkLists:
@@ -40,15 +40,11 @@ landingContent:
   - linkListType: overview
     links:
     - text: Update Management の概要
-      url: automation-update-management.md
+      url: update-management/update-mgmt-overview.md
   - linkListType: get-started
     links:
     - text: 複数の VM の更新プログラム管理
-      url: manage-update-multi.md
-  - linkListType: deploy
-    links:
-    - text: Azure VM での更新、インベントリ、変更の追跡
-      url: automation-onboard-solutions.md
+      url: update-management/update-mgmt-manage-updates-for-vm.md
 - title: Desired State Configuration を使用して VM を構成する
   linkLists:
   - linkListType: overview

@@ -1,19 +1,19 @@
 ---
 title: Azure portal を使用して検索インデックスにデータをインポートする
 titleSuffix: Azure Cognitive Search
-description: Azure portal でデータのインポート ウィザードを使用して、Cosmos DB、Blob Storage、Table Storage、SQL Database、Azure VM 上の SQL Server から Azure データをクロールします。
+description: Azure portal でデータのインポート ウィザードを使用して、Cosmos DB、Blob Storage、Table Storage、SQL Database、SQL Managed Instance、Azure VM 上の SQL Server から Azure データをクロールします。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460705"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935213"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Cognitive Search のデータのインポート ウィザード
 
@@ -65,7 +65,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 | ---------- | ----------- |
 | **既存のデータ ソース** |検索サービスに定義済みのインデクサーが既にある場合は、再利用できるデータ ソース定義が既に存在することがあります。 Azure Cognitive Search では、データ ソース オブジェクトはインデクサーでのみ使用されます。 データ ソース オブジェクトは、プログラムで、または**データのインポート** ウィザードを使用して作成でき、必要に応じて再利用できます。|
 | **サンプル**| Azure Cognitive Search には、チュートリアルとクイックスタートで使用される 2 つの組み込みサンプル データ ソースが用意されています。これは、Cosmos DB でホストされている不動産 SQL データベースとホテル データベースです。 ホテル サンプルに基づくチュートリアルについては、クイックスタートの「[Azure portal でインデックスを作成する](search-get-started-portal.md)」を参照してください。 |
-| [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |サービス名、読み取り権限を持つデータベース ユーザーの資格情報、データベース名は、このページで、または ADO.NET 接続文字列を使用して指定できます。 接続文字列のオプションを選択して、プロパティを表示またはカスタマイズします。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。|
+| [**Azure SQL Database または SQL Managed Instance**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |サービス名、読み取り権限を持つデータベース ユーザーの資格情報、データベース名は、このページで、または ADO.NET 接続文字列を使用して指定できます。 接続文字列のオプションを選択して、プロパティを表示またはカスタマイズします。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。|
 | **Azure VM 上の SQL Server** |接続文字列として、完全修飾サービス名、ユーザー ID とパスワード、データベースを指定します。 このデータ ソースを使用するには、接続を暗号化する証明書をローカル ストアにあらかじめインストールしておく必要があります。 手順については、[Azure Cognitive Search への SQL VM 接続](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)に関する記事をご覧ください。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。 |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要件には、アカウント、データベース、コレクションが含まれます。 コレクション内のすべてのドキュメントはインデックスに含まれます。 行セットをフラット化またはフィルター処理するクエリを定義することも、クエリを空白のままにすることもできます。 このウィザードでは、クエリは必要はありません。|
 | [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |要件には、ストレージ アカウントとコンテナーが含まれます。 BLOB 名がグループ化のために仮想名前付け規則に従っている場合は、必要に応じて、コンテナーの下のフォルダーとして名前の仮想ディレクトリの部分を指定できます。 詳しくは、[Blob Storage のインデックス作成](search-howto-indexing-azure-blob-storage.md)に関する記事をご覧ください。 |
@@ -73,14 +73,14 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
 ## <a name="wizard-output"></a>ウィザードの出力
 
-ウィザードでは、バックグラウンドで次のオブジェクトの作成、構成、呼び出しを行います。 ウィザードが実行された後、ポータル ページにその出力が表示されます。 サービスの [概要] ページには、インデックス、インデクサー、データ ソース、およびスキルセットの一覧が表示されます。 インデックスの定義は、完全な JSON でポータルに表示できます。 その他の定義については、[REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して特定のオブジェクトを取得できます。
+ウィザードでは、バックグラウンドで次のオブジェクトの作成、構成、呼び出しを行います。 ウィザードが実行された後、ポータル ページにその出力が表示されます。 サービスの [概要] ページには、インデックス、インデクサー、データ ソース、およびスキルセットの一覧が表示されます。 インデックスの定義は、完全な JSON でポータルに表示できます。 その他の定義については、[REST API](/rest/api/searchservice/) を使用して特定のオブジェクトを取得できます。
 
 | Object | 説明 | 
 |--------|-------------|
-| [データ ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | ソース データに対する接続情報を資格情報を含めて保持します。 データ ソース オブジェクトは、インデクサーでのみ使用されます。 | 
-| [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | フルテキスト検索やその他のクエリに使用される物理データ構造です。 | 
-| [スキルセット](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | 画像ファイルからの情報の分析と抽出を含む、コンテンツの操作、変換、および整形を行うための手順の完全なセットです。 非常に単純で限定されている構造の場合を除き、エンリッチメントを提供する Cognitive Services リソースへの参照が含まれます。 オプションで、ナレッジ ストアの定義が含まれる場合もあります。  | 
-| [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | データ ソース、ターゲット インデックス、オプションのスキルセット、オプションのスケジュール、およびエラー処理と Base-64 エンコード用のオプションの構成設定を指定する構成オブジェクトです。 |
+| [データ ソース](/rest/api/searchservice/create-data-source)  | ソース データに対する接続情報を資格情報を含めて保持します。 データ ソース オブジェクトは、インデクサーでのみ使用されます。 | 
+| [Index](/rest/api/searchservice/create-index) | フルテキスト検索やその他のクエリに使用される物理データ構造です。 | 
+| [スキルセット](/rest/api/searchservice/create-skillset) | 画像ファイルからの情報の分析と抽出を含む、コンテンツの操作、変換、および整形を行うための手順の完全なセットです。 非常に単純で限定されている構造の場合を除き、エンリッチメントを提供する Cognitive Services リソースへの参照が含まれます。 オプションで、ナレッジ ストアの定義が含まれる場合もあります。  | 
+| [Indexer](/rest/api/searchservice/create-indexer)  | データ ソース、ターゲット インデックス、オプションのスキルセット、オプションのスケジュール、およびエラー処理と Base-64 エンコード用のオプションの構成設定を指定する構成オブジェクトです。 |
 
 
 ## <a name="how-to-start-the-wizard"></a>ウィザードの起動方法
@@ -93,7 +93,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
    ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
 
-**[データのインポート]** は、Azure Cosmos DB、Azure SQL Database、Azure Blob Storage を含む、他の Azure サービスから起動することもできます。 サービスの概要ページの左側にあるナビゲーション ウィンドウで、 **[Add Azure Cognitive Search]\(Azure Cognitive Search の追加\)** を見つけます。
+**[データのインポート]** は、Azure Cosmos DB、Azure SQL Database、SQL Managed Instance、Azure Blob Storage を含む、他の Azure サービスから起動することもできます。 サービスの概要ページの左側にあるナビゲーション ウィンドウで、 **[Add Azure Cognitive Search]\(Azure Cognitive Search の追加\)** を見つけます。
 
 <a name="index-definition"></a>
 
@@ -103,7 +103,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
 1. フィールドの一覧は完了していますか。 サンプリングされなかった新しいフィールドを追加し、検索エクスペリエンスに値を追加しないものと、[フィルター式](search-query-odata-filter.md)にも[スコアリング プロファイル](index-add-scoring-profiles.md)にも使用されないものをすべて削除します。
 
-1. データ型は受信データに適していますか。 Azure Cognitive Search では、[Entity Data Model (EDM) データ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)がサポートされています。 Azure SQL データについては、同等の値を示している[マッピング表](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping)があります。 詳細な背景については、[フィールドのマッピングと変換](search-indexer-field-mappings.md)に関する記事をご覧ください。
+1. データ型は受信データに適していますか。 Azure Cognitive Search では、[Entity Data Model (EDM) データ型](/rest/api/searchservice/supported-data-types)がサポートされています。 Azure SQL データについては、同等の値を示している[マッピング表](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping)があります。 詳細な背景については、[フィールドのマッピングと変換](search-indexer-field-mappings.md)に関する記事をご覧ください。
 
 1. "*キー*" として使用できるフィールドが 1 つありますか。 このフィールドは、Edm.string でなければならず、ドキュメントを一意に識別する必要があります。 リレーショナル データの場合は、主キーにマップされていることがあります。 BLOB の場合、`metadata-storage-path` であることがあります。 フィールドの値に空白またはダッシュが含まれている場合は、**インデクサーの作成**手順の **[詳細オプション]** で **[Base-64 エンコード キー]** オプションを設定し、これらの文字の検証チェックを抑制する必要があります。
 

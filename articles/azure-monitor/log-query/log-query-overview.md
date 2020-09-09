@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591654"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539603"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor のログ クエリの概要
 ログ クエリは、[Azure Monitor ログ](../platform/data-platform-logs.md)内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。
 
-[分析情報](../insights/insights-overview.md)や[ソリューション](../insights/solutions-inventory.md)など、Azure Monitor の一部の機能では、基になるクエリをユーザーに公開せずに、ログ データを処理します。 Azure Monitor の他の機能を十分に活用するには、クエリを作成する方法と、それを使用して Azure Monitor ログ内のデータを対話形式で分析する方法を理解する必要があります。
+[分析情報](../insights/insights-overview.md)や[ソリューション](../monitor-reference.md)など、Azure Monitor の一部の機能では、基になるクエリをユーザーに公開せずに、ログ データを処理します。 Azure Monitor の他の機能を十分に活用するには、クエリを作成する方法と、それを使用して Azure Monitor ログ内のデータを対話形式で分析する方法を理解する必要があります。
 
 この記事は、Azure Monitor のログ クエリについて学習する際の開始点として使用してください。 よく寄せられる質問に回答し、詳細情報やレッスンを提供するその他のドキュメントへのリンクを示します。
 

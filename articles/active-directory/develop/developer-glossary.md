@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 298c5b96951ed616b324535cf3fe2585180789a1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161726"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117245"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -117,7 +117,7 @@ Microsoft ID プラットフォーム アプリケーション統合の場合、
 
 ## <a name="microsoft-identity-platform"></a>Microsoft ID プラットフォーム
 
-Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、開発者はすべての Microsoft ID にサインインし、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得することができます。 これは多彩な機能を備えたプラットフォームであり、認証サービス、ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。 詳細については、「[Microsoft ID プラットフォームについて](about-microsoft-identity-platform.md)」を参照してください。
+Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、開発者はすべての Microsoft ID にサインインし、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得することができます。 これは多彩な機能を備えたプラットフォームであり、認証サービス、ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
 ## <a name="multi-tenant-application"></a>マルチテナント アプリケーション
 
@@ -202,7 +202,7 @@ Azure AD ディレクトリのインスタンスを "Azure AD テナント" と�
 * ユーザー アカウントや登録済みアプリケーションの認証
 * OAuth2、SAML などの各種プロトコルをサポートするうえで必要な REST エンドポイント ([承認エンドポイント](#authorization-endpoint)、[トークン エンドポイント](#token-endpoint)のほか、[マルチテナント アプリケーション](#multi-tenant-application)によって使用される "共通" エンドポイントなど)
 
-Azure AD テナントはサインアップ時に作成され、Azure サブスクリプションおよび Office 365 サブスクリプションに関連付けられます。これにより、そのサブスクリプションの ID およびアクセス管理機能が提供されます。 Azure サブスクリプション管理者は、Azure Portal を使用して追加の Azure AD テナントを作成することもできます。 テナントを利用するための各種方法について詳しくは、[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]に関するページを参照してください。 サブスクリプションと Azure AD テナントの関係について詳しくは、[Azure サブスクリプションを Azure Active Directory に関連付ける方法][AAD-How-Subscriptions-Assoc]に関するページを参照してください。
+Azure AD テナントはサインアップ時に作成され、Azure サブスクリプションおよび Office 365 サブスクリプションに関連付けられます。これにより、そのサブスクリプションの ID およびアクセス管理機能が提供されます。 Azure サブスクリプション管理者は、Azure Portal を使用して追加の Azure AD テナントを作成することもできます。 テナントを利用するための各種方法について詳しくは、[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]に関するページを参照してください。 サブスクリプションと Azure AD テナントの関係と、サブスクリプションの Azure AD テナントへの関連付けまたは追加の方法については、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する][AAD-How-Subscriptions-Assoc]」を参照してください。
 
 ## <a name="token-endpoint"></a>トークン エンドポイント
 
@@ -248,7 +248,7 @@ Microsoft のコンテンツ改善のため、以下のコメント セクショ
 [AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://developer.microsoft.com/graph
-[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
+[O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3

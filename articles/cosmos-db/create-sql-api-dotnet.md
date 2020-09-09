@@ -1,26 +1,27 @@
 ---
 title: クイックスタート - Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
 description: このクイックスタートでは、Azure Cosmos DB SQL API アカウント リソースを管理する .NET コンソール アプリを構築する方法について説明します。
-author: SnehaGunda
-ms.author: sngun
+author: anfeldma-ms
+ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/12/2019
-ms.openlocfilehash: 0981ed30c6bcd9d4246ce1eb047aa66168e3884a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 05/11/2020
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: c76a6666be805aa088bab7c5716ffd88a30519c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215280"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002081"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>クイック スタート:Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -53,7 +54,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 
 Azure Cloud Shell を使用して、Azure Cosmos アカウントを作成できます。 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできる対話形式の認証されたシェルです。 Bash または PowerShell どちらかのシェル エクスペリエンスを作業方法に合わせて柔軟に選択できます。 このクイックスタートでは、 **[Bash]** モードを選択します。 Azure Cloud Shell ではストレージ アカウントも必要です。これはプロンプトが表示されたら作成できます。
 
-次のコードの横にある **[試してみる]** ボタンを選択し、 **[Bash]** モードを選択します。 **[ストレージ アカウントを作成する]** を選択して Cloud Shell にログインします。 次に、次のコードをコピーして Azure Cloud Shell に貼り付けて実行します。 Azure Cosmos アカウント名はグローバルに一意である必要があります。必ず `mysqlapicosmosdb` 値を更新してからコマンドを実行してください。
+次のコードの横にある **[使ってみる]** ボタンを選択し、 **[Bash]** モードを選択します。 **[ストレージ アカウントを作成する]** を選択して Cloud Shell にログインします。 次に、次のコードをコピーして Azure Cloud Shell に貼り付けて実行します。 Azure Cosmos アカウント名はグローバルに一意である必要があります。必ず `mysqlapicosmosdb` 値を更新してからコマンドを実行してください。
 
 ```azurecli-interactive
 
@@ -147,7 +148,7 @@ export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
 export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
-**MacOS**
+**macOS**
 
 ```bash
 export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"

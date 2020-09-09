@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 3df7ca90b81b697c72ba8f36bfff56c70cc090f2
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561310"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079151"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の共有を管理する 
 
@@ -92,23 +92,23 @@ ms.locfileid: "82561310"
 
 共有を更新するには、Azure portal で次の手順を実行します。
 
-1.   Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
+1. Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
 
-    ![共有を選択する](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![共有を選択する](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   **[最新の情報に更新]** をクリックします。 
+2. **[最新の情報に更新]** をクリックします。 
 
-    ![[最新の情報に更新] をクリックする](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![[最新の情報に更新] をクリックする](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。 
+3. 確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。 
 
-    ![更新を確認する](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![更新を確認する](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   更新の進行中は、コンテキスト メニューで更新オプションが淡色表示になります。 更新ジョブの状態を表示するには、ジョブの通知をクリックします。
 
-5.   更新の時間は、Azure コンテナー内のファイルの数と、デバイス上のファイルの数によって異なります。 更新が正常に完了すると、共有のタイムスタンプが更新されます。 更新が部分的に失敗しても、操作は成功したと見なされ、タイムスタンプが更新されます。 
+5. 更新の時間は、Azure コンテナー内のファイルの数と、デバイス上のファイルの数によって異なります。 更新が正常に完了すると、共有のタイムスタンプが更新されます。 更新が部分的に失敗しても、操作は成功したと見なされ、タイムスタンプが更新されます。 
 
-    ![更新されたタイムスタンプ](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![更新されたタイムスタンプ](media/data-box-gateway-manage-shares/refresh-4.png)
  
 失敗がある場合は、アラートが発生します。 アラートには、問題を解決するための推奨事項と原因が詳しく記載されています。 アラートには、更新または削除が失敗したファイルなど、失敗の完全なまとめが記載されているファイルへのリンクもあります。
 

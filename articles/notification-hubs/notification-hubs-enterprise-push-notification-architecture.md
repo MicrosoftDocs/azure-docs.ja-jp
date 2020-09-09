@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264035"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003628"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 
@@ -35,9 +36,9 @@ ms.locfileid: "76264035"
 
 次のセクションでは、このソリューションの全般的なアーキテクチャを紹介します (概論として、複数のモバイル アプリを前提としていますが、モバイル アプリが 1 つしかない場合にも同様に該当します)。
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
-![][1]
+![エンタープライズ アーキテクチャの図。イベント、サブスクリプション、プッシュ メッセージを通過する流れになっています。][1]
 
 このアーキテクチャ図の重要な部分は、トピック/サブスクリプション プログラミング モデルを提供する Azure Service Bus です (詳細については、[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]に関するページを参照)。 受信者 (この場合は、モバイル バックエンド。通常は、モバイル アプリへのプッシュを開始する [Azure Mobile Service]) は、バックエンド システムから直接にではなく、代わりに、[Azure Service Bus] によって提供される中間の抽象化レイヤーからメッセージを受信します。これにより、モバイル バックエンドは 1 つ以上のバックエンド システムからメッセージを受信できるようになります。 Service Bus トピックは、バックエンド システムごとに作成する必要があります (会計、人事、財務など)。これは基本的に、メッセージのプッシュ通知としての送信を開始する目的とする "トピック" です。 バックエンド システムは、これらのトピックにメッセージを送信します。 Service Bus のサブスクリプションを作成することで、モバイル バックエンドがこのような 1 つまたは複数のトピックをサブスクライブできます。 これにより、モバイル バックエンドは対応するバックエンド システムから通知を受信できます。 モバイル バックエンドは継続的にサブスクリプションのメッセージをリッスンし、メッセージを受信すると、Notification Hubs に通知として送信します。 その後、通知ハブは最終的に、そのメッセージをモバイル アプリに配信します。 主要なコンポーネントの一覧を次に示します。
 
@@ -228,15 +229,17 @@ ms.locfileid: "76264035"
 
     e. このアプリを **WebJob** として発行するには、Visual Studio でソリューションを右クリックし、 **[WebJob として発行]** を選択します。
 
-    ![][2]
+    ![右クリック オプションのスクリーンショット。[WebJob として発行] が赤で囲まれています。][2]
 
     f. 発行プロファイルを選択し、この WebJob をホストする新しい Azure Web サイトを作成し (このサイトがまだ存在しない場合)、Web サイトを作成したら **[発行]** を選択します。
 
-    ![][3]
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Azure でサイトを作成するためのワークフローのスクリーンショット。":::
+    [Web の発行] ダイアログのスクリーンショット。[Microsoft Azure Web サイト] オプションが選択されています。緑の矢印が指し示す [Select Existing Website]\(既存の Web サイトを選択する\) ダイアログ ボックスでは [新規] オプションが赤で囲まれています。そこからさらに緑の矢印が指し示す [Create site on Microsoft Azure]\(Microsoft Azure でサイトを作成する\) ダイアログ ボックスでは [サイト名] と [作成] オプションが赤で囲まれています。
+    :::image-end:::
 
     g. ジョブを [連続実行する] ように構成すると、[Azure Portal] にログインしたときに、以下のような画面が表示されます。
 
-    ![][4]
+    ![Azure portal のスクリーンショット。エンタープライズ プッシュ バックエンド Web ジョブが表示されています。名前、スケジュール、ログの値が赤で囲まれています。][4]
 
 3. **EnterprisePushMobileApp**
 
@@ -270,11 +273,11 @@ ms.locfileid: "76264035"
 2. Windows ストア アプリを起動する **EnterprisePushMobileApp** を実行します。
 3. LoB バックエンドをシミュレートし、メッセージの送信を開始する **EnterprisePushBackendSystem** コンソール アプリケーションを実行すると、次の図のようなトースト通知が表示されます。
 
-    ![][5]
+    ![Enterprise Push Backend System アプリを実行するコンソールと、そのアプリで送信されるメッセージのスクリーンショット。][5]
 
 4. これらのメッセージは最初、WebJob で Service Bus サブスクリプションによって監視されていた Service Bus トピックに送信されました。 メッセージを受信すると、通知が作成されてモバイル アプリに送信されます。 [Azure Portal] で WebJobs の [ログ] リンクをクリックすると、WebJobs ログで処理を確認することができます。
 
-    ![][6]
+    ![[Continuous WebJob Details]\(継続的な WebJob の詳細\) ダイアログ ボックスのスクリーンショット。送信されるメッセージが赤で囲まれています。][6]
 
 <!-- Images -->
 [1]: ./media/notification-hubs-enterprise-push-architecture/architecture.png
@@ -287,8 +290,8 @@ ms.locfileid: "76264035"
 <!-- Links -->
 [Notification Hubs のサンプル (英語)]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
-[Azure Service Bus]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure Service Bus]: ../service-bus-messaging/service-bus-messaging-overview.md
+[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure WebJob]: ../app-service/webjobs-create.md
-[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Azure Portal]: https://portal.azure.com/

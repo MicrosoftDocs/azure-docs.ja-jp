@@ -7,20 +7,20 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32b678058e2d24d277eaf56a1aadec3678e25a5b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231803"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128167"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールを割り当てる
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 - Security Manager
 
 > [!NOTE]
-> Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者サブスクリプション ロールに割り当てられたグループのユーザーまたはメンバー、および Azure AD 全体管理者には、既定でリソース管理者のアクセス許可が与えられます。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソース用 Privileged Identity Management を使用したアクセスの確認ができます。 リソース管理者のアクセス許可がないユーザーは、リソース用 Privileged Identity Management を管理できません。 [Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)の一覧をご確認ください。
+> Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者サブスクリプション ロールに割り当てられたグループのユーザーまたはメンバー、および Azure AD 全体管理者には、既定でリソース管理者のアクセス許可が与えられます。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソース用 Privileged Identity Management を使用したアクセスの確認ができます。 リソース管理者のアクセス許可がないユーザーは、リソース用 Privileged Identity Management を管理できません。 [Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)の一覧を表示します。
 
 ## <a name="assign-a-role"></a>ロールの割り当て
 
@@ -47,33 +47,31 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
 1. **[Azure リソース]** を選択します。
 
-1. **[リソース フィルター]** を使用して、管理対象リソースの一覧をフィルター処理します。
+1. リソース フィルターを使用して、探している管理対象リソースを検索します。
 
     ![管理する Azure リソースの一覧](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. サブスクリプションや管理グループなど、管理するリソースを選択します。
+1. 管理するリソースを選択して、リソース概要ページを開きます。
 
-1. [管理] で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
+1. **[管理]** で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
 
     ![Azure リソース ロール](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. **[メンバーの追加]** を選択して [新しい割り当て] ペインを開きます。
+1. **[割り当ての追加]** を選択して、 **[割り当ての追加]** ペインを開きます。
 
-1. **[ロールを選択]** を選択して [ロールを選択] ペインを開きます。
+1. **[ロールを選択]** を選択して **[ロールを選択]** ページを開きます。
 
     ![[新しい割り当て] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
 1. 割り当てるロールを選択し、 **[選択]** をクリックします。
 
-    [メンバーまたはグループの選択] ウィンドウが開きます。
+    **[メンバーまたはグループの選択]** ペインが開きます。
 
 1. ロールに割り当てるメンバーまたはグループを選択し、 **[選択]** をクリックします。
 
     ![[メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-    [メンバーシップ設定] ウィンドウが開きます。
-
-1. **[割り当ての種類]** リストで **[対象]** または **[アクティブ]** を選択します。
+1. **[設定]** タブの **[割り当ての種類]** リストで **[対象]** または **[アクティブ]** を選択します。
 
     ![[メンバーシップ設定] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,19 +81,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
     - **[アクティブ]** 割り当ての場合、ロールを使用するために何らかのアクションを実行することをメンバーに要求しません。 アクティブ割り当てされたメンバーは、ロールによって提供される特権を常に所有します。
 
-1. 割り当てを永続的 (永続的に対象または永続的に割り当て済み) にする必要がある場合は、 **[Permanently]\(永続的\)** チェック ボックスをオンにします。
+1. 特定の割り当て期間を指定するには、開始日時と終了日時を変更します。
 
-    ロールの設定によっては、チェック ボックスが表示されない場合や、変更できない場合があります。
+1. 完了したら、 **[割り当て]** を選択します。
 
-1. 特定の割り当て期間を指定するには、チェック ボックスの選択を解除して、開始または終了日時フィールドを変更します。
-
-    ![メンバー シップ設定 - 日付と時刻](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. 終わったら、 **[Done]\(完了\)** を選択します。
-
-    ![新しい割り当て - 追加](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. 新しいロールの割り当てを作成するには、 **[追加]** を選択します。 状態の通知が表示されます。
+1. 新しいロールの割り当てが作成されると、状態の通知が表示されます。
 
     ![新しい割り当て - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,9 +97,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
 1. **[Azure リソース]** を選択します。
 
-1. サブスクリプションや管理グループなど、管理するリソースを選択します。
+1. 管理するリソースを選択して、その概要ページを開きます。
 
-1. [管理] で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
+1. **[管理]** で **[ロール]** を選択して、Azure リソースのロール一覧を表示します。
 
     ![Azure リソース ロール - ロールの選択](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 

@@ -3,15 +3,16 @@ title: Azure Cosmos アカウントの Azure Private Link を構成する
 description: 仮想ネットワークのプライベート IP アドレスを使用して Azure Cosmos アカウントにアクセスするように Azure Private Link を設定する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 04/13/2020
+ms.topic: how-to
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: aa8fd911aaf5c61fc8c33ca469798291fca3d3d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270691"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502122"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos アカウントの Azure Private Link を構成する
 
@@ -23,9 +24,6 @@ Private Link を使用すると、ユーザーは、仮想ネットワーク内�
 
 この記事では、プライベート エンドポイントを作成する手順について説明します。 自動承認方法を使用していることを前提としています。
 
-> [!NOTE]
-> 現在、プライベート エンドポイント サポートは、ゲートウェイ接続モードでのみ、一般に提供されています。 ダイレクト モードでは、プレビュー機能として使用できます。
-
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを作成する
 
 Azure portal を使用して、次の手順で既存の Azure Cosmos アカウントのプライベート エンドポイントを作成します。
@@ -34,7 +32,7 @@ Azure portal を使用して、次の手順で既存の Azure Cosmos アカウ�
 
 1. 設定の一覧から **[プライベート エンドポイント接続]** を選択し、 **[プライベート エンドポイント]** を選択します。
 
-   ![Azure portal でプライベート エンドポイントを作成するための選択](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Azure portal でプライベート エンドポイントを作成するための選択":::
 
 1. **[プライベート エンドポイントの作成 - 基本]** ペインで次の詳細を入力または選択します。
 
@@ -47,7 +45,7 @@ Azure portal を使用して、次の手順で既存の Azure Cosmos アカウ�
     | 名前 | プライベート エンドポイントの名前を入力します。 この名前が使用済みの場合は、一意の名前を作成します。 |
     |リージョン| Private Link をデプロイするリージョンを選択します。 仮想ネットワークが存在する場所と同じ場所にプライベート エンドポイントを作成します。|
     |||
-1. **リソース** を選択します。
+1. **[Next:リソース]** を選択します。
 1. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -59,8 +57,8 @@ Azure portal を使用して、次の手順で既存の Azure Cosmos アカウ�
     |ターゲット サブリソース |マップする Azure Cosmos DB API の種類を選択します。 既定では SQL、MongoDB、Cassandra API では、1 つしか選択できません。 Gremlin と Table API のような API は SQL API と相互運用可能であるため、**SQL** を選択することもできます。 |
     |||
 
-1. **構成** を選択します。
-1. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
+1. **[Next:構成]** を選択します。
+1. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
@@ -97,7 +95,7 @@ Azure Cosmos アカウントの Private Link を承認すると、Azure portal �
 1. 先ほど作成したプライベート エンドポイントを検索します。 この例では **cdbPrivateEndpoint3** です。
 1. **[概要]** タブを選択して、DNS の設定と IP アドレスを表示します。
 
-![Azure portal のプライベート IP アドレス](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Azure portal のプライベート IP アドレス":::
 
 プライベート エンドポイントごとに複数の IP アドレスが作成されます。
 
@@ -410,7 +408,7 @@ PowerShell スクリプトでは、`GroupId` 変数に 1 つの値のみを含�
 
 テンプレートが正常にデプロイされると、次の図に示すような出力が表示されます。 プライベート エンドポイントが正しく設定されている場合、`provisioningState` 値は `Succeeded` です。
 
-![Resource Manager テンプレートのデプロイの出力](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Resource Manager テンプレートのデプロイの出力":::
 
 テンプレートがデプロイされると、プライベート IP アドレスがサブネット内で予約されます。 Azure Cosmos アカウントのファイアウォール規則は、プライベート エンドポイントからの接続のみを受け入れるように構成されています。
 
@@ -621,13 +619,19 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 
 * ファイアウォール規則を構成していない場合、既定では、すべてのトラフィックが Azure Cosmos アカウントにアクセスできます。
 
-* パブリック トラフィックまたはサービス エンドポイントを構成し、プライベート エンドポイントを作成する場合、さまざまな種類の受信トラフィックが、対応する種類のファイアウォール規則によって承認されます。
+* パブリック トラフィックまたはサービス エンドポイントを構成し、プライベート エンドポイントを作成する場合、さまざまな種類の受信トラフィックが、対応する種類のファイアウォール規則によって承認されます。 プライベート エンドポイントが、サービス エンドポイントも構成されているサブネットで構成されている場合は、次のようになります。
+  * プライベート エンドポイントによってマップされたデータベース アカウントへのトラフィックは、プライベート エンドポイントを介してルーティングされます。
+  * サブネットからの他のデータベース アカウントへのトラフィックは、サービス エンドポイントを介してルーティングされます。
 
-* パブリック トラフィックまたはサービス エンドポイントを構成せずにプライベート エンドポイントを作成する場合、Azure Cosmos アカウントにはプライベート エンドポイントからのみアクセスできます。 パブリック トラフィックまたはサービス エンドポイントを構成しない場合、すべての承認済みプライベート エンドポイントが拒否または削除されると、アカウントはネットワーク全体に対して開かれます。
+* パブリック トラフィックまたはサービス エンドポイントを構成せずにプライベート エンドポイントを作成する場合、Azure Cosmos アカウントにはプライベート エンドポイントからのみアクセスできます。 パブリック トラフィックまたはサービス エンドポイントを構成しない場合、すべての承認済みプライベート エンドポイントが拒否または削除されると、PublicNetworkAccess が Disabled に設定されていない限り、アカウントはネットワーク全体に対して開かれます (以下のセクションを参照してください)。
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>アカウントの作成中のパブリック ネットワーク アクセスのブロック
 
 前のセクションで説明されているように、特定のファイアウォール規則が設定されていない限り、プライベート エンドポイントを追加すると、Azure Cosmos アカウントはそのプライベート エンドポイント経由でのみアクセス可能になります。 つまり、パブリック トラフィックから Azure Cosmos アカウントに到達できるのは、それが作成されてから、プライベート エンドポイントが追加されるまでの間になります。 プライベート エンドポイントの作成の前であってもパブリック ネットワーク アクセスが確実に無効になるようにするには、アカウントの作成中に `publicNetworkAccess` フラグを `Disabled` に設定することができます。 このフラグの使用方法を示す例については、[この Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/)を参照してください。
+
+## <a name="port-range-when-using-direct-mode"></a>直接モードを使用する場合のポートの範囲
+
+直接モード接続を介して Azure Cosmos アカウントで Private Link を使用している場合は、TCP ポートの全範囲 (0-65535) が開いていることを確認する必要があります。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>リージョンの追加または削除時にプライベート エンドポイントを更新する
 
@@ -643,21 +647,15 @@ Azure Cosmos アカウントに新しいリージョン ("米国東部" など) 
 
 Azure Cosmos アカウントで Private Link を使用する場合は、次の制限事項が適用されます。
 
-* ダイレクト モード接続を使用し、Azure Cosmos アカウントで Private Link を使用している場合は、TCP プロトコルのみを使用できます。 HTTP プロトコルはまだサポートされていません
+* 1 つの Azure Cosmos アカウントに 200 を超えるプライベート エンドポイントを設定することはできません。
 
-* 現在、プライベート エンドポイント サポートは、ゲートウェイ接続モードでのみ、一般に提供されています。 ダイレクト モードでは、プレビュー機能として使用できます。
+* ダイレクト モード接続を介して Azure Cosmos アカウントで Private Link を使用している場合は、TCP プロトコルのみを使用できます。 HTTP プロトコルは現在サポートされていません。
 
 * MongoDB アカウント用の Azure Cosmos DB の API を使用する場合、プライベート エンドポイントは、サーバーのバージョンが 3.6 のアカウントでのみサポートされます (つまり、`*.mongo.cosmos.azure.com` 形式でエンドポイントを使用するアカウント)。 サーバーのバージョンが 3.2 のアカウント (`*.documents.azure.com` の形式でエンドポイントを使用するアカウント) では、Private Link はサポートされていません。 Private Link を使用するには、古いアカウントを新しいバージョンに移行する必要があります。
 
-* Private Link を採用している MongoDB アカウントで Azure Cosmos DB の API を使用する場合、Robo 3T、Studio 3T、Mongoose などのツールは使用できません。 このエンドポイントは、`appName=<account name>` パラメーターが指定されている場合にのみ、Private Link をサポートできます。 たとえば `replicaSet=globaldb&appName=mydbaccountname` です。 これらのツールは接続文字列のアプリ名をサービスに渡さないため、Private Link は使用できません。 ただし、3.6 バージョンの SDK ドライバーを使用してこれらのアカウントにアクセスすることもできます。
+* Azure Cosmos DB の MongoDB 用 API アカウントを使用している場合で、プライベート リンクがある場合、一部のツールやライブラリでは、接続文字列から `appName` パラメーターが自動的に除去されるため、正常に機能しないことがあります。 このパラメーターは、プライベート エンドポイント経由でアカウントに接続するために必要です。 一部のツール (Visual Studio Code など) では、このパラメーターが接続文字列から削除されないので、互換性が維持されます。
 
-* Private Link が含まれている場合、仮想ネットワークを移動または削除することはできません。
-
-* Azure Cosmos アカウントがプライベート エンドポイントにアタッチされている場合、そのアカウントを削除することはできません。
-
-* Azure Cosmos アカウントは、アカウントに接続されているすべてのプライベート エンドポイントにマップされていないリージョンにフェールオーバーすることはできません。
-
-* 自動承認されるプライベート エンドポイントを作成するには、Azure Cosmos アカウント スコープで少なくとも"*/PrivateEndpointConnectionsApproval" アクセス許可がネットワーク管理者に付与されている必要があります。
+* 自動承認されるプライベート エンドポイントを作成するには、Azure Cosmos アカウント スコープで少なくとも `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` アクセス許可がネットワーク管理者に付与されている必要があります。
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>プライベート DNS ゾーンの統合に関する制限事項
 

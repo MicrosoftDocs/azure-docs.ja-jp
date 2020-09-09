@@ -4,30 +4,24 @@ description: StorSimple Device Manager サービスの [バックアップ カ�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.topic: how-to
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60723392"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527831"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 
 ## <a name="overview"></a>概要
 
 このチュートリアルでは、既存のバックアップ セットを使用して、StorSimple 8000 シリーズ デバイスで実行される復元操作について説明します。 **[バックアップ カタログ]** ブレードを使用し、ローカルまたはクラウド バックアップからボリュームを復元します。 **[バックアップ カタログ]** ブレードには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。 バックアップ セットからの復元操作では、データがバックグラウンドでダウンロードされている間に、ボリュームがすぐにオンラインになります。
-
-復元を開始する代替の方法として、 **[デバイス]、[自分のデバイス]、[ボリューム]** に移動します。 **[ボリューム]** ブレードで、ボリュームを選択して右クリックし、コンテキスト メニューを呼び出して、 **[復元]** を選択します。
 
 ## <a name="before-you-restore"></a>復元する前に
 

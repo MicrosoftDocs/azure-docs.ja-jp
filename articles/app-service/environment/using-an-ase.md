@@ -4,15 +4,15 @@ description: App Service Environment でアプリを作成、発行、スケー�
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586130"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961909"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
 
@@ -122,15 +122,22 @@ SCM URL は、Kudu コンソールにアクセスしたり、Web デプロイを
 
 ### <a name="dns-configuration"></a>DNS の構成 
 
-外部 ASE を使用する場合、ASE で作成されたアプリは Azure DNS で登録されます。 ILB ASE を使う場合は、独自の DNS を管理する必要があります。 
+外部 ASE を使用する場合、ASE で作成されたアプリは Azure DNS で登録されます。 外部 ASE には、アプリを公開するための追加の手順はその後ありません。 ILB ASE を使う場合は、独自の DNS を管理する必要があります。 これは、独自の DNS サーバーで、または Azure DNS プライベート ゾーンを使用して行うことができます。
 
-ILB ASE で DNS を構成するには、次の操作を行ってください。
+ILB ASE を使用して独自の DNS サーバーで DNS を構成するには、次の操作を行ってください。
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. &lt;ASE 名&gt;.appserviceenvironment.net 用のゾーンを作成する
+1. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+1. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
+1. &lt;ASE 名&gt;.appserviceenvironment.net に scm という名前のゾーンを作成する
+1. scm ゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+
+Azure DNS プライベート ゾーンで DNS を構成するには、次の操作を行ってください。
+
+1. &lt;ASE 名&gt;.appserviceenvironment.net という名前の Azure DNS プライベート ゾーンを作成する
+1. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+1. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
+1. そのゾーンに、ILB の IP アドレスに *.scm を指定する A レコードを作成する
 
 ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、*contoso.net* という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、 *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* でのみ使用できます。 
 
@@ -156,7 +163,7 @@ ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたド
 
 ## <a name="storage"></a>ストレージ
 
-ASE には、ASE 内のすべてのアプリ用に 1 TB のストレージがあります。 Isolated 価格 SKU の App Service プランには、既定で 250 GB の制限があります。 5 つ以上の App Service プランがある場合は、ASE の上限である 1 TB を超えないように注意してください。 1 つの App Service プランで 250 GB の制限を超える必要がある場合は、サポートに問い合わせて、App Service プランの制限を最大 1 TB に調整してください。 プランの制限を調整しても、ASE 内のすべての App Service プランで 1 TB の制限が適用されます。
+ASE には、ASE 内のすべてのアプリ用に 1 TB のストレージがあります。 Isolated 価格 SKU の App Service プランには、250 GB の制限があります。 ASE では、App Service プランごとに 250 GB のストレージが追加されます。上限は 1 TB です。 App Service プランは 4 つ以上持つことができますが、ストレージは 1 TB の上限を超えて追加されることはありません。
 
 ## <a name="logging"></a>ログ記録
 
@@ -245,6 +252,30 @@ ASE を削除するには、次の手順に従います。
 
 1. **[OK]** を選択します。
 
+## <a name="ase-cli"></a>ASE CLI
+
+ASE に役立つコマンドライン機能があります。  以下で az cli コマンドを確認できます。
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
+
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png
 [2]: ./media/using_an_app_service_environment/usingase-pricingtiers.png
@@ -271,5 +302,5 @@ ASE を削除するには、次の手順に従います。
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
-[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/platform/alerts-log.md

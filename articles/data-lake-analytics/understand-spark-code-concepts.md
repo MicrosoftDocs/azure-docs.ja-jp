@@ -1,19 +1,17 @@
 ---
 title: Azure Data Lake Analytics U-SQL 開発者向けの Apache Spark コードの概念について説明します。
 description: この記事では、U-SQL 開発者が、Spark コードの概念を理解する上で役立つ Apache Spark の概念について説明します。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74424004"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132349"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark コードについて
 
@@ -131,7 +129,7 @@ U-SQL の型システムは .NET 型システムに基づいており、Spark �
 詳細については、次を参照してください。
 
 - [org.apache.spark.sql.types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
-- [Spark SQL および DataFrames 型](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
+- [Spark SQL および DataFrames 型](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
 - [Scala 値の型](https://www.scala-lang.org/api/current/scala/AnyVal.html)
 - [pyspark.sql.types](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.types)
 
@@ -183,7 +181,7 @@ U-SQL は、SQL Server データベースに対するフェデレーションク
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>SQL Server データベース/外部テーブルに対するフェデレーション クエリ
 
-U-SQL では、データ ソースと外部テーブルだけでなく Azure SQL Database に対する直接クエリも可能です。 Spark は同じオブジェクトの抽象化を提供しませんが、SQL データベースのクエリに使用できる [SQL Server 用の Spark コネクタ](../sql-database/sql-database-spark-connector.md)を提供します。
+U-SQL では、データ ソースと外部テーブルだけでなく Azure SQL Database に対する直接クエリも可能です。 Spark は同じオブジェクトの抽象化を提供しませんが、SQL データベースのクエリに使用できる [SQL Server 用の Spark コネクタ](../azure-sql/database/spark-connector.md)を提供します。
 
 ### <a name="u-sql-parameters-and-variables"></a>U-SQL パラメーターと変数
 

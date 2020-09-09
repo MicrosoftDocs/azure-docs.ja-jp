@@ -2,22 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
-ms.author: diberry
-ms.openlocfilehash: 7ef219e6b5f7547029612ec3898efec51abd4712
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 08/25/2020
+ms.openlocfilehash: 4eacc1c4e863ad1a278a4974bb0f6c101aafe7e0
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122746"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055392"
 ---
-## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
+### <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
 Azure portal で、Personalizer リソースの **[構成]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 この短い時間でサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 

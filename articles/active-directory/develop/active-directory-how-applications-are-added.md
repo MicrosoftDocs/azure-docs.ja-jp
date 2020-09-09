@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884275"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115766"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
@@ -74,7 +74,7 @@ Azure AD には、2 つの表現のアプリケーションがあります。
   * Office 365 にサブスクライブするか、または試用を開始すると、Office 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
   * SharePoint などの一部の Office 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
 * 管理者がアプリ ギャラリーからアプリケーションを追加するとき (これによって基になるアプリケーション オブジェクトも作成されます)
-* [Azure AD アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)を使用するアプリケーションを追加する
+* [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を使用するアプリケーションを追加する
 * シングル サインオンのために、SAML またはパスワードのシングル サインオン (SSO) を使用してアプリを接続する
 * Microsoft Graph API または PowerShell でプログラムを使用する
 
@@ -104,8 +104,8 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
   * 要求変換ルール
   * 属性マッピング (ユーザーのプロビジョニング)
 * サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Microsoft Graph API のリファレンス ドキュメントを参照してください。
-  * [Application](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [サービス プリンシパル](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Application](/graph/api/resources/application?view=graph-rest-1.0)
+  * [サービス プリンシパル](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>アプリケーションを Azure AD と統合する理由
 

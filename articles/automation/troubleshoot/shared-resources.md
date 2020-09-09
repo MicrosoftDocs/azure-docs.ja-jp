@@ -1,6 +1,6 @@
 ---
-title: Azure Automation での共有リソースのトラブルシューティング
-description: Azure Automation 共有リソースに関する問題のトラブルシューティングと解決方法について説明します。
+title: Azure Automation 共有リソースの問題のトラブルシューティング
+description: この記事では、Azure Automation 共有リソースに関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,19 +8,16 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: e83c7074d252083329537e205666374705a31873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733569"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187168"
 ---
-# <a name="troubleshoot-shared-resources-in-azure-automation"></a>Azure Automation での共有リソースのトラブルシューティング
+# <a name="troubleshoot-shared-resource-issues"></a>共有リソースの問題のトラブルシューティング
 
-この記事では、Azure Automation の[共有リソース](../automation-intro.md#shared-resources)の使用時に発生する可能性がある問題の解決策について説明します。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+この記事では、Azure Automation で[共有リソース](../automation-intro.md#shared-resources)を使用するときに発生する可能性がある問題について説明します。
 
 ## <a name="modules"></a>モジュール
 
@@ -28,15 +25,15 @@ ms.locfileid: "81733569"
 
 #### <a name="issue"></a>問題
 
-Azure Automation モジュールをインポートまたは更新しているときに、モジュールがインポート中の状態で停止します。
+Azure Automation モジュールをインポートまたは更新しているときに、モジュールが *[インポート中]* の状態で停止します。
 
 #### <a name="cause"></a>原因
 
-PowerShell モジュールのインポートは複雑なマルチステップ プロセスであるため、モジュールが正しくインポートされず、一時的な状態で停止することがあります。 このインポート プロセスの詳細については、「[PowerShell モジュールのインポート](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)」を参照してください。
+PowerShell モジュールのインポートは複雑なマルチステップ プロセスであるため、モジュールが正しくインポートされず、一時的な状態で停止することがあります。 このインポート プロセスの詳細については、「[PowerShell モジュールをインポートする](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)」を参照してください。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
-この問題を解決するには、[Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用して、インポート中の状態で停止しているモジュールを削除する必要があります。 その後、モジュールのインポートを再試行できます。
+この問題を解決するには、[Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用して、停止しているモジュールを削除する必要があります。 その後、モジュールのインポートを再試行できます。
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -54,9 +51,9 @@ Azure modules are being updated
 
 #### <a name="cause"></a>原因
 
-0 から始まる数値名を持つリソース グループに含まれている Automation アカウントでの AzureRM モジュールの更新には、既知の問題があります。
+Automation アカウントでの AzureRM モジュールの更新には、既知の問題があります。 具体的には、0 から始まる数値名を持つリソース グループにモジュールが含まれている場合に問題が発生します。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 Automation アカウントで AzureRM モジュールを更新するには、英数字名を持つリソース グループにアカウントが含まれている必要があります。 0 から始まる数値名を持つリソース グループは、現時点で AzureRM モジュールを更新できません。
 
@@ -73,9 +70,9 @@ Automation アカウントで AzureRM モジュールを更新するには、英
 * その構造が、Automation で必要な構造と一致しません。
 * Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
 * モジュールのフォルダーにその依存関係がありません。
-* モジュールのアップロードに [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
+* モジュールのアップロードに [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 この問題を修正するには、次の解決策のいずれかを使用します。
 
@@ -91,16 +88,16 @@ Automation アカウントで AzureRM モジュールを更新するには、英
 
 #### <a name="cause"></a>原因
 
-**Update-AzureModule.ps1** を使用している場合は、同時に更新されるモジュールの数を決定する既定の設定は 10 です。 更新プロセスは、同時に更新されるモジュールが多すぎると、エラーが発生しやすくなります。
+この Runbook の場合、同時に更新されるモジュール数を決定する既定値は 10 です。 更新プロセスは、同時に更新されるモジュールが多すぎると、エラーが発生しやすくなります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
-同じ Automation アカウントですべての AzureRM または Az モジュールが必要になることは、通常はありません。 必要な特定のモジュールのみをインポートすることをお勧めします。
+同じ Automation アカウントですべての AzureRM または Az モジュールが必要になることは、通常はありません。 必要な特定のモジュールのみをインポートする必要があります。
 
 > [!NOTE]
 > `Az.Automation` または `AzureRM.Automation` モジュール全体をインポートしないようにしてください。これにより、含まれているすべてのモジュールがインポートされます。
 
-更新プロセスが中断する場合は、`SimultaneousModuleImportJobCount` パラメーターを **Update-AzureModules.ps1** スクリプトに追加し、既定値の 10 より小さい値を指定してください。 このロジックを実装する場合、3 または 5 の値から始めることをお勧めします。 `SimultaneousModuleImportJobCount` は、Azure モジュールの更新に使用される **Update-AutomationAzureModulesForAccount** システム Runbook のパラメーターです。 この調整を行うと、更新プロセスの実行時間は長くなりますが、完了する可能性が高くなります。 次の例に、パラメーターと Runbook のそれを配置する場所を示します。
+更新プロセスが中断する場合は、`SimultaneousModuleImportJobCount` パラメーターを **Update-AzureModules.ps1** スクリプトに追加し、既定値の 10 より小さい値を指定してください。 このロジックを実装する場合、3 または 5 の値から始めてください。 `SimultaneousModuleImportJobCount` は、Azure モジュールの更新に使用される **Update-AutomationAzureModulesForAccount** システム Runbook のパラメーターです。 この調整を行うと、更新プロセスの実行時間は長くなりますが、完了する可能性が高くなります。 次の例に、パラメーターと Runbook のそれを配置する場所を示します。
 
  ```powershell
          $Body = @"
@@ -125,7 +122,7 @@ Automation アカウントで AzureRM モジュールを更新するには、英
 
 #### <a name="issue"></a>問題
 
-実行アカウントを作成または更新しようとすると、次のエラー メッセージのようなエラーが表示されます。
+実行アカウントを作成または更新しようとすると、次のようなエラーが表示されます。
 
 ```error
 You do not have permissions to create…
@@ -135,11 +132,11 @@ You do not have permissions to create…
 
 実行アカウントを作成または更新するために必要なアクセス許可がないか、リソースがリソース グループ レベルでロックされています。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切な[アクセス許可](../manage-runas-account.md#permissions)が必要です。 
 
-問題の原因がロックである場合は、ロックを削除しても構わないか確認します。 次に、Azure portal でロックされているリソースに移動し、ロックを右クリックして、 **[削除]** をクリックします。
+問題の原因がロックである場合は、ロックを削除しても構わないか確認します。 次に、Azure portal でロックされているリソースに移動し、ロックを右クリックして、 **[削除]** を選択します。
 
 ### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>シナリオ:Runbook の実行時に "DLL 'iplpapi.dll' の 'GetPerAdapterInfo' というエントリ ポイントが見つかりません" というエラーが表示される
 
@@ -155,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 このエラーは、正しく構成されていない [[アカウントとして実行]](../manage-runas-account.md) によって発生する可能性があります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 実行アカウントが正しく構成されていることを確認します。 次に、Azure で認証するための適切なコードが Runbook にあることを確認します。 次のサンプルは、[アカウントとして実行] を使用して Runbook で Azure を認証するコードのスニペットを示しています。
 
@@ -167,8 +164,9 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 ## <a name="next-steps"></a>次のステップ
 
-自分の問題が上記にない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
+この記事で問題を解決できない場合は、追加のサポートを得るために、次のいずれかのチャネルをお試しください。
 
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
-* [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
-* Azure サポート インシデントを送信する。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
+* [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる。 これは、Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐための、Microsoft Azure の公式アカウントです。
+* Azure サポート インシデントを送信する。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートを受ける]** を選択します。
+

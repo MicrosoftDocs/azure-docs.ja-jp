@@ -5,19 +5,20 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464643"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020203"
 ---
 # <a name="report-and-check-service-health"></a>サービス正常性のレポートとチェック
 サービスで問題が発生した場合、インシデントと停止に対処して修正する能力は、問題を迅速に検出できるかどうかに依存します。 問題とエラーをサービス コードから Service Fabric Health Manager にレポートすれば、正常性状態を確認するために Service Fabric に用意されている標準の正常性監視ツールを使用できます。
 
 サービスから正常性をレポートできる 3 つの方法があります。
 
-* [Partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) オブジェクトまたは [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) オブジェクトを使用します。  
+* [Partition](/dotnet/api/system.fabric.istatefulservicepartition) オブジェクトまたは [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) オブジェクトを使用します。  
   `Partition` と `CodePackageActivationContext` オブジェクトを使用し、現在のコンテキストに含まれる要素の正常性をレポートできます。 たとえば、レプリカの一部として実行されるコードでは、そのレプリカ、所属パーティション、含まれるアプリケーションのみの正常性をレポートできます。
 * `FabricClient`を使用します。   
   クラスターが[セキュリティで保護](service-fabric-cluster-security.md)されていない場合やサービスが管理者特権で実行されている場合、`FabricClient` を使用し、サービス コードから正常性をレポートできます。 ほとんどの現実のシナリオでは、セキュリティで保護されていないクラスターを使用しません。また、管理者特権を付与しません。 `FabricClient`では、クラスターの一部であるすべてのエンティティの正常性をレポートできます。 ただし、サービス コードで独自の正常性に関するレポートのみを送信するのが理想的です。
@@ -141,6 +142,5 @@ activationContext.ReportApplicationHealth(healthInformation);
 
 ## <a name="next-steps"></a>次のステップ
 * [Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
-* [サービスの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [アプリケーションの正常性をレポートするための REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [サービスの正常性をレポートするための REST API](/rest/api/servicefabric/report-the-health-of-a-service)
+* [アプリケーションの正常性をレポートするための REST API](/rest/api/servicefabric/report-the-health-of-an-application)

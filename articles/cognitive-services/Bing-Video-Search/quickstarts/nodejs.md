@@ -8,25 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9658d488fac187e63d04ca435c9233629407ac07
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382669"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408103"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
 
-このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな JavaScript アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは JavaScript で記述され、Node.js を使用しますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) で入手できます。
+このクイックスタートを使用して、Bing Video Search API を呼び出してみましょう。 このシンプルな JavaScript アプリケーションでは、HTTP 動画検索クエリを API に送信して、その JSON 応答を表示します。 このアプリケーションは JavaScript で記述され、Node.js を使用しますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 
+
+このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.js](https://nodejs.org/en/download/)
+* [Node.js](https://nodejs.org/en/download/)。
 
-* JavaScript 用の要求モジュール
-    * このモジュールは、`npm install request` を使用してインストールできます
+* JavaScript 用の Request モジュール `npm install request` を使用して、このモジュールをインストールします。
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -39,7 +41,7 @@ ms.locfileid: "75382669"
     let https = require('https');
     ```
 
-2. API エンドポイント、サブスクリプション キー、検索語句を格納する変数を作成します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. API エンドポイント、サブスクリプション キー、検索語句の変数を作成します。 `host` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -50,7 +52,7 @@ ms.locfileid: "75382669"
 
 ## <a name="create-a-response-handler"></a>応答ハンドラーの作成
 
-1. API からの JSON 応答を受け取る、`response_handler` という関数を作成します。 応答本文の変数を作成します。 `data` フラグを受け取ったら、`response.on()` を使用して応答を追加します。
+1. API からの JSON 応答を受け取る、`response_handler` という関数を作成します。 応答本文の変数を作成します。 `data` フラグを受け取る際に、`response.on()` を使用して応答を追加します。
 
     ```javascript
     let response_handler = function (response) {
@@ -61,39 +63,40 @@ ms.locfileid: "75382669"
     };
     ```
     
-   1. `end` が通知されたら、`response.on()` を使用して Bing に関連した (`bingapis` または `x-msedge-` で始まる) ヘッダーを格納します。 次に、`JSON.parse()` を使用して JSON を解析し、それを `JSON.stringify()` で文字列に変換して出力します。
+1. この関数では、`end` が通知されるときに `response.on()` を使用し、(`bingapis` または `x-msedge-`で始まる) bing 関連のヘッダーを格納します。 `JSON.parse()` を使用して JSON を解析し、それを `JSON.stringify()` で文字列に変換して出力します。
 
-       ```javascript
-       response.on('end', function () {
-           for (var header in response.headers)
-               // header keys are lower-cased by Node.js
-               if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                    console.log(header + ": " + response.headers[header]);
-           body = JSON.stringify(JSON.parse(body), null, '  ');
-           //JSON Response body
-           console.log(body);
-       });
-       ```
+    ```javascript
+    response.on('end', function () {
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        //JSON Response body
+        console.log(body);
+    });
+    ```
 
 ## <a name="create-and-send-the-search-request"></a>検索要求を作成して送信する
 
-1. `bing_video_search()` という関数を作成します。 ホスト名やヘッダーなど、実際の要求のパラメーターを追加してください。 検索語句はエンコードし、`?q=` パラメーターを使用して path パラメーターに追加します。 その後、`req.end()` を使用して要求を送信します。
+`bing_video_search()` という関数を作成します。 ホスト名やヘッダーなど、実際の要求のパラメーターを追加してください。 検索語句はエンコードし、`?q=` パラメーターを使用して path パラメーターに追加します。 その後、`req.end()` を使用して要求を送信します。
 
-    ```javascript
-    let bing_video_search = function (search_term) {
-      console.log('Searching videos for: ' + term);
-      let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + '?q=' + encodeURIComponent(search_term),
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
-        let req = https.request(request_params, response_handler);
-        req.end();
-    }
-    ```
+```javascript
+let bing_video_search = function (search_term) {
+  console.log('Searching videos for: ' + term);
+let request_params = {
+    method : 'GET',
+    hostname : host,
+    path : path + '?q=' + encodeURIComponent(search_term),
+    headers : {
+        'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        }
+    };
+    let req = https.request(request_params,
+      response_handler);
+    req.end();
+}
+```
 
 ## <a name="json-response"></a>JSON 応答
 

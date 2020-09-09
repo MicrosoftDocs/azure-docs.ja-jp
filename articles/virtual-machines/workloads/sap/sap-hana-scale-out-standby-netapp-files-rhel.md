@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c86d7c84ba5d7692e010ad95f258b67aa7dcfac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9978137edb7874a8b93e0c9a5f1f9979ce449277
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147634"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893172"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -46,7 +46,7 @@ ms.locfileid: "82147634"
 [1900823]:https://launchpad.support.sap.com/#/notes/1900823
 [2292690]:https://launchpad.support.sap.com/#/notes/2292690
 [2455582]:https://launchpad.support.sap.com/#/notes/2455582
-[2593824]:https://launchpad.support.sap.com/#/notes/2455582
+[2593824]:https://launchpad.support.sap.com/#/notes/2593824
 [2009879]:https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -55,7 +55,7 @@ ms.locfileid: "82147634"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 
-この記事では、共有ストレージ ボリューム用の [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) を使用して、Azure Red Hat Enterprise Linux 仮想マシン (VM) 上のスタンバイを使用するスケールアウト構成に高可用性の SAP HANA システムをデプロイする方法について説明します。  
+この記事では、共有ストレージ ボリューム用の [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) を使用して、Azure Red Hat Enterprise Linux 仮想マシン (VM) 上のスタンバイを使用するスケールアウト構成に高可用性の SAP HANA システムをデプロイする方法について説明します。  
 
 構成例やインストール コマンドなどでは、HANA インスタンスは **03**、HANA システム ID は **HN1** です。 例は HANA 2.0 SP4 と Red Hat Enterprise Linux for SAP 7.6 に基づいています。 
 
@@ -85,13 +85,13 @@ ms.locfileid: "82147634"
   * [高可用性アドオンの参照](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Red Hat Enterprise Linux ネットワーク ガイド](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide)
 * Azure 固有の RHEL ドキュメント:
-  * [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/solutions/3193782)
+  * [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/public-cloud/microsoft-azure)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
 
 
 ## <a name="overview"></a>概要
 
-HANA の高可用性を実現するための 1 つの方法は、ホストの自動フェールオーバーを構成することです。 ホストの自動フェールオーバーを構成するには、1 つ以上の仮想マシンを HANA システムに追加し、スタンバイ ノードとして構成します。 アクティブ ノードで障害が発生すると、スタンバイ ノードに自動的に引き継がれます。 提示されている Azure 仮想マシンの構成では、[Azure NetApp Files 上の NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) を使用して自動フェールオーバーを実現します。  
+HANA の高可用性を実現するための 1 つの方法は、ホストの自動フェールオーバーを構成することです。 ホストの自動フェールオーバーを構成するには、1 つ以上の仮想マシンを HANA システムに追加し、スタンバイ ノードとして構成します。 アクティブ ノードで障害が発生すると、スタンバイ ノードに自動的に引き継がれます。 提示されている Azure 仮想マシンの構成では、[Azure NetApp Files 上の NFS](../../../azure-netapp-files/azure-netapp-files-introduction.md) を使用して自動フェールオーバーを実現します。  
 
 > [!NOTE]
 > スタンバイ ノードは、すべてのデータベース ボリュームにアクセスする必要があります。 HANA ボリュームは NFSv4 ボリュームとしてマウントする必要があります。 NFSv4 プロトコルでは、強化されたファイル リースベースのロック メカニズムが `I/O` フェンスに使用されます。 
@@ -106,7 +106,7 @@ HANA の高可用性を実現するための 1 つの方法は、ホストの自
 * ストレージ システムとの通信用
 * HANA 内部のノード間通信用
 
-Azure NetApp ボリュームは、[Azure NetApp Files に委任された](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)別のサブネットにあります。  
+Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)別のサブネットにあります。  
 
 この構成例では、サブネットは次のとおりです。  
 
@@ -127,21 +127,21 @@ Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登�
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files リソースのデプロイ  
 
-以下の手順では、お使いの [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)が既にデプロイされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内にデプロイする必要があります。  
+以下の手順では、お使いの [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)が既にデプロイされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内にデプロイする必要があります。  
 
-1. リソースをまだデプロイしていない場合は、[Azure NetApp Files へのオンボード](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)を要求してください。  
+1. リソースをまだデプロイしていない場合は、[Azure NetApp Files へのオンボード](../../../azure-netapp-files/azure-netapp-files-register.md)を要求してください。  
 
-2. 「[NetApp アカウントを作成する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)」の手順に従って、選択した Azure リージョンに NetApp アカウントを作成します。  
+2. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」の手順に従って、選択した Azure リージョンに NetApp アカウントを作成します。  
 
-3. [Azure NetApp Files の容量プールの設定](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)に関するページの手順に従って、Azure NetApp Files の容量プールを設定します。  
+3. [Azure NetApp Files の容量プールの設定](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)に関するページの手順に従って、Azure NetApp Files の容量プールを設定します。  
 
-   この記事で示されている HANA アーキテクチャでは、"*Ultra サービス*" レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure 上の HANA ワークロードの場合、Azure NetApp Files の *Ultra* または *Premium* [サービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)を使用することをお勧めします。  
+   この記事で示されている HANA アーキテクチャでは、"*Ultra サービス*" レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure 上の HANA ワークロードの場合、Azure NetApp Files の *Ultra* または *Premium* [サービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)を使用することをお勧めします。  
 
-4. 「[サブネットを Azure NetApp Files に委任する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)」の手順に従って、サブネットを Azure NetApp Files に委任します。  
+4. 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の手順に従って、サブネットを Azure NetApp Files に委任します。  
 
-5. 「[Azure NetApp Files の NFS ボリュームを作成する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。  
+5. 「[Azure NetApp Files の NFS ボリュームを作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。  
 
-   ボリュームをデプロイするときは、**NFSv4.1** バージョンを必ず選択してください。 指定された Azure NetApp Files の[サブネット](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp ボリュームの IP アドレスは、自動的に割り当てられます。 
+   ボリュームをデプロイするときは、**NFSv4.1** バージョンを必ず選択してください。 指定された Azure NetApp Files の[サブネット](/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp ボリュームの IP アドレスは、自動的に割り当てられます。 
    
    Azure NetApp Files のリソースと Azure VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内に配置する必要があることに注意してください。 たとえば、**HN1**-data-mnt00001、**HN1**-log-mnt00001 などはボリューム名で、nfs://10.9.0.4/**HN1**-data-mnt00001、nfs://10.9.0.4/**HN1**-log-mnt00001 などは Azure NetApp Files ボリュームのファイル パスです。  
 
@@ -159,10 +159,10 @@ Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登�
 
 - 最小容量のプールは 4 テビバイト (TiB) です。  
 - 最小ボリューム サイズは 100 ギビバイト (GiB) です。
-- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)内に存在する必要があります。  
+- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](../../../virtual-network/virtual-network-peering-overview.md)内に存在する必要があります。  
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります。
-- Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。  
-- Azure NetApp Files の[エクスポート ポリシー](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)では、ユーザーが制御できるのは、許可されたクライアントと、アクセスの種類 (読み取りと書き込み、読み取り専用など) です。 
+- Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。  
+- Azure NetApp Files の[エクスポート ポリシー](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)では、ユーザーが制御できるのは、許可されたクライアントと、アクセスの種類 (読み取りと書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、その機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。  
 
 > [!IMPORTANT]
@@ -170,7 +170,7 @@ Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登�
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files 上の HANA データベースのサイズ指定
 
-Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)」に記載されているように、ボリューム サイズとサービス レベルの機能です。 
+Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム サイズとサービス レベルの機能です。 
 
 Azure で SAP 用のインフラストラクチャを設計するときは、SAP による最小ストレージ要件に注意する必要があります。これは、最小スループット特性につながります。
 
@@ -178,7 +178,7 @@ Azure で SAP 用のインフラストラクチャを設計するときは、SAP
 - /hana/data での読み取りアクティビティは、16 MB および 64 MB の I/O サイズで、400 MB/秒以上。  
 - /hana/data での書き込みアクティビティは、16 MB および 64 MB の I/O サイズで、250 MB/秒以上。 
 
-ボリューム クォータの 1 TiB あたりの [Azure NetApp Files スループットの上限](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)は次のとおりです。
+ボリューム クォータの 1 TiB あたりの [Azure NetApp Files スループットの上限](../../../azure-netapp-files/azure-netapp-files-service-levels.md)は次のとおりです。
 - Premium Storage 層 - 64 MiB/秒  
 - Ultra Storage 層 - 128 MiB/秒  
 
@@ -209,13 +209,13 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 ## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Azure portal を使用して Linux 仮想マシンをデプロイする
 
 最初に Azure NetApp Files ボリュームを作成する必要があります。 その後、次の手順を行います。
-1. お使いの [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)に [Azure 仮想ネットワーク サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)を作成します。 
+1. お使いの [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)に [Azure 仮想ネットワーク サブネット](../../../virtual-network/virtual-network-manage-subnet.md)を作成します。 
 1. VM をデプロイします。 
 1. 追加のネットワーク インターフェイスを作成し、対応する VM にネットワーク インターフェイスを接続します。  
 
    各仮想マシンには、3 つの Azure 仮想ネットワーク サブネット (`client`、`storage`、`hana`) に対応する 3 つのネットワーク インターフェイスが備わっています。 
 
-   詳しくは、[複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)方法に関するページをご覧ください。  
+   詳しくは、[複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する](../../linux/multiple-nics.md)方法に関するページをご覧ください。  
 
 > [!IMPORTANT]
 > SAP HANA ワークロードにとって、待ち時間の短縮は重要です。 待ち時間の短縮を実現するには、Microsoft の担当者と協力して、仮想マシンと Azure NetApp Files ボリュームが近接してデプロイされるようにします。 SAP HANA Azure NetApp Files を使用している[新しい SAP HANA システムをオンボードする](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)ときに、必要な情報を送信します。 
@@ -233,7 +233,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
    b. 前に作成した SAP HANA 用の可用性セットを選択します。  
 
-   c. クライアント Azure 仮想ネットワーク サブネットを選択します。 [高速ネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)を選択します。  
+   c. クライアント Azure 仮想ネットワーク サブネットを選択します。 [高速ネットワーク](../../../virtual-network/create-vm-accelerated-networking-cli.md)を選択します。  
 
    仮想マシンをデプロイすると、ネットワーク インターフェイス名が自動的に生成されます。 これらの手順をわかりやすくするために、クライアント Azure 仮想ネットワーク サブネット (**hanadb1-client**、**hanadb2-client**、**hanadb3-client**) に接続されている自動的に生成されたネットワーク インターフェイスについて説明します。 
 
@@ -255,7 +255,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
  
     f. 残りの仮想マシンについて、ステップ b から e を繰り返します (この例では **hanadb2** と **hanadb3**)。
  
-    g. 今のところ、仮想マシンは停止状態のままにしておきます。 次に、新しく接続されたすべてのネットワーク インターフェイスに対して[高速ネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)を有効にします。  
+    g. 今のところ、仮想マシンは停止状態のままにしておきます。 次に、新しく接続されたすべてのネットワーク インターフェイスに対して[高速ネットワーク](../../../virtual-network/create-vm-accelerated-networking-cli.md)を有効にします。  
 
 6. 次の手順を行って、`storage` および `hana` サブネット用の追加のネットワーク インターフェイスに対して高速ネットワークを有効にします。  
 
@@ -349,7 +349,9 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     net.core.optmem_max = 16777216
     net.ipv4.tcp_rmem = 65536 16777216 16777216
     net.ipv4.tcp_wmem = 65536 16777216 16777216
-    net.core.netdev_max_backlog = 300000 net.ipv4.tcp_slow_start_after_idle=0 net.ipv4.tcp_no_metrics_save = 1
+    net.core.netdev_max_backlog = 300000 
+    net.ipv4.tcp_slow_start_after_idle=0 
+    net.ipv4.tcp_no_metrics_save = 1
     net.ipv4.tcp_moderate_rcvbuf = 1
     net.ipv4.tcp_window_scaling = 1
     net.ipv4.tcp_timestamps = 1
@@ -361,7 +363,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
     # Add the following entries in the configuration file
-    ipv6.conf.all.disable_ipv6 = 1
+    net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
     net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
@@ -719,7 +721,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 7. Azure NetApp Files で使用されるストレージには、16 テラバイト (TB) のファイル サイズ制限があります。 SAP HANA では、ストレージの制限が暗黙的に認識されず、ファイル サイズの上限の 16 TB に達したときに新しいデータ ファイルが自動的に作成されることはありません。 SAP HANA では 16 TB を超えてファイルを拡張しようとするため、エラーとなり、最終的にはインデックス サーバーがクラッシュします。 
 
    > [!IMPORTANT]
-   > SAP HANA がストレージ サブシステムの [16 TB の制限](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits)を超えてデータ ファイルを拡張しようとするのを防ぐには、`global.ini` で次のパラメーターを設定します。  
+   > SAP HANA がストレージ サブシステムの [16 TB の制限](../../../azure-netapp-files/azure-netapp-files-resource-limits.md)を超えてデータ ファイルを拡張しようとするのを防ぐには、`global.ini` で次のパラメーターを設定します。  
    > - datavolume_striping = true
    > - datavolume_striping_size_gb = 15000 詳細については、SAP ノート [2400005](https://launchpad.support.sap.com/#/notes/2400005) を参照してください。
    > SAP ノート [2631285](https://launchpad.support.sap.com/#/notes/2631285) に注意してください。 

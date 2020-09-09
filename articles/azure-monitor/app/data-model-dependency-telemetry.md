@@ -4,16 +4,16 @@ description: 依存関係テレメトリ用の Application Insights データ �
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671921"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315973"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ:Application Insights データ モデル
 
-依存関係テレメトリ ([Application Insights](../../azure-monitor/app/app-insights-overview.md)) は、監視対象のコンポーネントと、SQL や HTTP エンドポイントのようなリモート コンポーネントとのやりとりを表します。
+依存関係テレメトリ ([Application Insights](./app-insights-overview.md)) は、監視対象のコンポーネントと、SQL や HTTP エンドポイントのようなリモート コンポーネントとのやりとりを表します。
 
 ## <a name="name"></a>名前
 
@@ -21,7 +21,7 @@ ms.locfileid: "77671921"
 
 ## <a name="id"></a>id
 
-依存関係呼び出しインスタンスの識別子。 この依存関係の呼び出しに対応する要求テレメトリ項目の相関付けに使用されます。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
+依存関係呼び出しインスタンスの識別子。 この依存関係の呼び出しに対応する要求テレメトリ項目の相関付けに使用されます。 詳細については、[相関付け](./correlation.md)に関するページを参照してください。
 
 ## <a name="data"></a>Data
 
@@ -33,7 +33,7 @@ ms.locfileid: "77671921"
 
 ## <a name="target"></a>移行先
 
-依存関係呼び出しのターゲット サイト。 例: サーバー名、ホスト アドレス。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
+依存関係呼び出しのターゲット サイト。 例: サーバー名、ホスト アドレス。 詳細については、[相関付け](./correlation.md)に関するページを参照してください。
 
 ## <a name="duration"></a>Duration
 
@@ -58,8 +58,9 @@ ms.locfileid: "77671921"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [.NET](../../azure-monitor/app/asp-net-dependencies.md) の依存関係追跡を設定します。
-- [Java](../../azure-monitor/app/java-agent.md) の依存関係追跡を設定します。
-- [カスタム依存関係テレメトリを記述します](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)。
+- [.NET](./asp-net-dependencies.md) の依存関係追跡を設定します。
+- [Java](./java-agent.md) の依存関係追跡を設定します。
+- [カスタム依存関係テレメトリを記述します](./api-custom-events-metrics.md#trackdependency)。
 - Application Insights の型とデータ モデルについては、[データ モデル](data-model.md)に関するページを参照してください。
-- Application Insights でサポートされている[プラットフォーム](../../azure-monitor/app/platforms.md)を確認します。
+- Application Insights でサポートされている[プラットフォーム](./platforms.md)を確認します。
+

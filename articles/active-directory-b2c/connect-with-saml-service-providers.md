@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696951"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520211"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -119,7 +119,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 `IssuerUri` メタデータの値を変更できます。 これは Azure AD B2C からの SAML 応答で返される発行者の URI です。 SAML アサーションの検証中に発行者の URI を受け入れるように証明書利用者アプリケーションを構成する必要があります。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -165,7 +165,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 1. 次に示すように、ポリシーの `PolicyId` と `PublicPolicyUri` を _B2C_1A_signup_signin_saml_ と `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` に変更します。
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 1. `<RelyingParty>` 要素の下に次の XML スニペットを追加します。 この XML により、_SignUpOrSignIn_ ユーザー体験のオーケストレーション ステップ番号 7 が上書きされます。 スターター パックの別のフォルダーから開始した場合、またはオーケストレーション ステップを追加または削除してユーザー体験をカスタマイズした場合は、番号 (`order` 要素内) が、ユーザー体験でトークン発行者ステップに対して指定されている番号と一致していることを確認します (たとえば、スターター パックの別のフォルダーで、`LocalAccounts` に対してステップ番号 4、`SocialAccounts` に対して 6、`SocialAndLocalAccountsWithMfa` に対して 9)。
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 1. `<RelyingParty>` 要素の `<TechnicalProfile>` 要素全体を次のテクニカル プロファイル XML に置き換えます。
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 証明書利用者ポリシー ファイルは最終的に次のようになります。
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -265,12 +265,12 @@ Azure AD B2C ポリシー IDP メタデータは、SAML ID プロバイダーの
 
 ## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4.Azure AD B2C ディレクトリでアプリケーションをセットアップする
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 Azure Active Directory にアプリケーションを登録する
+### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 Azure AD B2C にアプリケーションを登録する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションの**名前**を入力します。 たとえば、*SAMLApp1* です。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://localhost`」と入力します。 この値は、後でアプリケーションの登録のマニフェストで変更します。
@@ -297,7 +297,7 @@ SAML メタデータ URL とアプリケーションの登録のマニフェス�
 
 SAML テスト アプリケーションを使用するこのチュートリアルでは、`samlMetadataUrl` に次の値を使用します。
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 
 このチュートリアルでは、SAML テスト アプリケーションを使用して、`replyUrlsWithType` の `url` プロパティを次の JSON スニペット内で示される値に設定します。
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 
 SAML テスト アプリケーションを使用するこのチュートリアルでは、`logoutUrl` を `https://samltestapp2.azurewebsites.net/logout` に設定したままにします。
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 
@@ -354,6 +354,51 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 
 **[ログイン]** を選択すると、ユーザーのサインイン画面が表示されます。 サインインすると、サンプル アプリケーションに SAML アサーションが発行されます。
 
+## <a name="enable-encypted-assertions"></a>暗号化されたアサーションを有効にする
+サービス プロバイダーに送り返された SAML アサーションを暗号化するために、Azure AD B2C ではサービス プロバイダーの公開キー証明書が使用されます。 公開キーは、上記の「[samlMetadataUrl](#samlmetadataurl)」で説明した SAML メタデータに、'Encryption' の用途の KeyDescriptor として含まれている必要があります。
+
+次に示すのは、"use" を "Encryption" に設定した SAML メタデータの KeyDescriptor の例です。
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+Azure AD B2C が暗号化されたアサーションを送信できるようにするには、次に示すように、証明書利用者の技術プロファイルで **WantsEncryptedAssertion** メタデータ項目を true に設定します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
+
 ## <a name="sample-policy"></a>サンプル ポリシー
 
 SAML テスト アプリでテストに使用できる完全なサンプル ポリシーが用意されています。
@@ -369,6 +414,10 @@ SAML テスト アプリでテストに使用できる完全なサンプル ポ�
 * アプリケーションまたはサービス プリンシパル オブジェクト内のログアウト URL に対する複数のログアウト URL または POST バインド。
 * アプリケーションまたはサービス プリンシパル オブジェクト内に RP 要求を検証するための署名キーを指定します。
 * アプリケーションまたはサービス プリンシパル オブジェクト内にトークン暗号化キーを指定します。
+* ID プロバイダーがサインオンを開始しました。この場合、ID プロバイダーは Azure AD B2C です。
+
+次の SAML 証明書利用者 (RP) シナリオは、現在サポートされていません。
+* ID プロバイダーがサインオンを開始しました。この場合、ID プロバイダーは ADFS などの外部 ID プロバイダーです。
 
 ## <a name="next-steps"></a>次のステップ
 

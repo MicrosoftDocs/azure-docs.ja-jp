@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79218877"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710560"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing News Search API の言語と地域のサポート
 
@@ -31,14 +31,14 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|言語|市場コード|  
+|国/リージョン|Language|市場コード|  
 |---------------------|--------------|-----------------|
 |デンマーク|デンマーク語|da-DK|
 |オーストリア|ドイツ語|de-AT|
 |スイス|ドイツ語|de-CH|
 |ドイツ|ドイツ語|de-DE|
 |オーストラリア|英語|en-AU|
-|カナダ|英語|en-CA|
+|Canada|英語|en-CA|
 |イギリス|英語|en-GB|
 |インドネシア|英語|en-ID|
 |アイルランド|英語|en-IE|
@@ -47,7 +47,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |ニュージーランド|英語|en-NZ|
 |フィリピン共和国|英語|en-PH|
 |シンガポール|英語|en-SG|
-|米国|英語|ja-JP|
+|United States|英語|ja-JP|
 |英語|全般|en-WW|
 |英語|全般|en-XA|
 |南アフリカ|英語|en-ZA|
@@ -55,22 +55,22 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |チリ|スペイン語|es-CL|
 |スペイン|スペイン語|es-ES|
 |メキシコ|スペイン語|es-MX|
-|米国|スペイン語|es-US|
+|United States|スペイン語|es-US|
 |スペイン語|全般|es-XL|
 |フィンランド|フィンランド語|fi-FI|  
 |フランス|フランス語|fr-BE|
-|カナダ|フランス語|fr-CA|
+|Canada|フランス語|fr-CA|
 |ベルギー|オランダ語|nl-BE|
 |スイス|フランス語|fr-CH|
 |フランス|フランス語|fr-FR|  
 |イタリア|イタリア語|it-IT|
-|香港特別行政区|Traditional Chinese|zh-HK|  
-|台湾|Traditional Chinese|zh-TW|
+|香港特別行政区|繁体字中国語|zh-HK|  
+|台湾|繁体字中国語|zh-TW|
 |日本|日本語|ja-JP|  
 |韓国|韓国語|ko-KR|  
 |オランダ|オランダ語|nl-NL|  
-|中華人民共和国|中国語|zh-CN|  
-|ブラジル|ポルトガル語|pt-BR|
+|中華人民共和国|Chinese|zh-CN|  
+|ブラジル|Portuguese|pt-BR|
 |ロシア|ロシア語|ru-RU|  
 |スウェーデン|スウェーデン語|sv-SE|  
 |トルコ|トルコ語|tr-TR|  
@@ -80,41 +80,41 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|言語|市場コード|  
+|国/リージョン|Language|市場コード|  
 |---------------------|--------------|-----------------|
 |デンマーク|デンマーク語|da-DK|
 |ドイツ|ドイツ語|de-DE|
 |オーストラリア|英語|en-AU|
 |イギリス|英語|en-GB|
-|米国|英語|ja-JP|
+|United States|英語|ja-JP|
 |英語|全般|en-WW|
 |チリ|スペイン語|es-CL|
 |メキシコ|スペイン語|es-MX|
-|米国|スペイン語|es-US|
+|United States|スペイン語|es-US|
 |フィンランド|フィンランド語|fi-FI|  
-|カナダ|フランス語|fr-CA|
+|Canada|フランス語|fr-CA|
 |フランス|フランス語|fr-FR|  
 |イタリア|イタリア語|it-IT|
-|ブラジル|ポルトガル語|pt-BR|
-|中華人民共和国|中国語|zh-CN|
+|ブラジル|Portuguese|pt-BR|
+|中華人民共和国|Chinese|zh-CN|
 
 ## <a name="supported-markets-for-news-trending-endpoint"></a>ニュース トレンド エンドポイントでサポートされるマーケット
 `/news/trendingtopics` エンドポイントについて、`mkt` クエリ パラメーターを指定するために使用できる市場コード値の一覧を次の表に示します。 Bing はこれらの市場に対してのみコンテンツを返します。 一覧は変更されることがあります。  
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|言語|市場コード|  
+|国/リージョン|Language|市場コード|  
 |---------------------|--------------|-----------------|
 |ドイツ|ドイツ語|de-DE|
 |オーストラリア|英語|en-AU|
 |イギリス|英語|en-GB|
-|米国|英語|ja-JP|
-|カナダ|英語|en-CA|
+|United States|英語|ja-JP|
+|Canada|英語|en-CA|
 |インド|英語|en-IN|
 |フランス|フランス語|fr-FR|
-|カナダ|フランス語|fr-CA|
-|ブラジル|ポルトガル語|pt-BR|
-|中華人民共和国|中国語|zh-CN|
+|Canada|フランス語|fr-CA|
+|ブラジル|Portuguese|pt-BR|
+|中華人民共和国|Chinese|zh-CN|
 
 
 <a name="countrycodes"></a>   
@@ -129,7 +129,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |オーストリア|AT|  
 |ベルギー|BE|  
 |ブラジル|BR|  
-|カナダ|CA|  
+|Canada|CA|  
 |チリ|CL|  
 |デンマーク|DK|  
 |フィンランド|FI|  
@@ -159,7 +159,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |台湾|TW|  
 |トルコ|TR|  
 |イギリス|GB|  
-|米国|US|
+|United States|US|
 
 ## <a name="next-steps"></a>次のステップ
 Bing News Search エンドポイントについて詳しくは、[News Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)をご覧ください。

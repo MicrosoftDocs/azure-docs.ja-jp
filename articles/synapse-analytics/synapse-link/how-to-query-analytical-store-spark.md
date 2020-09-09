@@ -1,24 +1,24 @@
 ---
-title: Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアのクエリを実行する
+title: Apache Spark を使用して Azure Cosmos DB 分析ストア (プレビュー) のクエリを実行する
 description: Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアのクエリを実行する方法を説明します
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02d4b6a636bff5ef11686abba6efb52f45f04779
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a7ee04c922e4373414dc27ed2b7c98be605280e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089109"
 ---
-# <a name="query-azure-cosmos-db-analytical-store-with-apache-spark-for-azure-synapse-analytics"></a>Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアのクエリを実行する
+# <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストア (プレビュー) のクエリを実行する
 
-この記事では、Synapse ジェスチャから分析ストアを操作する方法について、いくつかの例を紹介しています。 ジェスチャは、コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
+この記事では、Synapse ジェスチャから分析ストアを操作する方法について、例を紹介しています。 ジェスチャは、コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
 
 ## <a name="load-to-dataframe"></a>データフレームに読み込む
 

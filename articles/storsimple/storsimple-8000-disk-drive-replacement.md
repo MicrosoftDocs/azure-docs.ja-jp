@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513134"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのディスク ドライブを交換する
 

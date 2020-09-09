@@ -3,24 +3,27 @@ title: Azure Media Services v3 API に接続する - Java
 description: この記事では、Java を使って Azure Media Services v3 API に接続する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/18/2019
-ms.author: juliako
-ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: quickstart
+ms.date: 08/31/2020
+ms.custom: devx-track-java
+ms.author: inhenkel
+ms.openlocfilehash: 0f099a1b807cb860aaeda95a442cfdd7fd3c2869
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888497"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297384"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API に接続する - Java
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、サービス プリンシパルによるサインイン方式を使用して Azure Media Services v3 Java SDK に接続する方法を説明します。
 
@@ -34,8 +37,8 @@ ms.locfileid: "74888497"
    - Apache Maven
    - Java Extension Pack
 - 環境変数 `JAVA_HOME` と `PATH` を必ず設定します。
-- [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
-- [API へのアクセス](access-api-cli-how-to.md)に関するトピックの手順を実行します。 後の手順で必要になるので、サブスクリプション ID、アプリケーション ID (クライアント ID)、認証キー (シークレット)、テナント ID を控えておきます。
+- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
+- [API へのアクセス](./access-api-howto.md)に関するトピックの手順を実行します。 後の手順で必要になるので、サブスクリプション ID、アプリケーション ID (クライアント ID)、認証キー (シークレット)、テナント ID を控えておきます。
 
 また、次を確認してください。
 
@@ -94,7 +97,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. 要求を行うのに必要な Active Directory 資格情報を作成するために、App クラスの main メソッドに次のコードを追加し、[API へのアクセスに関するページ](access-api-cli-how-to.md)で取得した値を設定します。
+1. 要求を行うのに必要な Active Directory 資格情報を作成するために、App クラスの main メソッドに次のコードを追加し、[API へのアクセスに関するページ](./access-api-howto.md)で取得した値を設定します。
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -130,4 +133,4 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` を挿入して、エンティティの操作を開始できます。
 
-コードの例について詳しくは、[Java SDK サンプル](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) リポジトリをご覧ください。
+コードの例について詳しくは、[Java SDK サンプル](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) リポジトリをご覧ください。

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1cd80fee51565f2a2c1afa38ed883c10f51a5ee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75898655"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113691"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>NoSQL データベースとリレーショナル データベースの違いについて
 
@@ -29,7 +29,7 @@ ms.locfileid: "75898655"
 
 トランザクション ボリュームが極端なレベル (1 秒あたり数千のトランザクションなど) に達している場合は、分散 NoSQL データベースを検討する必要があります。 効率を最大化し、メンテナンスを容易にし、総保有コストを削減するためには、Azure Cosmos DB をご検討ください。
 
-![バックエンド](./media/relational-or-nosql/backend-scaled.png)
+:::image type="content" source="./media/relational-or-nosql/backend-scaled.png" alt-text="バックエンド" border="false":::
 
 ## <a name="hierarchical-data"></a>階層データ
 
@@ -39,7 +39,7 @@ ms.locfileid: "75898655"
 
 [オブジェクト指向設計](https://en.wikipedia.org/wiki/Object-oriented_design)の出現、およびそれをリレーショナル モデルと組み合わせたときに生じる[インピーダンスの不一致](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch)も、特定のユース ケースに対するリレーショナル データベースのアンチパターンを浮き彫りにしています。 結果として、隠れてはいるが、多くの場合多大なメンテナンス コストが発生する可能性があります。 [ORM のアプローチ](https://en.wikipedia.org/wiki/Object-relational_mapping)は、これを部分的に緩和するために進化してきましたが、それでもドキュメント指向のデータベースは、オブジェクト指向のアプローチとの融合がはるかに優れています。 このアプローチでは、開発者は、ORM ドライバーやカスタム言語固有の [OO データベース エンジン](https://en.wikipedia.org/wiki/Object_database)にコミットすることを強制されません。 データに多数の親子リレーションシップと深い階層レベルが含まれている場合は、[Azure Cosmos DB SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction) などの NoSQL ドキュメント データベースの使用を検討してください。
 
-![OrderDetails](./media/relational-or-nosql/order-orderdetails.jpg)
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
 
 ## <a name="complex-networks-and-relationships"></a>複雑なネットワークとリレーションシップ
 
@@ -49,7 +49,7 @@ ms.locfileid: "75898655"
 
 データベース内にリレーションシップの複雑なネットワークを維持している場合は、このデータを管理するために、[Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) などのグラフ データベースを検討することをお勧めします。
 
-![グラフ](./media/relational-or-nosql/graph.png)
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Graph":::
 
 Azure Cosmos DB は、すべての主要な NoSQL モデルの種類、列ファミリ、ドキュメント、グラフ、およびキー値に対して API プロジェクションを提供するマルチモデル データベース サービスです。 [Gremlin (グラフ)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) と SQL (Core) Document API レイヤーは、完全に相互運用可能です。 これには、プログラミング レベルでの異なるモデル間の切り替えに利点があります。 グラフ ストアには、複雑なネットワーク トラバーサルと、同じストア内のドキュメント レコードとしてモデル化されたトランザクションという両方の観点からクエリを実行できます。
 
@@ -76,7 +76,7 @@ NoSQL データベースを実装する場合、いくつかの明確な利点�
 
 最初の課題に目を向けると、NoSQL データベースの経験則は一般的に非正規化です。これにより、前に説明したように、分散システムでより効率的な読み取りが実現します。 ただし、このアプローチには、設計上の課題がいくつかあります。 1 つのカテゴリと複数のタグに関連する製品の例を見てみましょう。
 
-![結合](./media/relational-or-nosql/many-joins.png)
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="結合":::
 
 NoSQL ドキュメント データベースでのベスト プラクティスのアプローチは、カテゴリ名とタグ名を "製品ドキュメント" で直接非正規化することです。 ただし、カテゴリ、タグ、および製品の同期を維持するために、これを容易にする設計オプションでは、"1 対多" リレーションシップの単純な更新やデータを取得するための結合ではなく、データが製品内の複数のレコード間で複製されるため、メンテナンスの複雑さが増しています。 
 

@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: f7629b4724e85f93a8dfe3e37ac2b2155288d235
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290510"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254703"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>クイック スタート:Linux (Ubuntu) Data Science Virtual Machine を設定する
 
@@ -22,13 +22,15 @@ Ubuntu 18.04 Data Science Virtual Machine を起動して実行します。
 ## <a name="prerequisites"></a>前提条件
 
 Ubuntu 18.04 Data Science Virtual Machine を作成するには、Azure サブスクリプションが必要です。 [Azure を無料で試す](https://azure.com/free)。
-Azure 無料アカウントでは、GPU 対応の仮想マシン SKU がサポートされないので注意してください。
+
+>[!NOTE]
+>Azure 無料アカウントでは、GPU 対応の仮想マシン SKU がサポートされません。
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Linux データ サイエンス仮想マシンの作成
 
 Data Science Virtual Machine Ubuntu 18.04 のインスタンスを作成する手順は以下のとおりです。
 
-1. [Azure portal](https://portal.azure.com) にアクセスします。まだサインインしていない場合は、Azure アカウントへのサインインを求めるメッセージが表示される可能性があります。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。 まだサインインしていない場合は、Azure アカウントへのサインインを求めるメッセージが表示される可能性があります。
 1. 「Data Science Virtual Machine」と入力して仮想マシンの一覧を検索し、[Data Science Virtual Machine - Ubuntu 18.04] を選択します。
 
 1. 次のウィンドウで **[作成]** を選択します。
@@ -41,18 +43,18 @@ Data Science Virtual Machine Ubuntu 18.04 のインスタンスを作成する�
     
        * **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
        * **[リソース グループ]** :新しいグループを作成するか、既存のグループを使用します。
-       * **[仮想マシン名]** : 仮想マシンの名前を入力します。 これは Azure portal に表示される名前です。
+       * **[仮想マシン名]** : 仮想マシンの名前を入力します。 この名前は Azure portal で使用されます。
        * **[リージョン]** :最適なデータ センターを選択します。 ネットワーク アクセスを最速にするために、データの大半が存在するデータセンターか、物理的に最も近くにあるデータセンターを選びます。 詳細については、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)に関する記事を参照してください。
        * **イメージ**:既定値をそのまま使用します。
-       * **Size**:これには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/linux/sizes.md)に関する記事を参照してください。
+       * **Size**:このオプションには、一般的なワークロードに適したサイズが自動的に設定されます。 詳細については、[Azure の Linux VM のサイズ](../../virtual-machines/linux/sizes.md)に関する記事を参照してください。
        * **[認証の種類]** : 設定を迅速に行うには、[パスワード] を選択します。 
          
          > [!NOTE]
          > JupyterHub を使用する場合は、JupyterHub は SSH 公開キーを使用するように構成されて "*いない*" ため、必ず [パスワード] を選択します。
 
-       * **[ユーザー名]** : 管理者のユーザー名を入力します。 これは、仮想マシンへのログインに使用するユーザー名であり、Azure ユーザー名と同じにする必要はありません。 大文字は使用 "*しない*" でください。
+       * **[ユーザー名]** : 管理者のユーザー名を入力します。 このユーザー名を使用して、仮想マシンにログインします。 このユーザー名は Azure ユーザー名と同じである必要はありません。 大文字は使用 "*しない*" でください。
          
-         > [!NOTE]
+         > [!IMPORTANT]
          > ユーザー名に大文字を使用すると、JupyterHub が機能しなくなり、500 内部サーバー エラーが発生します。
 
        * **パスワード**:仮想マシンへのログインに使用するパスワードを入力します。    
@@ -76,7 +78,7 @@ Ubuntu DSVM には、次の 3 つの方法のいずれかでアクセスでき�
 
 ### <a name="ssh"></a>SSH
 
-VM が作成された後、SSH アクセスを使用して構成されている場合は、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows では、[PuTTY](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X ウィンドウ システム) を使用する場合は、PuTTY で X11 転送を使用できます。
+SSH 認証を使用して VM を構成した場合、テキスト シェル インターフェイスの手順 3 の **[基本]** セクションで作成したアカウント資格情報を使用してログオンできます。 Windows では、[PuTTY](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X ウィンドウ システム) を使用する場合は、PuTTY で X11 転送を使用できます。
 
 > [!NOTE]
 > テストでは、パフォーマンスは、X11 転送よりも、X2Go クライアントの方が優れていました。 グラフィカル デスクトップ インターフェイスでは、X2Go クライアントを使用することをお勧めします。
@@ -86,7 +88,7 @@ VM が作成された後、SSH アクセスを使用して構成されている�
 Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。
-1. 仮想マシンのパブリック IP アドレスをメモしておきます。これは、先ほど作成した仮想マシンを開いて Azure portal で確認できます。
+1. 仮想マシンのパブリック IP アドレスをメモしておきます。これは、作成した仮想マシンを開いて Azure portal で確認できます。
 
    ![Ubuntu マシンの IP アドレス](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
@@ -99,14 +101,14 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
      * **[SSH Port]\(SSH ポート\)** : 既定値の 22 のままにします。
      * **[Session Type]\(セッションの種類\)** : 値を **XFCE** に変更します。 現在、Linux VM でサポートされるのは XFCE デスクトップのみです。
    * **[Media]\(メディア\) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders]\(共有フォルダー\)** : クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+   * **[Shared folders]\(共有フォルダー\)** : このタブを使用して、VM にマウントするクライアント マシン ディレクトリを追加します。 
 
    ![X2go の構成](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. **[OK]** を選択します。
 1. VM のログイン画面を表示するには、X2Go ウィンドウの右側のウィンドウにあるボックスをクリックします。
 1. VM のパスワードを入力します。
 1. **[OK]** を選択します。
-1. 接続を完了するには、必要に応じてファイアウォールをバイパスする X2Go アクセス許可を付与します。
+1. ファイアウォールをバイパスして接続を完了するには、X2Go アクセス許可の付与が必要な場合があります。
 1. これで、Ubuntu DSVM のグラフィカル インターフェイスが表示されます。 
 
 
@@ -122,6 +124,9 @@ Ubuntu DSVM は、マルチユーザーの Jupyter サーバーである [Jupyte
    1. VM を作成するときに使ったユーザー名とパスワードを入力してサインインしてください。 
 
       ![Jupyter ログインを入力する](./media/dsvm-ubuntu-intro/jupyter-login.png)
+
+>[!NOTE]
+> この段階で 500 エラーが発生した場合、ユーザー名に大文字を使用した可能性があります。 これは、JupyterHub と、それが使用する PAMAuthenticator の間の既知の相互作用です。 
 
    1. 入手できる多くのサンプル ノートブックを参照します。
 
@@ -139,6 +144,6 @@ c.Spawner.default_url = '/lab'
 
 * [Linux Data Science Virtual Machine でのデータ サイエンス](linux-dsvm-walkthrough.md)に関するチュートリアルでは、ここでプロビジョニングされた Linux DSVM を使用して、一般的なデータ サイエンス タスクをいくつか実行する方法を示します。 
 * この記事で説明しているツールを試して、DSVM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで `dsvm-more-info` を実行して確認することもできます。  
-* [Team Data Science Process](https://aka.ms/tdsp)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* [Team Data Science Process](https://aka.ms/tdsp)を使用して、分析ソリューションを体系的に構築する方法を確認します。
 * Azure AI サービスを使用する機械学習とデータ分析のサンプルについては、[Azure AI Gallery](https://gallery.azure.ai/) を参照してください。
 * この仮想マシンに適した[リファレンス ドキュメント](./reference-ubuntu-vm.md)を参照してください。

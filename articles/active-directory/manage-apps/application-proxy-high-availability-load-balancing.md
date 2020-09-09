@@ -3,8 +3,8 @@ title: 高可用性と負荷分散 - Azure AD アプリケーション プロキ
 description: アプリケーション プロキシの展開でのトラフィック分散のしくみ。 コネクタのパフォーマンスを最適化する方法、およびバックエンド サーバーに対して負荷分散を使用する方法に関するヒントが含まれます。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 5ab3b340654fd6d824edef0a33d1ea363a913654
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764589"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>アプリケーション プロキシ コネクタとアプリケーションの高可用性と負荷分散
 

@@ -1,6 +1,6 @@
 ---
-title: Azure リソースのカスタム ロール | Microsoft Docs
-description: Azure リソースの詳細なアクセス管理を行うために、ロールベースのアクセス制御 (RBAC) を使用してカスタム ロールを作成する方法について説明します。
+title: Azure カスタム ロール - Azure RBAC
+description: Azure リソースの詳細なアクセス管理を行うために、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure カスタム ロールを作成する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,31 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9454962e210781559f2fdceb1c36f499c4ae8ff7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062165"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124155"
 ---
-# <a name="custom-roles-for-azure-resources"></a>Azure リソースのカスタム ロール
+# <a name="azure-custom-roles"></a>Azure カスタム ロール
 
 > [!IMPORTANT]
 > `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 組み込みロールと同様に、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、管理グループ、サブスクリプション、およびリソース グループのスコープで割り当てることができます。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 組み込みロールと同様に、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、管理グループ、サブスクリプション、およびリソース グループのスコープで割り当てることができます。
 
-カスタム ロールは、同じ Azure AD ディレクトリを信頼するサブスクリプション間で共有できます。 カスタム ロールの数は、ディレクトリあたり **5,000** 個という制限があります (Azure Germany と Azure China 21Vianet の場合、制限は 2,000 カスタム ロールです)。カスタム ロールは、Azure portal (プレビュー)、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。
+カスタム ロールは、同じ Azure AD ディレクトリを信頼するサブスクリプション間で共有できます。 カスタム ロールの数は、ディレクトリあたり **5,000** 個という制限があります (Azure Germany と Azure China 21Vianet の場合、制限は 2,000 カスタム ロールです)。カスタム ロールは、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。
 
 ## <a name="custom-role-example"></a>カスタム ロールの例
 
-JSON 形式で表示されるカスタム ロールの例を次に示します。 このカスタム ロールは、仮想マシンの監視と再起動に使用できます。
+Azure PowerShell を使用して JSON 形式で表示されるカスタム ロールの例を次に示します。 このカスタム ロールは、仮想マシンの監視と再起動に使用できます。
 
 ```json
 {
@@ -67,45 +67,109 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 }
 ```
 
+Azure CLI を使用して表示される同じカスタム ロールを次に示します。
+
+```json
+[
+  {
+    "assignableScopes": [
+      "/subscriptions/{subscriptionId1}",
+      "/subscriptions/{subscriptionId2}",
+      "/providers/Microsoft.Management/managementGroups/{groupId1}"
+    ],
+    "description": "Can monitor and restart virtual machines.",
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/88888888-8888-8888-8888-888888888888",
+    "name": "88888888-8888-8888-8888-888888888888",
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/*/read",
+          "Microsoft.Network/*/read",
+          "Microsoft.Compute/*/read",
+          "Microsoft.Compute/virtualMachines/start/action",
+          "Microsoft.Compute/virtualMachines/restart/action",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.ResourceHealth/availabilityStatuses/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Insights/alertRules/*",
+          "Microsoft.Insights/diagnosticSettings/*",
+          "Microsoft.Support/*"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Virtual Machine Operator",
+    "roleType": "CustomRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
 カスタム ロールを作成すると、Azure portal にオレンジ色のリソース アイコンと共に表示されます。
 
 ![カスタム ロールのアイコン](./media/custom-roles/roles-custom-role-icon.png)
 
-## <a name="steps-to-create-a-custom-role"></a>カスタム ロールの作成手順
-
-1. カスタム ロールを作成する方法を決定する
-
-    カスタム ロールは、[Azure portal](custom-roles-portal.md) (プレビュー)、[Azure PowerShell](custom-roles-powershell.md)、[Azure CLI](custom-roles-cli.md)、または [REST API](custom-roles-rest.md) を使用して作成できます。
-
-1. 必要なアクセス許可を決定する
-
-    カスタム ロールを作成する場合、アクセス許可を定義するために使用可能なリソース プロバイダーの操作を把握しておく必要があります。 操作の一覧を確認するには、「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」を参照してください。 操作を[ロール定義](role-definitions.md)の `Actions` または `NotActions` プロパティに追加します。 データ操作をする場合は、それらを `DataActions` または `NotDataActions` プロパティに追加します。
-
-1. カスタム ロールを作成する
-
-    通常は、まず、既存の組み込みロールを使用し、必要に応じてそれを変更します。 次に、[New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) または [az role definition create](/cli/azure/role/definition#az-role-definition-create) コマンドを使用して、カスタム ロールを作成します。 カスタム ロールを作成するには、[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` アクセス許可が必要になります。
-
-1. カスタム ロールをテストする
-
-    カスタム ロールを作成したら、それをテストして期待どおりに動作することを確認する必要があります。 後で調整する必要がある場合は、カスタム ロールを更新できます。
-
-カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する」か「チュートリアル:](tutorial-custom-role-powershell.md)」か「[チュートリアル:Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
-
 ## <a name="custom-role-properties"></a>カスタム ロールのプロパティ
 
-カスタム ロールには、次のプロパティがあります。
+次の表で、カスタム ロールのプロパティについて説明します。
 
 | プロパティ | 必須 | Type | 説明 |
 | --- | --- | --- | --- |
-| `Name` | はい | String | カスタム ロールの表示名。 ロールの定義は、管理グループまたはサブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
-| `Id` | はい | String | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
-| `IsCustom` | はい | String | これがカスタム ロールであるかどうかを示します。 カスタム ロールの場合は `true` に設定します。 |
-| `Description` | はい | String | カスタム ロールの説明。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 1024 文字です。 |
-| `Actions` | はい | String[] | ロールで実行できる管理操作を指定する文字列の配列。 詳細については、「[Actions](role-definitions.md#actions)」を参照してください。 |
-| `NotActions` | いいえ | String[] | 許可された `Actions` から除外される管理操作を指定する文字列の配列。 詳細については、「[notActions](role-definitions.md#notactions)」を参照してください。 |
-| `DataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定する文字列の配列。 `DataActions` が含まれるカスタム ロールを作成する場合、そのロールは管理グループのスコープで割り当てることができません。 詳細については、「[DataActions](role-definitions.md#dataactions)」を参照してください。 |
-| `NotDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
-| `AssignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。 詳細については、「[AssignableScopes](role-definitions.md#assignablescopes)」を参照してください。 |
+| `Name`</br>`roleName` | はい | String | カスタム ロールの表示名。 ロールの定義は、管理グループまたはサブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
+| `Id`</br>`name` | はい | String | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
+| `IsCustom`</br>`roleType` | はい | String | これがカスタム ロールであるかどうかを示します。 カスタム ロールの場合は `true` または `CustomRole` に設定します。 組み込みロールの場合は `false` または `BuiltInRole` に設定します。 |
+| `Description`</br>`description` | はい | String | カスタム ロールの説明。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 1024 文字です。 |
+| `Actions`</br>`actions` | はい | String[] | ロールで実行できる管理操作を指定する文字列の配列。 詳細については、「[Actions](role-definitions.md#actions)」を参照してください。 |
+| `NotActions`</br>`notActions` | いいえ | String[] | 許可された `Actions` から除外される管理操作を指定する文字列の配列。 詳細については、「[notActions](role-definitions.md#notactions)」を参照してください。 |
+| `DataActions`</br>`dataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定する文字列の配列。 `DataActions` が含まれるカスタム ロールを作成する場合、そのロールは管理グループのスコープで割り当てることができません。 詳細については、「[DataActions](role-definitions.md#dataactions)」を参照してください。 |
+| `NotDataActions`</br>`notDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
+| `AssignableScopes`</br>`assignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。 詳細については、「[AssignableScopes](role-definitions.md#assignablescopes)」を参照してください。 |
+
+## <a name="wildcard-permissions"></a>ワイルドカードのアクセス許可
+
+`Actions`、`NotActions`、`DataActions`、および `NotDataActions` では、アクセス許可の定義でワイルドカード (`*`) をサポートしています。 ワイルドカード (`*`) を使用すると、指定されたアクション文字列に一致するものすべてにアクセス許可が拡張されます。 たとえば、Azure Cost Management とエクスポートに関連するすべてのアクセス許可を追加したいとします。 次のすべてのアクション文字列を追加できます。
+
+```
+Microsoft.CostManagement/exports/action
+Microsoft.CostManagement/exports/read
+Microsoft.CostManagement/exports/write
+Microsoft.CostManagement/exports/delete
+Microsoft.CostManagement/exports/run/action
+```
+
+これらの文字列をすべて追加する代わりに、ワイルドカードの文字列を追加するだけで済みます。 たとえば、次のワイルドカードの文字列は、前の 5 つの文字列に相当します。 これには、今後追加される可能性があるエクスポートのアクセス許可も含まれます。
+
+```
+Microsoft.CostManagement/exports/*
+```
+
+また、1 つの文字列に複数のワイルドカードを含めることもできます。 たとえば、次の文字列は、Cost Management のすべてのクエリ アクセス許可を表します。
+
+```
+Microsoft.CostManagement/*/query/*
+```
+
+## <a name="steps-to-create-a-custom-role"></a>カスタム ロールの作成手順
+
+カスタム ロールを作成するには、次の基本的な手順に従う必要があります。
+
+1. カスタム ロールを作成する方法を決定する。
+
+    カスタム ロールは、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。
+
+1. 必要なアクセス許可を決定する。
+
+    カスタム ロールを作成する場合、アクセス許可を定義するために使用可能な操作を把握しておく必要があります。 操作の一覧を確認するには、「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」を参照してください。 操作を[ロール定義](role-definitions.md)の `Actions` または `NotActions` プロパティに追加します。 データ操作をする場合は、それらを `DataActions` または `NotDataActions` プロパティに追加します。
+
+1. カスタム ロールを作成する。
+
+    通常は、まず、既存の組み込みロールを使用し、必要に応じてそれを変更します。 最も簡単な方法は、Azure portal を使用することです。 Azure portal を使用してカスタム ロールを作成する手順については、「[Azure portal を使用して Azure カスタム ロールを作成または更新する](custom-roles-portal.md)」を参照してください。
+
+1. カスタム ロールをテストする。
+
+    カスタム ロールを作成したら、それをテストして期待どおりに動作することを確認する必要があります。 後で調整する必要がある場合は、カスタム ロールを更新できます。
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>カスタム ロールを作成、削除、更新、または表示できるユーザー
 
@@ -128,9 +192,152 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 - `DataActions` が含まれるカスタム ロールを管理グループのスコープで割り当てることはできません。
 - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。
 
-カスタム ロールと管理グループの詳細については、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)」を参照してください。
+カスタム ロールと管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)」をご覧ください。
+
+## <a name="input-and-output-formats"></a>入力形式と出力形式
+
+コマンド ラインを使用してカスタム ロールを作成するには、通常、JSON を使用してカスタム ロールに対して必要なプロパティを指定します。 使用するツールによっては、入力と出力の形式が若干異なります。 このセクションでは、ツールに応じて入力と出力の形式を示します。
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Azure PowerShell を使用してカスタム ロールを作成するには、次の入力を指定する必要があります。
+
+```json
+{
+  "Name": "",
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+Azure PowerShell を使用してカスタム ロールを更新するには、次の入力を指定する必要があります。 `Id` プロパティが追加されていることに注意してください。 
+
+```json
+{
+  "Name": "",
+  "Id": "",
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+Azure PowerShell と [ConvertTo-Json](/powershell/module/microsoft.powershell.utility/convertto-json) コマンドを使用してカスタム ロールを一覧表示する場合の出力の例を次に示します。 
+
+```json
+{
+  "Name": "",
+  "Id": "",
+  "IsCustom": true,
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+Azure CLI を使用してカスタム ロールを作成または更新するには、次の入力を指定する必要があります。 この形式は、Azure PowerShell を使用してカスタム ロールを作成する場合と同じ形式です。
+
+```json
+{
+  "Name": "",
+  "Description": "",
+  "Actions": [],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": []
+}
+```
+
+Azure CLI を使用してカスタム ロールを一覧表示する場合の出力の例を次に示します。
+
+```json
+[
+  {
+    "assignableScopes": [],
+    "description": "",
+    "id": "",
+    "name": "",
+    "permissions": [
+      {
+        "actions": [],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "",
+    "roleType": "CustomRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
+### <a name="rest-api"></a>REST API
+
+REST API を使用してカスタム ロールを作成または更新するには、次の入力を指定する必要があります。 この形式は、Azure portal を使用してカスタム ロールを作成したときに生成される形式と同じです。
+
+```json
+{
+  "properties": {
+    "roleName": "",
+    "description": "",
+    "assignableScopes": [],
+    "permissions": [
+      {
+        "actions": [],
+        "notActions": [],
+        "dataActions": [],
+        "notDataActions": []
+      }
+    ]
+  }
+}
+```
+
+REST API を使用してカスタム ロールを一覧表示する場合の出力の例を次に示します。
+
+```json
+{
+    "properties": {
+        "roleName": "",
+        "type": "CustomRole",
+        "description": "",
+        "assignableScopes": [],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ],
+        "createdOn": "",
+        "updatedOn": "",
+        "createdBy": "",
+        "updatedBy": ""
+    },
+    "id": "",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": ""
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure portal を使用して Azure カスタム ロールを作成または更新する (プレビュー)](custom-roles-portal.md)
-- [Azure リソースのロール定義の概要](role-definitions.md)
-- [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)
+
+- [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
+- [チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する](tutorial-custom-role-cli.md)
+- [Azure ロールの定義について](role-definitions.md)
+- [Azure RBAC のトラブルシューティング](troubleshooting.md)

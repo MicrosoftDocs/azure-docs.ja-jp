@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 1d6773b4daac256234c33bf50fb3736d585ac505
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475297"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254692"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイされたマイクロサービスで Azure API Management を使用する
 
-マイクロサービスは API を構築するのに最適です。 [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) (AKS) を使うと、クラウドに[マイクロサービス ベースのアーキテクチャ](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/microservices)をすばやくデプロイして運用することができます。 その後、[Azure API Management](https://aka.ms/apimrocks) (API Management) を利用して、内部および外部で使用するためにマイクロサービスを API として公開できます。 この記事では、AKS で API Management をデプロイするためのオプションについて説明します。 Kubernetes、API Management、Azure ネットワークに関する基本的な知識があることを前提としています。 
+マイクロサービスは API を構築するのに最適です。 [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) (AKS) を使うと、クラウドに[マイクロサービス ベースのアーキテクチャ](/azure/architecture/guide/architecture-styles/microservices)をすばやくデプロイして運用することができます。 その後、[Azure API Management](https://aka.ms/apimrocks) (API Management) を利用して、内部および外部で使用するためにマイクロサービスを API として公開できます。 この記事では、AKS で API Management をデプロイするためのオプションについて説明します。 Kubernetes、API Management、Azure ネットワークに関する基本的な知識があることを前提としています。 
 
 ## <a name="background"></a>バックグラウンド
 
 マイクロサービスを使用するために API として公開する場合、マイクロサービスとそれらを使用するクライアント間の通信を管理するのが困難な場合があります。 認証、承認、調整、キャッシュ、変換、監視など、さまざまな横断的問題があります。 これらの問題は、マイクロサービスの公開対象のクライアントが内部か外部かに関係なく当てはまります。 
 
-[API ゲートウェイ](https://docs.microsoft.com/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) パターンによって、これらの問題に対処します。 マイクロサービスへのフロント ドアとして機能する API ゲートウェイにより、マイクロサービスからクライアントが分離され、セキュリティ レイヤーが追加されて、横断的問題を処理する負担を排除することでマイクロサービスの複雑さが軽減されます。 
+[API ゲートウェイ](/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) パターンによって、これらの問題に対処します。 マイクロサービスへのフロント ドアとして機能する API ゲートウェイにより、マイクロサービスからクライアントが分離され、セキュリティ レイヤーが追加されて、横断的問題を処理する負担を排除することでマイクロサービスの複雑さが軽減されます。 
 
 [Azure API Management](https://aka.ms/apimrocks) は、API ゲートウェイのニーズを解決するためのターンキー ソリューションです。 時間をかけずに、マイクロサービス用の一貫性のある最新のゲートウェイを作成し、マイクロサービスを API として公開することができます。 ライフサイクル全体の API 管理ソリューションとして、API 検出、API ライフサイクル管理、API 分析のためのセルフサービス開発者ポータルなどの追加機能も提供されます。
 
@@ -53,7 +53,7 @@ AKS クラスターは常に仮想ネットワーク (VNet) にデプロイさ�
 
 ### <a name="option-1-expose-services-publicly"></a>オプション 1: サービスをパブリックに公開する
 
-AKS クラスター内のサービスは、NodePort、LoadBalancer、ExternalName の[サービスの種類](https://docs.microsoft.com/azure/aks/concepts-network)を使用して、パブリックに公開できます。 この場合、サービスにはパブリック インターネットから直接アクセスできます。 クラスターの前面に API Management をデプロイした後、マイクロサービスで認証を適用することにより、すべての受信トラフィックが API Management を通過するようにする必要があります。 たとえば、API Management では、クラスターに対して行われる各要求にアクセス トークンを組み込むことができます。 各マイクロサービスでは、要求を処理する前にトークンを検証する必要があります。 
+AKS クラスター内のサービスは、NodePort、LoadBalancer、ExternalName の[サービスの種類](../aks/concepts-network.md)を使用して、パブリックに公開できます。 この場合、サービスにはパブリック インターネットから直接アクセスできます。 クラスターの前面に API Management をデプロイした後、マイクロサービスで認証を適用することにより、すべての受信トラフィックが API Management を通過するようにする必要があります。 たとえば、API Management では、クラスターに対して行われる各要求にアクセス トークンを組み込むことができます。 各マイクロサービスでは、要求を処理する前にトークンを検証する必要があります。 
 
 
 これは、特にマイクロサービスに認証ロジックが既に実装されている場合は、AKS の前面に API Management をデプロイする最も簡単なオプションである場合があります。 
@@ -73,7 +73,7 @@ AKS クラスター内のサービスは、NodePort、LoadBalancer、ExternalNam
 
 オプション 1 の方が簡単かもしれませんが、前述のような重要な欠点があります。 API Management のインスタンスがクラスターの VNet に存在しない場合、相互 TLS 認証 (mTLS) は、トラフィックがセキュリティで保護され、API Management インスタンスと AKS クラスター間の双方向で信頼されていることを保証するための、堅牢な方法です。 
 
-相互 TLS 認証は、API Management によって[ネイティブにサポート](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)されており、[イングレス コントローラーをインストールする](https://docs.microsoft.com/azure/aks/ingress-own-tls)ことによって Kubernetes で有効にすることができます (図 3)。 その結果、イングレス コントローラーで認証が行われるため、マイクロサービスが簡単になります。 さらに、API Management の IP アドレスをイングレスによる許可リストに追加することで、API Management だけがクラスターにアクセスできるようにすることもできます。  
+相互 TLS 認証は、API Management によって[ネイティブにサポート](./api-management-howto-mutual-certificates.md)されており、[イングレス コントローラーをインストールする](../aks/ingress-own-tls.md)ことによって Kubernetes で有効にすることができます (図 3)。 その結果、イングレス コントローラーで認証が行われるため、マイクロサービスが簡単になります。 さらに、API Management の IP アドレスをイングレスによる許可リストに追加することで、API Management だけがクラスターにアクセスできるようにすることもできます。  
 
  
 ![イングレス コントローラーを使って公開する](./media/api-management-aks/ingress-controller.png)
@@ -97,7 +97,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 
 規制上の制約または厳密なセキュリティ要件を持つ顧客の場合、オプション 1 と 2 は、エンドポイントが公開されるため、ソリューションとして使用できないことがあります。 また、AKS クラスターとマイクロサービスを使用するアプリケーションが同じ VNet 内に存在し、すべての API トラフィックが VNet 内に留まるため、クラスターを公開する必要がない場合があります。 これらのシナリオでは、API Management をクラスターの VNet にデプロイできます。 [API Management Premium レベル](https://aka.ms/apimpricing)では、VNet のデプロイがサポートされています。 
 
-[VNet への API Management のデプロイ](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)には、外部と内部の 2 つのモードがあります。 
+[VNet への API Management のデプロイ](./api-management-using-with-vnet.md)には、外部と内部の 2 つのモードがあります。 
 
 API コンシューマーがクラスター VNet に存在しない場合は、外部モード (図 4) を使用する必要があります。 このモードでは、API Management ゲートウェイはクラスター VNet に挿入されますが、外部ロード バランサー経由でパブリック インターネットからアクセスできます。 外部クライアントでマイクロサービスを使用できるようにしながら、クラスターを完全に隠ぺいすることができます。 さらに、ネットワーク セキュリティ グループ (NSG) などの Azure のネットワーク機能を使用して、ネットワーク トラフィックを制限することもできます。
 
@@ -120,10 +120,5 @@ API コンシューマーがクラスター VNet に存在しない場合は、�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [AKS でのアプリケーションに対するネットワークの概念](https://docs.microsoft.com/azure/aks/concepts-network)についてさらに学習します
-* [仮想ネットワークで API Management を使用する方法](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)についてさらに学習します
-
-
-
-
-
+* [AKS でのアプリケーションに対するネットワークの概念](../aks/concepts-network.md)についてさらに学習します
+* [仮想ネットワークで API Management を使用する方法](./api-management-using-with-vnet.md)についてさらに学習します

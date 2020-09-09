@@ -5,24 +5,25 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: devx-track-ansible
+ms.openlocfilehash: 9595627e9d7ca2de577aa83ebba3dd58d69e6750
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759474"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373557"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure での OpenShift Container Platform 3.11 デプロイのトラブルシューティング
 
 OpenShift クラスターが正常にデプロイされない場合は、Azure portal にエラーが出力されます。 この出力が読みにくく、問題を簡単に識別できない場合があります。 この出力にざっと目を通して、終了コード 3、4、または 5 を探してください。 これら 3 つの終了コードの情報を次に示します。
 
 - 終了コード 3: Red Hat サブスクリプション ユーザー名/パスワードまたは組織 ID/ライセンス認証キーが正しくありません
-- 終了コード 4: Red Hat のプール ID が正しくないか、使用権利がありません
+- 終了コード 4: Red Hat のプール ID が正しくないか、エンタイトルメントがありません
 - 終了コード 5: Docker シン プールのボリュームをプロビジョニングできません
 
 他のすべての終了コードについては、ssh 経由でホストに接続して、ログ ファイルを表示してください。

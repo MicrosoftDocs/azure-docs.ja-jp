@@ -4,14 +4,14 @@ description: AKS と Azure Container Registry で Helm を使用して、クラ�
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82169570"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407117"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>クイック スタート:Helm を使用して Azure Kubernetes Service (AKS) で開発する
 
@@ -23,7 +23,6 @@ ms.locfileid: "82169570"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 * [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* Docker がインストールされ構成されていること。 Docker では、[Mac][docker-for-mac]、[Windows][docker-for-windows]、または [Linux][docker-for-linux] システム上に Docker を構成するパッケージが提供されています。
 * [Helm v3 がインストールされていること][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する
@@ -57,14 +56,6 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
   "type": "Microsoft.ContainerRegistry/registries"
 }
 ```
-
-ACR インスタンスを使用するには、まずサインインする必要があります。 サインインするには [az acr login][az-acr-login] コマンドを使用します。 次の例では、*MyHelmACR* という名前の ACR にサインインします。
-
-```azurecli
-az acr login --name MyHelmACR
-```
-
-このコマンドは、完了すると *"Login Succeeded (ログインに成功しました)"* というメッセージを返します。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
@@ -122,18 +113,12 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>サンプル アプリケーションをビルドして ACR にプッシュする
 
-[az acr list][az-acr-list] コマンドを使用し、*loginServer* に対して次のようにクエリを実行して、ログイン サーバー アドレスを取得します。
+[az acr build][az-acr-build] コマンドを使用して、前の手順で作成した Dockerfile を使用してイメージをビルドし、レジストリにプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。
 
 ```azurecli
-az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-```
-
-Docker を使用して、サンプル アプリケーション コンテナーをビルドおよびタグ付けし、ACR にプッシュします。
-
-```console
-docker build -t webfrontend:latest .
-docker tag webfrontend <acrLoginServer>/webfrontend:v1
-docker push <acrLoginServer>/webfrontend:v1
+az acr build --image webfrontend:v1 \
+  --registry MyHelmACR \
+  --file Dockerfile .
 ```
 
 ## <a name="create-your-helm-chart"></a>Helm グラフを作成する
@@ -144,9 +129,9 @@ docker push <acrLoginServer>/webfrontend:v1
 helm create webfrontend
 ```
 
-*webfrontend/values.yaml* に以下の更新を加えます。
+*webfrontend/values.yaml* に以下の更新を加えます。 前の手順でメモしたレジストリの loginServer を *myhelmacr.azurecr.io* のように置き換えます。
 
-* `image.repository` を `<acrLoginServer>/webfrontend` に変更します。
+* `image.repository` を `<loginServer>/webfrontend` に変更します。
 * `service.type` を `LoadBalancer` に変更します。
 
 次に例を示します。
@@ -159,7 +144,7 @@ helm create webfrontend
 replicaCount: 1
 
 image:
-  repository: <acrLoginServer>/webfrontend
+  repository: *myhelmacr.azurecr.io*/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:
@@ -218,16 +203,11 @@ Helm の使用方法の詳細については、Helm のドキュメントを参�
 > [!div class="nextstepaction"]
 > [Helm のドキュメント][helm-documentation]
 
-[az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-list]: /cli/azure/acr#az-acr-list
+[az-acr-build]: /cli/azure/acr#az-acr-build
 [az-group-delete]: /cli/azure/group#az-group-delete
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-
-[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-for-mac]: https://docs.docker.com/docker-for-mac/
-[docker-for-windows]: https://docs.docker.com/docker-for-windows/
 [example-nodejs]: https://github.com/Azure/dev-spaces/tree/master/samples/nodejs/getting-started/webfrontend
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [helm]: https://helm.sh/

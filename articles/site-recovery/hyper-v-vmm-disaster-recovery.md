@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437504"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495975"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>セカンダリのオンプレミスのサイトに対して Hyper-V VM のディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
-この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されるオンプレミスの Hyper-V VM で、セカンダリ サイトに対するディザスター リカバリーを設定する方法について説明します。 この記事では、次のことについて説明します。
+この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されるオンプレミスの Hyper-V VM で、セカンダリ サイトに対するディザスター リカバリーを設定する方法について説明します。 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * オンプレミスの VMM サーバーと Hyper-V ホストを準備する
@@ -48,10 +48,10 @@ ms.locfileid: "80437504"
 
 次のように VMM を準備します。
 
-1. ソースおよびターゲット VMM サーバー上に [VMM 論理ネットワーク](https://docs.microsoft.com/system-center/vmm/network-logical)があることを確認します。
+1. ソースおよびターゲット VMM サーバー上に [VMM 論理ネットワーク](/system-center/vmm/network-logical)があることを確認します。
     - ソース サーバー上の論理ネットワークは、Hyper-V ホストが配置されているソース クラウドと関連付けられている必要があります。
     - ターゲット サーバーの論理ネットワークは、ターゲット クラウドと関連付けられている必要があります。
-1. ソースおよびターゲット VMM サーバー上に [VM ネットワーク](https://docs.microsoft.com/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
+1. ソースおよびターゲット VMM サーバー上に [VM ネットワーク](/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
 2. ソース Hyper-V ホスト上の VM をソース VM ネットワークに接続します。 
 
 
@@ -80,7 +80,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 4. Azure Site Recovery プロバイダーのインストール ファイルをダウンロードします。
 5. 登録キーをダウンロードします。 このキーは、プロバイダーをインストールする場合に必要になります。 キーは生成後 5 日間有効です。
 
-    ![Set up source](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![プロバイダーと登録キーをダウンロードするためのオプションのスクリーンショット。](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. 各 VMM サーバーにプロバイダーをインストールします。 Hyper-V ホストには何も明示的にインストールする必要はありません。
 
@@ -94,7 +94,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 4. **[インストール]** で、既定のインストール先をそのまま使用するか、インストール先を変更して、 **[インストール]** をクリックします。
 5. インストールが完了したら、 **[登録]** をクリックして、サーバーをコンテナーに登録します。
 
-    ![インストール場所](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![インストール場所を含む [プロバイダーのインストール] 画面のスクリーンショット。](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. **[コンテナー名]** で、サーバーが登録されるコンテナーの名前を確認します。 **[次へ]** をクリックします。
 7. **[プロキシ接続]** で、VMM サーバーで実行中のプロバイダーが Azure に接続する方法を指定します。
    - プロバイダーがインターネットに直接接続するかプロキシ経由で接続するかを指定できます。 必要な場合は、プロキシ設定を指定します。
@@ -115,7 +115,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 1. **[インフラストラクチャの準備]**  >  **[ターゲット]** の順にクリックし、ターゲット VMM サーバーを選択します。
 2. Site Recovery と同期されている VMM クラウドが表示されます。 ターゲット クラウドを選択します。
 
-   ![移行先](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![ターゲット VMM サーバーとクラウドの選択のスクリーンショット。](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
@@ -138,7 +138,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 5. ソース VM の保護を無効にする場合はレプリカ仮想マシンを削除するように指定するために、 **[レプリカ VM の削除]** をオンにします。 この設定を有効にすると、ソース VM の保護を無効にしたときに、Site Recovery コンソールからのソース VM の削除、VMM コンソールからの VMM の Site Recovery 設定の削除、レプリカの削除が行われます。
 6. ネットワーク経由でレプリケートする場合は、 **[初期レプリケーションの方法]** で、初期レプリケーションを開始するかスケジュールを設定するかを指定します。 ネットワーク帯域幅を節約するために、トラフィックの多い時間帯を避けてスケジュールを設定することをお勧めします。 次に、 **[OK]** をクリックします
 
-     ![Replication policy](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![レプリケーション ポリシー オプションのスクリーンショット。](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. 新しいポリシーは、自動的に VMM クラウドに関連付けられます。 **[レプリケーション ポリシー]** で **[OK]** をクリックします。 
 

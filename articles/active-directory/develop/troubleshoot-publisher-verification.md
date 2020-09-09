@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: cf886b7b43280e542f1941e7c0edb570868525d9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282978"
 ---
 # <a name="troubleshoot-publisher-verification-preview"></a>発行者確認のトラブルシューティング (プレビュー)
 [発行者の確認 (プレビュー)](publisher-verification-overview.md) で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
@@ -37,7 +37,7 @@ ms.locfileid: "83595751"
     1. [MPN の登録ページ](https://partner.microsoft.com/dashboard/account/v3/enrollment/joinnow/basicpartnernetwork/new)に移動します
     1. 組織のプライマリ Azure AD テナントにユーザー アカウントでサインインします 
     1. MPN アカウントが既に存在する場合は、これが認識され、アカウントに追加されます 
-    1. MPN ID とプライマリ アカウントの連絡先が表示される[パートナー プロファイル ページ](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile)に移動します
+    1. MPN ID とプライマリ アカウントの連絡先が表示される[パートナー プロファイル ページ](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)に移動します
 
 - **自分の Azure AD グローバル管理者 (会社の管理者またはテナント管理者とも呼ばれます) がわからない場合は、どのようにして見つけることができますか。アプリ管理者または別の管理者ロールの場合はどうですか。**
     1. 組織のプライマリ テナントのユーザー アカウントを使用して、[Azure AD ポータル](https://aad.portal.azure.com)にサインインします
@@ -45,14 +45,14 @@ ms.locfileid: "83595751"
     1. [グローバル管理者] または目的の管理者ロールをクリックします
     1. そのロールを割り当てられているユーザーの一覧が表示されます
 
-- **自分の MPN アカウントの管理者がわかりません** [MPN のユーザー管理ページ](https://partner.microsoft.com/en-us/pcv/users)にアクセスし、ユーザー一覧をフィルター処理して、さまざまな管理者ロールのユーザーを確認します。
+- **自分の MPN アカウントの管理者がわかりません** [MPN のユーザー管理ページ](https://partner.microsoft.com/pcv/users)にアクセスし、ユーザー一覧をフィルター処理して、さまざまな管理者ロールのユーザーを確認します。
 
 - **MPN ID が無効である、またはアクセス権を持っていない、というエラーが表示されます。**
-    1. 自分の[パートナー プロファイル](https://partner.microsoft.com/en-us/pcv/accountsettings/connectedpartnerprofile)に移動し、次のことを確認します。 
+    1. 自分の[パートナー プロファイル](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)に移動し、次のことを確認します。 
         - MPN ID が正しい。 
         - エラーまたは "保留中のアクション" が表示されず、会社プロファイルとパートナー情報の両方の検証状態が "承認済み" または "成功" と表示される。
-    1. [MPN テナント管理ページ](https://partner.microsoft.com/en-us/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。
-    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/en-us/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。
+    1. [MPN テナント管理ページ](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。
+    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。
 
 - **Azure AD ポータルにサインインすると、登録されているアプリが表示されません。なぜですか?** 
     アプリの登録が別のユーザー アカウントまたは別のテナントを使用して作成されている可能性があります。 アプリの登録が作成されたテナントで、正しいアカウントを使用してサインインしていることを確認します。

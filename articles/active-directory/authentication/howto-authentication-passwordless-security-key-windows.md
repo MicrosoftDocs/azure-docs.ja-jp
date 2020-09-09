@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b8f5d6aaa96c24eb37eb78d237a489f1d25293c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653995"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717967"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする (プレビュー)
 
 このドキュメントでは、FIDO2 セキュリティ キーに基づくパスワードレス認証を、Windows 10 デバイスとの間で有効にする方法について説明します。 この記事を最後まで読むと、FIDO2 セキュリティ キーを使用して、お使いの Azure AD アカウントで Azure AD とHybrid Azure AD 参加済み Windows 10 デバイスの両方にサインインできるようになります。
 
-|     |
-| --- |
-| FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+> [!NOTE]
+> FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="requirements"></a>必要条件
 
@@ -36,10 +34,10 @@ ms.locfileid: "80653995"
 | 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN には、Windows 10 バージョン 1809 以降が必要です | X | X |
 | [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)には、Windows 10 バージョン 1903 以降が必要です | X |   |
-| [Hybrid Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)には、Windows 10 Insider Build 18945 以降が必要です |   | X |
+| [Hybrid Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)には、Windows 10 バージョン 2004 以降が必要です |   | X |
 | 完全にパッチが適用された Windows Server 2016/2019 ドメイン コントローラー。 |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) バージョン 1.4.32.0 以降 |   | X |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (オプション) | X | X |
+| [Microsoft Intune](/intune/fundamentals/what-is-intune) (オプション) | X | X |
 | プロビジョニング パッケージ (オプション) | X | X |
 | グループ ポリシー (省略可能) |   | X |
 
@@ -60,7 +58,7 @@ ms.locfileid: "80653995"
 
 機能のプレビュー中に使用している Azure AD 参加済みデバイスでは、Windows 10 バージョン 1809 以降が動作している必要があります。 Windows 10 バージョン 1903 以降で操作することをお勧めします。
 
-Hybrid Azure AD 参加済みデバイスでは、Windows 10 Insider Build 18945 以降が動作している必要があります。
+Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004 以降が実行されている必要があります。
 
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Windows サインインのセキュリティ キーを有効にする
 
@@ -102,7 +100,7 @@ Intune を使用してセキュリティ キーを使用できるようにする
       - OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - データ型:Integer
       - 値:1
-1. このポリシーを、特定のユーザー、デバイス、またはグループに割り当てることができます。 詳細については、[Microsoft Intune でユーザーとデバイスのプロファイルを割り当てる](https://docs.microsoft.com/intune/device-profile-assign)方法に関するページを参照してください。
+1. このポリシーを、特定のユーザー、デバイス、またはグループに割り当てることができます。 詳細については、[Microsoft Intune でユーザーとデバイスのプロファイルを割り当てる](/intune/device-profile-assign)方法に関するページを参照してください。
 
 ![Intune のカスタム デバイス構成ポリシーの作成](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
@@ -124,10 +122,10 @@ Intune で管理されていないデバイスの場合は、プロビジョニ�
 1. **[ビルド]** ウィンドウの **[プロビジョニング パッケージの保存先の選択]** のパスをメモするか、変更して、 **[次へ]** を選択します。
 1. **[プロビジョニング パッケージのビルド]** ページで **[ビルド]** を選択します。
 1. 作成された 2 つのファイル (*ppkg* と *cat*) を、後でコンピューターに適用できる場所に保存します。
-1. 作成したプロビジョニング パッケージを適用するには、「[プロビジョニング パッケージの適用](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package)」を参照してください。
+1. 作成したプロビジョニング パッケージを適用するには、「[プロビジョニング パッケージの適用](/windows/configuration/provisioning-packages/provisioning-apply-package)」を参照してください。
 
 > [!NOTE]
-> Windows 10 バージョン 1809 を実行しているデバイスでは、共有 PC モード (*EnableSharedPCMode*) も有効にする必要があります。 この機能を有効にする方法の詳細については、「[Windows 10 での共有またはゲスト PC の設定](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc)」を参照してください。
+> Windows 10 バージョン 1809 を実行しているデバイスでは、共有 PC モード (*EnableSharedPCMode*) も有効にする必要があります。 この機能を有効にする方法の詳細については、「[Windows 10 での共有またはゲスト PC の設定](/windows/configuration/set-up-shared-or-guest-pc)」を参照してください。
 
 ### <a name="enable-with-group-policy"></a>グループ ポリシーを使用して有効にする
 

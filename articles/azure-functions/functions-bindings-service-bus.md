@@ -6,18 +6,18 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46660a0c8d20ab82c994a62b1c781108ea1070c1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235143"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111203"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
 Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [Azure Service Bus](https://azure.microsoft.com/services/service-bus) と統合されます。 Service Bus と統合すると、キューまたはトピック メッセージに応答して送信する関数を構築できます。
 
-| アクション | 種類 |
+| アクション | Type |
 |---------|---------|
 | Service Bus キューまたはトピック メッセージが作成されたときに関数を実行する | [トリガー](./functions-bindings-service-bus-trigger.md) |
 | Azure Service Bus メッセージを送信する |[出力バインド](./functions-bindings-service-bus-output.md) |
@@ -28,7 +28,7 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| 言語                                        | 追加手段                                   | 解説 
+| Language                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 4.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |

@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005380"
 ---
-# <a name="localization"></a>ローカリゼーション
+# <a name="localization-element"></a>Localization 要素
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "81681416"
 - ポリシーでサポートされている言語の明示的な一覧を設定し、既定の言語を選択する。
 - 言語固有の文字列とコレクションを指定する。
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -39,7 +39,7 @@ ms.locfileid: "81681416"
 
 **Localization** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Enabled | いいえ | 指定できる値: `true` または `false`。 |
 
@@ -54,7 +54,7 @@ ms.locfileid: "81681416"
 
 **SupportedLanguages** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | はい | ローカライズされたリソースの既定値として使用される言語。 |
 | MergeBehavior | いいえ | 同じ識別子を持つ親ポリシーに存在するすべての ClaimType と一緒にマージされる、値の列挙値。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、または `ReplaceAll`。 `Append` 値は、存在するデータのコレクションを、親ポリシーで指定したコレクションの末尾に追加する必要があることを指定します。 `Prepend` 値は、存在するデータのコレクションを、親ポリシーで指定したコレクションの前に追加する必要があることを指定します。 `ReplaceAll` 値は、親ポリシーで定義されているデータのコレクションを、現在のポリシーで定義されているデータを代わりに使用して無視する必要があることを指定します。 |
@@ -71,7 +71,7 @@ ms.locfileid: "81681416"
 
 **LocalizedResources** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | ローカライズされたリソースを一意に識別するために使用される識別子。 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "81681416"
 
 **LocalizedCollection** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ElementType | はい | ポリシー ファイル内の ClaimType 要素またはユーザー インターフェイス要素を参照します。 |
 | ElementId | はい | **ElementType** が ClaimType に設定されている場合に使用される、ClaimsSchema セクションで定義済みの要求の種類への参照を含む文字列。 |
@@ -108,7 +108,7 @@ ms.locfileid: "81681416"
 
 **Item** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Text | はい | このオプションのユーザー インターフェイスでユーザーに表示する必要がある、ユーザーフレンドリーな表示文字列。 |
 | Value | はい | このオプションの選択に関連付けられている要求の文字列値。 |
@@ -116,7 +116,7 @@ ms.locfileid: "81681416"
 
 次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
 
-```XML
+```xml
 <LocalizedResources Id="api.selfasserted.en">
  <LocalizedCollections>
    <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
@@ -144,7 +144,7 @@ ms.locfileid: "81681416"
 
 **LocalizedString** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ElementType | はい | 指定できる値[ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation)、または [UxElement](#uxelement)。   | 
 | ElementId | はい | **ElementType** が `ClaimType`、`Predicate`、または `InputValidation` に設定されている場合、この要素には ClaimsSchema セクションで定義済みの要求の種類への参照が含まれます。 |
@@ -205,7 +205,7 @@ ClaimType 値は、いずれかの要求属性をローカライズするため�
 
 次の例は、要求の種類 email の DisplayName、UserHelpText、および PatternHelpText の各属性をローカライズする方法を示しています。
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
@@ -228,7 +228,7 @@ ErrorMessage 値は、システム エラー メッセージのいずれかを�
 次の例は、UserMessageIfClaimsPrincipalAlreadyExists エラー メッセージをローカライズする方法を示しています。
 
 
-```XML
+```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
 ```
 
@@ -319,7 +319,7 @@ InputValidation 値は、[PredicateValidation](predicates.md) グループのエ
 
 次の例は、述語検証グループのヘルプ テキストをローカライズする方法を示しています。
 
-```XML
+```xml
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 ```
 
@@ -327,7 +327,7 @@ InputValidation 値は、[PredicateValidation](predicates.md) グループのエ
 
 UxElement 値は、ユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 次の例は、続行とキャンセルのボタンをローカライズする方法を示しています。
 
-```XML
+```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```

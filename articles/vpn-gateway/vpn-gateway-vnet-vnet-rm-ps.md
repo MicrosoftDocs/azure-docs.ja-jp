@@ -4,15 +4,15 @@ description: VNet 間接続と PowerShell を使用して仮想ネットワー�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 02/15/2019
+ms.topic: how-to
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860522"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398564"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -79,9 +79,9 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 ターミナルの左上をクリックして、Cloud Shell を再起動できます。 ターミナルを再起動したら、忘れずにすべての変数を再宣言してください。
+* ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 端末の左上をクリックして、Cloud Shell を再起動できます。 端末を再起動したら、忘れずにすべての変数を再宣言してください。
 
-* 代わりに最新バージョンの Azure PowerShell モジュールをローカル環境にインストールしたい場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
+* 代わりに最新バージョンの Azure PowerShell モジュールをローカル環境にインストールしたい場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」をご覧ください。
 
 ### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>手順 1 - IP アドレス範囲を決める
 
@@ -203,7 +203,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-コマンドが完了した後、このゲートウェイが作成されるまでに最大で 45 分かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell ターミナルの左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
+コマンドが完了した後、このゲートウェイが作成されるまでに最大で 45 分かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell 端末の左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>手順 3 - TestVNet4 を作成し、構成する
 

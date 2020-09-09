@@ -26,7 +26,7 @@ ms.locfileid: "75894091"
 
 さまざまな理由が考えられます。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 [クラスター サイズ](../hdinsight-scaling-best-practices.md)機能を使用して、クラスターに必要な追加のコア数を計算します。 これは、新しい worker ノードのコアの合計数に基づきます。 その後、次の手順を 1 つ以上試します。
 

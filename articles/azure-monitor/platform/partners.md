@@ -3,13 +3,13 @@ title: Azure Monitor と統合するパートナー
 description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/29/2020
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854940"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142411"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -106,7 +106,8 @@ Grafana は、時系列のメトリック データを視覚化できるオー�
 
 ![InfluxData のロゴ](./media/partners/Influxdata.png)
 
-InfluxDB の開発元である InfluxData は、DevOps と IoT アプリケーションのメトリックとイベント (時系列データ) の分析用に一から構築された最新のオープン ソース プラットフォームを提供します。 データが人、センサー、マシンのどこから送られてきたものであっても、InfluxData を利用することで、開発者はこれまでより速く、簡単に、大規模な次世代の監視、分析、および IoT アプリケーションを構築し、実際のビジネス価値を迅速に提供できます。 サンフランシスコに本社を置く InfluxData の 420 を超える顧客には、Cisco、eBay、IBM、Siemens が含まれます。
+InfluxData は、オープンソースの時系列データベースである InfluxDB の作成者です。 当社のテクノロジは、IoT デバイス、アプリケーション、ネットワーク、コンテナー、コンピューターによって生成される大量のタイムスタンプ データを処理することに特化しています。 当社の使命は、IBM、Visa、Siemens、Tesla、NASA などの開発者や組織がリアルタイム データを保存して分析することを支援し、革新的な監視、分析、IoT アプリケーションをより迅速に構築し、規模を拡大できるようにすることです。 Microsoft Azure Monitor のメトリックおよびイベント収集機能は、InfluxData の Telegraf エージェントによって拡張できます。これによって Microsoft ユーザーは、最先端の時系列データベース ソリューションの利点を活用し、増えつつある Telegraf へのオープンソースのコントリビューションを利用することができます。
+
 
 [ドキュメントを確認する。][influxdata-doc]
 
@@ -182,6 +183,16 @@ OpsGenie は、Azure によって生成されたアラートのディスパッ�
 トップクラスのインシデント管理ソリューション PagerDuty は、メトリックに関して、最高レベルのAzure アラート サポートを提供します。 PagerDuty は、Azure Monitor アラートの通知、自動スケールの通知、アクティビティ ログ イベント、および Azure サービスのプラットフォーム レベルのメトリックに関する通知をサポートします。 これらの機能強化により、Azure のコア プラットフォームに対する可視性が向上します。 PagerDuty のリアルタイム応答でのインシデント管理機能をフルに活用できます。 拡張された Azure の統合は webhook によって可能になります。 webhook を使用して、ソリューションを迅速かつ簡単にセットアップしてカスタマイズできます。
 
 [ドキュメントを確認する。][pagerduty-doc]
+
+## <a name="promitor"></a>Promitor
+
+![Promitor ロゴ](./media/partners/promitor.png)
+
+Promitor は、Atlassian Statuspage、Prometheus、StatsD などのシステムでメトリクスを利用できるようにする Azure Monitor の取得ツールです。
+
+すべてのメトリクスを Azure Monitor にプッシュし、必要に応じて使用します。
+
+[詳細情報。][promitor-doc]
 
 ## <a name="qradar"></a>QRadar
 
@@ -267,10 +278,10 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor の詳細情報](../../azure-monitor/overview.md)
+- [Azure Monitor の詳細情報](../overview.md)
 - [REST API を使用してメトリックにアクセスする](rest-api-walkthrough.md)
-- [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [リソース ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](./activity-log.md#legacy-collection-methods)
+- [リソース ログを Microsoft 以外のサービスにストリーミングする](./resource-logs.md#send-to-azure-event-hubs)
 
 
 
@@ -280,18 +291,19 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric の紹介。"
 [circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
-[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
+[cloudhealth-doc]: https://www.cloudhealthtech.com/products/azure-management
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix の概要。"
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog ドキュメント。"
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace ドキュメント。"
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic ドキュメント。"
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana の統合。"
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influxdata Telegraf の統合。"
+[influxdata-doc]: ./collect-custom-metrics-linux-telegraf.md "Azure Monitor Influxdata Telegraf の統合。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Logic Monitor のドキュメント。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft のドキュメント。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic ドキュメント。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie ドキュメント。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty ドキュメント。"
+[promitor-doc]: https://promitor.io/ "Promitor のドキュメント。"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar のドキュメント。"
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic ドキュメント。"
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360 のドキュメント。"

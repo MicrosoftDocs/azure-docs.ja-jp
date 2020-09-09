@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679137"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022182"
 ---
 # <a name="late-stage-reprojection"></a>Late Stage Reprojection
 
@@ -24,7 +24,7 @@ ms.locfileid: "80679137"
 
 ## <a name="choose-lsr-mode-in-unity"></a>Unity で LSR モードを選択する
 
-Unity エディターで、 *[File]\(ファイル\) > [Build Settings]\(ビルド設定\)* にアクセスします。 左下にある *[Player Settings]\(Player の設定\)* を選択し、 *[Player]\(プレーヤー\) > [XR Settings]\(XR の設定\) > [Windows Mixed Reality]* で、 **[Enable Depth Buffer Sharing]\(深度バッファーの共有を有効にする\)** がオンになっているかどうかを確認します。
+Unity エディターの *:::no-loc text="File > Build Settings":::* に移動します。 左下にある *:::no-loc text="Player Settings":::* を選択し、 *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* で **:::no-loc text="Enable Depth Buffer Sharing":::** がオンになっているかどうかを確認します。
 
 ![深度バッファーの共有を有効にするフラグ](./media/unity-depth-buffer-sharing-enabled.png)
 

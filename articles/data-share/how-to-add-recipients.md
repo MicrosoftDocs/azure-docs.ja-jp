@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share で受信者を追加する
 description: Azure Data Share で既存のデータ共有に受信者を追加する方法について説明します。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
-ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 9f49ab3aed60bfbe04ad022070a931461e3f52f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 07/30/2020
+ms.openlocfilehash: 999966192d92481a9d3eec68cfe804566a27f71e
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73490533"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513470"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Azure Data Share で既存のデータ共有に受信者を追加する方法
 

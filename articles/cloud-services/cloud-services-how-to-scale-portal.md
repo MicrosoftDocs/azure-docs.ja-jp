@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75360839"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223688"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 
@@ -41,12 +41,12 @@ ms.locfileid: "75360839"
 クラウド サービスを選択したら、該当するクラウド サービス ブレードを表示状態にします。
 
 1. クラウド サービス ブレードの **[ロールとインスタンス]** タイルで、クラウド サービスの名前を選択します。   
-   **重要**: ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
+   **重要**:ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![[ロールとインスタンス] タイルのスクリーンショット。WorkerRoleWithSBQueue 1 オプションが赤で囲まれています。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **[スケール]** タイルを選択します。
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![[操作] ページのスクリーンショット。[スケール] タイルが赤で囲まれています。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自動スケール
 ロールのスケール設定を構成する際は、**手動**または**自動**のいずれかのモードを使用できます。 手動モードでは想定通りにスケールが行われるので、インスタンスの絶対数を設定します。 ただし、自動モードでは、スケールの方法とスケールの程度を制御するルールを設定できます。
@@ -89,7 +89,7 @@ ms.locfileid: "75360839"
 
 ルールのトリガーは、条件値を追加可能なクラウド サービスのメトリック (CPU の使用率、ディスク アクティビティ、またはネットワーク アクティビティ) に基づいて設定されます。 さらに、メッセージ キュー、またはサブスクリプションに関連付けられているその他の Azure リソースのメトリックに基づいてトリガーを設定することができます。
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![[ルール] ダイアログ ボックスのスクリーンショット。[メトリック名] オプションが赤で囲まれています。](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 ルールを構成したら、ルール ブレードの下部にある **[OK]** ボタンを選択します。
 

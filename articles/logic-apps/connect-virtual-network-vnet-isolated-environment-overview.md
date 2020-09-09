@@ -5,88 +5,89 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 07/05/2020
+ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734920"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816025"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
-ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の仮想マシン (VM) や他のシステムまたはサービスなど、セキュリティで保護されたリソースにアクセスすることが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される分離された Logic Apps サービスのインスタンスです。
+ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) へのアクセスが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される Logic Apps サービスのインスタンスです。
 
-自分専用の分離されたインスタンスでロジック アプリを実行することで、他の Azure テナントが自分のアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれる) を減らすことができます。 ISE には、次の利点があります。
-
-* 自分専用の静的 IP アドレス。これらの IP アドレスは、マルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは区別されています。 また、送信先システムとの通信のために、単一の予測可能な静的パブリック アウトバウンド IP アドレスを自分で設定することもできます。 このようにすると、それらの送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
-
-* 実行継続時間、ストレージのリテンション期間、スループット、HTTP の要求と応答のタイムアウト、メッセージのサイズ、カスタム コネクタの要求の上限が引き上げられました。 詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md)に関するページを参照してください。
-
-> [!NOTE]
-> 一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md)) を使用して、Azure でホストされている Azure Storage、Azure Cosmos DB、Azure SQL Database、パートナー サービス、カスタマー サービスなどの Azure PaaS サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
+たとえば、一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md) を通じてセットアップ可能) を使用して、Azure Storage、Azure Cosmos DB などの Azure PaaS サービスや、Azure でホストされている Azure SQL Database、パートナー サービス、カスタマー サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
 
 ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*"(デプロイ) されます。 アクセスを必要とする統合アカウントやロジック アプリの場所としてその ISE を使用することができます。
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-ロジック アプリと同じ ISE 内で実行される以下の項目を使用して、仮想ネットワーク内のリソース、または仮想ネットワークに接続されているリソースにロジック アプリからアクセスすることができます。
+この概要では、[ISE を使用する理由](#benefits)、[専用の場合とマルチテナントの場合の Logic Apps サービスの違い](#difference)、Azure 仮想ネットワーク内にあるリソース、または仮想ネットワークに接続されているリソースに直接アクセスできる方法について詳しく説明します。
 
-* **CORE** というラベルが表示された組み込みトリガーまたは組み込みアクション (例: HTTP トリガーまたは HTTP アクション)
-* そのシステムまたはサービスの **ISE** とラベル付けされたコネクタ
-* カスタム コネクタ
+<a name="benefits"></a>
 
-**CORE** や **ISE** のラベルを持たないコネクタを ISE 内のロジック アプリで使用することもできます。 ただし、それらのコネクタは、マルチテナント Logic Apps サービスで実行されます。 詳細については、次のセクションを参照してください。
+## <a name="why-use-an-ise"></a>ISE を使用する理由
 
-* [分離とマルチテナント](#difference)
-* [統合サービス環境から接続する](../connectors/apis-list.md#integration-service-environment)
-* [ISE コネクタ](../connectors/apis-list.md#ise-connectors)
+分離された自分専用のインスタンスでロジック アプリを実行することで、他の Azure テナントが自分のアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれる) を減らすことができます。 ISE には、次の利点があります。
 
-> [!IMPORTANT]
-> ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 詳細については、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)を参照してください。 価格の詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」を参照してください。
+* 仮想ネットワーク内にあるリソース、または仮想ネットワークに接続されているリソースへの直接アクセス
 
-この概要では、ISE によってロジック アプリに Azure 仮想ネットワークへの直接アクセスが提供される方法を詳しく説明し、ISE とマルチテナント Logic Apps サービスとの違いを比較します。
+  ISE で作成して実行するロジック アプリでは、[ISE で実行される特別に設計されたコネクタ](../connectors/apis-list.md#ise-connectors)を使用できます。 オンプレミスのシステムまたはデータ ソース用の ISE コネクタが存在する場合は、[オンプレミスのデータ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用しなくても、直接接続できます。 詳細については、このトピックの後の方の「[専用とマルチテナント](#difference)」および「[オンプレミス システムへのアクセス](#on-premises)」のセクションを参照してください。
+
+* 仮想ネットワーク外にあるリソース、または仮想ネットワークに接続されていないリソースへの継続的なアクセス
+
+  ISE で作成して実行するロジック アプリでは、ISE 固有のコネクタが使用できない場合、マルチテナント Logic Apps サービスで実行されているコネクタを引き続き使用できます。 詳細については、「[専用とマルチテナント](#difference)」のセクションを参照してください。
+
+* 自分専用の静的 IP アドレス。これらの IP アドレスは、マルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは区別されています。 また、送信先システムとの通信のために、単一の予測可能な静的パブリック アウトバウンド IP アドレスを自分で設定することもできます。 このようにすると、それらの送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
+
+* 実行継続時間、ストレージのリテンション期間、スループット、HTTP の要求と応答のタイムアウト、メッセージのサイズ、カスタム コネクタの要求の上限が引き上げられました。 詳細については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md)に関するページを参照してください。
 
 <a name="difference"></a>
 
-## <a name="isolated-versus-multi-tenant"></a>分離とマルチテナント
+## <a name="dedicated-versus-multi-tenant"></a>専用とマルチテナント
 
 ISE にロジック アプリを作成して実行すると、マルチテナント Logic Apps サービスと同じユーザー エクスペリエンスおよび同様の機能が得られます。 マルチテナント Logic Apps サービスで使用できるのと同じすべての組み込みトリガー、アクション、マネージド コネクタを使用できます。 一部のマネージド コネクタでは、追加の ISE バージョンが提供されます。 ISE コネクタと非 ISE コネクタの違いは、ISE 内で作業するときにロジック アプリ デザイナーに付けられるラベルと実行される場所です。
 
 ![ISE 内のラベルが付いているコネクタと付いていないコネクタ](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
-* 組み込みのトリガーとアクションには、**CORE** ラベルが表示されます。 これらは常に、ご利用のロジック アプリと同じ ISE で実行されます。 **ISE** というラベルが表示されるマネージド コネクタも、ロジック アプリと同じ ISE で実行されます。
+* HTTP のような組み込みのトリガーとアクションには、**CORE** というラベルが表示され、これらはロジック アプリと同じ ISE で実行されます。
 
-  たとえば、ISE のバージョンを提供するコネクタをいくつか次に示します。
+* **ISE** というラベルが表示されるマネージド コネクタは、ISE 用に特別に設計されており、"*常にロジック アプリと同じ ISE で実行されます*"。 たとえば、以下に [ISE のバージョンを提供するコネクタ](../connectors/apis-list.md#ise-connectors)をいくつか示します。<p>
 
   * Azure Blob Storage、Azure File Storage、Azure Table Storage
-  * Azure キュー、Azure Service Bus、Azure Event Hubs、IBM MQ
-  * FTP、SFTP-SSH
+  * Azure Service Bus、Azure Queues、Azure Event Hubs
+  * Azure Automation、Azure Key Vault、Azure Event Grid、および Azure Monitor ログ
+  * FTP、SFTP-SSH、File System、および SMTP
+  * SAP、IBM MQ、IBM DB2、および IBM 3270
   * SQL Server、Azure SQL Data Warehouse、Azure Cosmos DB
   * AS2、X12、EDIFACT
 
-* 追加のラベルが表示されないマネージド コネクタは、常にマルチテナント Logic Apps サービスで実行されますが、ISE でホストされたロジック アプリでこれらのコネクタを使用することもできます。
+  オンプレミスのシステムまたはデータ ソース用の ISE コネクタを使用できる場合は、ほぼ例外なく、[オンプレミスのデータ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用せずに、直接接続できます。 詳細については、このトピックの後の方の「[オンプレミス システムへのアクセス](#on-premises)」のセクションを参照してください。
+
+* **ISE** というラベルが表示されないマネージド コネクタは、ISE 内のロジック アプリのために、引き続き機能します。 これらのコネクタは、ISE 内ではなく、"*常にマルチテナント Logic Apps サービスで実行されます*"。
+
+* "*ISE の外部*" で作成するカスタム コネクタは、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)が必要かどうかにかかわらず、ISE 内のロジック アプリのために、引き続き機能します。 ただし、"*ISE 内*" で作成するカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 詳細については、「[オンプレミス システムへのアクセス](#on-premises)」のセクションを参照してください。
 
 <a name="on-premises"></a>
 
-### <a name="access-to-on-premises-systems"></a>オンプレミス システムへのアクセス
+## <a name="access-to-on-premises-systems"></a>オンプレミス システムへのアクセス
 
-Azure 仮想ネットワークに接続されたオンプレミスのシステムやデータ ソースにアクセスするために、ISE 内のロジック アプリは、次の項目を使用できます。
+ISE 内で実行されるロジック アプリは、これらの項目を使用して、Azure 仮想ネットワーク内にある、または Azure 仮想ネットワークに接続されている、オンプレミス システムおよびデータ ソースに直接アクセスできます。<p>
 
-* HTTP アクション
+* **CORE** というラベルが表示される HTTP トリガーまたはアクション
 
-* そのシステムの ISE とラベル付けされたコネクタ
+* オンプレミスのシステムまたはデータ ソース用の **ISE** コネクタ (使用可能な場合)
 
-  > [!NOTE]
-  > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で SQL Server コネクタで Windows 認証を使用するには、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-install.md)でコネクタの ISE 以外のバージョンを使用します。 ISE とラベル付けされたバージョンでは、Windows 認証はサポートされていません。
+  ISE コネクタを使用できる場合は、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)なしで、システムまたはデータ ソースに直接アクセスできます。 ただし、ISE から SQL Server にアクセスし、Windows 認証を使用する必要がある場合は、コネクタの ISE 以外のバージョンとオンプレミス データ ゲートウェイを使用する必要があります。 コネクタの ISE バージョンでは、Windows 認証はサポートされていません。 詳細については、「[ISE コネクタ](../connectors/apis-list.md#ise-connectors)」および「[統合サービス環境から接続する](../connectors/apis-list.md#integration-service-environment)」のセクションを参照してください。
 
 * カスタム コネクタ
 
-  * オンプレミス データ ゲートウェイを必要とするカスタム コネクタを ISE の外部で作成した場合は、ISE 内のロジック アプリでもそれらのコネクタを使用できます。
+  * "*ISE の外部*" で作成するカスタム コネクタは、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)が必要かどうかにかかわらず、ISE 内のロジック アプリのために、引き続き機能します。
 
-  * ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE をホストしている仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。
+  * "*ISE 内*" で作成するカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE をホストしている仮想ネットワーク内にある、またはそのような仮想ネットワークに接続されている、オンプレミスのシステムおよびデータ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースにアクセスするときにデータ ゲートウェイは不要です。
 
-仮想ネットワークに接続されていない、または ISE とラベル付けされたコネクタがないオンプレミス システムでは、お使いのロジック アプリからこれらのシステムに接続する前に、まず[オンプレミスのデータ ゲートウェイを設定する](../logic-apps/logic-apps-gateway-install.md)必要があります。
+ISE コネクタがないか、仮想ネットワークの外部にあるか、または仮想ネットワークに接続されていないオンプレミスのシステムおよびデータ ソースにアクセスするには、引き続きオンプレミス データ ゲートウェイを使用する必要があります。 ISE 内のロジック アプリは、引き続き、**CORE** または **ISE** というラベルを持たないコネクタを使用できます。 それらのコネクタは、ISE 内ではなくマルチテナント Logic Apps サービスで実行されます。 
 
 <a name="ise-level"></a>
 
@@ -116,13 +117,26 @@ ISE を作成するときに、内部アクセス エンドポイントと外部
 > [!IMPORTANT]
 > アクセス エンドポイントは、ISE 作成中にのみ選択できます。後でこのオプションを変更することはできません。
 
-* **内部**:ロジック アプリの実行履歴から、"*仮想ネットワーク内からのみ*"、入力と出力を表示およびアクセスできる ISE のロジック アプリの呼び出しを許可するプライベート エンドポイント。 プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内、または ISE の仮想ネットワークに接続されている仮想ネットワーク内に配置できます (たとえば、ピアリングや仮想プライベート ネットワークを使用します)。
+* **内部**:ロジック アプリの実行履歴から、"*仮想ネットワーク内からのみ*"、入力と出力を表示およびアクセスできる ISE のロジック アプリの呼び出しを許可するプライベート エンドポイント。
+
+  > [!IMPORTANT]
+  > プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 そうでないと、ロジック アプリの実行履歴を表示しようとしたときに、"予期しないエラーが発生しました。 フェッチできませんでした。" というエラーが発生します。
+  >
+  > ![ファイアウォール経由でトラフィックを送信できないために Azure Storage アクション エラーが発生する](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
+  >
+  > たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内にも、ピアリングや仮想プライベート ネットワークを介して ISE の仮想ネットワークに接続されている仮想ネットワーク内にも配置できます。 
 
 * **外部**:ロジック アプリの実行履歴から、"*仮想ネットワーク外からの*" 入力と出力を表示およびアクセスできる ISE のロジック アプリの呼び出しを許可するパブリック エンドポイント。 ネットワーク セキュリティ グループ (NSG) を使用する場合は、実行履歴の入力と出力へのアクセスを許可する受信規則が設定されていることを確認します。 詳細については、「[ISE のアクセスを有効にする](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)」を参照してください。
 
 ISE が内部アクセス エンドポイントを使用しているか、外部アクセス エンドポイントを使用しているかを確認するには、ISE のメニューで、 **[設定]** の下にある **[プロパティ]** を選択し、 **[アクセス エンドポイント]** プロパティを見つけます。
 
 ![ISE アクセス エンドポイントを見つける](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
+
+<a name="pricing-model"></a>
+
+## <a name="pricing-model"></a>価格モデル
+
+ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクタでは、使用量ベースの価格プランとは異なる固定価格プランが使用されます。 詳細については、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
 <a name="create-integration-account-environment"></a>
 

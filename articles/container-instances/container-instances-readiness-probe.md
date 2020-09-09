@@ -2,13 +2,13 @@
 title: コンテナー インスタンスに readiness probe を設定する
 description: probe を構成して、Azure Container Instances のコンテナーの準備ができたときのみ要求を受信するようにする方法について説明します。
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/02/2020
+ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76935679"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169665"
 ---
 # <a name="configure-readiness-probes"></a>readiness probe の構成
 
@@ -26,7 +26,7 @@ Azure Container Instances は、[liveness probe](container-instances-liveness-pr
 例として、readiness probe を含む次のスニペットを使用して `readiness-probe.yaml` ファイルを作成します。 このファイルは、小規模な Web アプリを実行するコンテナーで構成される、コンテナー グループを定義します。 アプリは、パブリックの `mcr.microsoft.com/azuredocs/aci-helloworld` イメージからデプロイされます。 このコンテナー アプリは、「[Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする](container-instances-quickstart.md)」やその他のクイックスタートにも示されています。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: readinesstest
 properties:

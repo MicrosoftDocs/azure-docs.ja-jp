@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 260616b9dc11a45524842edf0d8f2989746a1d3d
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227091"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268742"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ  
+# <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 ## <a name="overview"></a>概要
 
@@ -30,7 +33,7 @@ ms.locfileid: "79227091"
 この記事では、[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) プリセットを取得してレイヤーの数を減らすことによってプリセットをカスタマイズする方法を説明します。 [Media Encoder Standard のプリセットのカスタマイズ](media-services-advanced-encoding-with-mes.md)の記事では、高度なエンコード タスクを実行するために使用できるカスタム プリセットを示しています。
 
 > [!NOTE]
-> この記事で説明されているカスタム プリセットは、[Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) 変換または CLI コマンドでは使用できません。 詳細については、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください。
+> この記事で説明されているカスタム プリセットは、[Media Services V3](../latest/index.yml) 変換または CLI コマンドでは使用できません。 詳細については、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください。
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES プリセットのカスタマイズ
 
@@ -120,9 +123,11 @@ ms.locfileid: "79227091"
 - エンコード ジョブを作成します。
 - Media Encoder Standard エンコーダーの参照を取得します。
 - 前のセクションで作成したカスタム JSON プリセットを読み込みます。 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - エンコード タスクをジョブに追加します。 
 - エンコードする入力資産を指定します。

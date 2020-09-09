@@ -7,15 +7,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/06/2020
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 8be5dac2d1d5e8a5a3ceafff6b51b2d89e03993f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593285"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344477"
 ---
 # <a name="add-entities-to-extract-data"></a>データを抽出するエンティティを追加する
 
@@ -31,14 +31,18 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 
 エンティティ計画の一環として、テキストに一致するエンティティ (事前構築済みエンティティ、正規表現エンティティ、リスト エンティティなど) の必要性が判明していることがあります。 そのようなエンティティは、サンプル発話でラベルが付けられる前に、 **[エンティティ]** ページから作成できます。
 
-ラベルを付けるときは、個々のエンティティにラベルを付け、機械学習された親エンティティまで構築できます。 あるいは、機械学習された親エンティティから始め、子エンティティに分解できます。
+ラベルを付けるときは、個々のエンティティにラベルを付けてから、親の機械学習エンティティまで構築できます。 あるいは、親の機械学習エンティティから始め、子エンティティに分解できます。
 
 > [!TIP]
 >クライアント アプリケーションで抽出されるとき、単語が使用されない場合でも、エンティティを示すすべての単語にラベルを付けます。
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>ラベル付けの前かラベル付けと同時にエンティティを作成する
+## <a name="when-to-create-an-entity"></a>エンティティを作成するタイミング
 
-次の表からは、どのエンティティをどのような状況で作成するか、あるいはどのような状況で各エンティティをアプリに追加するかわかります。
+エンティティを計画した後、機械学習エンティティとサブエンティティを作成する必要があります。 これには、機械学習エンティティに特徴を提供するために、事前構築済みのエンティティまたはテキスト照合エンティティを追加する必要がある場合があります。 これらはすべて、ラベル付けの前に行う必要があります。
+
+サンプルの発話のラベル付けを開始したら、機械学習済みエンティティを作成したり、リスト エンティティを拡張したりできます。
+
+次の表を使用すると、各エンティティ型を作成またはアプリに追加する場所を理解できます。
 
 |エンティティの種類|LUIS ポータルでエンティティを作成する状況|
 |--|--|
@@ -51,27 +55,11 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 
 エンティティはすべて、 **[エンティティ]** ページから作成できます。あるいは、 **[Intent detail]\(意図の詳細\)** ページでサンプル発話のエンティティにラベルを付けるとき、いくつかのエンティティを作成できます。 **[Intent detail]\(意図の詳細\)** ページでは、サンプル発話のエンティティにのみ _ラベルを付ける_ ことができます。
 
-## <a name="create-a-machine-learned-entity"></a>機械学習エンティティを作成する
 
-[!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>テキストに一致するエンティティを作成する
+## <a name="how-to-create-a-new-custom-entity"></a>新しいカスタム エンティティを作成する方法
 
-テキストに一致するエンティティを使用し、いくつかの方法でデータを抽出します。
-
-|テキストに一致するエンティティ|目的|
-|--|--|
-|[リスト エンティティ](reference-entity-list.md)|正規名と代替形式としてのシノニムの一覧|
-|正規表現エンティティ|正規表現エンティティを利用してテキストを照合する|
-|[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)|数値、メール、日付など、一般的なデータ型を照合する|
-|事前構築済みのドメイン エンティティ|選択したサブジェクト ドメインを使用して照合する|
-|[Pattern.any](reference-entity-pattern-any.md)| 周囲のテキストと混同しがちなエンティティを照合する|
-
-事前構築済みのエンティティは、カスタム トレーニング データを用意しなくても動作します。 他のエンティティの場合、カスタム トレーニング データ (リスト エンティティのアイテムなど) か表現 (正規表現や pattern.any など) を用意する必要があります。
-
-<a name="add-list-entities"></a>
-
-### <a name="how-to-create-a-new-custom-entity"></a>新しいカスタム エンティティを作成する方法
+このプロセスは、機械学習済みエンティティ、リスト エンティティ、および正規表現エンティティに対して機能します。
 
 1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
@@ -79,7 +67,50 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 1. **[+ 作成]** を選択し、エンティティの種類を選択します。
 1. エンティティの設定を続け、完了したら **[作成]** を選択します。
 
-### <a name="add-list-entities-for-exact-matches"></a>完全一致のリスト エンティティを追加する
+## <a name="create-a-machine-learned-entity"></a>機械学習済みエンティティを作成する
+
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. **[ビルド]** セクションの左側にあるパネルで **[エンティティ]** を選択し、 **[+ 作成]** を選択します。
+1. **[Create an entity type]\(エンティティ型の作成\)** ダイアログ ボックスで、エンティティの名前を入力し、 **[Machine learned]\(機械学習済み\)** を選択します。 サブエンティティを追加するには、 **[Add structure]\(構造を追加する\)** を選択します。 **［作成］** を選択します
+
+    > [!div class="mx-imgBorder"]
+    > ![機械学習済みエンティティを作成しているスクリーンショット。](media/add-entities/machine-learned-entity-with-structure.png)
+
+1. **[Add subentities]\(サブエンティティの追加\)** で、親エンティティ行の **[+]** を選択して、サブエンティティを追加します。
+
+    > [!div class="mx-imgBorder"]
+    > ![サブエンティティを追加しているスクリーンショット。](media/add-entities/machine-learned-entity-with-subentities.png)
+
+1. **[作成]** を選択して、作成プロセスを終了します。
+
+## <a name="add-a-feature-to-a-machine-learned-entity"></a>機械学習エンティティ済みに特徴を追加する
+
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. **[ビルド]** セクションから、左パネル内の **[エンティティ]** を選択し、機械学習済みエンティティを選択します。
+1. エンティティ行またはサブエンティティ行で **[+ Add feature]\(+ 特徴の追加\)** を選択して、特徴を追加します。
+1. 既存のエンティティとフレーズ リストから選択します。
+1. 特徴が見つかった場合にのみエンティティを抽出する必要がある場合は、その特徴のアスタリスク `*` を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![エンティティに特徴を追加しているスクリーンショット。](media/add-entities/machine-learned-entity-schema-with-features.png)
+
+## <a name="create-a-regular-expression-entity"></a>正規表現エンティティを作成する
+
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
+1. **[ビルド]** セクションの左側にあるパネルで **[エンティティ]** を選択し、 **[+ 作成]** を選択します。
+
+1. **[Create an entity type]\(エンティティ型の作成\)** ダイアログ ボックスで、エンティティの名前を入力します。 **[RegEx]** を選択し、 **[Regex]** フィールドに正規表現を入力した後、 **[作成]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![正規表現エンティティを作成しているスクリーンショット。](media/add-entities/add-regular-expression-entity.png)
+
+
+<a name="add-list-entities"></a>
+
+## <a name="create-a-list-entity"></a>リスト エンティティを作成する
 
 リスト エンティティとは、関連単語の集まりであり、固定かつ限定的です。 作成者はリストを変更できますが、LUIS によってリストが増減することはありません。 また、[リスト エンティティの .json 形式](reference-entity-list.md#example-json-to-import-into-list-entity)を使用して、既存のリスト エンティティにインポートすることもできます。
 
@@ -88,7 +119,7 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 |色 - リスト アイテム名|色 - シノニム|
 |--|--|
 |[赤]|深紅、血、リンゴ、消防車|
-|青|空、青空、コバルト|
+|青|空、コバルト|
 |[緑]|濃緑、ライム|
 
 リスト エンティティを作成する手順を使用します。 リスト エンティティが作成されたら、意図でサンプル発話にラベルを付ける必要はありません。 リスト アイテムとシノニムは正確なテキストを使用して照合されます。
@@ -138,47 +169,38 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
     ロールは構築済みのエンティティに追加されますが、そのエンティティを使用して発話に追加されることはありません。
 
 ### <a name="label-text-with-a-role-in-an-example-utterance"></a>サンプル発話のロールでテキストにラベルを付ける
+
+> [!TIP]
+> ロールは、機械学習エンティティのサブエンティティでラベル付けすることで置き換えることができます。
+
 1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. [Intent detail]\(意図の詳細\) ページに進みます。このページにはロールを使用するサンプル発話があります。
-1. ロールでラベルを付けるには、サンプル発話でエンティティ ラベル (テキストの下の実線) を選択し、ドロップダウン リストから **[View in entity palette]\(エンティティ パレットで表示する\)** を選択します。
+1. ロールでラベルを付けるには、サンプル発話でエンティティ ラベル (テキストの下の実線) を選択し、ドロップダウン リストから **[View in entity pane]\(エンティティ ペインで表示する\)** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![[View in entity palette]\(エンティティ パレットで表示する\) を選択している画面のスクリーンショット](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)
+    > ![[View in entity palette]\(エンティティ パレットで表示する\) を選択している画面のスクリーンショット](media/add-entities/view-in-entity-pane.png)
 
     エンティティ パレットが右側で開きます。
 
 1. エンティティを選択し、パレットの下部に移動し、ロールを選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![[View in entity palette]\(エンティティ パレットで表示する\) を選択している画面のスクリーンショット](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![[View in entity palette]\(エンティティ パレットで表示する\) を選択している画面のスクリーンショット](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
+<a name="add-a-patternany-entity"></a>
+<a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="add-a-patternany-entity"></a>pattern.any エンティティを追加する
+## <a name="create-a-patternany-entity"></a>pattern.any エンティティの作成
 
-[Pattern.any](luis-concept-entity-types.md) エンティティは[パターン](luis-how-to-model-intent-pattern.md)でのみ有効であり、意図のサンプル発話では無効です。 このエンティティ タイプは、可変長のエンティティの終わりや単語の選択を LUIS が見つけやすくします。 このエンティティがパターンで使用されることにより、発話テンプレート内でエンティティの終わりがどこにあるかを LUIS が認識します。
+**Pattern.any** エンティティは、[パターン](luis-how-to-model-intent-pattern.md)でのみ使用できます。
 
-### <a name="steps-to-create-a-patternany-entity"></a>pattern.any エンティティの作成手順
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
-1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
-1. **[ビルド]** セクションの左側にあるパネルで **[エンティティ]** を選択し、 **[+ 作成]** を選択します。
-
-1. **[Create an entity type]\(エンティティの種類を作成する\)** ダイアログ ボックスの **[名前]** ボックスにエンティティ名を入力し、 **[種類]** として **[Pattern.Any]** を選択し、 **[作成]** を選択します。
-
-    このエンティティを使用して[パターン発話を作成する](luis-how-to-model-intent-pattern.md)と、機械学習とテキスト照合アルゴリズムの組み合わせによりエンティティが抽出されます。
-
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>pattern.any エンティティを使用するパターン テンプレート発話を作成する
-
-Pattern.any エンティティを使用するには、( **[Improve app performance]\(アプリのパフォーマンス改善\)** セクションの) **[パターン]** ページで、「`Where is **{HumanResourcesFormTitle}** on the server?`」のように正しい中かっこ構文を使用してパターンを追加します。
-
-Pattern.any が含まれているパターンでエンティティが正しく抽出されない場合は、[明示的なリスト](reference-pattern-syntax.md#explicit-lists)を使用してこの問題を修正します。
 
 ## <a name="do-not-change-entity-type"></a>エンティティの種類は変更しないでください
 
 エンティティを作成するために追加または削除するものを LUIS は認識していないため、LUIS ではエンティティの種類を変更することは認められていません。 種類を変更するには、正しい種類の新しいエンティティを少し違う名前で作成することをお勧めします。 エンティティが作成されたら、それぞれの発話内で、古いラベルのエンティティ名を削除して新しいエンティティ名を追加します。 すべての発話でラベルが書き換えられたら、古いエンティティを削除します。
 
-<a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>次のステップ
 

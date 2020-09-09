@@ -3,12 +3,12 @@ title: アプリケーションをレンダリングする
 description: Azure Batch では任意のレンダリング アプリケーションを使用できます。 ただし、Azure Marketplace の VM イメージは、事前インストールされている一般的なアプリケーションで使用します。
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726487"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960488"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>VM イメージをレンダリングするために事前インストールされているアプリケーション
 
@@ -87,4 +87,4 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 
 ## <a name="next-steps"></a>次のステップ
 
-レンダリング VM イメージを使用するには、プール作成時にプールの構成で指定する必要があります。詳しくは、[Batch プールのレンダリング機能](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools)に関するページをご覧ください。
+レンダリング VM イメージを使用するには、プール作成時にプールの構成で指定する必要があります。詳しくは、[Batch プールのレンダリング機能](./batch-rendering-functionality.md#batch-pools)に関するページをご覧ください。

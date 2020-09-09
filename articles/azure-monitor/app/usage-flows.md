@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892446"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309271"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する
 
-![Application Insights ユーザー フロー ツール](./media/usage-flows/00001-flows.png)
+![Application Insights ユーザー フロー ツール](./media/usage-flows/flows.png)
 
 ユーザー フロー ツールは、ユーザーがサイトのページ間および機能間をどのように移動しているかを目で見てわかるようにします。 次のような疑問の答えを得るのに役立ちます。
 
@@ -27,13 +27,13 @@ ms.locfileid: "80892446"
 ユーザー フロー ツールは、指定した最初のページ ビュー、カスタム イベント、または例外から開始します。 この最初のイベントを前提に、ユーザー フローには、ユーザー セッション中、その前後に発生したイベントが表示されます。 太さが異なる線は、ユーザーが各パスを通過した回数を示します。 特別な **[セッションを開始しました]** ノードには、後続のノードがセッションを開始した場所が表示されます。 **[セッションが終了しました]** ノードには、前のノードの後でページ ビューまたはカスタム イベントを送信しなかったユーザーの数を示し、ユーザーが対象サイトを離れたと思われる場所が表示されます。
 
 > [!NOTE]
-> ユーザー フロー ツールを使うには、Application Insights のリソースにページ ビューやカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](../../azure-monitor/app/javascript.md)。
+> ユーザー フロー ツールを使うには、Application Insights のリソースにページ ビューやカスタム イベントが含まれる必要があります。 [アプリをセットアップし、Application Insights JavaScript SDK を使用してページ ビューを自動的に収集する方法について説明します](./javascript.md)。
 >
 >
 
 ## <a name="start-by-choosing-an-initial-event"></a>最初のイベントを選択して開始する
 
-![ユーザー フローの最初のイベントを選ぶ](./media/usage-flows/00002-flows-initial-event.png)
+![ユーザー フローの最初のイベントを選ぶ](./media/usage-flows/initial-event.png)
 
 ユーザー フロー ツールを使って前に示したような疑問への回答を始めるには、まず、表示の起点となる最初のページ ビュー、カスタム イベント、または例外を選びます。
 
@@ -52,13 +52,13 @@ ms.locfileid: "80892446"
 * **[編集]** メニューの **[除外されたイベント]** セクションを確認します。
 * 頻繁の低いイベントを視覚化に含めるには、 **[その他]** ノードのプラス ボタンを使用します。
 * 予想されるページ ビューまたはカスタム イベントがユーザーによってあまり送信されない場合は、 **[編集]** メニューで視覚化の時間範囲を広げてみます。
-* 予想されるページ ビュー、カスタム イベント、または例外が、サイトのソース コードで Application Insights SDK によって収集されるように設定されていることを確認します。 [カスタム イベントの収集について詳しくは、こちらをご覧ください。](../../azure-monitor/app/api-custom-events-metrics.md)
+* 予想されるページ ビュー、カスタム イベント、または例外が、サイトのソース コードで Application Insights SDK によって収集されるように設定されていることを確認します。 [カスタム イベントの収集について詳しくは、こちらをご覧ください。](./api-custom-events-metrics.md)
 
 視覚化の手順をさらに参照する場合は、視覚化の上の **[前のステップ]** と **[次のステップ]** の各ドロップダウン リストを使用します。
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>ページまたは機能にアクセスした後で、ユーザーが移動する先とクリックするもの
 
-![ユーザー フローを使ってユーザーがクリックする場所を理解する](./media/usage-flows/00003-flows-one-step.png)
+![ユーザー フローを使ってユーザーがクリックする場所を理解する](./media/usage-flows/one-step.png)
 
 最初のイベントがページ ビューである場合、視覚化の最初の列 ([Step 1]\(ステップ 1\)) を見ると、ユーザーがページにアクセスした直後に行ったことが簡単にわかります。 ユーザー フローの視覚化の横にあるウィンドウでサイトを開いてみてください。 ユーザーによるページの操作方法の予想と、[Step 1]\(ステップ 1\) 列のイベントの一覧を比較します。 多くの場合、チームにとってはあまり重要でないと思われるページの UI 要素が、ページで最も使われているものに含まれます。 これは、サイトのデザイン改善のよい出発点になる場合があります。
 
@@ -92,4 +92,5 @@ ms.locfileid: "80892446"
 * [利用状況の概要](usage-overview.md)
 * [ユーザー、セッション、およびイベント](usage-segmentation.md)
 * [保持](usage-retention.md)
-* [アプリにカスタム イベントを追加する](../../azure-monitor/app/api-custom-events-metrics.md)
+* [アプリにカスタム イベントを追加する](./api-custom-events-metrics.md)
+

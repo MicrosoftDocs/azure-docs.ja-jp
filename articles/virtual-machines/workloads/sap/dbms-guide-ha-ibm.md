@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
-ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052003"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性
 
@@ -60,7 +60,7 @@ SAP ノート [1928533] に記載されているように、サポートされ�
 | [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>概要
-高可用性を実現するには、HADR を搭載した IBM Db2 LUW を 2 台以上の Azure 仮想マシンにインストールします。このとき、これらの仮想マシンは、[Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)にデプロイするか、[Azure Availability Zones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) にデプロイします。 
+高可用性を実現するには、HADR を搭載した IBM Db2 LUW を 2 台以上の Azure 仮想マシンにインストールします。このとき、これらの仮想マシンは、[Azure 可用性セット](../../windows/tutorial-availability-sets.md)にデプロイするか、[Azure Availability Zones](./sap-ha-availability-zones.md) にデプロイします。 
 
 以下の図には、データベース サーバーである 2 台の Azure VM の設定が示されています。 どちらのデータベース サーバー Azure VM も、それぞれ独自のストレージが接続され、稼動しています。 HADR では、いずれか 1 つの Azure VM にある 1 つのデータベース インスタンスにプライマリ インスタンスの役割が与えられます。 すべてのクライアントは、このプライマリ インスタンスに接続されています。 データベース トランザクションにおけるすべての変更は、Db2 のトランザクション ログとしてローカルに永続化されます。 トランザクション ログ レコードは、ローカルに永続化されると、セカンダリ データベース サーバー (スタンバイ サーバーまたはスタンバイ インスタンス) 上のデータベース インスタンスに TCP/IP 経由で転送されます。 スタンバイ インスタンスは、転送されたトランザクション ログ レコードをロールフォワードすることによってローカル データベースを更新します。 このようにして、スタンバイ サーバーはプライマリ サーバーと同期された状態で維持されます。
 
@@ -110,7 +110,7 @@ IBM Db2 構成をデプロイするには、これらの手順に従う必要が
 | Azure Load Balancer | Basic または Standard (推奨)、Db2 データベース向けのプローブ ポート **probe-port** (62500 を推奨) の使用。 |
 | 名前解決| その環境における名前解決のしくみ。 DNS サービスを強くお勧めします。 ローカル ホスト ファイルを使用できます。 |
     
-Azure の Linux Pacemaker の詳細については、「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)」を参照してください。
+Azure の Linux Pacemaker の詳細については、「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](./high-availability-guide-suse-pacemaker.md)」を参照してください。
 
 ## <a name="deployment-on-suse-linux"></a>SUSE Linux へのデプロイ
 
@@ -396,10 +396,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer を構成する
-Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) を使用して、以下の操作を行うことをお勧めします。
+Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-overview.md) を使用して、以下の操作を行うことをお勧めします。
 
 > [!NOTE]
-> Standard Load Balancer SKU では、Load Balancer の管理下にあるノードからパブリック IP アドレスへのアクセスが制限されます。 「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」という記事では、それらのノードからパブリック IP アドレスにアクセスできるようにする方法が説明されています
+> Standard Load Balancer SKU では、Load Balancer の管理下にあるノードからパブリック IP アドレスへのアクセスが制限されます。 「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」という記事では、それらのノードからパブリック IP アドレスにアクセスできるようにする方法が説明されています
 
 1. フロントエンド IP プールを作成する:
 
@@ -498,8 +498,8 @@ HADR 設定の Db2 ログ アーカイブを構成するには、すべてのロ
 トランスポートまたはプロファイル ディレクトリで既存の高可用性 NFS 共有を使用することができます。 詳細については、次を参照してください。
 
 - [SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性][nfs-ha] 
-- [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (NFS 共有を作成する場合)
+- [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (NFS 共有を作成する場合)
 
 
 ## <a name="test-the-cluster-setup"></a>クラスターの設定をテストする
@@ -541,7 +541,7 @@ SAP システムにおける最初の状態は、次のイメージに示され�
 > テストを開始する前に、次のことを確認します。
 > * Pacemaker に失敗したアクションがない (crm status)。
 > * 場所の制約 (移行テストの残り) がない
-> * IBM Db2 HADR 同期が動作している。 ユーザー db2\<sid> で確認します。 <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM Db2 HADR 同期が動作している。 ユーザー db2\<sid> で確認します <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 次のコマンドを実行して、プライマリ Db2 データベースを実行しているノードを移行します。
@@ -879,8 +879,8 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Slaves: [ azibmdb01 ]</code></pre>
 
 ## <a name="next-steps"></a>次のステップ
-- [SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+- [SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](./sap-high-availability-architecture-scenarios.md)
+- [Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](./high-availability-guide-suse-pacemaker.md)
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553

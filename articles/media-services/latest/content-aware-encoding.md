@@ -3,25 +3,27 @@ title: コンテンツに対応したエンコードのプリセット - Azure M
 description: この記事では、Microsoft Azure Media Services v3 でのコンテンツに対応したエンコードについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 01/24/2020
-ms.author: juliako
-ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5d08e09905841f6068f2bac45680a8e5a011c158
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772073"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297367"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する
 
-[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)によるコンテンツ配信の準備をするためには、ビデオを複数のビット レート (高から低まで) でエンコードする必要があります。 これによりビットレートが低くなるにつれてビデオの解像度も低下するため、品質のグレースフル デグラデーションが保証されます。 このような複数のビットレート エンコードにより、いわゆるエンコード ラダー (解像度とビットレートの表) が生成されます。Media Services の[組み込みエンコード プリセット](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)をご覧ください。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)によるコンテンツ配信の準備をするためには、ビデオを複数のビット レート (高から低まで) でエンコードする必要があります。 これによりビットレートが低くなるにつれてビデオの解像度も低下するため、品質のグレースフル デグラデーションが保証されます。 このような複数のビットレート エンコードにより、いわゆるエンコード ラダー (解像度とビットレートの表) が生成されます。Media Services の[組み込みエンコード プリセット](/rest/api/media/transforms/createorupdate#encodernamedpreset)をご覧ください。
 
 処理中のコンテンツに注意し、エンコード ラダーを個々のビデオの複雑さに合わせてカスタマイズまたはチューニングする必要があります。 各解像度では、それを超えると品質が向上しても知覚できないビットレートが存在します。エンコーダーはこの最適なビットレート値で動作します。 最適化の次のレベルでは、コンテンツに基づいて解像度を選択します。たとえば、PowerPoint プレゼンテーションのビデオは、720p を下回ってもメリットはありません。 さらに進むと、ビデオ内の各ショットの設定を最適化するようにエンコーダーに任せることができます。 
 
@@ -55,9 +57,10 @@ Microsoft の[アダプティブ ストリーミング](autogen-bitrate-ladder.m
 
 次のようにこのプリセットを使用する変換を作成することができます。 
 
-> [!TIP]
-> 変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」 セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
+変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」 セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
 
+> [!NOTE]
+> ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** プリセットを使用してください。
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -77,7 +80,7 @@ TransformOutput[] output = new TransformOutput[]
 
 > [!NOTE]
 > `ContentAwareEncoding` プリセットを使用したエンコード ジョブは、出力時間 (分) に基づいて課金されます。 
-
+  
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Media Services v3 を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)

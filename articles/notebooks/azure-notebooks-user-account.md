@@ -3,22 +3,22 @@ title: Azure Notebooks プレビューにサインインする
 description: Microsoft アカウントまたは職場/学校アカウントを使用して、Azure Notebook のユーザー アカウント構成します。
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832187"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks プレビューのユーザー アカウント
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks は、ユーザー アカウントでサインインしてもしなくても使用できます。
 
 - サインインししない場合は、Notebooks を実行できますが、プロジェクトの一部として Notebooks やデータ ファイルを保持することはできません。 たとえば、Azure Notebooks へのリンクを受信するユーザーは、サインインをしなくても Notebooks を利用できます。
 - サインインすると、Azure Notebooks はそのアカウントで利用するすべてのプロジェクトを保持します。 サインイン ユーザーには、他のユーザーと自分のプロジェクトや Notebooks を共有できるユーザー ID も付与されます。
 - Azure Notebooks を使用するアカウントが Azure サブスクリプションにも関連付けられている場合、さらに強力なサーバー上で Notebooks を実行したり、プライベートの Notebooks を作成したり、個々のユーザーに Notebooks へのアクセス許可を付与したりできる追加のメリットがあります。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks にサインインするには、Microsoft アカウントまたは「職場または学校」アカウントのいずれかが必要です。 Notebook ページの右上隅にある**サインイン** コマンドを選択すると、アカウントの入力が求められます。
 
@@ -53,7 +53,7 @@ Microsoft アカウントは、Windows、Azure、outlook.com、OneDrive、XBox L
 
 ## <a name="work-or-school-accounts"></a>職場または学校アカウント
 
-職場または学校のアカウントは、組織の管理者によって作成され、組織のメンバーは Office 365 などの Microsoft クラウド サービスにアクセスしたり、ドメインに参加しているコンピューター上の Windows にサインインするためのアカウントとして使用したりできます。 職場または学校のアカウントは、通常は any-user@contoso.com などの組織の電子メール アドレスを使用します。
+職場または学校のアカウントは、組織の管理者によって作成され、組織のメンバーは Microsoft 365 などの Microsoft クラウド サービスにアクセスしたり、ドメインに参加しているコンピューター上の Windows にサインインするためのアカウントとして使用したりできます。 職場または学校のアカウントは、通常は any-user@contoso.com などの組織の電子メール アドレスを使用します。
 
 職場または学校のアカウントで Azure Notebooks にサインインするには、管理者の同意が必要となる場合があります。Azure Notebooks はアカウントの電子メール アドレスやユーザーのブラウザー情報などの情報を収集または使用する (ただし公開はしない) からです (ブラウザーのデータは、一般的な用途に応じて機能を最適化するために使用されます)。
 

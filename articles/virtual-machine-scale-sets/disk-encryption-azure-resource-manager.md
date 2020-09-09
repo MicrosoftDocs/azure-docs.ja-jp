@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: c2b49a7e7e14bfbefcca64133ff23fdfabe53e7b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4284e94f8d8d0effd160c5048f54fcbede417e38
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198423"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129763"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Azure Resource Manager を使用して仮想マシン スケール セットを暗号化する
 
@@ -38,9 +38,9 @@ Linux 仮想マシン スケール セットの暗号化と暗号化解除は、
 
 その後、次の手順に従います。
 
-     1. Click **Deploy to Azure**.
-     2. Fill in the required fields then agree to the terms and conditions.
-     3. Click **Purchase** to deploy the template.
+1. **[Azure へのデプロイ]** をクリックします。
+2. 必須のフィールドに入力し、使用条件に同意します。
+3. **[購入]** をクリックしてテンプレートをデプロイします。
 
 ## <a name="next-steps"></a>次のステップ
 

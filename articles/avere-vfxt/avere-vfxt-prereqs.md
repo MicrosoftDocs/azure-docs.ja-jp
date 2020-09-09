@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT の前提条件 - Azure
-description: Avere vFXT for Azure の前提条件
+description: Avere vFXT for Azure でクラスターを作成する前に実行するタスクについて説明します。これには、サブスクリプション、クォータ、ストレージ サービス エンドポイントの処理も含まれます。
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227491"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272418"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT の作成を準備する
 
@@ -32,13 +32,13 @@ Azure portal で新しい Azure サブスクリプションを作成するには
 
 サブスクリプションの所有者アクセス許可を持つユーザーが、vFXT クラスターを作成する必要があります。 クラスターの作成には、所有者がソフトウェアのサービス使用条件に同意し、ネットワークとストレージ リソースに対する変更を承認する必要があります。
 
-所有者以外が Avere vFXT for Azure クラスターを作成できるようにするための回避策がいくつかあります。 これらのシナリオでは、リソースの制限と、作成者に対する追加のロールベースのアクセス制御 (RBAC) ロールの割り当てが行われます。 すべての場合で、サブスクリプションの所有者が、事前に [Avere vFXT ソフトウェアの条件に同意](#accept-software-terms)している必要もあります。
+所有者以外が Avere vFXT for Azure クラスターを作成できるようにするための回避策がいくつかあります。 これらのシナリオでは、リソースの制限と、作成者への追加の Azure ロールの割り当てが行われます。 すべての場合で、サブスクリプションの所有者が、事前に [Avere vFXT ソフトウェアの条件に同意](#accept-software-terms)している必要もあります。
 
 | シナリオ | 制限 | Avere vFXT クラスターを作成するために必要なアクセス ロール |
 |----------|--------|-------|
 | リソース グループ管理者が vFXT を作成する | 仮想ネットワーク、クラスター コントローラー、およびクラスター ノードが、リソース グループ内に作成されている必要がある。 | [ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)および[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロール。両方とも、スコープはターゲット リソース グループに指定されている。 |
 | 既存の外部仮想ネットワークを使用する | クラスター コントローラーとクラスター ノードは vFXT のリソース グループ内に作成されるが、別のリソース グループにある既存の仮想ネットワークが使用される。 | (1) [ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)および[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロール。スコープは vFXT リソース グループに指定されている (2) [仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、[ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)、および [Avere 共同作成者](../role-based-access-control/built-in-roles.md#avere-contributor) ロール。スコープは仮想ネットワークのリソース グループに指定されている |
-| クラスター作成者のカスタム ロール | リソース配置の制限はありません。 この方法では、所有者以外のユーザーに重要な特権が与えられます。 | [この記事](avere-vfxt-non-owner.md)で説明されているように、サブスクリプション所有者がカスタム RBAC ロールを作成します。 |
+| クラスター作成者のカスタム ロール | リソース配置の制限はありません。 この方法では、所有者以外のユーザーに重要な特権が与えられます。 | サブスクリプション所有者は、[この記事](avere-vfxt-non-owner.md)で説明されているように、Azure のカスタム ロールを作成します。 |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT クラスターのクォータ
 

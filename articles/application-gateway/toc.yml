@@ -4,8 +4,6 @@
   items:
     - name: アプリケーション ゲートウェイについて
       href: overview.md
-    - name: 新機能
-      href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -30,6 +28,10 @@
       href: tutorial-url-redirect-cli.md
     - name: 自動スケーリングとゾーン冗長
       href: tutorial-autoscale-ps.md
+    - name: AKS 用のイングレス コントローラー アドオン (グリーンフィールド)
+      href: tutorial-ingress-controller-add-on-new.md
+    - name: AKS 用のイングレス コントローラー アドオン (ブラウンフィールド)
+      href: tutorial-ingress-controller-add-on-existing.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -64,10 +66,8 @@
           href: url-route-overview.md
         - name: リダイレクト
           href: redirect-overview.md
-        - name: HTTP ヘッダーを書き換える
-          href: rewrite-http-headers.md
-        - name: カスタム エラー ページ
-          href: custom-error.md
+        - name: HTTP ヘッダーと URL を書き換える
+          href: rewrite-http-headers-url.md
     - name: SSL
       items:
         - name: SSL ターミネーションとエンド ツー エンド SSL
@@ -90,6 +90,8 @@
       href: application-gateway-web-app-overview.md
     - name: WebSocket のサポート
       href: application-gateway-websocket.md
+    - name: 価格について
+      href: understanding-pricing.md
     - name: よく寄せられる質問
       href: application-gateway-faq.md
 - name: 操作方法ガイド
@@ -136,10 +138,12 @@
               href: application-gateway-configure-ssl-policy-powershell.md
     - name: AKS のイングレス
       items:
-        - name: 既存の Application Gateway を使用して設定する
+        - name: Helm 経由の AKS のイングレス (ブラウンフィールド)
           href: ingress-controller-install-existing.md
-        - name: 新しい Application Gateway を使用して設定する
+        - name: Helm 経由の AKS のイングレス (グリーンフィールド)
           href: ingress-controller-install-new.md
+        - name: AKS イングレス コントローラー アドオンの無効化と再有効化
+          href: ingress-controller-disable-addon.md
         - name: Cookie のアフィニティを有効にする
           href: ingress-controller-cookie-affinity.md
         - name: 複数の名前空間のサポートを有効にする
@@ -194,14 +198,20 @@
               href: redirect-internal-site-cli.md
         - name: Azure PowerShell を使用して Web トラフィックをリダイレクトする
           href: tutorial-url-redirect-powershell.md
-    - name: HTTP ヘッダーを書き換える
+    - name: HTTP ヘッダーと URL を書き換える
       items:
-        - name: Azure portal
-          href: rewrite-http-headers-portal.md
-        - name: Azure PowerShell
-          href: add-http-header-rewrite-rule-powershell.md
-        - name: HTTP ヘッダーを作成して書き換える
-          href: tutorial-http-header-rewrite-powershell.md
+        - name: ヘッダーの書き換え
+          items:
+            - name: Azure portal
+              href: rewrite-http-headers-portal.md
+            - name: Azure PowerShell
+              href: add-http-header-rewrite-rule-powershell.md
+            - name: HTTP ヘッダーを作成して書き換える
+              href: tutorial-http-header-rewrite-powershell.md
+        - name: URL 書き換え
+          items:
+            - name: Azure portal
+              href: rewrite-url-portal.md
     - name: App Service Web アプリとマルチテナント サービスを構成する
       items:
         - name: ポータル
@@ -234,6 +244,8 @@
           href: log-analytics.md
         - name: バックエンドの正常性に関する問題
           href: application-gateway-backend-health-troubleshooting.md
+    - name: カスタム エラー ページ
+      href: custom-error.md
     - name: v1 から v2 への移行
       href: migrate-v1-v2.md
 - name: リファレンス
@@ -243,7 +255,7 @@
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api
     - name: Java
@@ -274,5 +286,5 @@
       href: 'https://azure.microsoft.com/pricing/details/application-gateway/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-application-gateway'

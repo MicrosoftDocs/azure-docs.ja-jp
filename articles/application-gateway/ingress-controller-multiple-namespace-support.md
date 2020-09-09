@@ -4,15 +4,15 @@ description: この記事では、Application Gateway イングレス コント�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556162"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーを使用して AKS クラスターでの複数の名前空間のサポートを有効にする
 
@@ -45,6 +45,7 @@ AGIC のバージョン 0.7 では、`default` 名前空間が Helm 構成内の
 一方、パス、バックエンド プール、HTTP 設定、および TLS 証明書は、1 つの名前空間のみによって作成され、重複は削除されます。
 
 たとえば、次の重複したイングレス リソースによって定義された `www.contoso.com` に対する名前空間 `staging` および `production` について考えます。
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -101,6 +102,7 @@ AGIC では既定で、いずれかの名前空間内の注釈付きのイング
   - [Role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) を使用して、AGIC を特定の名前空間に制限する
 
 ## <a name="sample-helm-config-file"></a>サンプルの Helm 構成ファイル
+
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 
@@ -152,5 +154,5 @@ AGIC では既定で、いずれかの名前空間内の注釈付きのイング
     # Specify aks cluster related information. THIS IS BEING DEPRECATED.
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
-    ```
+```
 

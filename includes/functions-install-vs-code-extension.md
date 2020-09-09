@@ -4,18 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: c63fa01a078c415568b8d3d82701e424b9c72951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8dc4c77cf54769451928bd1f0dafeac34a889675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76845416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378408"
 ---
 ## <a name="install-the-azure-functions-extension"></a>Azure Functions 拡張機能をインストールする
 
 Azure Functions 拡張機能を使用すると、関数を作成してテストし、Azure にデプロイすることができます。
 
-1. Visual Studio Code で **[拡張機能]** を開き、**azure functions** を検索するか、[Visual Studio Code でこのリンクを選択](vscode:extension/ms-azuretools.vscode-azurefunctions)します。
+1. Visual Studio Code で **[拡張機能]** を開き、**azure functions** を検索するか、Visual Studio Code でこのリンク (`vscode:extension/ms-azuretools.vscode-azurefunctions`) を選択します。
 
 1. **[インストール]** を選択して、Visual Studio Code に拡張機能をインストールします。
 

@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e6810e20373aa6fcaab447d6b6be51a47f400e24
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918335"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268589"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する  
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure Media Video Thumbnails** メディア プロセッサは廃止予定です。 廃止日については、[レガシ コンポーネント](legacy-components.md)に関するトピックをご参照ください。
@@ -67,10 +70,10 @@ ms.locfileid: "77918335"
 
 次の表に、 **maxMotionThumbnailInSecs** が使用されていない場合の既定の再生時間を示します。
 
-|  |  |  |
+|  | Small | Larger |
 | --- | --- | --- |
-| ビデオの再生時間 |d < 3 分 |3 分 < d < 15 分 |
-| サムネイルの再生時間 |15 秒 (2 ～ 3 シーン) |30 秒 (3 ～ 5 シーン) |
+| **ビデオの再生時間** |d < 3 分 |3 分 < d < 15 分 |
+| **サムネイルの再生時間** |15 秒 (2 ～ 3 シーン) |30 秒 (3 ～ 5 シーン) |
 
 次の JSON では、使用可能なパラメーターを設定します。
 

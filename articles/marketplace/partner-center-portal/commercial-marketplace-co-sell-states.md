@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace での共同販売の州コード
 description: Azure Marketplace でオファーの [共同販売] ページに連絡先情報を指定するときに、使用可能な州コードを取得します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+author: palanis-MSFT
+ms.author: palanis
+ms.date: 09/02/2020
+ms.openlocfilehash: 44f06773eec965fad610da1a4286bdf224e3a88b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744704"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321482"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace での共同販売の州コード
 
@@ -78,7 +78,7 @@ ms.locfileid: "82744704"
 | 北マリアナ諸島            | US-MP     |
 | プエルトリコ                         | US-PR     |
 | 合衆国領有小離島 | US-UM    |
-| アメリカ領ヴァージン諸島                 | US-VI    |
+| 米国バージン諸島                 | US-VI    |
 
 ## <a name="canadian-provinces-and-territories"></a>カナダの州と準州
 

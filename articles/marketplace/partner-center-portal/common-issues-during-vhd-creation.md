@@ -1,18 +1,18 @@
 ---
 title: VHD 作成における一般的な問題 (FAQ)
 description: 仮想ハード ディスク (VHD) を作成するときの一般的な問題についてよく寄せられる質問。
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f4d30cdb931d6523eba3aac003caeee38a8c024d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724719"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653530"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 作成における一般的な問題
 
@@ -20,7 +20,7 @@ ms.locfileid: "83724719"
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Premium Storage の VHD を使用して Azure portal から VM を作成するにはどうすればよいですか?
 
-Azure Marketplace は現在、マネージド ストレージ上のイメージまたは Azure Premium Storage からの VM オファーの作成をサポートしていません。 詳細については、「[Azure Managed Disks の概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)」を参照してください。
+Azure Marketplace は現在、マネージド ストレージ上のイメージまたは Azure Premium Storage からの VM オファーの作成をサポートしていません。 詳細については、「[Azure Managed Disks の概要](../../virtual-machines/managed-disks-overview.md)」を参照してください。
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>オファーに第 2 世代の VM を使用できますか?
 
@@ -34,8 +34,8 @@ Azure Marketplace は現在、マネージド ストレージ上のイメージ�
 
 次の記事で、Windows および Linux ベースの VM に対する RDS のリセットを実行する方法について説明しています。
 
-* [Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>新しい SSH 証明書を生成するにはどうすればよいですか?
 
@@ -45,9 +45,9 @@ Azure Marketplace は現在、マネージド ストレージ上のイメージ�
 
 Azure Resource Manager デプロイ モデルを使用している場合、3 つのオプションがあります。
 
-* [Azure portal を使用してルートベースの VPN ゲートウェイを作成する](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [Azure PowerShell を使用してルートベースの VPN ゲートウェイを作成する](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [CLI を使用してルートベースの VPN ゲートウェイを作成する](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [Azure portal を使用してルートベースの VPN ゲートウェイを作成する](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [Azure PowerShell を使用してルートベースの VPN ゲートウェイを作成する](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [CLI を使用してルートベースの VPN ゲートウェイを作成する](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>Azure ベースの VM で Microsoft サーバー ソフトウェアを実行するための Microsoft サポート ポリシーはどのようなものですか?
 
@@ -59,7 +59,7 @@ Azure Resource Manager デプロイ モデルを使用している場合、3 つ
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>VM で、スタートアップ タスクのカスタム スクリプト拡張機能を管理するにはどうすればよいですか?
 
-Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)」を参照してください。
+Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](/azure/virtual-machines/extensions/custom-script-windows)」を参照してください。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>32 ビットのアプリケーションやサービスは Azure Marketplace でサポートされていますか?
 
@@ -75,4 +75,4 @@ Azure PowerShell モジュールと Azure Resource Manager テンプレートを
 
 VHD からイメージを作成しようとするたびに、Azure PowerShell で "VHD は、既にリソースとしてイメージ リポジトリに登録されています" というエラーが発生します。 これまでイメージを作成したことはなく、Azure でこの名前のイメージは見つかっていません。 解決するにはどうすればよいですか?
 
-この問題は通常、ロックがある VHD から VM を作成した場合に発生します。 この VHD から割り当てられた VM がないことを確認し、操作を再試行してください。 それでもこの問題が解決しない場合は、サポート チケットを開いてください。 [パートナー センターのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)に関する記事を参照してください。
+この問題は通常、ロックがある VHD から VM を作成した場合に発生します。 この VHD から割り当てられた VM がないことを確認し、操作を再試行してください。 それでもこの問題が解決しない場合は、サポート チケットを開いてください。 [パートナー センターのサポート](support.md)に関する記事を参照してください。

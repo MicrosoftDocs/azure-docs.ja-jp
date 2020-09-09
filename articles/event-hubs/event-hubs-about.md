@@ -1,21 +1,14 @@
 ---
 title: Azure Event Hubs とは - ビッグ データ インジェスト サービス | Microsoft Docs
 description: 1 秒間に百万単位のイベントを取り込むビッグ データ ストリーミング サービスである Azure Event Hubs について説明します。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: overview
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 06/23/2020
+ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398107"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927903"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs - ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービス
 Azure Event Hubs は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 1 秒間に何百万ものイベントを受信して処理することができます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。
@@ -51,7 +44,7 @@ Event Hubs は構成または管理のオーバーヘッドがほとんどない
 
 長期保有またはマイクロ バッチ処理のために、ほぼリアルタイムでデータを [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) または [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  に[キャプチャ](event-hubs-capture-overview.md)します。 この動作は、リアルタイム分析の派生に使用するものと同じストリームで実現できます。 イベント データをキャプチャするための設定に時間はかかりません。 実行に伴う管理コストは生じず、また、Event Hubs の [スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケーリングされます。 Event Hubs を使用することで、ユーザーはデータ キャプチャではなくデータ処理に専念できます。
 
-また、Azure Event Hubs は サーバーレス アーキテクチャ用の [Azure Functions](/azure/azure-functions/) と統合します。
+また、Azure Event Hubs は サーバーレス アーキテクチャ用の [Azure Functions](../azure-functions/index.yml) と統合します。
 
 ## <a name="scalable"></a>拡張性
 
@@ -81,17 +74,17 @@ Azure Stack Hub 上の Event Hubs を使用すると、ハイブリッド クラ
 
 (Azure Stack Hub 上および Azure 上の) Event Hubs エディションには、高度な機能パリティが実現されています。 ここでいうパリティとは、SDK、サンプル、PowerShell、CLI、ポータルからいずれも同様のエクスペリエンスが得られ、違いがほとんどないということです。 
 
-パブリック プレビュー期間中は、Stack 上の Event Hubs は無料です。 詳細については、「[Azure Stack Hub 上の Event Hubs の概要](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)」を参照してください。
+パブリック プレビュー期間中は、Stack 上の Event Hubs は無料です。 詳細については、「[Azure Stack Hub 上の Event Hubs の概要](/azure-stack/user/event-hubs-overview)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 Event Hubs を使い始めるには、以下の**イベントの送受信**のチュートリアルを参照してください。
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
-- [Java](get-started-java-send-v2.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (送信のみ)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (受信のみ)](event-hubs-storm-getstarted-receive.md)
@@ -101,5 +94,3 @@ Event Hubs の詳細については、次の記事を参照してください。
 
 - [Event Hubs の機能の概要](event-hubs-features.md)
 - [よく寄せられる質問](event-hubs-faq.md)
-
-

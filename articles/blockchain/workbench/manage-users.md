@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Workbench でユーザーを管理する
 description: Azure Blockchain Workbench でユーザーを管理する方法について説明します。
-ms.date: 05/09/2019
-ms.topic: article
-ms.reviewer: brendal
-ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/15/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: 541d5b2fa3d1a0cd5c4beba65cfe5ff3bdc3124a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227379"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538260"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのユーザーの管理
 
@@ -25,14 +25,11 @@ Azure Blockchain Workbench では、認証、アクセス制御、およびロ�
 
 Blockchain Workbench ユーザーをアプリケーションやロールに割り当てるには、まずそのユーザーが Azure AD テナントに追加する必要があります。 Azure AD にユーザーを追加するには、次の手順に従います。
 
-1.  [Azure portal](https://portal.azure.com) にサインインする
-2.  右上隅で自分のアカウントを選択し、Blockchain Workbench に関連付けられた Azure AD テナントに切り替えます。
-3.  **[Azure Active Directory] > [ユーザー]** を選択します。 ディレクトリ内のユーザーの一覧が表示されます。
-4.  ディレクトリにユーザーを追加するには、 **[新しいユーザー]** を選択します。 外部ユーザーの場合は、 **[新しいゲスト ユーザー]** を選択します。
-
-    ![新しいユーザー](./media/manage-users/add-ad-user.png)
-
-5.  新しいユーザーの必須フィールドに情報を入力します。 **作成** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. 右上隅で自分のアカウントを選択し、Blockchain Workbench に関連付けられた Azure AD テナントに切り替えます。
+1. **[Azure Active Directory] > [ユーザー]** を選択します。 ディレクトリ内のユーザーの一覧が表示されます。
+1. ディレクトリにユーザーを追加するには、 **[新しいユーザー]** を選択します。 外部ユーザーの場合は、 **[新しいゲスト ユーザー]** を選択します。
+1. 新しいユーザーの必須フィールドに情報を入力します。 **［作成］** を選択します
 
 Azure AD 内のユーザーの管理方法について詳しくは、[Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) ドキュメントをご覧ください。
 
@@ -42,20 +39,21 @@ Azure AD 内のユーザーの管理方法について詳しくは、[Azure AD](
 
 Azure AD ディレクトリ内の**管理者**グループにユーザーを追加するには、次の手順に従います。
 
-1.  [Azure portal](https://portal.azure.com) にサインインする
-2.  右上隅で自分のアカウントを選択して、Blockchain Workbench に関連付けられた Azure AD テナントに自分が属していることを確認します。
-3.  **[Azure Active Directory] > [エンタープライズ アプリケーション]** を選択します。
-4.  Blockchain Workbench の Azure AD クライアント アプリケーションを選択します
-    
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 右上隅で自分のアカウントを選択して、Blockchain Workbench に関連付けられた Azure AD テナントに自分が属していることを確認します。
+1. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を選択します。
+1. **[Application type]\(アプリケーションの種類\)** ドロップダウン フィルターを **[すべてのアプリケーション]** に変更し、 **[適用]** をクリックします。
+1. Azure Blockchain Workbench の Azure AD クライアント アプリケーションを選択します
+
     ![すべてのエンタープライズ アプリケーション登録](./media/manage-users/select-blockchain-client-app.png)
 
-5.  **[ユーザーとグループ] > [ユーザーの追加]** を選択します。
-6.  **[割り当ての追加]** で **[ユーザー]** を選択します。 管理者として追加するユーザーを選択するか、検索します。 選択が完了したら、 **[選択]** をクリックします。
+1. **[ユーザーとグループ] > [ユーザーの追加]** を選択します。
+1. **[割り当ての追加]** で **[ユーザー]** を選択します。 管理者として追加するユーザーを選択するか、検索します。 選択が完了したら、 **[選択]** をクリックします。
 
     ![割り当ての追加](./media/manage-users/add-user-assignment.png)
 
-9.  **ロール**が**管理者**に設定されていることを確認します
-10. **[割り当て]** を選択します。 追加したユーザーに管理者ロールが割り当てられ、一覧に表示されます。
+1. **ロール**が**管理者**に設定されていることを確認します
+1. **[割り当て]** を選択します。 追加したユーザーに管理者ロールが割り当てられ、一覧に表示されます。
 
     ![Blockchain クライアント アプリのユーザー](./media/manage-users/blockchain-admin-list.png)
 
@@ -69,7 +67,7 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
 
     メンバーは各アプリケーションに追加されます。 メンバーは 1 つ以上のアプリケーション ロールを持ち、コントラクトを開始したり、アクションを実行することができます。
 
-2. アプリケーションのメンバーを管理するには、 **[アプリケーション]** ウィンドウでアプリケーション タイルを選択します。
+1. アプリケーションのメンバーを管理するには、 **[アプリケーション]** ウィンドウでアプリケーション タイルを選択します。
 
     選択したアプリケーションに関連付けられているメンバーの数は、メンバー タイルに反映されます。
 
@@ -79,31 +77,31 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
 #### <a name="add-member-to-application"></a>アプリケーションにメンバーを追加する
 
 1. メンバー タイルを選択して、現在のメンバーの一覧を表示します。
-2. **[メンバーの追加]** を選択します。
+1. **[メンバーの追加]** を選択します。
 
     ![メンバーを追加する](./media/manage-users/application-add-members.png)
 
-3. ユーザーの名前を検索します。  Blockchain Workbench テナントに存在する Azure AD ユーザーのみが一覧に表示されます。 ユーザーが見つからない場合は、[Azure AD ユーザーを追加する](#add-azure-ad-users)必要があります。
+1. ユーザーの名前を検索します。  Blockchain Workbench テナントに存在する Azure AD ユーザーのみが一覧に表示されます。 ユーザーが見つからない場合は、[Azure AD ユーザーを追加する](#add-azure-ad-users)必要があります。
 
     ![メンバーを追加する](./media/manage-users/find-user.png)
 
-4. ドロップダウン メニューから**ロール**を選択します。
+1. ドロップダウン メニューから**ロール**を選択します。
 
     ![ロール メンバーの選択](./media/manage-users/application-select-role.png)
 
-5. **[追加]** を選択して、メンバーとそのロールをアプリケーションに追加します。
+1. **[追加]** を選択して、メンバーとそのロールをアプリケーションに追加します。
 
 #### <a name="remove-member-from-application"></a>アプリケーションからメンバーを削除する
 
 1. メンバー タイルを選択して、現在のメンバーの一覧を表示します。
-2. 削除するユーザーについて、ロールのドロップダウン リストから **[削除]** を選択します。
+1. 削除するユーザーについて、ロールのドロップダウン リストから **[削除]** を選択します。
 
     ![メンバーの削除](./media/manage-users/application-remove-member.png)
 
 #### <a name="change-or-add-role"></a>ロールの変更または追加
 
 1. メンバー タイルを選択して、現在のメンバーの一覧を表示します。
-2. 変更するユーザーのドロップダウン リストをクリックし、新しいロールを選択します。
+1. 変更するユーザーのドロップダウン リストをクリックし、新しいロールを選択します。
 
     ![ロールの変更](./media/manage-users/application-change-role.png)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 07/03/2019
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: eb51e8590e2859a9fe8692f79c5b1238ed5a2098
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737641"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948183"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
@@ -67,7 +67,7 @@ What If ツールの使用を開始するために必要なのは**ユーザー*
 
 構成が適切に作成されていることを検証するために、管理者は What If ツールを使用して、許可されるべき場所や拒否されるべき場所からアクセスを模倣できます。
 
-![[アクセスのブロック] での結果を示す What If ツール](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+[ ![[アクセスのブロック] での結果を示す What If ツール](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 この例では、Contoso が北朝鮮からのアクセスをブロックしたため、ユーザーはその場所への旅行ですべてのクラウド アプリへのアクセスをブロックされます。
 
@@ -76,6 +76,6 @@ What If ツールの使用を開始するために必要なのは**ユーザー*
 ## <a name="next-steps"></a>次のステップ
 
 * [条件付きアクセスとは](overview.md)
-* [Azure Active Directory Identity Protection とは](../identity-protection/overview-v2.md)
+* [Azure Active Directory Identity Protection とは](../identity-protection/overview-identity-protection.md)
 * [デバイス ID とは](../devices/overview.md)
 * [動作のしくみ: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)」を参照してください。

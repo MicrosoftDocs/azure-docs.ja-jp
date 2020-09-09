@@ -5,18 +5,19 @@ description: Azure Data Factory を使用してデータ インジェスト パ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
-ms.openlocfilehash: 5b4ed40048aab815397c9726098880b2125b732c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274571"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852856"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト
 

@@ -7,21 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/30/2020
+ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236787"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932765"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>データ インポートの概要 - Azure Cognitive Search
 
 Azure Cognitive Search では、[検索インデックス](search-what-is-an-index.md)に読み込まれて保存されたコンテンツに対してクエリが実行されます。 この記事では、インデックスを取り込む 2 つの基本的な手法について詳しく見ていきます。1 つは、プログラムを使用してデータをインデックスに "*プッシュ*" する方法、もう 1 つは、サポート対象データ ソースで [Azure Cognitive Search のインデクサー](search-indexer-overview.md)をポイントしてデータを "*プル*" する方法です。
 
-どちらの方法も、目的は外部データ ソースから Azure Cognitive Search インデックスに "*データを読み込む*" ことです。 Azure Cognitive Search では空のインデックスを作成できますが、そのインデックスには、データをプッシュまたはプルするまでクエリを実行できません。
+どちらの方法も、目的は外部データ ソースから Azure Cognitive Search インデックスにデータを読み込むことです。 Azure Cognitive Search では空のインデックスを作成できますが、そのインデックスには、データをプッシュまたはプルするまでクエリを実行できません。
+
+> [!NOTE]
+> [AI エンリッチメント](cognitive-search-concept-intro.md)がソリューションの要件である場合は、プル モデル (インデクサー) を使用してインデックスを読み込む必要があります。 外部処理がサポートされるのは、インデクサーにアタッチされているスキルセットを使用する場合だけです。
 
 ## <a name="pushing-data-to-an-index"></a>インデックスにデータをプッシュする
+
 プログラムで Azure Cognitive Search にデータを送信するプッシュ モデルは、最も柔軟なアプローチです。 まず、データ ソースの種類に関して制限がありません。 JSON ドキュメントから成るすべてのデータセットは、そこに含まれる各ドキュメントのフィールドが、インデックスのスキーマに定義されているフィールドにマッピングされていれば、Azure Cognitive Search インデックスにプッシュすることができます。 実行の頻度にも制限はありません。 インデックスには、必要に応じて何度でも変更をプッシュすることができます。 待機時間の要件が非常に厳しいアプリケーションの場合 (たとえば、検索操作を動的な在庫データベースと同期する必要がある場合) は、プッシュ モデルしか利用できません。
 
 このアプローチでは、ドキュメントを個別に、またはバッチでアップロードできるため、プル モデルよりも柔軟です ("バッチごとに最大 1,000 個" と "16 MB" のうち、どちらか先に達した制限が適用されます)。 プッシュ モデルでは、データのある場所にかかわらず、ドキュメントを Azure Cognitive Search にアップロードすることもできます。
@@ -30,12 +34,12 @@ Azure Cognitive Search では、[検索インデックス](search-what-is-an-ind
 
 次の API を使用して、1 つまたは複数のドキュメントをインデックスに読み込むことができます。
 
-+ [ドキュメントの追加、更新、削除 (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [ドキュメントの追加、更新、削除 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction クラス](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
 
 現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
 
-各方法の概要については、「[Quickstart: PowerShell を使用した Azure Cognitive Search インデックスの作成](search-create-index-rest-api.md)」または[C# の クイック スタートの.NET SDK を使用した Azure Cognitive Search インデックスの作成](search-get-started-dotnet.md)に関する記事をご覧ください。
+各方法の概要については、「[Quickstart: PowerShell を使用した Azure Cognitive Search インデックスの作成](./search-get-started-powershell.md)」または[C# の クイック スタートの.NET SDK を使用した Azure Cognitive Search インデックスの作成](search-get-started-dotnet.md)に関する記事をご覧ください。
 
 <a name="indexing-actions"></a>
 
@@ -55,27 +59,28 @@ REST API では、JSON 要求本文を利用して HTTP POST 要求を Azure Cog
 | `mergeOrUpload` |このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`merge` と同様の処理になります。 ドキュメントが存在しない場合は、 `upload` と同様の処理になり、新しいドキュメントが挿入されます。 |キーのほか、定義するその他すべてのフィールド |- |
 | `delete` |インデックスから指定したドキュメントを削除します。 |キーのみ |指定したフィールドは、キー フィールド以外すべて無視されます。 ドキュメントから個々のフィールドを削除する場合は、代わりに `merge` を使用して、フィールドを明示的に null に設定します。 |
 
-## <a name="decide-which-indexing-action-to-use"></a>利用するインデックス作成アクションの決定
-.NET SDK を使用してデータをインポートするには (upload、merge、delete、および mergeOrUpload)。 以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
-
-
 ### <a name="formulate-your-query"></a>クエリの作成
-[REST API を使用してインデックスを検索する](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義された HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義された HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
-POST でも GET でも、*サービス名*、*インデックス名*、適切な *API バージョン* (このドキュメントが書かれた時点で最新の API バージョンは `2019-05-06`) を要求 URL に指定する必要があります。 GET の場合は、URL の末尾の*クエリ文字列*でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
+[REST API を使用してインデックスを検索する](/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義された HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義された HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](/rest/api/searchservice/Search-Documents)です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
+POST と GET のどちらについても、要求 URL で*サービス名*、*インデックス名*、および *API バージョン*を指定する必要があります。 
+
+GET の場合は、URL の末尾の*クエリ文字列*でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
+
+```http
     https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+```
 
-POST の形式も同じですが、クエリ文字列のパラメーターで api-version だけを指定します。
-
+POST の形式も同じですが、クエリ文字列のパラメーターで `api-version` を指定します。
 
 ## <a name="pulling-data-into-an-index"></a>インデックスへのデータのプル
+
 プル モデルは、サポートされているデータ ソースをクロールし、データをインデックスに自動的にアップロードします。 Azure Cognitive Search では、この機能が "*インデクサー*" を使用して実装され、現時点ではこれらのプラットフォームで利用可能です。
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
-+ [Azure SQL データベースと Azure VM の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL Database、SQL Managed Instance、および Azure VM 上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 インデクサーは、インデックスをデータ ソース (通常はテーブル、ビュー、または同等の構造体) に接続し、ソース フィールドをインデックスの同等のフィールドにマップします。 実行中、行セットが自動的に JSON に変換され、指定したインデックスに読み込まれます。 すべてのインデクサーはスケジューリングをサポートしているため、データの更新頻度を指定できます。 ほとんどのインデクサーは、変更の追跡を提供します (データ ソースでサポートされている場合)。 インデクサーは、新しいドキュメントを認識するだけでなく、既存のドキュメントの変更と削除を追跡するため、インデックス内のデータをアクティブに管理する必要がありません。 
 

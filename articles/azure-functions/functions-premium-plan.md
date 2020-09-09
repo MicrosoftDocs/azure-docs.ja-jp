@@ -5,12 +5,13 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: references_regions
+ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234987"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506198"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -61,7 +62,9 @@ Premium プランで関数アプリにサブネットを割り当てるときは
 
 ### <a name="rapid-elastic-scale"></a>高速エラスティック スケール
 
-従量課金プランと同じ高速スケーリング ロジックを使用して、追加のコンピューティング インスタンスが自動的にアプリのために追加されます。  スケーリングのしくみの詳細については、[関数のスケールとホスティング](./functions-scale.md#how-the-consumption-and-premium-plans-work)に関するページを参照してください。
+従量課金プランと同じ高速スケーリング ロジックを使用して、追加のコンピューティング インスタンスが自動的にアプリのために追加されます。 同じ Azure App Service のアプリは、個々のアプリのニーズに基づき、互いに依存せずにスケーリングします。 ただし、同じ Azure App Service の関数アプリでは、可能であれば、コストを下げる目的で VM リソースが共有されます。 VM に関連付けられているアプリの数は、各アプリの占有領域と VM のサイズによって変わります。
+
+スケーリングのしくみの詳細については、[関数のスケールとホスティング](./functions-scale.md#how-the-consumption-and-premium-plans-work)に関するページを参照してください。
 
 ### <a name="longer-run-duration"></a>実行継続時間の延長
 

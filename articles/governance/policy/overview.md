@@ -1,14 +1,14 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 04/21/2020
+ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: 4ec09c8a38e22fc14980422bfe9a80a2bf3edda4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097372"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044194"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -60,7 +60,7 @@ Azure Policy では、[効果](./concepts/effects.md)を適用して、これら
 
 ### <a name="azure-policy-and-rbac"></a>Azure Policy と RBAC
 
-Azure Policy とロールベースのアクセス制御 (RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソース プロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
+Azure Policy とロールベースのアクセス制御 (RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
 
 RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
 
@@ -82,7 +82,7 @@ Azure Policy のリソースに対するアクセス許可は、さまざまな�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy の対象となるリソース
 
-Azure Policy では Azure 内のすべてのリソースを評価します。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/key-vault-overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
+Azure Policy では Azure 内のすべてのリソースを評価します。 [ゲスト構成](./concepts/guest-configuration.md)、[Azure Kubernetes Service](../../aks/intro-kubernetes.md)、[Azure Key Vault](../../key-vault/general/overview.md) などの特定のリソース プロバイダーについては、設定とオブジェクトを管理するための緊密な統合があります。 詳細については、[リソース プロバイダーのモード](./concepts/definition-structure.md)に関するページを参照してください。
 
 ### <a name="recommendations-for-managing-policies"></a>ポリシー管理に関する推奨事項
 
@@ -158,6 +158,8 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 イニシアチブ定義で値のオプションを作成すると、イニシアチブの割り当てで別の値を入力することは、リストの一部ではないためできません。
 
+イニシアチブ定義の構造の詳細については、[イニシアチブ定義の構造](./concepts/initiative-definition-structure.md)に関するページを参照してください。
+
 ### <a name="assignments"></a>代入
 
 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーの定義またはイニシアチブです。 このスコープの範囲は、[管理グループ](../management-groups/overview.md)から個々のリソースまでです。 "_スコープ_" という用語は、定義が割り当てられる、すべてのリソース、リソース グループ、サブスクリプション、または管理グループのことを指します。 割り当ては、すべての子リソースによって継承されます。 この設計は、リソース グループに適用された定義が、そのリソース グループ内のリソースにも適用されることを意味します。 ただし、サブスコープを割り当てから除外できます。
@@ -166,7 +168,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 別の例として、リソースの種類の許可リスト定義を管理グループ レベルで割り当てたいとしましょう。 そのうえで、より制限の緩やかな (より多くのリソースの種類を許可する) ポリシーを子管理グループまたはサブスクリプションに直接割り当てます。 しかし、この例はうまくいきません。Azure Policy は明示的な拒否のシステムであるためです。 代わりに、管理グループレベルの割り当てから、子管理グループまたはサブスクリプションを除外する必要があります。 そのうえで、より制限の緩やかな定義を子管理グループまたはサブスクリプション レベルで割り当てます。 いずれかの割り当てでリソースが拒否される場合、拒否割り当てに変更を加えることが、そのリソースを許可する唯一の方法となります。
 
-ポータルを使用した割り当ての設定の詳細については、[ポリシー割り当てを作成し、Azure 環境内の準拠していないリソースを特定する方法](assign-policy-portal.md)に関するページを参照してください。 [PowerShell](assign-policy-powershell.md)と[Azure CLI](assign-policy-azurecli.md) の場合の手順も利用することができます。
+ポータルを使用した割り当ての設定の詳細については、[ポリシー割り当てを作成し、Azure 環境内の準拠していないリソースを特定する方法](./assign-policy-portal.md)に関するページを参照してください。 [PowerShell](./assign-policy-powershell.md)と[Azure CLI](./assign-policy-azurecli.md) の場合の手順も利用することができます。 割り当て構造の詳細については、[割り当て構造](./concepts/assignment-structure.md)に関するページを参照してください。
 
 ## <a name="maximum-count-of-azure-policy-objects"></a>Azure Policy オブジェクトの最大数
 

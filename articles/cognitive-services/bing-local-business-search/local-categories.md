@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "69906392"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200515"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing Local Business Search API の検索カテゴリ
 
@@ -36,49 +36,17 @@ Bing Local Business Search API では、ユーザーの場所に近い結果に�
 ## <a name="sub-categories"></a>サブ カテゴリ
 サブカテゴリは `localCategories` と同じ方法で渡されます。 サブカテゴリとはより固有なカテゴリのことです。 カテゴリ C とそのサブカテゴリ S のいずれかを同じコンマ区切りリストで指定した場合、C を単独で指定した場合と同じ結果が得られるという意味で、これらは下位となります。
 
-### <a name="eat-drink"></a>Eat Drink 
-|  |  |  |  |
-| - | - | - | - |
-| BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
-| AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Taverns | SportsBars | Bars |
-| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
-| BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
-| ChineseRestaurants | CoffeeAndTea | Delicatessens | 
-| DeliveryService | Diners | DiscountStores | 
-| Donuts | FastFood | FrenchRestaurants | 
-| FrozenYogurt | GermanRestaurants | Supermarkets | 
-| GreekRestaurants | Grocers | HawaiianRestaurants | 
-| HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| ItalianRestaurants | JapaneseRestaurants | Juices | 
-| KoreanRestaurants | LiquorStores | MexicanRestaurants |
-| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Pretzels | Restaurants | 
-| RussianAndUkrainianRestaurants | Sandwiches | SeafoodRestaurants | 
-| SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
-| TakeAway | ThaiRestaurants | TurkishRestaurants | 
-| VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
- 
-### <a name="see-do"></a>See Do 
-|  |  |  |
-| -- | -- | -- |
-| AmusementParks | Attractions | Carnivals |
-| Casinos | LandmarksAndHistoricalSites | MiniatureGolfCourses |
-| MovieTheaters | Museums | Parks |
-| SightseeingTours | TouristInformation | Zoos |
- 
-### <a name="shop"></a>Shop 
-|  |  |  |
-| -- | -- | -- |
-| AntiqueStores | Bookstores | CDAndRecordStores |
-| ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
-| DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
-| FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
-| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
-| MensClothingStores | MusicStores | OutletStores |
-| PetShops | PetSupplyStores | SchoolAndOfficeSupplyStores |
-| ShoeStores | SportingGoodsStores | ToyAndGameStores |
-| VitaminAndSupplementStores | WomensClothingStores |  |
+### <a name="eat-drink"></a>Eat Drink
+
+> BreweriesAndBrewPubs、CocktailLounges、AfricanRestaurants、AmericanRestaurants、Bagels、BarbecueRestaurants、Taverns、SportsBars、Bars、BarsGrillsAndPubs、BuffetRestaurants| BelgianRestaurants、BritishRestaurants、CafeRestaurants、CaribbeanRestaurants、ChineseRestaurants、CoffeeAndTea、Delicatessens、DeliveryService、Diners、DiscountStores、Donuts、FastFood、FrenchRestaurants、FrozenYogurt、GermanRestaurants、Supermarkets、GreekRestaurants、Grocers、HawaiianRestaurants、HungarianRestaurants、IceCreamAndFrozenDesserts、IndianRestaurants、ItalianRestaurants、JapaneseRestaurants、Juices、KoreanRestaurants、LiquorStores、MexicanRestaurants、MiddleEasternRestaurants、Pizza、PolishRestaurants、PortugueseRestaurants、Pretzels、Restaurants、RussianAndUkrainianRestaurants、Sandwiches、SeafoodRestaurants、SpanishRestaurants、SteakHouseRestaurants、SushiRestaurants、TakeAway、ThaiRestaurants、TurkishRestaurants、VegetarianAndVeganRestaurants、VietnameseRestaurants
+
+### <a name="see-do"></a>See Do
+
+> AmusementParks、Attractions、Carnivals、Casinos、LandmarksAndHistoricalSites、MiniatureGolfCourses、MovieTheaters、Museums、Parks、SightseeingTours、TouristInformation、Zoos
+
+### <a name="shop"></a>Shop
+
+> AntiqueStores、Bookstores、CDAndRecordStores、ChildrensClothingStores、CigarAndTobaccoShops、ComicBookStores、DepartmentStores、DiscountStores、FleaMarketsAndBazaars、FurnitureStores、HomeImprovementStores、JewelryAndWatchesStores、KitchenwareStores、LiquorStores、MallsAndShoppingCenters、MensClothingStores、MusicStores、OutletStores、PetShops、PetSupplyStores、SchoolAndOfficeSupplyStores、ShoeStores、SportingGoodsStores、ToyAndGameStores、VitaminAndSupplementStores、WomensClothingStores
 
 
 ## <a name="examples-of-local-categories-search"></a>ローカル カテゴリ検索の例

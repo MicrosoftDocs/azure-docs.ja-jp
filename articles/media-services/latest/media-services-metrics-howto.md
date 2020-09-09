@@ -3,24 +3,27 @@ title: Azure Monitor でメトリックを表示する
 description: この記事では、Azure portal のグラフと Azure CLI を使用してメトリックを監視する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/08/2019
-ms.author: juliako
-ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382938"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296623"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services のメトリックを監視する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を参照してください。
 
@@ -28,7 +31,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](create-account-cli-how-to.md)
+- [Media Services アカウントを作成する](./create-account-howto.md)
 - 「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を確認する
 
 ## <a name="view-metrics-in-azure-portal"></a>Azure portal でメトリックを表示する

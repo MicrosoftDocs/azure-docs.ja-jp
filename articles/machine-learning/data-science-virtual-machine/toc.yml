@@ -6,8 +6,6 @@
   items:
     - name: Data Science Virtual Machine (DSVM) とは
       href: overview.md
-    - name: Geo AI Data Science Virtual Machine とは
-      href: geo-ai-dsvm-overview.md
     - name: Data Science Virtual Machine に含まれるツール
       href: tools-included.md
 - name: クイックスタート
@@ -17,8 +15,9 @@
       href: provision-vm.md
     - name: Ubuntu Data Science Virtual Machine を作成する
       href: dsvm-ubuntu-intro.md
-    - name: Geo AI Data Science Virtual Machine を作成する
-      href: provision-geo-ai-dsvm.md
+    - name: ARM テンプレートを使用して DSVM を作成する
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: 概念
   items:
     - name: ディープ ラーニングと AI のフレームワーク
@@ -45,14 +44,18 @@
       href: vm-do-ten-things.md
     - name: Linux Data Science Virtual Machine を使用する
       href: linux-dsvm-walkthrough.md
-    - name: Geo AI Data Science Virtual Machine を使用する
-      href: use-geo-ai-dsvm.md
-    - name: 自動スケール Data Science Virtual Machine プールを作成する
-      href: dsvm-pools.md
-    - name: Active Directory と連係する。
-      href: dsvm-common-identity.md
-    - name: リソースのアクセス資格情報のセキュリティ保護
-      href: dsvm-secure-access-keys.md
+    - name: Azure Machine Learning との統合
+      items:
+        - name: 実験を追跡する
+          href: how-to-track-experiments.md
+    - name: エンタープライズ向けのガイダンス
+      items:
+        - name: 自動スケール Data Science Virtual Machine プールを作成する
+          href: dsvm-pools.md
+        - name: Active Directory と連係する。
+          href: dsvm-common-identity.md
+        - name: リソースのアクセス資格情報のセキュリティ保護
+          href: dsvm-secure-access-keys.md
 - name: リソース
   items:
     - name: Microsoft Q&A 質問ページ

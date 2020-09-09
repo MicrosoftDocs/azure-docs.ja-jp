@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042111"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure App Configuration でのプライベート エンドポイントの使用
 
@@ -22,9 +22,6 @@ App Configuration にプライベート エンドポイントを使用すると�
 - パブリック エンドポイント上での App Configuration へのすべての接続をブロックするようにファイアウォールを構成して、アプリケーション構成の詳細をセキュリティで保護します。
 - 仮想ネットワーク (VNet) のセキュリティを強化し、データが VNet から抜け出さないようにします。
 - [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoutes](../expressroute/expressroute-locations.md) とプライベート ピアリングを使用して VNet に接続するオンプレミス ネットワークから App Configuration ストアに安全に接続します。
-
-> [!NOTE]
-> Azure App Configuration では、パブリック プレビューとしてプライベート エンドポイントを使用できます。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。
 
 ## <a name="conceptual-overview"></a>概念の概要
 
@@ -47,17 +44,13 @@ App Configuration ではサービス エンドポイントはサポートされ�
 Azure は、VNet から構成ストアへの接続をプライベート リンク経由でルーティングするために、DNS 解決に依存しています。 App Configuration ストアを選択し、 **[設定]**  >  **[アクセス キー]** を選択すると、Azure portal 内で接続文字列をすばやく見つけることができます。  
 
 > [!IMPORTANT]
-> パブリック エンドポイントに使用するのと同じ接続文字列を使用して、プライベート エンドポイントを使用して App Configuration ストアに接続します。 `privatelink` サブドメイン URL を使用してストレージ アカウントに接続しないでください。
+> パブリック エンドポイントに使用するのと同じ接続文字列を使用して、プライベート エンドポイントを使用して App Configuration ストアに接続します。 `privatelink` サブドメイン URL を使用してストアに接続しないでください。
 
 ## <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
 
 プライベート エンドポイントを作成すると、構成ストアの DNS CNAME リソース レコードは、プレフィックス `privatelink` を持つサブドメイン内のエイリアスに更新されます。 `privatelink` サブドメインに対応する[プライベート DNS ゾーン](../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
 
-VNet の外部からエンドポイント URL を解決すると、ストアのパブリック エンドポイントに解決されます。 プライベート エンドポイントをホストしている VNet 内から解決されると、エンドポイント URL はプライベート エンドポイントに解決されます。
-
-Azure Firewall サービスを使用して、VNet の外部のクライアントによるパブリック エンドポイント経由のアクセスを制御することができます。
-
-この方法を使用すると、プライベート エンドポイントをホストしている VNet 上のクライアントと、VNet の外部のクライアントから**同じ接続文字列を使用して**ストアにアクセスできます。
+プライベート エンドポイントをホストしている VNet 内からエンドポイント URL を解決すると、ストアのプライベート エンドポイントに解決されます。 VNet の外部から解決すると、エンドポイント URL はパブリック エンドポイントに解決されます。 プライベート エンドポイントを作成すると、パブリック エンドポイントは無効になります。
 
 ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントで、サービス エンドポイントの完全修飾ドメイン名 (FQDN) をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成するか、プライベート エンドポイントの IP アドレスを使用して `AppConfigInstanceA.privatelink.azconfig.io` の A レコードを構成します。
 

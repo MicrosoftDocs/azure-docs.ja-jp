@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d2f25f2b786686b8af9bad4ea8ce3c8aea9b589f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371455"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747495"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Google マップから Web サービスを移行する
 
@@ -56,7 +56,7 @@ Azure Maps には、必要になる可能性のある追加の REST Web サー�
 Azure Maps により、住所をジオコーディングするための複数の方法が提供されます。
 
 - [**自由形式の住所のジオコーディング**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress): 1 行の住所文字列を指定します。要求は直ちに処理されます。 たとえば、"1 Microsoft way, Redmond, WA" は 1 行の住所文字列に該当します。 この API は、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
-- [**構造化された住所のジオコーディング**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国、郵便番号など) を指定します。要求はただちに処理されます。 この API は、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。
+- [**構造化された住所のジオコーディング**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国または地域、郵便番号など) を指定します。要求は直ちに処理されます。 この API は、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。
 - [**住所のバッチ ジオコーディング**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview): 最大 10,000 個の住所を含む要求を作成します。これらの住所は一定期間内に処理されます。 すべての住所はサーバーで並行してジオコーディングされ、完了すると、完全な結果セットをダウンロードできます。 これは、大きなデータ セットをジオコーディングする場合に推奨されます。
 - [**あいまい検索**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy): この API は、住所のジオコーディングと目的地検索を組み合わせたものです。 この API は、自由形式の文字列を受け入れます。 住所、場所、ランドマーク、目的地、または目的地のカテゴリをこの文字列として指定できます。 要求は、この API によってほぼリアルタイムで処理されます。 この API は、ユーザーが同じテキスト ボックスで住所や目的地を検索するアプリケーションに適しています。
 - [**あいまいバッチ検索**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): 最大 10,000 個の住所、場所、ランドマーク、または目的地を含む要求を作成します。これらは一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
@@ -67,7 +67,7 @@ Azure Maps により、住所をジオコーディングするための複数の
 |---------------------------|--------------------------------------|
 | `address`                   | `query`                            |
 | `bounds`                    | `topLeft` および `btmRight`           |
-| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality` - 市区町村<br/>`municipalitySubdivision` - 地域、地区<br/>`countrySubdivision` - 都道府県<br/>`countrySecondarySubdivision` - 郡<br/>`countryTertiarySubdivision` - 区<br/>`countryCode` - 2 文字の国番号 |
+| `components`                | `streetNumber`<br/>`streetName`<br/>`crossStreet`<br/>`postalCode`<br/>`municipality` - 市区町村<br/>`municipalitySubdivision` - 地域、地区<br/>`countrySubdivision` - 都道府県<br/>`countrySecondarySubdivision` - 郡<br/>`countryTertiarySubdivision` - 区<br/>`countryCode` -2 文字の国または地域コード |
 | `key`                       | `subscription-key` - ドキュメント「[Azure Maps による認証](azure-maps-authentication.md)」も参照してください。 |
 | `language`                  | `language` - [サポートされている言語](supported-languages.md)に関するドキュメントも参照してください。  |
 | `region`                    | `countrySet`                       |
@@ -327,7 +327,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 - `ro` - アイコンを回転させる角度の値。 -360 から 360 までの数値を選択します。
 - `sc` - ピン アイコンのスケール値。 0 より大きい数値を選択します。
 
-それぞれのピン位置に使用するラベルの値を指定します。 このアプローチの方が、場所の一覧内にあるすべてのマーカーに単一のラベル値を適用するよりも効率的です。 ラベル値には、複数の文字で構成される文字列を指定することができます。 また、スタイルや場所の値として誤って解釈されないようにするため、その文字列を一重引用符で囲むこともできます。
+それぞれのピン位置に使用するラベルの値を指定します。 このアプローチの方が、場所の一覧内にあるすべてのマーカーに単一のラベル値を適用するよりも効率的です。 ラベル値には、複数の文字で構成される文字列を指定することができます。 また、誤ってスタイルや場所の値として解釈されないようにするため、その文字列を一重引用符で囲むこともできます。
 
 赤色 (`FF0000`) の既定のアイコンを追加し、その下 (15 50) に "Space Needle" というラベルを配置しましょう。 アイコンの位置は、経度: -122.349300、緯度: 47.620180 です。
 

@@ -1,18 +1,19 @@
 ---
 title: Azure File Sync のデプロイの計画 | Microsoft Docs
-description: Azure Files のデプロイを計画するときの考慮事項について説明します。
+description: Azure File Sync を使用したデプロイを計画します。このサービスを使用すると、オンプレミスの Windows Server またはクラウド VM に複数の Azure ファイル共有をキャッシュすることができます。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176092"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553109"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -130,13 +131,14 @@ Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
  
 システム要件のみをテストするには:
 ```powershell
-Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
+Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamespaceChecks
 ```
  
 CSV で結果を表示するには:
 ```powershell
 $errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
+    C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>ファイル システムの互換性
@@ -146,7 +148,7 @@ NTFS ボリュームのみがサポートされます。ReFS、FAT、FAT32 お�
 
 次の表に、NTFS ファイル システムの機能の相互運用の状態を示します。 
 
-| 機能 | サポートの状態 | Notes |
+| 特徴量 | サポートの状態 | Notes |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされています | Windows スタイルの随意アクセス制御リストは Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 Azure ファイル共有を直接マウントするときに ACL を適用することもできますが、これには追加の構成が必要です。 詳細については、[ID に関するセクション](#identity)を参照してください。 |
 | ハード リンク | スキップ | |
@@ -254,9 +256,7 @@ Azure File Sync エージェントは、Azure File Sync REST プロトコルと 
 - お使いの環境でプロキシをサポートするよう Azure File Sync を構成。
 - Azure File Sync からネットワーク アクティビティを調整。
 
-Azure File Sync のネットワーク機能の構成の詳細については、以下を参照してください。
-- [Azure File Sync のプロキシとファイアウォールの設定](storage-sync-files-firewall-and-proxy.md)
-- [データセンターで Azure File Sync が良好なネイバーであることを確認する](storage-sync-files-server-registration.md)
+Azure File Sync とネットワークの詳細については、「[Azure File Sync のネットワークに関する考慮事項](storage-sync-files-networking-overview.md)」を参照してください。
 
 ## <a name="encryption"></a>暗号化
 Azure File Sync を使用する場合、Windows Server のストレージの保存時の暗号化、Azure File Sync エージェントと Azure 間での暗号化、Azure ファイル共有のデータの暗号化という、3 つの異なるレベルの暗号化を考慮する必要があります。 
@@ -275,7 +275,7 @@ Azure File Sync は、ファイル システムより上に位置し、ファイ
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
 > [!NOTE]
-> Azure File Sync サービスは、2020 年 8 月に TLS 1.0 と 1.1 のサポートを削除します。 サポートされているすべての Azure File Sync エージェントのバージョンは、既に TLS 1.2 を既定で使用しています。 TLS 1.2 がサーバーで無効になっているか、プロキシが使用されている場合は、以前のバージョンの TLS が使用される可能性があります。 プロキシを使用している場合は、プロキシの構成を確認することをお勧めします。 2020 年 5 月 1 日より後に追加された Azure File Sync サービスのリージョンでは TLS 1.2 のみがサポートされます。TLS 1.0 と 1.1 のサポートは、2020 年 8 月に既存のリージョンから削除されます。  詳細については、[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)を参照してください。
+> 2020 年 8 月 1 日より、Azure File Sync サービスでは TLS 1.0 と 1.1 のサポートが削除されます。 サポートされているすべての Azure File Sync エージェントのバージョンは、既に TLS 1.2 を既定で使用しています。 TLS 1.2 がサーバーで無効になっているか、プロキシが使用されている場合は、以前のバージョンの TLS が使用される可能性があります。 プロキシを使用している場合は、プロキシの構成を確認することをお勧めします。 2020 年 5 月 1 日より後に追加された Azure File Sync サービスのリージョンでは TLS 1.2 のみがサポートされます。TLS 1.0 と 1.1 のサポートは、2020 年 8 月 1 日に既存のリージョンから削除されます。  詳細については、[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)を参照してください。
 
 Azure File Sync エージェントは、Azure File Sync REST プロトコルと FileREST プロトコルを使用して、ストレージ同期サービスと Azure ファイル共有と通信します。どちらも、常にポート443 経由で HTTPS を使用します。 Azure File Sync では、暗号化されていない要求が HTTP 経由で送信されることはありません。 
 
@@ -309,8 +309,8 @@ Azure File Sync は、次のリージョンで利用できます。
 | パブリック | オーストラリア | オーストラリア東部 | `australiaeast` |
 | パブリック | オーストラリア | オーストラリア南東部 | `australiasoutheast` |
 | パブリック | ブラジル | ブラジル南部 | `brazilsouth` |
-| パブリック | カナダ | カナダ中部 | `canadacentral` |
-| パブリック | カナダ | カナダ東部 | `canadaeast` |
+| パブリック | Canada | カナダ中部 | `canadacentral` |
+| パブリック | Canada | カナダ東部 | `canadaeast` |
 | パブリック | ヨーロッパ | 北ヨーロッパ | `northeurope` |
 | パブリック | ヨーロッパ | 西ヨーロッパ | `westeurope` |
 | パブリック | フランス | フランス中部 | `francecentral` |
@@ -358,10 +358,10 @@ Azure File Sync は、ストレージ同期サービスと同じリージョン�
 
 Data Box を使用して、Azure File Sync のデプロイにデータを移行することもできます。 ほとんどの場合、お客様がデータを取り込むために Data Box を使用するのは、デプロイの速度が向上すると考えたか、または制限された帯域幅シナリオで役立つことがあると考えたためです。 Azure File Sync のデプロイへデータを取り込むために Data Box を使用すると、帯域幅の使用率が低下することは事実ですが、ほとんどのシナリオでは、上記の方法のいずれかを使用してオンライン データのアップロードを実行する方が短時間で済みます。 Data Box を使用して Azure File Sync のデプロイにデータを取り込む方法の詳細については、「[Azure Data Box を使用して Azure File Sync にデータを移行する](storage-sync-offline-data-transfer.md)」を参照してください。
 
-新しい Azure File Sync のデプロイにデータを移行する際によくある間違いは、Windows ファイル サーバーではなく Azure ファイル共有にデータを直接コピーしてしまうことです。 Azure File Sync は Azure ファイル共有上のすべての新しいファイルを識別し、それらを Windows ファイル共有に同期しますが、通常、これは Windows ファイル サーバーを使用してデータを読み込む場合よりもはるかに低速です。 AzCopy などの多くの Azure のコピー ツールには、さらにタイムスタンプや ACL などのファイルの重要なメタデータをすべてコピーしないという欠点があります。
+新しい Azure File Sync のデプロイにデータを移行する際によくある間違いは、Windows ファイル サーバーではなく Azure ファイル共有にデータを直接コピーしてしまうことです。 Azure File Sync は Azure ファイル共有上のすべての新しいファイルを識別し、それらを Windows ファイル共有に同期しますが、通常、これは Windows ファイル サーバーを使用してデータを読み込む場合よりもはるかに低速です。 AzCopy などの Azure コピー ツールを使用する場合は、最新バージョンを使用することが重要です。 [ファイル コピー ツールの表](storage-files-migration-overview.md#file-copy-tools)をチェックして、Azure コピー ツールの概要を確認し、タイムスタンプや ACL など、ファイルの重要なメタデータをすべてコピーできることを確認します。
 
 ## <a name="antivirus"></a>ウイルス対策
-ウイルス対策は、ファイルをスキャンして既知の悪意のあるコードを検索することで機能するので、ウイルス対策製品によって階層化されたファイルの再呼び出しが発生することがあります。 Azure File Sync エージェントのバージョン 4.0 以降では、階層化されたファイルにはセキュリティで保護された Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS が設定されています。 この属性を設定してオフライン ファイルの読み取りをスキップするようにソリューションを構成する方法について、ソフトウェア ベンダーと相談することをお勧めします (多くの場合は自動実行されます)。 
+ウイルス対策は、ファイルをスキャンして既知の悪意のあるコードを検索することで機能するため、ウイルス対策製品によって階層化されたファイルの再呼び出しが発生することがあります。この結果、エグレス料金が高額になる可能性があります。 Azure File Sync エージェントのバージョン 4.0 以降では、階層化されたファイルにはセキュリティで保護された Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS が設定されています。 この属性を設定してオフライン ファイルの読み取りをスキップするようにソリューションを構成する方法について、ソフトウェア ベンダーと相談することをお勧めします (多くの場合は自動実行されます)。 
 
 Microsoft の社内ウイルス対策ソリューションである Windows Defender と System Center Endpoint Protection (SCEP) では、この属性が設定されたファイルの読み取りが自動的にスキップされます。 そのテスト結果として小さな問題点がわかりました。既存の同期グループにサーバーを追加すると、新しいサーバー上で 800 バイト未満のファイルの呼び戻し (ダウンロード) が実行されるという問題です。 このようなファイルは新しいサーバー上に残り、階層化のサイズ要件 (64 KB を超えるサイズ) を満たしていないため、階層化されません。
 
@@ -369,15 +369,15 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 > ウイルス対策ソフトウェア ベンダーは、その製品と Azure File Sync との間の互換性を、[Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) を使用して確認することができます。これは、Microsoft ダウンロード センターでダウンロードできます。
 
 ## <a name="backup"></a>バックアップ 
-ウイルス対策ソリューションと同様に、バックアップ ソリューションでも階層化されたファイルの再呼び出しが発生することがあります。 Azure ファイル共有をバックアップするには、オンプレミスのバックアップ製品ではなく、クラウド バックアップ ソリューションを使用することをお勧めします。
+クラウドを使った階層化が有効になっている場合、サーバー エンドポイント、またはサーバー エンドポイントが配置されている VM を直接バックアップするソリューションは使用しないでください。 クラウドを使った階層化では、データのサブセットのみがサーバー エンドポイントに格納され、完全なデータセットは Azure ファイル共有に保存されます。 使用されるバックアップ ソリューションによっては、階層化されたファイルはスキップされ、バックアップされないか (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性が設定されているため)、ディスクに再呼び出しされるため、エグレス料金が高額になります。 Azure ファイル共有を直接バックアップするには、クラウド バックアップ ソリューションを使用することをお勧めします。 詳細については、「[Azure ファイル共有のバックアップについて](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)」を参照するか、バックアップ プロバイダーに問い合わせて、Azure ファイル共有のバックアップがサポートされているかどうかを確認してください。
 
-オンプレミス バックアップ ソリューションを使用している場合、クラウドの階層化が無効な同期グループ内のサーバーに対してバックアップを実行する必要があります。 復元を実行するときは、ボリューム レベルまたはファイル レベルの復元オプションを使用します。 ファイル レベルの復元オプションを使用して復元されたファイルは、同期グループ内のすべてのエンドポイントに同期され、既存のファイルはバックアップから復元されたバージョンに置き換えられます。  ボリューム レベルの復元では、Azure ファイル共有やその他のサーバー エンドポイントの新しいファイル バージョンに置き換えられません。
+オンプレミス バックアップ ソリューションを使用する場合、クラウドを使った階層化が無効な同期グループ内のサーバーに対してバックアップを実行する必要があります。 復元を実行するときは、ボリューム レベルまたはファイル レベルの復元オプションを使用します。 ファイル レベルの復元オプションを使用して復元されたファイルは、同期グループ内のすべてのエンドポイントに同期され、既存のファイルはバックアップから復元されたバージョンに置き換えられます。  ボリューム レベルの復元では、Azure ファイル共有やその他のサーバー エンドポイントの新しいファイル バージョンに置き換えられません。
 
 > [!Note]  
 > ベアメタル (BMR) 復元は予期しない結果が生じることがあるため、現在サポートされていません。
 
 > [!Note]  
-> Azure File Sync エージェントのバージョン 9 では、VSS スナップショット ([以前のバージョン] タブを含む) が、クラウドの階層化が有効なボリュームでサポートされるようになりました。 ただし、PowerShell を使用して以前のバージョンの互換性を有効にする必要があります。 方法については、[こちら](storage-files-deployment-guide.md)をご覧ください。
+> Azure File Sync エージェントのバージョン 9 では、VSS スナップショット ([以前のバージョン] タブを含む) が、クラウドの階層化が有効なボリュームでサポートされるようになりました。 ただし、PowerShell を使用して以前のバージョンの互換性を有効にする必要があります。 方法については、[こちら](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)をご覧ください。
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

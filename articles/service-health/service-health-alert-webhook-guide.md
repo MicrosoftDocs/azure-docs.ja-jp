@@ -4,12 +4,12 @@ description: サービス正常性イベントについて個人用に設定さ�
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062854"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518930"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Webhook を使用して問題管理システム用に正常性通知を構成する
 
@@ -115,5 +115,5 @@ Service Health アラートによって通知される内容は、複数のリ�
 
 ## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
-- [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
+- [サービス正常性の通知](./service-notifications.md)について学習します。
 - [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

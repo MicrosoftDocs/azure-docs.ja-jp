@@ -1,6 +1,6 @@
 ---
-title: Azure Portal を使用して Logic Apps を API としてインポートする | Microsoft Docs
-description: このチュートリアルでは、API Management (APIM) を使用して Logic Apps を API としてインポートする方法を示します。
+title: Azure Portal を使用してロジック アプリを API としてインポートする | Microsoft Docs
+description: このチュートリアルでは、API Management (APIM) を使用してロジック アプリを API としてインポートする方法を示します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -19,33 +19,33 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "82202776"
 ---
-# <a name="import-a-logic-app-as-an-api"></a>Logic Apps を API としてインポート
+# <a name="import-a-logic-app-as-an-api"></a>ロジック アプリを API としてインポート
 
-この記事では、Logic Apps を API としてインポートし、そのインポート済みの API をテストする方法について説明します。
+この記事では、ロジック アプリを API としてインポートし、そのインポート済みの API をテストする方法について説明します。
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 >
-> -   Logic Apps を API としてインポート
+> -   ロジック アプリを API としてインポート
 > -   Azure Portal での API のテスト
 > -   開発者ポータルでの API のテスト
 
 ## <a name="prerequisites"></a>前提条件
 
 -   次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
--   HTTP エンドポイントが公開されるサブスクリプションに Logic Apps があることを確認します。 詳しくは、[HTTP エンドポイントでのワークフローのトリガー](../logic-apps/logic-apps-http-endpoint.md)に関する記事をご覧ください
+-   HTTP エンドポイントが公開されるサブスクリプションにロジック アプリがあることを確認します。 詳しくは、[HTTP エンドポイントでのワークフローのトリガー](../logic-apps/logic-apps-http-endpoint.md)に関する記事をご覧ください
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>バックエンド API のインポートと公開
 
 1. Azure portal で API Management サービスに移動し、メニューから **[API]** を選択します。
-2. **[Add a new API]\(新しい API の追加\)** の一覧から **[Logic App]** を選択します。
+2. **[Add a new API]\(新しい API の追加\)** の一覧から **[ロジック アプリ]** を選択します。
 
-    ![Logic Apps](./media/import-logic-app-as-api/logic-app-api.png)
+    ![ロジック アプリ](./media/import-logic-app-as-api/logic-app-api.png)
 
-3. **[参照]** を押して、サブスクリプション内の、HTTP トリガーを持つ Logic Apps の一覧を表示します  (HTTP トリガーを持たない Logic Apps は一覧に表示されないことに注意してください)。
+3. **[参照]** を押して、サブスクリプション内の、HTTP トリガーを持つロジック アプリの一覧を表示します  (HTTP トリガーを持たないロジック アプリは一覧に表示されないことに注意してください)。
 4. アプリを選びます。 API Management では、選択したアプリに関連付けられている Swagger が検索されてフェッチされ、インポートされます。
 5. API URL サフィックスを追加します。 サフィックスは、この API Management インスタンスでこの特定の API を識別する名前です。 この API Management インスタンス内で一意である必要があります。
 6. API を成果物に関連付けることで API を公開します。 この場合、"_無制限_" の成果物が使用されます。 API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
@@ -77,7 +77,7 @@ Azure Portal には、API の操作を表示およびテストするための便
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 >[!NOTE]
->すべての Logic Apps には、**手動呼び出し**操作があります。 複数 Logic Apps の API を含める場合は、競合を回避するために、関数の名前を変更する必要があります。
+>すべてのロジック アプリには、**手動呼び出し**操作があります。 複数ロジック アプリの API を含める場合は、競合を回避するために、関数の名前を変更する必要があります。
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

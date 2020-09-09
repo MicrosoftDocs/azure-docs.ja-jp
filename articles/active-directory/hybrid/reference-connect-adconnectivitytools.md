@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: ADConnectivityTools PowerShell リファレンス | Microsoft Docs'
+title: Azure AD Connect:ADConnectivityTools PowerShell リファレンス | Microsoft Docs
 description: このドキュメントでは、 ADConnectivityTools.psm1 PowerShell モジュールの参照情報を示します。
 author: billmath
 manager: daveba
@@ -10,14 +10,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5e06d0a6f7693ca9cc69f05f6b2318d6b60b5e3
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66473789"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070804"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: ADConnectivityTools PowerShell リファレンス
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:ADConnectivityTools PowerShell リファレンス
 
 次のドキュメントでは、Azure AD Connect に含まれる ADConnectivityTools.psm1 PowerShell モジュールの参照情報を示します。
 
@@ -310,7 +311,8 @@ Accept wildcard characters: False
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
 ユーザーが AD サイト/ログオン DC によって提供される DNS サービスを使用していない場合、ユーザーはポート 53 のチェックをスキップすることがあります。
-Active Directory コネクタ構成が成功するためには、ユーザーは _.ldap._tcp.\<forestfqdn\> を解決できる必要があります。
+Active Directory コネクタ構成が成功するためには、ユーザーは _.ldap._tcp.\<forestfqdn\>
+を解決できる必要があります。
 
 ```yml
 Type: SwitchParameter
@@ -773,9 +775,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-カスタム インストールの場合: AADConnect のウィザードの [AD フォレスト アカウント] ウィンドウでユーザーが [新しい AD アカウントを作成] を選択した場合、フラグは $True です。
+カスタム インストールの場合: AADConnect のウィザードの [AD フォレスト アカウント] ウィンドウ上でユーザーが [新しい AD アカウントを作成] を選択した場合、フラグは $True です。
 ユーザーが [既存 AD アカウントを使用] を選択した場合は $False です。
-簡易インストールの場合: 簡易インストールの場合、この変数の値は $True である必要があります。
+簡易インストールの場合: 簡易インストールの場合、この変数の値は $True になっている必要があります。
 
 ```yml
 Type: Boolean

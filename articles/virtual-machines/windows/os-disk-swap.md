@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 566347414ffe707b1d68a61b00ba21d19ff2b1eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d4abd68e60201a17e56ee105777614c42691bfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020340"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>PowerShell を使用して Azure VM で使用される OS ディスクを変更する
 
@@ -23,8 +23,9 @@ ms.locfileid: "81869381"
 この場合は、VM を停止するか、割り当てを解除する必要があります。その後は、マネージド ディスクのリソース ID を別のマネージド ディスクのリソース ID に置き換えることができます。
 
 VM のサイズとストレージの種類が、接続するディスクと互換性があることを確認します。 たとえば、使用するディスクが Premium Storage 内にある場合、VM は Premium Storage (DS シリーズのサイズなど) に対応している必要があります。 両方のディスクはサイズも同じである必要があります。
+また、暗号化されていない VM と暗号化された OS ディスクを混在させないようにします。これはサポートされていません。 VM に Azure Disk Encryption が使用されていない場合、交換される OS ディスクに Azure Disk Encryption を使用しないことをお勧めします。
 
-[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) を使用して、リソース グループ内のディスクの一覧を取得する
+[Get-AzDisk](/powershell/module/az.compute/get-azdisk) を使用して、リソース グループ内のディスクの一覧を取得する
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name

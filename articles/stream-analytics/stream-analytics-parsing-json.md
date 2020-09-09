@@ -6,12 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ff3ae9a787586a4d3f7c27353aca37326be32448
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77484589"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432553"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics で JSON データと Avro データを解析する
 
@@ -19,7 +20,8 @@ Azure Stream Analytics では、CSV、JSON、および Avro データ形式の�
 
 >[!NOTE]
 >Event Hub Capture によって作成される AVRO ファイルは、*カスタム逆シリアライザー* 機能を使用する必要がある特定の形式を使用します。 詳細については、[.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)を参照してください。
-
+>
+>Stream Analytics AVRO 逆シリアル化では、マップの種類はサポートされません。 EventHub キャプチャでマップが使用されるため、Stream Analytics は EventHub キャプチャ BLOB を読み取ることができません。
 
 
 ## <a name="record-data-types"></a>レコード データ型

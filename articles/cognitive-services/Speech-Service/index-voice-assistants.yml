@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 4fae88de9ad6c48e8079fc7d9ff2d7527d9e7208
+  ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82106204"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85299383"
 landingContent:
 - title: 音声アシスタントについて
   linkLists:
@@ -42,24 +42,20 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: カスタム コマンド アプリを作成する
-      url: quickstart-custom-speech-commands-create-new.md
-    - text: パラメーターを使用してカスタム コマンドを作成する
-      url: quickstart-custom-speech-commands-create-parameters.md
-    - text: カスタム音声でカスタム コマンドを使用する
-      url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Speech SDK でカスタム コマンドを使用する
-      url: quickstart-custom-speech-commands-speech-sdk.md
+    - text: カスタム コマンドを使用して音声アシスタントを作成する
+      url: quickstart-custom-commands-application.md
   - linkListType: how-to-guide
     links:
-    - text: クライアントからコマンドを実行する
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: パラメーターの検証を追加する
-      url: how-to-custom-speech-commands-validations.md
-    - text: 確認を追加する
-      url: how-to-custom-speech-commands-confirmations.md
-    - text: ワンステップ修正を追加する
-      url: how-to-custom-speech-commands-one-step-correction.md
+    - text: 単純なコマンドを使用してアプリケーションを作成する
+      url: how-to-custom-commands-create-application-with-simple-commands.md
+    - text: コマンドにパラメーターを追加する
+      url: how-to-custom-commands-add-parameters-to-commands.md
+    - text: パラメーターに検証を追加し、修正を求めるプロンプトを表示する
+      url: how-to-custom-commands-add-parameter-configuration.md
+    - text: Speech SDK を使用して統合する
+      url: how-to-custom-commands-setup-speech-sdk.md
+    - text: Azure DevOps を使用してカスタム コマンド アプリの継続的配置を設定する
+      url: how-to-custom-commands-deploy-cicd.md
 - title: Direct Line Speech を使用して開発する
   linkLists:
   - linkListType: quickstart

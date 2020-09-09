@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740452"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318319"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -48,7 +48,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     ```
   人間が判読できるユーザー名だけでなく、特定のユーザーまで直接追跡できる GUID も忘れずに検索してください。
 * *デバイス ID*:ユーザー ID と同様、デバイス ID も "プライベート" と見なされる場合があります。 上に記載されているユーザー ID の場合と同じ方法を使用して、これが問題となるかもしれないテーブルを特定します。 
-* *カスタム データ*:Log Analytics では、カスタム ログとカスタム フィールド、[HTTP データ コレクター API](../../azure-monitor/platform/data-collector-api.md)、システムのイベント ログの一部として収集されるカスタム データなど、さまざまな方法による収集が可能です。 これらはすべてプライベート データを含んでいる可能性があり、そのようなデータが存在するかどうかを確認するために調べる必要があります。
+* *カスタム データ*:Log Analytics では、カスタム ログとカスタム フィールド、[HTTP データ コレクター API](./data-collector-api.md)、システムのイベント ログの一部として収集されるカスタム データなど、さまざまな方法による収集が可能です。 これらはすべてプライベート データを含んでいる可能性があり、そのようなデータが存在するかどうかを確認するために調べる必要があります。
 * *ソリューションによって収集されたデータ*: ソリューションのメカニズムは変更可能です。そのため、コンプライアンスを確保するために、ソリューションによって生成されたすべてのテーブルを確認することをお勧めします。
 
 ### <a name="application-data"></a>アプリケーション データ
@@ -67,8 +67,8 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *メモリ内および転送中のデータ*:Application Insights では、例外、要求、依存関係の呼び出し、およびトレースが追跡されます。 プライベート データは、多くの場合、コードや HTTP 呼び出しのレベルで収集できます。 例外、要求、依存関係、およびトレース テーブルを確認して、このようなデータをすべて識別します。 可能な場所では[テレメトリ初期化子](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)を使用してこのデータを難読化します。
-* *スナップショット デバッガーのキャプチャ*:Application Insights の[スナップショット デバッガー](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)機能では、アプリケーションの実稼働インスタンスで例外がキャッチされるたびにデバッグのスナップショットを収集できます。 スナップショットでは、例外と、スタックに含まれるすべてのステップのローカル変数の値にたどり着く完全なスタック トレースが公開されます。 残念ながら、この機能では、スナップ ポイントを選択的に削除したり、スナップショット内のデータにプログラムからアクセスしたりすることができません。 そのため、既定のスナップショット保有期間のペースではお客様のコンプライアンス要件が満たされない場合は、この機能を無効にすることをお勧めします。
+* *メモリ内および転送中のデータ*:Application Insights では、例外、要求、依存関係の呼び出し、およびトレースが追跡されます。 プライベート データは、多くの場合、コードや HTTP 呼び出しのレベルで収集できます。 例外、要求、依存関係、およびトレース テーブルを確認して、このようなデータをすべて識別します。 可能な場所では[テレメトリ初期化子](../app/api-filtering-sampling.md)を使用してこのデータを難読化します。
+* *スナップショット デバッガーのキャプチャ*:Application Insights の[スナップショット デバッガー](../app/snapshot-debugger.md)機能では、アプリケーションの実稼働インスタンスで例外がキャッチされるたびにデバッグのスナップショットを収集できます。 スナップショットでは、例外と、スタックに含まれるすべてのステップのローカル変数の値にたどり着く完全なスタック トレースが公開されます。 残念ながら、この機能では、スナップ ポイントを選択的に削除したり、スナップショット内のデータにプログラムからアクセスしたりすることができません。 そのため、既定のスナップショット保有期間のペースではお客様のコンプライアンス要件が満たされない場合は、この機能を無効にすることをお勧めします。
 
 ## <a name="how-to-export-and-delete-private-data"></a>プライベート データをエクスポートして削除する方法
 
@@ -101,7 +101,7 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 
 #### <a name="log-data"></a>ログ データ
 
-* [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します 
+* [POST purge](/rest/api/loganalytics/workspacepurge/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します 
 * 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 次に例を示します。
 
     ```
@@ -113,7 +113,7 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 
 #### <a name="application-data"></a>アプリケーション データ
 
-* [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します
+* [POST purge](/rest/api/application-insights/components/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します
 * 消去状態の GET - 消去の POST 呼び出しは、"x-ms-status-location" ヘッダーを返します。ここには、消去 API の状態を確認するために呼び出せる URL が含まれます。 次に例を示します。
 
    ```
@@ -124,5 +124,6 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
 >  消去操作の大部分は、Application Insights で使用されるデータ プラットフォームへの影響が大きいため、SLA よりもずっと短期間に完了する場合があります。**消去操作の完了についての SLA は、30 日に設定されています**。
 
 ## <a name="next-steps"></a>次のステップ
-- Log Analytics のデータの収集方法、処理方法、保護方法については、「[Log Analytics データのセキュリティ](../../azure-monitor/platform/data-security.md)」をご覧ください。
-- Application Insights のデータが収集、処理、セキュリティ保護される方法について詳しくは、[Application Insights データのセキュリティ](../../azure-monitor/app/data-retention-privacy.md)に関するページをご覧ください。
+- Log Analytics のデータの収集方法、処理方法、保護方法については、「[Log Analytics データのセキュリティ](./data-security.md)」をご覧ください。
+- Application Insights のデータが収集、処理、セキュリティ保護される方法について詳しくは、[Application Insights データのセキュリティ](../app/data-retention-privacy.md)に関するページをご覧ください。
+

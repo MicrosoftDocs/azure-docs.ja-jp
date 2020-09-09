@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f5ff48f4d5a658a1bbb4e6b9fb4b3f0f3fb190f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81602684"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651029"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
@@ -136,7 +136,7 @@ VMware NSX-T 2.3 リリース時点:
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN に必要な論理スイッチ ID をフェッチする
 
-1. [NSX-T Manager](https://nsx-t-manager-ip-address) にサインインします。
+1. NSX-T Manager (`https://nsx-t-manager-ip-address`) にサインインします。
 2. **[Networking]\(ネットワーク\)**  >  **[Switching]\(スイッチ\)**  >  **[Switches]\(スイッチ\)**  >  **[<\Logical switch]\(<\論理スイッチ\)\>**  >  **[Overview]\(概要\)** を選択します。
 3. 拡張された論理スイッチの UUID をメモしておきます。これは、L2VPN を構成するときに必要になります。
 

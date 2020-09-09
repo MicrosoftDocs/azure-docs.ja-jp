@@ -2,13 +2,14 @@
 title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 2d33b7dddf29d37d174bdb7734e9048bc1658840
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235067"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206742"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -96,11 +97,15 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 * 関数を実装する [HttpExample.cs クラス ライブラリ ファイル](functions-dotnet-class-library.md#functions-class-library-project)。
 
+この時点で、[パラメーターを C# クラス ライブラリ関数に追加する](#add-input-and-output-bindings)ことにより、関数に入出力バインドを追加できます。
+
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * ルート フォルダー内の package.json ファイル。
 
 * [function.json 定義ファイル](functions-reference-node.md#folder-structure)と [index.js ファイル](functions-reference-node.md#exporting-a-function) (関数コードを含む Node.js ファイル) の格納先となる HttpExample フォルダー。
+
+この時点で、[function.json ファイルを変更する](#add-input-and-output-bindings)ことで、入出力バインディングを関数に追加できます。
 
 <!-- # [PowerShell](#tab/powershell)
 
@@ -113,8 +118,6 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 * An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
      -->
 ---
-
-この時点で、[function.json ファイルを変更する](#add-a-function-to-your-project)か、[パラメーターを C# クラス ライブラリ関数に追加する](#add-a-function-to-your-project)ことにより、関数に入出力バインドを追加できます。
 
 また、[新しい関数をプロジェクトに追加する](#add-a-function-to-your-project)こともできます。
 
@@ -267,13 +270,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 > [!IMPORTANT]
 > 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。
 
-1. Visual Studio Code で、F1 キーを選択してコマンド パレットを開きます。 コマンド パレットで、次のコマンドを探して実行します: **Azure Functions: Deploy to function app**。
-
-1. サインしていない場合は、**Azure にサインイン**するよう求められます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。 複数のサブスクリプションがある場合は、自分の関数アプリが含まれている**サブスクリプションを選択**します。
-
-1. Azure で既存の関数アプリを選択します。 関数アプリ内のすべてのファイルが上書きされるという警告が表示された場合は、 **[デプロイ]** を選択して警告を確認して続行します。
-
-プロジェクトが再構築され、再パッケージされて、Azure にアップロードされます。 既存のプロジェクトが新しいパッケージに置き換えられて、関数アプリが再起動します。
+[!INCLUDE [functions-republish-vscode](../../includes/functions-republish-vscode.md)]
 
 ## <a name="get-the-url-of-the-deployed-function"></a>デプロイされた関数の URL を取得する
 
@@ -299,7 +296,7 @@ Functions プロジェクトをローカルで実行するには、これらの�
 
     | Language | 要件 |
     | -------- | --------- |
-    | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI ツール](/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 以降](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) 推奨|

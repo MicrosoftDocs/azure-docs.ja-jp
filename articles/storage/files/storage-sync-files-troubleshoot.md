@@ -1,25 +1,25 @@
 ---
 title: Azure File Sync のトラブルシューティング | Microsoft Docs
-description: Azure File Sync の一般的な問題をトラブルシューティングします。
+description: Windows Server の Azure ファイル共有の高速キャッシュへの変換に使用可能な Azure File Sync での、デプロイに関する一般的な問題のトラブルシューティング。
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
-ms.date: 1/22/2019
+ms.topic: troubleshooting
+ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801318"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056263"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 この記事は、Azure File Sync のデプロイで発生する可能性がある問題のトラブルシューティングと解決を支援することを目的としています。 問題をさらに調査する必要がある場合に、システムから重要なログを収集する方法についても説明します。 ご質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
-1. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
+1. [Azure Storage に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure?product=storage)。
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。
 3. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
@@ -47,7 +47,7 @@ Windows Server 2012 R2 でサーバー エンドポイントを作成した後�
 driveletter:\ にアクセスできません。  
 パラメーターが正しくありません。
 
-解決するには、Windows Server 2012 R2 の最新更新プログラムをインストールし、サーバーを再起動します。
+この問題を解決するには、[KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) をインストールしてサーバーを再起動します。 新しい更新プログラムが既にインストールされているためにこの更新プログラムがインストールされない場合は、Windows Update にアクセスして、Windows Server 2012 R2 の最新の更新プログラムをインストールし、サーバーを再起動します。
 
 <a id="server-registration-missing-subscriptions"></a>**サーバー登録で一部の Azure サブスクリプションが一覧に表示されない**  
 ServerRegistration.exe を使用してサーバーを登録している場合、[Azure サブスクリプション] ドロップダウンをクリックしたとき、サブスクリプションが表示されません。
@@ -161,7 +161,7 @@ Reset-StorageSyncServer
 このエラーは、指定したサーバー エンドポイント パスが別のサーバー エンドポイントによって既に同期されている場合に発生します。 Azure File Sync では、同じディレクトリまたはボリュームを複数のサーバー エンドポイントで同期することはサポートされていません。
 
 <a id="-2160590967"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2160590967 または 0x80c80077) というエラーで失敗する**  
-このエラーは、サーバー エンドポイントのパスに孤立した階層化ファイルが含まれている場合に発生します。 サーバー エンドポイントが最近削除された場合は、孤立した階層化ファイルのクリーンアップが完了するまで待ちます。 孤立した階層化ファイルのクリーンアップが開始されると、イベント ID 6662 がテレメトリ イベント ログに記録されます。 孤立した階層化ファイルのクリーンアップが完了し、パスを使用してサーバー エンドポイントを再度作成できるようになったら、イベント ID 6661 が記録されます。 イベント ID 6661 が記録された後にサーバー エンドポイントの作成が失敗する場合は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」セクションの手順を実行して、孤立した階層化ファイルを削除します。
+このエラーは、サーバー エンドポイントのパスに孤立した階層化ファイルが含まれている場合に発生します。 サーバー エンドポイントが最近削除された場合は、孤立した階層化ファイルのクリーンアップが完了するまで待ちます。 孤立した階層化ファイルのクリーンアップが開始されると、イベント ID 6662 がテレメトリ イベント ログに記録されます。 孤立した階層化ファイルのクリーンアップが完了し、パスを使用してサーバー エンドポイントを再度作成できるようになったら、イベント ID 6661 が記録されます。 階層化されたファイルのクリーンアップが完了した後にサーバー エンドポイントの作成が失敗する場合、またはイベント ログがロールオーバーしたためにテレメトリ イベント ログにイベント ID 6661 が見つからない場合は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」セクションの手順を実行して、孤立した階層化ファイルを削除します。
 
 <a id="-2134347757"></a>**サーバー エンドポイントの削除が "MgmtServerJobExpired" (エラー コード: -2134347757 または 0x80c87013)** というエラーで失敗する  
 このエラーは、サーバーがオフラインの場合、またはネットワークに接続されていない場合に発生します。 サーバーを使用できなくなったら、ポータルでサーバーの登録を解除します。これで、サーバー エンドポイントが削除されます。 サーバー エンドポイントを削除するには、[Azure File Sync 使用したサーバーの登録解除](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)に関するセクションで説明されている手順を実行します。
@@ -226,7 +226,7 @@ Set-AzStorageSyncServerEndpoint `
 
 ![Azure portal のスクリーンショット](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="server"></a>[[サーバー]](#tab/server)
+# <a name="server"></a>[サーバー](#tab/server)
 イベント ビューアーの `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` にあるテレメトリ ログに移動します。 イベント 9102 は、完了した同期セッションに該当します。同期の最新の状態を調べるには、ID 9102 の最新のイベントを探します。 SyncDirection は、このセッションがアップロードとダウンロードのどちらだったかを示しています。 HResult が 0 の場合、同期セッションは成功しています。 HResult が 0 以外の場合は、同期中にエラーが発生したことを意味します。以下に示す一般的なエラーの一覧を参照してください。 PerItemErrorCount が 0 より大きい場合は、一部のファイルまたはフォルダーが正しく同期されなかったことを意味します。 HResult が 0 であるのに、PerItemErrorCount が 0 より大きい場合もあります。
 
 成功したアップロードの例を次に示します。 簡潔にするために、下の一覧では、各 9102 イベントに含まれる一部の値のみを示しています。 
@@ -261,7 +261,7 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 # <a name="portal"></a>[ポータル](#tab/portal1)
 同期グループ内で、問題のサーバー エンドポイントに移動して [同期アクティビティ] セクションを調べ、現在の同期セッション内のアップロード済みファイルとダウンロード済みファイルの数を確認します。 この状態は約 5 分遅れて表示されるため、この時間内に完了するほど小規模な同期セッションの場合は、ポータルでレポートされない可能性があります。 
 
-# <a name="server"></a>[[サーバー]](#tab/server)
+# <a name="server"></a>[サーバー](#tab/server)
 サーバーのテレメトリ ログ (イベント ビューアーで [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] に移動) で、最新の 9302 イベントを調べます。 このイベントは、現在の同期セッションの状態を示します。 TotalItemCount は同期が必要なファイルの数、AppliedItemCount はこれまでに同期されたファイルの数、PerItemErrorCount は同期が失敗しているファイルの数 (処理方法については後で説明します) を示します。
 
 ```
@@ -283,7 +283,7 @@ PerItemErrorCount: 1006.
 - [同期アクティビティ] フィールドに表示された残りの同期ファイル数が非常に少ないか、0 であること。
 - アップロードとダウンロードの両方で、[Files Not Syncing]\(同期していないファイル数\) フィールドが 0 であること。
 
-# <a name="server"></a>[[サーバー]](#tab/server)
+# <a name="server"></a>[サーバー](#tab/server)
 完了した同期セッションを調べます。これは、各サーバーのテレメトリ イベント ログ (イベント ビューアーで `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` に移動) で 9102 イベントとマークされています。 
 
 1. 特定のサーバー上で、アップロード セッションとダウンロード セッションが正常に完了したことを確認します。 そのためには、アップロードとダウンロードの両方で HResult と PerItemErrorCount が 0 であることを確認します (SyncDirection フィールドは、そのセッションがアップロード セッションとダウンロード セッションのどちらであるかを示します)。 最近完了した同期セッションが表示されていない場合は、同期セッションが現在進行中である可能性があります。この状況は、大量のデータを追加または変更した直後に発生することがあります。
@@ -315,6 +315,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | サーバー上の階層化されたファイルにアクセスできません。 この問題は、サーバー エンドポイントを削除する前に、階層化されたファイルが取り消されなかった場合に発生します。 | この問題を解決する方法は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 エラーが数日間継続する場合は、PowerShell の FileSyncErrorsReport.ps1 スクリプトを使用して、依存フォルダーがなぜまだ同期されないかを確認します。 |
+| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 エラーが数日間継続する場合は、PowerShell の FileSyncErrorsReport.ps1 スクリプトを使用して、依存フォルダーがなぜまだ同期されないかを確認します。 |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | 依存フォルダーがまだ同期されておらず、同期セッションが失敗したため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 エラーが引き続き発生する場合は、同期セッションの失敗を調査します。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
@@ -337,7 +338,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 競合ファイルの最大数に達したため、ファイルを同期できません。 Azure File Sync は、1 つのファイルにつき 100 個の競合ファイルをサポートします。 ファイル競合の詳細については、Azure File Sync の[よく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) を参照してください。 | この問題を解決するには、競合ファイルの数を減らします。 競合ファイルの数が 100 個未満になると、ファイルは同期されます。 |
 
 #### <a name="handling-unsupported-characters"></a>サポートされていない文字の処理
-**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x8007007b または 0x80c80255) が示されている場合は、該当するファイル名から問題のある文字を削除するか、ファイル名を変更する必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-cmdlet)を使用して、サポートされていない文字を識別できます。
+**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因で項目単位の同期エラー (エラー コード 0x8007007b または 0x80c80255) が示されている場合は、該当するファイル名から問題のある文字を削除するか、ファイル名を変更する必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-cmdlet)を使用して、サポートされていない文字を識別できます。 データセットに無効な文字が含まれている複数のファイルがある場合は、[ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) スクリプトを使用して、サポートされていない文字を含むファイルの名前を変更します。
 
 下の表に、Azure File Sync でまだサポートされていない Unicode 文字をすべて示します。
 
@@ -552,13 +553,13 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 
 このエラーは、Azure サブスクリプションが中断されている場合に発生します。 Azure サブスクリプションが復元されると、同期は再度有効になります。 詳細については、「[私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。](../../cost-management-billing/manage/subscription-disabled.md)」を参照してください。
 
-<a id="-2134364052"></a>**ストレージ アカウントにファイアウォールまたは仮想ネットワークが構成されています。**  
+<a id="-2134375618"></a>**ストレージ アカウントにファイアウォールまたは仮想ネットワークが構成されています。**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
-| **HRESULT (10 進値)** | -2134364052 |
-| **エラー文字列** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
+| **HRESULT** | 0x80c8033e |
+| **HRESULT (10 進値)** | -2134375618 |
+| **エラー文字列** | ECS_E_SERVER_BLOCKED_BY_NETWORK_ACL |
 | **修復が必要か** | はい |
 
 このエラーは、ストレージ アカウントにファイアウォールがあるか、またはストレージ アカウントが仮想ネットワークに属しているという理由により、Azure ファイル共有にアクセスできない場合に発生します。 ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します。 詳細については、「[ファイアウォールと仮想ネットワークの設定を構成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」を参照してください。 
@@ -689,7 +690,9 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT (10 進値)** | -1906441711 |
 | **エラー文字列** | JET_errLogDiskFull |
 | **修復が必要か** | はい |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (10 進値)** | -2134375654 |
 | **エラー文字列** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
@@ -716,12 +719,16 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT (10 進値)** | -2134375877 |
 | **エラー文字列** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **修復が必要か** | はい |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (10 進値)** | -2134375908 |
 | **エラー文字列** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **修復が必要か** | はい |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (10 進値)** | -2134375853 |
 | **エラー文字列** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
@@ -1087,6 +1094,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT (10 進値) | エラー文字列 | 問題 | Remediation |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 初期アップロードが進行中のため、ファイルを階層化できませんでした。 | 必要なアクションはありません。 初期アップロードが完了したら、ファイルは階層化されます。 |
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | ファイルは使用中のため、階層化できませんでした。 | 必要なアクションはありません。 ファイルは使用されなくなると階層化されます。 |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | ファイルは同期によって除外されているため、階層化できませんでした。 | 必要なアクションはありません。 同期除外リスト内のファイルは階層化できません。 |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | ファイルはサーバー上で見つからなかったため、階層化できませんでした。 | 必要なアクションはありません。 エラーが引き続き発生する場合は、ファイルがサーバー上に存在するかどうかを確認します。 |
@@ -1108,6 +1116,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | ネットワークの問題が発生したため、ファイルを階層化できませんでした。 | 必要なアクションはありません。 エラーが引き続き発生する場合は、Azure ファイル共有へのネットワーク接続を確認します。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | ファイルは変更されているため、階層化できませんでした。 | 必要なアクションはありません。 ファイルは、変更されたファイルが Azure ファイル共有と同期されると階層化されます。 |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | システム リソースが不足しているため、ファイルを階層化できませんでした。 | エラーが引き続き発生する場合は、どのアプリケーションまたはカーネル モード ドライバーがシステム リソースを消費しているかを調べます。 |
+| 0x8e5e03fe | -1906441218 | JET_errDiskIO | クラウドを使った階層化のデータベースへの書き込み中に I/O エラーが発生したため、ファイルを階層化できませんでした。 | エラーが引き続き発生する場合は、ボリュームで chkdsk を実行して、ストレージのハードウェアを確認してください。 |
+| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | クラウドを使った階層化のデータベースが実行されていないため、ファイルを階層化できませんでした。 | この問題を解決するには、FileSyncSvc サービスまたはサーバーを再起動します。 エラーが引き続き発生する場合は、ボリュームで chkdsk を実行して、ストレージのハードウェアを確認してください。 |
 
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 2c021a6d10c95b58ac444de8ea895ca01371a2b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75902454"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243547"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management のポリシーにおけるエラー処理
 
@@ -51,7 +51,7 @@ Azure API Management のポリシーは、次の例で示すとおり、`inbound
 `on-error` ポリシー セクションは、任意のスコープで使用できます。 API パブリッシャーは、イベント ハブへのエラーの記録や、呼び出し元に戻るための新しい応答の作成などのカスタム動作を構成できます。
 
 > [!NOTE]
-> `on-error` セクションは、既定ではポリシーに存在しません。 `on-error` セクションをポリシーに追加するには、ポリシー エディターで目的のポリシーを参照し、このセクションを追加します。 ポリシーを構成する方法の詳細については、「[Azure API Management のポリシー](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)」を参照してください。
+> `on-error` セクションは、既定ではポリシーに存在しません。 `on-error` セクションをポリシーに追加するには、ポリシー エディターで目的のポリシーを参照し、このセクションを追加します。 ポリシーを構成する方法の詳細については、「[Azure API Management のポリシー](./api-management-howto-policies.md)」を参照してください。
 >
 > `on-error` セクションがない場合、エラーが発生すると、呼び出し元は 400 または 500 HTTP 応答メッセージを受信します。
 
@@ -71,12 +71,16 @@ Azure API Management のポリシーは、次の例で示すとおり、`inbound
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
+-   [limit-concurrency](api-management-advanced-policies.md#LimitConcurrency)
+-   [mock-response](api-management-advanced-policies.md#mock-response)
+-   [retry](api-management-advanced-policies.md#Retry)
+-   [trace](api-management-advanced-policies.md#Trace)
 
 ## <a name="lasterror"></a>lastError
 
 エラーが発生し、コントロールが `on-error` ポリシー セクションにジャンプすると、エラーは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティ内に格納されます。これには、`on-error` セクションにあるポリシーがアクセス可能です。 LastError のプロパティは次のとおりです。
 
-| Name       | 種類   | 説明                                                                                               | 必須 |
+| 名前       | Type   | 説明                                                                                               | 必須 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | string | エラーが発生した要素を指定します。 ポリシーまたは組み込みパイプライン ステップ名のいずれかになります。      | はい      |
 | `Reason`   | string | エラー処理に使用できる、マシンに適したエラー コード。                                       | いいえ       |
@@ -185,5 +189,5 @@ API ポリシーを次のように設定します。
 
 -   [API Management のポリシー](api-management-howto-policies.md)
 -   [API を変換する](transform-api.md)
--   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
+-   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 -   [ポリシーのサンプル](policy-samples.md)

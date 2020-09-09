@@ -6,21 +6,21 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654394"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539654"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Network Performance Monitor の価格の変更
 
-お客様のフィードバックを参考にして、最近、Azure のさまざまな監視サービスに[新しい価格エクスペリエンス](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)が導入されました。 この記事では、Azure [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) に関連する価格の変更を、読みやすい質問と回答の形式で説明します。
+お客様のフィードバックを参考にして、最近、Azure のさまざまな監視サービスに[新しい価格エクスペリエンス](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)が導入されました。 この記事では、Azure [Network Performance Monitor](../../networking/network-monitoring-overview.md) (NPM) に関連する価格の変更を、読みやすい質問と回答の形式で説明します。
 
 Network Performance Monitor は 3 つのコンポーネントで構成されます。
-* [パフォーマンス モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [サービス エンドポイント モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [パフォーマンス モニター](../../networking/network-monitoring-overview.md#performance-monitor)
+* [サービス エンドポイント モニター](../../networking/network-monitoring-overview.md)
+* [ExpressRoute モニター](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 以降のセクションで、NPM コンポーネントの価格の変更について説明します。
 
@@ -112,4 +112,3 @@ ExpressRoute でプライベート ピアリング接続を監視する場合、
 ## <a name="references"></a>References
 
 [Log Analytics の価格に関する FAQ](https://azure.microsoft.com/pricing/details/log-analytics/):FAQ のセクションには、Free レベル、ノード単位の価格、価格に関するその他の詳細についての情報があります。
-

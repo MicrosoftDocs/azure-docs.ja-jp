@@ -5,15 +5,15 @@ description: Azure portal を使用してレガシの Direct ピアリングを 
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e49e4d5debe63b99039bbafbc14f7788367314f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 496774f034c861131624b552b1acefca9f399ea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700265"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Azure portal を使用してレガシの Direct ピアリングを Azure リソースに変換する
 
@@ -32,7 +32,28 @@ ms.locfileid: "81678858"
 
 ### <a name="convert-a-legacy-direct-peering"></a><a name=create></a>レガシの Direct ピアリングを変換する
 
-**Peering** リソースを使用して、レガシのピアリング接続を変換できます。
+インターネット サービス プロバイダーは[ピアリングの作成]( https://go.microsoft.com/fwlink/?linkid=2129593)を利用してレガシの Direct ピアリング接続を変換できます。
+
+1. **[ピアリングの作成]** ページの **[基本]** タブで、次のようにボックスに入力します。
+
+    > [!div class="mx-imgBorder"] 
+    > ![Peering Service の登録](./media/setup-basics-tab.png)
+
+*    お使いの Azure サブスクリプションを選択します。
+
+* [リソース グループ] では、ボックスの一覧から既存のリソース グループを選択するか、[新規作成] を選択して新しいグループを作成します。 この例では、新しいリソース グループを作成します。
+
+* [名前] は、リソース名に対応し、任意の名前を選択できます。
+
+* 既存のリソース グループを選択した場合、[リージョン] は自動的に選択されます。 新しいリソース グループの作成を選択した場合は、リソースを配置する Azure リージョンも選択する必要があります。
+
+>[!NOTE]
+>リソース グループを配置するリージョンは、Microsoft とのピアリングを作成する場所とは関係ありません。 ただし、最も近い Azure リージョンにリソース グループを配置して、使用するピアリング リソースをそこで整理することをお勧めします。 たとえば、Ashburn でのピアリングの場合、米国東部または米国東部 2 にリソース グループを作成できます。
+
+* **[PeerASN]** ボックスで、使用する ASN を選択します。
+
+>[!IMPORTANT] 
+>選択できるのは、ピアリング要求を送信する前に ValidationState が "Approved" になっている ASN だけです。 PeerAsn 要求を送信した直後であれば、ASN の関連付けが承認されるまで 12 時間程度かかります。 選択した ASN が検証待ちの場合、エラー メッセージが表示されます。 選択する必要がある ASN が表示されない場合は、適切なサブスクリプションを選択しているかどうかを確認します。 選択している場合は、「 **[ピア ASN を Azure サブスクリプションに関連付ける](https://go.microsoft.com/fwlink/?linkid=2129592)** 」を参照して、PeerAsn を既に作成したかどうかを確認します。
 
 #### <a name="launch-the-resource-and-configure-basic-settings"></a>リソースを起動して基本設定を構成する
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]

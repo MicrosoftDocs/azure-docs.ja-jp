@@ -1,18 +1,18 @@
 ---
 title: パートナー センターでの Microsoft コマーシャル マーケットプレース向け分析
 description: 分析レポートにアクセスして、売上を監視し、パフォーマンスを評価し、Microsoft Partner Center でのマーケットプレースのオファーを最適化する方法について説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: rajap
+ms.author: rajap
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 6fd42e7661e04b6eab35e3b076e9c8c2fb55a363
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744907"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122015"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする
 

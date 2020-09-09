@@ -3,21 +3,21 @@ title: 一般的な Azure CLI コマンド
 description: Azure Resource Manager モードで VM を管理する際に使用する一般的な Azure CLI コマンドについて説明します
 author: RicksterCDN
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969250"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372248"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Azure リソースを管理するための一般的な Azure CLI コマンド
 
 Azure CLI を使用すると、macOS、Linux、Windows 上の Azure リソースを作成および管理できます。 この記事では、仮想マシン (VM) の作成および管理に使用する最も一般的なコマンドの一部について詳しく説明します。
 
-この記事では、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](/azure/cloud-shell/quickstart) を使用することもできます。
+この記事では、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 ブラウザーから [Cloud Shell](../../cloud-shell/quickstart.md) を使用することもできます。
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI での 基本的な Azure Resource Manager コマンド
 特定のコマンド ライン スイッチやオプションの詳細については、「`az <command> <subcommand> --help`」と入力して、コマンドのオンライン ヘルプとオプションを使用します。
@@ -60,6 +60,3 @@ Azure CLI を使用すると、macOS、Linux、Windows 上の Azure リソース
 
 ## <a name="next-steps"></a>次のステップ
 CLI コマンドの他の例については、チュートリアル「[Azure CLI を使用した Linux VM の作成と管理](tutorial-manage-vm.md)」を参照してください。
-
-
-

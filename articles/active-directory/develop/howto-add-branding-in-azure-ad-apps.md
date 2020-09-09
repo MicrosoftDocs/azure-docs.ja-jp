@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884428"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117296"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 
@@ -61,7 +61,7 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 ## <a name="visual-guidance-for-app-acquisition"></a>アプリケーションの取得の表示に関するガイダンス
 
-"アプリケーションの入手" リンクでは、ユーザーを Azure AD のアクセス権の付与 (承認) ページにリダイレクトする必要があります。これにより、組織の管理者は、Microsoft がホストする組織のデータへのアクセス権をアプリケーションに付与できます。 アクセス権の要求方法の詳細については、記事「[Azure Active Directory とアプリケーションの統合](quickstart-v1-integrate-apps-with-azure-ad.md)」を参照してください。
+"アプリケーションの入手" リンクでは、ユーザーを Azure AD のアクセス権の付与 (承認) ページにリダイレクトする必要があります。これにより、組織の管理者は、Microsoft がホストする組織のデータへのアクセス権をアプリケーションに付与できます。 アクセス権の要求方法の詳細については、記事「[Azure Active Directory とアプリケーションの統合](./quickstart-register-app.md)」を参照してください。
 
 管理者は、アプリケーションに同意したら、ユーザーの Office 365 アプリ起動ツール (ワッフルおよび [https://portal.office.com/myapps](https://portal.office.com/myapps)からアクセス可能) にアプリケーションを追加することを選択できます。 この機能を公表する場合は、"このアプリケーションを組織に追加" のような言葉を使って、次のようなボタンを表示できます。
 

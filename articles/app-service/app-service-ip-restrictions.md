@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639267"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962963"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限
 
@@ -60,6 +60,10 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 サービス エンドポイントにより、Application Gateway やその他の WAF デバイスを使用してアプリを構成することができます。 また、セキュリティで保護されたバックエンドを使用して多層アプリケーションを構成することもできます。 いくつかの方法の詳細については、[ネットワーク機能と App Service](networking-features.md) に関する記事と、「[サービス エンドポイントと Application Gateway の統合](networking/app-gateway-with-service-endpoints.md)」を参照 してください。
 
+> [!NOTE]
+> 現在のところ、IP SSL 仮想 IP (VIP) を使用する Web アプリにはサービス エンドポイントがサポートされていません。 
+>
+
 ## <a name="managing-access-restriction-rules"></a>アクセス制限規則の管理
 
 任意の行をクリックして、既存のアクセス制限規則を編集できます。 優先順位の変更を含め、編集内容はすぐに有効になります。
@@ -90,7 +94,7 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>アクセス制限規則のプログラムによる操作 ##
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) と [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) では、アクセス制限の編集がサポートされています。 Azure CLI を使用してアクセス制限を追加する例:
+[Azure CLI](/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) と [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) では、アクセス制限の編集がサポートされています。 Azure CLI を使用してアクセス制限を追加する例:
 
 ```azurecli-interactive
 az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
@@ -103,7 +107,7 @@ Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName
     -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
 ```
 
-リソース マネージャーのアプリ構成で [Azure REST API](https://docs.microsoft.com/rest/api/azure/) の PUT 操作を使用するか、Azure Resource Manager テンプレートを使用して、値を手動で設定することもできます。 たとえば、resources.azure.com を使用して ipSecurityRestrictions ブロックを編集して、必要な JSON を追加することができます。
+リソース マネージャーのアプリ構成で [Azure REST API](/rest/api/azure/) の PUT 操作を使用するか、Azure Resource Manager テンプレートを使用して、値を手動で設定することもできます。 たとえば、resources.azure.com を使用して ipSecurityRestrictions ブロックを編集して、必要な JSON を追加することができます。
 
 Resource Manager におけるこの情報の場所は次のとおりです。
 
@@ -135,4 +139,4 @@ management.azure.com/subscriptions/ **<サブスクリプション ID>** /resour
 [サービス エンドポイントと Application Gateway の統合](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
-[serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
+[serviceendpoints]: ../virtual-network/virtual-network-service-endpoints-overview.md

@@ -3,25 +3,25 @@ title: Azure AD アプリケーション プロキシのワイルドカード �
 description: Azure Active Directory アプリケーション プロキシでワイルドカード アプリケーションを使用する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367735"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 内部 URL と外部 URL の両方が次の形式の場合、ワイルドカードでアプリケーションを発行できます。
 
-> http(s)://*.\<ドメイン\>
+> http(s)://*。\<domain\>
 
 (例: `http(s)://*.adventure-works.com`)。
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 1. Azure 内で確認済みドメインを作成する。
 1. PFX 形式の TLS/SSL 証明書をアプリケーション プロキシにアップロードする。
 
-作成する予定のアプリケーションに一致するワイルドカード証明書を使用することを検討する必要があります。 または、特定のアプリケーションのみが記載された証明書を使用することもできます。 この場合、証明書に記載されているアプリケーションのみが、ワイルドカード アプリケーションを通じてアクセス可能になります。
+作成する予定のアプリケーションに一致するワイルドカード証明書を使用することを検討する必要があります。 
 
 セキュリティ上の理由から、これは厳格な要件になっています。外部 URL にカスタム ドメインを使用できないアプリケーションのワイルドカードはサポートされません。
 

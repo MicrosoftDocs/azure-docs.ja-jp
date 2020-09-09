@@ -1,7 +1,7 @@
 ---
 title: API Management でクライアント証明書認証を使用して API を保護する
 titleSuffix: Azure API Management
-description: クライアント証明書を使用して API へのアクセスを保護する方法の詳細
+description: クライアント証明書を使用して API へのアクセスを保護する方法について説明します。 ポリシー式を使用して、受信証明書を検証できます。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76713137"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904866"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
 
 API Management には、クライアント証明書を使用して API (つまりクライアントから API Management) へのアクセスを保護する機能が備わっています。 受信証明書を検証し、ポリシー式を使用してその証明書のプロパティを目的の値に対して確認することができます。
 
-クライアント証明書を使用して API のバックエンド サービスへの (つまり、API Management からバックエンドへの) アクセスをセキュリティで保護する方法については、[クライアント証明書認証を使用してバックエンド サービスをセキュリティで保護する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)に関するページを参照してください。
+クライアント証明書を使用して API のバックエンド サービスへの (つまり、API Management からバックエンドへの) アクセスをセキュリティで保護する方法については、[クライアント証明書認証を使用してバックエンド サービスをセキュリティで保護する方法](./api-management-howto-mutual-certificates.md)に関するページを参照してください。
 
 > [!IMPORTANT]
 > Developer、Basic、Standard、または Premium レベルで HTTP/2 経由でクライアント証明書を受信して確認するには、次に示すように、[カスタム ドメイン] ブレードで [クライアント証明書のネゴシエート] 設定を有効にする必要があります。
@@ -97,7 +97,7 @@ API Management には、クライアント証明書を使用して API (つま�
 
 ![[Negotiate client certificate] (クライアント証明書をネゴシエートする)](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
--   [クライアント証明書認証を使用してバックエンド サービスを保護する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [証明書のアップロード方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [クライアント証明書認証を使用してバックエンド サービスを保護する方法](./api-management-howto-mutual-certificates.md)
+-   [証明書のアップロード方法](./api-management-howto-mutual-certificates.md)

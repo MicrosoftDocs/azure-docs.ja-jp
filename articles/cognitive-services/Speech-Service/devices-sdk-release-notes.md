@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780914"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212498"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK
 
@@ -42,7 +42,7 @@ ms.locfileid: "82780914"
 - Windows ユーザーは、`AudioConfig.fromDefaultMicrophoneInput()` または`AudioConfig.fromMicrophoneInput(deviceName)` を使用して、使用するマイクを指定できます。
 - ライブラリのサイズが最適化されました。
 - 同じ音声/意図認識オブジェクトを使用したマルチターン認識のサポート。
-- 認識の停止中に発生する可能性のある不定期なハングを修正。
+- 認識の停止中にプロセスが応答を停止する可能性のある問題を修正しました。
 - サンプル アプリに、ファイルの形式を示す participants.properties サンプル ファイルが追加されました。
 - [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.7.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
 

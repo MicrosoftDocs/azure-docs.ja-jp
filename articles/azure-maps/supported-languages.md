@@ -1,19 +1,19 @@
 ---
 title: ローカライズのサポート | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps のサービス向けにサポートされている言語について学習します。
-author: philmea
-ms.author: philmea
+description: Azure Maps では、マップ、検索、ルーティング、天気、交通事故などのサービスが、どのリージョンでサポートされているかを確認してください。 View パラメーターの設定方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334064"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037696"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps でのローカライズのサポート
 
@@ -46,7 +46,7 @@ Azure Maps は、そのサービス全体にわたってさまざまな言語に
 | en-AU      | 英語 (オーストラリア)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-NZ      | 英語 (ニュージーランド)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | 英語 (英国) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-US      | 英語 (米国)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| ja-JP      | 英語 (米国)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | エストニア語               |       |    ✓   |         |      ✓    |         ✓         |                |
 | fil-PH     | フィリピン語               |       |       |         |     ✓    |                   |                |
 | fi-FI      | フィンランド語                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -110,39 +110,39 @@ Azure Maps は、そのサービス全体にわたってさまざまな言語に
 > 2019 年 8 月 1 日以降、**View** パラメーターで、上記の新しい地域および国に対して返されるマップ コンテンツが定義されます。 Azure Maps の **View** パラメーター ("ユーザーの地域のパラメーター" とも呼ばれます) は 2 文字の ISO-3166 の国番号であり、マップ上に表示される国境やラベルなど、その国/地域にとって正しいマップが Azure Maps サービスを介して表示されます。 
 
 必要に応じて、ご自分のサービスに使用されている REST API および SDK に **View** パラメーターを設定してください。
->  
->
->  **Rest API:**
->  
->  必要に応じて View パラメーターを設定します。 View パラメーターには、Azure Maps サービスを介して返される地政学的な紛争のあるコンテンツのセットを指定します。 
->
->  影響を受ける Azure Maps REST サービス:
->    
->    * Get Map Tile
->    * Get Map Image 
->    * Get Search Fuzzy
->    * Get Search POI
->    * Get Search POI Category
->    * Get Search Nearby
->    * Get Search Address
->    * Get Search Address Structured
->    * Get Search Address Reverse
->    * Get Search Address Reverse Cross Street
->    * Post Search Inside Geometry
->    * Post Search Address Batch Preview
->    * Post Search Address Reverse Batch Preview
->    * Post Search Along Route
->    * Post Search Fuzzy Batch Preview
->
->    
->  **SDK:**
->
->  必要に応じて **View** パラメーターを設定し、Web SDK と Android SDK の最新バージョンを用意してください。 影響を受ける SDK:
->
->    * Azure Maps Web SDK
->    * Azure Maps Android SDK
+  
 
-要求で定義していない場合でも、既定で View パラメーターは **Unified** に設定されています。 ユーザーの場所を確認します。 次に、その場所の **View** パラメーターを正しく設定します。 または、要求の IP アドレスに基づいてマップ データを返す 'View = Auto' を設定することができます。  Azure Maps の **View** パラメーターは、Azure Maps へのアクセスを承認されたマップ、イメージ、およびその他のデータとサード パーティ コンテンツを表示できる国のマッピングに関する法律など、該当する法律に準拠していなければなりません。
+### <a name="rest-apis"></a>Rest API
+  
+必要に応じて View パラメーターを設定します。 View パラメーターには、Azure Maps サービスを介して返される地政学的な紛争のあるコンテンツのセットを指定します。 
+
+影響を受ける Azure Maps REST サービス:
+    
+ * Get Map Tile
+ * Get Map Image 
+ * Get Search Fuzzy
+ * Get Search POI
+ * Get Search POI Category
+ * Get Search Nearby
+ * Get Search Address
+ * Get Search Address Structured
+ * Get Search Address Reverse
+ * Get Search Address Reverse Cross Street
+ * Post Search Inside Geometry
+ * Post Search Address Batch Preview
+ * Post Search Address Reverse Batch Preview
+ * Post Search Along Route
+ * Post Search Fuzzy Batch Preview
+
+ 
+### <a name="sdks"></a>SDK
+
+必要に応じて **View** パラメーターを設定し、Web SDK と Android SDK の最新バージョンを用意してください。 影響を受ける SDK:
+
+ * Azure Maps Web SDK
+ * Azure Maps Android SDK
+
+要求で定義していない場合でも、既定で View パラメーターは **Unified** に設定されています。 ユーザーの場所を確認します。 次に、その場所の **View** パラメーターを正しく設定します。 または、要求の IP アドレスに基づいてマップ データを返す 'View = Auto' を設定することができます。  Azure Maps の **View** パラメーターは、Azure Maps へのアクセスを承認されたマップ、イメージ、およびその他のデータとサード パーティ コンテンツを表示できる国/地域のマッピングに関する法律など、該当する法律に準拠していなければなりません。
 
 
 次の表に、サポートされるビューを示します。

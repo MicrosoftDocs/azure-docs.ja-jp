@@ -4,32 +4,34 @@ description: このクイック スタートでは、IoT Edge デバイスを作
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/06/2019
+ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 54efe7b5c392ad2b4cc3a0de414e04951b268508
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78674239"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061491"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>クイック スタート:初めての IoT Edge モジュールを仮想 Windows デバイスにデプロイする
 
-コンテナー化されたコードを IoT Edge 仮想デバイスにデプロイして、Azure IoT Edge を試してみましょう。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイスに Azure 仮想マシンを使用することをお勧めします。 仮想マシンを使用することにより、テスト マシンをすばやく作成し、前提条件をインストールし、さらにテストが完了したら削除することができます。
+このクイックスタートでは、コンテナー化されたコードを Windows IoT Edge 仮想デバイスに配置して、Azure IoT Edge を使ってみます。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイスに Azure 仮想マシンを使用することをお勧めします。 仮想マシンを使用することにより、テスト マシンをすばやく作成し、前提条件をインストールし、さらにテストが完了したら削除することができます。
 
 このクイック スタートでは、次の方法について説明します。
 
-1. IoT Hub を作成します。
-2. IoT Edge デバイスを IoT ハブに登録します。
-3. IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
-4. モジュールを IoT Edge デバイスにリモートでデプロイし、テレメトリを IoT Hub に送信します。
+> [!div class="checklist"]
+>
+> * IoT Hub を作成します。
+> * IoT Edge デバイスを IoT ハブに登録します。
+> * IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+> * モジュールを IoT Edge デバイスにリモートでデプロイし、テレメトリを IoT Hub に送信します。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart/install-edge-full.png)
 
-このクイックスタートでは、Windows 仮想マシンを作成し、IoT Edge デバイスとして構成する手順について説明します。 その後、モジュールを Azure portal からご自身のデバイスに展開できます。 このクイック スタートで展開するモジュールは、温度、湿度、および圧力のデータを生成するシミュレートされたセンサーです。 その他の Azure IoT Edge チュートリアルは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析するモジュールを展開します。
+このクイックスタートでは、Windows 仮想マシンを作成し、IoT Edge デバイスとして構成する手順について説明します。 その後、Azure portal からご自身のデバイスにモジュールを配置します。 このクイックスタートで使用されているモジュールは、温度、湿度、圧力のデータを生成するシミュレートされたセンサーです。 他の Azure IoT Edge チュートリアルでは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析する追加のモジュールを配置しています。
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 
@@ -55,7 +57,7 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
    az group create --name IoTEdgeResources --location westus2
    ```
 
-IoT Edge デバイス: 
+IoT Edge デバイス:
 
 * IoT Edge デバイスとして機能する Windows 仮想マシン。 この仮想マシンを作成するには、次のコマンドを使用します。`{password}` は、セキュリティで保護されたパスワードに置き換えます。
 
@@ -63,7 +65,9 @@ IoT Edge デバイス:
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  新しい仮想マシンを作成して起動するまでに数分かかる場合があります。 その後、仮想マシンに接続するときに使用するための RDP ファイルをダウンロードできます。
+  新しい仮想マシンを作成して起動するまでに数分かかる場合があります。
+
+  仮想マシンが起動したら、仮想マシンに接続するときに使用する RDP ファイルをダウンロードできます。
 
   1. Azure portal で、新しい Windows 仮想マシンに移動します。
   1. **[接続]** を選択します。
@@ -72,6 +76,8 @@ IoT Edge デバイス:
   リモート デスクトップ接続でこのファイルを開き、`az vm create` コマンドで指定した管理者名とパスワードを使用して Windows 仮想マシンに接続します。
 
 > [!NOTE]
+> Windows 仮想マシンは、Windows バージョン 1809 (ビルド 17763) を使用して起動されます。これは、最新の [Windows の長期サポートのビルド](https://docs.microsoft.com/windows/release-information/)です。 既定では、Windows は 22 時間ごとに自動的に更新プログラムをチェックします。 仮想マシンのチェックが完了したら、Windows 用の IoT Edge と互換性のないバージョンの更新プログラムがプッシュされ、Windows 用の IoT Edge の機能をそれ以上使用できなくなります。 仮想マシンの使用を 22 時間以内に制限するか、[Windows の更新プログラムを一時的に停止する](https://support.microsoft.com/help/4028233/windows-10-manage-updates)ことをお勧めします。
+>
 > このクイックスタートでは、わかりやすくするための Windows デスクトップの仮想マシンを使用します。 運用シナリオ向けに一般提供されている Windows オペレーティング システムについては、「[Azure IoT Edge のサポートされるシステム](support.md)」を参照してください。
 >
 > IoT Core を実行しているデバイスなど、IoT Edge 用に独自の Windows デバイスを構成する準備ができたら、「[Windows に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-windows.md)」の手順を行います。
@@ -82,9 +88,9 @@ IoT Edge デバイス:
 
 ![図 - クラウドで IoT ハブを作成する](./media/quickstart/create-iot-hub.png)
 
-このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用できます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。
+このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、ハブを作成済みである場合は、その IoT ハブを使用することができます。
 
-次のコードにより、無料の **F1** ハブがリソース グループ `IoTEdgeResources` に作成されます。 `{hub_name}` は、実際の IoT ハブの一意の名前に置き換えてください。
+次のコードにより、無料の **F1** ハブがリソース グループ `IoTEdgeResources` に作成されます。 `{hub_name}` は、実際の IoT ハブの一意の名前に置き換えてください。 IoT ハブの作成には数分かかることがあります。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -104,12 +110,12 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
 1. Azure Cloud Shell で、次のコマンドを入力して、**myEdgeDevice** という名前のデバイスをハブに作成します。
 
    ```azurecli-interactive
-   az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
+   az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
    ```
 
    iothubowner ポリシー キーに関するエラーが表示された場合は、Cloud Shell で最新バージョンの azure-iot 拡張機能が実行されていることを確認してください。
 
-2. デバイスの接続文字列を取得します。この接続文字列により、IoT Hub 内で物理デバイスとその ID をリンクさせます。
+2. デバイスの接続文字列を確認します。この接続文字列により、IoT Hub 内で物理デバイスとその ID をリンクさせます。 これには、IoT ハブの名前、デバイスの名前、2 つの間の接続を認証する共有キーが含まれています。
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
@@ -124,7 +130,7 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
 Azure IoT Edge ランタイムを IoT Edge デバイスにインストールし、デバイスの接続文字列を使用してその構成を行います。
 ![図 - デバイスでランタイムを開始する](./media/quickstart/start-runtime.png)
 
-IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 **IoT Edge セキュリティ デーモン**は、IoT Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 **IoT Edge エージェント**は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールのデプロイと監視を管理します。 **IoT Edge ハブ**は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を処理します。
+IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 *IoT Edge セキュリティ デーモン*は、IoT Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 *IoT Edge エージェント*は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールのデプロイと監視を管理します。 *IoT Edge ハブ*は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を処理します。
 
 インストール スクリプトには、IoT Edge デバイス上のコンテナー イメージを管理する Moby というコンテナー エンジンも含まれています。
 
@@ -171,7 +177,7 @@ PowerShell を使用して IoT Edge ランタイムをダウンロードし、�
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge ランタイムの状態を確認する
 
-ランタイムが正常にインストールされ、構成されていることを確認します。
+ランタイムが正常にインストールされ、構成されていることを確認します。 インストールが完了し、IoT Edge エージェント モジュールが起動するまでに数分かかる場合があります。
 
 1. IoT Edge サービスの状態を確認します。
 
@@ -193,22 +199,21 @@ PowerShell を使用して IoT Edge ランタイムをダウンロードし、�
 
    ![ご自身のデバイス上の 1 つのモジュールを表示する](./media/quickstart/iotedge-list-1.png)
 
-インストールが完了し、IoT Edge エージェント モジュールが起動するまでに数分かかる場合があります。
-
 IoT Edge デバイスの構成はこれで完了です。 クラウドからモジュールをデプロイして実行することができます。
 
 ## <a name="deploy-a-module"></a>モジュールを展開する
 
 Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統計情報を送信するモジュールをデプロイします。
-![図 - クラウドからデバイスにモジュールを展開する](./media/quickstart/deploy-module.png)
+
+![図 - クラウドからデバイスにモジュールを配置する](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
-このクイック スタートでは、新しい IoT Edge デバイスを登録し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure portal を使用して、IoT Edge モジュールをデプロイし、デバイス自体を変更せずにモジュールをデバイスで実行しました。
+このクイック スタートでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure portal を使用して、IoT Edge モジュールをデプロイし、デバイス自体を変更せずにモジュールをデバイスで実行しました。
 
-この場合は、プッシュしたモジュールによって、テストに使用できるサンプル データが作成されます。 シミュレートされた温度センサー モジュールによって、後でテストに使用できる環境データが生成されます。 シミュレートされたセンサーは、マシンと、マシンの周囲の環境の両方を監視します。 たとえば、このセンサーは、サーバー ルーム、工場のフロア、または風力タービンに配置されている可能性があります。 メッセージには、周囲の温度と湿度、機械の温度と圧力、タイムスタンプが含まれます。 IoT Edge のチュートリアルでは、このモジュールによって作成されたデータを分析用のテスト データとして使用します。
+この場合、プッシュしたモジュールによって、後でテストするために使用できるサンプル環境データが生成されます。 シミュレートされたセンサーは、マシンと、マシンの周囲の環境の両方を監視します。 たとえば、このセンサーは、サーバー ルーム、工場のフロア、または風力タービンに配置されている可能性があります。 メッセージには、周囲の温度と湿度、機械の温度と圧力、タイムスタンプが含まれます。 IoT Edge のチュートリアルでは、このモジュールによって作成されたデータを分析用のテスト データとして使用します。
 
 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。
 
@@ -237,10 +242,19 @@ IoT Edge のチュートリアルに進む場合は、このクイック スタ�
 
 新しいリソース グループで仮想マシンと IoT ハブを作成した場合、そのグループと関連するすべてのリソースを削除できます。 リソース グループの内容を再確認して、残しておくべきものがないことを確認してください。 グループ全体を削除したくない場合は、リソースを個別に削除してもかまいません。
 
-**IoTEdgeResources** グループを削除します。
+> [!IMPORTANT]
+> リソース グループを削除すると、元に戻すことができません。
+
+**IoTEdgeResources** グループを削除します。 リソース グループを削除するのに数分かかる場合があります。
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+リソース グループが削除されたことは、リソース グループの一覧を表示することによって確認できます。
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>次のステップ

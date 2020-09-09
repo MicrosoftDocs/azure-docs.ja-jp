@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4e262c9e5bb88e77bc9c09853c06f4cdb41eedaa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c60e0275853f3c879db22f5414f0fbbbdb47b85
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181368"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050451"
 ---
 ## <a name="preparing-for-updates"></a>更新プログラムの準備
 更新プログラムをスキャンして適用する前に、次の手順を実行する必要があります。
@@ -21,23 +21,25 @@ ms.locfileid: "67181368"
    
     **固定 IP でインターネットに接続できるときの Test-Connection のサンプル出力**
 
-        Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
+    ```output
+    Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
 
-        Source      Destination     IPV4Address      IPV6Address
-        ----------------- -----------  -----------
-        HCSNODE0  bing.com        204.79.197.200
-        HCSNODE0  bing.com        204.79.197.200
-        HCSNODE0  bing.com        204.79.197.200
-        HCSNODE0  bing.com        204.79.197.200
+    Source      Destination     IPV4Address      IPV6Address
+    ----------------- -----------  -----------
+    HCSNODE0  bing.com        204.79.197.200
+    HCSNODE0  bing.com        204.79.197.200
+    HCSNODE0  bing.com        204.79.197.200
+    HCSNODE0  bing.com        204.79.197.200
 
-        Controller0>Test-Connection -Source 10.126.173.91 -Destination  204.79.197.200
+    Controller0>Test-Connection -Source 10.126.173.91 -Destination  204.79.197.200
 
-        Source      Destination       IPV4Address    IPV6Address
-        ----------------- -----------  -----------
-        HCSNODE0  204.79.197.200  204.79.197.200
-        HCSNODE0  204.79.197.200  204.79.197.200
-        HCSNODE0  204.79.197.200  204.79.197.200
-        HCSNODE0  204.79.197.200  204.79.197.200
+    Source      Destination       IPV4Address    IPV6Address
+    ----------------- -----------  -----------
+    HCSNODE0  204.79.197.200  204.79.197.200
+    HCSNODE0  204.79.197.200  204.79.197.200
+    HCSNODE0  204.79.197.200  204.79.197.200
+    HCSNODE0  204.79.197.200  204.79.197.200
+    ```
 
 これらの手動の事前チェックが正常に完了した後で、更新プログラムのスキャンとインストールを開始できます。
 

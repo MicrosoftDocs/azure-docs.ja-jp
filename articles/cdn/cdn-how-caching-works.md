@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253715"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201798"
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 
@@ -112,11 +112,11 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 すべてのリソースをキャッシュできるわけではありません。 次の表は、HTTP 応答の種類に基づいて、どのリソースをキャッシュできるかを示しています。 HTTP 応答で配信されるリソースで、これらの条件のすべてを満たしていないものは、キャッシュすることができません。 **Azure CDN Premium from Verizon** でのみ、ルール エンジンを使用して、これらの条件の一部をカスタマイズできます。
 
-|                   | Microsoft Azure CDN          | Azure CDN from Verizon | Azure CDN from Akamai        |
-|-------------------|-----------------------------------|------------------------|------------------------------|
-| HTTP 状態コード | 200、203、206、300、301、410、416 | 200                    | 200、203、300、301、302、401 |
-| HTTP メソッド      | GET、HEAD                         | GET                    | GET                          |
-| ファイル サイズ制限  | 300 GB                            | 300 GB                 | - 一般的な Web 配信の最適化:1.8 GB<br />- メディア ストリーミングの最適化:1.8 GB<br />- 大きなファイルの最適化:150 GB |
+|                       | Microsoft Azure CDN          | Azure CDN from Verizon | Azure CDN from Akamai        |
+|-----------------------|-----------------------------------|------------------------|------------------------------|
+| **HTTP 状態コード** | 200、203、206、300、301、410、416 | 200                    | 200、203、300、301、302、401 |
+| **HTTP メソッド**      | GET、HEAD                         | GET                    | GET                          |
+| **ファイル サイズ制限**  | 300 GB                            | 300 GB                 | - 一般的な Web 配信の最適化:1.8 GB<br />- メディア ストリーミングの最適化:1.8 GB<br />- 大きなファイルの最適化:150 GB |
 
 **Microsoft Azure CDN Standard** キャッシュをリソースに対して機能させるには、元のサーバーで、すべての HEAD および GET HTTP 要求をサポートしている必要があり、コンテンツ長の値は、アセットのすべての HEAD および GET HTTP 応答で同じである必要があります。 HEAD 要求の場合、元のサーバーは HEAD 要求をサポートしている必要があり、GET 要求を受信した場合のように、同じヘッダーで応答する必要があります。
 

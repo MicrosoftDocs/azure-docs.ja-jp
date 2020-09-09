@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504939"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor ブックの視覚化
 
@@ -51,7 +51,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 1. **[編集]** ツール バー項目をクリックして、ブックを編集モードに切り替えます。
 2. **[クエリの追加]** リンクを使用して、ログ クエリ コントロールをブックに追加します。
 3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) と、ターゲットにするリソースを選択します。
-4. クエリ エディターを使用して、分析用の [KQL](https://docs.microsoft.com/azure/kusto/query/) (たとえば、要求の傾向など) を入力します。
+4. クエリ エディターを使用して、分析用の [KQL](/azure/kusto/query/) (たとえば、要求の傾向など) を入力します。
 5. 視覚化を次のいずれかに設定します:**面**、**横棒**、**横棒 (カテゴリ別)** 、**折れ線**、**円**、**散布図**、**時間**。
 6. 必要に応じて他のパラメーターを設定します (時間範囲、視覚化、サイズ、カラー パレット、凡例など)。
 

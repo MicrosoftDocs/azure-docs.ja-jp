@@ -5,15 +5,16 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d8cea74ec24efa7562caab5074d87d436cddaffb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568816"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018486"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Azure Stack Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
 
@@ -24,6 +25,7 @@ Azure IoT Edge モジュールを Azure Stack Edge と共に使用して、デ�
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * モジュールを格納して管理するコンテナー レジストリを作成する (Docker イメージ)。
 > * IoT Edge モジュールを作成して Azure Stack Edge デバイスにデプロイする。 
 

@@ -4,26 +4,26 @@ description: Azure portal でプラットフォーム通知システム (PNS) �
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: dbradish-microsoft
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 06/22/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 78afb124ee1d1ab9b212197fb7a7140f88de9940
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349515"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761027"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>クイック スタート:通知ハブのプッシュ通知を設定する
 
 Azure Notification Hubs には、使いやすくスケールアウトにも対応したプッシュ エンジンが用意されています。Notification Hubs を使用すると、あらゆるプラットフォーム (iOS、Android、Windows、Baidu) にあらゆるバックエンド (クラウドまたはオンプレミス) から通知を送信することができます。 詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
-このクイック スタートでは、Notification Hubs におけるプラットフォーム通知システム (PNS) の設定を使用して、複数のプラットフォームに対するプッシュ通知を設定します。 このクイック スタートでは、Azure portal での手順を紹介します。  Azure CLI を使用した場合の手順については、「[Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm)」に記載されています。
+このクイック スタートでは、Notification Hubs におけるプラットフォーム通知システム (PNS) の設定を使用して、複数のプラットフォームに対するプッシュ通知を設定します。 このクイック スタートでは、Azure portal での手順を紹介します。 Azure CLI を使用した場合の手順については、「[Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm)」に記載されています。
 
 通知ハブを作成していない場合は、ここで作成します。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」または「[Azure CLI を使用して Azure 通知ハブを作成する](create-notification-hub-azure-cli.md)」を参照してください。
 
@@ -49,7 +49,7 @@ Apple Push Notification Service (APNS) を設定するには、次の手順に�
 
      ![Azure portal における APNS トークン構成のスクリーンショット](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
-詳細については、[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](notification-hubs-ios-apple-push-notification-apns-get-started.md)方法に関するページを参照してください。
+詳細については、[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)方法に関するページを参照してください。
 
 ## <a name="google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM)
 
@@ -109,9 +109,7 @@ Google FCM のプッシュ通知を設定するには、次の手順に従いま
 
 その他のプラットフォーム向けの Azure CLI リファレンスは、[az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) コマンドで入手してください。
 
----
-
-Android アプリケーションにプッシュ通知を送信する方法の詳細については、「[Firebase を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
+Android アプリケーションへの通知の送信に関する詳細については、「[Firebase を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
 
 ## <a name="windows-push-notification-service"></a>Windows プッシュ通知サービス
 
@@ -166,8 +164,8 @@ Baidu のプッシュ通知を設定するには、次の手順に従います�
 
 さまざまなプラットフォームに対してプッシュ通知を送信する方法について詳しくは、以下のチュートリアルを参照してください。
 
--[Notification Hubs と APNS を使用した iOS デバイスへのプッシュ通知の送信](notification-hubs-ios-apple-push-notification-apns-get-started.md)
--[Notification Hubs と Google FCM を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)
--[Windows デバイス上で動作する UWP アプリにプッシュ通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
--[MPNS を使用して Windows Phone 8 アプリにプッシュ通知を送信する](notification-hubs-windows-mobile-push-notifications-mpns.md)
--[Notification Hubs と Baidu クラウド プッシュを使用してプッシュ通知を送信する](notification-hubs-baidu-china-android-notifications-get-started.md)
+* [Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)
+* [Notification Hubs と Google FCM を使用して Android デバイスに通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)
+* [Windows デバイス上で動作する UWP アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+* [MPNS を使用して Windows Phone 8 アプリに通知を送信する](notification-hubs-windows-mobile-push-notifications-mpns.md)
+* [Notification Hubs と Baidu クラウド プッシュを使用して通知を送信する](notification-hubs-baidu-china-android-notifications-get-started.md)

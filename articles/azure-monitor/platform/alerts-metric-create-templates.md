@@ -1,33 +1,33 @@
 ---
-title: Resource Manager テンプレートでのメトリック アラートの作成
+title: Azure Resource Manager テンプレートを使用して新しいメトリック アラートを作成する
 description: Resource Manager テンプレートを使用してメトリック アラートを作成する方法を説明します｡
 author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677001"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321141"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[新しいメトリック アラート](../../azure-monitor/platform/alerts-metric-near-real-time.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)で利用することができます｡
+この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md) を使用して Azure Monitor に[新しいメトリック アラート](./alerts-metric-near-real-time.md)を構成する方法について説明します。 Resource Manager テンプレートを使用して､環境全体にまたがって一貫しかつ再現可能な方法でプログラムからアラートを設定することができます｡ 現在､新しくなったメトリック アラートは[この一群のリソースの種類](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)で利用することができます｡
 
 > [!IMPORTANT]
-> リソースの種類のメトリック アラートを作成するためのリソース テンプレート、つまり Azure Log Analytics ワークスペース `Microsoft.OperationalInsights/workspaces` には、追加の手順が必要です。 詳細については、[ログのメトリック アラート - リソース テンプレート](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)に関するページを参照してください。
+> リソースの種類のメトリック アラートを作成するためのリソース テンプレート、つまり Azure Log Analytics ワークスペース `Microsoft.OperationalInsights/workspaces` には、追加の手順が必要です。 詳細については、[ログのメトリック アラート - リソース テンプレート](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)に関するページを参照してください。
 
 基本的な手順は次のとおりです。
 
 1. アラートの作成方法を記述した JSON ファイルとして以下のテンプレートの 1 つを利用します｡
 2. 対応するパラメーター ファイルを編集し、JSON として利用してアラートをカスタマイズします。
-3. `metricName` パラメーターについては、「[Azure Monitor のサポートされるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)」で使用可能なメトリックを確認してください。
+3. `metricName` パラメーターについては、「[Azure Monitor のサポートされるメトリック](./metrics-supported.md)」で使用可能なメトリックを確認してください。
 4. [任意のデプロイ方法](../../azure-resource-manager/templates/deploy-powershell.md)を使用してテンプレートをデプロイします｡
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>単純な静的しきい値メトリック アラートのテンプレート
@@ -204,7 +204,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
 }
 ```
 
-アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)。
+アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](/rest/api/monitor/metricalerts/createorupdate)。
 
 パラメーターの値は､コマンドラインまたはパラメーター ファイルのどちらからでも設定できます｡ 以下は､パラメーター ファイルの 1 例です｡
 
@@ -477,7 +477,7 @@ Resource Manager テンプレートを使用してアラートを作成するに
 }
 ```
 
-アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)。
+アラート ルールのスキーマとプロパティについては、 [こちらをご覧ください](/rest/api/monitor/metricalerts/createorupdate)。
 
 パラメーターの値は､コマンドラインまたはパラメーター ファイルのどちらからでも設定できます｡ 以下は､パラメーター ファイルの 1 例です｡ 
 
@@ -1248,7 +1248,7 @@ az group deployment create \
 
 次のテンプレートを使用すると、カスタム メトリックに関するより高度な静的しきい値メトリック アラート ルールを作成できます。
 
-Azure Monitor のカスタム メトリックの詳細については、「[Azure Monitor のカスタム メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)」を参照してください。
+Azure Monitor のカスタム メトリックの詳細については、「[Azure Monitor のカスタム メトリック](./metrics-custom-overview.md)」を参照してください。
 
 カスタム メトリックに関するアラート ルールを作成する場合は、メトリック名とメトリック名前空間の両方を指定する必要があります。 まだ存在しないカスタム メトリックに対してアラート ルールを作成することはできないため、カスタム メトリックが既に報告されていることを確認する必要もあります。
 
@@ -1504,7 +1504,7 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 特定のカスタム メトリックのメトリック名前空間を確認するには、[Azure portal でカスタム メトリックを参照](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)します。
+> 特定のカスタム メトリックのメトリック名前空間を確認するには、[Azure portal でカスタム メトリックを参照](./metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)します。
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>複数のリソースを監視するメトリック アラートのテンプレート
@@ -1521,7 +1521,9 @@ az group deployment create \
 
 > [!NOTE]
 >
-> 複数のリソースを監視するメトリック アラート ルールの場合、許可される条件は 1 つだけです。
+> 複数のリソースを監視するメトリック アラート ルールでは、次の制限事項が適用されます。
+> - アラート ルールのスコープには、選択したリソースの種類のリソースが少なくとも 1 つ含まれている必要があります。
+> - アラート ルールに含めることができる条件は 1 つだけです。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>1 つまたは複数のリソース グループ内のすべての仮想マシンの静的しきい値アラート
 
@@ -3462,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>可用性テスト用のテンプレートとメトリック アラート
 
-[Application Insights 可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)を使用すると、世界中のさまざまな場所から Web サイトやアプリケーションの可用性を監視することができます。 可用性テストに失敗した場所が所定の数に達すると、可用性テスト アラートから通知が届きます。
+[Application Insights 可用性テスト](../app/monitor-web-app-availability.md)を使用すると、世界中のさまざまな場所から Web サイトやアプリケーションの可用性を監視することができます。 可用性テストに失敗した場所が所定の数に達すると、可用性テスト アラートから通知が届きます。
 可用性テスト アラートの対象となるリソースの種類は、メトリック アラートと同じです (Microsoft.Insights/metricAlerts)。 次のサンプル Azure Resource Manager テンプレートを使用すると、単純な可用性テストとそれに関連したアラートを設定することができます。
 
 このチュートリアルでは、以下の JSON を使用します。availabilityalert.json という名前で保存してください。
@@ -3549,7 +3551,6 @@ az group deployment create \
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
@@ -3627,3 +3628,4 @@ az group deployment create \
 - [Azure でのアラートの](alerts-overview.md)詳細を確認
 - [Resource Manager テンプレートを使用したアクション グループの作成](action-groups-create-resource-manager-template.md)
 - JSON の構文とプロパティについては、[Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) テンプレート リファレンスをご覧ください。
+

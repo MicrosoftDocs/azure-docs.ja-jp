@@ -7,26 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807684"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
 ネットワーク セキュリティ グループのフロー ログの情報は、ネットワーク セキュリティ グループでのイングレスおよびエグレス IP トラフィックについて理解するのに役立ちます。 こうしたフロー ログからは、ルールごとの送信および受信フロー、フローが適用されている NIC、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル)、およびトラフィックの許可/拒否の状況が分かります。
 
 これらのフロー ログを手動で解析したり、そこから手動で有用な情報を取得したりするのは難しいかもしれません。 しかし、いくつかのオープン ソース ツールによって、こうしたデータを視覚化できます。 この記事では、Elastic Stack を使用してこれらのログを視覚化するソリューションについて説明します。このソリューションによって、Kibana ダッシュボードのフロー ログに簡単にインデックスを作成して視覚化できます。
-
-> [!Warning]  
-> 次の手順は、フロー ログのバージョン 1 に使用できます。 詳細については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」を参照してください。 次の手順は、変更しなければ、ログ ファイルのバージョン 2 で使用できません。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -138,6 +135,11 @@ Elasticsearch のインストール方法について詳しくは、[インス�
                   "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
                   "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
                   "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                  "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+                   "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+                   "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+                   "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+                   "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
                    }
       convert => {"unixtimestamp" => "integer"}
       convert => {"srcPort" => "integer"}

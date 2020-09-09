@@ -1,18 +1,19 @@
 ---
 title: Azure 無料サービスの使用状況を監視および追跡する
-description: Azure portal で無料サービスの使用状況を確認する方法について説明します。
+description: Azure portal で無料サービスの使用状況を確認する方法について説明します。 サービスの制限を超えない限り、無料アカウントに含まれるサービスの料金は発生しません。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 0a62deecc6f70bb21059ae3ddda9eea173de65fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 787d54ba2050a0293957310dbc8377b83a7f7bfc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199808"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690053"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Azure 無料アカウントで無料サービスの使用状況を確認する
 
@@ -38,9 +39,9 @@ Azure 無料アカウントに含まれる無料サービスは、そのサー�
 * **使用状況/使用制限:** 当月の使用状況とメーターの使用制限。
 * **状態:** サービスの使用状況ステータス。 使用状況によって、次のいずれかの状態が表示されます。
   * **[未使用]:** メーターを使用しなかった、またはメーターの使用状況が課金システムに伝わらなかった。
-  * **[\<日付> に超えました]:** \<日付> にメーターの使用制限を超過した。
+  * **[\<Date> に超えました]:** \<Date> にメーターの使用制限を超過した。
   * **[超える可能性は低い]:** メーターの使用制限を超過する可能性が低い。
-  * **[\<日付> に超えます]:** \<日付> にメーターの使用制限を超過する可能性がある。
+  * **[\<Date> に超えます]:** \<Date> にメーターの使用制限を超過する可能性がある。
 
 > [!IMPORTANT]
 >

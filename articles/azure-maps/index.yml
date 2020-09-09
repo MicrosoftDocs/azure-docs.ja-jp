@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Maps のドキュメント
-summary: Microsoft Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 これらの地理空間機能は、最新マッピング データと共に提供されます。 Azure Maps は、Web とモバイル アプリケーションの両方で使用できます。 Azure Maps は、Azure One API に準拠した REST API のセットです。 次に示すのは、Azure Maps で提供されるサービス (マップ、検索、ルート指定、トラフィック、モビリティ、天気、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、空間演算) の概要です。 Web と Android の SDK を使用すると、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
+summary: Microsoft Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 これらの地理空間機能は、最新マッピング データと共に提供されます。 Azure Maps は、Web とモバイル アプリケーションの両方で使用できます。 Azure Maps は、Azure One API に準拠した REST API のセットです。 次に示すのは、Azure Maps で提供されるサービス (マップ、検索、ルート指定、トラフィック、モビリティ、天気、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、Creator、空間演算) の概要です。 Web と Android の SDK を使用すると、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
 metadata:
   title: Azure Maps のドキュメント | Microsoft Docs
   description: Azure Maps と、それを使用して地理空間サービスを Web またはモバイル アプリケーションに提供する方法について説明します。
   ms.service: azure-maps
   ms.topic: landing-page
-  author: philmea
-  ms.author: philmea
+  author: anastasia-ms
+  ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 83a51c7dff6d616297c7f558b20e7d1934c668d6
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.openlocfilehash: 01fb176ad6dc2ce097beddf03b724628ba3e1032
+  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83829888"
+  ms.lasthandoff: 08/18/2020
+  ms.locfileid: "88509928"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -76,6 +76,8 @@ landingContent:
       url: drawing-error-visualizer.md
     - text: 屋内マップ モジュールを使用する
       url: how-to-use-indoor-module.md
+    - text: Azure Digital Twins を使用してフロア ガイドを更新する
+      url: https://docs.microsoft.com/azure/digital-twins/how-to-integrate-maps
   - linkListType: reference
     links:
     - text: 変換サービス
@@ -176,7 +178,7 @@ landingContent:
     links:
     - text: Azure Maps と Event Grid の統合
       url: azure-maps-event-grid-integration.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
     - text: Azure Maps を使用してジオフェンスを設定する
       url: tutorial-geofence.md
@@ -188,6 +190,16 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/maps/data
     - text: 空間サービス
       url: https://docs.microsoft.com/rest/api/maps/spatial
+- title: Power BI を使用した空間分析
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 作業の開始
+      url: power-bi-visual-getting-started.md
+    - text: レイヤーの理解
+      url: power-bi-visual-understanding-layers.md
+    - text: アクセスを管理する
+      url: power-bi-visual-manage-access.md
 - title: モビリティ サービスを使用した開発
   linkLists:
   - linkListType: concept

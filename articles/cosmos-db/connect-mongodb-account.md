@@ -5,15 +5,15 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 0a25301bac125cd95b975a5ba1fc0cce47b56abd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617054"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954096"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB への MongoDB アプリケーションの接続
 
@@ -37,7 +37,7 @@ MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB �
 4. プラットフォームを選択します ( **.NET**、 **Node.js**、 **MongoDB シェル**、 **Java**、 **Python**)。 ドライバーまたはツールの一覧が表示されなくても、接続コード スニペットは継続的に文書化されますので心配はいりません。 表示を希望するものを下部のコメント欄に記入してください。 また、独自の接続を行う方法については、[アカウントの接続文字列情報の取得](#get-the-mongodb-connection-string-to-customize)に関するセクションを参照してください。
 5. コード スニペットを MongoDB アプリにコピーして貼り付けます。
 
-    ![クイック スタート ブレード](./media/connect-mongodb-account/QuickStartBlade.png)
+    :::image type="content" source="./media/connect-mongodb-account/QuickStartBlade.png" alt-text="クイック スタート ブレード":::
 
 ## <a name="get-the-mongodb-connection-string-to-customize"></a>MongoDB 接続文字列を取得してカスタマイズする
 
@@ -46,18 +46,16 @@ MongoDB 接続文字列を使用して、MongoDB アプリを Azure Cosmos DB �
 3. [アカウント] ブレードの左側のウィンドウで、 **[接続文字列]** をクリックします。
 4. **[接続文字列]** ブレードが開きます。 MongoDB のドライバーを使用してこのアカウントに接続するために必要なすべての情報 (あらかじめ構築された接続文字列も含む) が表示されます。
 
-   [ ![[接続文字列] ブレード](./media/connect-mongodb-account/ConnectionStringBlade.png) ](./media/connect-mongodb-account/ConnectionStringBlade.png#lightbox)
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="[接続文字列] ブレード" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>接続文字列の要件
 
 > [!Important]
-> Azure Cosmos DB には、厳密なセキュリティ要件と基準があります。 Azure Cosmos DB アカウントには、*TLS* による認証とセキュリティで保護された通信が必要です。 
->
->
+> Azure Cosmos DB には、厳密なセキュリティ要件と基準があります。 Azure Cosmos DB アカウントには、*TLS* による認証とセキュリティで保護された通信が必要です。
 
 Azure Cosmos DB は、標準の MongoDB 接続文字列の URI 形式をサポートしていますが、固有の要件がいくつかあります。Azure Cosmos DB アカウントには、TLS による認証とセキュリティで保護された通信が必要です。 そのため接続文字列は次の形式となります。
 
-    mongodb://username:password@host:port/[database]?ssl=true
+`mongodb://username:password@host:port/[database]?ssl=true`
 
 この文字列の値は、先ほど示した **[接続文字列]** ブレードで確認できます。
 
@@ -70,7 +68,7 @@ Azure Cosmos DB は、標準の MongoDB 接続文字列の URI 形式をサポ�
 
 たとえば、 **[接続文字列]** ブレードに表示されているアカウントでは次のようになります。 有効な接続文字列は次のようになります。
 
-    mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true
+`mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true`
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop トラブルシューティングの概要 - Azure
-description: Windows Virtual Desktop テナント環境の設定時の問題の解決方法の概要
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) トラブルシューティングの概要 - Azure
+description: Windows Virtual Desktop (クラシック) テナント環境の設定時の問題の解決方法の概要。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7fff21ec4fdb53483eea1a6c37ce9269081fe77e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7b2220ffe92446338e1b9db9b329847d93830334
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614276"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005433"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>トラブルシューティングの概要、フィードバック、サポート
+#  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Windows Virtual Desktop (クラシック) トラブルシューティングの概要、フィードバック、サポート
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-overview.md)をご覧ください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-overview.md)を参照してください。
 
 この記事では、Windows Virtual Desktop テナント環境の設定中に発生することがある問題の概要とその問題の解決方法について説明しています。
 

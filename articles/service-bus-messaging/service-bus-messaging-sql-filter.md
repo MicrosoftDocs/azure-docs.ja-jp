@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs
 description: この記事では、SQLFilter の文法について詳しく説明します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76759665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341596"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 構文
 

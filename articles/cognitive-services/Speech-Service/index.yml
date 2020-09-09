@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 87190c5cab772e4b8dc04672066e575b10c14533
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: 17cc7914c8e02d3b38e2527e1c0bff3afb885b0b
+  ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800776"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89055098"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -51,29 +51,26 @@ conceptualContent:
       url: index-speech-to-text.yml
   - title: テキスト読み上げ
     links:
+    - itemType: overview
+      text: テキスト読み上げについて
+      url: text-to-speech.md
     - itemType: quickstart
-      text: スピーカーに音声を合成する
-      url: quickstarts/text-to-speech.md
-    - itemType: quickstart
-      text: オーディオ ファイルに音声を合成する
-      url: quickstarts/text-to-speech-audio-file.md
+      text: テキスト読み上げの概要
+      url: get-started-text-to-speech.md
     - itemType: how-to-guide
-      text: 音声合成の基本
-      url: text-to-speech-basics.md
+      text: SSML を使用して合成を改善する
+      url: speech-synthesis-markup.md
     footerLink:
       text: 詳細
       url: index-text-to-speech.yml
   - title: 音声翻訳
     links:
+    - itemType: overview
+      text: 音声翻訳について
+      url: speech-translation.md
     - itemType: quickstart
-      text: 音声テキスト変換の翻訳
-      url: quickstarts/translate-speech-to-text.md
-    - itemType: quickstart
-      text: 音声を複数の言語に翻訳する
-      url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - itemType: how-to-guide
-      text: 音声翻訳の基本
-      url: speech-translation-basics.md
+      text: 音声翻訳を使ってみる
+      url: get-started-speech-translation.md
     footerLink:
       text: 詳細
       url: index-speech-translation.yml
@@ -123,10 +120,13 @@ conceptualContent:
     links:
     - itemType: how-to-guide
       text: Speaker Recognition について
-      url: ../Speaker-recognition/Home.md
+      url: speaker-recognition-overview.md
+    - itemType: how-to-guide
+      text: Speaker Recognition の基礎
+      url: speaker-recognition-basics.md
     - itemType: how-to-guide
       text: Speaker Recognition API リファレンス
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
+      url: https://docs.microsoft.com/rest/api/speakerrecognition/
   - title: ツール
     links:
     - itemType: overview
@@ -211,6 +211,8 @@ additionalContent:
         url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
     - title: リソース
       links:
+      - text: ドキュメントの最新情報
+        url: whats-new.md
       - text: 価格
         url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
       - text: リージョン

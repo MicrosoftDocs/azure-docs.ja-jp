@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721355"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process のグループ マネージャーのタスク
@@ -57,7 +57,7 @@ ms.locfileid: "76721355"
    
    ![Create project](./media/group-manager-tasks/create-project.png)
 
-**GroupCommon** プロジェクトの **[概要]** ページが開きます。 ページの URL は *https:\//\<サーバー名>/\<組織名>/GroupCommon* です。
+**GroupCommon** プロジェクトの **[概要]** ページが開きます。 ページの URL は *https:\//\<servername>/\<organization-name>/GroupCommon* です。
 
 ![プロジェクトの概要ページ](./media/group-manager-tasks/project-summary.png)
 

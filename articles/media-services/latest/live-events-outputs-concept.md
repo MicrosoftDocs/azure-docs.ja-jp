@@ -4,24 +4,26 @@ titleSuffix: Azure Media Services
 description: このトピックでは、Azure Media Services v3 のライブ イベントとライブ出力の概要について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 04/08/2020
-ms.author: juliako
-ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 9a32cd4db9a4c4dbd2b5f36c16feef4717790c3c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010581"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291468"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services では、Azure クラウドで顧客にライブ イベントを配信できます。 Media Services v3 でライブ ストリーミング イベントを設定するには、この記事で説明されている概念を理解する必要があります。
 
@@ -30,11 +32,11 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ## <a name="live-events"></a>ライブ イベント
 
-[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)は、ライブ ビデオ フィードの取り込みと処理を担当します。 ライブ イベントを作成すると、リモート エンコーダーからライブ シグナルを送信するために使用できるプライマリおよびセカンダリ入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (Fragmented MP4) 入力プロトコルを使用して、その入力エンドポイントに投稿フィードを送信します。 RTMP 取り込みプロトコルの場合は、コンテンツを平文で (`rtmp://`)、またはワイヤ上で安全に暗号化して (`rtmps://`) 送信できます。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。  
+[ライブ イベント](/rest/api/media/liveevents)は、ライブ ビデオ フィードの取り込みと処理を担当します。 ライブ イベントを作成すると、リモート エンコーダーからライブ シグナルを送信するために使用できるプライマリおよびセカンダリ入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [Smooth Streaming](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) (Fragmented MP4) 入力プロトコルを使用して、その入力エンドポイントに投稿フィードを送信します。 RTMP 取り込みプロトコルの場合は、コンテンツを平文で (`rtmp://`)、またはワイヤ上で安全に暗号化して (`rtmps://`) 送信できます。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。  
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
-[ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 これらの種類は、[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
+[ライブ イベント](/rest/api/media/liveevents)は、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 これらの種類は、[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) を使って作成中に設定されます。
 
 * **LiveEventEncodingType.None**:オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 パススルー モードとも呼ばれます。
 * **LiveEventEncodingType.Standard**:オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 投稿フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします。
@@ -87,7 +89,7 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 ### <a name="naming-rules"></a>名前付け規則
 
 * ライブ イベントの名前は最大 32 文字です。
-* 名前は、次の [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
+* 名前は、次の [regex](/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
 
 [ストリーミング エンドポイントの命名規則](streaming-endpoint-concept.md#naming-convention)に関するページも参照してください。
 
@@ -124,9 +126,9 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
     |Language|バニティ URL を有効にする|アクセス トークンを設定する|
     |---|---|---|
-    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[properties.vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--vanity-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>ライブ取り込み URL の名前付け規則
 
@@ -164,7 +166,7 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ## <a name="live-event-preview-url"></a>ライブ イベント プレビュー URL
 
-ライブ イベントが投稿フィードの受信を開始したら、ライブ ストリームを公開する前に、そのプレビュー エンドポイントを使用して、ライブ ストリームが受信されていることをプレビューして検証できます。 プレビュー ストリームが良好であることを確認したら、ライブ イベントを使用して、そのライブ ストリームを 1 つ以上の (事前に作成された) ストリーミング エンドポイント経由で配信可能にすることができます。 これを実現するために、ライブ イベントに新しい[ライブ出力](https://docs.microsoft.com/rest/api/media/liveoutputs)を作成します。
+ライブ イベントが投稿フィードの受信を開始したら、ライブ ストリームを公開する前に、そのプレビュー エンドポイントを使用して、ライブ ストリームが受信されていることをプレビューして検証できます。 プレビュー ストリームが良好であることを確認したら、ライブ イベントを使用して、そのライブ ストリームを 1 つ以上の (事前に作成された) ストリーミング エンドポイント経由で配信可能にすることができます。 これを実現するために、ライブ イベントに新しい[ライブ出力](/rest/api/media/liveoutputs)を作成します。
 
 > [!IMPORTANT]
 > 続行する前に、ビデオがプレビュー URL に送信されていることを確認してください。
@@ -175,7 +177,7 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ## <a name="live-outputs"></a>ライブ出力
 
-ストリームがライブ イベントに流れ始めると、[資産](https://docs.microsoft.com/rest/api/media/assets)、[ライブ出力](https://docs.microsoft.com/rest/api/media/liveoutputs)、[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
+ストリームがライブ イベントに流れ始めると、[資産](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
 
 ライブ出力の詳細については、「[クラウド DVRの使用](live-event-cloud-dvr.md)」を参照してください。
 

@@ -1,25 +1,15 @@
 ---
 title: Azure Relay ハイブリッド接続 - Node での HTTP 要求
 description: Node での Azure Relay ハイブリッド接続 HTTP 要求用 Node.js コンソール アプリケーションを作成します。
-services: service-bus-relay
-documentationcenter: node
-author: clemensv
-manager: timlt
-editor: ''
-ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
-ms.service: service-bus-relay
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: node
-ms.workload: na
-ms.date: 11/01/2018
-ms.author: clemensv
-ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ff6b4e6b99299091910df537bf90984f493405e3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204394"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382867"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Node での Relay ハイブリッド接続 HTTP 要求の概要
 

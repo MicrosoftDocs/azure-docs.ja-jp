@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/18/2020
-  ms.openlocfilehash: 53988177d28de184b5fcc494284185fac619b170
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.openlocfilehash: 6f8cabab3b2feaa219c52c4ed8c53d1cccb4b658
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83660292"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337196"
 landingContent:
 - title: Azure IoT Central について
   linkLists:
@@ -44,15 +44,11 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: デバイスの接続
-      url: tutorial-connect-device-nodejs.md
-    - text: IoT プラグ アンド プレイ (プレビュー) デバイスを接続する
-      url: tutorial-connect-pnp-device.md
+      url: tutorial-connect-device.md
   - linkListType: how-to-guide
     links:
     - text: デバイス テンプレートを設定する
       url: howto-set-up-template.md
-    - text: MX Chip IoT DevKit を準備して接続する
-      url: howto-connect-devkit.md
     - text: その他の IoT クラウドの接続
       url: howto-build-iotc-device-bridge.md
 - title: 接続を維持する

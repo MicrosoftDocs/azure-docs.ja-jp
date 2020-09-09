@@ -6,16 +6,17 @@ keywords: データ サイエンス ツール,データ サイエンス仮想マ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237063"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843268"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでサポートされている言語 
 
@@ -23,7 +24,7 @@ Data Science Virtual Machine (DSVM) には、人工知能 (AI) アプリケー�
 
 ## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 エディション)
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | サポートされている言語バージョン | Python 2.7 および 3.7 |
 | サポートされている DSVM エディション      | Windows Server 2016     |
@@ -67,13 +68,14 @@ Data Science Virtual Machine (DSVM) には、人工知能 (AI) アプリケー�
 
 ## <a name="python-linux-edition"></a>Python (Linux エディション)
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | サポートされている言語バージョン | Python 2.7 および 3.5 |
 | サポートされている DSVM エディション      | Linux   |
 | DSVM での構成/インストール方法  | 次の 2 つのグローバル `conda` 環境が作成されます: <br /> * `/anaconda/` にある `root` 環境は Python 2.7 です。 <br/> * `/anaconda/envs/py35` にある `py35` 環境は Python 3.5 です。       |
 | サンプルへのリンク      | Python 用のサンプル Jupyter ノートブックが含まれています。     |
 | DSVM 上の関連ツール      | PySpark、R、Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>使用と実行方法    
 
 * ターミナルで実行する:
@@ -105,13 +107,14 @@ Data Science Virtual Machine (DSVM) には、人工知能 (AI) アプリケー�
 
 ## <a name="r"></a>R
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | サポートされている言語バージョン | Microsoft R Open 3.x (CRAN-R と 100% 互換)<br /> Microsoft R Server 9.x Developer エディション (スケーラブルなエンタープライズ対応 R プラットフォーム)|
 | サポートされている DSVM エディション      | Linux、Windows     |
 | DSVM での構成/インストール方法  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | サンプルへのリンク      | R 用のサンプル Jupyter ノートブックが含まれています。     |
 | DSVM 上の関連ツール      | SparkR、Python、Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>使用と実行方法    
 
 **Windows**:
@@ -153,13 +156,14 @@ Data Science Virtual Machine (DSVM) には、人工知能 (AI) アプリケー�
 
 ## <a name="julia"></a>Julia
 
-|    |           |
+| カテゴリ | 値 |
 | ------------- | ------------- |
 | サポートされている言語バージョン | 0.6 |
 | サポートされている DSVM エディション      | Linux、Windows     |
 | DSVM での構成/インストール方法  | Windows: `C:\JuliaPro-VERSION` にインストール<br /> Linux: `/opt/JuliaPro-VERSION` にインストール    |
 | サンプルへのリンク      | Julia 用のサンプル Jupyter ノートブックが含まれています。     |
 | DSVM 上の関連ツール      | Python、R      |
+
 ### <a name="how-to-use-and-run-it"></a>使用と実行方法    
 
 **Windows**:

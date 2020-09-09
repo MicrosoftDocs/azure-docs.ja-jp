@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 81818cc5ba2af1f9f0f70f7aa27fe62ed2c90c77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfa84a993fafe9240ba765de8d87ea4afb69cbd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065679"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015949"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Azure Cosmos DB に予約割引が適用されるしくみについて
 
@@ -117,7 +117,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 * [Azure の予約とは](save-compute-costs-reservations.md)  
 * [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../sql-database/sql-database-reserved-capacity.md)  
+* [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)  
 * [Azure の予約の管理](manage-reserved-vm-instance.md)  
 * [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)  
 * [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)

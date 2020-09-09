@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80299191"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509037"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>ブート エラー This is not a bootable disk (これは起動可能なディスクではありません)
 
@@ -27,7 +27,7 @@ ms.locfileid: "80299191"
 
 ## <a name="symptoms"></a>現象
 
-[起動診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を利用して VM のスクリーンショットを表示すると、スクリーンショットのプロンプトに "This is not a bootable disk. Please insert a bootable floppy and press any key to try again..." (これは起動可能なディスクではありません。起動可能なフロッピーを挿入し、任意のキーを押して、もう一度やり直してください...) というメッセージが表示されます。
+[起動診断](./boot-diagnostics.md)を利用して VM のスクリーンショットを表示すると、スクリーンショットのプロンプトに "This is not a bootable disk. Please insert a bootable floppy and press any key to try again..." (これは起動可能なディスクではありません。起動可能なフロッピーを挿入し、任意のキーを押して、もう一度やり直してください...) というメッセージが表示されます。
 
    図 1
 
@@ -52,7 +52,7 @@ ms.locfileid: "80299191"
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM の作成とアクセス
 
-1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 2. リモート デスクトップ接続を使用し、修復 VM に接続します。
 
 ### <a name="set-partition-status-to-active"></a>パーティションの状態を Active に設定する
@@ -148,4 +148,4 @@ ms.locfileid: "80299191"
 
 ### <a name="rebuild-the-original-vm"></a>元の VM の再構築
 
-[仮想マシンの修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) の説明に従って、VM を再構成します。
+[仮想マシンの修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) の説明に従って、VM を再構成します。

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218885"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183207"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
 
@@ -92,8 +92,8 @@ Web スライスを **[アクティブ]** 一覧に追加すると、Bing Custom
 
 ポータルを使用すると、特定のドメイン、サブページ、および Web ページからのコンテンツの検索ランキングを調整できます。 プレビュー ウィンドウで検索クエリを送信した後、各検索結果には調整できる一覧が表示されます。  
 
-|            |                                                                                                                                                                      |
-|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 調整 | 説明 |
+|------------|-------------|
 | ブロック      | ドメイン、サブページ、または Web ページを [ブロック] 一覧に移動します。 Bing では、選択したサイトのコンテンツが、検索結果の表示から除外されます。                    |
 | 昇格      | 検索結果で、ドメインまたはサブページからのコンテンツを上位へ昇格させます。                                                                                        |
 | 降格     | 検索結果で、ドメインまたはサブページからのコンテンツを下位へ降格させます。 該当の Web ページが属するドメインまたはサブページからのコンテンツを降格するかどうかを選択します。 |

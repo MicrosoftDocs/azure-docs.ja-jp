@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8597b3e4ffab44672e88374010fa829211fbc18b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73647376"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507331"
 ---
 # <a name="upload-a-document"></a>ドキュメントのアップロード
 
@@ -40,19 +40,19 @@ ms.locfileid: "73647376"
     -  トレーニング: これらのドキュメントはトレーニング セットに使用されます。
     -  チューニング: これらのドキュメントはチューニング セットに使用されます。
     -  テスト: これらのドキュメントはテスト セットに使用されます。
-    -  Phrase Dictionary (フレーズ辞書): これらのドキュメントはフレーズ辞書に使用されます。
-    -  Sentence Dictionary (文辞書): これらのドキュメントは文辞書に使用されます。
+    -  Phrase Dictionary (句辞書): これらのドキュメントは句辞書に使用されます。
+    -  Sentence Dictionary (文辞書): これらのドキュメントは文辞書に使用されます
 
     b.  言語ペア
 
-    c.  Override document if exists (存在する場合はドキュメントを上書きする): 既存のドキュメントを同じ名前で上書きする場合は、このチェックボックスをオンにします。
+    c.  Override document if exists (存在する場合はドキュメントを上書きする): 既存のドキュメントを同じ名前で上書きする場合は、このチェック ボックスをオンにします。
 
     d.  関連するセクションに並列データまたは複合データを入力します。
 
     -  Parallel data (並列データ):
         -  ソース ファイル: ローカル コンピューターからソース言語ファイルを選択します。
         -  ターゲット ファイル: ローカル コンピューターからターゲット言語ファイルを選択します。
-        -  ドキュメント名: 並列ファイルをアップロードする場合にのみ使用されます。
+        -  Document name (ドキュメント名): 並列ファイルをアップロードする場合にのみ使用されます。
 
     - Combo data (複合データ):
         -  Combo File (複合ファイル): ローカル コンピューターから複合ファイルを選択します。 複合ファイルには、ソース言語とターゲット言語の両方の文があります。 複合ファイルには[名前付け規則](document-formats-naming-convention.md)が重要です。

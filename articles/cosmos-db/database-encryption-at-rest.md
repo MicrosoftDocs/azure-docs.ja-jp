@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114777"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの暗号化 
 
@@ -24,7 +24,7 @@ PaaS サービスである Azure Cosmos DB は使用方法がとても簡単で�
 
 保存時の暗号化は、セキュリティで保護されたキー ストレージ システム、暗号化ネットワーク、暗号化 API など、多くのセキュリティ テクノロジを使用して実装されています。 データの暗号化を解除して処理するシステムは、キーを管理するシステムと通信する必要があります。 図には、暗号化されたデータの格納とキーの管理がどのように分離されているかを示しています。 
 
-![設計の図](./media/database-encryption-at-rest/design-diagram.png)
+:::image type="content" source="./media/database-encryption-at-rest/design-diagram.png" alt-text="設計の図" border="false":::
 
 ユーザー要求の基本的なフローは、次のとおりです。
 - ユーザー データベース アカウントが準備され、ストレージ キーが管理サービス リソース プロバイダーへの要求を通じて取得されます。
@@ -46,7 +46,7 @@ A:キーは Microsoft によって管理されます。
 A:マイクロソフトには、暗号化キーのローテーションに関する一連の内部ガイドラインがあり、Cosmos DB はそれに従っています。 個々のガイドラインは公開されていません。 Microsoft が公開している[セキュリティ開発ライフ サイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) は、内部用ガイダンスのサブセットと見なされ、開発者に便利なベスト プラクティスが収められています。
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Q:独自の暗号化キーを使用できますか?
-A:はい。この機能は新しい Cosmos アカウントで使用でき、アカウントの作成時に行う必要があります。 詳細については、[カスタマー マネージド キー](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)のドキュメントを参照してください。
+A:はい。この機能は新しい Azure Cosmos DB アカウントで使用できるようになっており、アカウントの作成時に行う必要があります。 詳細については、[カスタマー マネージド キー](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk)のドキュメントを参照してください。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Q:どのリージョンで暗号化が有効になっていますか?
 A:すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。
@@ -61,4 +61,4 @@ A:エミュレーターは、スタンドアロンの開発/テスト ツール�
 
 * 独自のキーを使用して 2 つ目の暗号化レイヤーを追加することもできます。詳細については、[カスタマー マネージド キー](how-to-setup-cmk.md)の記事を参照してください。
 * Cosmos DB のセキュリティと最新の機能強化の概要については、[Azure Cosmos データベースのセキュリティ](database-security.md)に関するページを参照してください。
-* マイクロソフトが取得している認証の詳細については、[Azure Security Center](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure Trust Center](https://azure.microsoft.com/support/trust-center/) に関するページを参照してください。

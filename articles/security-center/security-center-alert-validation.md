@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791182"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure Security Center でのアラートの検証 (EICAR テスト ファイル)
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -39,7 +39,7 @@ Security Center エージェントをコンピューターにインストール�
 
 1. 実行可能ファイル (**calc.exe** など) をコンピューターのデスクトップまたは他の適切なディレクトリにコピーし、名前を **ASC_AlertTest_662jfi039N.exe** に変更します。
 1. コマンド プロンプトを開き、引数 (単なるダミーの引数名) を指定してこのファイルを実行します。例: ```ASC_AlertTest_662jfi039N.exe -foo```
-1. 5 ～ 10 分待って、Security Center のアラートを開きます。 以下の[例](#alert-validate)のようなアラートが表示されます。
+1. 5 ～ 10 分待って、Security Center のアラートを開きます。 アラートが表示されます。
 
 > [!NOTE]
 > Windows のこのテスト アラートを確認する場合は、 **[Arguments Auditing Enabled]\(引数の監査が有効\)** フィールドが **[true]** であることを確認してください。 それが **[false]** である場合は、コマンド ライン引数の監査を有効にする必要があります。 これを有効にするには、次のコマンドを使用します。
@@ -57,11 +57,7 @@ Security Center エージェントをコンピューターにインストール�
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. 5 ～ 10 分待って、Security Center のアラートを開きます。 以下の[例](#alert-validate)のようなアラートが表示されます。
-
-### <a name="alert-example"></a>アラートの例 <a name="alert-validate"></a>
-
-![アラートの検証の例](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+1. 5 ～ 10 分待って、Security Center のアラートを開きます。 アラートが表示されます。
 
 
 ## <a name="validate-alerts-on-kubernetes"></a>Kubernetes 上でのアラートの検証 <a name="validate-kubernetes"></a>

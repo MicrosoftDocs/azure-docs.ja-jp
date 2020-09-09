@@ -4,12 +4,12 @@ description: Application Insights の使用を開始します。 オンプレミ
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985067"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323453"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -23,10 +23,10 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>パフォーマンス モニターの設定
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
-* [ASP.NET Web アプリ](../../azure-monitor/app/asp-net.md)
-  * [例外の監視を追加する](../../azure-monitor/app/asp-net-exceptions.md)
-  * [依存関係の監視を追加する](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web アプリ](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [ASP.NET Web アプリ](./asp-net.md)
+  * [例外の監視を追加する](./asp-net-exceptions.md)
+  * [依存関係の監視を追加する](./monitor-performance-live-website-now.md)
+* [Java EE Web アプリ](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>パフォーマンス メトリックの監視
 [Azure ポータル](https://portal.azure.com)で、アプリケーション用に設定した Application Insights リソースを参照します。 概要ブレードに、基本的なパフォーマンス データが表示されます。
@@ -61,15 +61,15 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 タイルをクリックして、特定の URL の時間を取得します。
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+![[アプリケーションの正常性] ウィンドウのスクリーンショット。要求と応答時間の移動平均を時系列の折れ線グラフで示しています。](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>最も遅い要求
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![最も遅い要求と、その応答時間の一覧のスクリーンショット。](./media/web-monitor-performance/appinsights-44slowest.png)
 
 パフォーマンス チューニングが必要となる可能性がある要求を示します。
 
 ### <a name="failed-requests"></a>失敗した要求
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![失敗した要求 (受信できない例外がスローされた要求) の数を時系列で示したグラフのスクリーンショット。](./media/web-monitor-performance/appinsights-46failed.png)
 
 受信できない例外がスローされた要求の数。
 
@@ -87,7 +87,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 ## <a name="set-alerts"></a>アラートの設定
 すべてのメトリックの異常な値を電子メールで通知するには、アラートを追加します。 アカウント管理者または特定の電子メール アドレスのいずれかに電子メールを送信することを選択できます。
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![メトリックス エクスプローラーから [アラート ルールの追加] ダイアログ ボックスに移動する方法を、スクリーンショットを矢印で接続して示しているスクリーンショット。](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 その他のプロパティの前に、リソースを設定します。 パフォーマンスまたは使用状況のメトリックにアラートを設定する場合、Web テスト リソースは選択しないでください。
 
@@ -106,7 +106,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>過去のパフォーマンス調査を利用し、パフォーマンスのボトルネックを探して修正する
 
-過去のパフォーマンス調査を利用し、Web アプリの操作のパフォーマンス低下を調べることができます。 特定の低速な操作をすばやく選択し、[Profiler](../../azure-monitor/app/profiler.md) を使用して、低速な操作の根本原因となっているコードを特定することができます。 選択した操作に対して表示される新しい期間分布を使用すると、そのエクスペリエンスが顧客にとってどれだけ好ましくないかがひとめでわかります。 低速な操作ごとに、その影響を受けたユーザーの操作の数を確認できます。 次の例では、[GET Customers/Details]\(顧客/詳細の取得\) 操作のエクスペリエンスを詳しく見ています。 期間分布を見ると、3 つのスパイクがあることがわかります。 最も左のスパイクは 400 ミリ秒付近にあり、非常に反応がよいことがわかります。 中央のスパイクは 1.2 秒付近にあり、中程度であることがわかります。 最後になりますが、3.6 秒の地点に 99 パーセンタイルを表す小さなスパイクがもう 1 つあります。これは、顧客が不満を感じて去ってしまう原因になっている可能性があります。 このエクスペリエンスは、同じ操作の高速なエクスペリエンスよりも 10 倍低速です。 
+過去のパフォーマンス調査を利用し、Web アプリの操作のパフォーマンス低下を調べることができます。 特定の低速な操作をすばやく選択し、[Profiler](./profiler.md) を使用して、低速な操作の根本原因となっているコードを特定することができます。 選択した操作に対して表示される新しい期間分布を使用すると、そのエクスペリエンスが顧客にとってどれだけ好ましくないかがひとめでわかります。 低速な操作ごとに、その影響を受けたユーザーの操作の数を確認できます。 次の例では、[GET Customers/Details]\(顧客/詳細の取得\) 操作のエクスペリエンスを詳しく見ています。 期間分布を見ると、3 つのスパイクがあることがわかります。 最も左のスパイクは 400 ミリ秒付近にあり、非常に反応がよいことがわかります。 中央のスパイクは 1.2 秒付近にあり、中程度であることがわかります。 最後になりますが、3.6 秒の地点に 99 パーセンタイルを表す小さなスパイクがもう 1 つあります。これは、顧客が不満を感じて去ってしまう原因になっている可能性があります。 このエクスペリエンスは、同じ操作の高速なエクスペリエンスよりも 10 倍低速です。 
 
 ![[GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -142,15 +142,13 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
+[qna]: ../faq.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
 

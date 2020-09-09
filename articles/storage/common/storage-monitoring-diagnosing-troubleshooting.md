@@ -3,18 +3,18 @@ title: Azure Storage の監視、診断、およびトラブルシューティ�
 description: ストレージ分析、クライアント側ログ、他のサード パーティのツールなどの機能を使って、Azure Storage 関連の問題を特定、診断、およびトラブルシューティングします。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: monitoring
-ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684662"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011040"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,10 +23,6 @@ ms.locfileid: "83684662"
 クラウド環境でホストされる分散型アプリケーションの問題の診断およびトラブルシューティングは、従来の環境よりも複雑になる可能性があります。 アプリケーションは、PaaS や IaaS インフラストラクチャ、オンプレミス、モバイル デバイス、これらの環境を組み合わせたものにデプロイできます。 一般に、アプリケーションのネットワーク トラフィックは公衆ネットワークと専用ネットワークを経由する可能性があり、アプリケーションでは、Microsoft Azure Storage のテーブル、BLOB、キュー、ファイルのほか、リレーショナル データベースやドキュメント データベースといった他のデータ ストアなどの複数のストレージ技術を使用している可能性があります。
 
 このようなアプリケーションを適切に管理するためには、アプリケーションをプロアクティブに監視し、アプリケーションおよびアプリケーションが依存する技術をあらゆる側面から診断およびトラブルシューティングする方法を理解する必要があります。 Azure Storage サービスのユーザーは、(応答時間が通常より長いなどの) 予期しない動作変化を捉えるために、アプリケーションで使用している Storage サービスを継続して監視し、ログを使用して詳細なデータを収集し、問題を徹底的に分析する必要があります。 監視とログの両方から得られた診断情報を基に、アプリケーションで発生した問題の根本原因を特定できます。 そして、問題をトラブルシューティングし、問題を解決するための適切な手順を決定できます。 Azure Storage は Azure の中核サービスであり、顧客が Azure インフラストラクチャにデプロイするソリューションのほとんどでは、Azure Storage が重要な役割を担っています。 Azure Storage には、クラウド ベース アプリケーションのストレージの問題を簡単に監視、診断、およびトラブルシューティングできる機能が組み込まれています。
-
-> [!NOTE]
-> 現時点では、Azure Files はログ記録をサポートしていません。
->
 
 Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「 [Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting.md)」を参照してください。
 
@@ -79,7 +75,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 ## <a name="introduction"></a><a name="introduction"></a>はじめに
 このガイドでは、Azure Storage Analytics、Azure ストレージ クライアント ライブラリのクライアント側ログ、他のサード パーティのツールなどの機能を使用して、Azure Storage 関連の問題を識別、診断、およびトラブルシューティングする方法を説明します。
 
-![][1]
+![クライアント アプリケーションと Azure ストレージ サービス間の情報の流れを示す図。][1]
 
 このガイドの主な対象読者は、Azure Storage サービスを使用するオンライン サービスの開発者と、そのようなオンライン サービスを管理する IT プロフェッショナルです。 このガイドの目的を次に示します。
 
@@ -118,7 +114,7 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 
 下の図のグラフは、時間単位メトリックでなされる平均値の算出によってアクティビティの急増が隠れてしまう状況を示しています。 時間単位メトリックには安定した要求レートが示されますが、分単位メトリックから、実際は変動していることが分かります。
 
-![][3]
+![時間単位メトリックでなされる平均値の算出によってアクティビティの急増が隠れてしまう状況を示しているグラフ。][3]
 
 このセクションの残りの部分では、監視する必要があるメトリックとその理由について説明します。
 
@@ -348,7 +344,7 @@ catch (StorageException storageException)
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い
 [Azure Portal](https://portal.azure.com) 監視ツールに基づいて示されている以下の例の場合、**AverageE2ELatency** が **AverageServerLatency** よりもかなり高くなっています。
 
-![][4]
+![AverageE2ELatency が AverageServerLatency よりもかなり高くなっている例を示す Azure portal からの図。][4]
 
 Storage サービスが正常な要求に関して算出するのはメトリック **AverageE2ELatency** だけで、**AverageServerLatency** の場合とは異なり、このメトリックにはククライアントがデータを送信し、Storage サービスから確認応答を受け取るまでの時間が含まれます。 そのため、**AverageE2ELatency** と **AverageServerLatency** の差は、クライアント アプリケーションの応答速度が遅いこと、あるいはネットワークの状態に起因している可能性があります。
 
@@ -455,7 +451,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 >
 >
 
-**PercentTimeoutError** メトリックは、**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError**、**SASServerTimeoutError** の各メトリックの集計です。
+**PercentTimeoutError** メトリックは、**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError**、**SASServerTimeoutError** の各メトリックを統合したメトリックです。
 
 サーバー タイムアウトは、サーバー上のエラーが原因で生じます。 クライアント タイムアウトは、サーバー上の操作がクライアントによって指定されたタイムアウトを超えたことが原因です。たとえば、ストレージ クライアント ライブラリを使用するクライアントは、**QueueRequestOptions** クラスの **ServerTimeout** プロパティを使用して操作のタイムアウトを設定できます。
 
@@ -472,7 +468,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 | source | 詳細度 | 詳細度 | クライアント要求 ID | [操作テキスト] |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |場所 Primary、場所モード PrimaryOnly で操作を開始しています。 |
-| Microsoft.Azure.Storage |Information |3 |85d077ab -… |[https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;amp;api-version=2014-02-14](<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14>) に同期要求を開始しています。 |
+| Microsoft.Azure.Storage |Information |3 |85d077ab -… |[https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14](<https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request>) に同期要求を開始しています。 |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |応答を待機しています。 |
 | Microsoft.Azure.Storage |警告 |2 |85d077ab -… |応答の待機中に例外がスローされました。リモート サーバーがエラー(403) 禁止。 |
 | Microsoft.Azure.Storage |Information |3 |85d077ab -… |応答を受け取りました。 状態コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d、Content-MD5 = 、ETag = . |
@@ -507,7 +503,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 ストレージ クライアント ライブラリによって生成された以下のクライアント側のログには、作成する BLOB 用のコンテナーをクライアントが検出できないという問題が示されています。 このログには、以下のストレージ操作の詳細が示されています。
 
-| 要求 ID | Operation |
+| 要求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** メソッド。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 |
 | e2d06d78… |**CreateIfNotExists** 。 この操作には、コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 ここで、 **HEAD** から 404 メッセージが返されますが、処理を続行します。 |
@@ -517,24 +513,24 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 | 要求 ID | [操作テキスト] |
 | --- | --- |
-| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に同期要求を開始しています。 |
+| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer`) に同期要求を開始しています。 |
 | 07b26a5d-... |StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |応答を待機しています。 |
 | 07b26a5d-... |応答を受け取りました。 状態コード = 200、要求 ID = eeead849-...Content-MD5 = 、ETag = &quot;0x8D14D2DC63D059B&quot;. |
 | 07b26a5d-... |応答ヘッダーは正常に処理されました。残りの操作を処理しています。 |
 | 07b26a5d-... |応答の本文をダウンロードしています。 |
 | 07b26a5d-... |操作は正常に完了しました。 |
-| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に同期要求を開始しています。 |
+| 07b26a5d-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer`) に同期要求を開始しています。 |
 | 07b26a5d-... |StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | 07b26a5d-... |応答を待機しています。 |
 | 07b26a5d-... |応答を受け取りました。 状態コード = 202、要求 ID = 6ab2a4cf-...、Content-MD5 = ETag = 。 |
 | 07b26a5d-... |応答ヘッダーは正常に処理されました。残りの操作を処理しています。 |
 | 07b26a5d-... |応答の本文をダウンロードしています。 |
 | 07b26a5d-... |操作は正常に完了しました。 |
-| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に非同期要求を開始しています。</td> |
+| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer`) に非同期要求を開始しています。</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |応答を待機しています。 |
-| de8b1c3c-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` ) に同期要求を開始しています。 |
+| de8b1c3c-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt`) に同期要求を開始しています。 |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |要求データを書き込む準備をしています。 |
 | e2d06d78-... |応答の待機中に例外がスローされました。リモート サーバーがエラー「(404) 見つかりません」を返しました。 |
@@ -542,7 +538,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 | e2d06d78-... |応答ヘッダーは正常に処理されました。残りの操作を処理しています。 |
 | e2d06d78-... |応答の本文をダウンロードしています。 |
 | e2d06d78-... |操作は正常に完了しました。 |
-| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer` ) に非同期要求を開始しています。 |
+| e2d06d78-... |[https://domemaildist.blob.core.windows.net/azuremmblobcontainer](`https://domemaildist.blob.core.windows.net/azuremmblobcontainer`) に非同期要求を開始しています。 |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |応答を待機しています。 |
 | de8b1c3c-... |要求データを待機しています。 |
@@ -626,9 +622,9 @@ client.SetServiceProperties(sp);
 このような問題が頻繁に発生する場合は、クライアントが Table サービスからの確認を受信できない理由を調べる必要があります。 問題が断続的に発生する場合は、クライアントで "HTTP (404) 未検出" エラーをトラップしてログに記録する一方でクライアントの実行を継続できるようにする必要があります。
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
-次の表は、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用した **CreateIfNotExists** の 2 つのクライアント操作に関するサーバー側のログからの抜粋を示しています。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
+以下の表に、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用する **CreateIfNotExists** の 2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
-| Timestamp | Operation | 結果 | コンテナー名 | クライアント要求 ID |
+| Timestamp | 操作 | 結果 | コンテナー名 | クライアント要求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -727,7 +723,7 @@ Fiddler を起動すると、ローカル マシンの HTTP および HTTPS ト�
 
 Fiddler がキャプチャするトラフィックの量を制限するために、 **[Filters]** タブで構成するフィルターを使用することができます。以下のスクリーンショットには、 **contosoemaildist.table.core.windows.net** ストレージ エンドポイントに送信されるトラフィックのみをキャプチャするフィルターが示されています。
 
-![][5]
+![contosoemaildist.table.core.windows.net ストレージ エンドポイントに送信されるトラフィックのみをキャプチャするフィルターが示されているスクリーンショット。][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ
 [Wireshark](https://www.wireshark.org/) は、さまざまなネットワーク プロトコルの詳細なパケット情報を表示できるネットワーク プロトコル アナライザーです。
@@ -739,18 +735,18 @@ Fiddler がキャプチャするトラフィックの量を制限するために
 3. **[Capture Options]** をクリックします。
 4. フィルターを **[Capture Filter]** テキストボックスに追加します。 たとえば、**host contosoemaildist.table.core.windows.net** では、**contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](https://wiki.wireshark.org/CaptureFilters)を確認してください。
 
-   ![][6]
+   ![[Capture Filter] ボックスにフィルターを追加する方法を示すスクリーンショット。][6]
 5. **[開始]** をクリックします。 これで、Wireshark は、ローカル マシンでクライアント アプリケーションを使用しているときに Table サービス エンドポイントとの間で送受信されるすべてのパケットをキャプチャします。
 6. 終了したら、メイン メニューで **[Capture]** 、 **[Stop]** の順にクリックします。
 7. キャプチャしたデータを Wireshark キャプチャ ファイルに保存するには、メイン メニューで **[File]** 、 **[Save]** の順にクリックします。
 
 WireShark は、 **[packetlist]** ウィンドウに存在するエラーをすべて強調表示します。 **[Expert Info]** ウィンドウを使用して ( **[Analyze]** 、 **[Expert Info]** の順にクリック)、エラーや警告の概要を表示することもできます。
 
-![][7]
+![エラーと警告の概要を表示できる [Expert Info] ウィンドウを示すスクリーンショット。][7]
 
 アプリケーション レイヤーで見られる形で TCP データを表示するように選択することもできます。このためには、TCP データを右クリックしてから **[Follow TCP Stream]** を選択します。 これは、キャプチャ フィルターを使用せずにダンプをキャプチャした場合に便利です。 詳細については、[Follow TCP Stream](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html) に関する記事を参照してください。
 
-![][8]
+![アプリケーション レイヤーで見られる形で TCP データを表示する方法を示すスクリーンショット。][8]
 
 > [!NOTE]
 > Wireshark の使用方法の詳細については、『[Wireshark Users Guide](https://www.wireshark.org/docs/wsug_html_chunked)』を参照してください。
@@ -783,11 +779,11 @@ Microsoft Message Analyzer の **Web Proxy** トレースを使用してクラ�
 
 以下のスクリーンショットは、 **[DiagnosisTypes]** 列に**情報**メッセージが表示された **Local Link Layer** トレースの例を示しています。 **[DiagnosisTypes]** 列のアイコンをクリックすると、メッセージの詳細が表示されます。 この例では、サーバーが、クライアントからの確認を受信しなかったためにメッセージ #305 を再転送しました。
 
-![][9]
+![[DiagnosisTypes] 列に情報メッセージが表示された Local Link Layer トレースの例を示すスクリーンショット][9]
 
 Microsoft Message Analyzer でトレース セッションを作成するときに、フィルターを指定して、トレースに含まれる不要な情報の量を削減できます。 トレースを定義する **[Capture/Trace]** ページで、 **[Microsoft-Windows-NDIS-PacketCapture]** の横にある **[Configure]** リンクをクリックします。 以下のスクリーンショットは、3 つのストレージ サービスの IP アドレスに関する TCP トラフィックをフィルター処理する構成を示しています。
 
-![][10]
+![3 つのストレージ サービスの IP アドレスに関する TCP トラフィックをフィルター処理する構成を示すスクリーンショット][10]
 
 Microsoft Message Analyzer の Local Link Layer トレースの詳細については、「 [Microsoft-PEF-NDIS-PacketCapture Provider (Microsoft-PEF-NDIS-PacketCapture プロバイダー)](https://technet.microsoft.com/library/jj659264.aspx)」を参照してください。
 

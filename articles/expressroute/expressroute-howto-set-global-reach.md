@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Global Reach を構成する'
 description: この記事では、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築し、Global Reach を有効にする方法について説明します。
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: jaredro
-ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: duau
+ms.openlocfilehash: dd4c6f0b9d518acf06f7d018a65cc2b9b92db33d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656741"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395453"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach を構成する
 

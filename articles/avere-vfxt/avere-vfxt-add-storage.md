@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT ストレージを構成する - Azure
-description: Avere vFXT for Azure にバックエンド ストレージ システムを追加する方法
+description: Avere vFXT for Azure のクラスターにバックエンド ストレージ システムを追加する方法について説明します。 クラスターと共に Azure Blob コンテナーを作成している場合は、それはすぐに使用できます。
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227511"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271143"
 ---
 # <a name="configure-storage"></a>記憶域を構成する
 
@@ -57,7 +57,7 @@ NAS コア フィルターを追加するには、次の手順に従います。
 
    * コア ファイラーの名前を指定します。
    * ある場合は、完全修飾ドメイン名 (FQDN) を指定します。 それ以外の場合は、コア ファイラーに解決される IP アドレスまたはホスト名を指定します。
-   * 一覧からファイラー クラスを選択します。 わからない場合は、 **[その他]** を選択します。
+   * 一覧からファイラー クラスを選択します。 わからない場合は、**[その他]** を選択します。
 
      ![コア ファイラー名とその完全修飾ドメイン名が入力されている新規コア ファイラー追加ページのスクリーンショット](media/avere-vfxt-add-core-filer.png)
   
@@ -80,7 +80,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
 * クライアントがコア ファイラーのマウントに使用する名前空間ジャンクションを作成します (「[ジャンクションを作成する](#create-a-junction)」、ハードウェア ストレージもクラウド ストレージも同じ)
 
 > [!TIP]
-> Avere vFXT for Azure クラスターの作成時に新しい BLOB コンテナーを作成する場合は、デプロイ テンプレートによって、コンテナーがコア フィルターとして自動的に構成されます (これは、要求に応じて利用可能な作成スクリプトを使用する場合にも当てはまります)。コア フィルターを後で構成する必要はありません。
+> Avere vFXT for Azure クラスターの作成時に新しい BLOB コンテナーを作成する場合は、デプロイ テンプレートによって、コンテナーがコア フィルターとして自動的に構成されます  (これは、要求に応じて利用可能な作成スクリプトを使用する場合にも当てはまります)。コア フィルターを後で構成する必要はありません。
 >
 > クラスター作成ツールでは、次の構成タスクが自動的に実行されます。
 >
@@ -119,7 +119,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
 
    ![キーをコピーするための Azure portal GUI](media/avere-vfxt-copy-storage-key.png)
 
-1. 自分のクラスターの Avere Control Panel を開きます。 **[設定]** をクリックし、左側のナビゲーション ウィンドウで **[クラスター]**  >  **[Cloud Credentials]\(クラウド資格情報\)** を開きます。 [Cloud Credentials]\(クラウド資格情報\) ページで、 **[Add Credential]\(資格情報の追加\)** をクリックします。
+1. 自分のクラスターの Avere Control Panel を開きます。 **[設定]** をクリックし、左側のナビゲーション ウィンドウで **[クラスター]** > **[Cloud Credentials]\(クラウド資格情報\)** を開きます。 [Cloud Credentials]\(クラウド資格情報\) ページで、**[Add Credential]\(資格情報の追加\)** をクリックします。
 
    ![[Cloud Credentials]\(クラウド資格情報\) 構成ページの [Add Credential]\(資格情報の追加\) ボタンをクリック](media/avere-vfxt-new-credential-button.png)
 
@@ -144,7 +144,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
 1. ウィザードで次のように設定します。
 
    * ファイラーの種類で **[クラウド]** を選択します。
-   * 新しいコア ファイラーの名前を指定して、 **[Next]\(次へ\)** をクリックします。
+   * 新しいコア ファイラーの名前を指定して、**[Next]\(次へ\)** をクリックします。
    * 既定のキャッシュ ポリシーを受け入れ、3 ページ目に進みます。
    * **[Service type]\(サービスの種類\)** で **[Azure Storage]** を選択します。
    * 前に作成した資格情報を選択します。
@@ -153,7 +153,7 @@ Blob Storage をクラスターに追加するには、次のタスクが必要�
    * **[Compression mode]\(圧縮モード\)** を **[None]\(なし\)** に変更します
    * **[次へ]** をクリックします。
    * 4 ページ目では、コンテナーの名前を **[Bucket name]\(バケット名\)** に「<*ストレージ アカウント名*>/<*コンテナー名*>」の形式で入力します。
-   * 必要に応じて、 **[Encryption type]\(暗号化の種類\)** を **[None]\(なし\)** に設定します。  Azure Storage は既定で暗号化されます。
+   * 必要に応じて、**[Encryption type]\(暗号化の種類\)** を **[None]\(なし\)** に設定します。  Azure Storage は既定で暗号化されます。
    * **[Add Filer]\(ファイラーの追加\)** をクリックします。
 
    詳しくは、Avere クラスター構成ガイドの「[Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)」(新しいクラウド コア ファイラーの追加) をご覧ください。

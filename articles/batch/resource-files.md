@@ -3,12 +3,12 @@ title: リソース ファイルを作成して使用する
 description: さまざまな入力ソースから Batch リソースファイルを作成する方法について説明します。 この記事では、VM 上に作成して配置する方法について、いくつかの一般的な方法について説明します。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723461"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964024"
 ---
 # <a name="creating-and-using-resource-files"></a>リソース ファイルを作成して使用する
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > コンテナーへのアクセスでは、`Read` と `List` の両方のアクセス許可が必要ですが、BLOB へのアクセスでは、必要なのは `Read` アクセス権限のみです。
 
-アクセス許可を構成したら、SAS トークンを作成し、ストレージ コンテナーにアクセスするための SAS URL を書式設定します。 ストレージ コンテナーの書式設定された SAS URL を使用して、[`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) でリソース ファイルを生成します。
+アクセス許可を構成したら、SAS トークンを作成し、ストレージ コンテナーにアクセスするための SAS URL を書式設定します。 ストレージ コンテナーの書式設定された SAS URL を使用して、[`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) でリソース ファイルを生成します。
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,7 +99,7 @@ Batch ジョブには、すべてが同じ共通ファイルを使用する複�
 
 数百のリソース ファイルがタスクに指定されている場合、Batch はタスクが大きすぎるためにそれを拒否する可能性があります。 タスク自体のリソース ファイルの数を最小限に抑えることで、タスクを小さくしておくことをお勧めします。
 
-タスクが必要とするファイル数を最小限に抑える方法がない場合、リソース ファイルのストレージ コンテナーを参照する 1 つのリソース ファイルを作成することで、タスクを最適化できます。 これを実行するには、Azure ストレージ コンテナーにリソース ファイルを配置して、リソース ファイルに対するさまざまな「コンテナー」[メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)を使用します。 BLOB プレフィックス オプションを使用して、タスク用にダウンロードされるファイルのコレクションを指定します。
+タスクが必要とするファイル数を最小限に抑える方法がない場合、リソース ファイルのストレージ コンテナーを参照する 1 つのリソース ファイルを作成することで、タスクを最適化できます。 これを実行するには、Azure ストレージ コンテナーにリソース ファイルを配置して、リソース ファイルに対するさまざまな「コンテナー」[メソッド](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)を使用します。 BLOB プレフィックス オプションを使用して、タスク用にダウンロードされるファイルのコレクションを指定します。
 
 ## <a name="next-steps"></a>次のステップ
 

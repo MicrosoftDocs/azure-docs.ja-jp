@@ -4,8 +4,6 @@
   items:
     - name: Azure Front Door とは
       href: front-door-overview.md
-    - name: Azure Front Door の新着情報
-      href: front-door-whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -21,6 +19,8 @@
       href: front-door-tutorial-geo-filtering.md
     - name: ルール エンジンを設定する
       href: front-door-tutorial-rules-engine.md
+    - name: ルール エンジンを使用してセキュリティ ヘッダーを追加する
+      href: front-door-security-headers.md
     - name: Web アプリケーション ファイアウォールと Front Door
       href: front-door-waf.md
 - name: サンプル

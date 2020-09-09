@@ -5,41 +5,59 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1213b38f2b67e8fed179cfda4308943808893e1b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 06/22/2020
+ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213688"
 ---
 # <a name="logical-decoding"></a>論理デコード
  
 [PostgreSQL で論理デコード](https://www.postgresql.org/docs/current/logicaldecoding.html)を使用すると、データの変更を外部のコンシューマーにストリーミングできます。 論理デコードは、イベント ストリーミングおよび変更データ キャプチャのシナリオでよく使用されます。
 
-論理デコードでは、出力プラグインを使用して、Postgres の先行書き込みログ (WAL) を読み取り可能な形式に変換します。 Azure Database for PostgreSQL には、[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) と [wal2json](https://github.com/eulerto/wal2json) という2つの出力プラグインが用意されています。
- 
+論理デコードでは、出力プラグインを使用して、Postgres の先行書き込みログ (WAL) を読み取り可能な形式に変換します。 Azure Database for PostgreSQL には、[wal2json](https://github.com/eulerto/wal2json)、[test_decoding](https://www.postgresql.org/docs/current/test-decoding.html)、および pgoutput という出力プラグインが用意されています。 pgoutput は、Postgres バージョン 10 以上の Postgres で使用できます。
+
+Postgres の論理デコードのしくみの概要については、[弊社のブログ](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)を参照してください。 
 
 > [!NOTE]
 > 論理デコードは、Azure Database for PostgreSQL - Single Server のパブリック プレビューです。
 
 
-## <a name="set-up-your-server"></a>サーバーのセットアップ
-論理デコードを使い始めるには、サーバーが WAL を保存してストリーミングできるようにします。 
+## <a name="set-up-your-server"></a>サーバーのセットアップ 
+論理デコードと[読み取りレプリカ](concepts-read-replicas.md)はどちらも、情報を Postgres 書き込み先行ログ (WAL) に依存しています。 これらの 2 つの機能には、Postgres とは異なるレベルのログが必要です。 論理デコードには、読み取りレプリカよりも高いレベルのログが必要です。
 
-1. Azure CLI を使用して、azure.replication_support を `logical` に設定します。 
+適切なレベルのログを構成するには、Azure レプリケーション サポート パラメーターを使用します。 Azure レプリケーション サポートには、次の 3 つの設定オプションがあります。
+
+* **オフ** - 最小限の情報を WAL に格納します。 この設定は、ほとんどの Azure Database for PostgreSQL サーバーでは使用できません。  
+* **レプリカ** - **[オフ]** よりも冗長です。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
+* **論理** - **[レプリカ]** よりも冗長です。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカはこの設定でも機能します。
+
+このパラメーターを変更した後、サーバーを再起動する必要があります。 内部的には、このパラメーターによって、Postgres のパラメーター `wal_level`、`max_replication_slots`、および `max_wal_senders` が設定されます。
+
+### <a name="using-azure-cli"></a>Azure CLI の使用
+
+1. Replication_support を `logical` に設定します。
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
-   ```
-
-   > [!NOTE]
-   > 読み取りレプリカを使用する場合は、`logical` に設定されている azure.replication_support でもレプリカを実行できます。 論理デコードの使用を停止する場合は、設定を `replica` に戻します。 
-
+   ``` 
 
 2. サーバーを再起動して変更を適用します。
    ```
    az postgres server restart --resource-group mygroup --name myserver
    ```
+
+### <a name="using-azure-portal"></a>Azure Portal の使用
+
+1. Azure レプリケーションサポートを **[論理]** に設定します。 **[保存]** を選択します。
+
+   ![[Azure Database for PostgreSQL] - [レプリケーション] - [Azure レプリケーションのサポート]](./media/concepts-logical/replication-support.png)
+
+2. サーバーを再起動して変更を適用するには、 **[はい]** を選択します。
+
+   ![[Azure Database for PostgreSQL] - [レプリケーション] - 再起動の確認](./media/concepts-logical/confirm-restart.png)
+
 
 ## <a name="start-logical-decoding"></a>論理デコードを開始する
 

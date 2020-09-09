@@ -2,53 +2,54 @@
 title: Azure Cosmos DB 監視データのリファレンス | Microsoft Docs
 description: Azure Cosmos DB からのデータを監視するためのログとメトリックのリファレンス。
 author: bwren
-services: azure-monitor
-ms.service: azure-monitor
-ms.topic: reference
-ms.date: 11/11/2019
+services: cosmos-db
+ms.service: cosmos-db
+ms.topic: how-to
+ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.subservice: logs
-ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21e1d93e206751b5a55b0b3549e8bd566612ddbe
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588724"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080455"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 監視データのリファレンス
-この記事では、Azure Cosmos DB のパフォーマンスと可用性を分析する目的で収集されるログとメトリック データのリファレンスを提供します。 Azure Cosmos DB の監視データの収集と分析の詳細については、[Cosmos DB の監視](monitor-cosmos-db.md)に関するページを参照してください。
 
+この記事では、Azure Cosmos DB のパフォーマンスと可用性を分析する目的で収集されるログとメトリック データのリファレンスを提供します。 Azure Cosmos DB の監視データを収集して分析する方法については、[Azure Cosmos DB の監視](monitor-cosmos-db.md)に関するページを参照してください。
 
 ## <a name="resource-logs"></a>リソース ログ
-次の表に、Azure Monitor ログまたは Azure Storage で Azure Cosmos DB リソース ログが収集される場合のそれらのプロパティを示します。 Azure Monitor ログでは、**ResourceProvider** 値が *MICROSOFT.DOCUMENTDB* の **AzureDiagnostics** テーブルで収集されます。 
+
+次の表に、Azure Cosmos DB のリソース ログのプロパティを示します。 リソース ログは Azure Monitor ログまたは Azure Storage に収集されます。 Azure Monitor では、ログは `MICROSOFT.DOCUMENTDB` という名前のリソース プロバイダー** の下にある、**AzureDiagnostics** テーブルに収集されます。
 
 | Azure Storage のフィールドまたはプロパティ | Azure Monitor ログのプロパティ | 説明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作が発生した日時 (UTC)。 |
 | **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|
-| **category** | **カテゴリ** | Azure Cosmos DB ログの場合、利用できるログの種類には **DataPlaneRequests**、**MongoRequests**、**QueryRuntimeStatistics**、**PartitionKeyStatistics**、**PartitionKeyRUConsumption**、**ControlPlaneRequests** があります。 |
-| **operationName** | **OperationName** | 操作の名前。 この値は、Create、Update、Read、ReadFeed、Delete、Replace、Execute、SqlQuery、Query、JSQuery、Head、HeadFeed、または Upsert 操作のいずれかです。   |
+| **category** | **カテゴリ** | Azure Cosmos DB の場合、利用できるログの種類には **DataPlaneRequests**、**MongoRequests**、**QueryRuntimeStatistics**、**PartitionKeyStatistics**、**PartitionKeyRUConsumption**、**ControlPlaneRequests** があります。 |
+| **operationName** | **OperationName** | 操作の名前。 操作名は、`Create`、`Update`、`Read`、`ReadFeed`、`Delete`、`Replace`、`Execute`、`SqlQuery`、`Query`、`JSQuery`、`Head`、`HeadFeed`、`Upsert` のいずれかです。   |
 | **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |
-| **userAgent** | **userAgent_s** | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
-| **requestResourceType** | **requestResourceType_s** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Container、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
+| **userAgent** | **userAgent_s** | 要求の送信元であったクライアント ユーザー エージェントを示す文字列。 ユーザー エージェントの形式は `{user agent name}/{version}` です。|
+| **requestResourceType** | **requestResourceType_s** | アクセスされたリソースの種類。 この値は、database、container、document、attachment、user、permission、stored procedure、trigger、user-defined function、offer のいずれかです。 |
 | **statusCode** | **statusCode_s** | 操作の応答状態。 |
-| **requestResourceId** | **ResourceId** | 要求に関連するリソース ID。 値は、実行された操作によって databaseRid、collectionRid、または documentRid を示す可能性があります。|
+| **requestResourceId** | **ResourceId** | 要求に関連するリソース ID。 実行された操作に応じて、この値は `databaseRid`、`collectionRid`、または `documentRid`を指すことがあります。|
 | **clientIpAddress** | **clientIpAddress_s** | クライアントの IP アドレス。 |
-| **requestCharge** | **requestCharge_s** | 操作に使用された RU 数 |
+| **requestCharge** | **requestCharge_s** | 操作で使用された 1 秒あたりの RU 数 |
 | **collectionRid** | **collectionId_s** | コレクションの一意の ID。|
-| **duration** | **duration_s** | 操作時間 (ミリ秒)。 |
+| **duration** | **duration_d** | 操作時間 (ミリ秒)。 |
 | **requestLength** | **requestLength_s** | 要求の長さ (バイト単位)。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |
+| **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 
 すべての Azure Monitor ログ カテゴリと関連スキーマのリンクの一覧については、[Azure Monitor のログ カテゴリとスキーマ](../azure-monitor/platform/diagnostic-logs-schema.md)に関するページを参照してください。 
 
 ## <a name="metrics"></a>メトリック
 次の表は、Azure CosmOS DB 用に収集されたプラットフォーム メトリックを示しています。 メトリックはすべて、**Cosmos DB 標準メトリック**という名前空間に格納されます。
 
-(CosmosDB を含む) すべての Azure Monitor サポート メトリックの一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/platform/metrics-supported.md)に関するページを参照してください。 
+すべての Azure Monitor サポート メトリック (Azure Cosmos DB を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/platform/metrics-supported.md)に関するページを参照してください。 
 
 #### <a name="request-metrics"></a>要求のメトリック
             
@@ -97,7 +98,7 @@ ms.locfileid: "77588724"
 |メトリック (メトリックの表示名)|ユニット (集計の種類)|説明|Dimensions| 時間の細分性| 使用法 |
 |---|---|---|---| ---| ---|
 | CassandraRequests (Cassandra 要求) | カウント (カウント) | 実行された Cassandra API 要求の数| DatabaseName、CollectionName、ErrorCode、Region、OperationType、ResourceType| All| Cassandra 要求を 1 単単位の細分性で監視するために使用されます。 1 秒あたりの平均要求数を取得するには、分単位の Count 集計を使用して 60 で割ります。|
-| CassandraRequestCharges (Cassandra 要求の料金) | カウント (Sum、Min、Max、Avg) | Cassandra API 要求によって使用される要求ユニット数| DatabaseName、CollectionName、Region、OperationType、ResourceType| All| Cassandra API アカウントによって 1 分あたりで使用される RU を監視するために使用されます。|
+| CassandraRequestCharges (Cassandra 要求の料金) | カウント (Sum、Min、Max、Avg) | Cassandra API によって使用される要求ユニット数 | DatabaseName、CollectionName、Region、OperationType、ResourceType| All| Cassandra API アカウントによって 1 分あたりで使用される RU を監視するために使用されます。|
 | CassandraConnectionClosures (Cassandra 接続の終了) |カウント (カウント) |終了した Cassandra 接続の数| ClosureReason、Region| All | クライアントと Azure Cosmos DB Cassandra API の間の接続を監視するために使用されます。|
 
 ## <a name="see-also"></a>参照

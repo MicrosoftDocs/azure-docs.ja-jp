@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770494"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
 
@@ -149,11 +149,21 @@ IP アドレスを維持するには、次の手順を実行する必要があ�
 
 ## <a name="get-new-ip-addresses"></a>新しい IP アドレスの取得
 
-このシナリオでは、Azure VM はフェールオーバー後に新しい IP アドレスを取得します。 DNS の更新により、フェールオーバーされたマシンのレコードが Azure VM の IP アドレスを指すように更新されます。
+このシナリオでは、Azure VM はフェールオーバー後に新しい IP アドレスを取得します。 フェールオーバー後に作成された仮想マシン用に新しい IP アドレスを設定するには、次の手順のようにします。
 
+1. **[レプリケートされたアイテム]** に移動します。
+2. 対象の Azure 仮想マシンを選択します。
+3. **[コンピューティングとネットワーク]** を選択し、 **[編集]** を選択します。
 
+     ![フェールオーバー ネットワーク構成をカスタマイズする](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. フェールオーバー ネットワークの設定を更新するには、構成する NIC の **[編集]** を選択します。 開かれる次のページで、テスト フェールオーバーおよびフェールオーバーの場所においてあらかじめ作成してある、対応する IP アドレスを指定します。
+
+    ![NIC 構成ファイルを編集する](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. **[OK]** を選択します。
+
+Site Recovery でこれらの設定が使用されるようになり、フェールオーバー対象の仮想マシンは、対応する IP アドレスがターゲット IP 範囲で使用できる場合は、それを介して選択されたリソースに接続されます。 このシナリオでは、サブネット全体をフェールオーバーする必要はありません。 フェールオーバーされるマシンのレコードを、仮想マシンの新しい IP アドレスを指すように更新するには、DNS の更新が必要です。
 
 ## <a name="next-steps"></a>次のステップ
 オンプレミスの Active Directory と DNS の Azure へのレプリケートについて[確認します](site-recovery-active-directory.md)。
-
-

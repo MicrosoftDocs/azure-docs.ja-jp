@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954600"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129895"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure へのオンプレミスのディザスター リカバリーの VM のネットワーク インターフェイスを管理する
 
@@ -26,7 +26,7 @@ Azure 内の仮想マシン (VM) には少なくとも 1 つのネットワー�
 
 ## <a name="select-the-target-network"></a>ターゲット ネットワークを選択する
 
-VMware および物理マシンの場合、および Hyper-V (System Center Virtual Machine Manager なし) 仮想マシンの場合は、個々の仮想マシンに対してターゲット仮想ネットワークを指定できます。 Virtual Machine Manager で管理される Hyper-V 仮想マシンの場合は、[ネットワーク マッピング](site-recovery-network-mapping.md)を使用して、ソース側の Virtual Machine Manager サーバーとターゲット側の Azure ネットワーク上で VM ネットワークをマップします。
+VMware および物理マシンの場合、および Hyper-V (System Center Virtual Machine Manager なし) 仮想マシンの場合は、個々の仮想マシンに対してターゲット仮想ネットワークを指定できます。 Virtual Machine Manager で管理される Hyper-V 仮想マシンの場合は、[ネットワーク マッピング](./hyper-v-vmm-network-mapping.md)を使用して、ソース側の Virtual Machine Manager サーバーとターゲット側の Azure ネットワーク上で VM ネットワークをマップします。
 
 1. Recovery Services コンテナーの **[レプリケートされたアイテム]** で、任意のレプリケートされたアイテムを選択して、その設定にアクセスします。
 

@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Adobe Creative Cloud の統合 | Microsoft Docs
 description: Azure Active Directory と Adobe Creative Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 07/14/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25dd638c15fecbef787e4ceabea9ae7cb4359582
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81e02bdc483c4b68901d7e81b29f3a7f423480d9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76120368"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537602"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Adobe Creative Cloud の統合
 
@@ -34,7 +29,7 @@ ms.locfileid: "76120368"
 * ユーザーが自分の Azure AD アカウントを使用して Adobe Creative Cloud に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,10 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Adobe Creative Cloud では、**SP** Initiated SSO がサポートされます
-
-
-
-
+* Adobe Creative Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>ギャラリーから Adobe Creative Cloud を追加する
 
@@ -65,7 +57,7 @@ Azure AD への Adobe Creative Cloud の統合を構成するには、ギャラ�
 1. 結果のパネルから **[Adobe Creative Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adobe-creative-cloud"></a>Adobe Creative Cloud の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-adobe-creative-cloud"></a>Adobe Creative Cloud の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Adobe Creative Cloud に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Adobe Creative Cloud の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -95,7 +87,7 @@ Adobe Creative Cloud に対する Azure AD SSO を構成してテストするに
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[Adobe Creative Cloud クライアント サポート チーム](https://www.adobe.com/au/creativecloud/business/teams/plans.html)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この識別子の値は実際のものではありません。 「**Adobe Creative Cloud の SSO の構成**」セクションの手順 4. のガイダンスに従ってください。 これにより、**フェデレーション メタデータ XML ファイル**を開いて、そこからエンティティ ID の値を取得し、Azure AD 構成の識別子の値として入力できます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. Adobe Creative Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -198,7 +190,7 @@ Azure AD ユーザーが Adobe Creative Cloud にサインインできるよう�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
@@ -207,4 +199,3 @@ Azure AD ユーザーが Adobe Creative Cloud にサインインできるよう�
 - [ID を設定する (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
   
 - [Adobe SSO で使用するために Azure を構成する (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
-

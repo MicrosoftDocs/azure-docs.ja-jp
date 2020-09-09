@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318098"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Monitor で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -36,7 +36,7 @@ Active Directory 正常性チェック ソリューションを使用して、�
 ## <a name="prerequisites"></a>前提条件
 
 * Active Directory 正常性チェック ソリューションを使用するには、各コンピューターに (Microsoft Monitoring Agent (MMA) とも呼ばれる) Windows 用の Log Analytics エージェントがインストールされ、4.6.2 以降のサポートされているバージョンの .NET Framework がインストールされている必要があります。  このエージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Azure Monitor に使用されます。
-* このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、および Windows Server 2016 を実行するドメイン コントローラーをサポートしています。
+* このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、Windows Server 2016、および Windows Server 2019 を実行するドメイン コントローラーをサポートしています。
 * Azure Portal で Azure Marketplace から Active Directory 正常性チェック ソリューションを追加する Log Analytics ワークスペース。 追加の構成は必要ありません。
 
   > [!NOTE]
@@ -46,9 +46,9 @@ Active Directory 正常性チェック ソリューションを使用して、�
 
 評価対象のドメインのメンバーであるお使いのドメイン コントローラーに対して正常性チェックを実行するには、ドメイン内の各ドメイン コントローラーにエージェントがあり、次のサポートされるいずれかの方法で Azure Monitor に接続できる必要があります。
 
-1. ドメイン コントローラーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Windows 用の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)をインストールします。
+1. ドメイン コントローラーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Windows 用の Log Analytics エージェント](../platform/agent-windows.md)をインストールします。
 2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Azure Monitor と統合されていない場合は、ドメイン コントローラーを Azure Monitor とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
-3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
 Operations Manager 管理グループに報告するドメイン コントローラー上のエージェントではデータが収集されて、割り当てられている管理サーバーに転送されます。このデータは、管理サーバーから Azure Monitor に直接送信されます。  データは Operations Manager データベースに書き込まれません。  
 
@@ -216,3 +216,4 @@ ADAssessmentRecommendation
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な AD の正常性チェック データと推奨事項を分析する方法を学びます。
+

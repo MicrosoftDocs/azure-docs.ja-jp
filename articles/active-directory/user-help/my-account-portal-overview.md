@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 95947a9350f19f0f0ff45b7c65e14729b66f26cf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742201"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798161"
 ---
 # <a name="what-is-the-my-account-portal"></a>マイ アカウント ポータルとは
 
@@ -33,11 +33,11 @@ ms.locfileid: "83742201"
 ![マイ アカウント ポータル、[概要] ページ](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->この記事の対象読者は、マイ アカウント ポータルにアクセスして自分のセキュリティ情報やデバイス情報、パスワード、接続されている組織、プライバシー、以前のサインイン情報を更新したいと考えているユーザーです。 認証を初めとする Azure Active Directory (Azure AD) 機能を従業員その他のユーザーに対して有効にする方法についての情報を探している管理者の方は、[管理者向け Azure AD ドキュメント](https://docs.microsoft.com/azure/active-directory/)に関するページを参照してください。
+>この記事の対象読者は、マイ アカウント ポータルにアクセスして自分のセキュリティ情報やデバイス情報、パスワード、接続されている組織、言語設定、プライバシー、以前のサインイン情報を更新したいと考えているユーザーです。 認証を初めとする Azure Active Directory (Azure AD) 機能を従業員その他のユーザーに対して有効にする方法についての情報を探している管理者の方は、[管理者向け Azure AD ドキュメント](../index.yml)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 自分の[セキュリティ情報](user-help-security-info-overview.md)の表示または管理を選択する
+- 自分の[セキュリティ情報](./security-info-setup-signin.md)の表示または管理を選択する
 
 - 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する
 
@@ -46,6 +46,8 @@ ms.locfileid: "83742201"
 - [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示する
 
 - 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示する
+
+- [マイ アカウント ポータルの設定](my-account-portal-settings.md)を変更する
 
 ## <a name="related-microsoft-office-content"></a>関連する Microsoft Office コンテンツ
 

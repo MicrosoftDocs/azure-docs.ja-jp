@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Huddle の統合 | Microsoft Docs'
 description: Azure Active Directory と Huddle の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8389ba4c-f5f8-4ede-b2f4-32eae844ceb0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1faf1c1fcdefb0c93d36c195f0cf44626a555f44
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77472e27a11614b7b5600f48e020afcceaeb967c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158993"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525889"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>チュートリアル: Azure Active Directory と Huddle の統合
 
@@ -111,20 +106,18 @@ Huddle で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[識別子]** テキスト ボックスに次の URL を入力します。
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net`|
-    | `https://login.huddle.com`|
-    | |
+    ```http
+    https://login.huddle.net
+    https://login.huddle.com
+    ```
 
     b. **[応答 URL]** テキスト ボックスに、次の URL を入力します。
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net/saml/browser-sso`|
-    | `https://login.huddle.com/saml/browser-sso`|
-    | `https://login.huddle.com/saml/idp-initiated-sso`|
-    | |
+    ```http
+    https://login.huddle.net/saml/browser-sso
+    https://login.huddle.com/saml/browser-sso
+    https://login.huddle.com/saml/idp-initiated-sso
+    ```
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -132,128 +125,127 @@ Huddle で Azure AD シングル サインオンを構成するには、次の�
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | | |
-    |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
-    | |
+    ```http
+    https://<customsubdomain>.huddle.com
+    https://us.huddle.com
+        ```
 
     > [!NOTE]
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Huddle クライアント サポート チーム](https://huddle.zendesk.com)に問い合わせてください。
+    > The Sign-on URL value is not real. Update this value with the actual Sign-On URL. Contact [Huddle Client support team](https://huddle.zendesk.com) to get this value.
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-7. **[Set up Huddle]\(Huddle の設定\)** セクションで、要件どおりの適切な URL をコピーします。
+7. On the **Set up Huddle** section, copy the appropriate URL(s) as per your requirement.
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. ログイン URL
+    a. Login URL
 
-    b. Azure AD 識別子
+    b. Azure Ad Identifier
 
-    c. ログアウト URL
+    c. Logout URL
 
-### <a name="configure-huddle-single-sign-on"></a>Huddle のシングル サインオンの構成
+### Configure Huddle Single Sign-On
 
-**Huddle** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Huddle サポート チーム](https://huddle.zendesk.com/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+To configure single sign-on on **Huddle** side, you need to send the downloaded **Certificate (Base64)** and appropriate copied URLs from Azure portal to [Huddle support team](https://huddle.zendesk.com/). They set this setting to have the SAML SSO connection set properly on both sides.
 
 > [!NOTE]
-> Huddle サポート チームがシングル サインオンを有効にする必要があります。 構成が完了すると、通知が届きます。
+> Single sign-on needs to be enabled by the Huddle support team. You get a notification when the configuration has been completed.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### Create an Azure AD test user
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. 画面の上部にある **[新しいユーザー]** を選択します。
+2. Select **New user** at the top of the screen.
 
-    ![[新しいユーザー] ボタン](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. In the User properties, perform the following steps.
 
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    For example, BrittaSimon@contoso.com
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. **Create** をクリックしてください。
+    d. Click **Create**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### Assign the Azure AD test user
 
-このセクションでは、Britta Simon に Huddle へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Huddle.
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Huddle]** を選択します。
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Huddle**.
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Huddle]\(Huddle\)** を選択します。
+2. In the applications list, select **Huddle**.
 
-    ![アプリケーションの一覧の Huddle のリンク](common/all-applications.png)
+    ![The Huddle link in the Applications list](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+3. In the menu on the left, select **Users and groups**.
 
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-huddle-test-user"></a>Huddle のテスト ユーザーの作成
+### Create Huddle test user
 
-Azure AD ユーザーが Huddle にログインできるようにするには、そのユーザーを Huddle にプロビジョニングする必要があります。 Huddle の場合、プロビジョニングは手動で行います。
+To enable Azure AD users to log in to Huddle, they must be provisioned into Huddle. In the case of Huddle, provisioning is a manual task.
 
-**ユーザー プロビジョニングを構成するには、次の手順に従います。**
+**To configure user provisioning, perform the following steps:**
 
-1. **Huddle** 企業サイトに管理者としてログインします。
+1. Log in to your **Huddle** company site as administrator.
 
-2. **[ワークスペース]** をクリックします。
+2. Click **Workspace**.
 
-3. **[ユーザー] \>[ユーザーの招待]** の順にクリックします。
+3. Click **People \> Invite People**.
 
-    ![ユーザー](./media/huddle-tutorial/ic787838.png "ユーザー")
+    ![People](./media/huddle-tutorial/ic787838.png "People")
 
-4. **[新しい招待の作成]** セクションで、次の手順を実行します。
+4. In the **Create a new invitation** section, perform the following steps:
   
-    ![新しい招待](./media/huddle-tutorial/ic787839.png "新しい招待")
+    ![New Invitation](./media/huddle-tutorial/ic787839.png "New Invitation")
   
-    a. **[ユーザーを招待して参加させるチームの選択]** の一覧で **[チーム]** を選択します。
+    a. In the **Choose a team to invite people to join** list, select **team**.
 
-    b. **[Enter email address for people you'd like to invite]\(招待したい人の電子メール アドレスの入力\)** ボックスに、プロビジョニングを行う有効な Azure AD アカウントの**電子メール アドレス**を入力します。
+    b. Type the **Email Address** of a valid Azure AD account you want to provision in to **Enter email address for people you'd like to invite** textbox.
 
-    c. **[招待]** をクリックします。
+    c. Click **Invite**.
 
     > [!NOTE]
-    > アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。
+    > The Azure AD account holder will receive an email including a link to confirm the account before it becomes active.
 
 > [!NOTE]
-> Huddle から提供されている他の Huddle ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
+> You can use any other Huddle user account creation tools or APIs provided by Huddle to provision Azure AD user accounts.
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### Test single sign-on
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-アクセス パネル上で [Huddle] タイルをクリックすると、SSO を設定した Huddle に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+When you click the Huddle tile in the Access Panel, you should be automatically signed in to the Huddle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>その他のリソース
+## Additional Resources
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

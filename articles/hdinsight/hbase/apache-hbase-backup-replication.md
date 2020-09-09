@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75495932"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705726"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -36,19 +36,15 @@ Apache HBase は、データ損失を防ぐための複数の方法をサポー�
 
 HDInsight の HBase では、クラスターの作成時に選択された既定のストレージ (Azure Storage BLOB または Azure Data Lake Storage のどちらか) を使用します。 どちらの場合も、HBase はそのデータ ファイルとメタデータ ファイルを次のパスに保存します。
 
-    /hbase
+`/hbase`
 
 * Azure Storage アカウントでは、`hbase` フォルダーは BLOB コンテナーのルートにあります。
 
-    ```
-    wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
-    ```
+  `wasbs://<containername>@<accountname>.blob.core.windows.net/hbase`
 
 * Azure Data Lake Storage では、クラスターのプロビジョニング時に指定したルート パスの下に `hbase` フォルダーが存在します。 通常、このルート パスには `clusters` フォルダーがあり、HDInsight クラスターにちなんだ名前のサブフォルダーが含まれています。
 
-    ```
-    /clusters/<clusterName>/hbase
-    ```
+  `/clusters/<clusterName>/hbase`
 
 いずれの場合も、`hbase` フォルダーには、HBase によってディスクにフラッシュされたすべてのデータが含まれていますが、メモリ内のデータは含まれないことがあります。 このフォルダーを HBase データを正確に表すものとして利用できるようにするには、事前にクラスターをシャットダウンする必要があります。
 
@@ -64,31 +60,37 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
 テーブル データをエクスポートするには、最初にエクスポート元の HDInsight クラスターのヘッド ノードに SSH で接続してから、次の `hbase` コマンドを実行します。
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```
 
 エクスポート ディレクトリはまだ存在していてはなりません。 テーブル名は、大文字と小文字が区別されます。
 
 テーブル データをインポートするには、インポート先の HDInsight クラスターのヘッド ノードに SSH で接続してから、次の `hbase` コマンドを実行します。
 
-    hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```
 
 テーブルは既に存在している必要があります。
 
 既定のストレージまたは接続ストレージ オプションのいずれかへの完全なエクスポート パスを指定します。 たとえば、Azure Storage の場合は次のようになります。
 
-    wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasbs://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 Azure Data Lake Storage Gen2 では、構文は次のとおりです。
 
-    abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
+`abfs://<containername>@<accountname>.dfs.core.windows.net/<path>`
 
 Azure Data Lake Storage Gen1 では、構文は次のとおりです。
 
-    adl://<accountName>.azuredatalakestore.net:443/<path>
+`adl://<accountName>.azuredatalakestore.net:443/<path>`
 
 この方法では、テーブルレベルの粒度が提供されます。 また、含める行の日付範囲を指定することもできます。これにより、処理を段階的に実行できます。 各日付は、Unix エポック以降のミリ秒数で表されます。
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```
 
 エクスポートする各行のバージョンの数を指定する必要があることに注意してください。 日付範囲にすべてのバージョンを含めるには、`<numberOfVersions>` を、考えられる最大行バージョンより大きな値 (100000 など) に設定します。
 
@@ -98,16 +100,19 @@ Azure Data Lake Storage Gen1 では、構文は次のとおりです。
 
 クラスター内で CopyTable を使用するには、コピー元の HDInsight クラスターのヘッドノードに SSH で接続してから、この `hbase` コマンドを実行します。
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
-
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+```
 
 CopyTable を使用して別のクラスターのテーブルにコピーするには、コピー先のクラスターのアドレスを指定した `peer` スイッチを追加します。
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```
 
 コピー先のアドレスは、次の 3 つの部分で構成されています。
 
-    <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
+`<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
 * `<ZooKeeperQuorum>` は Apache ZooKeeper ノードのコンマ区切りリストです。次に例を示します。
 
@@ -121,7 +126,9 @@ CopyTable を使用して別のクラスターのテーブルにコピーする�
 
 CopyTable ユーティリティでは、コピーする行の時間範囲を指定するパラメーターと、コピーするテーブル内の列ファミリのサブセットを指定するパラメーターもサポートしています。 CopyTable でサポートされているパラメーターの完全な一覧を表示するには、パラメーターを指定せずに CopyTable を実行してください。
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```
 
 CopyTable は、コピー先テーブルにコピーされる、コピー元テーブルの内容全体をスキャンします。 これにより、CopyTable の実行中は HBase クラスターのパフォーマンスが低下する可能性があります。
 
@@ -134,29 +141,35 @@ CopyTable は、コピー先テーブルにコピーされる、コピー元テ�
 
 クォーラムのホスト名を取得するには、次の curl コマンドを実行します。
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```
 
 curl コマンドで HBase 構成情報を含む JSON ドキュメントを取得し、grep コマンドで次のように "hbase.zookeeper.quorum" エントリのみを返します。
 
-    "hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```output
+"hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```
 
 クォーラムのホスト名の値は、コロンの右側にある文字列全体です。
 
 これらのホストの IP アドレスを取得するには、前のリストにある各ホストに対して次の curl コマンドを使用します。
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```
 
 この curl コマンドの `<zookeeperHostFullName>` は ZooKeeper ホストの完全 DNS 名です (例: `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`)。 コマンドの出力には、次のように、指定したホストの IP アドレスが含まれます。
 
-    100    "ip" : "10.0.0.9",
+`100    "ip" : "10.0.0.9",`
 
 クォーラム内のすべての ZooKeeper ノードの IP アドレスを収集した後、コピー先のアドレスを再構築します。
 
-    <destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>
+`<destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>`
 
 この例では次のようになります。
 
-    <destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure
+`<destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure`
 
 ## <a name="snapshots"></a>スナップショット
 
@@ -164,31 +177,49 @@ curl コマンドで HBase 構成情報を含む JSON ドキュメントを取�
 
 スナップショットを作成するには、HDInsight HBase クラスターのヘッド ノードに SSH で接続し、`hbase` シェルを起動します。
 
-    hbase shell
+```console
+hbase shell
+```
 
 HBase シェル内で、テーブルの名前とこのスナップショットの名前を指定した snapshot コマンドを使用します。
 
-    snapshot '<tableName>', '<snapshotName>'
+```console
+snapshot '<tableName>', '<snapshotName>'
+```
 
 `hbase` シェル内で名前を使用してスナップショットを復元するには、最初にテーブルを無効にしてから、スナップショットを復元してテーブルを再度有効にします。
 
-    disable '<tableName>'
-    restore_snapshot '<snapshotName>'
-    enable '<tableName>'
+```console
+disable '<tableName>'
+restore_snapshot '<snapshotName>'
+enable '<tableName>'
+```
 
 スナップショットを新しいテーブルに復元するには、clone_snapshot を使用します。
 
-    clone_snapshot '<snapshotName>', '<newTableName>'
+```console
+clone_snapshot '<snapshotName>', '<newTableName>'
+```
 
 別のクラスターで使用するためにスナップショットを HDFS にエクスポートするには、まず、既に説明したようにスナップショットを作成してから、ExportSnapshot ユーティリティを使用します。 `hbase` シェル内ではなく、SSH セッション内からヘッド ノードに対してこのユーティリティを実行します。
 
-     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```
 
 `<hdfsHBaseLocation>` は、エクスポート元クラスターからアクセスできるストレージの場所のいずれかになり、エクスポート先クラスターで使用される hbase フォルダーを指す必要があります。 たとえば、セカンダリ Azure Storage アカウントがエクスポート元クラスターに接続されていて、そのアカウントから、エクスポート先クラスターの既定のストレージで使用されるコンテナーにアクセスできる場合は、次のコマンドを実行します。
 
-    hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
 
-スナップショットがエクスポートされたら、エクスポート先クラスターのヘッド ノードに SSH で接続し、前に説明したように restore_snapshot コマンドを使用してスナップショットを復元します。
+ソース クラスターにセカンダリ Azure Storage アカウントが接続されていない場合、またはソース クラスターがオンプレミスのクラスター (または非 HDI クラスター) である場合は、HDI クラスターのストレージ アカウントにアクセスしようとすると、承認の問題が発生する可能性があります。 これを解決するには、次の例に示すように、コマンドライン パラメーターとしてストレージ アカウントのキーを指定します。 ストレージ アカウントのキーは、Azure Portal で取得できます。
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+スナップショットがエクスポートされたら、エクスポート先クラスターのヘッド ノードに SSH で接続し、前に説明したように `restore_snapshot` コマンドを使用してスナップショットを復元します。
 
 スナップショットは、`snapshot` コマンドの時点でのテーブルの完全バックアップを提供します。 スナップショットでは、時間枠ごとに増分スナップショットを実行することも、スナップショットに含める列ファミリのサブセットを指定することもできません。
 

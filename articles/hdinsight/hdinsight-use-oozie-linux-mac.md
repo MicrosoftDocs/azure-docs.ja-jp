@@ -5,15 +5,15 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204119"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085941"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -35,7 +35,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 * **SSH クライアント**。 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-* **Azure SQL Database**。  [Azure portal での Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、**oozietest** という名前のデータベースを使用します。
+* **Azure SQL Database**。  [Azure portal での Azure SQL Database のデータベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、**oozietest** という名前のデータベースを使用します。
 
 * クラスターのプライマリ ストレージの URI スキーム。 Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は `abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
@@ -47,9 +47,11 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 1. Hive アクションは、HiveQL スクリプトを実行して、HDInsight に含まれている `hivesampletable` からレコードを抽出します。 各データ行は、特定のモバイル デバイスからのアクセスを表します。 レコードの形式は次のテキストのようになります。
 
-        8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-        23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-        23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```output
+    8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+    23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+    23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```
 
     このドキュメントで使う Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -232,7 +234,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  コマンドを入力して、前提条件の SQL データベースに接続します。  プロンプトでパスワードを入力します。
+2. 次のコードを編集して、`<serverName>` をご利用の[論理 SQL サーバー](../azure-sql/database/logical-servers.md)名に置き換え、`<sqlLogin>` をサーバー ログインに置き換えます。  コマンドを入力して、前提条件の SQL データベースに接続します。  プロンプトでパスワードを入力します。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -240,11 +242,13 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     出力は次のテキストのようになります。
 
-        locale is "en_US.UTF-8"
-        locale charset is "UTF-8"
-        using default charset "UTF-8"
-        Default database being set to oozietest
-        1>
+    ```output
+    locale is "en_US.UTF-8"
+    locale charset is "UTF-8"
+    using default charset "UTF-8"
+    Default database being set to oozietest
+    1>
+    ```
 
 3. `1>` プロンプトで、以下の行を入力します。
 
@@ -268,8 +272,10 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     次のようなテキストが出力されます。
 
-        TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-        oozietest       dbo             mobiledata      BASE TABLE
+    ```output
+    TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+    oozietest       dbo             mobiledata      BASE TABLE
+    ```
 
 4. `1>` プロンプトで「`exit`」と入力して、tsql ユーティリティを終了します。
 
@@ -301,9 +307,9 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 手順 1 で受け取った値。|
     |admin| admin ではない場合、HDInsight クラスターの自分のログイン名。|
-    |serverName| Azure SQL データベース サーバー名。|
-    |sqlLogin| Azure SQL データベース サーバー ログイン。|
-    |sqlPassword| Azure SQL データベース サーバー ログインのパスワード。|
+    |serverName| Azure SQL Database サーバー名。|
+    |sqlLogin| Azure SQL Database サーバー ログイン。|
+    |sqlPassword| Azure SQL Database サーバー ログインのパスワード。|
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -424,20 +430,22 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     次のテキストのような情報が返されます。
 
-        Job ID : 0000005-150622124850154-oozie-oozi-W
-        ------------------------------------------------------------------------------------------------------------------------------------
-        Workflow Name : useooziewf
-        App Path      : wasb:///tutorials/useoozie
-        Status        : PREP
-        Run           : 0
-        User          : USERNAME
-        Group         : -
-        Created       : 2015-06-22 15:06 GMT
-        Started       : -
-        Last Modified : 2015-06-22 15:06 GMT
-        Ended         : -
-        CoordAction ID: -
-        ------------------------------------------------------------------------------------------------------------------------------------
+    ```output
+    Job ID : 0000005-150622124850154-oozie-oozi-W
+    ------------------------------------------------------------------------------------------------------------------------------------
+    Workflow Name : useooziewf
+    App Path      : wasb:///tutorials/useoozie
+    Status        : PREP
+    Run           : 0
+    User          : USERNAME
+    Group         : -
+    Created       : 2015-06-22 15:06 GMT
+    Started       : -
+    Last Modified : 2015-06-22 15:06 GMT
+    Ended         : -
+    CoordAction ID: -
+    ------------------------------------------------------------------------------------------------------------------------------------
+    ```
 
     このジョブの状態は `PREP` です。 この状態は、ジョブが作成されたが開始されていないことを示します。
 
@@ -449,7 +457,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。  このジョブは完了までに数分かかります。
 
-6. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  正常に "*タスクが完了したら*"、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
+6. 次のコードを編集して、`<serverName>` をご利用のサーバー名に置き換え、`<sqlLogin>` をサーバー ログインに置き換えます。  正常に "*タスクが完了したら*"、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -464,14 +472,16 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     次のテキストのような情報が返されます。
 
-        deviceplatform  count
-        Android 31591
-        iPhone OS       22731
-        proprietary development 3
-        RIM OS  3464
-        Unknown 213
-        Windows Phone   1791
-        (6 rows affected)
+    ```output
+    deviceplatform  count
+    Android 31591
+    iPhone OS       22731
+    proprietary development 3
+    RIM OS  3464
+    Unknown 213
+    Windows Phone   1791
+    (6 rows affected)
+    ```
 
 Oozie コマンドの詳細については、[Apache Oozie コマンドライン ツール](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html)に関するページをご覧ください。
 

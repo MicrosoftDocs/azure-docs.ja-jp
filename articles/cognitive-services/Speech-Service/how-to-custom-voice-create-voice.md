@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76717318"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629010"
 ---
 # <a name="create-a-custom-voice"></a>Custom Voice を作成する
 
@@ -62,7 +62,7 @@ en-US と zh-CN のデータセットでは、さらに、レポートをダウ�
 
 ご自分のデータセットの検証後、それを使用してご自分のカスタム音声モデルを作成できます。
 
-1.  **[Text-to-Speech]\(テキスト読み上げ\)、[Custom Voice]、[トレーニング]** の順に移動します。
+1.  **[テキスト読み上げ]、[Custom Voice]、[<プロジェクト名>]、[トレーニング]** の順に移動します。
 
 2.  **[Train model]\(モデルのトレーニング\)** をクリックします。
 
@@ -106,7 +106,7 @@ en-US と zh-CN のデータセットでは、さらに、レポートをダウ�
 
 音声フォントが正常に作成されたら、使用のために展開する前にテストすることができます。
 
-1.  **[Text-to-Speech]\(テキスト読み上げ\)、[Custom Voice]、[Testing]\(テスト\)** の順に移動します。
+1.  **[テキスト読み上げ]、[Custom Voice]、[<プロジェクト名>]、[テスト]** の順に移動します。
 
 2.  **[テストの追加]** をクリックします。
 

@@ -5,17 +5,17 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426254"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015596"
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK:.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
 
 [管理用 Stream Analytics API の管理リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn889315.aspx)を参照してください。
@@ -30,7 +30,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 * Visual Studio 2019 または 2015 のインストール。
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)のダウンロードとインストール。
-* サブスクリプションに Azure リソース グループを作成する。 次の例に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。  
+* サブスクリプションに Azure リソース グループを作成する。 次の例に、サンプルの Azure PowerShell スクリプトを示します。 Azure PowerShell については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/)」を参照してください。  
 
    ```powershell
    # Log in to your Azure account
@@ -212,7 +212,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics の出力ターゲットの作成
 出力ターゲットの作成は、Stream Analytics の入力ソースの作成と似ています。 入力ソースと同様、出力ターゲットも特定のジョブに関連付けられます。 1 つの出力ターゲットを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。
 
-次のコードで出力ターゲット (Azure SQL データベース) を作成します。 出力ターゲットのデータとシリアル化の種類はカスタマイズできます。
+次のコードで、出力ターゲット (Azure SQL Database) を作成します。 出力ターゲットのデータとシリアル化の種類はカスタマイズできます。
 
    ```csharp
    // Create an output
@@ -285,7 +285,7 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
    ```
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、以下の記事をお読みください。

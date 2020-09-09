@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187786"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488773"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す
 
@@ -26,7 +26,7 @@ Azure AD B2C は現在、[Facebook](identity-provider-facebook.md) や [Google](
 
 ## <a name="prerequisites"></a>前提条件
 
-* 対象のアプリケーションが [v2 のユーザー フロー](user-flow-versions.md) を使用している。
+* 対象のアプリケーションで、[推奨されるユーザー フロー](user-flow-versions.md)が使用されている。
 * 対象のユーザー フローが OAuth 2.0 ID プロバイダーを使用して構成されている。
 
 ## <a name="enable-the-claim"></a>要求を有効にする

@@ -26,8 +26,6 @@
       href: how-to-configure-connected-field-services.md
     - name: デバイスの接続
       items:
-        - name: MXChip IoT DevKit を準備して接続する
-          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Rigado Cascade 500 を準備して接続する
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Azure CLI を使用してデバイスの接続性を監視する
@@ -107,9 +105,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: サポート オプションとヘルプ オプション
       href: /azure/iot-fundamentals/iot-support-help
     - name: 顧客データ要求

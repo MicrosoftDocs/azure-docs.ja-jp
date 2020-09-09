@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71057537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028551"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -66,14 +66,14 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 ### <a name="property-values"></a>プロパティ値
 
-|   **Name**   |**値/例**|       **説明**      |
+|   **名前**   |**値/例**|       **説明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API のバージョン。
 |publisher|Microsoft.Azure.Performance.Diagnostics|拡張機能の発行元名前空間。
 |type|AzurePerformanceDiagnostics|VM 拡張機能の種類。
 |typeHandlerVersion|1.0|拡張機能ハンドラーのバージョン。
 |performanceScenario|basic|データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。
-|traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
+|traceDurationInSeconds|該当なし|いずれかのトレース オプションを選択した場合、トレースの期間。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |xperfTrace|x|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
@@ -88,7 +88,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 Windows 仮想マシンにこの拡張機能をインストールするには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. この拡張機能をインストールする仮想マシンを選びます。
 
     ![仮想マシンが強調表示されている Azure Portal のスクリーンショット](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -233,7 +233,7 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
 
 ## <a name="view-and-share-the-results"></a>結果を表示および共有する
 
-拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** フォルダー以下の *zipfilename*_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
+拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-sas-overview.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** フォルダー以下の *zipfilename*_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
 
 サポート チケットの作業を行うサポート エンジニアを支援するために、Microsoft がこの SAS リンクを使って診断データをダウンロードする場合があります。
 
@@ -253,6 +253,6 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
     拡張機能の状態で拡張機能が正常にプロビジョニングされたことが示されている限り、この問題は無視しても安全です。
 - インストール中の問題の一部は、拡張ログを使って対処できます。 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
 
-        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
+    `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

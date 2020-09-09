@@ -4,15 +4,16 @@ description: Azure Consumption API シリーズを使用して Azure リソー�
 author: bandersmsft
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: f2d7398be1db6760ebe532d3d726373d8c78e0c7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e2252d13dd39587e7730b141a6096afc0a34dbc1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202949"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690019"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure Consumption API の概要
 
@@ -37,7 +38,7 @@ Usage Details API を使用して、すべての Azure ファースト パーテ
 この API には次の要素が含まれています。
 
 -   **測定レベルの消費データ** - 使用コスト、料金の元となる測定、および料金が関係する Azure リソースを含むデータを表示します。 すべての使用状況詳細レコードは、日単位のバケットにマップされます。
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **フィルタリング** - 次のフィルターを使用して、API 結果セットをより小さな使用状況詳細レコードのセットにトリミングします。
     - 使用終了/使用開始
     - リソース グループ
@@ -54,7 +55,7 @@ Marketplace Charges API を使用して、Marketplace のすべてのリソー�
 この API には次の要素が含まれています。
 
 -   **測定レベルの消費データ** - マーケットプレースの使用コスト、料金の元となる測定、および料金が関係するリソースを含むデータを表示します。 すべての使用状況詳細レコードは、日単位のバケットにマップされます。
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **フィルタリング** - 次のフィルターを使用して、API 結果セットをより小さなマーケットプレース レコードのセットにトリミングします。
     - 使用開始/使用終了
     - リソース グループ
@@ -69,7 +70,7 @@ Enterprise のお客様は、Balances API を使用して、残高、新規購�
 
 この API には次の要素が含まれています。
 
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **Enterprise のお客様のみ** - この API は、EA のお客様のみが使用できます。
     - この API を呼び出すには、エンタープライズ管理者のアクセス許可が必要です
 
@@ -81,7 +82,7 @@ Enterprise のお客様は、この API を使用して、リソース、リソ�
 
 この API には次の要素が含まれています。
 
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **Enterprise のお客様のみ** - この API は、EA のお客様のみが使用できます。
 -   **構成可能な通知** - 予算に達したときに通知されるユーザーを指定します。
 -   **使用状況またはコストベースの予算** - シナリオでの必要性に応じて消費またはコストのいずれかに基づいて予算を作成します。
@@ -99,7 +100,7 @@ Enterprise のお客様は、この API を使用して、リソース、リソ�
 
 この API には次の要素が含まれています。
 
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **フィルタリング** - 次のフィルターを使用して、推奨の結果を調整します。
     - スコープ
     - ルックバック期間
@@ -113,7 +114,7 @@ Reservation Details API を使用して、予約された消費と実際に使�
 
 この API には次の要素が含まれています。
 
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **フィルタリング** - 次のフィルターを使用して、API 結果セットをより小さな予約のセットにトリミングします。
     - 期間
 -   **別の種類のオファーの予約情報** - 予約情報は、現在、Enterprise および Web Direct のお客様が利用できます。
@@ -126,7 +127,7 @@ Reservation Details API を使用して、予約された消費と実際に使�
 
 この API には次の要素が含まれています。
 
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **フィルタリング** - 次のフィルターを使用して、日単位の粒度を使用する場合の結果を調整します。
     - 使用日
 -   **別の種類のオファーの予約情報** - 予約情報は、現在、Enterprise および Web Direct のお客様が利用できます。
@@ -139,7 +140,7 @@ Enterprise のお客様は、この API を使用して、すべての測定の�
 
 この API には次の要素が含まれています。
 
--   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
+-   **Azure ロールベースのアクセス制御** - [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)、または [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/)を使用して、アクセス ポリシーを構成し、サブスクリプションの使用状況データにアクセスできるユーザーやアプリケーションを指定できます。 呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。 また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、請求閲覧者、閲覧者、所有者、共同作成者のいずれかのロールに呼び出し元を追加します。
 -   **Enterprise のお客様のみ** - この API は、EA のお客様のみが使用できます。 Web Direct のお客様は、RateCard API を使用して価格を取得する必要があります。
 
 詳細については、[Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) の技術仕様を参照してください。

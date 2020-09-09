@@ -6,18 +6,18 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 11/9/2017
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c2490d8dc1d828992d309f07de1f75fa61ecb3be
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 16c9c103053c0cd36273feb84cd9b07fcf2627bb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200955"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830633"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
-現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
+現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](./index.yml)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
 
 大規模なスケール セットのある部分 (負荷分散や障害ドメインなど) の動作は、標準的なスケール セットとは異なります。 このドキュメントでは、大規模なスケール セットの特性を説明するほか、アプリケーションでこれらをうまく使用するために知っておくべきことについても説明します。 
 
@@ -33,16 +33,17 @@ ms.locfileid: "83200955"
 - Azure Marketplace イメージから作成されたスケール セットは、最大 1,000 個の VM にスケールアップできます。
 - カスタム イメージ (自身で作成してアップロードした VM イメージ) から作成されたスケール セットは、現在、最大 600 個の VM にスケールアップできます。
 - 大規模なスケール セットには、Azure Managed Disks が必要です。 Managed Disks を使用して作成されていないスケール セットには、複数のストレージ アカウントが必要です (VM 20 個につき 1 つ)。 大規模なスケール セットは、ストレージの管理オーバーヘッドを軽減し、サブスクリプションのストレージ アカウントの上限に達するリスクを回避するために、Managed Disks のみで動作するように設計されています。 
-- 複数の配置グループで構成されたスケール セットでのレイヤー 4 の負荷分散には、[Azure Load Balancer Standard SKU](../load-balancer/load-balancer-standard-overview.md) が必要です。 Load Balancer Standard SKU には、複数のスケール セットの間で負荷分散を行えるなど、他にもメリットがあります。 また Standard SKU では、スケール セットにネットワーク セキュリティ グループが関連付けられていることも必要です。そうでない場合、NAT プールは正常に機能しません。 Azure Load Balancer Basic SKU を使用する必要がある場合は、スケール セットが 1 つの配置グループを使用するよう構成されていることを確認してください。これは既定の設定です。
+- 大規模なスケール (SPG=false) では InfiniBand ネットワークはサポートされていません
+- 複数の配置グループで構成されたスケール セットでのレイヤー 4 の負荷分散には、[Azure Load Balancer Standard SKU](../load-balancer/load-balancer-overview.md) が必要です。 Load Balancer Standard SKU には、複数のスケール セットの間で負荷分散を行えるなど、他にもメリットがあります。 また Standard SKU では、スケール セットにネットワーク セキュリティ グループが関連付けられていることも必要です。そうでない場合、NAT プールは正常に機能しません。 Azure Load Balancer Basic SKU を使用する必要がある場合は、スケール セットが 1 つの配置グループを使用するよう構成されていることを確認してください。これは既定の設定です。
 - Azure Application Gateway によるレイヤー 7 の負荷分散は、すべてのスケール セットでサポートされています。
 - 1 つのスケール セットは 1 つのサブネットで定義されます。サブネットには、必要なすべての VM にとって十分な規模のアドレス空間があることを確認してください。 既定では、スケール セットはオーバープロビジョニングされ (デプロイ時またはスケールアウト時に追加の VM が作成されますが、これについては課金されません)、デプロイの信頼性とパフォーマンスが向上します。 スケールする予定の VM の数よりもアドレス空間が 20% 大きくなることを考慮に入れておいてください。
-- 配置グループ内で一貫性があるのは、障害ドメインとアップグレード ドメインのみです。 VM が個別の物理ハードウェアで均等に分散されているため、このアーキテクチャでは、スケール セットの全体的な可用性が変更されることはありません。ただし、これは、2 つの VM が異なるハードウェア上にあることを保証する必要がある場合、これらの VM が同じ配置グループ内の別々の障害ドメインに配置されるようにすることを意味します。 [可用性オプション](/azure/virtual-machines/windows/availability)に関するこちらのリンクを参照してください。 
+- 配置グループ内で一貫性があるのは、障害ドメインとアップグレード ドメインのみです。 VM が個別の物理ハードウェアで均等に分散されているため、このアーキテクチャでは、スケール セットの全体的な可用性が変更されることはありません。ただし、これは、2 つの VM が異なるハードウェア上にあることを保証する必要がある場合、これらの VM が同じ配置グループ内の別々の障害ドメインに配置されるようにすることを意味します。 [可用性オプション](../virtual-machines/availability.md)に関するこちらのリンクを参照してください。 
 - 障害ドメインと配置グループ ID は、スケール セット VM の "_インスタンス ビュー_" に表示されます。 スケール セット VM のインスタンス ビューは、[Azure リソース エクスプローラー](https://resources.azure.com/)で表示できます。
 
 ## <a name="creating-a-large-scale-set"></a>大規模なスケール セットを作成する
 Azure portal でスケール セットを作成する場合は、最大で 1,000 の "*インスタンス数*" の値を指定します。 インスタンスが 100 を超える場合は、 *[インスタンス数が 100 を超えるスケールを有効にする]* が *[はい]* に設定されます。その場合、複数の配置グループへのスケーリングが許可されます。 
 
-![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
+![この図には Azure portal のインスタンス ブレードが示されています。 [インスタンス数] と [インスタンス サイズ] を選択するオプションを使用できます。](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
 大規模な仮想マシン スケール セットは、[Azure CLI](https://github.com/Azure/azure-cli) の _az vmss create_ コマンドを使用して作成できます。 このコマンドを実行すると、_instance-count_ 引数に基づいて、サブネット サイズなど、インテリジェントな既定値が設定されます。
 
@@ -76,12 +77,10 @@ Azure Resource Manager テンプレートを構成して大規模なスケール
     }
 ```
 
-大規模なスケール セットのテンプレートの完全な例については、[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) を参照してください。
+大規模なスケール セットのテンプレートの完全な例については、[https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json) を参照してください。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>複数の配置グループをまたぐように既存のスケール セットを変換する
 既存の仮想マシン スケール セットで 100 個を超える VM にスケーリングできるようにするには、スケール セット モデルで _singlePlacementGroup_ プロパティを _false_ に変更する必要があります。 このプロパティの変更は、[Azure リソース エクスプローラー](https://resources.azure.com/)を使用してテストできます。 既存のスケール セットを探し、 _[編集]_ を選択して、_singlePlacementGroup_ プロパティを変更します。 このプロパティが表示されていない場合は、スケール セットの表示に以前のバージョンの Microsoft.Compute API を使用している可能性があります。
 
 > [!NOTE]
 > スケール セットは、1 つの配置グループのみのサポート (既定の動作) から複数の配置グループのサポートに変更できますが、その逆の変換を行うことはできません。 そのため、変換する前に、大規模なスケール セットのプロパティを理解しておく必要があります。
-
-

@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 description: Azure Kubernetes Service に Hyperledger Fabric コンソーシアム ネットワークをデプロイして構成する方法
-ms.date: 01/08/2020
-ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/06/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476442"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184212"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 
@@ -20,9 +20,23 @@ Azure Kubernetes Service (AKS) 上の Hyperledger Fabric (HLF) テンプレー�
 - Hyperledger Fabric と、Hyperledger Fabric ブロックチェーン ネットワークの構成要素を形成するさまざまなコンポーネントについての、実用的な知識が得られます。
 - 運用シナリオ用に Azure Kubernetes Service に Hyperledger Fabric コンソーシアムをデプロイして構成する方法がわかります。
 
+[!INCLUDE [Preview note](./includes/preview.md)]
+
+## <a name="choose-an-azure-blockchain-solution"></a>Azure Blockchain ソリューションの選択
+
+ソリューション テンプレートの使用を選択する前に、利用可能な Azure Blockchain オプションの一般的なユース ケースと実際のシナリオを比較してください。
+
+オプション | サービス モデル | 一般的なユース ケース
+-------|---------------|-----------------
+ソリューション テンプレート | IaaS | ソリューション テンプレートは、完全に構成されたブロックチェーン ネットワーク トポロジのプロビジョニングに使用できる Azure Resource Manager テンプレートです。 これらのテンプレートでは、特定のブロックチェーン ネットワークの種類に対応する Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスをデプロイして構成します。 ソリューション テンプレートは、サービス レベル アグリーメントなしに提供されます。 サポートが必要な場合には、[Microsoft Q&A の質問ページ](/answers/topics/azure-blockchain-workbench.html)をご利用ください。
+[Azure Blockchain Service](../service/overview.md) | PaaS | Azure Blockchain Service (プレビュー) により、コンソーシアム ブロックチェーン ネットワークの構成、管理、ガバナンスが簡素化されます。 Azure Blockchain Service は、PaaS、コンソーシアム管理、またはコントラクトとトランザクションのプライバシーを必要とするソリューションに使用します。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS および PaaS | Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン ソリューションまたはブロックチェーン アプリケーションの概念実証のプロトタイプを作成する際に使用します。 Azure Blockchain Workbench は、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A の質問ページ](/answers/topics/azure-blockchain-workbench.html)をご利用ください。
+
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric コンソーシアムのアーキテクチャ
 
-Azure 上に Hyperledger Fabric ネットワークを構築するには、ピア ノードで Ordering Service と組織をデプロイする必要があります。 テンプレートのデプロイの一部として、次のようなさまざまな基本コンポーネントが作成されます。
+Azure 上に Hyperledger Fabric ネットワークを構築するには、ピア ノードで Ordering Service と組織をデプロイする必要があります。 Azure Kubernetes Service ソリューション テンプレートで Hyperledger Fabric を使用すると、order ノードまたはピア ノードを作成できます。 作成するノードごとにテンプレートをデプロイする必要があります。
+
+テンプレートのデプロイの一部として、次のようなさまざまな基本コンポーネントが作成されます。
 
 - **Orderer ノード**:台帳でトランザクション順序付けを行うノード。 他のノードと順序付けされたノードにより、Hyperledger Fabric ネットワークの Ordering Service が形成されます。
 
@@ -42,27 +56,17 @@ Azure 上に Hyperledger Fabric ネットワークを構築するには、ピア
   - **Fabric CA**: Fabric CA を実行するポッド。
 - **PostgreSQL**: PostgreSQL のインスタンスは、Fabric CA の ID を維持するためにデプロイされます。
 
-- **Azure Key Vault**: キー コンテナー インスタンスは、ユーザーによって提供される Fabric CA 資格情報とルート証明書を保存するためにデプロイされ、テンプレートのデプロイの再試行時に使用されます。これは、テンプレートのしくみを処理するためのものです。
+- **Azure Key Vault**: キー コンテナー インスタンスは、ユーザーによって提供される Fabric CA 資格情報とルート証明書を保存するためにデプロイされ、テンプレートのデプロイの再試行時に使用され、テンプレートのしくみを処理します。
 - **Azure マネージド ディスク**: Azure マネージド ディスクは、台帳とピア ノードのワールド状態データベースの永続的ストア用です。
 - **[パブリック IP]** : クラスターとのインターフェイスを確立するためにデプロイされる AKS クラスターのパブリック IP エンドポイント。
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric ブロックチェーン ネットワークのセットアップ
+## <a name="deploy-the-ordererpeer-organization"></a>Orderer/ピア組織をデプロイする
 
 開始するには、複数の仮想マシンと標準のストレージ アカウントをデプロイできる Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成できます。
 
-次の手順に従って、Hyperledger Fabric ブロックチェーン ネットワークをセットアップします。
+HLF ネットワーク コンポーネントのデプロイを始めるには、[Azure portal](https://portal.azure.com) に移動します。
 
-- [Orderer/ピア組織をデプロイする](#deploy-the-ordererpeer-organization)
-- [コンソーシアムを構築する](#build-the-consortium)
-- [ネイティブ HLF 操作を実行する](#run-native-hlf-operations)
-
-## <a name="deploy-the-ordererpeer-organization"></a>Orderer/ピア組織をデプロイする
-
-HLF ネットワーク コンポーネントのデプロイを始めるには、[Azure portal](https://portal.azure.com) に移動します。 **[リソースの作成] > [ブロックチェーン]** を選択し、**Azure Kubernetes Service 上の Hyperledger Fabric** を探します。
-
-1. **[作成]** を選択してテンプレートのデプロイを始めます。 **[Create Hyperledger Fabric on Azure Kubernetes Service]\(Hyperledger Fabric on Azure Kubernetes Service の作成\)** が表示されます。
-
-    ![Hyperledger Fabric on Azure Kubernetes Service テンプレート](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+1. **[リソースの作成] > [ブロックチェーン]** を選択し、**Azure Kubernetes Service 上の Hyperledger Fabric (プレビュー)** を探します。
 
 2. **[基本]** ページでプロジェクトの詳細を入力します。
 
@@ -78,8 +82,8 @@ HLF ネットワーク コンポーネントのデプロイを始めるには、
     ![Hyperledger Fabric on Azure Kubernetes Service テンプレート](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. 次の詳細を入力します。
-    - **組織名**:さまざまなデータ プレーン操作に必要な Fabric 組織の名前。 組織名は、デプロイごとに一意である必要があります。 
-    - **[Fabric network component]\(Fabric ネットワーク コンポーネント\)** : セットアップするブロックチェーン ネットワーク コンポーネントに基づいて、Ordering Service またはピア ノードを選択します。
+    - **組織名**:さまざまなデータ プレーン操作に必要な Fabric 組織の名前。 組織名は、デプロイごとに一意である必要があります。
+    - **[Fabric network component]\(Fabric ネットワーク コンポーネント\)** : セットアップするブロックチェーン ネットワーク コンポーネントに基づいて、Ordering Service またはピア ノードのいずれかを選択します。
     - **[Number of nodes]\(ノード数\)** - 次の2種類のノードがあります。
         - Ordering Service - ネットワークにフォールト トレランスを提供するノードの数を選択します。 サポートされている orderer ノードの数は、3、5、7 のみです。
         - ピア ノード - 要件に基づいて、1 - 10 ノードを選択できます。
@@ -92,7 +96,7 @@ HLF ネットワーク コンポーネントのデプロイを始めるには、
     - **[Root Certificate private key]\(ルート証明書の秘密キー\)** : ルート証明書の秘密キーをアップロードします。 公開キーと秘密キーが組み合わされた .pem 証明書がある場合は、ここでもアップロードします。
 
 
-6. **[AKS cluster Settings]\(AKS クラスターの設定\)** タブを選択し、Fabric ネットワーク コンポーネントがセットアップされる基になるインフラストラクチャである Azure Kubernetes クラスターの構成を定義します。
+6. **[AKS cluster Settings] (AKS クラスターの設定)** タブを選択し、Azure Kubernetes クラスターの構成を定義します。これが、Fabric ネットワーク コンポーネントのセットアップ先の、基になるインフラストラクチャです。
 
     ![Hyperledger Fabric on Azure Kubernetes Service テンプレート](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
@@ -102,7 +106,7 @@ HLF ネットワーク コンポーネントのデプロイを始めるには、
     - **[DNS プレフィックス]** : AKS クラスターのドメイン ネーム システム (DNS) 名のプレフィックス。 クラスターを作成した後でコンテナーを管理するときに、DNS を使用して Kubernetes API に接続します。
     - **[ノード サイズ]** : Kubernetes ノードのサイズ。Azure で利用可能な VM Stock Keeping Unit (SKU) の一覧から選択できます。 最適なパフォーマンスのため、Standard DS3 v2 をお勧めします。
     - **ノード数**:クラスターにデプロイする Kubernetes ノードの数。 このノードの数は、Fabric の設定で指定した HLF ノードの数以上にすることをお勧めします。
-    - **[サービス プリンシパルのクライアント ID]** : 既存のサービス プリンシパルのクライアント ID を入力するか、新しく作成します。AKS 認証に必要です。 [サービス プリンシパルを作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)手順もご覧ください。
+    - **[サービス プリンシパルのクライアント ID]** : 既存のサービス プリンシパルのクライアント ID を入力するか、新しく作成します。AKS 認証に必要です。 [サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)手順もご覧ください。
     - **[サービス プリンシパルのクライアント シークレット]** : サービス プリンシパル クライアント ID で指定したサービス プリンシパルのクライアント シークレットを入力します。
     - **[Confirm client secret]\(クライアント シークレットの確認\)** :サービス プリンシパルのクライアント シークレットで指定したクライアント シークレットを確認します。
     - **[コンテナーの監視を有効にする]** : AKS の監視を有効にする場合に選択します。これにより、指定した Log Analytics ワークスペースに AKS ログがプッシュされるようになります。
@@ -116,48 +120,80 @@ HLF ネットワーク コンポーネントのデプロイを始めるには、
 
 ## <a name="build-the-consortium"></a>コンソーシアムを構築する
 
-Ordering Service とピア ノードのデプロイ後にブロックチェーン コンソーシアムを構築するには、次の手順を順番に行う必要があります。 **ネットワーク構築**スクリプト (byn.sh) は、コンソーシアムの設定、チャネルの作成、チェーンコードのインストールに役立ちます。
+Ordering Service とピア ノードのデプロイ後にブロックチェーン コンソーシアムを構築するには、次の手順を順番に行う必要があります。 Azure HLF スクリプト (azhlf) は、コンソーシアムの設定、チャネルの作成、チェーンコードの操作に役立ちます。
 
 > [!NOTE]
-> 提供されているネットワーク構築 (byn) スクリプトは、デモと DevTest のシナリオにのみ使用されます。 運用グレードのセットアップでは、ネイティブ HLF API を使用することをお勧めします。
+> このスクリプトには更新プログラムがあります。この更新プログラムは、Azure HLF スクリプトでより多くの機能を提供するためのものです。 以前のスクリプトを参照する場合は、[こちらをご参照ください](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/blob/master/consortiumScripts/README.md)。 このスクリプトは、Azure Kubernetes Service テンプレート バージョン 2.0.0 以上の Hyperledger Fabric と互換性があります。 デプロイのバージョンを確認するには、[トラブルシューティング](#troubleshoot)の手順に従います。
 
-byn スクリプトを実行するすべてのコマンドは、Azure Bash コマンド ライン インターフェイス (CLI) を使用して実行できます。 Azure Shell の Web バージョンにログインするには、 ![Hyperledger Fabric on Azure Kubernetes Service テンプレート](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) オプションを使用します (Azure portal の右上隅にあります)。 コマンド プロンプトで「bash」と入力して Enter キーを押しBash CLI に切り替えます。
+> [!NOTE]
+> 提供されている Azure HLF (azhlf) スクリプトは、デモ/DevTest シナリオにのみ使用できます。 このスクリプトによって作成されるチャネルおよびコンソーシアムには、デモ/DevTest シナリオを簡略化する基本的な HLF ポリシーがあります。 運用環境の設定では、ネイティブ HLF API を使用して、組織のコンプライアンスのニーズに合わせて、チャネルおよびコンソーシアム HLF ポリシーを更新することをお勧めします。
 
-詳しくは、[Azure Shell](https://docs.microsoft.com/azure/cloud-shell/overview) に関するページをご覧ください。
+
+Azure HLF スクリプトを実行するすべてのコマンドは、Azure Bash コマンド ラインを使用して実行できます。 インターフェイス (CLI)。 Azure portal の右上隅にある   ![[Hyperledger Fabric on Azure Kubernetes Service Template] (Hyperledger Fabric on Azure Kubernetes Service テンプレート)](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) オプションを使用して、Azure Shell Web バージョンにサインインできます。 コマンド プロンプトで「bash」と入力して Enter キーを押し、Bash CLI に切り替えます。または、シェルのツールバーから *[Bash]* を選択します。
+
+詳しくは、[Azure Shell](../../cloud-shell/overview.md) に関するページをご覧ください。
 
 ![Hyperledger Fabric on Azure Kubernetes Service テンプレート](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-byn.sh および fabric-admin.yaml ファイルをダウンロードします。
+次の図は、orderer 組織とピア組織の間にコンソーシアムを構築するための手順を示しています。 これらの手順を実行するための詳細なコマンドは、次のセクションで説明します。
+
+![Hyperledger Fabric on Azure Kubernetes Service テンプレート](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
+
+クライアント アプリケーションの初期セットアップのセクションを完了します。 
+
+1. クライアント アプリケーション ファイルをダウンロードする
+1. 環境変数を設定する
+1. 組織の接続プロファイル、管理者ユーザー、および MSP をインポートする
+
+初期セットアップが完了したら、クライアント アプリケーションを使用して以下の操作を行います。  
+
+- チャネル管理
+- コンソーシアムの管理
+- チェーンコード管理
+
+### <a name="download-client-application-files"></a>クライアント アプリケーション ファイルをダウンロードする
+
+最初のセットアップでは、クライアント アプリケーション ファイルをダウンロードします。 次のコマンドを実行して、必要なすべてのファイルとパッケージをダウンロードします。
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/azhlfToolSetup.sh | bash
+cd azhlfTool
+npm install
+npm run setup
 ```
-**Azure CLI Bash シェルで次の環境変数を設定する**:
 
-チャネル情報と orderer 組織の情報を設定します
+これらのコマンドは、GitHub パブリック リポジトリから Azure HLF クライアント アプリケーション コードを複製した後、すべての依存する npm パッケージを読み込みます。 コマンドが正常に実行されると、現在のディレクトリに node_modules フォルダーが表示されます。 必要なすべてのパッケージが node_modules フォルダーに読み込まれます。
+
+### <a name="setup-environment-variables"></a>環境変数を設定する
+
+> [!NOTE]
+> すべての環境変数は、Azure リソースの命名規則に従います。
+
+#### <a name="set-environment-variables-for-orderer-organization-client"></a>orderer 組織クライアントの環境変数を設定する
 
 ```bash
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
-ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
-ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
-ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
+ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
+ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
+ORDERER_ORG_NAME=<ordererOrgName>
+ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-ピア組織の情報を設定します
+
+#### <a name="set-the-environment-variables-for-peer-organization-client"></a>ピア組織クライアントの環境変数を設定する
 
 ```bash
-PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
-PEER_AKS_NAME=<peerAKSClusterName>
-PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
-#Peer organization name is case-sensitive. Specify exactly the same name, which was provided while creating the Peer AKS Cluster.
-PEER_ORG_NAME=<peerOrganizationName>
+PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
+PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
+PEER_ORG_NAME=<peerOrgName>
+PEER_ADMIN_IDENTITY="admin.$PEER_ORG_NAME"
+CHANNEL_NAME=<channelName>
 ```
 
-ピア組織と orderer 組織の間でさまざまな公開証明書を共有するため、Azure ファイル共有を 1 つ作成します。
+> [!NOTE]
+> コンソーシアムのピア組織の数に基づいて、ピア コマンドを繰り返し、あわせて環境変数を設定することが必要になる場合があります。
+
+#### <a name="set-the-environment-variables-for-setting-up-azure-storage-account"></a>Azure Storage アカウントを設定するための環境変数を設定する
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -165,311 +201,234 @@ STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
 STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
+```
 
+Azure Storage アカウントを作成するには、次の手順を使用します。 Azure Storage アカウントが既に作成されている場合は、この手順をスキップします。
+
+```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
+```
+
+Azure Storage アカウント内にファイル共有を作成するには、次の手順を使用します。 既にファイル共有が作成されている場合は、この手順をスキップします。
+
+```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
+```
+
+Azure ファイル共有の接続文字列を生成するには、次の手順を使用します。
+
+```bash
+STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
-AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
-```
-**チャネル管理コマンド**
+AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
 
-orderer 組織の AKS クラスターに移動し、次のコマンドを発行して新しいチャネルを作成します
+```
+
+### <a name="import-organization-connection-profile-admin-user-identity-and-msp"></a>組織の接続プロファイル、管理者ユーザー ID、および MSP をインポートします。
+
+以下のコマンドを実行して、組織の接続プロファイル、管理者ユーザー ID、および MSP を Azure Kubernetes クラスターからフェッチし、これらの ID をクライアント アプリケーションのローカル ストア ("azhlfTool/stores" ディレクトリなど) に格納します。
+
+orderer 組織の場合:
 
 ```bash
-SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-./byn.sh createChannel "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ```
 
-**コンソーシアム管理コマンド**
-
-次のコマンドを指定された順序で実行し、チャネルとコンソーシアムにピア組織を追加します。
-
-1. ピア組織の AKS クラスターに移動し、そのメンバー サービス プロバイダー (MSP) を Azure File Storage にアップロードします。
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-2. orderer 組織の AKS クラスターに移動し、チャネルとコンソーシアムにピア組織を追加します。
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-    #add peer in consortium
-    ./byn.sh addPeerInConsortium "$PEER_ORG_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    #add peer in channel
-    ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-3. ピア組織に戻り、次のコマンドを発行してチャネルにピア ノードを参加させます。
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-同様に、チャネルにより多くのピア組織を追加するには、必要なピア組織に従ってピア AKS 環境変数を更新し、ステップ 1 から 3 を実行します。
-
-**チェーンコード管理コマンド**
-
-チェーンコード関連の操作を行うには、次のコマンドを実行します。 これらのコマンドでは、すべての操作がデモ チェーンコードに対して実行されます。 このデモ チェーンコードには、"a" と "b" の 2 つの変数があります。 チェーンコードのインスタンス化では、"a" は 1000 で初期化され、"b" は 2000 で初期化されます。 チェーンコードを呼び出すたびに、10 個のユニットが "a" から "b" に転送されます。 チェーンコードのクエリ操作では、"a" 変数のワールド状態が表示されます。
-
-ピア組織の AKS クラスターで、次のコマンドを実行します。
+ピア組織の場合:
 
 ```bash
-# switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
-SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
+./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
-**チェーンコード操作コマンド**
+
+### <a name="create-channel-command"></a>チャネルの作成コマンド
+
+orderer 組織クライアントから、コマンドを発行して新しいチャネルを作成します。 このコマンドでは、orderer 組織のみを含むチャネルが作成されます。  
 
 ```bash
-PEER_NODE_NAME="peer<peer#>"
-./byn.sh installDemoChaincode "$PEER_NODE_NAME"
-./byn.sh instantiateDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh invokeDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
+./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
 
-## <a name="run-native-hlf-operations"></a>ネイティブ HLF 操作を実行する
+### <a name="consortium-management-commands"></a>コンソーシアムの管理コマンド
 
-お客様が AKS 上の HLF ネットワークで Hyperledger のネイティブ コマンドの実行を始められるようにします。 Fabric NodeJS SDK を使用して HLF 操作を実行するサンプル アプリケーションが用意されています。 新しいユーザー ID を作成し、独自のチェーンコードをインストールするためのコマンドが用意されています。
+>[!NOTE]
+> コンソーシアム操作を開始する前に、クライアント アプリケーションの初期セットアップが完了していることを確認します。  
 
-### <a name="before-you-begin"></a>開始する前に
+チャネルおよびコンソーシアムにピア組織を追加するには、次のコマンドを指定された順序で実行します。
+1.  ピア組織クライアントで、Azure Storage にピア組織 MSP をアップロードします。
 
-次のコマンドを実行して、アプリケーションの初期セットアップを行います。
+      ```bash
+      ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
+      ```
+2.  orderer 組織クライアントで、Azure Storage からピア組織 MSP をダウンロードし、コマンドを発行してチャネルまたはコンソーシアムにピア組織を追加します。
 
-- アプリケーション ファイルをダウンロードする
-- 接続プロファイルと管理プロファイルを生成する
-- 管理者ユーザー ID をインポートする
+      ```bash
+      ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ```
 
-初期セットアップが完了したら、SDK を使用して以下の操作を行うことができます。
+3.  orderer 組織クライアントで、Azure Storage に orderer 接続プロファイルをアップロードして、ピア組織がこの接続プロファイルを使用して orderer ノードに接続できるようにします。
 
-- ユーザー ID の生成
-- チェーンコード操作
+      ```bash
+      ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ```
 
-上記のコマンドは、Azure Cloud Shell から実行できます。
+4.  ピア組織クライアントで、Azure Storage から orderer 接続プロファイルをダウンロードし、コマンドを発行してチャネルにピア ノードを追加します。
 
-### <a name="download-application-files"></a>アプリケーション ファイルをダウンロードする
+      ```bash
+      ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
+      ```
 
-アプリケーションを実行するための最初のセットアップでは、フォルダー内のすべてのアプリケーション ファイルをダウンロードします。
+同様に、チャネルにピア組織をさらに追加するには、必要なピア組織に従ってピア環境変数を更新し、手順 1 ～ 4 を実行します。
 
-**アプリ フォルダーを作成してフォルダーに入る**:
+### <a name="set-anchor-peers-command"></a>アンカー ピアの設定コマンド
+
+ピア組織クライアントから次のコマンドを発行して、指定されたチャネルのピア組織のためにアンカー ピアを設定します。
+
+>[!NOTE]
+> このコマンドを実行する前に、コンソーシアムの管理コマンドを使用して、ピア組織がチャネルに追加されていることを確認してください。
 
 ```bash
-mkdir app
-cd app
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
-次のコマンドを実行して、必要なすべてのファイルとパッケージをダウンロードします。
 
-```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
-```
-このコマンドでは、すべてのパッケージの読み込みに時間がかかります。 コマンドが正常に実行されると、現在のディレクトリに `node_modules` フォルダーが表示されます。 必要なすべてのパッケージが `node_modules` フォルダーに読み込まれます。
+`<anchorPeersList>` はアンカー ピアとして設定するピア ノードのスペースで区切られたリストです。 たとえば、次のように入力します。
 
-### <a name="generate-connection-profile-and-admin-profile"></a>接続プロファイルと管理プロファイルを生成する
+  - ピア 1 ノードのみをアンカー ピアとして設定する場合は、`<anchorPeersList>` を "peer1" に設定します。
+  - ピア 1 と ピア 3 の両方のノードをアンカー ピアとして設定する場合は、`<anchorPeersList>` を "peer1" "peer3" に設定します。
 
-`app` フォルダー内に `profile` ディレクトリを作成します
+## <a name="chaincode-management-commands"></a>チェーンコード管理コマンド
+
+>[!NOTE]
+> チェーンコードの操作を始める前に、クライアント アプリケーションの初期セットアップが完了していることを確認します。  
+
+### <a name="set-the-below-chaincode-specific-environment-variables"></a>以下のチェーンコード固有の環境変数を設定する
 
 ```bash
-cd app
-mkdir ./profile
-```
-Azure Cloud Shell で次の環境変数を設定します
-
-```bash
-# Organization name whose connection profile is to be generated
-ORGNAME=<orgname>
-# Organization AKS cluster resource group
-AKS_RESOURCE_GROUP=<resourceGroup>
-```
-
-次のコマンドを実行して、組織の接続プロファイルと管理者プロファイルを生成します
-
-```bash
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
-```
-
-プロファイル フォルダーに、組織の接続プロファイルと管理者 `profile` が、それぞれ `<orgname>-ccp.json` および `<orgname>-admin.json` という名前で作成されます。
-
-同様に、orderer 組織とピア組織の接続プロファイルと管理者プロファイルを生成します。
-
-
-### <a name="import-admin-user-identity"></a>管理者ユーザー ID をインポートする
-
-最後のステップは、組織の管理者ユーザー ID をウォレットにインポートすることです。
-
-```bash
-npm run importAdmin -- -o <orgName>
-
-```
-上記のコマンドでは、importAdmin.js が実行されて、管理者ユーザー ID がウォレットにインポートされます。 このスクリプトでは、管理者プロファイル `<orgname>-admin.json` から管理者 ID が読み取られて、HLF 操作を実行するためにウォレットにインポートされます。
-
-スクリプトでは、ファイル システム ウォレットを使用して ID が格納されます。 接続プロファイルの ".wallet" フィールドで指定されているパスに従って、ウォレットが作成されます。 既定では、".wallet" フィールドは `<orgname>` で初期化されます。これは、ID を格納するために、`<orgname>` という名前のフォルダーが現在のディレクトリに作成されることを意味します。 他のパスにウォレットを作成する場合は、管理者ユーザー登録および他の HLF 操作を実行する前に、接続プロファイルの ".wallet" フィールドを変更します。
-
-同様に、各組織の管理者ユーザー ID をインポートします。
-
-コマンドに渡す引数の詳細については、コマンドのヘルプを参照してください。
-
-```bash
-npm run importAdmin -- -h
-
-```
-
-### <a name="user-identity-generation"></a>ユーザー ID の生成
-
-以下のコマンドを指定された順序で実行して、HLF 組織用の新しいユーザー ID を生成します。
-
-> [!NOTE]
-> ユーザー ID の生成手順を始める前に、アプリケーションの初期セットアップが完了していることを確認します。
-
-Azure Cloud Shell で次の環境変数を設定します
-
-```bash
-# Organization name for which user identity is to be generated
-ORGNAME=<orgname>
-# Name of new user identity. Identity will be registered with the Fabric-CA using this name.
-USER_IDENTITY=<username>
-
-```
-
-新しいユーザーを登録します
-
-新しいユーザーを登録するには、registerUser.js を実行する次のコマンドを実行します。 生成されたユーザー ID はウォレットに保存されます。
-
-```bash
-npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
-
-```
-
-> [!NOTE]
-> 新規ユーザー登録コマンドを発行するには、管理者ユーザー ID が使用されます。 そのため、このコマンドを実行する前に、ウォレットに管理者ユーザー ID を作成しておく必要があります。 そうしないと、このコマンドは失敗します。
-
-コマンドに渡す引数の詳細については、コマンドのヘルプを参照してください
-
-```bash
-npm run registerUser -- -h
-
-```
-
-### <a name="chaincode-operations"></a>チェーンコード操作
-
-
-> [!NOTE]
-> チェーンコードの操作を始める前に、アプリケーションの初期セットアップが完了していることを確認します。
-
-Azure Cloud Shell で次のチェーンコード固有の環境変数を設定します
-
-```bash
-# peer organization name where chaincode is to be installed
-ORGNAME=<orgName>
-USER_IDENTITY="admin.$ORGNAME"
-CC_NAME=<chaincodeName>
+# peer organization name where chaincode operation is to be performed
+ORGNAME=<PeerOrgName>
+USER_IDENTITY="admin.$ORGNAME"  
+# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+CC_NAME=<chaincodeName>  
+# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'
-# Default value is 'golang'
-CC_LANG=<chaincodeLanguage>
-# CC_PATH contains the path where your chaincode is place. In case of go chaincode, this path is relative to 'GOPATH'.
-# For example, if your chaincode is present at path '/opt/gopath/src/chaincode/chaincode.go'.
-# Then, set GOPATH to '/opt/gopath' and CC_PATH to 'chaincode'
-CC_PATH=<chaincodePath>
-# 'GOPATH' environment variable. This needs to be set in case of go chaincode only.
-export GOPATH=<goPath>
-# Channel on which chaincode is to be instantiated/invoked/queried
-CHANNEL=<channelName>
-
-````
-
-次のチェーンコード操作を実行できます。
-
-- チェーンコードをインストールする
-- チェーンコードをインスタンス化する
-- チェーンコードを呼び出す
-- チェーンコードのクエリを実行する
-
-### <a name="install-chaincode"></a>チェーンコードをインストールする
-
-ピア組織にチェーンコードをインストールするには、次のコマンドを実行します。
-
-```bash
-npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
-
-```
-`ORGNAME` 環境変数で設定されている組織のすべてのピア ノードに、チェーンコードがインストールされます。 チャネルに 2 つ以上のピア組織があり、それらのすべてにチェーンコードをインストールする場合は、ピア組織ごとにコマンドを個別に実行します。
-
-次の手順のようにします。
-
-- `ORGNAME` を `<peerOrg1Name>` に設定し、`installCC` コマンドを発行します。
-- `ORGNAME` を `<peerOrg2Name>` に設定し、`installCC` コマンドを発行します。
-
-  各ピア組織に対して実行します。
-
-コマンドに渡す引数の詳細については、コマンドのヘルプを参照してください
-
-```bash
-npm run installCC -- -h
-
+# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'  
+# Default value is 'golang'  
+CC_LANG=<chaincodeLanguage>  
+# CC_PATH contains the path where your chaincode is place.
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
+CC_PATH=<chaincodePath>  
+# Channel on which chaincode is to be instantiated/invoked/queried  
+CHANNEL_NAME=<channelName>  
 ```
 
-### <a name="instantiate-chaincode"></a>チェーンコードをインスタンス化する
+### <a name="install-chaincode"></a>チェーンコードをインストールする  
 
-ピアのチェーンコードをインスタンス化するには、次のコマンドを実行します。
+ピア組織にチェーンコードをインストールするには、次のコマンドを実行します。  
 
 ```bash
-npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
 
 ```
-`<instantiateFunc>` と `<instantiateFuncArgs>` で、インスタンス化関数名とコンマ区切りの引数リストを渡します。 たとえば、[fabrcar チェーンコード](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)では、チェーンコードをインスタンス化するために、`<instantiateFunc>` を `"Init"` に、`<instantiateFuncArgs>` を空の文字列 `""` に設定しています。
+このコマンドで ORGNAME 環境変数に設定されているピア組織のすべてのピア ノードにチェーンコードがインストールされます。 チャネルに 2 つ以上のピア組織がある場合、そのすべてにチェーンコードをインストールするには、ピア組織ごとにこのコマンドを個別に実行します。  
+
+次の手順のようにします。  
+
+1.  `ORGNAME` および `USER_IDENTITY` を peerOrg1 に従って設定し、`./azhlf chaincode install` コマンドを発行します。  
+2.  `ORGNAME` および `USER_IDENTITY` を peerOrg2 に従って設定し、`./azhlf chaincode install` コマンドを発行します。  
+
+### <a name="instantiate-chaincode"></a>チェーンコードをインスタンス化する  
+
+ピア クライアント アプリケーションから次のコマンドを実行して、チャネルでチェーンコードをインスタンス化します。  
+
+```bash
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
+```
+
+`<instantiateFunc>` と `<instantiateFuncArgs>` でそれぞれインスタンス化関数の名前とスペース区切りの引数のリストを渡します。 たとえば、chaincode_example02.go チェーンコードでは、チェーンコードをインスタンス化するために、`<instantiateFunc>` を `init`に、`<instantiateFuncArgs>` を "a" "2000" "b" "1000" に設定しています。
+
+`--collections-config` フラグを使用し、コレクション構成 JSON ファイルを渡すこともできます。 あるいは、プライベート トランザクションに使用されるチェーンコードをインストール化するとき、`-t` フラグを使用して一時的な引数を設定します。
+
+次に例を示します。
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+\<collectionConfigJSONFilePath\> は、プライベート データ チェーンコードのインスタンス化に定義されているコレクションを含む JSON ファイルのパスです。 azhlfTool ディレクトリから相対的に見ると、サンプル コレクション構成 JSON ファイルのパスは `./samples/chaincode/src/private_marbles/collections_config.json` になります。
+有効な JSON として \<transientArgs\> を文字列形式で渡します。 特殊文字があればエスケープ処理します。 例: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
-> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。
-> トランザクションが orderer に正常に送信されると、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 そのため、チャネル内のすべてのピア組織のすべてのピア ノードで、チェーンコードがインスタンス化されます。
+> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信されると、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 そのため、チャネル内のすべてのピア組織のすべてのピア ノードで、チェーンコードがインスタンス化されます。  
 
-コマンドに渡す引数の詳細については、コマンドのヘルプを参照してください
+### <a name="invoke-chaincode"></a>チェーンコードを呼び出す  
+
+ピア組織クライアントから、次のコマンドを実行してチェーンコード関数を呼び出します。  
 
 ```bash
-npm run instantiateCC -- -h
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
+```
+
+ `<invokeFunction>`  と  `<invokeFuncArgs>`  でそれぞれ呼び出し関数名とスペース区切りの引数リストを渡します。 引き続き chaincode_example02.go を使用すると、呼び出し操作を実行するために、 `<invokeFunction>`  を  `invoke`  に、 `<invokeFuncArgs>`  を "a" "b" "10" に設定しています。  
+
+>[!NOTE]
+> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信されると、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 そのため、チャネル内のすべてのピア組織のすべてのピア ノードで、ワールド状態が更新されます。  
+
+
+### <a name="query-chaincode"></a>チェーンコードのクエリを実行する  
+
+チェーンコードのクエリを行うには、次のコマンドを実行します。  
+
+```bash
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
+```
+保証ピアは、チェーンコードがインストールされ、トランザクションの実行のために呼び出されるピアです。 現在のピア組織からのピア ノード名を含む \<endorsingPeers\> を設定する必要があります。 指定されたチェーンコードとチャネルの組み合わせに対して保証ピアをスペースで区切って一覧表示します。 たとえば、「 `-p "peer1" "peer3"` 」のように入力します。
+
+azhlfTool を使用してチェーンコードをインストールする場合、保証ピア引数に値としてピア ノード名を渡します。 チェーンコードは、その組織のあらゆるピア ノードにインストールされます。 
+
+ `<queryFunction>`  と  `<queryFuncArgs>`  でそれぞれクエリ関数名とスペース区切りの引数リストを渡します。 ここでも chaincode_example02.go チェーンコードを参照すると、ワールド状態の値 "a" のクエリを実行するために、 `<queryFunction>`  を  `query` に、 `<queryArgs>` を "a" に設定しています。  
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+**実行中のテンプレートのバージョンを確認する**
+
+次のコマンドを実行して、テンプレートのデプロイのバージョンを確認します。
+
+テンプレートがデプロイされているリソース グループに応じて、下記の環境変数を設定します。
+
+```bash
+
+SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
+AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
+AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
+AKS_CLUSTER_NAME=<AKSClusterName>
+```
+次のコマンドを実行して、テンプレートのバージョンを印刷します。
+```bash
+SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
+kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
 
-### <a name="invoke-chaincode"></a>チェーンコードを呼び出す
+## <a name="support-and-feedback"></a>サポートとフィードバック
 
-チェーンコード関数を呼び出すには、次のコマンドを実行します。
+Azure Blockchain の最新情報については、[Azure Blockchain のブログ](https://azure.microsoft.com/blog/topics/blockchain/)をご覧ください。Azure Blockchain エンジニアリング チームからの情報やブロックチェーン サービスの内容に関する最新の情報を把握することができます。
 
-```bash
-npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
+製品に関するフィードバックや新機能のご要望をお寄せいただくには、[ブロックチェーンに関する Azure フィードバック フォーラム](https://aka.ms/blockchainuservoice)で投稿またはアイデアに投票してください。
 
-```
-`<invokeFunction>` と `<invokeFuncArgs>` で、呼び出し関数名とコンマ区切りの引数リストを渡します。 fabcar チェーンコードの例では、initLedger 関数を呼び出すために、`<invokeFunction>` を `"initLedger"` に設定し、`<invokeFuncArgs>` を `""` に設定しています。
+### <a name="community-support"></a>コミュニティ サポート
 
-> [!NOTE]
-> チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。
-> トランザクションが orderer に正常に送信されると、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 そのため、チャネル内のすべてのピア組織のすべてのピア ノードで、ワールド状態が更新されます。
+Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
 
-コマンドに渡す引数の詳細については、コマンドのヘルプを参照してください
-
-```bash
-npm run invokeCC -- -h
-
-```
-
-### <a name="query-chaincode"></a>チェーンコードのクエリを実行する
-
-チェーンコードのクエリを行うには、次のコマンドを実行します。
-
-```bash
-npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
-
-```
-
-`<queryFunction>` と `<queryFuncArgs>` で、クエリ関数名とコンマ区切りの引数リストを渡します。 ここでも、`fabcar` チェーンコードを参照すると、ワールド状態のすべての自動車のクエリを実行するために、`<queryFunction>` を `"queryAllCars"` に設定し、`<queryArgs>` を `""` に設定しています。
-
-コマンドに渡す引数の詳細については、コマンドのヘルプを参照してください
-
-```bash
-npm run queryCC -- -h
-
-```
+- [Microsoft Q&A 質問ページ](/answers/topics/azure-blockchain-workbench.html)。 ブロックチェーン テンプレートに関するエンジニアリング サポートは、デプロイに関する問題に限定されています。
+- [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

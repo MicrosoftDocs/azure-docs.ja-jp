@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066849"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829086"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -35,8 +35,8 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Windows 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](dsc-overview.md)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../log-analytics/log-analytics-azure-vm-extension.md)に関するページを参照してください。
-- Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](../../chef/chef-automation.md)」を参照してください。
+- Log Analytics エージェント VM 拡張機能を使用して VM の監視を構成します。 詳しくは、[Azure VM の Azure Monitor ログへの接続](../../azure-monitor/learn/quick-collect-azurevm.md)に関するページを参照してください。
+- Chef を使用して Azure VM を構成します。 詳しくは、「[Chef で Azure VM の展開を自動化する](/azure/developer/chef/windows-vm-configure)」を参照してください。
 - Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
 
@@ -65,18 +65,18 @@ Windows ゲスト エージェントは複数の OS で実行されますが、�
 
 #### <a name="network-access"></a>ネットワーク アクセス
 
-拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [サポートされている](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)バージョンのエージェントを使用する場合は、エージェントを使用してエージェント通信用の Azure ファブリック コントローラーに通信をリダイレクトできるので、VM リージョン内の Azure Storage へのアクセスを許可する必要はありません (プライベート IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) での特権チャネル経由の HostGAPlugin 機能)。 サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
+拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [サポートされている](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)バージョンのエージェントを使用する場合は、エージェントを使用してエージェント通信用の Azure ファブリック コントローラーに通信をリダイレクトできるので、VM リージョン内の Azure Storage へのアクセスを許可する必要はありません (プライベート IP [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md) での特権チャネル経由の HostGAPlugin 機能)。 サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
 
 > [!IMPORTANT]
 > ゲスト ファイアウォールまたはプロキシを使用して *168.63.129.16* へのアクセスをブロックした場合、上記とは関係なく、拡張機能はエラーになります。 ポート 80、443、32526 が必要です。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 Azure Storage または Azure Active Directory へのアクセスを必要とする拡張機能の場合は、Storage または AzureActiveDirectory の [Azure NSG サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 Azure Storage または Azure Active Directory へのアクセスを必要とする拡張機能の場合は、Storage または AzureActiveDirectory の [Azure NSG サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用してアクセスを許可できます。
 
 Windows ゲスト エージェントには、エージェントのトラフィック要求をリダイレクトするためのプロキシ サーバーのサポートはありません。つまり、Windows ゲスト エージェントでは、カスタムプロキシに依存して (ある場合)、IP 168.63.129.16 経由でインターネット上またはホスト上のリソースにアクセスできます。
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 
-Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、[Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage) を使用します。 次の例では、*WestUS* の場所で利用できるすべての拡張機能が表示されています。
+Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、[Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) を使用します。 次の例では、*WestUS* の場所で利用できるすべての拡張機能が表示されています。
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -92,7 +92,7 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 
 ### <a name="powershell"></a>PowerShell
 
-個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) を使用して*拡張機能*をフィルター処理します。
+個々の拡張機能を実行するための PowerShell コマンドがいくつか存在します。 一覧を表示するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) を使用して*拡張機能*をフィルター処理します。
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-次の例では、VM アクセス拡張機能を使って、Windows VM の管理パスワードを一時パスワードにリセットします。 VM アクセス拡張機能について詳しくは、[Windows VM でのリモート デスクトップ サービスのリセット](../windows/reset-rdp.md)に関する記事をご覧ください。 これを実行した後は、最初のログイン時にパスワードをリセットします。
+次の例では、VM アクセス拡張機能を使って、Windows VM の管理パスワードを一時パスワードにリセットします。 VM アクセス拡張機能について詳しくは、[Windows VM でのリモート デスクトップ サービスのリセット](../troubleshooting/reset-rdp.md)に関する記事をご覧ください。 これを実行した後は、最初のログイン時にパスワードをリセットします。
 
 ```powershell
 $cred=Get-Credential
@@ -137,7 +137,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳細については、[Set-AzVMExtension のリファレンス](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)を参照してください。
+`Set-AzVMExtension` コマンドを使って、任意の VM 拡張機能を開始できます。 詳細については、[Set-AzVMExtension のリファレンス](/powershell/module/az.compute/set-azvmextension)を参照してください。
 
 
 ### <a name="azure-portal"></a>Azure portal
@@ -150,7 +150,7 @@ VM 拡張機能は、Azure Portal から既存の VM に適用できます。 �
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
-VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は、負荷分散された一連の VM と Azure SQL データベースをデプロイし、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
+VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は、負荷分散された一連の VM と Azure SQL Database をデプロイし、各 VM に .NET Core アプリケーションをインストールする Resource Manager テンプレートからの抜粋です。 VM 拡張機能はソフトウェアのインストールに対応します。
 
 詳しくは、[Resource Manager テンプレート](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)全体をご覧ください。
 
@@ -252,7 +252,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 }
 ```
 
-拡張機能を使用する Azure IaaS VM の証明書コンソールには、 **_Windows Azure CRP Certificate Generator_** という件名の証明書が表示されることがあります。 クラシック RDFE VM の場合、証明書の件名は **_Windows Azure Service Management for Extensions_** になります。
+拡張機能を使用する Azure IaaS VM の証明書コンソールには、**_Windows Azure CRP Certificate Generator_** という件名の証明書が表示されることがあります。 クラシック RDFE VM の場合、証明書の件名は **_Windows Azure Service Management for Extensions_** になります。
 
 これらの証明書により、拡張機能によって使用される保護された設定 (パスワードやその他の資格情報) の転送中、VM とそのホストの間の通信がセキュリティで保護されます。 証明書は Azure ファブリック コントローラーによって作られ、VM エージェントに渡されます。 VM を毎日起動し、停止する場合、ファブリック コントローラーによって新しい証明書が作成されることがあります。 証明書はコンピューターの個人用証明書ストアに保存されます。 これらの証明書は削除できます。 必要に応じて、VM エージェントにより証明書が再作成されます。
 
@@ -315,7 +315,7 @@ Windows ゲスト エージェントには*拡張機能処理コード*のみが
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>拡張機能が autoUpgradeMinorVersion を使って VM 上に設定されているかどうかを識別する
 
-拡張機能が 'autoUpgradeMinorVersion' を使ってプロビジョニングされたかどうかは、VM モデルから判断できます。 確認するには、[Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用し、リソース グループと VM の名前を次のように指定します。
+拡張機能が 'autoUpgradeMinorVersion' を使ってプロビジョニングされたかどうかは、VM モデルから判断できます。 確認するには、[Get-AzVm](/powershell/module/az.compute/get-azvm) を使用し、リソース グループと VM の名前を次のように指定します。
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -355,7 +355,7 @@ AutoUpgradeMinorVersion     : True
 
 1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
-2. *C:\WindowsAzure\Logs\Plugins\<extensionName>* で、実際の拡張機能ログの詳細を確認します。
+2. *C:\WindowsAzure\Logs\Plugins\<extensionName>* で、実際の拡張機能ログの詳細を確認します
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。
 
@@ -371,7 +371,7 @@ AutoUpgradeMinorVersion     : True
 
 ### <a name="view-extension-status"></a>拡張機能の状態表示
 
-VM に対して VM 拡張機能が実行されたら、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して拡張機能の状態を返します。 *Substatuses[0]* は、拡張機能のプロビジョニングに成功したことを示しており、VM には正常にデプロイされたが VM 内での拡張機能の実行はエラーになったことが *Substatuses[1]* でわかります。
+VM に対して VM 拡張機能が実行されたら、[Get-AzVM](/powershell/module/az.compute/get-azvm) を使用して拡張機能の状態を返します。 *Substatuses[0]* は、拡張機能のプロビジョニングに成功したことを示しており、VM には正常にデプロイされたが VM 内での拡張機能の実行はエラーになったことが *Substatuses[1]* でわかります。
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -407,7 +407,7 @@ Extensions[0]           :
 
 ### <a name="rerun-vm-extensions"></a>VM 拡張機能の再実行
 
-VM 拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、[Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) を次のように使用します。
+VM 拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、[Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension) を次のように使用します。
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"

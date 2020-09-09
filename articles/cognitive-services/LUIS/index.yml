@@ -3,7 +3,7 @@ title: Language Understanding (LUIS) のドキュメント
 summary: Language Understanding を使用して、アプリケーションが人の発言の意図を認識できるようにする方法について説明します。
 metadata:
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 06/15/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
-  ms.openlocfilehash: f1fab99692fbd02cf3a8b659aad0069ac73ce8e6
-  ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+  ms.openlocfilehash: 6e34c5e39118565e14a40765443583b0b9ed237b
+  ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/23/2020
-  ms.locfileid: "82101673"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89322485"
 landingContent:
 - title: Language Understanding (LUIS) について
   linkLists:
@@ -33,6 +33,8 @@ landingContent:
       url: luis-how-plan-your-app.md
     - text: 反復的アプリ設計
       url: luis-concept-app-iteration.md
+    - text: DevOps プラクティス
+      url: luis-concept-devops-sourcecontrol.md
   - linkListType: whats-new
     links:
     - text: 新機能
@@ -58,9 +60,9 @@ landingContent:
     - text: 'ポータル: 新しい LUIS アプリを作成する'
       url: get-started-portal-build-app.md
     - text: C# SDK の使用
-      url: sdk-authoring.md?pivots=programming-language-csharp
+      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
     - text: Python SDK の使用
-      url: sdk-authoring.md?pivots=programming-language-python
+      url: azure-sdk-quickstart.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: 新しい LUIS アプリを作成する
@@ -86,7 +88,7 @@ landingContent:
     - text: 'ポータル: 予測エンドポイントにアプリをデプロイする'
       url: get-started-portal-deploy-app.md
     - text: SDK の使用
-      url: sdk-authoring.md
+      url: azure-sdk-quickstart.md
   - linkListType: how-to-guide
     links:
     - text: アプリをバージョン管理する
@@ -104,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: SDK の使用
-      url: sdk-query-prediction-endpoint.md
+      url: azure-sdk-quickstart.md
   - linkListType: quickstart
     links:
     - text: REST とともに C# を使用

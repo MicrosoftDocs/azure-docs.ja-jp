@@ -1,79 +1,91 @@
 ---
 title: Azure サブスクリプションのサインインに関する問題のトラブルシューティング
-description: Azure portal または Azure アカウント センターにサインインできない問題の解決を支援します。
+description: Azure portal または Azure アカウント センターにサインインできない問題の解決について説明します。
 services: cost-management-billing
 author: v-miegge
 manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.subservice: billing
+ms.topic: troubleshooting
+ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 08f278d56e742659ebe197695fae8dfa35383b17
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639200"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686498"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure サブスクリプションのサインインに関する問題のトラブルシューティング
 
-このガイドは、Azure portal または Azure アカウント センターにサインインできない問題の解決を支援します。
+このガイドでは、Azure portal または Azure アカウント センターにサインインできない問題の解決について説明します。
 
-## <a name="issues"></a>発行
+> [!NOTE]
+> 新しい Azure アカウントへのサインアップで問題が発生した場合は、[Azure サブスクリプションのサインインの問題のトラブルシューティング](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)に関するページを参照してください。
 
-### <a name="page-hangs-in-the-loading-status"></a>ページの読み込み中にハングする
+## <a name="page-hangs-in-the-loading-status"></a>ページの読み込み中にハングする
 
 インターネット ブラウザーのページがハングする場合、Azure portal にアクセスできるまで、次の各手順を試してみてください。
 
 - ページを更新します。
 - 別のインターネット ブラウザーを使用します。
-- お使いのブラウザーのプライベート ブラウズ モードを使用します。 Internet Explorer の場合、 **[ツール]**  >  **[安全性]**  >  **[InPrivate ブラウズ]** をクリックし、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスしてサインインします。
+- お使いのブラウザーで、プライベート ブラウズ モードを使用します。
 
-### <a name="you-are-automatically-signed-in-as-a-different-user"></a>サインイン時に自動で別のユーザーになる
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Chrome の場合:** **Incognito** モードを選択します。
+   - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
+
+- 次のように、キャッシュをクリアし、インターネット Cookie を削除します。
+
+   - **Edge の場合:** **[設定]** を開き、 **[プライバシーとサービス]** を選択します。 **[閲覧データをクリア]** の手順に従います。 **[閲覧履歴]** 、 **[ダウンロード履歴]** 、および **[キャッシュされた画像とファイル]** のチェックボックスが選択されていることを確認し、 **[削除]** を選択します。
+   - **Chrome の場合:** **[設定]** を選択し、 **[プライバシーとセキュリティ]** の **[閲覧データのクリア]** を選択します。
+
+## <a name="you-are-automatically-signed-in-as-a-different-user"></a>サインイン時に自動で別のユーザーになる
 
 この問題は、インターネット ブラウザーで複数のユーザー アカウントを使用している場合に発生する可能性があります。
 
 この問題を解決するには、次の方法のいずれかを試してください。
 
-- キャッシュをクリアし、インターネット Cookie を削除する。 Internet Explorer で、 **[ツール]**  >  **[インターネット オプション]**  >  **[削除]** の順にクリックします。 一時ファイル、Cookie、パスワード、閲覧履歴の各チェック ボックスをオンにして [削除] をクリックします。
-- Internet Explorer の設定をリセットして、構成済みの個人設定を元に戻す。 **[ツール]**  >  **[インターネット オプション]**  >  **[詳細設定]** の順にクリックし、 **[個人設定を削除する]** ボックス、 **[リセット]** の順に選択します。
-- お使いのブラウザーのプライベート ブラウズ モードを使用します。 Internet Explorer の場合、 **[ツール]**  >  **[安全性]**  >  **[InPrivate ブラウズ]** をクリックし、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスしてサインインします。
+- キャッシュをクリアし、インターネット Cookie を削除する。
 
-### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>サインインすることはできるが、"*サブスクリプション見つかりませんでした*" と表示される
+   - **Edge の場合:** **[設定]** を開き、 **[プライバシーとサービス]** を選択します。 **[閲覧データをクリア]** の手順に従います。 **[閲覧履歴]** 、 **[ダウンロード履歴]** 、 **[クッキー]** および **[キャッシュされた画像とファイル]** のチェックボックスが選択されていることを確認し、 **[削除]** を選択します。
+   - **Chrome の場合:** **[設定]** を選択し、 **[プライバシーとセキュリティ]** の **[閲覧データのクリア]** を選択します。
+- お使いのブラウザーの設定を既定にリセットします。
+- お使いのブラウザーのプライベート ブラウズ モードを使用します。 
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Chrome の場合:** **Incognito** モードを選択します。
+   - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
+
+## <a name="i-can-sign-in-but-i-see-the-error-no-subscriptions-found"></a>サインインすることはできるが、サブスクリプション見つかりませんでした、というエラーが表示される
 
 この問題は、誤ったディレクトリで選択した場合、または、自分のアカウントに十分なアクセス許可がない場合に発生します。
 
-**シナリオ 1:** [Azure portal](https://portal.azure.com/) でエラー メッセージが表示される
+**シナリオ 1:** [Azure portal](https://portal.azure.com/) へのサインインでエラーが発生した
 
 この問題を解決するには、次の手順に従います。
 
-- 右上にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
-- 適切な Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、[アカウントを所有者として追加](add-change-subscription-administrator.md)します。
+- 右上隅にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
+- 正しい Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、ご自分のアカウントを[所有者として追加](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator)します。
 
-**シナリオ 2:** [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でエラー メッセージが表示される
+**シナリオ 2:** [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)へのサインインでエラーが発生した
 
 使用しているアカウントがアカウント管理者であるかどうかを確認します。 どのアカウントがアカウント管理者であるかを確認するには、以下の手順に従ってください。
 
-1. Azure Portal の[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
-
-2. 確認するサブスクリプションを選択し、 **[設定]** を調べます。
-
-3. **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
+1.  Azure Portal の[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
+1.  確認するサブスクリプションを選択し、 **[設定]** を選択します。
+1.  **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
 
 ## <a name="additional-help-resources"></a>その他のヘルプ リソース
 
 Azure の請求とサブスクリプションに関するその他のトラブルシューティング記事
 
-- [拒否されたカード](troubleshoot-declined-card.md)
-- [サブスクリプションのサインアップの問題](troubleshoot-azure-sign-up.md)
-- [サブスクリプションが見つからない](no-subscriptions-found.md)
-- [Enterprise コスト ビューが無効になっている](enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [拒否されたカード](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
+- [サブスクリプションのサインアップの問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
+- [サブスクリプションが見つからない](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
+- [Enterprise コスト ビューが無効になっている](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Azure の課金に関するドキュメント](https://docs.microsoft.com/azure/cost-management-billing/)
 
 ## <a name="contact-us-for-help"></a>お問い合わせ
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
-
-## <a name="next-steps"></a>次のステップ
-
-- [Azure の課金に関するドキュメント](../../billing/index.md)

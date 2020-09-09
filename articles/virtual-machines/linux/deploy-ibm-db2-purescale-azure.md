@@ -3,15 +3,15 @@ title: Azure 上に IBM DB2 pureScale をデプロイする
 description: 最近、z/OS 上で実行される IBM DB2 環境から Azure 上の IBM DB2 pureScale に企業が移行する際に、あるアーキテクチャの例が使用されています。ここでは、そのアーキテクチャの例をデプロイする方法について説明します。
 author: njray
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78968890"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371925"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 
@@ -26,7 +26,7 @@ ms.locfileid: "78968890"
 このリポジトリには、Grafana ダッシュボードを設定するためのスクリプトも含まれています。 ダッシュボードを使用すると、DB2 に含まれているオープンソースの監視およびアラート システムである Prometheus に対してクエリを実行できます。
 
 > [!NOTE]
-> クライアント上の deploy.sh スクリプトは、プライベート SSH キーを作成して、HTTPS 経由で展開テンプレートにそのキーを渡します。 セキュリティを強化するために、シークレット、キー、およびパスワードの格納には、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) を使用することをお勧めします。
+> クライアント上の deploy.sh スクリプトは、プライベート SSH キーを作成して、HTTPS 経由で展開テンプレートにそのキーを渡します。 セキュリティを強化するために、シークレット、キー、およびパスワードの格納には、[Azure Key Vault](../../key-vault/general/overview.md) を使用することをお勧めします。
 
 ## <a name="how-the-deployment-script-works"></a>展開スクリプトの仕組み
 

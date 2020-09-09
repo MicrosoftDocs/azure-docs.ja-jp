@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70208147"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959145"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
@@ -41,9 +41,9 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
     
    1. **[ユーザーとグループ]** で、 **[すべてのユーザー]** を選択し、次に **[新しいユーザー]** を選択します。
    
-           The **User** pane opens:
+        **[ユーザー]** ペインが開きます。
       
-      ![[ユーザー] ウィンドウ](./media/add-user.png)
+        ![[ユーザー] ウィンドウ](./media/add-user.png)
     
    1. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
     

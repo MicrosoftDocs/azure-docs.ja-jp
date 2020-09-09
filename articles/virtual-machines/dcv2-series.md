@@ -1,18 +1,18 @@
 ---
 title: DC シリーズ - Azure Virtual Machines
 description: DC シリーズ VM の仕様。
-services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
-ms.topic: article
+ms.subservice: sizes
+ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: lahugh
-ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085724"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649892"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
@@ -33,21 +33,21 @@ Premium Storage キャッシュ:サポート対象*
 
 
 
-| サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |
-|------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
-| Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
-| Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
-| Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                            | 6400/96                                   | 2                                            |
-| Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
+| サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) | EPC メモリ (MiB) |
+|------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
+| Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2,000/16                                                                                               | 2   | 28                                      |
+| Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4,000/32                                                                                               | 2  | 56                                          |
+| Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8,000/64                                                                                               | 2  | 112                                          |
+| Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16,000/128                                                                                         | 2   | 168                                         |
 
 - DCsv2 シリーズの VM は、[第 2 世代の VM](./linux/generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみをサポートしています。
-- 現在、英国南部、カナダ中部、および米国東部のみでご利用いただけます。
+- 現在は、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)の一覧にあるリージョンで提供されています。
 - 前世代の機密コンピューティング VM:[DC シリーズ](sizes-previous-gen.md#preview-dc-series)
 - [Azure portal](./linux/quick-create-portal.md) または [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) を使用して DCsv2 VM を作成します
 
 
 
-## <a name="other-sizes"></a>その他のサイズ
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [メモリの最適化](sizes-memory.md)
@@ -55,6 +55,10 @@ Premium Storage キャッシュ:サポート対象*
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
+
+料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>次のステップ
 

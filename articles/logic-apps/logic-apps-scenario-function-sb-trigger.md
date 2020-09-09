@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fcf7f1a27633c978c10f541d0a341225fbcb126d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75428705"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013777"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする
 
@@ -119,11 +120,11 @@ ms.locfileid: "75428705"
 
    * この例では、`application/json` メッセージのコンテンツの種類を使用していますが、必要に応じて種類を変更できます。
    
-   * 関数が同時に実行される、ボリュームが大きくなる、あるいは負荷が高くなる可能性があるため、`using` ステートメントで [HTTPClient クラス](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)をインスタンス化し、要求ごとに HTTPClient インスタンスを直接作成することは避けてください。 詳細については、「[HttpClientFactory を使用して回復力の高い HTTP 要求を実装する](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)」を参照してください。
+   * 関数が同時に実行される、ボリュームが大きくなる、あるいは負荷が高くなる可能性があるため、`using` ステートメントで [HTTPClient クラス](/dotnet/api/system.net.http.httpclient)をインスタンス化し、要求ごとに HTTPClient インスタンスを直接作成することは避けてください。 詳細については、「[HttpClientFactory を使用して回復力の高い HTTP 要求を実装する](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)」を参照してください。
    
    * 可能な場合は、HTTP クライアントのインスタンスを再利用します。 詳細については、「[Azure Functions での接続の管理](../azure-functions/manage-connections.md)」を参照してください。
 
-   この例では、[非同期](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)モードで [`Task.Run` メソッド](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)が使用されています。 詳細については、[Async および Await を使用した非同期プログラミング](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)に関するページをご覧ください。
+   この例では、[非同期](/dotnet/csharp/language-reference/keywords/async)モードで [`Task.Run` メソッド](/dotnet/api/system.threading.tasks.task.run)が使用されています。 詳細については、[Async および Await を使用した非同期プログラミング](/dotnet/csharp/programming-guide/concepts/async/)に関するページをご覧ください。
 
    ```csharp
    using System;

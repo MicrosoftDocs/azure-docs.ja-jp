@@ -9,13 +9,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - seo-python-october2019
+- devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: aed9be394076b4ef10b8354552d69771ae659eea
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010853"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845326"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>クイック スタート:Azure Cache for Redis を使用する Python アプリを作成する
 
@@ -41,7 +42,7 @@ ms.locfileid: "81010853"
 
 ## <a name="read-and-write-to-the-cache"></a>キャッシュの読み取りと書き込みを実行する
 
-コマンド ラインから Python を実行し、次のコードを使用してキャッシュをテストします。 `<Your Host Name>` と `<Your Access Key>` を、Azure Cache for Redis インスタンスの値に置き換えます。 ホスト名は、 *\<DNS 名>.redis.cache.windows.net* の形式になります。
+コマンド ラインから Python を実行し、次のコードを使用してキャッシュをテストします。 `<Your Host Name>` と `<Your Access Key>` を、Azure Cache for Redis インスタンスの値に置き換えます。 ホスト名は、 *\<DNS name>.redis.cache.windows.net* の形式になります。
 
 ```python
 >>> import redis
@@ -58,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Python サンプル アプリを作成する
 
-新しいテキスト ファイルを作成し、次のスクリプトを追加して、ファイルを *PythonApplication1.py* として保存します。 `<Your Host Name>` と `<Your Access Key>` を、Azure Cache for Redis インスタンスの値に置き換えます。 ホスト名は、 *\<DNS 名>.redis.cache.windows.net* の形式になります。
+新しいテキスト ファイルを作成し、次のスクリプトを追加して、ファイルを *PythonApplication1.py* として保存します。 `<Your Host Name>` と `<Your Access Key>` を、Azure Cache for Redis インスタンスの値に置き換えます。 ホスト名は、 *\<DNS name>.redis.cache.windows.net* の形式になります。
 
 ```python
 import redis

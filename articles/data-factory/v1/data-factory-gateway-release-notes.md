@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064994"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194480"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
@@ -49,8 +49,8 @@ Data Management Gateway とその使用方法の詳細については、次の�
 -   ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
 -   1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです (以前は 195 GB に制限されていました)。
 -   固定:コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
--   固定:べき等性を利用して Document DB からオンプレミス SQL Server にコピーするときの範囲外のインデックスの問題。
--   固定:コピー ウィザードで、SQL クリーンアップ スクリプトがオンプレミス SQL Server で機能しない問題。
+-   固定:べき等性を利用して Document DB から SQL Server にコピーするときの範囲外のインデックスの問題。
+-   固定:コピー ウィザードで、SQL クリーンアップ スクリプトが SQL Server で機能しない問題。
 -   固定:末尾にスペースが含まれた列名がコピー アクティビティで機能しない問題。
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -111,7 +111,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 *  DB2 ドライバーは、既にサポートされているプラットフォーム (Linux、Unix、Windows) に加え、現在では z/OS と DB2 for i (AS/400) をサポートしています。
 *  オンプレミス データ ストアの送信元または送信先として Azure Cosmos DB を使用できるようになりました。
 *  既にサポートされている汎用ストレージ アカウントに加え、コールド/ホット Blob Storage との間でデータをコピーできるようになりました。
-*  ゲートウェイを介し、リモート ログイン特権でオンプレミスの SQL Server に接続することができます。  
+*  ゲートウェイを介し、リモート ログイン特権で SQL Server に接続することができます。  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -126,7 +126,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
     *  コントロールの配置が見直され、簡素化されました。
 
     *  [コーディング不要のコピー ツール](data-factory-copy-data-wizard-tutorial.md)を使用して、ストレージからデータをコピーできます。 この機能全般の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
-*  Data Management Gateway を使用すると、オンプレミスの SQL Server データベースから Azure Machine Learning に直接データを取り込むことができます。
+*  Data Management Gateway を使用すると、SQL Server データベースから Azure Machine Learning に直接データを取り込むことができます。
 
 *  パフォーマンスの向上
 

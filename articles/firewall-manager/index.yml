@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 10/10/2019
-  ms.openlocfilehash: e3b98f3954ee70b5e002bb844147d4d51b1f6d9d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 16db3ae780109aee0733aa401c03d6b258e2c5c0
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508671"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87079002"
 landingContent:
 - title: Azure Firewall Manager について
   linkLists:
@@ -31,17 +31,17 @@ landingContent:
     links:
     - text: セキュリティ保護付き仮想ハブとは
       url: secured-virtual-hub.md
-- title: 信頼されたセキュリティ パートナー
+- title: セキュリティ パートナー プロバイダー
   linkLists:
   - linkListType: concept
     links:
-    - text: 信頼されたセキュリティ パートナー (プレビュー) とは
+    - text: セキュリティ パートナー プロバイダーとは
       url: trusted-security-partners.md
   - linkListType: how-to-guide
     links:
-    - text: 信頼されたセキュリティ パートナー (プレビュー) のデプロイ
+    - text: セキュリティ パートナー プロバイダーのデプロイ
       url: deploy-trusted-security-partner.md
-- title: Azure クラウド ネットワークのセキュリティ保護
+- title: Azure クラウド ネットワークをセキュリティで保護する
   linkLists:
   - linkListType: tutorial
     links:

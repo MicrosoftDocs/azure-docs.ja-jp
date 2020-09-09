@@ -1,19 +1,20 @@
 ---
 title: Azure Maps の空間 IO モジュールの使用方法 | Microsoft Azure Maps
 description: Azure Maps Web SDK で提供される、空間 IO モジュールの使用方法について説明します。 このモジュールには、開発者が Azure Maps Web SDK に空間データを簡単に統合するための堅牢な機能があります。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f848274f67b5ebf5349cbef24a769aaae39b9955
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804641"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287042"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Maps の空間 IO モジュールの使用方法
 
@@ -39,7 +40,7 @@ Azure Maps Web SDK には、JavaScript または TypeScript を使用して、�
 
 ## <a name="prerequisites"></a>前提条件
 
-空間 IO モジュールを使用する前に、[Azure Maps アカウントを作成](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps)し、[お使いのアカウントのプライマリ サブスクリプション キーを取得](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)する必要があります。
+空間 IO モジュールを使用する前に、[Azure Maps アカウントを作成](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account)し、[お使いのアカウントのプライマリ サブスクリプション キーを取得](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)する必要があります。
 
 ## <a name="installing-the-spatial-io-module"></a>空間 IO モジュールのインストール
 

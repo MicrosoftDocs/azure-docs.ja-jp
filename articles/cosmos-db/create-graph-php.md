@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68736643"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118306"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>クイック スタート:PHP と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 
@@ -106,7 +106,8 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     URI の値の最初の部分をコピーします。
 
-    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-php/keys.png)
+    :::image type="content" source="./media/create-graph-php/keys.png" alt-text="Azure portal の [キー] ページでアクセス キーを表示およびコピーする":::
+
 2. `connect.php` ファイルを開き、8 行目の `your_server_address` に URI の値を貼り付けます。
 
     接続オブジェクトの初期化は、次のコードのようになります。
@@ -192,21 +193,21 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
 
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
 
 2. **[結果]** リストを見ると、新しいユーザーがグラフに追加されていることがわかります。 **ben** を選択すると、彼が robin に接続されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
 
-   ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portal のデータ エクスプローラーにおけるグラフの新しい頂点":::
 
 3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、 **[New Vertex]\(新しい頂点\)** ボタンをクリックします。
 
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
 
 4. 「*person*」というラベルを入力します。
 
 5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは **id** のみです。
 
-    Key | Value | Notes
+    Key | 値 | Notes
     ----|----|----
     **id** | ashley | 頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     **gender** | female | 
@@ -223,7 +224,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
     
-    Key | Value | Notes
+    Key | 値 | Notes
     ----|----|----
     **id** | rakesh | 頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     **gender** | male | 
@@ -237,15 +238,15 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンをクリックします。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
 
-    ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="グラフ内の頂点のターゲットを変更する":::
 
 13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
 
-    ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="データ エクスプローラーで ashley と rakesh との間の接続を追加する":::
 
 14. 結果リストから **[rakesh]** を選択すると、ashley と rakesh が接続されていることがわかります。 
 
-    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="データ エクスプローラーで接続されている 2 つの頂点":::
 
     以上で、このクイック スタートのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 

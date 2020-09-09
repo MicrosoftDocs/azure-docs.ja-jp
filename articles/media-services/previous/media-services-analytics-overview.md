@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79665531e5faa9766c62b87a002efafdea2f3221
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77069627"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264727"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics 
+# <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="retirement-plans"></a>提供終了予定
 
@@ -85,52 +88,58 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
 ### <a name="net"></a>.NET
 次の関数は、指定された MP 名のいずれかを取得し、MP オブジェクトを返します。
 
-    static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors
-            .Where(p => p.Name == mediaProcessorName)
-            .ToList()
-            .OrderBy(p => new Version(p.Version))
-            .LastOrDefault();
+```csharp
+static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors
+        .Where(p => p.Name == mediaProcessorName)
+        .ToList()
+        .OrderBy(p => new Version(p.Version))
+        .LastOrDefault();
 
-        if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor",
-                                                       mediaProcessorName));
+    if (processor == null)
+        throw new ArgumentException(string.Format("Unknown media processor",
+                                                  mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ### <a name="rest"></a>REST
 要求:
 
-    GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Accept: application/json
-    Accept-Charset: UTF-8
-    User-Agent: Microsoft ADO.NET Data Services
-    Authorization: Bearer <token>
-    x-ms-version: 2.19
-    Host: media.windows.net
+```http
+GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
+DataServiceVersion: 1.0;NetFx
+MaxDataServiceVersion: 3.0;NetFx
+Accept: application/json
+Accept-Charset: UTF-8
+User-Agent: Microsoft ADO.NET Data Services
+Authorization: Bearer <token>
+x-ms-version: 2.19
+Host: media.windows.net
+```
 
 応答:
 
-    . . .
+```http
+. . .
 
-    {  
-       "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
-       "value":[  
-          {  
-             "Id":"nb:mpid:UUID:074c3899-d9fb-448f-9ae1-4ebcbe633056",
-             "Description":"Azure Media OCR",
-             "Name":"Azure Media OCR",
-             "Sku":"",
-             "Vendor":"Microsoft",
-             "Version":"1.1"
-          }
-       ]
-    }
+{  
+    "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
+    "value":[  
+        {  
+            "Id":"nb:mpid:UUID:074c3899-d9fb-448f-9ae1-4ebcbe633056",
+            "Description":"Azure Media OCR",
+            "Name":"Azure Media OCR",
+            "Sku":"",
+            "Vendor":"Microsoft",
+            "Version":"1.1"
+        }
+    ]
+}
+```
 
 ## <a name="demos"></a>デモ
 [Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)を参照してください。

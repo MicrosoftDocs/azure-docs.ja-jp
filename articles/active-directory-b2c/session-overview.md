@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230793"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927039"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C のセッション
 
@@ -99,22 +99,20 @@ Azure AD B2C のセッションは、次のスコープで構成できます。
    - SAML - ID プロバイダーのメタデータに `SingleLogoutService` の場所が含まれている場合。
 1. 必要に応じて、他のアプリケーションからのサインアウトが行われます。 詳しくは、「[シングル サインアウト](#single-sign-out)」セクションをご覧ください。
 
-> [!NOTE]
-> サインアウトにより、Azure AD B2C でのユーザーのシングル サインオン状態はクリアされますが、ユーザーはソーシャル ID プロバイダーのセッションからサインアウトされない場合があります。 ユーザーは、その後のサインインで同じ ID プロバイダーを選択した場合、資格情報を入力しなくても再び認証される可能性があります。 ユーザーがアプリケーションからサインアウトしようとする場合、そのユーザーは必ずしも自分の Facebook アカウントからサインアウトしようとしているとは限りません。 ただし、ローカル アカウントを使用している場合、ユーザーのセッションは正常に終了します。
+サインアウトにより、Azure AD B2C でのユーザーのシングル サインオン状態はクリアされますが、ユーザーはソーシャル ID プロバイダーのセッションからサインアウトされない場合があります。 ユーザーは、その後のサインインで同じ ID プロバイダーを選択した場合、資格情報を入力しなくても再び認証される可能性があります。 ユーザーがアプリケーションからサインアウトしようとする場合、そのユーザーは必ずしも自分の Facebook アカウントからサインアウトしようとしているとは限りません。 ただし、ローカル アカウントを使用している場合、ユーザーのセッションは正常に終了します。
 
-### <a name="single-sign-out"></a>シングル サインアウト
+### <a name="single-sign-out"></a>シングル サインアウト 
+
+
+> [!NOTE]
+> この機能は [カスタム ポリシー](custom-policy-overview.md)に限定されています。
 
 Azure AD B2C のサインアウト エンドポイントにユーザーをリダイレクトすると (OAuth2 と SAML プロトコルの両方)、Azure AD B2C によってユーザーのセッションがブラウザーからクリアされます。 ただし、ユーザーは認証に Azure AD B2C を使用する他のアプリケーションにサインインしたままになることがあります。 それらのアプリケーションでユーザーを同時にサインアウトできるように、Azure AD B2C では、ユーザーが現在サインインしているすべてのアプリケーションの登録済み `LogoutUrl` に、HTTP GET 要求が送信されます。
 
-アプリケーションは、ユーザーを識別するすべてのセッションを消去し、`200` 応答を返すことで、この要求に応答する必要があります。 アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` を実装する必要があります。 `LogoutUrl` は Azure Portal から設定できます。
 
-1. [Azure Portal](https://portal.azure.com) に移動します。
-1. ページの右上隅のアカウントをクリックして、Active B2C のディレクトリを選択します。
-1. 左側のナビゲーション パネルで **[Azure AD B2C]** 、 **[アプリの登録]** の順に選択し、対象のアプリケーションを選択します。
-1. **[設定]** 、 **[プロパティ]** の順に選択して、 **[ログアウト URL]** テキスト ボックスを探します。 
-
+アプリケーションは、ユーザーを識別するすべてのセッションを消去し、`200` 応答を返すことで、この要求に応答する必要があります。 アプリケーションでシングル サインアウトをサポートする場合は、アプリケーションのコードで `LogoutUrl` を実装する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [ユーザー フローでセッションの動作を構成する](session-behavior.md)方法を学習します。
-- [カスタム ポリシーでセッションの動作を構成する](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso)方法を学習します。
+- [カスタム ポリシーでセッションの動作を構成する](session-behavior-custom-policy.md)方法を学習します。

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python) | Microsoft Azure Maps
 description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内します。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: 3118ca39ec0efd42c9f7b622c91f857034ef4b03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333833"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639751"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -27,7 +27,7 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * クラウドの [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) 上で Jupyter ノートブックを作成して実行する。
+> * クラウドの [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) 上で Jupyter Notebook ファイルを作成して実行する。
 > * Python で Azure Maps REST API シリーズを呼び出す。
 > * 電気自動車の消費モデルに基づいて到達可能範囲を調べる。
 > * 到達可能範囲 (つまり等時線) 内にある電気自動車充電スタンドを検索する。
@@ -39,15 +39,15 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 
 このチュートリアルを完了するには、まず Azure Maps アカウントを作成して、プライマリ キー (サブスクリプション キー) を取得する必要があります。 
 
-Azure Maps アカウントのサブスクリプションを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するセクションの手順に従います。 S1 価格帯の Azure Maps アカウントのサブスクリプションが必要です。 
+Azure Maps アカウントのサブスクリプションを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するセクションの手順に従います。 S1 価格帯の Azure Maps アカウントのサブスクリプションが必要です。 
 
 アカウントの主サブスクリプション キーを取得するには、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従います。
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
-## <a name="create-an-azure-notebook"></a>Azure ノートブックを作成する
+## <a name="create-an-azure-notebooks-project"></a>Azure Notebooks プロジェクトを作成する
 
-このチュートリアルに沿って作業を進めるには、Azure ノートブック プロジェクトを作成し、Jupyter ノートブック ファイルをダウンロードして、実行する必要があります。 ノートブック ファイルには、本チュートリアルのシナリオを実装する Python コードが含まれています。 Azure ノートブック プロジェクトを作成し、Jupyter ノートブック ドキュメントをそれにアップロードするには、次の手順に従います。
+このチュートリアルに沿って作業を進めるには、Azure Notebooks プロジェクトを作成し、Jupyter Notebook ファイルをダウンロードして、実行する必要があります。 Jupyter Notebook ファイルには、本チュートリアルのシナリオを実装する Python コードが含まれています。 Azure Notebooks プロジェクトを作成し、Jupyter Notebook ドキュメントをそれにアップロードするには、次の手順を実行します。
 
 1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします 詳細については、「[クイック スタート: サインインとユーザー ID の設定](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)」を参照してください。
 1. パブリック プロファイル ページの上部にある **[マイ プロジェクト]** を選択します。
@@ -64,25 +64,25 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 1. **［作成］** を選択します
 
-1. プロジェクトが作成されたら、[Azure Maps の Jupyter ノートブック リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)からこの [Jupyter ノートブック ドキュメント ファイル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)をダウンロードします。
+1. プロジェクトが作成されたら、[Azure Maps の Jupyter Notebook リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)からこの [Jupyter Notebook ドキュメント ファイル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb)をダウンロードします。
 
-1. **[マイ プロジェクト]** ページのプロジェクト一覧で、自分のプロジェクトを選択し、 **[アップロード]** を選択して Jupyter ノートブック ドキュメント ファイルをアップロードします。 
+1. **[マイ プロジェクト]** ページのプロジェクト一覧で、自分のプロジェクトを選択し、 **[アップロード]** を選択して Jupyter Notebook ドキュメント ファイルをアップロードします。 
 
-    ![ノートブックのアップロード](./media/tutorial-ev-routing/upload-notebook.png)
+    ![Jupyter Notebook のアップロード](./media/tutorial-ev-routing/upload-notebook.png)
 
 1. お使いのコンピューターからファイルをアップロードし、 **[完了]** を選択します。
 
-1. アップロードが正常に完了すると、プロジェクト ページにファイルが表示されます。 ファイルをダブルクリックし、Jupyter ノートブックとして開きます。
+1. アップロードが正常に完了すると、プロジェクト ページにファイルが表示されます。 そのファイルをダブルクリックし、Jupyter Notebook として開きます。
 
-ノートブック ファイルに実装される機能を見ていきましょう。 ノートブック ファイルのコードを一度に 1 セルずつ実行します。 Notebook アプリの上部にある **[実行]** ボタンを選択して、各セルのコードを実行できます。
+Jupyter Notebook ファイルに実装されている機能を見ていきましょう。 Jupyter Notebook ファイルのコードを一度に 1 セルずつ実行します。 Jupyter Notebook アプリの上部にある **[実行]** ボタンを選択すると、各セルのコードを実行できます。
 
   ![[実行] ボタン](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>プロジェクト レベルのパッケージをインストールする
 
-ノートブックのコードを実行するには、次の手順に従って、プロジェクト レベルでパッケージをインストールします。
+Jupyter Notebook のコードを実行するには、次の手順を実行して、プロジェクト レベルでパッケージをインストールします。
 
-1. [Azure Maps の Jupyter ノートブック リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)から [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) ファイルをダウンロードして、自分のプロジェクトにアップロードします。
+1. [Azure Maps の Jupyter Notebook リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)から [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) ファイルをダウンロードして、自分のプロジェクトにアップロードします。
 1. プロジェクト ダッシュボードで、 **[Project Settings]\(プロジェクトの設定\)** を選択します。 
 1. **[プロジェクトの設定]** ウィンドウで、 **[環境]** タブを選択し、 **[追加]** を選択します。
 1. **[Environment Setup Steps]\(環境セットアップ手順\)** で、次のようにします。   

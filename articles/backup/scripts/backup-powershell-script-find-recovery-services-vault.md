@@ -1,14 +1,15 @@
 ---
 title: PowerShell スクリプト - ストレージ アカウントのコンテナーを見つける
-description: Azure PowerShell スクリプトを使用して、お使いのストレージ アカウントが登録されている Recovery Services コンテナーを見つける方法を学習します。
+description: Azure PowerShell スクリプトを使用して、お使いのストレージ アカウントが登録されている Recovery Services コンテナーを見つける方法について説明します。
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 40859c1ea05210d27fcdcf33ba9d4f961965ea22
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76775868"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075700"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>ストレージ アカウントが登録されている Recovery Services コンテナーを見つけるための PowerShell スクリプト
 
@@ -72,4 +73,4 @@ Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure portal から Azure ファイル共有をバックアップする](https://docs.microsoft.com/azure/backup/backup-afs)方法を学習します
+[Azure portal から Azure ファイル共有をバックアップする](../backup-afs.md)方法を学習します

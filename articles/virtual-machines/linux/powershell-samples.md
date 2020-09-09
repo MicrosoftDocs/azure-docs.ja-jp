@@ -3,22 +3,22 @@ title: Azure 仮想マシンの PowerShell のサンプル
 description: Azure 仮想マシンの PowerShell のサンプル
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 8d7db5fe88890b7f807263e50757e637ad808eb1
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 23dd47df33ef6571fefbf1c1964324bea5ca4488
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759326"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369936"
 ---
-# <a name="azure-virtual-machine-powershell-samples"></a>Azure 仮想マシンの PowerShell のサンプル
+# <a name="azure-virtual-machine-powershell-samples-for-creating-and-managing-linux-vms"></a>Linux VM の作成と管理の一般的な Azure Virtual Machine PowerShell サンプル
 
 次の表には、Linux 仮想マシンを作成および管理する PowerShell サンプル スクリプトへのリンクが掲載されています。
 
-| | |
+| スクリプト | 説明 |
 |---|---|
 |**仮想マシンの作成**||
 | [完全に構成された仮想マシンの作成](./../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | リソース グループ、仮想マシン、およびすべての関連リソースを作成します。|

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561641"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892118"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
@@ -93,7 +93,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
   
 3. VMDK を ESXi サーバーにアップロードします。 ナビゲーター ウィンドウで **[ストレージ]** を選択します。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
+   ![ESXi サーバー サイト上のページのスクリーンショット。[ナビゲーター] ペインで [ストレージ] オプションが選択されています。](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
 4. 右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。 
 
@@ -145,7 +145,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
     同じページで、 **[Add hard disk]\(ハード ディスクの追加\)** をクリックし、 **[Existing hard disk]\(既存のハード ディスク\)** を選択します。 データ ストア内の VMDK ファイルを選択します。 これにより、OS ディスクが追加されます。 
 
-     ![Customize settings]\(設定のカスタマイズ\) ページ[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。
 
@@ -200,7 +200,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
 8. `Set-HcsIpAddress` コマンドレットを使用してネットワークを構成します。 例を次に示します。
 
-    `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
+    `Set-HcsIpAddress –Name Ethernet0 –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
 9. 初期セットアップが完了し、デバイスが再起動すると、デバイスのバナー テキストが表示されます。 デバイスを管理するため、バナー テキストに表示される IP アドレスと URL をメモしておきます。 この IP アドレスを使用して、仮想デバイスの Web UI に接続し、ローカル セットアップとアクティブ化を行います。
 

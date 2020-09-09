@@ -5,15 +5,15 @@ author: roygara
 ms.service: virtual-machines
 ms.subservice: disks
 ms.workload: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 2dac5665b70035baeca9113b7b207d054ee76768
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 295ff6ad0f623ac602e145e741db42ace5161538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085573"
 ---
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ
+# <a name="back-up-azure-unmanaged-virtual-machine-disks-with-incremental-snapshots"></a>Azure の非管理対象の仮想マシン ディスクを増分スナップショットでバックアップする
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault の概要 - Azure Key Vault | Microsoft Docs
-description: Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。
+description: Azure Key Vault は、ハードウェア セキュリティ モジュールを背景にシークレット、キー、証明書を管理する安全なシークレット ストアです。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688034"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190551"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault について
 
@@ -73,7 +73,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 
 Azure 内の安全なストアとして、Key Vault は次のようなシナリオの簡略化に使用されてきました。
 -  [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)
--  SQL サーバーと Azure SQL Database 内の [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能
+-  SQL サーバーと Azure SQL Database 内の [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) と [Transparent Data Encryption]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15) 機能
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate)。 
 
 Key Vault 自体は、ストレージ アカウント、イベント ハブ、ログ分析と統合できます。

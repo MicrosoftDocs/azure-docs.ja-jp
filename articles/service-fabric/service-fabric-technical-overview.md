@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229243"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260230"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 
-Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  [Service Fabric クラスターは任意の場所でホスト](service-fabric-deploy-anywhere.md)できます。具体的には、Azure、オンプレミスのデータセンター、任意のクラウド プロバイダー上などです。  Service Fabric は [Azure Service Fabric Mesh](/azure/service-fabric-mesh) の動力となるオーケストレーターです。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
+Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  [Service Fabric クラスターは任意の場所でホスト](service-fabric-deploy-anywhere.md)できます。具体的には、Azure、オンプレミスのデータセンター、任意のクラウド プロバイダー上などです。  Service Fabric は [Azure Service Fabric Mesh](../service-fabric-mesh/index.yml) の動力となるオーケストレーターです。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
 
 ## <a name="infrastructure-concepts"></a>インフラストラクチャの概念
 
@@ -116,7 +116,7 @@ Image Store サービスの詳細については、「[ImageStoreConnectionStrin
 
 **Repair Manager サービス**:これは、安全で、自動化可能、かつ透過的な方法でクラスター上で修復アクションを実行できるようにする、省略可能なシステム サービスです。 Repair Manager は、次の操作で使用されます。
 
-   - [Silver および Gold 持続性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric クラスター上での Azure メンテナンス修復の実行。
+   - [Silver および Gold 持続性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Azure Service Fabric クラスター上での Azure メンテナンス修復の実行。
    - [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)のための修復アクションの実行
 
 ## <a name="deployment-and-application-models"></a>デプロイとアプリケーション モデル
@@ -125,13 +125,13 @@ Image Store サービスの詳細については、「[ImageStoreConnectionStrin
 
 ### <a name="resource-model-preview"></a>リソース モデル (プレビュー)
 
-Service Fabric リソースは、アプリケーション、サービス、ネットワーク、ボリュームなど、Service Fabric に個別にデプロイできるあらゆるものです。 リソースは、クラスター エンドポイントにデプロイできる JSON ファイルを使用して定義されます。  Service Fabric Mesh では、Azure Resource Model スキーマが使用されます。 YAML ファイル スキーマを使用して、定義ファイルをより簡単に作成することもできます。 リソースは Service Fabric が実行されているあらゆる場所にデプロイできます。 リソース モデルは、Service Fabric アプリケーションを記述する最も簡単な方法です。 その中心は、コンテナー化されたサービスの単純なデプロイと管理にあります。 詳細については、「[Service Fabric リソース モデルの概要](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)」を参照してください。
+Service Fabric リソースは、アプリケーション、サービス、ネットワーク、ボリュームなど、Service Fabric に個別にデプロイできるあらゆるものです。 リソースは、クラスター エンドポイントにデプロイできる JSON ファイルを使用して定義されます。  Service Fabric Mesh では、Azure Resource Model スキーマが使用されます。 YAML ファイル スキーマを使用して、定義ファイルをより簡単に作成することもできます。 リソースは Service Fabric が実行されているあらゆる場所にデプロイできます。 リソース モデルは、Service Fabric アプリケーションを記述する最も簡単な方法です。 その中心は、コンテナー化されたサービスの単純なデプロイと管理にあります。 詳細については、「[Service Fabric リソース モデルの概要](../service-fabric-mesh/service-fabric-mesh-service-fabric-resources.md)」を参照してください。
 
 ### <a name="native-model"></a>ネイティブ モデル
 
 ネイティブ アプリケーション モデルからアプリケーションに Service Fabric への完全な低レベル アクセスが与えられます。 アプリケーションとサービスは、XML マニフェスト ファイルに登録済みタイプとして定義されます。
 
-ネイティブ モデルは Reliable Services および Reliable Actors フレームワークに対応しています。このフレームワークは、C# と Java で、Service Fabric ランタイム API とクラスター管理 API へのアクセスを提供します。 ネイティブ モデルは任意のコンテナーと実行可能ファイルにも対応しています。 [Service Fabric Mesh 環境](/azure/service-fabric-mesh/service-fabric-mesh-overview)では、ネイティブ モデルがサポートされていません。
+ネイティブ モデルは Reliable Services および Reliable Actors フレームワークに対応しています。このフレームワークは、C# と Java で、Service Fabric ランタイム API とクラスター管理 API へのアクセスを提供します。 ネイティブ モデルは任意のコンテナーと実行可能ファイルにも対応しています。 [Service Fabric Mesh 環境](../service-fabric-mesh/service-fabric-mesh-overview.md)では、ネイティブ モデルがサポートされていません。
 
 **Reliable Services**:ステートレス サービスとステートフル サービスを構築するための API。 ステートフル サービスの状態は、Reliable Collection (ディクショナリ、キューなど) に格納されます。 他にも、Web API や Windows Communication Foundation (WCF) など、さまざまな通信スタックを組み込むことができます。
 
@@ -155,7 +155,7 @@ Service Fabric はオープンソースのプラットフォーム テクノロ�
 
  - **Azure Service Fabric Mesh**:Microsoft Azure で Service Fabric アプリケーションを実行するためのフル マネージド サービス。
  - **Azure Service Fabric**:Azure がホストする Service Fabric クラスター サービス。 Service Fabric と Azure インフラストラクチャの統合や、Service Fabric クラスターのアップグレードと構成管理を提供します。
- - **Service Fabric スタンドアロン**:さまざまな場所に (オンプレミスまたはクラウド プロバイダーに) [Service Fabric クラスターをデプロイする](/azure/service-fabric/service-fabric-deploy-anywhere)ための一連のインストール ツールと構成ツール。 Azure によって管理されません。
+ - **Service Fabric スタンドアロン**:さまざまな場所に (オンプレミスまたはクラウド プロバイダーに) [Service Fabric クラスターをデプロイする](./service-fabric-deploy-anywhere.md)ための一連のインストール ツールと構成ツール。 Azure によって管理されません。
  - **Service Fabric 開発クラスター**:Service Fabric アプリケーションの開発のために、Windows、Linux、Mac 上でのローカル開発環境を提供します。
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>環境、フレームワーク、デプロイ モデルのサポート マトリックス
@@ -169,7 +169,7 @@ Service Fabric はオープンソースのプラットフォーム テクノロ�
 
 次の表では、Service Fabric に対してさまざまなアプリケーション モデルとそのツールをまとめています。
 
-| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
 | Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | VS 2017 |サポートされていません |サポートされていません | サポートされています - Mesh 環境のみ | サポートされていません|
 |Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | VS 2017 と VS 2015| サポートされています|サポートされています|サポートされています|サポートされています|
@@ -184,4 +184,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 
 Service Fabric Mesh の詳細については、以下の情報を参照してください。
 
-* [Service Fabric Mesh の概要](/azure/service-fabric-mesh/service-fabric-mesh-overview)
+* [Service Fabric Mesh の概要](../service-fabric-mesh/service-fabric-mesh-overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75397741"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207481"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk ユーザーのための Azure Monitor ログ クエリ
 
@@ -68,146 +68,108 @@ ms.locfileid: "75397741"
 ### <a name="search"></a>検索
 Splunk では、`search` キーワードを省略し、引用符なしの文字列を指定することができます。 Azure Monitor では、各クエリを `find` で始める必要があります。また、引用符なしの文字列は列名であり、検索値は引用符で囲まれた文字列である必要があります。 
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **search** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
-| | |
+| **Splunk** | **search** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
+| **Azure Monitor** | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+
 
 ### <a name="filter"></a>Assert
 Azure Monitor のクエリは、フィルターの表形式の結果セットから開始します。 Splunk では、フィルター処理は現在のインデックスに対する既定の操作です。 Splunk でも `where` 演算子を使用できますが、推奨されません。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **search** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
-| Azure Monitor | **where** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
-| | |
-
+| **Splunk** | **search** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
+| **Azure Monitor** | **where** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>検査のために n 個のイベント/行を取得する 
 Azure Monitor のログ クエリでは、`limit` に対する別名として `take` もサポートされます。 Splunk では、結果が順序付けされている場合、`head` は最初の n 個の結果を返します。 Azure Monitor では、limit は順序付けされませんが、見つかった最初の n 行を返します。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **head** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
-| Azure Monitor | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
-| | |
-
-
+| **Splunk** | **head** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
+| **Azure Monitor** | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>フィールド/列で順序づけされた最初の n イベント/行を取得する
 下位の結果の場合、Splunk では `tail` を使用します。 Azure Monitor では、並べ替えの方向を `asc` で指定できます。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **head** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
-| Azure Monitor | **top** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
-| | |
-
-
-
+| **Splunk** | **head** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
+| **Azure Monitor** | **top** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>新しいフィールド/列で結果セットを拡張する
 Splunk には `eval` 関数もありますが、`eval` 演算子と同等ではありません。 Splunk の `eval` 演算子と Azure Monitor の `extend` 演算子はどちらも、スカラー関数と算術演算子のみをサポートします。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
-| Azure Monitor | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
-| | |
-
+| **Splunk** | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
+| **Azure Monitor** | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
 
 ### <a name="rename"></a>[名前の変更] 
 Azure Monitor では、`project-rename` 演算子を使用してフィールドの名前を変更します。 `project-rename` によって、クエリでフィールドにあらかじめ構築されているインデックスを利用できるようにします。 Splunk では、同じことを行うために `rename` 演算子が用意されています。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
-| Azure Monitor | **project-rename** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
-| | |
-
-
-
+| **Splunk** | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
+| **Azure Monitor** | **project-rename** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 
 ### <a name="format-resultsprojection"></a>形式の書式設定/プロジェクション
 Splunk には、`project-away` と似た演算子はないようです。 UI を使用してフィールドをフィルター処理できます。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **テーブル** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Azure Monitor | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
-| | |
-
-
+| **Splunk** | **テーブル** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
+| **Azure Monitor** | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>集計
 各種集計関数については、「[Azure Monitor ログ クエリの集計](aggregations.md)」をご覧ください。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
-| Azure Monitor | **summarize** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
-| | |
-
+| **Splunk** | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| **Azure Monitor** | **summarize** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 
 
 ### <a name="join"></a>Join
 Splunk での結合には重要な制限があります。 サブクエリには 10000 件の結果の制限があり (展開構成ファイルで設定)、結合の種類の数に制限があります。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Azure Monitor | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
-| | |
-
-
+| **Splunk** | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| **Azure Monitor** | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 
 ### <a name="sort"></a>並べ替え
 Splunk では、昇順に並べ替えるには、`reverse` 演算子を使用する必要があります。 Azure Monitor では、null を格納する場所の定義もサポートされています (先頭または末尾)。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
-| Azure Monitor | **order by** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
-| | |
-
-
+| **Splunk** | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
+| **Azure Monitor** | **order by** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
 
 ### <a name="multivalue-expand"></a>複数値の展開
 この演算子は Splunk と Azure Monitor で似ています。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **mvexpand** |  `mvexpand foo` |
-| Azure Monitor | **mvexpand** | `mvexpand foo` |
-| | |
-
-
-
+| **Splunk** | **mvexpand** |  `mvexpand foo` |
+| **Azure Monitor** | **mvexpand** | `mvexpand foo` |
 
 ### <a name="results-facets-interesting-fields"></a>Results facets, interesting fields
 Azure portal での Log Analytics では、最初の列のみが展開されます。 すべての列は、API を介して利用します。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **fields** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| Azure Monitor | **facets** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
-| | |
-
-
-
+| **Splunk** | **fields** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
+| **Azure Monitor** | **facets** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
 
 ### <a name="de-duplicate"></a>重複除去
 選択されたレコードの順序を逆にする代わりに、`summarize arg_min()` を使用できます。
 
-| |  | |
+| | 演算子 | 例 |
 |:---|:---|:---|
-| Splunk | **dedup** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
-| Azure Monitor | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
-| | |
-
-
-
+| **Splunk** | **dedup** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
+| **Azure Monitor** | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 
 ## <a name="next-steps"></a>次のステップ
 

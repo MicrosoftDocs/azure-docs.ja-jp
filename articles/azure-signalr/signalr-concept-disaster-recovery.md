@@ -4,16 +4,17 @@ description: 複数の SignalR サービス インスタンスをセットアッ
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71bcb72b645c574eedd24ff868751f366738e73d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73747649"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935689"
 ---
-# <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
+# <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR Service の回復性とディザスター リカバリー
 
 回復性とディザスター リカバリーは、各種オンライン システムに共通の要件です。 Azure SignalR Service では、既に 99.9% の可用性が保証されていますが、それはあくまでリージョンごとのサービスです。
 サービス インスタンスは常に 1 つのリージョンで実行されており、リージョン全体の機能が停止しても、他のリージョンにフェールオーバーされることはありません。

@@ -1,19 +1,19 @@
 ---
 title: Azure File Sync エージェントのリリース ノート | Microsoft Docs
-description: Azure File Sync エージェントのリリース ノート。
+description: Azure File Sync エージェントのリリース ノートを読み、Azure Files で組織のファイル共有を集中管理できるようにします。
 services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/16/2020
+ms.date: 7/28/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 00590c2b12e8600b2a650444b97b6558e3a52da1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82800976"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904940"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,17 +25,16 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
-| V10 リリース - [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | 処理中 |
+| V10.1 リリース - [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | サポートされています |
+| 2020 年 5 月の更新プログラム ロールアップ - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | サポートされています |
+| V10 リリース - [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | サポートされています |
 | 2019 年 12 月の更新プログラム ロールアップ - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12日 | サポートされています |
 | V9 リリース - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019 年 12 月 2 日 | サポートされています |
 | V8 リリース - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | サポートされています |
-| 2019 年 7 月の更新プログラム ロールアップ - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | サポートされています |
-| 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポートされています |
-| V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | サポートされています |
-| 2019 年 6 月の更新プログラム ロールアップ - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
-| 2019 年 6 月の更新プログラム ロールアップ - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
-| 2019 年 5 月の更新プログラム ロールアップ - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
-| V6 リリース - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21 日 | サポートされています - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れます |
+| 2019 年 7 月の更新プログラム ロールアップ - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | サポートされています - エージェント バージョンは 2020 年 9 月 1 日に有効期限が切れます |
+| 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポートされています - エージェント バージョンは 2020 年 9 月 1 日に有効期限が切れます |
+| V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | サポートされています - エージェント バージョンは 2020 年 9 月 1 日に有効期限が切れます |
+| V6 リリース | 6.0.0.0 ～ 6.3.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2020 年 4 月 21 日に有効期限が切れました |
 | V5 リリース | 5.0.2.0 - 5.2.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2020 年 3 月 18 日に有効期限が切れました |
 | V4 リリース | 4.0.1.0 ～ 4.3.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2019 年 11 月 6 日に有効期限が切れました |
 | V3 リリース | 3.1.0.0 - 3.4.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2019 年 8 月 19 日に有効期限が切れました |
@@ -43,6 +42,25 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10100"></a>エージェント バージョン 10.1.0.0
+次のリリース ノートは、2020 年 6 月 5 日にリリースされた Azure File Sync エージェントのバージョン 10.1.0.0 を対象としています。 これらはバージョン 10.0.0.0 と 10.0.2.0 に関して記載されているリリース ノートへの追記となります。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題
+
+- Azure プライベート エンドポイントのサポート
+    - ストレージ同期サービスへの同期トラフィックをプライベート エンドポイントに送信できるようになりました。 これにより、ExpressRoute または VPN 接続を経由したトンネリングが可能になります。 詳細については、「[Azure File Sync ネットワーク エンドポイントの構成](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints)」を参照してください。
+- [同期されたファイル数] メトリックでは、進行状況が最後ではなく、大規模な同期の実行中に表示されるようになりました。
+- エージェントのインストール、クラウドを使った階層化、同期とテレメトリに関するその他の信頼性の向上
+
+## <a name="agent-version-10020"></a>エージェント バージョン 10.0.2.0
+次のリリース ノートは、2020 年 5 月 19 日にリリースされた Azure File Sync エージェントのバージョン 10.0.2.0 を対象としています。 これらは、バージョン 10.0.0.0 に関して記載されているリリース ノートへの追記です。
+
+このリリースで修正された問題:  
+- ストレージ同期エージェント (FileSyncSvc) は、Azure File Sync v10 エージェントをインストールした後に頻繁にクラッシュします。
+
+> [!Note]  
+>このリリースは、新しいバージョンが利用可能になったときに自動的に更新されるように構成されたサーバーにフライト化されていませんでした。 この更新プログラムをインストールするには、Microsoft Update または Microsoft Update カタログを使用します (インストール手順については、[KB4522412](https://support.microsoft.com/help/4522412) を参照してください)。
 
 ## <a name="agent-version-10000"></a>エージェント バージョン 10.0.0.0
 次のリリース ノートは、(2020 年 4 月 9 日にリリースされた) Azure File Sync エージェントのバージョン 10.0.0.0 を対象としています。
@@ -112,7 +130,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
 - Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
-- ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
+- ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
     > クラウド エンドポイントを作成するときは、ストレージ同期サービスとストレージ アカウントが同じ Azure AD テナントに存在する必要があります。 クラウド エンドポイントが作成された後、ストレージ同期サービスとストレージ アカウントを別の Azure AD テナントに移動できます。

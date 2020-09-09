@@ -8,24 +8,21 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72333452"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289570"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Standard Internal Load Balancer を使用する IPv6 デュアル スタック アプリケーションを Azure 上にデプロイする - PowerShell (プレビュー)
 
 この記事では、Azure でデュアル スタック (IPv4 と IPv6) アプリケーションをデプロイする方法を示します。これには、デュアル スタック仮想ネットワークとサブネット、デュアル (IPv4 と IPv6) フロントエンド構成を持つ Standard 内部ロード バランサー、デュアル IP 構成、ネットワーク セキュリティ グループ、およびパブリック IP を使用する NIC を持つ VM が含まれます。
-
-> [!Important]
-> 現在、Azure Virtual Network の IPv6 サポートは、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 IPv6 に対応した内部ロード バランサーを作成する手順は、インターネットに接続された IPv6 ロード バランサーを作成する手順 ([こちら](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)を参照) とほぼ同じです。 内部ロード バランサーを作成する場合の唯一の違いは、次の PowerShell の例に示すように、フロントエンド構成にあります。
 

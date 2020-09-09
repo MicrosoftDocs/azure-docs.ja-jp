@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229195"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130434"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する
 
@@ -94,5 +94,5 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure VM ディザスター リカバリーについては、[ネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)をご確認ください。
+- Azure VM ディザスター リカバリーについては、[ネットワーク ガイダンス](./azure-to-azure-about-networking.md)をご確認ください。
 - フェールオーバー後の IP アドレスの保持について[ご確認ください](site-recovery-retain-ip-azure-vm-failover.md)。

@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240299"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040777"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -159,7 +159,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |入力のエイリアス| *TwitterStream* | 入力のエイリアスを入力します。 |
-   |サブスクリプション  | \<該当するサブスクリプション\> |  使用する Azure サブスクリプションを選択します。 |
+   |サブスクリプション  | \<Your subscription\> |  使用する Azure サブスクリプションを選択します。 |
    |Event Hub 名前空間 | *asa-twitter-eventhub* |
    |イベント ハブ名 | *socialtwitter-eh* | [*既存を使用*] を選択します。 次に、作成したイベント ハブを選択します。|
    |イベントの圧縮タイプ| GZip | データ圧縮の種類。|
@@ -225,7 +225,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 3. **[ジョブの開始]** ページで、 **[ジョブ出力の開始時刻]** の **[Now]\(今すぐ\)** を選択し、 **[開始]** を選択します。
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079572"
 ---
-# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
+# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
 Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウド用語をまとめた簡単な辞書です。 関連項目:
 
@@ -31,7 +31,7 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 
 ## <a name="account"></a>account
 Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウント、Office 365 のユーザー名とパスワードのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
-「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](cost-management-billing/manage/office-365-account-for-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
+「[Microsoft 365 アカウントを使用して Azure のサブスクリプションにサインアップする](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md)」と[サインインに使用できるアカウント](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
 ## <a name="api-app"></a>API アプリ
 [App Service アプリ](#app-service-app)の別名。
@@ -51,7 +51,7 @@ Windows、macOS、Linux から Azure サービスを管理するためのコマ�
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 Windows PC からコマンド ラインを使って Azure サービスを管理するためのコマンド ライン インターフェイス。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。
-「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
+「[Azure PowerShell のインストールと構成の方法](/powershell/azure/)」をご覧ください。
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager デプロイ モデル
 Microsoft Azure でリソースをデプロイするために使用される 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (もう一方はクラシック デプロイ モデル)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
@@ -70,7 +70,7 @@ Microsoft Azure でリソースをデプロイするために使用される 2 �
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
-任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure では、VM イメージと OS イメージの 2 種類があります。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  
+任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure には 2 種類のイメージがあります。VM イメージと OS イメージです。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  
 「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 ## <a name="limits"></a>制限
@@ -110,9 +110,9 @@ Azure ソリューションの一部であるアイテム。 各 Azure サービ
 Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure Portal、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
 「[Azure リソース マネージャーの概要](azure-resource-manager/management/overview.md)」をご覧ください。
 
-## <a name="role"></a>ロール (role)
+## <a name="role"></a>role
 ユーザー、グループ、サービスに割り当てることのできるアクセスを制御する手段。 ロールは、Azure リソースの作成、管理、読み取りなどのアクションを実行できます。  
-「[RBAC: 組み込みのロール](role-based-access-control/built-in-roles.md)」をご覧ください。
+[RBAC の組み込みのロール](role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 ## <a name="service-level-agreement-sla"></a><a name="sla"></a>サービス レベル アグリーメント (SLA)
 稼働時間と接続に関する Microsoft の確約内容を示す契約です。 Azure サービスごとに固有の SLA があります。  
@@ -153,7 +153,7 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 ## <a name="web-app"></a>Web アプリ
 [App Service アプリ](#app-service-app)の別名。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure を使ってみる](https://azure.microsoft.com/get-started/)
 * [クラウド リソース センター](https://azure.microsoft.com/resources/)  

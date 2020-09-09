@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75927958"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
@@ -33,7 +33,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
     4. **[サブスクリプション]** で、名前空間を作成する Azure サブスクリプションを選択します。
     5. **[リソース グループ]** で、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。      
     6. **[場所]** で、名前空間をホストするリージョンを選択します。
-    7. **作成** を選択します。 これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
+    7. **［作成］** を選択します これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
    
         ![[名前空間の作成]](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Service Bus 名前空間が正常にデプロイされていることを確認します。 通知を確認するには、ツール バーの**ベルのアイコン (アラート)** を選択します。 次の図に示すように、通知内の**リソース グループの名前**を選択します。 Service Bus 名前空間を含むリソース グループが表示されます。
@@ -54,7 +54,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
 3. **[共有アクセス ポリシー]** 画面で、 **[RootManageSharedAccessKey]** をクリックします。
    
     ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
-4. **[ポリシー: RootManageSharedAccessKey]** ウィンドウで、 **[プライマリ接続文字列]** の横にある [コピー] ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
+4. **[ポリシー:RootManageSharedAccessKey]** ウィンドウで、 **[プライマリ接続文字列]** の横にあるコピー ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。 この値をメモ帳などに一時的に貼り付けます。
    
     ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
 5. 前の手順を繰り返し、 **[プライマリ キー]** の値をコピーして、後で使用するために一時的な場所に貼り付けます。

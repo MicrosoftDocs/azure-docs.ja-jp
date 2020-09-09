@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 0da1a3019124f62aba6a959ce9104c85bd85d3fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c541c848290988bb1f358f045abb2d0cd221de7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81616482"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386760"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault のセキュリティに関する推奨事項
 
@@ -30,7 +30,7 @@ ms.locfileid: "81616482"
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-|論理的な削除を有効にする | [論理的な削除](overview-soft-delete.md)) を使用すると、削除されたコンテナーとコンテナー オブジェクトを復旧できます |  - |
+|論理的な削除を有効にする | [論理的な削除](soft-delete-overview.md) を使用すると、削除されたコンテナーとコンテナー オブジェクトを復旧できます |  - |
 | コンテナー データへのアクセスを制限する  | 最小限の特権の原則に従って、コンテナー データにアクセスできる組織のメンバーを制限します |  - |
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理

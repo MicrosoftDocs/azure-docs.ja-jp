@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092730"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは `http://contoso.cloudapp.net` のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
@@ -63,7 +63,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
        ![サイトの URL を表示する [概要] セクション][csurl]
 
        **OR**
-   * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
+   * [Azure Powershell](/powershell/azure/)をインストールして構成し、次のコマンドを使用します。
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -96,7 +96,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
        ![VIP を表示する [概要] セクション][vip]
 
        **OR**
-   * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
+   * [Azure Powershell](/powershell/azure/)をインストールして構成し、次のコマンドを使用します。
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip

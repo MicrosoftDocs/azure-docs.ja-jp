@@ -4,15 +4,16 @@ description: Azure の予約を購入するうえで役立つ重要なポイン�
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/04/2020
+ms.subservice: reservations
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780642"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686209"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -34,9 +35,12 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 予約のスコープ設定には、ニーズに応じて次の 3 つのオプションがあります。
 
-- **単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
-- **単一サブスクリプション** — 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
-- **共有スコープ** — 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 Microsoft 顧客契約のお客様の場合、課金スコープは課金プロファイルです。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
+- **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
+- **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
+- **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。
+    - マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 予約の共有スコープには、登録内の複数の Active Directory テナントが含まれます。
+    - Microsoft 顧客契約のお客様の場合、課金スコープは課金プロファイルです。
+    - 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
 
 使用量に予約割引を適用しつつ、Azure では次の順序で予約が処理されます。
 
@@ -68,11 +72,11 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 - [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
 - [Data Explorer](/azure/data-explorer/pricing-reserved-capacity)
-- [Disk Storage](../../virtual-machines/linux/disks-reserved-capacity.md)
+- [Disk Storage](../../virtual-machines/disks-reserved-capacity.md)
 - [Dedicated Host](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [ソフトウェア プラン](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Storage](../../storage/blobs/storage-blob-reserved-capacity.md)
-- [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
+- [SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure Database for PostgreSQL](../../postgresql/concept-reserved-pricing.md)
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
@@ -85,7 +89,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 Microsoft 顧客契約 (MCA) を使用して予約を購入する場合、毎月の支払金額は、現地通貨に対する当月の市場相場によって異なる場合があります。
 
-Databricks、SUSE Linux の予約、Red Hat プラン、Azure Red Hat OpenShift のコンピューティングは、月払いの対象にはなりません。
+以下は月払いの対象外です。Databricks、SUSE Linux の予約、Red Hat プラン、Azure Red Hat OpenShift のライセンス。
 
 ### <a name="view-payments-made"></a>過去の支払いを確認する
 

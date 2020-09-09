@@ -9,14 +9,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 4f3148a4d5bd0d39ccfcf7e92e80300a7e19effa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31d9754ddd9e9dfd0cca258901a6c8ab2c4a9cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70307215"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497167"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>PowerShell を使用して、送信されたデータ共有の使用状況を監視する
+# <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>PowerShell を使用してスナップ ショット トリガーを作成および共有する
 
 この PowerShell スクリプトでは、共有のスナップショット トリガーを作成して取得します。
 

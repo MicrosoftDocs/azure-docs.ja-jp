@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67462531"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554873"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 登録済みデバイス
 
 Azure AD 登録済みデバイスの目標は、Bring Your Own Device (BYOD) またはモバイル デバイス シナリオのサポートをユーザーに提供することです。 これらのシナリオでは、ユーザーは個人所有のデバイスを使用して、組織の Azure Active Directory の管理下にあるリソースにアクセスできます。
 
-|   | Azure AD 登録済み |
+| Azure AD 登録済み | 説明 |
 | --- | --- |
 | **定義** | デバイスにサインインするための組織アカウントを必要としない Azure AD に登録します |
 | **主な対象** | 次の条件に該当するすべてのユーザーに適用できます。 |

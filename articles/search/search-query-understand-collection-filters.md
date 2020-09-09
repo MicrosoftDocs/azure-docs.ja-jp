@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932918"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターの概要
 
@@ -50,13 +50,17 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
 複合オブジェクトのコレクションに対して複数のフィルター条件を適用するとき、条件は " *、コレクション内の各オブジェクト*" に適用されるため、条件は**相関**されます。 たとえば、次のフィルターでは、料金が 100 未満のデラックス ルームが 1 室以上あるホテルが返されます。
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 フィルター処理が "*相関されない*" 場合、上記のフィルターでは、1 つの部屋がデラックスで、別の部屋が基本料金 100 未満であるホテルが返される可能性があります。 ラムダ式の両方の句が同じ範囲変数 `room` に適用されるので、それでは意味がありません。 これが、そのようなフィルターが相関される理由です。
 
 ただし、フルテキスト検索では、特定の範囲変数を参照する方法はありません。 フィールド検索を使って、次のような[完全な Lucene クエリ](query-lucene-syntax.md)を発行するものとします。
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 この場合、1 つの部屋がデラックスで、別の部屋の説明に "city view" という語句が含まれるホテルが返される可能性があります。 たとえば、`Id` が `1` である以下のドキュメントは、クエリに一致します。
 
@@ -149,19 +153,27 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
 このような等価性を踏まえて、次に、`or` を使用して同じ範囲変数でどのように複数の等価性チェックを組み合わせることができるかを見てみましょう。 それは、代数と[量指定子の分配則](https://en.wikipedia.org/wiki/Existential_quantification#Negation)に従って動作します。 次の式
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 は以下に匹敵します。
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 そして、2 つの各 `any` サブ式を、逆インデックスを使って効率的に実行できます。 また、[量指定子の否定法則](https://en.wikipedia.org/wiki/Existential_quantification#Negation)により、次の式
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 は以下に匹敵します。
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 これが、`ne` および `and` で `all` を使用できる理由です。
 
@@ -192,4 +204,4 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
 - [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

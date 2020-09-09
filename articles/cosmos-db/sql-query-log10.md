@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6869abb3040feb6431d60799536c9986c6ccb954
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302493"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798246"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
  指定された数値式の底 10 の対数を返します。  
@@ -34,7 +34,7 @@ LOG10 (<numeric_expr>)
   
 ## <a name="remarks"></a>解説
   
-  LOG10 関数と POWER 関数は逆の意味で相互に関連付けられています。 たとえば、10 ^ log10 (n) = n になります。  
+  LOG10 関数と POWER 関数は逆の意味で相互に関連付けられています。 たとえば、10 ^ log10 (n) = n になります。 このシステム関数では、インデックスは使用されません。
   
 ## <a name="examples"></a>例
   
@@ -49,10 +49,6 @@ SELECT LOG10(100) AS log10
 ```json
 [{log10: 2}]  
 ```  
-
-## <a name="remarks"></a>解説
-
-このシステム関数では、インデックスは使用されません。
 
 ## <a name="next-steps"></a>次のステップ
 

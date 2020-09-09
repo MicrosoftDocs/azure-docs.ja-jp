@@ -3,21 +3,17 @@ title: 認証と権限承認
 description: Azure App Service および Azure Functions での組み込みの認証と認可のサポート、およびそれが認可されていないアクセスからアプリを保護するのにどのように役立つかについて説明します。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196431"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962827"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service および Azure Functions での認証と承認
-
-> [!NOTE]
-> 現時点では、現在のユーザーに Authentication/Authorization 機能を設定することは ASP.NET Core ではサポートされていません。
->
 
 Azure App Service は組み込みの認証と認可のサポートを提供するので、Web アプリ、RESTful API、モバイル バックエンド、さらには [Azure Functions](../azure-functions/functions-overview.md) でも、最小限のコードを記述するだけで、またはまったく記述せずに、ユーザーのサインインとデータへのアクセスを可能にできます。 この記事では、App Service によりアプリの認証と認可を簡略化する方法について説明します。
 
@@ -26,16 +22,24 @@ Azure App Service は組み込みの認証と認可のサポートを提供す�
 > [!IMPORTANT]
 > 認証と認可にこの機能を必ずしも使う必要はありません。 選択した Web フレームワークにバンドルされているセキュリティ機能を使用するか、独自のユーティリティを作成することができます。 ただし、[Chrome 80 では Cookie の SameSite の実装に破壊的変更が加えられている](https://www.chromestatus.com/feature/5088147346030592)ため (リリース日は 2020 年 3 月頃)、クライアントの Chrome ブラウザーが更新されると、クロスサイト Cookie の投稿に依存するカスタムのリモート認証またはその他のシナリオが動作しなくなる可能性があることに注意してください。 この回避策は複雑です。ブラウザーごとに異なる SameSite 動作をサポートする必要があるためです。 
 >
-> App Service でホストされている ASP.NET Core 2.1 以降のバージョンには、この破壊的変更に対する修正プログラムが既に適用されており、Chrome 80 以前のブラウザーが適切に処理されます。 さらに、ASP.NET Framework 4.7.2 用の同じ修正プログラムは、2020 年 1 月中に App Service インスタンスに展開されています。 お使いのアプリが修正プログラムを受け取ったかどうかを確認する方法など、詳細については、[Azure App Service の SameSite の Cookie の更新プログラム](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)に関する記事を参照してください。
+> App Service でホストされている ASP.NET Core 2.1 以降のバージョンには、この破壊的変更に対する修正プログラムが既に適用されており、Chrome 80 以前のブラウザーが適切に処理されます。 さらに、ASP.NET Framework 4.7.2 用の同じ修正プログラムは、2020 年 1 月中に App Service インスタンスにデプロイされています。 詳細については、[Azure App Service SameSite クッキーの更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)に関するページを参照してください。
 >
 
-ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と認可](../app-service-mobile/app-service-mobile-auth.md)に関する記事をご覧ください。
+> [!NOTE]
+> 認証/承認機能は、"簡単認証" と呼ばれることもあります。
+
+> [!NOTE]
+> この機能を有効にすると、[HTTPS を適用](configure-ssl-bindings.md#enforce-https)するための App Service 構成設定に関係なく、アプリケーションへのセキュリティで保護されていない HTTP 要求が**すべて** HTTPS に自動的にリダイレクトされます。 必要に応じて、[認証設定構成ファイル](app-service-authentication-how-to.md#configuration-file-reference)の `requireHttps` 設定を使用してこれを無効にすることができますが、セキュリティで保護されていない HTTP 接続でセキュリティ トークンが送信されないように注意する必要があります。
+
+ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と認可](/previous-versions/azure/app-service-mobile/app-service-mobile-auth)に関する記事をご覧ください。
 
 ## <a name="how-it-works"></a>しくみ
 
+### <a name="on-windows"></a>Windows の場合
+
 認証と認可のモジュールは、アプリケーションのコードと同じサンドボックスで実行します。 有効になっている場合、すべての受信 HTTP 要求は、アプリケーション コードによって処理される前に、認証と認可のモジュールを通過します。
 
-![](media/app-service-authentication-overview/architecture.png)
+![デプロイされたサイトへのトラフィックを許可する前に、ID プロバイダーと対話するサイト サンドボックス内のプロセスによってインターセプトされる要求を示すアーキテクチャ図](media/app-service-authentication-overview/architecture.png)
 
 このモジュールは、アプリのためにいくつかの処理を行います。
 
@@ -46,13 +50,21 @@ Azure App Service は組み込みの認証と認可のサポートを提供す�
 
 このモジュールはアプリケーションのコードとは別に実行され、アプリの設定を使って構成されます。 SDK、特定の言語、またはアプリケーションのコードの変更は必要ありません。 
 
+### <a name="on-containers"></a>コンテナー上
+
+認証と承認のモジュールは、アプリケーションのコードから分離された別のコンテナーで実行されます。 [アンバサダー パターン](/azure/architecture/patterns/ambassador)と呼ばれるものを使用して、Windows と同様の機能を実行するために、受信トラフィックと対話します。 インプロセスでは実行されないため、特定の言語フレームワークと直接統合することはできません。ただし、以下で説明するように、アプリに必要な関連情報は、要求ヘッダーを使用して渡されます。
+
 ### <a name="userapplication-claims"></a>ユーザー/アプリケーション要求
 
-すべての言語フレームワークにおいて、App Service は、受信トークン (認証されたエンド ユーザーまたはクライアント アプリケーションからなど) 内のクレームを要求ヘッダーに挿入することにより、コードで使用できるようにします。 ASP.NET 4.6 アプリの場合、App Service は認証されたユーザーの要求で [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) を設定するので、標準の .NET コード パターン (`[Authorize]` 属性など) に従うことができます。 同様に、PHP アプリの場合、App Service は `_SERVER['REMOTE_USER']` 変数を設定します。 Java アプリの場合、要求には [Tomcat サーブレットからアクセスできます](containers/configure-language-java.md#authenticate-users-easy-auth)。
+すべての言語フレームワークにおいて、App Service は、受信トークン (認証されたエンド ユーザーまたはクライアント アプリケーションからなど) 内のクレームを要求ヘッダーに挿入することにより、コードで使用できるようにします。 ASP.NET 4.6 アプリの場合、App Service は認証されたユーザーの要求で [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) を設定するので、標準の .NET コード パターン (`[Authorize]` 属性など) に従うことができます。 同様に、PHP アプリの場合、App Service は `_SERVER['REMOTE_USER']` 変数を設定します。 Java アプリの場合、要求には [Tomcat サーブレットからアクセスできます](configure-language-java.md#authenticate-users-easy-auth)。
 
 [Azure Functions](../azure-functions/functions-overview.md) では、.NET コードの `ClaimsPrincipal.Current` は設定されていませんが、要求ヘッダーでユーザーの要求を検索することも、要求コンテキストまたはバインディング パラメーターを使用して `ClaimsPrincipal` オブジェクトを取得することもできます。 詳細については、「[クライアント ID の操作](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)」を参照してください。
 
 詳しくは、「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください。
+
+> [!NOTE]
+> 現時点では、現在のユーザーに Authentication/Authorization 機能を設定することは ASP.NET Core ではサポートされていません。 ただし、このギャップを埋めるのに役立つ[サードパーティのオープン ソースのミドルウェア コンポーネント](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)は存在します。
+>
 
 ### <a name="token-store"></a>トークン ストア
 
@@ -65,7 +77,7 @@ App Service が提供する組み込みのトークン ストアは、Web アプ
 
 ID トークン、アクセス トークン、更新トークンは認証されたセッションに対してキャッシュされ、関連付けられているユーザーだけがアクセスできます。  
 
-アプリでトークンを使う必要がない場合は、トークン ストアを無効にしてもかまいません。
+お使いのアプリでトークンを使う必要がない場合は、お使いのアプリの**認証と承認**のページでトークン ストアを無効にできます。
 
 ### <a name="logging-and-tracing"></a>ログとトレース
 
@@ -82,8 +94,11 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| 任意の [OpenID Connect](https://openid.net/connect/) プロバイダー (プレビュー) | `/.auth/login/<providerName>` |
 
-これらのプロバイダーのいずれかで認証と認可を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。 任意の数のサインイン オプションを、ユーザーに対して簡単に提供できます。 別の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合することもできます。
+これらのプロバイダーのいずれかで認証と認可を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。 任意の数のサインイン オプションを、ユーザーに対して簡単に提供できます。
+
+他の ID プロバイダーやカスタム認証ソリューションと統合するために[レガシ拡張性パス][custom-auth]が存在しますが、これはお勧めしません。 代わりに、OpenID Connect サポートの使用を検討してください。
 
 ## <a name="authentication-flow"></a>Authentication flow
 
@@ -113,7 +128,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 [Azure portal](https://portal.azure.com) では、受信要求が認証されていない場合、複数の動作で App Service の認可を構成することができます。
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![[要求が認証されない場合に実行するアクション] ドロップダウンを示すスクリーンショット](media/app-service-authentication-overview/authorization-flow.png)
 
 以下の見出しではそれらのオプションを説明します。
 
@@ -125,21 +140,17 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 ### <a name="allow-only-authenticated-requests"></a>認証された要求のみを許可する
 
-オプションは **[\<プロバイダー> でのログイン]** です。 App Service は、すべての匿名要求を、選ばれたプロバイダーの `/.auth/login/<provider>` にリダイレクトします。 匿名要求がネイティブ モバイル アプリからのものである場合、返される応答は `HTTP 401 Unauthorized` です。
+オプションは **[\<provider> でのログイン]** です。 App Service は、すべての匿名要求を、選ばれたプロバイダーの `/.auth/login/<provider>` にリダイレクトします。 匿名要求がネイティブ モバイル アプリからのものである場合、返される応答は `HTTP 401 Unauthorized` です。
 
 このオプションを使用すると、アプリで認証コードを記述する必要はまったくありません。 役割固有の認可などのさらに細かい認可は、ユーザーの要求を調べることで処理できます (「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください)。
 
 > [!CAUTION]
 > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページを必要とするアプリには適切でない場合があります。
 
-> [!NOTE]
-> Authentication/Authorization は、以前は Easy Auth と呼ばれていました。
->
-
 ## <a name="more-resources"></a>その他のリソース
 
-[チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](app-service-web-tutorial-auth-aad.md)  
-[チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](containers/tutorial-auth-aad.md)  
+[チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](tutorial-auth-aad.md)  
+[チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 [App Service での認証と認可のカスタマイズ ](app-service-authentication-how-to.md)
 [Azure AppService EasyAuth の .NET Core 統合 (サード パーティ) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
 [.NET Core で Azure App Service 認証を使用する (サード パーティ)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
@@ -151,16 +162,17 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 * [Google ログインを使用するようにアプリを構成する方法][Google]
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法][MSA]
 * [Twitter ログインを使用するようにアプリを構成する方法][Twitter]
-* [方法: アプリケーションにカスタム認証を使用する][custom-auth]
+* [ログインに OpenID Connect プロバイダーを使用するようにアプリを構成する方法 (プレビュー)][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
-[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+[custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
+[ADAL-Android]: /previous-versions/azure/app-service-mobile/app-service-mobile-android-how-to-use-client-library#adal
+[ADAL-iOS]: /previous-versions/azure/app-service-mobile/app-service-mobile-ios-how-to-use-client-library#adal
+[ADAL-dotnet]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#adal

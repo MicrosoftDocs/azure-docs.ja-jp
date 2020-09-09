@@ -4,14 +4,15 @@ description: Azure CLI を使用して Azure Database for PostgreSQL 単一サ�
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 77c464f51bd17921052b3ae1e9fefb49e777d6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181907"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797816"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -20,30 +21,30 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
 ## <a name="prerequisites-for-azure-cli"></a>Azure CLI の前提条件
 
 * Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
-* カスタマー マネージド キーに使用するキー コンテナーとキーを作成します。 また、キー コンテナーの消去防止と論理的な削除も有効にします。
+* カスタマー マネージド キーで使用するキー コンテナーとキーを作成します。 また、キー コンテナーの消去防止と論理的な削除も有効にします。
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+   ```azurecli-interactive
+   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
+   ```
 
 * 作成された Azure Key Vault で、Azure Database for PostgreSQL 単一サーバーのデータ暗号化に使用するキーを作成します。
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+   ```azurecli-interactive
+   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+   ```
 
 * 既存のキー コンテナーを使用するには、カスタママー マネージド キーとして使用すための次のプロパティが必要です。
-  * [論理的な削除](../key-vault/general/overview-soft-delete.md)
+  * [論理的な削除](../key-vault/general/soft-delete-overview.md)
 
-    ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-    ```
+      ```azurecli-interactive
+      az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+      ```
 
-  * [消去保護](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [消去保護](../key-vault/general/soft-delete-overview.md#purge-protection)
 
-    ```azurecli-interactive
-    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
-    ```
+      ```azurecli-interactive
+      az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+      ```
 
 * カスタマー マネージド キーとして使用するには、キーに次の属性が必要です。
   * 有効期限がない
@@ -54,16 +55,16 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
 
 1. Azure Database for PostgreSQL 単一サーバーのマネージド ID を取得する方法は 2 つあります。
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>マネージド ID を持つ Azure Database for MySQL サーバーを作成する。
+    ### <a name="create-an-new-azure-database-for-postgresql-server-with-a-managed-identity"></a>マネージド ID を使用して Azure Database for PostgreSQL サーバーを新規作成する。
 
     ```azurecli-interactive
-    az postgres server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
+    az postgres server create --name <server_name> -g <resource_group> --location <location> --storage-size <size>  -u <user> -p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled> --assign-identity
     ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>既存の Azure Database for MySQL サーバーを更新して、マネージド ID を取得する。
+    ### <a name="update-an-existing-the-azure-database-for-postgresql-server-to-get-a-managed-identity"></a>既存の Azure Database for PostgreSQL サーバーを更新して、マネージド ID を取得する。
 
     ```azurecli-interactive
-    az postgres server update –name <server name>  -g <resoure_group> --assign-identity
+    az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
 2. PostgreSQL 単一サーバーの名前である**プリンシパル**に対して、**キーのアクセス許可** (**get**、**wrap**、**unwrap**) を設定します。
@@ -77,7 +78,7 @@ Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーのデ
 1. Azure Key Vault に作成されたキーを使用して、Azure Database for PostgreSQL 単一サーバーのデータ暗号化を有効にします。
 
     ```azurecli-interactive
-    az postgres server key create –name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key create --name <server_name> -g <resource_group> --kid <key_url>
     ```
 
     キーの URL: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
@@ -88,36 +89,56 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 
 ### <a name="creating-a-restoredreplica-server"></a>復元/レプリカ サーバーの作成
 
-  *  [復元サーバーの作成](howto-restore-server-cli.md) 
-  *  [読み取りレプリカ サーバーの作成](howto-read-replicas-cli.md) 
+* [復元サーバーの作成](howto-restore-server-cli.md)
+* [読み取りレプリカ サーバーの作成](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>サーバーが復元された後、復元されたサーバーのデータ暗号化を再検証する
 
-    ```azurecli-interactive
-    az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+*   レプリカ サーバーに ID を割り当てます
+```azurecli-interactive
+az postgres server update --name  <server name>  -g <resoure_group> --assign-identity
+```
+
+*   復元されたサーバーまたはレプリカ サーバーに使用されたはずの既存のキーを取得します
+
+```azurecli-interactive
+az postgres server key list --name  '<server_name>'  -g '<resource_group_name>'
+```
+
+*   復元されたサーバーまたはレプリカ サーバーの新しい ID に対するポリシーを設定します
+
+```azurecli-interactive
+az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
+```
+
+* 暗号化キーを使用して復元されたサーバーまたはレプリカ サーバーを再検証します
+
+```azurecli-interactive
+az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーに使用されているキーの追加機能
 
 ### <a name="get-the-key-used"></a>使用されているキーを取得する
 
-    ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+キーの URL: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>使用されているキーを一覧表示する
 
-    ```azurecli-interactive
-    az postgres server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az postgres server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>使用されているキーを削除する
 
-    ```azurecli-interactive
-    az postgres server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az postgres server key delete -g <resource_group> --kid <key url> 
+```
+
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Azure Resource Manager テンプレートを使用したデータ暗号化の有効化
 
 Azure portal とは別に、新規および既存のサーバー用の Azure Resource Manager テンプレートを使用して、Azure Database for PostgreSQL の単一サーバー上でデータ暗号化を有効にすることもできます。

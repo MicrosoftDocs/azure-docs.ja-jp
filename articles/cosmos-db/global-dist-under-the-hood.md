@@ -4,21 +4,21 @@ description: この記事では、Azure Cosmos DB のグローバル配信に関
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74872130"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955915"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB でのグローバル データ分散 - 内部のしくみ
 
 Azure Cosmos DB は Azure の基本サービスであるため、パブリック クラウド、ソブリン クラウド、国防総省 (DoD) クラウド、政府機関クラウドを含む世界中のすべての Azure リージョンにわたってデプロイされています。 1 つのデータセンターで、専用のローカル ストレージをそれぞれのマシンで使用して大量のスタンプで Azure Cosmos DB をデプロイおよび管理します。 Azure Cosmos DB は 1 つのデータセンターの多数のクラスターでデプロイされます。各クラスターは、さまざまな世代のハードウェアを実行する可能性があります。 クラスター内のコンピューターは通常、リージョン内の高可用性のために 10 ～ 20 の障害ドメインに分散されます。 次の図は、Cosmos DB グローバル分散システムのトポロジを示したものです。
 
-![システム トポロジ](./media/global-dist-under-the-hood/distributed-system-topology.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distributed-system-topology.png" alt-text="システム トポロジ" border="false":::
 
 **Azure Cosmos DB のグローバル分散はターンキー:** いつでも、数回のクリックまたはプログラムの 1 回の API 呼び出しで、Cosmos データベースに関連付けられた地理的リージョンを追加または削除できます。 Cosmos データベースはさらに、一連の Cosmos コンテナーで構成されています。 Cosmos DB では、コンテナーは分散とスケーラビリティの論理ユニットとしての役割を果たします。 作成するコレクション、テーブル、グラフは、単に Cosmos コンテナーとして (内部的に) 示されます。 コンテナーは完全にスキーマから独立しており、クエリのスコープを提供します。 Cosmos コンテナー内のデータはインジェスト時に自動的にインデックス作成されます。 自動インデックス作成を使用すると、特にグローバルに分散された設定で、ユーザーはスキーマやインデックスの管理という面倒な作業を行うことなくデータにクエリを実行できます。  
 
@@ -30,7 +30,7 @@ Cosmos DB を使用するアプリが Cosmos コンテナーでスループッ�
 
 次の図に示すように、コンテナー内のデータは 2 つのディメンションに沿って (リージョン内および世界中のリージョンにまたがって) 分散されます。  
 
-![物理パーティション](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="物理パーティション" border="false":::
 
 物理パーティションは、*レプリカ セット*と呼ばれるレプリカのグループによって実装されます。 上の図に示すように、各コンピューターは、固定された一連のプロセス内のさまざまな物理パーティションに対応する数百のレプリカをホストします。 物理パーティションに対応するレプリカは動的に配置されて、1 つのクラスター内の多数のマシンと 1 つのリージョン内の多数のデータセンター内で負荷を分散します。  
 
@@ -52,7 +52,7 @@ Cosmos DB のグローバル分散は、*レプリカ セット*と*パーティ
 
 物理パーティションのグループは、それぞれが Cosmos データベース リージョンで構成されているパーティションから成り、構成されているすべてのリージョンでレプリケートされた同じキー セットを管理します。 この高度な調整プリミティブは、"*パーティションセット*" と呼ばれる、特定のキー セットを管理する物理パーティションの地理的に分散された動的オーバーレイです。 指定された物理パーティション (レプリカセット) は 1 つのクラスター内のものですが、パーティションセットの場合は、次の図に示すように、複数のクラスター、データ センター、地理的リージョンにまたがることができます。  
 
-![パーティション セット](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="パーティション セット" border="false":::
 
 パーティション セットは、同じキー セットを所有する複数のレプリカ セットで構成されている、地理的に分散している “スーパー レプリカ セット” と見なすことができます。 レプリカセットの場合と同様、パーティションセットのメンバーシップも動的です。暗黙的な物理パーティション管理処理に基づいて変動し、特定のパーティションセットで新しいパーティションが追加されたり、削除されたりします (たとえば、コンテナー上でスループットをスケールアウトする場合や、Cosmos データベースでリージョンを追加/削除する場合、障害が発生した場合など)。 (パーティションセットの) 各パーティションでそれぞれのレプリカセット内のパーティションセットのメンバーシップを管理することにより、メンバーシップを完全に分散して、高可用性を実現できます。 パーティション セットを再構成する間に、物理パーティション間のオーバーレイのトポロジも確立されます。 トポロジは一貫性レベル、地理的距離、ソースとターゲットの物理パーティション間で利用できるネットワーク帯域幅に基づいて動的に選択されます。  
 

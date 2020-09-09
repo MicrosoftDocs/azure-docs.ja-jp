@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
-ms.date: 05/06/2020
+ms.topic: end-user-help
+ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 3ba1b41859a543ab5e0393c5715dc49d452ea73c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82892238"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323027"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>中国のパブリック クラウドでの Android の Microsoft Authenticator
 
@@ -44,7 +44,7 @@ Android 用の Microsoft Authenticator アプリでは、Google の Firebase Clo
 
 ## <a name="multi-factor-authentication-workaround"></a>多要素認証の回避策
 
-ユーザーは、多要素認証でプッシュ通知を使用する代わりに、本人確認に使用できる確認コードをデバイスで受信するように MFA を設定することができます。 これらの確認コードは 30 秒間有効であり、それらを使用するには、管理者は、時間ベースのワンタイム パスワード (TOTP) 確認コードを使用してテナントが確認を実行できるようにする必要があります。
+ユーザーは、多要素認証でプッシュ通知を使用する代わりに、デバイスで身元を確認するために MFA に使用できる[確認コードを受け取るように Authenticator アプリを設定する](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes)ことができます。 これらの確認コードは 30 秒間有効であり、それらを使用するには、管理者は、時間ベースのワンタイム パスワード (TOTP) 確認コードを使用してテナントが確認を実行できるようにする必要があります。
 
 ## <a name="availability"></a>可用性
 

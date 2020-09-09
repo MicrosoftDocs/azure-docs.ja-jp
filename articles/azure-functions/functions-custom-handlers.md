@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdbb5bbde1e5efef9bef992a62a54f1525a16df7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052587"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions のカスタム ハンドラー (プレビュー)
 
@@ -20,9 +20,9 @@ ms.locfileid: "79475137"
 
 カスタム ハンドラーは、次のような場合に最適です。
 
-- 公式にサポートされている言語以外の言語で Functions アプリを実装する
-- 既定でサポートされていない言語バージョンまたはランタイムで Functions アプリを実装する
-- アプリの実行環境をきめ細かく制御する
+- 正式にサポートされていない言語で関数アプリを実装する。
+- 既定でサポートされていない言語バージョンまたはランタイムで関数アプリを実装する。
+- 関数アプリの実行環境のきめ細かい制御を提供する。
 
 カスタム ハンドラーを使用すると、すべての [トリガーと入出力バインド](./functions-triggers-bindings.md)は[拡張バンドル](./functions-bindings-register.md)によりサポートされます。
 
@@ -447,9 +447,14 @@ func host start
 
 カスタム ハンドラーは、ほぼすべての Azure Functions ホスティング オプションに配置できます ([の制限](#restrictions)を参照してください)。 ハンドラーがカスタム依存関係 (言語のランタイムなど) を必要とする場合は、[カスタム コンテナー](./functions-create-function-linux-custom-image.md)を使用する必要がある場合があります。
 
+Azure Functions Core Tools を使用してカスタム ハンドラー アプリをデプロイするには、次のコマンドを実行します。
+
+```bash
+func azure functionapp publish $functionAppName --no-build --force
+```
+
 ## <a name="restrictions"></a>制限
 
-- カスタム ハンドラーは、Linux 従量課金プランではサポートされていません。
 - Web サーバーは 60 秒以内に開始する必要があります。
 
 ## <a name="samples"></a>サンプル

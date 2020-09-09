@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664917"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327074"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights ログベースのメトリック
 
 Application Insights ログベースのメトリックを使用すると、監視対象アプリの正常性の分析、強力なダッシュボードの作成、アラートの構成を行うことができます。 次の 2 種類のメトリックがあります。
 
-* バック グラウンドの[ログベースのメトリック](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)は、格納されているイベントから [Kusto クエリ](https://docs.microsoft.com/azure/kusto/query/)に変換されます。
-* [標準メトリック](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)は、事前に集計された時系列として格納されます。
+* バック グラウンドの[ログベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)は、格納されているイベントから [Kusto クエリ](/azure/kusto/query/)に変換されます。
+* [標準メトリック](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)は、事前に集計された時系列として格納されます。
 
 *標準メトリック*は収集中に事前に集計されるため、クエリ時のパフォーマンスが優れています。 このことから、ダッシュボードやリアルタイム アラートで使用することをお勧めします。 *ログベースのメトリック*には、より多くのディメンションがあるため、データ分析やアドホック診断のための優れたオプションとなります。 [名前空間セレクター](metrics-getting-started.md#create-your-first-metric-chart)を使用して、[メトリックス エクスプローラー](metrics-getting-started.md)でログベースのメトリックと標準メトリックを切り替えます。
 
@@ -38,11 +38,11 @@ Application Insights ログベースのメトリックを使用すると、監�
 - 選択された**グラフの分割**のディメンションは、追加の集計プロパティに変換されます。 たとえば、*場所*によってグラフを分割し、5 分の時間の粒度を使用してプロットする場合、*summarize* 句は *... by bin(timestamp, 5 m), location* となります。
 
 > [!NOTE]
-> Kusto クエリ言語を初めて使用する場合は、まず Kusto ステートメントをコピーし、変更を加えずに Log Analytics クエリ ウィンドウに貼り付けます。 **[Run]\(実行\)** をクリックして、基本的なグラフを表示します。 クエリ言語の構文を理解し始めたら、わずかな変更を行い変更の影響を確認します。 [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) と [Azure Monitor](../../azure-monitor/overview.md) の最大限の能力を理解するには、独自のデータを探索することから始めるのが最もよいやり方です。
+> Kusto クエリ言語を初めて使用する場合は、まず Kusto ステートメントをコピーし、変更を加えずに Log Analytics クエリ ウィンドウに貼り付けます。 **[Run]\(実行\)** をクリックして、基本的なグラフを表示します。 クエリ言語の構文を理解し始めたら、わずかな変更を行い変更の影響を確認します。 [Log Analytics](../log-query/get-started-portal.md) と [Azure Monitor](../overview.md) の最大限の能力を理解するには、独自のデータを探索することから始めるのが最もよいやり方です。
 
 ## <a name="availability-metrics"></a>可用性のメトリック
 
-可用性カテゴリのメトリックを使用すると、世界中の地点から観察された Web アプリケーションの正常性を確認できます。 このカテゴリにあるメトリックの使用を開始するには、[可用性テストを構成します](../../azure-monitor/app/monitor-web-app-availability.md)。
+可用性カテゴリのメトリックを使用すると、世界中の地点から観察された Web アプリケーションの正常性を確認できます。 このカテゴリにあるメトリックの使用を開始するには、[可用性テストを構成します](../app/monitor-web-app-availability.md)。
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>可用性 (availabilityResults/availabilityPercentage)
 *可用性*メトリックは、問題が検出されなかった Web テストの実行の割合を示します。 可能な最小値は 0 で、これはすべての Web テストの実行が失敗したことを示します。 値 100 は、すべての Web テストの実行が検証条件に合格したことを意味します。
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>可用性テスト継続時間 (availabilityResults/duration)
 
-*可用性テスト継続時間*メトリックは、Web テストの実行にかかった時間を示します。 [複数ステップの Web テスト](../../azure-monitor/app/availability-multistep.md)の場合、メトリックには、すべてのステップの合計実行時間が反映されます。
+*可用性テスト継続時間*メトリックは、Web テストの実行にかかった時間を示します。 [複数ステップの Web テスト](../app/availability-multistep.md)の場合、メトリックには、すべてのステップの合計実行時間が反映されます。
 
 |Unit of measure|サポートされる集計|サポートされるディメンション|
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ availabilityResults
 ブラウザー メトリックは、実際のエンドユーザーのブラウザーから Application Insights JavaScript SDK によって収集されます。 これらは Web アプリでのユーザー エクスペリエンスに関する優れた分析情報を提供します。 通常、ブラウザー メトリックはサンプリングされません。つまり、サンプリングによって偏る可能性があるサーバー側のメトリックと比較して、使用状況の数値の精度が高くなります。
 
 > [!NOTE]
-> ブラウザー メトリックを収集するには、アプリケーションを [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) でインストルメント化する必要があります。
+> ブラウザー メトリックを収集するには、アプリケーションを [Application Insights JavaScript SDK](../app/javascript.md) でインストルメント化する必要があります。
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>ブラウザーのページ読み込み時間 (browserTimings/totalDuration)
 
@@ -210,7 +210,7 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>例外 (exceptions/count)
 
-Application Insights に例外を記録するたびに、SDK の[trackexception () メソッド](../../azure-monitor/app/api-custom-events-metrics.md#trackexception)が呼び出されます。 例外メトリックは、ログに記録された例外の数を示します。
+Application Insights に例外を記録するたびに、SDK の[trackexception () メソッド](../app/api-custom-events-metrics.md#trackexception)が呼び出されます。 例外メトリックは、ログに記録された例外の数を示します。
 
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|Notes|
 |---|---|---|---|
@@ -224,7 +224,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失敗した要求 (requests/failed)
 
-*失敗*としてマークされた追跡されたサーバー要求の数。 既定では、Application Insights SDK は HTTP 応答コード 5xx または 4xx を返した各サーバー要求を、失敗した要求として自動的にマークします。 このロジックをカスタマイズするには、[カスタムのテレメトリ初期化子](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)の要求テレメトリ項目の *success* プロパティを変更します。
+*失敗*としてマークされた追跡されたサーバー要求の数。 既定では、Application Insights SDK は HTTP 応答コード 5xx または 4xx を返した各サーバー要求を、失敗した要求として自動的にマークします。 このロジックをカスタマイズするには、[カスタムのテレメトリ初期化子](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)の要求テレメトリ項目の *success* プロパティを変更します。
 
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|Notes|
 |---|---|---|---|
@@ -254,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 
-**パフォーマンス カウンター** カテゴリのメトリックを使用して[、Application Insights](../../azure-monitor/app/performance-counters.md) によって収集されたシステム パフォーマンス カウンターにアクセスします。
+**パフォーマンス カウンター** カテゴリのメトリックを使用して[、Application Insights](../app/performance-counters.md) によって収集されたシステム パフォーマンス カウンターにアクセスします。
 
 ### <a name="available-memory-performancecountersavailablememory"></a>使用可能なメモリ (performanceCounters/availableMemory)
 
@@ -492,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

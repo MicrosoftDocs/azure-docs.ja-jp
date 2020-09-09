@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999022"
 ---
 # <a name="monitoring-scheduled-events"></a>スケジュールされたイベントの監視
 
@@ -25,7 +25,7 @@ ms.locfileid: "82099599"
 
 Scheduled Events は、すべての Azure 仮想マシン上で使用できる [Azure Instance Metadata Service](instance-metadata-service.md) の一部として提供されます。 お客様は、仮想マシンのエンドポイントに対してクエリを実行することで、スケジュールされたメンテナンス通知を検索して、状態の保存や仮想マシンのローテーションからの除外などの軽減策を実行するといった、自動化を作成できます。 Scheduled Events を記録する自動化を作成することをお勧めします。これにより、Azure メンテナンス イベントの監査ログを取得できます。 
 
-この記事では、メンテナンスの Scheduled Events を Log Analytics にキャプチャする方法について説明します。 さらに、いくつかの基本的な通知アクションをトリガーします。たとえば、所属チームへのメール送信や、ご利用の仮想マシンに影響を与えているすべてのイベントの履歴ビューの取得などがあります。 ここではイベントの集計と自動化に [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace) を使用しますが、これらのログの収集と自動化のトリガーには任意の監視ソリューションを使用できます。
+この記事では、メンテナンスの Scheduled Events を Log Analytics にキャプチャする方法について説明します。 さらに、いくつかの基本的な通知アクションをトリガーします。たとえば、所属チームへのメール送信や、ご利用の仮想マシンに影響を与えているすべてのイベントの履歴ビューの取得などがあります。 ここではイベントの集計と自動化に [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) を使用しますが、これらのログの収集と自動化のトリガーには任意の監視ソリューションを使用できます。
 
 ![イベントのライフサイクルを示す図](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ Scheduled Events は、すべての Azure 仮想マシン上で使用できる [
 
 このチュートリアルの終了時に、グループ リソース グループを削除しないでください。
 
-また、可用性セット内の VM からの情報を集約するために [Log Analytics ワークスペースを作成](/azure/azure-monitor/learn/quick-create-workspace)する必要があります。
+また、可用性セット内の VM からの情報を集約するために [Log Analytics ワークスペースを作成](../../azure-monitor/learn/quick-create-workspace.md)する必要があります。
 
 ## <a name="set-up-the-environment"></a>環境をセットアップする
 
@@ -112,7 +112,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 1. **[myCollectorVM]** を検索して選択します。 
 1. **myCollectorVM** の新しいページで、 **[接続]** を選択します。
 
-これにより、ご利用の仮想マシンに [Microsoft Monitoring Agent](/azure/virtual-machines/extensions/oms-windows) がインストールされます。 ご利用の VM をワークスペースに接続して拡張機能をインストールするまで数分かかります。 
+これにより、ご利用の仮想マシンに [Microsoft Monitoring Agent](../extensions/oms-windows.md) がインストールされます。 ご利用の VM をワークスペースに接続して拡張機能をインストールするまで数分かかります。 
 
 ## <a name="configure-the-workspace"></a>ワークスペースを構成する
 
@@ -132,7 +132,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Azure Monitor を使用したアラート ルールの作成 
 
 
-イベントが Log Analytics にプッシュされたら、次の[クエリ](/azure/azure-monitor/log-query/get-started-portal)を実行して、スケジュール イベントを探すことができます。
+イベントが Log Analytics にプッシュされたら、次の[クエリ](../../azure-monitor/log-query/get-started-portal.md)を実行して、スケジュール イベントを探すことができます。
 
 1. ページの上部にある **[ログ]** を選択し、次の内容をテキスト ボックスに貼り付けます。
 
@@ -155,7 +155,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
     ![クエリの保存](./media/notifications/save-query.png)
 
 1. **[新しいアラート ルール]** を選択します。 
-1. **[ルールの作成]** ページでは、`collectorworkspace`[リソース]**として** をそのまま使用します。
+1. **[ルールの作成]** ページでは、 **[リソース]** として `collectorworkspace` をそのまま使用します。
 1. **[条件]** で、エントリ *[Whenever the customer log search is]\(顧客ログ検索がいつでも\)<login undefined>* を選択します。 **[シグナル ロジックの構成]** ページが開きます。
 1. **[しきい値]** に「*0*」を入力して、 **[完了]** を選択します。
 1. **[アクション]** で、 **[アクショングループの作成]** を選択します。 **[アクション グループの追加]** ページが開きます。
@@ -165,7 +165,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 1. [アクション] の **[アクション名]** に「**電子メール**」 と入力し、 **[電子メール/SMS/プッシュ/音声]** を選択します。 **[電子メール/SMS/プッシュ/音声]** ページが開きます。
 1. **[電子メール]** を選択し、ご自分の電子メール アドレスを入力して、 **[OK]** を選択します。
 1. **[アクション グループの追加]** ページで、 **[OK]** を選択します。 
-1. **[ルールの作成]** ページの **[アラートの詳細]** で、 *[アラート ルール名]* に「**myAlert**」と入力し、 *[説明]* に「**電子メールによるアラート ルール**」と入力します。
+1. **[ルールの作成]** ページの **[アラートの詳細]** で、 **[アラート ルール名]** に「*myAlert*」と入力し、 **[説明]** に「*電子メールによるアラート ルール*」と入力します。
 1. 完了したら、 **[アラート ルールの作成]** を選択します。
 1. 可用性セット内の VM のいずれかを再起動します。 数分以内に、アラートがトリガーされたことを知らせる電子メールが届きます。
 

@@ -4,19 +4,19 @@ description: Azure Active Directory の条件付きアクセスのカスタム �
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 03/18/2020
+ms.topic: conceptual
+ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c149279a755eb186a3fdc7891e9b511d18c7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050546"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922109"
 ---
 # <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー)
 
@@ -33,11 +33,11 @@ ms.locfileid: "80050546"
 
 カスタム コントロールを作成するオプションは、 **[条件付きアクセス]** ページの **[管理]** セクションにあります。
 
-![コントロール](./media/controls/82.png)
+![条件付きアクセスのカスタム コントロール インターフェイス](./media/controls/custom-controls-conditional-access.png)
 
 **[New custom control] \(新しいカスタム コントロール)** をクリックし、コントロールの JSON データ用のテキスト ボックスを含むブレードを開きます。  
 
-![コントロール](./media/controls/81.png)
+![新しいカスタム コントロール](./media/controls/new-custom-controls-conditional-access.png)
 
 ## <a name="deleting-custom-controls"></a>カスタム コントロールの削除
 
@@ -53,7 +53,7 @@ ms.locfileid: "80050546"
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-カスタム コントロールは、Azure Multi-Factor Authentication、Azure AD のセルフサービス パスワード リセット (SSPR)、多要素認証要求の要件を満たすこと、または Privileged Identity Manager (PIM) でのロールの昇格のいずれかを必要とする ID 保護の自動化では使用できません。
+カスタム コントロールは、Privileged Identity Manager (PIM) でロールを昇格させる目的で Azure Multi-Factor Authentication、Azure AD のセルフサービス パスワード リセット (SSPR)、多要素認証要求の要件を満たすことを必要とする ID 保護の自動化では使用できず、また、Intune デバイス登録の一環として使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,7 +3,7 @@ title: Personalizer のドキュメント
 summary: Personalizer を使用すると、アプリケーションでユーザーのリアルタイムの行動から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようになるしくみを学習します。
 metadata:
   ms.topic: landing-page
-  ms.date: 05/01/2020
+  ms.date: 06/11/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Personalizer のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
-  ms.openlocfilehash: ef18921e9211bb1a3659fffc84bde922d500d0b0
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
+  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83586322"
+  ms.lasthandoff: 08/18/2020
+  ms.locfileid: "88506551"
 landingContent:
 - title: Personalizer について
   linkLists:
@@ -45,6 +45,12 @@ landingContent:
       url: concepts-features.md
     - text: 報酬の計算方法
       url: concept-rewards.md
+  - linkListType: tutorial
+    links:
+    - text: .NET Web アプリで Personalizer を使用する
+      url: tutorial-use-personalizer-web-app.md
+    - text: Azure Notebooks ファイルで Personalizer を使用する
+      url: tutorial-use-azure-notebook-generate-loop-data.md
   - linkListType: how-to-guide
     links:
     - text: Personalizer の作成および構成方法

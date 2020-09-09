@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666945"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317996"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Capacity and Performance ソリューション (非推奨) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -41,10 +41,10 @@ Monitor の Capacity and Performance ソリューションを使用すると、H
 
 | 接続先ソース | サポート | 説明 |
 |---|---|---|
-| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
-| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
-| [Azure Storage アカウント](../../azure-monitor/platform/collect-azure-metrics-logs.md) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
+| [Windows エージェント](../platform/agent-windows.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
+| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
+| [SCOM 管理グループ](../platform/om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
+| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +55,7 @@ Monitor の Capacity and Performance ソリューションを使用すると、H
 
 容量とパフォーマンス ソリューションをワークスペースに追加する手順は、以下のとおりです。
 
-- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](../../azure-monitor/insights/solutions.md)方法に関するページの手順に従って、容量とパフォーマンス ソリューションを Log Analytics ワークスペースに追加します。
+- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](./solutions.md)方法に関するページの手順に従って、容量とパフォーマンス ソリューションを Log Analytics ワークスペースに追加します。
 
 ## <a name="management-packs"></a>管理パック
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 容量とパフォーマンス ソリューションが更新された場合には、バージョン番号が変わります。
 
-ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」を参照してください。
+ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../platform/om-agents.md)」を参照してください。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
@@ -109,7 +109,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 コンピューティングの運用環境には、組織によって大きな差があります。 さらに、VM の実行方法や各自が "普通" であると考える状態の内容に応じて、容量とパフォーマンスのワークロードも変わります。 自分がパフォーマンスを測定するときに役立つ手順が何か具体的にあったとしても、それが環境に適用できるという保証はありません。 このため、もう少し一般化したガイダンスの方が、実用に適していると言えるでしょう。 Microsoft では、パフォーマンスの測定の規範として役立つガイダンス記事を多数公開しています。
 
-このソリューションはつまるところ、パフォーマンス カウンターなどの多種多様な情報源から容量とパフォーマンスのデータを収集するものです。 収集した容量とパフォーマンスに関するデータは、このソリューションでさまざまな形で提示されます。このデータを、「[Measuring Performance on Hyper-V (Hyper-V のパフォーマンスを測定する)](https://msdn.microsoft.com/library/cc768535.aspx)」で紹介しているデータと比較してみてください。 同記事は少し前に書かれたものではありますが、メトリック、考慮事項、ガイドラインは依然として有効です。 また、この記事にはほかにも便利なリソースへのリンクが記載されています。
+このソリューションはつまるところ、パフォーマンス カウンターなどの多種多様な情報源から容量とパフォーマンスのデータを収集するものです。 収集した容量とパフォーマンスに関するデータは、このソリューションでさまざまな形で提示されます。このデータを、「[Measuring Performance on Hyper-V (Hyper-V のパフォーマンスを測定する)](https://www.microsoft.com/en-us/download/details.aspx?id=56495)」で紹介しているデータと比較してみてください。 同記事は少し前に書かれたものではありますが、メトリック、考慮事項、ガイドラインは依然として有効です。 また、この記事にはほかにも便利なリソースへのリンクが記載されています。
 
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
@@ -129,4 +129,5 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Log Analytics のログ検索機能](../../azure-monitor/log-query/log-query-overview.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
+* [Log Analytics のログ検索機能](../log-query/log-query-overview.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
+

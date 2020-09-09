@@ -8,15 +8,15 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/25/2020
+ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f78ef7ddf48612728c0409b0f904c0964e2272b5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741587"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798994"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび回復する
 
@@ -73,54 +73,36 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 復旧が完了すると、Microsoft Authenticator アプリで個人用 Microsoft アカウントの検証コードが新旧の携帯電話間で異なることに気付く可能性があります。 各デバイスに独自の一意の資格情報があるためコードが異なりますが、どちらも有効で、関連付けられている携帯電話を使用してサインインするときに機能します。
 
-## <a name="recover-additional-accounts-requiring-more-verification"></a>さらに検証が必要な追加のアカウントを復旧する
+## <a name="recover-accounts-requiring-more-verification"></a>さらに検証が必要なアカウントを復旧する
 
 個人用アカウントや職場または学校アカウントでプッシュ通知を使用する場合、情報を復旧する前に追加認証を提供する必要があることを示すアラートが画面に表示されます。 プッシュ通知では、ネットワーク経由で送信されることのない、特定のデバイスに関連付けられた資格情報を使用する必要があるので、デバイスで資格情報を作成する前に本人確認が必要です。
 
 個人用 Microsoft アカウントの場合、代替電子メールや電話番号と共にパスワードを入力して本人確認することができます。 職場または学校アカウントの場合は、アカウント プロバイダーから提供された QR コードをスキャンする必要があります。
 
-### <a name="to-provide-additional-verification-for-personal-accounts"></a>個人用アカウントに対して追加の検証を提供するには
+### <a name="to-provide-more-verification-for-personal-accounts"></a>個人用アカウントに対してさらに検証を提供するには
 
-1. Microsoft Authenticator アプリの **[アカウント]** 画面で、回復するアカウントを選択します。 Android デバイスでは、回復するアカウントの横にある矢印を選択します。
+1. Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントをタップして、アカウントの全画面ビューを開きます。
 
-    ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="使用可能なアカウント タイルを表示した Microsoft Authenticator アプリ" border="true":::
 
-    iOS デバイスでは、回復するアカウントをタップして、アカウントの全画面表示を開きます。
+1. 復旧するアカウントのタイルをタップし、サインインするオプションをタップして復旧します。 パスワードを入力し、追加認証としてメール アドレスまたは電話番号を確認します。
 
-    ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Authenticator がワンタイム パスワードを確認コードとして提示する" border="true":::
 
-2. サインインしてアカウントを回復します。 Android デバイスでは、 **[回復するにはサインインする]** を選択します。
+### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>職場または学校アカウントに対してさらに検証を提供するには
 
-    ![Android でサインイン情報を入力できる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+1. Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントをタップして、アカウントの全画面ビューを開きます。
 
-    iOS デバイスでは、回復するアカウントのタイルをタップし、サインインと回復のオプションをタップします。 次に、パスワードを入力し、追加認証として電子メール アドレスまたは電話番号を確認します。
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="使用可能なアカウント タイルを表示した Microsoft Authenticator アプリ" border="true":::
 
-    ![iOS でサインイン情報を入力できる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
+1. 全画面表示ビューで、QR コードをスキャンするオプションをタップして完全に復旧します。
 
-### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>職場または学校アカウントに対して追加の検証を提供するには
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Authenticator がワンタイム パスワードを確認コードとして提示する" border="true":::
 
-1. サインインしてアカウントを回復します。 Android デバイスでは、 **[回復するにはサインインする]** を選択します。
-
-    ![Android で職場または学校アカウントを回復する Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
-
-    iOS デバイスでは、回復したいアカウントをタップして、アカウントの全画面表示を開きます。
-
-    ![iOS で職場または学校アカウントを回復する Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
-
-2. QR コードを使用してアカウントを回復することができます。 **[Scan QR code to recover] (QR コードをスキャンして復旧)** を選択してから、QR コードをスキャンします。
-
-    Android の場合:
-
-    ![Android 上の Microsoft Authenticator アプリ、QR コードのスキャンが可能](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
-
-    iOS の場合:
-
-    ![iOS 上の Microsoft Authenticator アプリ、QR コードのスキャンが可能](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
-
-    >[!NOTE]
-    >QR コードとその取得方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)に関するページまたは [Authenticator アプリを使用するためのセキュリティ情報の設定](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)に関するページを参照してください。
-    >
-    >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
+>[!NOTE]
+>QR コードとその取得方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、[Microsoft Authenticator アプリの概要](./user-help-auth-app-download-install.md)に関するページまたは [Authenticator アプリを使用するためのセキュリティ情報の設定](./security-info-setup-auth-app.md)に関するページを参照してください。
+>
+>初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>バックアップと復旧に関する問題のトラブルシューティング
 
@@ -136,7 +118,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 - **既存の Microsoft Authenticator アカウント**: Microsoft Authenticator アプリ内にアカウントを既に設定してある場合、アプリではバックアップしたアカウントを復旧できません。 復旧防止により、アカウントの詳細情報が古い情報で上書きされないことが保証されます。 このような状況では、バックアップを復旧する前に Authenticator アプリで設定した既存のアカウントから既存のアカウント情報を削除する必要があります。
 
-- **バックアップが最新ではない**: バックアップ情報が古い場合は、Microsoft の回復アカウントに再度サインインすることで、その情報を更新するように求められることがあります。 回復アカウントとは、バックアップを保存するために最初に使用した個人用の Microsoft アカウントです。 サインインが必要な場合は、メニューまたは操作バーに赤いドットが表示されるか、バックアップからの回復を完了するためにサインインを求める感嘆符が表示されます。 このアイコンを選択すると、もう一度サインインして情報を更新するように求められます。
+- **バックアップが最新ではない**: バックアップ情報が古い場合は、Microsoft の回復アカウントに再度サインインすることで、その情報を更新するように求められることがあります。 回復アカウントとは、バックアップを保存するために最初に使用した個人用の Microsoft アカウントです。 サインインが必要な場合は、メニューまたは操作バーに赤いドットが表示されるか、バックアップからの回復を完了するためにサインインを求める感嘆符のアイコンが表示されます。 適切なアイコンを選択すると、もう一度サインインして情報を更新するように求められます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -148,4 +130,4 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 - [Microsoft Authenticator アプリに関する FAQ](user-help-auth-app-faq.md)
 
-- [Multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)
+- [Multi-factor Authentication](/azure/multi-factor-authentication/)

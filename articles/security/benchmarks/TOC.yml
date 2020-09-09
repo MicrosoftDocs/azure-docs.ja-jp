@@ -35,35 +35,91 @@
       href: security-baselines-overview.md
     - name: API Management のセキュリティ ベースライン
       href: ../../api-management/security-baseline.md
+    - name: Application Gateway のセキュリティ ベースライン
+      href: ../../application-gateway/security-baseline.md
+    - name: Automation のセキュリティ ベースライン
+      href: ../../automation/security-baseline.md
+    - name: Azure Backup のセキュリティ ベースライン
+      href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
-    - name: Backup のセキュリティ ベースライン
-      href: ../../backup/security-baseline.md
+    - name: Azure Data Box のセキュリティ ベースライン
+      href: ../../databox/security-baseline.md
+    - name: Azure Data Explorer のセキュリティ ベースライン
+      href: /azure/data-explorer/security-baseline
+    - name: Azure Data Factory のセキュリティ ベースライン
+      href: ../../data-factory/security-baseline.md
+    - name: Azure Database for MySQL のセキュリティ ベースライン
+      href: ../../mysql/security-baseline.md
+    - name: Azure Database for MariaDB のセキュリティ ベースライン
+      href: ../../mariadb/security-baseline.md
+    - name: Azure Database for PostgreSQL - 単一サーバーのセキュリティ ベースライン
+      href: ../../postgresql/security-baseline.md
+    - name: Azure Database for PostgreSQL - Hyperscale のセキュリティ ベースライン
+      href: ../../postgresql/postgresql-hyperscale-security-baseline.md
+    - name: Azure Databricks のセキュリティ ベースライン
+      href: ../../azure-databricks/security-baseline.md
+    - name: Azure DNS のセキュリティ ベースライン
+      href: ../../dns/security-baseline.md
+    - name: Azure Firewall のセキュリティ ベースライン
+      href: ../../firewall/security-baseline.md
+    - name: Azure Functions のセキュリティ ベースライン
+      href: ../../azure-functions/security-baseline.md
+    - name: Azure IoT Hub のセキュリティ ベースライン
+      href: ../../iot-hub/security-baseline.md
+    - name: Azure Monitor のセキュリティ ベースライン
+      href: ../../azure-monitor/security-baseline.md
+    - name: Azure Machine Learning のセキュリティ ベースライン
+      href: ../../machine-learning/security-baseline.md
+    - name: Azure Policy のセキュリティ ベースライン
+      href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Resource Graph のセキュリティ ベースライン
+      href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure SQL Database のセキュリティ ベースライン
+      href: ../../sql-database/security-baseline.md
+    - name: Azure Storage のセキュリティ ベースライン
+      href: ../../storage/common/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
+    - name: Cognitive Services のセキュリティ ベースライン
+      href: ../../cognitive-services/security-baseline.md
+    - name: Container Instances のセキュリティ ベースライン
+      href: ../../container-instances/security-baseline.md
     - name: Container Registry のセキュリティ ベースライン
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB のセキュリティ ベースライン
       href: ../../cosmos-db/security-baseline.md
-    - name: データ エクスプローラーのセキュリティ ベースライン
-      href: /azure/data-explorer/security-baseline
-    - name: Databricks のセキュリティ ベースライン
-      href: ../../azure-databricks/security-baseline.md
+    - name: カスタマー ロックボックスのセキュリティ ベースライン
+      href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: Data Lake Analytics のセキュリティ ベースライン
+      href: ../../data-lake-analytics/security-baseline.md
+    - name: DDOS Protection のセキュリティ ベースライン
+      href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Event Grid のセキュリティ ベースライン
+      href: ../../event-grid/security-baseline.md
     - name: Event Hubs のセキュリティ ベースライン
       href: ../../event-hubs/security-baseline.md
-    - name: Functions のセキュリティ ベースライン
-      href: ../../azure-functions/security-baseline.md
+    - name: ExpressRoute のセキュリティ ベースライン
+      href: ../../expressroute/security-baseline.md
     - name: HDInsight のセキュリティ ベースライン
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault のセキュリティ ベースライン
       href: ../../key-vault/security-baseline.md
-    - name: MariaDB のセキュリティ ベースライン
-      href: ../../mariadb/security-baseline.md
-    - name: MySQL のセキュリティ ベースライン
-      href: ../../mysql/security-baseline.md
-    - name: PostgreSQL のセキュリティ ベースライン
-      href: ../../postgresql/security-baseline.md
-    - name: SQL Database のセキュリティ ベースライン
-      href: ../../sql-database/security-baseline.md
-    - name: Storage のセキュリティ ベースライン
-      href: ../../storage/common/security-baseline.md
+    - name: Logic Apps のセキュリティ ベースライン
+      href: ../../logic-apps/security-baseline.md
+    - name: Network Watcher のセキュリティベースライン
+      href: ../../network-watcher/security-baseline.md
+    - name: Security Center のベースライン
+      href: ../../security-center/security-baseline.md
+    - name: Service Fabric のベースライン
+      href: ../../service-fabric/security-baseline.md
+    - name: Stream Analytics のベースライン
+      href: ../../stream-analytics/security-baseline.md
+    - name: Synapse Analytics のセキュリティ ベースライン
+      href: ../../synapse-analytics/security-baseline.md
+    - name: Virtual Machine Scale Sets のセキュリティ ベースライン
+      href: ../../virtual-machine-scale-sets/security-baseline.md
+    - name: Virtual Machines Linux のセキュリティ ベースライン
+      href: ../../virtual-machines/linux/security-baseline.md
+    - name: Virtual Machines Windows のセキュリティ ベースライン
+      href: ../../virtual-machines/windows/security-baseline.md

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75454191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082814"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスの使用
 
@@ -38,7 +38,7 @@ ms.locfileid: "75454191"
 
 1. `https://myResourceGroup-app.azurewebsites.net` で証明書サービスを開いて、サインインします。
 2. **[Register New]\(新規登録\)** に移動します。 アプリケーションの登録には、ユーザーに少なくともライター ロールが割り当てられている必要があります。
-2. 入力フォームは、OPC UA の名前付け規則に従っています。 例えば下のスクリーンショットでは、OPC UA .NET Standard スタック内の [OPC UA Reference Server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) サンプルの設定が示されています。
+2. 入力フォームは、OPC UA の名前付け規則に従っています。 例えば下のスクリーンショットでは、OPC UA .NET Standard スタック内の [OPC UA Reference Server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) サンプルの設定が示されています。
 
    ![UA Reference Server の登録のスクリーンショット](media/howto-opc-vault-secure/reference-server-registration.png "UA Reference Server の登録")
 

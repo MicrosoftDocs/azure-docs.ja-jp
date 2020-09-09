@@ -1,20 +1,6 @@
 - name: 安全な開発に関するドキュメント
   href: index.yml
-- name: サンプル アプリ
-  expanded: true
-  items:
-    - name: 安全な開発に詳しくない場合
-      items:
-        - name: Linux コンテナー内の Web アプリ
-          href: secure-web-app.md
-        - name: Web アプリと Azure Active Directory
-          href: secure-aad-app.md
-    - name: 業界準拠のソリューション
-      items:
-        - name: ペイメント カード業界
-          href: secure-pci-web-app.md
 - name: 概念
-  expanded: true
   items:
     - name: ベスト プラクティス
       items:
@@ -26,8 +12,8 @@
           href: secure-develop.md
         - name: セキュリティで保護されたアプリをデプロイする
           href: secure-deploy.md
-- name: リソース
   expanded: true
+- name: リソース
   items:
     - name: Microsoft Security Code Analysis
       items:
@@ -72,6 +58,10 @@
               href: threat-modeling-tool-releases-73002061.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.3.00316.1 - 2020 年 3 月 22 日
               href: threat-modeling-tool-releases-73003161.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.3.00714.2 - 2020 年 7 月 14 日
+              href: threat-modeling-tool-releases-73007142.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.3.00729.1 - 2020 年 7 月 29 日
+              href: threat-modeling-tool-releases-73007291.md
         - name: 軽減策
           href: threat-modeling-tool-mitigations.md
           items:
@@ -95,3 +85,4 @@
               href: threat-modeling-tool-sensitive-data.md
             - name: セッションの管理
               href: threat-modeling-tool-session-management.md
+  expanded: true

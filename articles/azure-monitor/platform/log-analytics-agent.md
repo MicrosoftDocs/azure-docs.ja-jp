@@ -5,16 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 08/06/2020
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520719"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121529"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
-Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](/azure/security-center/)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。
+Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。
 
 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
@@ -31,7 +31,7 @@ Azure Monitor の[Azure Diagnostics 拡張機能](diagnostics-extension-overview
 
 - Azure Diagnostics 拡張機能は、Azure の仮想マシンでのみ使用できます。 Log Analytics エージェントは、Azure、他のクラウド、およびオンプレミスの仮想マシンで使用できます。
 - Azure Diagnostics 拡張機能では、Azure Storage、[Azure Monitor メトリック](data-platform-metrics.md) (Windows のみ)、および Event Hubs にデータが送信されます。 Log Analytics エージェントでは、[Azure Monitor ログ](data-platform-logs.md)にデータが収集されます。
-- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[Azure Monitor for VMs](../insights/vminsights-overview.md)、および [Azure Security Center](/azure/security-center/) などのその他のサービスに必要です。
+- Log Analytics エージェントは、[ソリューション](../monitor-reference.md#insights-and-core-solutions)、[Azure Monitor for VMs](../insights/vminsights-overview.md)、および [Azure Security Center](../../security-center/index.yml) などのその他のサービスに必要です。
 
 ## <a name="costs"></a>コスト
 Log Analytics エージェントには料金はかかりませんが、取り込まれたデータの料金が発生する場合があります。 Log Analytics ワークスペースで収集されたデータの価格設定の詳細については、[Azure Monitor ログで使用量とコストを管理する](manage-cost-storage.md) を確認してください。
@@ -51,7 +51,7 @@ Log Analytics エージェントには料金はかかりませんが、取り込
 Log Analytics エージェントは、データを Azure Monitor の Log Analytics ワークスペースに送信します。 Windows エージェントをマルチホーム化して、複数のワークスペースおよび System Center Operations Manager 管理グループにデータを送信できます。 Linux エージェントは、1 つの宛先にのみ送信できます。
 
 ## <a name="other-services"></a>その他のサービス
-Linux および Windows 用エージェントは、Azure Monitor に接続するためだけでなく、Azure Automation もサポートされており、Hybrid Runbook ワーカー ロールや、[Change Tracking](../../automation/change-tracking.md)、[Update Management](../../automation/automation-update-management.md)、[Azure Security Center](../../security-center/security-center-intro.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
+Linux および Windows 用エージェントは、Azure Monitor に接続するためだけでなく、Azure Automation もサポートされており、Hybrid Runbook ワーカー ロールや、[Change Tracking](../../automation/change-tracking.md)、[Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Security Center](../../security-center/security-center-intro.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
 ## <a name="installation-and-configuration"></a>インストールと構成
 
@@ -59,7 +59,7 @@ Log Analytics エージェントを使用してデータを収集している場
 
 * Windows エージェントからデータを収集するには、[1 つまたは複数のワークスペースにレポートするように各エージェントを構成](agent-windows.md)できます。これは、System Center Operations Manager 管理グループにレポートしている場合でも同様です。 Windows エージェントでは、最大 4 つのワークスペースを報告できます。
 * Linux エージェントでは、マルチホームがサポートされず、1 つのワークスペースにしかレポートできません。
-* Windows エージェントでは [FIPS 140 規格](https://docs.microsoft.com/windows/security/threat-protection/fips-140-validation)がサポートされていますが、Linux エージェントではサポートされていません。  
+* Windows エージェントでは [FIPS 140 規格](/windows/security/threat-protection/fips-140-validation)がサポートされていますが、Linux エージェントではサポートされていません。  
 
 System Center Operations Manager 2012 R2 以降を使用している場合:
 
@@ -72,15 +72,15 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 
 |source | Method | 説明|
 |-------|-------------|-------------|
-|Azure VM| [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Log Analytics ワークスペースからデプロイする VM を指定します。 |
+|Azure VM| [Azure portal から手動で](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | Log Analytics ワークスペースからデプロイする VM を指定します。 |
 | | \- Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能 | この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。 |
 | | [Azure Monitor for VMs](../insights/vminsights-enable-overview.md) | Azure Monitor for VM でモニタリングを有効化すると、Log Analytics 拡張機能とエージェントがインストールされます。 |
 | | [Azure Security Center の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md) | \- Azure Security Center では、セキュリティの脆弱性と脅威を監視するために有効にされている場合、サポートされているすべての Azure VM と作成された新しいものに、Log Analytics エージェントをプロビジョニングできます。 有効な場合、エージェントがインストールされていない新規または既存の VM がプロビジョニングされます。 |
 | ハイブリッド Windows コンピューター| [手動インストール](agent-windows.md) | コマンド ラインから Microsoft Monitoring エージェントをインストールします。 |
 | | [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | Azure Automation DSC を使用してインストールを自動化します。 |
 | | [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | データセンターに Microsoft Azure Stack をデプロイしている場合は、Azure Resource Manager テンプレートを使用します。| 
-| ハイブリッド Linux コンピューター| [手動インストール](../../azure-monitor/learn/quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 
-| System Center Operations Manager|[Operations Manager を Log Analytics に統合する](../../azure-monitor/platform/om-agents.md) | Operations Manager と Azure Monitor ログとの統合を構成して、収集したデータを Windows コンピューター レポートから管理グループに転送します。|  
+| ハイブリッド Linux コンピューター| [手動インストール](../learn/quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 
+| System Center Operations Manager|[Operations Manager を Log Analytics に統合する](./om-agents.md) | Operations Manager と Azure Monitor ログとの統合を構成して、収集したデータを Windows コンピューター レポートから管理グループに転送します。|  
 
 
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
@@ -88,8 +88,12 @@ Log Analytics エージェントをインストールしてマシンをAzure Mon
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
 * Windows Server 2019
-* Windows Server 2008 SP2 (x64)、2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
-* Windows 7 SP1、Windows 8 Enterprise および Pro、Windows 10 Enterprise および Pro
+* Windows Server 2016、バージョン 1709 および 1803
+* Windows Server 2012、2012 R2
+* Windows Server 2008 SP2 (x64)、2008 R2
+* Windows 10 Enterprise (マルチセッションを含む) および Pro
+* Windows 8 Enterprise および Pro 
+* Windows 7 SP1
 
 >[!NOTE]
 >Windows 用 Log Analytics エージェントはサーバー監視シナリオをサポートするように設計されていましたが、Windows クライアントを実行して、サーバーのオペレーティング システム用に構成および最適化されたワークロードをサポートできることがわかっています。 エージェントは Windows クライアントをサポートしますが、Microsoft の監視ソリューションは、明示的に示されていない限り、クライアント監視シナリオを重視しません。
@@ -110,12 +114,38 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 >[!NOTE]
 >現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
 
+
+### <a name="python-2-requirement"></a>Python 2 要件
+ Log Analytics エージェントには Python 2 が必須です。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
+
+ - Red Hat、CentOS、Oracle: `yum install -y python2`
+ - Ubuntu、Debian: `apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+次の手順を使用して、python2 実行可能ファイルに *python* という別名を付ける必要があります。
+
+1. 次のコマンドを実行して、現在 python という別名が存在する場合は、それを表示します。 存在する場合は、次の手順に関して優先順位を書き留めておきます。
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. 次のコマンドを実行します。 *\<priority\>* を、既存のリンクの優先順位より大きい数値に置き換えます。または、現在リンクが存在しない場合は、1 に置き換えます。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
+
+### <a name="supported-distros"></a>サポートされているディストリビューション
+
+Linux エージェントでは、次のバージョンの Linux オペレーティング システムが正式にサポートされています。
+
 * Amazon Linux 2017.09 (x64)
-* CentOS Linux 6 (x86/x64) および 7 (x64)  
-* Oracle Linux 6 および 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) および 7 (x64)
-* Debian GNU/Linux 8 および 9 (x86/x64)
-* Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64)
+* CentOS Linux 6 (x64) および 7 (x64)  
+* Oracle Linux 6 および 7 (x64) 
+* Red Hat Enterprise Linux Server 6 (x64)、7 (x64)、および 8 (x64)
+* Debian GNU と Linux 8 および 9 (x64)
+* Ubuntu 14.04 LTS (x86 および x64)、16.04 LTS (x64)、および 18.04 LTS (x64)
 * SUSE Linux Enterprise Server 12 (x64) および 15 (x64)
 
 >[!NOTE]
@@ -131,6 +161,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 |Glibc |    GNU C ライブラリ | 2.5-12 
 |Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
 |Curl | cURL Web クライアント | 7.15.5 |
+|Python | | 2.6 以降または 3.3 以降
 |Python-ctypes | | 
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
 
@@ -143,7 +174,7 @@ Azure Monitor ログに転送中のデータのセキュリティを確保する
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows の SHA-2 コード署名サポートの要件
-Windows エージェントでは、2020 年 5 月 18 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 5 月 18 日より前に次の操作をマシンで行う必要があります。そうしないと、エージェントからの Log Analytics ワークスペースへのデータの送信が停止します。
+Windows エージェントでは、2020 年 11 月 2 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 11 月 2 日より前に、ご利用のマシンで次の操作を行う必要があります。これを行わない場合は、エージェントが Log Analytics ワークスペースへのデータの送信を停止します。
 
 1. お使いの OS の最新の Service Pack をインストールします。 必要な Service Pack バージョンは次のとおりです。
     - Windows 7 SP1
@@ -166,13 +197,12 @@ Linux および Windows 用エージェントは、Azure Monitor サービスに
 
 |エージェントのリソース|Port |Direction |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.blob.core.windows.net |ポート 443 |受信および送信|はい |
-|*.azure-automation.net |ポート 443 |受信および送信|はい |
-|*.azure.com |ポート 443|受信および送信|はい |
+|*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.blob.core.windows.net |ポート 443 |送信|はい |
+|*.azure-automation.net |ポート 443 |送信|はい |
 
-Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)に関するトピックを参照してください。 
+Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)に関するトピックを参照してください。 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
 

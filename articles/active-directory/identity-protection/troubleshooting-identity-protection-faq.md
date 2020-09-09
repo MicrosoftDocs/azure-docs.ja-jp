@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443566"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
@@ -24,7 +24,7 @@ ms.locfileid: "75443566"
 
 従来の Identity Protection で**ユーザー リスクを無視する**と、Identity Protection のユーザーのリスク履歴のアクターが **Azure AD** に設定されます。
 
-Identity Protection で**ユーザーのリスクを無視する**と、Identity Protection のユーザーのリスク履歴のアクターが、 **\<ユーザーのブレードを指すハイパーリンクが付いた管理者の名前\>** に設定されます。
+Identity Protection で**ユーザー リスクを無視する**と、Identity Protection のユーザーのリスク履歴のアクターが **\<Admin’s name with a hyperlink pointing to user’s blade\>** に設定されます。
 
 現在、ユーザー リスクの無視フローに遅延が発生するという既知の問題があります。 "ユーザー リスク ポリシー" がある場合、このポリシーによって、[ユーザー リスクを無視する] をクリックしてから数分以内に、無視されたユーザーへの適用が停止されます。 ただし、無視されたユーザーの "リスク状態" が UX で更新されるまでに既知の遅延があります。 回避策としては、ブラウザー レベルでページを更新して最新のユーザーの "リスク状態" を確認します。
 

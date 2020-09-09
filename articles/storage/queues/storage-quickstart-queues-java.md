@@ -2,17 +2,18 @@
 title: クイック スタート:Azure Queue storage ライブラリ v12 - Java
 description: Azure Queue Java v12 ライブラリを使用してキューを作成し、そのキューにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って削除する方法について説明します。 キューを削除する方法についても説明します。
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81729852"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319373"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -27,7 +28,12 @@ Java 用 Azure Queue storage クライアント ライブラリ v12 を使用す
 * キューからメッセージを受信して削除する
 * キューを削除する
 
-[API リファレンスのドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+その他のリソース:
+
+* [API リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+* [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
+* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -167,7 +173,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 * [接続文字列を取得する](#get-the-connection-string)
 * [キューを作成する](#create-a-queue)
 * [メッセージをキューに追加する](#add-messages-to-a-queue)
-* [キュー内のメッセージを表示する](#peek-at-messages -in-a-queue)
+* [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
 * [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
 * [キューからメッセージを受信して削除する](#receive-and-delete-messages-from-a-queue)
 * [キューを削除する](#delete-a-queue)

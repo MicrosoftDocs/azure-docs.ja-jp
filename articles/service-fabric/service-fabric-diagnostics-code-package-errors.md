@@ -5,12 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75463101"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256494"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Service Fabric を使用して一般的なコード パッケージ エラーを診断する
 
@@ -57,6 +57,6 @@ The process/container terminated with exit code: XXXXXXXX. Please look at your a
 ## <a name="next-steps"></a>次のステップ
 
 * [他の一般的なシナリオの診断](service-fabric-diagnostics-common-scenarios.md)を確認します。
-* Azure Monitor ログとそれらが提供するサービスの詳しい概要について、「[Azure Monitor の概要](../operations-management-suite/operations-management-suite-overview.md)」で確認します。
-* 検出と診断に役立つ Azure Monitor ログの[アラート](../log-analytics/log-analytics-alerts.md)についてさらに学習します。
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能の詳細を確認します。
+* Azure Monitor ログとそれらが提供するサービスの詳しい概要について、「[Azure Monitor の概要](../azure-monitor/overview.md)」で確認します。
+* 検出と診断に役立つ Azure Monitor ログの[アラート](../azure-monitor/platform/alerts-overview.md)についてさらに学習します。
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/log-query/log-query-overview.md)機能の詳細を確認します。

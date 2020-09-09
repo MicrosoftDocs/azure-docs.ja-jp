@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1 に大きなデータ セットをアップ�
 description: Import/Export サービスを使用して Azure Blob ストレージから Azure Data Lake Storage Gen1 にデータをコピーする
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73839308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855682"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Azure Import/Export サービスを使用した Data Lake Storage Gen1 へのデータのオフライン コピー
 
@@ -31,17 +31,16 @@ Azure Import/Export サービスを使用すると、ハード ディスク ド�
 
 Import/Export サービスを使用する前に、転送するデータ ファイルを **200 GB 未満のコピーに**分割します。 これは、インポート ツールでは 200 GB を超えるファイルを扱えないためです。 この記事では、それぞれ 100 GB のチャンクにファイルを分割します。 これは [Cygwin](https://cygwin.com/install.html) を使用して実行できます。 Cygwin では、Linux のコマンドがサポートされています。 この場合は、次のコマンドを使用します。
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 この split 操作により下記の名前のファイルが作成されます。
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB.tsv-part-aa*
+* *319GB.tsv-part-ab*
+* *319GB.tsv-part-ac*
+* *319GB.tsv-part-ad*
 
 ## <a name="get-disks-ready-with-data"></a>ディスクにデータを準備する
 

@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 6d9ceac5a63a7a644989430b0349a16369c7133a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a5e957e21b431ede445fd64774fa4727eda7f803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478634"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922244"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>クイック スタート:Bing Image Search REST API と C# を使用してイメージを検索する
 
-このクイック スタートでは、Bing Image Search API に検索要求を送信する基本的な方法について説明します。 この C# アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートでは、Bing Image Search API に検索要求を送信する方法について説明します。 この C# アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは C# で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) で入手できます。
 
@@ -42,7 +43,7 @@ ms.locfileid: "80478634"
     using Newtonsoft.Json.Linq;
     ```
 
-2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。 `uriBase` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. API エンドポイント、サブスクリプション キー、および検索用語の変数を作成します。 `uriBase` には、次のコードのグローバル エンドポイントか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```csharp
     //...
@@ -59,7 +60,7 @@ ms.locfileid: "80478634"
 
 ## <a name="create-a-struct-to-format-the-bing-image-search-response"></a>Bing Image Search 応答の書式を設定する構造体を作成する
 
-画像の検索結果と JSON ヘッダー情報を含む `SearchResult` 構造体を定義します。
+画像の検索結果と JSON ヘッダー情報を格納する `SearchResult` 構造体を定義します。
 
 ```csharp
     namespace BingSearchApisQuickstart
@@ -77,7 +78,7 @@ ms.locfileid: "80478634"
 
 ## <a name="create-a-method-to-send-search-requests"></a>検索要求を送信するメソッドを作成する
 
-`BingImageSearch` という名前のメソッドを作成して API に対する呼び出しを実行し、以前に作成した`SearchResult` 構造体に戻り値の型を設定します。
+API に対する呼び出しを実行する `BingImageSearch` という名前のメソッドを作成し、戻り値の型を前に作成した `SearchResult` 構造体に設定します。
 
 ```csharp
 //...
@@ -95,9 +96,9 @@ namespace BingSearchApisQuickstart
 
 ## <a name="create-and-handle-an-image-search-request"></a>画像の検索要求の作成と処理
 
-`BingImageSearch` メソッドで次の手順を実行します。
+`BingImageSearch` メソッドで、次の手順を実行します。
 
-1. 検索要求の URI を構築します。 検索語句 `SearchTerm` は、書式を設定したうえで文字列に追加する必要があります。
+1. 検索要求の URI を構築します。 文字列に追加する前に、`SearchTerm` 検索語句を書式設定します。
 
     ```csharp
     static SearchResult BingImageSearch(string SearchTerm){
@@ -115,7 +116,7 @@ namespace BingSearchApisQuickstart
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
     ```
 
-3. 検索結果オブジェクトを作成し、Bing HTTP ヘッダーを抽出します。 次に `searchResult` を返します。
+3. 検索結果オブジェクトを作成し、Bing HTTP ヘッダーを抽出します。 次に、`searchResult` を返します。
 
     ```csharp
     // Create the result object for return
@@ -208,9 +209,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Bing Image Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [Bing Search API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

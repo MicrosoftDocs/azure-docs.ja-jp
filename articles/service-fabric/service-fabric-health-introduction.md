@@ -1,16 +1,16 @@
 ---
 title: Service Fabric での正常性の監視
 description: クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: gwallace
+ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236683"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258861"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
@@ -60,7 +60,7 @@ Service Fabric のコンポーネントは、この豊富な機能を持つ正�
 ## <a name="health-states"></a>正常性状態
 Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用してエンティティが正常な状態であるかどうかどうかを記述します。 正常性ストアに送信されるすべてのレポートには、これらの状態のいずれかを指定する必要があります。 正常性の評価結果は、これらの状態のいずれかです。
 
-考えられる [正常性状態](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) は次のとおりです。
+考えられる [正常性状態](/dotnet/api/system.fabric.health.healthstate) は次のとおりです。
 
 * **OK**。 エンティティは正常です。 そのエンティティ、およびその子 (該当する場合) に関して報告されている既知の問題はありません。
 * **警告**。 エンティティにいくつかの問題がありますが、まだ正常に機能することができます。 たとえば、遅延はありますが、まだ機能の問題は発生していない場合などです。 場合によっては、外部が介入することなく警告条件が解消することがあります。 正常性レポートを見ると、このような場合を認識し、状況を把握できます。 その他の場合、ユーザーが介入しないと、警告状態からより深刻な問題に悪化する可能性があります。
@@ -78,13 +78,13 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 既定では、Service Fabric は親子階層関係に厳密なルール (すべて正常でなければならない) を適用します。 子の 1 つに 1 つの異常なイベントがある限り、親は異常と見なされます。
 
 ### <a name="cluster-health-policy"></a>クラスターの正常性ポリシー
-[クラスターの正常性ポリシー](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy) は、クラスターの正常性状態とノードの正常性状態を評価するために使用されます。 このポリシーは、クラスター マニフェストで定義できます。 存在しない場合は、既定のポリシー (許容エラー数: 0) が使用されます。
+[クラスターの正常性ポリシー](/dotnet/api/system.fabric.health.clusterhealthpolicy) は、クラスターの正常性状態とノードの正常性状態を評価するために使用されます。 このポリシーは、クラスター マニフェストで定義できます。 存在しない場合は、既定のポリシー (許容エラー数: 0) が使用されます。
 クラスターの正常性ポリシーには以下のものが含まれます。
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
-* [MaxPercentUnhealthyApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications)。 異常な可能性のあるアプリケーションの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。
-* [MaxPercentUnhealthyNodes](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes)。 異常な可能性のあるノードの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。 大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。
-* [ApplicationTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 アプリケーションの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なアプリケーションの種類を記述できます。 既定では、すべてのアプリケーションはプールに入れられ、MaxPercentUnhealthyApplications を使用して評価されます。 一部の種類のアプリケーションは、異なる方法で扱う必要がある場合にグローバル プールから除外することができます。 代わりに、マップでアプリケーションの種類名に関連付けられているパーセンテージに照らして評価されます。 たとえば、クラスターには、異なる種類の数千ものアプリケーションがあり、特別なアプリケーションの種類の制御アプリケーション インスタンスの数はわずかです。 制御アプリケーションがエラー状態になることはありません。 グローバルな MaxPercentUnhealthyApplications を 20% に指定していくつかのエラーを許容することはできますが、アプリケーションの種類が "ControlApplicationType" の場合は、MaxPercentUnhealthyApplications を 0 に設定します。 このようにすると、多くのアプリケーションのうちのいくつかが異常でも、グローバルな異常のパーセンテージを下回っている場合、クラスターは警告と評価されます。 警告の正常性状態はクラスターのアップグレードや、エラーの正常性状態によりトリガーされる他の監視には影響しません。 しかし、エラーの制御アプリケーションが 1 つでもあるとクラスターが異常になり、アップグレードの構成に応じて、ロールバックがトリガーされたり、クラスター アップグレードが一時停止されたりします。
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
+* [MaxPercentUnhealthyApplications](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications)。 異常な可能性のあるアプリケーションの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。
+* [MaxPercentUnhealthyNodes](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes)。 異常な可能性のあるノードの最大許容パーセンテージを指定します。この値を超えるとクラスターはエラーの状態と見なされます。 大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。
+* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 アプリケーションの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なアプリケーションの種類を記述できます。 既定では、すべてのアプリケーションはプールに入れられ、MaxPercentUnhealthyApplications を使用して評価されます。 一部の種類のアプリケーションは、異なる方法で扱う必要がある場合にグローバル プールから除外することができます。 代わりに、マップでアプリケーションの種類名に関連付けられているパーセンテージに照らして評価されます。 たとえば、クラスターには、異なる種類の数千ものアプリケーションがあり、特別なアプリケーションの種類の制御アプリケーション インスタンスの数はわずかです。 制御アプリケーションがエラー状態になることはありません。 グローバルな MaxPercentUnhealthyApplications を 20% に指定していくつかのエラーを許容することはできますが、アプリケーションの種類が "ControlApplicationType" の場合は、MaxPercentUnhealthyApplications を 0 に設定します。 このようにすると、多くのアプリケーションのうちのいくつかが異常でも、グローバルな異常のパーセンテージを下回っている場合、クラスターは警告と評価されます。 警告の正常性状態はクラスターのアップグレードや、エラーの正常性状態によりトリガーされる他の監視には影響しません。 しかし、エラーになっている制御アプリケーションが 1 つでもある場合、クラスターが異常になり、アップグレードの構成に応じて、ロールバックがトリガーされたり、クラスター アップグレードが一時停止されたりします。
   マップで定義されているアプリケーションの種類の場合は、すべてのアプリケーション インスタンスがアプリケーションのグローバル プールから除外されます。 これらは、マップの特定の MaxPercentUnhealthyApplications を使用して、該当するアプリケーションの種類のアプリケーションの総数に基づいて評価されます。 残りのアプリケーションはすべてグローバル プールで保持され、MaxPercentUnhealthyApplications を使用して評価されます。
 
 次の例は、クラスター マニフェストからの抜粋です。 アプリケーションの種類マップでエントリを定義するには、パラメーター名の先頭に "ApplicationTypeMaxPercentUnhealthyApplications-" というプレフィックスを付け、パラメーター名の後にアプリケーションの種類名を続けます。
@@ -101,20 +101,20 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 ```
 
 ### <a name="application-health-policy"></a>アプリケーションの正常性ポリシー
-[アプリケーションの正常性ポリシー](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) は、アプリケーションとその子に関して、イベントの評価方法および子の状態の集計方法を記述します。 これは、アプリケーション パッケージにある、アプリケーション マニフェストの **ApplicationManifest.xml**ファイルで定義できます。 ポリシーが指定されていない場合、正常性状態が警告またはエラーの正常性レポートか子が見つかれば、Service Fabric はエンティティを異常と見なします。
+[アプリケーションの正常性ポリシー](/dotnet/api/system.fabric.health.applicationhealthpolicy) は、アプリケーションとその子に関して、イベントの評価方法および子の状態の集計方法を記述します。 これは、アプリケーション パッケージにある、アプリケーション マニフェストの **ApplicationManifest.xml**ファイルで定義できます。 ポリシーが指定されていない場合、正常性状態が警告またはエラーの正常性レポートか子が見つかれば、Service Fabric はエンティティを異常と見なします。
 構成可能なポリシーは、次のとおりです。
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
-* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 異常な可能性のあるデプロイされたアプリケーションの最大許容パーセンテージを指定します。この値を超えるとアプリケーションはエラーの状態と見なされます。 このパーセンテージは、デプロイされた異常なアプリケーションの数を、クラスター内でそのアプリケーションが現在デプロイされているノードの数で除算して計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。
-* [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy)。 アプリケーション内のすべてのサービスの種類の既定の正常性ポリシーに代わる、既定のサービスの種類の正常性ポリシーを指定します。
-* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 サービスの種類ごとのサービス正常性ポリシーのマップを指定します。 指定された各サービスの種類について、既定のサービスの種類の正常性ポリシーは、これらのポリシーに置き換えられます。 たとえば、アプリケーションにステートレスなゲートウェイ サービスの種類とステートフルなエンジン サービスの種類がある場合は、異なる方法で評価されるように正常性ポリシーを構成できます。 サービスの種類ごとにポリシーを指定すると、サービスの正常性をより細かく制御できます。
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
+* [MaxPercentUnhealthyDeployedApplications](/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications)。 異常な可能性のあるデプロイされたアプリケーションの最大許容パーセンテージを指定します。この値を超えるとアプリケーションはエラーの状態と見なされます。 このパーセンテージは、デプロイされた異常なアプリケーションの数を、クラスター内でそのアプリケーションが現在デプロイされているノードの数で除算して計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。
+* [DefaultServiceTypeHealthPolicy](/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy)。 アプリケーション内のすべてのサービスの種類の既定の正常性ポリシーに代わる、既定のサービスの種類の正常性ポリシーを指定します。
+* [ServiceTypeHealthPolicyMap](/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap)。 サービスの種類ごとのサービス正常性ポリシーのマップを指定します。 指定された各サービスの種類について、既定のサービスの種類の正常性ポリシーは、これらのポリシーに置き換えられます。 たとえば、アプリケーションにステートレスなゲートウェイ サービスの種類とステートフルなエンジン サービスの種類がある場合は、異なる方法で評価されるように正常性ポリシーを構成できます。 サービスの種類ごとにポリシーを指定すると、サービスの正常性をより細かく制御できます。
 
 ### <a name="service-type-health-policy"></a>サービスの種類の正常性ポリシー
-[サービスの種類の正常性ポリシー](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy) は、サービスとサービスの子を評価および集計する方法を指定します。 このポリシーには以下のものが含まれます。
+[サービスの種類の正常性ポリシー](/dotnet/api/system.fabric.health.servicetypehealthpolicy) は、サービスとサービスの子を評価および集計する方法を指定します。 このポリシーには以下のものが含まれます。
 
-* [MaxPercentUnhealthyPartitionsPerService](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice)。 異常なパーティションの最大許容パーセンテージを指定します。この値を超えるとサービスは異常と見なされます。 既定のパーセンテージは 0 です。
-* [MaxPercentUnhealthyReplicasPerPartition](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition)。 異常なレプリカの最大許容パーセンテージを指定します。この値を超えるとパーティションは異常と見なされます。 既定のパーセンテージは 0 です。
-* [MaxPercentUnhealthyServices](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices)。 異常なサービスの最大許容パーセンテージを指定します。この値を超えるとアプリケーションは異常と見なされます。 既定のパーセンテージは 0 です。
+* [MaxPercentUnhealthyPartitionsPerService](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice)。 異常なパーティションの最大許容パーセンテージを指定します。この値を超えるとサービスは異常と見なされます。 既定のパーセンテージは 0 です。
+* [MaxPercentUnhealthyReplicasPerPartition](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition)。 異常なレプリカの最大許容パーセンテージを指定します。この値を超えるとパーティションは異常と見なされます。 既定のパーセンテージは 0 です。
+* [MaxPercentUnhealthyServices](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices)。 異常なサービスの最大許容パーセンテージを指定します。この値を超えるとアプリケーションは異常と見なされます。 既定のパーセンテージは 0 です。
 
 次の例は、アプリケーション マニフェストからの抜粋です。
 
@@ -179,10 +179,10 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 ## <a name="health-reporting"></a>正常性の報告
 システム コンポーネント、Service Fabric アプリケーション、内部/外部のウォッチドッグは、Service Fabric エンティティに対してレポートすることができます。 レポーターは、監視対象エンティティの正常性を、監視条件に基づいて *ローカルに* 判定します。 これらは、グローバル状態や集計データを確認する必要がありません。 望ましいのは、送信すべき情報を推定するために多くのことを確認しなければならない複雑な構造体ではなく、単純なレポーターを持つことです。
 
-正常性データを正常性ストアに送信するには、レポーターは影響を受けるエンティティを特定し、正常性レポートを作成する必要があります。 レポートを送信するには、[FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API、`Partition` または `CodePackageActivationContext` オブジェクトで公開されている正常性レポート API、PowerShell コマンドレット、または REST を使用します。
+正常性データを正常性ストアに送信するには、レポーターは影響を受けるエンティティを特定し、正常性レポートを作成する必要があります。 レポートを送信するには、[FabricClient.HealthClient.ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API、`Partition` または `CodePackageActivationContext` オブジェクトで公開されている正常性レポート API、PowerShell コマンドレット、または REST を使用します。
 
 ### <a name="health-reports"></a>正常性レポート
-クラスターの各エンティティに関する [正常性レポート](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) には、次の情報が含まれています。
+クラスターの各エンティティに関する [正常性レポート](/dotnet/api/system.fabric.health.healthreport) には、次の情報が含まれています。
 
 * **SourceId**。 正常性イベントのレポーターを一意に識別する文字列。
 * **エンティティ識別子**。 レポートを適用するエンティティを識別します。 この値は [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)に応じて異なります:
@@ -205,7 +205,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 すべての正常性レポートに、SourceId、エンティティ識別子、プロパティおよび HealthState という 4 つの情報が必要です。 SourceId 文字列では、先頭に "**System.** " というプレフィックスを使用することはできません。これはシステム レポート用に予約されています。 同じエンティティの場合、同じソースとプロパティに対するレポートは 1 つだけ存在します。 同じソースとプロパティに対する複数のレポートは、正常性クライアント側 (バッチ処理される場合) または正常性ストア側で、互いにオーバーライドします。 置換はシーケンス番号に基づいて行われます。新しいレポート (シーケンス番号が大きい方) が古いレポートを置換します。
 
 ### <a name="health-events"></a>正常性イベント
-内部的には、正常性ストアは [正常性イベント](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent)を保持しており、これにはレポートからのすべての情報と追加のメタデータが含まれています。 メタデータには、レポートが正常性クライアントに送信された時刻やレポートがサーバー側で変更された時刻が含まれています。 正常性イベントは、 [正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)によって返されます。
+内部的には、正常性ストアは [正常性イベント](/dotnet/api/system.fabric.health.healthevent)を保持しており、これにはレポートからのすべての情報と追加のメタデータが含まれています。 メタデータには、レポートが正常性クライアントに送信された時刻やレポートがサーバー側で変更された時刻が含まれています。 正常性イベントは、 [正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)によって返されます。
 
 追加のメタデータは、次のとおりです。
 
@@ -306,4 +306,3 @@ HealthEvents                    :
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-

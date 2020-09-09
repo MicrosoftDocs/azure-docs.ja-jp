@@ -3,19 +3,23 @@ title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476051"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337094"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
+
+"*この記事は、オペレーターとデバイス開発者を対象としています。* "
 
 この記事では、Azure IoT Central アプリケーションにデバイスを接続する場合のさまざまな選択肢について説明します。
 
@@ -37,7 +41,7 @@ IoT Central では、[Azure IoT Hub Device Provisioning Service (DPS)](../../iot
 - [X.509 証明書を使用して大量のデバイスを接続する](#connect-devices-using-x509-certificates) - これは運用環境に対して推奨されるアプローチです。
 - [デバイスを事前登録なしで接続する](#connect-without-registering-devices)
 - [DPS 個別登録を使用するデバイスを接続する](#individual-enrollment-based-device-connectivity)
-- [IoT プラグ アンド プレイ (プレビュー) 機能を使用してデバイスを接続する](#connect-devices-with-iot-plug-and-play-preview)
+- [デバイスをデバイス テンプレートに自動的に関連付ける](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>1 つのデバイスを接続する
 
@@ -45,7 +49,7 @@ IoT Central では、[Azure IoT Hub Device Provisioning Service (DPS)](../../iot
 
 ![個々のデバイスの SAS キー](./media/concepts-get-connected/single-device-sas.png)
 
-詳細については、チュートリアル「[Node.js クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)」を参照してください。
+詳細については、チュートリアル「[Node.js クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device-nodejs.md)」を参照してください。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS を使用して大量のデバイスを接続する
 
@@ -68,19 +72,40 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 運用環境では、X.509 証明書を使用することが、IoT Central に対して推奨されるデバイス認証メカニズムです。 詳細については、「[X.509 CA 証明書を使用したデバイス認証](../../iot-hub/iot-hub-x509ca-overview.md)」をご覧ください。
 
-X.509 証明書を使用してデバイスを接続するには、あらかじめ中間またはルート X.509 証明書をアプリケーションに追加し、検証しておく必要があります。 デバイスは、ルート証明書または中間証明書から生成されたリーフ X.509 証明書を使用する必要があります。
+X.509 証明書を使用してデバイスをアプリケーションに接続するには、次のようにします。
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>ルート証明書または中間証明書を追加して検証する
+1. **証明書 (X.509)** 構成証明の種類を使用する*登録グループ*を作成します。
+2. 登録グループで、中間またはルート X.509 証明書を追加して検証します。
+3. 登録グループのルートまたは中間証明書から生成されたリーフ X.509 証明書を使用するデバイスを登録して接続します。
 
-**[管理] > [デバイス接続] > [プライマリ証明書の管理]** に移動し、デバイス証明書の生成に使用する X.509 ルート証明書または中間証明書を追加します。
+### <a name="create-an-enrollment-group"></a>登録グループを作成する
 
-![接続の設定](media/concepts-get-connected/manage-x509-certificate.png)
+[登録グループ](../../iot-dps/concepts-service.md#enrollment)は、同じ構成証明の種類を共有するデバイスのグループです。 サポートされている構成証明の種類は、X.509 証明書と SAS の 2 つです。
 
-証明書の所有権を検証して、証明書のアップロード担当者が証明書の秘密キーを持っていることを確認します。 証明書を検証するには:
+- X.509 登録グループでは、IoT Central に接続するすべてのデバイスによって、登録グループのルートまたは中間証明書から生成されたリーフ X.509 証明書が使用されます。
+- SAS 登録グループでは、IoT Central に接続するすべてのデバイスによって、登録グループの SAS トークンから生成された SAS トークンが使用されます。
 
-  1. **[確認コード]** の横のボタンを選択してコードを生成します。
-  1. 前の手順で生成した確認コードを使用して X.509 検証証明書を作成します。 証明書を .cer ファイルとして保存します。
-  1. 署名された検証証明書をアップロードし、 **[確認]** を選択します。 正常に確認されると、証明書が "**確認済み**" としてマークされます。
+すべての IoT Central アプリケーションの 2 つの既定の登録グループは、1 つは IoT デバイス用、もう 1 つは Azure IoT Edge デバイス用の、SAS 登録グループです。 X.509 登録グループを作成するには、 **[デバイスの接続]** ページに移動し、 **[+ Add enrollment group]\(+ 登録グループの追加\)** を選択します。
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="X.509 登録グループの追加のスクリーンショット":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>ルートまたは中間 X.509 証明書を追加して検証する
+
+登録グループにルートまたは中間証明書を追加して検証するには、次のようにします。
+
+1. 先ほど作成した X.509 登録グループに移動します。 プライマリとセカンダリの両方の X.509 証明書を追加することもできます。 **[+ Manage primary]\(プライマリの管理\)** を選択します。
+
+1. **[プライマリ証明書] ページ**で、プライマリの X.509 証明書をアップロードします。 これは、ルートまたは中間証明書です。
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="プライマリ証明書のスクリーンショット":::
+
+1. **確認コード**を使用して、使用しているツールで確認コードを生成します。 次に、 **[検証]** を選択して検証証明書をアップロードします。
+
+1. 検証が成功すると、次の確認メッセージが表示されます。
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="検証済みのプライマリ証明書のスクリーンショット":::
+
+証明書の所有権を検証して、証明書のアップロード担当者が証明書の秘密キーを持っていることを確認します。
 
 セキュリティ侵害があるか、プライマリ証明書の期限が設定されている場合は、セカンダリ証明書を使用してダウンタイムを短縮します。 プライマリ証明書の更新中に、セカンダリ証明書を使用してデバイスのプロビジョニングに進むことができます。
 
@@ -88,7 +113,15 @@ X.509 証明書を使用してデバイスを接続するには、あらかじ�
 
 X.509 証明書を使用してデバイスを一括接続するには、まず CSV ファイルを使用してデバイスをアプリケーションに登録し、[デバイス ID とデバイス名をインポート](howto-manage-devices.md#import-devices)します。 デバイス ID はすべて小文字である必要があります。
 
-アップロードしたルート証明書または中間証明書を使用して、デバイスの X.509 リーフ証明書を生成します。 **デバイス ID** をリーフ証明書の `CNAME` 値として使用します。 デバイス コードには、アプリケーションの **ID スコープ**値と**デバイス ID**、および対応するデバイス証明書が必要です。
+X.509 登録グループにアップロードしたルートまたは中間証明書を使用して、デバイスの X.509 リーフ証明書を生成します。 **デバイス ID** をリーフ証明書の `CNAME` 値として使用します。 デバイス コードには、アプリケーションの **ID スコープ**値と**デバイス ID**、および対応するデバイス証明書が必要です。
+
+#### <a name="sample-device-code"></a>サンプル デバイス コード
+
+[Azure IoT NODE.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) の次のサンプルは、Node.js デバイス クライアントで x.509 リーフ証明書と DPS を使用して IoT Central アプリケーションに登録する方法を示しています。
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+同等の C サンプルについては、[Azure IoT C Provisioning Device Client SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) の [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) を参照してください。
 
 ### <a name="for-testing-purposes-only"></a>テスト目的のみ
 
@@ -102,11 +135,6 @@ X.509 証明書を使用してデバイスを一括接続するには、まず C
   - IoT Central アプリケーションからの確認コードを使用して検証証明書を生成します。
   - デバイス ID をツールへのパラメーターとして使用して、デバイスのリーフ証明書を作成します。
 
-### <a name="further-reference"></a>他の参考資料
-
-- [RaspberryPi のサンプル実装](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
-
 ## <a name="connect-without-registering-devices"></a>デバイスを登録しないで接続する
 
 これまでに説明したどのシナリオでも、接続するデバイスをあらかじめアプリケーションに登録しておく必要があります。 しかし IoT Central には、事前登録なしで接続する手段も用意されており、そのようなデバイスを OEM は大量に製造することができます。 OEM が適切なデバイス資格情報を生成し、デバイスを工場で構成することになります。 顧客が初めてデバイスの電源を投入したとき、デバイスはまず DPS に接続し、その後 DPS によって自動的に適切な IoT Central アプリケーションに接続されます。 デバイスからアプリケーションへのデータの送信が開始される前に、IoT Central のオペレーターがデバイスを承認しておく必要があります。
@@ -115,9 +143,9 @@ X.509 証明書を使用してデバイスを一括接続するには、まず C
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>SAS トークンを使用するデバイスを登録なしで接続する
 
-1. IoT Central アプリケーションのグループ プライマリ キーをコピーします。
+1. **SAS-IoT-Devices** 登録グループからグループ プライマリ キーをコピーします。
 
-    ![アプリケーションのグループ プライマリ SAS キー](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="SAS-IoT-Devices 登録グループのグループ プライマリ キー":::
 
 1. [dps-keygen](https://www.npmjs.com/package/dps-keygen) ツールを使用してデバイスの SAS キーを生成します。 前の手順で得たグループ プライマリ キーを使用します。 デバイス ID は小文字にする必要があります。
 
@@ -134,15 +162,15 @@ X.509 証明書を使用してデバイスを一括接続するには、まず C
     デバイスからデータの送信が開始される前にデバイスを手動で承認しておく必要があるかどうかは、 **[管理] > [デバイス接続]** ページの **[自動承認]** オプションで制御されます。
 
     > [!NOTE]
-    > デバイス テンプレートにデバイスを自動的に関連付ける方法については、「[IoT プラグ アンド プレイ (プレビュー) を使用してデバイスを接続する](#connect-devices-with-iot-plug-and-play-preview)」を参照してください。
+    > デバイス テンプレートにデバイスを自動的に関連付ける方法については、「[デバイスをデバイス テンプレートに自動的に関連付ける](#automatically-associate-with-a-device-template)」を参照してください。
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>X.509 証明書を使用するデバイスを登録なしで接続する
 
-1. IoT Central アプリケーションに[ルートまたは中間 X.509 証明書を追加して検証](#connect-devices-using-x509-certificates)します。
+1. [登録グループを作成](#create-an-enrollment-group)し、IoT Central アプリケーションに[ルートまたは中間 X.509 証明書を追加して検証](#add-and-verify-a-root-or-intermediate-x509-certificate)します。
 
 1. IoT Central アプリケーションに追加したルートまたは中間証明書を使用して、デバイスのリーフ証明書を生成します。 小文字のデバイス ID をリーフ証明書の `CNAME` として使用してください。
 
-1. デバイス ID、生成された X.509 証明書、アプリケーションの **ID スコープ**の値を使用して、OEM が各デバイスをフラッシュします。
+1. OEM では、デバイス ID、生成されたリーフ X.509 証明書、アプリケーションの **ID スコープ**の値を使用して、各デバイスがフラッシュされます。
 
 1. デバイスの電源をオンにすると、そのデバイスはまず DPS に接続して、IoT Central の登録情報を取得します。
 
@@ -151,7 +179,7 @@ X.509 証明書を使用してデバイスを一括接続するには、まず C
     デバイスからデータの送信が開始される前にデバイスを手動で承認しておく必要があるかどうかは、 **[管理] > [デバイス接続]** ページの **[自動承認]** オプションで制御されます。
 
     > [!NOTE]
-    > デバイス テンプレートにデバイスを自動的に関連付ける方法については、「[IoT プラグ アンド プレイ (プレビュー) を使用してデバイスを接続する](#connect-devices-with-iot-plug-and-play-preview)」を参照してください。
+    > デバイス テンプレートにデバイスを自動的に関連付ける方法については、「[デバイスをデバイス テンプレートに自動的に関連付ける](#automatically-associate-with-a-device-template)」を参照してください。
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>個別加入ベースのデバイス接続
 
@@ -160,7 +188,7 @@ X.509 証明書を使用してデバイスを一括接続するには、まず C
 > [!NOTE]
 > デバイスの個別登録を作成すると、既定のグループ登録オプションよりもそちらが IoT Central アプリケーションで優先されます。
 
-### <a name="creating-individual-enrollments"></a>個別加入を作成する
+### <a name="create-individual-enrollments"></a>個々の登録を作成する
 
 IoT Central では、個別登録に関して次の構成証明メカニズムがサポートされます。
 
@@ -176,14 +204,22 @@ IoT Central では、個別登録に関して次の構成証明メカニズム�
 
 - **トラステッド プラットフォーム モジュール (TPM) の構成証明:** [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) は、ハードウェア セキュリティ モジュールの一種です。 TPM を使用することが、デバイスを接続する最も安全な方法の 1 つとなっています。 この記事では、ディスクリート TPM、ファームウェア TPM、または統合された TPM を使用していると仮定します。 ソフトウェアでエミュレートされた TPM はプロトタイプの作成やテストには適していますが、ディスクリート TPM、ファームウェア TPM、または統合された TPM と同じレベルのセキュリティを提供することはできません。 運用環境ではソフトウェア TPM を使用しないでください。 TPM を使用する個別登録を作成するには、 **[デバイス接続]** ページを開き、接続方法として **[個別の登録]** を、メカニズムとして **[TPM]** を選択します。 TPM 保証キーを入力し、デバイスの接続情報を保存します。
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ (プレビュー) を使用してデバイスを接続する
+## <a name="automatically-associate-with-a-device-template"></a>デバイス テンプレートに自動的に関連付ける
 
-IoT Central の IoT プラグ アンド プレイ (プレビュー) の主な機能の 1 つとして、デバイスの接続時にデバイス テンプレートを自動的に関連付ける機能があります。 デバイスは、デバイスの資格情報と共に、デバイス登録呼び出しの一部として **CapabilityModelId** を送信できるようになりました。 この機能を通じて、IoT Central はデバイス テンプレートを検出し、それをデバイスに関連付けることができます。 検出プロセスは次のように実行されます。
+IoT Central の主な機能の 1 つとして、デバイスの接続時にデバイス テンプレートを自動的に関連付ける機能があります。 デバイスでは、デバイスの資格情報と共に、デバイス登録呼び出しの一部として **CapabilityModelId** を送信できます。 **CapabilityModelID** は、デバイスで実装する機能モデルを識別する URN です。 IoT Central アプリケーションでは、**CapabilityModelID** を使用して、使用するデバイス テンプレートを特定し、デバイスをデバイス テンプレートに自動的に関連付けることができます。 検出プロセスは次のように実行されます。
 
-1. デバイス テンプレートに関連付けます (IoT Central アプリケーションで既に発行されている場合)。
-1. 発行および認定済みの機能モデルのパブリック リポジトリからフェッチします。
+1. IoT Central アプリケーションでデバイス テンプレートが既に発行されている場合、デバイスはデバイス テンプレートに関連付けられます。
+1. 事前認定された IoT プラグ アンド プレイ デバイスでは、IoT Central アプリケーションでデバイス テンプレートがまだ発行されていない場合、デバイス テンプレートはパブリック リポジトリからフェッチされます。
 
-DPS 登録呼び出し中にデバイスが送信する追加のペイロードの形式を次に示します
+次のスニペットは、自動的な関連付けが機能するために、DPS 登録呼び出し中にデバイスで送信する必要がある追加のペイロードの形式を示しています。
+
+一般提供デバイス SDK を使用するデバイスの形式は、次のとおりです。
+
+```javascript
+    iotcModelId: '< this is the URN for the capability model>';
+```
+
+パブリック プレビュー デバイス SDK を使用するデバイスの形式は、次のとおりです。
 
 ```javascript
 '__iot:interfaces': {
@@ -192,7 +228,7 @@ DPS 登録呼び出し中にデバイスが送信する追加のペイロード�
 ```
 
 > [!NOTE]
-> デバイスが自動的に接続し、デバイス テンプレートを検出して、データの送信を開始するためには、 **[管理] > [デバイス接続]** の **[自動承認]** オプションが有効になっている必要がある点に注意してください。
+> デバイスで自動的に接続し、デバイス テンプレートを検出して、データの送信を開始するには、 **[管理] > [デバイス接続]** の **[自動承認]** オプションが有効になっている必要があります。
 
 ## <a name="device-status-values"></a>デバイスの状態の値
 
@@ -243,9 +279,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | テレメトリ | デバイスからクラウドへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| command | ダイレクト メソッド |
-
-デバイス SDK の使用方法の詳細については、「[DevDiv キット デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-devkit.md)」のコード例を参照してください。
+| コマンド | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 
@@ -259,13 +293,14 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 デバイスでサポートされているプロトコルのいずれも使用できない場合は、Azure IoT Edge を使用して、プロトコルを変換します。 IoT Edge は、Azure IoT Central アプリケーションの処理負荷を軽減するための他のエッジ上のインテリジェンス シナリオをサポートします。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 デバイスと、Azure IoT Central 間で交換されるすべてのデータは暗号化されます。 IoT Hub は IoT Hub エンドポイントに接続するデバイスからのすべての要求を認証します。 有線上で資格情報を交換することを避けるため、デバイスでは、認証に署名入りトークンが使用されます。 詳細については、「[IoT Hub へのアクセスの制御](../../iot-hub/iot-hub-devguide-security.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Azure IoT Central のデバイス接続機能について説明しました。推奨される次の手順は次のとおりです。
+デバイス開発者にお勧めする次のステップは次のとおりです。
 
-- [DevKit デバイスを準備して接続する](howto-connect-devkit.md)
-- [C SDK:Provisioning Device Client SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する
+- [Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する](./howto-set-up-template.md)方法を確認する
+- [Azure IoT Edge デバイスと Azure IoT Central](./concepts-iot-edge.md) について確認する

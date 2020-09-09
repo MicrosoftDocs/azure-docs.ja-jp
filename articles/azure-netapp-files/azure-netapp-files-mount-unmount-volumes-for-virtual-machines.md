@@ -5,14 +5,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: how-to
+ms.date: 07/06/2020
+ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610855"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533089"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 
 
@@ -26,9 +26,9 @@ ms.locfileid: "82610855"
 
     ![マウント手順 NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
-    ![マウント手順 SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
-    
-    NFSv4.1 を使用している場合は、`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT` のコマンドを使用してご自分のファイル システムをマウントします。  
+    ![マウント手順 SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)  
+    * NFS ボリュームをマウントしている場合は、必ず `mount` コマンドで `vers`オプションを使用して、マウントするボリュームに対応する NFS プロトコル バージョンを指定します。 
+    * NFSv4.1 を使用している場合は、`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT` のコマンドを使用してご自分のファイル システムをマウントします。  
 
 3. Azure VM の起動時または再起動時に NFS ボリュームを自動的にマウントしたい場合は、ホストの `/etc/fstab` にエントリを追加します。 
 
@@ -43,9 +43,12 @@ ms.locfileid: "82610855"
     a. まず、ボリュームを Unix または Linux VM にマウントします。  
     b. ボリュームに対して `chmod 777` または `chmod 775` コマンドを実行します。  
     c. Windows 上の NFS クライアントを使用してボリュームをマウントします。
+    
+5. NFS Kerberos ボリュームをマウントする場合の詳細については、[NFSv4.1 Kerberos 暗号化の構成](configure-kerberos-encryption.md)に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS に関する FAQ](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [ネットワーク ファイル システムの概要](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [NFS Kerberos ボリュームをマウントする](configure-kerberos-encryption.md#kerberos_mount)

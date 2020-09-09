@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
-description: この記事では、Desired State Configuration (DSC) レポート データを Azure Automation State Configuration から Azure Monitor ログに送信して、詳しい情報を入手し、きめ細かい管理を実現する方法について説明します。
+title: Azure Monitor ログとの統合
+description: この記事では、Desired State Configuration レポート データを Azure Automation State Configuration から Azure Monitor ログに送信する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996046"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015155"
 ---
-# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Monitor ログに状態の構成のレポート データを転送する
+# <a name="integrate-with-azure-monitor-logs"></a>Azure Monitor ログとの統合
 
 Azure Automation State Configuration は、ノード状態のデータを 30 日間保持します。 このデータを長期間保持したい場合は、ノード状態のデータを Log Analytics ワークスペースに送信することができます。 Azure Portal または PowerShell を使用して、ノード構成内のノードや個々の DSC リソースのコンプライアンス ステータスを確認できます。 
 
@@ -30,14 +30,13 @@ Azure Monitor ログによって、Automation State Configuration のデータ�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-
 ## <a name="prerequisites"></a>前提条件
 
 Azure Monitor ログへの Automation State Configuration レポートの送信を開始するには、次のものが必要です。
 
-- 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
+- 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/) (v2.3.0)。
 - Azure Automation アカウント。 詳細については、「[Azure Automation の概要](automation-intro.md)」を参照してください。
-- Automation & Control サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Azure Monitor で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)」を参照してください。
+- Automation & Control サービス プラン付きの Log Analytics ワークスペース。 詳細については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/get-started-portal.md)」を参照してください。
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 - [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) モジュール、バージョン 2.7.0.0 以上。 インストール手順については、「[Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする](./troubleshoot/desired-state-configuration.md)」を参照してください。
 
@@ -45,7 +44,7 @@ Azure Monitor ログへの Automation State Configuration レポートの送信�
 
 Azure Automation State Configuration から Azure Monitor ログへのデータのインポートを始めるには、次の手順のようにします。
 
-1. PowerShell で Azure アカウントにログインします。 [Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)に関するページをご覧ください。
+1. PowerShell で Azure アカウントにログインします。 [Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)に関するページをご覧ください。
 1. 次の PowerShell コマンドレットを実行して、Automation アカウントのリソース ID を取得します。 複数の Automation アカウントがある場合は、構成するアカウントのリソース ID を選択します。
 
    ```powershell
@@ -92,7 +91,7 @@ Automation State Configuration データの Azure Monitor ログとの統合を�
 * `DscResourceStatusData` でフィルター処理を実行すると、そのリソースに適用されているノード構成で呼び出された各 DSC リソースに対して操作が返されます。 
 * `DscResourceStatusData` でフィルター処理を実行すると、失敗したすべての DSC リソースのエラー情報が返されます。
 
-ログ クエリを構築してデータを検索する方法の詳細については、[Azure Monitor のログ クエリの概要](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)に関するページを参照してください。
+ログ クエリを構築してデータを検索する方法の詳細については、[Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>State Configuration のコンプライアンス チェックでエラーになったときに電子メールを送信する
 
@@ -106,7 +105,7 @@ Automation State Configuration データの Azure Monitor ログとの統合を�
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。 `DscNodeStatusData` レコードの検索の `Resource` フィールドから、Automation アカウント名を抽出します。
 1. **[ルールの作成]** 画面を開くには、ページの上部にある **[新しいアラート ルール]** をクリックします。 
 
-アラートの構成オプションについて詳しくは、[アラート ルールの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関する記事をご覧ください。
+アラートの構成オプションについて詳しくは、[アラート ルールの作成](../azure-monitor/platform/alerts-metric.md)に関する記事をご覧ください。
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>すべてのノードで失敗した DSC リソースを検索する
 
@@ -192,15 +191,13 @@ Azure Automation の診断により、Azure Monitor ログに 2 つのカテゴ�
 | ResourceType | AUTOMATIONACCOUNTS。 |
 | CorrelationId |コンプライアンス レポートの相関 ID である GUID。 |
 
-
 ## <a name="next-steps"></a>次のステップ
 
-- 概要については、[Azure Automation State Configuration](automation-dsc-overview.md) に関するページをご覧ください。
-- 使用を開始するには、「[Azure Automation State Configuration の使用開始](automation-dsc-getting-started.md)」をご覧ください。
-- DSC 構成をコンパイルしてターゲット ノードに割り当てることができるようにする方法の詳細については、「[Azure Automation State Configuration での構成のコンパイル](automation-dsc-compile.md)」をご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+- 概要については、[Azure Automation State Configuration の概要](automation-dsc-overview.md)に関するページを参照してください。
+- 使用を開始するには、「[Azure Automation State Configuration の使用を開始する](automation-dsc-getting-started.md)」をご覧ください。
+- DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
-- 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ](automation-dsc-cd-chocolatey.md)」をご覧ください。
-- 各種検索クエリの作成方法と、Azure Monitor ログでの Automation State Configuration ログの確認方法の詳細については、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
-- Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページを参照してください。
+- 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」をご覧ください。
+- 各種検索クエリの作成方法と、Azure Monitor ログでの Automation State Configuration ログの確認方法の詳細については、[Azure Monitor ログでのログ検索](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
+- Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。

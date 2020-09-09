@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 08/25/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76697899"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853850"
 ---
 # <a name="brokered-authentication-in-android"></a>Android のブローカー認証
 
@@ -122,3 +122,12 @@ MSAL では最初にブローカー バインド サービスが使用されま�
 
 - Microsoft Authenticator アプリと Intune ポータル サイトの電力の最適化を無効にするようにユーザーに依頼します。
 - `"READ_CONTACTS"` のアクセス許可を付与するようユーザーに依頼します。
+
+## <a name="verifying-broker-integration"></a>ブローカーの統合の検証
+
+ブローカーの統合が機能しているかどうかはすぐにはわかりませんが、次の手順を使用して確認できます。
+
+1. Android デバイスで、ブローカーを使用して要求を完了します。
+1. Android デバイスの設定で、認証に使用したアカウントに対応する新しく作成されたアカウントを探します。 アカウントの種類は*職場アカウント*である必要があります。
+
+テストを繰り返す場合は、設定からアカウントを削除することができます。

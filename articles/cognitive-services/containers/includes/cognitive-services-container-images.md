@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ac8e49c85147576e489b16a3a421c75d60ad4aee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590667"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104413"
 ---
 ### <a name="container-repositories-and-images"></a>コンテナーのリポジトリとイメージ
 
@@ -62,7 +62,7 @@ Microsoft コンテナー レジストリ (MCR) からは、Cognitive Services �
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>パブリックの "ゲート付き" プレビュー (コンテナー レジストリ: `containerpreview.azurecr.io`)
 
-次のゲート付きプレビュー コンテナーはコンテナー プレビュー レジストリでホストされており、アクセスするにはアプリケーションが必要です。 詳細については、[Cognitive Services のゲート プロセス](../../cognitive-services-gating-process.md)に関するページを参照してください。
+次のゲート付きプレビュー コンテナーはコンテナー プレビュー レジストリでホストされており、アクセスするにはアプリケーションが必要です。 詳細については、次のコンテナーに関する記事を参照してください。
 
 | サービス | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |--|--|--|
@@ -73,3 +73,4 @@ Microsoft コンテナー レジストリ (MCR) からは、Cognitive Services �
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=cstt) | カスタム音声変換 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=tts) | テキスト読み上げ | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=ctts) | カスタム テキスト読み上げ | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` |
+| [Text Analytics for Health](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health) | Text Analytics for Health | `containerpreview.azurecr.io/microsoft/cognitive-services-healthcare` |

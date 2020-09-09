@@ -3,18 +3,18 @@ title: Azure Functions のスケールとホスティング
 description: Azure Functions の従量課金プランと Premium プランの選択方法について説明します。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985883"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587227"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
-Azure で関数アプリを作成するときは、アプリのホスティング プランを選択する必要があります。 Azure Functions に利用できるホスティング プランは 3 つあります。[従量課金プラン](#consumption-plan)、[Premium プラン](#premium-plan)、[専用 (App Service) プラン](#app-service-plan)です。
+Azure で関数アプリを作成するときは、アプリのホスティング プランを選択する必要があります。 Azure Functions で利用できる基本のホスティング プランは 3 つあります。[従量課金プラン](#consumption-plan)、[Premium プラン](#premium-plan)、[専用 (App Service) プラン](#app-service-plan)です。 すべてのホスティング プランは、Linux と Windows 仮想マシンの両方で、一般提供 (GA) されています。
 
 お客様が選択したホスティング プランによって、次の動作が決まります。
 
@@ -28,19 +28,7 @@ Premium プランには、Premium コンピューティング インスタンス
 
 App Service プランでは、お客様が管理している専用のインフラストラクチャを利用できます。 関数アプリはイベントに基づいてスケーリングされません。つまり、ゼロにスケールインされることはありません。 ([[常時接続]](#always-on) を有効にする必要があります)。
 
-## <a name="hosting-plan-support"></a>ホスティング プランのサポート
-
-機能のサポートは次の 2 つのカテゴリに分類されます。
-
-* _一般提供 (GA)_ : 完全にサポートされ、運用環境用に承認されています。
-* "_プレビュー_": まだ完全にはサポートされておらず、運用環境用として承認されていません。
-
-次の表は、Windows または Linux 上で実行される場合の 3 つのホスティング プランに対する現在のサポート レベルを示しています。
-
-| | 従量課金プラン | Premium プラン | 専用プラン |
-|-|:----------------:|:------------:|:----------------:|
-| Windows | GA | GA | GA |
-| Linux | GA | GA | GA |
+さまざまなホスティング プラン (Kubernetes ベースのホスティングを含む) の詳細な比較については、[ホスティング プランの比較セクション](#hosting-plans-comparison)を参照してください。
 
 ## <a name="consumption-plan"></a>従量課金プラン
 
@@ -68,7 +56,7 @@ Premium プランを使用すると、従量課金プランと同じように、
 * 予測可能な料金
 * 複数の関数アプリを含むプランでの高密度アプリ割り当て
 
-これらのオプションの構成方法については、[Azure Functions の Premium プランのドキュメント](functions-premium-plan.md)を参照してください。
+Premium プランで関数アプリを作成する方法については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。
 
 Premium プランの課金は、実行や消費されたメモリごとの課金ではなく、必要なインスタンスや事前ウォーミングされたインスタンスで使用されたコア秒数とメモリに基づいています。 1 つのプランにつき、少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 つまり、実行数に関係なく、アクティブなプランごとに最小の月額コストがかかります。 なお、Premium プランのすべての関数アプリでは、事前ウォーミングされたインスタンスとアクティブなインスタンスが共有されことに注意してください。
 
@@ -78,9 +66,7 @@ Premium プランの課金は、実行や消費されたメモリごとの課金
 * 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒の請求額は低い。
 * 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。
 * 従量課金プランで[許可されている最大実行時間](#timeout)よりも長くコードを実行する必要がある。
-* 仮想ネットワーク接続など、Premium プランでのみ利用できる機能が必要である。
-
-Premium プランで JavaScript 関数を実行する場合は、vCPU の少ないインスタンスを選ぶ必要があります。 詳しくは、[シングルコア Premium プランの選択](functions-reference-node.md#considerations-for-javascript-functions)に関する記事をご覧ください。  
+* 仮想ネットワーク接続など、Premium プランでのみ利用できる機能が必要である。 
 
 ## <a name="dedicated-app-service-plan"></a><a name="app-service-plan"></a>専用 (App Service) プラン
 
@@ -98,6 +84,8 @@ App Service プランでは、VM インスタンスを追加して、手動で�
 App Service プランで JavaScript 関数を実行する場合は、CPUの少ないプランを選択してください。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#choose-single-vcpu-app-service-plans)に関するページをご覧ください。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
+[App Service Environment](../app-service/environment/intro.md) (ASE) で実行すると、関数を完全に分離し、高スケールを活用できます。
+
 ### <a name="always-on"></a><a name="always-on"></a> 常にオン
 
 App Service プランを実行する場合、関数アプリが正常に実行されるように、**常時接続** 設定を有効にする必要があります。 App Service プランでは、関数のランタイムは非アクティブな状態が数分続くとアイドル状態となるため、関数を "起こす" ことができるのは HTTP トリガーのみとなります。 常時接続は App Service プランでのみ使用可能です。 従量課金プランでは、関数アプリはプラットフォームにより自動的にアクティブ化されます。
@@ -109,7 +97,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>既存のアプリケーションのホスティング プランを決定する
 
-自分の関数アプリが使用するホスティング プランを確認するには、[Azure Portal](https://portal.azure.com) で関数アプリの **[概要]** タブの **[App Service プラン / 価格レベル]** を表示します。 App Service プランについては価格レベルも示されます。
+自分の関数アプリで使用されるホスティング プランを確認するには、[Azure portal](https://portal.azure.com) で関数アプリの **[概要]** タブの **[App Service プラン]** を表示します。 価格レベルを表示するには、 **[App Service プラン]** の名前を選択し、左側のウィンドウから **[プロパティ]** を選択します。
 
 ![ポータルでのスケーリング プランの表示](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,11 +112,11 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
-どのプランでも、関数アプリを使用するには、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 これは、Functions が、Azure Storage を利用してトリガーの管理や関数実行のログなどの操作を行っているためですが、ストレージ アカウントによってはキューと表はサポートされません。 そのようなアカウント (BLOB専用ストレージ アカウント (including premium storage) や、ゾーン冗長ストレージ レプリケーションを備えた汎用ストレージ アカウントなど) は、関数アプリを作成するときに既存の **[ストレージ アカウント]** の選択肢から除外されます。
+どのプランでも、関数アプリを使用するには、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 これは、Azure Functions が、Azure Storage を利用してトリガーの管理や関数実行のログなどの操作を行っているためですが、ストレージ アカウントによってはキューと表はサポートされません。 そのようなアカウント (BLOB専用ストレージ アカウント (including premium storage) や、ゾーン冗長ストレージ レプリケーションを備えた汎用ストレージ アカウントなど) は、関数アプリを作成するときに既存の **[ストレージ アカウント]** の選択肢から除外されます。
 
 関数アプリで使用されるものと同じストレージ アカウントを、アプリケーション データを格納するためのトリガーとバインドで使用することもできます。 ただし、ストレージを集中的に使用する操作の場合は、別のストレージ アカウントを使用する必要があります。  
 
-複数の関数アプリが間違いなく、何の問題もなく同じストレージ アカウントを共有できます。 (これの良い例は、1 つのストレージ アカウントのように動作する Azure ストレージ エミュレーターを使用してローカル環境で複数のアプリを開発する場合です。) 
+複数の関数アプリでは、同じストレージ アカウントを問題なく共有できます。 (これの良い例は、1 つのストレージ アカウントのように動作する Azure ストレージ エミュレーターを使用してローカル環境で複数のアプリを開発する場合です。) 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -148,21 +136,33 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 
 ![イベントを監視してインスタンスを作成しているスケール コントローラー](./media/functions-scale/central-listener.png)
 
+### <a name="cold-start"></a>コールド スタート
+
+関数アプリが数分の間アイドル状態になると、プラットフォームによって、アプリが実行されるインスタンスの数が 0 にスケール ダウンされる可能性があります。 次の要求には、0 から 1 へのスケーリングの待機時間が追加されています。 この待機時間は、_コールド スタート_と呼ばれます。 関数アプリによって読み込まれる必要がある依存関係の数は、コールド スタート時間に影響を与える可能性があります。 コールド スタートは、応答を必ず返す必要がある HTTP トリガーなどの同期操作においては問題です。 コールド スタートが関数に影響を与えている場合は、Always On が有効になっている Premium プランまたは専用プランで実行することを検討してください。   
+
 ### <a name="understanding-scaling-behaviors"></a>スケーリングの動作について
 
 スケーリングはさまざまな要因によって異なる可能性があり、選択したトリガーと言語に基づいて異なる方法でスケールします。 スケーリング動作には、注意が必要な複雑な作業がいくつかあります。
 
-* 1 つの関数アプリがスケールアウトされるのは、最大 200 インスタンスまでのみとなります。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。
+* 1 つの関数アプリがスケールアウトされるのは、最大 200 インスタンスまでのみとなります。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。  必要な場合は[最大値を下げて](#limit-scale-out)スケーリングを制限できます。
 * HTTP トリガーの場合、新しいインスタンスは最大で 1 秒間に 1 回割り当てられます。
 * HTTP 以外のトリガーの場合、新しいインスタンスは最大で 30 秒ごとに 1 回割り当てられます。 [Premium プラン](#premium-plan)で実行しているときは、スケーリングが速くなります。
 * Service Bus トリガーの場合、最も効率的なスケーリングを行うためには、リソースに対して "_管理_" 権限を使用します。 "_リッスン_" 権限では、スケーリングの決定を通知するためにキューの長さを使用できないため、スケーリングが正確ではありません。 Service Bus アクセス ポリシーで権限を設定する方法の詳細については、「[共有アクセス承認ポリシー](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)」を参照してください。
 * イベント ハブのトリガーについては、リファレンス記事の[スケーリングのガイダンス](functions-bindings-event-hubs-trigger.md#scaling)を参照してください。 
 
+### <a name="limit-scale-out"></a>スケールアウトを制限する
+
+アプリをスケールアウトするインスタンス数を制限したい場合があります。  これは、データベースなどのダウンストリーム コンポーネントのスループットに制限があるケースで最も一般的です。  既定では、従量課金プランの関数は最大 200 インスタンスにスケールアウトでき、Premium プランの関数は最大 100 インスタンスにスケールアウトできます。  特定のアプリで最大値を下げるには、`functionAppScaleLimit` 値の指定を変更します。  `functionAppScaleLimit` は、0、(制限しない場合は) null、1 からアプリの最大値間の有効値に設定できます。
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
+
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン
 
 関数アプリには、スケールに影響を及ぼすさまざまな側面 (ホスト構成、ランタイム フットプリント、リソースの効率など) があります。  詳細については、[パフォーマンスの考慮事項に関する記事のスケーラビリティのセクション](functions-best-practices.md#scalability-best-practices)をご覧ください。 関数アプリがスケールするにつれて、接続がどのように変化するかを認識する必要もあります。 詳細については、「[How to manage connections in Azure Functions](manage-connections.md)」(Azure Functions で接続を管理する方法) を参照してください。
 
-Python と Node.js のスケールインの詳細については、[Azure Functions Python 開発者ガイド - スケーリングとコンカレンシー](functions-reference-python.md#scaling-and-concurrency)に関するページおよび [Azure Functions Node.js 開発者ガイド - スケーリングとコンカレンシー](functions-reference-node.md#scaling-and-concurrency)に関するページを参照してください。
+Python と Node.js のスケールインの詳細については、「[Azure Functions の Python 開発者向けガイド - スケーリングとコンカレンシー](functions-reference-python.md#scaling-and-concurrency)」および [Azure Functions Node.js 開発者ガイド - スケーリングとコンカレンシー](functions-reference-node.md#scaling-and-concurrency)に関するページを参照してください。
 
 ### <a name="billing-model"></a>課金モデル
 
@@ -175,8 +175,82 @@ Python と Node.js のスケールインの詳細については、[Azure Functi
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
-## <a name="service-limits"></a>サービスの制限
+## <a name="hosting-plans-comparison"></a>ホスティング プランの比較
 
-次の表は、さまざまなホスティング プランで実行する場合に、関数アプリに適用される制限を示しています。
+次の比較表は、Azure Functions アプリ ホスティングプランを選ぶ上で役立つすべての重要な側面を示しています。
+
+### <a name="plan-summary"></a>プラン概要
+| | |
+| --- | --- |  
+|**[従量課金プラン](#consumption-plan)**| 自動的にスケールし、関数が実行されている際のコンピューティング リソースに対してのみ課金されます。 従量課金プランでは、Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。<br/> ✔ 既定のホスティング プランです。<br/>✔ 関数の実行中にのみ課金されます。<br/>✔ 負荷が高い期間中であっても、自動的にスケールアウトされます。|  
+|**[Premium プラン](#premium-plan)**|需要に応じて自動的にスケーリングを行いながら、事前ウォーミングされたワーカーを使用して、アイドル状態になっても遅延なくアプリケーションを実行したり、より強力なインスタンスで実行したり、VNET に接続したりすることができます。 次の状況では、App Service プランのすべての機能に加えて、Azure Functions Premium プランを検討してください。 <br/>✔ 関数を継続的に、またはほぼ継続的に実行したい。<br/>✔ 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒の請求額は低い。<br/>✔ 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。<br/>✔ 従量課金プランで許可されている最大実行時間よりも長くコードを実行する必要がある。<br/>✔ 仮想ネットワーク接続など、Premium プランでのみ利用できる機能が必要である。|  
+|**[専用プラン](#app-service-plan)** <sup>1</sup>|App Service プラン内で、関数を通常の App Service プラン料金で実行します。 長期の操作や、より予測的なスケーリングやコストが必要な場合に適しています。 次のような状況では、App Service プランを検討してください。<br/>✔ 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。<br/>✔ 関数を実行するカスタム イメージを提供したい。|  
+|**[ASE](#app-service-plan)** <sup>1</sup>|App Service Environment (ASE) は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 ASE は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ 高スケール。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ 高いメモリ使用率。|  
+| **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes は、Kubernetes プラットフォーム上で実行される完全に分離された専用の環境を提供します。  Kubernetes は、以下を必要とするアプリケーション ワークロードに最適です。 <br/>✔ ハードウェア要件のカスタマイズ。<br/>✔ 分離およびセキュリティで保護されたネットワーク アクセス。<br/>✔ ハイブリッド環境またはマルチクラウド環境で実行可能。<br/>✔ 既存の Kubernetes アプリケーションやサービスと並行して実行。|  
+
+<sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。
+
+### <a name="operating-systemruntime"></a>オペレーティング システム/ランタイム
+
+| | Linux<sup>1</sup><br/>コードのみ | Windows<sup>2</sup><br/>コードのみ | Linux<sup>1、3</sup><br/>Docker コンテナー |
+| --- | --- | --- | --- |
+| **[従量課金プラン](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | サポートなし  |
+| **[Premium プラン](#premium-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
+| **[専用プラン](#app-service-plan)** <sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[ASE](#app-service-plan)** <sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
+| **[Kubernetes](functions-kubernetes-keda.md)** | 該当なし | 該当なし |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+
+<sup>1</sup>Linux は、Python ランタイム スタックでサポートされている唯一のオペレーティング システムです。  
+<sup>2</sup>Windows は、PowerShell ランタイム スタックでサポートされている唯一のオペレーティング システムです。   
+<sup>3</sup>Linux は、Docker コンテナーでサポートされている唯一のオペレーティング システムです。
+<sup>4</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。
+
+### <a name="scale"></a>スケール
+
+| | スケール アウト | 最大インスタンス数 |
+| --- | --- | --- |
+| **[従量課金プラン](#consumption-plan)** | イベント ドリブン。 負荷が高い期間中であっても、自動的にスケールアウトされます。 Azure Functions インフラストラクチャでは、関数がトリガーされるイベントの数に基づいて Functions ホストのインスタンスを追加することで、CPU とメモリのリソースがスケーリングされます。 | 200 |
+| **[Premium プラン](#premium-plan)** | イベント ドリブン。 負荷が高い期間中であっても、自動的にスケールアウトされます。 Azure Functions インフラストラクチャでは、関数がトリガーされるイベントの数に基づいて Functions ホストのインスタンスを追加することで、CPU とメモリのリソースがスケーリングされます。 |100|
+| **[専用プラン](#app-service-plan)** <sup>1</sup> | 手動/自動スケール |10 - 20|
+| **[ASE](#app-service-plan)** <sup>1</sup> | 手動/自動スケール |100 |
+| **[Kubernetes](functions-kubernetes-keda.md)**  | [KEDA](https://keda.sh) を使用した Kubernetes クラスターのイベント ドリブン自動スケーリング。 | &nbsp;クラスター&nbsp;によって&nbsp;異なります。&nbsp;|
+
+<sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。
+
+### <a name="cold-start-behavior"></a>コールド スタートの動作
+
+|    |    | 
+| -- | -- |
+| **[従量課金&nbsp;プラン](#consumption-plan)** | アプリが一定期間アイドル状態になった場合、0 にスケーリングされます。つまり、一部の要求の起動時に追加の待機時間が発生する可能性があります。  従量課金プランには、コールド スタート時間を短縮するためのいくつかの最適化があります。これには、既に関数ホストと言語プロセスが実行されている、事前ウォーミングされたプレースホルダー関数からのプルが含まれます。 |
+| **[Premium プラン](#premium-plan)** | コールド スタートを回避するためにインスタンスを常にウォーム状態に維持します。 |
+| **[専用プラン](#app-service-plan)** <sup>1</sup> | 専用プランで実行していると、Functions ホストを継続的に実行できます。つまり、コールド スタートは問題にならないということです。 |
+| **[ASE](#app-service-plan)** <sup>1</sup> | 専用プランで実行していると、Functions ホストを継続的に実行できます。つまり、コールド スタートは問題にならないということです。 |
+| **[Kubernetes](functions-kubernetes-keda.md)**  | KEDA の構成に依存します。 アプリは、常に実行可能でコールド スタートにならないよう設定したり、新しいイベントの際にコールド スタートになる 0 にスケーリングされるよう設定することもできます。 
+
+<sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。
+
+### <a name="service-limits"></a>サービスの制限
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]
+
+### <a name="networking-features"></a>ネットワーク機能
+
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
+
+### <a name="billing"></a>課金
+
+| | | 
+| --- | --- |
+| **[従量課金プラン](#consumption-plan)** | 関数が実行された時間に対してだけ支払います。 課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 |
+| **[Premium プラン](#premium-plan)** | Premium プランは、必要なインスタンスや事前ウォーミングされたインスタンスで使用されたコア秒数とメモリに基づいています。 プランごとに少なくとも 1 つのインスタンスが常にウォーム状態である必要があります。 このプランでは、より予測可能な価格が提供されます。 |
+| **[専用プラン](#app-service-plan)** <sup>1</sup> | App Service プランの関数アプリに対する支払いは、Web アプリなどの他の App Service リソースの場合と同じです。|
+| **[ASE](#app-service-plan)** <sup>1</sup> | インフラストラクチャの支払いを行うための ASE には一定の月額料金があり、ASE のサイズが変化しても料金は変わりません。 それに加えて、App Service プランの vCPU あたりのコストがあります。 ASE でホストされているすべてのアプリは、分離された価格 SKU に含まれます。 |
+| **[Kubernetes](functions-kubernetes-keda.md)**| お支払いは Kubernetes クラスターのコストだけです。関数に対する追加の課金はありません。 関数アプリは、通常のアプリと同じように、クラスターのアプリケーションのワークロードとして実行されます。 |
+
+<sup>1</sup> 各種 App Service プラン オプションに固有の制限については、[App Service プランの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)に関する記事を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
++ [クイック スタート: Visual Studio Code を使用して Azure Functions プロジェクトを作成する](functions-create-first-function-vs-code.md)
++ [Azure Functions のデプロイ テクノロジ](functions-deployment-technologies.md) 
++ [Azure Functions 開発者ガイド](functions-reference.md)

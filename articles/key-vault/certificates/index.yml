@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 5a716ad70a31342467eb0944b3e6d1f5d80d5166
+  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81423532"
+  ms.lasthandoff: 08/27/2020
+  ms.locfileid: "89000908"
 landingContent:
 - title: 証明書
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Key Vault 証明書とは
       url: about-certificates.md
+    - text: 論理的な削除に関する重要なニュース
+      url: ../general/soft-delete-change.md
     - text: Key Vault 証明書の概要
       url: certificate-scenarios.md
     - text: 証明書の作成方法
@@ -44,6 +46,18 @@ landingContent:
       url: quick-create-python.md
     - text: Key Vault に証明書をインポートする
       url: tutorial-import-certificate.md
+- title: Key Vault 証明書用クライアント ライブラリ
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET クライアント ライブラリ
+      url: /dotnet/api/azure.security.keyvault.certificates?view=azure-dotnet
+    - text: Python クライアント ライブラリ
+      url: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
+    - text: Java クライアント ライブラリ
+      url: https://apidocs.chargebee.com/docs/api?lang=java#client_library
+    - text: Node.js クライアント ライブラリ
+      url: /javascript/api/@azure/keyvault-certificates/?view=azure-node-latest
 - title: Key Vault の詳細
   linkLists:
   - linkListType: overview
@@ -53,7 +67,7 @@ landingContent:
     - text: 基本的な概念
       url: ../general/basic-concepts.md
     - text: 論理的な削除の概要
-      url: ../general/overview-soft-delete.md
+      url: ../general/soft-delete-overview.md
     - text: セキュリティの概要
       url: ../general/overview-security.md
 - title: Microsoft Learn

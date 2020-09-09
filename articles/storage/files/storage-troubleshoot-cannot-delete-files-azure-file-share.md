@@ -7,15 +7,15 @@ ms.author: kartup
 manager: dcscontentpm
 ms.date: 10/25/2019
 ms.service: storage
-ms.subservice: common
+ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c50f54491e0284005c4b762b0c4b35a8460f5ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74196472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511965"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure ファイル共有 - Azure ファイル共有からファイルを削除できない
 

@@ -1,18 +1,18 @@
 ---
 title: データ ソースからのインポート - QnA Maker
-description: QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペアと、各 QnA セットに関連付けられている省略可能なメタデータで構成されます。
+description: QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペアと、各 QnA ペアに関連付けられている省略可能なメタデータで構成されます。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: eaa19cb2abf84f31cda9d8894e91ec1540980b27
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804284"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993101"
 ---
 # <a name="importing-from-data-sources"></a>データ ソースからのインポート
 
-ナレッジ ベースは、パブリック URL とファイルで取り込まれる質問と回答のセットで構成されます。
+ナレッジ ベースは、パブリック URL とファイルで取り込まれる質問と回答のペアで構成されます。
 
 ## <a name="data-source-locations"></a>データ ソースの場所
 
@@ -26,7 +26,7 @@ ms.locfileid: "80804284"
 
 ## <a name="structured-data-format-through-import"></a>インポートでの構造化データ形式
 
-ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートには、質問と回答を含む構造化された `.tsv` ファイルが必要です。 この情報によって、QnA Maker は質問とその回答のセットをグループ化し、その帰属先となるデータ ソースを特定することができます。
+ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートには、質問と回答を含む構造化された `.tsv` ファイルが必要です。 この情報によって、QnA Maker は質問とその回答のペアをグループ化し、その帰属先となるデータ ソースを特定することができます。
 
 | Question  | Answer  | source| メタデータ (1 つのキー: 1 つの値) |
 |-----------|---------|----|---------------------|
@@ -58,7 +58,7 @@ ms.locfileid: "80804284"
 
 `.tsv` ファイルで QnA ペアを表す方法が不明な場合:
 * この [GitHub からダウンロードできるサンプル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)を使用します
-* または、QnA Maker ポータルでセットを作成し、保存してから、セットを表す方法の例としてナレッジ ベースをエクスポートします。
+* または、QnA Maker ポータルでペアを作成し、保存してから、ペアを表す方法の例としてナレッジ ベースをエクスポートします。
 
 ## <a name="next-steps"></a>次のステップ
 

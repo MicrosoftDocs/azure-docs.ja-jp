@@ -1,19 +1,19 @@
 ---
 title: Azure Maps Route Service のベスト プラクティス | Microsoft Azure Maps
-description: Microsoft Azure Maps から Route Service を使用して効率的にルーティングする方法について説明します。
-author: philmea
-ms.author: philmea
+description: Microsoft Azure Maps から Route Service を使用して車両をルーティングする方法について説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335410"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132213"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route Service のベスト プラクティス
 
@@ -31,7 +31,7 @@ Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) の R
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Maps API を呼び出すには、Azure Maps アカウントとキーが必要です。 詳細については、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)および[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)を参照してください。 プライマリ キーは、プライマリ サブスクリプション キーまたはサブスクリプション キーとも呼ばれます。
+Azure Maps API を呼び出すには、Azure Maps アカウントとキーが必要です。 詳細については、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)および[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)を参照してください。 プライマリ キーは、プライマリ サブスクリプション キーまたはサブスクリプション キーとも呼ばれます。
 
 Azure Maps での認証の詳細については、[Azure Maps での認証の管理](./how-to-manage-authentication.md)を参照してください。 Route Service の範囲の詳細については、[ルーティングの対象範囲](routing-coverage.md)に関するページを参照してください。
 

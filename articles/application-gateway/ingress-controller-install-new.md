@@ -4,15 +4,15 @@ description: この記事では、新しい Application Gateway を使用して 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807156"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -66,7 +66,7 @@ ms.locfileid: "80585896"
     }
     EOF
     ```
-    **RBAC** が有効のクラスターをデプロイするには、`aksEnabledRBAC` フィールドを `true` に設定します
+    **RBAC** が有効のクラスターをデプロイするには、`aksEnableRBAC` フィールドを `true` に設定します
 
 ## <a name="deploy-components"></a>コンポーネントをデプロイする
 この手順では、サブスクリプションに次のコンポーネントを追加します。

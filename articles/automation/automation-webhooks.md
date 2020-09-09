@@ -1,28 +1,27 @@
 ---
-title: webhook を使用した Azure Automation の Runbook の開始
-description: HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。
+title: Webhook から Azure Automation の Runbook を開始する
+description: この記事では、Webhook を使用して、HTTP 呼び出しから Azure Automation の Runbook を開始する方法を説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/16/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015104"
 ---
-# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
+# <a name="start-a-runbook-from-a-webhook"></a>webhook から Runbook を開始する
 
-Webhook を使用すると、外部サービスは、1 つの HTTP 要求により、Azure Automation で特定の Runbook を開始することができます。 外部サービスには、Azure DevOps Services、GitHub、Azure Monitor ログ、およびカスタム アプリケーションが含まれます。 このようなサービスは、Webhook を使用することで、Azure Automation API を使用して完全なソリューションを実装せずに、Runbook を開始できます。 Webhook と、Runbook の他の 開始方法を比較するには、「[Azure Automation で Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
+Webhook を使用すると、外部サービスは、1 つの HTTP 要求により、Azure Automation で特定の Runbook を開始することができます。 外部サービスには、Azure DevOps Services、GitHub、Azure Monitor ログ、およびカスタム アプリケーションが含まれます。 このようなサービスでは、Webhook を使用することで、完全な Azure Automation API を実装せずに、Runbook を開始できます。 Webhook と、Runbook の他の 開始方法を比較するには、「[Azure Automation で Runbook を開始する](./start-runbooks.md)」を参照してください。
 
 > [!NOTE]
 > Webhook を使用して Python Runbook を開始することはできません。
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
+Webhook を使用する TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)」のセクションを参照してください。
 
 ## <a name="webhook-properties"></a>Webhook のプロパティ
 
@@ -84,9 +83,13 @@ Webhook 以外のメカニズムを使用して `WebhookData` を定義する Ru
 
 Webhook のセキュリティは、Webhook の呼び出しを許可するセキュリティ トークンを含む URL のプライバシーに依存します。 Azure Automation は、正しい URL に対して要求が行われている限り、いかなる認証も実行しません。 この理由により、クライアントは、要求を検証する代替方法を使用せずに機密性の高い操作を実行する Runbook には Webhook を使用しないようにする必要があります。
 
-Webhook で呼び出すかどうかを判断するためのロジックを Runbook 内に含めることができます。 `WebhookData` パラメーターの `WebhookName` プロパティを Runbook に検査させます。 Runbook は、`RequestHeader` と `RequestBody` のプロパティで特定の情報を検索することにより、追加の検証を実行できます。
+次の戦略を考えます。
 
-もう 1 つの方法は、Webhook 要求の受信時に外部条件の検証を Runbook に実行させることです。 たとえば、GitHub リポジトリへの新しいコミットが発生するたびに GitHub によって呼び出される Runbook について考えてみましょう。 Runbook は、GitHub に接続して、新しいコミットが発生したことを確認してから続行することができます。
+* Webhook で呼び出すかどうかを判断するためのロジックを Runbook 内に含めることができます。 `WebhookData` パラメーターの `WebhookName` プロパティを Runbook に検査させます。 Runbook は、`RequestHeader` と `RequestBody` のプロパティで特定の情報を検索することにより、追加の検証を実行できます。
+
+* Webhook 要求の受信時に外部条件の検証を Runbook に実行させます。 たとえば、GitHub リポジトリへの新しいコミットが発生するたびに GitHub によって呼び出される Runbook について考えてみましょう。 Runbook は、GitHub に接続して、新しいコミットが発生したことを確認してから続行することができます。
+
+* Azure Automation では、Azure 仮想ネットワーク サービス タグ、特に [GuestAndHybridManagement](../virtual-network/service-tags-overview.md) がサポートされています。 サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義し、仮想ネットワーク内から Webhook をトリガーできます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用できます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 **GuestAndHybridManagement** を指定することで、Automation サービスのトラフィックを許可または拒否できます。 このサービス タグでは、IP 範囲を特定のリージョンに制限することによる、より詳細な制御はサポートされていません。
 
 ## <a name="create-a-webhook"></a>webhook を作成する
 
@@ -104,7 +107,8 @@ Webhook で呼び出すかどうかを判断するためのロジックを Runbo
    ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
 
 1. **[パラメーター]** をクリックし、Runbook のパラメーターの値を指定します。 Runbook に必須のパラメーターがある場合、値を指定しない限り、Webhook を作成することはできません。
-1. **[作成]** をクリックして Webhook を作成します。
+
+2. **[作成]** をクリックして Webhook を作成します。
 
 ## <a name="use-a-webhook"></a>Webhook を使用する
 
@@ -129,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-Runbook ジョブの完了時期と Webhook からの完了状態は、クライアントからは判別できません。 この情報は、[Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) や [Azure Automation API](/rest/api/automation/job) などの別のメカニズムでジョブ ID を使用して確認できます。
+Runbook ジョブの完了時期と Webhook からの完了状態は、クライアントからは判別できません。 この情報は、[Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) や [Azure Automation API](/rest/api/automation/job) などの別のメカニズムでジョブ ID を使用して確認できます。
 
 ## <a name="renew-a-webhook"></a>Webhook を更新する
 
@@ -147,7 +151,7 @@ Webhook が作成されると、有効期間が 10 年に設定され、それ�
 次の例の Runbook では、webhook データを受け入れ、要求本文で指定された仮想マシンを起動します。 この Runbook をテストするには、Automation アカウントの **[Runbook]** で、 **[Runbook の作成]** をクリックします。 Runbook を作成する方法がわからない場合は、[Runbook の作成](automation-quickstart-create-runbook.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
 
 ```powershell
 param
@@ -240,4 +244,4 @@ $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Automation を使用して Azure アラートに対処する方法については、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」をご覧ください。
+* アラートから Runbook をトリガーするには、「[Azure Automation Runbook をトリガーするアラートを使用する](automation-create-alert-triggered-runbook.md)」を参照してください。

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70139137"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195880"
 ---
 # <a name="use-case---product-recommendations"></a>使用事例 - 製品に関する推奨事項
 Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  このスイートの詳細については、 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) のページを参照してください。 このドキュメントでは、Azure ユーザーが Azure Data Factory と他の Cortana Intelligence コンポーネント サービスを使用して、既に解決および実装している一般的な使用事例について説明します。
@@ -41,7 +41,7 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 ## <a name="solution-overview"></a>ソリューションの概要
 この使用事例は、実在の Azure ユーザーが解決および実装したものです。このユーザーは、Azure Data Factory と他の Cortana Intelligence コンポーネント サービス ([HDInsight](https://azure.microsoft.com/services/hdinsight/) や [Power BI](https://powerbi.microsoft.com/) など) を使用しています。
 
-このオンライン小売業者は、ワークフロー全体のデータ ストレージ オプションとして、Azure BLOB ストア、オンプレミスの SQL サーバー、Azure SQL DB、およびリレーショナル データ マートを使用しています。  BLOB ストアには、顧客情報、顧客行動データ、および製品情報データが含まれています。 製品情報データには、オンプレミスの SQL データ ウェアハウスに格納された製品ブランド情報と製品カタログが含まれています。 
+このオンライン小売業者は、ワークフロー全体のデータ ストレージ オプションとして、Azure BLOB ストア、オンプレミスの SQL Server、Azure SQL Database、リレーショナル データ マートを使用しています。  BLOB ストアには、顧客情報、顧客行動データ、および製品情報データが含まれています。 製品情報データには、オンプレミスの SQL データ ウェアハウスに格納された製品ブランド情報と製品カタログが含まれています。 
 
 すべてのデータは結合され、製品推奨システムに取り込まれます。ユーザーが Web サイトで製品を閲覧すると、顧客の関心と操作に基づいて個人用に設定された推奨が提供されます。 また、特定の顧客に関連付けられていない Web サイト全体の使用パターンに基づいて、顧客が閲覧している製品に関連する製品も表示されます。
 

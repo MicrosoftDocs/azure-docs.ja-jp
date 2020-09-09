@@ -3,15 +3,15 @@ title: Azure portal を使用して Azure 内部ロード バランサーを別�
 description: Azure portal を使用して Azure 内部ロード バランサーを Azure リージョン間で移動するには、Azure Resource Manager テンプレートを使用します
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb3605249578b15d67bdd9764490d61812b21c18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75638809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808438"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure 内部ロード バランサーを別のリージョンに移動する
 

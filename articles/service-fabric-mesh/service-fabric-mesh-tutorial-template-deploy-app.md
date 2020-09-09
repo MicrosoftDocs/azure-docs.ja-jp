@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75494943"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248392"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -171,7 +171,7 @@ Result
 ## <a name="retrieve-credentials-for-the-registry"></a>レジストリの資格情報を取得する
 
 > [!IMPORTANT]
-> 運用環境では、ACR インスタンスで管理者ユーザーを有効にしないでください。 ここでは便宜上行っています。 運用環境では、ユーザーとシステム両方の認証に[サービス プリンシパル](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal)を使用します。
+> 運用環境では、ACR インスタンスで管理者ユーザーを有効にしないでください。 ここでは便宜上行っています。 運用環境では、ユーザーとシステム両方の認証に[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用します。
 
 テンプレートを使用して作成されたレジストリからコンテナー インスタンスをデプロイするには、デプロイの間にレジストリの資格情報を指定する必要があります。 最初に、次のコマンドを使用して、レジストリの管理者ユーザーを有効にします。
 
@@ -191,7 +191,7 @@ az acr credential show --name myContainerRegistry --query "passwords[0].value"
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>テンプレート ファイルとパラメーター ファイルをダウンロードして調べる
 
-Service Fabric Mesh アプリケーションは、Azure Resource Manager (RM) テンプレートを使用してデプロイおよび管理できる Azure リソースです。 Azure ソリューションのデプロイと管理に関する概念に精通していない場合は、「[Azure Resource Manager の概要](/azure/azure-resource-manager/resource-group-overview)」および「[Azure Resource Manager テンプレートの構造と構文の詳細](/azure/azure-resource-manager/resource-group-authoring-templates)」をご覧ください。
+Service Fabric Mesh アプリケーションは、Azure Resource Manager (RM) テンプレートを使用してデプロイおよび管理できる Azure リソースです。 Azure ソリューションのデプロイと管理に関する概念に精通していない場合は、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」および「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)」をご覧ください。
 
 このチュートリアルでは、例として To Do List サンプルを使います。  新しいテンプレート ファイルとパラメーター ファイルを作成する代わりに、[mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルをダウンロードします。
 

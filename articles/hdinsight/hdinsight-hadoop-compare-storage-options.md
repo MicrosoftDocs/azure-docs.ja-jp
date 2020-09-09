@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ce1c6bdfb38e37c18a18cf970d2dd08683967da3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536750"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -63,6 +63,12 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 > [!NOTE]
 > Data Lake Storage Gen2 プライマリ ストレージは、Spark 2.1 または 2.2 クラスターではサポートされていません。
 
+## <a name="data-replication"></a>データのレプリケーション
+
+Azure HDInsight では顧客データを格納しません。 クラスターでの主な格納手段は、それに関連付けられているストレージ アカウントです。 クラスターを既存のストレージ アカウントにアタッチすることも、クラスターの作成プロセス中に新しいストレージ アカウントを作成することもできます。 新しいアカウントが作成されると、そのアカウントはローカル冗長ストレージ (LRS) アカウントとして作成され、リージョン内データ所在地要件 ([セキュリティ センター](https://azuredatacentermap.azurewebsites.net)で指定されたものを含む) を満たします。
+
+HDInsight が 1 つのリージョンにデータを格納するように正しく構成されていることを検証するには、HDInsight に関連付けられているストレージ アカウントが LRS であるか、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net)に記載された別のストレージ オプションであることを確認します。
+ 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Storage の概要](./overview-azure-storage.md)

@@ -2,22 +2,22 @@
 title: 'Azure ExpressRoute: QoS の要件'
 description: このページでは、QoS を構成および管理するための詳細な要件を示します。 Skype for Business/音声サービスについて説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: cherylmc
-ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 871af5b767e8cfe10db3a0a1c15c47340e25581f
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74080095"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395028"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS の要件
 Skype for Business には、特化した QoS 処理を必要とするさまざまなワークロードがあります。 ExpressRoute で音声サービスを使用する場合、以下の要件に従う必要があります。
 
-![](./media/expressroute-qos/expressroute-qos.png)
+![ExpressRoute を通過する音声サービス示す図。](./media/expressroute-qos/expressroute-qos.png)
 
 > [!NOTE]
 > QoS 要件は Microsoft ピアリングにのみ適用されます。 Azure パブリック ピアリングと Azure プライベート ピアリングで受信されたネットワーク トラフィックの DSCP 値は、0 にリセットされます。 

@@ -3,12 +3,12 @@ title: Azure Site Recovery での復旧計画の作成/カスタマイズ
 description: Azure Site Recovery サービスを使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする方法について説明します。
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485335"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 
@@ -29,9 +29,9 @@ ms.locfileid: "76705838"
    (VMM によって管理される) Hyper-V から Azure  | VMM サーバーを選択します | Azure を選択します
   
     次のことを考慮してください。
-    -  ソースの場所から Azure へのフェールオーバーにのみ復旧計画を使用できます。 Azure からのフェールバックに復旧計画を使用することはできません。
-    - ソースの場所には、フェールオーバーと復旧が有効になったマシンが必要になります。 
-    - 復旧計画には、ソースとターゲットが同一のマシンを含めることができます。 
+    - Azure へのフェールオーバーと Azure からのフェールバックの両方に復旧計画を使用できます。
+    - ソースの場所には、フェールオーバーと復旧が有効になったマシンが必要になります。
+    - 復旧計画には、ソースとターゲットが同一のマシンを含めることができます。
     - VMM によって管理される VMware VM と Hyper-V VM を同じ計画に含めることができます。
     - VMware VM と物理サーバーを同じ計画に含めることができます。
 
@@ -53,7 +53,7 @@ ms.locfileid: "76705838"
 
 スクリプトまたは手動アクションを追加することで、復旧計画をカスタマイズできます。 以下の点に注意してください。
 
-- Azure にレプリケートする場合、Azure Automation の Runbook を復旧計画に組み込むことができます。 詳細については、[こちら](site-recovery-runbook-automation.md)をご覧ください。
+- Azure にレプリケートする場合、Azure Automation の Runbook を復旧計画に組み込むことができます。 [詳細については、こちらを参照してください](site-recovery-runbook-automation.md)。
 - System Center の VMM によって管理される Hyper-V の仮想マシンをレプリケートする場合、オンプレミスの VMM サーバーにスクリプトを作成し、それを復旧計画に含めることができます。
 - スクリプトを追加すると、グループに対して新しい一連のアクションが追加されます。 たとえば、グループ 1 の前処理ステップ セットが "*グループ 1: 前処理ステップ*" という名前で作成されます。 すべての前処理ステップが、このセット内に一覧表示されます。 プライマリ サイトにスクリプトを追加できるのは、VMM サーバーがデプロイされている場合のみです。
 - 手動アクションを追加した場合、復旧計画を実行すると、手動アクションを挿入した位置で停止します。 ダイアログ ボックスで、手動アクションが完了したことを指定するように求められます。
@@ -76,7 +76,7 @@ ms.locfileid: "76705838"
     1. アクションの名前を入力し、アクションの手順を入力します。 これらの手順は、フェールオーバーを実行しているユーザーに表示されます。
     1. すべての種類のフェールオーバー (テスト、フェールオーバー、計画されたフェールオーバー (該当する場合)) にその手動アクションを追加するかどうかを指定します。 次に、 **[OK]** をクリックします
 4. スクリプトを追加する場合は、次の操作を行います。
-    1. VMM スクリプトを追加する場合、 **[Failover to VMM script]\(VMM へのフェールオーバー スクリプト\)** を選択して、 **[スクリプト パス]** に共有の相対パスを入力します。 たとえば、共有が \\\<VMMServerName>\MSSCVMMLibrary\RPScripts に配置されている場合は、\RPScripts\RPScript.PS1 のパスを指定します。
+    1. VMM スクリプトを追加する場合、 **[Failover to VMM script]\(VMM へのフェールオーバー スクリプト\)** を選択して、 **[スクリプト パス]** に共有の相対パスを入力します。 たとえば、共有が \\\<VMMServerName>\MSSCVMMLibrary\RPScripts に配置されている場合は、パスとして「\RPScripts\RPScript.PS1」と入力します。
     1. Azure Automation Runbook を追加する場合、Runbook が配置されている **Azure Automation アカウント**を指定し、適切な **Azure Runbook スクリプト**を選択します。
 5. 復旧計画のテスト フェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
 

@@ -3,16 +3,16 @@ title: オンプレミスの NAS を Azure File Sync に移行する
 description: オンプレミスのネットワーク接続ストレージ (NAS) の場所から、Azure File Sync と Azure ファイル共有を使用してハイブリッド クラウド デプロイにファイルを移行する方法について説明します。
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7b0c7a30580d3863a78e85b8b45287a598bbf394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510307"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用してネットワーク接続ストレージ (NAS) からハイブリッド クラウド デプロイに移行する
 
@@ -124,7 +124,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG:\<ファイル名\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       状態を UNICODE 形式でログ ファイルに出力します (既存のログを上書きします)。

@@ -1,107 +1,86 @@
 ---
-title: 'チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合 | Microsoft Docs'
-description: Azure Active Directory と TigerText Secure Messenger の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と TigerConnect Secure Messenger の統合 | Microsoft Docs
+description: Azure Active Directory と TigerConnect Secure Messenger の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 03f1e128-5bcb-4e49-b6a3-fe22eedc6d5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/29/2019
+ms.date: 08/21/2020
 ms.author: jeedes
-ms.openlocfilehash: ea3bda1dd51a7c3a2e5e3f8b669d7138898f1595
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 995cd8470d4fbbf3dc340139a86275593a3d5d28
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67088671"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815220"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合
+# <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>チュートリアル:Azure Active Directory と TigerConnect Secure Messenger の統合
 
-このチュートリアルでは、TigerText Secure Messenger と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、TigerConnect Secure Messenger と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-TigerText Secure Messenger と Azure AD の統合には、次の利点があります。
+TigerConnect Secure Messenger と Azure AD の統合には、次の利点があります。
 
-* TigerText Secure Messenger にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで TigerText Secure Messenger に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* TigerConnect Secure Messenger にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで TigerConnect Secure Messenger に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
 サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-TigerText Secure Messenger と Azure AD の統合を構成するには、次のものが必要です。
+TigerConnect Secure Messenger と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-* TigerText Secure Messenger のシングル サインオンが有効なサブスクリプション。
+* シングル サインオンが有効になった TigerConnect Secure Messenger サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストし、TigerText Secure Messenger を Azure AD と統合します。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストし、TigerConnect Secure Messenger を Azure AD と統合します。
 
-TigerText Secure Messenger では、SP によって開始されるシングル サインオン (SSO) がサポートされます。
+* TigerConnect Secure Messenger では、**SP** Initiated SSO がサポートされます
+* TigerConnect Secure Messenger を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
-## <a name="add-tigertext-secure-messenger-from-the-azure-marketplace"></a>Azure Marketplace からの TigerText Secure Messenger の追加
+## <a name="adding-tigerconnect-secure-messenger-from-the-gallery"></a>ギャラリーからの TigerConnect Secure Messenger の追加
 
-Azure AD への TigerText Secure Messenger の統合を構成するには、Azure Marketplace からマネージド SaaS アプリの一覧に TigerText Secure Messenger を追加する必要があります。
+Azure AD への TigerConnect Secure Messenger の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に TigerConnect Secure Messenger を追加する必要があります。
 
-1. [Azure portal](https://portal.azure.com?azure-portal=true) にサインインする
-1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
-
-    ![[Azure Active Directory] オプション](common/select-azuread.png)
-
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TigerConnect Secure Messenger**」と入力します。
+1. 結果パネルから **[TigerConnect Secure Messenger]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-1. 新しいアプリケーションを追加するには、ウィンドウの上部の **[+ 新しいアプリケーション]** を選択します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TigerConnect Secure Messenge で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TigerConnect Secure Messenge 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-    ![[新しいアプリケーション] オプション](common/add-new-app.png)
+TigerConnect Secure Messenge で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. 検索ボックスに「**TigerText Secure Messenger**」と入力します。 検索結果で **[TigerText Secure Messenger]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[TigerConnect Secure Messenge の SSO の構成](#configure-tigerconnect-secure-messenger-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[TigerConnect Secure Messenge のテスト ユーザーの作成](#create-a-tigerconnect-secure-messenger-test-user)** - Britta Simon という Azure AD ユーザーにリンクされている Britta Simon というユーザーが TigerConnect Secure Messenge に存在するようにします。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![結果一覧の TigerText Secure Messenger](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TigerText Secure Messenger で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TigerText Secure Messenger 内の関連ユーザーとの間にリンク関係を確立する必要があります。
-
-TigerText Secure Messenger で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[TigerText Secure Messenger のシングル サインオンの構成](#configure-tigertext-secure-messenger-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[TigerText Secure Messenger のテスト ユーザーの作成](#create-a-tigertext-secure-messenger-test-user)** - Britta Simon という Azure AD ユーザーにリンクされている Britta Simon というユーザーが TigerText Secure Messenger に存在するようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-TigerText Secure Messenger で Azure AD シングル サインオンを構成するには、次の手順に従います。
+TigerConnect Secure Messenger で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **TigerText Secure Messenger** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **TigerConnect Secure Messenger** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-    ![シングル サインオン オプションを構成する](common/select-sso.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[シングル サインオン方式の選択]** ウィンドウで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-1. **[基本的な SAML 構成]** ウィンドウで、次の手順に従います。
-
-    ![[TigerText Secure Messenger のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
     1. **[サインオン URL]** ボックスに、URL を入力します。
 
@@ -112,88 +91,69 @@ TigerText Secure Messenger で Azure AD シングル サインオンを構成す
        `https://saml-lb.tigertext.me/v1/organization/<instance ID>`
 
     > [!NOTE]
-    > **[識別子 (エンティティ ID)]** の値は実際の値ではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[TigerText Secure Messenger サポート チーム](mailto:prosupport@tigertext.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ウィンドウに示されているパターンを参照することもできます。
+    > **[識別子 (エンティティ ID)]** の値は実際の値ではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[TigerConnect Secure Messenger サポート チーム](mailto:prosupport@tigertext.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ウィンドウに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択し、特定のオプションの**フェデレーション メタデータ XML** をダウンロードします。
 
     ![フェデレーション メタデータ XML のダウンロード オプション](common/metadataxml.png)
 
-1. **[TigerText Secure Messenger のセットアップ]** セクションに、必要な URL (複数可) をコピーします。
-
-   * **ログイン URL**
-   * **Azure AD 識別子**
-   * **ログアウト URL**
+1. **[TigerConnect Secure Messenger のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="configure-tigertext-secure-messenger-single-sign-on"></a>TigerText Secure Messenger シングル サインオンの構成
-
-TigerText Secure Messenger 側でシングル サインオンを構成するには、ダウンロードしたフェデレーション メタデータ XML と Azure portal からコピーした適切な URL を [TigerText Secure Messenger サポート チーム](mailto:prosupport@tigertext.com)に送信する必要があります。 TigerText Secure Messenger チームは、SAML SSO 接続が両方の側で正しく設定されていることを確認します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure ポータルで Britta Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]**    >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザー] と [すべてのユーザー] オプション](common/users.png)
-
-1. 画面の上部にある **[+ 新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] オプション](common/new-user.png)
-
-1. **[ユーザー]** ウィンドウで、次の手順を実行します。
-
-    ![[ユーザー] ウィンドウ](common/user-properties.png)
-
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-  
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
-
-    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-
-    1. **作成** を選択します。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に TigerText Secure Messenger へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に TigerConnect Secure Messenger へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[TigerText Secure Messenger]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[TigerConnect Secure Messenger]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. アプリケーションの一覧で **[TigerText Secure Messenger]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![アプリケーションの一覧の TigerText Secure Messenger](common/all-applications.png)
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-1. 左側のウィンドウの **[管理]** で、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-    ![[ユーザーとグループ] オプション](common/users-groups-blade.png)
+## <a name="configure-tigerconnect-secure-messenger-sso"></a>TigerConnect Secure Messenger SSO の構成
 
-1. **[+ ユーザーの追加]** を選択し、 **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+TigerConnect Secure Messenger 側でシングル サインオンを構成するには、ダウンロードしたフェデレーション メタデータ XML と Azure portal からコピーした適切な URL を [TigerConnect Secure Messenger サポート チーム](mailto:prosupport@tigertext.com)に送信する必要があります。 TigerConnect Secure Messenger チームは、SAML SSO 接続が両方の側で正しく設定されていることを確認します。
 
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+## <a name="create-a-tigerconnect-secure-messenger-test-user"></a>TigerConnect Secure Messenger のテスト ユーザーの作成
 
-1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** の一覧で **[Britta Simon]** を選択し、ウィンドウの下部にある **[選択]** を選択します。
+このセクションでは、TigerConnect Secure Messenger で Britta Simon というユーザーを作成します。 [TigerConnect Secure Messenger サポート チーム](mailto:prosupport@tigertext.com)と協力して、TigerConnect Secure Messenger にユーザーとして Britta Simon を追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに適したロールを選択します。 ウィンドウの下部で、 **[選択]** を選択します。
-
-1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
-
-### <a name="create-a-tigertext-secure-messenger-test-user"></a>TigerText Secure Messenger のテストユーザーの作成
-
-このセクションでは、TigerText Secure Messenger で Britta Simon というユーザーを作成します。 [TigerText Secure Messenger サポート チーム](mailto:prosupport@tigertext.com)と協力して、TigerText Secure Messenger にユーザーとして Britta Simon を追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
-
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリ ポータルで **[TigerText Secure Messenger]** を選択すると、シングル サインオンを設定した TigerText Secure Messenger サブスクリプションに自動的にサインインします。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+マイ アプリ ポータルで **[TigerConnect Secure Messenger]** を選択すると、シングル サインオンを設定した TigerConnect Messenger サブスクリプションに自動的にサインインします。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-* [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で TigerConnect Secure Messenger を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

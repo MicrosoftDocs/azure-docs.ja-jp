@@ -2,19 +2,17 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.author: diberry
-ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604962"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133866"
 ---
 Cognitive Services には、[Language Understanding](../luis/what-is-luis.md) と [QnA Maker](../qnamaker/overview/overview.md) という 2 つの自然言語処理サービスが用意されており、それぞれ異なる目的があります。 各サービスをどのようなときに使用し、それぞれのサービスがどのように補完されるかについて説明します。
 
@@ -37,6 +35,9 @@ Language Understanding (LUIS) と QnA Maker では、さまざまな問題が解
 |LUIS|テキストの**ユーザーの意図を決定します** - サービスでは質問に対する回答は返されません。 たとえば、このテキストは `FindLocation` という意図と一致するものとして分類されます。<br>|
 |QnA Maker|カスタム ナレッジ ベースから**質問に対する回答が返されます**。 たとえば、このテキストは、`Get on the #9 bus and get off at Franklin street` という静的なテキストが回答になる質問として特定されます。|
 |||
+
+> [!div class="mx-imgBorder"]
+> ![LUIS と QnA Maker をそれぞれいつ使用するかについてのインフォグラフィック](./luis-qna-maker-together-decision.png)
 
 ## <a name="when-do-you-use-luis"></a>LUIS を使用する場合
 
@@ -70,7 +71,7 @@ QnA Maker のナレッジ ベースを構築しているのに、対象ドメイ
 
 いずれかのサービスで提供されるものより多くの情報が必要な場合、デシジョン ツリーを続けるには、クライアント アプリケーションで両方のサービスを使用して両方の応答を処理します。
 
-両方のサービスを使用するプロセスを構築するには、Bot Framework の **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** ツールを使用します。 このツールでは、子アプリとしての LUIS と QnA Maker の間でディスパッチを行う、意図の上位 LUIS アプリが構築されます。
+両方のサービスを使用するプロセスを構築するには、Bot Framework の **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** ツールを使用します。 このツールでは、子アプリとしての LUIS と QnA Maker の間でディスパッチを行う、意図の上位 LUIS アプリが構築されます。 LUIS、QnA Maker、Bot Framework との統合について詳しくは、[こちら](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs)を参照してください。
 
 この種のチャット ボットを実装するには、Bot Builder のサンプル「**NLP とディスパッチ**」を使用してください ([C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) または [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch))。
 

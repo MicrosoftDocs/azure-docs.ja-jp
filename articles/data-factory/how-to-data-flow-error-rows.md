@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254414"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローで SQL の切り捨てエラー行を処理する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Data Factory のマッピング データ フローを使用する際の一般的なシナリオとして、変換済みのデータを Azure SQL データベースに書き込むことが挙げられます。 このシナリオでは一般に、列の切り捨てが起こりやすく、そのようなエラー状態は回避する必要があります。 以降の手順に従って、書き込み先の文字列型列に収まらない列をログに記録するしくみを作れば、そのようなシナリオでもデータ フローを続行することができます。
+Data Factory でマッピング データ フローを使用する一般的なシナリオは、変換済みのデータを Azure SQL Database のデータベースに書き込むことです。 このシナリオでは一般に、列の切り捨てが起こりやすく、そのようなエラー状態は回避する必要があります。 以降の手順に従って、書き込み先の文字列型列に収まらない列をログに記録するしくみを作れば、そのようなシナリオでもデータ フローを続行することができます。
 
 ## <a name="scenario"></a>シナリオ
 
-1. 書き込み先の Azure SQL データベース テーブルには、"name" という ```nvarchar(5)``` 列があります。
+1. 書き込み先のデータベース テーブルには、"name" という ```nvarchar(5)``` 列があります。
 
 2. データ フロー内で、映画のタイトルをシンクから書き込み先の "name" 列にマッピングしたいと考えています。
 

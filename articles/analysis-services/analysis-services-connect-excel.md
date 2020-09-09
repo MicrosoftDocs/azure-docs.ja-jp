@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5c46c8b85af59efaf611300e2ab7129b3ef3cde
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361559"
 ---
 # <a name="connect-with-excel"></a>Excel を使用した接続
 
@@ -42,7 +42,7 @@ Excel でのサーバーへの接続は、Excel 2016 以降のデータの取得
 
 ## <a name="see-also"></a>参照
 
-[クライアント ライブラリ](analysis-services-data-providers.md)   
+[クライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [サーバーの管理](analysis-services-manage.md)     
 
 

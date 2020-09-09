@@ -7,14 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77580630"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846702"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
@@ -47,7 +48,7 @@ Azure ML リソースを管理するには、いくつかの方法がありま�
 - クライアント ID (作成されたトークンに関連付けられます)
 - クライアント シークレット (これは保護する必要があります)
 
-[Azure Machine Learning のリソースとワークフローの認証を設定する方法](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)に関する記事で説明されているように、サービス プリンシパルの作成に対する応答から、これらの値を取得する必要があります。 会社のサブスクリプションを使用している場合は、サービス プリンシパルを作成するアクセス許可がない可能性があります。 その場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)を使用する必要があります。
+これらの値は、サービス プリンシパルの作成に対する応答から取得する必要があります。 これらの値の取得については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)」で説明しています。 会社のサブスクリプションを使用している場合は、サービス プリンシパルを作成するアクセス許可がない可能性があります。 その場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)を使用する必要があります。
 
 トークンを取得するには:
 
@@ -199,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-実験の一覧を表示する場合はパスの先頭が `history/v1.0` であり、モデルの一覧を表示する場合はパスの先頭が `modelmanagement/v1.0` であることがわかります。 REST API はいくつかの操作グループに分割され、それぞれが個別のパスを持っています。 以下のリンクに記載されている API リファレンス ドキュメントでは、操作、パラメーター、さまざまな操作に対する応答コードが一覧表示されています。
+実験の一覧を表示する場合はパスの先頭が `history/v1.0` であり、モデルの一覧を表示する場合はパスの先頭が `modelmanagement/v1.0` であることがわかります。 REST API はいくつかの操作グループに分割され、それぞれが個別のパスを持っています。 
 
-|領域|Path|リファレンス|
-|-|-|-|
-|アーティファクト|artifact/v2.0/|[REST API リファレンス](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|データ ストア|datastore/v1.0/|[REST API リファレンス](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|ハイパーパラメーターの調整|hyperdrive/v1.0/|[REST API リファレンス](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|モデル|modelmanagement/v1.0/|[REST API リファレンス](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|実行履歴|execution/v1.0/ および history/v1.0/|[REST API リファレンス](https://docs.microsoft.com/rest/api/azureml/runs)|
+|領域|Path|
+|-|-|
+|Artifacts|/rest/api/azureml|
+|データ ストア|/azure/machine-learning/how-to-access-data|
+|ハイパーパラメーターの調整|hyperdrive/v1.0/|
+|モデル|modelmanagement/v1.0/|
+|実行履歴|execution/v1.0/ および history/v1.0/|
 
 次の一般的なパターンを使用して、REST API を調べることができます。
 

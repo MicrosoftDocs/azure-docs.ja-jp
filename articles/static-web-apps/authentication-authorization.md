@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: cb6b99351a5cb995d87b482b7e707a3913fd86f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85297071"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの認証と承認
 
@@ -118,7 +118,7 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 今後の要求でプラットフォームから個々のアプリに対してこの情報が提供されないようにするには、以下の URL へ要求を送信します。
 
 ```url
-https://<WEB_APP_DOMAIN_NAME>/identity/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
+https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
 
 ## <a name="system-folder"></a>システム フォルダー
@@ -154,6 +154,11 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 }
 ```
 
+### <a name="post-login-redirect"></a>ログイン後のリダイレクト
+
+ログイン後にユーザーが特定のページに戻るようにするには、`post_login_redirect_uri` クエリ文字列パラメーターに URL を指定します。
+
+
 ## <a name="logout"></a>Logout
 
 `/.auth/logout` ルートでは、Web サイトからユーザーをログアウトします。 次の例に示すように、サイト ナビゲーションにユーザーがログアウトできるリンクを追加することが可能です。
@@ -171,6 +176,10 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 }
 ```
 
+### <a name="post-logout-redirect"></a>ログアウト後のリダイレクト
+
+ログアウト後にユーザーが特定のページに戻るようにするには、`post_logout_redirect_uri` クエリ文字列パラメーターに URL を指定します。
+
 ## <a name="block-an-authorization-provider"></a>承認プロバイダーをブロックする
 
 承認プロバイダーを使用しないように、アプリを制限することができます。 たとえば、お使いのアプリ上で、[電子メール アドレスを公開するプロバイダー](#provider-user-details)のみに統一したい場合があります。
@@ -183,6 +192,10 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
   "statusCode": "404"
 }
 ```
+
+## <a name="restrictions"></a>制限
+
+一般的な制限事項と限度については、[クォータに関する記事](quotas.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

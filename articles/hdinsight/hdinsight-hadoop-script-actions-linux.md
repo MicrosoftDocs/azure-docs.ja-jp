@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767539"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082252"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -264,11 +264,15 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 環境変数を設定すると、次のステートメントで実行されます。
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
 VARIABLENAME は、変数の名前です。 変数にアクセスするには、`$VARIABLENAME` を使用します。 たとえば、PASSWORD という名前の環境変数として位置指定パラメーターで指定された値を割り当てるには、次のステートメントを使用します。
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
 以後のこの情報へのアクセスでは `$PASSWORD`が使用されます。
 
@@ -352,7 +356,9 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 
 *解決方法*:ファイルを ASCII として、または BOM なしの UTF-8 として保存します。 Linux または Unix システムで次のコマンドを使用して、BOM なしのファイルを作成することもできます。
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
 `INFILE` を BOM を含むファイルに置き換えます。 `OUTFILE` は、BOM なしのスクリプトを含む新しいファイルの名前にする必要があります。
 

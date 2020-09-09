@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/06/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ac46eb0119ac95cf09e48823686a6c563d8d4d4a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887365"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246121"
 ---
 .NET 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
 
@@ -23,29 +23,24 @@ ms.locfileid: "80887365"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[無料で作成](https://azure.microsoft.com/free/cognitive-services)できます。
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-
-## <a name="setting-up"></a>設定
-
-### <a name="create-an-azure-resource"></a>Azure リソースを作成する
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-### <a name="create-an-environment-variable"></a>環境変数を作成する
+## <a name="create-environment-variables"></a>環境変数を作成する
 
 >[!NOTE]
-> 2019 年 7 月 1 日より後に作成された非試用版リソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。 
+> 2019 年 7 月 1 日より後に作成されたリソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。
 
 作成したリソースのキーとエンドポイントを使用して、認証用に 2 つの環境変数を作成します。
 <!-- replace the below variable names with the names expected in the code sample.-->
-* `AUTOSUGGEST_SUBSCRIPTION_KEY` - 要求を認証するためのリソース キー。
-* `AUTOSUGGEST_ENDPOINT` - API 要求を送信するためのリソース エンドポイント。 以下のようになります。 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `AUTOSUGGEST_SUBSCRIPTION_KEY`:要求を認証するためのリソース キー。
+* `AUTOSUGGEST_ENDPOINT`:API 要求を送信するためのリソース エンドポイント。 `https://<your-custom-subdomain>.api.cognitive.microsoft.com` のようになります。
 
 ご利用のオペレーティング システムの手順に従ってください。
 <!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
+### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx AUTOSUGGEST_SUBSCRIPTION_KEY <replace-with-your-autosuggest-api-key>
@@ -54,7 +49,7 @@ setx AUTOSUGGEST_ENDPOINT <replace-with-your-autosuggest-api-endpoint>
 
 環境変数を追加したら、コンソール ウィンドウを再起動します。
 
-#### <a name="linux"></a>[Linux](#tab/linux)
+### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -63,7 +58,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
 
-#### <a name="macos"></a>[macOS](#tab/unix)
+### <a name="macos"></a>[macOS](#tab/unix)
 
 次のように `.bash_profile` を編集し、環境変数を追加します。
 
@@ -75,11 +70,11 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
 ***
 
-### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
+## <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
-好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。 
+好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`bing-autosuggest-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (*program.cs*) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`bing-autosuggest-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (*program.cs*) を使用する単純な "Hello World" C# プロジェクトが作成されます。
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
@@ -91,7 +86,7 @@ dotnet new console -n bing-autosuggest-quickstart
 dotnet build
 ```
 
-ビルドの出力に警告やエラーが含まれないようにする必要があります。 
+ビルドの出力に警告やエラーが含まれないようにする必要があります。
 
 ```console
 ...
@@ -133,7 +128,7 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+## <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Bing Autosuggest クライアント ライブラリをインストールします。
 
@@ -150,7 +145,7 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 * [クライアントを認証する](#authenticate-the-client)
 * [自動提案要求を送信する](#send-an-autosuggest-request)
 
-## <a name="authenticate-the-client"></a>クライアントを認証する
+### <a name="authenticate-the-client"></a>クライアントを認証する
 
 > [!NOTE]
 > このクイックスタートでは、`AUTOSUGGEST_SUBSCRIPTION_KEY` という名前の Bing Autosuggest キー用と `AUTOSUGGEST_ENDPOINT` という名前のエンドポイント用の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)してあることを前提としています。
@@ -170,9 +165,9 @@ async static Task RunQuickstart()
 }
 ```
 
-## <a name="send-an-autosuggest-request"></a>自動提案要求を送信する
+### <a name="send-an-autosuggest-request"></a>自動提案要求を送信する
 
-同じメソッド内でクライアントの [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) メソッドを使用して、クエリを Bing に送信します。 次に、[Suggestions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) 応答を反復処理し、最初の候補を印刷します。
+同じメソッド内でクライアントの [AutoSuggestMethodAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) メソッドを使用して、クエリを Bing に送信します。 次に、[Suggestions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) 応答を反復処理し、最初の候補を出力します。
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -210,8 +205,8 @@ dotnet run
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
-* [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure portal でリソース グループを削除する](../../../cognitive-services-apis-create-account.md#clean-up-resources)。
+* [Azure CLI でリソース グループを削除する](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>次のステップ
 

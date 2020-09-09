@@ -1,23 +1,23 @@
 ---
-title: Python
+title: デザイナーで Python スクリプトを実行する (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナーで Python を使用してデータを変換する方法について説明します。
+description: Azure Machine Learning デザイナー (プレビュー) で Python を使用してデータを変換する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer
-ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: conceptual
+ms.custom: how-to, designer, devx-track-python
+ms.openlocfilehash: 7cb6fc0f4f2c2d3f57588d8ef0412177f612ee02
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644465"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853128"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
 
 この記事では、[Python スクリプトの実行](algorithm-module-reference/execute-python-script.md)モジュールを使用して、Azure Machine Learning デザイナーにカスタム ロジックを追加する方法について説明します。 次の攻略ガイドでは、Pandas ライブラリを使用して簡単な特徴エンジニアリングを行います。
 
@@ -26,6 +26,8 @@ ms.locfileid: "83644465"
 既定の実行環境では、Python の Anaconda ディストリビューションが使用されます。 プレインストールされているパッケージの完全な一覧については、[「Python スクリプトの実行モジュール」のリファレンス](algorithm-module-reference/execute-python-script.md) ページを参照してください。
 
 ![Python 実行入力マップ](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>デザイナーで記述された Python を実行する
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982141"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504922"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
 
@@ -78,7 +78,7 @@ ms.locfileid: "82982141"
     }
     ```
 1. `galleries` オブジェクトで、`name` および `category` キーに、使用する値を入力します。 [パラメーター](#parameters)の詳細については、次のセクションを参照してください。
-2. この Azure Resource Manager テンプレートは、[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)、[コマンド ライン インターフェイス](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell) などを使用してデプロイします。
+2. この Azure Resource Manager テンプレートは、[Azure portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)、[コマンド ライン インターフェイス](../../azure-resource-manager/templates/deploy-cli.md)、[PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) などを使用してデプロイします。
 3. Azure portal を開き、Azure Resource Manager テンプレートで選択したブック ギャラリーに移動します。 テンプレートの例で、Azure Monitor ブック ギャラリーに移動します。
     1. Azure portal を開き、Azure Monitor に移動します。
     2. 目次から `Workbooks` を開く

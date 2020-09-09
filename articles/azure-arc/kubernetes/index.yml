@@ -1,47 +1,38 @@
 ### YamlMime:Landing
-title: Azure Arc 対応 Kubernetes
-summary: Azure Arc は、Azure Resource Manager の機能を、オンプレミス、マルチクラウド、エッジにわたるあらゆるインフラストラクチャに Kubernetes クラスターを拡張します。
+title: Azure Arc Kubernetes (プレビュー)
+summary: Azure Arc を使用して Kubernetes クラスターを管理する方法について説明します
 metadata:
-  title: Azure Arc 対応 Kubernetes
-  description: Kubernetes クラスターの管理方法について説明します
-  author: mlearned
-  manager: carmonm
+  title: Azure Arc Kubernetes
+  description: Azure でオンプレミスのマシンを管理する方法について説明します
+  author: 
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 05/19/2020
-  ms.author: mlearned
-  ms.openlocfilehash: a2ba3c789d6f7b6dea352468c01533b21c56812d
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.date: 06/26/2020
+  ms.author: 
+  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83661977"
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763767"
 landingContent:
-- title: Azure Arc の概要
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Arc の詳細
-      url: https://azure.microsoft.com/services/azure-arc/
 - title: Azure Arc を使用して Kubernetes クラスターを Azure に接続する
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Arc 対応 Kubernetes とは
-      url: ./overview.md
-  - linkListType: how-to-guide
+      url: overview.md
+  - linkListType: quickstart
     links:
     - text: クラスターの接続
-      url: ./connect-cluster.md
-    - text: 接続されたクラスターで GitOps を使用する
-      url: ./use-gitops-connected-cluster.md
-    - text: Helm で GitOps を使用する
-      url: ./use-gitops-with-helm.md
-    - text: Azure Monitor for containers を使用する
-      url: ./deploy-azure-monitor-for-containers.md
-    - text: Azure Policy を使用する
-      url: ./use-azure-policy.md
+      url: connect-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: GitOps を使用して構成をデプロイする
+      url: use-gitops-connected-cluster.md
+    - text: GitOps を使用して Helm グラフをデプロイする
+      url: use-gitops-with-helm.md
+    - text: Azure Policy を使用して GitOps を適用する
+      url: use-azure-policy.md
     - text: Azure IoT Edge ワークロードをデプロイする
-      url: ./deploy-azure-iot-edge-workloads.md
-    - text: サービス プリンシパルのオンボード
-      url: ./create-onboarding-service-principal.md
+      url: deploy-azure-iot-edge-workloads.md

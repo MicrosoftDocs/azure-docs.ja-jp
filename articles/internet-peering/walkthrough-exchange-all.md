@@ -5,15 +5,15 @@ description: Exchange ピアリングのチュートリアル
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: bb761afa6d8953b441b6c9541c43b73031719494
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec83778d034cfc512582eddf79995412dad405c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710730"
 ---
 # <a name="exchange-peering-walkthrough"></a>Exchange ピアリングのチュートリアル
 

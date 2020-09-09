@@ -4,12 +4,12 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: sstein
-ms.openlocfilehash: f11fbaccd38e8d6fed956c5cf476ed5a3732a68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1462f0dbeb45edeed964c24585b1fbc948f74233
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84013245"
 ---
 ## <a name="additional-resources"></a>その他のリソース
-まだ弾力性データベース ツールを使用していない場合は、 [ファースト ステップ ガイド](../articles/sql-database/sql-database-elastic-scale-get-started.md)を参照してください。  質問がある場合は、[SQL Database のフォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
+まだ弾力性データベース ツールを使用していない場合は、 [ファースト ステップ ガイド](../articles/azure-sql/database/elastic-scale-get-started.md)を参照してください。  ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)を参照してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。

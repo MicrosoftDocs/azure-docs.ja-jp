@@ -1,32 +1,34 @@
 ---
-title: マネージド イメージからカスタム プールをプロビジョニングする
-description: マネージド イメージ リソースから Batch プールを作成して、アプリケーション用のソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。
-ms.topic: article
-ms.date: 09/16/2019
-ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+title: マネージド イメージを使用してカスタム イメージ プールを作成する
+description: マネージド イメージから Batch カスタム イメージ プールを作成して、アプリケーション用のソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。
+ms.topic: conceptual
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117320"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851295"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>マネージド イメージを使用して仮想マシンのプールを作成する
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>マネージド イメージを使用してカスタム イメージ プールを作成する
 
-Batch プールの仮想マシン (VM) のカスタム イメージを作成するには、[Shared Image Gallery](batch-sig-images.md) または *マネージド イメージ* リソースのいずれかを使用できます。
+Batch プールの仮想マシン (VM) のカスタム イメージ プールを作成するために、マネージド イメージを使用して [Shared Image Gallery イメージ](batch-sig-images.md)を作成できます。 マネージド イメージだけを使用することもできますが、2019-08-01 以前の API バージョンでのみサポートされます。 
 
-> [!TIP]
+> [!IMPORTANT]
 > ほとんどの場合、Shared Image Gallery を使用してカスタム イメージを作成する必要があります。 Shared Image Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりすることができます。 詳細については、「[Shared Image Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
+
+このトピックでは、マネージド イメージだけを使用してカスタム イメージ プールを作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- **マネージド イメージ リソース**。 カスタム イメージを使用して仮想マシンのプールを作成するには、Batch アカウントと同じ Azure サブスクリプションおよびリージョンに、マネージド イメージ リソースを配置または作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。 マネージド イメージを準備するための情報と手順については、次のセクションをご覧ください。
+- **マネージド イメージ リソース**。 カスタム イメージを使用して仮想マシンのプールを作成するには、Batch アカウントと同じ Azure サブスクリプションおよびリージョンに、マネージド イメージ リソースを配置または作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
   - 作成する各プールには、一意のカスタム イメージを使用します。
-  - Batch API を使用してイメージでプールを作成するには、イメージの**リソース ID** を指定します。形式は次のとおりです。`/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` ポータルを使用するには、イメージの**名前**を使用します。  
+  - Batch API を使用してイメージでプールを作成するには、イメージの**リソース ID** を指定します。形式は次のとおりです。`/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`
   - マネージド イメージ リソースは、スケール アップするプールの有効期間を通じて存在する必要があり、プールを削除した後は削除することができます。
 
-- **Azure Active Directory (AAD) 認証**。 Batch クライアント API では、AAD 認証を使用する必要があります。 AAD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。
+- **Azure Active Directory (Azure AD) 認証**。 Batch クライアント API では、Azure AD 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。
 
-## <a name="prepare-a-custom-image"></a>カスタム イメージを準備する
+## <a name="prepare-a-managed-image"></a>マネージド イメージを準備する
 
 Azure では、次のものからマネージド イメージを準備できます。
 
@@ -34,16 +36,14 @@ Azure では、次のものからマネージド イメージを準備できま�
 - マネージド ディスクで汎用化された Azure VM
 - クラウドにアップロードされた、汎用化されたオンプレミス VHD
 
-カスタム イメージを使って Batch プールを安定的にスケーリングするには、最初の方法 (VM のディスクのスナップショットを使用する) *のみ*を使用してマネージド イメージを作成することをお勧めします。 VM を準備し、スナップショットを作成し、スナップショットからイメージを作成する手順については、次の説明をご覧ください。
+マネージド イメージを使って Batch プールを安定的にスケーリングするには、最初の方法 (VM のディスクのスナップショットを使用する) *のみ*を使用してマネージド イメージを作成することをお勧めします。 次の手順では、VM を準備し、スナップショットを作成し、スナップショットからマネージド イメージを作成する方法を説明します。
 
 ### <a name="prepare-a-vm"></a>VM を準備する
 
 イメージ用に新しい VM を作成する場合は、Batch によってサポートされているファースト パーティ Azure Marketplace イメージをマネージド イメージのベース イメージとして使用します。 ファースト パーティのイメージのみを、基本イメージとして使用できます。 Azure Batch でサポートされている Azure Marketplace イメージ参照のフルリストを取得するには、[ノード エージェント SKU の一覧表示](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus)操作に関する記事をご覧ください。
 
 > [!NOTE]
-> 基本イメージとして追加のライセンスと購入条件のあるサード パーティのイメージを使用することはできません。 このような Marketplace イメージについては、[Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) VM または [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) VM のガイダンスを参照してください。
+> 基本イメージとして追加のライセンスと購入条件のあるサード パーティのイメージを使用することはできません。 このような Marketplace イメージについては、[Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM または [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM のガイダンスを参照してください。
 
 - VM がマネージド ディスクを使用して作成されていることを確認してください。 これは VM を作成するときの既定のストレージ設定です。
 - VM には、Azure 拡張機能 (カスタム スクリプト拡張機能など) をインストールしないでください。 イメージにプレインストールされた拡張機能が含まれる場合、Azure で Batch プールのデプロイ時に問題が発生する可能性があります。
@@ -59,29 +59,70 @@ Azure では、次のものからマネージド イメージを準備できま�
 
 スナップショットからマネージド イメージを作成するには、[az image create](/cli/azure/image) コマンドなどの Azure コマンドライン ツールを使用します。 イメージを作成する際には、OS ディスクのスナップショットを指定し、必要に応じて 1 つ以上のデータ ディスク スナップショットを指定することができます。
 
-## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>ポータルでカスタム イメージからプールを作成する
+## <a name="create-a-pool-from-a-managed-image"></a>マネージド イメージからプールを作成する
 
-カスタム イメージを保存し、そのリソース ID または名前を特定したら、そのイメージから Batch プールを作成します。 次の手順は、Azure Portal からプールを作成する方法を示しています。
+マネージド イメージのリソース ID が見つかったら、そのイメージからカスタム イメージ プールを作成します。 次の手順では、Batch サービスまたは Batch Management を使用してカスタム イメージ プールを作成する方法を説明します。
 
 > [!NOTE]
-> Batch API のいずれかを使用してプールを作成する場合は、AAD 認証に使用する ID に、イメージ リソースへのアクセス許可が付与されていることを確認してください。 「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」を参照してください。
+> Azure AD 認証に使用する ID に、イメージ リソースに対するアクセス許可があることを確認してください。 「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」を参照してください。
 >
 > マネージド イメージのリソースは、プールの有効期間にわたって存在する必要があります。 基になるリソースが削除されると、プールはスケールできません。
 
-1. Azure Portal の Batch アカウントに移動します。 このアカウントは、カスタム イメージを含むリソース グループと同じサブスクリプションおよびリージョン内にある必要があります。
-2. 左側の **[設定]** ウィンドウで、 **[プール]** メニュー項目を選択します。
-3. **[プール]** ウィンドウで、 **[追加]** コマンドを選択します。
-4. **[プールの追加]** ウィンドウで、 **[イメージの種類]** ボックスの一覧の **[カスタム イメージ (Linux/Windows)]** を選択します。 **[カスタム VM イメージ]** ドロップダウンで、イメージ名 (リソース ID の短い形式) を選択します。
-5. **[Publisher]\(パブリッシャー\)、[Offer]\(プラン\)、[SKU]** で、カスタム イメージに対して適切な値を選択します。
-6. **[ノード サイズ]** 、 **[ターゲットの専用ノード数]** 、 **[低優先度ノード]** など、残りの必須の設定ほか、オプションの設定も必要に応じて指定します。
+### <a name="batch-service-net-sdk"></a>Batch サービス .NET SDK
 
-    たとえば、Microsoft Windows Server Datacenter 2016 のカスタム イメージの場合、 **[プールの追加]** ウィンドウは次のように表示されます。
+```csharp
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
+{
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
+}
 
-    ![カスタム Windows イメージからプールを追加する](media/batch-custom-images/add-pool-custom-image.png)
-  
-既存のプールがカスタム イメージに基づいているかどうかを調べるには、 **[プール]** ウィンドウのリソースの概要セクションで **[オペレーティング システム]** プロパティを確認します。 プールがカスタム イメージから作成されている場合、値は **[カスタム VM イメージ]** に設定されます。
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        virtualMachineImageId: "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image definition name}");
+}
 
-プールに関連付けられているすべてのカスタム イメージがプールの **[プロパティ]** ウィンドウに表示されます。
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
+
+        pool.Commit();
+    }
+```
+
+### <a name="batch-management-rest-api"></a>Batch Management REST API
+
+REST API URI
+
+```http
+ PUT https://management.azure.com/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Batch/batchAccounts/{account name}/pools/{pool name}?api-version=2020-03-01
+```
+
+要求本文
+
+```json
+ {
+   "properties": {
+     "vmSize": "{VM size}",
+     "deploymentConfiguration": {
+       "virtualMachineConfiguration": {
+         "imageReference": {
+           "id": "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image name}"
+         },
+         "nodeAgentSkuId": "{Node Agent SKU ID}"
+       }
+     }
+   }
+ }
+```
 
 ## <a name="considerations-for-large-pools"></a>サイズの大きなプールに関する考慮事項
 
@@ -113,4 +154,5 @@ Packer を使用して VM を作成する詳細については、「[Build a Lin
 
 ## <a name="next-steps"></a>次のステップ
 
-Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
+- [Shared Image Gallery](batch-sig-images.md) を使用してカスタム プールを作成する方法を確認してください。
+- Batch の詳細については、「[Batch サービスのワークフローとリソース](batch-service-workflow-features.md)」を参照してください。

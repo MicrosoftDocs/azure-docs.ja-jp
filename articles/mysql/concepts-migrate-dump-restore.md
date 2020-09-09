@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163779"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971183"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -23,6 +23,8 @@ ms.locfileid: "78163779"
 - [Azure Database for MySQL サーバー - Azure Portal を使用して作成](quickstart-create-mysql-server-database-using-azure-portal.md)
 - コンピューターにインストールされている [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) コマンド ライン ユーティリティ
 - ダンプおよび復元コマンドを実行する MySQL Workbench ([MySQL Workbench のダウンロード](https://dev.mysql.com/downloads/workbench/))、またはサード パーティ製の他の MySQL ツール。
+
+データベースのサイズが 1 TB を超える大規模なデータベースを移行しようとしている場合、並列エクスポートおよびインポートがサポートされる mydumper/mydumper などのコミュニティ ツールの使用を検討してください。 並列のダンプと復元を使用すると、大規模なデータベースの移行にかかる時間を大幅に短縮できます。 大規模なデータベースを Azure Database for MySQL サービスに移行するためのベスト プラクティスについては、[テクニカルコミュニティのブログ](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)を参照してください。
 
 ## <a name="use-common-tools"></a>一般的なツールの使用
 MySQL Workbench または mysqldump などの一般的なユーティリティとツールを使用して、Azure Database for MySQL にリモートで接続してデータを復元します。 こうしたツールは、インターネットに接続されたクライアント コンピューターで、Azure Database for MySQL に接続するときに使用します。 SSL で暗号化された接続を使ってセキュリティを強化するために、[Azure Database for MySQL での SSL 接続の構成](concepts-ssl-connection-security.md)に関するページもご覧ください。 Azure Database for MySQL に移行するとき、ダンプ ファイルをクラウドの特別な場所に移動する必要はありません。 
@@ -65,7 +67,11 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 - [backupfile.sql]: データベース バックアップのファイル名 
 - [--opt]: mysqldump オプション 
 
-たとえば、MySQL サーバー上の、ユーザー名が "testuser" で、パスワードが設定されていない "testdb" という名前のデータベースを、testdb_backup.sql ファイルにバックアップするには、次のコマンドを使用します。 このコマンドは、`testdb` データベースを `testdb_backup.sql` というファイルにバックアップします。このファイルには、データベースを再作成するために必要なすべての SQL ステートメントが含まれます。 
+たとえば、MySQL サーバー上の、ユーザー名が "testuser" で、パスワードが設定されていない "testdb" という名前のデータベースを、testdb_backup.sql ファイルにバックアップするには、次のコマンドを使用します。 このコマンドは、`testdb` データベースを `testdb_backup.sql` というファイルにバックアップします。このファイルには、データベースを再作成するために必要なすべての SQL ステートメントが含まれます。 ユーザー名 'testuser' には、少なくとも、ダンプされたテーブルに対する SELECT 特権、ダンプされたビューの SHOW VIEW、ダンプされたトリガーの TRIGGER、および--single-transaction オプションが使用されていない場合は LOCK TABLES が含まれていることを確認してください。
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -90,6 +96,17 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 
 ![MySQL Workbench の接続文字列](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
+## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>高速データ読み込みのためのターゲット Azure Database for MySQL サーバーの準備
+データの読み込みを高速化するためにターゲット Azure Database for MySQL サーバーを準備するには、次のサーバー パラメーターと構成を変更する必要があります。
+- max_allowed_packet – 1073741824 (1GB) に設定して、行が長いために発生するオーバーフローの問題を防ぎます。
+- slow_query_log – OFF に設定して、低速のクエリ ログを無効にします。 これにより、データの読み込み中の低速クエリ ログによって発生するオーバーヘッドがなくなります。
+- query_store_capture_mode – NONE に設定し、クエリ ストアを無効にします。 これにより、クエリ ストアによるサンプリング アクティビティで発生するオーバーヘッドがなくなります。
+- innodb_buffer_pool_size – 移行中に、サーバーをポータルの価格レベルから 32 vCore メモリ最適化 SKU にスケールアップし、innodb_buffer_pool_size を増やします。 Innodb_buffer_pool_size は、Azure Database for MySQL サーバーのコンピューティングをスケールアップしないと増やすことができません。
+- innodb_io_capacity & innodb_io_capacity_max - IO 使用率を向上させて移行速度を最適化するために、Azure portal のサーバー パラメーターから 9000 に変更します。
+- innodb_write_io_threads および innodb_write_io_threads - Azure portal のサーバー パラメーターで 4 に変更し、移行の速度を向上させます。
+- ストレージ層のスケールアップ – Azure Database for MySQL サーバーの IOP は、ストレージ層の増加に合せて徐々に増加します。 読み込みを高速化するために、ストレージ層を増やして、プロビジョニングされる IOP を増やすことができます。 ストレージはスケールアップのみ可能で、スケールダウンはできないことに注意してください。
+
+移行が完了したら、サーバー パラメーターとコンピューティング層の構成を前の値に戻すことができます。 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>コマンド ラインまたは MySQL Workbench を使用した MySQL データベースの復元
 ターゲット データベースを作成したら、mysql コマンドまたは MySQL Workbench を使用して、ダンプ ファイルから新しく作成された特定のデータベースにデータを復元できます。
@@ -100,7 +117,6 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
-
 ## <a name="export-using-phpmyadmin"></a>PHPMyAdmin を使用したエクスポート
 エクスポートには一般的なツールである phpMyAdmin を使用できます。このツールは、既にローカル環境にインストールされている可能性があります。 PHPMyAdmin を使用して MySQL データベースをエクスポートするには、次の操作を行います。
 1. phpMyAdmin を開きます。
@@ -118,6 +134,9 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 4. **[SQL]** リンクをクリックします。表示されたページで、SQL コマンドを入力したり、SQL ファイルをアップロードしたりできます。 
 5. **参照**ボタンを使用して、データベース ファイルを検索します。 
 6. **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。
+
+## <a name="known-issues"></a>既知の問題
+既知の問題、ヒント、コツについては、[テクニカルコミュニティのブログ](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure/ba-p/916912)を参照することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for MySQL にアプリケーションを接続します](./howto-connection-string.md)。

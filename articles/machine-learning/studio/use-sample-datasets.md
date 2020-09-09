@@ -1,25 +1,25 @@
 ---
-title: サンプル データセットの使用
-titleSuffix: ML Studio (classic) - Azure
+title: 'Machine Learning Studio (classic): サンプル データセットの使用 - Azure'
 description: Machine Learning Studio (クラシック) に含まれるサンプル モデルで使用されるデータセットについて説明します。 実験には、これらのサンプル データセットを使用できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb10b55aeeaa2d40d4ef4398dc06c9d4091f5ea
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217782"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432093"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) におけるサンプル データセットの使用
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 [top]: #machine-learning-sample-datasets
 
@@ -96,7 +96,7 @@ CSV データに変換された、公開の画像ファイル。
 <p></p>
 献血データには、最後の献血からの経過月数、頻度、献血の合計回数、最後の献血からの経過期間、献血量が含まれます。
 <p></p>
-<b>使用法:</b>目標は、2007 年 3 月に献血者が献血を実施したかどうかの分類に基づいて予測を実行することです。1 は対象期間に献血をした人、0 はしなかった人を示しています。 
+<b>使用法:</b> 目標は、2007 年 3 月に献血者が献血を実施したかどうかの分類に基づいて予測を実行することです。1 は対象期間に献血をした人、0 はしなかった人を示しています。 
 <p></p>
 <b>関連の研究:</b>Yeh, I. (2008 年)。 UCI Machine Learning リポジトリ <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部
 <p></p>
@@ -305,7 +305,7 @@ german.data ファイルを使用した、UCI Statlog (ドイツのクレジッ�
 <p></p>
 <b>関連の研究:</b>Sterling, D.、Buntine, W.(年度不明)。 UCI Machine Learning リポジトリ <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン:カリフォルニア大学、情報・コンピューター サイエンス学部
 <p></p>
-鉄鋼グレードの有用なガイドは、<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
+鉄鋼グレードの有用なガイドは、<a href="https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf">https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf</a>
    にあります。</td>
 </tr>
 
@@ -337,7 +337,7 @@ NOAA の 1 時間ごとの陸上の気象観測 (<a href="https://az754797.vo.ms
   <li>気象観測所 ID を対応する空港 ID にマッピングします。</li>
   <li>混雑度が上位 70 位の空港に関連付けられていない気象観測所をフィルターで外します。</li>
   <li>Date 列を Year、Month、Day の列に分割します。</li>
-  <li>次の列が選択されています。AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter</li>
+  <li>AirportID、Year、Month、Day、Time、TimeZone、SkyCondition、Visibility、WeatherType、DryBulbFarenheit、DryBulbCelsius、WetBulbFarenheit、WetBulbCelsius、DewPointFarenheit、DewPointCelsius、RelativeHumidity、WindSpeed、WindDirection、ValueForWindCharacter、StationPressure、PressureTendency、PressureChange、SeaLevelPressure、RecordType、HourlyPrecip、Altimeter の各列が選択されています。</li>
 </ul>
   </td>
 </tr>

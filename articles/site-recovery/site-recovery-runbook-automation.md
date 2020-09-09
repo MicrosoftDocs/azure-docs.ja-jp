@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021581"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 
@@ -56,6 +56,9 @@ Azure Automation アカウントと Runbook を復旧計画に追加します。
 | CloudServiceName |VM が作成されたときの Azure クラウド サービス名。 |
 | RoleName |Azure VM の名前。 |
 | RecoveryPointId|VM 復旧のタイムスタンプ。 |
+
+>[!Note]
+>変数 "FailoverDirection" の値は、フェールオーバーの場合は "PrimaryToSecondary" に、フェールバックの場合は "SecondaryToPrimary" になります。
 
 次の例は、コンテキスト変数を示しています。
 
@@ -126,7 +129,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 
 外部変数を使用することによって、複数の復旧計画で 1 つの Runbook スクリプトを使用できます。 
 
-- [Azure Automation 変数 ](../automation/automation-variables.md) を使用して、復旧計画の実行用のパラメーターを格納します。
+- [Azure Automation 変数 ](../automation/shared-resources/variables.md) を使用して、復旧計画の実行用のパラメーターを格納します。
 - この変数へのプレフィックスとして復旧計画名を追加することにより、復旧計画ごとの個別の変数を作成できます。 次に、これらの変数をパラメーターとして使用します。
 - スクリプトを変更しなくてもパラメーターを変更できますが、それによってスクリプトの動作が変更されます。
 
@@ -196,7 +199,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 - たとえば、SharePoint の復旧には 2 つのフロントエンドがあります。 基本的な基幹業務 (LOB) アプリケーションには 1 つのフロントエンドしかありません。
 - このシナリオでは、復旧計画ごとに個別の変数を作成することはできません。
 
-次の例では、Azure Automation アカウント内に[複合変数](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable)を作成します。
+次の例では、Azure Automation アカウント内に[複合変数](/powershell/module/servicemanagement/azure.service/set-azureautomationvariable)を作成します。
 
 これは、Azure PowerShell を使用して複数の値を指定することによって行います。
 
@@ -261,9 +264,6 @@ $vmMap = $RecoveryPlanContext.VmMap
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Automation の実行アカウント](../automation/automation-create-runas-account.md)について学習します。
+- [Azure Automation の実行アカウント](../automation/manage-runas-account.md)について学習します。
 - [Azure Automation サンプル スクリプト](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)を確認します。
 - フェールオーバーの実行については、[こちら](site-recovery-failover.md)を参照してください。
-
-
-

@@ -6,30 +6,39 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185976"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387049"
 ---
 # <a name="best-practices-for-creating-assessments"></a>評価を作成するためのベスト プラクティス
 
-[Azure Migrate](migrate-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
+[Azure Migrate](./migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
 
 この記事では、Azure Migrate Server Assessment ツールを使用して評価を作成する際のベスト プラクティスについて説明します。
 
 ## <a name="about-assessments"></a>評価について
 
-Azure Migrate Server Assessment を使用して作成した評価は、特定の時点におけるデータのスナップショットです。 Azure Migrate には、2 種類の評価があります。
+Azure Migrate Server Assessment を使用して作成した評価は、特定の時点におけるデータのスナップショットです。 Azure Migrate:Server Assessment を使用して、2 種類の評価を作成できます。
 
-**評価の種類** | **詳細** | **データ**
+**評価の種類** | **詳細**
+--- | --- 
+**Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md)、[物理サーバー](how-to-set-up-appliance-physical.md)を評価できます。 [詳細情報](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
+
+
+### <a name="sizing-criteria"></a>サイズ変更の設定基準
+Server Assessment には、サイズ変更の設定基準として、次の 2 つのオプションが用意されています。
+
+**サイズ変更の設定基準** | **詳細** | **データ**
 --- | --- | ---
-**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。
-**現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。
+**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、CPU とメモリの使用率データに基づきます。
+**現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | **Azure VM の評価**: VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、オンプレミスの VM サイズに基づきます。
 
-### <a name="example"></a>例
-たとえば、オンプレミスの VM で 4 コア CPU の使用率が 20%、8 GB メモリの使用率が 10% の場合、評価は次のようになります。
+#### <a name="example"></a>例
+たとえば、オンプレミスの VM で 4 コア CPU の使用率が 20%、8 GB メモリの使用率が 10% の場合、Azure VM の評価は次のようになります。
 
 - **パフォーマンスベースの評価**:
     - コア (4 x 0.20 = 0.8) とメモリ (8 GB x 0.10 = 0.8) の使用率に基づいて、有効なコアとメモリを識別します。
@@ -38,6 +47,7 @@ Azure Migrate Server Assessment を使用して作成した評価は、特定の
 
 - **現状 (オンプレミス) での評価**:
     -  4 コア、8 GB メモリの VM を推奨します。
+
 
 ## <a name="best-practices-for-creating-assessments"></a>評価を作成するためのベスト プラクティス
 
@@ -54,6 +64,19 @@ CSV ファイル経由で Azure Migrate にインポートされたサーバー�
 - **現状評価の作成**:現状評価は、Azure Migrate ポータルにコンピューターが表示されたらすぐに作成できます。
 - **パフォーマンスベース評価の作成**:これにより、特にオンプレミスのサーバー容量が過剰にプロビジョニングされている場合に、コストをより正確に見積もることができます。 ただし、パフォーマンスに基づく評価の精度は、サーバーに対して指定されたパフォーマンス データによって決まります。 
 - **評価の再計算**:評価は特定の時点のスナップショットであるため、最新のデータで自動的に更新されることはありません。 最後にインポートされたデータを使用して評価を更新するには、それを再計算する必要があります。
+ 
+### <a name="ftt-sizing-parameters-for-avs-assessments"></a>AVS 評価に対する FTT サイズ設定パラメーター
+
+AVS で使用されるストレージ エンジンは vSAN です。 vSAN ストレージ ポリシーには、仮想マシンのストレージ要件が定義されています。 これらのポリシーによって、ストレージを VM に割り当てる方法が決まるため、VM に必要なサービス レベルを確保できます。 使用できる FTT-Raid の組み合わせを次に示します。 
+
+**許容エラー (FTT)** | **RAID 構成** | **最小ホスト要件** | **サイズ設定の考慮事項**
+--- | --- | --- | --- 
+1 | RAID-1 (ミラーリング) | 3 | 100 GB の VM に 200 GB が使用されます。
+1 | RAID-5 (イレイジャー コーディング) | 4 | 100 GB の VM に 133.33 GB が使用されます
+2 | RAID-1 (ミラーリング) | 5 | 100 GB の VM に 300 GB が使用されます。
+2 | RAID-6 (イレイジャー コーディング) | 6 | 100 GB の VM に 150 GB が使用されます。
+3 | RAID-1 (ミラーリング) | 7 | 100 GB の VM に 400 GB が使用されます。
+
 
 ## <a name="best-practices-for-confidence-ratings"></a>信頼度レーティングのベスト プラクティス
 
@@ -83,7 +106,18 @@ CSV ファイル経由で Azure Migrate にインポートされたサーバー�
 
 ### <a name="outdated-assessments"></a>評価が古い
 
-評価されたグループ内の VM に対してオンプレミスでの変更があった場合、その評価は**古い**評価としてマークされます。 変更を反映するには、評価を再度実行してください。
+評価されたグループ内の VM に対してオンプレミスでの変更があった場合、その評価は**古い**評価としてマークされます。 次のプロパティに 1 つ以上の変更があるため、評価は "古い" としてマークされている可能性があります。
+
+- プロセッサ コアの数
+- 割り当て済みメモリ
+- ブートの種類またはファームウェア
+- オペレーティング システムの名前、バージョン、アーキテクチャ
+- ディスクの数
+- ネットワーク アダプターの数
+- ディスク サイズの変更 (割り当てられた GB)
+- NIC プロパティの更新。 例:MAC アドレスの変更、IP アドレスの追加など。
+
+変更を反映するには、評価を再度実行します ( **[再計算]** )。
 
 ### <a name="low-confidence-rating"></a>信頼度レーティングが低い
 
@@ -94,6 +128,12 @@ CSV ファイル経由で Azure Migrate にインポートされたサーバー�
 - 評価の計算対象である期間中に、いくつかの VM がシャットダウンされました。 いずれかの VM でしばらく電源がオフになっていた場合、Server Assessment ではその期間のパフォーマンス データを収集できません。
 
 - Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
+
+### <a name="migration-tool-guidance-for-avs-assessments"></a>AVS 評価に関する移行ツールのガイダンス
+
+Azure VMware Solution (AVS) 評価の Azure 対応性レポートでは、次の推奨ツールを確認できます。 
+- **VMware HCX または Enterprise**: VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMWare Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
+- **不明**:CSV ファイルを介してインポートされたマシンの場合、既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。
 
 
 ## <a name="next-steps"></a>次のステップ

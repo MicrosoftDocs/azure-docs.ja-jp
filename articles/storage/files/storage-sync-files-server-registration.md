@@ -3,16 +3,16 @@ title: Azure File Sync に登録されたサーバーの管理 | Microsoft Docs
 description: Azure ファイル同期のストレージ同期サービスへの Windows Server の登録と登録解除の方法について説明します。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509508"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -76,9 +76,6 @@ Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー 
 > サーバーがフェールオーバー クラスターのメンバーである場合、クラスターのすべてのノードに Azure ファイル同期エージェントをインストールする必要があります。
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>サーバーの登録 UI を使用してサーバーを登録する
-> [!Important]  
-> クラウド ソリューション プロバイダー (CSP) サブスクリプションでは、サーバー登録 UI を使用できません。 代わりに、PowerShell (このセクションの下) を使用してください。
-
 1. Azure File Sync エージェントのインストールが完了した直後にサーバーの登録 UI が開始されない場合は、`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` を実行して手動で開始することができます。
 2. *[サインイン]* をクリックして Azure サブスクリプションにアクセスします。 
 
@@ -96,7 +93,7 @@ Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー 
 > サービスがフェールオーバー クラスターのメンバーである場合、各サーバーで [サーバーの登録] を実行する必要があります。 Azure Portal で登録済みサーバーを表示すると、Azure File Sync は、各ノードを同じフェールオーバー クラスターのメンバーとして自動的に認識し、適宜、各メンバーをグループ化します。
 
 #### <a name="register-the-server-with-powershell"></a>PowerShell でサーバーを登録する
-PowerShell を使用してサーバー登録を実行することもできます。 これが、クラウド ソリューション プロバイダー (CSP) サブスクリプションでサポートされている唯一のサーバー登録方法です。
+PowerShell を使用してサーバー登録を実行することもできます。 
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
@@ -161,7 +158,7 @@ Azure File Sync がデータセンターで実行されている唯一のサー�
 Azure File Sync のネットワーク使用率は、`StorageSyncNetworkLimit` コマンドレットを使用して調整できます。
 
 > [!Note]  
-> ネットワークの制限は、階層化されたファイルへのアクセス時または Invoke-StorageSyncFileRecall コマンドレットの使用時には適用されません。
+> 階層型されたファイルにアクセスする場合、ネットワークの制限は適用されません。
 
 たとえば、営業日の午前 9 時～午後 5 時 (17 時) に、Azure File Sync が 10 Mbps 以上使用しないようにするためのスロットルの新しい制限を作成できます。 
 
@@ -185,7 +182,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>Windows Server の記憶域 QoS を使用する 
 Windows Server 仮想化ホストで実行されている仮想マシンで Azure File Sync がホストされている場合、記憶域 QoS (記憶域のサービス品質) を使用して記憶域 IO の使用を調整できます。 記憶域 QoS ポリシーは、最大値 (制限、上記の StorageSyncNetwork の制限を強制する方法と同様) または最小値 (予約) として設定できます。 最大値ではなく最小値を設定すると、使用可能なストレージ帯域幅を他のワークロードが使用していない場合に、Azure File Sync がバーストして使用できるようになります。 詳細については、[記憶域のサービス品質](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)に関する記事をご覧ください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 - [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
 - [Azure File Sync の監視](storage-sync-files-monitoring.md)

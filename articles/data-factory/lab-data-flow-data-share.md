@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415923"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252663"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -22,9 +22,9 @@ ms.locfileid: "81415923"
 
 コーディングが不要な ETL (または ELT) の実現からデータに対する包括的なビューの作成まで、Azure Data Factory の強化によって、データ エンジニアはより多くのデータを安心して取り込むことができるようになり、ひいては、会社により大きな価値をもたらすことができます。 Azure Data Share を使用すれば、統制された形で企業間の共有を行えます。
 
-このワークショップでは、Azure Data Factory (ADF) を使用して Azure SQL データベース (SQL DB) から Azure Data Lake Storage Gen2 (ADLS gen2) にデータを取り込みます。 レイクにデータを配置したら、データ ファクトリのネイティブ変換サービスであるマッピング データ フローを介してそれを変換し、Azure Synapse Analytics (旧称 SQL DW) に書き込みます。 その後、Azure Data Share を使用して、変換済みのデータが含まれたテーブルを別のいくつかのデータと共に共有します。 
+このワークショップでは、Azure Data Factory (ADF) を使用して Azure SQL Database から Azure Data Lake Storage Gen2 (ADLS gen2) にデータを取り込みます。 レイクにデータを配置したら、データ ファクトリのネイティブ変換サービスであるマッピング データ フローを介してそれを変換し、Azure Synapse Analytics (旧称 SQL DW) に書き込みます。 その後、Azure Data Share を使用して、変換済みのデータが含まれたテーブルを別のいくつかのデータと共に共有します。 
 
-このラボで使用されるデータは、ニューヨーク市のタクシーのデータです。 これを自分の Azure SQL データベースにインポートするために、[taxi-data.bacpac ファイル](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)をダウンロードしてください。
+このラボで使用されるデータは、ニューヨーク市のタクシーのデータです。 これを SQL Database のデータベースにインポートするために、[taxi-data.bacpac ファイル](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)をダウンロードしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
     ![ポータル](media/lab-data-flow-data-share/configure1.png)
 
-### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL データベースのリンクされたサービスを作成する
+### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 
 1. 作成ページは、パイプライン、データセット、データ フロー、トリガー、リンクされたサービスなどのデータ ファクトリ リソースを作成する場所です。 リンクされたサービスを作成するには、右下隅の **[接続]** ボタンをクリックします。
 

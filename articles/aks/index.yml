@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: laurenhughes
   ms.author: lahugh
-  ms.date: 03/25/2020
-  ms.openlocfilehash: 4829b95fb62a33406248f503e646238e116cb413
-  ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+  ms.date: 07/21/2020
+  ms.openlocfilehash: 35138e4e5569ddfa46cb60c742e7ae0b3868c8cd
+  ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/07/2020
-  ms.locfileid: "80803281"
+  ms.lasthandoff: 08/04/2020
+  ms.locfileid: "87563332"
 landingContent:
 - title: Azure Kubernetes Service (AKS) について
   linkLists:
@@ -26,11 +26,13 @@ landingContent:
     links:
     - text: AKS に対する Kubernetes の中心概念
       url: concepts-clusters-workloads.md
+    - text: AKS クラスターのベースライン アーキテクチャ
+      url: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
     - text: クラスターとワークロード
       url: concepts-clusters-workloads.md
     - text: アクセスと ID
       url: concepts-identity.md
-    - text: Security
+    - text: セキュリティ
       url: concepts-security.md
     - text: ネットワーク
       url: concepts-network.md
@@ -48,18 +50,14 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager テンプレート
       url: kubernetes-walkthrough-rm-template.md
-- title: AKS と Dev Spaces を使用したアプリケーションの開発とデバッグ
+- title: Local Process with Kubernetes を使用してアプリケーションを開発およびデバッグする
   linkLists:
-  - linkListType: quickstart
+  - linkListType: how-to-guide
     links:
-    - text: Java
-      url: ../dev-spaces/quickstart-java.md
-    - text: .NET と VS Code
-      url: ../dev-spaces/quickstart-netcore.md
-    - text: .NET と Visual Studio
-      url: ../dev-spaces/quickstart-netcore-visualstudio.md
-    - text: Node.js
-      url: ../dev-spaces/quickstart-nodejs.md
+    - text: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
+      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
+    - text: Visual Studio で Local Process with Kubernetes を使用する (プレビュー)
+      url: /visualstudio/containers/local-process-kubernetes
 - title: アプリケーションのデプロイ、管理、更新
   linkLists:
   - linkListType: tutorial
@@ -83,8 +81,8 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure Kubernetes Service の概要
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-kubernetes-service/
+      url: /learn/modules/intro-to-azure-kubernetes-service/
     - text: Azure 上のコンテナーの概要
-      url: https://docs.microsoft.com/learn/modules/intro-to-containers/
+      url: /learn/modules/intro-to-containers/
     - text: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
-      url: https://docs.microsoft.com/learn/modules/build-and-store-container-images/
+      url: /learn/modules/build-and-store-container-images/

@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884088"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141366"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -47,7 +47,7 @@ Azure AD でアプリケーションをマルチテナントにするには、�
 既定で、Azure Portal で作成されたアプリには、アプリの作成時にグローバルに一意のアプリ ID URI が設定されますが、この値は変更することができます。 たとえば、テナントの名前が contoso.onmicrosoft.com である場合、有効なアプリケーション ID URI は `https://contoso.onmicrosoft.com/myapp`のようになります。 また、テナントの検証済みドメインが `contoso.com` である場合は、有効なアプリケーション ID URI は `https://contoso.com/myapp` のようになります。 アプリ ID URI がこのパターンに従っていないと、アプリケーションのマルチテナントとしての設定が失敗します。
 
 > [!NOTE]
-> ネイティブ クライアントの登録と [Microsoft ID プラットフォーム アプリケーション](./active-directory-appmodel-v2-overview.md)は、既定でマルチテナントです。 このようなアプリケーション登録については、マルチテナントにする操作を行う必要はありません。
+> ネイティブ クライアントの登録と [Microsoft ID プラットフォーム アプリケーション](./v2-overview.md)は、既定でマルチテナントです。 このようなアプリケーション登録については、マルチテナントにする操作を行う必要はありません。
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>/common に要求を送信するようにコードを更新する
 
@@ -71,15 +71,21 @@ Web アプリケーションと Web API は、Microsoft ID プラットフォー
 
 アプリケーションで Microsoft ID プラットフォームから受信したトークンが検証される仕組みを見てみましょう。 シングル テナント アプリケーションは通常、次のようなエンドポイント値を取得します。
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 そして、この値を使用して、次のようなメタデータ URL (この例では OpenID Connect) を作成します。
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 さらに、この URL を使用して、トークンの検証に使用する 2 種類の重要な情報である、テナントの署名キーと issuer 値をダウンロードします。 各 Azure AD テナントは、次のような形をした一意の issuer 値を持ちます。
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 ここで、GUID の値は、テナントのテナント ID を名前変更できるようにしたものです。 前述の `contoso.onmicrosoft.com` のメタデータ リンクを選択すると、ドキュメントでこの issuer 値を確認できます。
 
@@ -87,7 +93,9 @@ Web アプリケーションと Web API は、Microsoft ID プラットフォー
 
 /common エンドポイントはテナントに対応しておらず発行者でもないので、/common のメタデータの issuer 値を確認すると、実際の値の代わりに次のようなテンプレート URL が表示されます。
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 このため、マルチテナント アプリケーションでは、メタデータの issuer 値をトークンの `issuer` 値と照合するだけでは、トークンの検証を行うことができません。 マルチテナント アプリケーションには、issuer 値のテナント ID の部分に基づいて issuer 値が有効であるかどうかを判定するロジックが必要になります。 
 
@@ -135,7 +143,9 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 この処理は、論理アプリケーションが 2 つ以上のアプリケーション登録 (別々のクライアントとリソースなど) で構成されている場合に問題になる可能性があります。 まずユーザーのテナントにリソースを追加するにはどうすればいいのでしょうか。 Azure AD では、ワンステップでクライアントとリソースが同意されるようにすることによって、この状況に対応します。 ユーザーには、同意ページにクライアントとリソースの両方によって要求されたアクセス許可の合計が表示されます。 この動作を有効にするには、リソースのアプリケーション登録で、[アプリケーションのマニフェスト][AAD-App-Manifest]に `knownClientApplications` というクライアントのアプリ ID を含める必要があります。 次に例を示します。
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 この方法については、この記事の末尾の「[関連コンテンツ](#related-content)」セクションにある多層ネイティブ クライアントによる Web API 呼び出しのサンプルを参照してください。 次の図は、1 つのテナントに登録されている多層アプリケーションのための同意の概要を示しています。
 
@@ -191,11 +201,11 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
+[AAD-Samples-MT]: /samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
-[MSFT-Graph-permission-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
+[MSFT-Graph-overview]: /graph/
+[MSFT-Graph-permission-scopes]: /graph/permissions-reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
@@ -216,9 +226,9 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
+[O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: https://msdn.microsoft.com/library/azure/dn645542.aspx
+[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6

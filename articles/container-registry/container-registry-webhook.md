@@ -3,12 +3,12 @@ title: レジストリ アクションに応答するための Webhook
 description: レジストリ リポジトリでプッシュまたはプル アクションが発生したときに、Webhook を使用してイベントをトリガーする方法について説明します。
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74454366"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685037"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -18,12 +18,12 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Container Registry - コンテナー レジストリを Azure サブスクリプションで作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。 [Azure Container Registry SKU](container-registry-skus.md) に Webhook のさまざまなクォータがあります。
+* Azure Container Registry - コンテナー レジストリを Azure サブスクリプションで作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。 [Azure Container Registry サービス レベル](container-registry-skus.md)には Webhook のさまざまなクォータがあります。
 * Docker CLI - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、[Docker エンジン](https://docs.docker.com/engine/installation/)をインストールします。
 
 ## <a name="create-webhook---azure-portal"></a>Webhook の作成 - Azure portal
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. webhook を作成するコンテナー レジストリに移動します。
 1. **[サービス]** で **[Webhook]** を選択します。
 1. webhook ツールバーで **[追加]** を選択します。
@@ -32,12 +32,12 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 | 値 | 説明 |
 |---|---|
 | Webhook 名 | Webhook に付与する名前。 使用できる文字は英数字のみです。文字数は 5 ～ 50 文字にする必要があります。 |
-| Location | [geo レプリケートされた](container-registry-geo-replication.md)レジストリの場合は、レジストリ レプリカの Azure リージョンを指定します。 
+| 場所 | [geo レプリケートされた](container-registry-geo-replication.md)レジストリの場合は、レジストリ レプリカの Azure リージョンを指定します。 
 | サービス URI | Webhook が POST 通知を送信する URI。 |
 | カスタム ヘッダー | POST 要求と共に渡すヘッダー。 "キー: 値" の形式にする必要があります。 |
 | トリガー アクション | Webhook をトリガーするアクション。 アクションには、イメージのプッシュ、イメージの削除、Helm chart のプッシュ、chart の削除、およびイメージの検疫などがあります。 Webhook をトリガーするアクションを 1 つ以上選択できます。 |
 | Status | Webhook の作成後の状態。 既定で有効です。 |
-| スコープ | Webhook が動作するスコープです。 指定しない場合、スコープはレジストリ内のすべてのイベントです。 "リポジトリ:タグ" または "リポジトリ:*" (あるリポジトリ以下のすべてのタグの場合) という形式を使用して、リポジトリまたはタグに指定できます。 |
+| Scope | Webhook が動作するスコープです。 指定しない場合、スコープはレジストリ内のすべてのイベントです。 "リポジトリ:タグ" または "リポジトリ:*" (あるリポジトリ以下のすべてのタグの場合) という形式を使用して、リポジトリまたはタグに指定できます。 |
 
 Webhook フォームの例 :
 
@@ -101,4 +101,4 @@ Azure Container Registry によって出力される JSON イベント ペイロ
 
 この記事で説明したネイティブ レジストリ Webhook イベントだけでなく、Azure Container Registry は Event Grid に対してイベントを生成できます。
 
-[クイック スタート - Event Grid へのコンテナー レジストリ イベントの送信](container-registry-event-grid-quickstart.md)
+[クイック スタート: Event Grid へのコンテナー レジストリ イベントの送信](container-registry-event-grid-quickstart.md)

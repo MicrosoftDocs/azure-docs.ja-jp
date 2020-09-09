@@ -3,12 +3,13 @@ title: チュートリアル - プライベートの基本イメージを更新�
 description: このチュートリアルでは、別のプライベート Azure コンテナー レジストリの基本イメージが更新されたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするよう、Azure Container Registry タスクを構成する方法を説明します。
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e28dc65f44f3d9997a59e6204451cc84b0e41e40
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77617685"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407134"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>チュートリアル:別のプライベート コンテナー レジストリで基本イメージが更新されたときのコンテナー イメージ ビルドを自動化する 
 
@@ -37,7 +38,7 @@ ACR タスクでは、いずれかの基本イメージ内で OS またはアプ
 
 * Azure Container Registry の作成
 * サンプル リポジトリのフォーク
-* サンプル リポジトリのクローン
+* サンプル リポジトリの複製
 * GitHub 個人用アクセス トークンの作成
 
 まだ完了していない場合は、続行する前に次のチュートリアルを完了してください。

@@ -11,7 +11,7 @@
 - name: 操作方法ガイド
   items:
     - name: 前提条件
-      href: hpc-cache-prereqs.md
+      href: hpc-cache-prerequisites.md
     - name: キャッシュを作成する
       href: hpc-cache-create.md
     - name: ストレージを追加する
@@ -38,10 +38,16 @@
       href: hpc-cache-manage.md
     - name: オプション設定を構成する
       href: configuration.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: リソース
   items:
     - name: サポート チケットを開く
       href: hpc-cache-support-ticket.md
+    - name: Azure HPC Cache 向けに Azure CLI を設定する
+      href: az-cli-prerequisites.md
     - name: BLOB ストレージ アカウントのファイアウォール設定を回避する
       href: hpc-cache-blob-firewall-fix.md
     - name: NFS ストレージ ターゲットの作成のトラブルシューティング
@@ -52,3 +58,5 @@
       href: customer-keys.md
     - name: Azure HPC Cache で Azure NetApp Files を使用する
       href: hpc-cache-netapp.md
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'

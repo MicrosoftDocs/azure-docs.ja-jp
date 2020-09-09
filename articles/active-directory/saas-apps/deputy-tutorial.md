@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Deputy の統合 | Microsoft Docs
 description: Azure Active Directory と Deputy の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048561"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル:Azure Active Directory と Deputy の統合
 
@@ -108,43 +103,43 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    |  |
-    | ----|
-    | `https://<subdomain>.<region>.au.deputy.com` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com` |
-    | `https://<subdomain>.<region>.na.deputy.com`|
-    | `https://<subdomain>.<region>.ent-na.deputy.com`|
-    | `https://<subdomain>.<region>.eu.deputy.com` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com` |
-    | `https://<subdomain>.<region>.as.deputy.com` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com` |
-    | `https://<subdomain>.<region>.la.deputy.com` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com` |
-    | `https://<subdomain>.<region>.af.deputy.com` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com` |
-    | `https://<subdomain>.<region>.an.deputy.com` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com` |
-    | `https://<subdomain>.<region>.deputy.com` |
+    ```http
+    https://<subdomain>.<region>.au.deputy.com
+    https://<subdomain>.<region>.ent-au.deputy.com
+    https://<subdomain>.<region>.na.deputy.com
+    https://<subdomain>.<region>.ent-na.deputy.com
+    https://<subdomain>.<region>.eu.deputy.com
+    https://<subdomain>.<region>.ent-eu.deputy.com
+    https://<subdomain>.<region>.as.deputy.com
+    https://<subdomain>.<region>.ent-as.deputy.com
+    https://<subdomain>.<region>.la.deputy.com
+    https://<subdomain>.<region>.ent-la.deputy.com
+    https://<subdomain>.<region>.af.deputy.com
+    https://<subdomain>.<region>.ent-af.deputy.com
+    https://<subdomain>.<region>.an.deputy.com
+    https://<subdomain>.<region>.ent-an.deputy.com
+    https://<subdomain>.<region>.deputy.com
+    ```
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-    | |
-    |----|
-    | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs` |
+    ```http
+    https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.
+    https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs
+    https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs
+    ```
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 

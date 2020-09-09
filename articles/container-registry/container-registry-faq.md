@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 39b543c5f886b22d488198873b75cf76555692fa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731646"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245368"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
 この記事では、Azure Container Registry に関するよく寄せられる質問および既知の問題について説明します。
+
+レジストリのトラブルシューティング ガイダンスについては、以下を参照してください。
+* [レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md)
+* [レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)
+* [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>リソース管理
 
@@ -32,7 +37,7 @@ ms.locfileid: "82731646"
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?
 
-はい。 [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)、および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
+はい。 [Azure Security Center](../security-center/azure-container-registry-integration.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)、および [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) のドキュメントを参照してください。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Azure Container Registry で Kubernetes を構成するにはどうすればよいですか?
 
@@ -51,7 +56,7 @@ Azure CLI を使用して資格情報を取得するには:
 az acr credential show -n myRegistry
 ```
 
-Azure Powershell の使用:
+Azure PowerShell の使用:
 
 ```powershell
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
@@ -119,7 +124,7 @@ Bash を使用している場合:
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
-Powershell の場合:
+PowerShell の場合:
 
 ```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
@@ -254,7 +259,9 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>匿名プル アクセスを有効にするにはどうすればよいですか?
 
-匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
+匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 レジストリに[スコープ マップ (ユーザー) またはトークン リソース](https://aka.ms/acr/repo-permissions)がある場合は、サポート チケットを生成する前にそれらを削除してください (システム スコープ マップは無視できます)。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
@@ -269,6 +276,7 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 - [Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Azure portal でリポジトリまたはタグをフェッチできないのはなぜですか?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [リポジトリ形式が無効またはサポートされていません](#repository-format-is-invalid-or-unsupported)
 - [Windows で http トレースを収集するにはどうすればよいですか?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>`az acr check-health` を使用した正常性チェック
@@ -435,9 +443,16 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?
 
 操作が許可されない可能性のあるいくつかのシナリオを次に示します。
-* クラシック レジストリはサポートされなくなりました。 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) か Azure portal を使用して、サポートされている [SKU](https://aka.ms/acr/skus) にアップグレードしてください。
-* イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) コマンドを使用して、現在の属性を表示できます。
+* クラシック レジストリはサポートされなくなりました。 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) か Azure portal を使用して、サポートされている[サービス レベル](https://aka.ms/acr/skus)にアップグレードしてください。
+* イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](./container-registry-image-lock.md) コマンドを使用して、現在の属性を表示できます。
 * イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、[こちら](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)をご覧ください。
+* レジストリが、その[ストレージの上限](container-registry-skus.md#service-tier-features-and-limits)に達した可能性があります。
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>リポジトリ形式が無効またはサポートされていません
+
+リポジトリの操作でリポジトリ名を指定するときに "サポートされていないリポジトリ形式"、"無効な形式"、"要求されたデータが存在しません" などのエラーが表示された場合は、名前のスペル、および大文字か小文字かを確認します。 有効なリポジトリ名には、小文字の英数字、ピリオド、ダッシュ、アンダースコア、およびスラッシュのみを含めることができます。 
+
+リポジトリの完全な名前付け規則については、[Open Container Initiative Distribution Specification](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview) (オープン コンテナー イニシアチブの配布仕様) を参照してください。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows で http トレースを収集するにはどうすればよいですか?
 

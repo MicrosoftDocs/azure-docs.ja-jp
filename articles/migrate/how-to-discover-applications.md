@@ -2,34 +2,32 @@
 title: Azure Migrate を使用したオンプレミス サーバーでのアプリ、ロール、機能の検出
 description: Azure Migrate Server Assessment を使用して、オンプレミス サーバー上のアプリ、ロール、および機能を検出する方法について説明します。
 ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: ff9f5489b513cd1405e6b093d7537e4cbcead041
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 06/10/2020
+ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118649"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>マシンのアプリ、ロール、および機能を検出する
 
-この記事では、Azure Migrate を使用して、オンプレミス サーバー上のアプリケーション、ロール、および機能を検出する方法について説明します。Server Assessment を使用して作成する方法について説明します。
+この記事では、Azure Migrate :Server Assessment を使用して、オンプレミス サーバー上のアプリケーション、ロール、および機能を検出する方法について説明します。
 
-オンプレミス マシンで実行されているアプリのインベントリとロール/機能を検出すると、ワークロードに合わせて調整された Azure への移行パスを特定し、計画することができます。
+オンプレミスのマシンで実行されているアプリ、ロール、機能のインベントリを検出することで、Azure への移行パスを特定し、ワークロードに合わせて調整ができます。 アプリ検出では、VM ゲスト資格情報を使用し、Azure Migrate アプライアンスを使って検出が実行されます。 アプリ検出はエージェントレスです。 VM には何もインストールされません。
 
 > [!NOTE]
-> 現在、アプリ検出は VMware VM に対してプレビュー段階であり、検出のみに限定されています。 アプリベースの評価はまだ提供されていません。 オンプレミスの VMware VM、Hyper-V VM、物理サーバーに対するマシン ベースの評価です。
-
-Azure Migrate を使用したアプリ検出:Server Assessment はエージェントレスです。 マシンと VM には何もインストールされません。 Server Assessment では、検出の実行に、マシンのゲスト資格情報と共に Azure Migrate アプライアンスが使用されます。 アプライアンスから VMware マシンへのリモート アクセスには、VMware API が使用されます。
+> 現在、アプリ検出は VMware VM に対してプレビュー段階であり、検出のみに限定されています。 アプリベースの評価はまだ提供されていません。 
 
 
 ## <a name="before-you-start"></a>開始する前に
 
-1. Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
-2. プロジェクトに Azure Migrate: Server Assessment ツールを[追加](how-to-assess.md)していることを確認します。
-4. Azure Migrate アプライアンスを使用した VMware VM の検出と評価に関する [VMware の要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。
-5. Azure Migrate アプライアンスを展開するための[要件](migrate-appliance.md)を確認します。
-6. アプリケーションの検出の[サポートと要件を検証](migrate-support-matrix-vmware.md#application-discovery)します。
-
+- 次を完了したことを確認します。
+    - Azure Migrate プロジェクトの[作成](how-to-add-tool-first-time.md)。
+    - プロジェクトへの Azure Migrate:Server Assessment ツーのル[追加](how-to-assess.md)。
+- [アプリ検出のサポートと要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。
+- アプリ検出を実行する VM に PowerShell バージョン2.0 以降がインストールされていること、および VMware ツール (10.2.0 より後) がインストールされていることを確認します。
+- Azure Migrate アプライアンスを展開するための[要件](migrate-appliance.md)を確認します。
 
 
 ## <a name="deploy-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスをデプロイする
@@ -37,7 +35,7 @@ Azure Migrate を使用したアプリ検出:Server Assessment はエージェ�
 1. Azure Migrate アプライアンスを展開するための要件を[確認](migrate-appliance.md#appliance---vmware)します。
 2. アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government クラウド](migrate-appliance.md#government-cloud-urls)でアクセスする必要がある Azure の URL について確認します。
 3. 検出および評価中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---vmware)します。
-4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-vmware.md#port-access)します。
+4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-vmware.md#port-access-requirements)します。
 5. [Azure Migrate アプライアンスを展開](how-to-set-up-appliance-vmware.md)して検出を開始します。 アプライアンスを展開するには、OVA テンプレートをダウンロードして VMware にインポートし、アプライアンスを VMware VM として作成します。 アプライアンスを構成し、Azure Migrate に登録します。
 6. アプライアンスを展開するときに、継続的な検出を開始するには、以下を指定します。
     - 接続先の vCenter Server の名前。
@@ -46,18 +44,13 @@ Azure Migrate を使用したアプリ検出:Server Assessment はエージェ�
 
 アプライアンスを展開し、資格情報を指定すると、アプリ、機能、およびロールの検出と共に、VM メタデータとパフォーマンス データの継続的な検出がアプライアンスで開始されます。  アプリ検出の期間は、所有している VM の数によって変わります。 通常、500 台の VM のアプリ検出には 1 時間かかります。
 
-## <a name="prepare-a-user-account"></a>ユーザー アカウントを準備する
+## <a name="verify-permissions"></a>アクセス許可の確認
 
-検出用のアカウントを作成し、アプライアンスに追加します。
-
-### <a name="create-a-user-account-for-discovery"></a>検出用のユーザー アカウントを作成する
-
-サーバー評価で検出のために VM にアクセスできるように、ユーザー アカウントを設定します。 アカウントの要件を[確認](migrate-support-matrix-vmware.md#application-discovery)します。
-
+検出と評価のために [vCenter Server の読み取り専用アカウントを作成](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)しました。 読み取り専用アカウントには、アプリ検出用の VM と対話するために、 **[Virtual Machines]**  >  **[ゲスト操作]** に対して有効になっている特権が必要です。
 
 ### <a name="add-the-user-account-to-the-appliance"></a>アプライアンスにユーザー アカウントを追加する
 
-アプライアンスにユーザー アカウントを追加します。
+次のようにユーザー アカウントを追加します。
 
 1. アプライアンス管理アプリを開きます。 
 2. **[Provide vCenter details]\(vCenter の詳細\)** パネルに移動します。
@@ -69,9 +62,6 @@ Azure Migrate を使用したアプリ検出:Server Assessment はエージェ�
     ![VM ユーザー アカウントを追加する](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
 
 
-
-
-
 ## <a name="review-and-export-the-inventory"></a>インベントリの確認とエクスポート
 
 検出が終了すると、アプリ検出用の資格情報を指定した場合は、Azure portal でアプリ インベントリを確認してエクスポートできます。
@@ -79,7 +69,7 @@ Azure Migrate を使用したアプリ検出:Server Assessment はエージェ�
 1. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** で、表示されたカウントをクリックして、 **[検出済みサーバー]** ページを開きます。
 
     > [!NOTE]
-    > この段階では、必要に応じて、検出されたマシンの依存関係を設定して、評価対象のマシン間の依存関係を視覚化することもできます。 [詳細については、こちらを参照してください](how-to-create-group-machine-dependencies.md)。
+    > この段階では、必要に応じて、検出されたマシンの依存関係の分析を設定して、評価対象のマシン間の依存関係を視覚化することもできます。 依存関係の分析の[詳細を見る](concepts-dependency-visualization.md)。
 
 2. **[Applications discovered]\(検出されたアプリケーション\)** で、表示されたカウントをクリックします。
 3. **[Application inventory]\(アプリケーション インベントリ\)** では、検出されたアプリ、ロール、および機能を確認できます。
@@ -89,5 +79,5 @@ Azure Migrate を使用したアプリ検出:Server Assessment はエージェ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 検出済みサーバーのリフトアンドシフト移行のための[評価を作成](how-to-create-assessment.md)します。
-- SQL Server データベースの評価に [Azure Migrate:Database Assessment](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017) を使用します。
+- 検出されたサーバーの[評価を作成](how-to-create-assessment.md)します。
+- [Azure Migrate:Database Assessment](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017) を使用して SQL Server データベースを評価します。

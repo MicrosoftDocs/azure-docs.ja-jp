@@ -5,27 +5,30 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/24/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c6ff67e3c1588f6671173d6fa1eec3dc15883291
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445126"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020917"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのクエリ コストを最適化する
 
-Azure Cosmos DB では、コンテナー内の項目を操作するリレーショナル クエリや階層クエリなど、豊富なデータベース操作が提供されます。 これらの操作のそれぞれに関連付けられたコストは、操作を完了するために必要な CPU、IO、およびメモリに応じて異なります。 ハードウェア リソースについて考えて管理する代わりに、要求ユニット (RU) を、さまざまなデータベース操作を実行して要求を処理するのに必要なリソースの 1 つの測定単位として考えることができます。 この記事では、クエリの要求ユニット使用量を評価し、パフォーマンスとコストの観点からクエリを最適化する方法について説明します。 
+Azure Cosmos DB では、コンテナー内の項目を操作するリレーショナル クエリや階層クエリなど、豊富なデータベース操作が提供されます。 これらの操作のそれぞれに関連付けられたコストは、操作を完了するために必要な CPU、IO、およびメモリに応じて異なります。 ハードウェア リソースについて考えて管理する代わりに、要求ユニット (RU) を、さまざまなデータベース操作を実行して要求を処理するのに必要なリソースの 1 つの測定単位として考えることができます。 この記事では、クエリの要求ユニット使用量を評価し、パフォーマンスとコストの観点からクエリを最適化する方法について説明します。
 
-Azure Cosmos DB でのクエリは、通常、以下のようにスループットの観点から、最も実行時間が短く、効率的なものから、実行時間が長く、効率性の低いものの順に並べられます。  
+Azure Cosmos DB での読み取りは、通常、以下のようにスループットの観点から、最も実行時間が短く、効率的なものから、実行時間が長く、効率性の低いものの順に並べられます。  
 
-* 1 つのパーティション キーと項目キーでの取得操作。
+* ポイントの読み取り (1 つの項目 ID およびパーティション キーにおいてキーと値を参照する)。
 
 * 1 つのパーティション キー内にフィルター句を含むクエリ。
 
 * 任意のプロパティに対して等値または範囲フィルター句を使用しないクエリ。
 
 * フィルターを使用しないクエリ。
+
+項目 ID でキーや値を参照することは、読み取りとして最も効率的であるため、項目 ID に意味のある値が含まれるようにしてください。
 
 1 つ以上のパーティションからデータを読み取るクエリでは、待機時間がより長くなり、より多くの数の要求ユニットが使用されます。 各パーティションにはすべてのプロパティに対する自動インデックス作成機能があるため、インデックスからクエリを効率的に実行できます。 並行処理オプションを使うことで、より迅速に複数のパーティションを使用するクエリを実行できます。 パーティション分割とパーティション キーの詳細については、「[Azure Cosmos DB のパーティション分割](partitioning-overview.md)」をご覧ください。
 
@@ -36,7 +39,7 @@ Azure Cosmos コンテナーでデータを格納したら、Azure ポータル�
 また、SDK を使用して、クエリのコストをプログラムで取得することもできます。 作成、更新、削除などの操作のオーバーヘッドを測定するには、REST API を使用するときに `x-ms-request-charge` ヘッダーを確認します。 .NET または Java SDK を使用する場合、`RequestCharge` プロパティは要求使用量を取得するためのプロパティと同等であり、このプロパティは ResourceResponse または FeedResponse 内にあります。
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

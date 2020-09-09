@@ -7,12 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03b9cce0d8e4666630aa6568597e08d1f13386ff
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614674"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422812"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの概要
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
@@ -31,14 +31,14 @@ Azure 上の Service Fabric クラスターは、次の他の Azure リソース
 ![Service Fabric クラスター][Image]
 
 ### <a name="virtual-machine"></a>仮想マシン
-クラスターの一部である[仮想マシン](/azure/virtual-machines/)はノードと呼ばれます。ただし、技術的には、クラスター ノードは Service Fabric ランタイム プロセスです。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、[配置プロパティ](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)などの特性があります。 各コンピューターまたは VM には、自動的に開始されるサービス *FabricHost.exe* が存在します。このサービスは、ブート時に開始され、その後、ノードを構成する *Fabric.exe* と *FabricGateway.exe* の 2 つの実行可能ファイルを起動します。 運用環境デプロイは、物理マシンまたは仮想マシンあたり 1 ノードです。 テストのシナリオでは、*Fabric.exe* と *FabricGateway.exe* の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
+クラスターの一部である[仮想マシン](../virtual-machines/index.yml)はノードと呼ばれます。ただし、技術的には、クラスター ノードは Service Fabric ランタイム プロセスです。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、[配置プロパティ](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)などの特性があります。 各コンピューターまたは VM には、自動的に開始されるサービス *FabricHost.exe* が存在します。このサービスは、ブート時に開始され、その後、ノードを構成する *Fabric.exe* と *FabricGateway.exe* の 2 つの実行可能ファイルを起動します。 運用環境デプロイは、物理マシンまたは仮想マシンあたり 1 ノードです。 テストのシナリオでは、*Fabric.exe* と *FabricGateway.exe* の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
 
 各 VM は仮想ネットワーク インターフェイス カード (NIC) に関連付けられ、各 NIC にはプライベート IP アドレスが割り当てられます。  VM は、NIC を介して、仮想ネットワークおよびローカル バランサーに割り当てられます。
 
 クラスター内のすべての VM は、仮想ネットワークに配置されます。  同じノード タイプ/スケール セットのすべてのノードは、仮想ネットワークの同じサブネットに配置されます。  これらのノードは、プライベート IP アドレスのみ持ち、仮想ネットワークの外部で直接アドレス指定できません。  クライアントは、Azure Load Balancer を介してノード上のサービスにアクセスできます。
 
 ### <a name="scale-setnode-type"></a>スケール セット/ノード タイプ
-クラスターを作成する場合、ノード タイプを 1 つ以上定義します。  1 つのノード タイプのノード、つまり VM は、サイズが同じです。また、CPU の数、メモリー、ディスクの数、ディスク I/O などの特性も同じです。  たとえば、1 つのノード タイプを、インターネットに対してポートを開いた小規模なフロントエンド VM 用にし、別のノード タイプを、データを処理する大規模なバックエンド VM 用にすることができます。 Azure クラスターでは、ノード タイプはそれぞれ 1 つの[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)に対応付けられます。
+クラスターを作成する場合、ノード タイプを 1 つ以上定義します。  1 つのノード タイプのノード、つまり VM は、サイズが同じです。また、CPU の数、メモリー、ディスクの数、ディスク I/O などの特性も同じです。  たとえば、1 つのノード タイプを、インターネットに対してポートを開いた小規模なフロントエンド VM 用にし、別のノード タイプを、データを処理する大規模なバックエンド VM 用にすることができます。 Azure クラスターでは、ノード タイプはそれぞれ 1 つの[仮想マシン スケール セット](../virtual-machine-scale-sets/index.yml)に対応付けられます。
 
 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノード タイプごとに別個のスケール セットが設定されます。 Service Fabric ランタイムは、Azure VM 拡張機能を使用して、スケール セットの各仮想マシンにブートストラップされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。 1 つのスケールセットには、5 つの[アップグレード ドメイン](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains)と 5 つの[障害ドメイン](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains)があり、最大で 100 の VM を使用できます。  100 を超えるノードのクラスターを作成するには、複数のスケール セット/ノード タイプを作成します。
 
@@ -48,12 +48,12 @@ Azure 上の Service Fabric クラスターは、次の他の Azure リソース
 詳細については、[Service Fabric のノード タイプと仮想マシン スケール セット](service-fabric-cluster-nodetypes.md)に関するページを参照してください。
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM インスタンスは、[パブリック IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)と DNS ラベルが関連付けられている [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) の背後で結合されます。  *&lt;clustername&gt;* でクラスターをプロビジョニングする場合、DNS 名 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* が、スケール セットの前のロード バランサーに関連付けられた DNS ラベルになります。
+VM インスタンスは、[パブリック IP アドレス](../virtual-network/public-ip-addresses.md)と DNS ラベルが関連付けられている [Azure Load Balancer](../load-balancer/load-balancer-overview.md) の背後で結合されます。  *&lt;clustername&gt;* でクラスターをプロビジョニングする場合、DNS 名 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* が、スケール セットの前のロード バランサーに関連付けられた DNS ラベルになります。
 
-クラスター内の VM には[プライベート IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)しかありません。  管理トラフィックとサービス トラフィックは、パブリック ロード バランサーを介してルーティングされます。  ネットワーク トラフィックは、NAT 規則 (クライアントは特定のノード/インスタンスに接続します)、または負荷分散規則 (トラフィックは VM ラウンド ロビンに送られます) を介してこれらのコンピューターにルーティングされます。  ロード バランサーには、 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* という形式の DNS 名を持つパブリック IP が関連付けられています。  パブリック IP は、リソース グループ内の別の Azure リソースです。  クラスターで複数のノード タイプを定義する場合、ノード タイプ/スケール セットごとにロード バランサーが作成されます。 または、複数のノード タイプに対して 1 つのロード バランサーをセットアップできます。  プライマリ ノード タイプには、DNS ラベル *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* があり、他のノード タイプには、DNS ラベル *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.azure.com* があります。
+クラスター内の VM には[プライベート IP アドレス](../virtual-network/private-ip-addresses.md)しかありません。  管理トラフィックとサービス トラフィックは、パブリック ロード バランサーを介してルーティングされます。  ネットワーク トラフィックは、NAT 規則 (クライアントは特定のノード/インスタンスに接続します)、または負荷分散規則 (トラフィックは VM ラウンド ロビンに送られます) を介してこれらのコンピューターにルーティングされます。  ロード バランサーには、 *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* という形式の DNS 名を持つパブリック IP が関連付けられています。  パブリック IP は、リソース グループ内の別の Azure リソースです。  クラスターで複数のノード タイプを定義する場合、ノード タイプ/スケール セットごとにロード バランサーが作成されます。 または、複数のノード タイプに対して 1 つのロード バランサーをセットアップできます。  プライマリ ノード タイプには、DNS ラベル *&lt;clustername&gt;.&lt;location&gt;.cloudapp.azure.com* があり、他のノード タイプには、DNS ラベル *&lt;clustername&gt;-&lt;nodetype&gt;.&lt;location&gt;.cloudapp.azure.com* があります。
 
 ### <a name="storage-accounts"></a>ストレージ アカウント
-各クラスター ノード タイプが、[Azure Storage アカウント](/azure/storage/common/storage-introduction)およびマネージド ディスクによってサポートされています。
+各クラスター ノード タイプが、[Azure Storage アカウント](../storage/common/storage-introduction.md)およびマネージド ディスクによってサポートされています。
 
 ## <a name="cluster-security"></a>クラスターのセキュリティ
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。  承認されていないユーザーが接続できないように、クラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。 
@@ -71,7 +71,7 @@ Azure Service Fabric クラスターは、ユーザーが所有するリソー�
 詳細については、「[クライアントとノードの間のセキュリティ](service-fabric-cluster-security.md#client-to-node-security)」を参照してください。
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
-ロールベースのアクセス制御 (RBAC) により、Azure リソースに対してきめ細かいアクセス制御を割り当てることができます。  別のアクセス規則を、サブスクリプション、リソース グループ、およびリソースに割り当てることができます。  RBAC 規則は、下位のレベルでオーバーライドされない限り、リソースの階層に沿って継承されます。  指定のユーザーとグループがクラスターを変更できるようにするために、RBAC 規則を使用して AAD にユーザーやユーザー グループを割り当てることができます。  詳細については、[Azure RBAC の概要](/azure/role-based-access-control/overview)に関するページを参照してください。
+ロールベースのアクセス制御 (RBAC) により、Azure リソースに対してきめ細かいアクセス制御を割り当てることができます。  別のアクセス規則を、サブスクリプション、リソース グループ、およびリソースに割り当てることができます。  RBAC 規則は、下位のレベルでオーバーライドされない限り、リソースの階層に沿って継承されます。  指定のユーザーとグループがクラスターを変更できるようにするために、RBAC 規則を使用して AAD にユーザーやユーザー グループを割り当てることができます。  詳細については、[Azure RBAC の概要](../role-based-access-control/overview.md)に関するページを参照してください。
 
 Service Fabric では、ユーザーの各グループに対して特定のクラスター操作へのアクセスを制限するアクセス制御もサポートしています。 その結果、クラスターのセキュリティが強化されます。 クラスターに接続するクライアント用に、2 種類のアクセス制御 (管理者ロールとユーザー ロール) がサポートされています。  
 
@@ -80,7 +80,7 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 ### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ 
 ネットワーク セキュリティ グループ (NSG) は、サブネット、VM、または特定 NIC の受信および送信のトラフィックを制御します。  既定では、複数の VM が同じ仮想ネットワークに配置される場合、それらの VM はポートを通じて相互に通信できます。  コンピューター間の通信を制限する必要がある場合、NSG を定義してネットワークをセグメント化することや、VM を相互に分離することができます。  クラスターに複数のノード タイプがある場合、異なるノード タイプに属するコンピューターが相互に通信するのを防ぐために、サブネットに NSG を適用できます。  
 
-詳細については、「[セキュリティ グループ](/azure/virtual-network/security-overview)」を参照してください。
+詳細については、「[セキュリティ グループ](../virtual-network/security-overview.md)」を参照してください。
 
 ## <a name="scaling"></a>Scaling
 
@@ -105,8 +105,9 @@ Azure Service Fabric クラスターはお客様が所有するリソースで�
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
+| Linux Ubuntu 18.04 | 7.1 |
 
-詳細については、[Azure でサポートされているクラスター バージョン](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems)に関するページを参照してください
+詳細については、[Azure でサポートされているクラスター バージョン](./service-fabric-versions.md#supported-operating-systems)に関するページを参照してください
 
 > [!NOTE]
 > Windows Server 1709 で Service Fabric をデプロイする場合、(1) これは Long Term Servicing Branch ではないため、今後、バージョンの移動が必要になる可能性があります。また、(2) コンテナーをデプロイする場合、Windows Server 2016 で構築されたコンテナーは Windows Server 1709 で動作しません。その逆も同様です (デプロイするにはリビルドが必要です)。

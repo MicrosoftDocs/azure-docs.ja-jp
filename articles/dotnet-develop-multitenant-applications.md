@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481832"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017704"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 上のマルチテナント アプリケーション
 マルチテナント アプリケーションは共有リソースであり、"それぞれ異なるテナント内のユーザー" からは独自のアプリケーションであるかのように見えます。 マルチテナント アプリケーションに適した一般的なシナリオは、さまざまなテナントからのアプリケーションのユーザーはすべて、ユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。 大規模なマルチテナント アプリケーションの例は、Office 365、Outlook.com、visualstudio.com です。

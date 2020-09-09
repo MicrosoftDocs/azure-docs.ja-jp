@@ -3,15 +3,15 @@ title: Azure Cosmos DB と Azure Functions を使用したサーバーレス デ
 description: Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263263"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -33,7 +33,7 @@ Azure Cosmos DB と Azure Functions を使用して、次の方法でデータ�
 
 次の各図は、これら 3 つの統合を示しています。 
 
-![Azure Cosmos DB と Azure Functions を統合する方法](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Azure Cosmos DB と Azure Functions を統合する方法" border="false":::
 
 Azure Cosmos DB 用 Azure Functions トリガー、入力バインディング、および出力バインディングは、次の組み合わせで使用できます。
 
@@ -61,7 +61,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 次の図は、このトリガーで Azure Portal で書き込まれるコードを示しています。
 
-![Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>財務ユース ケース - タイマー トリガーと入力バインディング
 
@@ -75,13 +75,13 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 次の図は、このシナリオ用の Azure Portal のコードを示しています。
 
-![財務シナリオのタイマー トリガーの Index.js ファイル](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="財務シナリオのタイマー トリガーの Index.js ファイル":::
 
-![財務シナリオのタイマー トリガーの Run.csx ファイル](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="財務シナリオのタイマー トリガーの Run.csx ファイル":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>ゲームのユース ケース - Cosmos DB 用 Azure Functions トリガーと出力バインディング 
 
-ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Gremlin API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB SQL データベース] に書き込むことができます。
+ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Gremlin API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB または SQL データベース]()に書き込むことができます。
 
 **実装:** Cosmos DB 用 Azure Functions トリガーと出力バインディングを使用する
 

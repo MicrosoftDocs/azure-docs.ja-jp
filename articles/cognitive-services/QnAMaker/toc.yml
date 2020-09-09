@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: 概念
   items:
+    - name: ナレッジ ベースの計画
+      href: Concepts/plan.md
     - name: Azure リソース
       href: Concepts/azure-resources.md
     - name: 他の人と共同作業を行う
@@ -72,8 +74,6 @@
         - name: リソースの管理
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: ビジネス継続性計画の作成
-          href: How-To/business-continuity-plan.md
         - name: 協力
           href: How-To/collaborate-knowledge-base.md
         - name: アクティブ ラーニングを有効にする
@@ -115,7 +115,7 @@
       items:
         - name: 新しいナレッジ ベースの作成
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/create-new-kb-csharp.md
             - name: Go
               href: Quickstarts/create-new-kb-go.md
@@ -125,19 +125,19 @@
               href: Quickstarts/create-new-kb-python.md
         - name: ナレッジ ベースの公開
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/publish-kb-csharp.md
             - name: Go
               href: Quickstarts/publish-kb-go.md
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
+              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: 回答の取得
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/get-answer-from-knowledge-base-csharp.md
             - name: Go
               href: Quickstarts/get-answer-from-knowledge-base-go.md
@@ -185,7 +185,7 @@
           href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK
       items:
-        - name: 'C#'
+        - name: C#
           items:
             - name: リファレンス ドキュメント
               href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
@@ -201,12 +201,14 @@
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker'
             - name: サンプル
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-go'
-        - name: Node.js
+        - name: JavaScript
           items:
             - name: リファレンス ドキュメント
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
-            - name: NPM
-              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
+            - name: NPM - 作成
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+            - name: NPM - クエリ ランタイム
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker-runtime'
             - name: サンプル
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python

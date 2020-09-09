@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201635"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Synapse SQL プールを使用したデータの読み込みに関するベスト プラクティス
 
@@ -28,8 +28,6 @@ ms.locfileid: "80745498"
 
 ORC ファイル形式でデータをエクスポートすると、大きなテキスト列がある場合に、Java のメモリ不足エラーが発生することがあります。 この制限を回避するには、列のサブセットのみをエクスポートします。
 
-PolyBase には、1,000,000 バイトを超えるデータを含む行を読み込むことができません。 Azure BLOB ストレージまたは Azure Data Lake Store のテキスト ファイルにデータを保存する場合、データは 1,000,000 バイトよりも少なくする必要があります。 テーブル スキーマには関係なく、このバイト制限はあります。
-
 すべてのファイル形式は、異なるパフォーマンス特性を持っています。 最速で読み込むには、圧縮されたテキスト区切りファイルを使用します。 UTF-8 と UTF-16 のパフォーマンスの違いはごくわずかです。
 
 大きな圧縮ファイルは小さな圧縮ファイルに分割します。
@@ -38,38 +36,47 @@ PolyBase には、1,000,000 バイトを超えるデータを含む行を読み�
 
 読み込み速度を最速にするには、一度に 1 つの読み込みジョブのみを実行します。 それが実行できない場合は、同時に実行する読み込み数を最小限に抑えます。 大規模な読み込みジョブが予想される場合は、読み込み前に SQL プールをスケール アップすることを検討してください。
 
-適切なコンピューティング リソースで読み込みを実行するには、読み込みを実行するように指定された読み込みユーザーを作成します。 特定のリソース クラスまたはワークロード グループに各読み込みユーザーを割り当てます。 読み込みを実行するには、いずれかの読み込みユーザーとしてサインインし、読み込みを実行します。 読み込みは、ユーザーのリソース クラスで実行されます。  
-
-> [!NOTE]
-> この方法は、現在のリソース クラスのニーズに合わせてユーザーのリソース クラスを変更しようとするより簡単です。
+適切なコンピューティング リソースで読み込みを実行するには、読み込みを実行するように指定された読み込みユーザーを作成します。 各読み込みユーザーを特定のワークロード グループに分類します。 読み込みを実行するには、いずれかの読み込みユーザーとしてサインインし、読み込みを実行します。 読み込みは、ユーザーのワークロード グループを使用して実行されます。  
 
 ### <a name="example-of-creating-a-loading-user"></a>読み込みユーザーの作成の例
 
-この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、**マスターに接続**し、ログインを作成します。
+この例では、特定のワークロード グループに分類された読み込みユーザーを作成します。 まず、**マスターに接続**し、ログインを作成します。
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 LoaderRC20 という名前のユーザーを作成し、そのユーザーにデータベースに対するアクセス許可の制御を与える方法を示します。 その後、ユーザーを staticrc20 データベース ロールのメンバーとして追加します。  
+SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+      MIN_PERCENTAGE_RESOURCE = 100
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-staticRC20 リソース クラスのリソースで読み込みを実行するには、LoaderRC20 としてサインインし、読み込みを実行します。
+読み込みワークロード グループのリソースを使用して読み込みを実行するには、loader としてサインインし、読み込みを実行します。
 
-動的リソース クラスではなく、静的リソース クラスで読み込みを実行します。 静的リソース クラスを使用すると、[Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)に関係なく、必ず同じリソースが使用されます。 動的リソース クラスを使用すると、サービス レベルによってリソースが変わります。
+## <a name="allowing-multiple-users-to-load-polybase"></a>複数のユーザーによる読み込みの許可 (PolyBase)
 
-動的クラスの場合、サービス レベルが低いと、おそらく読み込みユーザー用により大きなリソース クラスを使用する必要があります。
-
-## <a name="allowing-multiple-users-to-load"></a>複数のユーザーが読み込みを実行できるようにする
-
-多くの場合、複数のユーザーが SQL プールにデータを読み込む必要があります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。
+多くの場合、複数のユーザーが SQL プールにデータを読み込む必要があります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。
 
 読み込みを実行するすべてのユーザーに、すべてのスキーマに対する制御アクセス権を付与したくない場合があります。 アクセス許可を制限するには、DENY CONTROL ステートメントを使用します。
 
@@ -104,7 +111,7 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SqLBulkCopy API または bcp を使用するときはバッチ サイズを増やす
 
-PolyBase を使用して読み込むと、SQL プールで最高のスループットが得られます。 PolyBase を使用して読み込みを行うことができず、[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。
+COPY ステートメントを使用して読み込むと、SQL プールで最大のスループットが得られます。 COPY を使用して読み込むことができず、[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。
 
 > [!TIP]
 > 最適なバッチ サイズの容量を決定するために推奨されるベースラインは、10 万行から 100 万行のバッチ サイズです。
@@ -142,7 +149,7 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="rotate-storage-keys"></a>ストレージ キーの切り替え
+## <a name="rotate-storage-keys-polybase"></a>ストレージ キーを切り替える (PolyBase)
 
 セキュリティのために BLOB ストレージへのアクセス キーを定期的に変更することをお勧めします。 BLOB ストレージ アカウントには 2 つのストレージ キーがあり、キーの切り替えに使用できます。
 
@@ -168,6 +175,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>次のステップ
 
-- PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[SQL Data Warehouse の ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
-- 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」を参照してください。
+- 抽出、読み込み、変換 (ELT) プロセスを設計するときの COPY ステートメントまたは PolyBase の詳細については、[SQL Data Warehouse のための ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
+- 読み込みのチュートリアルについては、[COPY ステートメントを使用した Azure BLOB ストレージから Synapse SQL へのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関するページを参照してください。
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](sql-data-warehouse-manage-monitor.md)」を参照してください。

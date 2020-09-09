@@ -8,30 +8,30 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72791974"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936063"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>キー フレーズ抽出コグニティブ スキル
 
-**キー フレーズ抽出**スキルは、非構造化テキストを評価し、各レコードに対してキー フレーズのリストを返します。 このスキルでは、Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) によって提供される機械学習モデルが使用されます。
+**キー フレーズ抽出**スキルは、非構造化テキストを評価し、各レコードに対してキー フレーズのリストを返します。 このスキルでは、Cognitive Services の [Text Analytics](../cognitive-services/text-analytics/overview.md) によって提供される機械学習モデルが使用されます。
 
 この機能は、レコード内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、 "食べ物" と "すばらしいスタッフ" がサービスによって返されます。
 
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>データ制限
-レコードのサイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをキー フレーズ エクストラクターに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)の使用を検討してください。
+レコードのサイズは、[`String.Length`](/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをキー フレーズ エクストラクターに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)の使用を検討してください。
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -39,17 +39,35 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 | 入力                | 説明 |
 |---------------------|-------------|
-| defaultLanguageCode | (省略可能) 言語を明示的に指定しないドキュメントに適用する言語コード。  既定の言語コードが指定されていない場合、既定の言語コードとして英語 (en) が使用されます。 <br/> [サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)を参照してください。 |
-| maxKeyPhraseCount   | (省略可能) 生成するキー フレーズの最大数。 |
+| `defaultLanguageCode` | (省略可能) 言語を明示的に指定しないドキュメントに適用する言語コード。  既定の言語コードが指定されていない場合、既定の言語コードとして英語 (en) が使用されます。 <br/> [サポートされる言語の完全な一覧](../cognitive-services/text-analytics/language-support.md)を参照してください。 |
+| `maxKeyPhraseCount`   | (省略可能) 生成するキー フレーズの最大数。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力     | 説明 |
+| 入力  | 説明 |
 |--------------------|-------------|
-| text | 分析されるテキスト。|
-| languageCode  |  レコードの言語を示す文字列。 このパラメーターが指定されていない場合、既定の言語コードがレコードを分析するために使用されます。 <br/>[サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)を参照|
+| `text` | 分析されるテキスト。|
+| `languageCode`    |  レコードの言語を示す文字列。 このパラメーターが指定されていない場合、既定の言語コードがレコードを分析するために使用されます。 <br/>[サポートされる言語の完全な一覧](../cognitive-services/text-analytics/language-support.md)を参照|
+
+## <a name="skill-outputs"></a>スキルの出力
+
+| 出力     | 説明 |
+|--------------------|-------------|
+| `keyPhrases` | 入力テキストから抽出されたキー フレーズの一覧。 キー フレーズは、重要度順に返されます。 |
+
 
 ##  <a name="sample-definition"></a>定義例
+
+次のフィールドを持つ SQL レコードを検討してみます。
+
+```json
+{
+    "content": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
+    "language": "en"
+}
+```
+
+スキル定義は次のようになります。
 
 ```json
  {
@@ -61,7 +79,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
       },
       {
         "name": "languageCode",
-        "source": "/document/languagecode" 
+        "source": "/document/language" 
       }
     ],
     "outputs": [
@@ -73,33 +91,12 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
   }
 ```
 
-##  <a name="sample-input"></a>サンプル入力
-
-```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "text": "Glaciers are huge rivers of ice that ooze their way over land, powered by gravity and their own sheer weight. They accumulate ice from snowfall and lose it through melting. As global temperatures have risen, many of the world’s glaciers have already started to shrink and retreat. Continued warming could see many iconic landscapes – from the Canadian Rockies to the Mount Everest region of the Himalayas – lose almost all their glaciers by the end of the century.",
-             "language": "en"
-           }
-      }
-    ]
-```
-
-
 ##  <a name="sample-output"></a>サンプル出力
 
+上記の例では、スキルの出力は "document/myKeyPhrases" と呼ばれる強化されたツリーの新しいノードに書き込まれます。これは、指定した `targetName` が "document/myKeyPhrases" であるためです。 `targetName` が指定されていない場合は、"document/keyPhrases" になります。
+
+#### <a name="documentmykeyphrases"></a>document/myKeyPhrases 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-            "keyPhrases": 
             [
               "world’s glaciers", 
               "huge rivers of ice", 
@@ -108,12 +105,9 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
               "Mount Everest region",
               "Continued warming"
             ]
-           }
-      }
-    ]
-}
 ```
 
+他のスキルへの入力として、または[出力フィールドのマッピング](cognitive-search-output-field-mapping.md)のソースとして、"document/myKeyPhrases" を使用できます。
 
 ## <a name="errors-and-warnings"></a>エラーと警告
 サポートされていない言語コードを指定すると、エラーが生成され、キー フレーズは抽出されません。
@@ -124,3 +118,4 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
++ [出力フィールドのマッピングを定義する方法](cognitive-search-output-field-mapping.md)

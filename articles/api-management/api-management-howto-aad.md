@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868390"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254828"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -44,7 +44,7 @@ ms.locfileid: "81868390"
     **[ID プロバイダーの追加]** ウィンドウが右側に表示されます。
 8. **[プロバイダーの種類]** で **[Azure Active Directory]** を選択します。
 
-    その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、 **[クライアント ID]** や **[クライアント シークレット]** があります  (これらのコントロールに関する情報は、記事の後半で取得します)。
+    その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、 **[クライアント ID]** や **[クライアント シークレット]** があります (これらのコントロールに関する情報は、記事の後半で取得します)。
 9. **[リダイレクト URL]** の内容をメモします。
     
    ![Azure Portal で ID プロバイダーを追加するための手順](./media/api-management-howto-aad/api-management-with-aad001.png)  
@@ -88,7 +88,7 @@ Azure AD テナント内のユーザーのアクセスを有効にした後、AP
 
 1. 前のセクションで作成したアプリの登録に戻ります。
 2. **[API のアクセス許可]** を選択し、 **[アクセス許可の追加]** をクリックします。 
-3. **[API アクセス許可の要求]** ペインで、 **[Microsoft API]** タブを選択し、 **[Microsoft Graph]** タイルを選択します。 **[アプリケーションのアクセス許可]** を選択し、 **[ディレクトリ]** を探して、 **[Directory.Read.All]** アクセス許可を選択します。 
+3. **[API アクセス許可の要求]** ペインで、 **[Microsoft API]** タブを選択し、下にスクロールして **[Azure Active Directory Graph]** タイルを選択します。 **[アプリケーションのアクセス許可]** を選択し、 **[ディレクトリ]** を探して、 **[Directory.Read.All]** アクセス許可を選択します。 
 4. ペインの下部にある **[アクセス許可の追加]** をクリックし、 **[Grant admin consent for {tenantname}]\({テナント名} に対する管理者の同意を与える\)** をクリックして、このディレクトリ内のすべてのユーザーに対するアクセスを許可します。 
 
 これで、外部の Azure AD グループを、API Management インスタンスの **[グループ]** タブから追加できるようになります。
@@ -103,7 +103,7 @@ Azure AD テナント内のユーザーのアクセスを有効にした後、AP
  
 これで、構成された Azure AD インスタンスのユーザーが開発者ポータルにサインインできるようになります。 これらのユーザーは、可視性があるすべてのグループを表示し、サブスクライブすることができます。
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 開発者ポータル - Azure AD アカウント認証の追加
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a> 開発者ポータル - Azure AD アカウント認証の追加
 
 開発者ポータルでは、AAD によるサインインは、 **[サインイン] ボタン:OAuth** ウィジェットを利用して行うことができます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
 
@@ -141,14 +141,14 @@ Azure AD テナント内のユーザーのアクセスを有効にした後、AP
 [api-management-complete-registration]: ./media/api-management-howto-aad/api-management-complete-registration.png
 [api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
-[API Management policy reference]: api-management-policy-reference.md
-[Caching policies]: api-management-policy-reference.md#caching-policies
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-policies.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
 [https://oauth.net/2/]: https://oauth.net/2/

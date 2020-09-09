@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/18/2020
-ms.openlocfilehash: 361ba17532d27a7020be1b6874993da999f48604
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 7/20/2020
+ms.openlocfilehash: 0b495bf21b1f78e5e6a9285f67e1769d2d2a0db1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527709"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065691"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>サポートされている Azure Database for MariaDB サーバーのバージョン
 
@@ -26,15 +26,15 @@ Azure Database for MariaDB では現在、次のバージョンがサポート�
 
 ## <a name="mariadb-version-102"></a>MariaDB バージョン 10.2
 
-パッチ バージョン:10.2.25
+パッチ バージョン:10.2.32
 
-このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/)を参照してください。
+このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/mariadb-10232-release-notes/)を参照してください。
 
 ## <a name="mariadb-version-103"></a>MariaDB バージョン 10.3
 
-パッチ バージョン:10.3.16
+パッチ バージョン:10.3.23
 
-このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/)を参照してください。
+このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/mariadb-10323-release-notes/)を参照してください。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
 サービスはパッチの更新プログラムのアップグレードを自動的に管理します。 たとえば、10.2.21 から 10.2.23 などです。  

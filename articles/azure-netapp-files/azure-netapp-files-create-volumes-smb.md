@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files の SMB ボリュームを作成する | Microsoft Docs
-description: Azure NetApp Files の SMB ボリュームを作成する方法について説明します。
+description: この記事では、Azure NetApp Files の SMBv3 ボリュームを作成する方法について説明します。 Active Directory の接続と Domain Services に対する要件について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,19 +11,19 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625541"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080509"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
-Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポートしています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、SMBv3 ボリュームを作成する方法について説明します。 NFS ボリュームを作成する場合は、[Azure NetApp Files の NFS ボリュームの作成](azure-netapp-files-create-volumes.md)に関するページを参照してください。 
+Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュアル プロトコル (NFSv3 and SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、SMBv3 ボリュームを作成する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に 
 あらかじめ容量プールを設定しておく必要があります。   
@@ -58,7 +58,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
     |    SAM/LSA            |    445       |    UDP           |
     |    w32time            |    123       |    UDP           |
 
-* ターゲットの Active Directory Domain Services のサイト トポロジについて、特に Azure NetApp Files がデプロイされる Azure VNet ではベスト プラクティスに従う必要があります。  
+* ターゲットの Active Directory Domain Services のサイト トポロジは、特に Azure NetApp Files がデプロイされる Azure VNet ではガイドラインに従う必要があります。  
 
     (Azure NetApp Files によって到達可能なドメイン コントローラーが存在する) 新規または既存の Active Directory サイト に、Azure NetApp Files がデプロイされる仮想ネットワークのアドレス空間を追加する必要があります。 
 
@@ -79,7 +79,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 
     For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
+    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
 
     ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
 -->
@@ -98,7 +98,7 @@ Azure NetApp Files では、 [[Active Directory サイトとサービス]](https
 
 ADDS の使用時にサイト名を確認するには、Active Directory Domain Services を担当する組織内の管理グループに問い合わせてください。 次の例は、サイト名が表示されている [Active Directory サイトとサービス] プラグインを示しています。 
 
-![Active Directory サイトとサービス](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+![Active Directory サイトとサービス](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-services.png)
 
 Azure NetApp Files の AD 接続を構成するときに、 **[AD サイト名]** フィールドのスコープにサイト名を指定します。
 
@@ -152,11 +152,32 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
         サービスによって、必要に応じて、Active Directory で追加のコンピューター アカウントが作成されます。
 
+        > [!IMPORTANT] 
+        > Active Directory 接続を作成した後に SMB サーバー プレフィックスの名前を変更すると混乱が生じます。 SMB サーバー プレフィックスの名前を変更したら、既存の SMB 共有を再マウントする必要があります。
+
     * **組織単位名**  
         これは、SMB サーバー コンピューター アカウントが作成される組織単位 (OU) の LDAP パスです。 つまり、OU=second level, OU=first level です。 
 
         Azure Active Directory Domain Services と組み合わせて Azure NetApp Files を使用している場合、NetApp アカウント用に Active Directory を構成する際の組織単位のパスは `OU=AADDC Computers` になります。
-        
+
+     * **バックアップ ポリシー ユーザー**  
+        Azure NetApp Files で使用するために作成されたコンピューター アカウントに対して昇格された特権を必要とする追加のアカウントを含めることができます。 指定したアカウントは、ファイルまたはフォルダー レベルで NTFS アクセス許可を変更できます。 たとえば、Azure NetApp Files の SMB ファイル共有にデータを移行するために使用される非特権サービス アカウントを指定できます。  
+
+        **バックアップ ポリシー ユーザー**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
     * **ユーザー名**や**パスワード**などの資格情報
 
     ![Active Directory に参加する](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
@@ -167,9 +188,6 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
     ![Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
-> [!NOTE] 
-> Active Directory 接続を保存したら、[ユーザー名] フィールドと [パスワード] フィールドを編集できます。 他の値については、接続を保存しても編集することはできません。 他の値を変更する必要がある場合は、まず、デプロイされている SMB ボリュームを削除し、次に Active Directory 接続を削除して再作成する必要があります。
-
 ## <a name="add-an-smb-volume"></a>SMB ボリュームを追加する
 
 1. [容量プール] ブレードから **[ボリューム]** ブレードをクリックします。 
@@ -179,7 +197,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 2. **[+ ボリュームの追加]** をクリックして、ボリュームを作成します。  
     [ボリュームの作成] ウィンドウが表示されます。
 
-3. [ボリュームの作成] ウィンドウの **[作成]** をクリックし、次のフィールドの情報を指定します。   
+3. [ボリュームの作成] ウィンドウで **[作成]** をクリックし、[基本] タブで次のフィールドの情報を入力します。   
     * **ボリューム名**      
         作成するボリュームの名前を指定します。   
 
@@ -209,6 +227,12 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         ![ボリュームを作成する](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、プルダウン メニューでスナップショット ポリシーを選択します。 
+
+        スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)」を参照してください。
+
+        ![詳細セクションの表示](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. **[プロトコル]** をクリックし、次の情報を入力します。  
     * ボリュームのプロトコルの種類として **[SMB]** を選択します。 

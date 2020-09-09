@@ -11,12 +11,17 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Operations'
+- devx-track-javascript
+- devx-track-csharp
+ms.openlocfilehash: f8971faec53830746c76d09a6cf7f22d2c80c45a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726062"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017687"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -198,11 +203,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-前提条件のインストール手順は次のとおりです。
-
-[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
-
 セキュリティ トークンを生成する C# の機能を下に示します。
 
 ```csharp
@@ -234,7 +234,6 @@ public static string generateSasToken(string resourceUri, string key, string pol
 }
 
 ```
-
 
 > [!NOTE]
 > トークンの有効期間は IoT Hub コンピューターで検証されるため、トークンを生成するコンピューターのクロックのずれは最小限である必要があります。

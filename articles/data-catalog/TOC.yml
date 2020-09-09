@@ -1,10 +1,11 @@
-- name: Data Catalog のドキュメント
+- name: Azure Data Catalog のドキュメント
   href: index.yml
 - name: 概要
   items:
     - name: Data Catalog とは
       href: overview.md
 - name: クイックスタート
+  expanded: true
   items:
     - name: Azure データ カタログを作成する
       href: data-catalog-get-started.md
@@ -20,11 +21,9 @@
       href: data-catalog-dsr.md
     - name: Azure Data Catalog の導入
       href: data-catalog-adopting-data-catalog.md
-    - name: 前提条件
-      href: data-catalog-prerequisites.md
     - name: よく寄せられる質問
       href: data-catalog-frequently-asked-questions.md
-- name: 操作方法
+- name: 操作方法ガイド
   items:
     - name: データ ソースの登録
       href: data-catalog-how-to-register.md

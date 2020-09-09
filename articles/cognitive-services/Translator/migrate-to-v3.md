@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 47136ee9c2f0dee29571f310eb3b07d7c11888c0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592714"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523980"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 から V3 への移行
 
@@ -32,11 +32,11 @@ Microsoft Translator チームは Translator のバージョン 3 (V3) をリリ
 
 * トレースなし - V3 では、Azure Portal の全価格レベルにトレースが適用されません。 つまり、この機能では、V3 API に送信されたテキストを Microsoft が保存することはありません。
 * JSON - XML が JSON に取って代わられます。 サービスに届くデータとサービスから届くデータはすべて JSON 形式になります。
-* 1 回の要求で複数のターゲット言語 - 翻訳メソッドは、1 回の要求で複数の ‘翻訳先’ 言語に応じます。 たとえば、1 回の要求で ‘翻訳元’ を英語とし、‘翻訳先’ にドイツ語、スペイン語、日本語、その他の言語グループを指定できます。
-* 2 か国語辞書 - 2 か国語辞書メソッドが API に追加されました。 このメソッドには ‘lookup’ と ‘examples’ が含まれます。
+* 1 回の要求で複数のターゲット言語 - 翻訳メソッドは、1 回の要求で複数の "翻訳先" 言語に応じます。 たとえば、1 回の要求で "翻訳元" を英語とし、"翻訳先" にドイツ語、スペイン語、日本語、その他の言語グループを指定できます。
+* 2 か国語辞書 - 2 か国語辞書メソッドが API に追加されました。 このメソッドには "lookup" と "examples" が含まれます。
 * 音訳 - 音訳メソッドが API に追加されました。 このメソッドでは、ある文字体系 (アラビア語 など) で書かれた言葉や文章が別の文字体系 (ラテン語 など) に変換されます。
-* 言語 - 新しい ‘languages’ メソッドは、‘translate’、‘dictionary’、‘transliterate’ メソッドで使用するために、言語情報を JSON 形式で届けます。
-* 翻訳の新機能 - 別のメソッドとして V2 API に存在した一部の機能に対応する目的で、新しい機能が ‘translate’ メソッドに追加されました。 それには、たとえば、TranslateArray があります。
+* 言語 - 新しい "languages" メソッドは、"translate"、"dictionary"、"transliterate" メソッドで使用するために、言語情報を JSON 形式で届けます。
+* 翻訳の新機能 - 別のメソッドとして V2 API に存在した一部の機能に対応する目的で、新しい機能が "translate" メソッドに追加されました。 それには、たとえば、TranslateArray があります。
 * 読み上げメソッド - テキスト読み上げ機能は、Microsoft Translator でサポートから外れました。 テキスト読み上げ機能は、[Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) で利用できます。
 
 V2 メソッドと V3 メソッドについてまとめた次のリストで、V3 メソッドと、V2 に備わっていた機能を提供する API を確認できます。
@@ -116,10 +116,10 @@ Microsoft Translator V3 では、ニューラル機械翻訳が既定で使用�
 
 V3 テキスト API によるニューラル翻訳では、標準カテゴリ (SMT、speech、tech、generalnn) を使用できません。
 
-| |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
-|:-----|:-----|:-----|:-----|:-----|
-|Translator バージョン 2|  api.microsofttranslator.com|    いいえ  |はい    |いいえ|
-|Translator バージョン 3|  api.cognitive.microsofttranslator.com|  はい|    いいえ| はい|
+| Version | エンドポイント | GDPR のプロセッサ準拠 | Translator Hub の使用 | カスタム トランスレーター (プレビュー) の使用 |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
+|Translator バージョン 2|    api.microsofttranslator.com|    いいえ    |○    |いいえ|
+|Translator バージョン 3|    api.cognitive.microsofttranslator.com|    はい|    ×|    はい|
 
 **Translator バージョン 3**
 * 一般提供されており完全にサポートされます。

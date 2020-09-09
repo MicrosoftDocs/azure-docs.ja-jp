@@ -2,13 +2,13 @@
 title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/24/2020
+ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537408"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826941"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -24,8 +24,11 @@ ms.locfileid: "81537408"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- バックアップに対してサポートされている vCenter または ESXi のバージョンを実行していることを確認します。 [こちら](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)のサポート マトリックスを参照してください。
+- バックアップに対してサポートされている vCenter または ESXi のバージョンを実行していることを確認します。 [こちら](./backup-mabs-protection-matrix.md)のサポート マトリックスを参照してください。
 - Azure Backup Server がセットアップされていることを確認します。 まだの場合は、始める前に[行います](backup-azure-microsoft-azure-backup.md)。 Azure Backup Server が最新の更新プログラムで実行されている必要があります。
+- 確実に、次のネットワーク ポートを開いた状態にします。
+  - MABS と vCenter 間の TCP 443
+  - MABS と ESXi ホストの間の TCP 443 と TCP 902
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>vCenter Server へのセキュリティで保護された接続の作成
 
@@ -38,7 +41,7 @@ ms.locfileid: "81537408"
 - Azure Backup Server がバックアップを処理する方法を理解しておくことが重要です。
   - 最初のステップとして、Azure Backup Server はローカル ディスク ストレージにデータをバックアップします。 Azure Backup Server ではストレージ プールが使用されます。ストレージ プールとは、保護対象データに対するディスク復旧ポイントを Azure Backup Server が格納するディスクとボリュームのセットです。 ストレージ プールには、直接接続ストレージ (DAS)、ファイバー チャネル SAN、iSCSI ストレージ デバイスまたは SAN を使用できます。 VMware VM データのローカル バックアップ用に十分なストレージがあることを確認することが重要です。
   - その後、ローカル ディスク ストレージから Azure にバックアップが行われます。
-  - 必要なストレージ容量を確認するには、[こちらをご覧ください](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need)。 情報は DPM に対するものですが、Azure Backup Server にも使用できます。
+  - 必要なストレージ容量を確認するには、[こちらをご覧ください](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need)。 情報は DPM に対するものですが、Azure Backup Server にも使用できます。
 
 ### <a name="set-up-the-certificate"></a>証明書を設定する
 
@@ -48,7 +51,7 @@ ms.locfileid: "81537408"
 
     ![vSphere Web Client](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-2. VSphere Web Client のログイン ページで、 **[Download trusted root CA certificates]\(信頼されたルート CA 証明書のダウンロード\)** をクリックします。
+2. vSphere Web Client のログイン ページで、 **[信頼されたルート CA 証明書のダウンロード]** を選択します。
 
     ![Download trusted root CA certificates (信頼されたルート CA 証明書のダウンロード)](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 
@@ -72,19 +75,19 @@ ms.locfileid: "81537408"
 
 8. ルート証明書を右クリックし、ポップアップ メニューから **[証明書のインストール]** を選択します。
 
-9. **証明書のインポート ウィザード**で、証明書のインポート先として **[ローカル コンピューター]** を選択し、 **[次へ]** をクリックします。 コンピューターへの変更を許可するかどうかの確認を求められたら、確認します。
+9. **証明書のインポート ウィザード**で、証明書のインポート先として **[ローカル コンピューター]** を選択し、 **[次へ]** を選択します。 コンピューターへの変更を許可するかどうかの確認を求められたら、確認します。
 
     ![ウィザードのようこそ画面](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
-10. **[証明書ストア]** ページで、 **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックして、証明書ストアを選択します。
+10. **[証明書ストア]** ページで、 **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** を選択して、証明書ストアを選択します。
 
     ![証明書ストレージ](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-11. **[証明書ストアの選択]** で、証明書のインポート先フォルダーとして **[信頼されたルート証明機関]** を選択し、 **[OK]** をクリックします。
+11. **[証明書ストアの選択]** で、証明書のインポート先フォルダーとして **[信頼されたルート証明機関]** を選択し、 **[OK]** を選択します。
 
     ![証明書の格納先フォルダー](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-12. **[証明書のインポート ウィザードの完了]** で、フォルダーを確認して、 **[完了]** をクリックします。
+12. **[証明書のインポート ウィザードの完了]** で、フォルダーを確認して、 **[完了]** を選択します。
 
     ![証明書が適切なフォルダーにあることを確認する](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -111,18 +114,18 @@ ms.locfileid: "81537408"
 Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許可を持つユーザー アカウントが必要です。 特定の権限を持つ VMware ロールを作成し、ユーザー アカウントをそのロールと関連付けます。
 
 1. vCenter Server (または、vCenter Server を使用していない場合は ESXi ホスト) にサインインします。
-2. **[Navigator]\(ナビゲーター\)** パネルで、 **[Administration]\(管理\)** をクリックします。
+2. **[ナビゲーター]** パネルで、 **[管理]** を選択します。
 
     ![管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. **[Administration]\(管理\)**  >  **[Roles]\(ロール\)** で、ロールの追加アイコン (+ 記号) をクリックします。
+3. **[管理]**  >  **[ロール]** で、ロールの追加アイコン (+ 記号) を選択します。
 
     ![ロールの追加](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
 4. **[Create Role]\(ロールの作成\)**  >  **[Role name]\(ロール名\)** で、「*BackupAdminRole*」と入力します。 ロール名は任意の名前でかまいませんが、ロールの目的を識別できる名前である必要があります。
 
-5. 次の表にまとめたように特権を選択して、 **[OK]** をクリックします。  **[Roles]\(ロール\)** パネルの一覧に新しいロールが表示されます。
-   - 親ラベルの横にあるアイコンをクリックして親を展開し、子権限を表示します。
+5. 次の表にまとめたように特権を選択して、 **[OK]** を選択します。  **[Roles]\(ロール\)** パネルの一覧に新しいロールが表示されます。
+   - 親ラベルの横にあるアイコンを選択して親を展開し、子権限を表示します。
    - VirtualMachine の権限を選択するには、親子階層を複数のレベルにわたって移動する必要があります。
    - 親権限のすべての子権限を選択する必要はありません。
 
@@ -130,82 +133,85 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
 ### <a name="role-permissions"></a>ロールのアクセス許可
 
-| vCenter 6.7 ユーザー アカウントの権限                     | vCenter 6.5 ユーザー アカウントの権限                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [データストア クラスタ].[データストア クラスタの設定]            | [データストア クラスタ].[データストア クラスタの設定]            |
-| Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
-| [データストア].[データストアの参照]                                   | [データストア].[データストアの参照]                                   |
-| [データストア].[低レベルのファイル操作]                          | [データストア].[低レベルのファイル操作]                          |
-| [グローバル].[メソッドを無効にする]                                       | [グローバル].[メソッドを無効にする]                                       |
-| [グローバル].[メソッドを有効にする]                                        | [グローバル].[メソッドを有効にする]                                        |
-| [グローバル].[ライセンス]                                              | [グローバル].[ライセンス]                                              |
-| [グローバル].[ログ イベント]                                             | [グローバル].[ログ イベント]                                             |
-| [グローバル].[カスタム属性の管理]                              | [グローバル].[カスタム属性の管理]                              |
-| [グローバル].[カスタム属性の設定]                                  | [グローバル].[カスタム属性の設定]                                  |
-| [ホスト].[ローカル操作].[仮想マシンの作成]                | [ホスト].[ローカル操作].[仮想マシンの作成]                |
-| [ネットワーク].[ネットワークの割り当て]                                       | [ネットワーク].[ネットワークの割り当て]                                       |
-| [リソース]. リソース プールへの仮想マシンの割り当て           | [リソース]. リソース プールへの仮想マシンの割り当て           |
-| [vApp].[仮想マシンの追加]                                     | [vApp].[仮想マシンの追加]                                     |
-| [vApp].[リソース プールの割り当て]                                    | [vApp].[リソース プールの割り当て]                                    |
-| [vApp].[登録解除]                                              | [vApp].[登録解除]                                              |
-| VirtualMachine.Configuration. [デバイスの追加または削除]          | VirtualMachine.Configuration. [デバイスの追加または削除]          |
-| [仮想マシン].[設定].[ディスク リースの取得]            | [仮想マシン].[設定].[ディスクのリース]                     |
-| [仮想マシン].[設定].[新規ディスクの追加]                   | [仮想マシン].[設定].[新規ディスクの追加]                   |
-| [仮想マシン].[設定].[詳細設定]        | [仮想マシン].[設定].[詳細]                       |
-| [仮想マシン].[設定].[ディスク変更の追跡の切り替え]   | [仮想マシン].[設定].[ディスク変更の追跡]          |
-| [仮想マシン].[設定].[ホスト USB デバイスの設定]     | [仮想マシン].[設定].[ホストの USB デバイス]               |
-| [仮想マシン].[設定].[仮想ディスクの拡張]           | [仮想マシン].[設定].[仮想ディスクの拡張]           |
-| [仮想マシン].[設定].[所有していないファイルのクエリ]           | [仮想マシン].[設定].[所有していないファイルのクエリ]           |
-| [仮想マシン].[設定].[スワップ ファイルの配置の変更]     | [仮想マシン].[設定].[スワップファイルの配置]            |
-| [仮想マシン].[ゲスト操作].[ゲスト操作のプログラム実行] | [仮想マシン].[ゲスト操作].[ゲスト操作のプログラム実行] |
-| [仮想マシン].[ゲスト操作].[ゲスト操作の変更] | [仮想マシン].[ゲスト操作].[ゲスト操作の変更] |
-| [仮想マシン].[ゲスト操作].[ゲスト操作のクエリ]    | [仮想マシン].[ゲスト操作].[ゲスト操作のクエリ]    |
-| [仮想マシン].[相互作用].[デバイス接続]             | [仮想マシン].[相互作用].[デバイス接続]             |
+次の表は、作成するユーザー アカウントに割り当てる必要がある権限を示しています。
+
+| vCenter 6.5 ユーザー アカウントの権限                          | vCenter 6.7 ユーザー アカウントの権限                            |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [データストア クラスタ].[データストア クラスタの設定]                           | [データストア クラスタ].[データストア クラスタの設定]                           |
+| Datastore.AllocateSpace                                                    | Datastore.AllocateSpace                                                    |
+| [データストア].[データストアの参照]                                                 | [データストア].[データストアの参照]                                                 |
+| [データストア].[低レベルのファイル操作]                                        | [データストア].[低レベルのファイル操作]                                        |
+| [グローバル].[メソッドを無効にする]                                                     | [グローバル].[メソッドを無効にする]                                                     |
+| [グローバル].[メソッドを有効にする]                                                      | [グローバル].[メソッドを有効にする]                                                      |
+| [グローバル].[ライセンス]                                                            | [グローバル].[ライセンス]                                                            |
+| [グローバル].[ログ イベント]                                                           | [グローバル].[ログ イベント]                                                           |
+| [グローバル].[カスタム属性の管理]                                            | [グローバル].[カスタム属性の管理]                                            |
+| [グローバル].[カスタム属性の設定]                                                | [グローバル].[カスタム属性の設定]                                                |
+| [ホスト].[ローカル操作].[仮想マシンの作成]                               | [ホスト].[ローカル操作].[仮想マシンの作成]                               |
+| [ネットワーク].[ネットワークの割り当て]                                                     | [ネットワーク].[ネットワークの割り当て]                                                     |
+| [リソース]. リソース プールへの仮想マシンの割り当て                          | [リソース]. リソース プールへの仮想マシンの割り当て                          |
+| [vApp].[仮想マシンの追加]                                                   | [vApp].[仮想マシンの追加]                                                   |
+| [vApp].[リソース プールの割り当て]                                                  | [vApp].[リソース プールの割り当て]                                                  |
+| [vApp].[登録解除]                                                            | [vApp].[登録解除]                                                            |
+| VirtualMachine.Configuration. [デバイスの追加または削除]                         | VirtualMachine.Configuration. [デバイスの追加または削除]                         |
+| [仮想マシン].[設定].[ディスクのリース]                                   | [仮想マシン].[設定].[ディスク リースの取得]                           |
+| [仮想マシン].[設定].[新規ディスクの追加]                                 | [仮想マシン].[設定].[新規ディスクの追加]                                 |
+| [仮想マシン].[設定].[詳細]                                     | [仮想マシン].[設定].[詳細設定]                       |
+| [仮想マシン].[設定].[ディスク変更の追跡]                         | [仮想マシン].[設定].[ディスク変更の追跡の切り替え]                  |
+| [仮想マシン].[設定].[ホストの USB デバイス]                              | [仮想マシン].[設定].[ホスト USB デバイスの設定]                    |
+| [仮想マシン].[設定].[仮想ディスクの拡張]                          | [仮想マシン].[設定].[仮想ディスクの拡張]                          |
+| [仮想マシン].[設定].[所有していないファイルのクエリ]                          | [仮想マシン].[設定].[所有していないファイルのクエリ]                          |
+| [仮想マシン].[設定].[スワップファイルの配置]                           | [仮想マシン].[設定].[スワップ ファイルの配置の変更]                    |
+| [仮想マシン].[ゲスト操作].[ゲスト操作のプログラム実行]         | [仮想マシン].[ゲスト操作].[ゲスト操作のプログラム実行]         |
+| [仮想マシン].[ゲスト操作].[ゲスト操作の変更]             | [仮想マシン].[ゲスト操作].[ゲスト操作の変更]             |
+| [仮想マシン].[ゲスト操作].[ゲスト操作のクエリ]                   | [仮想マシン].[ゲスト操作].[ゲスト操作のクエリ]                   |
+| [仮想マシン].[相互作用].[デバイス接続]                            | [仮想マシン].[相互作用].[デバイス接続]                            |
 | [仮想マシン].[相互作用].[VIX API によるゲスト オペレーティング システム管理] | [仮想マシン].[相互作用].[VIX API によるゲスト オペレーティング システム管理] |
-| [仮想マシン].[相互作用].[パワーオフ]                      | [仮想マシン].[相互作用].[パワーオフ]                      |
-| [仮想マシン].[インベントリ].[新規作成]                        | [仮想マシン].[インベントリ].[新規作成]                        |
-| [仮想マシン].[インベントリ].[削除]                            | [仮想マシン].[インベントリ].[削除]                            |
-| [仮想マシン].[インベントリ].[登録]                          | [仮想マシン].[インベントリ].[登録]                          |
-| [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]             | [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]             |
-| [仮想マシン].[プロビジョニング].[ファイル アクセスの許可]             | [仮想マシン].[プロビジョニング].[ファイル アクセスの許可]             |
-| [仮想マシン].[プロビジョニング].[読み取り専用ディスク アクセスの許可]   | [仮想マシン].[プロビジョニング].[読み取り専用ディスク アクセスの許可]   |
-| [仮想マシン].[プロビジョニング].[仮想マシンのダウンロードの許可] | [仮想マシン].[プロビジョニング].[仮想マシンのダウンロードの許可] |
-| [仮想マシン].[スナップショット管理].  スナップショットの作成       | [仮想マシン].[スナップショット管理].  スナップショットの作成       |
-| [仮想マシン].[スナップショット管理].[スナップショットの削除]        | [仮想マシン].[スナップショット管理].[スナップショットの削除]        |
-| [仮想マシン].[スナップショット管理].[現在のスナップショットまで戻る]     | [仮想マシン].[スナップショット管理].[現在のスナップショットまで戻る]     |
+| [仮想マシン].[相互作用].[パワーオフ]                                    | [仮想マシン].[相互作用].[パワーオフ]                                    |
+| [仮想マシン].[インベントリ].[新規作成]                                      | [仮想マシン].[インベントリ].[新規作成]                                      |
+| [仮想マシン].[インベントリ].[削除]                                          | [仮想マシン].[インベントリ].[削除]                                          |
+| [仮想マシン].[インベントリ].[登録]                                        | [仮想マシン].[インベントリ].[登録]                                        |
+| [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]                            | [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]                            |
+| [仮想マシン].[プロビジョニング].[ファイル アクセスの許可]                            | [仮想マシン].[プロビジョニング].[ファイル アクセスの許可]                            |
+| [仮想マシン].[プロビジョニング].[読み取り専用ディスク アクセスの許可]                  | [仮想マシン].[プロビジョニング].[読み取り専用ディスク アクセスの許可]                  |
+| [仮想マシン].[プロビジョニング].[仮想マシンのダウンロードの許可]               | [仮想マシン].[プロビジョニング].[仮想マシンのダウンロードの許可]               |
+| [仮想マシン].[スナップショット管理]. スナップショットの作成                      | [仮想マシン].[スナップショット管理]. スナップショットの作成                      |
+| [仮想マシン].[スナップショット管理].[スナップショットの削除]                       | [仮想マシン].[スナップショット管理].[スナップショットの削除]                       |
+| [仮想マシン].[スナップショット管理].[現在のスナップショットまで戻る]                    | [仮想マシン].[スナップショット管理].[現在のスナップショットまで戻る]                    |
 
-<br>
+> [!NOTE]
+> 次の表に、vCenter 6.0 と vCenter 5.5 ユーザー アカウントの権限を示します。
 
-| **vCenter 6.0 ユーザー アカウントの権限**                | **vCenter 5.5 ユーザー アカウントの権限** |
-| ---------------------------------------------------------- | ------------------------------------------- |
-| Datastore.AllocateSpace                                    | Network.Assign                              |
-| Global.Manage custom attributes                           | Datastore.AllocateSpace                     |
-| Global.Set custom attribute                               | VirtualMachine.Config.ChangeTracking        |
-| Host.Local  operations.Create virtual machine              | VirtualMachine.State.RemoveSnapshot         |
-| ネットワーク。  ネットワークの割り当て                                   | VirtualMachine.State.CreateSnapshot         |
-| [リソース].  リソース プールへの仮想マシンの割り当て         | VirtualMachine.Provisioning.DiskRandomRead  |
-| Virtual  machine.Configuration.Add new disk                | VirtualMachine.Interact.PowerOff            |
-| Virtual  machine.Configuration.Advanced                    | VirtualMachine.Inventory.Create             |
-| Virtual  machine.Configuration.Disk change tracking        | VirtualMachine.Config.AddNewDisk            |
-| Virtual  machine.Configuration.Host USB device             | VirtualMachine.Config.HostUSBDevice         |
-| Virtual  machine.Configuration.Query unowned files         | VirtualMachine.Config.AdvancedConfig        |
-| Virtual  machine.Configuration.Swapfile placement          | VirtualMachine.Config.SwapPlacement         |
-| Virtual  machine.Interaction.Power Off                     | Global.ManageCustomFields                   |
-| Virtual  machine.Inventory. 新規作成                     |                                             |
-| Virtual  machine.Provisioning.Allow disk access            |                                             |
-| Virtual  machine.Provisioning. 読み取り専用ディスク アクセスの許可 |                                             |
-| Virtual  machine.Snapshot management.Create snapshot       |                                             |
-| Virtual  machine.Snapshot management.Remove Snapshot       |                                             |
+| vCenter 6.0 ユーザー アカウントの権限 | vCenter 5.5 ユーザー アカウントの権限 |
+| --- | --- |
+| Datastore.AllocateSpace | Network.Assign |
+| [グローバル].[カスタム属性の管理] | Datastore.AllocateSpace |
+| [グローバル].[カスタム属性の設定] | VirtualMachine.Config.ChangeTracking |
+| [ホスト].[ローカル操作].[仮想マシンの作成] | VirtualMachine.State.RemoveSnapshot |
+| ネットワーク。 ネットワークの割り当て | VirtualMachine.State.CreateSnapshot |
+| [リソース]. リソース プールへの仮想マシンの割り当て | VirtualMachine.Provisioning.DiskRandomRead |
+| [仮想マシン].[設定].[新規ディスクの追加] | VirtualMachine.Interact.PowerOff |
+| [仮想マシン].[設定].[詳細] | VirtualMachine.Inventory.Create |
+| [仮想マシン].[設定].[ディスク変更の追跡] | VirtualMachine.Config.AddNewDisk |
+| [仮想マシン].[設定].[ホストの USB デバイス] | VirtualMachine.Config.HostUSBDevice |
+| [仮想マシン].[設定].[所有していないファイルのクエリ] | VirtualMachine.Config.AdvancedConfig |
+| [仮想マシン].[設定].[スワップファイルの配置] | VirtualMachine.Config.SwapPlacement |
+| [仮想マシン].[相互作用].[パワーオフ] | Global.ManageCustomFields |
+| [仮想マシン].[インベントリ]. 新規作成 |   |
+| [仮想マシン].[プロビジョニング].[ディスク アクセスの許可] |   |
+| [仮想マシン].[プロビジョニング]. 読み取り専用ディスク アクセスの許可 |   |
+| [仮想マシン].[スナップショット管理].[スナップショットの作成] |   |
+| [仮想マシン].[スナップショット管理].[スナップショットの削除] |   |
 
 ## <a name="create-a-vmware-account"></a>VMware アカウントを作成する
 
-1. vCenter Server の **[Navigator]\(ナビゲーター\)** パネルで、 **[Users and Groups]\(ユーザーとグループ\)** をクリックします。 vCenter Server を使用しない場合は、適切な ESXi ホスト上にアカウントを作成します。
+1. vCenter Server の **[ナビゲーター]** パネルで、 **[ユーザーとグループ]** を選択します。 vCenter Server を使用しない場合は、適切な ESXi ホスト上にアカウントを作成します。
 
     ![[ユーザーとグループ] のオプション](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
     **[vCenter Users and Groups]\(vCenter のユーザーとグループ\)** パネルが表示されます。
 
-2. **[vCenter Users and Groups]\(vCenter のユーザーとグループ\)** パネルで **[ユーザー]** タブを選択し、ユーザーの追加アイコン (+ 記号) をクリックします。
+2. **[vCenter のユーザーとグループ]** パネルで **[ユーザー]** タブを選択し、ユーザーの追加アイコン (+ 記号) を選択します。
 
     ![[vCenter Users and Groups]\(vCenter のユーザーとグループ\) パネル](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
@@ -213,15 +219,15 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
     ![[新しいユーザー] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-4. ユーザー アカウントをロールに関連付けるには、 **[ナビゲーター]** パネルで **[グローバル アクセス許可]** をクリックします。 **[グローバル アクセス許可]** パネルで **[管理]** タブを選択し、追加アイコン (+ 記号) をクリックします。
+4. ユーザー アカウントをロールに関連付けるには、 **[ナビゲーター]** パネルで **[グローバル アクセス許可]** を選択します。 **[グローバル アクセス許可]** パネルで **[管理]** タブを選択し、追加アイコン (+ 記号) を選択します。
 
     ![[グローバル アクセス許可] パネル](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
-5. **[Global Permissions Root - Add Permission]\(グローバル アクセス許可のルート - アクセス許可の追加\)** ダイアログ ボックスで、 **[Add]\(追加\)** をクリックして、ユーザーまたはグループを選択します。
+5. **[グローバル アクセス許可のルート - アクセス許可の追加]** で、 **[追加]** を選択して、ユーザーまたはグループを選択します。
 
     ![ユーザーまたはグループの選択](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. **[Select Users/Groups]\(ユーザー/グループの選択\)** で、 **[BackupAdmin]**  >  **[Add]\(追加\)** を選択します。 **[ユーザー]** では、ユーザー アカウントに *domain\username* の形式が使用されます。 別のドメインを使用する場合は、 **[ドメイン]** の一覧からドメインを選択します。 **[OK]** をクリックして、選択したユーザーを **[アクセス許可の追加]** ダイアログ ボックスに追加します。
+6. **[Select Users/Groups]\(ユーザー/グループの選択\)** で、 **[BackupAdmin]**  >  **[Add]\(追加\)** を選択します。 **[ユーザー]** では、ユーザー アカウントに *domain\username* の形式が使用されます。 別のドメインを使用する場合は、 **[ドメイン]** の一覧からドメインを選択します。 **[OK]** を選択して、選択したユーザーを **[アクセス許可の追加]** ダイアログ ボックスに追加します。
 
     ![BackupAdmin ユーザーを追加する](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
@@ -237,31 +243,31 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
     ![Azure Backup Server アイコン](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. Azure Backup Server コンソールで、 **[管理]**  >   **[運用サーバー]**  >  **[VMware の管理]** をクリックします。
+2. Azure Backup Server コンソールで、 **[管理]**  >   **[運用サーバー]**  >  **[VMware の管理]** を選択します。
 
     ![Azure Backup Server コンソール](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
-3. **[資格情報の管理]** ダイアログ ボックスで、 **[追加]** をクリックします。
+3. **[資格情報の管理]** ダイアログ ボックスで、 **[追加]** を選択します。
 
-    ![Azure Backup Server の [資格情報の管理] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+    ![[資格情報の管理] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 4. **[資格情報の追加]** で、新しい資格情報の名前と説明を入力し、VMware サーバーで定義したユーザー名とパスワードを指定します。 この手順では資格情報を識別するために *Contoso Vcenter credential* という名前を使用します。 VMware サーバーと Azure Backup Server が同じドメイン内にない場合は、ユーザー名でドメインを指定します。
 
     ![Azure Backup Server の [資格情報の追加] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
-5. **[追加]** をクリックして、新しい資格情報を追加します。
+5. **[追加]** を選択して、新しい資格情報を追加します。
 
-    ![Azure Backup Server の [資格情報の管理] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+    ![新しい資格情報の追加](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server"></a>vCenter Server を追加する
 
 Azure Backup Server に vCenter Server を追加します。
 
-1. Azure Backup Server コンソールで、 **[管理]**  >  **[運用サーバー]**  >  **[追加]** をクリックします。
+1. Azure Backup Server コンソールで、 **[管理]**  >  **[運用サーバー]**  >  **[追加]** を選択します。
 
     ![運用サーバーの追加ウィザードを開く](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. **[運用サーバーの追加ウィザード]**  >  **[運用サーバーの種類を選択]** ページで、 **[VMware サーバー]** を選択し、 **[次へ]** をクリックします。
+2. **[運用サーバーの追加ウィザード]**  >  **[運用サーバーの種類を選択]** ページで、 **[VMware サーバー]** を選択し、 **[次へ]** を選択します。
 
     ![運用サーバーの追加ウィザード](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -275,11 +281,11 @@ Azure Backup Server に vCenter Server を追加します。
 
     ![資格情報を指定する](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. **[追加]** をクリックして、VMware サーバーをサーバーのリストに追加します。 続けて、 **[次へ]** をクリックします。
+6. **[追加]** を選択して、VMware サーバーをサーバーのリストに追加します。 **[次へ]** を選択します。
 
     ![VMWare サーバーと資格情報を追加する](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
-7. **[概要]** ページで、 **[追加]** をクリックして VMware サーバーを Azure Backup Server に追加します。 新しいサーバーはすぐに追加され、VMware サーバー上にエージェントは必要ありません。
+7. **[概要]** ページで、 **[追加]** を選択して VMware サーバーを Azure Backup Server に追加します。 新しいサーバーはすぐに追加され、VMware サーバー上にエージェントは必要ありません。
 
     ![Azure Backup Server への VMware サーバーの追加](./media/backup-azure-backup-server-vmware/tasks-screen.png)
 
@@ -293,24 +299,24 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
 バックアップ対象の VMware VM を追加します。 保護グループでは、複数の VM が収集されて、グループ内のすべての VM に、同じデータ保持とバックアップの設定が適用されます。
 
-1. Azure Backup Server コンソールで、 **[保護]** > **[新規]** をクリックします。
+1. Azure Backup Server コンソールで、 **[保護]** > **[新規]** を選択します。
 
     ![新しい保護グループの作成ウィザードを開く](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-1. **新しい保護グループの作成**ウィザードのようこそページで、 **[次へ]** をクリックします。
+1. **新しい保護グループの作成**ウィザードのようこそページで、 **[次へ]** を選択します。
 
     ![[新しい保護グループの作成ウィザード] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. **[保護グループの種類の選択]** ページで、 **[サーバー]** を選択し、 **[次へ]** をクリックします。 **[グループ メンバーの選択]** ページが表示されます。
+1. **[保護グループの種類の選択]** ページで、 **[サーバー]** を選択し、 **[次へ]** を選択します。 **[グループ メンバーの選択]** ページが表示されます。
 
-1. **[グループ メンバーの選択]** で、バックアップする VM (または VM フォルダー) を選択します。 続けて、 **[次へ]** をクリックします。
+1. **[グループ メンバーの選択]** で、バックアップする VM (または VM フォルダー) を選択します。 **[次へ]** を選択します。
 
     - フォルダーを選択すると、そのフォルダー内の VM またはフォルダーもバックアップ対象に選択されます。 バックアップしたくないフォルダーや VM はオフにすることができます。
 1. VM またはフォルダーが既にバックアップされている場合、それを選択することはできません。 これにより、1 つの VM に足して重複する復旧ポイントが作成されないことが保証されます。
 
     ![グループ メンバーの選択](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. **[データの保護方法の選択]** ページで、保護グループの名前と保護の設定を入力します。 Azure にバックアップするには、短期的な保護を **[ディスク]** に設定して、オンライン保護を有効にします。 続けて、 **[次へ]** をクリックします。
+1. **[データの保護方法の選択]** ページで、保護グループの名前と保護の設定を入力します。 Azure にバックアップするには、短期的な保護を **[ディスク]** に設定して、オンライン保護を有効にします。 **[次へ]** を選択します。
 
     ![データ保護方法の選択](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -319,13 +325,13 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
    - **[同期の間隔]** で、ディスクの復旧ポイントを作成する頻度を指定します。
        - バックアップ間隔を設定しない場合は、 **[回復ポイントの直前]** をオンにして、各復旧ポイントがスケジュールされている直前にバックアップを実行できます。
        - 短期的なバックアップは完全バックアップであり、増分ではありません。
-       - 短期的なバックアップを実行する日付/時刻を変更するには、 **[変更]** をクリックします。
+       - 短期的なバックアップを実行する日付/時刻を変更するには、 **[変更]** を選択します。
 
          ![短期的な目標の指定](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. **[ディスク割り当ての確認]** では、VM に対して VM のバックアップ用に提供されているディスク領域を確認します 。
 
-   - 推奨されるディスク割り当ては、指定した保有期間の範囲、ワークロードの種類、および保護データのサイズに基づきます。 必要な変更を行い、 **[次へ]** をクリックします。
+   - 推奨されるディスク割り当ては、指定した保有期間の範囲、ワークロードの種類、および保護データのサイズに基づきます。 必要な変更を行い、 **[次へ]** を選択します。
    - **データ サイズ:** 保護グループ内のデータのサイズです。
    - **ディスク領域:** 保護グループの推奨ディスク領域の量です。 この設定を変更する場合は、どのデータ ソースも拡大するので、予想よりも少し大きめに合計領域を割り当てる必要があります。
    - **データの併置:** 併置を有効にすると、保護対象の複数のデータ ソースを 1 つのレプリカと復旧ポイントのボリュームにマップできます。 すべてのワークロードで併置がサポートされているわけではありません。
@@ -334,38 +340,53 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
     ![ディスクの割り当てを確認する](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-1. **[レプリカの作成方法の選択]** ページで、初期バックアップの作成方法を指定し、 **[次へ]** をクリックします。
+1. **[レプリカの作成方法の選択]** ページで、初期バックアップの作成方法を指定し、 **[次へ]** を選択します。
    - 既定値は、 **[自動 (ネットワーク経由)]** と **[今すぐ]** です。
    - 既定値を使用する場合は、ピーク時以外を指定することをお勧めします。 **[時間指定]** を選択し、日時を指定します。
    - データが大量にある場合や、ネットワークの状態が最適でない場合は、リムーバブル メディアを使用してオフラインでデータをレプリケートすることを検討してください。
 
     ![レプリカ作成方法の選択](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. **[整合性チェック オプション]** で、整合性チェックを自動化する方法とタイミングを選択します。 続けて、 **[次へ]** をクリックします。
+1. **[整合性チェック オプション]** で、整合性チェックを自動化する方法とタイミングを選択します。 **[次へ]** を選択します。
       - 整合性チェックは、レプリカ データが不整合になったときに実行することや、設定したスケジュールで実行することができます。
       - 自動整合性チェックを構成しない場合は、チェックを手動で実行できます。 これを行うには、保護グループを右クリックして、 **[Perform Consistency Check]\(整合性チェックの実行\)** を選択します。
 
-1. **[オンライン保護するデータの指定]** ページで、バックアップする VM または VM フォルダーを選択します。 メンバーを個別に選択するか、 **[すべて選択]** をクリックしてすべてのメンバーを選択することができます。 続けて、 **[次へ]** をクリックします。
+1. **[オンライン保護するデータの指定]** ページで、バックアップする VM または VM フォルダーを選択します。 メンバーを個別に選択するか、 **[すべて選択]** を選択してすべてのメンバーを選択することができます。 **[次へ]** を選択します。
 
     ![オンライン保護データの指定](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. **[オンライン バックアップ スケジュールの指定]** ページで、ローカル ストレージから Azure にデータをバックアップする頻度を指定します。
 
-    - スケジュールに従って、データのクラウド復旧ポイントが生成されます。 続けて、 **[次へ]** をクリックします。
+    - スケジュールに従って、データのクラウド復旧ポイントが生成されます。 **[次へ]** を選択します。
     - 復旧ポイントは生成されると、Azure の Recovery Services コンテナーに転送されます。
 
     ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. **[オンライン保持ポリシーの指定]** ページで、Azure への毎日/毎週/毎月/毎年のバックアップから作成される復旧ポイントを保持する期間を指定します。 その後、 **[次へ]** をクリックします。
+1. **[オンライン保持ポリシーの指定]** ページで、Azure への毎日/毎週/毎月/毎年のバックアップから作成される復旧ポイントを保持する期間を指定します。 **[次へ]** を選択します。
 
     - Azure にデータを保持できる期間に制限はありません。
     - 唯一の制限は、保護されたインスタンスあたりの復旧ポイントの数が 9999 までであることです。 この例では、保護するインスタンスは VMware サーバーです。
 
     ![オンライン保持ポリシーの指定](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
-1. **[概要]** ページで設定を確認して、 **[グループの作成]** をクリックします。
+1. **[概要]** ページで設定を確認して、 **[グループの作成]** を選択します。
 
     ![保護グループのメンバーと設定の概要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+
+## <a name="vmware-parallel-backups"></a>VMware の並列バックアップ
+
+>[!NOTE]
+> この機能は、MABS V3 UR1 に適用されます。
+
+以前のバージョンの MABS では、並列バックアップは保護グループ間でのみ実行されていました。 MABS V3 UR1 では、1 つの保護グループ内のすべての VMware VM バックアップが並列化され、VM のバックアップが高速になります。 すべての VMWare デルタ レプリケーション ジョブが並列で実行されます。 既定では、並列で実行されるジョブの数は 8 に設定されます。
+
+次に示すように、レジストリ キーを使用してジョブの数を変更できます (既定では存在しません。自分で追加する必要があります)。
+
+**キー パス**: `Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**キーの種類**:DWORD (32 ビット) 値。
+
+> [!NOTE]
+> ジョブの数をより大きい値に変更できます。 ジョブの数を 1 に設定すると、レプリケーション ジョブは順次実行されます。 数値を大きくするには、VMware のパフォーマンスを考慮する必要があります。 使用されるリソースの数と VMWare vSphere Server で必要となる追加の使用量を検討し、並列で実行するデルタ レプリケーション ジョブの数を決定します。 また、この変更は、新しく作成された保護グループにのみ影響します。 既存の保護グループについては、別の VM を一時的に保護グループに追加する必要があります。 これにより、保護グループの構成が更新されます。 手順が完了したら、この VM を保護グループから削除できます。
 
 ## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
 
@@ -396,6 +417,126 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
 "SystemDefaultTlsVersions"=dword:00000001
 "SchUseStrongCrypto"=dword:00000001
+```
+
+## <a name="exclude-disk-from-vmware-vm-backup"></a>VMware VM バックアップからディスクを除外する
+
+> [!NOTE]
+> この機能は、MABS V3 UR1 に適用されます。
+
+MABS V3 UR1 では、VMware VM のバックアップから特定のディスクを除外できます。 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` に構成スクリプト **ExcludeDisk.ps1** があります。
+
+ディスクの除外を構成するには、次の手順に従います。
+
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>除外する VMware VM とディスクの詳細を特定する
+
+  1. VMware コンソールで、ディスクを除外する VM 設定に移動します。
+  2. 除外するディスクを選択し、そのディスクのパスをメモします。
+
+        たとえば、TestVM4 からハード ディスク 2 を除外するためのハード ディスク 2 のパスは **[datastore1] TestVM4/TestVM4\_1.vmdk** です。
+
+        ![除外するハード ディスク](./media/backup-azure-backup-server-vmware/test-vm.png)
+
+### <a name="configure-mabs-server"></a>MABS サーバーを構成する
+
+VMware VM が保護対象として構成されている MABS サーバーに移動し、ディスクの除外を構成します。
+
+  1. MABS サーバーで保護されている VMware ホストの詳細を取得します。
+
+        ```powershell
+        $psInfo = get-DPMProductionServer
+        $psInfo
+        ```
+
+        ```output
+        ServerName   ClusterName     Domain            ServerProtectionState
+        ----------   -----------     ------            ---------------------
+        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+        ```
+
+  2. VMware ホストを選択し、VMware ホストに対する VM の保護を一覧表示します。
+
+        ```powershell
+        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+        $vmDsInfo
+        ```
+
+        ```output
+        Computer     Name     ObjectType
+        --------     ----     ----------
+        Vcentervm1  TestVM2      VMware
+        Vcentervm1  TestVM1      VMware
+        Vcentervm1  TestVM4      VMware
+        ```
+
+  3. ディスクを除外する VM を選択します。
+
+        ```powershell
+        $vmDsInfo[2]
+        ```
+
+        ```output
+        Computer     Name      ObjectType
+        --------     ----      ----------
+        Vcentervm1   TestVM4   VMware
+        ```
+
+  4. ディスクを除外するには、`Bin` フォルダーに移動し、次のパラメーターを使用して *ExcludeDisk.ps1* スクリプトを実行します。
+
+        > [!NOTE]
+        > このコマンドを実行する前に、MABS サーバー上の DPMRA サービスを停止します。 そうしないと、スクリプトで成功が返されますが、除外リストは更新されません。 サービスを停止する前に、進行中のジョブがないことを確認してください。
+
+     **除外対象にディスクを追加するか削除するには、次のコマンドを実行します。**
+
+      ```powershell
+      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+      ```
+
+     **例**:
+
+     TestVM4 に対するディスクの除外を追加するには、次のコマンドを実行します。
+
+       ```powershell
+      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+       ```
+
+      ```output
+       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+      ```
+
+  5. ディスクが除外対象として追加されていることを確認します。
+
+     **特定の VM に対する既存の除外を表示するには、次のコマンドを実行します。**
+
+        ```powershell
+        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+        ```
+
+     **例**
+
+        ```powershell
+        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+        ```
+
+        ```output
+        <VirtualMachine>
+        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+        </VirtualMachine>
+        ```
+
+     この VM の保護を構成すると、保護中は除外されたディスクは表示されません。
+
+        > [!NOTE]
+        > 既に保護されている VM に対してこれらの手順を実行する場合は、除外するディスクを追加した後、手動で整合性チェックを実行する必要があります。
+
+### <a name="remove-the-disk-from-exclusion"></a>除外対象からディスクを削除する
+
+除外対象からディスクを削除するには、次のコマンドを実行します。
+
+```powershell
+C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
 ## <a name="next-steps"></a>次のステップ

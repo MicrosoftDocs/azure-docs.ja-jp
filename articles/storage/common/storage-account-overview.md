@@ -1,7 +1,7 @@
 ---
 title: ストレージ アカウントの概要
 titleSuffix: Azure Storage
-description: Azure Storage アカウントを作成して使用するためのオプションを理解します。
+description: Azure Storage のストレージ アカウントの概要を確認します。 アカウントの名前付け、パフォーマンス レベル、アクセス層、冗長性、暗号化、エンドポイントなどについて確認します。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8342ffc122f56f4e2a3a41e249007b2ceaad22a6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371557"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034653"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -30,9 +30,9 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 汎用 v2 ストレージ アカウントは、最新の Azure Storage の機能をサポートし、汎用 v1 と BLOB ストレージ アカウントのすべての機能が組み込まれています。 汎用 v2 アカウントは、業界内の他社に引けを取らないトランザクション料金で、Azure Storage に対してギガバイトあたり容量の最低価格を提供しています。 汎用 v2 ストレージ アカウントは、次の Azure Storage サービスをサポートします。
 
-- BLOB (すべての種類:ブロック、追加、ページ)
+- BLOB (すべての種類: ブロック、追加、ページ)
 - Data Lake Gen2
-- ファイル
+- Files
 - ディスク
 - キュー
 - テーブル
@@ -49,7 +49,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 汎用 v1 ストレージ アカウントでは、すべての Azure Storage サービスにアクセスできますが、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 汎用 v1 ストレージ アカウントは、次の Azure Storage サービスをサポートします。
 
 - BLOB (すべての種類)
-- ファイル
+- Files
 - ディスク
 - キュー
 - テーブル
@@ -78,7 +78,7 @@ FileStorage ストレージ アカウントでは、IOPS バーストなど、�
 
 ストレージ アカウントに名前を付けるときは、次の規則に注意してください。
 
-- ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
+- ストレージ アカウント名の長さは 3 から 24 文字である必要があり、数字と小文字のみを使用できます。
 - ストレージ アカウント名は Azure 内で一意である必要があります。 複数のストレージ アカウントが同じ名前を持つことはできません。
 
 ## <a name="performance-tiers"></a>パフォーマンス レベル
@@ -89,7 +89,7 @@ FileStorage ストレージ アカウントでは、IOPS バーストなど、�
 
 汎用ストレージ アカウントは、次のパフォーマンス レベルのいずれか向けに構成できます。
 
-- BLOB、ファイル、テーブル、キュー、および Azure 仮想マシン ディスクを格納するための Standard パフォーマンス レベル。 Standard Storage アカウントのスケーラビリティ ターゲットの詳細については、「[Standard Storage アカウントのスケーラビリティ ターゲット](scalability-targets-standard-account.md)」に関するページを参照してください。
+- BLOB、ファイル、テーブル、キュー、および Azure 仮想マシン ディスクを格納するための Standard パフォーマンス レベル。 Standard ストレージ アカウントのスケーラビリティ ターゲットの詳細については、[Standard ストレージ アカウントのスケーラビリティ ターゲット](scalability-targets-standard-account.md)に関するページを参照してください。
 - 仮想マシンのアンマネージド ディスクを格納するための Premium パフォーマンス レベル。 Microsoft は、Azure 仮想マシンでアンマネージド ディスクではなく、マネージド ディスクを使用することをお勧めします。 Premium パフォーマンス レベルのスケーラビリティ ターゲットの詳細については、「[Premium ページ BLOB ストレージ アカウントのスケーラビリティ ターゲット](../blobs/scalability-targets-premium-page-blobs.md)」に関するページを参照してください。
 
 ### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage ストレージ アカウント
@@ -184,6 +184,8 @@ Azure Storage REST API の詳細については、「[Azure Storage Services RES
 ## <a name="storage-account-billing"></a>ストレージ アカウントの課金
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

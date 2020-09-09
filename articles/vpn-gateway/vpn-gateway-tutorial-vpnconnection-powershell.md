@@ -5,15 +5,15 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 03/11/2020
+ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 18c6188e1b13c35a4c28a5f9e7fc863f00798eed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b712c1b2e8ac33ec189542bf6f60929ac59858d
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80616398"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420559"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>チュートリアル:PowerShell を使用して S2S VPN 接続を作成および管理する
 

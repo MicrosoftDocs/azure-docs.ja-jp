@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79499631"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130757"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>クイック スタート:サインアップして最初のビデオをアップロードする方法
 
@@ -25,7 +25,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 ## <a name="sign-up-for-video-indexer"></a>Video Indexer にサインアップする
 
-Video Indexer での開発を始めるには、[Video Indexer](https://www.videoindexer.com) Web サイトに移動してサインインします。
+Video Indexer での開発を始めるには、[Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 
 > [!NOTE]
 > Video Indexer の使用を開始すると、保存されているデータおよびアップロードされたコンテンツはすべて、Microsoft で管理されるキーを使用して保存時に暗号化されます。

@@ -4,41 +4,41 @@ description: SQL 構文、および Azure Cosmos DB の FROM 句の例につい�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587687"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005872"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での FROM 句
 
 ソースがクエリの後半でフィルター処理またはプロジェクションされる場合を除いて、FROM (`FROM <from_specification>`) 句はオプションです。 `SELECT * FROM Families` のようなクエリは、`Families` コンテナー全体を列挙します。 コンテナー名の代わりにコンテナーに特別な識別子 ROOT を使うこともできます。
 
-FROM 句では、クエリごとに次の規則が適用されます。
+`FROM` 句では、クエリごとに次の規則が適用されます。
 
-* コンテナーは、`SELECT f.id FROM Families AS f` またはシンプルに `SELECT f.id FROM Families f` のようにエイリアス化することができます。 ここで `f` は `Families` のエイリアスです。 AS は、識別子を[エイリアス化する](sql-query-aliasing.md)ためのオプションのキーワードです。  
+* コンテナーは、`SELECT f.id FROM Families AS f` またはシンプルに `SELECT f.id FROM Families f` のようにエイリアス化することができます。 ここで `f` は `Families` のエイリアスです。 AS は、識別子を[エイリアス化する](sql-query-working-with-json.md#aliasing)ためのオプションのキーワードです。  
 
 * エイリアス化されると、元のソース名をバインドすることはできなくなります。 たとえば、`SELECT Families.id FROM Families f` は無効な構文となります。識別子 `Families` がエイリアス化されており、それ以上解決できないためです。  
 
-* 参照されているすべてのプロパティを完全修飾し、厳格なスキーマの準拠がない場合の曖昧なバインドを回避する必要があります。 たとえば、プロパティ `SELECT id FROM Families f` がバインドされていないため、`id` は無効な構文です。
+* 参照されているすべてのプロパティを完全修飾し、厳格なスキーマの準拠がない場合の曖昧なバインドを回避する必要があります。 たとえば、プロパティ `id` がバインドされていないため、`SELECT id FROM Families f` は無効な構文です。
 
 ## <a name="syntax"></a>構文
   
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
@@ -51,9 +51,9 @@ FROM <from_specification>
   
   別名の有無に関係なくデータソースを指定します。 別名が指定されていない場合、次の規則を使用して、`<container_expression>` から推論されます。  
   
-  -  式が container_name である場合は、container_name が別名として使用されます。  
+-  式が container_name である場合は、container_name が別名として使用されます。  
   
-  -  式が `<container_expression>` である場合は、property_name が別名として使用されます。 式が container_name である場合は、container_name が別名として使用されます。  
+-  式が `<container_expression>` である場合は、property_name が別名として使用されます。 式が container_name である場合は、container_name が別名として使用されます。  
   
 - AS `input_alias`  
   
@@ -99,9 +99,9 @@ FROM <from_specification>
   
 コンテナー式には、コンテナー スコープまたはドキュメント スコープがあります。  
   
--   基になるコンテナー式のソースが ROOT または `container_name` である場合、式はコンテナー スコープです。 このような式は、直接コンテナーから取得されたドキュメントのセットを表し、その他のコンテナーの式の処理に依存しません。  
+- 基になるコンテナー式のソースが ROOT または `container_name` である場合、式はコンテナー スコープです。 このような式は、直接コンテナーから取得されたドキュメントのセットを表し、その他のコンテナーの式の処理に依存しません。  
   
--   基になるコンテナー式が、クエリで前に導入された `input_alias` である場合、式はドキュメント スコープです。 このような式は、別名を付けられたコンテナーに関連付けられているセットに属する各ドキュメントのスコープ内で、コンテナー式を評価することによって取得されたドキュメントのセットを表します。  結果セットは、基になるセット内の各ドキュメントのコンテナー式を評価することによって取得されたセットの和集合になります。 
+- 基になるコンテナー式が、クエリで前に導入された `input_alias` である場合、式はドキュメント スコープです。 このような式は、別名を付けられたコンテナーに関連付けられているセットに属する各ドキュメントのスコープ内で、コンテナー式を評価することによって取得されたドキュメントのセットを表します。 結果セットは、基になるセット内の各ドキュメントのコンテナー式を評価することによって取得されたセットの和集合になります。
 
 ## <a name="examples"></a>例
 
@@ -147,7 +147,7 @@ FROM 句により、ソースを小さなサブセットに限定することが
     ]
 ```
 
-前のクエリでは、配列をソースとして使用していますが、オブジェクトをソースとして使用することもできます。 クエリでは、ソース内のすべての有効な定義済みの JSON 値が結果に含まれるものと見なされます。 次の例は、`Families` 値がない `address.state` を除外しています。
+前のクエリでは、配列をソースとして使用していますが、オブジェクトをソースとして使用することもできます。 クエリでは、ソース内のすべての有効な定義済みの JSON 値が結果に含まれるものと見なされます。 次の例は、`address.state` 値がない `Families` を除外しています。
 
 ```sql
     SELECT *

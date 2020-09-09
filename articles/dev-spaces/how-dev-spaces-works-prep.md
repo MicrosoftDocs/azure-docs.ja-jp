@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces でプロジェクトを準備する方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241317"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213430"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Azure Dev Spaces のためにプロジェクトを準備する方法
 
@@ -98,17 +98,4 @@ configurations:
 
 開発スペースでコードを実行する方法について詳しくは、「[Azure Dev Spaces でコードを実行する方法][how-it-works-up]」をご覧ください。
 
-Azure Dev Spaces を使用してプロジェクトの準備を始めるには、以下のクイック スタートを参照してください。
-
-* [Visual Studio Code と Java を使用した迅速な反復処理とデバッグ][quickstart-java]
-* [Visual Studio Code と .NET を使用した迅速な反復処理とデバッグ][quickstart-netcore]
-* [Visual Studio Code と Node.js を使用した迅速な反復処理とデバッグ][quickstart-node]
-* [Visual Studio と .NET Core を使用した迅速な反復処理とデバッグ][quickstart-vs]
-* [CLI を使用して Kubernetes 上でアプリケーションを開発する][quickstart-cli]
-
 [how-it-works-up]: how-dev-spaces-works-up.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md

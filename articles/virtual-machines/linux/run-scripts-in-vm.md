@@ -6,13 +6,13 @@ ms.service: virtual-machines-linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
-ms.topic: article
-ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.topic: how-to
+ms.openlocfilehash: 0f91bb33116947312173d8f22929b8548d23a9ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758588"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292268"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Linux VM でスクリプトを実行する
 
@@ -33,7 +33,7 @@ ms.locfileid: "81758588"
 [実行コマンド](run-command.md)機能では、スクリプトを使用して仮想マシンやアプリケーションの管理およびトラブルシューティングを行うことができます。この機能は、ゲスト ファイアウォールで RDP ポートや SSH ポートが開かれていないなど、マシンに到達不能なときにも使用できます。
 
 * Azure 仮想マシンでスクリプトを実行します。
-* [Azure Portal](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)、または [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) を使用して実行できます。
+* [Azure Portal](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)、または [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) を使用して実行できます。
 * Azure Portal でスクリプトをすばやく実行し、出力を確認して、必要に応じて繰り返すことができます。
 * スクリプトは直接入力するか、組み込みのスクリプトを使用できます。
 * PowerShell スクリプトは Windows マシンで実行し、Bash スクリプトは Linux マシンで実行します。
@@ -56,7 +56,7 @@ ms.locfileid: "81758588"
 
 ## <a name="serial-console"></a>シリアル コンソール
 
-[Serial console](serial-console.md) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
+[Serial console](../troubleshooting/serial-console-linux.md) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
 
 * Azure 仮想マシンでコマンドを実行します。
 * Azure Portal 内のマシンにテキスト ベースのコンソールを使用して実行できます。
@@ -70,4 +70,4 @@ ms.locfileid: "81758588"
 * [カスタム スクリプト拡張機能](../extensions/custom-script-linux.md)
 * [実行コマンド](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Serial console](serial-console.md)
+* [Serial console](../troubleshooting/serial-console-linux.md)

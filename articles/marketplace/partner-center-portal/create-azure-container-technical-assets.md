@@ -1,18 +1,18 @@
 ---
 title: Azure Container オファーの技術的概念 - Microsoft コマーシャル マーケットプレース
 description: Azure Marketplace でコンテナー オファーを構成するのに役立つ技術リソースとガイドライン。
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 46102305e99c94fc71ad0934a2c0063fdcbeec4e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700984"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317792"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container オファーを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "83700984"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-クイックスタート、チュートリアル、サンプルについては、[Azure Container Instances のドキュメント](https://docs.microsoft.com/azure/container-instances)をご覧ください。
+クイックスタート、チュートリアル、サンプルについては、[Azure Container Instances のドキュメント](../../container-instances/index.yml)をご覧ください。
 
 ## <a name="fundamental-technical-knowledge"></a>技術的な知識の基礎
 
@@ -43,9 +43,9 @@ ms.locfileid: "83700984"
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
-  - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  - 拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
   - 拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)。
 
@@ -55,9 +55,9 @@ ms.locfileid: "83700984"
 
 詳細については、次のチュートリアルを参照してください。
 
-- [チュートリアル:Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)。
+- [チュートリアル:Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする](../../container-registry/container-registry-tutorial-quick-task.md)。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コンテナー オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)。
+- [コンテナー オファーを作成する](create-azure-container-offer.md)。

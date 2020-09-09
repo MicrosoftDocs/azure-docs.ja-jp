@@ -3,18 +3,18 @@ title: 例外数の異常な上昇 - Azure Application Insights
 description: 例外数の異常なパターンを検出するために、Azure Application Insights でアプリケーションの例外をスマート検出で監視します。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00b7a28a51f91c969b41d2ab85b611f6dde51396
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671768"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499428"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>例外数の異常な上昇 (プレビュー)
 
 Application Insights は、アプリケーションでスローされた例外を自動的に分析し、例外テレメトリの異常なパターンについて警告することができます。
 
-この機能を使うには、アプリの[例外レポートを構成する](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting)以外に、特別なセットアップは必要ありません。 この機能は、アプリが十分な例外のテレメトリを生成するとアクティブになります。
+この機能を使うには、アプリの[例外レポートを構成する](./asp-net-exceptions.md#set-up-exception-reporting)以外に、特別なセットアップは必要ありません。 この機能は、アプリが十分な例外のテレメトリを生成するとアクティブになります。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
 アプリで 1 日に発生した特定の種類の例外の数が、過去 7 日間にわたって計算されたベースラインと比較して異常に上昇している場合、この種の通知を受け取ることがあります。

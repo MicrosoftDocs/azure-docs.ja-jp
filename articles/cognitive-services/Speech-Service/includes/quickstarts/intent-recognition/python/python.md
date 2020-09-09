@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d819eaa5c90e304a642efd3a6f2458cab4eefe7f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7572e5c5621b514c375e44ca44ddfc4102f5d714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81422230"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298821"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,6 +68,8 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 > この値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
+
+この例では `add_intents()` 関数を使用して、明示的に定義された意図の一覧を追加します。 モデルのすべての意図を追加する場合は、`add_all_intents(model)` を使用し、モデルを渡します。
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 

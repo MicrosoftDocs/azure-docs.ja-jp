@@ -4,14 +4,14 @@ description: この記事では、Azure Database for PostgreSQL - Single Server 
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74770137"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116286"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server で一括挿入を最適化し、一時データを使用する 
 この記事では、Azure Database for PostgreSQL サーバーでの一括挿入操作を最適化し、一時データを使用する方法について説明します。

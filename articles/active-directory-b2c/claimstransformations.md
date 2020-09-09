@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202961"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -121,7 +121,7 @@ ms.locfileid: "80529130"
 
 例えば、ユーザーが同意したサービス使用条件の最後のバージョンを保存できます。 サービス使用条件を更新するときに、新しいバージョンに同意することをユーザーに求めることができます。 次の例では、**HasTOSVersionChanged** 要求変換によって、**TOSVersion** 要求の値と **LastTOSAcceptedVersion** 要求の値が比較され、ブール **TOSVersionChanged** 要求が返されます。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">

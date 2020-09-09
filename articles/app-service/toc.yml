@@ -4,8 +4,6 @@
   items:
     - name: Web Apps について
       href: overview.md
-    - name: App Service on Linux について
-      href: containers/app-service-linux-intro.md
     - name: App Service 環境について
       href: environment/intro.md
     - name: ホスティング オプションの比較
@@ -13,34 +11,50 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: .NET Core アプリの作成
-      href: app-service-web-get-started-dotnet.md
-    - name: .NET Framework アプリの作成
-      href: app-service-web-get-started-dotnet-framework.md
-    - name: Node.js アプリの作成
-      href: app-service-web-get-started-nodejs.md
-    - name: PHP アプリの作成
-      href: app-service-web-get-started-php.md
-    - name: Java アプリの作成
-      href: app-service-web-get-started-java.md
-    - name: 静的な HTML サイトの作成
-      href: app-service-web-get-started-html.md
-    - name: Windows コンテナーを実行する
-      href: app-service-web-get-started-windows-container.md
+    - name: .NET Core
+      href: quickstart-dotnetcore.md
+    - name: .NET Framework
+      href: quickstart-dotnet-framework.md
+    - name: Node.js
+      href: quickstart-nodejs.md
+    - name: PHP
+      href: quickstart-php.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Python
+      href: quickstart-python.md
+    - name: Ruby
+      href: quickstart-ruby.md
+    - name: 静的な HTML サイト
+      href: quickstart-html.md
+    - name: カスタム コンテナー
+      href: quickstart-custom-container.md
+    - name: 複数コンテナー アプリ
+      href: quickstart-multi-container.md
 - name: チュートリアル
   items:
     - name: アプリと DB
       items:
         - name: .NET Core と SQL DB
-          href: app-service-web-tutorial-dotnetcore-sqldb.md
+          href: tutorial-dotnetcore-sqldb-app.md
         - name: .NET Framework と SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP と MySQL
-          href: app-service-web-tutorial-php-mysql.md
+          href: tutorial-php-mysql-app.md
         - name: Node.js と MongoDB
-          href: app-service-web-tutorial-nodejs-mongodb-app.md
-    - name: Windows の最適化 (コンテナー)
-      href: app-service-web-tutorial-windows-containers-custom-fonts.md
+          href: tutorial-nodejs-mongodb-app.md
+        - name: Ruby と Postgres
+          href: tutorial-ruby-postgres-app.md
+        - name: Python と Postgres
+          href: tutorial-python-postgresql-app.md
+        - name: Java と Spring データ
+          href: tutorial-java-spring-cosmosdb.md
+    - name: カスタム コンテナー
+      items:
+        - name: ACR からのデプロイ
+          href: tutorial-custom-container.md
+        - name: 複数コンテナー アプリ
+          href: tutorial-multi-container-app.md
     - name: SQL DB への安全なアクセス
       href: app-service-web-tutorial-connect-msi.md
     - name: RESTful API のホスト
@@ -52,9 +66,11 @@
     - name: CDN の追加
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: ユーザーを認証する
-      href: app-service-web-tutorial-auth-aad.md
+      href: tutorial-auth-aad.md
     - name: メール/ツイートの送信
       href: tutorial-send-email.md
+    - name: エラーをトラブルシューティングする
+      href: tutorial-troubleshoot-monitor.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -63,9 +79,8 @@
       href: samples-powershell.md
     - name: Resource Manager テンプレート
       href: samples-resource-manager-templates.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+    - name: Terraform
+      href: samples-terraform.md
 - name: 概念
   items:
     - name: App Service プラン
@@ -74,9 +89,9 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -84,6 +99,9 @@
           href: overview-patch-os-runtime.md
         - name: 組み込みのセキュリティ制御
           href: app-service-security-controls.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティの概要
           href: overview-security.md
     - name: ネットワーク機能
@@ -112,10 +130,22 @@
       items:
         - name: 共通設定の構成
           href: configure-common.md
+        - name: ASP.NET の構成
+          href: configure-language-dotnet-framework.md
+        - name: ASP.NET Core の構成
+          href: configure-language-dotnetcore.md
+        - name: Node.js の構成
+          href: configure-language-nodejs.md
         - name: PHP の構成
-          href: web-sites-php-configure.md
+          href: configure-language-php.md
+        - name: Python の構成
+          href: configure-language-python.md
         - name: Java を構成する
           href: configure-language-java.md
+        - name: Ruby の構成
+          href: configure-language-ruby.md
+        - name: カスタム Linux コンテナーの構成
+          href: configure-custom-container.md
         - name: オンプレミスのリソースへの接続
           href: web-sites-integrate-with-vnet.md
         - name: Azure Storage (コンテナー) の構成
@@ -134,10 +164,14 @@
               href: deploy-content-sync.md
             - name: 継続的なデプロイ
               href: deploy-continuous-deployment.md
+            - name: カスタム コンテナーの CI/CD
+              href: deploy-ci-cd-custom-container.md
             - name: ローカル Git からのデプロイ
               href: deploy-local-git.md
-            - name: GitHub Actions を使用したデプロイ
+            - name: GitHub アクション
               href: deploy-github-actions.md
+            - name: コンテナーの GitHub アクション
+              href: deploy-container-github-action.md
             - name: テンプレートを使用したデプロイ
               href: deploy-complex-application-predictably.md
         - name: デプロイメント資格情報の設定
@@ -170,6 +204,8 @@
               href: configure-authentication-provider-microsoft.md
             - name: Twitter による認証
               href: configure-authentication-provider-twitter.md
+            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+              href: configure-authentication-provider-openid-connect.md
         - name: 高度な認証
           href: app-service-authentication-how-to.md
         - name: アクセスを制限する
@@ -202,6 +238,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: リソース イベントの取得
           href: get-resource-events.md
+        - name: Linux コンテナーへの SSH セッションを開く
+          href: configure-linux-open-ssh-session.md
     - name: アプリの管理
       items:
         - name: ホスティング プランの管理
@@ -216,12 +254,14 @@
           href: app-service-web-app-cloning.md
         - name: 削除された App Service を復元する
           href: app-service-undelete.md
+        - name: 停止したリージョンからの復元
+          href: manage-disaster-recovery.md
     - name: アプリの移動
       items:
         - name: リージョン間の移動
           href: manage-move-across-regions.md
         - name: サブスクリプションの移動
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources'
+          href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources
     - name: バックグラウンド タスクの実行
       items:
         - name: Web ジョブの作成
@@ -237,11 +277,14 @@
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
-      href: '/powershell/module/az.websites/#app_service'
+      href: /powershell/module/az.websites/#app_service
     - name: REST API
       href: /rest/api/appservice/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.web/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: App Service ブログ
@@ -253,7 +296,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: クォータの情報
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Migration Assistant のガイド
@@ -267,7 +310,7 @@
     - name: クックブック
       items:
         - name: 参照アーキテクチャ
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: デプロイ スクリプト
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: トラブルシューティング

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2303d36e93cecfca03894a8b0e55458c03b13d78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0627dd0833e3b20468eb5f50fbeb9fd9d9ae2b3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73412984"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864649"
 ---
 **送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/bandwidth/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "73412984"
 Azure VM には、Ultra Disk と互換性があるかどうかを示す機能があります。 Ultra ディスク互換 VM では、コンピューティング VM インスタンスとブロック ストレージ スケール ユニット間に専用の帯域幅キャパシティが割り当てられてパフォーマンスが最適化され、待機時間が減少します。 このキャパシティを VM に追加すると、Ultra ディスクがアタッチされていない VM 上で Ultra ディスク キャパシティを有効にした場合にのみ、予約料金がかかります。 Ultra ディスク互換の VM に Ultra ディスクがアタッチされている場合、この料金は適用されません。 この料金は、VM 上にプロビジョニングされている vCPU ごとにかかります。 
 
 > [!Note]
-> [制約付きコア VM サイズ](../articles/virtual-machines/linux/constrained-vcpu.md)の場合、予約料金は、制限付きコアではなく実際の vCPU 数に基づいています。 Standard_E32-8s_v3 の場合、予約料金は 32 コアに基づきます。 
+> [制約付きコア VM サイズ](../articles/virtual-machines/constrained-vcpu.md)の場合、予約料金は、制限付きコアではなく実際の vCPU 数に基づいています。 Standard_E32-8s_v3 の場合、予約料金は 32 コアに基づきます。 
 
 Ultra Disk の価格について詳しくは、[Azure ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
 

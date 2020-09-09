@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052021"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
@@ -39,6 +39,9 @@ WAF は、次の Web の脆弱性から保護します。
 ### <a name="owasp-crs-31"></a>OWASP CRS 3.1
 
 次の表に示すように、CRS 3.1 には 13 個の規則グループが含まれています。 各グループには、無効にできる複数の規則が含まれています。
+
+> [!NOTE]
+> CRS 3.1 は WAF_v2 SKU でのみ利用できます。
 
 |規則グループ|説明|
 |---|---|

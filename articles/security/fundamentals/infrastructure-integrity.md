@@ -1,6 +1,6 @@
 ---
 title: Azure インフラストラクチャの整合性
-description: この記事では、Azure インフラストラクチャの整合性について説明します。
+description: Azure インフラストラクチャの整合性、および、ソフトウェア コンポーネントのビルドでのウイルス スキャンなど、それをセキュリティで保護するために Microsoft で行われている手順について説明します。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: ef81e74b07a351139aa8feefbdf1b89ea7e4994f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0df14dfcf66f53e01989a27a95afa5e19fcb2fe
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68727182"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543641"
 ---
 # <a name="azure-infrastructure-integrity"></a>Azure インフラストラクチャの整合性
 

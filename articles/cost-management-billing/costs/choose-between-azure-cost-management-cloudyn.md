@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 03/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 9b17cdfbae7fccae146f01654fb755f23f00563c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a46e02bfa9590b5ef34affa45f3c468fba6999c2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80083212"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684968"
 ---
 # <a name="choose-between-azure-cost-management-and-cloudyn"></a>Azure Cost Management か Cloudyn かの選択
 

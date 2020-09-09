@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074287"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API の調整エラーのトラブルシューティング 
 
@@ -26,7 +26,7 @@ Azure コンピューティング要求は、サービスの全体的なパフ�
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager による調整とリソース プロバイダーによる調整  
 
-Azure への入口として、Azure Resource Manager は、認証と最初の検証を行って、すべての受信 API 要求を調整します。 Azure Resource Manager の呼び出しレート制限と、関連する診断応答 HTTP ヘッダーについては[こちら](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)を参照してください。
+Azure への入口として、Azure Resource Manager は、認証と最初の検証を行って、すべての受信 API 要求を調整します。 Azure Resource Manager の呼び出しレート制限と、関連する診断応答 HTTP ヘッダーについては[こちら](../../azure-resource-manager/management/request-limits-and-throttling.md)を参照してください。
  
 Azure API クライアントで調整エラーが取得された場合、HTTP ステータスは "429 要求が多すぎます" になります。 要求の調整が Azure Resource Manager に行われているか CRP などの基になるリソース プロバイダーによって行われているかを判断するには、GET 要求の `x-ms-ratelimit-remaining-subscription-reads` と GET 以外の要求の `x-ms-ratelimit-remaining-subscription-writes` 応答ヘッダーを調べます。 残りの呼び出し回数が 0 に近づいていれば、Azure Resource Manager によって定義されているサブスクリプションの一般的な呼び出し制限に達しています。 すべてのサブスクリプション クライアントによるアクティビティがまとめてカウントされます。 それ以外の場合、調整はターゲット リソース プロバイダー (要求 URL の `/providers/<RP>` セグメントによってアドレス指定されているもの) によって行なわれています。 
 
@@ -79,8 +79,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 呼び出しレートと調整エラー アナライザー
 プレビュー バージョンのトラブルシューティング機能は、コンピューティング リソース プロバイダーの API に使用できます。 これらの PowerShell コマンドレットは、操作ごとの時間間隔あたりの API 要求レートと操作グループ (ポリシー) ごとの調整違反に関する統計情報を提供します。
--   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Export-AzLogAnalyticRequestRateByInterval](/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-AzLogAnalyticThrottledRequest](/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 API 呼び出しの統計情報は、サブスクリプションのクライアントの動作に関する優れた洞察を提供でき、調整の原因となる呼び出しパターンを識別しやすくすることができます。
 
@@ -100,4 +100,4 @@ API 呼び出しの統計情報は、サブスクリプションのクライア�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure での他のサービスの再試行に関するガイダンスの詳細については、「[特定のサービスの再試行ガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)」を参照してください。
+Azure での他のサービスの再試行に関するガイダンスの詳細については、「[特定のサービスの再試行ガイダンス](/azure/architecture/best-practices/retry-service-specific)」を参照してください。

@@ -1,18 +1,18 @@
 ---
-title: RBAC のロールとアクセス許可
-description: Azure のロールベースのアクセス制御 (RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
+title: Azure のロールとアクセス許可
+description: Azure のロールベースのアクセス制御 (Azure RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
 ms.topic: article
-ms.date: 12/02/2019
-ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/17/2020
+ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74893486"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661386"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
-Azure Container Registry サービスは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する [組み込みの Azure ロール](../role-based-access-control/built-in-roles.md) のセットをサポートします。 Azure の[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) を使用して、ユーザー、サービス プリンシパル、またはレジストリと対話する必要のある他の ID に特定のアクセス許可を割り当てます。 
+Azure Container Registry サービスは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する [組み込みの Azure ロール](../role-based-access-control/built-in-roles.md) のセットをサポートします。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) を使用して、レジストリを操作する必要があるユーザー、サービス プリンシパル、またはその他の ID に特定のアクセス許可を割り当てます。 レジストリに対するさまざまな操作権限を細かく設定した[カスタム ロール](#custom-roles)を定義することもできます。
 
 | ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager) | [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [イメージ データを削除する](#delete-image-data) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -70,7 +70,7 @@ Azure コンテナー レジストリを作成および削除する権限です�
 
 ## <a name="custom-roles"></a>カスタム ロール
 
-他の Azure リソースと同様に、Azure Container Registry に対するきめ細かいアクセス許可を持つ独自の [カスタムロール](../role-based-access-control/custom-roles.md) を作成することができます。 次に、ユーザー、サービスプリンシパル、またはレジストリと対話する必要がある他の ID にカスタムロールを割り当てます。 
+他の Azure リソースと同様に、Azure Container Registry に対するきめ細かいアクセス許可を持つ[カスタムロール](../role-based-access-control/custom-roles.md)を作成できます。 次に、ユーザー、サービスプリンシパル、またはレジストリと対話する必要がある他の ID にカスタムロールを割り当てます。 
 
 どのアクセス許可をカスタムロールに適用するか決めるには、Microsoft.containerregistry [アクション](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry) の一覧を参照し、[組み込みの ACR ロール](../role-based-access-control/built-in-roles.md) で許可されているアクションを確認するか、次のコマンドを実行します：
 
@@ -83,9 +83,39 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 > [!IMPORTANT]
 > カスタムロールでは、Azure Container Registry は、現在、一致するすべてのアクションへのアクセスを許可する `Microsoft.ContainerRegistry/*` や `Microsoft.ContainerRegistry/registries/*` などのワイルドカードを、サポートしていません。 ロールに、必要なアクションを個別に指定します。
 
+### <a name="example-custom-role-to-import-images"></a>例:イメージをインポートするためのカスタム ロール
+
+たとえば、次の JSON では、レジストリへの[イメージ インポート](container-registry-import-images.md)を許可するカスタム ロールの最小アクションが定義されます。
+
+```json
+{
+   "assignableScopes": [
+     "/subscriptions/<optional, but you can limit the visibility to one or more subscriptions>"
+   ],
+   "description": "Can import images to registry",
+   "Name": "AcrImport",
+   "permissions": [
+     {
+       "actions": [
+         "Microsoft.ContainerRegistry/registries/push/write",
+         "Microsoft.ContainerRegistry/registries/pull/read",
+         "Microsoft.ContainerRegistry/registries/read",
+         "Microsoft.ContainerRegistry/registries/importImage/action"
+       ],
+       "dataActions": [],
+       "notActions": [],
+       "notDataActions": []
+     }
+   ],
+   "roleType": "CustomRole"
+ }
+```
+
+JSON 記述を使用してカスタム ロールを作成または更新するには、[Azure CLI](../role-based-access-control/custom-roles-cli.md)、[Azure Resource Manager テンプレート](../role-based-access-control/custom-roles-template.md)、[Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)、その他の Azure ツールを使用します。 組み込み Azure ロールのロール割り当て管理と同じ方法でカスタム ロールのロール割り当てを追加したり、削除したりします。
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、またはその他の Azure ツールを使用した Azure ID への RBAC ロールの割り当てについてさらに理解します。
+* [Azure portal](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、またはその他の Azure ツールを使用した Azure ID への Azure ロールの割り当てについてさらに理解します。
 
 * Azure Container Registry の[認証オプション](container-registry-authentication.md)について理解します。
 

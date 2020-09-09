@@ -1,18 +1,18 @@
 ---
 title: 会社の職場アカウントとパートナー センター
 description: 会社が Microsoft を使用して職場アカウントを設定しているかどうかを確認する方法、新しい職場アカウントを作成する方法、または複数の職場アカウントを設定してパートナー センターで使用する方法。
-author: dsindona
-ms.author: parthp
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262368"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119754"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>会社の職場アカウントとパートナー センター
 
@@ -44,7 +44,7 @@ ms.locfileid: "81262368"
 
 このユーザー アカウントの電子メール アドレスは、ご使用のディレクトリで確認済みのドメイン名である必要があります。 左側のナビゲーション メニューで、 **[Azure Active Directory]**  ->  **[カスタム ドメイン名]** を選択することによって、ディレクトリで確認済みのドメインをすべて一覧表示できます。
 
-Azure Active Directory にカスタム ドメインを追加する方法の詳細については、[Azure AD へのドメインの追加または関連付け](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain)に関するページをご覧ください。
+Azure Active Directory にカスタム ドメインを追加する方法の詳細については、[Azure AD へのドメインの追加または関連付け](../../active-directory/active-directory-add-domain.md)に関するページをご覧ください。
 
 ## <a name="troubleshoot-work-email-sign-in"></a>職場の電子メールによるサインインのトラブルシューティング
 

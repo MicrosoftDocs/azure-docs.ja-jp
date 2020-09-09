@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73494529"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084644"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 
@@ -30,13 +30,17 @@ ms.locfileid: "73494529"
 
 2. 次のコマンドを実行して、Livy を通じて開始された対話型ジョブのアプリケーション ID を調べます。
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     明示的な名前が指定されていない Livy 対話型セッションでジョブが開始された場合、既定のジョブ名は Livy になります。 [Jupyter Notebook](https://jupyter.org/) によって開始された Livy セッションの場合、ジョブ名は `remotesparkmagics_*` で始まります。
 
 3. 次のコマンドを実行して、これらのジョブを強制終了します。
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 新しいジョブの実行が開始されます。
 

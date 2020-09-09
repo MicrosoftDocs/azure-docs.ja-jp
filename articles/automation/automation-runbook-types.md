@@ -1,20 +1,20 @@
 ---
 title: Azure Automation の Runbook の種類
-description: Azure Automation で使用できるさまざまな種類の Runbook と、使用する種類を決定する際の考慮事項について説明します。
+description: この記事では、Azure Automation で使用できる Runbook の種類と、使用する種類を決定する際の考慮事項について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac6347bd8e723f356da4803da54a6ea45a4a71a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535521"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185927"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
-Azure Automation プロセスのオートメーション サービスは、次の表で定義されているように、いくつかの種類の Runbook をサポートしています。 プロセス オートメーション環境の詳細については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
+Azure Automation のプロセス オートメーション機能では、次の表で定義されているように、いくつかの種類の Runbook がサポートされています。 プロセス オートメーション環境の詳細については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
 
 | Type | 説明 |
 |:--- |:--- |
@@ -28,9 +28,6 @@ Azure Automation プロセスのオートメーション サービスは、次�
 
 * グラフィカル Runbook からテキスト Runbook への変換、およびこの逆の変換を行うことはできません。
 * 異なる種類の Runbook を子 Runbook として使用する場合は制限があります。 詳しくは、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」をご覧ください。
-
->[!NOTE]
->この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation 内の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」を使用して、モジュールを最新バージョンに更新できます。
 
 ## <a name="graphical-runbooks"></a>グラフィック Runbook
 
@@ -69,17 +66,17 @@ PowerShell Runbook は、Windows PowerShell に基づきます。 Azure ポー�
 ### <a name="limitations"></a>制限事項
 
 * PowerShell スクリプトについて理解している必要があります。
-* Runbook に[並列処理](automation-powershell-workflow.md#parallel-processing)を使用し、複数のアクションを並列して実行することはできません。
-* Runbook に[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用し、エラーが発生した場合に Runbook を再開することはできません。
-* PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) コマンドレットを使用する必要があります。
+* Runbook に[並列処理](automation-powershell-workflow.md#use-parallel-processing)を使用し、複数のアクションを並列して実行することはできません。
+* Runbook に[チェックポイント](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)を使用し、エラーが発生した場合に Runbook を再開することはできません。
+* PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) コマンドレットを使用する必要があります。
 
 ### <a name="known-issues"></a>既知の問題
 
 PowerShell Runbook に関する現在の既知の問題は次のとおりです。
 
-* PowerShell Runbook では、null 値を含む暗号化されていない[変数資産](automation-variables.md)は取得できません。
+* PowerShell Runbook では、null 値を含む暗号化されていない[変数資産](./shared-resources/variables.md)は取得できません。
 * PowerShell Runbook では、名前に `*~*` が含まれる変数資産は取得できません。
-* PowerShell Runbook のループ内の [Get-Process](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 操作は、約 80 回の反復後にクラッシュする可能性があります。
+* PowerShell Runbook のループ内の [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 操作は、約 80 回の反復後にクラッシュする可能性があります。
 * 一度に大量のデータを出力ストリームに書き込もうとした場合、PowerShell Runbook が失敗する可能性があります。 通常、大きなオブジェクトの処理に必要な情報のみを Runbook から出力することで、この問題を回避できます。 たとえば、制限なしで `Get-Process` を使用するのではなく、`Get-Process | Select ProcessName, CPU` のように必要なパラメーターのみをコマンドレットから出力させることができます。
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell ワークフロー Runbook
@@ -89,14 +86,14 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 ### <a name="advantages"></a>長所
 
 * すべての複雑なロジックを PowerShell ワークフローのコードで実装できます。
-* エラーが発生した場合は、[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用して操作を再開できます。
-* [並列処理](automation-powershell-workflow.md#parallel-processing)を使用して、複数のアクションを並行して実行できます。
+* エラーが発生した場合は、[チェックポイント](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)を使用して操作を再開できます。
+* [並列処理](automation-powershell-workflow.md#use-parallel-processing)を使用して、複数のアクションを並行して実行できます。
 * 高度なワークフローを作成するために、他のグラフィカル Runbook や PowerShell ワークフロー Runbook を子 Runbook として組み込むことができます。
 
 ### <a name="limitations"></a>制限事項
 
 * PowerShell ワークフローについて理解している必要があります。
-* [逆シリアル化されたオブジェクト](automation-powershell-workflow.md#code-changes)など、PowerShell ワークフローに関する別の複雑さに対応する必要があります。
+* [逆シリアル化されたオブジェクト](automation-powershell-workflow.md#deserialized-objects)など、PowerShell ワークフローに関する別の複雑さに対応する必要があります。
 * Runbook は、実行前にコンパイルする必要があるため、PowerShell Runbook よりも起動に時間がかかります。
 * PowerShell Runbook を子 Runbook として含めるには、`Start-AzAutomationRunbook` コマンドレットを使用する必要があります。
 * Linux Hybrid Runbook Worker では Runbook を実行できません。
@@ -118,7 +115,7 @@ Python Runbook は Python 2 でコンパイルします。 Azure portal のテ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* グラフィック Runbook 作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
-* Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、[Windows PowerShell ワークフローの概要](automation-powershell-workflow.md)に関するページを参照してください。
-* Runbook を作成またはインポートする方法の詳細については、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
-* 言語リファレンス、学習モジュールなど、PowerShell の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。
+* PowerShell Runbook の詳細については、「[チュートリアル: PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* PowerShell Workflow Runbook の詳細については、「[チュートリアル: PowerShell Workflow Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。
+* グラフィカル Runbook の詳細については、「[チュートリアル: グラフィカル Runbook を作成する](learn/automation-tutorial-runbook-graphical.md)」を参照してください。
+* Python Runbook の詳細については、「[チュートリアル: Python Runbook を作成する」](learn/automation-tutorial-runbook-textual-python2.md)を参照してください。

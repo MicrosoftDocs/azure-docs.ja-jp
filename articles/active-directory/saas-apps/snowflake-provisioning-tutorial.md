@@ -2,57 +2,53 @@
 title: チュートリアル:Snowflake を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Snowflake に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: f9ce85f4-0992-4bc6-8276-4b2efbce8dcb
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 2c5d91894ba35233f3fbebffdff9104edcfdd27b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fbf7743eb1c037a364e1004fc3be30db6777bb0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063154"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546644"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>チュートリアル:Snowflake を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure AD によって自動的にユーザーまたはグループが Snowflake にプロビジョニングされる、または Snowflake からプロビジョニング解除されるように構成するため、Snowflake と Azure Active Directory (Azure AD) で実行する手順を示すことです。
+このチュートリアルの目的は、Azure Active Directory (Azure AD) によって自動的にユーザーまたはグループが [Snowflake](https://www.Snowflake.com/pricing/) にプロビジョニングされる、または Snowflake からプロビジョニング解除されるように構成するため、Snowflake と Azure AD で実行する手順を示すことです。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
+
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
->
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+## <a name="capabilities-supported"></a>サポートされる機能
+> [!div class="checklist"]
+> * Snowflake でユーザーを作成する
+> * アクセスが不要になった場合に Snowflake のユーザーを削除する
+> * Azure AD と Snowflake の間でユーザー属性の同期を維持する
+> * Snowflake でグループとグループ メンバーシップをプロビジョニングする
+> * Snowflake への[シングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial) (推奨)
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* Azure AD テナント。
+* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
+* プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
 * [Snowflake テナント](https://www.Snowflake.com/pricing/)。
 * Admin アクセス許可がある Snowflake のユーザー アカウント。
 
-## <a name="assigning-users-to-snowflake"></a>Snowflake へのユーザーの割り当て
+## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
+1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
+2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
+3. [Azure AD と Snowflake の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
-
-自動ユーザー プロビジョニングを構成して有効にする前に、Snowflake へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Snowflake に割り当てることができます。
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-snowflake"></a>ユーザーを Snowflake に割り当てる際の重要なヒント
-
-* 単一の Azure AD ユーザーを Snowflake に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
-
-* Snowflake にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
-
-## <a name="setup-snowflake-for-provisioning"></a>Snowflake をプロビジョニング用に設定する
+## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Snowflake を構成する
 
 Azure AD での自動ユーザー プロビジョニング用に Snowflake を構成する前に、Snowflake 上で SCIM プロビジョニングを有効にする必要があります。
 
@@ -68,34 +64,22 @@ Azure AD での自動ユーザー プロビジョニング用に Snowflake を�
 
     ![Snowflake での SCIM の追加](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="add-snowflake-from-the-gallery"></a>ギャラリーから Snowflake を追加する
+## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Snowflake を追加する
 
-Azure AD で自動ユーザー プロビジョニング用に Snowflake を構成するには、Azure AD アプリケーション ギャラリーから Snowflake をマネージド SaaS アプリケーションの一覧に追加する必要があります。
+Azure AD アプリケーション ギャラリーから Snowflake を追加して、Snowflake へのプロビジョニングの管理を開始します。 SSO のために Snowflake を以前に設定している場合は、その同じアプリケーションを使用することができます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)を参照してください。 
 
-**Azure AD アプリケーション ギャラリーから Snowflake を追加するには、次の手順を行います。**
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーまたはグループの属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループをアプリケーションに割り当てることができます。 ユーザーまたはグループの属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)で説明されているスコープ フィルターを使用できます。 
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+* Snowflake にユーザーとグループを割り当てるときは、**既定のアクセス**以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)してロールを追加することができます。 
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+* 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループでテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループに設定される場合、これを制御するには、1 つまたは 2 つのユーザーまたはグループをアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を指定できます。 
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
-
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索ボックスに「**Snowflake**」と入力し、結果ウィンドウで **Snowflake** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
-
-    ![結果一覧の Snowflake](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-snowflake"></a>Snowflake への自動ユーザー プロビジョニングの構成 
+## <a name="step-5-configure-automatic-user-provisioning-to-snowflake"></a>手順 5. Snowflake への自動ユーザー プロビジョニングを構成する 
 
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Snowflake のユーザーやグループを作成、更新、無効化する手順について説明します。
-
-> [!TIP]
-> Snowflake では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、「[チュートリアル:Azure Active Directory と Snowflake の統合](Snowflake-tutorial.md)」で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Azure AD で Snowflake の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
@@ -115,9 +99,7 @@ Azure AD で自動ユーザー プロビジョニング用に Snowflake を構�
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションのテナント URL に「`https://<Snowflake Account URL>/scim/v2`」と入力します。 テナント URL の例は次のとおりです: `https://acme.snowflakecomputing.com/scim/v2`
-
-6. **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Snowflake に接続できることを確認します。 接続できない場合は、使用中の Snowflake アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** フィールドおよび **[シークレット トークン]** フィールドに、先ほど取得した **SCIM 2.0 ベース URL および認証トークン**の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Snowflake に接続できることを確認します。 接続できない場合は、使用中の Snowflake アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -129,19 +111,27 @@ Azure AD で自動ユーザー プロビジョニング用に Snowflake を構�
 
 9. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Snowflake]\(Azure Active Directory ユーザーを Snowflake に同期する\)** を選択します。
 
-    ![Snowflake のユーザー マッピング](media/Snowflake-provisioning-tutorial/user-mapping.png)
-
 10. **[属性マッピング]** セクションで、Azure AD から Snowflake に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Snowflake のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Snowflake のユーザー属性](media/Snowflake-provisioning-tutorial/user-attribute.png)
+   |属性|Type|
+   |---|---|
+   |active|Boolean|
+   |displayName|String|
+   |emails[type eq "work"].value|String|
+   |userName|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:defaultRole|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:defaultWarehouse|String|
 
 11. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Snowflake]\(Azure Active Directory グループを Snowflake に同期する\)** を選択します。
 
-    ![Snowflake のグループ マッピング](media/Snowflake-provisioning-tutorial/group-mapping.png)
-
 12. **[属性マッピング]** セクションで、Azure AD から Snowflake に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Snowflake のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Snowflake のグループ属性](media/Snowflake-provisioning-tutorial/group-attribute.png)
+      |属性|Type|
+      |---|---|
+      |displayName|String|
+      |members|リファレンス|
 
 13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -157,13 +147,22 @@ Azure AD で自動ユーザー プロビジョニング用に Snowflake を構�
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-    これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Snowflake に対して実行されたすべてのアクションが記載されています。
+    これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。
 
-    Azure AD プロビジョニング ログの読み方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
+## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
+プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
+
+1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。  
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
 * Snowflake で生成される SCIM トークンの有効期間は 6 か月です。 プロビジョニングの同期を続行するには、有効期限が切れる前にこれらを更新する必要があることに注意してください。 
+
+## <a name="change-log"></a>変更履歴
+
+* 2020 年 7 月 21 日 - すべてのユーザーに対して (アクティブな属性を介して) 論理的な削除を有効化。
 
 ## <a name="additional-resources"></a>その他のリソース
 

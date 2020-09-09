@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885465"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253122"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデーモン アプリケーション
 
@@ -38,7 +38,7 @@ Web API を呼び出すデーモン アプリをビルドするために必要�
 - バッチ ジョブ (バックグラウンドで実行されているオペレーティング システム サービス) を実行するデスクトップ アプリケーション (Windows 上の Windows サービスや Linux 上のデーモン プロセスなど)
 - 特定のユーザーではなく、ディレクトリを操作する必要がある Web API
 
-デーモン以外のアプリケーションがクライアントの資格情報を使用する一般的なケースがもう 1 つあります。これらのアプリケーションがユーザーの代わりに動作している場合でも、技術的な理由から、アプリケーションは自身の ID を使用して Web API またはリソースにアクセスする必要があります。 Azure Key Vault 内のシークレットまたはキャッシュのための Azure SQL データベースへのアクセスはその一例です。
+デーモン以外のアプリケーションがクライアントの資格情報を使用する一般的なケースがもう 1 つあります。これらのアプリケーションがユーザーの代わりに動作している場合でも、技術的な理由から、アプリケーションは自身の ID を使用して Web API またはリソースにアクセスする必要があります。 Azure Key Vault 内のシークレットまたはキャッシュのための Azure SQL Database へのアクセスはその一例です。
 
 自身の ID 用にトークンを取得するアプリケーションは:
 

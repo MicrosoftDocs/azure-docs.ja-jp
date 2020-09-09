@@ -1,22 +1,25 @@
 ---
 title: Azure IoT Hub モジュール ツインについて | Microsoft Docs
 description: 開発者ガイド - モジュール ツインを使用して、IoT Hub とデバイス間で状態と構成を同期する
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
-ms.author: menchi
-ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303598"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323011"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
 
-この記事は、「[IoT Hub のデバイス ツインの理解と使用](iot-hub-devguide-device-twins.md)」をすでに読み、理解していることを前提としています。 IoT Hub では、デバイス ID ごとに最大 20 個のモジュール ID を作成できます。 モジュールの ID ごとに、モジュール ツインは暗黙的に生成されます。 モジュール ツインは、デバイス ツインと同様、モジュールの状態に関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 Azure IoT Hub は、IoT Hub に接続したモジュールごとにモジュール ツインを管理します。 
+この記事は、「[IoT Hub のデバイス ツインの理解と使用](iot-hub-devguide-device-twins.md)」をすでに読み、理解していることを前提としています。 IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作成できます。 モジュールの ID ごとに、モジュール ツインは暗黙的に生成されます。 モジュール ツインは、デバイス ツインと同様、モジュールの状態に関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 Azure IoT Hub は、IoT Hub に接続したモジュールごとにモジュール ツインを管理します。 
 
 デバイス側では、IoT Hub デバイス SDK を使用して、それぞれが IoT Hub への独立した接続を確立するモジュールを作成できます。 この機能により、デバイスのさまざまなコンポーネントごとに個別の名前空間を使用することができます。 たとえば、3 つの異なるセンサーが付いた自動販売機があるとします。 各センサーは、社内の異なる部署によって管理されています。 センサーごとにモジュールを作成することができます。 これにより、各部門は、管轄するセンサーにのみジョブを送信したり、メソッドを転送できるため、競合やユーザー エラーを回避できます。
 
@@ -236,35 +239,45 @@ ms.locfileid: "78303598"
 
 タグ、必要なプロパティ、報告されるプロパティは JSON オブジェクトであり、次のような制限があります。
 
-* **キー**: JSON オブジェクトのすべてのキーは、大文字小文字が区別される 64 バイトの UTF-8 UNICODE 文字列です。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、SP、`$` は使用できません。
+* **キー**: JSON オブジェクト内のすべてのキーは UTF-8 でエンコードされ、大文字と小文字が区別され、最大 1 KB の長さです。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、`$`、SP は使用できません。
 
 * **値**:JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列は使用できません。
 
     * 使用できる整数の範囲は、-4503599627370496 (最小値) から 4503599627370495 (最大値) までです。
 
-    * 文字列値は UTF-8 でエンコードされ、最大長は 512 バイトです。
+    * 文字列値は UTF-8 でエンコードされ、最大長は 4 KB です。
 
-* **深さ**: タグ、必要なプロパティ、および報告されるプロパティのすべての JSON オブジェクトは、深さ 5 まで許容されます。 たとえば、次のオブジェクトは有効です。
+* **深さ**: タグ、必要なプロパティ、およびレポートされるプロパティにおける JSON オブジェクトの深さは最大で 10 です。 たとえば、次のオブジェクトは有効です。
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>モジュール ツインのサイズ
 

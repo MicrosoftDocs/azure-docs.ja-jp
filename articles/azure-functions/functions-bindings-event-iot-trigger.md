@@ -1,16 +1,16 @@
 ---
-title: Azure Functions の Azure IoT Hub バインド
+title: Azure Functions の Azure IoT Hub トリガー
 description: Azure Functions で IoT Hub のイベント ストリームに送信されたイベントに応答する方法を学習します。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: f63fe965b3f37add8ddf9d262f1ef1dae9fff966
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25396da3fb9a4293633308bf2e9d3c6b3d07265d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041640"
 ---
 # <a name="azure-iot-hub-trigger-for-azure-functions"></a>Azure Functions の Azure IoT Hub トリガー
 

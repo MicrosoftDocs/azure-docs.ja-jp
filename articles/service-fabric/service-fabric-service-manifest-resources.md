@@ -3,12 +3,12 @@ title: Service Fabric サービス エンドポイントの指定
 description: サービス マニフェストにエンドポイント リソースを記述する方法 (HTTPS エンドポイントの設定方法を含みます)
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610746"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
@@ -52,8 +52,6 @@ https エンドポイントを指定するサービスをアクティブ化す�
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>例: サービスの HTTP エンドポイントを指定する
 次のサービス マニフェストは、1 つの TCP エンドポイント リソースと 2 つの HTTP エンドポイント リソースを &lt;Resources&gt; 要素内に定義しています。
-
-HTTP エンドポイントは Service Fabric によって自動的に ACL に登録されます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -157,6 +155,8 @@ HTTPS エンドポイントに必要な構成を示す ApplicationManifest の�
 
 Linux クラスターの場合、**MY** ストアは既定で **/var/lib/sfcerts** フォルダーになります。
 
+## <a name="port-acling-for-http-endpoints"></a>HTTP エンドポイントのポート ACL 処理
+Service Fabric では、既定で選択された HTTP エンドポイントが自動で ACL 処理されます。 エンドポイントに [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) が関連付けられておらず、Service Fabric が管理者特権を持つアカウントを使用して実行するように構成されている場合は、自動で ACL 処理が実行されることは**ありません**。
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml のエンドポイントのオーバーライド
 

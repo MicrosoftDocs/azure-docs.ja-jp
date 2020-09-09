@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Virtual Array のバックアップ チュートリアル | Microsoft Docs
-description: StorSimple Virtual Array の共有/ボリュームをバックアップする方法について説明します。
+description: Microsoft Azure StorSimple Virtual Array 用にスケジュールされたバックアップと手動バックアップを作成し、項目レベルの回復を実行して、削除されたファイルを仮想アレイで復元する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: e3cdcd9e-33b1-424d-82aa-b369d934067e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60581397"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183226"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
 

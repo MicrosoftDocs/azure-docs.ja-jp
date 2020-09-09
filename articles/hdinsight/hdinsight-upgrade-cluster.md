@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: f7198aeff5e9ef6d37e29c2336dc38e4eec0dda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023975"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085890"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>HDInsight クラスターを新しいバージョンに移行する
 
@@ -51,7 +51,7 @@ HDInsight クラスターをアップグレードするワークフローは次�
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 
-データベースのバックアップと復元の詳細については、「[自動データベース バックアップを使用して Azure SQL データベースを復旧する](../sql-database/sql-database-recovery-using-backups.md)」を参照してください。
+データベースのバックアップと復元の詳細については、[自動データベース バックアップを使用した Azure SQL Database 内のデータベースの復旧](../azure-sql/database/recovery-using-backups.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

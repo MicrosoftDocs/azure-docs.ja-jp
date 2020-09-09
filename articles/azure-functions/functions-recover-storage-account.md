@@ -1,16 +1,14 @@
 ---
 title: Azure Functions ランタイムに到達できないエラーのトラブルシューティング
 description: 無効なストレージ アカウントのトラブルシューティング方法について説明します。
-author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: alkarche
-ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c46ca214ab6c0798fdc39ead575fb2873b8c51c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063783"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385859"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>"Azure Functions ランタイムに到達できない" エラーのトラブルシューティング
 
@@ -18,7 +16,7 @@ ms.locfileid: "77063783"
 
 > "エラー: Azure Functions ランタイムに到達できません。 ストレージ構成の詳細については、ここをクリックしてください。"
 
-この問題は、Azure Functions ランタイムが起動できない場合に発生します。 この問題が発生する最も一般的な理由は、関数アプリでそのストレージ アカウントへのアクセスが失われていることです。 詳細については、「[ストレージ アカウントの要件](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)」をご覧ください。
+この問題は、Azure Functions ランタイムが起動できない場合に発生します。 この問題が発生する最も一般的な理由は、関数アプリでそのストレージ アカウントへのアクセスが失われていることです。 詳細については、「[ストレージ アカウントの要件](./functions-create-function-app-portal.md#storage-account-requirements)」をご覧ください。
 
 この記事の残りの部分では、各ケースを特定して解決する方法など、このエラーの次の原因をトラブルシューティングする際に役立ちます。
 
@@ -26,7 +24,7 @@ ms.locfileid: "77063783"
 
 すべての関数アプリには、操作するためのストレージ アカウントが必要です。 そのアカウントが削除されると、関数は機能しません。
 
-まず、アプリケーションの設定でご自分のストレージ アカウント名を検索します。 `AzureWebJobsStorage` または `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` のいずれかに、接続文字列でラップされたストレージ アカウントの名前が含まれています。 詳細については、「[Azure Functions のアプリケーション設定のリファレンス](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)」をご覧ください。
+まず、アプリケーションの設定でご自分のストレージ アカウント名を検索します。 `AzureWebJobsStorage` または `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` のいずれかに、接続文字列でラップされたストレージ アカウントの名前が含まれています。 詳細については、「[Azure Functions のアプリケーション設定のリファレンス](./functions-app-settings.md#azurewebjobsstorage)」をご覧ください。
 
 Azure portal でご自分のストレージ アカウントを検索して、まだ存在するかどうかを確認します。 削除されている場合は、ストレージ アカウントを作成し直して、ストレージ接続文字列を置き換えます。 関数コードが失われるため、もう一度デプロイする必要があります。
 
@@ -37,12 +35,12 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 ### <a name="required-application-settings"></a>必須のアプリケーションの設定
 
 * 必須:
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
 * 従量課金プラン関数には必須:
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-詳細については、「[Azure Functions のアプリケーション設定のリファレンス](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)」をご覧ください。
+詳細については、「[Azure Functions のアプリケーション設定のリファレンス](./functions-app-settings.md)」をご覧ください。
 
 ### <a name="guidance"></a>ガイダンス
 
@@ -52,7 +50,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 ## <a name="storage-account-credentials-are-invalid"></a>ストレージ アカウントの資格情報が無効
 
-ストレージ キーを再生成する場合は、前述のストレージ アカウント接続文字列を更新する必要があります。 ストレージ キーの管理の詳細については、「[Azure Storage アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)」をご覧ください。
+ストレージ キーを再生成する場合は、前述のストレージ アカウント接続文字列を更新する必要があります。 ストレージ キーの管理の詳細については、「[Azure Storage アカウントの作成](../storage/common/storage-account-create.md)」をご覧ください。
 
 ## <a name="storage-account-is-inaccessible"></a>ストレージ アカウントにアクセスできない
 
@@ -60,7 +58,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 * ストレージ アカウント間のトラフィックを許可するため、正しいネットワーク規則なしで関数アプリが App Service Environment にデプロイされた。
 
-* ストレージ アカウントのファイアウォールが有効になっていて、Functions 間のトラフィックを許可するように構成されていない。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関する記事を参照してください。
+* ストレージ アカウントのファイアウォールが有効になっていて、Functions 間のトラフィックを許可するように構成されていない。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="daily-execution-quota-is-full"></a>日ごとの実行クォータがいっぱいである
 
@@ -88,7 +86,7 @@ App Service Environment 構成を確認するには、次の操作を行いま�
    
 また、アプリを実行している仮想ネットワーク、または仮想ネットワークで実行されている仮想マシンに接続されているコンピューターからポータルを使用することもできます。 
 
-受信規則の構成の詳細については、「[App Service Environment のネットワークの考慮事項](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)」の「ネットワーク セキュリティ グループ」セクションをご覧ください。
+受信規則の構成の詳細については、「[App Service Environment のネットワークの考慮事項](../app-service/environment/network-info.md#network-security-groups)」の「ネットワーク セキュリティ グループ」セクションをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

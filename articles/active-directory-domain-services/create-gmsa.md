@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5955f52cda73630f371a46f83ac0fb9a252b80e3
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655481"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281856"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services でグループの管理されたサービス アカウント (gMSA) を作成する
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でグループで管理されるサービス アカウント (gMSA) を作成する
 
 多くの場合、アプリケーションとサービスは、他のリソースで自身を認証するために ID を必要とします。 たとえば、Web サービスは、データベース サービスで認証を行う必要がある可能性があります。 アプリケーションまたはサービスに複数のインスタンス (Web サーバー ファームなど) がある場合、それらのリソースの ID を手動で作成して構成すると時間がかかります。
 
 代わりに、グループの管理されたサービス アカウント (gMSA) を Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインで作成することができます。 Windows OS は、gMSA の資格情報を自動的に管理します。これにより、大規模なリソース グループの管理が簡素化されます。
 
-この記事では、Azure PowerShell を使用して Azure AD DS マネージド ドメインで gMSA を作成する方法について説明します。
+この記事では、Azure PowerShell を使用してマネージド ドメインで gMSA を作成する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -35,7 +35,7 @@ ms.locfileid: "80655481"
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+    * 必要に応じて、[Azure Active Directory Domain Services マネージド ドメインを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
     * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
 
@@ -49,11 +49,11 @@ ms.locfileid: "80655481"
 
 ## <a name="using-service-accounts-in-azure-ad-ds"></a>Azure AD DS でのサービス アカウントの使用
 
-Azure AD DS マネージド ドメインは、Microsoft によってロックダウンおよび管理されるため、サービス アカウントを使用する際の考慮事項がいくつかあります。
+マネージド ドメインは、Microsoft によってロックダウンおよび管理されるため、サービス アカウントを使用する際の考慮事項がいくつかあります。
 
 * マネージド ドメインのカスタム組織単位 (OU) 内にサービス アカウントを作成する。
     * 組み込みの *AADDC ユーザー* または *AADDC コンピューター*の OU には、サービス アカウントを作成できません。
-    * 代わりに、Azure AD DS マネージド ドメインに[カスタム OU を作成][create-custom-ou]し、そのカスタム OU 内にサービス アカウントを作成します。
+    * 代わりに、マネージド ドメインに[カスタム OU を作成][create-custom-ou]し、そのカスタム OU 内にサービス アカウントを作成します。
 * キー配布サービス (KDS) ルート キーが事前に作成されている。
     * KDS ルート キーは、gMSA のパスワードの生成と取得に使用されます。 Azure AD DS では、KDS ルートは自動的に作成されます。
     * 別のものを作成したり、既定の KDS ルート キーを表示したりする権限はありません。
@@ -65,7 +65,7 @@ Azure AD DS マネージド ドメインは、Microsoft によってロックダ
 > [!TIP]
 > これらの手順を完了して gMSA を作成するには、[管理 VM 使用します][tutorial-create-management-vm]。 この管理 VM には、必要な AD PowerShell コマンドレットと管理対象ドメインへの接続が既に存在している必要があります。
 
-次の例では、*aaddscontoso.com* という名前の Azure AD DS マネージド ドメインで、*myNewOU* という名前のカスタム OU が作成されます。 独自の OU とマネージド ドメイン名を使用します。
+次の例では、*aaddscontoso.com* という名前のマネージド ドメインで、*myNewOU* という名前のカスタム OU が作成されます。 独自の OU とマネージド ドメイン名を使用します。
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
@@ -76,7 +76,7 @@ New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 * **-Name** は *WebFarmSvc* に設定されます
 * **-Path** パラメーターは、前の手順で作成された gMSA のカスタム OU を指定します。
 * DNS エントリとサービス プリンシパル名が *WebFarmSvc.aaddscontoso.com* に対して設定されます。
-* *AADDSCONTOSO-SERVER$* のプリンシパルでは、ID を使用するパスワードの取得が可能です。
+* *AADDSCONTOSO-SERVER$* のプリンシパルでは、パスワードを取得して ID を使用することが可能です。
 
 独自の名前とドメイン名を指定します。
 

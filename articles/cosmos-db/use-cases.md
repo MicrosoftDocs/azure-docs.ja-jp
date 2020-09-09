@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73888929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114267"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -42,7 +42,7 @@ Azure Cosmos DB を、グローバルな展開を視野に入れた高性能ア�
 ## <a name="iot-and-telematics"></a>IoT とテレマティックス
 IoT のユース ケースでは、データの取り込み、処理、および格納の方法にいくつかの共通パターンがあります。  まず、これらのシステムでは、さまざまなロケールのデバイス センサーから大量のデータを取り込む必要があります。 次に、これらのシステムではストリーミング データを処理および分析して、インサイトをリアルタイムで導き出しています。 その後、データはバッチ分析用にコールド ストレージにアーカイブされます。 Microsoft Azure では、Azure Cosmos DB、Azure Event Hubs、Azure Stream Analytics、Azure Notification Hub、Azure Machine Learning、Azure HDInsight、Power BI など、IoT のユース ケースに適用できる豊富なサービスを提供しています。 
 
-![Azure Cosmos DB IoT リファレンス アーキテクチャ](./media/use-cases/iot.png)
+:::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::
 
 大量データの取り込みは、待機時間が短く高スループットのデータ取り込みが可能な Azure Event Hubs で実行できます。 取り込んだデータを処理してリアルタイムのインサイトを得る必要がある場合は、Azure Stream Analytics にデータを投入してリアルタイムで分析できます。 アドホック クエリのためにデータを Azure Cosmos DB に読み込むことができます。 データが Azure Cosmos DB に読み込まれたら、そのデータはクエリの準備ができています。 さらに、新しいデータと既存のデータへの変更は、Change Feed で読み取ることができます。 変更フィードは、Cosmos コンテナーへの変更を順番に格納する、永続的な追加専用のログです。 Azure Cosmos DB 内のすべてのデータ、またはデータへの変更のみを、リアルタイム分析に含まれる参照データとして使用できます。 さらに、Azure Cosmos DB データを Pig、Hive、または Map/Reduce ジョブ用に HDInsight に接続することによって、データをさらに絞り込んで処理できます。  絞り込まれたデータはその後、レポート作成のために元の Azure Cosmos DB に読み込まれます。   
 
@@ -57,18 +57,18 @@ Azure Cosmos DB は、Windows ストアおよび XBox Live を実行する Micro
 
 自動車部品メーカーの製品カタログの例を考えてみましょう。 各部品には、すべて部品に共通の属性に加えて、それぞれに固有の属性があります。 また、特定の部品の属性は、翌年に新しいモデルがリリースされたときに変更されることがあります。 Azure Cosmos DB は柔軟なスキーマと階層データをサポートしているため、製品カタログ データの格納に最適です。
 
-![Azure Cosmos DB 小売カタログ リファレンス アーキテクチャ](./media/use-cases/product-catalog.png)
+:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB 小売カタログ リファレンス アーキテクチャ" border="false":::
 
 Azure Cosmos DB は、多くの場合、その [Change Feed](change-feed.md) 機能を使用するイベント駆動アーキテクチャのイベント ソーシングに使用されます。 Change Feed 機能は、Azure Cosmos DB 用に作られた、段階的かつ確実にインサートやアップデートを読み取る (注文イベントなど) 能力をダウンストリームのマイクロサービスに提供します。 この機能を利用すれば、状態の変化するイベントのメッセージ ブローカーとして永続的なイベント ストアを提供し、多数のマイクロサービス間で注文処理ワークフローを稼働することができます ([サーバーレス Azure Functions](https://azure.com/serverless) として実装可能)。
 
-![Azure Cosmos DB 注文パイプライン リファレンス アーキテクチャ](./media/use-cases/event-sourcing.png)
+:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB 注文パイプライン リファレンス アーキテクチャ" border="false":::
 
 さらに、Azure Cosmos DB に格納されたデータは、Apache Spark ジョブによるビッグ データ分析のために HDInsight と統合できます。 Azure Cosmos DB 用の Spark コネクタの詳細については、「[Run a Spark job with Cosmos DB and HDInsight (Cosmos DB と HDInsight を使用した Spark ジョブの実行)](spark-connector.md)」を参照してください。
 
 ## <a name="gaming"></a>Gaming
 データベース層は、ゲーム アプリケーションの重要なコンポーネントです。 最近のゲームはモバイル/コンソール クライアントでグラフィック処理を行いますが、ゲーム内統計、ソーシャル メディア統合、スコアボードなどの個人向けにカスタマイズされたコンテンツの配信は、クラウドに依存しています。 多くの場合、ゲームでは魅力的なゲーム内エクスペリエンスを提供するために、読み取り/書き込みの待機時間を 1 ミリ秒にする必要があります。 ゲーム データベースは高速であることが必要であり、新しいゲームのリリース時や機能の更新時に、要求レートの急増に対処できる必要があります。
 
-Azure Cosmos DB は、[Next Games](https://www.nextgames.com/) による [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) や [Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/) などのゲームで使用されています。 Azure Cosmos DB は、ゲーム開発者に次の利点を提供します。
+Azure Cosmos DB は、[The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) ([Next Games](https://www.nextgames.com/)) や [Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/) などのゲームで使用されています。 Azure Cosmos DB は、ゲーム開発者に次の利点を提供します。
 
 * Azure Cosmos DB では、パフォーマンスを柔軟にスケールアップまたはスケールダウンできます。 これにより、同時にプレイしている数十から数百万ものプレイヤーのプロファイルや統計の更新を、1 回の API 呼び出しだけで処理することができます。
 * Azure Cosmos DB は、ゲーム プレイ中の遅延の回避に役立つように、ミリ秒の読み取り/書き込みをサポートしています。
@@ -76,7 +76,7 @@ Azure Cosmos DB は、[Next Games](https://www.nextgames.com/) による [The Wa
 * ゲーム内チャット メッセージ、ギルド メンバーシップ、ミッション完了、スコアボード、ソーシャル グラフなどのソーシャル機能は、柔軟なスキーマで簡単に実装できます。
 * Azure Cosmos DB は、管理されたサービスとしてのプラットフォーム (PaaS) として、迅速な繰り返しを可能にして製品化までの時間を短縮するために必要なセットアップや管理作業が最小限に抑えられます。
 
-![Azure Cosmos DB ゲーム リファレンス アーキテクチャ](./media/use-cases/gaming.png)
+:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB ゲーム リファレンス アーキテクチャ" border="false":::
 
 ## <a name="web-and-mobile-applications"></a>Web アプリケーションとモバイル アプリケーション
 Azure Cosmos DB は一般に Web およびモバイル アプリケーション内で使用され、ソーシャル インタラクションのモデル化、サード パーティ サービスとの統合、および豊富な個人別のエクスペリエンスの構築に適しています。 Cosmos DB SDK を使用すると、一般的な [Xamarin フレームワーク](mobile-apps-with-xamarin.md)を使って豊富な iOS および Android アプリケーションを構築できます。  
@@ -88,14 +88,14 @@ Azure Cosmos DB の一般的なユース ケースは、Web、モバイル、ソ
 
 ソーシャル アプリケーションの多くが世界規模で実行されており、予測できない使用パターンが発生することがあります。 アプリケーション層は使用ニーズを満たすようにスケールするため、データ ストアを柔軟にスケールできることがきわめて重要です。  Cosmos DB では、Cosmos DB アカウントにデータのパーティションを追加することでスケールアウトできます。  また、複数のリージョンにわたって追加の Cosmos DB アカウントを作成することもできます。 Cosmos DB サービス リージョンの可用性については、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-![Azure Cosmos DB Web アプリ リファレンス アーキテクチャ](./media/use-cases/apps-with-global-reach.png)
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB Web アプリ リファレンス アーキテクチャ" border="false":::
 
 ### <a name="personalization"></a>パーソナル化
 今日では、最新のアプリケーションは複雑なビューとエクスペリエンスを備えています。 それらはたいてい動的で、ユーザーの設定や気分、ブランドのニーズに対応します。 そのため、アプリケーションは、UI 要素とエクスペリエンスをすばやく表示するために、個人用設定を効率的に取得できる必要があります。 
 
 Cosmos DB でサポートされる形式である JSON は、軽量なうえに JavaScript で容易に解釈できるため、UI レイアウト データを表すのに効果的な形式です。 Cosmos DB は、チューニング可能な一貫性レベルを提供し、高速な読み取りと待機時間の短い書き込みを実現します。 これにより、個人用設定を含む UI レイアウト データを Cosmos DB に JSON ドキュメントとして格納すれば、これらのデータをネットワーク経由で効率よく取得することができます。
 
-![Azure Cosmos DB Web アプリ リファレンス アーキテクチャ](./media/use-cases/personalization.png)
+:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB Web アプリ リファレンス アーキテクチャ" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

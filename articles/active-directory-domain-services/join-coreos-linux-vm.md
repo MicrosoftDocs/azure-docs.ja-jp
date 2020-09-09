@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 63dfe39b986125abc9cacf6c1a6556876bbd3a99
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005108"
 ---
-# <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>CoreOS 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる
+# <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインに CoreOS 仮想マシンを参加させる
 
-ユーザーが 1 セットの資格情報を使用して Azure の仮想マシン (VM) にサインインできるようにするには、Azure Active Directory Domain Services (AD DS) のマネージド ドメインに VM を参加させます。 VM を Azure AD DS のマネージド ドメインに参加させると、ドメインのユーザー アカウントと資格情報を使用して、サーバーにサインインして管理することができます。 Azure AD DS マネージド ドメインのグループ メンバーシップも適用され、VM 上のファイルまたはサービスへのアクセスを制御できるようになります。
+ユーザーが 1 セットの資格情報を使用して Azure の仮想マシン (VM) にサインインできるようにするには、Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインに VM を参加させます。 VM を Azure AD DS のマネージド ドメインに参加させると、ドメインのユーザー アカウントと資格情報を使用して、サーバーにサインインして管理することができます。 マネージド ドメインのグループ メンバーシップも適用され、VM 上のファイルまたはサービスへのアクセスを制御できるようになります。
 
-この記事では、CoreOS VM を Azure AD DS のマネージド ドメインに参加させる方法について説明します。
+この記事では、CoreOS VM をマネージド ドメインに参加させる方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,8 +33,8 @@ ms.locfileid: "80655188"
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-    * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]します。
-* Azure AD DS のマネージド ドメインの一部であるユーザー アカウント。
+    * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
+* マネージド ドメインの一部であるユーザー アカウント。
 
 ## <a name="create-and-connect-to-a-coreos-linux-vm"></a>CoreOS Linux VM を作成してそれに接続する
 
@@ -46,10 +46,10 @@ CoreOS Linux VM を作成する必要がある場合、またはこの記事で�
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-VM を作成するときは、VM が Azure AD DS マネージド ドメインと通信できるように、仮想ネットワークの設定に注意してください。
+VM を作成するときは、VM がマネージド ドメインと通信できるように、仮想ネットワークの設定に注意してください。
 
 * Azure AD Domain Services を有効にしたのと同じ仮想ネットワーク、またはピアリングされた仮想ネットワークに、VM をデプロイします。
-* Azure AD Domain Services インスタンスとは別のサブネットに VM をデプロイします。
+* Azure AD Domain Services マネージド ドメインとは別のサブネットに VM をデプロイします。
 
 VM をデプロイした後、SSH を使用して VM に接続する手順に従います。
 
@@ -63,7 +63,7 @@ sudo vi /etc/hosts
 
 *hosts* ファイルで、*localhost* アドレスを更新します。 次の例では
 
-* *aaddscontoso.com* は、Azure AD DS マネージド ドメインの DNS ドメイン名です。
+* *aaddscontoso.com* は、マネージド ドメインの DNS ドメイン名です。
 * *coreos* は、マネージド ドメインに参加させる CoreOS VM のホスト名です。
 
 これらの名前を実際の値に更新します。
@@ -82,10 +82,10 @@ sudo vi /etc/hosts
 sudo vi /etc/sssd/sssd.conf
 ```
 
-次のパラメーターに対し、独自の Azure AD DS マネージド ドメインの名前を指定します。
+次のパラメーターに対し、独自のマネージド ドメインの名前を指定します。
 
 * *domains* (すべて大文字)
-* *[domain/AADDS]* (AADDS はすべて大文字)
+* *[domain/AADDSCONTOSO]* (AADDSCONTOSO はすべて大文字)
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
@@ -97,7 +97,7 @@ config_file_version = 2
 services = nss, pam
 domains = AADDSCONTOSO.COM
 
-[domain/AADDSCONTOSO.COM]
+[domain/AADDSCONTOSO]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
@@ -122,27 +122,27 @@ krb5_realm = AADDSCONTOSO.COM
 
 SSSD 構成ファイルを更新したので、仮想マシンをマネージド ドメインに参加させます。
 
-1. 最初に、`adcli info` コマンドを使用して、Azure AD DS マネージド ドメインに関する情報を表示できることを確認します。 次の例では、ドメイン *AADDSCONTOSO.COM* の情報を取得します。 独自の Azure AD DS マネージド ドメイン名を、すべて大文字で指定します。
+1. 最初に、`adcli info` コマンドを使用して、マネージド ドメインに関する情報を表示できることを確認します。 次の例では、ドメイン *AADDSCONTOSO.COM* の情報を取得します。 独自のマネージド ドメイン名を、すべて大文字で指定します。
 
     ```console
     sudo adcli info AADDSCONTOSO.COM
     ```
 
-   `adcli info` コマンドで Azure AD DS マネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
+   `adcli info` コマンドでマネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
 
     * ドメインに VM からアクセスできることを確認します。 `ping aaddscontoso.com` を試し、肯定応答が返されるかどうかを確認します。
-    * VM が、Azure AD DS マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
-    * 仮想ネットワークに対する DNS サーバーの設定が、Azure AD DS マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
+    * VM が、マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
+    * 仮想ネットワークに対する DNS サーバーの設定が、マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
 
-1. 次に、`adcli join` コマンドを使用して、VM を Azure AD DS マネージド ドメインに参加させます。 Azure AD DS のマネージド ドメインの一部であるユーザーを指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 次に、`adcli join` コマンドを使用して、VM をマネージド ドメインに参加させます。 マネージド ドメインの一部であるユーザーを指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    やはり、Azure AD DS マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@aaddscontoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 Azure AD DS のマネージド ドメインの一部である独自のユーザー アカウントを入力します。
+    やはり、マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@aaddscontoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 マネージド ドメインの一部である独自のユーザー アカウントを入力します。
 
     ```console
     sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos
     ```
 
-    VM が Azure AD DS マネージド ドメインに正常に参加している場合、`adcli join` コマンドから情報は返されません。
+    VM がマネージド ドメインに正常に参加している場合、`adcli join` コマンドから情報は返されません。
 
 1. ドメイン参加構成を適用するには、SSSD サービスを開始します。
   
@@ -152,7 +152,7 @@ SSSD 構成ファイルを更新したので、仮想マシンをマネージド
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>ドメイン アカウントを使用して VM にサインインする
 
-VM が Azure AD DS マネージド ドメインに正常に参加したことを確認するには、ドメイン ユーザー アカウントを使用して新しい SSH 接続を開始します。 ホーム ディレクトリが作成されていること、およびドメインのグループ メンバーシップが適用されていることを確認します。
+VM がマネージド ドメインに正常に参加したことを確認するには、ドメイン ユーザー アカウントを使用して新しい SSH 接続を開始します。 ホーム ディレクトリが作成されていること、およびドメインのグループ メンバーシップが適用されていることを確認します。
 
 1. コンソールから新しい SSH 接続を作成します。 `ssh -l` コマンドを使用して、マネージド ドメインに属しているドメイン アカウントを使用し (`contosoadmin@aaddscontoso.com` など)、VM のアドレス (*coreos.aaddscontoso.com* など) を入力します。 Azure Cloud Shell を使用する場合は、内部 DNS 名ではなく、VM のパブリック IP アドレスを使用します。
 
@@ -166,11 +166,11 @@ VM が Azure AD DS マネージド ドメインに正常に参加したことを
     id
     ```
 
-    Azure AD DS マネージド ドメインからのグループ メンバーシップが表示される必要があります。
+    マネージド ドメインからのグループ メンバーシップが表示される必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure AD DS マネージド ドメインへの VM の接続、またはドメイン アカウントでのサインインに関して問題がある場合は、「[ドメイン参加の問題のトラブルシューティング](join-windows-vm.md#troubleshoot-domain-join-issues)」を参照してください。
+マネージド ドメインへの VM の接続、またはドメイン アカウントでのサインインに関して問題がある場合は、「[ドメイン参加の問題のトラブルシューティング](join-windows-vm.md#troubleshoot-domain-join-issues)」を参照してください。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

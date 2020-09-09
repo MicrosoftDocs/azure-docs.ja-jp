@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231935"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121393"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -44,7 +44,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 - ストレージ情報
 
-- Azure 仮想マシンの構成 ([Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service) を使用して収集)
+- Azure 仮想マシンの構成 ([Azure Instance Metadata Service](../windows/instance-metadata-service.md) を使用して収集)
 
 - 実行中のプロセス、ディスク、メモリ、CPU 使用率の一覧
 
@@ -99,6 +99,7 @@ Linux 仮想マシン、オペレーティング システム、ブロック デ
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat or /var/log/sa [`**`]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -109,10 +110,12 @@ Linux 仮想マシン、オペレーティング システム、ブロック デ
   - /etc/waagent.config
   - 過去 5 日間の journalctl の出力
 
-- [Azure 仮想マシン インスタンスのメタデータ](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Azure 仮想マシン インスタンスのメタデータ](../windows/instance-metadata-service.md)
 
 >[!Note]
->[`*`] Debian と SLES のディストリビューションでは、まだ PCI 情報が収集されません
+>[`*`] PCI 情報は、Debian および SLES ディストリビューションでは、まだ収集されません。
+> 
+>[`**`] /var/log/sysstat または /var/log/sa には、sysstat パッケージによって収集されたシステム アクティビティ レポート (SAR) ファイルが含まれます。 sysstat パッケージが VM にインストールされていない場合は、PerfInsights ツールではインストールが推奨されます。
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>VM で PerfInsights Linux を実行する
 
@@ -121,7 +124,7 @@ Linux 仮想マシン、オペレーティング システム、ブロック デ
 #### <a name="tool-requirements"></a>ツールの要件
 
 - このツールを、パフォーマンスに問題がある VM で実行する必要があります。
-- Python 2.7 が VM にインストールされている必要があります
+- Python 3.x または Python 2.7 が VM にインストールされている必要があります。
 
 - 現在、次のディストリビューションがサポートされています。
 

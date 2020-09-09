@@ -4,14 +4,14 @@ description: この記事では、Azure portal を使用して Azure Database fo
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 6/30/2020
+ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74765632"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110812"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 
@@ -58,10 +58,10 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 3. [復元] フォームに必要な情報を入力します。
 
    ![Azure Database for PostgreSQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
-   - **復元ポイント**: 復元先の特定の時点を選択します。
-   - **対象サーバー**: 新しいサーバーの名前を指定します。
-   - **場所**: リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
-   - **価格レベル**: ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
+   - **復元ポイント**:復元先の特定の時点を選択します。
+   - **対象サーバー**:新しいサーバーの名前を指定します。
+   - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 
@@ -71,24 +71,49 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
 
-
 ## <a name="geo-restore"></a>geo リストア
 
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for PostgreSQL を使用できる任意のリージョンに作成できます。  
 
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。 **[データベース]**  >  **[Azure Database for PostgreSQL]** の順に選択します。
 
-   ![[Azure Database for PostgreSQL] オプション](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Azure Database for PostgreSQL に移動します。":::
 
-2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
-   ![ソースの選択: バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
+2. **[単一サーバー]** デプロイ オプションを選択します。
 
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Azure Database for PostgreSQL - 単一サーバー デプロイ オプションを選択します。":::
+ 
+3. 新しいサーバーのサブスクリプション、リソース グループ、および名前を指定します。 
+
+4. **[データ ソース]** として **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧を示すドロップダウンが表示されます。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="データ ソースを選択する。":::
+    
    > [!NOTE]
    > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
    >
 
-3. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。 場所を選択したら、 **[価格レベル]** を選択できます。 既定では、復元元の既存のサーバーのパラメーターが表示されます。 これらの設定を継承するには、変更を加えずに **[OK]** をクリックします。 または、**コンピューティング世代** (選択したリージョンで使用できる場合)、**仮想コア**の数、**バックアップのリテンション期間**、および**バックアップ冗長性オプション**を変更することもできます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+5. **[バックアップ]** ドロップダウンを選択します。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="[バックアップ] ドロップダウンを選択する。":::
 
+6. 復元元のソース サーバーを選択します。
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="バックアップを選択する。":::
+
+7. サーバーでは、**仮想コア**の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および**管理者資格情報**が規定値に設定されます。 **[続行]** をクリックします。 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="バックアップを続行する。":::
+
+8. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。
+
+    場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア**の数、**バックアップ保有期間**、および**バックアップ冗長オプション**を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="フォームに入力する。"::: 
+
+9. **[確認および作成]** を選択して、選択内容を確認します。 
+
+10. **[作成]** を選択して、サーバーをプロビジョニングします。 この操作には数分かかることがあります。
 
 geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 

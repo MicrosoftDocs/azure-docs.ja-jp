@@ -3,28 +3,28 @@ title: Azure AD でのエンタープライズ アプリのユーザー プロ�
 description: Azure Active Directory を使用してエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 02f3198a9c3d35a0031fdd65ceefbb72b0f8bb31
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593813"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234841"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
 この記事では、サポートされているアプリケーションの自動ユーザー アカウントのプロビジョニングとプロビジョニング解除を管理する一般的な手順について説明します。 "*ユーザー アカウントのプロビジョニング*" とは、アプリケーションのローカル ユーザー プロファイル ストアのユーザー アカウント レコードを作成、更新、無効化することです。 ほとんどのクラウドおよび SaaS アプリケーションでは、ユーザー ロールとアクセス許可をユーザー独自のローカル ユーザー プロファイル ストアに格納しています。このようにユーザーのローカル ストアにユーザー レコードを格納することは、シングル サインオンとアクセスの実行のために "*必須*" となっています。 自動ユーザー アカウント プロビジョニングの詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)」を参照してください。
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) には、Azure AD による自動プロビジョニングに対応した何千もの事前統合されたアプリケーションを含むギャラリーがあります。 まず、[SaaS アプリと Azure Active Directoryを統合する方法に関するチュートリアルの 一覧](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)で、使用しているアプリケーションに固有のプロビジョニングのセットアップのチュートリアルを見つけてください。 ここでは、アプリと Azure AD の両方を構成してプロビジョニング接続を作成する手順について、順を追って説明します。
+> Azure Active Directory (Azure AD) には、Azure AD による自動プロビジョニングに対応した何千もの事前統合されたアプリケーションを含むギャラリーがあります。 まず、[SaaS アプリと Azure Active Directoryを統合する方法に関するチュートリアルの 一覧](../saas-apps/tutorial-list.md)で、使用しているアプリケーションに固有のプロビジョニングのセットアップのチュートリアルを見つけてください。 ここでは、アプリと Azure AD の両方を構成してプロビジョニング接続を作成する手順について、順を追って説明します。
 
 ## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
 
@@ -85,4 +85,4 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 **[プロビジョニング状態]** を **[オフ]** に変更すると、プロビジョニング サービスが一時停止します。 この状態では、アプリのユーザーやグループ オブジェクトの作成、更新、削除が行われることはありません。 状態を **[オン]** に戻すと、サービスは中断したところから再開します。
 
-**現在の状態を消去して、同期を再開する**ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。 
+**現在の状態を消去して、同期を再開する**ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。

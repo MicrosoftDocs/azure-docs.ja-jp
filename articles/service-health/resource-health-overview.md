@@ -3,12 +3,12 @@ title: Azure Resource Health の概要
 description: Azure Resource Health の概要
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159253"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041576"
 ---
 # <a name="resource-health-overview"></a>Resource Health の概要
  
@@ -18,7 +18,7 @@ Azure Resource Health は、Azure のリソースに影響を及ぼしている�
 
 ## <a name="resource-definition-and-health-assessment"></a>リソース定義と正常性評価
 
-*リソース*は、仮想マシン、Web アプリ、SQL データベースなど、Azure サービスの特定のインスタンスです。 Resource Health は、さまざまな Azure サービスからの信号を基に、リソースが正常であるかどうかを評価します。 リソースが正常でない場合、Resource Health は追加の情報を分析して問題の原因を特定します。 また、問題解決のために Microsoft が実施しているアクションについても報告し、問題に対処するためにユーザーができることを特定します。
+*リソース*は、仮想マシン、Web アプリ、SQL Database など、Azure サービスの特定のインスタンスです。 Resource Health は、さまざまな Azure サービスからの信号を基に、リソースが正常であるかどうかを評価します。 リソースが正常でない場合、Resource Health は追加の情報を分析して問題の原因を特定します。 また、問題解決のために Microsoft が実施しているアクションについても報告し、問題に対処するためにユーザーができることを特定します。
 
 正常性の評価方法の詳細については、[Azure Resource Health](resource-health-checks-resource-types.md) に関する記事でリソースの種類と正常性チェックの一覧を参照してください。
 

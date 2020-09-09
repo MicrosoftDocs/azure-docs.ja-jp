@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536303"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387848"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>お客様が管理するキー ディスクの暗号化
 
@@ -30,7 +30,7 @@ HDInsight のマネージド ディスクはすべて、Azure Storage Service En
 
 ディスク暗号化キーが格納されているキー コンテナーでキー コンテナー ファイアウォールが有効になっている場合、クラスターをデプロイするリージョンの HDInsight リージョン リソース プロバイダーの IP アドレスを、キー コンテナーのファイアウォール構成に追加する必要があります。 これは、HDInsight が信頼された Azure キー コンテナー サービスではないために必要です。
 
-Azure portal または Azure CLI を使用し、キー コンテナーのキーを安全にローテーションすることができます。 キーをローテーションすると、HDInsight クラスターは数分以内に新しいキーの使用を開始します。 ランサムウェア シナリオと誤削除の対策として、 [論理的な削除](../key-vault/general/overview-soft-delete.md) キー保護機能を有効にします。 この保護機能のないキー コンテナーはサポートされていません。
+Azure portal または Azure CLI を使用し、キー コンテナーのキーを安全にローテーションすることができます。 キーをローテーションすると、HDInsight クラスターは数分以内に新しいキーの使用を開始します。 ランサムウェア シナリオと誤削除の対策として、 [論理的な削除](../key-vault/general/soft-delete-overview.md) キー保護機能を有効にします。 この保護機能のないキー コンテナーはサポートされていません。
 
 |クラスターの種類 |OS Disk（マネージド ディスク） |データ ディスク（マネージド ディスク） |一時データ ディスク (ローカル SSD) |
 |---|---|---|---|
@@ -88,7 +88,7 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
     |プロパティ |説明|
     |---|---|
-    |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除**してから、 **キーをラップ**します。|
+    |キーのアクセス許可|**取得** を選択し、 **キーのラップを解除**してから、 **キーををラップ**します。|
     |シークレットのアクセス許可|**取得**、 **設定**、 **削除**を選択します。|
     |プリンシパルの選択|以前に作成したユーザー割り当てマネージド ID を選択します。|
 

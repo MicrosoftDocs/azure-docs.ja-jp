@@ -1,6 +1,6 @@
 ---
 title: Azure CDN エンドポイントのトラブルシューティング - 404 状態コード
-description: Azure CDN エンドポイントでの 404 応答コードのトラブルシューティングを行います。
+description: 404 HTTP 応答状態コードを返す Content Delivery Network エンドポイントに関する問題のトラブルシューティングを行う方法について説明します。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083130"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192493"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング
 この記事により、404 HTTP 応答状態コードを返す Content Delivery Network (CDN) エンドポイントに関する問題のトラブルシューティングを行うことができます。

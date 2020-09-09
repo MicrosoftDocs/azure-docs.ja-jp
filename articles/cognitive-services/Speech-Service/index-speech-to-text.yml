@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 音声テキスト変換のドキュメント
-summary: Speech Service の音声変換 (音声認識とも呼ばれる) を使用すると、オーディオ ストリームからテキストへの文字起こしをリアルタイムで一括して行うことができます。
+summary: Speech Service の音声変換 (音声認識とも呼ばれる) を使用すると、オーディオ ストリームからテキストへの文字起こしをリアルタイムで一括して行うことができます。 追加の参照テキスト入力では、リアルタイムの発音評価も有効になり、発表者に音声の精度と流暢さに関するフィードバックを提供します。
 metadata:
   title: 音声テキスト変換のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: 717c4e0322b48eca0acfacd20ed527a629bd1ff0
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: c1f4b6b43f661251f764e65e5d5378952ab99d10
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401403"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800871"
 landingContent:
 - title: 音声テキスト変換について
   linkLists:
@@ -28,6 +28,8 @@ landingContent:
       url: batch-transcription.md
     - text: 音声認識の基礎
       url: speech-to-text-basics.md
+    - text: コードなしの音声テキスト変換に Speech CLI を使用する
+      url: spx-overview.md
   - linkListType: quickstart
     links:
     - text: マイク入力を使用して音声を認識する
@@ -36,6 +38,8 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Blob Storage に格納された音声を認識する
       url: quickstarts/from-blob.md
+    - text: 参照入力による発音評価
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: 音声テキスト変換を使用して開発する
   linkLists:
   - linkListType: how-to-guide

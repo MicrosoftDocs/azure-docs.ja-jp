@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 02/19/2020
+ms.subservice: sql-dw
+ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201160"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL プールのデータの読み込み戦略
 
@@ -46,15 +46,13 @@ ELT を実装するための基本的な手順は次のとおりです。
 5. データを変換します。
 6. 運用環境テーブルにデータを挿入します。
 
-PolyBase の読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」を参照してください。
-
-詳細については、[読み込みパターンに関するブログ](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。
+読み込みのチュートリアルについては、[ Azure Blob Storage からのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事をご覧ください。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.ソース データをテキスト ファイルに抽出する
 
-ソース システムからのデータの取得方法は、保存場所によって異なります。  最終的な目標は、PolyBase および COPY でサポートされている区切りテキストまたは CSV ファイルにデータを移動することです。
+ソース システムからのデータの取得方法は、保存場所によって異なります。 目標は、サポートされている区切りテキストまたは CSV ファイルにデータを移動することです。
 
-### <a name="polybase-and-copy-external-file-formats"></a>PolyBase および COPY の外部ファイル形式
+### <a name="supported-file-formats"></a>サポートされるファイル形式
 
 PolyBase および COPY ステートメントを使用すると、UTF-8 および UTF-16 でエンコードされた区切りテキストまたは CSV ファイルから、データを読み込むことができます。 区切りテキストまたは CSV ファイルに加え、ORC や Parquet などの Hadoop ファイル形式からも読み込みます。 また、PolyBase および COPY ステートメントは、Gzip および Snappy 圧縮ファイルからもデータを読み込むことができます。
 
@@ -68,17 +66,17 @@ Azure Storage へのデータの移動で使用できるツールやサービス
 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) サービス - ネットワークのスループット、パフォーマンス、予測可能性を向上させます。 ExpressRoute は、専用プライベート接続を通してデータを Azure にルーティングするサービスです。 ExpressRoute 接続では、パブリック インターネットを通してデータをルーティングすることはありません。 ExpressRoute 接続は、パブリック インターネットを通る一般的な接続に比べて安全性と信頼性が高く、待機時間も短く、高速です。
 - [AZCopy ユーティリティ](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - パブリック インターネットを通してデータを Azure Storage に移動します。 このユーティリティは、データ サイズが 10 TB より小さい場合に機能します。 AZCopy を使用して読み込みを定期的に実行するには、ネットワーク速度をテストして、許容可能かどうかを確認してください。
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 SQL Analytics で Data Factory を使用する方法については、[SQL Analytics のデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事を参照してください。
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 SQL プールで Data Factory を使用する方法については、[SQL プールのデータの読み込み](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。
 
 ## <a name="3-prepare-the-data-for-loading"></a>3.読み込むデータを準備する
 
 読み込む前に、ストレージ アカウントのデータを準備してクリーンアップすることが必要になる場合があります。 データの準備は、データがソース内にあるとき、データをテキスト ファイルにエクスポートするとき、またはデータが Azure Storage に配置された後に実施できます。  データの操作は、プロセスの早い段階の方が、最も簡単に行えます。  
 
-### <a name="define-external-tables"></a>外部テーブルを定義する
+### <a name="define-the-tables"></a>テーブルを定義する
 
-PolyBase を使用している場合は、読み込み前に、SQL プールに外部テーブルを定義する必要があります。 COPY ステートメントでは、外部テーブルは必要ありません。 PolyBase は、外部テーブルを使用して Azure Storage のデータを定義し、それにアクセスします。
+COPY ステートメントを使用する場合は、最初に SQL プールで読み込み先のテーブルを定義する必要があります。
 
-外部テーブルは、データベースのビューに似ています。 外部テーブルにはテーブル スキーマが含まれており、SQL プールの外部に格納されているデータを指します。
+PolyBase を使用している場合は、読み込み前に、SQL プールに外部テーブルを定義する必要があります。 PolyBase は、外部テーブルを使用して Azure Storage のデータを定義し、それにアクセスします。 外部テーブルは、データベースのビューに似ています。 外部テーブルにはテーブル スキーマが含まれており、SQL プールの外部に格納されているデータを指します。
 
 外部テーブルを定義するには、データ ソース、テキスト ファイルの形式、テーブル定義を指定する必要があります。 必要な T-SQL 構文の参照記事は次のとおりです。
 
@@ -86,34 +84,47 @@ PolyBase を使用している場合は、読み込み前に、SQL プールに�
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Parquet を読み込むと、SQL のデータ型マッピングは次のようになります。
+Parquet ファイルを読み込む場合、次の SQL データ型マッピングを使用します。
 
-| **Parquet データ型** | **SQL データ型** |
-| :-------------------: | :---------------: |
-|        tinyint        |      tinyint      |
-|       smallint        |     smallint      |
-|          INT          |        INT        |
-|        bigint         |      bigint       |
-|        boolean        |        bit        |
-|        double         |       float       |
-|         float         |       real        |
-|        double         |       money       |
-|        double         |    smallmoney     |
-|        string         |       nchar       |
-|        string         |     nvarchar      |
-|        string         |       char        |
-|        string         |      varchar      |
-|        binary         |      binary       |
-|        binary         |     varbinary     |
-|       timestamp       |       date        |
-|       timestamp       |   smalldatetime   |
-|       timestamp       |     datetime2     |
-|       timestamp       |     DATETIME      |
-|       timestamp       |       time        |
-|         date          |       date        |
-|        decimal        |      decimal      |
+|                         Parquet 型                         |   Parquet 論理型 (注釈)   |  SQL データ型   |
+| :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
+|                           BOOLEAN                            |                                       |       bit        |
+|                     BINARY / BYTE_ARRAY                      |                                       |    varbinary     |
+|                            DOUBLE                            |                                       |      float       |
+|                            FLOAT                             |                                       |       real       |
+|                            INT32                             |                                       |       INT        |
+|                            INT64                             |                                       |      bigint      |
+|                            INT96                             |                                       |    datetime2     |
+|                     FIXED_LEN_BYTE_ARRAY                     |                                       |      binary      |
+|                            BINARY                            |                 UTF8                  |     nvarchar     |
+|                            BINARY                            |                STRING                 |     nvarchar     |
+|                            BINARY                            |                 ENUM                  |     nvarchar     |
+|                            BINARY                            |                 UUID                  | UNIQUEIDENTIFIER |
+|                            BINARY                            |                DECIMAL                |     decimal      |
+|                            BINARY                            |                 JSON                  |  nvarchar(MAX)   |
+|                            BINARY                            |                 BSON                  |  varbinary(max)  |
+|                     FIXED_LEN_BYTE_ARRAY                     |                DECIMAL                |     decimal      |
+|                          BYTE_ARRAY                          |               INTERVAL                |  varchar(max)   |
+|                            INT32                             |             INT(8, true)              |     smallint     |
+|                            INT32                             |            INT(16, true)            |     smallint     |
+|                            INT32                             |             INT(32, true)             |       INT        |
+|                            INT32                             |            INT(8, false)            |     tinyint      |
+|                            INT32                             |            INT(16, false)             |       INT        |
+|                            INT32                             |           INT(32, false)            |      bigint      |
+|                            INT32                             |                 DATE                  |       date       |
+|                            INT32                             |                DECIMAL                |     decimal      |
+|                            INT32                             |            TIME (MILLIS)             |       time       |
+|                            INT64                             |            INT(64, true)            |      bigint      |
+|                            INT64                             |           INT(64, false)            |  decimal (20,0)   |
+|                            INT64                             |                DECIMAL                |     decimal      |
+|                            INT64                             |         TIME (MICROS / NANOS)         |       time       |
+|                            INT64                             | TIMESTAMP (MILLIS / MICROS / NANOS) |    datetime2     |
+| [複合型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 リスト                  |   varchar(max)   |
+| [複合型](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAP                  |   varchar(max)   |
 
-外部オブジェクトの作成の例については、読み込みのチュートリアルの[外部テーブルの作成](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data)に関する手順をご覧ください。
+
+
+外部オブジェクトの作成の例については、[外部テーブルの作成](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)に関する記事を参照してください。
 
 ### <a name="format-text-files"></a>テキスト ファイルの書式設定
 
@@ -126,17 +137,16 @@ PolyBase を使用する場合、定義する外部オブジェクトは、外�
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.PolyBase または COPY ステートメントを使用してデータを読み込む
 
-これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用環境のテーブルへの挿入前に、SQL プールの MPP を使用してデータを変換することができます。
+これがステージング テーブルにデータを読み込むための最善の方法です。 ステージング テーブルを使用すると、運用環境のテーブルに支障をきたすことなく、エラーを処理することができます。 また、ステージング テーブルを使用すれば、運用環境のテーブルにデータを挿入する前に、SQL プールの並列処理アーキテクチャを使用してデータを変換することができます。
 
-COPY を使用してステージング テーブルに読み込む場合、テーブルを事前作成する必要があります。
+### <a name="options-for-loading"></a>読み込みのオプション
 
-### <a name="options-for-loading-with-polybase-and-copy-statement"></a>PolyBase および COPY ステートメントを使用してデータを読み込むためのオプション
+データを読み込むには、次のいずれかの読み込みオプションを使用できます。
 
-PolyBase を使用してデータを読み込むには、次のいずれかの読み込みオプションを使用します。
-
-- [T-SQL を使用した PolyBase](load-data-from-azure-blob-storage-using-polybase.md) - データが Azure Blob Storage または Azure Data Lake Store 内にある場合に最適です。 読み込みプロセスを細かく制御できますが、外部データ オブジェクトの定義も必要となります。 その他の方法では、外部データ オブジェクトは、ソース テーブルを移行先テーブルにマップするときにバック グラウンドで定義されます。  T-SQL の読み込みを調整するには、Azure Data Factory、SSIS、または Azure Functions を使用します。
-- [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) - ソース データが SQL Server にある場合に有効です。SQL Server の場所は、オンプレミス、クラウドを問いません。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
+- [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 
+- [T-SQL を使用したPolyBase](load-data-from-azure-blob-storage-using-polybase.md) では、外部データ オブジェクトを定義する必要があります。
 - [Azure Data Factory (ADF) を使用した PolyBase および COPY ステートメント](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
+- [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
 - [Azure Databricks を使用した PolyBase](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - PolyBase を使用して、テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームからテーブルにデータを書き込むことができます。
 
 ### <a name="other-loading-options"></a>その他の読み込みオプション

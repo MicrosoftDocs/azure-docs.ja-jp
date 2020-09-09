@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77210467"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936131"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>例:Python を使用してカスタム スキルを作成する
 
@@ -25,12 +26,12 @@ Python でのカスタム スキルの開発に使用されるツールと手法
 
 + カスタム スキルで実装する必要がある入出力インターフェイスの概要については、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
 
-+ 環境を設定します。 [このチュートリアルを最初から最後まで](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01)実行し、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定しました。 このチュートリアルでは、次のツールとコンポーネントのインストールについて説明しています。 
++ 環境を設定します。 [このチュートリアルを最初から最後まで](/azure/python/tutorial-vs-code-serverless-python-01)実行し、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定しました。 このチュートリアルでは、次のツールとコンポーネントのインストールについて説明しています。 
 
   + [Python 3.75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Visual Studio Code 用の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [Visual Studio Code 用 Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Azure Function の作成
@@ -269,5 +270,5 @@ POST [Function URL you copied above]
 + [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
 + [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [スキルセットを作成する (REST)](/rest/api/searchservice/create-skillset)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)

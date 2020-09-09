@@ -1,24 +1,24 @@
 ---
 title: VPN Gateway に関する Azure PowerShell のサンプル
-description: VPN Gateway に関する Azure PowerShell のサンプルです。
+description: これらの Azure PowerShell スクリプトを使用して、VPN Gateway を作成したり、サイト間および VNet 間接続を作成したり、VPN デバイス テンプレートをダウンロードしたりします。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: sample
-ms.date: 01/10/2020
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7510b0243db25752a61d3711c88a250b7ae3b576
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe2e1f970e64d80bfd8cb762cf74bb52d4fc9650
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75867228"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426172"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>VPN Gateway に関する Azure PowerShell のサンプル
 
 次の表には、Azure PowerShell スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |----|----|
 | [VPN ゲートウェイの作成](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md) | ルートベースの VPN ゲートウェイを作成します。 |
 | [VPN ゲートウェイと P2S 構成の作成 - RADIUS](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md) | ルートベースの VPN Gateway と RADIUS ユーザー名/パスワード認証を使用する P2S 構成を作成します。 |

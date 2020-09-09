@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: ARM テンプレートを使用したメッセージの自動ルーティング
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: チュートリアル
   items:
     - name: メッセージのルーティング
@@ -81,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: デバイス接続のテスト
       href: tutorial-connectivity.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: TLS サポート
@@ -175,7 +173,9 @@
           href: iot-hub-devguide-glossary.md
     - name: Security
       items:
-        - name: Recommendations
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: 推奨事項
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 徹底的なセキュリティ
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
@@ -185,6 +185,9 @@
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
         - name: IoT デプロイのセキュリティ保護
           href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: X.509 CA 証明書を使用したセキュリティ保護
       items:
         - name: X.509 CA 証明書セキュリティの概要
@@ -324,6 +327,8 @@
           href: iot-hub-distributed-tracing.md
         - name: IP フィルター処理を構成する
           href: iot-hub-ip-filtering.md
+        - name: パブリック ネットワーク アクセスの管理
+          href: iot-hub-public-network-access.md
         - name: 大規模な自動デバイス管理
           items:
             - name: Azure Portal の使用
@@ -379,6 +384,8 @@
       items:
         - name: デバイスの切断
           href: iot-hub-troubleshoot-connectivity.md
+        - name: メッセージ ルーティングのトラブルシューティング
+          href: troubleshoot-message-routing.md
         - name: 問題解決
           items:
             - name: 400027 ConnectionForcefullyClosedOnNewConnection
@@ -414,13 +421,15 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/iot
+      href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
-      href: '/powershell/module/az.iothub#iot'
+      href: /powershell/module/az.iothub#iothub
     - name: .NET (デバイス)
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (サービス)
       href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (管理)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
     - name: Java (デバイス)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (サービス)
@@ -429,6 +438,14 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js (サービス)
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: Node.js (管理)
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+    - name: Python (デバイス)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+    - name: Python (サービス)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+    - name: Python (管理)
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
     - name: C デバイス SDK
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
     - name: REST (デバイス)
@@ -441,6 +458,9 @@
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: 機能と API の廃止
       items:
         - name: 操作の監視
@@ -474,12 +494,12 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT サンプル
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
@@ -503,16 +523,12 @@
       href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics ツール
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-iot-hub.html'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: ビデオ

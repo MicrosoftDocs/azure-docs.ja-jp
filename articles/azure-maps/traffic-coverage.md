@@ -1,19 +1,19 @@
 ---
 title: 交通情報の対象範囲 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps の交通情報の対象範囲について説明します。
-author: philmea
-ms.author: philmea
+description: Azure Maps の交通情報の対象範囲について説明します。 交通の流れと事故に関する情報が、世界中のさまざまなリージョンで利用できるかどうかを確認します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51fdbda755b98b47b700f57bf990b5c5356854a9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80333958"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037611"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps の交通情報の対象範囲
 
@@ -27,13 +27,13 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |---------|:---------:|:---------:|
 |アルゼンチン      |✓         |✓         |
 |ブラジル     |✓         |✓         |
-|カナダ     |✓         |✓         |
+|Canada     |✓         |✓         |
 |チリ     |✓         |✓         |
 |コロンビア      |✓         |✓         |
 |メキシコ     |✓         |✓         |
 |ペルー       |✓         |✓         | 
-|米国     |✓         |✓        |
-|\+ プエルトリコ     |✓         |✓         |
+|United States     |✓         |✓        |
+|+ プエルトリコ     |✓         |✓         |
 |ウルグアイ |✓         |✓         |
 
 
@@ -72,7 +72,7 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |デンマーク     |✓         |✓         |
 |エストニア     |         | ✓        |
 |フィンランド     |✓         |✓         |
-|\+ オーランド諸島      |✓         |✓         |
+|+ オーランド諸島      |✓         |✓         |
 |フランス     |✓         |✓         |
 |モナコ     |✓         |✓         |
 |ドイツ     |✓         |✓         |
@@ -101,15 +101,15 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |スロバキア     |✓         |✓         |
 |スロベニア     |✓         |✓         |
 |スペイン     |✓         |✓         |
-|\+ アンドラ     |✓         |✓         |
-|\+ バレアレス諸島     |✓         |✓         |
-|\+ カナリア諸島     |✓         |✓         |
+|+ アンドラ     |✓         |✓         |
+|+ バレアレス諸島     |✓         |✓         |
+|+ カナリア諸島     |✓         |✓         |
 |スウェーデン     |✓         |✓         |
 |スイス     |✓         |✓        |
 |トルコ     |✓         |✓         |
 |ウクライナ     |✓         |✓         |
 |イギリス     |✓         |✓         |
-|\+ ジブラルタル     |✓         |✓         |
+|+ ジブラルタル     |✓         |✓         |
 |+ガーンジー島とジャージー島     |✓         |✓         |
 |+マン島     |✓         |✓         |
 |バチカン   |✓         |✓         |

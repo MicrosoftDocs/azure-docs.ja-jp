@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770962"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -40,6 +40,7 @@ ms.locfileid: "81414140"
 | データ ストア固有   | **Azure Synpase Analytics (旧称 SQL DW)** へのデータ読み込み: 使用しない場合は、PolyBase または COPY ステートメントを使用することをお勧めします。 |
 | &nbsp;                | **Azure SQL Database** との間でのデータのコピー: DTU の使用率が高い場合は、上位レベルへのアップグレードをお勧めします。 |
 | &nbsp;                | **Azure Cosmos DB** との間でのデータのコピー: RU の使用率が高い場合は、より大きな RU にアップグレードすることをお勧めします。 |
+|                       | **SAP テーブル**からのデータのコピー: 大量のデータをコピーする場合は、SAP コネクタのパーティション オプションを利用して並列読み込みを有効にし、最大パーティション数を増やすことをお勧めします。 |
 | &nbsp;                | **Amazon Redshift**からデータを取り込み: 使用されていない場合は、UNLOAD を使用することをお勧めします。 |
 | データ ストアの調整 | コピー中にデータ ストアによって多数の読み取り/書き込み操作が調整されている場合は、データ ストアに対して許可されている要求レートを確認して増やすか、同時実行ワークロードを減らすことをお勧めします。 |
 | 統合ランタイム  | **セルフホステッド統合ランタイム (IR)** を使用し、IR が実行可能なリソースを使用できるようになるまで、コピー アクティビティがキュー内で長時間待機している場合は、IR のスケールアウト/アップをお勧めします。 |
@@ -56,7 +57,7 @@ ms.locfileid: "81414140"
 | --------------- | ------------------------------------------------------------ |
 | キュー           | コピー アクティビティが統合ランタイムで実際に開始されるまでの経過時間。 |
 | コピー前スクリプト | コピー アクティビティが IR で開始してから、コピー アクティビティによるシンク データ ストアでのコピー前スクリプトの実行が終了するまでの経過時間。 データベース シンクのコピー前スクリプトを構成するときに適用します。たとえば、データを Azure SQL Database に書き込む場合は、新しいデータをコピーする前にクリーンアップする必要があります。 |
-| 転送        | 前のステップが終了してから、IR がソースからシンクにすべてのデータを転送するまでの経過時間。 "転送" のサブステップは並列で実行されます。<br><br>- **1 バイト目にかかる時間: (** )前の手順が終了してから、IR がソース データ ストアから最初のバイトを受信するまでの経過時間。 ファイルベース以外のソースに適用されます。<br>- **ソースのリスト:** ソース ファイルまたはデータ パーティションを列挙するために費やされた時間。 後者は、データベース ソースのパーティション オプションを構成するときに適用されます。たとえば、Oracle/SAP HANA/Teradata/Netezza などのデータベースからデータをコピーする場合です。<br/>-**ソースからの読み取り:** ソース データ ストアからデータを取得するために費やされた時間。<br/>- **シンクへの書き込み:** シンク データ ストアにデータを書き込むために費やされた時間。 |
+| 転送        | 前のステップが終了してから、IR がソースからシンクにすべてのデータを転送するまでの経過時間。 <br/>転送のサブステップは並列に実行され、一部の操作 (ファイル形式の解析や生成など) は現在表示されません。<br><br/>- **1 バイト目にかかる時間: (** )前の手順が終了してから、IR がソース データ ストアから最初のバイトを受信するまでの経過時間。 ファイルベース以外のソースに適用されます。<br>- **ソースのリスト:** ソース ファイルまたはデータ パーティションを列挙するために費やされた時間。 後者は、データベース ソースのパーティション オプションを構成するときに適用されます。たとえば、Oracle/SAP HANA/Teradata/Netezza などのデータベースからデータをコピーする場合です。<br/>-**ソースからの読み取り:** ソース データ ストアからデータを取得するために費やされた時間。<br/>- **シンクへの書き込み:** シンク データ ストアにデータを書き込むために費やされた時間。 現時点では、Azure Cognitive Search、Azure Data Explorer、Azure Table Storage、Oracle、SQL Server、Common Data Service、Dynamics 365、Dynamics CRM、Salesforce/Salesforce Service Cloud など、一部のコネクタにはこのメトリックがないことに注意してください。 |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Azure IR でのコピー アクティビティのトラブルシューティング
 
@@ -69,7 +70,6 @@ ms.locfileid: "81414140"
 - **"転送 - 最初のバイトまでの転送時間" に長い時間がかかっています**: ソース クエリで任意のデータが返されるまでに時間がかかることを意味します。 クエリまたはサーバーを確認して最適化します。 さらに支援が必要な場合は、データ ストア チームにお問い合わせください。
 
 - **"転送 - リスト ソース" の作業時間が長くなっています**: これは、ソース ファイルまたはソース データベースのデータ パーティションの列挙に時間がかかることを意味します。
-
   - ファイルベースのソースからデータをコピーする場合、フォルダー パスまたはファイル名 (`wildcardFolderPath` または `wildcardFileName`) で **ワイルドカード フィルター** を使用するか、**ファイルの最終変更時刻フィルター** (`modifiedDatetimeStart` または`modifiedDatetimeEnd`) を使用すると、このようなフィルターにより、指定したフォルダーにあるすべてのファイルがクライアント側にリスト化されます。 このようなファイル列挙は、フィルター規則に一致するファイルのセットが少数しかない場合に、特にボトルネックになる可能性があります。
 
     - [datetime パーティション分割されたファイルパスまたは名前に基づいてファイルをコピー](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)できるかどうかを確認します。 このような方法では、ソース側のリスト化に負担がかかりません。
@@ -181,7 +181,7 @@ ms.locfileid: "81414140"
 * Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。
-* オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
+* SQL Server:[パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)。
 
 ## <a name="next-steps"></a>次のステップ

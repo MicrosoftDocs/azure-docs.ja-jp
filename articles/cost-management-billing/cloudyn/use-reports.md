@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 633bf8126c1745cfd8db117966975bbf4ea2c9c8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4bc68e851c4f3ba85f8ea18a91d86906e1f87887
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79463545"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685223"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Cloudyn ポータルで利用できるレポート
 

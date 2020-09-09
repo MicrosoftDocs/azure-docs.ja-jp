@@ -1,20 +1,20 @@
 ---
 title: Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて
-description: Availability Zones での VPN Gateway と ExpressRoute ゲートウェイについて学習します。
+description: VPN および ExpressRoute ゲートウェイを Azure Availability Zones にデプロイして、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、より高い可用性をもたらします。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2030469262baf406635fd170af384e154fec6ae6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75864300"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401114"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて
 

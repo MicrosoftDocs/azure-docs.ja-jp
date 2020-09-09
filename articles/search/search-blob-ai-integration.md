@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73496432"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936743"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>AI を使用して BLOB ストレージ データを理解する
 
@@ -112,7 +112,7 @@ Azure Storage では、ナレッジ ストアの形態には BLOB コンテナ�
 
 Azure Storage のデータを最大限に活用するために、AI エンリッチメントを使ってできることは、まだまだあります。たとえば、さまざまな方法で Cognitive Services を組み合わせたり、目的に合った既存の Cognitive Services がない場合にスタム スキルを作成したりできます。 詳細については、次のリンク先を参照してください。
 
-+ [Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する (Azure Blob Storage)](../storage/blobs/storage-quickstart-blobs-portal.md)
 + [BLOB インデクサーを設定する (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 
 + [AI エンリッチメントの概要 (Azure Cognitive Search)](cognitive-search-concept-intro.md) 
 + [スキルセットを作成する (Azure Cognitive Search)](cognitive-search-defining-skillset.md)

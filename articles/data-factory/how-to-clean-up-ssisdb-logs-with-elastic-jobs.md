@@ -5,27 +5,28 @@ services: data-factory
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 02952c3baea5d9089061b10f2429be57a9322398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606174"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073558"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、SQL Server Integration Services のカタログ データベース `SSISDB` のログをクリーンアップするストアド プロシージャを、Azure エラスティック データベース ジョブを使ってトリガーする方法について説明します。
 
 エラスティック データベース ジョブは、単一のデータベースまたは一連のデータベースを対象としたジョブを簡単に自動化して実行できる Azure サービスです。 これらのジョブは、Azure portal、Transact-SQL、PowerShell、REST API のいずれかを使用してスケジュール、実行、監視できます。 ログをクリーンアップするためのストアド プロシージャを 1 回限りまたはスケジュールに従ってトリガーするには、エラスティック データベース ジョブを使用します。 データベースに高い負荷がかかるのを避けるために、スケジュールの間隔は SSISDB のリソース使用量に基づいて選ぶことができます。
 
-詳細については、「[Elastic Database ジョブを使ってデータベースのグループを管理する](../sql-database/elastic-jobs-overview.md)」を参照してください。
+詳細については、「[Elastic Database ジョブを使ってデータベースのグループを管理する](../azure-sql/database/elastic-jobs-overview.md)」を参照してください。
 
 以降の各セクションでは、管理者によって設定された保持期間が経過した SSISDB のログを削除するストアド プロシージャ `[internal].[cleanup_server_retention_window_exclusive]` をトリガーする方法について説明しています。
 
@@ -33,7 +34,7 @@ ms.locfileid: "81606174"
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-以下のサンプル PowerShell スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[PowerShell を使用したエラスティック ジョブ エージェントの作成](../sql-database/elastic-jobs-powershell.md)」を参照してください。
+以下のサンプル PowerShell スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[PowerShell を使用したエラスティック ジョブ エージェントの作成](../azure-sql/database/elastic-jobs-powershell-create.md)」を参照してください。
 
 ### <a name="create-parameters"></a>パラメーターの作成
 
@@ -41,7 +42,7 @@ ms.locfileid: "81606174"
 # Parameters needed to create the Job Database
 param(
 $ResourceGroupName = $(Read-Host "Please enter an existing resource group name"),
-$AgentServerName = $(Read-Host "Please enter the name of an existing Azure SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
+$AgentServerName = $(Read-Host "Please enter the name of an existing logical SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
 $SSISDBLogCleanupJobDB = $(Read-Host "Please enter a name for the Job Database to be created in the given SQL Server"),
 # The Job Database should be a clean,empty,S0 or higher service tier. We set S0 as default.
 $PricingTier = "S0",
@@ -52,7 +53,7 @@ $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elast
 # Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
-$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
+$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target logical SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
 $SSISDBServerAdminUserName = $(Read-Host "Please enter the target server admin username for SQL authentication"),
 $SSISDBServerAdminPassword = $(Read-Host "Please enter the target server admin password for SQL authentication"),
 $SSISDBName = "SSISDB",
@@ -191,7 +192,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. SSISDB データベースに対する適切なアクセス許可を与えます。 ストアド プロシージャが SSISDB のログを正常にクリーンアップするためには、SSISDB カタログに適切なアクセス許可が必要です。 詳しいガイダンスについては、[ログインの管理](../sql-database/sql-database-manage-logins.md)に関するページを参照してください。
+4. SSISDB データベースに対する適切なアクセス許可を与えます。 ストアド プロシージャが SSISDB のログを正常にクリーンアップするためには、SSISDB カタログに適切なアクセス許可が必要です。 詳しいガイダンスについては、[ログインの管理](../azure-sql/database/logins-create-manage.md)に関するページを参照してください。
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 

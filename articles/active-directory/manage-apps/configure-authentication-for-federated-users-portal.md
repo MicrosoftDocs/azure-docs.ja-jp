@@ -3,24 +3,24 @@ title: ホーム領域検出を使用してサインイン自動高速化を構�
 description: 自動高速化やドメインのヒントを含む、フェデレーション ユーザーのための Azure Active Directory 認証のホーム領域検出ポリシーを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690504"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763586"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -81,8 +81,8 @@ Azure Active Directory によってサポートされるドメイン ヒント�
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>自動高速化に対するホーム領域検出ポリシー
 アプリケーションで、出力される認証要求を構成する手段が提供されていない場合があります。 そのような場合は、ドメイン ヒントを使って自動高速化を制御することはできません。 そのような場合は、ポリシーを使用して自動高速化を構成することで、同じ動作を実現できます。  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>レガシ アプリケーションに対する直接認証を有効にする
-アプリケーションで AAD ライブラリと対話型サインインを使用してユーザーを認証するのが最良の方法です。 ライブラリは、フェデレーション ユーザーのフローを処理します。  レガシ アプリケーションによっては、フェデレーションを解釈するように作成されていないものがあります。 これらのアプリケーションは、ホーム領域検出を実行せず、また、目的のフェデレーション エンドポイントと対話してユーザーを認証することもしません。 選択した場合は、HRD ポリシーを使用して、ユーザー名とパスワードの資格情報を送信する特定のレガシー アプリケーションが、Azure Active Directory に対して直接認証を行うようにすることもできます。 パスワード ハッシュ同期を有効にする必要があります。 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>レガシ アプリケーションに対するフェデレーション ユーザーの直接 ROPC 認証を有効にする
+アプリケーションで AAD ライブラリと対話型サインインを使用してユーザーを認証するのが最良の方法です。 ライブラリは、フェデレーション ユーザーのフローを処理します。  レガシ アプリケーション (具体的には、ROPC の許可を使用しているもの) では、ユーザー名とパスワードが Azure AD に直接送信され、フェデレーションを把握するために書き込まれていないことがあります。 これらのアプリケーションは、ホーム領域検出を実行せず、また、目的のフェデレーション エンドポイントと対話してユーザーを認証することもしません。 選択した場合は、HRD ポリシーを使用して、ROPC の許可を使用してユーザー名とパスワードの資格情報を送信する特定のレガシ アプリケーションが、Azure Active Directory に対して直接認証を行うようにすることもできます。 パスワード ハッシュ同期を有効にする必要があります。 
 
 > [!IMPORTANT]
 > 直接認証を有効にするのは、パスワード ハッシュ同期がオンであり、なおかつオンプレミス IdP でポリシーを実装せずにこのアプリケーションを認証しても問題ないことがわかっている場合のみにしてください。 何らかの理由でパスワード ハッシュ同期をオフにした場合、または AD Connect によるディレクトリ同期をオフにした場合は、このポリシーを削除し、古いパスワード ハッシュを使用して直接認証が行われないようにしてください。
@@ -110,7 +110,7 @@ HRD ポリシーの定義の例を次に示します。
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```

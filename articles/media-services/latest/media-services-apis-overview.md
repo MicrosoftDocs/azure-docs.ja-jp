@@ -4,25 +4,27 @@ titleSuffix: Azure Media Services
 description: Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472086"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298965"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API を使用して開発する
 
-開発者は、Media Services の [REST API](https://docs.microsoft.com/rest/api/media/) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+開発者は、Media Services の [REST API](/rest/api/media/) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
 
 この記事では、Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。
 
@@ -41,7 +43,7 @@ Media Services API では、REST API 要求を行うユーザーまたはアプ�
 
 Azure AD アプリとサービス プリンシパルを作成する場合は、アプリを専用のテナントに置く必要があります。 アプリを作成した後、アプリの**共同作成者**または**所有者**ロールのアクセス権を、Media Services アカウントに付与します。
 
-Azure AD アプリを作成するためのアクセス許可を自分が持っているかどうかわからない場合は、「[必要なアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」を参照してください。
+Azure AD アプリを作成するためのアクセス許可を自分が持っているかどうかわからない場合は、「[必要なアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)」を参照してください。
 
 次の図の番号は、要求のフローを時系列で表したものです。
 
@@ -54,7 +56,7 @@ Azure AD アプリを作成するためのアクセス許可を自分が持っ�
    * REST Media Services のリソース URI。
    * Azure AD アプリの値: クライアント ID とクライアント シークレット。
 
-   必要な値をすべて取得するには、「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」をご覧ください。
+   必要な値をすべて取得するには、[Azure Media Services API にアクセスする](./access-api-howto.md)方法に関する記事を参照してください。
 
 2. Azure AD アクセス トークンが中間層アプリに送信されます。
 4. 中間層アプリが、Azure AD トークンを使用して要求を Azure Media REST API に送信します。
@@ -80,36 +82,36 @@ Azure Resource Manager の名前付けの詳細については、[名前付け�
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>資産内のファイルまたは BLOB の名前
 
-アセット内のファイルまたは BLOB の名前は、[BLOB 名の要件](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)と[NTFS 名の要件](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)の両方に従っている必要があります。 これらの要件は、ファイルが BLOB ストレージからローカルの NTFS ディスクにコピーされて処理できるようにするためのものです。
+アセット内のファイルまたは BLOB の名前は、[BLOB 名の要件](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)と[NTFS 名の要件](/windows/win32/fileio/naming-a-file)の両方に従っている必要があります。 これらの要件は、ファイルが BLOB ストレージからローカルの NTFS ディスクにコピーされて処理できるようにするためのものです。
 
 ## <a name="long-running-operations"></a>長時間にわたって実行される操作
 
 Azure Media Services の [Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json)に `x-ms-long-running-operation` とマークされた操作は長期操作です。 
 
-非同期の Azure 操作を追跡する方法について詳しくは、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)に関するセクションを参照してください。
+非同期の Azure 操作を追跡する方法について詳しくは、[非同期操作](../../azure-resource-manager/management/async-operations.md)に関するセクションを参照してください。
 
 Media Services には、次のような長期操作があります。
 
-* [ライブ イベントの作成](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [ライブ イベントの更新](https://docs.microsoft.com/rest/api/media/liveevents/update)
-* [ライブ イベントの削除](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [ライブ イベントの開始](https://docs.microsoft.com/rest/api/media/liveevents/start)
-* [LiveEvent の停止](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+* [ライブ イベントの作成](/rest/api/media/liveevents/create)
+* [ライブ イベントの更新](/rest/api/media/liveevents/update)
+* [ライブ イベントの削除](/rest/api/media/liveevents/delete)
+* [ライブ イベントの開始](/rest/api/media/liveevents/start)
+* [LiveEvent の停止](/rest/api/media/liveevents/stop)
 
   イベントの停止時に、関連付けられているライブ出力をすべて削除するには `removeOutputsOnStop` パラメーターを使用します。  
-* [LiveEvent のリセット](https://docs.microsoft.com/rest/api/media/liveevents/reset)
-* [LiveOutput の作成](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [LiveOutput の削除](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [StreamingEndpoint の作成](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
-* [StreamingEndpoint の更新](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
-* [StreamingEndpoint の削除](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
-* [StreamingEndpoint の開始](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
-* [StreamingEndpoint の停止](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
-* [StreamingEndpoint のスケーリング](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+* [LiveEvent のリセット](/rest/api/media/liveevents/reset)
+* [LiveOutput の作成](/rest/api/media/liveevents/create)
+* [LiveOutput の削除](/rest/api/media/liveevents/delete)
+* [StreamingEndpoint の作成](/rest/api/media/streamingendpoints/create)
+* [StreamingEndpoint の更新](/rest/api/media/streamingendpoints/update)
+* [StreamingEndpoint の削除](/rest/api/media/streamingendpoints/delete)
+* [StreamingEndpoint の開始](/rest/api/media/streamingendpoints/start)
+* [StreamingEndpoint の停止](/rest/api/media/streamingendpoints/stop)
+* [StreamingEndpoint のスケーリング](/rest/api/media/streamingendpoints/scale)
 
 長い操作の送信に成功すると、"202 Accepted" を受け取ります。返された操作 ID を使用して、操作の完了をポーリングする必要があります。
 
-「[非同期 Azure 操作の追跡](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)」の記事では、応答で返される値を通じて非同期 Azure 操作の状態を追跡する方法について説明します。
+「[非同期 Azure 操作の追跡](../../azure-resource-manager/management/async-operations.md)」の記事では、応答で返される値を通じて非同期 Azure 操作の状態を追跡する方法について説明します。
 
 実行時間の長い操作は、特定のライブ イベントまたはそれに関連付けられているライブ出力に対して 1 つだけサポートされます。 実行時間の長い操作が開始したら、それが完了してからでないと、同じ LiveEvent または関連付けられているライブ出力に対して、実行時間の長い操作を続けて開始できません。 複数のライブ出力があるライブ イベントの場合は、あるライブ出力に対して長時間実行されている操作の完了を待ってから、別のライブ出力に対して長時間実行される操作をトリガーする必要があります。 
 
@@ -148,7 +150,7 @@ AMSE はオープン ソース プロジェクトであり、サポートはコ�
 
 ## <a name="see-also"></a>関連項目
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+必要な値をすべて取得するには、[Azure Media Services API にアクセスする](./access-api-howto.md)方法に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

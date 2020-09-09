@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Talentsoft の統合 | Microsoft Docs
 description: Azure Active Directory と Talentsoft の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9807bf77-fd2a-41fe-86d0-d746a8736b2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/18/2019
+ms.date: 05/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b130bb88ea9a3e08d788171b1d341b8db21a3ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3fa173d6191334fd4944966730ec1617ca2ec7e5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75532715"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-talentsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Talentsoft の統合
 
@@ -90,7 +86,7 @@ Talentsoft に対する Azure AD SSO を構成してテストするには、次�
     **[サインオン URL]** ボックスに、`https://<tenant>.talentsoft.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Talentsoft クライアント サポート チーム](mailto:jlegoff@talentsoft.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Talentsoft クライアント サポート チーム](mailto:advancedservices@talentsoft.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -132,11 +128,11 @@ Talentsoft に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-talentsoft-sso"></a>Talentsoft SSO の構成
 
-**Talentsoft** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Talentsoft サポート チーム](mailto:jlegoff@talentsoft.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Talentsoft** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Talentsoft サポート チーム](mailto:advancedservices@talentsoft.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-talentsoft-test-user"></a>Talentsoft テスト ユーザーの作成
 
-このセクションでは、Talentsoft で B.Simon というユーザーを作成します。  [Talentsoft サポート チーム](mailto:jlegoff@talentsoft.com)と連携して、Talentsoft プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Talentsoft で B.Simon というユーザーを作成します。 [Talentsoft サポート チーム](mailto:advancedservices@talentsoft.com)と連携して、Talentsoft プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 

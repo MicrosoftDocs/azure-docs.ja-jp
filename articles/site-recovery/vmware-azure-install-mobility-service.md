@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186447"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606508"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 
@@ -59,6 +59,7 @@ ms.locfileid: "74186447"
 11. **[アカウントの管理]** タブの **[アカウントの追加]** を選択します。
 12. 作成したアカウントを追加します。
 13. コンピューターのレプリケーションを有効にするときに使用する資格情報を入力します。
+1. SUSE Linux Enterprise Server 11 SP3 コンピューターを更新または保護するための追加の手順を実行します。 [構成サーバーで最新バージョンを使用できることを確認してください](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)。
 
 ## <a name="anti-virus-on-replicated-machines"></a>レプリケートされるマシンでのウイルス対策
 

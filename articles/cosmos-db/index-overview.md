@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB のインデックス作成
 description: Azure Cosmos DB でのインデックス作成のしくみについて説明します。範囲、空間、複合インデックスなどのさまざまな種類のインデックスがサポートされています。
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.author: thweiss
-ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.date: 05/21/2020
+ms.author: tisande
+ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273241"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760874"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 
@@ -41,7 +41,7 @@ Azure Cosmos DB はスキーマ非依存のデータベースであり、スキ�
 
 これは次のツリーで表現されます。
 
-![ツリーとして表現された前の項目](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="ツリーとして表現された前の項目" border="false":::
 
 ツリー内で配列がどのようにエンコードされるかに注目します。配列内の各エントリは、配列内のそのエントリのインデックス (0、1 など) でラベル付けされた中間ノードを取得します。
 
@@ -51,14 +51,14 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 上記の例の項目から各プロパティへのパスは次のとおりです。
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /locations/0/country:"Germany"
+- /locations/0/city:"Berlin"
+- /locations/1/country:"France"
+- /locations/1/city:"Paris"
+- /headquarters/country:"Belgium"
+- /headquarters/employees:250
+- /exports/0/city:"Moscow"
+- /exports/1/city:"Athens"
 
 項目が書き込まれると、Azure Cosmos DB は各プロパティのパスとそれに対応する値のインデックスを効果的に作成します。
 
@@ -98,10 +98,14 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- 文字列プレフィックスの一致 (CONTAINS キーワードでは範囲インデックスは使用されません):
+- 文字列システム関数:
 
    ```sql
-   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   SELECT * FROM c WHERE CONTAINS(c.property, "value")
+   ```
+
+   ```sql
+   SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
 - `ORDER BY` クエリ:
@@ -170,14 +174,13 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 * インデックスを使用するフィルター述語を追加することによって、インデックスを使用しない関数 (CONTAINS など) を使用するときの、クエリを高速化し、完全なコンテナー スキャンを回避できます。 フィルター句の順序は重要ではありません。 クエリ エンジンでは、どの述語がより選択的であるかが判断され、それに応じてクエリが実行されます。
 
-
 ## <a name="querying-with-indexes"></a>インデックスを使用してクエリを実行する
 
 データのインデックス作成時に抽出されるパスを使用すると、クエリの処理時にインデックスを簡単に検索できます。 クエリの `WHERE` 句をインデックス付きパスの一覧と照合して、クエリの述語と一致する項目を非常にすばやく識別することができます。
 
-たとえば、次のクエリを考えてみましょう。`SELECT location FROM location IN company.locations WHERE location.country = 'France'` クエリの述語 (どの場所にも国として "France" 含まれている項目のフィルター処理) は、以下のように赤で強調表示されているパスと一致します。
+たとえば、次のクエリを考えてみましょう。`SELECT location FROM location IN company.locations WHERE location.country = 'France'` クエリの述語 (どこかの場所に国やリージョンとして "France" が含まれている項目のフィルター処理) は、以下のように赤で強調表示されているパスと一致します。
 
-![ツリー内の特定のパスとの照合](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="ツリー内の特定のパスとの照合" border="false":::
 
 > [!NOTE]
 > 1 つのプロパティで並べ替える `ORDER BY` 句には*常に*範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、*常に*複合インデックスが必要です。

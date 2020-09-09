@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931581"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195895"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "74931581"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>エラー: サブスクリプションが名前空間 'Microsoft.DataFactory' を使用するように登録されていません
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>エラー:サブスクリプションが名前空間 'Microsoft.DataFactory' を使用するように登録されていません
 このエラー メッセージが表示される場合は、Azure Data Factory のリソース プロバイダーがコンピューターに登録されていません。 次の操作を行います。
 
 1. Azure PowerShell を起動します。
@@ -44,14 +44,14 @@ ms.locfileid: "74931581"
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>問題: Data Factory コマンドレットを実行する際の認証エラー
+### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>問題: Data Factory コマンドレットを実行する際の未承認エラー
 Azure PowerShell で使用する Azure アカウントまたはサブスクリプションが正しくない可能性があります。 次のコマンドレットを使用して、Azure PowerShell で使用する適切な Azure アカウントとサブスクリプションを選択してください。
 
 1. Connect-AzAccount - 適切なユーザー ID とパスワードを使用します
 2. Get-AzSubscription - アカウントのサブスクリプションをすべて表示します。
 3. Select-AzSubscription &lt;サブスクリプション名&gt; - 適切なサブスクリプションを選択します。 Azure ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
 
-### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>問題: Azure ポータルから Data Management Gateway の高速セットアップを起動できない
+### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>問題: Azure portal から Data Management Gateway の高速セットアップを起動できない
 Data Management Gateway の高速セットアップを起動するには、Internet Explorer または Microsoft ClickOnce と互換性のある Web ブラウザーが必要です。 高速セットアップの開始が失敗した場合は、次のいずれかの操作を行います。
 
 * Internet Explorer または Microsoft の ClickOnce と互換性のある Web ブラウザーを使用します。
@@ -61,10 +61,10 @@ Data Management Gateway の高速セットアップを起動するには、Inter
     Firefox についても、同じ操作を実行します (アドインをインストール)。 ツール バーの [メニューを開く] ボタン (右上隅にある 3 本の横線) をクリックして、[アドオン] をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 * ポータルの同じブレードに表示される **[手動セットアップ]** リンクを使用します。 この方法を使用して、インストール ファイルをダウンロードし、手動で実行します。 インストールが成功すると、[Data Management Gateway Configuration (Data Management Gateway の構成)] ダイアログ ボックスが表示されます。 ポータル画面の **キー** をコピーし、構成マネージャーでそれを使用して、手動でゲートウェイをサービスに登録します。  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>問題: オンプレミス SQL Server に接続できない
+### <a name="problem-fail-to-connect-to-sql-server"></a>問題: SQL Server に接続できない
 ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、 **[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>問題: 入力スライスの状態が Waiting のままになっている
+### <a name="problem-input-slices-are-in-waiting-state-forever"></a>問題: 入力スライスの状態が Waiting のままになっている
 このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
 
 **external** プロパティの使用方法については、次の例を参照してください。 external を true に設定するときに、必要に応じて **externalData*** を指定できます。

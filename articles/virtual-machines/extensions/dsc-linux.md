@@ -13,22 +13,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226899"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505582"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) は、コードで構成を行って IT および開発インフラストラクチャを管理するために使用できる管理プラットフォームです。
 
 > [!NOTE]
-> Linux 用の DSC 拡張機能と [Linux 用の Azure Monitor 仮想マシン拡張機能](/azure/virtual-machines/extensions/oms-linux) では現在競合があるため、並列構成ではサポートされていません。 2 つのソリューションを同じ VM で同時に使用しないでください。
+> Linux 用の DSC 拡張機能と [Linux 用の Azure Monitor 仮想マシン拡張機能](./oms-linux.md) では現在競合があるため、並列構成ではサポートされていません。 2 つのソリューションを同じ VM で同時に使用しないでください。
 
 DSCForLinux 拡張機能は Microsoft によって公開され、サポートされています。 拡張機能では、OMI および DSC のエージェントが Azure 仮想マシンにインストールされます。 DSC 拡張機能では、さらに次のアクションを実行できます。
-
 
 - Azure Automation サービスから構成をプルするために、Linux VM を Azure Automation アカウントに登録する (Register ExtensionAction)。
 - MOF 構成を Linux VM にプッシュする (Push ExtensionAction)。
@@ -36,22 +35,16 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 - カスタム DSC モジュールを Linux VM にインストールする (Install ExtensionAction)。
 - カスタム DSC モジュールを Linux VM から削除する (Remove ExtensionAction)。
 
- 
-
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
+Linux が実行されているノードの場合、DSC Linux 拡張機能では、[PowerShell DSC に関するドキュメント](/powershell/scripting/dsc/getting-started/lnxgettingstarted)に示されている Linux ディストリビューションがすべてサポートされます。
 
-| Distribution | Version |
-|---|---|
-| Debian | すべてのバージョン |
-| Ubuntu| 18.04 |
- 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-DSCForLinux 拡張機能では、ターゲット仮想マシンがインターネットに接続されている必要があります。 たとえば、Register 拡張機能では、Automation サービスへの接続が必要です。 その他のアクション (Pull、Pull、Install など) では、Azure Storage や GitHub への接続が必要です。 これはお客様が提供する設定によって異なります。
+DSCForLinux 拡張機能では、ターゲット仮想マシンがインターネットに接続されている必要があります。 たとえば、Register 拡張機能では、Automation サービスへの接続が必要です。
+その他のアクション (Pull、Pull、Install など) では、Azure Storage や GitHub への接続が必要です。 これはお客様が提供する設定によって異なります。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -63,13 +56,13 @@ DSCForLinux 拡張機能では、ターゲット仮想マシンがインター�
 * `ResourceName`: (省略可能、文字列) カスタム リソース モジュールの名前。
 * `ExtensionAction`: (省略可能、文字列) 拡張機能で実行されるアクションを指定します。 有効な値は Register、Push、Pull、Install、および Remove です。 指定しない場合、既定で Push アクションと見なされます。
 * `NodeConfigurationName`: (省略可能、文字列) 適用するノード構成の名前。
-* `RefreshFrequencyMins`: (省略可能、整数) プル サーバーからの構成の取得が DSC によって試行される頻度 (分単位) を指定します。 
+* `RefreshFrequencyMins`: (省略可能、整数) プル サーバーからの構成の取得が DSC によって試行される頻度 (分単位) を指定します。
        プル サーバー上の構成がターゲット ノード上の現在の構成と異なる場合、その構成は保留中ストアにコピーされてから適用されます。
 * `ConfigurationMode`: (省略可能、文字列) DSC によって構成が適用される方法を指定します。 有効な値は ApplyOnly、ApplyAndMonitor、および ApplyAndAutoCorrect です。
 * `ConfigurationModeFrequencyMins`: (省略可能、整数) DSC によって構成が望ましい状態にされる頻度 (分単位) を指定します。
 
 > [!NOTE]
-> 2\.3 より前のバージョンを使用する場合、モード パラメーターは ExtensionAction と同じです。 モードは多義な用語であるようです。 混同を避けるため、バージョン2.3 以降では ExtensionAction が使用されます。 下位互換性を実現するために、拡張機能ではモードと ExtensionAction の両方がサポートされます。 
+> 2\.3 より前のバージョンを使用する場合、モード パラメーターは ExtensionAction と同じです。 モードは多義な用語であるようです。 混同を避けるため、バージョン2.3 以降では ExtensionAction が使用されます。 下位互換性を実現するために、拡張機能ではモードと ExtensionAction の両方がサポートされます。
 >
 
 ### <a name="protected-configuration"></a>保護された構成
@@ -277,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (Azure Automation へのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (Azure Automation へのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。
 
 サンプルの Resource Manager テンプレートは、[201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) と [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu) です。
 
@@ -331,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 Azure サービス管理モードで Azure アカウントにサインインするには、次を実行します。
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 次を実行して DSCForLinux 拡張機能をデプロイします。
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -370,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 Azure Resource Manager モードで Azure アカウントにサインインするには、次を実行します。
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -378,7 +371,7 @@ Azure Resource Manager での Azure PowerShell の使用方法については、
 
 次を実行して DSCForLinux 拡張機能をデプロイできます。
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'

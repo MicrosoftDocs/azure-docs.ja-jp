@@ -1,0 +1,4 @@
+- name: Autodesk Maya で物理ベース レンダリング素材を設定する
+  href: maya-material-setup.md
+- name: Autodesk 3DSMax で物理ベース レンダリング素材を設定する
+  href: 3dsmax-material-setup.md

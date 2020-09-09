@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用したレプリケーションからディ�
 description: Azure Site Recovery を使用したレプリケーションから Azure にディスクを除外する方法。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236507"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245400"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>ディザスター リカバリーからディスクを除外する
 
@@ -24,9 +24,9 @@ ms.locfileid: "79236507"
 
 表にまとめられているように、レプリケーションからディスクを除外できます。
 
-**Azure から Azure** | **VMware から Azure** | **Hyper-V から Azure** 
---- | --- | ---
-はい (PowerShell の使用) | はい | はい 
+**Azure から Azure** | **VMware から Azure** | **Hyper-V から Azure** | **物理サーバーから Azure**
+--- | --- | --- | ---
+はい | はい | はい | はい
 
 ## <a name="exclude-limitations"></a>除外の制限事項
 
@@ -35,7 +35,7 @@ ms.locfileid: "79236507"
 **ディスクの種類** | レプリケーションからベーシック ディスクを除外できます。<br/><br/> オペレーティング システム ディスクまたはダイナミック ディスクは除外できません。 一時ディスクは既定で除外されます。 | レプリケーションからベーシック ディスクを除外できます。<br/><br/> オペレーティング システム ディスクまたはダイナミック ディスクは除外できません。 | レプリケーションからベーシック ディスクを除外できます。<br/><br/> オペレーティング システム ディスクは除外できません。 ダイナミック ディスクは除外しないことをお勧めします。 Site Recovery では、ゲスト VM 内のどの VHD がベーシックまたはダイナミック であるかを識別できません。 依存するダイナミック ボリューム ディスクすべてが除外されていない場合、保護されたダイナミック ディスクはフェールオーバー VM 上で障害が発生したディスクになり、そのディスク上のデータにアクセスすることができなくなります。
 **ディスクのレプリケート** | レプリケートしているディスクを除外することはできません。<br/><br/> VM でのレプリケーションを無効にしてから、再度有効にします。 |  レプリケートしているディスクを除外することはできません。 |  レプリケートしているディスクを除外することはできません。
 **Mobility Service (VMware)** | 関連性なし | Mobility Service がインストールされている VM 上のディスクのみを除外できます。<br/><br/> これは、ディスクを除外する VM に Mobility Service を手動でインストールする必要があることを意味します。レプリケーションが有効になった後にのみ Mobility Service がインストールされるため、プッシュ インストール メカニズムを使用することはできません。 | 関連性なし。
-**追加/削除** | マネージド ディスクを使用して Azure VM のディスクを追加および削除できます。 | レプリケーションが有効になった後で、ディスクを追加または削除することはできません。 ディスクを追加するには、レプリケーションを無効にしてから再度有効にします。 | レプリケーションが有効になった後で、ディスクを追加または削除することはできません。 レプリケーションを無効にしてから再度有効にします。
+**追加/削除** | マネージド ディスクを使用して、レプリケーションが有効な Azure VM にマネージド ディスクを追加できます。 レプリケーションが有効な Azure VM のディスクを削除することはできません。 | レプリケーションが有効になった後で、ディスクを追加または削除することはできません。 ディスクを追加するには、レプリケーションを無効にしてから再度有効にします。 | レプリケーションが有効になった後で、ディスクを追加または削除することはできません。 レプリケーションを無効にしてから再度有効にします。
 **[フェールオーバー]** | 除外したディスクがアプリで必要な場合は、フェールオーバー後に、レプリケートされたアプリを実行できるように、そのディスクを手動で作成する必要があります。<br/><br/> 別の方法として、Azure Automation を復旧計画に組み込んで、VM のフェールオーバー中にディスクを作成することもできます。 | アプリに必要なディスクを除外する場合は、フェールオーバー後に Azure でそのディスクを手動で作成します。 | アプリに必要なディスクを除外する場合は、フェールオーバー後に Azure でそのディスクを手動で作成します。
 **オンプレミスのフェールバック - 手動で作成したディスク** | 関連性なし | **Windows VM**:Azure で手動で作成したディスクはフェールバックされません。 たとえば、3 つのディスクをフェールオーバーし、Azure VM 上に 2 つのディスクを直接作成した場合、フェールオーバーされた 3 つのディスクだけがフェールバックされます。<br/><br/> **Linux VM**:Azure で手動で作成したディスクはフェールバックされます。 たとえば、3 つのディスクをフェールオーバーし、Azure VM 上に 2 つのディスクを作成した場合、5 つのディスクがすべてフェールバックされます。 手動で作成したディスクは、フェールバックから除外できません。 | Azure で手動で作成したディスクはフェールバックされません。 たとえば、3 つのディスクをフェールオーバーし、Azure VM 上に 2 つのディスクを直接作成した場合、フェールオーバーされた 3 つのディスクだけがフェールバックされます。
 **オンプレミスのフェールバック - 除外されたディスク** | 関連性なし | 元のマシンにフェールバックした場合、フェールバック VM のディスク構成に、除外されたディスクは含まれません。 VMware から Azure へのレプリケーションで除外されたディスクは、フェールバック VM では利用できません。 | 元の Hyper-V の場所にフェールバックした場合、フェールバック VM のディスク構成は、元のソース VM のディスク構成と同じままです。 Hyper-V のサイトから Azure へのレプリケーションで除外されたディスクは、フェールバック VM で利用できます。
@@ -105,29 +105,35 @@ Disk3 | G:\ | ユーザー データベース 2
 1. コマンド プロンプトを開きます。
 2. コマンド プロンプトから SQL Server を回復モードで実行します。
 
-        Net start MSSQLSERVER /f / T3608
+    ```console
+    Net start MSSQLSERVER /f / T3608
+    ```
 
 3. 次の sqlcmd を実行して、tempdb のパスを新しいパスに変更します。
 
-        sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;     
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
-        GO
-
+    ```sql
+    sqlcmd -A -S SalesDB        **Use your SQL DBname**
+    USE master;     
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
+    GO
+    ```
 
 4. Microsoft SQL Server サービスを停止します。
 
-        Net stop MSSQLSERVER
+    ```console
+    Net stop MSSQLSERVER
+    ```
+
 5. Microsoft SQL Server サービスを開始します。
 
-        Net start MSSQLSERVER
-
-
+    ```console
+    Net start MSSQLSERVER
+    ```
 
 ### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware VM:元の場所へのフェールバック中のディスク
 
@@ -260,7 +266,6 @@ Azure VM におけるページング ファイルの設定は次のとおりで�
 ## <a name="next-steps"></a>次のステップ
 
 - 一時記憶域ディスクのガイドラインの詳細を確認します。
-    - Azure VM で SSD を使用した SQL Server TempDB とバッファー プール拡張機能の保存の[詳細を確認](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)します
-    - Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスを[確認](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)します。
+    - Azure VM で SSD を使用した SQL Server TempDB とバッファー プール拡張機能の保存の[詳細を確認](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)します
+    - Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスを[確認](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)します。
 - デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの [詳細を確認](failover-failback-overview.md) します。
-

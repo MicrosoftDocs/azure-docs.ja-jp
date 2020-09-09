@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128704"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962045"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 
 
-App Service Environment (ASE) は、ご使用の Azure Virtual Network (VNet) 内で実行する Azure App Service のデプロイです。 これは、インターネットでアクセス可能なアプリケーション エンドポイントまたはご使用の VNet 内にあるアプリケーション エンドポイントを使用してデプロイできます。 インターネットでアクセス可能なエンドポイントを使用して ASE をデプロイすると、そのデプロイは外部 ASE と呼ばれます。 VNet 内にあるエンドポイントを使用して ASE をデプロイすると、そのデプロイは ILB ASE と呼ばれます。 ILB ASE の詳細については、[ILB ASE の作成と使用](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)に関するページを参照してください。
+App Service Environment (ASE) は、ご使用の Azure Virtual Network (VNet) 内で実行する Azure App Service のデプロイです。 これは、インターネットでアクセス可能なアプリケーション エンドポイントまたはご使用の VNet 内にあるアプリケーション エンドポイントを使用してデプロイできます。 インターネットでアクセス可能なエンドポイントを使用して ASE をデプロイすると、そのデプロイは外部 ASE と呼ばれます。 VNet 内にあるエンドポイントを使用して ASE をデプロイすると、そのデプロイは ILB ASE と呼ばれます。 ILB ASE の詳細については、[ILB ASE の作成と使用](./create-ilb-ase.md)に関するページを参照してください。
 
 ASE は、シングル テナント システムです。 シングル テナントのため、マルチテナントの App Service では使用できない ASE でのみ使用できるいくつかの機能があります。 
 
@@ -41,13 +41,16 @@ ASE の作成と証明書のアップロードは、ポータルで 1 つのア�
 
 テストのために自己署名証明書をすばやく作成するには、次の少量の PowerShell を使用できます。
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
+
 自己署名証明書を作成するときは、サブジェクト名を CN={ASE_NAME_HERE}_InternalLoadBalancingASE の形式にする必要があります。
 
 ## <a name="application-certificates"></a>アプリケーション証明書 
@@ -80,15 +83,18 @@ ASE 内のアプリに証明書をアップロードするには、次の手順�
 
 証明書は、その設定を構成したアプリと同じ App Service プラン内のすべてのアプリで使用できます。 別の App Service プラン内のアプリに対してもその証明書を使用できるようにする必要がある場合は、その App Service プランでアプリ設定操作を繰り返す必要があります。 証明書が設定されていることを確認するには、Kudu コンソールに移動し、PowerShell デバッグ コンソールで次のコマンドを発行します。
 
-    dir cert:\localmachine\root
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 テストを実行するには、自己署名証明書を作成し、次の PowerShell を使用して *.cer* ファイルを生成します。 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

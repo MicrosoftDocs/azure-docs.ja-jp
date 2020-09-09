@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070330"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple ソリューションのサポート
 
@@ -28,8 +28,8 @@ Microsoft は、StorSimple エンタープライズ ストレージのお客様�
 
 ## <a name="storsimple-support-plans"></a>StorSimple サポート プラン
 
-|                                                                                                                                                     | **STANDARD** <sup>1                                                 |  **PREMIUM** <sup>1                                                                         |
-|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| サポート機能 | STANDARD <sup>1 | PREMIUM <sup>1 |
+| --------------- | --------------- | -------------- |
 | 課金およびサブスクリプション管理                                                                     | ✓                                                                               | ✓                                                                              |
 | Azure Portal でのチケット送信                                                                          | ✓                                                                               | ✓                                                                              |
 | オンライン サポート ポータルへのアクセス                                                                            | ✓                                                                               | ✓                                                                              |
@@ -87,7 +87,7 @@ Microsoft は、StorSimple エンタープライズ ストレージのお客様�
  
 <sup>1 </sup> 問題の解決に必要なリソースや回答をご提供いただけない場合、マイクロソフトは重大度 A のケースに対する重大度を引き下げる場合があります。
 
-<sup>2</sup> 重大度 A の場合は 24 時間 365 日体制で英語で対応し、重大度 B および C の場合は現地時間の営業時間に対応いたします。それ以外の現地語(日本語、台湾語、繁体字中国語、韓国語) でのお問い合わせには現地時間の営業時間内に対応いたします。
+<sup>2</sup> 重大度 A の場合は 24 時間 365 日体制で英語で対応し、重大度 B および C の場合は現地時間の営業時間に対応いたします。それ以外の現地語 (日本語、台湾語、繁体字中国語、韓国語) でのお問い合わせには現地時間の営業時間内に対応いたします。
 
 ## <a name="cancellation-policy"></a>キャンセルに関するポリシー
 お客様が StorSimple サポートを利用するには、サブスクリプション期間中に、Standard サポート プランまたは Premium サポート プランを購入する必要があります。 サポートをキャンセルしても、日割り計算での返金はありません。 StorSimple サポート プランは、EA 応当日に有効な割引です。 ただし、Microsoft は、有効なサポート契約のない StorSimple のお客様にサポートを提供することはできません。

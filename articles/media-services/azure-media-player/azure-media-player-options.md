@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2b7acb1ad6fbe0beb4d79ee2a833561f0829664c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81725876"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423033"
 ---
 # <a name="options"></a>Options #
 
@@ -101,7 +102,7 @@ plugins JSON では、AMP のインスタンスでどのプラグインが読み
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-`playbackSpeed` 設定のその他のプロパティは [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) オブジェクトで指定されます。
+`playbackSpeed` 設定のその他のプロパティは [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) オブジェクトで指定されます。
 
 JavaScript で再生速度オプションを設定する例:
 

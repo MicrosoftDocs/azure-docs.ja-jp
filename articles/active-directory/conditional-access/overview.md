@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/17/2019
+ms.date: 05/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: contperfq4
+ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79215990"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948880"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 
@@ -37,7 +38,8 @@ ms.locfileid: "79215990"
 
 ![概念的な条件付きアクセスのプロセス フロー](./media/overview/conditional-access-overview-how-it-works.png)
 
-条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する組織の防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセス権を判定できます。
+> [!IMPORTANT]
+> 条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する組織の防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセス権を判定できます。
 
 ## <a name="common-signals"></a>一般的なシグナル
 
@@ -47,7 +49,7 @@ ms.locfileid: "79215990"
    - 特定のユーザーとグループをポリシーの対象にすることができるため、管理者はアクセスをきめ細かく制御できます。
 - IP の場所に関する情報
    - 組織では、ポリシーに基づく決定を行うときに使用できる、信頼された IP アドレス範囲を作成できます。 
-   - 管理者は、国全体の IP 範囲を指定して、その範囲からのトラフィックをブロックまたは許可することができます。
+   - 管理者は、国/地域全体の IP 範囲を指定して、その範囲からのトラフィックをブロックまたは許可することができます。
 - Device
    - 条件付きアクセス ポリシーを適用するとき、特定のプラットフォームのデバイスまたは特定の状態であるとマークされたデバイスを使用しているユーザーを使用できます。
 - Application
@@ -71,7 +73,7 @@ ms.locfileid: "79215990"
 
 ## <a name="commonly-applied-policies"></a>一般的に適用されるポリシー
 
-多くの組織には、次のような一般的なアクセスの問題があり、それらに対して条件付きアクセス ポリシーが役に立ちます。
+多くの組織には、次のような[一般的なアクセスの問題があり、それらに対して条件付きアクセス ポリシーが役に立ちます](concept-conditional-access-policy-common.md)。
 
 - 管理者の役割を持つユーザーに多要素認証を要求する
 - Azure 管理タスクに対して多要素認証を要求する
@@ -92,16 +94,12 @@ Azure AD の条件付きアクセスを使用して、自動化されたアク�
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-[Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。 
+[Microsoft 365 Business Premium ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-[条件付きアクセス ポリシーを 1 つずつ作成する](concept-conditional-access-policies.md)
-
-お使いの環境に条件付きアクセスを実装する方法については、「[Azure Active Directory の条件付きアクセスの展開を計画する](plan-conditional-access.md)」をご覧ください。
-
-[Identity Protection について学ぶ](../identity-protection/overview-v2.md)
-
-[Microsoft Cloud App Security について学ぶ](/cloud-app-security/what-is-cloud-app-security)
-
-[Microsoft Intune について学ぶ](/intune/index)
+- [条件付きアクセス ポリシーを 1 つずつ作成する](concept-conditional-access-policies.md)
+- [条件付きアクセスのデプロイを計画する](plan-conditional-access.md)
+- [Identity Protection について学ぶ](../identity-protection/overview-identity-protection.md)
+- [Microsoft Cloud App Security について学ぶ](/cloud-app-security/what-is-cloud-app-security)
+- [Microsoft Intune について学ぶ](/intune/index)

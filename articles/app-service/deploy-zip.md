@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2959403d2e5db38d03013e798fe299d56837227
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75945178"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962113"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -28,16 +28,19 @@ ms.locfileid: "75945178"
 
 WAR ファイルの展開では、Java Web アプリを実行するために [WAR](https://wikipedia.org/wiki/WAR_(file_format)) ファイルを App Service に展開します。 「[WAR ファイルの展開](#deploy-war-file)」を参照してください。
 
+> [!NOTE]
+> `ZipDeploy` を使用すると、ファイルは、タイムスタンプが既にデプロイされているものと一致しない場合にのみコピーされます。 出力をキャッシュするビルド プロセスを使用して zip を生成すると、デプロイが高速になる場合があります。 詳細については、「[zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を完了するには、[App Service アプリを作成する](/azure/app-service/)か、別のチュートリアルで作成したアプリを使用します。
+この記事の手順を完了するには、[App Service アプリを作成する](./index.yml)か、別のチュートリアルで作成したアプリを使用します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-現在、上記のエンドポイントは Linux App Services では機能しません。 代わりに、FTP または [ZIP デプロイ API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) の使用を検討してください。
+現在、上記のエンドポイントは Linux App Services では機能しません。 代わりに、FTP または [ZIP デプロイ API](faq-app-service-linux.md#continuous-integration-and-deployment) の使用を検討してください。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Azure CLI を使って ZIP ファイルを展開する
 

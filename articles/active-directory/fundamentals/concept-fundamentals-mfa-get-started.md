@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: febdb708c637ac322c0ca884eae627da9bd5904c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554654"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>組織での Azure Multi-Factor Authentication の概要
 
@@ -32,7 +32,7 @@ Azure Active Directory (AD) ユーザーに対して Azure Multi-Factor Authenti
 
 Azure AD の無料特典を利用しているお客様は、[セキュリティ既定値](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、環境内で多要素認証を有効にすることができます。
 
-## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium、E3、または E5
+## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business、E3、または E5
 
 Office 365 をお持ちのお客様には、次の 2 つのオプションがあります。
 
@@ -43,7 +43,7 @@ Office 365 をお持ちのお客様には、次の 2 つのオプションがあ
 
 Azure AD Premium P1、または Enterprise Mobility + Security E3、Microsoft 365 F1、Microsoft 365 E3 など、この機能を含む同様のライセンスを持つお客様の場合: 
 
-[Azure AD 条件付きアクセス](../conditional-access/overview.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。
+[Azure AD 条件付きアクセス](../authentication/tutorial-enable-azure-mfa.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。
 
 ## <a name="azure-ad-premium-p2"></a>Azure AD Premium P2
 
@@ -53,7 +53,7 @@ Azure AD Premium P2、または Enterprise Mobility + Security E5 や Microsoft 
 
 ## <a name="authentication-methods"></a>認証方法
 
-|   | セキュリティの既定値 | その他すべての方法 |
+| Method | セキュリティの既定値群 | その他すべての方法 |
 | --- | --- | --- |
 | モバイル アプリでの通知 | X | X |
 | モバイル アプリからの確認コードまたはハードウェア トークン |   | X |

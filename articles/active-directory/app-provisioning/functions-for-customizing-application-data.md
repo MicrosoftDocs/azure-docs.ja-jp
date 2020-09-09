@@ -2,20 +2,20 @@
 title: Azure Active Directory における属性マッピングの式を記述する
 description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
-ms.author: mimart
-ms.openlocfilehash: c8573f9151ac59178b19bbf354da43990405b3e0
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kenwith
+ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593694"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235674"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>方法: Azure AD における属性マッピングの式を記述する
 
@@ -34,6 +34,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
   2. 文字列定数。二重引用符で囲む必要があります。 次に例を示します。"米国"
   3. 他の関数 次に例を示します。FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 次に例を示します。"会社名:\\"Contoso\\""
+* この構文では大文字と小文字が区別されます。これは、関数に文字列として入力するときに考慮する必要があり、ここから直接コピーして貼り付けることもできます。 
 
 ## <a name="list-of-functions"></a>関数の一覧
 
@@ -192,7 +193,7 @@ DateFromNum(129699324000000000)
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
+| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされている形式については、[/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings) を参照してください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 ---
@@ -393,7 +394,7 @@ Left("John Doe", 3)
 ### <a name="numfromdate"></a>NumFromDate
 **関数:**<br> NumFromDate(value)
 
-**説明:**<br> NumFromDate 関数は、DateTime 値を、[accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
+**説明:**<br> NumFromDate 関数は、DateTime 値を、[accountExpires](/windows/win32/adschema/a-accountexpires) などの属性を設定するために必要な Active Directory 形式に変換します。 この関数を使用して、Workday や SuccessFactors などのクラウド HR アプリから受信した DateTime 値を、それと等価な AD 表現に変換します。 
 
 **パラメーター:**<br> 
 
@@ -700,11 +701,13 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **Expression:** <br>
 
+```ad-attr-mapping-expr
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
+```
 
 **サンプル入力/出力:**
 

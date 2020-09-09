@@ -4,15 +4,15 @@ description: Azure CLI を使用して Azure プライベート リンク サー
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 6e6148d305af26f7933567ae58023d2ba73263eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75350234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737344"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLI を使用してプライベート リンク サービスを作成する
 この記事では、Azure CLI を使用して Azure 上でプライベート リンク サービスを作成する方法を示します。

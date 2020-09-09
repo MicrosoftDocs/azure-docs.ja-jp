@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と GaggleAMP の統合 | Microsoft Docs'
 description: Azure Active Directory と GaggleAMP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9cc1a4b7-964b-406b-9e0c-05cb1a7c9856
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a6dc3dc2b0580f72ffae5cb5d034b0acdb64612
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7293430968d82fbf9a5efd370f3e0a3ca85842a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73155392"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>チュートリアル: Azure Active Directory と GaggleAMP の統合
 

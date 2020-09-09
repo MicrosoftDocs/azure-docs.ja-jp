@@ -6,22 +6,22 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ed8dd902ac490b4e6a0f172029bf3ffa1d44acee
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206732"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Azure Synapse Analytics に対する認証
 
-Azure Active Directory (AAD) または SQL Server 認証を使用して Azure Synapse の SQL Analytics に対して認証する方法について説明します。
+Azure Active Directory (AAD) または SQL Server 認証を使用して Azure Synapse の Synapse SQL に対して認証する方法について説明します。
 
 SQL プールに接続するには、認証のためにセキュリティ資格情報を渡す必要があります。 接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されます。  
 
@@ -54,16 +54,16 @@ SQL プールに接続するには、次の情報を指定する必要があり�
 Azure Active Directory には次のような利点があります。
 
 * SQL Server 認証の代替方法が用意されています。
-* データベース サーバー全体でユーザー ID が急増するのを防ぎます。
+* サーバー全体でユーザー ID が急増するのを防ぎます
 * 1 か所でのパスワードのローテーションを許可します。
 * 外部の (Azure AD) グループを使用してデータベースのアクセス許可を管理できます。
 * 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすると、パスワードが保存されません。
 * 包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 * SQL プールに接続するアプリケーション向けにトークンベース認証をサポートしています。
-* [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、[SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) などのさまざまなツールに対して、Active Directory ユニバーサル認証を介して Multi-Factor Authentication をサポートします。
+* [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、[SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) などのさまざまなツールに対して、Active Directory ユニバーサル認証を介して Multi-Factor Authentication をサポートします。
 
 > [!NOTE]
-> Azure Active Directory はまだ比較的新しいため、制限がいくつかあります。 Azure Active Directory を環境に確実に適合させるには、「 [Azure AD の機能と制限事項](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)」を参照してください。
+> Azure Active Directory はまだ比較的新しいため、制限がいくつかあります。 Azure Active Directory を環境に確実に適合させるには、「 [Azure AD の機能と制限事項](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)」を参照してください。
 
 ### <a name="configuration-steps"></a>構成の手順
 
@@ -80,7 +80,7 @@ Azure Active Directory 認証を構成するには、次の手順に従います
 
 ### <a name="find-the-details"></a>詳細の確認
 
-* Azure Active Directory 認証を構成および使用する手順は、Azure SQL Database と Azure Synapse の SQL Analytics とではほぼ同じです。 詳細な手順については、[Azure Active Directory 認証を使用して SQL Database または SQL プールに接続する](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)方法に関する記事を参照してください。
+* Azure Active Directory 認証を構成および使用する手順は、Azure SQL Database と Azure Synapse の Synapse SQL とではほぼ同じです。 詳細な手順については、[Azure Active Directory 認証を使用して SQL Database または SQL プールに接続する](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)方法に関する記事を参照してください。
 * カスタム データベース ロールを作成し、ロールにユーザーを追加します。 その後、ロールに詳細なアクセス許可を付与します。 詳細については、「 [データベース エンジンの権限の概要](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ

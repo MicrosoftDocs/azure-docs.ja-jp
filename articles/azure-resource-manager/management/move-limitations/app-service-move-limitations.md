@@ -2,13 +2,13 @@
 title: Azure App Service リソースの移動
 description: Azure Resource Manager を使用して、App Service リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 08/10/2020
+ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655784"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042060"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service リソースの移動に関するガイダンス
 
@@ -23,7 +23,8 @@ Web アプリをサブスクリプション間で移動する場合には、次�
     - App Service プラン
     - アップロードまたはインポートした TLS/SSL 証明書
     - App Service Environment
-- リソース グループ内のすべての App Service リソースを一緒に移動する必要があります。 App Service Environment を新しいリソース グループや新しいサブスクリプションには移動できないことに注意してください。
+- リソース グループ内のすべての App Service リソースを一緒に移動する必要があります。
+- App Service Environment を新しいリソース グループまたはサブスクリプションに移動することはできません。 ただし、App Service Environment を移動せずに、Web アプリと App Service プランを新しいサブスクリプションに移動することはできます。 移動後、Web アプリは App Service Environment でホストされなくなります。
 - リソース グループ内の他のすべてのリソースと共に証明書が移動される限りは、TLS バインドを削除せずに Web にバインドされた証明書を移動することができます。
 - App Service リソースは、最初に作成されたときのリソース グループからのみ移動できます。 元のリソース グループ内には App Service リソースが既にない場合は、元のリソース グループに戻します。 次に、サブスクリプション間でリソースを移動します。
 

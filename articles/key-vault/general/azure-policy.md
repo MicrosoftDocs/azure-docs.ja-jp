@@ -6,13 +6,13 @@ ms.author: mbaldwin
 ms.date: 01/28/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: quickstart
-ms.openlocfilehash: 6b54dc27f8a3e88dedb0552b1ac7fb675d75121a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81420856"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586071"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault と Azure Policy を統合する
 

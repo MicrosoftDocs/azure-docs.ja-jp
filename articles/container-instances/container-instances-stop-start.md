@@ -2,17 +2,19 @@
 title: コンテナー グループを手動で停止または開始する
 description: Azure Container Instances のコンテナー グループを手動で停止または開始する方法について説明します。
 ms.topic: article
-ms.date: 04/15/2019
-ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/11/2020
+ms.openlocfilehash: f697f18459959cf40e71d3ca90cd8b42aaa74239
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533424"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799079"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーの手動での停止または開始
 
 コンテナー グループの[再起動ポリシー](container-instances-restart-policy.md)設定により、コンテナー インスタンスの既定の開始方法または停止方法が決まります。 コンテナー グループを手動で停止または開始することにより、この既定の設定をオーバーライドできます。
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="stop"></a>Stop
 

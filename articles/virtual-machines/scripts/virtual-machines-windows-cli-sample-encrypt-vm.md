@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 857bddaad32ea98635f5fbd2f8202975fb033b70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0ea6bc61aae45386d2a7b90a32f66ad5de342107
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459442"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494538"
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Azure における Windows 仮想マシンの暗号化
 
@@ -47,18 +48,18 @@ az group delete --name myResourceGroup
 
 | command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault) | セキュリティで保護されたデータ (暗号化キーなど) を格納する Azure Key Vault を作成します。 |
-| [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key) | Key Vault に暗号化キーを作成します。 |
-| [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp) | 暗号化キーへのアクセスを安全に認証して制御する Azure Active Directory サービス プリンシパルを作成します。 |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault) | サービス プリンシパルに暗号化キーへのアクセス権を付与するために、Key Vault に対するアクセス許可を設定します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
-| [az vm encryption enable](https://docs.microsoft.com/cli/azure/vm/encryption) | サービス プリンシパルの資格情報と暗号化キーを使って VM に対する暗号化を有効にします。 |
-| [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption) | VM の暗号化処理の状態を表示します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az keyvault create](/cli/azure/keyvault) | セキュリティで保護されたデータ (暗号化キーなど) を格納する Azure Key Vault を作成します。 |
+| [az keyvault key create](/cli/azure/keyvault/key) | Key Vault に暗号化キーを作成します。 |
+| [az ad sp create-for-rbac](/cli/azure/ad/sp) | 暗号化キーへのアクセスを安全に認証して制御する Azure Active Directory サービス プリンシパルを作成します。 |
+| [az keyvault set-policy](/cli/azure/keyvault) | サービス プリンシパルに暗号化キーへのアクセス権を付与するために、Key Vault に対するアクセス許可を設定します。 |
+| [az vm create](/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
+| [az vm encryption enable](/cli/azure/vm/encryption) | サービス プリンシパルの資格情報と暗号化キーを使って VM に対する暗号化を有効にします。 |
+| [az vm encryption show](/cli/azure/vm/encryption) | VM の暗号化処理の状態を表示します。 |
+| [az group delete](/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%windows%2ftoc.json)のページにあります。

@@ -1,18 +1,18 @@
 ---
-title: Visual Studio Code を使用してタスクを自動化する
-description: Visual Studio Code (VS Code) を使用して、ロジック アプリの基になる JSON 定義を作成または編集します
+title: Visual Studio Code を使用してタスクとワークフローを自動化する
+description: Visual Studio Code (VS Code) を使用して、ロジック アプリ ワークフロー定義を作成または編集します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, deli, logicappspm
+ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 3dccb596be2d97dd0f38d680537913a76ce09e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147060"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131482"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
 
@@ -50,9 +50,9 @@ ms.locfileid: "82147060"
 
     詳細については、「[Extension Marketplace (拡張機能 Marketplace)](https://code.visualstudio.com/docs/editor/extension-gallery)」をご覧ください。 この拡張機能のオープン ソース バージョンに協力するには、[GitHub の Visual Studio Code 用 Azure Logic Apps 拡張機能](https://github.com/Microsoft/vscode-azurelogicapps)に関するページを参照してください。
 
-<a name="sign-in-azure"></a>
+<a name="access-azure"></a>
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="access-azure-from-visual-studio"></a>Visual Studio から Azure にアクセスする
 
 1. Visual Studio Code を開きます。 Visual Studio Code ツール バーで、Azure アイコンを選択します。
 
@@ -99,7 +99,7 @@ ms.locfileid: "82147060"
 
 ## <a name="create-new-logic-app"></a>新しいロジック アプリを作成する
 
-1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#sign-in-azure)します。
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
 
 1. Visual Studio Code の **[ロジック アプリ]** でサブスクリプションのショートカット メニューを開き、 **[ロジック アプリの作成]** を選択します。
 
@@ -133,7 +133,7 @@ ms.locfileid: "82147060"
    > このサンプル ロジック アプリの定義を再利用する場合は、@fabrikam.com などの Office 365 組織アカウントが必要です。 架空の電子メール アドレスを実際の電子メール アドレスに置き換えてください。 Outlook.com や Gmail など、別の電子メール コネクタを使用するには、`Send_an_email_action` アクションを、[Azure Logic Apps がサポートしている電子メール コネクタ](../connectors/apis-list.md)から入手できる同様のアクションに置き換えます。
    >
    > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 
-   > Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 
+   > Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 
    > 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
    ```json
@@ -226,7 +226,7 @@ Azure portal でロジック アプリを確認するには、次の手順を実
 
 Visual Studio Code では、発行されたロジック アプリを編集して変更を保存すると、既にデプロイされているアプリを*上書き*します。 運用環境でのロジック アプリの中断を回避し、中断を最小限に抑えるには、ロジック アプリを最初に非アクティブ化します。 ロジック アプリが引き続き動作することを確認した後で、ロジック アプリを再度アクティブにすることができます。
 
-1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#sign-in-azure)します。
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
 
 1. サブスクリプション内のすべてのロジック アプリを表示できるように、Azure ウィンドウの **[ロジック アプリ]** で、Azure サブスクリプションを展開します。
 
@@ -247,7 +247,7 @@ Visual Studio Code では、既に Azure にデプロイされているロジッ
 > [!IMPORTANT] 
 > 実稼働環境でアクティブに実行されているロジック アプリを編集する前に、[まずロジック アプリを無効化する](#disable-enable-logic-app)ことで、ロジック アプリが破損するリスクを回避し、中断を最小限に抑えることができます。
 
-1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#sign-in-azure)します。
+1. まだ Visual Studio Code 内から Azure アカウントおよびサブスクリプションにサインインしていない場合は、先ほどの手順に従って[今すぐサインイン](#access-azure)します。
 
 1. Azure ウィンドウの **[Logic Apps]** で、Azure サブスクリプションを展開し、目的のロジック アプリを選択します。
 

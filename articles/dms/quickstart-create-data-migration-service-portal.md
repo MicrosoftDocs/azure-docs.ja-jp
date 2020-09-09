@@ -11,17 +11,17 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.openlocfilehash: efbf7d9db91b8c23151ca4337bd4d58f814a7096
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 07/21/2020
+ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78254975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087783"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 
-このクイック スタートでは、Azure portal を使用して Azure Database Migration Service のインスタンスを作成します。  サービスを作成したら、それを使用してオンプレミスの SQL Server から Azure SQL データベースにデータを移行できます。
+このクイック スタートでは、Azure portal を使用して Azure Database Migration Service のインスタンスを作成します。  インスタンスを作成したら、それを使用して SQL Server から Azure SQL Database にデータを移行できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -30,6 +30,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Web ブラウザーを開いて [Microsoft Azure Portal](https://portal.azure.com/) にアクセスし、資格情報を入力して Portal にサインインします。
 
 既定のビューはサービス ダッシュボードです。
+
+> [!NOTE]
+> サブスクリプションあたり最大 10 個の DMS インスタンスを作成できます。 それ以上のインスタンスが必要な場合は、サポート チケットを作成してください。
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
@@ -78,4 +81,4 @@ Database Migration Service の最初のインスタンスを作成する前に�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [オンプレミスの SQL Server を Azure SQL Database に移行する](tutorial-sql-server-to-azure-sql.md)
+> [SQL Server の Azure SQL Database への移行](tutorial-sql-server-to-azure-sql.md)

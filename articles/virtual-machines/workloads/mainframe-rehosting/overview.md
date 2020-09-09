@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76289800"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835529"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 
@@ -70,11 +70,11 @@ Azure 上のエミュレーション環境では、Application Developers Contro
 
 IBM DB2 pureScale 環境は、Azure 向けデータベース クラスターを提供します。 これは元の環境と同一ではないものの、Parallel Sysplex 設定で動作する IBM DB2 for z/OS と同程度の可用性とスケーラビリティを実現します。
 
-開始するには、「[Azure 上の IBM DB2 pureScale](/azure/virtual-machines/linux/ibm-db2-purescale-azure)」を参照してください。
+開始するには、「[Azure 上の IBM DB2 pureScale](../../linux/ibm-db2-purescale-azure.md)」を参照してください。
 
 ## <a name="considerations"></a>考慮事項
 
-メインフレーム ワークロードを Azure IaaS (サービスとしてのインフラストラクチャ) に移行する場合は、Azure VM を含む、何種類かのオンデマンドでスケーラブルなコンピューティング リソースから選択できます。 Azure は、さまざまな [Linux](/azure/virtual-machines/linux/overview) および [Windows](/azure/virtual-machines/windows/overview) VM を提供しています。
+メインフレーム ワークロードを Azure IaaS (サービスとしてのインフラストラクチャ) に移行する場合は、Azure VM を含む、何種類かのオンデマンドでスケーラブルなコンピューティング リソースから選択できます。 Azure は、さまざまな [Linux](../../linux/overview.md) および [Windows](../../windows/overview.md) VM を提供しています。
 
 ### <a name="compute"></a>Compute
 
@@ -86,21 +86,21 @@ Azure のコンピューティング能力は、メインフレームのキャ�
 
 Azure では、コミットメントベースのサービス レベル アグリーメント (SLA) を提供します。 複数ナインの可用性が既定になっていて、SLA は、ローカルまたは geo ベースのサービスのレプリケーションによって最適化できます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
-VM などの Azure IaaS の場合、特定のシステム関数によってフェールオーバー サポートが提供されます。たとえば、フェールオーバー クラスタリング インスタンスや可用性セットなどです。 Azure PaaS (サービスとしてのプラットフォーム) リソースを使用する場合、フェールオーバーはプラットフォームで自動的に処理されます。 たとえば、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) や [Azure Cosmos DB](/azure/cosmos-db/introduction) などがあります。
+VM などの Azure IaaS の場合、特定のシステム関数によってフェールオーバー サポートが提供されます。たとえば、フェールオーバー クラスタリング インスタンスや可用性セットなどです。 Azure PaaS (サービスとしてのプラットフォーム) リソースを使用する場合、フェールオーバーはプラットフォームで自動的に処理されます。 たとえば、[Azure SQL Database](../../../azure-sql/database/sql-database-paas-overview.md) や [Azure Cosmos DB](../../../cosmos-db/introduction.md) などがあります。
 
 ### <a name="scalability"></a>スケーラビリティ
 
-メインフレームは通常スケールアップしますが、クラウド環境はスケールアウトします。Azure は、ユーザーのニーズを満たすために、さまざまな [Linux](/azure/virtual-machines/linux/sizes) および [Windows](/azure/virtual-machines/windows/sizes) のサイズを提供しています。 クラウドはまた、正確なユーザー仕様に一致するようにスケールアップまたはスケールダウンします。 コンピューティング能力、ストレージ、およびサービスは、使用量ベースの課金モデルのもとで、オンデマンドで[スケール調整](/azure/architecture/best-practices/auto-scaling)されます。
+メインフレームは通常スケールアップしますが、クラウド環境はスケールアウトします。Azure は、ユーザーのニーズを満たすために、さまざまな [Linux](../../sizes.md) および [Windows](../../sizes.md) のサイズを提供しています。 クラウドはまた、正確なユーザー仕様に一致するようにスケールアップまたはスケールダウンします。 コンピューティング能力、ストレージ、およびサービスは、使用量ベースの課金モデルのもとで、オンデマンドで[スケール調整](/azure/architecture/best-practices/auto-scaling)されます。
 
 ### <a name="storage"></a>ストレージ
 
-クラウドには、柔軟でスケーラブルなストレージ オプションがあり、必要な分だけ支払うことができます。 [Azure Storage](/azure/storage/common/storage-introduction) は、データ オブジェクトのための高度にスケーラブルなオブジェクト ストア、クラウドのためのファイル システム サービス、信頼性の高いメッセージング ストア、および NoSQL ストアを提供します。 VM の場合、マネージド ディスクとアンマネージド ディスクは、永続的でセキュリティで保護されたディスク ストレージを提供します。
+クラウドには、柔軟でスケーラブルなストレージ オプションがあり、必要な分だけ支払うことができます。 [Azure Storage](../../../storage/common/storage-introduction.md) は、データ オブジェクトのための高度にスケーラブルなオブジェクト ストア、クラウドのためのファイル システム サービス、信頼性の高いメッセージング ストア、および NoSQL ストアを提供します。 VM の場合、マネージド ディスクとアンマネージド ディスクは、永続的でセキュリティで保護されたディスク ストレージを提供します。
 
 [メインフレーム ストレージを Azure に移行](./concepts/mainframe-storage-azure.md)する方法について確認してください。
 
 ### <a name="backup-and-recovery"></a>バックアップと回復
 
-独自のディザスター リカバリー サイトを維持することは、高価な提案になる場合があります。 Azure では、[バックアップ](/azure/backup/backup-introduction-to-azure-backup)、[復旧](/azure/site-recovery/site-recovery-overview)、および[冗長性](/azure/storage/common/storage-redundancy)のための、実装が容易でコスト効率に優れたオプションをローカルまたはリージョン レベルで、または geo 冗長性経由で使用できます。
+独自のディザスター リカバリー サイトを維持することは、高価な提案になる場合があります。 Azure では、[バックアップ](../../../backup/backup-overview.md)、[復旧](../../../site-recovery/site-recovery-overview.md)、および[冗長性](../../../storage/common/storage-redundancy.md)のための、実装が容易でコスト効率に優れたオプションをローカルまたはリージョン レベルで、または geo 冗長性経由で使用できます。
 
 ## <a name="azure-government-for-mainframe-migrations"></a>メインフレーム移行のための Azure Government
 
@@ -118,7 +118,7 @@ Azure Government は、この種類の環境が必要なシステムに対して
 
 - [メインフレームのトピックに関するホワイト ペーパー](mainframe-white-papers.md)
 - [メインフレーム移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [トラブルシューティング](/azure/virtual-machines/troubleshooting/)
+- [トラブルシューティング](../../troubleshooting/index.yml)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

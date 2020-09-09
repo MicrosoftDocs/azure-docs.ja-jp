@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305212"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -89,7 +89,7 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 
 Log Analytics ゲートウェイは、トランスポート層セキュリティ (TLS) 1.0、1.1、1.2 のみをサポートします。  Secure Sockets Layer (SSL) はサポートされません。  Log Analytics へのデータの転送時のセキュリティを保証するため、少なくとも TLS 1.2 を使用するようにゲートウェイを構成してください。 以前のバージョンの TLS または SSL には脆弱性が存在します。 現在、これらは下位互換性を維持するために残されていますが、使用は避けてください。  
 
-詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
+詳細については、「[TLS 1.2 を使用して安全にデータを送信する](./data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
 
 ### <a name="supported-number-of-agent-connections"></a>サポートされるエージェント接続の数
 
@@ -149,7 +149,7 @@ or
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>コマンド ラインを使用して Log Analytics ゲートウェイをインストールする
 
-ゲートウェイ用にダウンロードしたファイルは、コマンド ラインまたはその他の自動化された方法によるサイレント インストールをサポートする Windows インストーラー パッケージです。 Windows インストーラーの標準コマンド ライン オプションに慣れていない場合は、「[Command-line options (コマンド ライン オプション)](https://docs.microsoft.com/windows/desktop/Msi/command-line-options)」を参照してください。
+ゲートウェイ用にダウンロードしたファイルは、コマンド ラインまたはその他の自動化された方法によるサイレント インストールをサポートする Windows インストーラー パッケージです。 Windows インストーラーの標準コマンド ライン オプションに慣れていない場合は、「[Command-line options (コマンド ライン オプション)](/windows/desktop/msi/command-line-options)」を参照してください。
  
 次の表に、セットアップでサポートされているパラメーターを示します。
 
@@ -185,11 +185,11 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 ## <a name="configure-network-load-balancing"></a>ネットワーク負荷分散を構成する
 
-ネットワーク負荷分散 (NLB) を使えば、ゲートウェイに高可用性を構成できます。これには、Microsoft [ネットワーク負荷分散 (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md)、またはハードウェアベースのロード バランサーを使用します。 ロード バランサーは、Log Analytics エージェントまたは Operations Manager 管理サーバーからの接続要求を自らのノードにリダイレクトする形で、トラフィックを管理します。 1 台のゲートウェイ サーバーで障害が発生した場合、トラフィックは他のノードにリダイレクトされます。
+ネットワーク負荷分散 (NLB) を使えば、ゲートウェイに高可用性を構成できます。これには、Microsoft [ネットワーク負荷分散 (NLB)](/windows-server/networking/technologies/network-load-balancing)、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md)、またはハードウェアベースのロード バランサーを使用します。 ロード バランサーは、Log Analytics エージェントまたは Operations Manager 管理サーバーからの接続要求を自らのノードにリダイレクトする形で、トラフィックを管理します。 1 台のゲートウェイ サーバーで障害が発生した場合、トラフィックは他のノードにリダイレクトされます。
 
 ### <a name="microsoft-network-load-balancing"></a>Microsoft ネットワーク負荷分散
 
-Windows Server 2016 のネットワーク負荷分散クラスターの設計およびデプロイの方法については、「[ネットワーク負荷分散](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)」を参照してください。 以下の手順では、Microsoft ネットワーク負荷分散クラスターの構成方法を説明します。  
+Windows Server 2016 のネットワーク負荷分散クラスターの設計およびデプロイの方法については、「[ネットワーク負荷分散](/windows-server/networking/technologies/network-load-balancing)」を参照してください。 以下の手順では、Microsoft ネットワーク負荷分散クラスターの構成方法を説明します。  
 
 1. 管理者アカウントを使用して、NLB クラスターのメンバーとなっている Windows サーバーにサインオンします。  
 2. サーバー マネージャーでネットワーク負荷分散マネージャーを開いて、 **[ツール]** 、 **[ネットワーク負荷分散マネージャー]** の順にクリックします。
@@ -388,4 +388,5 @@ Azure portal にサインインすると、Log Analytics ゲートウェイま�
 
 ## <a name="next-steps"></a>次のステップ
 
-[データ ソースを追加](../../azure-monitor/platform/agent-data-sources.md)して、接続されたソースからデータを収集して Log Analytics ワークスペースにデータを格納します。
+[データ ソースを追加](./agent-data-sources.md)して、接続されたソースからデータを収集して Log Analytics ワークスペースにデータを格納します。
+

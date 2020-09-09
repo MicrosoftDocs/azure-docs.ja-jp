@@ -1,19 +1,19 @@
 ---
 title: ルーティングの対象範囲 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps のルーティングの対象範囲となるリージョンについて説明します。
-author: Philmea
-ms.author: philmea
+description: ルーティング、交通量を含むルーティング、トラック ルーティングに対してさまざまなリージョンで Azure Maps から提供される対象範囲レベルについて説明します。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123889"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030896"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 
@@ -90,7 +90,7 @@ ms.locfileid: "83123889"
 | バルバドス                       |        ✓       |                      |             |
 | ベリーズ                         |        ✓       |                      |             |
 | ブラジル                         |        ✓       |         ✓            |     ✓       | 
-| カナダ                         |        ✓       |         ✓            |     ✓      |
+| Canada                         |        ✓       |         ✓            |     ✓      |
 | チリ                          |        ✓       |         ✓            |     ✓      |
 | コロンビア                       |        ✓       |         ✓            |             |
 | コスタリカ                     |        ✓       |                      |             |
@@ -116,7 +116,7 @@ ms.locfileid: "83123889"
 | セントビンセントおよびグレナディーン諸島       |        ✓       |                      |             |
 | スリナム                       |        ✓       |                      |             |
 | トリニダード・トバゴ              |        ✓       |                      |             |
-| 米国                  |        ✓       |         ✓            |     ✓      | 
+| United States                  |        ✓       |         ✓            |     ✓      | 
 | \+ 米領サモア                |        ✓       |                      |             |
 | \+ 北マリアナ諸島      |        ✓       |                      |             |
 | \+ プエルトリコ                   |        ✓       |                      |             |

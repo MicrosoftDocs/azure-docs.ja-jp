@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b0d6221aaafe3ade70bc23ce4196a7b53c9474c5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421036"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169969"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -65,9 +65,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 証明書が正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 すると、いくつかのプロパティを確認できます。 現在のバージョンをクリックすると、前の手順で指定した値が表示されます。
 
-![証明書プロパティ](../media/certificates/quick-create-portal/current-version-hidden.png)
+![証明書のプロパティ](../media/certificates/quick-create-portal/current-version-hidden.png)
 
-[CER 形式でダウンロード] または [PFX/PEM 形式でダウンロード] をクリックすると、証明書をダウンロードできます。 
+## <a name="export-certificate-from-key-vault"></a>Key Vault から証明書をエクスポートする
+[CER 形式でダウンロード] または [PFX/PEM 形式でダウンロード] ボタンをクリックすると、証明書をダウンロードできます。 
 
 ![証明書のダウンロード](../media/certificates/quick-create-portal/current-version-shown.png)
 

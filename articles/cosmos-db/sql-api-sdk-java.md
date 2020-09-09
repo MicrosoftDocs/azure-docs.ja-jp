@@ -1,36 +1,46 @@
 ---
 title: Azure Cosmos DB:SQL Java API、SDK およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB SQL Java SDK の各バージョン間の変更など、SQL Java API と SDK に関するあらゆる詳細を提供します。
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 02/21/2020
-ms.author: sngun
-ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 08/12/2020
+ms.author: anfeldma
+ms.custom: devx-track-java
+ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983604"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586130"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
-SQL API Java SDK は、同期操作をサポートしています。 非同期サポートの場合は、[SQL API Async Java SDK](sql-api-sdk-async-java.md) を使用してください。 
+これは、同期操作がサポートされる最初の Azure Cosmos DB Sync Java SDK v2 for SQL API です。
+
+> [!IMPORTANT]  
+> これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 プロジェクトには [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) を使用することを検討してください。 アップグレードするには、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[ Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってください。 
+>
 
 | |  |
 |---|---|
@@ -43,53 +53,59 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="247"></a><a name="2.4.7"/>2.4.7
+### <a name="251"></a><a name="2.5.1"></a>2.5.1
+* documentCollection クエリのマスター パーティション キャッシュの問題を修正します。
+
+### <a name="250"></a><a name="2.5.0"></a>2.5.0
+* 449 再試行カスタム構成のサポートが追加されました。
+
+### <a name="247"></a><a name="2.4.7"></a>2.4.7
 * 接続プールのタイムアウト問題を修正します。
 * 内部再試行での認証トークンの更新を修正します。
 
-### <a name="246"></a><a name="2.4.6"/>2.4.6
+### <a name="246"></a><a name="2.4.6"></a>2.4.6
 * databaseAccount 上の正しいクライアント側レプリカ ポリシー タグが更新され、databaseAccount 構成がキャッシュから読み取られるようになりました。
 
-### <a name="245"></a><a name="2.4.5"/>2.4.5
+### <a name="245"></a><a name="2.4.5"></a>2.4.5
 * ユーザーが pkRangeId を提供する場合は、無効なパーティション キー範囲のエラーが発生したときの再試行を回避します。
 
-### <a name="244"></a><a name="2.4.4"/>2.4.4
+### <a name="244"></a><a name="2.4.4"></a>2.4.4
 * パーティション キー範囲のキャッシュ更新を最適化しました。
 * SDK によってサーバーからのパーティション分割のヒントが受け入れられず、クライアント側のルーティング キャッシュが正しく更新されないシナリオを修正します。
 
-### <a name="242"></a><a name="2.4.2"/>2.4.2
+### <a name="242"></a><a name="2.4.2"></a>2.4.2
 * コレクションのキャッシュ更新を最適化しました。
 
-### <a name="241"></a><a name="2.4.1"/>2.4.1
+### <a name="241"></a><a name="2.4.1"></a>2.4.1
 * 要求の診断文字列から内部例外メッセージを取得できるようになりました。
 
-### <a name="240"></a><a name="2.4.0"/>2.4.0
+### <a name="240"></a><a name="2.4.0"></a>2.4.0
 * PartitionKeyDefinition にバージョン API を導入しました。
 
-### <a name="230"></a><a name="2.3.0"/>2.3.0
+### <a name="230"></a><a name="2.3.0"></a>2.3.0
 * 直接モード用に独立したタイムアウト サポートが追加されました。
 
-### <a name="223"></a><a name="2.2.3"/>2.2.3
+### <a name="223"></a><a name="2.2.3"></a>2.2.3
 * サービスからの null エラー メッセージを使用して、ドキュメント クライアント例外を生成します。
 
-### <a name="222"></a><a name="2.2.2"/>2.2.2
+### <a name="222"></a><a name="2.2.2"></a>2.2.2
 * ソケット接続が改良され、SoKeepAlive の既定値 true が追加されました。
 
-### <a name="220"></a><a name="2.2.0"/>2.2.0
+### <a name="220"></a><a name="2.2.0"></a>2.2.0
 * 要求の診断文字列のサポートが追加されました。
 
-### <a name="213"></a><a name="2.1.3"/>2.1.3
+### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * ハッシュ V2 の PartitionKey のバグが修正されました。
 
-### <a name="212"></a><a name="2.1.2"/>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 * 複合インデックスのサポートが追加されました。
 * グローバル エンドポイント マネージャーが強制的に更新されるように、バグが修正されました。
 * ダイレクト モードでの事前条件のある upsert のバグが修正されました。
 
-### <a name="211"></a><a name="2.1.1"/>2.1.1
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * ゲートウェイ アドレス キャッシュでのバグが修正されました。
 
-### <a name="210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 * 直接モードに対するマルチリージョンの書き込みサポートが追加されました。
 * プロキシから、ServiceUnavailable 例外としてスローされた IOExceptions を処理するためのサポートが追加されました。
 * エンドポイントの検出再試行ポリシーのバグが修正されました。
@@ -97,30 +113,30 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * QueryIterator で null が返されないように、バグが修正されました。
 * 確実に大きな PartitionKey が許可されるように、バグが修正されました
 
-### <a name="200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 * ゲートウェイ モードに対するマルチリージョンの書き込みサポートが追加されました。
 
-### <a name="1164"></a><a name="1.16.4"/>1.16.4
+### <a name="1164"></a><a name="1.16.4"></a>1.16.4
 * クエリのパーティション キー範囲の読み取りでのバグが修正されました。
 
-### <a name="1163"></a><a name="1.16.3"/>1.16.3
+### <a name="1163"></a><a name="1.16.3"></a>1.16.3
 * DirectHttps モードでの継続トークン ヘッダー サイズの設定に関するバグが修正されました。
 
-### <a name="1162"></a><a name="1.16.2"/>1.16.2
+### <a name="1162"></a><a name="1.16.2"></a>1.16.2
 * ストリーミングのフェールオーバーに対するサポートが追加されました。
 * カスタム メタデータのサポートが追加されました。
 * セッション処理ロジックが強化されました。
 * パーティション キー範囲のキャッシュのバグを修正しました。
 * 直接モードでの NPE バグを修正しました。
 
-### <a name="1161"></a><a name="1.16.1"/>1.16.1
+### <a name="1161"></a><a name="1.16.1"></a>1.16.1
 * 一意なインデックスのサポートが追加されました。
 * フィード オプションに、継続トークンのサイズを制限するためのサポートが追加されました。
 * JSON のシリアル化のバグを修正しました (タイムスタンプ)。
 * JSON のシリアル化のバグを修正しました (列挙)。
 * com.fasterxml.jackson.core:jackson-databind への依存関係が 2.9.5 にアップグレードされました。
 
-### <a name="1160"></a><a name="1.16.0"/>1.16.0
+### <a name="1160"></a><a name="1.16.0"></a>1.16.0
 * 直接モードの接続プールが改善されました。
 * orderby 以外のクロス パーティション クエリのプリフェッチが向上しました。
 * UUID の生成が強化されました。
@@ -129,35 +145,35 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * コレクションに対するパーティション キー範囲の統計のサポートが追加されました。
 * マルチリージョンのサポートでのバグを修正します。
 
-### <a name="1150"></a><a name="1.15.0"/>1.15.0
+### <a name="1150"></a><a name="1.15.0"></a>1.15.0
 * JSON シリアル化のパフォーマンスが向上しました。
 * この SDK バージョンには [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) の最新バージョンが必要です。
 
-### <a name="1140"></a><a name="1.14.0"/>1.14.0
+### <a name="1140"></a><a name="1.14.0"></a>1.14.0
 * Microsoft フレンド ライブラリの内部変更。
 
-### <a name="1130"></a><a name="1.13.0"/>1.13.0
+### <a name="1130"></a><a name="1.13.0"></a>1.13.0
 * 単一のパーティション キーの範囲の読み取りに関する問題を修正しました。
 * 短い名前のデータベースに影響する ResourceID の解析に関する問題を修正しました。
 * パーティション キーのエンコードが原因で発生する問題を修正しました。
 
-### <a name="1120"></a><a name="1.12.0"/>1.12.0
+### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * パーティション分割中に処理を要求する重要なバグ修正です。
 * Strong および BoundedStaleness 整合性レベルの問題を修正しました。
 
-### <a name="1110"></a><a name="1.11.0"/>1.11.0
+### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * ConsistentPrefix と呼ばれている新しい一貫性レベルに対応するようになりました。
 * セッション モードのコレクション読み取りのバグを修正しました。
 
-### <a name="1100"></a><a name="1.10.0"/>1.10.0
+### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * 2,500 RU/秒という低いパーティション分割コレクションと、100 RU/秒ずつ増加するスケールのサポートを有効にしました。
 * 一部のクエリで NullRef 例外が発生する可能性があるネイティブ アセンブリのバグを修正しました。
 
-### <a name="196"></a><a name="1.9.6"/>1.9.6
+### <a name="196"></a><a name="1.9.6"></a>1.9.6
 * ゲートウェイ モードでクエリに例外を引き起こす可能性のあるクエリ エンジン構成のバグが修正されました。
 * コレクションの作成直後の要求に対して "所有者リソースが見つかりません" という例外を引き起こす可能性のある、セッション コンテナー内のいくつかのバグを修正しました。
 
-### <a name="195"></a><a name="1.9.5"/>1.9.5
+### <a name="195"></a><a name="1.9.5"></a>1.9.5
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-query-aggregates.md)に関するトピックを参照してください。
 * Change Feed のサポートを追加しました。
 * RequestOptions.setPopulateQuotaInfo を介したコレクション クォータ情報のサポートを追加しました。
@@ -167,7 +183,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * 要求レートが高いときに HttpContext の NullReferenceException を引き起こす可能性のあるバグを修正しました。
 * DirectHttps モードのパフォーマンスを改善しました。
 
-### <a name="194"></a><a name="1.9.4"/>1.9.4
+### <a name="194"></a><a name="1.9.4"></a>1.9.4
 * ConnectionPolicy.setProxy() API による簡易クライアント インスタンス ベースのプロキシのサポートを追加しました。
 * DocumentClient インスタンスを適切にシャットダウンするために、DocumentClient.close() API を追加しました。
 * ゲートウェイではなく、ネイティブ アセンブリからクエリ プランを派生することで、直接接続モードでのクエリのパフォーマンスを改善しました。
@@ -175,22 +191,22 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * SLF4J を使用するためにログ記録をリファクタリングしました。
 * 整合性リーダーの他のいくつかのバグを修正しました。
 
-### <a name="193"></a><a name="1.9.3"/>1.9.3
+### <a name="193"></a><a name="1.9.3"></a>1.9.3
 * 直接接続モードでの接続リークを防ぐために、接続管理のバグを修正しました。
 * NullReference 例外がスローされる場合がある TOP クエリのバグを修正しました。
 * 内部キャッシュのネットワーク呼び出しの数を減らすことでパフォーマンスを改善しました。
 * トラブルシューティングを適切に行うために、状態コード、ActivityID、要求 URI を DocumentClientException に追加しました。
 
-### <a name="192"></a><a name="1.9.2"/>1.9.2
+### <a name="192"></a><a name="1.9.2"></a>1.9.2
 * 安定性を確保するために接続管理の問題を修正しました。
 
-### <a name="191"></a><a name="1.9.1"/>1.9.1
+### <a name="191"></a><a name="1.9.1"></a>1.9.1
 * BoundedStaleness 一貫性レベルのサポートを追加しました。
 * パーティション分割コレクションの CRUD 操作のための直接接続のサポートを追加しました。
 * SQL を使用したデータベース クエリのバグを修正しました。
 * セッション キャッシュでセッション トークンが正しく設定されない場合があるというバグを修正しました。
 
-### <a name="190"></a><a name="1.9.0"/>1.9.0
+### <a name="190"></a><a name="1.9.0"></a>1.9.0
 * クロス パーティションの並列クエリのサポートを追加しました。
 * パーティション分割コレクションの TOP/ORDER BY クエリのサポートを追加しました。
 * 強力な一貫性のサポートを追加しました。
@@ -200,69 +216,62 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * ジオフェンシング空間クエリに対してコレクションのインデックス作成ポリシーを指定する際の Polygon および LineString データ型を追加しました。
 * Java 1.8 の Java ドキュメントに関する問題を修正しました。
 
-### <a name="181"></a><a name="1.8.1"/>1.8.1
+### <a name="181"></a><a name="1.8.1"></a>1.8.1
 * 単一のパーティション コレクションをキャッシュし、パーティション キーの要求は余計にフェッチしないように、PartitionKeyDefinitionMap のバグを修正しました。
 * 無効なパーティション キー値が指定された場合に再試行されないように、バグを修正しました。
 
-### <a name="180"></a><a name="1.8.0"/>1.8.0
+### <a name="180"></a><a name="1.8.0"></a>1.8.0
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 最大再試行回数と最大再試行待機時間をカスタマイズするオプションと共に、調整された要求での自動再試行のサポートを追加しました。  RetryOptions と ConnectionPolicy.getRetryOptions() をご覧ください。
 * IPartitionResolver に基づくカスタム パーティション分割コードを非推奨にしました。 大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。
 
-### <a name="171"></a><a name="1.7.1"/>1.7.1
+### <a name="171"></a><a name="1.7.1"></a>1.7.1
 * レート制限の再試行ポリシー サポートを追加しました。  
 
-### <a name="170"></a><a name="1.7.0"/>1.7.0
+### <a name="170"></a><a name="1.7.0"></a>1.7.0
 * ドキュメントの有効期限 (TTL) サポートを追加しました。
 
-### <a name="160"></a><a name="1.6.0"/>1.6.0
+### <a name="160"></a><a name="1.6.0"></a>1.6.0
 * [パーティション分割コレクション](partition-data.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
 
-### <a name="151"></a><a name="1.5.1"/>1.5.1
+### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * 他の SDK と一貫性を維持するため、リトル エンディアンのハッシュ値を生成する HashPartitionResolver のバグを修正しました。
 
-### <a name="150"></a><a name="1.5.0"/>1.5.0
+### <a name="150"></a><a name="1.5.0"></a>1.5.0
 * ハッシュおよび範囲パーティション リゾルバーを追加して、複数のパーティションにわたってシャーディング アプリケーションを支援します。
 
-### <a name="140"></a><a name="1.4.0"/>1.4.0
+### <a name="140"></a><a name="1.4.0"></a>1.4.0
 * Upsert を実装します。 Upsert 機能をサポートするために新しい upsertXXX メソッドが追加されました。
 * ID ベースのルーティングを実装します。 パブリック API の変更なし、すべて内部の変更。
 
-### <a name="130"></a><a name="1.3.0"/>1.3.0
+### <a name="130"></a><a name="1.3.0"></a>1.3.0
 * 他の SDK とバージョン番号をそろえるため、このリリースはスキップされました
 
-### <a name="120"></a><a name="1.2.0"/>1.2.0
+### <a name="120"></a><a name="1.2.0"></a>1.2.0
 * 地理空間インデックスをサポートします
 * すべてのリソースの ID プロパティを検証します。 リソースの ID には ?、/、#、\, 文字を使えず、終わりの文字をスペースにできません。
 * ResourceResponse に新しいヘッダーの「インデックス変換の進行状況」を追加します。
 
-### <a name="110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 * V2 インデックス作成ポリシーを実装する
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * GA SDK
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
-新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
-
-提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
 > [!WARNING]
-> **1.x** のすべてのバージョンの SQL SDK for Java は、**2020 年 5 月 30 日**で提供が終了します。
-> 
+> 2020 年 5 月 30 日以降、Azure Cosmos DB では、Azure Cosmos DB Java SDK for SQL API バージョン 1.x に対するバグ修正、新機能の追加、サポートの提供は行われません。 アップグレードしない場合でも、SDK バージョン 1.x から送信される要求は、引き続き Azure Cosmos DB サービスによって処理されます。
 >
+> 2016 年 2 月 29 日以降、Azure Cosmos DB では、Azure Cosmos DB Java SDK for SQL API バージョン 0.x に対するバグ修正、新機能の追加、サポートの提供は行われません。 アップグレードしない場合でも、SDK バージョン 0.x から送信される要求は、引き続き Azure Cosmos DB サービスによって処理されます。
 
-> [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの SQL SDK for Java は、**2016 年 2 月 29 日**で提供が終了します。
-> 
-> 
-
-<br/>
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2020 年 6 月 3 日 |--- |
+| [2.5.0](#2.5.0) |2020 年 5 月 12 日 |--- |
 | [2.4.7](#2.4.7) |2020 年 2 月 20 日 |--- |
 | [2.4.6](#2.4.6) |2020 年 1 月 24 日 |--- |
 | [2.4.5](#2.4.5) |2019 年 11 月 10 日 |--- |

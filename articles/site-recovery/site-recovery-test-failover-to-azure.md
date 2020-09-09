@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229023"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503499"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Azure へのテスト フェールオーバー (ディザスター リカバリー訓練) を実行する 
 
@@ -25,7 +25,7 @@ ms.locfileid: "79229023"
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行
 この手順では、復旧計画のテスト フェールオーバーを実行する方法について説明します。 1 つの VM のテスト フェールオーバーを実行する場合は、[ここ](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm)で説明されている手順に従ってください
 
-![テスト フェールオーバー](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Azure portal の [テスト フェールオーバー] ページのスクリーンショット。](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. Azure Portal の Site Recovery で、 **[Recovery Plans] (復旧計画)**  >  *[recoveryplan_name]*  >  **[Test Failover] (テスト フェールオーバー)** をクリックします。
@@ -48,7 +48,7 @@ ms.locfileid: "79229023"
 8. **[メモ]** を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。
 
 
-![テスト フェールオーバー](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![[テスト フェールオーバー] の [ジョブ] タブのスクリーンショット。](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 テスト フェールオーバーがトリガーされると次の操作が行われます。
 

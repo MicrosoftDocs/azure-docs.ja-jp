@@ -1,25 +1,25 @@
 ---
 title: Android マップへのタイル レイヤーの追加 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップにタイル レイヤーをレンダリングする方法を示します。
-author: philmea
-ms.author: philmea
+description: マップにタイル レイヤーを追加する方法について説明します。 Azure Maps Android SDK を使用して気象レーダーのオーバーレイをマップに追加する例を参照してください。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335561"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037356"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
 
 この記事では、Azure Maps Android SDK を使用してマップにタイル レイヤーをレンダリングする方法を示します。 タイル レイヤーを使用すると、Azure Maps ベース マップ タイルの上に画像を重ねることができます。 Azure Maps のタイル システムの詳細については、[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)のドキュメントを参照してください。
 
-タイル レイヤーでは、サーバーからタイルが読み込まれます。 これらの画像は事前にレンダリングし、タイル レイヤーが認識する名前付け規則を使用して、サーバー上の他の画像と同様に保存できます。 または、画像をほぼリアルタイムに生成する動的サービスを使用して、これらの画像をレンダリングすることもできます。 Azure Maps の TileLayer クラスでは、次の 3 種類のタイル サービスの名前付け規則がサポートされています。
+タイル レイヤーでは、サーバーからタイルが読み込まれます。 これらの画像は事前にレンダリングし、タイル レイヤーが認識する名前付け規則を使用して、サーバー上の他の画像と同様に保存できます。 または、画像をほぼリアルタイムに生成する動的サービスを使用して、これらの画像をレンダリングすることもできます。 Azure Maps の TileLayer クラスでは、3 種類のタイル サービスの名前付け規則がサポートされています。
 
 * X、Y、ズーム表記 - ズーム レベルに基づいた、タイル グリッド内のタイルの列 (x)、行 (x) の位置です。
 * quadkey 表記 - x、y、ズーム情報を組み合わせて、タイルの一意の識別子である 1 つの文字列値にします。
@@ -174,7 +174,7 @@ ms.locfileid: "80335561"
 
 ![Android マップの線](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 マップのスタイルを設定する方法の詳細については、次の記事を参照してください。
 

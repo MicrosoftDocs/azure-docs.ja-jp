@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Azure Media Services v3 エンティティのフィルター処理、順序付け、およびページングについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.topic: overview
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584527"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300189"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、およびページング
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このトピックでは、Azure Media Services v3 エンティティを一覧表示するときに使用できる OData クエリ オプションと改ページ位置の自動調整のサポートについて説明します。
 
@@ -158,34 +160,34 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 |エンティティ名|プロパティ名|Assert|Order|
 |---|---|---|---|
-|[アセット](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` および `desc`|
+|[アセット](/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` および `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
 ||properties.created| `eq`、`gt`、`lt`| `asc` および `desc`|
-|[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+|[コンテンツ キー ポリシー](/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
 ||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
 ||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
 ||properties.policyId|`eq`, `ne`||
-|[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` および `desc`|
+|[ジョブ](/rest/api/media/jobs)| name  | `eq`            | `asc` および `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
 ||properties.created      | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
 ||properties.lastModified | `gt`、`ge`、`lt`, `le` | `asc` および `desc`| 
-|[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+|[ストリーミング ロケーター](/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
 ||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-|[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+|[ストリーミング ポリシー](/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
 ||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-|[変換](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` および `desc`|
+|[変換](/rest/api/media/transforms)| name | `eq`            | `asc` および `desc`|
 || properties.created      | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
 || properties.lastModified | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アセットを一覧表示する](https://docs.microsoft.com/rest/api/media/assets/list)
-* [コンテンツ キー ポリシーを一覧表示する](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [ジョブを一覧表示する](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [ストリーミング ポリシーを一覧表示する](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [ストリーミング ロケーターを一覧表示する](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [アセットを一覧表示する](/rest/api/media/assets/list)
+* [コンテンツ キー ポリシーを一覧表示する](/rest/api/media/contentkeypolicies/list)
+* [ジョブを一覧表示する](/rest/api/media/jobs/list)
+* [ストリーミング ポリシーを一覧表示する](/rest/api/media/streamingpolicies/list)
+* [ストリーミング ロケーターを一覧表示する](/rest/api/media/streaminglocators/list)
 * [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
 * [クォータと制限](limits-quotas-constraints.md)

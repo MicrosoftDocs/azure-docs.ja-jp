@@ -1,28 +1,26 @@
 ---
-title: クイック スタート:Azure Key Vault との間でキーの設定と取得を行う
+title: Azure Key Vault でキーの属性を作成し、取得する - Azure PowerShell
 description: Azure PowerShell を使用して Azure Key Vault との間でキーの設定と取得を行う方法を紹介するクイック スタート
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c407c10327a80de6b3df18a3db3978468c9f8da0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ebd3cc605b396f72d063f3fc506df9020ec3a5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060997"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault との間でキーの設定と取得を行う
 
 このクイックスタートでは、Azure PowerShell を使用して Azure Key Vault にキー コンテナーを作成します。 Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Key Vault の詳細については、[概要](../general/overview.md)に関するページを参照してください。 Azure PowerShell は、コマンドまたはスクリプトを使用して Azure リソースを作成および管理するために使用します。 この作業を完了したら、キーを格納します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -44,7 +42,7 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 次に、Key Vault を作成します。 この手順を実行するときは、いくつかの情報が必要になります。
 
-このクイック スタート全体で Key Vault の名前として "Contoso KeyVault2" を使用していますが、一意の名前を使用する必要があります。
+このクイックスタート全体でキー コンテナーの名前として "Contoso KeyVault2" を使用していますが、一意の名前を使用する必要があります。
 
 - **コンテナー名**: Contoso-Vault2。
 - **リソース グループ名**: ContosoResourceGroup。
@@ -60,8 +58,6 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 * **Vault URI (コンテナー URI)** :この例では、これは https://Contoso-Vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 資格情報コンテナーを作成した後は、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
-
-![キー コンテナー作成コマンドの実行後の出力](../media/quick-create-powershell/output-after-creating-keyvault.png)
 
 ## <a name="add-a-key-to-key-vault"></a>Key Vault にキーを追加する
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21b09e6b7a2be6b87288d973b40c566fb6217841
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195351"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849983"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -61,7 +61,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
     1. **[詳細]** タブをクリックします。
     1. **[Data Lake Storage Gen2]** の下の **[階層構造の名前空間]** の横の **[有効]** をクリックします。
     1. **[Review + create]\(レビュー + 作成\)** をクリックします。
-    1. **[作成]**
+    1. **[作成]** をクリックします。
 
 ストレージ アカウントを作成する場合のその他のオプションについては、「[Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](../storage/blobs/data-lake-storage-quickstart-create-account.md)」を参照してください。
 
@@ -79,7 +79,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 1. **[+ ロールの割り当ての追加]** ボタンを選択して新しいロールを追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、 **[ストレージ BLOB データ所有者]** ロールを選択します。 次に、マネージド ID とストレージ アカウントを持つサブスクリプションを選択します。 次に、以前作成したユーザー割り当てマネージド ID を検索して見つけます。 最後に、マネージド ID を選択すると、その ID が **[選択したメンバー]** の下に一覧表示されます。
 
-    ![RBAC ロールの割り当て方法を示すスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    ![Azure ロールの割り当て方法を示すスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. **[保存]** を選択します。 選択したユーザー割り当て ID が、選択されたロールの下に表示されるようになります。
 1. この初期セットアップを完了すると、ポータルを通じてクラスターを作成できます。 クラスターは、ストレージ アカウントと同じ Azure リージョンに存在する必要があります。 クラスターの作成メニューの **[ストレージ]** タブで、次のオプションを選択します。
@@ -106,6 +106,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 | `<RESOURCEGROUPNAME>` | 新しいクラスターとストレージ アカウントを作成するリソース グループです。 |
 | `<MANAGEDIDENTITYNAME>` | Azure Data Lake Storage Gen2 アカウントに対するアクセス許可を付与するマネージド ID の名前です。 |
 | `<STORAGEACCOUNTNAME>` | 作成される新しい Azure Data Lake Storage Gen2 アカウントです。 |
+| `<FILESYSTEMNAME>`  | このクラスターがストレージ アカウントで使用する必要があるファイルシステムの名前。 |
 | `<CLUSTERNAME>` | HDInsight クラスターの名前です。 |
 | `<PASSWORD>` | SSH と Ambari ダッシュボードを使用してクラスターにサインインするために選択したパスワードです。 |
 
@@ -138,7 +139,8 @@ az storage account create --name <STORAGEACCOUNTNAME> \
 
 次に、ポータルにサインインします。 ストレージ アカウントでユーザー割り当ての新しいマネージド ID を**ストレージ BLOB データ共同作成者**ロールに割り当てます。 この手順については、[Azure portal の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)に関するページの手順 3 で説明しています。
 
-ユーザー割り当てマネージド ID のロールを割り当てたら、次のコード スニペットを使用してテンプレートをデプロイします。
+ > [!IMPORTANT]
+ > ストレージ アカウントに、**ストレージ BLOB データ共同作成者**ロールのアクセス許可を持つユーザー割り当て ID があることを確認します。そうでない場合、クラスターの作成は失敗します。
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \
@@ -159,7 +161,7 @@ Data Lake Storage Gen2 では、ロール ベースのアクセス制御 (RBAC) 
 
 RBAC では、ロールの割り当てを使用して、Azure リソースのユーザー、グループ、サービス プリンシパルにアクセス許可のセットを効果的に適用します。 通常、これらの Azure リソースは、最上位のリソース (例: Azure Storage アカウント) に制約されます。 Azure Storage および Data Lake Storage Gen2 の場合、このメカニズムがファイル システムのリソースにまで拡張されています。
 
- RBAC を使用したファイルのアクセス許可の詳細については、「[Azure のロールベースのアクセス制御 (RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)」を参照してください。
+ RBAC を使用したファイルのアクセス許可の詳細については、「[Azure のロールベースのアクセス制御 (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)」を参照してください。
 
 ACL を使用したファイルのアクセス許可の詳細については、「[ファイルとディレクトリのアクセス制御リスト](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)」を参照してください。
 
@@ -169,7 +171,7 @@ Data Lake Storage Gen2 で HDInsight クラスターがファイルにアクセ�
 
 Azure サービスには、システム割り当てとユーザー割り当ての 2 種類のマネージド ID があります。 HDInsight は、ユーザー割り当てマネージド ID を使用して Data Lake Storage Gen2 にアクセスします。 `user-assigned managed identity` はスタンドアロンの Azure リソースとして作成されます。 作成プロセスで、使用されているサブスクリプションによって信頼されている Azure AD テナントに、Azure が ID を作成します。 作成された ID は、1 つまたは複数の Azure サービス インスタンスに割り当てることができます。
 
-ユーザー割り当て ID のライフサイクルは、その ID が割り当てられている Azure サービス インスタンスのライフサイクルとは個別に管理されます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID のしくみ](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」を参照してください。
+ユーザー割り当て ID のライフサイクルは、その ID が割り当てられている Azure サービス インスタンスのライフサイクルとは個別に管理されます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Hive またはその他のサービスを使用して Data Lake Storage Gen2 でデータをクエリするためのアクセス許可を Azure AD ユーザーに設定する方法
 

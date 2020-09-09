@@ -2,22 +2,23 @@
 title: Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする | Microsoft Docs
 description: Application Insights Profiler の使用方法についての概念の概要と、詳細な手順を説明したチュートリアルです。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81640969"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930385"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
 現在、この機能はプレビュー段階にあります。
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用するときにライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Application Insights Profiler は現在、Azure App Service 上の Linux でホストされている ASP.NET Core Web アプリで利用できます。 このガイドでは、ASP.NET Core Linux Web アプリのためにプロファイラー トレースを収集するしくみについて段階的に説明します。
+[Application Insights](./app-insights-overview.md) を使用するときにライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Application Insights Profiler は現在、Azure App Service 上の Linux でホストされている ASP.NET Core Web アプリで利用できます。 このガイドでは、ASP.NET Core Linux Web アプリのためにプロファイラー トレースを収集するしくみについて段階的に説明します。
 
 このチュートリアルを完了すると、図に示されているトレースのようなプロファイラー トレースをアプリで収集できるようになります。 この例では、プロファイラー トレースは、特定の Web 要求が待ち時間のために遅くなっていることを示しています。 アプリを遅くしているコード内の "*ホット パス*" には炎を模したアイコンが付きます。 **HomeController** セクションの **About** メソッドが **Thread.Sleep** 関数を呼び出しているため、Web アプリが遅くなっています。
 
@@ -35,17 +36,17 @@ ms.locfileid: "81640969"
 
 1. ASP.NET Core MVC Web アプリケーションを作成します。
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. 作業ディレクトリをプロジェクトのルート フォルダーに変更します。
 
 1. プロファイラー トレースを収集する NuGet パッケージを追加します。
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. Program.cs で Application Insights を有効にします。
 
@@ -55,7 +56,7 @@ ms.locfileid: "81640969"
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. Startup.cs でプロファイラーを有効にします。
 
     ```csharp
@@ -69,24 +70,24 @@ ms.locfileid: "81640969"
 1. **HomeController.cs** セクションに無作為で数秒遅らせるためのコード行を追加します。
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. 変更内容をローカル リポジトリに保存し、コミットします。
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>プロジェクトをホストする Linux Web アプリを作成する
@@ -106,13 +107,13 @@ ms.locfileid: "81640969"
 
     ![Git リポジトリを設定する](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-その他のデプロイ オプションについては、[この記事](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type)を参照してください。
+詳細については、「[App Service のドキュメント](https://docs.microsoft.com/azure/app-service)」を参照してください。
 
 ## <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
 1. コマンド プロンプト ウィンドウで、プロジェクトのルート フォルダーを参照します。 App Service のリポジトリを指すように Git リモート リポジトリを追加します。
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -121,13 +122,13 @@ ms.locfileid: "81640969"
 
 2. Azure に変更をプッシュし、プロジェクトをデプロイします。
 
-    ```
+    ```console
     git push azure master
     ```
 
-次の例のような出力が表示されます。
+    次の例のような出力が表示されます。
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -144,19 +145,16 @@ ms.locfileid: "81640969"
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights を追加して Web アプリを監視する
 
-1. [Application Insights リソースを作成します](./../../azure-monitor/app/create-new-resource.md )。
+1. [Application Insights リソースを作成します](./create-new-resource.md)。
 
 2. Application Insights リソースの **iKey** 値をコピーし、自分の Web アプリで次のように設定します。
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     アプリ設定を変更すると、サイトは自動的に再起動します。 新しい設定が適用されると、すぐにプロファイラーが 2 分間実行されます。 その後、プロファイラーは 1 時間ごとに 2 分間実行されます。
 
@@ -174,3 +172,4 @@ ms.locfileid: "81640969"
 Azure App Service でホストされているカスタム コンテナーを使用する場合は、[コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で Application Insight Profiler を有効にします。
 
 問題やご提案があれば、次の Application Insights GitHub リポジトリにご報告ください:[ApplicationInsights-Profiler-AspNetCore:Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)。
+

@@ -3,16 +3,16 @@ title: Linux 上で Azure Files で使用するポイント対サイト (P2S) VP
 description: Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する方法
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515312"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -117,7 +117,9 @@ Azure 仮想ネットワーク ゲートウェイは、オンプレミスの Lin
 `<desired-vpn-name-here>` は、これらのリソースに必要な名前に置き換えてください。
 
 > [!Note]  
-> Azure 仮想ネットワーク ゲートウェイのデプロイには、最大で 45 分かかる場合があります。 このリソースがデプロイされている間、この bash スクリプトは、デプロイが完了されるようにブロックします。 これは予期されることです。
+> Azure 仮想ネットワーク ゲートウェイのデプロイには、最大で 45 分かかる場合があります。 このリソースがデプロイされている間、この bash スクリプトは、デプロイが完了されるようにブロックします。
+>
+> P2S IKEv2/OpenVPN 接続は、**Basic** SKU ではサポートされていません。 そのため、このスクリプトでは、仮想ネットワーク ゲートウェイに **VpnGw1** SKU を使用しています。
 
 ```bash
 vpnName="<desired-vpn-name-here>"

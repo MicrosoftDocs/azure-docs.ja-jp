@@ -1,22 +1,18 @@
 ---
 title: Azure Event Grid の Azure AD を使用して WebHook 配信をセキュリティで保護する
 description: Azure Event Grid を使用して Azure Active Directory によって保護された HTTPS エンドポイントにイベントを配信する方法について説明します
-services: event-grid
-author: banisadr
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.author: babanisa
-ms.openlocfilehash: 86d647ebfcf6e4c1ea8d05f58dd1f559d6e30cfc
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.date: 07/07/2020
+ms.openlocfilehash: 90d06f203bc93177101a87a7a774d816b11b16f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900467"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460713"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Azure Active Directory で保護されたエンドポイントにイベントを発行する
 
-この記事では、Azure Active Directory を利用して、イベント サブスクリプションと webhook エンドポイント間の接続をセキュリティで保護する方法について説明します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)」を参照してください。
+この記事では、Azure Active Directory を利用して、イベント サブスクリプションと webhook エンドポイント間の接続をセキュリティで保護する方法について説明します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](../active-directory/develop/v2-overview.md)」を参照してください。
 
 この記事ではデモンストレーションのために Azure portal を使用しますが、CLI、PowerShell、または SDK を使用して機能を有効にすることもできます。
 
@@ -32,7 +28,7 @@ ms.locfileid: "82900467"
 Azure AD アプリケーションでロールとサービス プリンシパルを作成するには、次の PowerShell スクリプトを使用します。 Azure AD アプリケーションのテナント ID とオブジェクト ID が必要になります。
 
    > [!NOTE]
-   > このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)のメンバーである必要があります。
+   > このスクリプトを実行するには、[Azure AD アプリケーション管理者ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)のメンバーである必要があります。
     
 1. Azure AD テナント ID を使用するように、PowerShell スクリプトの $myTenantId を変更します。
 1. Azure AD アプリケーションのオブジェクト ID を使用するように、PowerShell スクリプトの $myAzureADApplicationObjectId を変更します。

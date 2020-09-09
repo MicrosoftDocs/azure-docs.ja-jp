@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4c75af054a342e74606696f09c227822f385e096
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75530733"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017993"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs から通知を安全にプッシュする
 
@@ -94,7 +95,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、**Solution SecurePush**) を右クリックし、 **[追加]** 、 **[新しいプロジェクト]** の順にクリックします。
 2. **[ストア アプリ]** を展開し、 **[Windows Phone アプリ]** 、 **[Windows ランタイム コンポーネント (Windows Phone)]** の順にクリックします。 プロジェクトの名前として「**PushBackgroundComponent**」と入力し、 **[OK]** をクリックしてプロジェクトを作成します。
 
-    ![][12]
+    ![[Windows ランタイム コンポーネント (Windows Phone)] の Visual C# オプションが強調表示されている [新しいプロジェクトの追加] ダイアログのスクリーンショット。][12]
 3. ソリューション エクスプローラーで、**PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、 **[追加]** 、 **[クラス]** の順にクリックします。 新しいクラスに `PushBackgroundTask.cs` という名前を付けます。 **[追加]** をクリックしてクラスを生成します。
 4. `PushBackgroundComponent` 名前空間定義の内容全体を次のコードで置き換えます。プレースホルダー `{back-end endpoint}` をバックエンドのデプロイ時に取得したバックエンド エンドポイントで置き換えます。
 
@@ -162,12 +163,12 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[参照]** を右クリックし、 **[参照の追加]** をクリックします。参照マネージャー ダイアログで、**PushBackgroundComponent** のチェック ボックスをオンにして、 **[OK]** をクリックします。
 12. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[Package.appxmanifest]** をダブルクリックします。 **[通知]** で、 **[トースト対応]** を **[はい]** に設定します。
 
-    ![][3]
+    ![[はい] に設定された [トースト対応] オプションが赤色の枠線で囲まれている Package.appxmanifest にフォーカスした [ソリューション エクスプローラー] ウィンドウのスクリーンショット。][3]
 13. 引き続き **Package.appxmanifest** で、上部の **[宣言]** メニューをクリックします。 **[使用可能な宣言]** ボックスで、 **[バックグラウンド タスク]** 、 **[追加]** の順にクリックします。
 14. **Package.appxmanifest** で、 **[プロパティ]** の **[プッシュ通知]** チェック ボックスをオンにします。
 15. **Package.appxmanifest** で、 **[アプリ設定]** の **[エントリ ポイント]** フィールドに「**PushBackgroundComponent.PushBackgroundTask**」と入力します。
 
-    ![][13]
+    ![[使用可能な宣言]、[サポートされる宣言]、[プッシュ通知]、[エントリ ポイント] オプションが赤色の枠線で囲まれている Package.appxmanifest にフォーカスした [ソリューション エクスプローラー] ウィンドウのスクリーンショット。][13]
 16. **[ファイル]** メニューの **[すべて保存]** をクリックします。
 
 ## <a name="run-the-application"></a>アプリケーションの実行

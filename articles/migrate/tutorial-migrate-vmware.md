@@ -2,26 +2,29 @@
 title: Azure Migrate Server Migration を使用して VMware VM のエージェントレス移行を実行する
 description: Azure Migrate を使用して VMware VM のエージェントレス移行を実行する方法について説明します。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 86f24b7fdfee30c182419023e4ed33f6228b3711
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: c9a7e76496c2851b90c8fd1d164645c46d02609b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509314"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376037"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
-この記事では、Azure Migrate Server Migration ツールによるエージェントレス移行を使用して、オンプレミスの VMware VM を Azure に移行する方法について説明します。
+この記事では、[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用して、エージェントレス移行でオンプレミスの VMware VM を Azure に移行する方法について説明します。 エージェントベース移行を使用して VMware VM を移行することもできます。 方法を[比較してください](server-migrate-overview.md#compare-migration-methods)。
 
-[Azure Migrate](migrate-services-overview.md) では、オンプレミスのアプリとワークロード、および AWS/GCP VM インスタンスの検出、評価、それらの Azure への移行を追跡するための中央ハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
+これは、VMware VM を評価して Azure に移行する方法を示すシリーズの 3 番目のチュートリアルです。 
 
-これはシリーズの 3 番目のチュートリアルであり、Azure Migrate の Server Assessment と Server Migration を使用して VMware VM を評価し、Azure に移行する方法を示します。 このチュートリアルでは、以下の内容を学習します。
+> [!NOTE]
+> チュートリアルでは、概念実証をすばやく設定できるように、シナリオの最も簡単なデプロイ パスを示します。 チュートリアルではできるだけ既定のオプションを使用しており、使用可能な設定とパスをすべて示しているわけではありません。 
+
+
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * 移行のために VM を準備します。
-> * Azure Migrate Server Migration ツールを追加します。
+> * Azure Migrate:Server Migration ツールを追加します。
 > * 移行したい VM を検出します。
 > * VM のレプリケートを開始します。
 > * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。
@@ -29,38 +32,17 @@ ms.locfileid: "82509314"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
-## <a name="migration-methods"></a>移行の方法
-
-Azure Migrate Server Migration ツールを使用して VMware VM を Azure に移行できます。 このツールには、VMware VM の移行のためのいくつかのオプションが用意されています。
-
-- エージェントレス レプリケーションを使用した移行。 VM に何もインストールする必要なく VM を移行します。
-- レプリケーション用のエージェントを使用した移行。 レプリケーションのために VM 上にエージェントをインストールします。
-
-エージェントレスとエージェントベース、いずれの移行を使用するかを決定するには、これらの記事を確認してください。
-
-- エージェントレス移行の[しくみを学習](server-migrate-overview.md)し、[移行方法を比較](server-migrate-overview.md#compare-migration-methods)してください。
-- エージェントベースの方法を使用したい場合は、[この記事をお読みください](tutorial-migrate-vmware-agent.md)。
-
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを始める前に、次の準備が必要です。
 
-1. このシリーズの[最初のチュートリアルを完了](tutorial-prepare-vmware.md)して、移行のために Azure と VMware を設定します。 具体的には、このチュートリアルでは以下を行う必要があります。
-    - 移行のために [Azure を準備する](tutorial-prepare-vmware.md#prepare-azure)。
-    - 移行のために[オンプレミス環境を準備する](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration)。
-    
-2. Azure に移行する前に、Azure Migrate Server Assessment を使用して VMware VM を評価してみることをお勧めします。 評価を設定するには、このシリーズの [2 番目のチュートリアルを完了](tutorial-assess-vmware.md)します。 VM を評価したくない場合、このチュートリアルはスキップできます。 評価を試してみることをお勧めしますが、移行を試みる前に評価を実行しなければならないわけではありません。
-
+1. [最初のチュートリアルを完了](tutorial-prepare-vmware.md)して、移行のために Azure と VMware を準備します。
+2. 2 番目のチュートリアルを完了して、Azure に移行する前に [VMware VM を評価](tutorial-assess-vmware.md)しておくことをお勧めしますが、必須ではありません。 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Migrate Server Migration ツールを追加する
 
-Azure Migrate Server Migration ツールを追加します。
-
-- 2 番目のチュートリアルに従って [VMware VM を評価](tutorial-assess-vmware.md)した場合は、そのままツールを追加できます。
-- 2 番目のチュートリアルに従っていない場合は、[こちらの手順に従って](how-to-add-tool-first-time.md)、Azure Migrate プロジェクトの設定を行ってください。  プロジェクトの作成時に Azure Migrate:Server Migration ツールを追加します。
-
-プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。
+Azure Migrate プロジェクトをまだ設定していない場合は、ツールを追加する前に[それを行ってください](how-to-add-tool-first-time.md)。 プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。
 
 1. Azure Migrate プロジェクトで、 **[概要]** をクリックします。 
 2. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
@@ -77,57 +59,21 @@ Azure Migrate Server Migration ツールを追加します。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
-Azure Migrate Server Migration では、軽量の VMware VM アプライアンスを実行します。 このアプライアンスによって VM の検出が実行され、VM のメタデータとパフォーマンス データが Azure Migrate Server Migration に送信されます。 Azure Migrate:Server Assessment ツールでも、VMware VM のエージェントレス移行を実行するために同じアプライアンスが使用されます。
+Azure Migrate Server Migration は、VMware VM の検出、評価、エージェントレス移行に使用される軽量の VMware VM アプライアンスを実行します。 [評価のチュートリアル](tutorial-assess-vmware.md)に従っている場合、アプライアンスは既に設定されています。 まだ設定していない場合は、次のいずれかの方法を使用して設定します。
 
-- [VMware VM を評価するチュートリアル](tutorial-assess-vmware.md)に従った場合は、そのチュートリアルの中でアプライアンスを既に設定してあります。
-- そのチュートリアルに従っていない場合は、次のどちらかの方法を使用して、アプライアンスを設定してください。
-    - ダウンロードした OVA テンプレートを使用して VMware VM 上に[設定](how-to-set-up-appliance-vmware.md)します。
-    - PowerShell インストーラー スクリプトを使用して VMware VM 上または物理マシン上に設定します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、[この方法](deploy-appliance-script.md)を使用してください。
+- **OVA テンプレート**:ダウンロードした OVA テンプレートを使用して VMware VM 上に[設定](how-to-set-up-appliance-vmware.md)します。
+- **Script**: PowerShell インストーラ スクリプトを使用して VMware VM 上または物理マシン上に[設定](deploy-appliance-script.md)します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、この方法を使用してください。
 
 アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
-
-## <a name="prepare-vms-for-migration"></a>移行のために VM を準備する
-
-VM を Azure に確実に移行できるよう、Azure Migrate では VM にいくつかの変更を行う必要があります。
-
-- 一部のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。 [詳細情報](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
-- これらのいずれのオペレーティング システムも備えていない VM を移行する場合は、手順に従って VM を準備してください。
-- 移行を開始する前にこれらの変更を行うことが重要です。 変更を行う前に VM を移行すると、Azure で VM が起動しない可能性があります。
-- オンプレミスの VM に対して行う構成変更は、VM のレプリケーションが有効になった後に、Azure にレプリケートされます。 変更が確実にレプリケートされるよう、移行先の復旧ポイントは、オンプレミスで行われた構成変更の時点よりも後にしてください。
-
-
-### <a name="prepare-windows-server-vms"></a>Windows Server VM の準備
-
-**操作** | **詳細** | **手順**
---- | --- | ---
-Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されるようにする。 | SAN ポリシーを Online All に構成します。 | 1.管理者アカウントで VM にサインインし、コマンド ウィンドウを開きます。<br/> 2.「**diskpart**」と入力して、Diskpart ユーティリティを実行します。<br/> 3.「**SAN POLICY=OnlineAll**」と入力します<br/> 4.「Exit」と入力して Diskpart を終了し、コマンド プロンプトを閉じます。
-Azure VM で Azure シリアル アクセス コンソールを有効にする | これはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 ディスク イメージを使用して Azure VM が起動します。これは、新しい VM の再起動に相当します。 | [これらの手順](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)に従って、有効化してください。
-Hyper-V ゲスト統合をインストールする | Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 | [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
-リモート デスクトップ | VM でリモート デスクトップを有効にして、どのネットワーク プロファイルでも Windows ファイアウォールがリモート デスクトップ アクセスをブロックしていないことを確認します。 | [詳細については、こちらを参照してください](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
-
-### <a name="prepare-linux-vms"></a>Linux VM の準備
-
-**操作** | **詳細** 
---- | --- | ---
-Hyper-V Linux 統合サービスをインストールする | Linux ディストリビューションの新しいバージョンには、ほとんどの場合、既定でこれが含まれています。
-必要な Hyper-V ドライバーが含まれるように Linux の init イメージをリビルドする | これにより、Azure で確実に VM が起動します。これが必要なのは一部のディストリビューションだけです。
-Azure シリアル コンソールのログ記録を有効にする | これはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 ディスク イメージを使用して Azure VM が起動します。これは、新しい VM の再起動に相当します。<br/> [これらの手順](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console)に従って、有効化してください。
-デバイスのマップ ファイルを更新する | 永続的なデバイス識別子を使用するよう、デバイス名とボリュームの関連付けが含まれているデバイスのマップ ファイルを更新します
-fstab エントリを更新する | 永続的なボリューム識別子を使用するよう、エントリを更新します。
-Udev ルールを削除する | MAC アドレスなどに基づいてインターフェイス名を予約する Udev ルールを削除します。
-ネットワーク インターフェイスを更新する | DHCP に基づいて IP アドレスを受け取るよう、ネットワーク インターフェイスを更新します。
-SSH を有効にする | SSH を有効にして、再起動時に自動的に開始するよう sshd サービスを設定してください。<br/> 受信 SSH 接続要求が、OS ファイアウォールまたはスクリプト実行可能なルールによってブロックされないようにします。
-
-Azure での Linux VM の実行については、それらの手順について説明している[こちらの記事に従って](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)ください。いくつかの人気のある Linux ディストリビューションについては、手順を収集してください。  
-
-
 ## <a name="replicate-vms"></a>VM をレプリケートする
 
-検出が完了したら、Azure への VMware VM のレプリケーションを開始できます。 
+アプライアンスを設定して検出を完了すると、Azure への VMware VM のレプリケーションを開始できます。 
 
-> [!NOTE]
-> 最大 10 台のマシンをまとめてレプリケートできます。 レプリケートするマシンがそれより多い場合は、10 台をひとまとまりとして同時にレプリケートしてください。 エージェントレス移行の場合は、100 台まで同時にレプリケーションを実行できます。
+- 最大 300 件のレプリケーションを同時に実行できます。
+- ポータルでは、移行の対象として一度に最大 10 台の VM を選択できます。 より多くのマシンを移行するには、10 台のバッチでグループに追加します。
+
+レプリケーションを有効にするには、次の手順に従います。
 
 1. Azure Migrate プロジェクトの **[サーバー]** の **[Azure Migrate: Server Migration]** で、 **[レプリケート]** をクリックします。
 
@@ -138,72 +84,70 @@ Azure での Linux VM の実行については、それらの手順について�
 
     ![ソースの設定](./media/tutorial-migrate-vmware/source-settings.png)
 
-    - この手順では、チュートリアルの完了時にアプライアンスを既に設定してあることを想定しています。
-    - アプライアンスを設定していない場合は、[こちらの記事](how-to-set-up-appliance-vmware.md)の手順に従ってください。
-
-4. **[仮想マシン]** で、レプリケートしたいマシンを選択します。
-    - VM の評価を実行した場合は、評価結果から VM のサイズ設定とディスクの種類 (Premium または Standard) の推奨事項を適用できます。 これを行うには、 **[Azure Migrate Assessment から移行設定をインポートしますか?]** で **[はい]** オプションを選択します。
-    - 評価を実行しなかった場合、または評価の設定を使用しない場合は、 **[いいえ]** オプションを選択します。
-    - 評価の使用を選択した場合は、VM グループと評価名を選択します。
-
+4. **[仮想マシン]** で、レプリケートしたいマシンを選択します。 評価 (実行している場合) から VM のサイズ設定とディスクの種類を適用するには、 **[Azure Migrate Assessment から移行設定をインポートしますか?]** で **[はい]** を選択し、VM グループと評価名を選択します。 評価の設定を使用していない場合は **[いいえ]** を選択します。
+   
     ![評価の選択](./media/tutorial-migrate-vmware/select-assessment.png)
 
-5. **[仮想マシン]** で、必要に応じて VM を検索し、移行したい各 VM を確認します。 その後、 **[次へ:ターゲット設定]** をクリックします。
+5. **[仮想マシン]** で、移行する VM を選択します。 その後、 **[次へ:ターゲット設定]** をクリックします。
 
     ![VM を選択する](./media/tutorial-migrate-vmware/select-vms.png)
 
-6. **[ターゲット設定]** で、サブスクリプションと、移行先となるターゲット リージョンを選択し、移行後に Azure VM が配置されるリソース グループを指定します。 **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。
-7. **[Azure ハイブリッド特典]** で、
+6. **[ターゲット設定]** で、サブスクリプションとターゲット リージョンを選択します。 移行後に Azure VM が属するリソース グループを指定します。
+7. **[仮想ネットワーク]** で、移行後に Azure VM が参加する Azure VNet およびサブネットを選択します。
+8. **[可用性オプション]** で、以下を選択します。
+    -  可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションを選択した場合は、[コンピューティング] タブで選択した各マシンに使用する可用性ゾーンを指定する必要があります。このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。
+    -  可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択されたターゲット リソース グループに 1 つ以上の可用性セットが必要です。
+    - [インフラストラクチャ冗長は必要ありません] オプション (移行されたマシンに対してこれらの可用性構成がいずれも不要な場合)。
+
+9. **[Azure ハイブリッド特典]** で、
 
     - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
     - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 続けて、 **[次へ]** をクリックします。
 
     ![ターゲットの設定](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、可用性セットを確認します。 VM は [Azure の要件](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)に準拠している必要があります。
+10. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)に準拠している必要があります。
 
     - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。 
     - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。 
-    - **可用性セット**:移行後に VM を Azure 可用性セットに配置する必要がある場合は、セットを指定します。 このセットは、移行用に指定するターゲット リソース グループ内に存在する必要があります。
-
-    ![VM コンピューティングの設定](./media/tutorial-migrate-vmware/compute-settings.png)
-
-9. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
-    - レプリケーションからディスクを除外できます。
-    - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
-
-    ![ディスク](./media/tutorial-migrate-vmware/disks.png)
-
-10. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
+    - **可用性ゾーン**:使用する可用性ゾーンを指定します。
+    - **可用性セット**:使用する可用性セットを指定します。
 
 > [!NOTE]
-> レプリケーションを開始する前であれば、 **[管理]**  >  **[マシンのレプリケート]** でレプリケーションの設定をいつでも更新できます。 レプリケーションの開始後は、設定を変更することができません。
+>仮想マシンのセットごとに別の可用性オプションを選択する場合は、手順 1 に進み、仮想マシンの 1 つのセットのレプリケーションを開始した後に別の可用性オプションを選択して各手順を繰り返します。
+
+
+ ![VM コンピューティングの設定](./media/tutorial-migrate-vmware/compute-settings.png)
+
+11. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
+   
+    ![ディスク](./media/tutorial-migrate-vmware/disks.png)
+
+12. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
+
+> [!NOTE]
+> レプリケーションが開始される前であれば、レプリケーションの設定をいつでも更新できます( **[管理]**  >  **[マシンのレプリケート]** )。 レプリケーションの開始後は、設定を変更できません。
 
 ### <a name="provisioning-for-the-first-time"></a>初回のプロビジョニング
 
-これが Azure Migrate プロジェクトでレプリケートする初めての VM である場合、Azure Migrate Server Migration によって、プロジェクトと同じリソース グループにこれらのリソースが自動的にプロビジョニングされます。
+これがプロジェクトでレプリケートする最初の VM である場合、Server Migration によって、プロジェクトと同じリソース グループにこれらのリソースが自動的にプロビジョニングされます。
 
-- **サービス バス**: Azure Migrate Server Migration では、サービス バスを使用して、レプリケーション オーケストレーション メッセージをアプライアンスに送信します。
+- **サービス バス**: Server Migration では、サービス バスを使用して、レプリケーション オーケストレーション メッセージをアプライアンスに送信します。
 - **ゲートウェイ ストレージ アカウント**: Server Migration では、ゲートウェイ ストレージ アカウントを使用して、レプリケートされる VM に関する状態情報を格納します。
 - **ログ ストレージ アカウント**: Azure Migrate アプライアンスでは、VM のレプリケーション ログをログ ストレージ アカウントにアップロードします。 Azure Migrate により、レプリケーション情報がレプリカ マネージド ディスクに適用されます。
-- **キー コンテナー**: Azure Migrate アプライアンスでは、キー コンテナーを使用して、サービス バスの接続文字列と、レプリケーションで使用されるストレージ アカウントのアクセス キーを管理します。 準備を行ったときに、キー コンテナーがストレージ アカウントにアクセスするために必要なアクセス許可を設定したはずです。 [これらのアクセス許可を確認してください](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)。   
-
+- **キー コンテナー**: Azure Migrate アプライアンスでは、キー コンテナーを使用して、サービス バスの接続文字列と、レプリケーションで使用されるストレージ アカウントのアクセス キーを管理します。
 
 ## <a name="track-and-monitor"></a>追跡して監視する
 
+1. ポータルの通知で、ジョブの状態を追跡します。
+2. レプリケーションの状態を監視するには、**サーバーをレプリケートしています** をクリックします (**Azure Migrate:Server Migration** 内)。
 
-- **[レプリケート]** をクリックすると、レプリケーションの開始ジョブが開始されます。 
+     ![レプリケーションを監視します](./media/tutorial-migrate-vmware/replicating-servers.png)
+
+レプリケーションは、次のように行われます。
 - レプリケーションの開始ジョブが正常に終了すると、マシンで Azure への初期レプリケーションが開始されます。
 - 初期レプリケーション中に、VM スナップショットが作成されます。 スナップショットのディスク データは、Azure のレプリカ マネージド ディスクにレプリケートされます。
 - 初期レプリケーションが完了すると、差分レプリケーションが開始されます。 オンプレミスのディスクに対する増分変更は、Azure のレプリカ ディスクに定期的にレプリケートされます。
-
-ジョブの状態は、ポータルの通知で追跡できます。
-
-レプリケーションの状態を監視するには、**サーバーをレプリケートしています** をクリックします (**Azure Migrate: Server Migration** 内)。
-![レプリケーションの監視](./media/tutorial-migrate-vmware/replicating-servers.png)
-
-
-
 
 ## <a name="run-a-test-migration"></a>テスト移行を実行する
 
@@ -251,7 +195,7 @@ Azure での Linux VM の実行については、それらの手順について�
 ## <a name="complete-the-migration"></a>移行を完了する
 
 1. 移行が完了したら、VM を右クリックして、 **[レプリケーションの停止]** を選択します。 これで、オンプレミスのマシンのレプリケーションが停止し、VM のレプリケーション状態情報がクリーンアップされます。
-2. Azure VM の [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) エージェントを、移行されたマシンにインストールします。
+2. Azure VM の [Windows](../virtual-machines/extensions/agent-windows.md) または [Linux](../virtual-machines/extensions/agent-linux.md) エージェントを、移行されたマシンにインストールします。
 3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
 4. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
 5. 移行された Azure VM インスタンスにトラフィックを切り替えます。
@@ -265,14 +209,14 @@ Azure での Linux VM の実行については、それらの手順について�
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
-    - [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
+    - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
--  [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) をデプロイして、リソースの使用率と消費量を監視します。
+-  [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure クラウド導入フレームワークでの[クラウド移行の工程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)を調査します。
+Azure クラウド導入フレームワークでの[クラウド移行の工程](/azure/architecture/cloud-adoption/getting-started/migrate)を調査します。

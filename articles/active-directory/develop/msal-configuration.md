@@ -7,18 +7,18 @@ author: shoatman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050373"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854916"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
 
@@ -34,7 +34,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 |-----------|------------|-------------|-------|
 | `client_id` | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのクライアント ID |
 | `redirect_uri`   | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのリダイレクト URI |
-| `authorities` | List\<機関> | いいえ | アプリに必要な機関の一覧 |
+| `authorities` | リスト\<Authority> | いいえ | アプリに必要な機関の一覧 |
 | `authorization_user_agent` | AuthorizationAgent (列挙型) | いいえ | 指定できる値: `DEFAULT`、`BROWSER`、`WEBVIEW` |
 | `http` | HttpConfiguration | いいえ | `HttpUrlConnection` `connect_timeout` と `read_timeout` を構成します |
 | `logging` | LoggingConfiguration | いいえ | ログ記録の詳細レベルを指定します。 オプションの構成には次のものが含まれます: `pii_enabled` (ブール値を取ります)、`log_level` (`ERROR`、`WARNING`、`INFO`、または `VERBOSE` を取ります)。 |
@@ -58,14 +58,14 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
     "audience": {
         "type": "AzureADandPersonalMicrosoftAccount"
     },
-    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken or acquireTokenSilent call
+    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken call
 },
 // Example AzureAD My Organization
 {
     "type": "AAD",
     "audience": {
         "type": "AzureADMyOrg",
-        "tenantId": "contoso.com" // Provide your specific tenant ID here
+        "tenant_id": "contoso.com" // Provide your specific tenant ID here
     }
 },
 // Example AzureAD Multiple Organizations
@@ -150,7 +150,7 @@ HTTP タイムアウトのグローバル設定を構成します。次に例を
 | プロパティ | データ型  | 必須 | Notes |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | boolean | いいえ | 個人データを出力するかどうか |
-| `log_level`   | boolean | いいえ | どのログ メッセージを出力するか |
+| `log_level`   | string | いいえ | どのログ メッセージを出力するか。 サポートされているログレベルには、`ERROR`、`WARNING`、`INFO`、および `VERBOSE` があります。 |
 | `logcat_enabled` | boolean | いいえ | ログ記録のインターフェイスに加えて、ログ cat にも出力するかどうか |
 
 ### <a name="account_mode"></a>account_mode

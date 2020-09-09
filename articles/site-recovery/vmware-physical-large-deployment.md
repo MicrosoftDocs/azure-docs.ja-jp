@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d991b38c3f72b54f4564dd4847c8532b507286cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81409763"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131777"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 
@@ -85,7 +85,7 @@ Deployment Planner は、VMware のオンプレミス環境に関する情報を
 
 **タスク** | **詳細** | **操作**
 --- | --- | ---
-**コア数を確認する** | フェールオーバーの時点で使用可能なクォータ内のコア数がターゲットの総数以上でない場合、フェールオーバーは失敗します。 | VMware VM の場合は、Deployment Planner のコアの推奨事項を満たすために、ターゲット サブスクリプションに十分なコアがあることを確認してください。<br/><br/> 物理サーバーの場合は、Azure コア数が、手動での見積もりを満たすことを確認してください。<br/><br/> クォータを確認するには、Azure portal > **[サブスクリプション]** で **[使用量 + クォータ]** をクリックします。<br/><br/> クォータの増加については[こちら](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)をご覧ください。
+**コア数を確認する** | フェールオーバーの時点で使用可能なクォータ内のコア数がターゲットの総数以上でない場合、フェールオーバーは失敗します。 | VMware VM の場合は、Deployment Planner のコアの推奨事項を満たすために、ターゲット サブスクリプションに十分なコアがあることを確認してください。<br/><br/> 物理サーバーの場合は、Azure コア数が、手動での見積もりを満たすことを確認してください。<br/><br/> クォータを確認するには、Azure portal > **[サブスクリプション]** で **[使用量 + クォータ]** をクリックします。<br/><br/> クォータの増加については[こちら](../azure-portal/supportability/resource-manager-core-quotas-request.md)をご覧ください。
 **フェールオーバーの上限を確認する** | フェールオーバーの数は、Site Recovery のフェールオーバーの上限を超えてはいけません。 |  フェールオーバーが上限を超える場合、サブスクリプションを追加して複数のサブスクリプションにフェールオーバーするか、サブスクリプションのクォータを増やすことができます。 
 
 
@@ -188,7 +188,7 @@ VM の最初のバッチのレプリケーションを開始したら、次の�
 1. レプリケーション対象のマシンの正常性状態を監視するディザスター リカバリー管理者を割り当てます。
 2. レプリケーション対象の項目とインフラストラクチャに関する[イベントを監視](site-recovery-monitor-and-troubleshoot.md)します。
 3. スケールアウト プロセス サーバーの[正常性を監視](vmware-physical-azure-monitor-process-server.md)します。
-4. 監視しやすくするために、サインアップしてイベントに関する[メール通知](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications)を取得します。
+4. 監視しやすくするために、サインアップしてイベントに関する[メール通知](./site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications)を取得します。
 5. 定期的な[ディザスター リカバリー訓練](site-recovery-test-failover-to-azure.md)を実施して、すべてが予想どおりに動作することを確認します。
 
 
@@ -214,7 +214,7 @@ VM の最初のバッチのレプリケーションを開始したら、次の�
     - [こちら](recovery-plan-overview.md) をご覧ください。
 2. Azure での手動タスクを自動化するため、復旧計画に Azure Automation Runbook スクリプトを追加します。 一般的なタスクには、ロード バランサーの構成や DNS の更新などがあります。 [詳細情報](site-recovery-runbook-automation.md)
 2. フェールオーバーの前に、Windows マシンが Azure 環境に準拠するように準備します。 準拠するマシンでは[フェールオーバーの上限](#plan-azure-subscriptions-and-quotas)が大きくなります。 Runbook については[こちら](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)をご覧ください。
-4.  復旧計画と共に、[Start-AzRecoveryServicesAsrPlannedFailoverJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell コマンドレットを使用してフェールオーバーをトリガーします。
+4.  復旧計画と共に、[Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell コマンドレットを使用してフェールオーバーをトリガーします。
 
 
 

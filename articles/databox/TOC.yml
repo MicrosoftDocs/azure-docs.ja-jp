@@ -11,33 +11,59 @@
           expanded: true
           items:
             - name: 設定 - Azure portal
-              href: data-box-quickstart-portal.md
+              items:
+                - name: インポートの場合
+                  href: data-box-quickstart-portal.md
+                - name: エクスポートの場合
+                  href: data-box-quickstart-export.md
         - name: チュートリアル
           items:
-            - name: 1 - 注文
-              href: data-box-deploy-ordered.md
-            - name: 2 - 設定
-              href: data-box-deploy-set-up.md
-            - name: 3 - 接続とコピー
+            - name: Azure へのデータ インポート
               items:
-                - name: SMB 経由
-                  href: data-box-deploy-copy-data.md
-                - name: NFS 経由
-                  href: data-box-deploy-copy-data-via-nfs.md
-                - name: REST 経由
-                  href: data-box-deploy-copy-data-via-rest.md
-                - name: データ コピー サービス経由
-                  href: data-box-deploy-copy-data-via-copy-service.md
-                - name: マネージド ディスクへ
-                  href: data-box-deploy-copy-data-from-vhds.md
-            - name: 4 - 返却、アップロード、確認
-              href: data-box-deploy-picked-up.md
+                - name: 1 - 注文
+                  href: data-box-deploy-ordered.md
+                - name: 2 - 設定
+                  href: data-box-deploy-set-up.md
+                - name: 3 - 接続とコピー
+                  items:
+                    - name: SMB 経由
+                      href: data-box-deploy-copy-data.md
+                    - name: NFS 経由
+                      href: data-box-deploy-copy-data-via-nfs.md
+                    - name: REST 経由
+                      href: data-box-deploy-copy-data-via-rest.md
+                    - name: データ コピー サービス経由
+                      href: data-box-deploy-copy-data-via-copy-service.md
+                    - name: マネージド ディスクへ
+                      href: data-box-deploy-copy-data-from-vhds.md
+                - name: 4 - 返却、アップロード、確認
+                  href: data-box-deploy-picked-up.md
+            - name: Azure からデータをエクスポートする
+              items:
+                - name: 1 - 注文
+                  href: data-box-deploy-export-ordered.md
+                - name: 2 - 設定
+                  href: data-box-deploy-set-up.md
+                - name: 3 - 接続とコピー
+                  items:
+                    - name: SMB 経由
+                      href: data-box-deploy-export-copy-data.md
+                    - name: NFS 経由
+                      href: data-box-deploy-export-copy-data-via-nfs.md
+                - name: 4 - 返却
+                  href: data-box-deploy-export-picked-up.md
         - name: 概念
           items:
             - name: 安全性のガイドラインを読む
               href: data-box-safety.md
             - name: 追跡とログ記録を確認する
-              href: data-box-logs.md
+              items:
+                - name: インポート順序の場合
+                  href: data-box-logs.md
+                - name: エクスポート順序の場合
+                  href: data-box-export-logs.md
+            - name: 監査ログの表示
+              href: data-box-audit-logs.md
             - name: 要件を確認する
               items:
                 - name: Data Box の場合
@@ -46,8 +72,12 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: セキュリティを確認する
-              href: data-box-security.md
+            - name: Security
+              items:
+                - name: セキュリティ ベースライン
+                  href: security-baseline.md
+                - name: セキュリティを確認する
+                  href: data-box-security.md
             - name: よく寄せられる質問
               href: data-box-faq.md
         - name: 方法
@@ -60,6 +90,8 @@
               href: data-box-portal-customer-managed-shipping.md
             - name: カスタマー マネージド キーの有効化
               href: data-box-customer-managed-encryption-key-portal.md
+            - name: カスタマー ロックボックスを使用する
+              href: data-box-customer-lockbox.md
             - name: データを BLOB 層に移動する
               href: data-box-how-to-set-data-tier.md
             - name: デバイスをケーブル接続する
@@ -195,11 +227,19 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS ストアから
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+    - name: リファレンス
+      items:
+        - name: Azure CLI
+          href: /cli/azure/ext/databox/databox
+        - name: Azure PowerShell
+          href: /powershell/module/az.databox
+        - name: .NET API
+          href: /dotnet/api/overview/azure/databox/management
     - name: リソース
       items:
         - name: Data Box 製品
           href: 'https://azure.microsoft.com/services/storage/databox/data/'
         - name: Data Box の価格
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/'
         - name: Data Box Disk の価格
-          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'
+          href: 'https://azure.microsoft.com/pricing/details/databox/disk/'

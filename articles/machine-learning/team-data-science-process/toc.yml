@@ -62,7 +62,7 @@
       href: walkthroughs-azure-data-lake.md
     - name: SQL Server での R、Python、T-SQL の使用
       href: walkthroughs-sql-server.md
-    - name: SQL DW での T-SQL と Python の使用
+    - name: Azure Synapse Analytics での T-SQL と Python の使用
       href: walkthroughs-sql-data-warehouse.md
 - name: ユーティリティとツール
   items:
@@ -95,7 +95,7 @@
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: HDInsight での R Server の概要
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
-        - name: Azure Machine Learning ワークスペース
+        - name: Machine Learning Studio (classic) ワークスペース
           href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: ビジネス ニーズの分析
       items:
@@ -192,8 +192,6 @@
       href: deploy-models-in-production.md
 - name: 関連項目
   items:
-    - name: Azure Machine Learning
-      href: ../
     - name: Cognitive Services
       href: 'https://docs.microsoft.com/azure/cognitive-services/'
     - name: 異常検出
@@ -211,7 +209,7 @@
     - name: TDSP を使用している組織
       items:
         - name: New Signature
-          href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
+          href: 'https://newsignature.com/services/'
         - name: BlueGranite
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
     - name: Microsoft の関連リソース

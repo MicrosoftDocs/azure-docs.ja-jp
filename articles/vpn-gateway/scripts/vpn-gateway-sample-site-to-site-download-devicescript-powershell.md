@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell サンプル スクリプト - デバイス構成テンプレートのダウンロード | Microsoft Docs
-description: デバイス構成テンプレートをダウンロードします。
+description: PowerShell スクリプトを使用して、接続用の VPN デバイス構成テンプレートをダウンロードする方法について説明します。
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: yushwang
-ms.openlocfilehash: 11906dfa8a3d7c49b71ff1cdcc51d8ae5c6cbdc6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 283ddb12e497c242f1843840fe1f1ff208712626
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862418"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031712"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>PowerShell を使用して VPN デバイス テンプレートをダウンロードする
 
@@ -55,4 +55,4 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。

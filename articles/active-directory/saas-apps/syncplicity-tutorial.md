@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Syncplicity の統合 | Microsoft Docs
 description: Azure Active Directory と Syncplicity の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 896a3211-f368-46d7-95b8-e4768c23be08
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da532adfa2d4ab97edb44de9ae49c646ccdff381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233276"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544895"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Syncplicity の統合
 

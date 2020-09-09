@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259930"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN の Standard ルール エンジンの一致条件
@@ -170,7 +170,7 @@ String | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 
 #### <a name="key-information"></a>重要な情報
 
-- このルール条件を使用する場合は、必ずプロトコル情報を含めてください。 たとえば、「 *https://www.\<yourdomain\>.com* 」のように入力します。
+- このルール条件を使用する場合は、必ずプロトコル情報を含めてください。 たとえば、 *https://www.\<yourdomain\>.com* とします。
 
 ### <a name="url-file-extension"></a>URL のファイル拡張子
 

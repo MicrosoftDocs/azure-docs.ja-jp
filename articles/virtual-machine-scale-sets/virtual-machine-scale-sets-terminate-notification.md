@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207517"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する
 スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。
@@ -178,7 +178,7 @@ POST 要求の本文には、次のような json が含まれます。 要求�
 
 スケール セット内のすべての VM が、その VM に関連する EventID のみを承認していることを確認します。 VM は、[インスタンス メタデータ](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name)を介して自身の VM 名を取得できます。 この名前の形式は "{scale-set-name}_{instance-id}" であり、上記のクエリ応答の "Resources" セクションに表示されます。
 
-[PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample) と [Python](../virtual-machines/linux/scheduled-events.md#python-sample) を使用して、イベントに対してクエリを実行し、応答するサンプル スクリプトを参照することもできます。
+[Python](../virtual-machines/linux/scheduled-events.md#python-sample) を使用してイベントに対してクエリを実行し応答するサンプル スクリプトを参照することもできます。
 
 ## <a name="tips-and-best-practices"></a>ヒントとベスト プラクティス
 -   "削除" 操作に対して通知を終了する - スケール セットで *scheduledEventsProfile* が有効な場合は、すべての削除操作 (手動の削除または自動スケーリングによって開始されたスケールイン) で Terminate イベントが生成されます。 再起動、再イメージ化、再デプロイ、終了/割り当て解除などの他の操作では、Terminate イベントは生成されません。 優先順位の低い VM に対して終了通知を有効にすることはできません。

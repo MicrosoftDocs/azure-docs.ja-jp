@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c50232abd12c8c0390409bd7bf72833b4f153e02
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: b5f8d08f0814ec69719c002ea9efd39bb38b7d16
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667355"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718018"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>動作のしくみ: Azure Multi-Factor Authentication
 
@@ -66,4 +66,4 @@ Azure Multi-Factor Authentication では、次のような追加の検証形式�
 MFA の動作を確認するには、次のチュートリアルで一連のテスト ユーザーに対して Azure Multi-Factor Authentication を有効にします。
 
 > [!div class="nextstepaction"]
-> [Azure Multi-Factor Authentication を有効にする](tutorial-mfa-applications.md)
+> [Azure Multi-Factor Authentication を有効にする](./tutorial-enable-azure-mfa.md)

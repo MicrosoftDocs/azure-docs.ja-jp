@@ -2,31 +2,31 @@
 title: スコープ外のユーザーの削除をスキップする
 description: スコープ外のユーザーのプロビジョニングを解除する既定の動作をオーバーライドする方法について説明します。
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84789907"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>スコープ外に出るユーザー アカウントの削除をスキップする
 
 既定では、Azure AD プロビジョニング エンジンは、スコープ外に出るユーザーを論理的に削除または無効化します。 ただし、Workday to AD User Inbound Provisioning などの特定のシナリオでは、この動作が予期されていない場合があり、この既定の動作をオーバーライドしたいことがあります。  
 
-このガイドでは、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ ***SkipOutOfScopeDeletions*** を設定する方法について説明します。 
-* ***SkipOutOfScopeDeletions*** が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります
-* ***SkipOutOfScopeDeletions*** が 1 (true) に設定されている場合、スコープ外に出るアカウントはターゲットで無効になりません。このフラグは "*プロビジョニング アプリ*" レベルで設定され、Graph API を使用して構成できます。 
+この記事では、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ ***SkipOutOfScopeDeletions*** を設定する方法について説明します。 
+* ***SkipOutOfScopeDeletions*** が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります。
+* ***SkipOutOfScopeDeletions*** が 1 (true) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になりません。 このフラグは、*プロビジョニング アプリ*のレベルで設定され、Graph API を使用して構成できます。 
 
-この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、これは **他のすべてのアプリ**（ServiceNow、Salesforce、Dropboxなど）でも使用できます。
+この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、この構成は*他のすべてのアプリ* (ServiceNow、Salesforce、Dropbox など) でも使用できます。
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>手順 1:プロビジョニング アプリのサービス プリンシパル ID (オブジェクト ID) を取得します
 

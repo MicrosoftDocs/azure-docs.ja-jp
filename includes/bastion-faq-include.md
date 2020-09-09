@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780311"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276118"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>利用可能なリージョン
 
@@ -48,6 +48,10 @@ RDP と SSH はどちらも使用量ベースのプロトコルです。 セッ�
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>どのブラウザーがサポートされていますか?
 
 Windows では Microsoft Edge ブラウザーまたは Google Chrome をご使用ください。 Apple Mac では、Google Chrome ブラウザーをご使用ください。 Microsoft Edge Chromium も Windows と Mac の両方でサポートされます。
+
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>顧客データは Azure Bastion によってどこに格納されますか?
+
+Azure Bastion によって、顧客データがデプロイされているリージョン外に移動または格納されることはありません。
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>仮想マシンにアクセスするには、なんらかのロールが必要ですか?
 

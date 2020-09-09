@@ -27,11 +27,11 @@ ms.locfileid: "80876439"
     |サブスクリプション|サブスクリプションを選択します。|
     |Resource group|利用可能なリソース グループを選択するか、新しいリソース グループを作成します (`cognitive-services` など)。|
     |コンテナー名|`cognitive-container-instance` などの名前を入力します。 この名前は小文字である必要があります。|
-    |Location|デプロイのためのリージョンを選択します。|
-    |イメージの種類|資格情報を必要としないコンテナー レジストリにコンテナー イメージが格納されている場合、`Public` を選択します。 コンテナー イメージにアクセスするとき、資格情報が必要な場合、`Private` を選択します。 コンテナー イメージが [ または ](../../cognitive-services-container-support.md#container-repositories-and-images) ("パブリック プレビュー") であるかどうかに関する詳細は、「`Public`コンテナーのリポジトリとイメージ`Private`」を参照してください。 |
+    |場所|デプロイのためのリージョンを選択します。|
+    |イメージの種類|資格情報を必要としないコンテナー レジストリにコンテナー イメージが格納されている場合、`Public` を選択します。 コンテナー イメージにアクセスするとき、資格情報が必要な場合、`Private` を選択します。 コンテナー イメージが `Public` または `Private` ("パブリック プレビュー") であるかどうかに関する詳細は、「[コンテナーのリポジトリとイメージ](../../cognitive-services-container-support.md#container-repositories-and-images)」を参照してください。 |
     |イメージ名|Cognitive Services コンテナーの場所を入力します。 場所は `docker pull` コマンドの引数として使用される場所です。 使用可能なイメージ名と対応するリポジトリについては、[コンテナーのリポジトリとイメージ](../../cognitive-services-container-support.md#container-repositories-and-images)を参照してください。<br><br>イメージ名は、3 つの部分を指定する完全修飾名にする必要があります。 最初にコンテナー レジストリ、次にリポジトリ、最後にイメージ名 `<container-registry>/<repository>/<image-name>` です。<br><br>例を 1 つ挙げてみると、`mcr.microsoft.com/azure-cognitive-services/keyphrase` であれば、Microsoft Container Registry の Azure Cognitive Services リポジトリにあるキー フレーズ抽出イメージを指します。 もう 1 つの例を挙げると、`containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` は、Container Preview コンテナー レジストリの Microsoft リポジトリの Speech to Text イメージです。 |
     |OS の種類|`Linux`|
-    |Size|特定の Cognitive Service コンテナーに対して推奨されるサイズに変更します。<br>2 CPU コア<br>4 GB
+    |サイズ|特定の Cognitive Service コンテナーに対して推奨されるサイズに変更します。<br>2 CPU コア<br>4 GB
 
 3. **[ネットワーク]** タブで、以下の詳細を入力します。
 

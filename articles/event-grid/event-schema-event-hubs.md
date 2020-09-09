@@ -1,18 +1,14 @@
 ---
 title: Event Grid ソースとしての Azure Event Hub
 description: Azure Event Grid の Event Hubs イベントに対して用意されているプロパティについて説明します
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 07/07/2020
+ms.openlocfilehash: 960aa1fe7184e1d02d28fdc135907119fee8f123
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393351"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113685"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Event Hub
 

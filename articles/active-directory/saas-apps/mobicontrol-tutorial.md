@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と MobiControl の統合 | Microsoft Docs
 description: Azure Active Directory と MobiControl の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d656688f-245d-4d8f-b343-752d1656cd06
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a5ec603b65161f3b0b2d9c88224aef0004cc686a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a828b194d1e274183d581e0cdc2c5e894d6c0148
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67096920"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>チュートリアル:Azure Active Directory と MobiControl の統合
 

@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426497"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039298"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
 
@@ -40,7 +40,7 @@ Azure portal を使用して参照入力ソースとして Azure SQL Database �
 
    ![SQL Database の参照の構成](./media/sql-reference-data/sql-input-config.png)
 
-3. SQL クエリ エディターでスナップショット クエリをテストします。 詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](../sql-database/sql-database-connect-query-portal.md)」をご覧ください
+3. SQL クエリ エディターでスナップショット クエリをテストします。 詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](../azure-sql/database/connect-query-portal.md)」をご覧ください
 
 ### <a name="specify-storage-account-in-job-config"></a>ジョブの構成でストレージ アカウントを指定する
 
@@ -69,7 +69,7 @@ Visual Studio を使用して参照入力ソースとして Azure SQL Database �
 
 ### <a name="create-a-sql-database-table"></a>SQL Database テーブルの作成
 
-SQL Server Management Studio を使用して、参照データを格納するためのテーブルを作成します。 詳しくは、「[SSMS を使用して最初の Azure SQL データベースを設計する](../sql-database/sql-database-design-first-database.md)」をご覧ください。
+SQL Server Management Studio を使用して、参照データを格納するためのテーブルを作成します。 詳しくは、[SSMS を使用した最初の Azure SQL Database の設計](../azure-sql/database/design-first-database-tutorial.md)に関するチュートリアルをご覧ください。
 
 後の例で使用するテーブルの例は、次のステートメントで作成しました。
 
@@ -115,7 +115,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. エディターで SQL ファイルを開き、SQL クエリを記述します。
 
-5. Visual Studio 2019 を使用していて、SQL Server Data Tools をインストールしている場合は、 **[実行]** をクリックしてクエリをテストできます。 SQL Database への接続を支援するウィザード ウィンドウがポップアップし、クエリの結果が下部のウィンドウに表示されます。
+5. Visual Studio 2019 を使用していて、SQL Server Data Tools をインストールしている場合は、 **[実行]** をクリックしてクエリをテストできます。 SQL Database への接続を支援するウィザード ウィンドウがポップアップし、クエリの結果がウィンドウの下部に表示されます。
 
 ### <a name="specify-storage-account"></a>ストレージ アカウントを指定する
 
@@ -129,7 +129,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ## <a name="delta-query"></a>デルタ クエリ
 
-デルタ クエリを使用するときは、[Azure SQL Database のテンポラル テーブル](../sql-database/sql-database-temporal-tables.md)をお勧めします。
+デルタ クエリを使用するときは、[Azure SQL Database のテンポラル テーブル](../azure-sql/temporal-tables.md)をお勧めします。
 
 1. Azure SQL Database にテンポラル テーブルを作成します。
    
@@ -147,7 +147,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
 2. スナップショット クエリを作成します。 
 
-   **\@snapshotTime** パラメーターを使用して、システム時刻で有効な SQL Database のテンポラル テーブルから参照データ セットを取得するよう Stream Analytics ランタイムに指示します。 このパラメーターを指定しないと、クロックのずれが原因で不正確な基本参照データ セットを取得する可能性があります。 完全なスナップショット クエリの例を以下に示します。
+   **\@snapshotTime** パラメーターを使用して、システム時刻において有効であった SQL Database の一時テーブルから参照データ セットを取得するよう Stream Analytics ランタイムに指示します。 このパラメーターを指定しないと、クロックのずれが原因で不正確な基本参照データ セットを取得する可能性があります。 完全なスナップショット クエリの例を以下に示します。
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,16 +156,16 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. デルタ クエリを作成します。 
    
-   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の **_操作_** を返す必要があります。 この列では、 **\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 
+   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の**_操作_** を返す必要があります。 この列では、 **\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 また、差分期間内のすべての更新が適切にキャプチャされるようにするために、SQL Server 側から**透かし**を追加する必要があります。 **透かし**なしでデルタ クエリを使用すると、参照データセットに誤りが生じる可能性があります。  
 
    更新されたレコードの場合、テンポラル テーブルでは挿入と削除の操作をキャプチャすることによってブックキーピングが行われます。 その場合、Stream Analytics ランタイムでは、前のスナップショットにデルタ クエリの結果を適用することによって、参照データが最新の状態に維持されます。 デルタ クエリの例を次に示します。
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as _watermark_, 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as _watermark_, 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

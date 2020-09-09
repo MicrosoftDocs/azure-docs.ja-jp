@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/13/2020
-ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/09/2020
+ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655877"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -56,13 +56,13 @@ ms.locfileid: "82857696"
 
 Azure Data Factory の UI を使用してセルフホステッド IR を作成するには、次の手順に従います。
 
-1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの **[作成]** タブを選択します。
+1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を選択します。
 
-   ![ホームページの [作成] ボタン](media/doc-common-process/get-started-page-author-button.png)
+   ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
 
-1. 左端のペインの下部にある **[接続]** を選択し、 **[接続]** ウィンドウで **[Integration Runtimes]\(統合ランタイム\)** を選択します。 **[+新規]** を選択します。
+1. 左ペインの **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
 
-   ![統合ランタイムの作成](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
+   ![統合ランタイムの作成](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ページで、 **[Azure, Self-Hosted]\(Azure、セルフホステッド\)** を選択してから、 **[Continue]\(続行\)** を選択します。 
 
@@ -97,7 +97,7 @@ Azure Data Factory の UI を使用してセルフホステッド IR を作成�
 
 コマンド ラインを使用して、既存のセルフホステッド IR を設定または管理できます。 この使用方法は、セルフホステッド IR ノードのインストールと登録を自動化するのに特に役立ちます。
 
-Dmgcmd.exe は、セルフホステッド インストーラーに含まれています。 これは通常、C:\Program Files\Microsoft Integration Runtime\3.0\Shared\ フォルダーにあります。 このアプリケーションはさまざまなパラメーターをサポートしており、自動化のためにバッチ スクリプトを使用してコマンド ラインから呼び出すことができます。
+Dmgcmd.exe は、セルフホステッド インストーラーに含まれています。 これは、通常は、C:\Program Files\Microsoft Integration Runtime\4.0\Shared\ フォルダーに置かれます。 このアプリケーションはさまざまなパラメーターをサポートしており、自動化のためにバッチ スクリプトを使用してコマンド ラインから呼び出すことができます。
 
 次のようにアプリケーションを使用します。
 
@@ -375,9 +375,9 @@ Windows ファイアウォール レベル (コンピューター レベル) で
 
 HTTP プロキシに対して **[システム プロキシを使用する]** オプションを選択すると、セルフホステッド統合ランタイムで、diahost.exe.config と diawp.exe.config のプロキシ設定が使用されます。これらのファイルでプロキシが指定されていない場合、セルフホステッド統合ランタイムではプロキシを経由せず、直接クラウド サービスに接続します。 diahost.exe.config ファイルを更新する手順を以下に示します。
 
-1. エクスプローラーで、C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config の安全なコピーを、元のファイルのバックアップとして作成します。
+1. エクスプローラーで、元のファイルのバックアップとして C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config のセーフ コピーを作成します。
 1. 管理者として実行中のメモ帳を開きます。
-1. メモ帳で、テキスト ファイル C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config を開きます。
+1. メモ帳で、テキスト ファイル C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config を開きます。
 1. 次のコードに示されている既定の **system.net** のタグを見つけます。
 
     ```xml

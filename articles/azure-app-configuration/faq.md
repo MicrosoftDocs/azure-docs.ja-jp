@@ -1,18 +1,18 @@
 ---
 title: Azure App Configuration の FAQ
-description: Azure App Configuration に関してよく寄せられる質問
+description: Azure App Configuration のよくあるご質問 (FAQ) に対して、それが Azure Key Vault とどのように違うかなど、回答します。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80348788"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587346"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ
 

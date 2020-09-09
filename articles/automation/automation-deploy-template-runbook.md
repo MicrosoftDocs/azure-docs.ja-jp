@@ -1,34 +1,30 @@
 ---
-title: Azure Automation Runbook に Azure Resource Manager テンプレートをデプロイする
-description: Azure Storage に格納されている Azure Resource Manager テンプレートを Runbook からデプロイする方法
+title: Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
+description: この記事では、Azure Storage に格納されている Azure Resource Manager テンプレートを PowerShell Runbook からデプロイする方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure automation
-ms.openlocfilehash: 1bf381499ac31fafc8aaeef2b4ee488cfa1aa5c1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 10eadd7b8ee6c2e954f40469a02d42dc77c2bf41
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994699"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186556"
 ---
-# <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
+# <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
 
-[Azure Resource Management テンプレート](../azure-resource-manager/resource-manager-create-first-template.md)を使用して、Azure リソースをデプロイする [Azure Automation PowerShell Runbook](automation-first-runbook-textual-powershell.md) を記述できます。
-
-これにより、Azure リソースのデプロイを自動化できます。 Azure Storage など、セキュリティで保護された一元的な場所に Resource Manager テンプレートを維持することができます。
+[Azure Resource Management テンプレート](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を使用して、Azure リソースをデプロイする [Azure Automation PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md) を記述できます。 このテンプレートを使用すると、Azure Automation と Azure Storage を使用して Azure リソースのデプロイを自動化できます。 Azure Storage など、セキュリティで保護された一元的な場所に Resource Manager テンプレートを維持することができます。
 
 この記事では、[Azure Storage](../storage/common/storage-introduction.md) に格納されている Resource Manager テンプレートを使用して新しい Azure ストレージ アカウントをデプロイする PowerShell Runbook を作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下のものが必要です。
-
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
-* [Automation アカウント](automation-sec-configure-azure-runas-account.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
-* Resource Manager テンプレートを格納する [Azure Storage アカウント](../storage/common/storage-create-storage-account.md)
-* ローカル コンピューターにインストールされている Azure PowerShell。 Azure PowerShell の取得方法の詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)に関するページを参照してください。
+* [Automation アカウント](./manage-runas-account.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+* Resource Manager テンプレートを格納する [Azure Storage アカウント](../storage/common/storage-account-create.md)
+* ローカル コンピューターにインストールされている Azure PowerShell。 Azure PowerShell の取得方法の詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps?view=azps-3.5.0)に関するページを参照してください。
 
 ## <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
 
@@ -196,8 +192,7 @@ Publish-AzAutomationRunbook @publishParams
 
 ## <a name="start-the-runbook"></a>Runbook の起動
 
-[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0
-) コマンドレットを呼び出して Runbook を起動します。 Azure Portal で Runbook を起動する方法については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」をご覧ください。
+[Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) コマンドレットを呼び出して Runbook を起動します。 Azure Portal で Runbook を起動する方法については、「[Azure Automation での Runbook の開始](./start-runbooks.md)」をご覧ください。
 
 PowerShell コンソールで次のコマンドを実行します。
 
@@ -231,15 +226,10 @@ Runbook は、Resource Manager テンプレートを取得し、それを使用�
 Get-AzStorageAccount
 ```
 
-## <a name="summary"></a>まとめ
-
-これで完了です。 Azure Automation および Azure Storage と Resource Manager テンプレートを使用して、すべての Azure リソースをデプロイできます。
-
 ## <a name="next-steps"></a>次のステップ
 
 * Resource Manager テンプレートについて詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」をご覧ください。
 * Azure Storage の概要については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
-* 役に立つその他の Azure Automation Runbook を探すには、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」をご覧ください。
+* 役に立つその他の Azure Automation Runbook を探すには、[Azure Automation 用の Runbook とモジュールの使用](automation-runbook-gallery.md)に関するページをご覧ください。
 * 役に立つその他の Resource Manager テンプレートを探すには、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」をご覧ください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。

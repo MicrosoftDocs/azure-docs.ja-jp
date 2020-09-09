@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Palo Alto Networks データを接続する | Microsoft Docs
-description: Azure Sentinel に Palo Alto Networks データを接続する方法について説明します。
+description: Palo Alto Networks データ コネクタを使用して、Palo Alto Networks ログを Azure Sentinel に簡単に接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564554"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Azure Sentinel に Palo Alto Networks を接続する
 
@@ -34,7 +34,7 @@ ms.locfileid: "77588129"
 Syslog のエージェントを介してお使いの Azure ワークスペースに CEF 形式で Syslog メッセージを転送するように Palo Alto Networks を構成します。
 1.  「[Common Event Format (CEF) Configuration Guides (Common Event Format (CEF) 構成ガイド)](https://docs.paloaltonetworks.com/resources/cef)」にアクセスし、お使いのアプライアンスの種類に応じた PDF をダウンロードします。 ガイドのすべての手順に従って、CEF イベントを収集するように Palo Alto Networks アプライアンスを設定します。 
 
-1.  「[Configure Syslog monitoring](https://aka.ms/asi-syslog-paloalto-forwarding)」(Syslog の監視を構成する) に移動し、ステップ 2 と 3 に従って、Palo Alto Networks アプライアンスから Azure Sentinel への CEF イベントの転送を構成します。
+1.  「[Configure Syslog monitoring](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring)」(Syslog の監視を構成する) に移動し、ステップ 2 と 3 に従って、Palo Alto Networks アプライアンスから Azure Sentinel への CEF イベントの転送を構成します。
 
     1. **[Syslog server format]\(Syslog サーバーの形式\)** を **[BSD]** に設定します。
 

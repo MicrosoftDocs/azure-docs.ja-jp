@@ -1,152 +1,164 @@
-### YamlMime:Hub
+### YamlMime:Landing
 title: Azure Cost Management および Billing のドキュメント
-summary: Azure Cost Management および Billing は、Azure の課金の把握、ご利用のアカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
+summary: Azure Cost Management および Billing は、Azure の課金の把握、アカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
 metadata:
+  title: Azure Cost Management および Billing
+  description: Azure Cost Management および Billing は、Azure の課金の把握、アカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
   ms.service: cost-management-billing
-  description: Azure Cost Management および Billing は、Azure の課金の把握、ご利用のアカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
-  ms.topic: hub-page
+  ms.subservice: common
+  ms.topic: landing-page
+  ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 01/24/2019
-  ms.openlocfilehash: c1fbce7ba94ad097f948a36f93b1f997225c7086
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.date: 08/20/2020
+  ms.openlocfilehash: 1d3fafd26b5ad7f92d9280701a386a09f1ad3d22
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83833604"
-highlightedContent:
-  items:
-  - title: Cost Management と Billing の概要
-    itemType: overview
-    url: cost-management-billing-overview.md
-  - title: コストの分析と予算の作成
-    itemType: learn
-    url: https://docs.microsoft.com/learn/modules/analyze-costs-create-budgets-azure-cost-management/?WT.mc_id=costmanagementcontent_docsazurebilling_-inproduct-learn
-  - title: Cost Management のベスト プラクティス
-    itemType: concept
-    url: ./costs/cost-mgt-best-practices.md
-conceptualContent:
-  items:
-  - title: Azure Billing の概要
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88683132"
+landingContent:
+- title: コストの分析
+  linkLists:
+  - linkListType: overview
     links:
-    - url: ./understand/review-individual-bill.md
-      itemType: tutorial
-      text: 個々の請求書の確認
-    - url: ./understand/review-customer-agreement-bill.md
-      itemType: tutorial
-      text: 顧客契約の請求書の確認
-    - url: ./understand/review-partner-agreement-bill.md
-      itemType: tutorial
-      text: Partner Agreement の請求書の確認
-    - url: ./understand/review-enterprise-agreement-bill.md
-      itemType: tutorial
-      text: Enterprise Agreement の請求書の確認
-    footerLink:
-      text: 詳細情報
-      url: ./understand/index.yml
-  - title: 無料アカウント
+    - text: Cost Management と Billing の概要
+      url: cost-management-billing-overview.md
+  - linkListType: get-started
     links:
-    - url: ./manage/create-free-services.md
-      itemType: concept
-      text: 無料のサービスの作成
-    - url: ./manage/avoid-charges-free-account.md
-      itemType: concept
-      text: 請求の回避
-    - url: ./manage/check-free-service-usage.md
-      itemType: concept
-      text: 使用量を確認する
-    - url: ./manage/upgrade-azure-subscription.md
-      itemType: concept
-      text: サブスクリプションのアップグレード
-  - title: Azure のコストと使用状況の管理
+    - text: 自分のペースで学習する
+      url: https://aka.ms/costmgmt/learn
+    - text: Azure Cost Management のビデオ
+      url: https://www.youtube.com/c/AzureCostManagement
+    - text: コストの分析を開始する
+      url: costs/quick-acm-cost-analysis.md
+  - linkListType: how-to-guide
     links:
-    - url: ./costs/quick-acm-cost-analysis.md
-      itemType: quickstart
-      text: コストの分析を開始する
-    - url: ./costs/tutorial-acm-create-budgets.md
-      itemType: tutorial
-      text: 予算を作成して管理する
-    - url: ./costs/tutorial-export-acm-data.md
-      itemType: tutorial
-      text: コストと使用状況データをエクスポートする
-    - url: ./costs/tutorial-acm-opt-recommendations.md
-      itemType: tutorial
-      text: コスト削減に関する推奨事項に対処する
-    - url: ./costs/cost-analysis-common-uses.md
-      itemType: how-to-guide
-      text: 一般的なタスクにコスト分析を使用する
-    footerLink:
-      text: 詳細情報
-      url: ./costs/index.yml
-  - title: Azure アカウントと Azure サブスクリプションの管理
+    - text: 一般的なタスクにコスト分析を使用する
+      url: costs/cost-analysis-common-uses.md
+    - text: Power BI テンプレート アプリを使用してコストを分析する
+      url: https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app
+    - text: Power BI Desktop を使用して接続する
+      url: /power-bi/desktop-connect-azure-cost-management
+  - linkListType: tutorial
     links:
-    - url: ./manage/manage-billing-access.md
-      itemType: how-to-guide
-      text: 課金情報へのアクセスを許可する
-    - url: ./manage/change-azure-account-profile.md
-      itemType: how-to-guide
-      text: プロファイルを編集する
-    - url: ./manage/resolve-past-due-balance.md
-      itemType: how-to-guide
-      text: 過去の延滞残高を決済する
-    - url: ./manage/subscription-disabled.md
-      itemType: how-to-guide
-      text: サブスクリプションの再アクティブ化
-    - url: ./manage/billing-subscription-transfer.md
-      itemType: how-to-guide
-      text: 所有権の移転
-    - url: ./manage/cancel-azure-subscription.md
-      itemType: how-to-guide
-      text: サブスクリプションを取り消す
-    - url: ./manage/change-credit-card.md
-      itemType: how-to-guide
-      text: クレジット カードの変更
-    - url: ./manage/add-change-subscription-administrator.md
-      itemType: how-to-guide
-      text: 管理者の変更
-    - url: ./manage/create-subscription.md
-      itemType: how-to-guide
-      text: 追加のサブスクリプションを作成する
-    footerLink:
-      text: 詳細情報
-      url: ./manage/index.yml
-  - title: Azure の予約による節約
+    - text: 個々のアカウントの請求書を確認する
+      url: understand/review-individual-bill.md
+    - text: Microsoft 顧客契約の請求書を確認する
+      url: understand/review-customer-agreement-bill.md
+    - text: Enterprise Agreement の請求書の確認
+      url: understand/review-enterprise-agreement-bill.md
+- title: コストを管理する
+  linkLists:
+  - linkListType: tutorial
     links:
-    - url: ./reservations/save-compute-costs-reservations.md
-      itemType: concept
-      text: Azure の予約とは
-    - url: ./reservations/manage-reserved-vm-instance.md
-      itemType: how-to-guide
-      text: Azure の予約の管理
-    - url: ./reservations/monthly-payments-reservations.md
-      itemType: how-to-guide
-      text: 月額払いで予約を購入する
-    - url: ./reservations/reservation-renew.md
-      itemType: how-to-guide
-      text: 予約の更新
-    - url: ./reservations/exchange-and-refund-azure-reservations.md
-      itemType: how-to-guide
-      text: 予約の交換と返金
-    footerLink:
-      text: 詳細情報
-      url: ./reservations/index.yml
-  - title: 参加する
+    - text: 予算を作成して管理する
+      url: costs/tutorial-acm-create-budgets.md
+    - text: コストと使用状況データをエクスポートする
+      url: costs/tutorial-export-acm-data.md
+  - linkListType: concept
     links:
-    - url: https://feedback.azure.com/forums/906772-cost-management
-      itemType: how-to-guide
-      text: Cost Management のフィードバック
-    - url: https://twitter.com/azurecostmgmt
-      itemType: how-to-guide
-      text: Twitter での Cost Management
-    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22cost%20management%22&location=category:Azure&collapse_discussion=true
-      itemType: how-to-guide
-      text: Azure Cost Management の技術コミュニティ
-    - url: https://feedback.azure.com/forums/170030-signup-and-billing
-      itemType: how-to-guide
-      text: Billing のサービス機能をリクエストする
-    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22billing%22&noSynonym=false&location=category:Azure&collapse_discussion=true
-      itemType: how-to-guide
-      text: Azure Billing の技術コミュニティ
-    - url: https://docs.microsoft.com/answers/topics/azure-cost-management.html
-      itemType: how-to-guide
-      text: Cost Management と Billing についてフォーラムで質問する
+    - text: 自動化を使用したコストの管理
+      url: https://docs.microsoft.com/azure/cost-management-billing/costs/manage-automation
+    - text: 使用条件の説明
+      url: understand/understand-usage.md
+    - text: 請求条件の説明
+      url: understand/understand-invoice.md
+    - text: Microsoft Customer Agreement の使用状況の用語
+      url: understand/mca-understand-your-usage.md
+    - text: Microsoft Customer Agreement の請求書の用語
+      url: understand/mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: コストのアラートの使用
+      url: costs/cost-mgt-alerts-monitor-usage-spending.md
+    - text: コストを割り当てる
+      url: costs/allocate-costs.md
+    - text: Azure の請求書を表示してダウンロードする
+      url: understand/download-azure-invoice.md
+    - text: Azure の使用量と料金の表示とダウンロード
+      url: understand/download-azure-daily-usage.md
+    - text: 外部サービスの料金を表示する
+      url: understand/understand-azure-marketplace-charges.md
+- title: コストを最適化する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Cost Management のベスト プラクティス
+      url: costs/cost-mgt-best-practices.md
+    - text: Azure の予約による節約
+      url: reservations/save-compute-costs-reservations.md
+  - linkListType: tutorial
+    links:
+    - text: レコメンデーションに基づいて対応する
+      url: costs/tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: 予想外の料金を防ぐ
+      url: manage/getting-started.md
+  - linkListType: learn
+    links:
+    - text: 今すぐコストの最適化を始める
+      url: https://azure.microsoft.com/overview/cost-optimization/
+    - text: コストを予測し、Azure の支出を最適化する
+      url: https://docs.microsoft.com/learn/modules/predict-costs-and-optimize-spending/
+    - text: Microsoft Azure Well-Architected Framework - コストの最適化
+      url: https://docs.microsoft.com/learn/modules/azure-well-architected-cost-optimization/
+- title: Cost Management と Billing を構成する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: スコープを理解して使用する
+      url: costs/understand-work-scopes.md
+    - text: Cost Management のデータを理解する
+      url: costs/understand-cost-mgt-data.md
+    - text: Azure における EA のロール
+      url: manage/understand-ea-roles.md
+    - text: Azure における Microsoft 顧客契約のロール
+      url: manage/understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: コスト管理データへのアクセスを割り当てる
+      url: costs/assign-access-acm-data.md
+    - text: 請求先アカウントを表示する
+      url: manage/view-all-accounts.md
+    - text: 追加のサブスクリプションの作成
+      url: manage/create-subscription.md
+    - text: クレジット カードの変更
+      url: manage/change-credit-card.md
+    - text: 管理者の変更
+      url: manage/add-change-subscription-administrator.md
+    - text: 請求書による支払い
+      url: manage/pay-by-invoice.md
+- title: Microsoft 顧客契約アカウントの確認
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Microsoft 顧客契約の請求先アカウント
+      url: understand/mca-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 税務書類を表示してダウンロードする
+      url: understand/mca-download-tax-document.md
+    - text: Microsoft 顧客契約の請求書の支払いを行う
+      url: understand/pay-bill.md
+- title: 予約の購入
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 購入する予約の選択
+      url: reservations/determine-reservation-purchase.md
+    - text: 予約の交換と返金
+      url: reservations/exchange-and-refund-azure-reservations.md
+  - linkListType: how-to-guide
+    links:
+    - text: 予約の購入
+      url: reservations/prepare-buy-reservation.md
+    - text: 予約の管理
+      url: reservations/manage-reserved-vm-instance.md
+    - text: 予約購入の表示
+      url: reservations/view-purchase-refunds.md
+    - text: 予約のチャージバック
+      url: reservations/charge-back-usage.md
+    - text: 予約の更新
+      url: reservations/reservation-renew.md

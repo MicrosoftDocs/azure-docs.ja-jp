@@ -7,35 +7,41 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: 'C# の使用'
-      href: Quickstart.md
-    - name: Node.js の使用
-      href: quickstart-nodejs.md
-    - name: Swift の使用 (iOS)
-      href: ios-quickstart.md
+    - name: クライアント ライブラリの使用
+      href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
-    - name: Immersive Reader の起動 (Python)
+    - name: イマーシブ リーダーの起動 (Android)
+      href: tutorial-android.md
+    - name: イマーシブ リーダーの起動 (iOS)
+      href: tutorial-ios.md
+    - name: イマーシブ リーダーの起動 (Python)
       href: tutorial-python.md
-    - name: 複数の Immersive Reader リソースの使用
+    - name: 複数のイマーシブ リーダー リソースの使用
       href: tutorial-multiple-resources.md
 - name: 操作方法
   items:
-    - name: Immersive Reader のリソースを作成する
+    - name: イマーシブ リーダーのリソースを作成する
       href: how-to-create-immersive-reader.md
     - name: Cookie のポリシーを設定する
       href: how-to/set-cookie-policy.md
     - name: 数式を表示する
       href: how-to/display-math.md
-    - name: Immersive Reader を起動して HTML コンテンツを表示する
+    - name: イマーシブ リーダーを起動して HTML コンテンツを表示する
       href: how-to-launch-with-html.md
-    - name: Immersive Reader のボタンをカスタマイズする
+    - name: イマーシブ リーダーのボタンをカスタマイズする
       href: how-to-customize-launch-button.md
     - name: 認証トークンをキャッシュする
       href: how-to-cache-token.md
+    - name: 音声読み上げを構成する
+      href: how-to-configure-read-aloud.md
+    - name: 翻訳を構成する
+      href: how-to-configure-translation.md
+    - name: ユーザー設定を格納する
+      href: how-to-store-user-preferences.md
 - name: リファレンス
   items:
-    - name: SDK リファレンス
+    - name: JavaScript SDK
       href: reference.md
 - name: リソース
   items:

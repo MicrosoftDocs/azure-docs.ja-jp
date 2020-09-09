@@ -6,23 +6,23 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 04/30/2020
+ms.subservice: sql-dw
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 546945d70554adbb28f19a3153faa67495e55f04
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607753"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482855"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL のレコメンデーション
 
 この記事では、Azure Advisor によって提供される Synapse SQL のレコメンデーションについて説明します。  
 
-SQL Analytics からは、データ ウェアハウスのワークロードのパフォーマンスを常に最適化するためのレコメンデーションが提供されます。 レコメンデーションは [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) と強固に統合され、[Azure portal](https://aka.ms/Azureadvisor) 内でベスト プラクティスを直接提供します。 SQL Analytics を使うと、1 日の間にアクティブなワークロードのテレメトリが収集され、レコメンデーションが提示されます。 以下にサポートされるレコメンデーションのシナリオの概要と、推奨されるアクションを適用する方法を示します。
+Synapse SQL からは、データ ウェアハウスのワークロードのパフォーマンスを常に最適化するためのレコメンデーションが提供されます。 レコメンデーションは [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) と強固に統合され、[Azure portal](https://aka.ms/Azureadvisor) 内でベスト プラクティスを直接提供します。 Synapse SQL を使うと、1 日の間にアクティブなワークロードのテレメトリが収集され、レコメンデーションが提示されます。 以下にサポートされるレコメンデーションのシナリオの概要と、推奨されるアクションを適用する方法を示します。
 
 [レコメンデーションは今すぐ確認](https://aka.ms/Azureadvisor)することができます。 
 
@@ -70,3 +70,7 @@ Advisor は、テーブル アクセスの頻度、返された平均行数、�
 ## <a name="tempdb-contention"></a>Tempdb の競合
 
 Tempdb の競合が高い場合、クエリのパフォーマンスが低下する可能性があります。  Tempdb の競合は、ユーザー定義の一時テーブルを経由するか、または大量のデータ移動が発生した場合に、生じる可能性があります。 このシナリオに対しては、tempdb の割り当てを拡張し、[リソース クラスとワークロード管理を構成](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management)してクエリにより多くのメモリを提供することができます。 
+
+## <a name="data-loading-misconfiguration"></a>データ読み込みの構成の誤り
+
+待機時間を最小限に抑えるには、SQL プールと同じリージョン内にあるストレージ アカウントから常にデータを読み込む必要があります。 [高スループットのデータ インジェストに関する COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用し、ストレージ アカウント内にあるステージング済みファイルを分割してスループットを最大化します。 COPY ステートメントを使用できない場合は、スループットを向上させるために、バッチ サイズが大きい SqlBulkCopy API または bcp を使用できます。 データ読み込みに関するその他のガイダンスについては、次の[ドキュメント](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)を参照してください。 

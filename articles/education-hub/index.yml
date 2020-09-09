@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Azure Education Hub のドキュメント
+summary: Education Hub を使用すると、クラウドに習熟するために必要なすべてのソフトウェア、学習、および Azure サービスを学生にすばやく簡単に提供できます。
+metadata:
+  title: Azure Education Hub のドキュメント
+  description: Education Hub を使用すると、クラウドに習熟するために必要なすべてのソフトウェア、学習、および Azure サービスを学生にすばやく簡単に提供できます。
+  ms.service: azure-education .
+  ms.subservice: education-hub
+  ms.topic: landing-page
+  author: tfosmark
+  ms.author: rymend
+  ms.date: 07/14/2020
+  ms.openlocfilehash: be96b241c3ca784043ac3203fd1cb100b05178b8
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86540409"
+landingContent:
+- title: Education Hub
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Education Hub について
+      url: about-education-hub.md
+  - linkListType: quickstart
+    links:
+    - text: Education Hub を使用する
+      url: access-education-hub.md
+- title: Azure Dev Tools for Teaching
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Dev Tools for Teaching とは
+      url: ./azure-dev-tools-teaching/about-program.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Dev Tools for Teaching に登録する
+      url: ./azure-dev-tools-teaching/enroll-renew-subscription.md
+    - text: アクセスの設定
+      url: ./azure-dev-tools-teaching/set-up-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: 学生を管理する方法
+      url: ./azure-dev-tools-teaching/manage-students.md
+    - text: ソフトウェアをダウンロードする方法
+      url: ./azure-dev-tools-teaching/download-software.md

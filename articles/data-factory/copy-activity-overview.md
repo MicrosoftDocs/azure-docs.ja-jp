@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414219"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534347"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -55,7 +55,7 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 コピー アクティビティを使用すると、ファイル ベースの 2 つのデータ ストア間でファイルをそのままコピーできます。その場合、データはシリアル化または逆シリアル化なしで効率的にコピーされます。 また、特定の形式のファイルを解析または生成することもできます。たとえば、次のような操作を実行できます。
 
-* オンプレミスの SQL Server データベースからデータをコピーし、Parquet 形式で Azure Data Lake Storage Gen2 に書き込む。
+* SQL Server データベースからデータをコピーし、Parquet 形式で Azure Data Lake Storage Gen2 に書き込む。
 * オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB ストレージに Avro 形式で書き込む。
 * オンプレミスのファイル システムから zip 形式のファイルをコピーし、その場で圧縮解除して、抽出されたファイルを Azure Data Lake Storage Gen2 に書き込む。
 * Azure BLOB ストレージから Gzip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
@@ -241,6 +241,19 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 ]
 ```
 
+## <a name="auto-create-sink-tables"></a>シンク テーブルの自動作成
+
+SQL データベース/Azure Synapse Analytics にデータをコピーするときに、コピー先のテーブルが存在しない場合、コピー アクティビティではソース データに基づいてデータが自動的に作成されます。 これは、データの読み込みと SQL データベース/Azure Synapse Analytics の評価をすぐに開始できるようにすることを目的としています。 データ インジェストが完了したら、必要に応じて、シンク テーブル スキーマを確認して調整できます。
+
+この機能は、任意のソースから以下のシンク データ ストアにデータをコピーする際にサポートされます。 このオプションは、*ADF のオーサリング UI* – > *コピー アクティビティ シンク* – > *[テーブル] オプション* – > *[Auto create table]\(テーブルの自動作成\)* の順に選択するか、またはコピー アクティビティ シンク ペイロードの `tableOption` プロパティを使用して確認できます。
+
+- [Azure SQL Database](connector-azure-sql-database.md)
+- [Azure SQL Database マネージド インスタンス](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![シンク テーブルの作成](media/copy-activity-overview/create-sink-table.png)
+
 ## <a name="fault-tolerance"></a>フォールト トレランス
 
 既定では、ソース データ行がシンク データ行と互換性がない場合、コピー アクティビティでデータのコピーが停止され、エラーが返されます。 コピーを成功させるには、互換性のない行をスキップし、ログに記録し、互換性のあるデータのみをコピーするようにコピー アクティビティを構成します。 詳細については、[コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)に関する記事を参照してください。
@@ -250,4 +263,4 @@ Data Factory を使用すると、ソース データ ストアからシンク �
 
 - [ある場所から同じ Azure Blob Storage アカウントの別の場所にデータをコピーする](quickstart-create-data-factory-dot-net.md)
 - [Azure Blob Storage から Azure SQL Database にデータをコピーする](tutorial-copy-data-dot-net.md)
-- [オンプレミスの SQL Server データベースから Azure にデータをコピーする](tutorial-hybrid-copy-powershell.md)
+- [SQL Server データベースから Azure にデータをコピーする](tutorial-hybrid-copy-powershell.md)

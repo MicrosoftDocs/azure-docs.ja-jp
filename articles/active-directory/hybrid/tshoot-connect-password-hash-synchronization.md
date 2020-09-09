@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807606"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 
@@ -288,12 +288,15 @@ Azure AD との接続がありますか。
 6. ドメイン コントローラーは、Azure AD Connect からアクセスできますか。 Connect サーバーがすべてのドメイン コントローラーに接続できない場合は、 **[Only use preferred domain controller]\(優先ドメイン コントローラーのみ使用する\)** を構成します。  
     
     ![Active Directory コネクタで使用されるドメイン コントローラー](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
-    
+
 7. **Synchronization Service Manager** と **[ディレクトリ パーティションの構成]** に戻ります。 
  
 8. **[ディレクトリ パーティションの選択]** でドメインを選択し、 **[Only use preferred domain controller]\(優先ドメイン コントローラーのみ使用する\)** チェック ボックスをオンにして、 **[構成]** をクリックします。 
 
 9. 一覧で、Connect がパスワード同期に使用するドメイン コントローラーを入力します。同じ一覧がインポートとエクスポートにも使用されます。 すべてのドメインに対してこの手順を実行します。
+
+> [!NOTE]
+> これらの変更を適用するには、**Microsoft Azure AD Sync** (ADSync) サービスを再起動します。
 
 10. スクリプトによってハートビートがないことが示されたら、「[すべてのパスワードの完全同期の開始](#trigger-a-full-sync-of-all-passwords)」にあるスクリプトを実行します。
 

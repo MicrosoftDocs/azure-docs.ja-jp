@@ -10,12 +10,12 @@ metadata:
   author: rohinkoul
   ms.author: rohink
   ms.date: 09/20/2019
-  ms.openlocfilehash: ff3ff696e6ffcfc99f84dd4b821c88c4b616f671
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 40a502efb457ba9ac5497ca6fd6f241b40cca94e
+  ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76935390"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89077655"
 landingContent:
 - title: Azure DNS について
   linkLists:
@@ -33,6 +33,8 @@ landingContent:
     links:
     - text: Azure DNS でドメインをホストする
       url: dns-delegate-domain-azure-dns.md
+    - text: 子 DNS ゾーンの作成
+      url: tutorial-public-dns-zones-child.md
 - title: プライベート DNS ゾーンのデプロイ
   linkLists:
   - linkListType: overview

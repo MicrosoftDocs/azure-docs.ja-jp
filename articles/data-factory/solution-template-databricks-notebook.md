@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 3d55e37078d7bbbcd84684f43ef12810ef01e10e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627757"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857645"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks による変換
 
@@ -132,7 +132,7 @@ ms.locfileid: "82627757"
 
 1. **データ コピー** アクティビティの **[file-to-blob]** で、 **[ソース]** タブと **[シンク]** タブを確認します。 必要に応じて設定を変更します。
 
-   - **[ソース]![ タブ** ソース タブ](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **[ソース]** タブ ![ソース タブ](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
    - **[シンク]** タブ ![シンク タブ](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
@@ -153,6 +153,9 @@ ms.locfileid: "82627757"
 1. **パイプラインのパラメーター**が、次のスクリーンショットに示されている内容と一致していることを確認します。![パイプラインのパラメーター](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. データセットに接続します。
+
+    >[!NOTE]
+    >以下のデータ セットでは、ファイルのパスはテンプレートで自動的に指定されています。 変更が必要な場合は、接続エラーが発生した場合に備えて、**container** と **directory** の両方のパスを指定してください。
 
    - **SourceAvailabilityDataset** - ソース データが使用可能であることを確認します。
 

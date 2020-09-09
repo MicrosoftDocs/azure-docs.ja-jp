@@ -18,16 +18,16 @@ ms.locfileid: "80876434"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics リソースを作成する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[Create a resource]\(リソースを作成)** を選択して、**AI + Machine Learning** > **Text Analytics** に移動します。
    または、[[Create Text Analytics]\(Text Analytics の作成\)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) に移動します。
 1. すべての必須設定を入力します。
 
     |設定|値|
     |--|--|
-    |Name|名前 (2 から 64 文字) を入力します。|
+    |名前|名前 (2 から 64 文字) を入力します。|
     |サブスクリプション|適切なサブスクリプションを選択します。|
-    |Location|近くの場所を選択します。|
+    |場所|近くの場所を選択します。|
     |Pricing tier| **S** (Standard 価格レベル) を入力します。|
     |Resource group|使用可能なリソース グループを選択します。|
 

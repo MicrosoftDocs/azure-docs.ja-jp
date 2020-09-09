@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69016786"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264642"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]  
 
 Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。 スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。 サポートされている機能の詳細については、 [リリース ノート](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。 詳細については、 [Windows 8 用プレーヤー フレームワークに関する記事](https://playerframework.codeplex.com/)を参照してください。 
 
@@ -53,7 +56,7 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 
 ![スムーズ ストリーミング用の Windows ストア アプリケーションの例][PlayerApplication]
 
-Windows ストア アプリケーションの開発の詳細については、「 [Windows 8 用の優れたアプリケーションの開発](https://msdn.microsoft.com/windows/apps/br229512.aspx)」をご覧ください。 このレッスンは、次の工程で構成されています。
+Windows ストア アプリケーションの開発の詳細については、「 [Windows 8 用の優れたアプリケーションの開発](https://developer.microsoft.com/en-us/windows/)」をご覧ください。 このレッスンは、次の工程で構成されています。
 
 1. Windows ストア プロジェクトの作成
 2. ユーザー インターフェイスの設計 (XAML)
@@ -151,15 +154,24 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
-   
+
+    ```csharp
         using Windows.Media;
+    ```
+
 3. **MainPage** クラスの先頭に、次のデータ メンバーを追加します。
-   
-         private MediaExtensionManager extensions = new MediaExtensionManager();
+
+    ```csharp
+        private MediaExtensionManager extensions = new MediaExtensionManager();
+    ```
+
 4. **MainPage** コンストラクターの末尾に、次の 2 行を追加します。
-   
+
+    ```csharp
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
+    ```
+
 5. **MainPage** クラスの末尾に、次のコードを貼り付けます。
    ```csharp
          # region UI Button Click Events
@@ -1036,4 +1048,3 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

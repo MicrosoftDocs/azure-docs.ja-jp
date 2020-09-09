@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
-ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498088"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86131995"
 ---
 # <a name="fail-over--vmware-vms"></a>VMware VM をフェールオーバーする
 
@@ -87,7 +87,7 @@ ms.locfileid: "75498088"
 
 ## <a name="connect-to-failed-over-vm"></a>フェールオーバーされた VM に接続する
 
-1. リモート デスクトップ プロトコル (RDP) および Secure Shell (SSH) を使用してフェールオーバー後に Azure VM に接続する場合は、[要件が満たされていることを確認します]((ailover-failback-overview.md#connect-to-azure-after-failover)。
+1. リモート デスクトップ プロトコル (RDP) と Secure Shell (SSH) を使用して、フェールオーバー後の Azure VM に接続する場合は、[要件が満たされていることを確認](failover-failback-overview.md#connect-to-azure-after-failover)します。
 2. フェールオーバー後は、VM に移動し、それに[接続する](../virtual-machines/windows/connect-logon.md)ことで検証します。
 3. フェールオーバー後に別の復旧ポイントを使用する場合は、 **[復旧ポイントの変更]** を使用します。 次の手順でフェールオーバーをコミットした後、このオプションは使用できなくなります。
 4. 検証後に、 **[コミット]** を選択して、フェールオーバー後の VM の復旧ポイントを最終処理します。

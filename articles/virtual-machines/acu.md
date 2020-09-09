@@ -1,24 +1,20 @@
 ---
-title: Azure コンピューティング ユニットの概要 | Microsoft Docs
+title: Azure コンピューティング ユニットの概要
 description: Azure コンピューティング ユニットの概念の概要。 ACU は、Azure SKU 間の CPU パフォーマンスを比較する方法を提供します。
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
-ms.topic: article
+ms.subservice: sizes
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.reviewer: davberg
+ms.openlocfilehash: 07d222139f48e91637405660ae0e0c65ef3acdb6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629101"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605019"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
 
@@ -48,8 +44,20 @@ Azure コンピューティング ユニット (ACU) の概念は、Azure SKU �
 | [DS1_v2 - DS15_v2](dv2-dsv2-series.md) |210 - 250* | 1:1 |
 | [D_v3](dv3-dsv3-series.md) |160 - 190* | 2:1\*\*\* |
 | [Ds_v3](dv3-dsv3-series.md) |160 - 190* | 2:1\*\*\* |
+| [Dav4](dav4-dasv4-series.md) |230 - 260** | 2:1 |
+| [Dasv4](dav4-dasv4-series.md) |230 - 260** | 2:1 |
+| [Dv4](dv4-dsv4-series.md) | 195 - 210 | 2:1\*\*\* |
+| [Dsv4](dv4-dsv4-series.md) | 195 - 210 | 2:1\*\*\* |
+| [Ddv4](ddv4-ddsv4-series.md) | 195 -210* | 2:1\*\*\* |
+| [Ddsv4](ddv4-ddsv4-series.md) | 195 から 210* | 2:1\*\*\* |
 | [E_v3](ev3-esv3-series.md) |160 - 190* | 2:1\*\*\*|
 | [Es_v3](ev3-esv3-series.md) |160 - 190* | 2:1\*\*\* |
+| [Eav4](eav4-easv4-series.md) |230 - 260** | 2:1 |
+| [Easv4](eav4-easv4-series.md) | 230 - 260** | 2:1 |
+| [Ev4](ev4-esv4-series.md) | 195 - 210 | 2:1\*\*\* |
+| [Esv4](ev4-esv4-series.md) | 195 - 210 | 2:1\*\*\* |
+| [Edv4](edv4-edsv4-series.md) | 195 から 210* | 2:1\*\*\* |
+| [Edsv4](edv4-edsv4-series.md) | 195 から 210* | 2:1\*\*\* |
 | [F2s_v2 - F72s_v2](fsv2-series.md) |195 から 210* | 2:1\*\*\* |
 | [F1 - F16](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [F1s - F16s](sizes-previous-gen.md) |210 - 250* | 1:1 |
@@ -61,6 +69,7 @@ Azure コンピューティング ユニット (ACU) の概念は、Azure SKU �
 | [L4s - L32s](sizes-previous-gen.md) |180 ～ 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160 から 180 | 2:1\*\*\* |
+| [NVv4](nvv4-series.md) |230 - 260** | 2:1 |
 
 さまざまなサイズの詳細に関するリンクは次のとおりです。
 

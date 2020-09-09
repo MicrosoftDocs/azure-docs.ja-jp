@@ -6,15 +6,17 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 04/16/2020
-ms.openlocfilehash: 74aa17fb17d682449bd817945c3b8bbf3f95363e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 08/31/2020
+ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727689"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265509"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>OBS を使用して Azure Media Services のライブ ストリームを作成する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このクイックスタートでは、Azure portal と Open Broadcasting Studio (OBS) を使用して Azure Media Services のライブ ストリームを作成する方法について説明します。 ここでは、Azure サブスクリプションを所有し、かつ Azure Media Services アカウントを作成済みであることを前提としています。
 

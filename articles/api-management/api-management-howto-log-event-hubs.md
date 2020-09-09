@@ -1,6 +1,6 @@
 ---
 title: Azure API Management で Azure Event Hubs にイベントを記録する方法 | Microsoft Docs
-description: Azure API Management で Azure Event Hubs にイベントを記録する方法について説明します。
+description: Azure API Management で Azure Event Hubs にイベントを記録する方法について説明します。 Event Hubs は、拡張性の高いデータ イングレス サービスです。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260940"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903393"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure API Management で Azure Event Hubs にイベントを記録する方法
 Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる高度にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。 Event Hubs はイベント パイプラインの「玄関」として機能し、Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。 Event Hubs はイベント ストリームの生成とイベントの使用を分離し、イベント コンシューマーが独自のスケジュールでイベントにアクセスできるようにします。
@@ -27,16 +27,16 @@ Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むこ�
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub を作成します
 
-イベント ハブを作成し、イベント ハブでイベントの送受信を行うために必要な接続文字列を取得する方法の詳しい手順については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)」をご覧ください。
+イベント ハブを作成し、イベント ハブでイベントの送受信を行うために必要な接続文字列を取得する方法の詳しい手順については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。
 
 ## <a name="create-an-api-management-logger"></a>API Management ロガーの作成
-イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの [ロガー](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) に対して行います。
+イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの [ロガー](/rest/api/apimanagement/2019-12-01/logger) に対して行います。
 
-API Management のロガーは、 [API Management REST API](https://aka.ms/apimapi)を使用して構成します。 要求の詳細な例については、[ロガーの作成方法](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)を参照してください。
+API Management のロガーは、 [API Management REST API](https://aka.ms/apimapi)を使用して構成します。 要求の詳細な例については、[ロガーの作成方法](/rest/api/apimanagement/2019-12-01/logger/createorupdate)を参照してください。
 
-## <a name="configure-log-to-eventhubs-policies"></a>log-to-eventhub ポリシーの構成
+## <a name="configure-log-to-eventhub-policies"></a>log-to-eventhub ポリシーを構成する
 
-API Management でロガーを構成したら、必要なイベントを記録するための構成を log-to-eventhub ポリシーに対して行います。 log-to-eventhub ポリシーは、inbound と outbound のどちらかのポリシー セクションで使用します。
+API Management でロガーを構成したら、必要なイベントを記録するように log-to-eventhub ポリシーを構成できます。 log-to-eventhub ポリシーは、受信ポリシー セクションまたは送信ポリシー セクションで使用できます。
 
 1. APIM インスタンスを参照します。
 2. [API] タブを選択します。
@@ -49,24 +49,44 @@ API Management でロガーを構成したら、必要なイベントを記録�
 9. 右側のウィンドウで、 **[詳細なポリシー]**  >  **[Log to EventHub]\(EventHub へのログ記録\)** を選択します。 これにより、`log-to-eventhub` ポリシー ステートメント テンプレートが挿入されます。
 
 ```xml
-<log-to-eventhub logger-id ='logger-id'>
-  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+<log-to-eventhub logger-id="logger-id">
+    @{
+        return new JObject(
+            new JProperty("EventTime", DateTime.UtcNow.ToString()),
+            new JProperty("ServiceName", context.Deployment.ServiceName),
+            new JProperty("RequestId", context.RequestId),
+            new JProperty("RequestIp", context.Request.IpAddress),
+            new JProperty("OperationName", context.Operation.Name)
+        ).ToString();
+    }
 </log-to-eventhub>
 ```
-`logger-id` を、前の手順でロガーを作成するために URL の `{new logger name}` に使用した値に置き換えます。
+`logger-id` を、前のステップでロガーを作成するための要求 URL の `{loggerId}` に使用した値に置き換えます。
 
-`log-to-eventhub` 要素の値は、文字列を返す式であれば何でもかまいません。 この例では、日付と時刻、サービス名、要求 ID、要求の IP アドレス、操作の名前から成る文字列が記録されます。
+`log-to-eventhub` 要素の値は、文字列を返す式であれば何でもかまいません。 この例では、日付と時刻、サービス名、要求 ID、要求の IP アドレス、操作の名前を含む JSON 形式の文字列がログされます。
 
 **[保存]** をクリックして、更新済みのポリシーの構成を保存します。 保存後すぐポリシーが有効となり、指定したイベント ハブにイベントが記録されます。
+
+> [!NOTE]
+> この API Management ポリシーからイベント ハブに送信できる最大メッセージ サイズは 200 キロバイト (KB) です。 イベント ハブに送信されたメッセージが 200 KB を超える場合、メッセージは自動的に切り詰められ、切り詰められたメッセージがイベント ハブに転送されます。
+
+## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Azure Stream Analytics を使用して Event Hubs 内のログをプレビューする
+
+[Azure Stream Analytics のクエリ](../event-hubs/process-data-azure-stream-analytics.md)を使用して、Event Hubs 内のログをプレビューすることができます。 
+
+1. Azure portal で、ロガーがイベントを送信するイベント ハブを参照します。 
+2. **[機能]** で、 **[データの処理]** タブを選択します。
+3. **[Enable real time insights from events]\(イベントからのリアルタイム分析情報を有効にする\)** カードで **[探索]** を選択します。
+4. **[入力のプレビュー]** タブでログをプレビューできます。表示されたデータが最新でない場合は、 **[更新]** を選択して最新のイベントを表示します。
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Event Hubs の詳細
   * [Azure Event Hubs の使用](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)
 * API Management と Event Hubs の統合の詳細
-  * [ロガーのエンティティ リファレンス](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
-  * [log-to-eventhub ポリシー リファレンス](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [ロガーのエンティティ リファレンス](/rest/api/apimanagement/2019-12-01/logger)
+  * [log-to-eventhub ポリシー リファレンス](./api-management-advanced-policies.md#log-to-eventhub)
   * [Azure API Management、Event Hubs、Moesif を使用した API の監視](api-management-log-to-eventhub-sample.md)  
 * [Azure Application Insights との統合](api-management-howto-app-insights.md)について学習する
 

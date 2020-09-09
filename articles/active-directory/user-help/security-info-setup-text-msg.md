@@ -89,11 +89,11 @@ ms.locfileid: "83747240"
 
     ![既定のサインイン方法の変更リンク](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 利用可能なメソッドのドロップダウン リストから **[Phone - text ( *_your_phone_number_* )]\(電話 - テキスト (<ユーザーの電話番号>)\)** を選択して、 **[確認]** を選択します。
+2. 利用可能なメソッドのドロップダウン リストから **[Phone - text (*_your_phone_number_*)]\(電話 - テキスト (<ユーザーの電話番号>)\)** を選択して、 **[確認]** を選択します。
 
     ![既定のサインインのメソッドを選択する](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    サインインに使用される既定のメソッドが、 **[Phone - text ( *_your_phone_number_* )]\(電話 - テキスト (<ユーザーの電話番号>)\)** に変更されます。
+    サインインに使用される既定のメソッドが、 **[Phone - text (*_your_phone_number_*)]\(電話 - テキスト (<ユーザーの電話番号>)\)** に変更されます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
 

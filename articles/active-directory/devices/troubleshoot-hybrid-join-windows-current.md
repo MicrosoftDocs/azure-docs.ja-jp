@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611315"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268776"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -28,8 +28,8 @@ ms.locfileid: "82611315"
 この記事は、[ハイブリッド Azure Active Directory 参加済みデバイスの構成](hybrid-azuread-join-plan.md)が済んでいて、次のシナリオに対応していることが前提となります。
 
 - デバイスベースの条件付きアクセス
-- [設定のエンタープライズ ローミング](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
+- [設定のエンタープライズ ローミング](./enterprise-state-roaming-overview.md)
+- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 このドキュメントでは、潜在的な問題を解決するためのトラブルシューティング ガイダンスを示します。
 

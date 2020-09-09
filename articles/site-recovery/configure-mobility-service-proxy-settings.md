@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
-ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 429ffcab147142ae2e96de13b7c9e1e5ee1ac7ba
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79504123"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133227"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Azure から Azure へのディザスター リカバリーのためにモビリティ サービスのプロキシ設定を構成する
 
@@ -54,5 +54,5 @@ ms.locfileid: "79504123"
 ProxyInfo.conf には次のテンプレートが含まれています。[proxy] Address=http://1.2.3.4 Port=5678 BypassList=hypervrecoverymanager.windowsazure.com,login.microsoftonline.com,blob.core.windows.net。 BypassList では、"*.windows.net" のようなワイルドカードはサポートされませんが、windows.net と指定することで十分回避できます。 
 
 ## <a name="next-steps"></a>次のステップ:
-- Azure VM のレプリケートに関する[ネットワークのガイダンス](site-recovery-azure-to-azure-networking-guidance.md)を確認します。
-- [Azure VM をレプリケートして](site-recovery-azure-to-azure.md)ディザスター リカバリーを展開します。
+- Azure VM のレプリケートに関する[ネットワークのガイダンス](./azure-to-azure-about-networking.md)を確認します。
+- [Azure VM をレプリケートして](./azure-to-azure-quickstart.md)ディザスター リカバリーを展開します。

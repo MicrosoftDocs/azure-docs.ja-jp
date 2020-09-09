@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99b51610e41aaf8358e7e3069d38dfd8c68ae422
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67849260"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446768"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 
@@ -60,7 +60,7 @@ Connect-To モデルでは、サービス プロバイダーが顧客のネッ�
 
 これら 2 つのモデルのどちらを選択するかは、顧客のニーズと、Azure サービスの提供に対する貴社の現在のニーズによって決まります。 各モデルの詳細と、関連するロールベースのアクセス制御、ネットワーク、ID 設計パターンなどの詳細については、以下のリンクを参照してください。
 
-* **ロールベースのアクセス制御 (RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、 [こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。
+* **Azure ロールベースのアクセス制御 (Azure RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、 [こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。
 * **ネットワーク** - Microsoft Azure でのネットワークに関するさまざまなトピックを紹介します。
 * **Azure Active Directory (Azure AD)** - Azure AD では、Microsoft Azure およびサード パーティ SaaS アプリケーション向けの ID 管理機能を提供します。 Azure AD の詳細については、 [こちら](https://azure.microsoft.com/documentation/services/active-directory/)を参照してください。  
 
@@ -130,5 +130,5 @@ Connect-To モデルと Connect-Through モデルのどちらが使用されて�
 詳細については、以下のリンクを参照してください。
 
 [クラウド ソリューション プロバイダー プログラムにおける Azure](https://docs.microsoft.com/azure/cloud-solution-provider)。  
-[クラウド ソリューション プロバイダーとしての取引の準備](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch)。  
-[マイクロソフト クラウド ソリューション プロバイダー リソース](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources)。
+[クラウド ソリューション プロバイダーとしての取引の準備](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch)。  
+[マイクロソフト クラウド ソリューション プロバイダー リソース](https://partner.microsoft.com/solutions/cloud-reseller-resources)。

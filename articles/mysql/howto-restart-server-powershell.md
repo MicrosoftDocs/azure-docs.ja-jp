@@ -4,14 +4,15 @@ description: この記事では、PowerShell を使用して Azure Database for 
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 935459a398c07d3b4f61c76dec75b083a2354720
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 71d10078a704b2905cf055347f5ed4272ca8ef72
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609038"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502785"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-powershell"></a>PowerShell を使用して Azure Database for MySQL サーバーを再起動する
 

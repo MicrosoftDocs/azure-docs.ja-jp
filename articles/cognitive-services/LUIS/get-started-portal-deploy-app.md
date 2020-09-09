@@ -3,12 +3,12 @@ title: クイック スタート:LUIS ポータルを使用してアプリをデ
 description: このクイックスタートでは、予測エンドポイント リソースを作成し、リソースを割り当て、アプリをトレーニング、公開することによって、アプリをデプロイする方法について説明します。
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585084"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336372"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -19,7 +19,7 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure サブスクリプション](https://azure.microsoft.com/free)を取得します。
-* [前のポータルのクイック スタート](get-started-portal-build-app.md)を完了するか、[アプリをダウンロードして、インポート](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)します。
+* [前のポータルのクイック スタート](get-started-portal-build-app.md)を完了するか、[アプリをダウンロードして、インポート](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/portal-build-app.json)します。
 * Azure リソース認証より前のアプリがある場合は、[Azure リソースに移行します](luis-migration-authoring.md)。 一部のポータル ページは、メール認証が有効になっている場合に表示が異なることがあります。
 
 <a name="create-the-endpoint-resource"></a>
@@ -40,7 +40,8 @@ LUIS 向けの新しい作成リソースまたはクエリ予測リソースを
 
 1. ご自分のテナント、サブスクリプション、リソースの名前を選択します。 **[Assign resource]\(リソースの割り当て)** を選択します。
 
-   ![アプリにリソースを割り当てる](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![自分のアプリにリソースを割り当てる](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. 同じ手順を実行して、オーサリング キーをアプリに追加します。
 
@@ -51,11 +52,11 @@ LUIS 向けの新しい作成リソースまたはクエリ予測リソースを
 
 ## <a name="train-the-app"></a>アプリをトレーニングする
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+前回のトレーニング以降、アプリを変更した場合、アプリを[トレーニング](get-started-portal-build-app.md)します。
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>予測エンドポイントにアプリを公開する
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>予測エンドポイントの要求
 

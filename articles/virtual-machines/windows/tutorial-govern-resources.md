@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 723eaeb6eb8946473b31b447e817a0a3b696f1cc
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100364"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926571"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
@@ -41,7 +41,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [ロールベースのアクセス制御](../../role-based-access-control/overview.md)を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
+組織のユーザーがこれらのリソースへの適切なアクセス レベルを持つようにします。 ユーザーに無制限のアクセス権を許可したくはありませんが、ユーザーが自分の作業を実行できるようにすることも必要です。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使うと、あるスコープで特定のアクションを実行するアクセス許可を持つユーザーを管理することができます。
 
 ロールの割り当てを作成および削除するには、`Microsoft.Authorization/roleAssignments/*` アクセス権が必要です。 このアクセス権は、所有者ロールまたはユーザー アクセス管理者ロールを通じて許可されます。
 
@@ -53,7 +53,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーを Azure Active Directory グループにまとめて使用する方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事では、仮想マシンを管理するための既存のグループを使用するか、またはポータルを使用して [Azure Active Directory グループを作成](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)します。
 
-新しいグループを作成するか、または既存のグループを見つけた後、[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、Azure Active Directory グループを割り当てます。  
+新しいグループを作成するか、または既存のグループを見つけた後、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、Azure Active Directory グループを割り当てます。  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -63,13 +63,13 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-"**プリンシパル \<guid> がディレクトリにありません**" というエラー メッセージが表示される場合は、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
+"**プリンシパル \<guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
 
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../governance/policy/overview.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) コマンドを使用します。
+[Azure Policy](../../governance/policy/overview.md) は、サブスクリプション内のすべてのリソースが会社の基準を順守するために役立ちます。 サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を表示するには、[Get-AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition) コマンドを使用します。
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -81,7 +81,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 * 仮想マシンの SKU を制限する。
 * マネージド ディスクを使用しない仮想マシンを監査する。
 
-次の例では、表示名に基づいて 3 つのポリシー定義を取得します。 [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) コマンドを使って、それらの定義をリソース グループに割り当てます。 一部のポリシーについては、許可される値を指定するパラメーター値を提供します。
+次の例では、表示名に基づいて 3 つのポリシー定義を取得します。 [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) コマンドを使って、それらの定義をリソース グループに割り当てます。 一部のポリシーについては、許可される値を指定するパラメーター値を提供します。
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -93,7 +93,7 @@ $rg = Get-AzResourceGroup -Name myResourceGroup
 
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
 $locationDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
-$skuDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$skuDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine size SKUs"}
 $auditDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
 
 # Assign policy for allowed locations
@@ -135,7 +135,7 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 [リソースのロック](../../azure-resource-manager/management/lock-resources.md)は、組織内のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。 ロールベースのアクセス制御とは異なり、リソースのロックはすべてのユーザーとロールに制限を適用します。 ロック レベルは *CanNotDelete* または *ReadOnly* に設定できます。
 
-仮想マシンとネットワーク セキュリティ グループをロックするには、[New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) コマンドを使用します。
+仮想マシンとネットワーク セキュリティ グループをロックするには、[New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) コマンドを使用します。
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -167,7 +167,7 @@ Azure リソースに[タグ](../../azure-resource-manager/management/tag-resour
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-仮想マシンにタグを適用するには、[Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) コマンドを使用します。
+仮想マシンにタグを適用するには、[Set-AzResource](/powershell/module/az.resources/set-azresource) コマンドを使用します。
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -181,7 +181,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>タグでリソースを見つける
 
-タグの名前と値でリソースを検索するには、[Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) コマンドを使用します。
+タグの名前と値でリソースを検索するには、[Get-AzResource](/powershell/module/az.resources/get-azresource) コマンドを使用します。
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -199,7 +199,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ロックされたネットワーク セキュリティ グループは、そのロックが削除されるまで削除できません。 ロックを削除するには、[Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) コマンドを使用します。
+ロックされたネットワーク セキュリティ グループは、そのロックが削除されるまで削除できません。 ロックを削除するには、[Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) コマンドを使用します。
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -212,11 +212,15 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
+
+## <a name="manage-costs"></a>コストを管理する
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -232,4 +236,3 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [仮想マシンの管理](tutorial-config-management.md)
-

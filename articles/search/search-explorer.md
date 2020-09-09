@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/27/2020
-ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369663"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929790"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>クイック スタート:Search エクスプローラーを使用してポータルでクエリを実行する
 
-**Search エクスプローラー**は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいは新しい内容の存在を確認することによるインデックス更新の結果の確認が簡単になります。
+**Search エクスプローラー**は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいはインデックス内の新しいコンテンツの有無を確認することによるデータ更新の確認が簡単になります。
 
-このクイックスタートでは、**realestate-us-sample-index** を使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して作成され、応答は JSON ドキュメントとして返されます。
+このクイックスタートでは、既存のインデックスを使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](/rest/api/searchservice/) を使用して作成され、応答は JSON ドキュメントとして返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
+開始する前に、次の項目を用意する必要があります。
 
-+ このクイックスタートでは、**realestate-us-sample-index** が使用されます。 組み込みのサンプル データ ソースからインデックスを生成するには、[**データのインポート**](search-import-data-portal.md) ウィザードをステップ実行します。
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
+
++ Azure Cognitive Search サービス。 [サービスを作成する](search-create-service-portal.md)か、現在のサブスクリプションで[既存のサービスを探してください](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
+
++ このクイックスタートでは、*realestate-us-sample-index* を使用します。 [ **[データのインポート]** ](search-import-data-portal.md) ウィザードを使用して、このインデックスを作成してください。 最初の手順でデータ ソースの入力を求められたら、 **[サンプル]** 、**realestate-us-sample** データ ソースの順に選択します。 インデックスの作成にあたっては、ウィザードの既定値をすべてそのまま使用してください。
 
 ## <a name="start-search-explorer"></a>Search エクスプローラーの起動
 
@@ -129,7 +133,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
    ![Orderby 式](./media/search-explorer/search-explorer-example-ordery.png "並べ替え順の変更")
 
-**$filter** 式と **$orderby** 式はどちらも OData 構文です。 詳細については、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
+**$filter** 式と **$orderby** 式はどちらも OData 構文です。 詳細については、[フィルターの OData 構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
 
 <a name="start-search-explorer"></a>
 
@@ -143,7 +147,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
 + 商用 Web ブラウザーで入力することがあるような自由形式のクエリは、エンドユーザーのエクスペリエンスをテストするのに便利です。 たとえば、組み込みの不動産サンプル インデックスがあるとしたら、「Seattle apartments lake washington」と入力できます。そして、CTRL + F キーを使用して検索結果内で語句を見つけることができます。 
 
-+ クエリ式とフィルター式は、Azure Cognitive Search でサポートされている構文で表されます。 既定値は[単純な構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
++ クエリ式とフィルター式は、Azure Cognitive Search でサポートされている構文で表されます。 既定値は[単純な構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -155,7 +159,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
 ## <a name="next-steps"></a>次のステップ
 
-クエリ構造やクエリ構文について学習するには、Postman または同等のツールを使用して、API のさらに多くの部分を利用するクエリ式を作成してください。 [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) は、学習や調査に特に役立ちます。
+クエリ構造やクエリ構文について学習するには、Postman または同等のツールを使用して、API のさらに多くの部分を利用するクエリ式を作成してください。 [Search REST API](/rest/api/searchservice/) は、学習や調査に特に役立ちます。
 
 > [!div class="nextstepaction"]
 > [Postman で基本的なクエリを作成する](search-query-simple-examples.md)

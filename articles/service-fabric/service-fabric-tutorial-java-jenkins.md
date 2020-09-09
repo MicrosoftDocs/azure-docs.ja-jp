@@ -5,15 +5,15 @@ author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594765"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320716"
 ---
-# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
+# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>チュートリアル:Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
 このチュートリアルは、シリーズの第 5 部です。 Jenkins を使用してアプリケーションにアップグレードをデプロイする方法を示します。 このチュートリアルでは、Service Fabric Jenkins プラグインと、投票アプリケーションをホストする GitHub リポジトリを組み合わせて使用して、アプリケーションをクラスターにデプロイします。
 
@@ -77,7 +77,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. GitHub で投票プロジェクトをホストするために使用できるリポジトリがない場合は、最初にリポジトリを作成します。 このチュートリアルでは、これ以降、このリポジトリを **dev_test** と呼びます。
 
-1. Jenkins ダッシュボード ( **) で**新しい項目``http://<HOST-IP>:8080``を作成します。
+1. Jenkins ダッシュボード (``http://<HOST-IP>:8080``) で**新しい項目**を作成します。
 
 1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、 **[OK]** をクリックします。
 
@@ -133,7 +133,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     </div>
     ```
 
-1. **Voting/VotingApplication/ApplicationManifest.xml** ファイル内で、**ApplicationTypeVersion** と **ServiceManifestVersion** のバージョンを *2.0.0* に更新します。
+1. *Voting/VotingApplication/ApplicationManifest.xml* ファイル内で、**ApplicationTypeVersion** と **ServiceManifestVersion** のバージョンを **2.0.0** に更新します。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -160,7 +160,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     </ApplicationManifest>
     ```
 
-1. **Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml** ファイル内で、**ServiceManifest** の **Version** フィールドと **CodePackage** タグの *Version* フィールドを **2.0.0** に更新します。
+1. *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* ファイル内で、**ServiceManifest** の **Version** フィールドと **CodePackage** タグの **Version** フィールドを **2.0.0** に更新します。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">

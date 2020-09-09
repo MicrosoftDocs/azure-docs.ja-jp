@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 09d039801107a44df4f3bf3745a1e074e6d708b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2da31944a58fb3e5834938b7de32348f30ed7e25
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76760966"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439817"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C IoT Edge モジュールを開発する
 
@@ -89,7 +89,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
    | ----- | ----- |
    | テンプレートの選択 | **[C モジュール]** を選択します。 |
    | モジュール プロジェクト名 | ご自身のモジュール **CModule** に名前を付けます。 |
-   | Docker イメージ リポジトリ | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/cmodule のようになります。 |
+   | Docker イメージ リポジトリ | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure Container Registry の**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/cmodule のようになります。 |
 
    ![ターゲット デバイス、モジュールの種類、コンテナー レジストリ用にプロジェクトを構成する](./media/tutorial-c-module-windows/add-application-and-module.png)
 
@@ -316,7 +316,13 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 前のセクションで、IoT Edge ソリューションを作成し、報告されたマシンの温度が許容しきい値を下回るメッセージをフィルターに掛けて除去するコードを **CModule** に追加しました。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
 
-1. 次のコマンドを使用して、開発マシンで Docker にサインインします。 自分の Azure コンテナー レジストリのユーザー名、パスワード、ログイン サーバーを使用してサインインします。 これらの値は、Azure portal でご自身のレジストリの **[アクセス キー]** セクションから取得できます。
+### <a name="sign-in-to-docker"></a>Docker にサインインする
+
+コンテナー イメージをレジストリにプッシュして格納できるように、開発マシン上の Docker にコンテナー レジストリの資格情報を入力します。
+
+1. PowerShell またはコマンド プロンプトを開きます。
+
+2. レジストリを作成した後に保存した Azure コンテナー レジステリの資格情報を使用して Docker にサインインします。
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -324,15 +330,21 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
    `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
 
-2. Visual Studio のソリューション エクスプローラーで、ビルドするプロジェクト名を右クリックします。 既定の名前は **AzureIotEdgeApp1** です。そして、Windows モジュールをビルドするので、拡張子は **Windows.Amd64** になります。
+### <a name="build-and-push"></a>ビルドとプッシュ
 
-3. **[IoT Edge モジュールをビルドしてプッシュする]\(Build and Push IoT Edge Modules\)** を選択します。
+これで開発マシンはコンテナー レジストリにアクセスできるようになり、ご使用の IoT Edge デバイスもアクセスできるようになりました。 次に、プロジェクト コードをコンテナー イメージに変換します。
+
+1. Visual Studio のソリューション エクスプローラーで、ビルドするプロジェクト名を右クリックします。 既定の名前は **AzureIotEdgeApp1** です。 このチュートリアルでは、**CTutorialApp** という名前が選択されています。 Windows モジュールをビルドするので、拡張子は **Windows.Amd64** になっている必要があります。
+
+2. **[IoT Edge モジュールをビルドしてプッシュする]\(Build and Push IoT Edge Modules\)** を選択します。
 
    ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。
 
+   このプロセスは、初回は数分間かかる可能性がありますが、次回これらのコマンドを実行するときは、それより速くなります。
+
 ## <a name="deploy-modules-to-device"></a>モジュールをデバイスにデプロイする
 
-IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Cloud Explorer と Azure IoT Edge Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
+IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Cloud Explorer と Azure IoT Edge Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.windows-amd64.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
 お使いの IoT Edge デバイスが稼働していることを確認します。
 

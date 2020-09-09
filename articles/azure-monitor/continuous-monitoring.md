@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797599"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318132"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -26,9 +26,9 @@ ms.locfileid: "83797599"
 お客様の環境全体に対する観測性を確保するためには、お客様のすべての Web アプリケーションとサービスに対して監視を有効にする必要があります。 そうすることで、すべてのコンポーネントについてエンドツーエンドのトランザクションと接続を容易に視覚化できます。
 
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
-- [お客様の DevOps リリース パイプラインに継続的監視](../azure-monitor/app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
-- [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
-- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../azure-monitor/learn/quick-monitor-portal.md) 向け、[Java](../azure-monitor/app/java-get-started.md) 向け、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
+- [お客様の DevOps リリース パイプラインに継続的監視](./app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
+- [Status Monitor](./app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
+- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](./learn/quick-monitor-portal.md) 向け、[Java](./app/java-get-started.md) 向け、[Node.js](./learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](./app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](./app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 
 
@@ -38,7 +38,7 @@ ms.locfileid: "83797599"
 - お客様のほとんどの Azure リソースから[プラットフォーム メトリック、アクティビティ ログ、診断ログ](platform/data-sources.md)が構成なしで自動的に得られます。
 - [Azure Monitor for VMs](insights/vminsights-overview.md) を使用して、VM に対してより高度な監視を有効にします。
 -  [コンテナー用 Azure Monitor](insights/container-insights-overview.md) を使用して、AKS クラスターに対してより高度な監視を有効にします。
-- お客様の環境内のさまざまなアプリケーションおよびサービス用に[監視ソリューション](insights/solutions-inventory.md)を追加します。
+- お客様の環境内のさまざまなアプリケーションおよびサービス用に[監視ソリューション](./monitor-reference.md)を追加します。
 
 
 [Infrastructure as Code](/azure/devops/learn/what-is-infrastructure-as-code) は、DevOps チームがソース コードに使用するのと同じバージョン管理を使用し、記述的モデルでインフラストラクチャを管理するものです。 これにより、お客様の環境の信頼性とスケーラビリティが高まり、お客様のアプリケーションの管理に使用されるものと同様のプロセスを利用できるようになります。
@@ -50,7 +50,7 @@ ms.locfileid: "83797599"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Azure リソース グループでリソースをまとめる
 今日、Azure 上の標準的なアプリケーションには、さまざまなリソース (VM やアプリ サービスのほか、Cloud Services、AKS クラスター、Service Fabric でホストされるマイクロサービスなど) が含まれています。 これらのアプリケーションでは、Event Hubs、Storage、SQL、Service Bus などの依存関係がよく利用されます。
 
-- Azure リソース グループでリソースをまとめることで、お客様のさまざまなアプリケーションを構成するすべてのリソースについて完全な可視性を得ることができます。 [リソース グループ用 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) を使用すると、フルスタックのアプリケーション全体の正常性とパフォーマンスを簡単な方法で追跡できます。また、各コンポーネントをドリルダウンして調査やデバッグを行うことができます。
+- Azure リソース グループでリソースをまとめることで、お客様のさまざまなアプリケーションを構成するすべてのリソースについて完全な可視性を得ることができます。 [リソース グループ用 Azure Monitor](./insights/resource-group-insights.md) を使用すると、フルスタックのアプリケーション全体の正常性とパフォーマンスを簡単な方法で追跡できます。また、各コンポーネントをドリルダウンして調査やデバッグを行うことができます。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>継続的デプロイによって品質を確保する
 継続的インテグレーションと継続的デプロイでは、自動化されたテストの結果に基づいて、お客様のアプリケーションに対するコードの変更を自動的に統合してデプロイできます。 これにより、デプロイ プロセスが効率化されるほか、運用への移行前にあらゆる変更の品質が確保されます。
@@ -58,32 +58,33 @@ ms.locfileid: "83797599"
 
 - [Azure Pipelines](/azure/devops/pipelines) を使用して継続的デプロイを実装し、お客様の CI/CD テストに基づいて、コードのコミットから運用までお客様のプロセス全体を自動化します。
 - [品質ゲート](/azure/devops/pipelines/release/approvals/gates)を使用して、お客様のデプロイの前後に監視を統合します。 これにより、お客様のアプリケーションが開発から運用に移行する際に正常性とパフォーマンスの主要指標 (KPI) を確実に満たし、インフラストラクチャ環境の違いやスケールの違いがお客様の KPI に悪い影響を及ぼさないようにできます。
-- お客様のさまざまなデプロイ環境 (開発、テスト、カナリア、運用) の間で[個別の監視インスタンスを維持](../azure-monitor/app/separate-resources.md)します。そうすることで、関連するアプリケーションおよびインフラストラクチャ全体で、収集されたデータの適合性が得られます。 環境をまたいでデータを相互に関連付ける必要がある場合は、[メトリックス エクスプローラーのマルチリソース グラフ](../azure-monitor/platform/metrics-charts.md)を使用するか、[Azure Monitor のクロスリソース クエリ](log-query/cross-workspace-query.md)を使用することができます。
+- お客様のさまざまなデプロイ環境 (開発、テスト、カナリア、運用) の間で[個別の監視インスタンスを維持](./app/separate-resources.md)します。そうすることで、関連するアプリケーションおよびインフラストラクチャ全体で、収集されたデータの適合性が得られます。 環境をまたいでデータを相互に関連付ける必要がある場合は、[メトリックス エクスプローラーのマルチリソース グラフ](./platform/metrics-charts.md)を使用するか、[Azure Monitor のクロスリソース クエリ](log-query/cross-workspace-query.md)を使用することができます。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>アクションにつながる実用的なアラートを作成する
 監視の重要な側面の 1 つは、現在の問題と予測される問題を管理者に対してプロアクティブに通知することです。 
 
-- 予測可能な障害状態を特定するために、ログとメトリックに基づいて [Azure Monitor のアラートを](../azure-monitor/platform/alerts-overview.md)作成します。 すべてのアラートがアクションにつながるものになることを目標にして、それらが実際に重大な状態を表すようにしてください。また、誤検知が少なくなるようにしてください。 お客様独自の静的なしきい値を定義するのではなく、[動的しきい値](platform/alerts-dynamic-thresholds.md)を使用して、メトリック データに対するベースラインを自動的に計算します。 
+- 予測可能な障害状態を特定するために、ログとメトリックに基づいて [Azure Monitor のアラートを](./platform/alerts-overview.md)作成します。 すべてのアラートがアクションにつながるものになることを目標にして、それらが実際に重大な状態を表すようにしてください。また、誤検知が少なくなるようにしてください。 お客様独自の静的なしきい値を定義するのではなく、[動的しきい値](platform/alerts-dynamic-thresholds.md)を使用して、メトリック データに対するベースラインを自動的に計算します。 
 - お客様の管理者への通知に最も効果的な手段が使用されるよう、アラートに関するアクションを定義します。 [通知のアクション](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)としては、SMS、電子メール、プッシュ通知、音声通話が利用できます。
 - より高度なアクションを使用し、[Webhook](platform/activity-log-alerts-webhook.md) を通じて[お客様の ITSM ツール](platform/itsmc-overview.md)や他のアラート管理システムに接続します。
 - さらに、Webhook を使用してアラートから起動できる [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) や [Azure Automation Runbook](../automation/automation-webhooks.md) を使って、アラートで特定された状態を修復します。 
-- [自動スケーリング](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md)を使用し、収集されたメトリックに基づいてお客様のコンピューティング リソースを動的に増減させます。
+- [自動スケーリング](./learn/tutorial-autoscale-performance-schedule.md)を使用し、収集されたメトリックに基づいてお客様のコンピューティング リソースを動的に増減させます。
 
 ## <a name="prepare-dashboards-and-workbooks"></a>ダッシュボードとブックを準備する
 お客様の開発担当者と運用担当者が同じテレメトリとツールにアクセスできるようにすると、彼らがお客様の環境全体のパターンを確認して、お客様の平均検出時間 (MTTD) と平均復元時間 (MTTR) を最小限に抑えることができるようになります。
 
-- お客様の組織内のさまざまな役割のために、一般的なメトリックとログに基づく[カスタム ダッシュボード](../azure-monitor/learn/tutorial-app-dashboards.md)を準備します。 すべての Azure リソースからのデータをダッシュボードでまとめることができます。
-- 開発担当者と運用担当者の間で知識を共有できるように[ブック](../azure-monitor/platform/workbooks-overview.md)を準備します。 これらは、メトリック グラフやログ クエリが含まれた動的レポートとして準備される場合があります。また、基本的な問題に対処するカスタマー サポートや運用担当者を支援するために開発者によって作成されたトラブルシューティング ガイドとして準備される場合もあります。
+- お客様の組織内のさまざまな役割のために、一般的なメトリックとログに基づく[カスタム ダッシュボード](./learn/tutorial-app-dashboards.md)を準備します。 すべての Azure リソースからのデータをダッシュボードでまとめることができます。
+- 開発担当者と運用担当者の間で知識を共有できるように[ブック](./platform/workbooks-overview.md)を準備します。 これらは、メトリック グラフやログ クエリが含まれた動的レポートとして準備される場合があります。また、基本的な問題に対処するカスタマー サポートや運用担当者を支援するために開発者によって作成されたトラブルシューティング ガイドとして準備される場合もあります。
 
 ## <a name="continuously-optimize"></a>継続的に最適化する
  監視は、Build-Measure-Learn (構築-測定-学習) という一般的な方針に含まれている基本的要素の 1 つです。これによると、お客様の KPI とユーザー行動のメトリックを継続的に追跡し、計画の繰り返しを通じてそれらを最適化することを目指すことが推奨されます。 Azure Monitor は、お客様のビジネスに関連するメトリックとログを収集したり、必要に応じて新しいデータ ポイントを次回のデプロイに追加したりするのに役に立ちます。
 
-- Application Insights のツールを使用して、[エンドユーザーの行動とエンゲージメントを追跡](../azure-monitor/learn/tutorial-users.md)します。
-- [影響分析](../azure-monitor/app/usage-impact.md)を使用して、重要な KPI を高めるためにどの分野に注力すべきかの優先度付けを行います。
+- Application Insights のツールを使用して、[エンドユーザーの行動とエンゲージメントを追跡](./learn/tutorial-users.md)します。
+- [影響分析](./app/usage-impact.md)を使用して、重要な KPI を高めるためにどの分野に注力すべきかの優先度付けを行います。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor](overview.md) のさまざまなコンポーネントについて確認する。
-- お客様のリリース パイプラインに[継続的監視を追加](../azure-monitor/app/continuous-monitoring.md)する。
+- お客様のリリース パイプラインに[継続的監視を追加](./app/continuous-monitoring.md)する。
+

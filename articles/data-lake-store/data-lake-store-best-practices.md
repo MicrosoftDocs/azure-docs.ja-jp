@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75638937"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981437"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -126,7 +126,9 @@ Distcp と同様に、AdlCopy は Azure Automation や Windows タスク スケ�
 
 Data Lake Storage Gen1 には詳細な診断ログと監査機能が用意されています。 Data Lake Storage Gen1 には、Data Lake Storage Gen1 アカウントの下および Azure Monitor の中に、Azure Portal の基本の指標がいくつか用意されています。 Data Lake Storage Gen1 の可用性は、Azure Portal に表示されます。 ただし、この指標は 7 分ごとに更新され、公開済みの API ではクエリを実行できません。 Data Lake Storage Gen1 アカウントの最新の可用性を取得するには、独自の統合テストを実行して可用性を検証する必要があります。 記憶域使用率の合計、読み取り/書き込み要求、イングレス/エグレスなどの他の指標では、最新の情報に更新されるまで、最大で 24 時間かかる場合があります。 そのため、Hadoop のコマンドライン ツールを使用またはログ情報を集計することを通じて、より最新の指標を手動で計算する必要があります。 最新の記憶域使用率を取得する最も早い方法は、この HDFS コマンドを Hadoop クラスター ノード (ヘッド ノードなど) で実行する方法です。
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>Data Lake Storage Gen1 の診断をエクスポートする
 
@@ -138,7 +140,7 @@ Data Lake Storage Gen1 から検索可能なログへのログを取得する最
 
 Data Lake Storage Gen1 のログ配布が有効になっていない場合、Azure HDInsight には log4j を介して [Data Lake Storage Gen1 のクライアント側のログ記録](data-lake-store-performance-tuning-mapreduce.md)を有効にできます。 **[Ambari]**  >  **[YARN]**  >  **[Config]\(構成\)**  >  **[Advanced yarn-log4j configurations]\(高度な yarn-log4j 構成\)** で次のプロパティを設定する必要があります。
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
 このプロパティを設定してノードを再起動すると、Data Lake Storage Gen1 の診断がノード上の YARN ログ (/tmp/\<user\>/yarn.log) に書き込まれ、エラーやスロットリング (HTTP 429 エラー コード) などの重要な詳細を監視できます。 この同じ情報は、Azure Monitor ログや、Data Lake Storage Gen1 アカウントの [[診断]](data-lake-store-diagnostic-logs.md) ブレードの他のログ配布先で監視できます。 少なくともクライアント側のログ記録を有効にするか、Data Lake Storage Gen1 でログ配布のオプションを活用して、運用を可視化し、デバッグを簡単にすることをおすすめします。
 
@@ -154,11 +156,15 @@ Data Lake Storage Gen1 のログ配布が有効になっていない場合、Azu
 
 IoT のワークロードでは、データ ストアにランディングできるデータは、製品、端末、組織、お客様と多岐にわたります。 ダウンストリーム コンシューマーのために、組織のディレクトリのレイアウト、セキュリティ、データの効率的な処理について、事前に計画することが重要です。 考慮する一般的なテンプレートは、次のようなレイアウトになります。
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 たとえば、英国の飛行機のエンジンのランディング テレメトリは次のような構造になります。
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 フォルダー構造の最後に日付を追加することには、重要な意味があります。 特定のリージョンや主題をユーザー/グループにロック ダウンする場合、POSIX のアクセス許可で簡単に行うことができます。 それ以外で、特定のセキュリティ グループによる閲覧を英国のデータや特定の飛行機に限定する必要があった場合、日付構造を前すると、毎時のフォルダーの下の多数のフォルダーに、別個のアクセス許可が必要です。 さらに、日付構造を前にすると、時間が経過するごとにフォルダーの数が指数関数的に増加します。
 
@@ -168,14 +174,18 @@ IoT のワークロードでは、データ ストアにランディングでき
 
 ファイルのプロセスがデータの破損や予期しない形式により失敗することがあります。 このようなケースでは、 **/bad** フォルダーにファイルを移動してさらに調査すると便利な場合があります。 また、バッチ ジョブはこれらの "*不良*" ファイルのレポート作成や通知を管理し、手動で介入できるようにします。 次のテンプレート構造を考慮してください。
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 たとえば、ある北米のマーケティング企業は、更新されたお客様情報の抽出データをクライアントから毎日受け取ります。 処理される前と後では、次のスニペットのようになります。
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 Hive や従来の SQL データベースなどのデータベースで直接処理される一般的なバッチ データの場合、出力は既に Hive テーブルまたは外部データベースの別のフォルダーに入るように設定されているため、 **/in** フォルダーや **/out** フォルダーは不要です。 たとえば、お客様からの毎日の抽出データはそれぞれのフォルダーにランディングし、Azure Data Factory、Apache Oozie、Apache Airflow などによるオーケストレーションは Hive や Spark の毎日のジョブをトリガーし、データを処理して Hive のテーブルに書き込みます。
 

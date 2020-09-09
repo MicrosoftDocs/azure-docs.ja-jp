@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202827"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249492"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API アプリを API としてインポートする
 
@@ -33,7 +33,7 @@ ms.locfileid: "82202827"
 ## <a name="prerequisites"></a>前提条件
 
 + 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
-+ サブスクリプションに API アプリがあることを確認します。 詳細については、[App Service のドキュメント](https://docs.microsoft.com/azure/app-service/)に関するページを参照してください
++ サブスクリプションに API アプリがあることを確認します。 詳細については、[App Service のドキュメント](../app-service/index.yml)に関するページを参照してください
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

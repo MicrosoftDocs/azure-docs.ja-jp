@@ -1,22 +1,22 @@
 ---
 title: V3 機械学習エンティティに移行する
-description: V3 作成には新しいエンティティ型である機械学習エンティティが用意されているほか、アプリケーションの機械学習エンティティやその他のエンティティ、または機能にリレーションシップを追加することができます。
+description: V3 作成では、新しいエンティティ型である機械学習エンティティが用意されているほか、アプリケーションの機械学習エンティティやその他のエンティティ、または特徴にリレーションシップを追加することができます。
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593224"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684592"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>V3 作成エンティティに移行する
 
-V3 作成には新しいエンティティ型である機械学習エンティティが用意されているほか、アプリケーションの機械学習エンティティやその他のエンティティ、または機能にリレーションシップを追加することができます。
+V3 作成では、新しいエンティティ型である機械学習エンティティが用意されているほか、アプリケーションの機械学習エンティティやその他のエンティティ、または特徴にリレーションシップを追加することができます。
 
 ## <a name="entities-are-decomposable-in-v3"></a>V3 ではエンティティが分解可能
 
-[API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) またはポータルのいずれかを使って V3 作成 API で作成されたエンティティを使用すると、親と子が含まれる多層エンティティ モデルを構築できます。 親は**機械学習エンティティ**、子は機械学習エンティティの**サブエンティティ**と呼ばれます。
+[API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) またはポータルのいずれかを使って V3 作成 API で作成されたエンティティを使用すると、親と子が含まれる多層エンティティ モデルを構築できます。 親は**機械学習エンティティ**、子は機械学習済みエンティティの**サブエンティティ**と呼ばれます。
 
 各サブエンティティは、機械学習エンティティでもありますが、特徴の構成オプションが追加されています。
 
@@ -70,7 +70,7 @@ V3 作成モデルへの移行を開始するときは、機械学習エンテ�
 |V2 作成エンティティ型|V3 作成エンティティ型|例|
 |--|--|--|
 |複合エンティティ|機械学習エンティティ|[詳細情報](#migrate-v2-composite-entity)|
-|階層構造エンティティ|機械学習エンティティの役割|[詳細情報](#migrate-v2-hierarchical-entity)|
+|階層構造エンティティ|機械学習エンティティのロール|[詳細情報](#migrate-v2-hierarchical-entity)|
 
 ## <a name="migrate-v2-composite-entity"></a>V2 複合エンティティを移行する
 

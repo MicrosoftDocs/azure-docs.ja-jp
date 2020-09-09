@@ -3,18 +3,17 @@ title: Python を使用して Azure Data Lake Analytics を管理する
 description: この記事では、Python を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、ジョブを管理する方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: matt1883
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2018
-ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: dd3511fefe39f51a521aa211454a49763224a6d9
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68355984"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876242"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -39,7 +38,7 @@ ms.locfileid: "68355984"
 
 最初に、次のコマンドを実行して最新の `pip` があることを確認します。
 
-```
+```console
 python -m pip install --upgrade pip
 ```
 
@@ -47,7 +46,7 @@ python -m pip install --upgrade pip
 
 コマンドラインからモジュールをインストールするには、次の `pip` コマンドを使用します。
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-datalake-store
 pip install azure-mgmt-datalake-store

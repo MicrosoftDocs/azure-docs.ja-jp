@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519957"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Facebook ログインを使用するように App Service または Azure Functions アプリを構成する
@@ -48,7 +48,7 @@ ms.locfileid: "80519957"
 
 1. アプリケーションの登録に使用した Facebook アカウントがアプリケーションの管理者になります。 この時点では、管理者のみがこのアプリケーションにサインインできます。
 
-   他の Facebook アカウントを認証するには、 **[アプリのレビュー]** を選択し、 **[\<アプリ名> をパブリックにする]** を有効にして、Facebook 認証を使用することで一般公衆がアクセスできるようにします。
+   他の Facebook アカウントを認証するには、 **[アプリのレビュー]** を選択し、 **[\<your-app-name> をパブリックにする]** を有効にして、Facebook 認証を使用することで一般公衆がアクセスできるようにします。
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 

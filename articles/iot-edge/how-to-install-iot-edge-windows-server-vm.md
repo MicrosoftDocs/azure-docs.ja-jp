@@ -9,12 +9,13 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d8344f5f6b4ccc9f58cc1809f5d625e7e4adf68
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77045898"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494062"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Windows Server 仮想マシンで Azure IoT Edge を実行する
 
@@ -22,11 +23,11 @@ Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デ�
 
 IoT Edge ランタイムの動作とランタイムに含まれるコンポーネントについては、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
-この記事では、[Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーを使用して Windows Server 2019 仮想マシンで Azure IoT Edge ランタイムを実行する手順を紹介します。 他のバージョンで使用する場合は、Windows に [Azure IoT Edge ランタイムをインストール](how-to-install-iot-edge-windows.md)する手順に従ってください。
+この記事では、[Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace オファーを使用して Windows Server 2019 仮想マシンで Azure IoT Edge ランタイムを実行する手順を紹介します。 他のバージョンで使用する場合は、Windows に [Azure IoT Edge ランタイムをインストール](how-to-install-iot-edge-windows.md)する手順に従ってください。
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketplace からデプロイする
 
-1. [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で “Windows Server” を検索します。
+1. [Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で “Windows Server” を検索します。
 2. **[今すぐ入手する]** を選択します。
 3. **ソフトウェア プラン**で、「Windows Server 2019 Datacenter Server Core with Containers」を検索し、次のダイアログで **[続行]** を選択します。
     * 他のバージョンの Windows Server with Containers でこれらの手順を使用することもできます。

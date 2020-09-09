@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) での仮想ネットワーク リ�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208059"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542706"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 
@@ -37,7 +37,9 @@ Container Networking Interface (CNI) は、コンテナー ランタイムがネ
 
 ![各ブリッジが 1 つの Azure VNet に接続している 2 つのノードを示す図](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-ほとんどの運用環境デプロイでは、Azure CNI ネットワークを使用する必要があります。 このネットワーク モデルでは、コントロールの分離とリソースの管理が可能です。 セキュリティの観点から、多くの場合に、それらのリソースを異なるチームが管理し、セキュリティで保護することが望まれます。 Azure CNI ネットワークでは、各ポッドに割り当てられた IP アドレスを使用して、既存の Azure リソース、オンプレミスのリソース、またはその他のサービスに直接接続することができます。
+運用環境のデプロイでは、kubenet と Azure CNI の両方が有効なオプションです。
+
+運用環境での Azure CNI ネットワークの主な利点は、ネットワーク モデルを使用して、リソースの制御と管理の分離が可能になることです。 セキュリティの観点から、多くの場合に、それらのリソースを異なるチームが管理し、セキュリティで保護することが望まれます。 Azure CNI ネットワークでは、各ポッドに割り当てられた IP アドレスを使用して、既存の Azure リソース、オンプレミスのリソース、またはその他のサービスに直接接続することができます。
 
 Azure CNI ネットワークを使用する場合、仮想ネットワーク リソースは AKS クラスターとは別個のリソース グループに含まれます。 これらのリソースにアクセスして管理するためのアクセス許可を AKS サービス プリンシパルに委任します。 AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`

@@ -5,22 +5,22 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9604f0c6eeb9d0ac4b7d07f1ab1ba03285fd60fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a552f03c8a8fa05ed7d2c6eb87374d4e7e17838d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070088"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
+# <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境をスケーリングする方法
 
-この記事では、[Azure portal](https://portal.azure.com) を使用して Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。
+この記事では、[Azure portal](https://portal.azure.com) を使用して Azure Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。
 
 Azure ポータルを使用して、容量を特定の価格 SKU 内で増減できます。
 
@@ -32,11 +32,11 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 
 ## <a name="change-the-capacity-of-your-environment"></a>環境の容量を変更する
 
-1. Azure Portal で Time Series Insights 環境を見つけて選択します。
+1. Azure portal で、Azure Time Series Insights 環境を見つけて選択します。
 
-1. Time Series Insighs 環境のメニューから、 **[ストレージの構成]** を選択します。
+1. Azure Time Series Insights 環境のメニューから、 **[ストレージ構成]** を選択します。
 
-   [![Time Series Insights の容量を構成する](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
+   [![Azure Time Series Insights の容量を構成する](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. **容量**のスライダーを調整して、受信レートとストレージ容量の要件を満たす容量を選択します。 **受信レート**、**ストレージの容量**、および**コストの見積もり**が動的に更新されて変化の影響が示されることに注目してください。
 
@@ -50,7 +50,7 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを参照してください。
+- 詳細については、[Azure Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを確認してください。
 
 - [Azure Time Series Insights のデータ リテンションの構成](time-series-insights-how-to-configure-retention.md)について確認します。
 

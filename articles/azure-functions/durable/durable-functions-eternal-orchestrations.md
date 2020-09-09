@@ -3,14 +3,14 @@ title: Durable Functions での永続的オーケストレーション - Azure
 description: Azure Functions の Durable Functions 拡張機能を使用して永続的オーケストレーションを実装する方法について説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478820"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506368"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -22,7 +22,7 @@ ms.locfileid: "80478820"
 
 ## <a name="resetting-and-restarting"></a>リセットと再開
 
-オーケストレーター関数は、無限ループを使用せずに、[オーケストレーション トリガーのバインド](durable-functions-bindings.md#orchestration-trigger)の `ContinueAsNew` (.NET) または `continueAsNew` (JavaScript) メソッドを使用してその状態をリセットします。 このメソッドでは、JSON でシリアル化できる 1 つのパラメーターが使用され、このパラメーターが、次のオーケストレーター関数生成に対する新しい入力になります。
+オーケストレーター関数は、無限ループを使用せずに、[オーケストレーション トリガーのバインド](durable-functions-bindings.md#orchestration-trigger)の `ContinueAsNew` (.NET)、`continueAsNew` (JavaScript)、または `continue_as_new` (Python) メソッドを使用してその状態をリセットします。 このメソッドでは、JSON でシリアル化できる 1 つのパラメーターが使用され、このパラメーターが、次のオーケストレーター関数生成に対する新しい入力になります。
 
 `ContinueAsNew` が呼び出されると、インスタンスは、終了前に、自身に対してメッセージをエンキューします。 メッセージは、新しい入力値でインスタンスを再開します。 同じインスタンス ID が保持されますが、オーケストレーター関数の履歴は効果的に切り詰められます。
 
@@ -70,13 +70,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("DoCleanup")
+
+    # sleep for one hour between cleanups
+    next_cleanup = context.current_utc_datetime + timedelta(hours = 1)
+    yield context.create_timer(next_cleanup)
+
+    context.continue_as_new(None)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 この例と、タイマーによってトリガーされる関数の違いは、クリーンアップ トリガーのタイミングです。この例のタイミングはスケジュールに基づいていません。 たとえば、1 時間ごとに関数を実行する CRON スケジュールでは、1:00、2:00、3:00 といったタイミングで関数が実行され、重複の問題が発生する可能性があります。 この例では、クリーンアップ所要時間が 30 分の場合は、1:00、2:30、4:00 にスケジュールされるため、重複することはありません。
 
 ## <a name="starting-an-eternal-orchestration"></a>永続的オーケストレーションの開始
 
-永続的オーケストレーションを開始するには、他のオーケストレーション関数と同様に、`StartNewAsync` (.NET) または `startNew` (JavaScript) メソッドを使用します。  
+永続的オーケストレーションを開始するには、他のオーケストレーション関数と同様に、`StartNewAsync` (.NET)、`startNew` (JavaScript)、または `start_new` (Python) メソッドを使用します。  
 
 > [!NOTE]
 > 単一の永続的オーケストレーションを確実に実行するには、オーケストレーションの開始時に同じインスタンス `id` を維持することが重要です。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
@@ -115,6 +134,19 @@ module.exports = async function (context, req) {
     return client.createCheckStatusResponse(context.bindingData.req, instanceId);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    instance_id = 'StaticId'
+
+    await client.start_new('Periodic_Cleanup_Loop', instance_id, None)
+
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+
+```
 
 ---
 
@@ -122,7 +154,7 @@ module.exports = async function (context, req) {
 
 オーケストレーター関数は、最終的に完了する必要がある場合は、`ContinueAsNew` を "*呼び出さない*" でください。呼び出さなければ、関数は終了します。
 
-オーケストレーター関数が無限ループにあり、停止する必要がある場合は、[オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)の `TerminateAsync` (.NET) メソッドまたは `terminate` (JavaScript) メソッドを使用してそれを停止します。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
+オーケストレーター関数が無限ループにあり、停止する必要がある場合は、[オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)の `TerminateAsync` (.NET)、`terminate` (JavaScript)、または `terminate` (Python) メソッドを使用してそれを停止します。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

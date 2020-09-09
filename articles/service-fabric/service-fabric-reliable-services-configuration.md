@@ -5,12 +5,13 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645516"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021971"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
 Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
@@ -29,13 +30,15 @@ Reliable Services のグローバル構成は、クラスターのクラスタ�
 
 次の例は、Azure ARM またはオンプレミスの JSON テンプレートで、ステートフル サービスの信頼性の高いコレクションを戻すために作成される共有トランザクション ログを変更する方法を示しています。
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>開発者のローカル クラスター マニフェスト セクションのサンプル
 ローカル開発環境でこれを変更する場合は、ローカル clustermanifest.xml ファイルを編集する必要があります。
@@ -184,5 +187,4 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
 
 ## <a name="next-steps"></a>次のステップ
 * [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
-* [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [Reliable Services の開発者向けリファレンス](/previous-versions/azure/dn706529(v=azure.100))

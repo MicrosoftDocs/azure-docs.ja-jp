@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712056"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの Update 3 リリース ノート
 

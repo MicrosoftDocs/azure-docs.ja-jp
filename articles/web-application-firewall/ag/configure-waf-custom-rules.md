@@ -1,19 +1,19 @@
 ---
 title: PowerShell を使用して v2 のカスタム規則を構成する
 titleSuffix: Azure Web Application Firewall
-description: Azure PowerShell を使用して WAF v2 のカスタム規則を構成する方法について説明します。 ファイアウォールを通過する要求ごとに評価される独自の規則を作成できます。
+description: Azure PowerShell を使用して Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則を構成する方法について説明します ファイアウォールを通過する要求ごとに評価される独自の規則を作成できます。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 05/21/2020
 ms.author: victorh
-ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471637"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758964"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell を使用してカスタム ルールによって Application Gateway 上に Web アプリケーション ファイアウォール v2 を構成する
 
@@ -136,6 +136,19 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
   -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig `
   -WebApplicationFirewallConfig $wafConfig `
   -FirewallPolicy $wafPolicy
+```
+
+## <a name="update-your-waf"></a>WAF を更新する
+
+WAF を作成したら、次のコードのようなプロシージャを使用して更新できます。
+
+```azurepowershell
+# Get the existing policy
+$policy = Get-AzApplicationGatewayFirewallPolicy -Name $policyName -ResourceGroupName $RGname
+# Add an existing rule named $rule
+$policy.CustomRules.Add($rule)
+# Update the policy
+Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
 ```
 
 ## <a name="next-steps"></a>次のステップ

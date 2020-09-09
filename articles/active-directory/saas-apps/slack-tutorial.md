@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Slack の統合 | Microsoft Docs
 description: Azure Active Directory とSlack の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 07/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c80963976783321d05fc6f32bb24daed36fa105
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985555"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527555"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Slack の統合
 
@@ -39,6 +35,12 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Slack でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> 1 つのテナント内の複数の Slack インスタンスと統合する必要がある場合は、各アプリケーションの識別子を変数にすることができます。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
@@ -47,9 +49,6 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Slack では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 * Slack では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)がサポートされます
 * Slack を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
-
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-slack-from-the-gallery"></a>ギャラリーからの Slack の追加
 
@@ -87,23 +86,30 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.slack.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://< DOMAIN NAME>.slack.com/sso/saml/start`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://slack.com` という URL を入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 値を取得するには、[Slack クライアント サポート チーム](https://slack.com/help/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    
+    > [!NOTE]
+    > テナントと統合する必要がある Slack インスタンスが複数ある場合は、 **[識別子 (エンティティ ID)]** の値を変数にすることができます。 `https://<DOMAIN NAME>.slack.com` というパターンを使用します。 このシナリオでは、同じ値を使用して、Slack の別の設定と組み合わせる必要もあります。
 
 1. Slack アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/edit-attribute.png)
 
-1. その他に、Slack アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。 ユーザーがメール アドレスを持っていない場合は、**emailaddress** を **user.userprincipalname** にマップします。
+1. その他に、Slack アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。 また、`email` 属性も追加する必要があります。 ユーザーがメール アドレスを持っていない場合は、**emailaddress** を **user.userprincipalname** にマップし、**email** を **user.userprincipalname** にマップします。
 
     | 名前 | ソース属性 |
     | -----|---------|
     | emailaddress | user.userprincipalname |
+    | email | user.userprincipalname |
     | | |
+
+   > [!NOTE]
+   > サービス プロバイダー (SP) の構成を設定するには、SAML 構成ページの **[詳細オプション]** の横にある **[展開]** をクリックする必要があります。 **[Service Provider Issuer]\(サービス プロバイダーの発行者\)** ボックスに、ワークスペースの URL を入力します。 既定値は slack.com です。 
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -149,25 +155,32 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 2. **[Microsoft Azure AD]** 、 **[Team Settings]** の順に選択します。
 
-     ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial_slack_001.png)
+     ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. **[Team Settings]** セクションで、 **[Authentication]** タブをクリックし、 **[Change Settings]** をクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial_slack_002.png)
+    ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. **[SAML Authentication Settings]** ダイアログで、次の手順を実行します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial_slack_003.png)
+    ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  **[SAML 2.0 Endpoint (HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
     b.  **[Identity Provider Issuer]\(ID プロバイダー発行者\)** テキスト ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    c.  ダウンロードした証明書をメモ帳で開き、その内容をクリップボードにコピーし、 **[Public Certificate]** ボックスに貼り付けます。
+    c.  ダウンロードした証明書ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[公開証明書]** ボックスに貼り付けます。
 
     d. 必要に応じて、Slack チームに上記の 3 つの設定を構成します。 設定の詳細については、**Slack の SSO 構成ガイド**をこちらから参照してください。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    e.  **[Save Configuration]** をクリックします。
+    ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial-slack-expand.png)
+
+    e. **[expand]\(展開\)** をクリックし、 **[Service provider issuer]\(サービス プロバイダー発行者\)** ボックスに「`https://slack.com`」と入力します。
+
+    f.  **[Save Configuration]** をクリックします。
+    
+    > [!NOTE]
+    > Azure AD と統合する必要がある複数の Slack インスタンスがある場合は、Azure アプリケーション**識別子**の設定と組み合わせることができるように、 **[Service provider issuer]\(サービス プロバイダー発行者\)** に `https://<DOMAIN NAME>.slack.com` を設定します。
 
 ### <a name="create-slack-test-user"></a>Slack のテスト ユーザーの作成
 

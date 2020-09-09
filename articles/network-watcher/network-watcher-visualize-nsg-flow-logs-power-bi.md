@@ -1,23 +1,23 @@
 ---
 title: Azure NSG フロー ログの視覚化- Power BI
 titleSuffix: Azure Network Watcher
-description: このページでは、NSG フロー ログを Power BI で視覚化する方法について説明しています。
+description: Power BI を使用してネットワーク セキュリティ グループのフロー ログを視覚化し、Azure Network Watcher 内の IP トラフィックに関する情報を表示する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840606"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272639"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>ネットワーク セキュリティ グループのフロー ログを Power BI で視覚化する
 

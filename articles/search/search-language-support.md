@@ -7,13 +7,13 @@ author: yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2bc66c755da2011cc7016f37b194caa6200d9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/12/2020
+ms.openlocfilehash: c7d574bf172a792c59e4b00ea9ad0366ad1f17ad
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793587"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922856"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Azure Cognitive Search で複数の言語のインデックスを作成する方法
 
@@ -44,7 +44,7 @@ Azure Cognitive Search では、多彩な言語アナライザーが Lucene と 
 
 クエリを発行するエージェントの言語がわかっている場合は、 **searchFields** クエリ パラメーターを使用して、検索要求を特定のフィールドに制限できます。 次のクエリは、ポーランド語の説明に対してのみ発行されます。
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
 
 ポータルでは、インデックスをクエリし、[**検索エクスプローラー**](search-explorer.md)を使用して上記のようなクエリに貼り付けることができます。
 
@@ -52,6 +52,7 @@ Azure Cognitive Search では、多彩な言語アナライザーが Lucene と 
 
 クエリを発行するエージェントの言語が不明な場合もありますが、その場合は、すべてのフィールドに対して同時にクエリを発行できます。 必要に応じて、 [スコアリング プロファイル](index-add-scoring-profiles.md)を使用すると、特定言語の結果に対する優先度を定義できます。 次の例では、英語の説明で見つかった一致項目には、ポーランド語とフランス語の一致項目に比べて高いスコアが付けられます。
 
+```http
     "scoringProfiles": [
       {
         "name": "englishFirst",
@@ -60,9 +61,10 @@ Azure Cognitive Search では、多彩な言語アナライザーが Lucene と 
         }
       }
     ]
+```
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 
 ## <a name="next-steps"></a>次のステップ
 
-.NET 開発者の場合は、[Azure Cognitive Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) と [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) プロパティを使用して言語アナライザーを構成できます。 
+.NET 開発者の場合は、[Azure Cognitive Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) と [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) プロパティを使用して言語アナライザーを構成できます。

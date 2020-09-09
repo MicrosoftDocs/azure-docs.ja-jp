@@ -4,12 +4,12 @@ description: MetaMask を使用して Azure Blockchain Service ネットワー�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920573"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>クイック スタート:MetaMask を使用してスマート コントラクトを接続およびデプロイする
 
@@ -128,9 +128,9 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
 
 Remix のデバッグ ウィンドウに、ブロックチェーンに対するトランザクションの詳細が表示されます。
 
-    ![Debug history](./media/connect-metamask/debug.png)
+![デバッグ履歴](./media/connect-metamask/debug.png)
 
-    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+**simple** コントラクトの作成、**simple.add** のトランザクション、**simple.get** の呼び出しを確認できます。
 
 MetaMask のトランザクション履歴を確認するには、MetaMask ブラウザー拡張機能を開いて、 **[History]\(履歴\)** セクションで、デプロイされたコントラクトとトランザクションのログを調べます。
 

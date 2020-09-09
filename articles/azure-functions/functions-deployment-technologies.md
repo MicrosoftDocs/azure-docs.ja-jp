@@ -1,21 +1,33 @@
 ---
 title: Azure Functions のデプロイ テクノロジ
 description: Azure Functions にコードをデプロイするさまざまな方法について学習します。
-author: ggailey777
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: glenga
-ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735302"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641961"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
-各種のテクノロジを使用して、Azure Functions プロジェクト コードを Azure にデプロイすることができます。 この記事では、これらのテクノロジの包括的な一覧を提供し、どのテクノロジをどの種類の関数に対して使用できるかを説明し、各手法を使用するとどのようなことが起こるかについて説明し、各種シナリオで使用する最適な手法についてレコメンデーションを提示します。 Azure Functions へのデプロイをサポートする各種ツールは、それらのコンテキストに基づいて適切なテクノロジとなるように調整されています。 一般に、Azure Functions で推奨されるデプロイ テクノロジは zip デプロイです。
+各種のテクノロジを使用して、Azure Functions プロジェクト コードを Azure にデプロイすることができます。 この記事では、使用可能なデプロイ方法の概要と、さまざまなシナリオで推奨される最適な方法について説明します。 また、基になるデプロイ テクノロジについての完全な一覧とその主要な詳細情報も提供します。 
+
+## <a name="deployment-methods"></a>デプロイ方法
+
+コードを Azure に発行するために使用するデプロイ テクノロジは、通常、アプリの公開方法によって決まります。 適切なデプロイ方法は、具体的なニーズと開発サイクルにおけるポイントによって決まります。 たとえば、開発およびテスト中であれば、Visual Studio Code などの開発ツールから直接配置します。 アプリが運用環境にある場合は、ソース管理から継続的に発行するか、または追加の検証とテストを含む自動化された発行パイプラインを使用する可能性が高くなります。  
+
+次の表では、関数プロジェクトで使用できるデプロイ方法について説明します。
+
+| デプロイ&nbsp;の種類 | メソッド | 最適なシナリオ |
+| -- | -- | -- |
+| ツールベース | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;による発行](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio による発行](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Core Tools による発行](functions-run-local.md#publish) | 開発中のデプロイ、およびその他のアドホック デプロイ。 デプロイはツールによってローカルで管理されます。 | 
+| App Service マネージド| &bull;&nbsp;[Deployment&nbsp;Center&nbsp;(CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[コンテナーの&nbsp;デプロイ](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  ソース管理またはコンテナー レジストリからの継続的配置 (CI/CD)。 デプロイは、App Service プラットフォーム (Kudu) によって管理されます。|
+| 外部パイプライン|&bull;&nbsp;[DevOps パイプライン](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub Actions](functions-how-to-github-actions.md) | 追加の検証、テスト、およびその他のアクションを含む運用および DevOps パイプラインは、自動デプロイの一部として実行されます。 デプロイはパイプラインによって管理されます。 |
+
+特定の関数のデプロイでは、そのコンテキストに基づいて最適なテクノロジが使用されますが、ほとんどのデプロイ方法は [zip デプロイ](#zip-deploy)に基づいています。
 
 ## <a name="deployment-technology-availability"></a>デプロイ テクノロジの利用可否
 
@@ -39,7 +51,7 @@ Azure Functions は、クロス プラットフォームのローカル開発と
 | FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | ポータルでの編集 |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup>[トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。  
+<sup>1</sup>[トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。
 <sup>2</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
 
 ## <a name="key-concepts"></a>主要な概念
@@ -74,9 +86,9 @@ Linux でリモート ビルドを有効にするには、次の[アプリケー
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-既定では、[Azure Functions Core Tools](functions-run-local.md) と [Visual Studio Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、Linux へのデプロイ時にリモート ビルドが実行されます。 このため、どちらのツールでも、これらの設定は Azure で自動的に作成されます。 
+既定では、[Azure Functions Core Tools](functions-run-local.md) と [Visual Studio Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、Linux へのデプロイ時にリモート ビルドが実行されます。 このため、どちらのツールでも、これらの設定は Azure で自動的に作成されます。
 
-Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。 
+Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。
 
 ##### <a name="consumption-plan"></a>従量課金プラン
 
@@ -94,7 +106,7 @@ Azure Functions では、次のデプロイ方法が使用できます。
 
 外部パッケージ URL を使用して、関数アプリが含まれるリモート パッケージ (.zip) ファイルを参照できます。 このファイルは、指定の URL からダウンロードされます。アプリは [Run From Package](run-functions-from-deployment-package.md) モードで実行されます。
 
->__使用方法:__ アプリケーションの設定に `WEBSITE_RUN_FROM_PACKAGE` を追加します。 この設定では、値として URL (実行する特定のパッケージ ファイルの場所) を指定する必要があります。 [ポータルで](functions-how-to-use-azure-function-app-settings.md#settings)、または [Azure CLI を使用して](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)設定を追加できます。 
+>__使用方法:__ アプリケーションの設定に `WEBSITE_RUN_FROM_PACKAGE` を追加します。 この設定では、値として URL (実行する特定のパッケージ ファイルの場所) を指定する必要があります。 [ポータルで](functions-how-to-use-azure-function-app-settings.md#settings)、または [Azure CLI を使用して](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)設定を追加できます。
 >
 >Azure Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) を備えたプライベート コンテナーを使用して、Functions にパッケージへのアクセス権を付与します。 アプリケーションが再起動されるたびに、コンテンツのコピーがフェッチされます。 アプリケーションの有効期間中は、参照が有効である必要があります。
 
@@ -106,7 +118,7 @@ ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイ�
 
 >__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。[Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、またはコマンド ラインを使用した [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 既定では、これらのツールは zip デプロイを使用し、[パッケージから実行](run-functions-from-deployment-package.md)されます。 Core Tools と Visual Studio Code 拡張機能の両方で、Linux へのデプロイ時に[リモート ビルド](#remote-build)が有効になります。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
 
->zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。 
+>zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。
 
 >__いつ使用するか:__ zip デプロイは、Azure Functions で推奨されるデプロイ テクノロジです。
 
@@ -169,7 +181,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ポータルベースのエディターでは、関数アプリ内のファイルを直接編集できます (基本的には、変更内容を保存するたびにデプロイされます)。
 
->__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。 
+>__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。
 
 >__いつ使用するか:__ Azure Functions の使用を開始するには、ポータルが適しています。 より集中的な開発作業には、次のクライアント ツールのいずれかを使用することをお勧めします。
 >
@@ -179,7 +191,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 次の表に、ポータルでの編集をサポートしているオペレーティング システムと言語を示します。
 
-| | Windows Consumption | Windows Premium | Windows Dedicated | Linux Consumption | Linux Premium | Linux Dedicated |
+| Language | Windows Consumption | Windows Premium | Windows Dedicated | Linux Consumption | Linux Premium | Linux Dedicated |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# スクリプト |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
@@ -192,13 +204,19 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 <sup>*</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
 
+## <a name="deployment-behaviors"></a>デプロイ動作
+
+デプロイすると、すべての既存実行に完了またはタイムアウトが許可されます。その後、新しいコードが読み込まれ、要求の処理が開始されます。
+
+この移行をさらに制御する必要がある場合、デプロイ スロットを使用してください。
+
 ## <a name="deployment-slots"></a>デプロイ スロット
 
 関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure Functions のデプロイ スロット](../app-service/deploy-staging-slots.md)のドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-関数アプリのデプロイの詳細については、次の記事を参照してください。 
+関数アプリのデプロイの詳細については、次の記事を参照してください。
 
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
 + [Azure DevOps を使用した継続的デリバリー](functions-how-to-azure-devops.md)

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7c84c705da99bd6f04a6737a1c781b905cbeaad6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100483"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508238"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Windows 仮想マシンを監視する
 
@@ -52,7 +52,7 @@ VM のセキュリティ構成を可視化するためには、まず Security C
 
 ## <a name="set-up-a-security-policy"></a>セキュリティ ポリシーを設定する
 
-Security Center によるデータの収集と推奨事項の提示の対象となる項目は、セキュリティ ポリシーを使って定義します。 Azure リソースのまとまりごとに異なるセキュリティ ポリシーを適用することができます。 既定ではすべてのポリシー項目と照らして Azure リソースが評価されますが、すべての Azure リソースを対象として、または特定のリソース グループを対象として、個々のポリシー項目を無効にすることができます。 Security Center のセキュリティ ポリシーの詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](../../security-center/security-center-policies.md)」を参照してください。 
+Security Center によるデータの収集と推奨事項の提示の対象となる項目は、セキュリティ ポリシーを使って定義します。 Azure リソースのまとまりごとに異なるセキュリティ ポリシーを適用することができます。 既定ではすべてのポリシー項目と照らして Azure リソースが評価されますが、すべての Azure リソースを対象として、または特定のリソース グループを対象として、個々のポリシー項目を無効にすることができます。 Security Center のセキュリティ ポリシーの詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](../../security-center/tutorial-security-policy.md)」を参照してください。 
 
 サブスクリプション全体を対象とするセキュリティ ポリシーを設定するには、次の手順に従います。
 

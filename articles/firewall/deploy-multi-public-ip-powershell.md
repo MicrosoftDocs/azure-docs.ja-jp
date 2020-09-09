@@ -4,24 +4,24 @@ description: この記事では、Azure PowerShell を使用して、複数の�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 04/14/2020
+ms.topic: how-to
+ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 21f645e64c9944ed102f538710ea6facc26c7e83
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: cbad025a0d0c4d679ea9cdc7557c81b5145798fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610678"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Azure PowerShell を使用して複数のパブリック IP アドレスを使用する Azure Firewall をデプロイする
 
 この機能により、次のシナリオが可能になります。
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
-- **SNAT** -送信 SNAT 接続に追加のポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。
+- **SNAT** -送信 SNAT 接続に追加のポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
  
-Azure portal、Azure PowerShell、Azure CLI、REST、テンプレートで、複数のパブリック IP アドレスを持つ Azure Firewall を使用できます。 最大 100 個のパブリック IP アドレスを使用する Azure Firewall をデプロイできます。
+Azure portal、Azure PowerShell、Azure CLI、REST、テンプレートで、複数のパブリック IP アドレスを持つ Azure Firewall を使用できます。 最大 250 個のパブリック IP アドレスを使用する Azure Firewall をデプロイできます。
 
 以下の Azure PowerShell の例は、Azure Firewall のパブリック IP アドレスを構成、追加、および削除する方法を示しています。
 

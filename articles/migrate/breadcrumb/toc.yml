@@ -12,3 +12,6 @@
     - name: 移行
       tocHref: /sql/dma/
       topicHref: /azure/migrate/index
+    - name: AVS 移行評価
+      tocHref: /azure/azure-vmware/
+      topicHref: /azure/migrate/index

@@ -4,19 +4,19 @@ description: インクルード ファイル
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789040"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501962"
 ---
-共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
+Shared Image Gallery は、イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
-- イメージのマネージド グローバル レプリケーション。
+- イメージのグローバル レプリケーション。
 - 容易な管理のためのバージョン管理とグループ化。
 - Availability Zones がサポートされるリージョンでのゾーン冗長ストレージ (ZRS) アカウントによる高可用性イメージ。 ZRS では、ゾーンの障害に対する回復性の向上が提供されます。
 - Premium Storage のサポート (Premium_LRS)。
@@ -33,7 +33,7 @@ ms.locfileid: "82789040"
 
 | リソース | 説明|
 |----------|------------|
-| **イメージのソース** | これは、イメージ ギャラリーに**イメージ バージョン**を作成するために使用できるリソースです。 イメージのソースには、[一般化または特殊化された](#generalized-and-specialized-images)既存の Azure VM、マネージド イメージ、スナップショット、または別のイメージ ギャラリー内のイメージ バージョンを使用できます。 |
+| **イメージのソース** | これは、イメージ ギャラリーに**イメージ バージョン**を作成するために使用できるリソースです。 イメージのソースには、[一般化または特殊化された](#generalized-and-specialized-images)既存の Azure VM、マネージド イメージ、スナップショット、VHD、または別のイメージ ギャラリー内のイメージ バージョンを使用できます。 |
 | **イメージ ギャラリー** | Azure Marketplace などの **イメージ ギャラリー**は、イメージを管理して共有するためのリポジトリです。ただし、アクセス権の所有者を制御します。 |
 | **イメージ定義** | イメージ定義はギャラリー内に作成され、内部で使用するためにイメージと要件に関する情報を伝達します。 この情報には、イメージが Windows または Linux のどちらか、リリース ノート、および最小と最大のメモリ要件が含まれます。 これは、イメージの種類の定義です。 |
 | **イメージ バージョン** | **イメージ バージョン**は、ギャラリーを利用している場合に、VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 マネージド イメージのように、**イメージ バージョン**を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。 |
@@ -68,10 +68,11 @@ ms.locfileid: "82789040"
 * vCPU とメモリの最小値と最大値の推奨 - イメージに vCPU とメモリの推奨値がある場合は、その情報をイメージ定義に添付できます。
 * 許可されないディスクの種類 - VM に対するストレージ ニーズに関する情報を提供することができます。 たとえば、イメージが Standard HDD ディスクに適さない場合は、禁止リストにそれを追加します。
 * Hyper-V の世代 - イメージが第 1 世代または第 2 世代のどちらの Hyper-V VHD から作成されたのかを指定できます。
+* Marketplace イメージの購入プラン情報 - `-PurchasePlanPublisher `、`-PurchasePlanName`、および `-PurchasePlanProduct`。 購入プラン情報の詳細については、[Azure Marketplace でのイメージの検索](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)に関するページおよび「[Supply Azure Marketplace purchase plan information when creating images (イメージの作成時に Azure Marketplace 購入プラン情報を指定する)](../articles/virtual-machines/marketplace-images.md)」を参照してください。
 
 ## <a name="generalized-and-specialized-images"></a>一般化されたイメージと特殊化されたイメージ
 
-共有イメージ ギャラリーでは、2 つのオペレーティング システムの状態がサポートされています。 通常は、イメージを作成するために使用される VM は、イメージの取得前に一般化されている必要があります。 一般化は、マシンとユーザーに固有の情報を VM から削除するプロセスです。 Windows の場合、Sysprep も使用されます。 Linux の場合は、[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` パラメーターを使用できます。
+共有イメージ ギャラリーでは、2 つのオペレーティング システムの状態がサポートされています。 通常は、イメージを作成するために使用される VM は、イメージの取得前に一般化されている必要があります。 一般化は、マシンとユーザーに固有の情報を VM から削除するプロセスです。 Windows の場合、Sysprep ツールが使用されます。 Linux の場合は、[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` パラメーターを使用できます。
 
 特殊化された VM は、マシン固有の情報やアカウントを削除するプロセスを済ませていません。 さらに、特殊化されたイメージから作成された VM には、`osProfile` が関連付けられていません。 これは、特殊化されたイメージには、いくつかの利点に加えていくつかの制限があることを意味します。
 
@@ -82,24 +83,7 @@ ms.locfileid: "82789040"
 
 ## <a name="regional-support"></a>リージョン サポート
 
-ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
-
-
-| ソース リージョン        |                   |                    |                    |
-| --------------------- | ----------------- | ------------------ | ------------------ |
-| オーストラリア中部     | 中国東部        | インド南部        | 西ヨーロッパ        |
-| オーストラリア中部 2   | 中国東部 2      | 東南アジア     | 英国南部           |
-| オーストラリア東部        | 中国北部       | 東日本         | 英国西部            |
-| オーストラリア南東部   | 中国北部 2     | 西日本         | US DoD Central     |
-| ブラジル南部          | 東アジア         | 韓国中部      | US DoD East        |
-| カナダ中部        | 米国東部           | 韓国南部        | US Gov アリゾナ     |
-| カナダ東部           | 米国東部 2         | 米国中北部   | US Gov テキサス       |
-| インド中部         | 米国東部 2 EUAP    | 北ヨーロッパ       | US Gov バージニア州    |
-| 米国中部            | フランス中部    | 米国中南部   | インド西部         |
-| 米国中部 EUAP       | フランス南部      | 米国中西部    | 米国西部            |
-|                       |                   |                    | 米国西部 2          |
-
-
+すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションが許可リストに追加されている必要があります。 許可リストへのサブスクリプションの追加を要求するには、 https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
 
 ## <a name="limits"></a>制限 
 
@@ -246,13 +230,7 @@ ms.locfileid: "82789040"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>特殊なディスクからイメージ バージョンを作成できますか?
 
-はい。イメージとしての特殊なディスクのサポートはプレビュー段階です。 特殊化されたイメージからの VM の作成は、ポータル、PowerShell、または API を使用してのみ実行できます。 
-
-
-[特殊化された VM のイメージを作成するには、PowerShell](../articles/virtual-machines/image-version-vm-powershell.md) を使用します。
-
-[Windows](../articles/virtual-machines/linux/shared-images-portal.md) または [Linux] (../articles/virtual-machines/linux/shared-images-portal.md) イメージを作成するには、ポータルを使用します。 
-
+特殊化されたイメージからの VM の作成は、[CLI](../articles/virtual-machines/vm-specialized-image-version-cli.md)、[PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)、または API を使用して実行できます。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Shared Image Gallery リソースが作成された後に、それを別のサブスクリプションに移動することはできますか?
 

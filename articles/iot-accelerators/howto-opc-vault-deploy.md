@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686938"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307930"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスをビルドしてデプロイする
 
@@ -76,7 +76,7 @@ PowerShell スクリプトを使用すると、OPC Vault マイクロサービ�
    > 問題が発生した場合は、後の「デプロイ失敗のトラブルシューティング」セクションを参照してください。
 
 8. 好みのブラウザーを開き、アプリケーション ページ `https://myResourceGroup.azurewebsites.net` を開きます
-8. デプロイ後に Web アプリと OPC Vault マイクロサービスがウォーム アップされるまで数分かかります。 最初の使用時は、最初の応答が得られるまで Web ホーム ページが最大 1 分間反応しないことがあります。
+8. デプロイ後に Web アプリと OPC Vault マイクロサービスがウォーム アップされるまで数分かかります。 最初の使用時は、最初の応答が得られるまで Web ホーム ページが最大 1 分間応答が停止することがあります。
 11. Swagger API を確認するには、`https://myResourceGroup-service.azurewebsites.net` を開きます
 13. dotnet でローカルの GDS サーバーを起動するには、`.\myResourceGroup-gds.cmd` を開始します。 Docker の場合は、`.\myResourceGroup-dockergds.cmd` を開始します。
 

@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop でテナントを作成する - Azure
-description: Windows Virtual Desktop のテナントを Azure Active Directory に設定する方法を説明します。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) でテナントを作成する - Azure
+description: Windows Virtual Desktop (クラシック) のテナントを Azure Active Directory に設定する方法を説明します。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94128c69f227ceff51968354048ec6610e3d7c4c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613928"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005620"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop でテナントを作成する
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) でテナントを作成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。
 
 Windows Virtual Desktop でのテナントの作成は、デスクトップ仮想ソリューションを構築するための最初の手順です。 テナントは、1 つまたは複数のホスト プールのグループです。 各ホスト プールは複数のセッション ホストで構成されていて、Azure において仮想マシンとして動作し、Windows Virtual Desktop サービスに登録されます。 各ホスト プールはさらに、リモート デスクトップおよびリモート アプリケーションのリソースをユーザーに発行するために使用される、1 つ以上のアプリ グループで構成されます。 テナントを使用すると、ホスト プールの構築、アプリ グループの作成、ユーザーの割り合て、サービスを通じた接続の作成を行うことができます。
 
@@ -78,25 +76,34 @@ TenantCreator アプリケーション ロールを割り当てるには:
 
 1. TenantCreator アプリケーション ロールを管理するには、[Azure portal](https://portal.azure.com) にアクセスします。 **[エンタープライズ アプリケーション]** を選択します。 複数の Azure Active Directory テナントを操作する場合は、プライベート ブラウザー セッションを開き、URL をコピーしてアドレス バーに貼り付けるのがベスト プラクティスです。
 
-   ![Azure portal でのエンタープライズ アプリケーションの検索を示すスクリーンショット](../media/azure-portal-enterprise-applications.png)
+   > [!div class="mx-imgBorder"]
+   > ![Azure portal でのエンタープライズ アプリケーションの検索を示すスクリーンショット](../media/azure-portal-enterprise-applications.png)
+
 2. **[エンタープライズ アプリケーション]** 内で「**Windows Virtual Desktop**」を検索します。 前のセクションで同意した 2 つのアプリケーションが表示されます。 これらの 2 つのアプリについて、 **[Windows Virtual Desktop]** を選択します。
-   
-   ![[エンタープライズ アプリケーション] で "Windows Virtual Desktop" を検索したときの検索結果を示すスクリーンショット。 "Windows Virtual Desktop" という名前のアプリが強調表示されています。](../media/tenant-enterprise-app.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![「エンタープライズ アプリケーション」で "Windows Virtual Desktop" を検索したときの検索結果を示すスクリーンショット。 "Windows Virtual Desktop" という名前のアプリが強調表示されています。](../media/tenant-enterprise-app.png)
+
 3. **[ユーザーとグループ]** を選択します。 アプリケーションへの同意を付与した管理者が、**既定のアクセス** ロールを割り当てられた状態で既に表示されている場合があります。 これだけでは Windows Virtual Desktop テナントを作成するのに不十分です。 以降の手順に従って、**TenantCreator** ロールをユーザーに付加します。
-   
-   !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループを示すスクリーンショット。 このスクリーンショットには、"既定のアクセス" の割り当てのみが示されています。](../media/tenant-default-access.png)
+
+   > [!div class="mx-imgBorder"]
+   > !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループのスクリーンショット。 このスクリーンショットには、"既定のアクセス" の割り当てのみが示されています。](../media/tenant-default-access.png)
+
 4. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** タブで **[ユーザーとグループ]** を選択します。
 5. 自分の Windows Virtual Desktop テナントを作成するユーザー アカウントを検索します。 わかりやすいように、これはグローバル管理者アカウントにできます。
    - Microsoft の ID プロバイダー (contosoadmin@live.com、contosoadmin@outlook.com など) を使用している場合、Windows Virtual Desktop にサインインできない場合があります。 代わりにドメイン固有のアカウントを使用することをお勧めします (admin@contoso.com、admin@contoso.onmicrosoft.com など)。
 
-   !["TenantCreator" として追加するユーザーを選択しているスクリーンショット。](../media/tenant-assign-user.png)
+   > [!div class="mx-imgBorder"]
+   > !["TenantCreator" として追加するユーザーを選択しているスクリーンショット。](../media/tenant-assign-user.png)
+
    > [!NOTE]
    > この Azure Active Directory インスタンスに属しているユーザー (またはユーザーを含むグループ) を選択する必要があります。 ゲスト (B2B) ユーザーまたはサービス プリンシパルを選択することはできません。
 
 6. ユーザー アカウントを選択し、 **[選択]** ボタンを選択し、 **[割り当て]** を選択します。
 7. **[Windows Virtual Desktop - ユーザーとグループ]** ページで、Windows Virtual Desktop テナントを作成するユーザーに **TenantCreator** ロールが割り当てられた新しいエントリが表示されていることを確認します。
 
-   !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループを示すスクリーンショット。 このスクリーンショットには、"TenantCreator" ロールに割り当てられたユーザーを表す 2 つ目のエントリが追加されています。](../media/tenant-tenant-creator-added.png)
+   > [!div class="mx-imgBorder"]
+   > !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループのスクリーンショット。 このスクリーンショットには、"TenantCreator" ロールに割り当てられたユーザーを表す 2 つ目のエントリが追加されています。](../media/tenant-tenant-creator-added.png)
 
 Windows Virtual Desktop テナントの作成を続行する前に、2 つの情報を入手する必要があります。
 
@@ -106,20 +113,26 @@ Windows Virtual Desktop テナントの作成を続行する前に、2 つの情
 Azure Active Directory のテナント ID (**ディレクトリ ID**) を検索するには:
 1. 同じ [Azure portal](https://portal.azure.com) セッションで、**Azure Active Directory** を検索して選択します。
 
-   ![Azure portal で "Azure Active Directory" を検索した結果を示すスクリーンショット。 [サービス] の下の検索結果が強調表示されています。](../media/tenant-search-azure-active-directory.png)
+   > [!div class="mx-imgBorder"]
+   > ![Azure portal で "Azure Active Directory" を検索した結果のスクリーンショット。 [サービス] の下の検索結果が強調表示されています。](../media/tenant-search-azure-active-directory.png)
+
 2. 下にスクロールし、 **[プロパティ]** を選択します。
 3. **[ディレクトリ ID]** を探し、クリップボード アイコンを選択します。 この値を後で **AadTenantId** 値として使用できるように便利な場所に貼り付けます。
 
-   ![Azure Active Directory のプロパティを示すスクリーンショット。 [ディレクトリ ID] をコピーして貼り付けるために、クリップボード アイコンにマウス ポインターを合わせています。](../media/tenant-directory-id.png)
+   > [!div class="mx-imgBorder"]
+   > ![Azure Active Directory のプロパティのスクリーンショット。 "ディレクトリ ID" をコピーして貼り付けるために、クリップボード アイコンにマウス ポインターを合わせています。](../media/tenant-directory-id.png)
 
 Azure サブスクリプション ID を検索するには:
 1. 同じ [Azure portal](https://portal.azure.com) セッションで、**サブスクリプション**を検索して選択します。
-   
-   ![Azure portal で "Azure Active Directory" を検索した結果を示すスクリーンショット。 [サービス] の下の検索結果が強調表示されています。](../media/tenant-search-subscription.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![Azure portal で "Azure Active Directory" を検索した結果のスクリーンショット。 [サービス] の下の検索結果が強調表示されています。](../media/tenant-search-subscription.png)
+
 2. Windows Virtual Desktop サービスの通知を受け取るために使用する Azure サブスクリプションを選択します。
 3. **サブスクリプション ID** を探し、その値にマウス ポインターを合わせてクリップボード アイコンを表示します。 クリップボード アイコンを選択し、この値を後で **AzureSubscriptionId** 値として使用できるように便利な場所に貼り付けます。
-   
-   ![Azure サブスクリプションのプロパティを示すスクリーンショット。 [サブスクリプション ID] をコピーして貼り付けるために、クリップボード アイコンにマウス ポインターを合わせています。](../media/tenant-subscription-id.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![Azure サブスクリプションのプロパティのスクリーンショット。 "サブスクリプション ID" をコピーして貼り付けるために、クリップボード アイコンにマウス ポインターを合わせています。](../media/tenant-subscription-id.png)
 
 ## <a name="create-a-windows-virtual-desktop-tenant"></a>Windows Virtual Desktop テナントを作成する
 
@@ -152,7 +165,6 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
 テナントを作成した後、Azure Active Directory でサービス プリンシパルを作成し、Windows Virtual Desktop 内でそれにロールを割り当てる必要があります。 サービス プリンシパルを使用することで、Azure Marketplace オファリングである Windows Virtual Desktop を正常にデプロイしてホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]

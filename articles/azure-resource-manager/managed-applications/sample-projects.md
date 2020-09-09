@@ -5,20 +5,19 @@ author: tfitzmac
 ms.topic: sample
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7c04f5d78f742eda70e71d9bee9ce4482c48f0f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2ce9ac925cce96af8a0017a5e97b3f52dc8e5669
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040976"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Azure マネージド アプリケーションのサンプル プロジェクト
 
 次の表に、GitHub の Azure マネージド アプリケーションのサンプルへのリンクを示します。
 
-|  |  |
+| 例 | 説明 |
 | --- | --- |
-| **使用例** | |
 | [新規または既存の仮想ネットワークへのマネージド アプリケーション (評価版または製品版)](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet) | 顧客のために柔軟なデプロイ オプションを作成する方法について説明します。 このマネージド アプリケーションは、新しい仮想ネットワークまたは既存のネットワークにデプロイできます。 顧客は、評価版または製品版のマネージド アプリケーションを指定できます。 |
 | [Managed Azure ストレージ アカウント](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-storage-account) | 単一のストレージ アカウントをデプロイします。 このサンプル プロジェクトは、マネージド アプリケーション作成の導入部として使用します。 |
 | [Azure 管理サービスを使用した管理対象 Service Fabric](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-service-fabric) | Service Fabric クラスターと仮想マシン スケール セットをデプロイします。 ログ記録と診断のストレージ アカウントが含まれます。 |

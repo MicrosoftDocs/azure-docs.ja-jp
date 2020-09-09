@@ -1,89 +1,73 @@
 ---
-title: Linux の暗号化の状態を確認する方法
+title: Linux の暗号化状態の確認 - Azure Disk Encryption
 description: この記事では、プラットフォームおよび OS レベルの暗号化の状態を確認する手順について説明します。
 author: kailashmsft
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
-ms.custom: seodec18
-ms.openlocfilehash: 0aaa32c46d915eafffcfac9d95cfdd3a24d4086d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e39a230c71cf48422220768adfa8de91cbaa6692
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123419"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072844"
 ---
-# <a name="how-to-verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する方法 
+# <a name="verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する 
 
-**このシナリオは、ADE のデュアルパス拡張機能とシングルパス拡張機能を対象としています。**  
-このドキュメントのスコープは、各種の方法を使用して仮想マシンの暗号化状態を確認することです。
+この記事では、Azure portal、PowerShell、Azure CLI、仮想マシン (VM) のオペレーティング システムを使用した各種方法によって、仮想マシンの暗号化の状態を確認します。 
 
-### <a name="environment"></a>環境
+暗号化の状態は、次のいずれかの方法により暗号化中または暗号化後に確認することができます。
 
-- Linux ディストリビューション
+- 特定の VM にアタッチされたディスクを確認する。 
+- 各ディスクの暗号化の設定を照会する。この方法は、ディスクがアタッチされているかどうかに関係しません。
 
-### <a name="procedure"></a>手順
-
-仮想マシンは、デュアルパスまたはシングルパスを使用して暗号化されています。
-
-暗号化の状態は、暗号化中または暗号化後にさまざまな方法を使用して確認することができます。
+このシナリオは、Azure Disk Encryption のデュアルパス拡張機能とシングルパス拡張機能を対象としています。 このシナリオに該当する環境は、Linux ディストリビューションのみです。
 
 >[!NOTE] 
->このドキュメントでは、いたるところで変数が使用されています。適宜、実際の値に置き換えてください。
+>この記事では、変数を使用しています。 値は適宜置き換えてください。
 
-### <a name="verification"></a>検証
+## <a name="portal"></a>ポータル
 
-確認作業は、ポータル、PowerShell、AZ CLI から行えるほか、VM OS 側から行うこともできます。 
+Azure portal の **[拡張機能]** セクションで、一覧から Azure Disk Encryption 拡張機能を選択します。 **[ステータス メッセージ]** の情報に、現在の暗号化の状態が示されます。
 
-この確認は、特定の VM にアタッチされたディスクをチェックすることで実行できます。 
+![ポータルでの確認 (状態、バージョン、ステータス メッセージを強調表示)](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
 
-また、ディスクがアタッチされているかどうかに関係なく、各ディスクについて個別に暗号化の設定を照会する方法もあります。
+拡張機能の一覧には、対応する Azure Disk Encryption 拡張機能のバージョンが表示されます。 バージョン 0.x は Azure Disk Encryption デュアル パスに、バージョン 1.x は Azure Disk Encryption シングル パスに対応します。
 
-以降、各種の確認方法を見ていきましょう。
+拡張機能を選び、 **[詳細な状態の表示]** を選択すると、さらに詳しい情報が得られます。 暗号化プロセスの詳細な状態が、JSON 形式で表示されます。
 
-## <a name="using-the-portal"></a>ポータルの使用
+![ポータルでの確認 ([詳細な状態の表示] リンクを強調表示)](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
 
-Azure portal の拡張機能セクションをチェックして暗号化の状態を確認します。
+![JSON 形式の詳細な状態](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-**[拡張機能]** セクションには、ADE 拡張機能が一覧表示されます。 
+暗号化の状態は、 **[ディスクの設定]** セクションを見て確認することもできます。
 
-それをクリックして **[status message]\(ステータス メッセージ\)** を見ると、現在の暗号化の状態がわかります。
-
-![ポータルのチェック (1)](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
-
-拡張機能の一覧には、対応する ADE 拡張機能のバージョンが表示されます。 バージョン 0.x は ADE デュアルパスに、バージョン 1.x は ADE シングルパスに対応します。
-
-拡張機能をクリックし、 *[詳細な状態の表示]* をクリックすると、さらに詳しい情報が得られます。
-
-暗号化プロセスの詳しい状態は、JSON 形式で表示されます。
-
-![ポータルのチェック (2)](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
-
-![ポータルのチェック (3)](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
-
-暗号化の状態は、 **[ディスク]** セクションを見て確認することもできます。
-
-![ポータルのチェック (4)](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
+![OS ディスクとデータ ディスクの暗号化状態](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
 >[!NOTE] 
-> この状態は、ディスクに暗号化の設定がスタンプされていることを意味するものであって、実際に OS レベルで暗号化されているという意味ではありません。 設計上、ディスクは最初にスタンプされ、後から暗号化されます。 暗号化プロセスに失敗した場合、ディスクはスタンプされているものの暗号化されていない状態になります。 実際にディスクが暗号化されているかどうかを確かめるために、OS レベルで各ディスクの暗号化をダブルチェックしてください。
+> この状態は、ディスクに暗号化の設定がスタンプされていることを意味するものであり、実際に OS レベルで暗号化されているという意味ではありません。
+>
+> 設計上、ディスクはまずスタンプされ、その後暗号化されます。 暗号化プロセスに失敗した場合、ディスクはスタンプされているものの暗号化されていない状態になります。 
+>
+> 実際にディスクが暗号化されているかどうかを確かめるために、OS レベルで各ディスクの暗号化をダブルチェックしてください。
 
-## <a name="using-powershell"></a>PowerShell の使用
+## <a name="powershell"></a>PowerShell
 
-暗号化された VM の**全体的**な暗号化の状態は、次の PowerShell コマンドを使用して確認できます。
+暗号化された VM の "*全体的な*" 暗号化の状態は、次の PowerShell コマンドを使用して確認できます。
 
 ```azurepowershell
    $VMNAME="VMNAME"
    $RGNAME="RGNAME"
    Get-AzVmDiskEncryptionStatus -ResourceGroupName  ${RGNAME} -VMName ${VMNAME}
 ```
-![PowerShell でのチェック (1)](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
+![PowerShell で確認した全体的な暗号化状態](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
 
-暗号化の設定を各ディスクから個別にキャプチャするには、次の PowerShell コマンドを使用します。
+各ディスクの暗号化の設定を取得するには、次の PowerShell コマンドを使用します。
 
-### <a name="single-pass"></a>シングルパス
-シングルパスの場合、暗号化の設定は各ディスク (OS とデータ) にスタンプされます。シングルパスでの OS ディスクの暗号化設定は、次のようにしてキャプチャできます。
+### <a name="single-pass"></a>シングル パス
+シングル パスでは、各ディスク (OS とデータ) に暗号化設定がスタンプされます。 シングル パスの OS ディスクの暗号化設定は、次のようにして取得できます。
 
 ``` powershell
 $RGNAME = "RGNAME"
@@ -101,13 +85,13 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
  Write-Host "============================================================================================================================================================="
 ```
-![OS の確認 (シングル パス 01)](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
+![OS ディスクの暗号化設定](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
 
-ディスクに暗号化の設定がスタンプされていない場合、次のように出力は空になります。
+ディスクに暗号化の設定がスタンプされていない場合、出力は空になります。
 
-![OS の暗号化の設定 (2)](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
+![空の出力](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
 
-データ ディスクの暗号化の設定は、次のようにしてキャプチャします。
+データ ディスクの暗号化設定を取得するには、次のコマンドを使用します。
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -128,12 +112,12 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "============================================================================================================================================================="
  }
 ```
-![データの確認 (シングル パス 001)](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
+![データ ディスクの暗号化設定](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
 
-### <a name="dual-pass"></a>デュアルパス
-デュアル パスでは、暗号化の設定が、個々のディスクではなく VM モデルにスタンプされます。
+### <a name="dual-pass"></a>デュアル パス
+デュアル パスでは、暗号化の設定は、個々のディスクではなく VM モデルにスタンプされます。
 
-暗号化の設定がデュアルパスでスタンプされていることを確認するには、次のコマンドを使用します。
+暗号化設定がデュアル パスでスタンプされていることを確認するには、次のコマンドを使用します。
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -152,7 +136,7 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-![デュアル パスの確認 (PowerShell 1)](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
+![デュアル パスでの暗号化設定](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
 
 ### <a name="unattached-disks"></a>アタッチされていないディスク
 
@@ -171,19 +155,19 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-## <a name="using-az-cli"></a>AZ CLI の使用
+## <a name="azure-cli"></a>Azure CLI
 
-暗号化された VM の**全体的**な暗号化の状態は、次の AZ CLI コマンドを使用して確認できます。
+暗号化された VM の "*全体的な*" 暗号化の状態は、次の Azure CLI コマンドを使用して確認できます。
 
 ```bash
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
 ```
-![全体確認 (CLI 使用) ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
+![Azure CLI で確認した全体的な暗号化状態 ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
 
 ### <a name="single-pass"></a>シングル パス
-暗号化の設定を各ディスクから個別に確認するには、次の AZ CLI コマンドを使用します。
+各ディスクの暗号化の設定を確認するには、次の Azure CLI コマンドを使用します。
 
 ```bash
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
@@ -192,9 +176,9 @@ az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuse
 ![データ暗号化設定](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> ディスクに暗号化の設定がスタンプされていない場合、"Disk is not encrypted" (ディスクは暗号化されていません) と表示されます。
+> ディスクに暗号化の設定がスタンプされていない場合、 **"ディスク暗号化なし"** というテキストが表示されます。
 
-詳細な状態と暗号化の設定は次のとおりです。
+詳細な状態と暗号化設定を取得するには、次のコマンドを使用します。
 
 OS ディスク:
 
@@ -214,7 +198,7 @@ echo "==========================================================================
 done
 ```
 
-![OSSingleCLI](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
+![OS の詳細な状態と暗号化設定](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
 
 データ ディスク:
 
@@ -234,7 +218,7 @@ echo "==========================================================================
 done
 ```
 
-![データ シングル CLI ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
+![データ ディスクの詳細な状態と暗号化設定](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
 
 ### <a name="dual-pass"></a>デュアル パス
 
@@ -242,7 +226,9 @@ done
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
-![全体確認 (デュアル、CLI 使用)](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png) 暗号化の設定は、OS ディスクの VM モデル ストレージ プロファイルで確認することもできます。
+![Azure CLI で取得したデュアル パスの全体的な暗号化設定](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png)
+
+暗号化設定は、OS ディスクの VM モデル ストレージ プロファイルでも確認できます。
 
 ```bash
 disk=`az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.osDisk.name -o tsv`
@@ -257,7 +243,7 @@ echo "==========================================================================
 done
 ```
 
-![VM プロファイルの確認 (デュアル、CLI 使用) ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
+![Azure CLI で取得したデュアル パスの VM プロファイル](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
 
 ### <a name="unattached-disks"></a>アタッチされていないディスク
 
@@ -282,10 +268,10 @@ echo "==========================================================================
 
 特定のディスクの詳細を把握するには、次の情報を指定する必要があります。
 
-ディスクが含まれるストレージ アカウントの ID。
-対象となる特定のストレージ アカウントの接続文字列。
-ディスクを格納するコンテナーの名前。
-ディスク名。
+- ディスクが含まれるストレージ アカウントの ID。
+- 対象となる特定のストレージ アカウントの接続文字列。
+- ディスクを格納するコンテナーの名前。
+- ディスク名。
 
 次のコマンドは、すべてのストレージ アカウントの ID を一覧表示するものです。
 
@@ -294,21 +280,18 @@ az storage account list --query [].[id] -o tsv
 ```
 ストレージ アカウントの ID が、次の形式で一覧表示されます。
 
-/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Storage/storageAccounts/\<ストレージ アカウント名>
+/subscriptions/\<subscription id>/resourceGroups/\<resource group name>/providers/Microsoft.Storage/storageAccounts/\<storage account name>
 
 適切な ID を選択して変数に格納します。
 ```bash
 id="/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>"
 ```
-接続文字列です。
 
 次のコマンドは、ある特定のストレージ アカウントの接続文字列を取得して変数に格納するものです。
 
 ```bash
 ConnectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)
 ```
-
-コンテナーの名前。
 
 次のコマンドは、ストレージ アカウントにあるすべてのコンテナーを一覧表示するものです。
 ```bash
@@ -321,44 +304,40 @@ az storage container list --connection-string $ConnectionString --query [].[name
 ContainerName="name of the container"
 ```
 
-ディスク名。
-
 特定のコンテナーにあるすべての BLOB を一覧表示するには、次のコマンドを使用します。
 ```bash 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-照会したいディスクを選んでその名前を変数に格納します。
+照会したいディスクを選んで、その名前を変数に格納します。
 ```bash
 DiskName="diskname.vhd"
 ```
-ディスク暗号化の設定を照会します。
+ディスクの暗号化設定を照会します。
 ```bash
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
-## <a name="from-the-os"></a>OS から
-データ ディスクのパーティションが暗号化されている (なおかつ OS ディスクが暗号化されていない) かどうかを確認します。
+## <a name="operating-system"></a>オペレーティング システム
+データ ディスクのパーティションが暗号化されている (かつ OS ディスクが暗号化されていない) かどうかを確認します。
 
-暗号化されているパーティションまたはディスクは、**crypt** タイプとして表示されます。暗号化されていないパーティションまたはディスクは、**part または disk** タイプとして表示されます。
+暗号化されているパーティションまたはディスクは、 **"crypt"** タイプとして表示されます。 暗号化されていない場合は、 **"part" または "disk"** タイプとして表示されます。
 
 ``` bash
 lsblk
 ```
 
-![OS Crypt レイヤー ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
+![パーティションの OS crypt レイヤー](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
 
-以下の "lsblk" バリアントを使用すれば、さらに詳しい情報を取得できます。 
+以下の **lsblk** バリアントを使用すると、さらに詳しい情報を取得できます。 
 
-拡張機能によってマウントされた **crypt** タイプ レイヤーが表示されます。
-
-"**crypto\_LUKS FSTYPE**" の通常のディスクと論理ボリュームの例を次に示します。
+拡張機能によってマウントされた **crypt** タイプ レイヤーが表示されます。 **crypto\_LUKS FSTYPE** の通常のディスクと論理ボリュームの例を、次に示します。
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 ```
-![OS Crypt レイヤー (2)](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
+![論理ボリュームと通常のディスクの OS crypt レイヤー](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
 
-さらに、データ ディスクにキーが読み込まれているかどうかを確認することもできます。
+さらに、データ ディスクにキーが読み込まれているかどうかも確認できます。
 
 ``` bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
@@ -368,12 +347,12 @@ cryptsetup luksDump /dev/VGNAME/LVNAME
 cryptsetup luksDump /dev/sdd1
 ```
 
-どの dm デバイスが crypt として表示されるかを調べることもできます。
+また、どの **dm** デバイスが **crypt** として表示されるかを調べることもできます。
 
 ```bash
 dmsetup ls --target crypt
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Disk Encryption のトラブルシューティング](disk-encryption-troubleshooting.md)

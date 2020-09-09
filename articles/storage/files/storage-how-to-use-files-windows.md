@@ -1,18 +1,19 @@
 ---
 title: Windows で Azure ファイル共有を使用する | Microsoft Docs
-description: Windows と Windows Server で Azure ファイル共有を使用する方法について説明します。
+description: Windows と Windows Server での Azure ファイル共有の使用方法について説明します。 オンプレミスまたは Azure VM で実行されている Windows インストールで、SMB 3.0 を使用して Azure ファイル共有を利用します。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 06/07/2018
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231766"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071076"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -41,140 +42,41 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件 
-* **ストレージ アカウント名**: Azure ファイル共有をマウントするには、ストレージ アカウントの名前が必要です。
 
-* **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
-
-* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。
-
-    次の PowerShell コードは、Azure PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
-
-    ```powershell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-    ```
-
-    接続に成功した場合、次の出力結果が表示されます。
-
-    ```
-    ComputerName     : <storage-account-host-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
-    ```
-
-    > [!Note]  
-    > 前出のコマンドからは、ストレージ アカウントの最新の IP アドレスが返されます。 この IP アドレスは同じ状態で維持される保証がなく、常に変化する可能性があります。 スクリプトやファイアウォールの構成にこの IP アドレスをハードコーディングすることは避けてください。 
+ポート 445 が開いていることを確認します。SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 ブロックされた 445 ポートを回避する方法については、「[原因 1:ポート 445 がブロックされている](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)」セクション (Windows トラブルシューティング ガイド) を参照してください。
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 Windows で Azure ファイル共有を使用するには、Azure ファイル共有にドライブ文字 (マウント ポイントのパス) を割り当ててマウントするか、または対応する [UNC パス](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx)経由でアクセスする必要があります。 
 
-Windows Server や Linux Samba サーバー、NAS デバイスをホストとするような従来からある SMB 共有とは異なり、Azure ファイル共有は現在、Active Directory (AD) または Azure Active Directory (AAD) の ID を使った Kerberos 認証をサポートしていません。この認証機能については現在、対応に向けて[作業中](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)です。 Azure ファイル共有には、それが格納されているストレージ アカウントのストレージ アカウント キーを使ってアクセスする必要があります。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、Kerberos 認証と ACL サポートの不足を [Azure File Sync](storage-sync-files-planning.md) で解決できる可能性があります。AAD ベースの Kerberos 認証および ACL サポートが一般提供されるまでの一時的な措置としてご利用ください。
+この記事では、ストレージ アカウント キーを使用してファイル共有にアクセスします。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、[Azure File Sync](storage-sync-files-planning.md) または [SMB 経由の ID ベースの認証](storage-files-active-directory-overview.md)を使用できます。
 
 SMB ファイル共有が想定されている基幹業務 (LOB) アプリケーションを Azure にリフトアンドシフトする一般的なパターンは、専用の Windows ファイル サーバーを Azure VM で実行する代わりとして Azure ファイル共有を使うことです。 基幹業務アプリケーションで Azure ファイル共有を使うための移行に関して、その作業を成功させるうえで重要な考慮事項があります。多くの基幹業務アプリケーションは、VM の管理者アカウントではなく、制限されたシステム アクセス許可を与えられた専用のサービス アカウントのコンテキストで実行されるということです。 そのため、Azure ファイル共有の資格情報をマウント/保存する際は、自分の管理者アカウントからではなく、必ずサービス アカウントのコンテキストから行う必要があります。
 
-### <a name="persisting-azure-file-share-credentials-in-windows"></a>Azure ファイル共有の資格情報を Windows で保持する  
-ストレージ アカウントの資格情報は、[cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) ユーティリティを使って Windows 内に保持することができます。 つまり Azure ファイル共有に UNC パスでアクセスしたり Azure ファイル共有をマウントしたりする際に、資格情報を指定する必要はありません。 ストレージ アカウントの資格情報を保存するには、次の PowerShell コマンドを実行します。`<your-storage-account-name>` と `<your-resource-group-name>` は、実際の値に置き換えてください。
+### <a name="mount-the-azure-file-share"></a>Azure ファイル共有をマウントする
 
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
+Azure portal には、ファイル共有をホストに直接マウントするために使用できるスクリプトが用意されています。 この用意されているスクリプトを使用することをお勧めします。
 
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+このスクリプトを入手するには:
 
-# The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
-# consume the appropriate values from the storage account variables. The value given to the add parameter of the
-# cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
-# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
-# clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
-```
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. マウントするファイル共有が含まれているストレージ アカウントに移動します。
+1. **[ファイル共有]** を選択します。
+1. マウントするファイル共有を選択します。
 
-ストレージ アカウントの資格情報が cmdkey ユーティリティによって保存されたことを確認するには、次のように list パラメーターを使用します。
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="例":::
 
-```powershell
-cmdkey /list
-```
+1. **[接続]** を選択します。
 
-Azure ファイル共有の資格情報が正常に保存された場合、次のような結果が出力されます (実際に格納されているキーはこれよりも多い可能性があります)。
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="ファイル共有の接続アイコンのスクリーンショット。":::
 
-```
-Currently stored credentials:
+1. 共有のマウント先のドライブ文字を選択します。
+1. 表示されたスクリプトをコピーします。
 
-Target: Domain:target=<storage-account-host-name>
-Type: Domain Password
-User: AZURE\<your-storage-account-name>
-```
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="テキストの例":::
 
-以降は、別途資格情報を指定しなくても共有をマウントしたり、共有にアクセスしたりすることができます。
+1. ファイル共有をマウントするホスト上のシェルにスクリプトを貼り付けて実行します。
 
-#### <a name="advanced-cmdkey-scenarios"></a>高度な cmdkey のシナリオ
-他にも cmdkey には、考慮すべきシナリオが 2 つあります。別のユーザー (サービス アカウントなど) の資格情報をマシンに保存するシナリオと、PowerShell リモート処理でリモート マシンに資格情報を保存するシナリオです。
-
-別のユーザーの資格情報をマシンに保存するのは簡単です。アカウントにログインする際、単純に次の PowerShell コマンドを実行します。
-
-```powershell
-$password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
-Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
-```
-
-これで、指定したサービス アカウント (またはユーザー アカウント) のユーザー コンテキストで新しい PowerShell ウィンドウが開きます。 その後は、[前述](#persisting-azure-file-share-credentials-in-windows)の説明のように cmdkey ユーティリティを使うことができます。
-
-ただし、PowerShell リモート処理を使って資格情報をリモート マシンに保存することはできません。PowerShell リモート処理を介してユーザーがログインしているとき、cmdkey では、資格情報ストアへのアクセスが、追加も含め許可されません。 [リモート デスクトップ](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows)でマシンにログインすることをお勧めします。
-
-### <a name="mount-the-azure-file-share-with-powershell"></a>PowerShell を使用した Azure ファイル共有のマウント
-Azure ファイル共有をマウントするには、管理者特権ではない通常の PowerShell セッションから次のコマンドを実行します。 `<your-resource-group-name>`、`<your-storage-account-name>`、`<your-file-share-name>`、`<desired-drive-letter>` は、忘れずに適切な情報に置き換えてください。
-
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
-$fileShareName = "<your-file-share-name>"
-
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object { 
-    $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
-}
-
-if ($fileShare -eq $null) {
-    throw [System.Exception]::new("Azure file share not found")
-}
-
-# The value given to the root parameter of the New-PSDrive cmdlet is the host address for the storage account, 
-# <storage-account>.file.core.windows.net for Azure Public Regions. $fileShare.StorageUri.PrimaryUri.Host is 
-# used because non-Public Azure regions, such as sovereign clouds or Azure Stack deployments, will have different 
-# hosts for Azure file shares (and other storage resources).
-$password = ConvertTo-SecureString -String $storageAccountKeys[0].Value -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "AZURE\$($storageAccount.StorageAccountName)", $password
-New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($fileShare.StorageUri.PrimaryUri.Host)\$($fileShare.Name)" -Credential $credential -Persist
-```
-
-> [!Note]  
-> `New-PSDrive` コマンドレットの `-Persist` オプションを使ってできることは、資格情報が保存されている場合に、ファイル共有を起動時に再マウントすることだけです。 資格情報を保存するには、[前述の説明](#persisting-azure-file-share-credentials-in-windows)に従って cmdkey を使います。 
-
-次のPowerShell コマンドレットを使えば、必要に応じて Azure ファイル共有のマウントを解除できます。
-
-```powershell
-Remove-PSDrive -Name <desired-drive-letter>
-```
+これで、Azure ファイル共有がマウントされました。
 
 ### <a name="mount-the-azure-file-share-with-file-explorer"></a>エクスプローラーを使用した Azure ファイル共有のマウント
 > [!Note]  
@@ -182,11 +84,11 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. エクスプローラーを開きます。 [スタート] メニューから開くことも、Windows + E キーを押すショートカットで開くこともできます。
 
-1. ウィンドウの左側の **[PC]** 項目に移動します。 これで、リボンで使用できるメニューが変更されます。 [コンピューター] メニューの **[ネットワーク ドライブの割り当て]** を選択します。
+1. ウィンドウの左側の **[PC]** に移動します。 これで、リボンで使用できるメニューが変更されます。 [コンピューター] メニューの **[ネットワーク ドライブの割り当て]** を選択します。
     
     ![[ネットワーク ドライブの割り当て] ドロップダウン メニューのスクリーンショット](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. ドライブ文字を選択し、UNC パスを入力します。UNC パスの形式は `<storageAccountName>.file.core.windows.net/<fileShareName>` です  (例: `anexampleaccountname.file.core.windows.net/example-share-name`)。
+1. ドライブ文字を選択し、UNC パスを入力します。UNC パスの形式は `\\<storageAccountName>.file.core.windows.net\<fileShareName>` です (例: `\\anexampleaccountname.file.core.windows.net\example-share-name`)。
     
     ![[ネットワーク ドライブの割り当て] ダイアログのスクリーンショット](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
@@ -201,7 +103,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 1. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、 **[切断]** を選択します。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows から共有スナップショットへのアクセス
-手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure portal](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md)、および [Azure CLI](storage-how-to-use-files-cli.md) で取得することができます。
+手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure PowerShell](storage-how-to-use-files-powershell.md)、[Azure CLI](storage-how-to-use-files-cli.md)、または [Azure portal](storage-how-to-use-files-portal.md) を使用して取得できます。
 
 #### <a name="list-previous-versions"></a>以前のバージョンを一覧表示する
 復元が必要な項目または親項目を参照します。 ダブルクリックして、目的のディレクトリに移動します。 右クリックして、メニューから **[プロパティ]** を選択します。

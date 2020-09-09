@@ -4,12 +4,13 @@ description: IntelliJ IDEA を使用して最初の Azure Resource Manager テ�
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-java
+ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153354"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321821"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用して ARM テンプレートを作成およびデプロイする
 
@@ -27,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition または Community Edition がインストールされていること
 * [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) がインストールされていること。詳細については、[IntelliJ のプラグイン管理ガイド](https://www.jetbrains.com/help/idea/managing-plugins.html)を参照してください
-* Azure Toolkit for IntelliJ 用の自分の Azure アカウントに[サインイン](/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions)していること
+* Azure Toolkit for IntelliJ 用の自分の Azure アカウントに[サインイン](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)していること
 
 ## <a name="deploy-a-quickstart-template"></a>クイックスタート テンプレートをデプロイする
 
@@ -86,4 +87,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [初心者向けチュートリアル](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
-> [Azure デベロッパー センターで Java にアクセスする](https://docs.microsoft.com/azure/java)
+> [Azure デベロッパー センターで Java にアクセスする](/azure/java)

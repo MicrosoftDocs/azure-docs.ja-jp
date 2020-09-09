@@ -7,15 +7,16 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79fa01e53b53f3066e55736c105d6489ccbd96e7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81426995"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019846"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -101,35 +102,22 @@ Web アプリが既に作成されている場合は、その Web アプリに K
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>ソース管理フォルダーの外部にあるシークレット設定をシークレット ファイルに保存する
 クイック プロトタイプを記述しており、Azure リソースをプロビジョニングしない場合は、このオプションを使用します。
 
-1. プロジェクトに次の NuGet パッケージをインストールします
-    ```
-    Microsoft.Configuration.ConfigurationBuilders.Base
-    ```
+1. プロジェクトを右クリックして、 **[ユーザー シークレットの管理]** を選択します。 これにより、NuGet パッケージ **Microsoft.Configuration.ConfigurationBuilders.UserSecrets** がインストールされ、web.config ファイルの外部にシークレット設定を保存するためのファイルが作成され、web.config ファイルに **ConfigBuilders** が追加されます。
 
-2. 次のようなファイルを作成します。 プロジェクト フォルダーの外部の場所に保存します。
+2. シークレット設定をルート要素に配置します。 次に例を示します。
 
     ```xml
+    <?xml version="1.0" encoding="utf-8"?>
     <root>
-        <secrets ver="1.0">
-            <secret name="secret1" value="foo_one" />
-            <secret name="secret2" value="foo_two" />
-        </secrets>
+      <secrets ver="1.0">
+        <secret name="secret" value="foo"/>
+        <secret name="secret1" value="foo_one" />
+        <secret name="secret2" value="foo_two" />
+      </secrets>
     </root>
     ```
 
-3. Web.config ファイルでそのシークレット ファイルを構成ビルダーとして定義します。 このセクションは *appSettings* セクションの前に配置します。
-
-    ```xml
-    <configBuilders>
-        <builders>
-            <add name="Secrets"
-                 secretsFile="C:\Users\AppData\MyWebApplication1\secret.xml" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder,
-                    Microsoft.Configuration.ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
-        </builders>
-    </configBuilders>
-    ```
-
-4. appSettings セクションで、そのシークレット構成ビルダーを使用することを指定します。 シークレット設定に、ダミーの値を含むエントリがあることを確認します。
+3. appSettings セクションで、そのシークレット構成ビルダーを使用することを指定します。 シークレット設定に、ダミーの値を含むエントリがあることを確認します。
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -148,20 +136,18 @@ Web アプリが既に作成されている場合は、その Web アプリに K
 
 1. プロジェクトに次の NuGet パッケージをインストールします
    ```
-   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   Microsoft.Configuration.ConfigurationBuilders.Azure
    ```
 
-2. Web.config で Key Vault 構成ビルダーを定義します。このセクションは *appSettings* セクションの前に配置します。 お客様の Key Vault がパブリック Azure 内にある場合は、*vaultName* を Key Vault 名に置き換え、管理権のあるクラウドを使用している場合は完全 URI に置き換えます。
+2. Web.config で Key Vault 構成ビルダーを定義します。このセクションは *appSettings* セクションの前に配置します。 お客様の Key Vault がグローバル Azure 内にある場合は、*vaultName* を Key Vault 名に置き換え、管理権のあるクラウドを使用している場合は完全 URI に置き換えます。
 
     ```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-    <configBuilders>
+     <configBuilders>
         <builders>
-            <add name="AzureKeyVault" vaultName="Test911" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
+            <add name="Secrets" userSecretsId="695823c3-6921-4458-b60b-2b82bbd39b8d" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            <add name="AzureKeyVault" vaultName="[VaultName]" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
         </builders>
-    </configBuilders>
+      </configBuilders>
     ```
 3. appSettings セクションでその Key Vault 構成ビルダーを使用することを指定します。 シークレット設定に、ダミーの値をもつエントリがあることを確認します。
 

@@ -1,20 +1,21 @@
 ---
-title: モジュール エラーのトラブルシューティング
+title: デザイナー (プレビュー) モジュール エラーのトラブルシューティング
 titleSuffix: Azure Machine Learning
-description: エラー コードを使用した Azure Machine Learning デザイナーでのモジュール例外のトラブルシューティング
+description: Azure Machine Learning デザイナーでのモジュール エラー コードのトラブルシューティング (プレビュー)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684697"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876922"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
 
@@ -712,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **解決策:** このエラーは多くの状況によって発生し、特定の解決策はありません。  
  次の表はこのエラーに対する一般的なメッセージであり、後で状況について具体的に説明します。 
 
- 使用可能な詳細情報がない場合は、[フィードバックを送信](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
+ 使用可能な詳細情報がない場合は、[Microsoft Q&A 質問ページでフィードバックを送信](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html)して、エラーが発生したモジュールおよび関連する状況に関する情報を提供してください。
 
 |例外メッセージ|
 |------------------------|
@@ -1106,7 +1107,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
  モジュールの例外により報告された、SQL によって生成されたメッセージがある場合、報告されたエラーに基づいて対処を実行します。 たとえば、エラー メッセージには、発生する可能性の高いエラーに関する具体的なガイダンスが含まれる場合があります。
 + "*No such column or missing database*" (そのような列はないか、またはデータベースが存在しません) は、列名を誤って入力した可能性があることを示します。 列名が正しいことが確実な場合は、角かっこまたは引用符を使って列の識別子を囲んでみてください。
-+ "*SQL logic error near \<SQL keyword\>* " ("<SQL キーワード> の近くに SQL ロジック エラーがあります") は、指定されたキーワードの前に構文エラーが存在する可能性があることを示します
++ "*SQL logic error near \<SQL keyword\>* " ("\<SQL keyword\> の近くに SQL ロジック エラーがあります") は、指定されたキーワードの前に構文エラーが存在する可能性があることを示します
 
   
 |例外メッセージ|
@@ -1163,7 +1164,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
 このイベントでのエラー処理は、ビン分割方法のカスタマイズがより広い範囲で可能だった以前のバージョンの Azure Machine Learning で導入されました。 現在は、ビン分割方法はすべてドロップダウン リストでの選択に基づくため、技術的には、このエラーが発生する可能性はありません。
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Azure Machine Learning forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |例外メッセージ|
 |------------------------|
@@ -1500,7 +1501,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 
 ## <a name="error-0159"></a>エラー 0159
- モジュール モデル ディレクトリに渡されたものが無効な場合に、例外が発生します。 
+ モジュール モデル ディレクトリが無効な場合に、例外が発生します。 
 
 |例外メッセージ|
 |------------------------------------------------------------|
@@ -1515,7 +1516,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 このエラーは、他の方法では処理されない内部エンジン エラーをキャプチャするために提供されます。 そのため、このエラーの原因は、エラーが生成されたモジュールによって異なる可能性があります。  
 
-詳細なヘルプを取得するには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、Azure Machine Learning フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
+詳細なヘルプを受けるには、エラーに付随する詳細なメッセージに、入力として使用したデータなどのシナリオの説明を添えて、[Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning.html) フォーラムに投稿することをお勧めします。 このフィードバックは、エラーの優先順位付けや、さらに取り組むべき最重要問題の特定に役立てられます。  
 
 |例外メッセージ|
 |------------------------|

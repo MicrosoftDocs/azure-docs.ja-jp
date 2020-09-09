@@ -3,14 +3,15 @@ title: デバッグ レンダリング
 description: サーバー側デバッグ レンダリング効果の概要
 author: jumeder
 ms.author: jumeder
-ms.date: 04/09/2020
+ms.date: 06/15/2020
 ms.topic: article
-ms.openlocfilehash: dc07b20340b852eadeb7c93e5cef2ed2092b3641
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758658"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013590"
 ---
 # <a name="debug-rendering"></a>デバッグ レンダリング
 
@@ -45,16 +46,16 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ```cpp
 void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight)
 {
-    ApiHandle<DebugRenderingSettings> settings = *session->Actions()->DebugRenderingSettings();
+    ApiHandle<DebugRenderingSettings> settings = session->Actions()->GetDebugRenderingSettings();
 
     // Enable frame counter text overlay on the server side rendering
-    settings->RenderFrameCount(true);
+    settings->SetRenderFrameCount(true);
 
     // Enable polygon count text overlay on the server side rendering
-    settings->RenderPolygonCount(true);
+    settings->SetRenderPolygonCount(true);
 
     // Enable wireframe rendering of object geometry on the server
-    settings->RenderWireframe(true);
+    settings->SetRenderWireframe(true);
 }
 ```
 

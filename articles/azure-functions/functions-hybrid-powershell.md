@@ -3,14 +3,14 @@ title: PowerShell 関数を使用してリモートのオンプレミス リソ�
 description: PowerShell 関数アプリをオンプレミス リソースに接続するように Azure Relay のハイブリッド接続を構成し、それを使用してリモートからオンプレミス リソースを管理する方法について説明します。
 author: eamono
 ms.topic: conceptual
-ms.date: 9/5/2019
+ms.date: 04/26/2020
 ms.author: eamono
-ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74226933"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122274"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Azure Functions の PowerShell と App Service ハイブリッド接続を使用してハイブリッド環境を管理する
 
@@ -50,31 +50,47 @@ cmd.exe /C $Cmd
 
 App Service ハイブリッド接続機能は、Basic、Standard、Isolated の価格プランでのみ利用できます。 PowerShell で関数アプリを作成する際は、このいずれかのプランを作成または選択してください。
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで **[+ リソースの作成]** を選択し、 **[関数アプリ]** を選択します。
+1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 
-1. **[ホスティング プラン]** で、 **[App Service プラン]** を選択し、 **[App Service プラン/場所]** を選択します。
+1. **[新規]** ページで、 **[計算]** 、 >  **[関数アプリ]** の順に選択します。
 
-1. **[新規作成]** を選択し、 **[App Service プラン]** に名前を入力し、[[リージョン]](https://azure.microsoft.com/regions/) で、自分の近くか使用する関数がアクセスする他のサービスの近くの**場所**を選択し、 **[価格レベル]** を選択します。
+1. **[基本]** ページで、下の表で指定されている関数アプリの設定を使用します。
 
-1. S1 Standard プランを選択し、 **[適用]** を選択します。
-
-1. **[OK]** を選択してプランを作成し、残りの**関数アプリ**の設定を構成します。次のスクリーンショットの直後にある表の指定に従ってください。
-
-    ![PowerShell Core 関数アプリ](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
-
-    | 設定      | 推奨値  | 説明                                        |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
+    | 設定      | 推奨値  | 説明 |
+    | ------------ | ---------------- | ----------- |
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 |
-    | **リソース グループ** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 推奨値を使用することもできます。 |
-    | **OS** | 推奨 OS | [Windows] を選択します。 |
+    | **[リソース グループ](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Function App を作成するための新しいリソース グループの名前。 |
+    | **関数アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。  |
+    |**発行**| コード | コード ファイルまたは Docker コンテナーの発行オプション。 |
     | **ランタイム スタック** | 優先言語 | [PowerShell Core] を選択します。 |
-    | **Storage** |  グローバルに一意の名前 |  Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 から 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできます。
-    | **Application Insights** | Default | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開することによって、 **[新しいリソース名]** を変更するか、またはデータを格納する [Azure 地理的](https://azure.microsoft.com/global-infrastructure/geographies/)リージョン内の別の **[場所]** を選択することができます。 |
+    |**Version**| バージョン番号 | インストールされているランタイムのバージョンを選択します。  |
+    |**リージョン**| 優先リージョン | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
 
-1. 設定が検証されたら、 **[作成]** を選択します。
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-basics.png" alt-text="関数アプリ - 基本を作成します。" border="true":::
 
-1. ポータルの右上隅の**通知**アイコンを選択し、"デプロイメントに成功しました" というメッセージが表示されるまで待ちます。
+1. **[次へ :ホスティング]** を選択します。 **[ホスティング]** ページで、次の設定を入力します。
+
+    | 設定      | 推奨値  | 説明 |
+    | ------------ | ---------------- | ----------- |
+    | **[ストレージ アカウント](../storage/common/storage-account-create.md)** |  グローバルに一意の名前 |  Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名は、3 文字から 24 文字までの長さにし、数字と小文字のみを使用する必要があります。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](../azure-functions/functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
+    |**オペレーティング システム**| 優先オペレーティング システム | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
+    | **[プランの種類](../azure-functions/functions-scale.md)** | **App Service プラン** | **App Service プラン**を選択します。 App Service プランで実行する場合は、[関数アプリのスケーリング](../azure-functions/functions-scale.md)を管理する必要があります。  |
+
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="関数アプリ プロジェクト - ホスティングを作成します。" border="true":::
+
+1. **[次へ :監視]** を選択します。 **[監視]** ページで、次の設定を入力します。
+
+    | 設定      | 推奨値  | 説明 |
+    | ------------ | ---------------- | ----------- |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Default | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開するか、 **[新規作成]** を選択することによって、Application Insights 名を変更するか、データを格納する [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)内の別のリージョンを選択することができます。 |
+
+    :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="関数アプリ プロジェクト - 監視を作成します。" border="true":::
+
+1. **[確認および作成]** を選択して、アプリ構成の選択内容を確認します。
+
+1. **[確認および作成]** ページで設定を確認して、 **[作成]** を選択し、関数アプリをプロビジョニングしてデプロイします。
+
+1. ポータルの右上隅の **[通知]** アイコンを選択し、"**デプロイメントに成功しました**" というメッセージが表示されるまで待ちます。
 
 1. **[リソースに移動]** を選択して、新しい Function App を確認します。 また、 **[ダッシュボードにピン留めする]** を選択することもできます。 ピン留めすると、ダッシュボードからこの関数アプリ リソースに戻るのが容易になります。
 
@@ -82,42 +98,53 @@ App Service ハイブリッド接続機能は、Basic、Standard、Isolated の�
 
 ハイブリッド接続の構成は、関数アプリの [ネットワーク] セクションから行います。
 
-1. 関数アプリの **[プラットフォーム機能]** タブを選択し、 **[ネットワーク]** を選択します。 
-   ![プラットフォーム ネットワークのアプリの概要](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. 先ほど作成した関数アプリの **[設定]** で、 **[ネットワーク]** を選択します。 
 1. **[Configure your hybrid connections endpoints]\(ハイブリッド接続のエンドポイントを構成する\)** を選択します。
-   ![ネットワーク](./media/functions-hybrid-powershell/select-network-feature.png)  
+   
+    :::image type="content" source="./media/functions-hybrid-powershell/configure-hybrid-connection-endpoint.png" alt-text="ハイブリッド接続エンドポイントを構成します。" border="true":::
+
 1. **[ハイブリッド接続の追加]** を選択します。
-   ![ハイブリッド接続](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+   
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-overview.png" alt-text="ハイブリッド接続を追加します。" border="true":::
+
 1. ハイブリッド接続に関する情報を入力します。次のスクリーンショットのすぐ後に記載した情報を参照してください。 **[エンドポイント ホスト]** の設定は、後でリモート コマンドを実行する際に思い出しやすいよう、オンプレミス サーバーのホスト名と同じでもかまいません。 ポートは、先ほどサーバーで定義した Windows リモート管理サービスの既定のポートと対応します。
-  ![ハイブリッド接続の追加](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
+  
+      :::image type="content" source="./media/functions-hybrid-powershell/add-hybrid-connection.png" alt-text="[ハイブリッド接続の追加]。" border="true":::
 
-    **[ハイブリッド接続の名前]** : ContosoHybridOnPremisesServer
-    
-    **[エンドポイント ホスト]** : finance1
-    
-    **[エンドポイント ポート]** : 5986
-    
-    **Servicebus 名前空間**: Create New
-    
-    **[場所]** :使用可能な場所を選択
-    
-    **[名前]** : contosopowershellhybrid
+    | 設定      | 推奨値  |
+    | ------------ | ---------------- |
+    | **ハイブリッド接続の名前** | ContosoHybridOnPremisesServer |
+    | **エンドポイント ホスト** | finance1 |
+    | **エンドポイント ポート** | 5986 |
+    | **Servicebus 名前空間** | Create New |
+    | **場所** | 使用可能な場所を選択 |
+    | **名前** | contosopowershellhybrid | 
 
-5. **[OK]** を選択してハイブリッド接続を作成します。
+1. **[OK]** を選択してハイブリッド接続を作成します。
 
 ## <a name="download-and-install-the-hybrid-connection"></a>ハイブリッド接続をダウンロードしてインストールする
 
-1. **[接続マネージャーのダウンロード]** を選択して .msi ファイルをローカル コンピューターに保存します。
-![インストーラーのダウンロード](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. ローカル コンピューターからオンプレミス サーバーに .msi ファイルをコピーします。
+1. **[接続マネージャーのダウンロード]** を選択して、 *.msi* ファイルをローカル コンピューターに保存します。
+
+    :::image type="content" source="./media/functions-hybrid-powershell/download-hybrid-connection-installer.png" alt-text="インストーラーをダウンロードします。" border="true":::
+
+1. ローカル コンピューターからオンプレミス サーバーに *.msi* ファイルをコピーします。
 1. ハイブリッド接続マネージャーのインストーラーを実行して、オンプレミス サーバーにサービスをインストールします。
-![ハイブリッド接続のインストール](./media/functions-hybrid-powershell/hybrid-installation.png)  
+
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-installation.png" alt-text="ハイブリッド接続をインストールします。" border="true":::
+
 1. ポータルからハイブリッド接続を開き、ゲートウェイ接続文字列をクリップボードにコピーします。
-![ハイブリッド接続文字列をコピーする](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+
+    :::image type="content" source="./media/functions-hybrid-powershell/copy-hybrid-connection.png" alt-text="ハイブリッド接続文字列をコピーします。" border="true":::
+
 1. オンプレミス サーバー上のハイブリッド接続マネージャーの UI を開きます。
-![ハイブリッド接続の UI を開く](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. **[手動で入力]** ボタンを選択して、クリップボードから接続文字列を貼り付けます。
-![接続文字列を貼り付ける](./media/functions-hybrid-powershell/enter-manual-connection.png)  
+
+    :::image type="content" source="./media/functions-hybrid-powershell/hybrid-connection-ui.png" alt-text="ハイブリッド接続 UI を開きます。" border="true":::
+
+1. **[手動で入力]** を選択して、クリップボードから接続文字列を貼り付けます。
+
+    :::image type="content" source="./media/functions-hybrid-powershell/enter-manual-connection.png" alt-text="ハイブリッド接続を貼り付けます。" border="true":::
+
 1. ハイブリッド接続マネージャーが接続状態になっていない場合は、PowerShell からハイブリッド接続マネージャーを再起動します。
     ```powershell
     Restart-Service HybridConnectionManager
@@ -125,19 +152,33 @@ App Service ハイブリッド接続機能は、Basic、Standard、Isolated の�
 
 ## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>管理者アカウントのパスワードに使用するアプリ設定を作成する
 
-1. 関数アプリの **[プラットフォーム機能]** タブを選択します。
-1. **[General Settings]\(全般設定\)** で **[構成]** を選択します。
-![プラットフォームの構成を選択する](./media/functions-hybrid-powershell/select-configuration.png)  
-1. **[新しいアプリケーション設定]** を展開して、パスワード用の新しい設定を作成します。
-1. この設定に _ContosoUserPassword_ という名前を付けてパスワードを入力します。
-1. **[OK]** 、[保存] の順に選択して、関数アプリケーションにパスワードを保存します。
-![パスワードのアプリ設定を追加する](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. 関数アプリの **[設定]** で、 **[構成]** を選択します。 
+1. **[+ 新しいアプリケーション設定]** を選択します。
 
-## <a name="create-a-function-http-trigger-to-test"></a>HTTP トリガー関数を作成してテストする
+    :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="管理者アカウントのパスワードを構成します。" border="true":::
 
-1. 関数アプリから新しい HTTP トリガー関数を作成します。
-![新しい HTTP トリガーを作成する](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
-1. テンプレートの PowerShell コードを次のコードに置き換えます。
+1. この設定に **ContosoUserPassword** という名前を付けてパスワードを入力します。 **[OK]** を選択します。
+1. **[保存]** を選択して、パスワードを関数アプリケーションに保存します。
+
+    :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="管理者アカウントのパスワードを保存します。" border="true":::
+
+## <a name="create-a-function-http-trigger"></a>HTTP トリガー関数を作成する
+
+1. 関数アプリで、 **[関数]** を選択し、 **[+ 追加]** を選択します。
+
+    :::image type="content" source="./media/functions-hybrid-powershell/create-http-trigger-function.png" alt-text="新しい HTTP トリガーを作成します。" border="true":::
+
+1. **HTTP トリガー** テンプレートを選択します。
+
+    :::image type="content" source="./media/functions-hybrid-powershell/select-http-trigger-template.png" alt-text="HTTP トリガー テンプレートを選択します。" border="true":::
+
+1. 新しい関数に名前を付けて、 **[関数の作成]** を選択します。
+
+    :::image type="content" source="./media/functions-hybrid-powershell/create-new-http-function.png" alt-text="名前を指定して、新しい HTTP トリガー関数を作成します。" border="true":::
+
+## <a name="test-the-function"></a>関数をテストする
+
+1. 新しい関数で、 **[Code + Test]\(コード + テスト\)** を選択します。 テンプレートの PowerShell コードを次のコードに置き換えます。
 
     ```powershell
     # Input bindings are passed in via param block.
@@ -172,8 +213,13 @@ App Service ハイブリッド接続機能は、Basic、Standard、Isolated の�
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. **[保存]** および **[実行]** を選択して関数をテストします。
-![関数アプリをテストする](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+1. **[保存]** を選択します。
+
+    :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="PowerShell コードを変更して、HTTP トリガー関数を保存します。" border="true":::
+
+ 1. **[テスト]** を選択し、 **[実行]** を選択して、関数をテストします。 ログを確認して、テストが成功したことを確認します。
+
+     :::image type="content" source="./media/functions-hybrid-powershell/test-function-hybrid.png" alt-text="HTTP トリガー関数をテストします。" border="true":::
 
 ## <a name="managing-other-systems-on-premises"></a>オンプレミスにある他のシステムを管理する
 

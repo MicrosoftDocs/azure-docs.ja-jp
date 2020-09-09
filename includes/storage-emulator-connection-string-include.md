@@ -2,16 +2,16 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 07/17/2020
 ms.author: tamram
-ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85e7cb86217340e77a6f597a357c3de1f91fb8d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070559"
 ---
-ストレージ エミュレーターでは、共有キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。 このアカウントとキーのみ、ストレージ エミュレーターで共有キー資格情報として使用できます。 これらは次のとおりです。
+Azurite では、共有キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。 このアカウントとキーのみ、Azurite で共有キー資格情報として使用できます。 これらは次のとおりです。
 
 ```
 Account name: devstoreaccount1
@@ -19,13 +19,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> ストレージ エミュレーターでサポートされている認証キーは、クライアント認証コードの機能をテストすることだけを目的としています。 セキュリティ機能は果たしません。 ストレージ エミュレーターで運用環境のストレージ アカウントとキーを使用することはできません。 開発アカウントを運用データで使用することは避けてください。
+> Azurite でサポートされている認証キーは、クライアント認証コードの機能をテストすることだけを目的としています。 セキュリティ機能は果たしません。 Azurite で運用環境のストレージ アカウントとキーを使用することはできません。 開発アカウントを運用データで使用することは避けてください。
 > 
-> ストレージ エミュレーターでは HTTP 経由の接続のみがサポートされます。 ただし、運用環境の Azure ストレージ アカウント内のリソースにアクセスする際は、HTTPS が推奨されるプロトコルです。
+> Azurite では HTTP 経由の接続のみがサポートされます。 ただし、運用環境の Azure ストレージ アカウント内のリソースにアクセスする際は、HTTPS が推奨されるプロトコルです。
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>ショートカットを使用してエミュレーター アカウントに接続する
-アプリケーションからストレージ エミュレーターに接続する最も簡単な方法は、ショートカット `UseDevelopmentStorage=true` を参照するアプリケーションの構成ファイル内で接続文字列を構成することです。 たとえば、*app.config* ファイル内でのストレージ エミュレーターへの接続文字列は次のようになります。 
+アプリケーションから Azurite に接続する最も簡単な方法は、ショートカット `UseDevelopmentStorage=true` を参照するアプリケーションの構成ファイル内で接続文字列を構成することです。 たとえば、*app.config* ファイル内の Azurite の接続文字列は次のようになります。 
 
 ```xml
 <appSettings>
@@ -40,16 +40,7 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
 AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;
 BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
-TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
 この値は、前述のショートカット `UseDevelopmentStorage=true`と同じです。
-
-#### <a name="specify-an-http-proxy"></a>HTTP プロキシを指定する
-また、サービスをストレージ エミュレーターでテストする際に使用する HTTP プロキシを指定することもできます。 これは、ストレージ サービスに対する操作をデバッグするとき、HTTP の要求と応答を調べる場合に便利です。 プロキシを指定するには、 `DevelopmentStorageProxyUri` オプションを接続文字列に追加し、値としてプロキシ URI を設定します。 たとえば、次に示す接続文字列は、ストレージ エミュレーターを指しており、HTTP プロキシを構成しています。
-
-```
-UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri
-```
-

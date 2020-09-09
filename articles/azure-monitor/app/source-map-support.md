@@ -4,13 +4,14 @@ description: Application Insights を使用して、独自のストレージ ア
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: de475cbd7cbb0d8dbcda026109b0387da14bedff
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474885"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386794"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript アプリケーションに対するソース マップのサポート
 
@@ -31,7 +32,9 @@ Application Insights では、独自のストレージ アカウントの BLOB �
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>ソース マップを BLOB コンテナーにプッシュする
 
-構成済みの BLOB コンテナーにソース マップを自動的にアップロードするように構成することで、継続的配置パイプラインをストレージ アカウントと統合する必要があります。 ソース マップを BLOB コンテナー内のサブフォルダーにアップロードすることはできません。現在、ソース マップはルート フォルダーからのみフェッチされます。
+構成済みの BLOB コンテナーにソース マップを自動的にアップロードするように構成することで、継続的配置パイプラインをストレージ アカウントと統合する必要があります。
+
+Blob Storage コンテナーのフォルダー構造がソース マップのコンパイルおよびデプロイ時のフォルダー構造と同じであれば、ソース マップを Blob Storage コンテナーにアップロードできます。 一般的なユース ケースは、`1.2.3/static/js/main.js` のように、デプロイ フォルダーにそのバージョンでプレフィックスを付けることです。 `sourcemaps` という名前の Azure Blob コンテナーでアンミニファイ処理するとき、`sourcemaps/1.2.3/static/js/main.js.map` に置かれているソース マップの取得が試行されます。
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Azure Pipelines 経由でソース マップをアップロードする (推奨)
 
@@ -80,13 +83,13 @@ Application Insights リソースにリンクされているストレージ ア�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure ファイル コピー タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
+* [Azure ファイル コピー タスク](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
 
 
 <!-- Remote URLs -->
-[create storage account]: https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal
-[create blob container]: https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal
-[storage blob data reader]: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader
+[create storage account]: ../../storage/common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal
+[create blob container]: ../../storage/blobs/storage-quickstart-blobs-portal.md
+[storage blob data reader]: ../../role-based-access-control/built-in-roles.md#storage-blob-data-reader
 [ApplicationInsights-JS]: https://github.com/microsoft/applicationinsights-js
 [ApplicationInsights-Node.js]: https://github.com/microsoft/applicationinsights-node.js
 [azure file copy]: https://aka.ms/azurefilecopyreadme

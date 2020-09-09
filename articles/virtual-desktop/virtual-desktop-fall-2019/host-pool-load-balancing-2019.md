@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop のホスト プールの負荷分散 - Azure
+title: Windows Virtual Desktop (クラシック) のホスト プールの負荷分散 - Azure
 description: Windows Virtual Desktop 環境でのホスト プールの負荷分散方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2bfbd580d0e114cf4a135879340745107183b6a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 940863b983b00dbb3c4af590d75868665372f818
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614080"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002312"
 ---
-# <a name="host-pool-load-balancing-methods"></a>ホスト プールの負荷分散方法
+# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのホスト プールの負荷分散方法
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../host-pool-load-balancing.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../host-pool-load-balancing.md)を参照してください。
 
 Windows Virtual Desktop では 2 つの負荷分散方法がサポートされます。 それぞれの方法では、ユーザーがホスト プール内のリソースに接続するときにそのユーザーのセッションをホストするセッション ホストが決定されます。
 

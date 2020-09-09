@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 5867c4ba7fa1447cbd5d40e15237ae50c24c7168
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199264"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681925"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について
 
@@ -71,7 +72,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 ### <a name="statement-section-of-csv-file"></a>CSV ファイルの Statement セクション
 
-**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な**メーター カテゴリ** (Azure SQL データベースまたは Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
+**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な**メーター カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
 
 ![SQL Database の予約容量の CSV ファイル](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -83,7 +84,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 ![SQL Database の予約容量の CSV ファイル](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
-1. **Additional Info** フィールドの **ReservationId** は、SQL データベース リソースに適用された SQL Database 予約容量の予約です。
+1. **Additional Info** フィールドの **ReservationId** は、SQL Database リソースに適用された SQL Database 予約容量の予約です。
 2. **ConsumptionMeter** は、SQL データベース リソースの測定 ID です。
 3. **Meter Id** は予約の測定です。 この測定のコストは $0 です。 予約割引が適用される SQL データベース リソースの場合、CSV ファイルにこの測定 ID が表示されます。
 
@@ -97,7 +98,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](../manage/understand-vm-reservation-charges.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)

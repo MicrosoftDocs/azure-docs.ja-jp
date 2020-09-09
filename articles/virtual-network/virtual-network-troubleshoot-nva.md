@@ -1,6 +1,6 @@
 ---
 title: Azure でネットワーク仮想アプライアンスの問題をトラブルシューティングする | Microsoft Docs
-description: Azure でネットワーク仮想アプライアンスの問題をトラブルシューティングする方法について説明します。
+description: Azure でのネットワーク仮想アプライアンス (NVA) に関する問題のトラブルシューティングを行い、NVA 構成のため基本的な Azure Platform の要件を検証します。
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71056831"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286072"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
@@ -103,11 +103,15 @@ PowerShell の使用
 
     Windows の場合:
 
-        netstat -an
+    ```console
+   netstat -an
+    ```
 
     Linux の場合:
 
-        netstat -an | grep -i listen
+    ```console
+   netstat -an | grep -i listen
+    ```
 2. 結果に一覧されている NVA ソフトウェアによって使用される TCP ポートが表示されない場合は、それらのポートに到達するトラフィックをリッスンして応答するように、NVA と VM 上にアプリケーションを構成する必要があります。 [必要に応じて、NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 ## <a name="check-nva-performance"></a>NVA のパフォーマンスの確認

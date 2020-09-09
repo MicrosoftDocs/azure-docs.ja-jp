@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81453899"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401488"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
 [Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 この記事では、App Service にプライベート証明書またはパブリック証明書を作成、アップロード、またはインポートする方法について説明します。 
 
-証明書が App Service アプリまたは[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)に追加されたら、[その証明書を使用してカスタム DNS 名をセキュリティで保護](configure-ssl-bindings.md)したり、[その証明書をアプリケーション コードで使用](configure-ssl-certificate-in-code.md)したりできます。
+証明書が App Service アプリまたは[関数アプリ](../azure-functions/index.yml)に追加されたら、[その証明書を使用してカスタム DNS 名をセキュリティで保護](configure-ssl-bindings.md)したり、[その証明書をアプリケーション コードで使用](configure-ssl-certificate-in-code.md)したりできます。
 
 次の表に、App Service で証明書を追加するためのオプションを示します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "81453899"
 |-|-|
 | 無料の App Service マネージド証明書を作成する (プレビュー) | App Service で `www` [カスタム ドメイン](app-service-web-tutorial-custom-domain.md)またはネイキッド以外のドメインをセキュリティで保護することだけが必要な場合に、簡単に使用できるプライベート証明書。 |
 | App Service 証明書を購入する | Azure によって管理されるプライベート証明書。 自動証明書管理のシンプルさと、更新オプションとエクスポート オプションの柔軟性が組み合わされています。 |
-| Key Vault から証明書をインポートする | [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) を使用して [PKCS12 証明書](https://wikipedia.org/wiki/PKCS_12)を管理する場合に便利です。 「[プライベート証明書の要件](#private-certificate-requirements)」を参照してください。 |
+| Key Vault から証明書をインポートする | [Azure Key Vault](../key-vault/index.yml) を使用して [PKCS12 証明書](https://wikipedia.org/wiki/PKCS_12)を管理する場合に便利です。 「[プライベート証明書の要件](#private-certificate-requirements)」を参照してください。 |
 | プライベート証明書のアップロード | 既にサードパーティ プロバイダーからのプライベート証明書がある場合は、それをアップロードすることができます。 「[プライベート証明書の要件](#private-certificate-requirements)」を参照してください。 |
 | パブリック証明書のアップロード | パブリック証明書はカスタム ドメインのセキュリティ保護には使用されませんが、リモート リソースにアクセスするために必要な場合は、コードに読み込むことができます。 |
 
@@ -33,7 +33,7 @@ ms.locfileid: "81453899"
 
 この攻略ガイドに従うには:
 
-- [App Service アプリを作成](/azure/app-service/)します。
+- [App Service アプリを作成](./index.yml)します。
 - 無料の証明書の場合のみ: サブドメイン (たとえば、`www.contoso.com`) を [CNAME レコード](app-service-web-tutorial-custom-domain.md#map-a-cname-record)で App Service にマップします。
 
 ## <a name="private-certificate-requirements"></a>プライベート証明書の要件
@@ -64,7 +64,8 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 - ワイルドカード証明書はサポートされません。
 - ネイキッド ドメインはサポートされていません。
 - エクスポートはできません。
-- DNS A レコードはサポートされません。
+- App Service Environment (ASE) ではサポートされません。
+- A レコードはサポートされません。 たとえば、A レコードでは自動更新が機能しません。
 
 > [!NOTE]
 > 無料の証明書は DigiCert によって発行されます。 一部のトップレベル ドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue digicert.com` の値を使用して作成することによって、DigiCert を証明書の発行者として明示的に許可する必要があります。
@@ -72,7 +73,7 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 
 無料の App Service マネージド証明書を作成するには、次の手順を実行します。
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[Create App Service Managed Certificate]\(App Service マネージド証明書の作成\)** を選択します。
 
@@ -122,6 +123,10 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 | 証明書 SKU | 作成する証明書の種類 (標準の証明書または[ワイルドカード証明書](https://wikipedia.org/wiki/Wildcard_certificate)) を決定します。 |
 | 法律条項 | クリックして法律条項に同意したことを確認します。 証明書は GoDaddy から取得されます。 |
 
+> [!NOTE]
+> Azure から購入した App Service 証明書は、GoDaddy によって発行されます。 一部のトップレベル ドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue godaddy.com` の値を使用して作成することによって、GoDaddy を証明書の発行者として明示的に許可する必要があります。
+> 
+
 ### <a name="store-in-azure-key-vault"></a>Azure Key Vault に格納する
 
 証明書の購入プロセスの完了後、この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあります。 
@@ -130,7 +135,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 ![App Service 証明書の Key Vault ストレージを構成する](./media/configure-ssl-certificate/configure-key-vault.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。 これは App Service 証明書に対して選択するストレージです。
+[Key Vault](../key-vault/general/overview.md) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。 これは App Service 証明書に対して選択するストレージです。
 
 **[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 App Service アプリと同じサブスクリプションおよび同じリソース グループに新しい Key Vault を作成します。
 
@@ -140,8 +145,8 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 | Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
 | 場所 | App Service アプリと同じ場所を選択します。 |
 | Pricing tier | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
-| アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/general/group-permissions-for-apps.md)」の手順に従って構成できます。 |
-| 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/general/network-security.md)」の手順に従って構成できます |
+| アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で、[Key Vault アクセス ポリシーの割り当て](/azure/key-vault/general/assign-access-policy-portal)の手順に従って構成できます。 |
+| 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](/azure/key-vault/general/network-security)」の手順に従って構成できます |
 
 コンテナーを選択したら、 **[Key Vault リポジトリ]** ページを閉じます。 **[手順 1: 格納]** オプションに、成功を示す緑色のチェック マークが表示されます。 次の手順のためにページは開いたままにしておきます。
 
@@ -163,7 +168,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 ### <a name="import-certificate-into-app-service"></a>App Service に証明書をインポートする
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[App Service 証明書のインポート]** を選択します。
 
@@ -183,7 +188,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 Azure Key Vault を使用して証明書を管理している場合は、[要件を満たしている](#private-certificate-requirements)限り、Key Vault から App Service に PKCS12 証明書をインポートすることができます。
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[Key Vault 証明書のインポート]** を選択します。
 
@@ -247,13 +252,13 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 メッセージが表示されたら、エクスポートのパスワードを定義します。 このパスワードは、後で TLS/SSL 証明書を App Service にアップロードするときに使用します。
 
-IIS または _Certreq.exe_ を使用して証明書の要求を生成した場合は、ローカル コンピューターに証明書をインストールした後で[証明書を PFX にエクスポート](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)します。
+IIS または _Certreq.exe_ を使用して証明書の要求を生成した場合は、ローカル コンピューターに証明書をインストールした後で[証明書を PFX にエクスポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754329(v=ws.11))します。
 
 ### <a name="upload-certificate-to-app-service"></a>証明書を App Service にアップロードする
 
 これで、証明書を App Service にアップロードする準備ができました。
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[証明書のアップロード]** を選択します。
 
@@ -273,7 +278,7 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 公開証明書は、 *.cer* 形式でサポートされています。 
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> の左側のメニューから、 **[App Services]**  >  **\<app-name>** を選択します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションで、 **[SSL 設定]**  >  **[公開証明書 (.cer)]**  >  **[公開キー証明書のアップロード]** の順にクリックします。
 
@@ -326,9 +331,9 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 ### <a name="export-certificate"></a>証明書をエクスポートします。
 
-App Service 証明書は [Key Vault シークレット](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)であるため、そのファイルの PFX コピーをエクスポートして、他の Azure サービスまたは Azure の外部で使用することができます。
+App Service 証明書は [Key Vault シークレット](../key-vault/general/about-keys-secrets-certificates.md)であるため、そのファイルの PFX コピーをエクスポートして、他の Azure サービスまたは Azure の外部で使用することができます。
 
-App Service 証明書を PFX ファイルとしてエクスポートするには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。 [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)した場合は、ローカルで実行することもできます。 プレースホルダーは、[App Service 証明書の作成](#start-certificate-order)時に使用した名前に置き換えます。
+App Service 証明書を PFX ファイルとしてエクスポートするには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。 [Azure CLI をインストール](/cli/azure/install-azure-cli)した場合は、ローカルで実行することもできます。 プレースホルダーは、[App Service 証明書の作成](#start-certificate-order)時に使用した名前に置き換えます。
 
 ```azurecli-interactive
 secretname=$(az resource show \
@@ -375,4 +380,4 @@ App Service 証明書の削除は最終的なものであり、元に戻すこ�
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
 * [Azure App Service のご自分のコードから TLS/SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
-* [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [FAQ:App Service 証明書](./faq-configuration-and-management.md)

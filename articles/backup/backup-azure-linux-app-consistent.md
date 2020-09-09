@@ -1,15 +1,14 @@
 ---
 title: Linux VM のアプリケーション整合性バックアップ
 description: Linux 仮想マシンのアプリケーション整合性バックアップを Azure に作成します。 この記事では、Azure にデプロイされた Linux VM をバックアップするためのスクリプト フレームワークの構成について説明します。 この記事にはトラブルシューティング情報も含まれています。
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74173004"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407100"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ
 
@@ -53,19 +52,19 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 
     - **postScriptParams**:事後スクリプトに渡す必要があるパラメーターを指定します (省略可能)。 パラメーターはすべて引用符で囲んでください。 複数のパラメーターを使用する場合は、パラメーターをコンマで区切ります。
 
-    - **preScriptNoOfRetries**:事前スクリプトでエラーが発生した場合の再試行回数を指定します。 0 (ゼロ) を指定すると、試行回数は 1 回のみでエラーが発生しても再試行は実行されません。
+    - **preScriptNoOfRetries**:事前スクリプトでエラーが発生した場合に停止するまでの再試行回数を指定します。 0 (ゼロ) を指定すると、試行回数は 1 回のみでエラーが発生しても再試行は実行されません。
 
-    - **postScriptNoOfRetries**:事後スクリプトでエラーが発生した場合の再試行回数を指定します。 0 (ゼロ) を指定すると、試行回数は 1 回のみでエラーが発生しても再試行は実行されません。
+    - **postScriptNoOfRetries**:事後スクリプトでエラーが発生した場合の終了までの再試行回数を指定します。 0 (ゼロ) を指定すると、試行回数は 1 回のみでエラーが発生しても再試行は実行されません。
 
     - **timeoutInSeconds**:事前スクリプトと事後スクリプトの個々のタイムアウトを指定します (最大値は 1800 です)。
 
-    - **continueBackupOnFailure**:事前スクリプトまたは事後スクリプトでエラーが発生した場合に Azure Backup をファイル システム整合性/クラッシュ整合性バックアップにフォールバックするには、この値を **true** に設定します。 **false** に設定すると、スクリプト エラーの発生時にバックアップは失敗します (ただし、この設定に関係なく、クラッシュ整合バックアップにフォールバックする単一ディスク VM の場合を除く)。
+    - **continueBackupOnFailure**:事前スクリプトまたは事後スクリプトでエラーが発生した場合に Azure Backup をファイル システム整合性/クラッシュ整合性バックアップにフォールバックするには、この値を **true** に設定します。 **false** に設定すると、スクリプト エラーが発生した場合にバックアップは失敗します (ただし、この設定に関係なく、クラッシュ整合バックアップにフォールバックする単一ディスク VM の場合を除く)。 **continueBackupOnFailure** の値を false に設定すると、バックアップが失敗した場合に、サービスの再試行ロジックに基づいてバックアップ操作が再試行されます (指定された試行回数で)。
 
     - **fsFreezeEnabled**:VM スナップショットの作成中、ファイル システム レベルの整合性を確保するために Linux fsfreeze を呼び出すかどうかを指定します。 アプリケーションの動作上、fsfreeze を無効にしなければならない場合を除いて、この設定は **true** にしておくことをお勧めします。
 
     - **ScriptsExecutionPollTimeSeconds**: スクリプトを実行するための各ポーリング間で拡張機能がスリープする必要がある時間を設定します。 たとえば、値が 2 の場合、事前スクリプトまたは事後スクリプトの実行が完了したかどうかが、拡張機能によって 2 秒ごとにチェックされます。 使用できる最小値と最大値は、それぞれ 1 と 5 です。 値は、厳密に整数である必要があります。
 
-6. 以上でスクリプト フレームワークの構成は完了です。 VM のバックアップが構成済みの場合、次回のバックアップではスクリプトが呼び出され、アプリケーション整合バックアップがトリガーされます。 VM バックアップの構成が済んでいない場合は、「[Recovery Services コンテナーへの Azure 仮想マシンのバックアップ](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)」を参照して必要な構成を行ってください。
+6. 以上でスクリプト フレームワークの構成は完了です。 VM のバックアップが構成済みの場合、次回のバックアップではスクリプトが呼び出され、アプリケーション整合バックアップがトリガーされます。 VM バックアップの構成が済んでいない場合は、「[Recovery Services コンテナーへの Azure 仮想マシンのバックアップ](./backup-azure-vms-first-look-arm.md)」を参照して、それを構成してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -86,4 +85,4 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Recovery Services コンテナーへの VM バックアップの構成](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[Recovery Services コンテナーへの VM バックアップの構成](./backup-azure-vms-first-look-arm.md)

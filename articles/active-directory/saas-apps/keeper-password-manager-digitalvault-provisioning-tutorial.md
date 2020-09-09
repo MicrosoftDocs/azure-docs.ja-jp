@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory で自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する | Microsoft Docs
 description: ユーザー アカウントを Keeper Password Manager & Digital Vault に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure Active Directory を構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9ca77a059625ace13e6798e3fde84f11f3fe1db
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057524"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546793"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する
 

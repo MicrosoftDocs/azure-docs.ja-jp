@@ -11,23 +11,23 @@ Customer intent: I want only specific Azure Storage account to be allowed access
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78271182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708214"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLI を使って仮想ネットワーク サービス エンドポイント ポリシーで Azure Storage アカウントへのデータの流出を管理する
 
 仮想ネットワーク サービス エンドポイント ポリシーを使用すると、サービス エンドポイント経由で仮想ネットワーク内から Azure Storage アカウントにアクセス制御を適用できます。 これは、ワークロードのセキュリティ保護のために必要であり、どのストレージ アカウントが許可され、どのようなデータ流出が許可されるかが管理されます。
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 * 仮想ネットワークを作成し、サブネットを追加します。
 * Azure Storage のサービス エンドポイントを有効にします。
@@ -263,7 +263,7 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-許可されているストレージ アカウントのリソース URI を変数に保存します。 以下のコマンドを実行する前に、 *\<your-subscription-id>* をご自身のサブスクリプション ID の実際の値に置き換えます。
+許可されているストレージ アカウントのリソース URI を変数に保存します。 以下のコマンドを実行する前に、 *\<your-subscription-id>* を、お使いのサブスクリプション ID の実際の値に置き換えます。
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
@@ -313,7 +313,7 @@ VM の作成には数分かかります。 作成された後、返された出�
 
 ### <a name="confirm-access-to-storage-account"></a>ストレージ アカウントへのアクセスを確認する
 
-*myVmPrivate* VM に SSH で接続します。 *\<publicIpAddress>* を *myVmPrivate VM* のパブリック IP アドレスに置き換えます。
+*myVmPrivate* VM に SSH で接続します。 *\<publicIpAddress>* を *myVmPrivate* VM のパブリック IP アドレスに置き換えます。
 
 ```bash 
 ssh <publicIpAddress>
@@ -325,7 +325,7 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-作成したディレクトリに Azure のファイル共有をマウントします。 以下のコマンドを実行する前に、 *\<storage-account-key>* を **$saConnectionString1** からの *AccountKey* の値に置き換えます。
+作成したディレクトリに Azure のファイル共有をマウントします。 以下のコマンドを実行する前に、 *\<storage-account-key>* を **$saConnectionString1** の *AccountKey* の値に置き換えます。
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -343,7 +343,7 @@ sudo mkdir /mnt/MyAzureFileShare2
 
 ストレージ アカウント *notallowedstorageacc* から、作成したディレクトリに Azure ファイル共有をマウントしてみます。 この記事では、最新バージョンの Ubuntu を展開してあるものとします。 以前のバージョンの Ubuntu を使っている場合は、「[Linux でのマウント](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」でファイル共有のマウントに関する追加説明を参照してください。 
 
-以下のコマンドを実行する前に、 *\<storage-account-key>* を **$saConnectionString2** からの *AccountKey* の値に置き換えます。
+以下のコマンドを実行する前に、 *\<storage-account-key>* を **$saConnectionString2** の *AccountKey* の値に置き換えます。
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino

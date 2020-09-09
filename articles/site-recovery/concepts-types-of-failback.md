@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691086"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリー後の VMware VM のフェールバック
 

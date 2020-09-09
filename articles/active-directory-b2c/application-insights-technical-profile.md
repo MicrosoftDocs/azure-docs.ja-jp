@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80088871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201414"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーで Application Insights 技術プロファイルを定義する
 
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) では、Azure AD B2C に提供され�
 
 **InputClaims** 要素には、Application Insights に送信する要求の一覧が含まれます。 また、要求の名前を Application Insights に優先表示する名前にマップすることもできます。 次の例では、Application Insights にテレメトリを送信する方法を示します。 イベントのプロパティは、`{property:NAME}` 構文を使用して追加します。ここで、NAME は、イベントに追加するプロパティです。 DefaultValue には、静的な値か、サポートされている [要求リゾルバー](claim-resolver-overview.md)のいずれかによって解決される値を指定できます。
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
   <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />

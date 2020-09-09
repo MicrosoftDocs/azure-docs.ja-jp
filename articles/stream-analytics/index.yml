@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Stream Analytics のドキュメント
-summary: Azure Stream Analytics は、アラートとアクションをトリガーするために使用できるデータの高速移動ストリームを分析および処理するための、フル マネージド リアルタイム分析サービスです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
+summary: Azure Stream Analytics は、分析情報の取得、レポートの作成、またはアラートとアクションをトリガーするために使用できるデータの高速移動ストリームを分析および処理するための、フル マネージド リアルタイム分析サービスです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
 metadata:
   title: Azure Stream Analytics のドキュメント
-  description: Azure Stream Analytics は、アラートとアクションをトリガーするために使用できるデータの高速移動ストリームを分析および処理するための、フル マネージド リアルタイム分析サービスです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
+  description: Azure Stream Analytics は、分析情報の取得、レポートの作成、またはアラートとアクションをトリガーするために使用できるデータの高速移動ストリームを分析および処理するための、フル マネージド リアルタイム分析サービスです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 757c60487e4c4c7fedca4824cd40e86cbd9ca465
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130950"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86119652"
 landingContent:
 - title: Azure Stream Analytics について
   linkLists:

@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop のアプリ グループを管理する - Azure
-description: Windows Virtual Desktop のテナントを Azure Active Directory に設定する方法を説明します。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) のアプリ グループを管理する - Azure
+description: Windows Virtual Desktop (クラシック) のテナントを Azure Active Directory に設定する方法を説明します。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 55c2ed5f9066d85643588f77806bbd41e92dd16b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7ad8afc3d842a134ba09281005e35cf8cb04818a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613948"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009071"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop のアプリ グループを管理する
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) のアプリ グループを管理する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースを対象としています。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../manage-app-groups.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしない Windows Virtual Desktop (クラシック) を対象としたコンテンツです。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../manage-app-groups.md)を参照してください。
 
 Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
 
@@ -53,7 +51,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
-   
+
 4. 次のコマンドレットを実行して、`AppAlias` に基づくアプリケーションをインストールします。 `AppAlias` は、手順 3. の出力を実行すると利用できるようになります。
 
    ```powershell

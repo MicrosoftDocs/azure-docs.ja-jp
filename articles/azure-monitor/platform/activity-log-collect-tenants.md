@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80055739"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321872"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure Active Directory テナントにまたがる Azure Monitor に Azure アクティビティ ログを収集する (レガシ)
 
 > [!NOTE]
-> この記事では、Azure テナントにまたがる Azure アクティビティ ログを、Log Analytics ワークスペースで収集されるように構成する従来の方法について説明します。  リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](activity-log-collect.md)」を参照してください。
+> この記事では、Azure テナントにまたがる Azure アクティビティ ログを、Log Analytics ワークスペースで収集されるように構成する従来の方法について説明します。  リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](./activity-log.md)」を参照してください。
 
 
 この記事では、Logic Apps 用の Azure Log Analytics データ コレクター コネクタを使用して、Azure アクティビティ ログを Azure Monitor の Log Analytics ワークスペースに収集する方法について説明します。 異なる Azure Active Directory テナントのワークスペースにログを送信する必要があるときには、この記事の手順を使用します。 たとえば、マネージド サービス プロバイダーとしては、顧客のサブスクリプションからアクティビティ ログを収集して、自身のサブスクリプションの内の Log Analytics ワークスペースに格納する必要があります。
 
-Log Analytics ワークスペースが同一の Azure サブスクリプションにある場合、または同じ Azure Active Directory 内の別のサブスクリプションにある場合は、[Azure Monitor で Log Analytics ワークスペースに Azure アクティビティ ログを収集し、分析する](activity-log-collect.md)方法に関する記事の手順を使用して Azure アクティビティ ログを収集します。
+Log Analytics ワークスペースが同一の Azure サブスクリプションにある場合、または同じ Azure Active Directory 内の別のサブスクリプションにある場合は、[Azure Monitor で Log Analytics ワークスペースに Azure アクティビティ ログを収集し、分析する](./activity-log.md)方法に関する記事の手順を使用して Azure アクティビティ ログを収集します。
 
 ## <a name="overview"></a>概要
 
@@ -90,17 +90,17 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
 11. **[OK]** と **[保存]** を順にクリックして設定を保存します。 設定はサブスクリプションにすぐに適用されます。
 
-<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) to configure a log profile that writes activity logs to an event hub. -->
+<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](./activity-log.md#legacy-collection-methods) to configure a log profile that writes activity logs to an event hub. -->
 
 ## <a name="step-3---create-logic-app"></a>手順 3 - ロジック アプリの作成
 
 アクティビティ ログがイベント ハブに書き込まれるようになったら、イベント ハブからログを収集し、それを Log Analytics ワークスペースに書き込むロジック アプリを作成します。
 
 ロジック アプリには次を含めます。
-- イベント ハブから読み取る[イベント ハブ コネクタ](https://docs.microsoft.com/connectors/eventhubs/) トリガー。
+- イベント ハブから読み取る[イベント ハブ コネクタ](/connectors/eventhubs/) トリガー。
 - JSON イベントを抽出する [Parse JSON アクション](../../logic-apps/logic-apps-content-type.md)。
 - JSON をオブジェクトに変換する [Compose アクション](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)。
-- データを Log Analytics ワークスペースに投稿する [Log Analytics データ送信コネクタ](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)。
+- データを Log Analytics ワークスペースに投稿する [Log Analytics データ送信コネクタ](/connectors/azureloganalyticsdatacollector/)。
 
    ![イベント ハブ トリガーのロジック アプリへの追加の画像](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
@@ -284,7 +284,7 @@ Event Hub からの出力には、レコードの配列を持つ JSON ペイロ�
 
 
 ### <a name="add-log-analytics-send-data-action"></a>Log Analytics データ送信アクションの追加
-[Azure Log Analytics データ コレクター](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) アクションは、Compose アクションからオブジェクトを取得し、それを Log Analytics ワークスペースに送信します。
+[Azure Log Analytics データ コレクター](/connectors/azureloganalyticsdatacollector/) アクションは、Compose アクションからオブジェクトを取得し、それを Log Analytics ワークスペースに送信します。
 
 1. **[新しいステップ]**  >  **[アクションの追加]** をクリックします。
 2. フィルターとして「*log analytics*」と入力し、 **[Azure Log Analytics Data Collector - Send Data]\(Azure Log Analytics データ コレクター - データの送信\)** アクションを選択します。
@@ -330,7 +330,7 @@ Logic Apps デザイナーで **[実行]** をクリックしてロジック ア
 > 新しいカスタム ログが Log Analytics ワークスペースに初めて送信されるときは、カスタム ログが検索可能になるまでに最大 1 時間かかる可能性があります。
 
 >[!NOTE]
-> アクティビティ ログはカスタム テーブルに書き込まれ、[アクティビティ ログ ソリューション](./activity-log-collect.md)には表示されません。
+> アクティビティ ログはカスタム テーブルに書き込まれ、[アクティビティ ログ ソリューション](./activity-log.md)には表示されません。
 
 
 ![ロジック アプリのテスト](media/collect-activity-logs-subscriptions/log-analytics-results.png)
@@ -340,4 +340,5 @@ Logic Apps デザイナーで **[実行]** をクリックしてロジック ア
 この記事では、イベント ハブから Azure アクティビティ ログを読み取り、分析のためにそれを Log Analytics ワークスペースに送信するロジック アプリを作成しました。 ワークスペース内のデータの視覚化 (ダッシュボードの作成を含む) の詳細については、データの視覚化のチュートリアルを確認してください。
 
 > [!div class="nextstepaction"]
-> [ログ検索データの視覚化のチュートリアル](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [ログ検索データの視覚化のチュートリアル](../learn/tutorial-logs-dashboards.md)
+

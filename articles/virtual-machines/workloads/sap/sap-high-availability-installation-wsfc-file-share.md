@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617326"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760891"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 
@@ -236,8 +236,8 @@ SOFS クラスターに次のボリュームとファイル共有を作成しま
 * SAPMNT ファイル共有
 
 * 次のものに対するフル コントロールを持つように、SAPMNT ファイル共有およびフォルダーにセキュリティを設定する:
-    * \<ドメイン>\SAP_\<SID>_GlobalAdmin ユーザー グループ
-    * SAP ASCS/SCS クラスター ノード コンピューター オブジェクト \<ドメイン>\ClusterNode1$ および \<ドメイン>\ClusterNode2$
+    * \<DOMAIN>\SAP_\<SID>_GlobalAdmin ユーザー グループ
+    * SAP ASCS/SCS クラスター ノード コンピューター オブジェクト \<DOMAIN>\ClusterNode1$ および \<DOMAIN>\ClusterNode2$
 
 ミラーの回復性を使用して CSV ボリュームを作成するには、SOFS クラスター ノードのいずれかで次の PowerShell コマンドレットを実行します。
 
@@ -299,7 +299,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 SAP ASCS/SCS インスタンスを最初のクラスター ノードにインストールします。 インスタンスをインストールするには、SAP SWPM インストール ツールで、次のように選択します。
 
-**\<製品>**  >  **\<DBMS>**  > **インストール** > **アプリケーション サーバー ABAP** (または **Java**) > **高可用性システム** > **ASCS/SCS インスタンス** > **最初のクラスター ノード**
+**\<Product>**  >  **\<DBMS>**  > **インストール** > **アプリケーション サーバー ABAP** (または **Java**) > **高可用性システム** > **ASCS/SCS インスタンス** > **最初のクラスター ノード**
 
 ### <a name="add-a-probe-port"></a>プローブ ポートの追加
 
@@ -309,12 +309,12 @@ PowerShell を使用して、SAP クラスター リソース SAP-SID-IP プロ�
 
 SAP ASCS/SCS インスタンスを 2 番目のクラスター ノードにインストールします。 インスタンスをインストールするには、SAP SWPM インストール ツールで、次のように選択します。
 
-**\<製品>**  >  **\<DBMS>**  > **インストール** > **アプリケーション サーバー ABAP** (または **Java**) > **高可用性システム** > **ASCS/SCS インスタンス** > **追加のクラスター ノード**
+**\<Product>**  >  **\<DBMS>**  > **インストール** > **アプリケーション サーバー ABAP** (または **Java**) > **高可用性システム** > **ASCS/SCS インスタンス** > **追加のクラスター ノード**
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>SAP ASCS/SCS インスタンス プロファイルの更新
 
-SAP ASCS/SCS インスタンス プロファイル \<SID>_ASCS/SCS\<Nr>_ \<ホスト> のパラメーターを更新します。
+SAP ASCS/SCS インスタンス プロファイル \<SID>_ASCS/SCS\<Nr>_ \<Host> のパラメーターを更新します。
 
 
 | パラメーター名 | パラメーター値 |
@@ -323,6 +323,7 @@ SAP ASCS/SCS インスタンス プロファイル \<SID>_ASCS/SCS\<Nr>_ \<ホ�
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
+パラメーター `enque/encni/set_so_keepalive` は、ENSA1 を使用する場合にのみ必要です。  
 SAP ASCS/SCS インスタンスを再起動します。 [SAP ASCS/SCS インスタンスのクラスター ノードに対するレジストリ項目の設定][high-availability-guide]に関する記事に従って、両方の SAP ASCS/SCS クラスター ノードの `KeepAlive` パラメーターを設定します。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>DBMS インスタンスと SAP アプリケーション サーバーのインストール

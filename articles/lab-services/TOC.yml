@@ -1,289 +1,160 @@
-- name: DevTest Labs のドキュメント
+- name: Lab Services のドキュメント
   href: index.yml
-- name: Lab Services のドキュメントへの切り替え
-  href: classroom-labs/classroom-labs-overview.md
 - name: 概要
   items:
-    - name: DevTest ラボについて
-      href: devtest-lab-overview.md
-    - name: Azure DevTest Labs と Lab Services
+    - name: Lab Services について
       href: lab-services-overview.md
 - name: チュートリアル
   items:
-    - name: 1. ラボを設定する
-      href: tutorial-create-custom-lab.md
-    - name: 2. ラボにアクセスする
-      href: tutorial-use-custom-lab.md
-- name: サンプル
-  items:
-    - name: Resource Manager テンプレート
-      href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
-    - name: Azure PowerShell
-      href: samples-powershell.md
-      items:
-        - name: 外部ユーザーをラボに追加する
-          href: scripts/add-external-user-to-lab.md
-        - name: マーケットプレース イメージをラボに追加する
-          href: scripts/add-marketplace-images-to-lab.md
-        - name: VHD からカスタム イメージを作成する
-          href: scripts/create-custom-image-from-vhd.md
-        - name: ラボ内にカスタム ロールを作成する
-          href: scripts/create-custom-role-in-lab.md
-        - name: 許可される VM のサイズをラボ内に設定する
-          href: scripts/set-allowed-vm-sizes-in-lab.md
-    - name: Azure PowerShell - Az.DevTestLabs2 モジュール
-      href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
-    - name: Azure CLI
-      href: samples-cli.md
-      items:
-        - name: VM の作成と可用性の検証を行う
-          href: scripts/create-verify-virtual-machine-in-lab-cli.md
-        - name: VM の起動
-          href: scripts/start-connect-virtual-machine-in-lab-cli.md
-        - name: VM の停止と削除を行う
-          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
+    - name: ラボ アカウントを設定する
+      href: tutorial-setup-lab-account.md
+    - name: クラスルーム ラボを設定する
+      href: tutorial-setup-classroom-lab.md
+    - name: クラスルーム ラボへのアクセス
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+    - name: クラスルーム ラボの使用状況を追跡する
+      href: tutorial-track-usage.md
 - name: 概念
   items:
-    - name: DevTest ラボの概念
-      href: devtest-lab-concepts.md
-    - name: 分散型および協力型の開発のベスト プラクティス
-      href: best-practices-distributive-collaborative-development-environment.md
-    - name: Azure DevOps との統合
-      href: devtest-lab-dev-ops.md
+    - name: クラスルーム ラボの概要
+      href: classroom-labs-overview.md
+    - name: クラスルーム ラボの概念
+      href: classroom-labs-concepts.md
+    - name: クラスルーム ラボのアーキテクチャの基礎
+      href: classroom-labs-fundamentals.md
+    - name: 容量制限
+      href: capacity-limits.md
+    - name: ラボのコスト管理
+      href: cost-management-guide.md
     - name: シナリオ
       items:
-        - name: DevTest Labs を使用する一般的なシナリオ
-          href: devtest-lab-guidance-get-started.md
-        - name: 開発者向けのラボの使用
-          href: devtest-lab-developer-lab.md
-        - name: テスト環境でのラボの使用
-          href: devtest-lab-test-env.md
-        - name: トレーニングでのラボの使用
-          href: devtest-lab-training-lab.md
-        - name: クレーム可能 VM を使用するシナリオ
-          href: devtest-lab-use-claim-capabilities.md
+        - name: クラスを実施するためのラボ サービスの使用
+          href: classroom-labs-scenarios.md
+        - name: ハッカソンにラボ サービスを使用する
+          href: hackathon-labs.md
+        - name: クラスルーム ラボ - クラスの種類
+          items:
+            - name: クラスの種類の概要
+              href: class-types.md
+            - name: 自然言語処理でのディープ ラーニング
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: Linux でのシェル スクリプト
+              href: class-type-shell-scripting-linux.md
+            - name: 倫理的ハッキング
+              href: class-type-ethical-hacking.md
+            - name: データベースの管理
+              href: class-type-database-management.md
+            - name: Azure SQL Database の管理と開発
+              href: class-type-sql-server.md
+            - name: Python と Jupyter Notebook
+              href: class-type-jupyter-notebook.md
+            - name: ビッグ データ分析
+              href: class-type-big-data-analytics.md
+            - name: MATLAB
+              href: class-type-matlab.md
+            - name: SolidWorks のコンピューター支援設計 (CAD)
+              href: class-type-solidworks.md
 - name: 操作方法ガイド
   items:
-    - name: ラボの構成
+    - name: 管理者ガイド
+      href: administrator-guide.md
+    - name: 高速ラボ アカウントの設定ガイド
+      href: account-setup-guide.md
+    - name: 高速ラボの設定ガイド
+      href: setup-guide.md
+    - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)
       items:
-        - name: ラボを作成する
-          href: devtest-lab-create-lab.md
-        - name: Resource Manager テンプレートを使ってラボを作成または変更する
-          href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
-        - name: ラボ仮想マシンのリソース グループを指定する
-          href: resource-group-control.md
-        - name: ラボへのサポート情報の追加
-          href: devtest-lab-internal-support-message.md
-        - name: ポリシーとスケジュールの設定
-          href: devtest-lab-set-lab-policy.md
-        - name: リモート デスクトップ ゲートウェイを使用するためにラボを構成する
-          href: configure-lab-remote-desktop-gateway.md
-        - name: ラボでのお知らせの投稿
-          href: devtest-lab-announcements.md
-        - name: VM でブラウザー接続を有効にする
-          href: enable-browser-connection-lab-virtual-machines.md
-        - name: コスト管理の構成
-          href: devtest-lab-configure-cost-management.md
-        - name: ラボ仮想マシンの自動スタートアップの設定
-          href: devtest-lab-auto-startup-vm.md
-        - name: ラボのスケーリング
-          href: devtest-lab-scale-lab.md
-        - name: ラボ VM のマネージド ID の有効化
-          href: enable-managed-identities-lab-vms.md
-        - name: 仮想マシンのベースの管理
+        - name: ラボ アカウントを作成および管理する
+          href: how-to-manage-lab-accounts.md
+        - name: ラボ アカウントでラボを管理する
+          href: manage-labs.md
+        - name: ラボ アカウント用に VM の自動シャットダウンを構成する
+          href: how-to-configure-lab-accounts.md
+        - name: ラボ作成者を追加する
+          href: add-lab-creator.md
+        - name: ラボ作成者にラボの場所の選択を許可する
+          href: allow-lab-creator-pick-lab-location.md
+        - name: ピア仮想ネットワークに接続する
+          href: how-to-connect-peer-virtual-network.md
+        - name: 共有リソースを使用してラボを作成する方法
+          href: how-to-create-a-lab-with-shared-resource.md
+        - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
+          href: how-to-attach-detach-shared-image-gallery.md
+        - name: クラスルーム ラボに他の所有者を追加する
+          href: how-to-add-user-lab-owner.md
+        - name: ファイアウォール設定を構成する
+          href: how-to-configure-firewall-settings.md
+        - name: ラボの Marketplace イメージを指定する
+          href: specify-marketplace-images.md
+        - name: サポート情報を指定する (ラボ アカウント オーナー)
+          href: lab-account-owner-support-information.md
+    - name: クラスルーム ラボを作成して構成する (教師)
+      items:
+        - name: クラスルーム ラボを作成して管理する
+          href: how-to-manage-classroom-labs.md
+        - name: ダッシュボードを使用する
+          href: use-dashboard.md
+        - name: テンプレートを設定、カスタマイズ、公開する
+          href: how-to-create-manage-template.md
+        - name: 仮想マシン プールを設定および管理する
+          href: how-to-set-virtual-machine-passwords.md
+        - name: ラボ ユーザーを追加および管理する
+          href: how-to-configure-student-usage.md
+        - name: スケジュールの作成と管理
+          href: how-to-create-schedules.md
+        - name: 共有イメージ ギャラリーを使用する
+          href: how-to-use-shared-image-gallery.md
+        - name: Linux のリモート デスクトップ接続を有効にする
+          href: how-to-enable-remote-desktop-linux.md
+        - name: ラボの VM の自動シャットダウンを構成する
+          href: how-to-enable-shutdown-disconnect.md
+        - name: テンプレート VM で入れ子になった仮想化を有効にする
           items:
-            - name: Azure Marketplace イメージの構成
-              href: devtest-lab-configure-marketplace-images.md
-            - name: ライセンスされたイメージの有効化
-              href: devtest-lab-enable-licensed-images.md
-            - name: 共有イメージ ギャラリーの構成
-              href: configure-shared-image-gallery.md
-        - name: タグの構成
-          href: devtest-lab-add-tag.md
-        - name: アクセスの制御の構成
-          items:
-            - name: ラボの所有者とユーザーを追加する
-              href: devtest-lab-add-devtest-user.md
-            - name: カスタム ロールでのアクセス許可のカスタマイズ
-              href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-            - name: ラボ ユーザーの追加の自動化
-              href: automate-add-lab-user.md
-        - name: 仮想ネットワークの管理
-          items:
-            - name: 仮想ネットワークを構成する
-              href: devtest-lab-configure-vnet.md
-            - name: IP 構成オプションの選択
-              href: devtest-lab-shared-ip.md
-        - name: ラボまたはラボ内の VM を削除する
-          href: devtest-lab-delete-lab-vm.md
-        - name: 個人データをエクスポートまたは削除する
-          href: personal-data-delete-export.md
-    - name: ラボでの VM の使用
+            - name: テンプレート VM で入れ子になった仮想化の有効化の概要
+              href: how-to-enable-nested-virtualization-template-vm.md
+            - name: テンプレート VM で入れ子になった仮想化を UI を使用して有効にする
+              href: how-to-enable-nested-virtualization-template-vm-ui.md
+            - name: テンプレート VM で入れ子になった仮想化をスクリプトを使用して有効にする
+              href: how-to-enable-nested-virtualization-template-vm-using-script.md
+        - name: GPU を使用してラボを設定する
+          href: how-to-setup-lab-gpu.md
+        - name: Windows テンプレート VM の準備
+          href: how-to-prepare-windows-template.md
+        - name: Windows のシャットダウン動作を制御する
+          href: how-to-windows-shutdown.md
+        - name: サポート情報の表示 (教師)
+          href: lab-creator-support-information.md
+        - name: 教師 ビューから学生の VM にアクセスする
+          href: instructor-access-virtual-machines.md
+    - name: クラスルーム ラボの VM に接続する (学生)
       items:
-        - name: VM の作成 - Azure portal
-          href: devtest-lab-add-vm.md
-        - name: VM の作成 - Azure PowerShell
-          href: devtest-lab-vm-powershell.md
-        - name: VM の作成 - Azure CLI
-          href: devtest-lab-vmcli.md
-        - name: VM の作成 - Resource Manager テンプレート
-          href: devtest-lab-use-resource-manager-template.md
-        - name: 共有イメージ ギャラリーのイメージを使用して VM を作成する
-          href: add-vm-use-shared-image.md
-        - name: ブラウザーを使用して VM に接続する
-          href: connect-virtual-machine-through-browser.md
-        - name: PowerShell または CLI を使用して VM を開始/停止する
-          href: use-command-line-start-stop-virtual-machines.md
-        - name: VM の再起動
-          href: devtest-lab-restart-vm.md
-        - name: VM のサイズを変更する
-          href: devtest-lab-resize-vm.md
-        - name: VM を再デプロイする
-          href: devtest-lab-redeploy-vm.md
-        - name: コンピューティングとラボ VM の自動シャットダウンを構成する
-          href: devtest-lab-auto-shutdown.md
-        - name: クレーム可能 VM の作成と管理
-          href: devtest-lab-add-claimable-vm.md
-        - name: シークレットの構成
-          href: devtest-lab-store-secrets-in-key-vault.md
-        - name: データ ディスクのアタッチとデタッチ
-          href: devtest-lab-attach-detach-data-disk.md
-        - name: Automation Runbook を使用して VM を開始する
-          href: start-machines-use-automation-runbooks.md
-        - name: 別のラボから仮想マシンをインポートする
-          href: import-virtual-machines-from-another-lab.md
-    - name: ラボでの環境の使用
-      items:
-        - name: 環境の作成
-          href: devtest-lab-create-environment-from-arm.md
-        - name: サービスとしてのプラットフォーム (PaaS) サービスの使用
-          href: use-paas-services.md
-        - name: パブリックな環境
-          items:
-            - name: パブリックな環境の構成と使用
-              href: devtest-lab-configure-use-public-environments.md
-            - name: Service Fabric クラスターを含む環境の作成
-              href: create-environment-service-fabric-cluster.md
-        - name: ラボの仮想ネットワークに環境を接続する
-          href: connect-environment-lab-virtual-network.md
-        - name: 入れ子になったテンプレートを使用したテスト環境の構成
-          href: deploy-nested-template-environments.md
-        - name: Azure マネージド ID を使用した環境のデプロイ
-          href: use-managed-identities-environments.md
-        - name: 環境のセキュリティ アラート
-          href: environment-security-alerts.md
-    - name: 再利用可能なテンプレートの管理
-      items:
-        - name: カスタム イメージと数式
-          href: devtest-lab-comparing-vm-base-image-types.md
-        - name: 環境テンプレートの管理
-          items:
-            - name: アーティファクトとテンプレート用の Git リポジトリの追加
-              href: devtest-lab-add-artifact-repo.md
-        - name: カスタム イメージの管理
-          items:
-            - name: VM からカスタム イメージを作成する
-              href: devtest-lab-create-custom-image-from-vm-using-portal.md
-            - name: VHD からカスタム イメージを作成する - Azure portal
-              href: devtest-lab-create-template.md
-            - name: VHD からカスタム イメージを作成する - PowerShell
-              href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
-            - name: AzCopy を使用して VHD ファイルをアップロードする
-              href: devtest-lab-upload-vhd-using-azcopy.md
-            - name: PowerShell を使用して VHD ファイルをアップロードする
-              href: devtest-lab-upload-vhd-using-powershell.md
-            - name: ストレージ エクスプローラーを使用して VHD ファイルをアップロードする
-              href: devtest-lab-upload-vhd-using-storage-explorer.md
-        - name: 数式を管理する
-          href: devtest-lab-manage-formulas.md
-        - name: イメージ ファクトリを作成する
-          href: image-factory-create.md
-          items:
-            - name: Azure DevOps からイメージ ファクトリを実行する
-              href: image-factory-set-up-devops-lab.md
-            - name: カスタム イメージを保存して複数のラボに配布する
-              href: image-factory-save-distribute-custom-images.md
-            - name: アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する
-              href: image-factory-set-retention-policy-cleanup.md
-    - name: アーティファクトの管理
-      items:
-        - name: アーティファクトを VM に追加する
-          href: add-artifact-vm.md
-        - name: カスタム アーティファクトを作成する
-          href: devtest-lab-artifact-author.md
-        - name: アーティファクト リポジトリをラボに追加する
-          href: add-artifact-repository.md
-        - name: 必須アーティファクトの指定
-          href: devtest-lab-mandatory-artifacts.md
-        - name: アーティファクトの適用に関する問題のトラブルシューティング
-          href: devtest-lab-troubleshoot-apply-artifacts.md
-    - name: CI/CD との統合
-      items:
-        - name: ラボを Azure Pipelines CI/CD パイプラインに統合する
-          href: devtest-lab-integrate-ci-cd.md
-        - name: 環境を Azure Pipelines CI/CD パイプラインに統合する
-          href: integrate-environments-devops-pipeline.md
-        - name: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
-          href: use-devtest-labs-build-release-pipelines.md
-    - name: DevTest Labs の拡張
-      items:
-        - name: Azure Functions を使用した DevTest Labs の拡張
-          href: extend-devtest-labs-azure-functions.md
-    - name: ラボの使用状況のレポート
-      href: report-usage-across-multiple-labs-subscriptions.md
-    - name: 企業内での DevTest Labs
-      items:
-        - name: エンタープライズ規模の DevTest Labs
-          href: devtest-lab-guidance-prescriptive-adoption.md
-        - name: 参照アーキテクチャ
-          href: devtest-lab-reference-architecture.md
-        - name: 概念実証の提供
-          href: deliver-proof-concept.md
-        - name: DevTest Labs デプロイのスケールアップ
-          href: devtest-lab-guidance-scale.md
-        - name: DevTest Labs の実装を調整する
-          href: devtest-lab-guidance-orchestrate-implementation.md
-        - name: DevTest Labs インフラストラクチャのガバナンス
-          items:
-            - name: リソース
-              href: devtest-lab-guidance-governance-resources.md
-            - name: コストと所有権
-              href: devtest-lab-guidance-governance-cost-ownership.md
-            - name: ポリシーとコンプライアンス
-              href: devtest-lab-guidance-governance-policy-compliance.md
-            - name: アプリケーションの移行と統合
-              href: devtest-lab-guidance-governance-application-migration-integration.md
-    - name: Azure でアプリをテストする
-      href: test-app-azure.md
-    - name: トラブルシューティング
-      items:
-        - name: VM および環境の作成の失敗に関するトラブルシューティング
-          href: troubleshoot-vm-environment-creation-failures.md
-        - name: アーティファクトの失敗に関するトラブルシューティング
-          href: devtest-lab-troubleshoot-artifact-failure.md
+        - name: クラスルーム ラボへのアクセス
+          href: how-to-use-classroom-lab.md
+        - name: Linux VM への接続
+          href: how-to-use-remote-desktop-linux-student.md
+        - name: RDP を使用して Mac から VM に接続する
+          href: connect-virtual-machine-mac-remote-desktop.md
+        - name: RDP を使用して Chromebook から VM に接続する
+          href: connect-virtual-machine-chromebook-remote-desktop.md
+        - name: 仮想マシンのパスワードを設定またはリセットする
+          href: how-to-set-virtual-machine-passwords-student.md
+        - name: サポート情報の表示 (学生)
+          href: lab-user-support-information.md
 - name: リファレンス
   items:
-    - name: CLI
-      href: /cli/azure/lab
-    - name: PowerShell
-      href: /powershell/module/az.devtestlabs
-    - name: PowerShell - サンプル Az.DevTestLabs2 モジュール
-      href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/dtl/'
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.devtestlab/allversions
+      href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: Az.LabServices PowerShell モジュール (プレビュー)
+      href: reference-powershell-module.md
 - name: リソース
   items:
+    - name: Azure Lab Services のブログ
+      href: 'https://aka.ms/azlabs-blog'
     - name: Azure の更新情報
-      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
+      href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
-    - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-devtestlabs.html'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=devtest-lab'
+      href: 'https://azure.microsoft.com/pricing/details/lab-services/'
+    - name: テクニカル コミュニティ フォーラム
+      href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: よく寄せられる質問
-      href: devtest-lab-faq.md
+      href: classroom-labs-faq.md

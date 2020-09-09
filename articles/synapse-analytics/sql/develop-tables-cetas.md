@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420046"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696834"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL での CETAS
 
@@ -78,6 +78,9 @@ SELECT <select_criteria>
 
 SELECT ステートメントの結果を新しいテーブルに追加します。 *select_criteria* は、新しいテーブルにコピーするデータを決定する SELECT ステートメントの本文です。 SELECT ステートメントについては、「[SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
 
+> [!NOTE]
+> CETAS の SELECT 部分での ORDER BY 句はサポートされていません。
+
 ## <a name="permissions"></a>アクセス許可
 
 CETAS を機能させるには、フォルダーの内容を一覧表示し、LOCATION フォルダーに書き込むためのアクセス許可が必要です。
@@ -86,7 +89,9 @@ CETAS を機能させるには、フォルダーの内容を一覧表示し、LO
 
 これらの例では、CETAS を使用して、年および州別に集計された総人口を、population_ds データソース内の aggregated_data フォルダーに保存します。
 
-このサンプルは、前に作成した資格情報、データ ソース、および外部ファイル形式に依存しています。 [外部テーブル](develop-tables-external-tables.md)に関するドキュメントを参照してください。 同じデータ ソース内の別のフォルダーにクエリ結果を保存するには、LOCATION 引数を変更します。 結果を別のストレージ アカウントに保存するには、DATA_SOURCE 引数に別のデータ ソースを作成して使用します。
+このサンプルは、前に作成した資格情報、データ ソース、および外部ファイル形式に依存しています。 [外部テーブル](develop-tables-external-tables.md)に関するドキュメントを参照してください。 同じデータ ソース内の別のフォルダーにクエリ結果を保存するには、LOCATION 引数を変更します。 
+
+結果を別のストレージ アカウントに保存するには、DATA_SOURCE 引数に別のデータ ソースを作成して使用します。
 
 > [!NOTE]
 > 次のサンプルでは、パブリックの Azure オープン データ ストレージ アカウントを使用します。 これは読み取り専用です。 これらのクエリを実行するには、書き込みアクセス許可があるデータ ソースを指定する必要があります。
@@ -152,7 +157,8 @@ CETAS を使用して、次の SQL データ型の結果セットを格納でき
 - tinyint
 - bit
 
-LOB は CETAS では使用できません。
+> [!NOTE]
+> LOB は CETAS では使用できません。
 
 次のデータ型は、CETAS の SELECT 部分では使用できません。
 
@@ -167,4 +173,4 @@ LOB は CETAS では使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Spark テーブル](develop-storage-files-spark-tables.md)に対してクエリを実行できます。
+[Azure Synapse 外部テーブルの Apache Spark](develop-storage-files-spark-tables.md) のクエリの実行を試すことができます。

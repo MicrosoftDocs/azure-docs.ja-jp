@@ -4,12 +4,12 @@ description: Azure Service Fabric Reliable State Manager と Reliable Collection
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938905"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500284"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collection のトランザクションとロック モード
 
@@ -19,7 +19,7 @@ ms.locfileid: "76938905"
 
 * **原子性**:トランザクションはアトミック作業ユニットである必要があります。 つまり、そのすべてのデータ変更が実行されるか、いずれもが実行されないということです。
 * **整合性**:トランザクションの完了時に、すべてのデータが一貫した状態になければなりません。 すべての内部データ構造は、トランザクション終了時に正しくなければなりません。
-* **分離**:同時実行トランザクションによって行われる変更は、他の同時実行トランザクションによって行われる変更と相互に独立している必要があります。 [ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) 内の操作に使用される分離レベルは、操作を実行する [IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) によって決まります。
+* **分離**:同時実行トランザクションによって行われる変更は、他の同時実行トランザクションによって行われる変更と相互に独立している必要があります。 [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) 内の操作に使用される分離レベルは、操作を実行する [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) によって決まります。
 * **持続性**:トランザクションが完了すると、その影響は完全にシステム内に存在します。 システム障害が発生しても、変更結果は持続されます。
 
 ### <a name="isolation-levels"></a>分離レベル
@@ -77,7 +77,7 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 デッドロック検出のために、Reliable Collection API のタイムアウト引数が使用されます。
 たとえば、2 つのトランザクション (T1 と T2) が K1 を読み取って更新しようとしているとします。
 いずれも共有ロックを取得することになるため、両方にデッドロックが発生する可能性があります。
-この場合、一方または両方の操作がタイムアウトになります。このシナリオでは、更新ロックによってこのようなデッドロックが発生する可能性があります。
+この場合、一方または両方の操作がタイムアウトになります。このシナリオでは、更新ロックによってこのようなデッドロックが回避される可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -85,4 +85,4 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 * [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
 * [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)
 * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
-* [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

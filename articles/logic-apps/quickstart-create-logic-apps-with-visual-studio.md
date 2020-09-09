@@ -1,18 +1,18 @@
 ---
-title: Visual Studio 内でタスク ワークフローを自動化する
-description: Azure Logic Apps と Visual Studio を使用して、エンタープライズ統合のためのワークフローを作成、スケジュール設定、および実行します
+title: Visual Studio を使用してタスクとワークフローを自動化する
+description: Azure Logic Apps と Visual Studio を使用して、エンタープライズ統合のための自動化されたワークフローを作成、スケジュール設定、および実行します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
-ms.openlocfilehash: 3311d1143c0eca0c2b57e89e98dc22ab14fd9308
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147733"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008884"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -28,7 +28,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 Azure Government サブスクリプションをご利用の場合、追加の手順に従って [Azure Government Cloud 用に Visual Studio を設定](#azure-government)してください。
 
 * まだお持ちでない場合は、以下のツールをダウンロードしてインストールしてください。
 
@@ -37,7 +37,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
     > [!IMPORTANT]
     > Visual Studio 2019 または 2017 をインストールする場合は、 **[Azure の開発]** ワークロードを選択してください。
 
-  * [Microsoft Azure SDK for .NET (2.9.1 以降)](https://azure.microsoft.com/downloads/)。 [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet) の詳細を参照してください。
+  * [Microsoft Azure SDK for .NET (2.9.1 以降)](https://azure.microsoft.com/downloads/)。 [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) の詳細を参照してください。
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -49,16 +49,44 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 インストールが完了したら、必ず Visual Studio を再起動してください。
+    Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 インストールが完了したら、必ず Visual Studio を再起動してください。
 
 * 組み込みのロジック アプリ デザイナーを使用する際の Web へのアクセス
 
-  デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティやデータを読み取るには、インターネット接続が必要です。 たとえば、Dynamics CRM Online の接続の場合、デザイナーは CRM インスタンスをチェックして、既定のプロパティやカスタム プロパティを確認します。
+  デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティやデータを読み取るには、インターネット接続が必要です。
 
-* Logic Apps でサポートされるメール アカウント (Office 365 Outlook、Outlook.com、Gmail など)。 その他のプロバイダーについては、[こちらのコネクタ一覧](https://docs.microsoft.com/connectors/)を参照してください。 この例では Office 365 Outlook を使います。 別のプロバイダーを使用する場合も、全体的な手順は同じです。ただし、UI がやや異なる場合があります。
+* Logic Apps でサポートされるメール アカウント (Office 365 Outlook、Outlook.com、Gmail など)。 その他のプロバイダーについては、[こちらのコネクタ一覧](/connectors/)を参照してください。 この例では Office 365 Outlook を使います。 別のプロバイダーを使用する場合も、全体的な手順は同じです。ただし、UI がやや異なる場合があります。
 
   > [!IMPORTANT]
-  > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+  > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>Azure Government 用に Visual Studio を設定する
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+[Azure Environment Selector Visual Studio 拡張機能](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)を使用できます。これは、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) からダウンロードしてインストールできます。
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+Azure Logic Apps で Azure Government サブスクリプションを使用するには、[Azure Government クラウドの検出エンドポイントを Visual Studio に追加](../azure-government/documentation-government-connect-vs.md)する必要があります。 ただし、"*Azure Government アカウントで Visual Studio にサインインする前に*"、検出エンドポイントの追加後に生成される JSON ファイルの名前を次の手順で変更する必要があります。
+
+1. Visual Studio を閉じます。
+
+1. 次の場所に `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` という名前で生成される JSON ファイルを見つけます。
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. JSON ファイルの名前を `AadProvider.Configuration.json` に変更します。
+
+1. Visual Studio を再起動します。
+
+1. 引き続き Azure Government アカウントでサインインする手順に進みます。
+
+この設定を元に戻すには、次の場所にある JSON ファイルを削除して、Visual Studio を再起動してください。
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 
@@ -68,7 +96,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 1. Visual Studio を起動します。 Azure のアカウントを使用してサインインします。
 
-1. **[ファイル]** メニューで、 **[新規作成]**  >  **[プロジェクト]** の順に選択します  (Ctrl + Shift + N)
+1. **[ファイル]** メニューで、 **[新規作成]**  >  **[プロジェクト]** の順に選択します (Ctrl + Shift + N)
 
    ![[ファイル] メニューで [新規作成]、[プロジェクト] の順に選択する](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
@@ -99,7 +127,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 Azure リソース グループ プロジェクトが作成されたら、 **[空のロジック アプリ]** テンプレートを使用してロジック アプリを作成します。
 
-1. ソリューション エクスプローラーで、**LogicApp.json** ファイルのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します  (Ctrl + L)
+1. ソリューション エクスプローラーで、**LogicApp.json** ファイルのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します (Ctrl + L)
 
    ![ロジック アプリ デザイナーでロジック アプリの .json ファイルを開く](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 

@@ -1,26 +1,24 @@
 ---
-title: Windows Virtual Desktop の診断ログ分析 - Azure
-description: Windows Virtual Desktop の診断機能でログ分析を使用する方法について説明します。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) の診断ログ分析 - Azure
+description: Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する方法について説明します。
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 05bb7274fe598df45ce14bfc89b606aec3f869c9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614304"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997678"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-log-analytics.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../diagnostics-log-analytics.md)を参照してください。
 
-Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 この機能は、Windows Virtual Desktop ロールが割り当てられているユーザーがサービスを使用するたびに、診断情報をログに記録します。 各ログには、そのアクティビティで Windows Virtual Desktop ロールが関係している情報、そのセッション中に表示されるすべてのエラー メッセージ、テナント情報、ユーザー情報が格納されます。 診断機能は、ユーザーと管理者の両方のアクションのアクティビティ ログを作成します。 各アクティビティ ログは、次の 3 つの主なカテゴリに分類されます。 
+Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 この機能は、Windows Virtual Desktop ロールが割り当てられているユーザーがサービスを使用するたびに、診断情報をログに記録します。 各ログには、そのアクティビティで Windows Virtual Desktop ロールが関係している情報、そのセッション中に表示されるすべてのエラー メッセージ、テナント情報、ユーザー情報が格納されます。 診断機能は、ユーザーと管理者の両方のアクションのアクティビティ ログを作成します。 各アクティビティ ログは、次の 3 つの主なカテゴリに分類されます。
 
 - フィード サブスクリプション アクティビティ: ユーザーが Microsoft リモート デスクトップ アプリケーションを通じてフィードに接続しようとする場合。
 - 接続アクティビティ: ユーザーが Microsoft リモート デスクトップ アプリケーションを通じてデスクトップまたは RemoteApp に接続しようとする場合。
@@ -36,37 +34,37 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 
 診断機能で Log Analytics を使用するには、まず[ワークスペースを作成する](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)必要があります。
 
-ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)」の指示に従って、次の情報を取得します。 
+ワークスペースを作成したら、「[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」の指示に従って、次の情報を取得します。
 
 - ワークスペース ID
 - ワークスペースの主キー
 
 この情報は後のセットアップ プロセスで必要になります。
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>診断データをワークスペースにプッシュする 
+## <a name="push-diagnostics-data-to-your-workspace"></a>診断データをワークスペースにプッシュする
 
 Windows Virtual Desktop テナントからワークスペースの Log Analytics に診断データをプッシュできます。 この機能は、最初にテナントを作成する時点で、ワークスペースをテナントにリンクすることにより設定できます。または、既存のテナントを使用して後で設定することもできます。
 
-新しいテナントの設定中にテナントを Log Analytics ワークスペースにリンクするには、次のコマンドレットを実行して、TenantCreator ユーザー アカウントで Windows Virtual Desktop にサインインします。 
+新しいテナントの設定中にテナントを Log Analytics ワークスペースにリンクするには、次のコマンドレットを実行して、TenantCreator ユーザー アカウントで Windows Virtual Desktop にサインインします。
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
+Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
 ```
 
-新しいテナントではなく、既存のテナントをリンクする場合は、代わりに次のコマンドレットを実行します。 
+新しいテナントではなく、既存のテナントをリンクする場合は、代わりに次のコマンドレットを実行します。
 
 ```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String>
 ```
 
-これらのコマンドレットは、Log Analytics にリンクする各テナントに対して実行する必要があります。 
+これらのコマンドレットは、Log Analytics にリンクする各テナントに対して実行する必要があります。
 
 >[!NOTE]
->テナントの作成時に Log Analytics ワークスペースをリンクしたくない場合は、代わりに `New-RdsTenant` コマンドレットを実行します。 
+>テナントの作成時に Log Analytics ワークスペースをリンクしたくない場合は、代わりに `New-RdsTenant` コマンドレットを実行します。
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>診断イベントの送信頻度
 
-診断イベントは、完了時に Log Analytics に送信されます。  
+診断イベントは、完了時に Log Analytics に送信されます。
 
 ## <a name="example-queries"></a>クエリの例
 
@@ -75,65 +73,65 @@ Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnaly
 最初の例は、サポートされているリモート デスクトップ クライアントを使用してユーザーが開始した接続アクティビティを示しています。
 
 ```powershell
-WVDActivityV1_CL 
+WVDActivityV1_CL
 
-| where Type_s == "Connection" 
+| where Type_s == "Connection"
 
-| join kind=leftouter ( 
+| join kind=leftouter (
 
-    WVDErrorV1_CL 
+    WVDErrorV1_CL
 
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
+    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g   
+    ) on $left.Id_g  == $right.ActivityId_g 
 
-| join  kind=leftouter (  
+| join  kind=leftouter (
 
-    WVDCheckpointV1_CL 
+    WVDCheckpointV1_CL
 
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
+    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g  
+    ) on $left.Id_g  == $right.ActivityId_g
 
-|project-away ActivityId_g, ActivityId_g1 
+|project-away ActivityId_g, ActivityId_g1
 ```
 
 次のクエリの例は、管理者によるテナントに対する管理アクティビティを示しています。
 
 ```powershell
-WVDActivityV1_CL 
+WVDActivityV1_CL
 
-| where Type_s == "Management" 
+| where Type_s == "Management"
 
-| join kind=leftouter ( 
+| join kind=leftouter (
 
-    WVDErrorV1_CL 
+    WVDErrorV1_CL
 
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
+    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g   
+    ) on $left.Id_g  == $right.ActivityId_g 
 
-| join  kind=leftouter (  
+| join  kind=leftouter (
 
-    WVDCheckpointV1_CL 
+    WVDCheckpointV1_CL
 
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
+    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g  
+    ) on $left.Id_g  == $right.ActivityId_g
 
-|project-away ActivityId_g, ActivityId_g1 
+|project-away ActivityId_g, ActivityId_g1
 ```
- 
-## <a name="stop-sending-data-to-log-analytics"></a>Log Analytics へのデータ送信を停止する 
+
+## <a name="stop-sending-data-to-log-analytics"></a>Log Analytics へのデータ送信を停止する
 
 既存のテナントから Log Analytics へのデータ送信を停止するには、次のコマンドレットを実行して、空の文字列を設定します。
 
 ```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String>
 ```
 
-このコマンドレットは、データ送信を停止する各テナントに対して実行する必要があります。 
+このコマンドレットは、データ送信を停止する各テナントに対して実行する必要があります。
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次のステップ
 
 診断機能で特定できる一般的なエラー シナリオについては、「[問題の特定と診断](diagnostics-role-service-2019.md#common-error-scenarios)」をご確認ください。

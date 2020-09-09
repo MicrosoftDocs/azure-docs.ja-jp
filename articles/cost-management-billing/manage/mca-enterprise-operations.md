@@ -4,15 +4,16 @@ description: 新しい課金アカウントでの Enterprise Agreement タスク
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b8f588df89429bd08b1c74fbc528801fb45377ed
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 928800f22011f6388ec50a1ab5e906b2080a4125
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692302"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682894"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する
 
@@ -125,7 +126,7 @@ Enterprise Agreement のアカウント所有者は、新しい課金アカウ�
 
 追加の Azure サブスクリプションを作成するために、新しい請求先アカウントに対する次のロールが与えられます。
 
-**Azure サブスクリプション作成者** - Enterprise Agreement の部署用に作成された請求書セクションに対する Azure サブスクリプション作成者ロールが割り当てられます。 アカウントが部署に属していない場合は、[既定の請求書セクション] という名前のセクションに対して Azure サブスクリプション作成者ロールが与えられます。 このロールでは、請求書セクションの Azure サブスクリプションを作成できます。
+**Azure サブスクリプション作成者** - マイクロソフト エンタープライズ契約の部署用に作成された請求書セクションに対する Azure サブスクリプション作成者ロールが割り当てられます。 アカウントが部署に属していない場合は、[既定の請求書セクション] という名前のセクションに対して Azure サブスクリプション作成者ロールが与えられます。 このロールでは、請求書セクションの Azure サブスクリプションを作成できます。
 
 ### <a name="create-an-azure-subscription"></a>Azure サブスクリプションを作成します。
 

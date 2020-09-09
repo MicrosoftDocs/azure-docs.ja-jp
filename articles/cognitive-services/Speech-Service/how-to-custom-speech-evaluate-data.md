@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856825"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>カスタム音声の正確性を評価する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74806098"
 
 ## <a name="what-is-word-error-rate-wer"></a>ワード エラー率 (WER) とは
 
-モデルの正確性を測定するための業界標準は、"*ワード エラー率*" (WER) です。 WER では、認識中に識別された誤った単語の数を数え、ヒューマン ラベル付けトランスクリプトで提供された単語の総数で割ります。 最後に、その数に 100% を掛けて WER を計算します。
+モデルの正確性を測定するための業界標準は、"*ワード エラー率*" (WER) です。 WER では、認識中に識別された誤った単語の数を数え、ヒューマン ラベル付けトランスクリプトで提供された単語の総数で割ります (下では N と示されています)。 最後に、その数に 100% を掛けて WER を計算します。
 
 ![WER の数式](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -52,7 +52,7 @@ Microsoft の音声テキスト変換ベースライン モデルまたはトレ
 モデルを並べて評価するには、次のように操作します。
 
 1. [Custom Speech ポータル](https://speech.microsoft.com/customspeech)にサインインします。
-2. **[音声テキスト変換]、[Custom Speech]、[Testing]\(テスト\)** の順に移動します。
+2. **[音声テキスト変換]、[Custom Speech]、[<プロジェクト名>]、[テスト]** の順に移動します。
 3. **[テストの追加]** をクリックします。
 4. **[Evaluate accuracy]\(正確性の評価\)** を選択します。 テストの名前と説明を設定し、オーディオ + ヒューマン ラベル付け文字起こしデータセットを選択します。
 5. テストするモデルを最大で 2 つ選択します。

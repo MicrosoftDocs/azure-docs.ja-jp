@@ -4,17 +4,17 @@ description: 意図とエンティティが含まれる発話テキストから�
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589722"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682195"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
 
-抽出するのが最も困難なデータは機械学習データです。その理由は、テキストが完全一致ではないためです。 機械学習[エンティティ](luis-concept-entity-types.md)のデータ抽出は、期待どおりのデータを受け取っていると確信できるまでは、[作成サイクル](luis-concept-app-iteration.md)の一環とする必要があります。
+抽出するのが最も困難なデータは機械学習データです。その理由は、テキストが完全一致ではないためです。 機械学習[エンティティ](luis-concept-entity-types.md)のデータ抽出は、期待どおりのデータを受け取っていると確信できるまでは、[作成サイクル](luis-concept-app-iteration.md)の一部としておく必要があります。
 
 ## <a name="data-location-and-key-usage"></a>データの場所とキー使用法
 LUIS により、公開されている[エンドポイント](luis-glossary.md#endpoint)でのユーザーの発話からデータが抽出されます。 **HTTPS 要求** (POST または GET) には、発話と、ステージング環境や運用環境など、オプションの構成がいくつか含まれます。
@@ -245,7 +245,7 @@ LUIS での [トークンのサポート](luis-language-support.md#tokenization)
 
 ## <a name="patternany-entity-data"></a>Pattern.any エンティティ データ
 
-[Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。 パターンが適用されるためには、パターンで使用されるエンティティが必要です。 
+[Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。 パターンが適用されるためには、パターンで使用されるエンティティが必要です。
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 [公開](luis-how-to-publish-app.md#sentiment-analysis)中にセンチメント分析が構成されている場合、LUIS の json 応答にはセンチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) のドキュメントを参照してください。

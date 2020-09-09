@@ -7,15 +7,15 @@ manager: celestedg
 ms.author: mimart
 ms.date: 02/04/2019
 ms.custom: mvc
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b05e2eaa71b99db1979f9575d59580238e8fe093
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50dbdc270aabb8013a7b0b0cfae4cb33112fad7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385877"
 ---
 # <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントへのネイティブ クライアント アプリケーションの追加
 

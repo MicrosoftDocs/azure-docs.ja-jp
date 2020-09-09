@@ -3,16 +3,16 @@ title: Azure Files で使用するサイト間 (S2S) VPN を構成する | Micro
 description: Azure Files で使用するサイト間 (S2S) VPN を構成する方法
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515346"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Azure Files で使用するサイト間 VPN を構成する
 サイト間 (S2S) VPN 接続を使用すると、ポート 445 を開くことなく、オンプレミス ネットワークから SMB 経由で Azure ファイル共有をマウントできます。 サイト間 VPN は、Azure リソース オファリングの VPN サービスであり、ストレージ アカウントまたはその他の Azure リソースと共にリソース グループにデプロイされる [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して設定できます。

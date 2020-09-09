@@ -8,12 +8,13 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 05b94ca9bd14392bad5288882a80f5c75590ef7b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: devx-track-python
+ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76931790"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642318"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイック スタート:Microsoft Genomics サービス経由でワークフローを実行する
 
@@ -47,18 +48,18 @@ Microsoft Genomics の詳細については、「[Microsoft Genomics とは](ove
 
 ## <a name="set-up-install-the-microsoft-genomics-python-client"></a>設定: Microsoft Genomics Python クライアントをインストールする
 
-ローカル環境に Python と Microsoft Genomics Python クライアントの両方をインストールする必要があります。 
+ローカル環境に Python と Microsoft Genomics Python クライアント `msgen` の両方をインストールする必要があります。 
 
 ### <a name="install-python"></a>Python のインストール
 
 Microsoft Genomics Python クライアントは、Python 2.7.12 以降の 2.7.xx バージョンと互換性があります。 バージョン 2.7.14 を推奨します。 ダウンロードは[こちら](https://www.python.org/downloads/release/python-2714/)で検索できます。 
 
 > [!IMPORTANT]
-> Python 3.x には Python 2.7.xx との互換性がありません。  MSGen は Python 2.7 アプリケーションです。 MSGen を実行するときは、アクティブな Python 環境で 2.7.xx バージョンの Python が使用されていることを確認してください。 3\.x バージョンの Python で MSGen を使用しようとすると、エラーが発生する可能性があります。
+> Python 3.x には Python 2.7.xx との互換性がありません。  `msgen` は Python 2.7 アプリケーションです。 `msgen` を実行するときは、アクティブな Python 環境で 2.7.xx バージョンの Python が使用されていることを確認してください。 3\.x バージョンの Python で `msgen` を使用しようとすると、エラーが発生する可能性があります。
 
-### <a name="install-the-microsoft-genomics-client"></a>Microsoft Genomics クライアントのインストール
+### <a name="install-the-microsoft-genomics-python-client-msgen"></a>Microsoft Genomics Python クライアント `msgen` をインストールする
 
-Python `pip` を使用して Microsoft Genomics クライアントの `msgen` をインストールします。 次の手順では、Python が既にシステム パスにあることを前提としています。 `pip` のインストールが認識されない問題が生じた場合は、システム パスに Python とスクリプトのサブフォルダーを追加する必要があります。
+Python `pip` を使用して Microsoft Genomics クライアントの `msgen` をインストールします。 次の手順では、Python 2.x が既にシステム パスにあることを前提としています。 `pip` のインストールが認識されない問題が生じた場合は、システム パスに Python とスクリプトのサブフォルダーを追加する必要があります。
 
 ```
 pip install --upgrade --no-deps msgen
@@ -66,14 +67,9 @@ pip install msgen
 ```
 
 `msgen` をシステム全体のバイナリとしてインストールしてシステム全体の Python パッケージに変更を加えることが好ましくない場合は、`pip` と共に `–-user` フラグを使用します。
-パッケージ ベースのインストールまたは setup.py を使用すると、必要なすべての必須パッケージがインストールされます。 それ以外の場合は、以下に示す `msgen` 用の基本の必須パッケージがインストールされます。 
+パッケージ ベースのインストールまたは setup.py を使用すると、必要なすべての必須パッケージがインストールされます。
 
- * [Azure-storage](https://pypi.python.org/pypi/azure-storage) 
- * [Requests](https://pypi.python.org/pypi/requests) 
-
-`pip` を使用して、`easy_install`または標準の `setup.py` プロシージャ経由で、これらのパッケージをインストールできます。 
-
-### <a name="test-the-microsoft-genomics-client"></a>Microsoft Genomics クライアントのテスト
+### <a name="test-msgen-python-client"></a>`msgen` Python クライアントをテストする
 Microsoft Genomics クライアントをテストするには、お使いの Genomics アカウントから config ファイルをダウンロードします。 Azure portal の左上にある **[すべてのサービス]** を選択し、Genomics アカウントを検索、選択して、自分の Genomics アカウントに移動します。
 
 ![Azure portal で Microsoft Genomics を検索する](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Azure portal で Microsoft Genomics を検索する")
@@ -118,18 +114,20 @@ Microsoft Genomics サービスでは、入力ファイルとして paired end �
 
 ストレージ アカウント内では、入力データ用に 1 つの BLOB コンテナーと、出力データ用に 2 つ目の BLOB コンテナーを作成する必要があります。  入力データをお使いの入力用 BLOB コンテナーにアップロードします。 アップロードを行うために、[Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter)、[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) など、さまざまなツールを使用できます。 
 
-## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-python-client"></a>Python クライアントを使用して Microsoft Genomics サービス経由でワークフローを実行する 
+## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>`msgen` Python クライアントを使用して Microsoft Genomics サービス経由でワークフローを実行する
 
 Microsoft Genomics サービス経由でワークフローを実行するために、*config.txt* ファイルを編集してお使いのデータの入力および出力ストレージ コンテナーを指定します。
 お使いの Genomics アカウントからダウンロードした *config.txt* ファイルを開きます。 ユーザーによる指定が必要なセクションは、サブスクリプション キーと下部にある 6 つの項目、ストレージ アカウント名、入力および出力用のキーとコンテナー名です。 この情報を検索するには、Azure portal 内でお使いのストレージ アカウントの**アクセス キー**に移動するか、Azure Storage Explorer から直接移動します。  
 
-![Genomics の構成](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomics の構成")
+![Genomics の構成](./media/quickstart-run-genomics-workflow-portal/genomics-config.PNG "Genomics の構成")
 
 GATK4 を実行したい場合は、`process_name` パラメーターを `gatk4` に設定します。
 
 既定では、Genomics サービスから VCF ファイルが出力されます。 VCF 出力 (GATK 3.x では `-emitRefConfidence` に、GATK 4.x では `emit-ref-confidence` に相当) ではなく gVCF 出力を希望する場合は、*config.txt* に `emit_ref_confidence` パラメーターを追加し、それを `gvcf` に設定してください (上図参照)。  VCF 出力に戻す場合は、*config.txt* ファイルからそれを削除するか、`emit_ref_confidence` パラメーターを `none` に設定します。 
 
-### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>Microsoft Genomics クライアントを使用して Microsoft Genomics サービスにワークフローを送信する
+`bgzip` は、vcf または gvcf ファイルを圧縮するツールです。また、`tabix` を使用すると、圧縮されたファイル用のインデックスを作成できます。 既定で、Genomics サービスでは、".g.vcf" 出力に対して `bgzip` に続いて `tabix` が実行されますが、".vcf" 出力の場合、既定ではこれらのツールは実行されません。 実行すると、サービスによって ".gz" (bgzip 出力) および ".tbi" (tabix 出力) ファイルが生成されます。 引数はブール値であり、"vcf" 出力の場合は既定で false に設定され、"gcvf" 出力の場合は既定で true に設定されます。 コマンド ライン上で使用するには、`-bz` または `--bgzip-output` を `true` (bgzip および tabix を実行) または `false` として指定します。 この引数を *config.txt* ファイル内で使用するには、ファイルに `bgzip_output: true` または `bgzip_output: false` を追加します。
+
+### <a name="submit-your-workflow-to-the-microsoft-genomics-service-using-the-msgen-python-client"></a>`msgen` Python クライアントを使用して Microsoft Genomics サービスにワークフローを送信する
 
 Microsoft Genomics Python クライアントを使用して、次のコマンドを使ってワークフローを送信します。
 
@@ -145,4 +143,5 @@ msgen list -f c:\temp\config.txt
 ワークフローが完了すると、構成した出力コンテナーにあるお使いの Azure Storage アカウントの出力ファイルを表示できます。 
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、サンプル入力データを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 Microsoft Genomics サービスで使用できる他の入力 ファイルの種類の詳細については、[一組の FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md) に関するページをご覧ください。 このチュートリアルは、[Azure notebook チュートリアル](https://aka.ms/genomicsnotebook)を使って考察することもできます。
+
+この記事では、サンプル入力データを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 Microsoft Genomics サービスで使用できる他の入力 ファイルの種類の詳細については、[一組の FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [複数の FASTQ または BAM](quickstart-input-multiple.md) に関するページをご覧ください。 "Genomics Tutorial.ipynb" ファイルをダウンロードし、[Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) などのノートブック リーダーでファイルを開いて実行することで、[Azure Notebooks の例](https://aka.ms/genomicsnotebook)を使用してこのチュートリアルを調べることもできます。

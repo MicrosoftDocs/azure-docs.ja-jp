@@ -1,26 +1,25 @@
 ---
-title: C# で REST 呼び出しを使用してモデルを取得する
+title: Node.js で REST 呼び出しを使用してモデルを取得する
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d2dd43366068c8b0d5f280a4c5c22ac774824f59
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368408"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407262"
 ---
+[リファレンス ドキュメント](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
+
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Language Understanding (作成リソースの 32 文字のキーおよび作成エンドポイントの URL)。 [Azure portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) または [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) で作成します。
-* cognitive-services-language-understanding GitHub リポジトリから [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) アプリをインポートします。
-* インポートした TravelAgent アプリ用の LUIS アプリケーション ID。 アプリケーション ID は、アプリケーション ダッシュボードに表示されます。
-* 発話を受け取るアプリケーション内のバージョン ID。 既定の ID は "0.1" です。
 * [Node.js](https://nodejs.org/) プログラミング言語
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,106 +27,137 @@ ms.locfileid: "77368408"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-the-nodejs-project"></a>Node.js プロジェクトの作成
+
+1. `node-model-with-rest` など、Node.js プロジェクトを保持する新しいフォルダーを作成します。
+
+1. 新しいコマンド プロンプトを開き、作成したフォルダーに移動して、次のコマンドを実行します。
+
+    ```console
+    npm init
+    ```
+
+    各プロンプトで Enter キーを押して、既定の設定をそのまま使用します。
+
+1. 次のコマンドを入力して request-promise モジュールをインストールします。
+
+    ```console
+    npm install --save request
+    npm install --save request-promise
+    npm install --save querystring
+    ```
 
 ## <a name="change-model-programmatically"></a>プログラムを使用してモデルを変更する
 
 1. `model.js` という名前で新しいファイルを作成します。 次のコードを追加します。
 
-    ```javascript
-    var request = require('request');
-    var requestpromise = require('request-promise');
-
-    // 32 character key value
-    const LUIS_authoringKey = "YOUR-KEY";
-
-    // endpoint example: your-resource-name.api.cognitive.microsoft.com
-    const LUIS_endpoint = "YOUR-ENDPOINT";
-    const LUIS_appId = "YOUR-APP-ID";
-    const LUIS_versionId = "0.1";
-    const addUtterancesURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/examples`;
-    const addTrainURI = `https://${LUIS_endpoint}/luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/train`;
-
-    const utterances = [
-            {
-              'text': 'go to Seattle today',
-              'intentName': 'BookFlight',
-              'entityLabels': [
-                {
-                  'entityName': 'Location::LocationTo',
-                  'startCharIndex': 6,
-                  'endCharIndex': 12
-                }
-              ]
-            },
-            {
-                'text': 'a barking dog is annoying',
-                'intentName': 'None',
-                'entityLabels': []
-            }
-          ];
-
-    const main = async() =>{
-
-
-        await addUtterance();
-        await train("POST");
-        await trainStatus("GET");
-
-    }
-    const addUtterance = async () => {
-
-        const options = {
-            uri: addUtterancesURI,
-            method: 'POST',
-            headers: {
-                'Ocp-Apim-Subscription-Key': LUIS_authoringKey
-            },
-            json: true,
-            body: utterances
-        };
-
-        const response = await requestpromise(options)
-        console.log(response.body);
-    }
-    const train = async (verb) => {
-
-        const options = {
-            uri: addTrainURI,
-            method: verb,
-            headers: {
-                'Ocp-Apim-Subscription-Key': LUIS_authoringKey
-            },
-            json: true,
-            body: null // The body can be empty for a training request
-        };
-
-        const response = await requestpromise(options)
-        console.log(response.body);
-    }
-
-    // MAIN
-    main().then(() => console.log("done")).catch((err)=> console.log(err returned));
-    ```
+    [!code-javascript[Code snippet](~/cognitive-services-quickstart-code/javascript/LUIS/node-model-with-rest/model.js)]
 
 1. `YOUR-` で始まる値を実際の値に置き換えます。
 
     |Information|目的|
     |--|--|
-    |`YOUR-KEY`|32 文字の実際の作成キー。|
-    |`YOUR-ENDPOINT`| 作成 URL エンドポイント。 たとえば、「 `replace-with-your-resource-name.api.cognitive.microsoft.com` 」のように入力します。 リソース名は、リソースの作成時に設定します。|
     |`YOUR-APP-ID`| LUIS アプリ ID。 |
+    |`YOUR-AUTHORING-KEY`|32 文字の実際の作成キー。|
+    |`YOUR-AUTHORING-ENDPOINT`| 作成 URL エンドポイント。 たとえば、「 `https://replace-with-your-resource-name.api.cognitive.microsoft.com/` 」のように入力します。 リソース名は、リソースの作成時に設定します。|
 
     割り当てられたキーとリソースは、LUIS ポータルの [Manage]\(管理\) セクションの **[Azure リソース]** ページで確認できます。 アプリ ID は、同じ [Manage]\(管理\) セクションの **[アプリケーションの設定]** ページで入手できます。
 
-1. このファイルを作成したときと同じディレクトリからコマンド プロンプトで次のコマンドを入力し、ファイルを実行します。
+1. コマンド プロンプトに次のコマンドを入力してプロジェクトを実行します。
 
     ```console
     node model.js
     ```
 
+1. 作成の応答を確認します。
+
+    ```json
+    addUtterance:
+    [
+      {
+        "value": {
+          "ExampleId": 1137150691,
+          "UtteranceText": "order a pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150692,
+          "UtteranceText": "order a large pepperoni pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150693,
+          "UtteranceText": "i want two large pepperoni pizzas on thin crust"
+        },
+        "hasError": false
+      }
+    ]
+    train POST:
+    {
+      "statusId": 9,
+      "status": "Queued"
+    }
+    train GET:
+    [
+      {
+        "modelId": "edb46abf-0000-41ab-beb2-a41a0fe1630f",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "a5030be2-616c-4648-bf2f-380fa9417d37",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "e4b6704b-1636-474c-9459-fe9ccbeba51c",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "031d3777-2a00-4a7a-9323-9a3280a30000",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "9250e7a1-06eb-4413-9432-ae132ed32583",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      }
+    ]
+    done
+    ```
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイックスタートを使用して完了したときに、ファイル システムからファイルを削除します。
+このクイックスタートを完了したら、ファイル システムからプロジェクト フォルダーを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

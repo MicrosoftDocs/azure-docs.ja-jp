@@ -4,12 +4,12 @@ description: Azure Site Recovery で VM/物理サーバーを Azure にフェー
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 99a197e8f5ebac8a3b0be1b567ee41b43a2c4476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471270"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309970"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>オンプレミスから Azure へのフェールオーバーを実行する
 
@@ -52,6 +52,7 @@ ms.locfileid: "79471270"
 4. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。
 
     - **Latest**:最新のポイントを使用します。 これにより、Site Recovery サービスに送信されたすべてのデータが処理され、各マシンの復旧ポイントが作成されます。 このオプションでは、フェールオーバー後に作成された VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (回復ポイントの目標) が最も低くなります。
+    ソース リージョンがダウンした場合、ログ処理を実行できなくなることに注意してください。 そのため、処理された最新の復旧ポイントにフェールオーバーする必要があります。 詳細については、次の点をご覧ください。
    - **最後に処理があった時点**:このオプションを使用して、Site Recovery によって既に処理された最新の復旧ポイントに VM をフェールオーバーします。 処理された最新の復旧ポイントは、 **[Latest Recovery Points]\(最新の復旧ポイント\)** で確認できます。 このオプションでは、未処理のデータの処理に時間がかからないため、RTO が低くなります。
    - **最新のアプリ整合性**:このオプションを使用して、Site Recovery によって処理されたアプリケーション整合性の最新の復旧ポイントに VM をフェールオーバーします。
    - **最新のマルチ VM 処理**:このオプションを使用すると、レプリケーション グループに含まれる VM は、最新の共通マルチ VM 整合性復旧ポイントにフェールオーバーされます。 その他の仮想マシンは、処理された最新の復旧ポイントにフェールオーバーされます。 このオプションは、マルチ VM 整合性がオンになっている 1 つ以上の VM を含む復旧計画のみを対象としています。

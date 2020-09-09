@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189788"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201210"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで要求変換技術プロファイルを定義する
 
@@ -30,7 +30,7 @@ ms.locfileid: "78189788"
 
 次の例は、要求変換技術プロファイルを示してます。
 
-```XML
+```xml
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -52,7 +52,7 @@ ms.locfileid: "78189788"
 
 **OutputClaimsTransformations** 要素には、要求を修正したり新しい要求を生成したりするために使用される **OutputClaimsTransformation** 要素のコレクションが存在する場合があります。 次の技術プロファイルは、**RemoveAlternativeSecurityIdByIdentityProvider** 要求変換を呼び出します。 この要求変換は、**AlternativeSecurityIds**  のコレクションからソーシャル ID を削除します。 この技術プロファイルの出力要求は、`facebook.com` に設定されている **identityProvider2**、および facebook.com ID の削除後にこのユーザーに関連付けられたソーシャル ID のリストが存在する **AlternativeSecurityIds** です。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -84,7 +84,7 @@ TransformationClaimType="collection" />
 
 要求変換技術プロファイルにより、任意のユーザー体験のオーケストレーション手順から、要求変換を実行できます。 次の例では、オーケストレーション手順は、**Facebook-OAUTH のリンク解除** などの、いずれかのリンク解除技術プロファイルを呼び出します。 この技術プロファイルでは、要求変換技術プロファイル **RemoveAlternativeSecurityIdByIdentityProvider** が呼び出されます。これは、ユーザーのソーシャル ID の一覧を含む新しい **AlternativeSecurityIds2** 要求を生成し、同時にコレクションから Facebook ID を削除します。
 
-```XML
+```xml
 <UserJourney Id="AccountUnLink">
   <OrchestrationSteps>
     ...
@@ -110,7 +110,7 @@ TransformationClaimType="collection" />
 
 要求変換技術プロファイルを使用すれば、情報を検証できます。 次の例では、**LocalAccountSignUpWithLogonEmail** という名前の[自己宣言された技術プロファイル](self-asserted-technical-profile.md)が、ユーザーにメールを 2 回入力するように依頼してから、**Validate-Email** という名前の[検証技術プロファイル](validation-technical-profile.md)を呼び出して、メールを検証しています。 **Validate-Email** 技術プロファイルは、要求変換 **AssertEmailAreEqual** を呼び出して、**email** と **emailRepeat** の 2 つの要求を比較し、指定された比較により等しくない場合は、例外をスローします。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="AssertEmailAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
     <InputClaims>
@@ -126,7 +126,7 @@ TransformationClaimType="collection" />
 
 要求変換技術プロファイルは、**AssertEmailAreEqual** 要求変換を呼び出します。これは、ユーザーが入力したメールが同じであることを宣言します。
 
-```XML
+```xml
 <TechnicalProfile Id="Validate-Email">
   <DisplayName>Unlink Facebook</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -145,7 +145,7 @@ TransformationClaimType="collection" />
 
 自己宣言された技術プロファイルは、検証技術プロファイルを呼び出して、**UserMessageIfClaimsTransformationStringsAreNotEqual** メタデータで指定されたエラー メッセージを表示できます。
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>User ID signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

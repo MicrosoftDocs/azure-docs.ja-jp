@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77191368"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536404"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ソリューション
 
@@ -42,7 +42,7 @@ EIP を使用した B2B ロジック アプリ ワークフローの構築を開
 
 * マップとスキーマを作成するには、[Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) と Visual Studio 2015 を使用できます。
 
-統合アカウントを作成し、アーティファクトを追加したら、Azure portal でロジック アプリを作成することにより、これらのアーティファクトを使用して B2B ワークフローの構築を開始できます。 ロジック アプリを初めて使用する場合は、[基本的なロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してみてください。 ただし、これらのアーティファクトを使用するには、統合アカウントとロジック アプリの関連付けを行っておく必要があります。 その後、ロジック アプリから統合アカウントにアクセスできます。 また、Visual Studio または [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) を使用して、ロジック アプリを作成、管理、デプロイすることもできます。
+統合アカウントを作成し、アーティファクトを追加したら、Azure portal でロジック アプリを作成することにより、これらのアーティファクトを使用して B2B ワークフローの構築を開始できます。 ロジック アプリを初めて使用する場合は、[基本的なロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してみてください。 ただし、これらのアーティファクトを使用するには、統合アカウントとロジック アプリの関連付けを行っておく必要があります。 その後、ロジック アプリから統合アカウントにアクセスできます。 また、Visual Studio または [PowerShell](/powershell/module/az.logicapp) を使用して、ロジック アプリを作成、管理、デプロイすることもできます。
 
 B2B ロジック アプリの構築を開始する手順の概要を次に示します。
 

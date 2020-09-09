@@ -3,15 +3,15 @@ title: Data Lake Storage Gen1 で Azure HDInsight クラスターを作成する
 description: Azure portal を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成および使用します
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3e54b037485a85d836e7e7e67c9af2d9d140986
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856809"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 
@@ -170,7 +170,9 @@ Data Lake Storage Gen1 アカウント内のデータを操作するときは、
 
 たとえば、プライマリ ストレージとして Data Lake Storage Gen1 を使用するクラスターを作成した場合は、データのパスは *adl://<data_lake_storage_gen1_account_name>/azuredatalakestore.net/path/to/file* になります。 Data Lake Storage Gen1 アカウントに格納されているサンプル データからテーブルを作成する Hive クエリは、次のようなステートメントになります。
 
-    CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```console
+CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
+```
 
 上記のクエリで、
 

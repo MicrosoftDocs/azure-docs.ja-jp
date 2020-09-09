@@ -3,19 +3,18 @@ title: Key Vault 証明書の概要
 description: 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427667"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224861"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -82,6 +81,9 @@ ms.locfileid: "81427667"
       -   状態: 完了、エラー情報ありで失敗、またはキャンセル済み  
       -   作成の遅延のため、キャンセル操作を開始できます。 キャンセルは、有効な場合と有効でない場合とがあります。  
 
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>統合 CA に関連付けられたネットワーク セキュリティとアクセス ポリシー
+Key Vault サービスは要求を CA に送信します (送信トラフィック)。 したがって、ファイアウォール対応のキー コンテナーと完全に互換性があります。 Key Vault はアクセス ポリシーを CA と共有しません。 署名要求を個別に受け入れるように CA を構成する必要があります。 [信頼された CA の統合に関するガイド](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+
 ## <a name="import-a-certificate"></a>証明書のインポート  
  代わりに、証明書を Key Vault にインポートできます (PFX または PEM)。  
 
@@ -97,13 +99,19 @@ ms.locfileid: "81427667"
 -   また、ユーザーはポリシーを編集できます。これはインポート時に機能しますが、インポート時に情報が指定されなかった場合は既定値が含まれています。 例: 発行者情報なし  
 
 ### <a name="formats-of-import-we-support"></a>サポート対象のインポートの形式
+Azure Key Vault では、キー コンテナーへの証明書のインポートに対し、.pem および .pfx 証明書ファイルがサポートされています。
 PEM ファイル形式の次の種類のインポートがサポートされています。 PEM でエンコードされた単一の証明書と、PKCS #8 でエンコードされた、以下を含む暗号化されていないキー
 
 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
 -----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
 
-証明書のマージでは、PEM ベースの 2 つの形式がサポートされています。 PKCS #8 でエンコードされた単一の証明書、または base64 でエンコードされた P7B ファイルのいずれかをマージすることができます。 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+証明書をインポートするときは、キーがファイル自体に含まれていることを確認する必要があります。 秘密キーが異なる形式で別にある場合は、キーと証明書を組み合わせる必要があります。 証明機関によっては、証明書が異なる形式で提供されるため、証明書をインポートする前に、.pem 形式または .pfx 形式であることを確認します。 
+
+### <a name="formats-of-merge-csr-we-support"></a>サポートされているマージ CSR の形式
+AKV では、2 つの PEM ベースの形式がサポートされています。 PKCS #8 でエンコードされた単一の証明書、または base64 でエンコードされた P7B (CA によって署名された証明書のチェーン) のいずれかをマージできます 
+
+-----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
 PEM 形式の EC キーは現在サポートされていません。
 
@@ -123,4 +131,3 @@ PEM 形式の EC キーは現在サポートされていません。
   (4) - 選択した CA は、X509 証明書で応答します。  
 
   (5) - アプリケーションは、CA からの X509 証明書の合併で新しい証明書の作成を完了します。
-

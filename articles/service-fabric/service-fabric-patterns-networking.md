@@ -3,12 +3,12 @@ title: Azure Service Fabric のネットワーク パターン
 description: Service Fabric の一般的なネットワーク パターンと、Azure のネットワーク機能を使用してクラスターを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75466280"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421469"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
@@ -100,6 +100,8 @@ DnsSettings              : {
             },*/
     ```
 
+   Azure portal のクラスター デプロイ ブレードで仮想ネットワーク名の入力を再び求めないよう、"virtualNetworkName" という名前でパラメーターをコメント アウトできます。
+
 2. 既存のサブネットを使用し、手順 1 でこの変数を無効にしているため、`Microsoft.Compute/virtualMachineScaleSets` の `nicPrefixOverride` 属性をコメント アウトします。
 
     ```json
@@ -171,7 +173,7 @@ DnsSettings              : {
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-別の例については、[Service Fabric に固有でない例](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet)をご覧ください。
+別の例については、[Service Fabric に固有でない例](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet)をご覧ください。
 
 
 <a id="staticpublicip"></a>
@@ -598,10 +600,9 @@ DnsSettings              : {
 
 ## <a name="notes-for-production-workloads"></a>運用環境のワークロードに関する注意事項
 
-上記の GitHub テンプレートは、Azure Standard Load Balancer (SLB) の既定の SKU である Basic SKU で動作するように設計されています。 この SLB には SLA がないため、運用環境のワークロードには Standard SKU を使用する必要があります。 詳しくは、「[Azure Standard Load Balancer の概要](/azure/load-balancer/load-balancer-standard-overview)」をご覧ください。 SLB の Standard SKU を使用しているすべての Service Fabric クラスターで、ポート 443 での送信トラフィックを許可するルールがノード タイプごとに設定されていることを確認する必要があります。 これはクラスターの設定を完了するために必要であり、このルールのないデプロイは失敗します。 上記の "内部専用" ロード バランサーの例では、追加の外部ロード バランサーを、ポート 443 での送信トラフィックを許可するルールと共にテンプレートに追加する必要があります。
+上記の GitHub テンプレートは、Azure Standard Load Balancer (SLB) の既定の SKU である Basic SKU で動作するように設計されています。 この SLB には SLA がないため、運用環境のワークロードには Standard SKU を使用する必要があります。 詳しくは、「[Azure Standard Load Balancer の概要](../load-balancer/load-balancer-overview.md)」をご覧ください。 SLB の Standard SKU を使用しているすべての Service Fabric クラスターで、ポート 443 での送信トラフィックを許可するルールがノード タイプごとに設定されていることを確認する必要があります。 これはクラスターの設定を完了するために必要であり、このルールのないデプロイは失敗します。 上記の "内部専用" ロード バランサーの例では、追加の外部ロード バランサーを、ポート 443 での送信トラフィックを許可するルールと共にテンプレートに追加する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 [クラスターの作成](service-fabric-cluster-creation-via-arm.md)
 
 デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
-

@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: dfd75ad2c6ae246bfe6ee8b983744b3db07a841f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d07364e20cc11abc52ad9b308eb5daed8a65c146
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194943"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923383"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での単純なクエリ構文
 
@@ -21,7 +21,7 @@ Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実�
 
 単純なパーサーは、より柔軟であり、完全に構成されていない場合でも要求の解釈が試みられます。 この柔軟性により、Azure Cognitive Search のクエリの既定値になっています。 
 
-単純な構文は、[ドキュメントの検索要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)の `search` パラメーターで渡されるクエリ式に使用されます。同じドキュメントの検索 API の [$filter 式](search-filters.md)パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 `search` および `$filter` パラメーターにはさまざまな構文があり、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
+単純な構文は、[ドキュメントの検索要求](/rest/api/searchservice/search-documents)の `search` パラメーターで渡されるクエリ式に使用されます。同じドキュメントの検索 API の [$filter 式](search-filters.md)パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 `search` および `$filter` パラメーターにはさまざまな構文があり、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
 
 単純なパーサーは [Apache Lucene Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) クラスに基づいていますが、Azure Cognitive Search における実装では、あいまい検索が除外されています。 [あいまい検索](search-query-fuzzy.md)またはその他の高度なクエリ フォームを使用する必要がある場合は、代わりに代替の[完全な Lucene クエリ構文](query-lucene-syntax.md)をお勧めします。
 
@@ -62,6 +62,14 @@ Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実�
 
 安全でない文字は ``" ` < > # % { } | \ ^ ~ [ ]`` です。 予約文字は `; / ? : @ = + &` です。
 
+### <a name="querying-for-special-characters"></a>特殊文字のクエリ
+
+場合によっては、"❤" のような絵文字や "€" のような記号などの特殊文字を検索することが必要です。 そのような場合は、使用しているアナライザーによってそれらの文字が除外されないことを確認します。標準アナライザーでは、インデックス内のトークンにならないように、特殊文字の多くが無視されます。
+
+したがって、最初のステップとして、それらの要素トークンが考慮されるアナライザーを使用していることを確認します。 たとえば、"whitespace" アナライザーでは、空白で区切られた任意の文字シーケンスがトークンとして考慮されるため、"❤" という文字列はトークンと見なされます。 また、Microsoft English アナライザー ("en.microsoft") のようなアナライザーでは、"€" という文字列がトークンとして考慮されます。 [アナライザーをテスト](/rest/api/searchservice/test-analyzer)して、特定のクエリに対して生成されるトークンを確認できます。
+
+Unicode 文字を使用する場合は、クエリ URL でシンボルが適切にエスケープされていることを確認します (たとえば、"❤" の場合は、エスケープ シーケンス `%E2%9D%A4+` を使用します)。 Postman では、この変換が自動的に行われます。
+
 ###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> クエリ サイズの上限
 
  Azure Cognitive Search に送信できるクエリのサイズには制限があります。 具体的には、最大で 1024 句 (AND、OR、その他で区切られた式) を持つことができます。 クエリ内の個々の用語のサイズにも約 32 KB の制限があります。 アプリケーションがプログラムで検索クエリを生成する場合は、無制限のサイズのクエリが生成されないように設計することをお勧めします。  
@@ -94,23 +102,23 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 
 <a name="prefix-search"></a>
 
-## <a name="prefix-search"></a>プレフィックス検索
+## <a name="wildcard-prefix-matching--"></a>ワイルドカード プレフィックスの一致 (*、?)
 
-サフィックス演算子はアスタリスク `*` です。 たとえば、`lingui*` では "linguistic" または "linguini" が検索され、大文字小文字は無視されます。 
+"次の文字で始まる" クエリの場合は、語句の残りの部分のプレースホルダーとしてサフィックス演算子を追加します。 複数文字の場合はアスタリスク `*`、1 文字の場合は `?` を使用します。 たとえば、`lingui*` は "linguistic" や "linguini" と一致し、大文字と小文字の違いは無視されます。 
 
-フィルターと同様に、プレフィックス クエリは完全一致を検索します。 そのため、関連性スコアリングは存在しません (すべての結果が 1.0 の検索スコアを受け取ります)。 プレフィックス クエリは、特にインデックスが大きく、プレフィックスが少ない文字数で構成されている場合、低速になる場合があります。 
+フィルターと同様に、プレフィックス クエリは完全一致を検索します。 そのため、関連性スコアリングは存在しません (すべての結果が 1.0 の検索スコアを受け取ります)。 プレフィックス クエリは、遅い場合があることに注意してください。インデックスが大きく、プレフィックスが少ない文字数で構成されている場合は特にそうです。 エッジ n-gram トークン化などの別の方法の方が、実行速度が速いことがあります。
 
-文字列の最後の部分を照合するサフィックス クエリを実行する場合は、[ワイルドカード検索](query-lucene-syntax.md#bkmk_wildcard)と完全な Lucene 構文を使用します。
+語句の末尾または中間に対するサフィックスや挿入辞の照合など、他のワイルドカード クエリ バリエーションの場合は、[ワイルドカード検索に対して完全な Lucene 構文](query-lucene-syntax.md#bkmk_wildcard)を使用します。
 
 ## <a name="phrase-search-"></a>語句検索 `"`
 
-用語検索は、1 つ以上の用語に対するクエリで、いずれかの用語が一致と見なされます。 語句検索は引用符 `" "` で囲まれた完全に一致する語句です。 たとえば、`Roach Motel` (引用符なし) は、`Roach` と `Motel` (またはそのいずれか) を含むドキュメントを検索します。その際、語句が指定されている場所と順序は関係ありません。一方、`"Roach Motel"` (引用符あり) は、その語句全体を一緒に、その順序で含むドキュメントだけに一致します (テキスト分析は適用されます)。
+用語検索は、1 つ以上の用語に対するクエリで、いずれかの用語が一致と見なされます。 語句検索は引用符 `" "` で囲まれた完全に一致する語句です。 たとえば、`Roach Motel` (引用符なし) では、`Roach` と `Motel` (またはそのいずれか) を含むドキュメントが検索されます。その場合、語句が指定されている場所と順序は関係ありません。一方、`"Roach Motel"` (引用符あり) では、その語句全体を一緒に、その順序で含むドキュメントだけに一致します (字句解析は適用されます)。
 
 ## <a name="see-also"></a>関連項目  
 
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [単純な検索のクエリ例](search-query-simple-examples.md)
 + [完全な Lucene 検索のクエリ例](search-query-lucene-examples.md)
-+ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Search Documents REST API](/rest/api/searchservice/Search-Documents)
 + [Lucene クエリ構文](query-lucene-syntax.md)
-+ [OData 式の構文](query-odata-filter-orderby-syntax.md) 
++ [OData 式の構文](query-odata-filter-orderby-syntax.md)

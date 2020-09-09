@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a754873aeafe8d4e7b48d49647469874ff40f7e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875883"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921760"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
@@ -75,6 +75,10 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 ![Web API の応答が表示されているブラウザーのサンプル アプリケーション](./media/quickstart-single-page-app/call-api-spa.png)
 
 このシングルページ アプリケーション サンプルは、保護された Web API リソースへの要求にアクセス トークンを追加します。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

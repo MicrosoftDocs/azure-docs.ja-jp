@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224839"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249905"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management の製品テンプレート
 
@@ -31,7 +31,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 -   [Product](#Product)  
   
 > [!NOTE]
->  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
+>  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](./api-management-developer-portal-templates.md)に関するページを参照してください。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -210,7 +210,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |IsDeveloperSubscribed|boolean|現在のユーザーがこの製品をサブスクライブしているかどうか。|  
 |SubscriptionState|number|サブスクリプションの状態。 次の状態があります。<br /><br /> -   `0 - suspended` – サブスクリプションがブロックされています。サブスクライバーは製品の API を呼び出すことができません。<br />-   `1 - active` – サブスクリプションがアクティブです。<br />-   `2 - expired` – サブスクリプションの期限になり、サブスクリプションが非アクティブ化されました。<br />-   `3 - submitted` – サブスクリプション要求が開発者によって行われましたが、まだ承認または拒否されていません。<br />-   `4 - rejected` – サブスクリプション要求が管理者によって拒否されました。<br />-   `5 - cancelled` – サブスクリプションが開発者または管理者によって取り消されました。|  
 |制限|array|このプロパティは非推奨です。使用しないでください。|  
-|DelegatedSubscriptionEnabled|boolean|このサブスクリプションで[委任](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)が有効かどうか。|  
+|DelegatedSubscriptionEnabled|boolean|このサブスクリプションで[委任](./api-management-howto-setup-delegation.md)が有効かどうか。|  
 |DelegatedSubscriptionUrl|string|委任が有効になっている場合、委任されたサブスクリプションの URL。|  
 |IsAgreed|boolean|製品に条件がある場合、現在のユーザーがその条件に同意したかどうか。|  
 |サブスクリプション|[サブスクリプションの概要](api-management-template-data-model-reference.md#SubscriptionSummary)エンティティのコレクション。|製品のサブスクリプション。|  

@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55d9d9191dc62d7397c5de944985d5653eff4e13
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227019"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269830"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 ## <a name="overview"></a>概要
 このドキュメントには、**ワークフロー デザイナー**でワークフローをカスタマイズする方法を示したチュートリアルが含まれています。 実際のワークフロー ファイルは、[こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)から入手できます。  
 
@@ -187,7 +190,7 @@ AVC でエンコードしたビデオ ストリームと AAC でエンコード�
 
 式エディターでは、変数と組み合わせて任意のリテラル値を入力できます。 変数はドル記号で始まります。 エディターで $ キーを押すとドロップダウン ボックスが表示され、利用可能な変数を選択できます。 ここでは、出力ディレクトリと入力ファイルのベース名に変数を使用しています。
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![式エディターへの入力](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +268,16 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 ファイル出力の名前付けは、デザイナーから式を使って制御できます。 いずれかのファイル出力コンポーネントのプロパティ ウィンドウを開き、File プロパティの式エディターを開きます。 1 つ目の出力ファイルは、次の式で設定しました (「 [MXF をシングル ビットレートの MP4 にエンコードする](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)」を参照)。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 これを見ると、ファイル名は、2 つの変数によって決定されることがわかります。書き込み先となる出力ディレクトリとソース ファイルのベース名です。 前者はワークフローのルートにプロパティとして公開され、後者は入力ファイルから取得されます。 出力ディレクトリは、ローカル テスト用です。Azure Media Services でクラウドベースのメディア プロセッサによってワークフローが実行されたときに、このプロパティはワークフロー エンジンによってオーバーライドされます。
 両方の出力ファイルに一貫した名前を付けるために、1 つ目のファイル名の式を次のように変更します。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 同様に 2 つ目の式を次のように変更します。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 ここでひとまずテスト ランを実行し、両方の MP4 出力ファイルが正しく生成されることを確認します。
 
@@ -287,7 +290,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 このマルチプレクサーから送信されたストリームを出力するための第 3 のファイル出力コンポーネントを作成し、次のようにファイル名の式を構成します。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![オーディオ マルチプレクサーによって生成されるファイル出力](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +322,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 出力される .ism ファイルについても他のファイル出力コンポーネントと同様、次の式を使って名前を構成します。
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 完成したワークフローは次のようになります。
 
@@ -342,11 +345,11 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 たとえば、1 つ目のビデオ ファイルに使用されているファイル出力コンポーネントは、次の式を使って構成されています。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 同様に、2 つ目の出力ビデオの式は次のように指定されています。
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 もしハードコーディングを止めて柔軟性を高めることができれば、わかりやすくミスも減ってよいのではないでしょうか。 さいわい、それを実現する方法があります。デザイナーが備えている式の機能と、ワークフローのルートにカスタム プロパティを作成する機能とを組み合わせることで、式の無駄をなくすことができます。
 
@@ -391,7 +394,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>生成される出力ファイル名に公開プロパティの値を使用する
 今度は、生成するファイル名をハードコーディングするのではなく、ワークフロー図のルートに公開したビットレート プロパティを使用するように、各ファイル出力コンポーネントでファイル名の式を変更しましょう。 まず 1 つ目のファイル出力の File プロパティを探し、その式を次のように編集します。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 この式の各種パラメーターは、式ウィンドウを表示した状態でキーボードからドル記号を入力することによってアクセスしたり入力したりすることができます。 利用可能なパラメーターの 1 つが、先ほど公開した video1bitrate プロパティです。
 
@@ -401,11 +404,11 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 2 つ目のビデオのファイル出力についても同じ作業を行います。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 音声のみのファイル出力も同様に編集します。
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 以後、ビデオ ファイルまたはオーディオ ファイルのビットレートを変更した場合、それぞれ対応するエンコーダーが再構成され、ビットレートに基づくファイルの名前付け規則が自動的に反映されます。
 
@@ -462,11 +465,11 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 *シーン サーチ JPG ファイル ライターを追加*
 
-[出力フォルダー パス] プロパティに「${ROOT_outputWriteDirectory}」という式を設定します。
+[出力フォルダー パス] プロパティに `${ROOT_outputWriteDirectory}` という式を設定します。
 
 また、[ファイル名プレフィックス] プロパティには次のように指定します。
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 このプレフィックスによって、サムネイル ファイルに付けられる名前が決まります。 ファイル名の最後には、ストリームにおけるサムネイルの位置を示す数字が付加されます。
 
@@ -551,11 +554,11 @@ AVC エンコーダーとスピーカー ポジション アサイナーは、�
 
 音声のトリミングに関して、次のように開始時間を指定します。
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 同様に、終了時間を次のように指定します。
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>完成したワークフロー
 ![完成したワークフロー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +594,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 では、realizeScript のコンテキストで単純な Groovy スクリプト (hello world) を作成しましょう。 エディターで次のように入力してください。
 
-    node.log("hello world");
+`node.log("hello world");`
 
 ローカル テスト ランを実行します。 実行後、スクリプト コンポーネントの [システム] タブで [ログ] プロパティを確認します。
 

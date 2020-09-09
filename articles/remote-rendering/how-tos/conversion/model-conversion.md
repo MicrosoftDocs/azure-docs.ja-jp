@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808606"
 ---
 # <a name="convert-models"></a>モデルの変換
 
@@ -38,6 +38,11 @@ Azure Remote Rendering を使用すると、非常に複雑なモデルをレン
     - または、*Shared Access Signature (SAS)* を提供します。
 
 すべてのモデル データ (入力と出力) は、ユーザーが指定した Azure Blob ストレージに格納されます。 Azure Remote Rendering を使用すると、資産管理を完全に制御できます。
+
+## <a name="pricing"></a>価格
+
+変換の料金の詳細については、「[Remote Rendering の価格](https://azure.microsoft.com/pricing/details/remote-rendering)」ページを参照してください。
+
 
 ## <a name="conversion-parameters"></a>変換パラメーター
 

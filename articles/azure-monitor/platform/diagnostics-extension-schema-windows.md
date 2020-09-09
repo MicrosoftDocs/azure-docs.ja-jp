@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007930"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics 拡張機能のスキーマ
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure コンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 仮想マシンおよびその他のコンピューティング リソースで Diagnostics 拡張機能を構成するために使用するスキーマについて詳細に説明します。
@@ -76,7 +76,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 |----------------|-----------------|  
 | **overallQuotaInMB** | Azure Diagnostics によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 4096 MB です。<br />
 |**useProxyServer** | IE 設定で設定したプロキシ サーバー設定を使用するように Azure Diagnostics を構成します。|
-|**sinks** | 1\.5 で追加されました。 省略可能。 シンクの場所を指定すると共に、シンクをサポートするすべての子要素の診断データを送信します。 シンクの例に、Application Insights または Event Hubs があります。|  
+|**sinks** | 1\.5 で追加されました。 省略可能。 シンクの場所を指定すると共に、シンクをサポートするすべての子要素の診断データを送信します。 シンクの例に、Application Insights または Event Hubs があります。 なお、Event Hubs にアップロードするイベントにリソース ID を含めるには、*Metrics* 要素の下に *resourceId* プロパティを追加します。 |  
 
 
 <br /> <br />
@@ -157,7 +157,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**EtwEventSourceProviderConfiguration**|[EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 |**EtwManifestProviderConfiguration**|必須属性:<br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 
 
@@ -165,7 +165,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
- [EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。  
+ [EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)から生成されたイベントの収集を構成します。  
 
 |子要素|説明|  
 |--------------------|-----------------|  
@@ -189,7 +189,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
  高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。  
 
- **resourceId** 属性は必須です。  Azure Diagnostics のデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、 **[ID]** フィールドの値をコピーします。  
+ **resourceId** 属性は必須です。  Azure Diagnostics のデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、 **[ID]** フィールドの値をコピーします。  この resourceID プロパティは、カスタム メトリックの送信と、Event Hubs に送信するデータへの resourceID プロパティの追加の両方に使用します。 なお、Event Hubs にアップロードするイベントにリソース ID を含めるには、*Metrics* 要素の下に *resourceId* プロパティを追加します。
 
 |子要素|説明|  
 |--------------------|-----------------|  
@@ -208,8 +208,8 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
 |子要素|説明|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。 値は、[UnitType クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)で使用できます。 |
-|**sinks** | 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Azure Monitor や Event Hubs です。|    
+|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。 値は、[UnitType クラス](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)で使用できます。 |
+|**sinks** | 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Azure Monitor や Event Hubs です。 なお、Event Hubs にアップロードするイベントにリソース ID を含めるには、*Metrics* 要素の下に *resourceId* プロパティを追加します。|    
 
 
 
@@ -239,7 +239,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilter**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
 |**scheduledTransferPeriod**|**duration**|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
-|**sinks** |**string**| 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Application Insights または Event Hubs があります。|  
+|**sinks** |**string**| 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Application Insights または Event Hubs があります。 なお、Event Hubs にアップロードするイベントにリソース ID を含めるには、*Metrics* 要素の下に *resourceId* プロパティを追加します。|  
 
 ## <a name="dockersources"></a>DockerSources
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -327,7 +327,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 JSON のユース ケースでは、ほとんどの場合、*PublicConfig* と *PrivateConfig* は異なる変数として渡されるため、これらを分けて示しています。 このようなケースとしては、Resource Manager テンプレート、PowerShell、Visual Studio があります。
 
 > [!NOTE]
-> パブリック構成の Azure Monitor シンクの定義には、*resourceId* と *region* の 2 つのプロパティがあります。 これらは、クラシック VM と従来の Cloud Services のみに必要です。 これらのプロパティを他のリソースに使用することはできません。
+> パブリック構成の Azure Monitor シンクの定義には、*resourceId* と *region* の 2 つのプロパティがあります。 これらは、クラシック VM と従来の Cloud Services のみに必要です。 *region* プロパティは、他のリソースには使用できません。ARM VM には、*resourceId* プロパティを使用して、Event Hubs にアップロードされるログの resourceID フィールドを入力します。
 
 ```json
 "PublicConfig" {

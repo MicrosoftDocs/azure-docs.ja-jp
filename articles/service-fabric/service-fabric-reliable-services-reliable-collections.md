@@ -3,12 +3,12 @@ title: Reliable Collections の概要
 description: Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの作成を可能にする Reliable Collection を提供します。
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81398430"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245128"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric ステートフル サービスの Reliable Collection の概要
 
@@ -40,8 +40,8 @@ Reliable Collection API は同時実行コレクション API ( **System.Collect
 
 現在、 **Microsoft.ServiceFabric.Data.Collections** には次の 3 つのコレクションが含まれています。
 
-* [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx):レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。 **ConcurrentDictionary**と同様に、キーと値のいずれにも任意の型を使用できます。
-* [リライアブル キュー](https://msdn.microsoft.com/library/azure/dn971527.aspx):レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。 **ConcurrentQueue**と同様に、値には任意の型を使用できます。
+* [Reliable Dictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2):レプリケートされた、トランザクションに使用する非同期のキーと値のペアのコレクションです。 **ConcurrentDictionary**と同様に、キーと値のいずれにも任意の型を使用できます。
+* [リライアブル キュー](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1):レプリケートされた、トランザクションに使用する非同期の厳密な先入れ先出し型 (FIFO) のキューです。 **ConcurrentQueue**と同様に、値には任意の型を使用できます。
 * [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md):高スループットのためにレプリケートされたトランザクションの非同期のベスト エフォートで順序付けされるキューを表します。 **ConcurrentQueue** と同様に、値には任意の型を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
@@ -57,4 +57,4 @@ Reliable Collection API は同時実行コレクション API ( **System.Collect
   * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 * その他
   * [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Reliable Collection の開発者向けリファレンス](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

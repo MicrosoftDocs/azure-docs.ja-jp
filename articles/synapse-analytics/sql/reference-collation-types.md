@@ -1,18 +1,19 @@
 ---
-title: 照合順序
+title: 照合順序のサポート
 description: Azure Synapse SQL でサポートされる照合順序の種類
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
+ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b10aea962a31ba600deca866a8d9f7ab3b81ea8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133675"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496204"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL でのデータベースの照合順序のサポート
 
@@ -22,7 +23,7 @@ ms.locfileid: "82133675"
 
 CREATE DATABASE ステートメントを使用した作成時には、既定の Synapse SQL オンデマンドデータベースの照合順序を指定できます。
 
-## <a name="changing-collation"></a>照合順序の変更
+## <a name="change-collation"></a>照合順序を変更する
 SQL プール データベースの既定の照合順序を変更するには、単純にプロビジョニング エクスペリエンスで [Collation] フィールドを更新します。 たとえば、既定の照合順序を大文字と小文字が区別されるように変更する場合は、単純に [Collation] の名前を SQL_Latin1_General_CP1_CI_AS から SQL_Latin1_General_CP1_CS_AS に変更します。 
 
 SQL オンデマンド データベースの既定の照合順序を変更するには、ALTER DATABASE ステートメントを使用できます。
@@ -103,7 +104,7 @@ SQL オンデマンド データベースの既定の照合順序を変更する
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="checking-the-current-collation"></a>現在の照合順序の確認
+## <a name="check-the-current-collation"></a>現在の照合順序を確認する
 データベースの現在の照合順序を確認するには、次の T-SQL スニペットを実行できます。
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;

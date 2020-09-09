@@ -1,18 +1,18 @@
 ---
 title: パートナー センターの評価とレビューの分析ダッシュボード
 description: Microsoft AppSource および Azure Marketplace でのオファーに関する顧客フィードバックの統合ビューにアクセスする方法について説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 4a107b3175b7dddad3abb6401cbc12216ae843be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792923"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304192"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>パートナー センターの評価とレビューの分析ダッシュボード
 
@@ -26,7 +26,7 @@ ms.locfileid: "82792923"
 
 ## <a name="access-the-dashboard"></a>ダッシュボードにアクセスする
 
-パートナー センターの[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** セクションを展開し、 **[評価とレビュー]** を選択します。
+パートナー センターの[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** セクションを展開し、 **[評価とレビュー]** を選択します。
 
 ダッシュボードには、以下のカスタム アクティビティがグラフィカルに表示されます。
 

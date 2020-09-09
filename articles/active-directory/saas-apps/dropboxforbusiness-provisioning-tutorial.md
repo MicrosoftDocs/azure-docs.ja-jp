@@ -2,29 +2,28 @@
 title: チュートリアル:Dropbox for Business を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: ユーザー アカウントを Dropbox for Business に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure Active Directory を構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3dd0a31e23418c5871ac3db80b2ba1543576fac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058446"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555765"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>チュートリアル:Dropbox for Business を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、ユーザーまたはグループを Dropbox for Business に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、Dropbox for Business と Azure Active Directory (Azure AD) で実行される手順を示すことです。
+
+> [!IMPORTANT]
+> Microsoft と Dropbox は、2021 年 4 月 1 日付けで古くなった Dropbox 統合を廃止します。 サービスの中断を回避するには、グループをサポートする新しい Dropbox 統合に移行することをお勧めします。 新しい Dropbox 統合に移行するには、次の手順を使用して、Azure AD テナントでのプロビジョニング用に Dropbox の新しいインスタンスを追加して構成します。 新しい Dropbox 統合を構成したら、以前の Dropbox 統合でのプロビジョニングを無効にして、プロビジョニングの競合を回避します。
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。

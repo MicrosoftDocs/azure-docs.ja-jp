@@ -26,7 +26,7 @@ Apache Phoenix で Apache HBase に接続できません。 さまざまな理�
 
 アクティブな Zookeeper ノードの IP が正しくありません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 アクティブな Zookeeper ノードの IP は、 **[HBase]**  >  **[Quick Links]\(クイック リンク\)**  >  **[ZK (Active)]\(ZK (アクティブ)\)**  >  **[Zookeeper Info]\(Zookeeper 情報\)** へのリンクをたどることで、Ambari UI から識別できます。 必要に応じて IP を修正します。
 
@@ -46,7 +46,7 @@ Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolat
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Apache Ambari UI から、次の手順に従って、すべての ZooKeeper ノード上で HMaster サービスを再起動します。
 

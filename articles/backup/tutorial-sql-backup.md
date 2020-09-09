@@ -3,12 +3,12 @@ title: チュートリアル - Azure への SQL Server データベースのバ�
 description: このチュートリアルでは、Azure VM 上で稼働している SQL Server データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17a8472da2595c08cb198baaf853faf110a619fa
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680730"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612454"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -64,7 +64,7 @@ SQL Server VM を Azure Marketplace から作成しなかった場合、エラ�
 * 右大かっこ "]"
 * "F:\" で始まるデータベース名
 
-Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 [詳細については、こちらを参照してください](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 [詳細については、こちらを参照してください](/rest/api/storageservices/understanding-the-table-service-data-model)。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -117,7 +117,7 @@ VM 上で稼働しているデータベースを検出します。
 
    ![[バックアップの構成] を選択する](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. **[バックアップの構成]** をクリックすると、 **[バックアップする項目の選択]** ブレードが表示されます。 ここには、登録されている可用性グループとスタンドアロン SQL Server すべてが一覧表示されます。 行の左側のシェブロンを展開すると、そのインスタンスまたは Always On AG 内の保護されていないすべてのデータベースが表示されます。  
+2. **[バックアップの構成]** を選択すると、 **[バックアップする項目の選択]** ペインが表示されます。 ここには、登録されている可用性グループとスタンドアロン SQL Server すべてが一覧表示されます。 行の左側のシェブロンを展開すると、そのインスタンスまたは Always On AG 内の保護されていないすべてのデータベースが表示されます。  
 
     ![スタンドアロン データベースであるすべての SQL Server インスタンスの表示](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -129,11 +129,11 @@ VM 上で稼働しているデータベースを検出します。
 
      * または、 **[AUTOPROTECT]\(自動保護\)** 列の対応するドロップダウンの **[オン]** オプションを選択することにより、インスタンス全体または Always On 可用性グループで自動保護を有効にすることができます。 自動保護機能では、既存のすべてのデータベースの保護が一度に有効になるだけでなく、それ以降にそのインスタンスまたは可用性グループに追加されるすべての新しいデータベースも自動的に保護されます。  
 
-4. **[OK]** をクリックすると、 **[バックアップ ポリシー]** ブレードが開きます。
+4. **[OK]** を選択して、 **[バックアップ ポリシー]** ペインを開きます。
 
     ![Always On 可用性グループで自動保護を有効にする](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. **[バックアップ ポリシーの選択]** でポリシーを選択し、 **[OK]** をクリックします。
+5. **[バックアップ ポリシーの選択]** でポリシーを選択し、 **[OK]** を選択します。
 
    * 既定のポリシーを選択します:HourlyLogBackup
    * SQL 用に以前に作成された既存のバックアップ ポリシーを選択する。
@@ -161,8 +161,8 @@ VM 上で稼働しているデータベースを検出します。
 
 バックアップ ポリシーを作成するには:
 
-1. コンテナーで、 **[バックアップ ポリシー]**  >  **[追加]** の順にクリックします。
-2. **[追加]** メニューで、 **[Azure VM 内の SQL Server]** をクリックしてポリシーの種類を定義します。
+1. コンテナーで、 **[バックアップ ポリシー]**  >  **[追加]** の順に選択します。
+2. **[追加]** メニューで、 **[Azure VM 内の SQL Server]** を選択してポリシーの種類を定義します。
 
    ![新しいバックアップ ポリシーのポリシーの種類を選択する](./media/backup-azure-sql-database/policy-type-details.png)
 
@@ -171,7 +171,7 @@ VM 上で稼働しているデータベースを検出します。
 
    * **[毎日]** を選択する場合は、バックアップ ジョブが開始されるときに、時刻とタイム ゾーンを選択します。
    * **[完全バックアップ]** オプションをオフにすることはできないため、完全バックアップを実行する必要があります。
-   * **[完全バックアップ]** をクリックし、ポリシーを表示します。
+   * **[完全バックアップ]** を選択し、ポリシーを表示します。
    * 日次の完全バックアップを選択する場合は、差分バックアップを作成できません。
    * **[毎週]** を選択する場合は、バックアップ ジョブが開始されるときに、曜日、時刻、およびタイム ゾーンを選択します。
 
@@ -214,7 +214,7 @@ VM 上で稼働しているデータベースを検出します。
 ## <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 
 1. Recovery Services コンテナーで、[バックアップ アイテム] を選択します。
-2. [SQL in Azure VM]\(Azure VM 内の SQL\) をクリックします。
+2. [SQL in Azure VM]\(Azure VM 内の SQL\) を選択します。
 3. データベースを右クリックし、[今すぐバックアップ] を選択します。
 4. バックアップの種類 (完全、差分、ログ、コピーのみの完全) と圧縮の有効/無効を選択します
 5. [OK] を選択して、バックアップを開始します。

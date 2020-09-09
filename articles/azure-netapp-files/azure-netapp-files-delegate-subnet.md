@@ -1,6 +1,6 @@
 ---
 title: サブネットを Azure NetApp Files に委任する | Microsoft Docs
-description: サブネットを Azure NetApp Files に委任する方法を説明します。
+description: サブネットを Azure NetApp Files に委任する方法について説明します。 ボリュームを作成する際は、委任されたサブネットを指定します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,22 +11,22 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/04/2020
+ms.topic: how-to
+ms.date: 07/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 5f36e40091ada27f411adc2ffa78b6d4a58f8cca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9bb3e93b99ce8d5a61501d417a71e5e38753f5ff
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791410"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513028"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>サブネットを Azure NetApp Files に委任する 
 
 サブネットを Azure NetApp Files に委任する必要があります。   ボリュームを作成する際は、委任されたサブネットを指定する必要があります。
 
 ## <a name="considerations"></a>考慮事項
-* 新しいサブネットを作成するウィザードでは、既定で /24 ネットワーク マスクになっており、251 個の使用可能な IP アドレスが提供されます。 /28 ネットワーク マスクを使用すると、16 個の使用可能な IP アドレスが提供され、このサービスにはそれで十分です。
+* 新しいサブネットを作成するウィザードでは、既定で /24 ネットワーク マスクになっており、251 個の使用可能な IP アドレスが提供されます。 /28 ネットワーク マスクを使用すると、11 個の使用可能な IP アドレスが提供され、このサービスにはそれで十分です。
 * 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
    Azure では、VNet 内に複数の委任されたサブネットを作成できます。  ただし、委任されたサブネットを複数使用している場合、新しいボリュームを作成しようとすると失敗します。  
    1 つの VNet には、委任されたサブネットを 1 つだけ含めることができます。 NetApp アカウントでは、複数の Vnet にボリュームを配置でき、それぞれに独自の委任されたサブネットがあります。  

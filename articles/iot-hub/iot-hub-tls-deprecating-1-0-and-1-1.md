@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: a887dd4df44ba58b0e6646ffb1c10eb21edf3e69
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5c717a02c2008436617d16f08625a1cecc204340
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381292"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849520"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>IoT Hub での TLS 1.0 と 1.1 の非推奨化
 
@@ -22,15 +22,26 @@ ms.locfileid: "81381292"
 
 IoT Hub は、将来通知があるまで TLS 1.0/1.1 を引き続きサポートします。 ただし、すべてのお客様にできるだけ早く TLS 1.2 に移行することをお勧めします。
 
-## <a name="supported-ciphers"></a>サポートされる暗号
+## <a name="deprecating-tls-11-ciphers"></a>非推奨となる TLS 1.1 暗号
 
-TLS ハンドシェイクで使用されるさまざまな暗号が使用可能になるタイムラインを次に示します。
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SH`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
 
-* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (現在サポートされています)
-* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (2020 年の後半にサポートされる予定です)
-* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (2020 年の後半にサポートされる予定です)
-* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (2020 年の後半にサポートされる予定です)
+## <a name="deprecating-tls-10-ciphers"></a>非推奨となる TLS 1.0 暗号
 
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+## <a name="tls-12-ciphers"></a>TLS 1.2 暗号
+
+[IoT Hub TLS 1.2 の推奨される暗号](iot-hub-tls-support.md#recommended-ciphers)に関する記事を参照してください。
+ 
 ## <a name="customer-feedback"></a>カスタマー フィードバック
 
 TLS 1.2 強制は業界全体で最高クラスの暗号化の選択肢であり、計画どおりに有効になりますが、特定のデプロイおよび TLS 1.2 の導入に関する問題についてのご意見をお待ちしております。 このため、[iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com) にコメントを送信できます。

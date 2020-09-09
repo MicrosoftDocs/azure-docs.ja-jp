@@ -5,15 +5,15 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236635"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253118"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>ステートフル Reliable Services の診断機能
-Azure Service Fabric ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
+Azure Service Fabric ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
 
 ## <a name="eventsource-events"></a>EventSource イベント
 ステートフル Reliable Services の StatefulServiceBase クラスの EventSource 名は、"Microsoft-ServiceFabric-Services" です。 このイベント ソースからのイベントは、サービスを [Visual Studio でデバッグしている](service-fabric-debugging-your-application.md)ときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
@@ -46,11 +46,11 @@ Reliable Services ランタイムでは、次のパフォーマンス カウン�
 | Service Fabric トランザクション レプリケーター |Azure Service Fabric トランザクション レプリケーターに固有のカウンター |
 | Service Fabric TStore |Azure Service Fabric TStore に固有のカウンター |
 
-Service Fabric トランザクション レプリケーターは、特定の一連の[レプリカ](service-fabric-concepts-replica-lifecycle.md)内でトランザクションをレプリケートするために、[Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) によって使用されます。
+Service Fabric トランザクション レプリケーターは、特定の一連の[レプリカ](service-fabric-concepts-replica-lifecycle.md)内でトランザクションをレプリケートするために、[Reliable State Manager](./service-fabric-reliable-services-introduction.md) によって使用されます。
 
-Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-services-reliable-collections-internals.md) でキーと値のペアを格納および取得するために使用されるコンポーネントです。
+Service Fabric TStore は、[Reliable Collections](./service-fabric-reliable-services-introduction.md) でキーと値のペアを格納および取得するために使用されるコンポーネントです。
 
-パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
+パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
 
 ### <a name="performance-counter-instance-names"></a>パフォーマンス カウンター インスタンス名
 多数の Reliable Service または Reliable Service パーティションを持つクラスターには、多数のトランザクション レプリケーターのパフォーマンス カウンター インスタンスが含まれます。 これは TStore パフォーマンス カウンターの場合と同様ですが、使用されているリライアブル ディクショナリとリライアブル キューの数も乗算されます。 パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定の[パーティション](service-fabric-concepts-partitioning.md)、サービス レプリカ、および TStore の場合の状態プロバイダーを識別するために役立ちます。
@@ -60,7 +60,7 @@ Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-servi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID であり、その文字列表現は書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) を使用して生成されます。
+*ServiceFabricPartitionId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID であり、その文字列表現は書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) を使用して生成されます。
 
 *ServiceFabricReplicaId* は、Reliable Service の特定のレプリカに関連付けられている ID です。 一意性を確保し、同じパーティションによって生成された他のパフォーマンス カウンター インスタンスと競合しないように、レプリカ ID は、パフォーマンス カウンター インスタンス名の中に組み入れられています。 Reliable Services におけるレプリカとその役割に関する詳細については、[こちら](service-fabric-concepts-replica-lifecycle.md)で確認できます。
 
@@ -75,7 +75,7 @@ Service Fabric TStore は、[Reliable Collections](service-fabric-reliable-servi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID であり、その文字列表現は書式指定子 "D" を持つ [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) を使用して生成されます。
+*ServiceFabricPartitionId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID であり、その文字列表現は書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) を使用して生成されます。
 
 *ServiceFabricReplicaId* は、Reliable Service の特定のレプリカに関連付けられている ID です。 一意性を確保し、同じパーティションによって生成された他のパフォーマンス カウンター インスタンスと競合しないように、レプリカ ID は、パフォーマンス カウンター インスタンス名の中に組み入れられています。 Reliable Services におけるレプリカとその役割に関する詳細については、[こちら](service-fabric-concepts-replica-lifecycle.md)で確認できます。
 
@@ -116,4 +116,4 @@ Reliable Services ランタイムでは、`Service Fabric TStore` カテゴリ�
 | コピー ディスク転送バイト数/秒 | ストア コピー中に (プライマリ レプリカ上で) 読み取られたディスク バイト数/秒と (セカンダリ レプリカ上で) 書き込まれたディスク バイト数/秒。|
 
 ## <a name="next-steps"></a>次のステップ
-[PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+[PerfView での EventSource プロバイダー](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

@@ -3,22 +3,23 @@ title: Jupyter ノートブックでデータにアクセスする - Azure Noteb
 description: Jupyter Notebook からファイル、REST API、データベース、さまざまな Azure Storage リソースにアクセスする方法について説明します。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: b2254e6d966ca3281cd9c8b0771cb77fb6dede33
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646349"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846617"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Jupyter Notebook で面白い仕事を行うには、データが必要です。 実際、データは Notebook に不可欠なものです。
 
 もちろん、[データ ファイルをプロジェクトにインポートする](work-with-project-data-files.md)こともできます。`curl` などのコマンドを使用してノートブック内から直接ファイルをダウンロードすることさえできます。 ただし、REST API、リレーショナル データベース、クラウド ストレージ (Azure テーブルなど) といったファイル以外のソースから利用可能なさらに広範なデータを使用することが必要になる可能性があります。
 
 この記事では、これらのさまざまなオプションについて簡単に説明します。 データ アクセスは動いているところを見るのが最もよくわかるので、「[Azure Notebooks Samples - Access your data](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)」(Azure Notebooks サンプル - データにアクセスする) の実行可能なコードをご覧ください。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API
 
@@ -41,11 +42,11 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL データベース
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance
 
-pyodbc または pymssql ライブラリを利用して、SQL Server データベースにアクセスできます。
+pyodbc または pymssql ライブラリを利用して、SQL Database または SQL Managed Instance のデータベースにアクセスできます。
 
-「[Python を使用して Azure SQL データベースに照会する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)」では、AdventureWorks のデータを含むデータベースを作成する方法と、そのデータのクエリを行う方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
+[Python を使用した Azure SQL データベースに対するクエリ](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)に関するクイックスタートには、AdventureWorks のデータが格納された SQL Database のデータベースを作成する方法と、そのデータにクエリを実行する方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
 
 ## <a name="azure-storage"></a>Azure Storage
 

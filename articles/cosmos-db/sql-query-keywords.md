@@ -4,14 +4,14 @@ description: Azure Cosmos DB の SQL キーワードについて説明します�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261569"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496683"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB でのキーワード
 
@@ -35,9 +35,6 @@ ms.locfileid: "81261569"
 ```
 
 SQL API では、ANSI SQL と異なり、混合型のプロパティに対して範囲クエリを表すことができます。 たとえば、一部の項目の `grade` が `5` などの数値で、他の項目が `grade4` などの文字列である場合があります。 このような場合、JavaScript の場合と同様に、2 つの異なる種類を比較した結果は `Undefined` になるため、項目がスキップされます。
-
-> [!TIP]
-> クエリの実行速度を速めるには、`BETWEEN` 句でフィルター処理される数値プロパティやパスに対して範囲のインデックス型を使用するインデックス作成ポリシーを作成します。
 
 ## <a name="distinct"></a>DISTINCT
 
@@ -76,7 +73,7 @@ FROM Families f
 ]
 ```
 
-DISTINCT は、サブクエリ内のプロジェクションでも使用できます。
+`DISTINCT` は、サブクエリ内のプロジェクションでも使用できます。
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames

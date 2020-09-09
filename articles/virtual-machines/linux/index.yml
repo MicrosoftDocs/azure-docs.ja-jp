@@ -10,19 +10,19 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/19/2019
-  ms.openlocfilehash: 12c3447bc7e46e45d05711e1b0c7a59f8d8d0218
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: edc0fa71a169ddce00f361e4125f72094692b087
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77115827"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816798"
 landingContent:
 - title: 最新の機能
   linkLists:
   - linkListType: whats-new
     links:
     - text: スポット VM
-      url: spot-vms.md
+      url: ../spot-vms.md
     - text: 専用ホスト
       url: dedicated-hosts.md
     - text: 近接通信配置グループ
@@ -32,28 +32,28 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli
+      url: ./quick-create-cli.md
     - text: Azure portal
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal
+      url: ./quick-create-portal.md
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell
+      url: ./quick-create-powershell.md
 - title: ステップバイステップ ガイド
   linkLists:
   - linkListType: tutorial
     links:
     - text: Linux VM を作成および管理する
-      url: /azure/virtual-machines/linux/tutorial-manage-vm
+      url: ./tutorial-manage-vm.md
     - text: VM ディスク
-      url: /azure/virtual-machines/linux/tutorial-manage-disks
+      url: ./tutorial-manage-disks.md
     - text: VM 構成を自動化する
-      url: /azure/virtual-machines/linux/tutorial-automate-vm-deployment
+      url: ./tutorial-automate-vm-deployment.md
     - text: カスタム VM イメージを作成する
-      url: /azure/virtual-machines/linux/tutorial-custom-images
+      url: ./tutorial-custom-images.md
     - text: 仮想ネットワークを使用して VM を管理する
-      url: /azure/virtual-machines/linux/tutorial-virtual-network
+      url: ./tutorial-virtual-network.md
 - title: 自習形式トレーニング
   linkLists:
   - linkListType: learn
     links:
     - text: " Azure における Linux 仮想マシンの作成"
-      url: https://docs.microsoft.com/learn/modules/create-linux-virtual-machine-in-azure/
+      url: /learn/modules/create-linux-virtual-machine-in-azure/

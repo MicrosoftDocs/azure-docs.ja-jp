@@ -1,22 +1,22 @@
 ---
 title: チュートリアル:ユーザー インターフェイスをカスタマイズする
 titleSuffix: Azure AD B2C
-description: Azure portal を使用し、Azure Active Directory B2C でアプリケーションのユーザー インターフェイス (UI) をカスタマイズする方法について説明します。
+description: このチュートリアルでは、Azure portal を使用し、Azure Active Directory B2C でアプリケーションのユーザー インターフェイス (UI) をカスタマイズする方法について説明します。
 services: B2C
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/01/2019
+ms.topic: tutorial
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9ca6d91be95bfb1a47f85b20f3775a57518ffcf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186252"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922134"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェースをカスタマイズする
 
@@ -139,7 +139,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 ## <a name="update-the-user-flow"></a>ユーザー フローを更新する
 
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-2. **[ユーザー フロー (ポリシー)]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
+2. **[ユーザー フロー]** を選択し、*B2C_1_signupsignin1* ユーザー フローを選択します。
 3. **[ページ レイアウト]** を選択し、 **[統合されたサインアップまたはサインイン ページ]** の下で、 **[カスタム コンテンツの使用]** に対して **[はい]** を選択します。
 4. **[カスタム ページ URI]** に、先に記録しておいた *custom-ui.html* ファイルの URL を入力します。
 5. ページの最上部で **[保存]** を選択します。
@@ -166,4 +166,4 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 > * カスタマイズした UI をテストする
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C での言語のカスタマイズ](user-flow-language-customization.md)
+> [Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする](customize-ui-overview.md)

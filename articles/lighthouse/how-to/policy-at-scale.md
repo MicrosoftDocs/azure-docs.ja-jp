@@ -1,20 +1,23 @@
 ---
 title: 委任されたサブスクリプションに Azure Policy を大規模にデプロイする
-description: Azure の委任されたリソース管理によって、ポリシー定義とポリシー割り当てを複数のテナントにわたってデプロイする方法について説明します。
-ms.date: 11/8/2019
-ms.topic: conceptual
-ms.openlocfilehash: 3fe7e48c56e9a5af93e9642ee16c50cfbce34f9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+description: Azure Lighthouse によって、ポリシー定義とポリシー割り当てを複数のテナントにわたってデプロイする方法について説明します。
+ms.date: 08/12/2020
+ms.topic: how-to
+ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481819"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167285"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 
-サービス プロバイダーは、Azure の委任されたリソース管理のために、複数の顧客テナントをオンボードしてきたかもしれません。 [Azure Lighthouse](../overview.md) を使用すると、サービス プロバイダーは一度に複数のテナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
+サービス プロバイダーは、[Azure Lighthouse](../overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、サービス プロバイダーは一度に複数のテナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
 
 このトピックでは、PowerShell コマンドを介して [Azure Policy](../../governance/policy/index.yml) を使用し、複数のテナントにわたってポリシー定義とポリシー割り当てをデプロイする方法を示します。 この例では、ポリシー定義によって HTTPS トラフィックのみを許可することで、ストレージ アカウントが確実に保護されるようにしています。
+
+> [!TIP]
+> このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](../concepts/enterprise.md)も同じプロセスを使用できます。
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Azure Resource Graph を使用して複数の顧客テナントにわたるクエリを実行する
 

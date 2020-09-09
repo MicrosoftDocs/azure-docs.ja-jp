@@ -2,31 +2,21 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
-ms.author: diberry
-ms.openlocfilehash: 11abd52681d7c9962af4e5bf0728f97b256223c1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 07/30/2020
+ms.openlocfilehash: 0be0343bc79f8e8f62e49056c8c1042df412e8bd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122754"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461125"
 ---
 ## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
-[Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 次のこともできます。
+[Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 
 
-* 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。
-* [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
-
-試用版のサブスクリプションまたはリソースからキーを取得した後、[環境変数](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)を 2 つ作成します。
-
-* `PERSONALIZER_RESOURCE_KEY` (リソース キー)。
-* `PERSONALIZER_RESOURCE_ENDPOINT` (リソース エンドポイント)。
-
-Azure portal では、キーとエンドポイントのどちらの値も **[クイック スタート]** ページで取得できます。
+リソースからキーを取得した後、値でコードを編集できるように、これら 2 つの値をコピーします。 Azure portal の **[クイックスタート]** ページで、キーとエンドポイントのどちらの値も取得できます。

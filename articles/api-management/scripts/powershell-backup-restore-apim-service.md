@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - サービスのバックアップと復元 | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - サービスのバックアップと復元
+description: API Management サービス インスタンスをバックアップおよび復元する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 236384b0f269018e3689888ab9ad5f1a3d9593ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d80a63b1a52d1ed7750d1a025eb8f4cd9f254a94
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70074250"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851071"
 ---
 # <a name="backup-and-restore-service"></a>サービスのバックアップと復元
 
-この記事で示すサンプルでは、API Management サービス インスタンスをバックアップおよび復元する方法を示します。 
+この記事で示すサンプル スクリプトでは、API Management サービス インスタンスをバックアップおよび復元する方法を示します。 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 その他の Azure API Management 用 Azure PowerShell サンプルは、[PowerShell サンプル](../powershell-samples.md)のページにあります。

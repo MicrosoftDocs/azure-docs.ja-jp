@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 054f1449d6f06225633bf0647cac93ca42f2b59b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929011"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652042"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge の技術仕様
 
-Microsoft Azure Stack Edge デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術仕様では、電源装置 (PSU)、ストレージ容量、エンクロージャ、環境基準について説明しています。 
+Microsoft Azure Stack Edge デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術仕様では、電源装置 (PSU)、ストレージ容量、エンクロージャ、環境基準について説明しています。
 
 ## <a name="compute-memory-specifications"></a>コンピューティング、メモリの仕様
 
@@ -28,15 +28,13 @@ Azure Stack Edge デバイスには、コンピューティングとメモリに
 | CPU    | 2 X 10 コア CPU                     |
 | メモリ              | 128 GB RAM                  |
 
-
 ## <a name="fpga-specifications"></a>FPGA の仕様
 
-Machine Learning (ML) のシナリオが可能なすべての Azure Stack Edge デバイスには、Field Programmable Gate Array (FPGA) が含まれています。 
+Machine Learning (ML) のシナリオが可能なすべての Azure Stack Edge デバイスには、Field Programmable Gate Array (FPGA) が含まれています。
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> 利用可能なディープ ニューラル ネットワーク (DNN) モデルは、[クラウド FPGA インスタンスでサポートされる](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)ものと同じです。| 
-
+| FPGA   | Intel Arria 10 <br> 利用可能なディープ ニューラル ネットワーク (DNN) モデルは、[クラウド FPGA インスタンスでサポートされる](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)ものと同じです。|
 
 ## <a name="power-supply-unit-specifications"></a>電源装置の仕様
 
@@ -48,6 +46,11 @@ Azure Stack Edge デバイスは 100-240 V の電源装置 (PSU) 2 つと高性�
 | 頻度               | 50/60 Hz                   |
 | 選択電圧範囲 | オート レンジ: 100-240 V AC |
 | ホット プラグ可能           | はい                        |
+
+### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Azure Stack Edge 電源コードのリージョン別仕様
+
+Azure Stack Edge デバイスに必要な電源コードは、Azure リージョンに応じて異なります。
+サポートされているすべての電源コードの技術的仕様については、[Azure Stack Edge 電源コードのリージョン別仕様](azure-stack-edge-technical-specifications-power-cords-regional.md)に関するページをご覧ください。
 
 <!--## Power consumption statistics
 
@@ -133,7 +136,6 @@ Azure Stack Edge デバイスには、それぞれ 1.6 TB の容量を持つ 9 X
 |    エネルギー             |    委員会規則 (EU) No. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
-
 ### <a name="operating-temperature-de-rating-specifications"></a>動作温度のディレーティング仕様
 
 |     動作温度のディレーティング     |     周辺温度の範囲                                                         |
@@ -141,7 +143,6 @@ Azure Stack Edge デバイスには、それぞれ 1.6 TB の容量を持つ 9 X
 |    最大 35°C (95°F)                       |    最大温度は、950 m (3,117 ft) より高いところでは、1°C/300 m (1°F/547 ft) の割合で下がります。    |
 |    35°C - 40°C (95°F - 104°F)            |    最大温度は、950 m (3,117 ft) より高いところでは、1°C/175 m (1°F/319 ft) の割合で下がります。    |
 |    40°C - 45°C (104°F - 113°F)           |    最大温度は、950 m (3,117 ft) より高いところでは、1°C/125 m (1°F/228 ft) の割合で下がります。    |
-
 
 ## <a name="next-steps"></a>次のステップ
 

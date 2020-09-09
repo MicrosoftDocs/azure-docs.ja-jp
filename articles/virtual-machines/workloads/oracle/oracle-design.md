@@ -3,8 +3,8 @@ title: Azure での Oracle データベースの設計と実装 | Microsoft Docs
 description: ご利用の Azure 環境で Oracle データベースを設計および実装します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.author: rogardle
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687535"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510013"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -43,17 +43,17 @@ ms.locfileid: "81687535"
 
 オンプレミスの実装と Oracle データベースの Azure 実装の違いの一部を次の表に示します。
 
-> 
-> |  | **オンプレミスの実装** | **Azure 実装** |
-> | --- | --- | --- |
-> | **ネットワーク** |LAN/WAN  |SDN (ソフトウェアによるネットワーク)|
-> | **セキュリティ グループ** |IP/ポートの制限ツール |[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **回復力** |MTBF (平均故障間隔) |MTTR (平均復旧時間)|
-> | **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (修正/更新プログラムは Azure によって管理) |
-> | **リソース** |専用  |他のクライアントと共有|
-> | **リージョン** |データ センター |[リージョンのペア](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage** |記憶域ネットワーク/物理ディスク |[Azure 管理のストレージ](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **スケール** |垂直スケール |水平スケール|
+
+|  | オンプレミスの実装 | Azure 実装 |
+| --- | --- | --- |
+| **ネットワーク** |LAN/WAN  |SDN (ソフトウェアによるネットワーク)|
+| **セキュリティ グループ** |IP/ポートの制限ツール |[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+| **回復力** |MTBF (平均故障間隔) |MTTR (平均復旧時間)|
+| **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](../../windows/infrastructure-example.md) (修正/更新プログラムは Azure によって管理) |
+| **リソース** |専用  |他のクライアントと共有|
+| **リージョン** |データ センター |[リージョンのペア](../../regions.md#region-pairs)|
+| **Storage** |記憶域ネットワーク/物理ディスク |[Azure 管理のストレージ](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **スケール** |垂直スケール |水平スケール|
 
 
 ### <a name="requirements"></a>必要条件
@@ -116,11 +116,11 @@ AWR レポートから取得できるメトリックを次に示します。
 
 #### <a name="2-choose-a-vm"></a>2.VM の選択
 
-AWR レポートから収集した情報に基づき、次のステップでは要件を満たすサイズの VM を選択します。 [メモリの最適化](../../linux/sizes-memory.md)に関する記事で、使用可能な仮想マシンの一覧を見つけることができます。
+AWR レポートから収集した情報に基づき、次のステップでは要件を満たすサイズの VM を選択します。 [メモリの最適化](../../sizes-memory.md)に関する記事で、使用可能な仮想マシンの一覧を見つけることができます。
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3.ACU に基づき、同様の VM シリーズで VM のサイズを細かく調整する
 
-VM を選択した後に、仮想マシンの ACU に注意を向けてください。 お客様の要件に合うように、ACU の値に基づいて別の VM を選択することもできます。 詳細については、「[Azure コンピューティング ユニット](https://docs.microsoft.com/azure/virtual-machines/windows/acu)」をご覧ください。
+VM を選択した後に、仮想マシンの ACU に注意を向けてください。 お客様の要件に合うように、ACU の値に基づいて別の VM を選択することもできます。 詳細については、「[Azure コンピューティング ユニット](../../acu.md)」をご覧ください。
 
 ![ACU ユニット ページのスクリーン ショット](./media/oracle-design/acu_units.png)
 
@@ -143,8 +143,8 @@ VM を選択した後に、仮想マシンの ACU に注意を向けてくださ
 
 - オンプレミスのデプロイと比べて、ネットワーク待機時間が比較的長くなります。 ネットワークのラウンド トリップ数を削減すると、パフォーマンスが大幅に向上します。
 - ラウンドトリップ数を削減するには、同じ仮想マシン上のトランザクション数が多いアプリケーション、つまり "おしゃべりな" アプリを統合します。
-- ネットワーク パフォーマンスを向上させるには、[高速ネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)で仮想マシンを使用してください。
-- 特定の Linux ディストリビューションについては、[TRIM/UNMAP サポート](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)を有効にすることを検討してください。
+- ネットワーク パフォーマンスを向上させるには、[高速ネットワーク](../../../virtual-network/create-vm-accelerated-networking-cli.md)で仮想マシンを使用してください。
+- 特定の Linux ディストリビューションについては、[TRIM/UNMAP サポート](../../linux/configure-lvm.md#trimunmap-support)を有効にすることを検討してください。
 - 個別の仮想マシン上に [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) をインストールします。
 - Linux では、既定では大型のページは有効になっていません。 大型のページを有効にすることを検討し、Oracle DB で `use_large_pages = ONLY` を設定します。 これは、パフォーマンスの向上に役立ちます。 詳細については、 [こちら](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)で確認できます。
 
@@ -187,7 +187,7 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 - I/O 削減のためにデータ圧縮を使用します (データとインデックスの両方)。
 - REDO ログ、SYSTEM 表領域、TEMP 表領域、UNDO 表領域は、それぞれ別のデータ ディスクに分離します。
 - アプリケーション ファイルを既定の OS ディスク (/dev/sda) に保存しないでください。 これらのディスクは VM の高速起動用に最適化されていないため、アプリケーションに適切なパフォーマンスが提供されない可能性があります。
-- Premium ストレージで M シリーズの VM を使用する場合は、再実行ログ ディスクで[書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)を有効にします。
+- Premium ストレージで M シリーズの VM を使用する場合は、再実行ログ ディスクで[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を有効にします。
 
 ### <a name="disk-cache-settings"></a>ディスク キャッシュの設定
 

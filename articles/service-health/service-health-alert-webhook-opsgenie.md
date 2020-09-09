@@ -3,12 +3,12 @@ title: OpsGenie で webhook を使用して Azure サービス正常性アラー
 description: OpsGenie インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654139"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529099"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>OpsGenie で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "77654139"
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Azure Portal で OpsGenie を使用してアラートを作成する
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:
-1. 「[Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する](../azure-monitor/platform/alerts-activity-log-service-notifications.md)」の手順 1 から 8 を実行します。
+1. 「[Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する](./alerts-activity-log-service-notifications-portal.md)」の手順 1 から 8 を実行します。
 
 1. **[アクション]** の一覧で以下を定義します。
 
@@ -85,5 +85,5 @@ ms.locfileid: "77654139"
 ## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
-- [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
+- [サービス正常性の通知](./service-notifications.md)について学習します。
 - [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

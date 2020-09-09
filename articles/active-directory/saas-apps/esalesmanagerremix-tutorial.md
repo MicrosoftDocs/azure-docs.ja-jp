@@ -1,27 +1,22 @@
 ---
-title: 'チュートリアル: Azure Active Directory と E Sales Manager Remix の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と E Sales Manager Remix の統合 | Microsoft Docs
 description: Azure Active Directory と E Sales Manager Remix の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202398"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555391"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 
@@ -101,9 +96,9 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     ![[E Sales Manager Remix のドメインと URL] のシングル サインオン情報](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/esales-pc*
+    a. **[サインオン URL]** ボックスに、*https://\<Server-Based-URL>/\<sub-domain>/esales-pc* の形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、次の形式で URL を入力します。*https://\<サーバー ベースの URL>/\<サブドメイン>/*
+    b. **[識別子]** ボックスに、*https://\<Server-Based-URL>/\<sub-domain>/* 形式で URL を入力します。
 
     c. **[識別子]** の値は、このチュートリアルの中で後で使用します。
     
@@ -120,7 +115,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     **[属性の編集]** ウィンドウが開きます。
 
-1. **[名前空間]** と **[名前]** の値をコピーします。 *\<名前空間>/\<名前>* のパターンの値を生成し、このチュートリアルの中で後で使用するために保存しておきます。
+1. **[名前空間]** と **[名前]** の値をコピーします。 *\<Namespace>/\<Name>* のパターンの値を生成し、このチュートリアルの中で後で使用するために保存しておきます。
 
     ![[属性の編集] ウィンドウ](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -204,7 +199,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **作成** を選択します。
+    d. **［作成］** を選択します
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix のテスト ユーザーの作成
 

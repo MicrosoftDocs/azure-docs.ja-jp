@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417897"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280802"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "81417897"
 Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
 
 > [!NOTE]
-> Web アクティビティでは、公開されている URL のみを呼び出すことができます。 プライベート仮想ネットワークでホストされている URL についてはサポートされていません。
+> Web アクティビティは、自己ホスト型統合ランタイムを利用することで、プライベート仮想ネットワークでホストされる URL の呼び出しでもサポートされています。 統合ランタイムでは、URL エンドポイントへの通信経路が必要です。 
 
 ## <a name="syntax"></a>構文
 
@@ -36,6 +36,10 @@ Web アクティビティを使用すると、Data Factory パイプラインか
    "typeProperties":{
       "method":"Post",
       "url":"<URLEndpoint>",
+      "connectVia": {
+          "referenceName": "<integrationRuntimeName>",
+          "type": "IntegrationRuntimeReference"
+      }
       "headers":{
          "Content-Type":"application/json"
       },
@@ -70,13 +74,14 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 -------- | ----------- | -------------- | --------
 name | Web アクティビティの名前 | String | はい
 type | **WebActivity** に設定する必要があります。 | String | はい
-method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされるタイプ: "GET"、"POST"、"PUT" | はい
+method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされている型"GET"、"POST"、"PUT" | はい
 url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。 | はい
 headers | 要求に送信されるヘッダー。 たとえば、要求で言語と種類を設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列 (または文字列の resultType を含む式) | あり。Content-type ヘッダーが必要です。 `"headers":{ "Content-Type":"application/json"}`
 body | エンドポイントに送信されるペイロードを表します。  | 文字列 (または文字列の resultType を含む式)。 <br/><br/>「[要求ペイロードのスキーマ](#request-payload-schema)」セクションにある要求ペイロードのスキーマを参照してください。 | POST/PUT メソッドには必須です。
 認証 | エンドポイントを呼び出すために使用される認証方法。 サポートされるタイプは "Basic" または "ClientCertificate" です。 詳細については、「[認証](#authentication)」セクションを参照してください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列 (または文字列の resultType を含む式) | いいえ
 datasets | エンドポイントに渡されるデータセットの一覧。 | データセット参照の配列。 空の配列にすることができます。 | はい
 linkedServices | エンドポイントに渡されるリンクされたサービスの一覧。 | リンクされたサービスの参照の配列。 空の配列にすることができます。 | はい
+connectVia | データ ストアに接続するために使用される[統合ランタイム](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 | 統合ランタイム参照。 | いいえ 
 
 > [!NOTE]
 > Web アクティビティが呼び出す REST エンドポイントは、型 JSON の応答を返す必要があります。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。
@@ -85,7 +90,7 @@ linkedServices | エンドポイントに渡されるリンクされたサービ
 
 | 値の型 | 要求本文 | 応答本文 |
 |---|---|---|
-|JSON オブジェクト | サポートされています | サポートされています |
+|JSON オブジェクト | サポート | サポート |
 |JSON 配列 | サポートされています <br/>(バグがあるため、現在、JSON 配列は動作していません。 修正が進行中です)。 | サポートされていない |
 | JSON 値 | サポートされています | サポートされていない |
 | 非 JSON 型 | サポートされていない | サポートされていない |
@@ -161,7 +166,7 @@ POST/PUT メソッドを使用する場合、body プロパティは、エンド
 ```
 
 ## <a name="example"></a>例
-この例では、パイプライン内の Web アクティビティが REST エンドポイントを呼び出します。 Azure SQL リンクされたサービスと Azure SQL データセットがエンドポイントに渡されます。 REST エンドポイントは、Azure SQL 接続文字列を使用して Azure SQL サーバーに接続し、SQL サーバーのインスタンスの名前を返します。
+この例では、パイプライン内の Web アクティビティが REST エンドポイントを呼び出します。 Azure SQL リンクされたサービスと Azure SQL データセットがエンドポイントに渡されます。 REST エンドポイントは、Azure SQL 接続文字列を使用して論理 SQL サーバーに接続し、SQL サーバーのインスタンスの名前を返します。
 
 ### <a name="pipeline-definition"></a>パイプラインの定義
 

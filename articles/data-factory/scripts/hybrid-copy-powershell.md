@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用してオンプレミスから Azure にデータをコピーする
-description: この PowerShell スクリプトは、オンプレミスの SQL Server データベースから別の Azure Blob Storage にデータをコピーします。
+description: この PowerShell スクリプトは、SQL Server データベースから別の Azure Blob Storage にデータをコピーします。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,16 +10,16 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75974704"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194626"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>PowerShell を使用して、オンプレミスから Azure にデータをコピーするための Data Factory パイプラインを作成する
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>PowerShell を使用して、SQL Server から Azure にデータをコピーするための Data Factory パイプラインを作成する
 
-このサンプル PowerShell スクリプトは、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするパイプラインを Azure Data Factory に作成します。
+このサンプル PowerShell スクリプトは、SQL Server データベースから Azure Blob Storage にデータをコピーするパイプラインを Azure Data Factory に作成します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,12 +27,12 @@ ms.locfileid: "75974704"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **SQL Server**。 このサンプルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。
+- **SQL Server**。 このサンプルでは、SQL Server データベースを**ソース** データ ストアとして使用します。
 - **Azure Storage アカウント**。 このサンプルでは、Azure Blob Storage を**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
 - **セルフホステッド統合ランタイム**。 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI ファイルをダウンロードして実行し、セルフホステッド統合ランタイムをマシンにインストールします。  
 
 ### <a name="create-sample-database-in-sql-server"></a>SQL Server にサンプル データベースを作成する
-1. オンプレミスの SQL Server データベースで、次の SQL スクリプトを使用して **emp** という名前のテーブルを作成します。
+1. SQL Server データベースで、次の SQL スクリプトを使用して **emp** という名前のテーブルを作成します。
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -57,7 +57,7 @@ ms.locfileid: "75974704"
 > [!IMPORTANT]
 > このスクリプトは、Data Factory エンティティ (リンクされたサービス、データセット、およびパイプライン) を定義する JSON ファイルをハード ドライブ上の c:\ フォルダー内に作成します。
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
@@ -77,7 +77,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 このスクリプトでは以下のコマンドを使用します。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | データ ファクトリを作成します。 |

@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: デシジョン フォレスト回帰
           href: decision-forest-regression.md
+        - name: 高速フォレスト分位点回帰
+          href: fast-forest-quantile-regression.md
         - name: 線形回帰
           href: linear-regression.md
         - name: ニューラル ネットワーク回帰
           href: neural-network-regression.md
+        - name: ポワソン回帰
+          href: poisson-regression.md
     - name: クラスタリング
       items:
         - name: K-Means クラスタリング
@@ -106,6 +110,8 @@
       href: train-clustering-model.md
     - name: モデルのトレーニング
       href: train-model.md
+    - name: PyTorch モデルのトレーニング
+      href: train-pytorch-model.md
     - name: モデルのハイパーパラメーターの調整
       href: tune-model-hyperparameters.md
 - name: モデルのスコアリングと評価
@@ -118,6 +124,8 @@
       href: cross-validate-model.md
     - name: モデルの評価
       href: evaluate-model.md
+    - name: 画像モデルのスコア付け
+      href: score-image-model.md
     - name: モデルのスコア付け
       href: score-model.md
 - name: Python 言語
@@ -142,14 +150,36 @@
       href: preprocess-text.md
     - name: Latent Dirichlet Allocation
       href: latent-dirichlet-allocation.md
+    - name: Vowpal Wabbit モデルのスコアリング
+      href: score-vowpal-wabbit-model.md
+    - name: Vowpal Wabbit モデルのトレーニング
+      href: train-vowpal-wabbit-model.md
+- name: Computer Vision
+  items:
+    - name: イメージ変換の適用
+      href: apply-image-transformation.md
+    - name: イメージ ディレクトリへの変換
+      href: convert-to-image-directory.md
+    - name: イメージ変換の初期化
+      href: init-image-transformation.md
+    - name: イメージ ディレクトリの分割
+      href: split-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: 推奨
   items:
     - name: レコメンダーの評価
       href: evaluate-recommender.md
     - name: Score SVD Recommender
       href: score-svd-recommender.md
+    - name: ワイドかつディープなレコメンダーのスコア付け
+      href: score-wide-and-deep-recommender.md
     - name: SVD レコメンダーのトレーニング
       href: train-svd-recommender.md
+    - name: ワイドかつディープなレコメンダーのトレーニング
+      href: train-wide-and-deep-recommender.md
 - name: 異常検出
   items:
     - name: PCA ベースの異常検出
@@ -162,3 +192,5 @@
       href: web-service-input-output.md
 - name: モジュールのエラーとトラブルシューティング
   href: designer-error-codes.md
+- name: グラフ検索のクエリ構文
+  href: graph-search-syntax.md

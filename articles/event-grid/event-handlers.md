@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid イベント ハンドラー
 description: Azure Event Grid でサポートされるイベント ハンドラーについて説明します。 Azure Automation、Functions、Event Hubs、ハイブリッド接続、Logic Apps、Service Bus、Queue storage、Webhook。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/07/2020
+ms.openlocfilehash: 76f7fff3e0a3e1c0c554e452987bf944503358b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592459"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117017"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid のイベント ハンドラー
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。 イベント処理のための Webhook を使うこともできます。 Webhook は、イベント処理用に Azure でホストする必要はありません。 Event Grid では、HTTPS webhook エンドポイントのみがサポートされます。

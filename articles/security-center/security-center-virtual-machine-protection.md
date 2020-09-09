@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d79d1bf846cc023b86c3e33b17c91cce77ffe9ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435626"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089874"
 ---
 # <a name="protect-your-machines-and-applications"></a>マシンとアプリケーションを保護する
 Azure Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -123,7 +123,7 @@ Log Analytics エージェントをインストールするように既存のス
 
 
 ### <a name="app-services"></a><a name="app-services"></a>App Service
-App Service 情報を表示するには、Security Center の Standard 価格レベルを使用し、サブスクリプションでApp Service を有効にする必要があります。 この機能を有効にする方法については、「[Azure Security Center で App Service を保護する](security-center-app-services.md)」を参照してください。
+App Service 情報を表示するには、Security Center の Standard 価格レベルを使用し、サブスクリプションで App Service を有効にする必要があります。 この機能を有効にする方法については、「[Azure Security Center で App Service を保護する](security-center-app-services.md)」を参照してください。
 
 **[App Service]** には、App Service 環境の一覧と、Security Center によって実行された評価に基づく正常性についての概要が表示されます。
 
@@ -163,15 +163,13 @@ Web アプリケーションを選択すると、次の 3 つのタブがある�
 
 ![コンテナー ホスト](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) コンテナーホスト - Docker を実行している VM 
 
-![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes Service (AKS) クラスター
+![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes Service (AKS) クラスター。 [Security Center の AKS バンドルについての詳細情報](azure-kubernetes-service-integration.md)
 
-![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) レジストリ - 標準価格レベルを使用していて、Azure Container Registry バンドルが有効になっている場合にのみ表示されます。
+![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) のレジストリ。 [Security Center の ACR バンドルについての詳細情報](azure-container-registry-integration.md)
 
 コンテナーのセキュリティ機能を使用する方法については、「[コンテナーのセキュリティを監視する](monitor-container-security.md)」を参照してください。
 
-Azure Container Registry バンドルの利点については、[こちら](azure-container-registry-integration.md)を参照してください
 
-Kubernetes Services バンドルの利点については、[こちら](azure-kubernetes-service-integration.md)を参照してください
 
 [![[コンテナー] タブ](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 

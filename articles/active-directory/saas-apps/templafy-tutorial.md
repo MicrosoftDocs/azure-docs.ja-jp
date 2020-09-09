@@ -1,34 +1,29 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Templafy の統合 | Microsoft Docs
-description: Azure Active Directory と Templafy の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Templafy SAML2 の統合 | Microsoft Docs
+description: Azure Active Directory と Templafy SAML2 の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 60c6153e-2d9d-4a56-809d-4a7a9d677c43
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 06/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52130ac90f9faec19eedf77da425645e35259269
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cff461ba2d463e88d0d5ba1943f789614aa5afa9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74081609"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541853"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-templafy"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Templafy の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-templafy-saml2"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Templafy SAML2 の統合
 
-このチュートリアルでは、Templafy と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Templafy を統合すると、次のことができます。
+このチュートリアルでは、Templafy SAML2 と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Templafy SAML2 を統合すると、次のことができます。
 
-* Templafy にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Templafy に自動的にサインインできるように設定できます。
+* Templafy SAML2 にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Templafy SAML2 に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -38,44 +33,44 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Templafy でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Templafy SAML2 でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Templafy では、**SP** によって開始される SSO がサポートされます
-* Templafy では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Templafy SAML2 では、**SP** Initiated SSO がサポートされます
+* Templafy SAML2 では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-## <a name="adding-templafy-from-the-gallery"></a>ギャラリーからの Templafy の追加
+## <a name="adding-templafy-saml2-from-the-gallery"></a>ギャラリーからの Templafy SAML2 の追加
 
-Azure AD への Templafy の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Templafy を追加する必要があります。
+Azure AD への Templafy SAML2 の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Templafy SAML2 を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Templafy**」と入力します。
-1. 結果のパネルから **[Templafy]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Templafy SAML2**」と入力します。
+1. 結果のパネルから **[Templafy SAML2]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-templafy"></a>Templafy の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on-for-templafy-saml2"></a>Templafy SAML2 の Azure AD シングル サインオンの構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、Templafy に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Templafy の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Templafy SAML2 に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Templafy SAML2 の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Templafy で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Templafy SAML2 で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Templafy SSO の構成](#configure-templafy-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Templafy のテスト ユーザーの作成](#create-templafy-test-user)** - Templafy で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+1. **[Templafy SAML2 の SSO の構成](#configure-templafy-saml2-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[Templafy SAML2 のテスト ユーザーの作成](#create-templafy-saml2-test-user)** - Templafy SAML2 で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Templafy** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Templafy SAML2** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -86,13 +81,13 @@ Templafy で Azure AD SSO を構成してテストするには、次の構成要
     **[サインオン URL]** ボックスに、`https://<CLIENTSUBDOMAIN>.templafy.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Templafy クライアント サポート チーム](mailto:support@templafy.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Templafy SAML2 クライアント サポート チーム](mailto:support@templafy.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Templafy アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. Templafy SAML2 アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
-1. その他に、Templafy アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. その他に、Templafy SAML2 アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
     | 名前 | ソース属性| 名前空間  |
     | ---------------| --------------- | --------- |
@@ -130,10 +125,10 @@ Templafy で Azure AD SSO を構成してテストするには、次の構成要
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に Templafy へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Templafy SAML2 へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Templafy]** を選択します。
+1. アプリケーションの一覧で **[Templafy SAML2]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
@@ -146,19 +141,19 @@ Templafy で Azure AD SSO を構成してテストするには、次の構成要
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-templafy-sso"></a>Templafy SSO の構成
+## <a name="configure-templafy-saml2-sso"></a>Templafy SAML2 の SSO の構成
 
-**Templafy** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Templafy サポート チーム](mailto:support@templafy.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Templafy SAML2** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Templafy SAML2 サポート チーム](mailto:support@templafy.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-### <a name="create-templafy-test-user"></a>Templafy のテスト ユーザーの作成
+### <a name="create-templafy-saml2-test-user"></a>Templafy SAML2 のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Templafy に作成します。 Templafy では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Templafy にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+このセクションでは、B.Simon というユーザーを Templafy SAML2 に作成します。 Templafy SAML2 では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Templafy SAML2 にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Templafy] タイルをクリックすると、SSO を設定した Templafy に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Templafy SAML2] タイルをクリックすると、SSO を設定した Templafy SAML2 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -168,4 +163,6 @@ Templafy で Azure AD SSO を構成してテストするには、次の構成要
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD で Templafy を試す](https://aad.portal.azure.com/)
+- [Azure AD で Templafy SAML2 を試す](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

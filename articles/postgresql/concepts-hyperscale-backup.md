@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515961"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030081"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップと復元
 
@@ -32,7 +32,11 @@ Azure Database for PostgreSQL – Hyperscale (Citus) では、各ノードのバ
 
 ## <a name="restore"></a>復元
 
-Azure Database for PostgreSQL では、Hyperscale (Citus) クラスターを復元すると、元のノードのバックアップから新しいクラスターが作成されます。
+Azure Database for PostgreSQL では、Hyperscale (Citus) クラスターを復元すると、元のノードのバックアップから新しいクラスターが作成されます。 
+
+> [!IMPORTANT]
+>ハイパースケール クラスターは、異なるクラスター名で、同じサブスクリプションとリソース グループ内にのみ復元できます。
+
 
 > [!IMPORTANT]
 > 削除された Hyperscale (Citus) クラスターを復元することはできません。 クラスターを削除すると、そのクラスターに属するすべてのノードが削除され、復旧できなくなります。 管理者は、デプロイ後の誤削除や予期せぬ変更からクラスターのリソースを保護するために、[管理ロック](/azure/azure-resource-manager/management/lock-resources)を利用できます。

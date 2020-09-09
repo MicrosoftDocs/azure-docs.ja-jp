@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 14eda137d386146d96b6b9aa54e1ed57021db19d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7c64835ced558727718690138c3e7a7666cf0809
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427727"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167300"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault の基本的な概念
 

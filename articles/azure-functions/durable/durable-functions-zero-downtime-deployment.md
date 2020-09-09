@@ -5,23 +5,21 @@ author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74231255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093070"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
 
-Durable Functions の[信頼性の高い実行モデル](durable-functions-checkpointing-and-replay.md)には、オーケストレーションが決定論的であることが必要です。これにより、更新プログラムをデプロイするときに考慮する必要がある追加の課題が発生します。 アクティビティ関数のシグネチャまたはオーケストレーター ロジックに対する変更がデプロイに含まれている場合、実行中のオーケストレーション インスタンスが失敗します。 この状況は、数時間または数日間にわたる作業を表す可能性がある、長時間実行されているオーケストレーションのインスタンスの場合に特に問題があります。
+Durable Functions の[信頼性の高い実行モデル](./durable-functions-orchestrations.md)には、オーケストレーションが決定論的であることが必要です。これにより、更新プログラムをデプロイするときに考慮する必要がある追加の課題が発生します。 アクティビティ関数のシグネチャまたはオーケストレーター ロジックに対する変更がデプロイに含まれている場合、実行中のオーケストレーション インスタンスが失敗します。 この状況は、数時間または数日間にわたる作業を表す可能性がある、長時間実行されているオーケストレーションのインスタンスの場合に特に問題があります。
 
 このような障害は 2 とおりの方法で防止できます。 
 - 実行中のオーケストレーション インスタンスがすべて完了するまでデプロイを遅らせます。
 - 実行中のオーケストレーション インスタンスで既存バージョンの関数が使用されていることを確認します。 
-
-> [!NOTE]
-> この記事では、Durable Functions 1.x をターゲットにした関数アプリに関するガイダンスを提供します。 ただし、Durable Functions 2.x で導入された変更については反映されていません。 拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 次の表では、Durable Functions のゼロダウンタイム デプロイを実現するための 3 つの主な戦略を比較します。 
 
@@ -54,7 +52,7 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 
 1. スロットごとに、共有ストレージ アカウントの接続文字列に [AzureWebJobsStorage アプリケーション設定](../functions-app-settings.md#azurewebjobsstorage)を設定します。 このストレージ アカウント接続文字列は Azure Functions ランタイムで使用されます。 このアカウントは Azure Functions ランタイムによって使用され、このアカウントで関数のキーを管理します。
 
-1. スロットごとに、新しいアプリ設定を作成します (例: `DurableManagementStorage`)。 その値を異なるストレージ アカウントの接続文字列に設定します。 これらのストレージ アカウントは、[信頼性の高い実行](durable-functions-checkpointing-and-replay.md)のために Durable Functions 拡張機能によって使用されます。 スロットごとに個別のストレージ アカウントを使用します。 この設定をデプロイ スロットの設定としてマークしないでください。
+1. スロットごとに、新しいアプリ設定を作成します (例: `DurableManagementStorage`)。 その値を異なるストレージ アカウントの接続文字列に設定します。 これらのストレージ アカウントは、[信頼性の高い実行](./durable-functions-orchestrations.md)のために Durable Functions 拡張機能によって使用されます。 スロットごとに個別のストレージ アカウントを使用します。 この設定をデプロイ スロットの設定としてマークしないでください。
 
 1. 関数アプリの [host.json ファイルの durableTask セクション](durable-functions-bindings.md#hostjson-settings)で、ステップ 3 で作成したアプリ設定の名前として `azureStorageConnectionStringName` を指定します。
 
@@ -97,7 +95,7 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 [FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient client,
+    [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
     var runtimeStatus = new List<OrchestrationRuntimeStatus>();
@@ -105,8 +103,8 @@ public static async Task<IActionResult> StatusCheck(
     runtimeStatus.Add(OrchestrationRuntimeStatus.Pending);
     runtimeStatus.Add(OrchestrationRuntimeStatus.Running);
 
-    var status = await client.GetStatusAsync(new DateTime(2015,10,10), null, runtimeStatus);
-    return (ActionResult) new OkObjectResult(new Status() {HasRunning = (status.Count != 0)});
+    var result = await client.ListInstancesAsync(new OrchestrationStatusQueryCondition() { RuntimeStatus = runtimeStatus }, CancellationToken.None);
+    return (ActionResult)new OkObjectResult(new { HasRunning = result.DurableOrchestrationState.Any() });
 }
 ```
 
@@ -174,4 +172,3 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 > [!div class="nextstepaction"]
 > [Durable Functions のバージョン管理](durable-functions-versioning.md)
-

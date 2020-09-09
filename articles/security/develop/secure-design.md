@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857160"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246811"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -209,7 +209,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 これは、カスタム認証コードの開発ではエラーが生じやすいためです。 商用コード (たとえば Microsoft のコード) は、通常はセキュリティが徹底的にレビューされています。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) は ID とアクセスを管理するための Azure ソリューションです。 安全な開発には、Azure AD の以下のツールとサービスが役立ちます。
 
-- [Azure AD ID プラットフォーム (開発者向けの Azure AD)](../../active-directory/develop/about-microsoft-identity-platform.md) は、開発者がユーザーを安全にサインインさせるアプリのビルドに使用する、クラウドの ID サービスです。 Azure AD は、シングル テナント アプリと基幹業務 (LOB) アプリを構築する開発者、およびマルチテナント アプリの開発を目指す開発者を支援します。 Azure AD を使用してビルドされるアプリでは、基本的なサインイン機能が得られることに加え、Microsoft の API と Azure AD プラットフォーム上に構築されたカスタム API を呼び出すことができます。 Azure AD ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+- [Microsoft ID プラットフォーム](/azure/active-directory/develop/)は、ユーザーが安全にサインインするアプリを構築するために、開発者が使用する一連のコンポーネントです。 このプラットフォームでは、シングル テナントの基幹業務 (LOB) アプリを構築する開発者、およびマルチテナント アプリの開発を目指す開発者を支援します。 基本的なサインインに加えて、Microsoft ID プラットフォームを使用して構築されたアプリによって、Microsoft API とカスタム API を呼び出すことができます。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) は、アプリケーション使用時に顧客がサインアップ、サインイン、プロファイル管理の方法をカスタマイズして制御するために使用できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、顧客 ID を保護します。
 

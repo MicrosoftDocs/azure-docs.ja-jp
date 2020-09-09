@@ -31,7 +31,7 @@ java.util.concurrent.TimeoutException: deadline passed
 
 Hive ビューの既定のタイムアウト値が、実行しているクエリに適していない可能性があります。 指定された時間が短すぎて、Hive ビューがクエリ結果をフェッチできません。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 `/etc/ambari-server/conf/ambari.properties` で次のプロパティを設定して、Apache Ambari Hive ビューのタイムアウト値を増加してください。
 

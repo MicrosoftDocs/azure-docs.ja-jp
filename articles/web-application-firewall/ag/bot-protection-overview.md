@@ -5,15 +5,15 @@ description: この記事では、Application Gateway 上の Web アプリケー
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 02/04/2020
+ms.date: 05/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 3bc481cfc35ac94699d2795862f1fe8e4decf875
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77026515"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714901"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Azure Application Gateway 上の Azure Web Application Firewall でのボット保護の概要
 
@@ -33,6 +33,33 @@ ms.locfileid: "77026515"
 ## <a name="ruleset-update"></a>ルールセットの更新
 
 既知の問題のある IP アドレスのボット軽減ルールセット一覧は、ボットとの同期を維持するために、Microsoft の脅威インテリジェンス フィードから 1 日に複数回更新されます。 Web アプリケーションは、ボットの攻撃ベクトルが変更された場合でも継続的に保護されます。
+
+## <a name="log-example"></a>ログの例
+
+ボット保護のためのログ エントリの例を次に示します。
+
+```
+{
+        "timeStamp": "0000-00-00T00:00:00+00:00",
+            "resourceId": "appgw",
+            "operationName": "ApplicationGatewayFirewall",
+            "category": "ApplicationGatewayFirewallLog",
+            "properties": {
+            "instanceId": "vm1",
+                "clientIp": "1.2.3.4",
+                "requestUri": "/hello.php?arg1=aaaaaaabccc",
+                "ruleSetType": "MicrosoftBotProtection",
+                "message": "IPReputationTriggered",
+                "action": "Blocked",
+                "hostname": "example.com",
+                "transactionId": "abc",
+                "policyId": "waf policy 1",
+                "policyScope": "Global",
+                "policyScopeName": "Default Policy",
+                "engine": "Azwaf"
+        }
+    }
+```
 
 ## <a name="next-steps"></a>次のステップ
 

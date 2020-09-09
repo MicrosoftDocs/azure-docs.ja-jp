@@ -1,27 +1,25 @@
 ---
-title: 具体化されたビューを使用したパフォーマンス チューニング
+title: 具体化されたビューを使用したパフォーマンスのチューニング
 description: 具体化されたビューを使用したクエリ パフォーマンスの向上に関して知っておくべき推奨事項と考慮事項
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417022"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956391"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>具体化されたビューを使用したパフォーマンス チューニング
+# <a name="performance-tune-with-materialized-views"></a>具体化されたビューを使用したパフォーマンスのチューニング
 
 Synapse SQL プールの具体化されたビューは、複雑な分析クエリを少ないメンテナンスで維持し、クエリには一切変更を加えることなく高速なパフォーマンスが得られる手法です。 この記事では、具体化されたビューを使用するうえでの一般的なガイダンスを説明します。
-
-SQL プールの具体化されたビューでは、クエリを何も変更しなくても高速なパフォーマンスが得られる、複雑な分析クエリのためのメンテナンスの少ない方法が提供されます。 この記事では、具体化されたビューを使用するうえでの一般的なガイダンスを説明します。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化されたビューと標準ビュー
 
@@ -161,7 +159,7 @@ SQL プール オプティマイザーでは、クエリ パフォーマンス�
 
 ## <a name="example"></a>例
 
-この例では、TPCDS に似たクエリを使用しています。店舗よりもカタログで多くのお金を費やす顧客を検索し、優良顧客とその出身国を特定します。   このクエリには、SUM() と GROUP BY を含んだ 3 つのサブ SELECT ステートメントの UNION から上位 100 レコードを選択する操作が含まれています。
+この例では、TPCDS に似たクエリを使用しています。店舗よりもカタログで多くのお金を費やす顧客を検索し、優良顧客とその出身国/地域を特定します。   このクエリには、SUM() と GROUP BY を含んだ 3 つのサブ SELECT ステートメントの UNION から上位 100 レコードを選択する操作が含まれています。
 
 ```sql
 WITH year_total AS (

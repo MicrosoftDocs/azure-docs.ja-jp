@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 05/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70995108"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142148"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files のコスト モデル 
 
@@ -50,6 +50,8 @@ Azure NetApp Files は、プロビジョニングされたストレージ容量�
 ## <a name="overage-in-capacity-consumption"></a>容量消費の超過  
 
 プールの合計使用容量がそのプロビジョニング容量を超えた時点で、データ書き込みはまだ許可されています。  猶予期間 (1 時間) が過ぎてもなお、プールの使用容量がそのプロビジョニング容量を超えている場合、プロビジョニング容量が合計使用容量を超えるまでプール サイズが自動的に 1 TiB 単位で増加します。  たとえば上の図で、ボリューム 3 が拡張し続けて実際の消費量が 1.2 TiB に達した場合、猶予期間の後、プールは自動的に 5 TiB にサイズ変更されます。  その結果、プロビジョニングされたプール容量 (5 TiB) が使用容量 (4.2 TiB) を上回ります。  
+
+容量プールのサイズは、ボリュームの需要に合わせて自動的に拡張されますが、ボリューム サイズが減少したときに自動的に縮小されることはありません。 ボリューム サイズが減少した後に容量プールのサイズを縮小する場合 (ボリュームのデータ クリーンアップ後など) は、_手動_で容量プールのサイズを小さくする必要があります。
 
 ## <a name="manual-changes-of-the-pool-size"></a>プール サイズの手動変更  
 

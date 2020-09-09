@@ -1,27 +1,14 @@
 ---
 title: 診断ログの設定 - Azure Event Hub | Microsoft Docs
 description: Azure のイベント ハブのアクティビティ ログおよび診断ログを設定する方法について説明します。
-keywords: ''
-documentationcenter: ''
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.custom: seodec18
-ms.date: 04/28/2020
-ms.author: shvija
-ms.openlocfilehash: 0fb5da965a9b13667b8a128e83a5a4cd2c2b28d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691854"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927733"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
@@ -74,18 +61,18 @@ Event Hubs では、次のカテゴリの診断ログをキャプチャします
 
 名前 | 説明
 ------- | -------
-TaskName | 失敗したタスクの説明
-ActivityId | 内部 ID。追跡目的で使用されます
-trackingId | 内部 ID。追跡目的で使用されます
-resourceId | Azure Resource Manager リソース ID
-eventHub | イベント ハブの完全名 (名前空間の名前を含みます)
-partitionId | 書き込み先のイベント ハブ パーティション
-archiveStep | 使用可能な値:ArchiveFlushWriter、DestinationInit
-startTime | 障害開始時刻
-failures | 障害が発生した回数
-durationInSeconds | 障害の時間
-message | エラー メッセージ
-category | ArchiveLogs
+`TaskName` | 失敗したタスクの説明
+`ActivityId` | 内部 ID。追跡目的で使用されます
+`trackingId` | 内部 ID。追跡目的で使用されます
+`resourceId` | Azure Resource Manager リソース ID
+`eventHub` | イベント ハブの完全名 (名前空間の名前を含みます)
+`partitionId` | 書き込み先のイベント ハブ パーティション
+`archiveStep` | 使用可能な値:ArchiveFlushWriter、DestinationInit
+`startTime` | 障害開始時刻
+`failures` | 障害が発生した回数
+`durationInSeconds` | 障害の時間
+`message` | エラー メッセージ
+`category` | ArchiveLogs
 
 次のコードは、アーカイブ ログの JSON 文字列の例です。
 
@@ -112,15 +99,15 @@ category | ArchiveLogs
 
 名前 | 説明
 ------- | -------
-ActivityId | 内部 ID。追跡目的で使用されます |
-EventName | 操作の名前 |
-resourceId | Azure Resource Manager リソース ID |
-SubscriptionId | サブスクリプション ID |
-EventTimeString | 操作時間 |
-EventProperties | 操作プロパティ |
-Status | 操作の状態 |
-Caller | 操作の呼び出し元 (Azure Portal または管理クライアント) |
-カテゴリ | OperationalLogs |
+`ActivityId` | 内部 ID。追跡目的で使用されます |
+`EventName` | 操作名 |
+`resourceId` | Azure Resource Manager リソース ID |
+`SubscriptionId` | サブスクリプション ID |
+`EventTimeString` | 操作時間 |
+`EventProperties` | 操作プロパティ |
+`Status` | 操作の状態 |
+`Caller` | 操作の呼び出し元 (Azure Portal または管理クライアント) |
+`Category` | OperationalLogs |
 
 次のコードは、操作ログの JSON 文字列の例です。
 
@@ -144,22 +131,32 @@ Example:
 
 | 名前 | 説明 |
 | ---- | ----------- | 
-| TrackingId | 内部 ID。トレース目的で使用されます |
-| ResourceId | Azure Resource Manager リソース ID。 |
-| Message | 情報メッセージ。自動インフレ アクションに関する詳細情報を提供します。 このメッセージには、特定の名前空間のスループット ユニットの以前の値と現在の値、および TU のインフレをもたらした要因が含まれます。 |
+| `TrackingId` | 内部 ID。トレース目的で使用されます |
+| `ResourceId` | Azure Resource Manager リソース ID。 |
+| `Message` | 情報メッセージ。自動インフレ アクションに関する詳細情報を提供します。 このメッセージには、特定の名前空間のスループット ユニットの以前の値と現在の値、および TU のインフレをもたらした要因が含まれます。 |
+
+自動スケーリング イベントの例を次に示します。 
+
+```json
+{
+    "TrackingId": "fb1b3676-bb2d-4b17-85b7-be1c7aa1967e",
+    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2020 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name"
+}
+```
 
 ## <a name="kafka-coordinator-logs-schema"></a>Kafka コーディネーター ログのスキーマ
 Kafka コーディネーター ログの JSON には、次の表に示す要素が含まれます。
 
 | 名前 | 説明 |
 | ---- | ----------- | 
-| RequestId | 要求 ID。トレース目的で使用されます |
-| ResourceId | Azure Resource Manager リソース ID |
-| Operation | グループの調整中に実行された操作の名前 |
-| ClientId | クライアント ID |
-| NamespaceName | 名前空間名 | 
-| SubscriptionId | Azure サブスクリプション ID |
-| Message | 情報または警告メッセージ。グループの調整中に実行されたアクションに関する詳細情報を提供します。 |
+| `RequestId` | 要求 ID。トレース目的で使用されます |
+| `ResourceId` | Azure Resource Manager リソース ID |
+| `Operation` | グループの調整中に実行された操作の名前 |
+| `ClientId` | クライアント ID |
+| `NamespaceName` | 名前空間名 | 
+| `SubscriptionId` | Azure サブスクリプション ID |
+| `Message` | 情報または警告メッセージ。グループの調整中に実行されたアクションに関する詳細情報を提供します。 |
 
 ### <a name="example"></a>例
 
@@ -181,14 +178,14 @@ Kafka ユーザー エラー ログの JSON には、次の表に示す要素が
 
 | 名前 | 説明 |
 | ---- | ----------- |
-| TrackingId | 追跡 ID。トレース目的で使用されます。 |
-| NamespaceName | 名前空間名 |
-| Eventhub | イベント ハブ名 |
-| PartitionId | Partition ID |
-| GroupId | グループ ID |
-| ClientId | クライアント ID |
-| ResourceId | Azure Resource Manager リソース ID。 |
-| Message | 情報メッセージ。エラーに関する詳細情報を提供します |
+| `TrackingId` | 追跡 ID。トレース目的で使用されます。 |
+| `NamespaceName` | 名前空間名 |
+| `Eventhub` | イベント ハブ名 |
+| `PartitionId` | Partition ID |
+| `GroupId` | グループ ID |
+| `ClientId` | クライアント ID |
+| `ResourceId` | Azure Resource Manager リソース ID。 |
+| `Message` | 情報メッセージ。エラーに関する詳細情報を提供します |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs 仮想ネットワーク接続イベントのスキーマ
 
@@ -196,13 +193,13 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 
 | 名前 | 説明 |
 | ---  | ----------- | 
-| SubscriptionId | Azure サブスクリプション ID |
-| NamespaceName | 名前空間名 |
-| IPAddress | Event Hubs サービスに接続しているクライアントの IP アドレス |
-| アクション | 接続要求を評価するときに Event Hubs サービスによって実行されたアクション。 サポートされているアクションは、**接続の受け入れ**と**接続の拒否**です。 |
-| 理由 | アクションが実行された理由を提供します |
-| Count | 指定されたアクションの発生回数 |
-| ResourceId | Azure Resource Manager リソース ID。 |
+| `SubscriptionId` | Azure サブスクリプション ID |
+| `NamespaceName` | 名前空間名 |
+| `IPAddress` | Event Hubs サービスに接続しているクライアントの IP アドレス |
+| `Action` | 接続要求を評価するときに Event Hubs サービスによって実行されたアクション。 サポートされているアクションは、**接続の受け入れ**と**接続の拒否**です。 |
+| `Reason` | アクションが実行された理由を提供します |
+| `Count` | 指定されたアクションの発生回数 |
+| `ResourceId` | Azure Resource Manager リソース ID。 |
 
 ### <a name="example"></a>例
 
@@ -224,22 +221,22 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 
 | 名前 | 説明 |
 | ---- | ----------- | 
-| カテゴリ | メッセージのカテゴリの種類。 **error** と **info** のどちらかの値です |
-| ResourceId | 内部リソース ID。Azure サブスクリプション ID と名前空間名が含まれます |
-| KeyVault | Key Vault リソースの名前 |
-| Key | Key Vault キーの名前。 |
-| Version | Key Vault キーのバージョン |
-| Operation | 要求を処理するために実行された操作の名前 |
-| コード | status code |
-| Message | メッセージ。エラーまたは情報メッセージに関する詳細情報を提供します |
+| `Category` | メッセージのカテゴリの種類。 **error** と **info** のどちらかの値です |
+| `ResourceId` | 内部リソース ID。Azure サブスクリプション ID と名前空間名が含まれます |
+| `KeyVault` | Key Vault リソースの名前 |
+| `Key` | Key Vault キーの名前。 |
+| `Version` | Key Vault キーのバージョン |
+| `Operation` | 要求を処理するために実行された操作の名前 |
+| `Code` | status code |
+| `Message` | メッセージ。エラーまたは情報メッセージに関する詳細情報を提供します |
 
 
 
 ## <a name="next-steps"></a>次のステップ
-- [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-- [Event Hubs API 概要](event-hubs-api-overview.md)
+- [Event Hubs の概要](./event-hubs-about.md)
+- [Event Hubs サンプル](sdks.md)
 - Event Hubs の使用
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)

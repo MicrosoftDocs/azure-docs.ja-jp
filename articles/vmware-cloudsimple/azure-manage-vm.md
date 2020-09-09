@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77014999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082071"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Azure で CloudSimple プライベート クラウドの仮想マシンを管理する
 
@@ -29,7 +29,7 @@ ms.locfileid: "77014999"
 | [開始] | 指定された VM を起動します。  |
 | Restart | 指定された VM をシャットダウンした後、電源を入れます。  |
 | Stop | 特定の VM をシャットダウンします。  |
-| キャプチャ | 指定された VM のイメージをキャプチャして、他の VM を作成するためのイメージとして使用できるようにします。 「[Azure で一般化された VM のマネージド イメージを作成する](../virtual-machines/windows/classic/capture-image.md)」を参照してください。   |
+| キャプチャ | 指定された VM のイメージをキャプチャして、他の VM を作成するためのイメージとして使用できるようにします。 「[Azure で一般化された VM のマネージド イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」を参照してください。   |
 | 詳細ビュー | 指定された VM に移動します。  |
 | 削除 | 指定された VM を削除します。  |
 | 更新 | 表示内のデータを更新します。  |

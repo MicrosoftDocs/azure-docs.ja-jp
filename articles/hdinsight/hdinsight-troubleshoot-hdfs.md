@@ -104,7 +104,7 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 HDInsight クラスター上の HBase では、Azure Storage に書き込むときに既定のブロック サイズは 256 KB です。 HBase API または REST API では問題ありませんが、`hadoop` または `hdfs dfs` コマンドライン ユーティリティを使うとエラーになります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 `fs.azure.write.request.size` を使ってさらに大きいブロック サイズを指定します。 この変更は、`-D` パラメーターを使うことで、利用状況に応じて指定できます。 `hadoop` コマンドでこのパラメーターを使う例を次に示します。
 

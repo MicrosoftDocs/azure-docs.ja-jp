@@ -5,17 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52569f3cec26432970606b31fe831bb6459839d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75773029"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010960"
 ---
-共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで任意の操作を実行しているときに問題が発生した場合は、デバッグ モードでエラー コマンドを再実行します。 CLI では **-debug** スイッチ、PowerShell では **-Debug** スイッチを渡すことで、デバッグ モードがアクティブ化されます。 エラーの場所を特定したら、このドキュメントに従ってエラーをトラブルシューティングします。
+共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで任意の操作を実行しているときに問題が発生した場合は、デバッグ モードでエラー コマンドを再実行します。 CLI では `--debug` スイッチ、PowerShell では `-Debug` スイッチを渡すことで、デバッグ モードがアクティブ化されます。 エラーの場所を特定したら、このドキュメントに従ってエラーをトラブルシューティングします。
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>共有イメージ ギャラリーを作成できない
@@ -43,7 +43,7 @@ ms.locfileid: "75773029"
 
 名前、発行元、オファー、SKU、および OS の種類などのプロパティは必須です。 すべてのプロパティが渡されているかを確認してください。
 
-イメージ定義の **OSType** (Linux または Windows) が、イメージ バージョンの作成に使用しているソース マネージド イメージと同じであることを確かめてください。 
+イメージ定義の **OSType** (Linux または Windows) が、イメージ バージョンの作成に使用しているソースと同じであることを確かめてください。 
 
 
 ## <a name="unable-to-create-an-image-version"></a>イメージ バージョンを作成できない 
@@ -52,7 +52,7 @@ ms.locfileid: "75773029"
 
 "*イメージ バージョン名が無効である。* "
 
-イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式は *MajorVersion.MinorVersion.Patch* です。 イメージ バージョン名を変更して、再試行してください。
+イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion.MinorVersion.Patch*。 イメージ バージョン名を変更して、再試行してください。
 
 "*イメージ バージョンの作成元であるソース マネージド イメージが見つからない。* " 
 
@@ -76,7 +76,7 @@ ms.locfileid: "75773029"
 
 "*VM または仮想マシン スケール セットの作成を試行しているユーザーが、イメージ バージョンへの読み取りアクセス権を保持していない。* "
 
-サブスクリプションの所有者に連絡して、[ロール ベース アクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) 経由でイメージ バージョンまたは親リソース (共有イメージ ギャラリーまたはイメージ定義など) への読み取りアクセス権の付与を依頼します。 
+サブスクリプションの所有者に連絡して、[Azure ロールベース アクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) 経由でイメージ バージョンまたは親リソース (共有イメージ ギャラリーまたはイメージ定義など) への読み取りアクセス権の付与を依頼します。 
 
 "*イメージ バージョンが見つからない。* "
 
@@ -84,11 +84,11 @@ VM または仮想マシン スケール セットの作成を試行している
 
 "*VM または仮想マシン スケール セットの作成に長い時間がかかる。* "
 
-VM または仮想マシン スケール セットの作成を試行している元のイメージ バージョンの **OSType** が、イメージ バージョンの作成に使用したソース マネージド バージョンの **OSType** と同じであることを確認します。 
+VM または仮想マシン スケール セットの作成を試行している元のイメージ バージョンの **OSType** が、イメージ バージョンの作成に使用したソースの **OSType** と同じであることを確認します。 
 
 ## <a name="unable-to-share-resources"></a>リソースを共有できない
 
-サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) を使用して有効化されています。 
+サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[Azure ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) を使用して有効化されています。 
 
 ## <a name="replication-is-slow"></a>レプリケーションが遅い
 
@@ -97,6 +97,3 @@ VM または仮想マシン スケール セットの作成を試行している
 ## <a name="azure-limits-and-quotas"></a>Azure の制限とクォータ 
 
 [Azure の制限とクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
-
-
-

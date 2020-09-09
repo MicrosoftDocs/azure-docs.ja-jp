@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: 1d71f4c5616efb05efe2733c49507b085ca2dcf6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: b1a361b2c1b1010c6593defa37ef92a3c36b0693
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75426293"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015613"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>チュートリアル:Azure Stream Analytics ジョブの C# ユーザー定義関数を記述する (プレビュー)
 
@@ -32,7 +32,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 * [Visual Studio の Stream Analytics ツール](stream-analytics-tools-for-visual-studio-install.md)と、**Azure 開発**ワークロードまたは**データの保存と処理**ワークロードをインストールします。
-* IoT Edge ジョブを構築している場合は、既存の [Stream Analytics Edge 開発ガイド] を参照してください (stream-analytics-tools-for-visual-studio-edge-jobs.md)。
+* IoT Edge ジョブを構築している場合は、既存の [Stream Analytics Edge 開発ガイド](stream-analytics-tools-for-visual-studio-edge-jobs.md)を参照してください。
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Azure ストレージ アカウントでコンテナーを作成する
 

@@ -4,12 +4,12 @@ description: この記事では、Azure Resource Manager を使用した Azure S
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682641"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258739"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
 
@@ -56,7 +56,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 
 * [Azure Active Directory](../storage/common/storage-auth-aad-app.md) を使用して BLOB とキューへのアクセスを承認する。
 * [Azure portal で RBAC](../storage/common/storage-auth-aad-rbac-portal.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
-* [Shared Access Signature](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature) を使用してアクセスを委任する。
+* [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature) を使用してアクセスを委任する。
 
 次のスクリーンショットの例では、BLOB の匿名読み取りアクセスを使用しています。
 
@@ -166,13 +166,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 Resource Manager でアプリケーション リソース モデルを使用してデプロイされたアプリケーションを削除するには、次のようにします。
 
-1. [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
+1. [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーション リソースを削除します。
+1. [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーション リソースを削除します。
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

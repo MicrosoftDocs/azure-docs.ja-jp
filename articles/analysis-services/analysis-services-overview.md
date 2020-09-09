@@ -4,15 +4,16 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: references_regions
+ms.openlocfilehash: 7878ecd2b1ce223a95c229b93713a875636daa09
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128883"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164310"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -64,14 +65,13 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8 <sup>[1](#depr)</sup>、<sup>[2](#rec)</sup>    |    320    |    200     |
-|S9 <sup>[1](#depr)</sup>、<sup>[2](#rec)</sup>    |    640    |    400     |
-|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
-|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
+|S8 <sup>[1](#naar)</sup>、<sup>[2](#rec)</sup>   |    320    |    200     |
+|S9 <sup>[1](#naar)</sup>、<sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#naar)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
-<a name="depr">1</a> - すべてのリージョンで利用できるわけではありません。   
-<a name="rec">2</a> - このプランは非推奨です。 v2 が推奨されます。
-
+<a name="naar">1</a> - すべてのリージョンで利用できるわけではありません。   
+<a name="rec">2</a> - v2 が推奨されます。
 
 ## <a name="availability-by-region"></a>リージョンごとの可用性
 
@@ -85,15 +85,16 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|米国東部 2     |     S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    1    |
+|米国東部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+|米国中部     |    S8v2、S9v2     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|米国西部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    2  |
+|米国西部     |    S8、S9、S8v2、S9v2   |    2  |
 |米国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|米国西部 2    |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |    1     |
+|米国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
@@ -103,17 +104,17 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |北ヨーロッパ     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西ヨーロッパ    |   S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |  1  |
+|西ヨーロッパ    |   S8、S9、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア東部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|オーストラリア東部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2    |    1     |
+|オーストラリア東部     |    S8、S9、S8v2、S9v2    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2、D1     |   1      |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
@@ -132,15 +133,17 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 ## <a name="pricing"></a>価格
 
-総コストは、多数の要素 (選択されたリージョン、レベル、クエリ レプリカ、一時停止/再開など) に依存します。 「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」の計算機を使用して、ご利用のリージョンの一般的な価格を確認してください。 このツールは、1 つのリージョンでの 1 つのサーバー インスタンスの価格を計算します。 クエリ レプリカは、サーバーと同じ料金で課金されることに留意してください。 
+総コストは、さまざまな要因によって異なります。 たとえば、選択されたリージョン、レベル、クエリ レプリカ、一時停止/再開です。 「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」の計算機を使用して、ご利用のリージョンの一般的な価格を確認してください。 このツールは、1 つのリージョンでの 1 つのサーバー インスタンスの価格を計算します。 クエリ レプリカは、サーバーと同じ料金で課金されることに留意してください。 
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services が基礎
 
 Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](analysis-services-compat-level.md) 1200 以降の表形式モデルをサポートします。 表形式モデルは、Tabular Model Scripting Language (TMSL) と表形式オブジェクト モデル (TOM) コードで表形式メタデータ オブジェクト定義に明記されたリレーショナル モデリング構造 (モデル、テーブル、列) です。 パーティション、パースペクティブ、行レベルのセキュリティ、双方向リレーションシップ、および翻訳のすべてがサポートされています。\* 多次元モデルと PowerPivot for SharePoint は、Azure Analysis Services ではサポートされて "*いません*"。
 
-インメモリと DirectQuery モードの両方で表形式モデルがサポートされます。 インメモリ モード (既定値) の表形式モデルでは、複数のデータ ソースがサポートされます。 モデル データは高度に圧縮され、インメモリでキャッシュされるため、このモードは、大量のデータに対するクエリの応答を最速で提供します。 複雑なデータセットとクエリに対する最大の柔軟性も備えています。 パーティション分割によって増分読み込みが可能になり、並列処理が増加し、メモリの消費量が減少します。 計算テーブルなどの高度なデータ モデリング機能と、すべての DAX 関数がサポートされます。 データ ソースからキャッシュされたデータを更新するには、インメモリ モデルを更新 (処理) する必要があります。 Azure サービス プリンシパルのサポートによる PowerShell、TOM、TMSL、および REST を使用した無人の更新操作によって、モデル データが常に最新であることを柔軟に保証できます。 
+インメモリと DirectQuery モードの両方で表形式モデルがサポートされます。 インメモリ モード (既定値) の表形式モデルでは、複数のデータ ソースがサポートされます。 モデル データは高度に圧縮され、インメモリでキャッシュされるため、このモードは、大量のデータに対するクエリの応答を最速で提供します。 複雑なデータセットとクエリに対する最大の柔軟性も備えています。 
 
-DirectQuery モード* では、ストレージとクエリの実行でバックエンドのリレーショナル データベースを活用します。 1 つの SQL Server、SQL Server Data Warehouse、Azure SQL Database、Azure Synapse Analytics (SQL Data Warehouse)、Oracle、および Teradata データ ソース内の非常に大きなデータ セットがサポートされます。 バックエンド データ セットは、利用可能なサーバー リソースのメモリを超えることができます。 複雑なデータ モデルの更新シナリオは必要ありません。 また、データ ソースの種類や DAX 式などに制限があり、一部の高度なデータ モデリング機能もサポートされていません。 最適なモードを決定する前に、[DirectQuery モード](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)に関する記事を参照してください。
+パーティション分割によって増分読み込みが可能になり、並列処理が増加し、メモリの消費量が減少します。 計算テーブルなどの高度なデータ モデリング機能と、すべての DAX 関数がサポートされます。 データ ソースからキャッシュされたデータを更新するには、インメモリ モデルを更新 (処理) する必要があります。 Azure サービス プリンシパルのサポートによる PowerShell、TOM、TMSL、および REST を使用した無人の更新操作によって、モデル データが常に最新の状態であることを柔軟に保証できます。 
+
+DirectQuery モード* では、ストレージとクエリの実行でバックエンドのリレーショナル データベースを活用します。 1 つの SQL Server、SQL Server Data Warehouse、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、Oracle、および Teradata データ ソース内の非常に大きなデータ セットがサポートされます。 バックエンド データ セットは、利用可能なサーバー リソースのメモリを超えることができます。 複雑なデータ モデルの更新シナリオは必要ありません。 また、データ ソースの種類や DAX 式などに制限があり、一部の高度なデータ モデリング機能もサポートされていません。 最適なモードを決定する前に、[DirectQuery モード](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)に関する記事を参照してください。
 
 \* 利用できる機能はレベルによって異なります。
 

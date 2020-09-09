@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592187"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701812"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592187"
 
 **Q:何を利用できますか。**
 
-**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の[利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、[ゲート プレビュー](../cognitive-services-gating-process.md)として使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 
+**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の[利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、ゲート プレビューとして使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 
 
 **Q:Cognitive Services のクラウドとコンテナーには違いがありますか。**
 

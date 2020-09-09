@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev, vs-azure
-ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-csharp, aaddev, vs-azure
+ms.openlocfilehash: ab72512b2e5d915dbd4b8a3d7d8446a5932eef9e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886111"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165449"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 
@@ -31,7 +31,7 @@ ms.locfileid: "80886111"
 
 プロジェクト ファイル (.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| 種類 | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -46,7 +46,7 @@ ms.locfileid: "80886111"
 
 追加の参照 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-| 種類 | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
@@ -60,7 +60,7 @@ ms.locfileid: "80886111"
 
 次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
 
-| 種類 | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -86,7 +86,7 @@ ms.locfileid: "80886111"
     </appSettings>
     ```
 
-- `<dependentAssembly>` と `<runtime><assemblyBinding>`の `System.IdentityModel.Tokens.Jwt` ノードの下に `Microsoft.IdentityModel.Protocol.Extensions` 要素が追加されます。
+- `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Protocol.Extensions`の `<runtime><assemblyBinding>` ノードの下に `<dependentAssembly>` 要素が追加されます。
 
 追加の変更 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
@@ -120,7 +120,7 @@ ms.locfileid: "80886111"
     </entityFramework>
     ```
 
-- `<dependentAssembly>`、`<runtime><assemblyBinding>`、`Microsoft.Data.Services.Client` の `Microsoft.Data.Edm`ノードの下に `Microsoft.Data.OData` 要素が追加されます。
+- `Microsoft.Data.Services.Client`、`Microsoft.Data.Edm`、`Microsoft.Data.OData` の `<runtime><assemblyBinding>`ノードの下に `<dependentAssembly>` 要素が追加されます。
 
 ## <a name="code-changes-and-additions"></a>コードの変更と追加
 
@@ -162,5 +162,5 @@ ms.locfileid: "80886111"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD の認証シナリオ](authentication-scenarios.md)
+- [Azure AD の認証シナリオ](./authentication-vs-authorization.md)
 - [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](quickstart-v2-aspnet-webapp.md)

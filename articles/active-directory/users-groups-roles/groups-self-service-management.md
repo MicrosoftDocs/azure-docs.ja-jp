@@ -1,6 +1,6 @@
 ---
 title: セルフサービス グループ管理の設定 - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory にセキュリティ グループまたは Office 365 グループを作成して管理したり、セキュリティ グループまたは Office 365 グループのメンバーシップを要求したりすることができます。
+description: Azure Active Directory にセキュリティ グループまたは Microsoft 365 グループを作成して管理したり、セキュリティ グループまたは Microsoft 365 グループのメンバーシップを要求したりすることができます
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,28 +9,28 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: conceptual
-ms.date: 03/10/2020
+ms.topic: how-to
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 541deb5cf44ad5440e31641b673ed5da5b5d2b26
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9a32874cebcd8335967eaf8a07a56346e8ad6460
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768548"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213634"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス グループ管理の設定 
 
-Azure Active Directory (Azure AD) では、独自のセキュリティ グループまたは Office 365 グループを作成して管理することができます。 グループの所有者は、メンバーシップ要求を承認または拒否できます。また、グループ メンバーシップの制御を委任できます。 セルフサービスによるグループ管理機能は、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。
+Azure Active Directory (Azure AD) では、独自のセキュリティ グループまたは Microsoft 365 グループを作成して管理することができます。 グループの所有者は、メンバーシップ要求を承認または拒否できます。また、グループ メンバーシップの制御を委任できます。 セルフサービスによるグループ管理機能は、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。
 
 ## <a name="self-service-group-membership-defaults"></a>セルフ サービス グループ メンバーシップの既定値
 
-Azure portal で、または Azure AD PowerShell を使用してセキュリティ グループが作成された場合、グループの所有者のみがメンバーシップを更新できます。 所有者による承認か自動承認かにかかわらず、[アクセス パネル](https://account.activedirectory.windowsazure.com/r#/joinGroups)でセルフサービスにより作成されたセキュリティ グループおよびすべての Office 365 グループにはすべてのユーザーが参加できます。 アクセス パネルでは、グループを作成するときにメンバーシップ オプションを変更できます。
+Azure portal で、または Azure AD PowerShell を使用してセキュリティ グループが作成された場合、グループの所有者のみがメンバーシップを更新できます。 所有者による承認か自動承認かにかかわらず、[アクセス パネル](https://account.activedirectory.windowsazure.com/r#/joinGroups)でセルフサービスにより作成されたセキュリティ グループおよびすべての Microsoft 365 グループにはすべてのユーザーが参加できます。 アクセス パネルでは、グループを作成するときにメンバーシップ オプションを変更できます。
 
-グループの作成場所 | セキュリティ グループの既定の動作 | Office 365 グループの既定の動作
+グループの作成場所 | セキュリティ グループの既定の動作 | Microsoft 365 グループの既定の動作
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | メンバーを追加できるのは所有者のみです<br>アクセス パネルには表示されますが、参加できません | すべてのユーザーが参加できます
 [Azure Portal](https://portal.azure.com) | メンバーを追加できるのは所有者のみです<br>アクセス パネルには表示されますが、参加できません<br>グループ 作成時に所有者は自動的に割り当てられません | すべてのユーザーが参加できます
@@ -47,7 +47,7 @@ Azure portal で、または Azure AD PowerShell を使用してセキュリテ�
 1. **[グループ]** を選択し、 **[全般]** 設定を選択します。
 1. **[所有者はアクセス パネルでのグループ メンバーシップの要求を管理できる]** を **[はい]** に設定します。
 1. **[アクセス パネルでのグループへのアクセスを制限する]** を **[いいえ]** に設定します。
-1. **[ユーザーは Azure Portal でセキュリティ グループを作成できる]** または **[ユーザーは Azure Portal で Office 365 グループを作成することができる]** を次の値に設定した場合
+1. **[ユーザーは Azure Portal でセキュリティ グループを作成できる]** または **[ユーザーは Azure Portal で Microsoft 365 グループを作成することができる]** を次の値に設定した場合
 
     - **[はい]** :Azure AD 組織内のすべてのユーザーが、新しいセキュリティ グループを作成したりそれらのグループにメンバーを追加したりできるようになります。 これらの新しいグループは、他のすべてのユーザーのアクセス パネルにも表示されるようになります。 グループのポリシー設定で許可されている場合、他のユーザーはこれらのグループへの参加要求を作成できます
     - **[いいえ]** :ユーザーはグループを作成できず、所有している既存のグループを変更することもできません。 ただし、それらのグループのメンバーシップの管理と、他のユーザーからのグループへの参加要求の承認は、引き続き行うことができます。
@@ -57,7 +57,7 @@ Azure portal で、または Azure AD PowerShell を使用してセキュリテ�
 ユーザーがグループを作成できる場合、自分の組織内のすべてのユーザーが、新しいグループを作成でき、既定の所有者としてそれらのグループにメンバーを追加できるようになります。 独自のグループを作成できる個人を指定することはできません。 個人を指定できるのは、別のグループ メンバーをグループの所有者にする場合のみです。
 
 > [!NOTE]
-> ユーザーが セキュリティ グループまたは Office 365 グループへの参加を要求したり、所有者がメンバーシップ要求を承認または拒否するように要求するには、Azure Active Directory Premium (P1 または P2) ライセンスが必要です。 Azure Active Directory Premium ライセンスがない場合でも、ユーザーはアクセス パネルでグループを管理できますが、アクセス パネルで所有者の承認を必要とするグループを作成することはできません。また、グループに参加するように要求することもできません。 
+> ユーザーが セキュリティ グループまたは Microsoft 365 グループへの参加を要求したり、所有者がメンバーシップ要求を承認または拒否するように要求するには、Azure Active Directory Premium (P1 または P2) ライセンスが必要です。 Azure Active Directory Premium ライセンスがない場合でも、ユーザーはアクセス パネルでグループを管理できますが、アクセス パネルで所有者の承認を必要とするグループを作成することはできません。また、グループに参加するように要求することもできません。
 
 ## <a name="next-steps"></a>次のステップ
 

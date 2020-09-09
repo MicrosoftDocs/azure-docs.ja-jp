@@ -1,19 +1,20 @@
 ---
 title: Active Directory を使用して結果をトリミングするためのセキュリティ フィルター
 titleSuffix: Azure Cognitive Search
-description: セキュリティ フィルターと Azure Active Directory (AAD) ID を使用した Azure Cognitive Search コンテンツに対するアクセス制御。
+description: セキュリティ フィルターと Azure Active Directory (AAD) ID を使用した Azure Cognitive Search の検索結果に対するドキュメント レベルのセキュリティ特権。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/04/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72794312"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019778"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -28,7 +29,7 @@ ms.locfileid: "72794312"
 > - グループ識別子フィルターでの検索要求を発行します
 > 
 > [!NOTE]
-> この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 
+> この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started)に完全なソース コードがあります。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +41,7 @@ Azure Cognitive Search のインデックスには、ドキュメントに対す
 
 ### <a name="register-your-application-with-aad"></a>AAD にアプリケーションを登録する
 
-このステップでは、ユーザー アカウントとグループ アカウントのサインインを受け付けるために、アプリケーションを AAD と統合します。 組織の AAD 管理者ではない場合は、以下の手順を実行するために[新しいテナントを作成する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)ことが必要な場合があります。
+このステップでは、ユーザー アカウントとグループ アカウントのサインインを受け付けるために、アプリケーションを AAD と統合します。 組織の AAD 管理者ではない場合は、以下の手順を実行するために[新しいテナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)ことが必要な場合があります。
 
 1. [ **[アプリケーション登録ポータル]** ](https://apps.dev.microsoft.com) >   **[Converged app]\(集中型アプリ\)**  >  **[Add an app]\(アプリの追加\)** に移動します。
 2. アプリケーションの名前を入力して、 **[作成]** をクリックします。 
@@ -63,7 +64,7 @@ Microsoft Graph に用意されている API では、REST API を使ってプ�
 
 特に大規模な組織では、ユーザーとグループ メンバーシップが頻繁に変更される場合があります。 ユーザーとグループの ID を作成するコードは、組織のメンバーシップの変更を反映するのに十分な頻度で実行する必要があります。 また、Azure Cognitive Search インデックスについても、許可されたユーザーとリソースの現在の状態を反映するために同様の更新スケジュールが必要です。
 
-### <a name="step-1-create-aad-group"></a>ステップ 1: [AAD グループ](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0)を作成する 
+### <a name="step-1-create-aad-group"></a>手順 1:[AAD グループ](/graph/api/group-post-groups?view=graph-rest-1.0)を作成する 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-user"></a>ステップ 2: [AAD ユーザー](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)を作成する
+### <a name="step-2-create-aad-user"></a>手順 2:[AAD ユーザー](/graph/api/user-post-users?view=graph-rest-1.0)を作成する
 ```csharp
 User user = new User()
 {
@@ -92,15 +93,15 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>ステップ 3: ユーザーとグループを関連付ける
+### <a name="step-3-associate-user-and-group"></a>手順 3:ユーザーとグループを関連付ける
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>ステップ 4: グループ識別子をキャッシュする
-ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) を使用して、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
+### <a name="step-4-cache-the-groups-identifiers"></a>手順 4:グループ識別子をキャッシュする
+ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 [AAD Batch API](/graph/json-batching) を使用して、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
 
-Microsoft Graph は、大量の要求を処理できるように設計されています。 ただし、処理できないほど多数の要求が発生すると、Microsoft Graph は HTTP 状態コード 429 で要求を失敗させます。 詳しくは、「[Microsoft Graph 調整ガイド](https://developer.microsoft.com/graph/docs/concepts/throttling)」をご覧ください。
+Microsoft Graph は、大量の要求を処理できるように設計されています。 ただし、処理できないほど多数の要求が発生すると、Microsoft Graph は HTTP 状態コード 429 で要求を失敗させます。 詳しくは、「[Microsoft Graph 調整ガイド](/graph/throttling)」をご覧ください。
 
 ## <a name="index-document-with-their-permitted-groups"></a>許可されているグループでドキュメントにインデックスを付ける
 
@@ -136,9 +137,9 @@ _indexClient.Documents.Index(batch);
 
 要求を発行したユーザーのグループに基づいて検索結果で返されるドキュメントをフィルター処理するには、次の手順のようにします。
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>ステップ 1: ユーザーのグループ識別子を取得する
+### <a name="step-1-retrieve-users-group-identifiers"></a>手順 1:ユーザーのグループ識別子を取得する
 
-ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) 要求を発行します。
+ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) 要求を発行します。
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -164,7 +165,7 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>ステップ 2: 検索要求を作成する
+### <a name="step-2-compose-the-search-request"></a>手順 2:検索要求を作成する
 
 ユーザーのグループ メンバーシップがある場合は、適切なフィルター値を指定して検索要求を発行できます。
 
@@ -178,7 +179,7 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>ステップ 3: 結果を処理する
+### <a name="step-3-handle-the-results"></a>手順 3:結果を処理する
 
 応答には、ユーザーが表示アクセス許可を持つドキュメントだけにフィルター処理されたリストが含まれます。 検索結果ページの作成方法によっては、フィルター処理された結果セットを反映するための視覚的な合図を含めることができます。
 
@@ -186,7 +187,7 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 このチュートリアルでは、AAD のサインインを使って Azure Cognitive Search の結果のドキュメントをフィルター処理し、要求で指定されたフィルターに一致しないドキュメントの結果をトリミングする方法を説明しました。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search フィルターを使用した ID ベースのアクセスの制御](search-security-trimming-for-azure-search.md)
 + [Azure Cognitive Search のフィルター](search-filters.md)

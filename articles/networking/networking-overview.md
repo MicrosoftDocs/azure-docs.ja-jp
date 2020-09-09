@@ -1,6 +1,6 @@
 ---
 title: Azure ネットワーク サービスの概要
-description: Azure のネットワーク サービスとその機能 (接続サービス、アプリケーション保護サービス、アプリケーション配信サービス、ネットワーク監視) について説明します。
+description: 接続、アプリケーション保護、アプリケーション配信、およびネットワーク監視サービスなどの Azure のネットワーク サービスについて説明します。
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,19 +10,19 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133616"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037254"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 
 Azure のネットワーク サービスにはさまざまなネットワーク機能があり、単独で使用することも組み合わせて使用することもできます。 主な機能については、次のリンクをクリックしてください。
 - [**接続サービス**](#connect):Azure リソースとオンプレミス リソースを接続するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Virtual Network (VNet)、Virtual WAN、ExpressRoute、VPN Gateway、Virtual Network NAT Gateway、Azure DNS, Peering Service、Azure Bastion。
 - [**アプリケーション保護サービス**](#protect): アプリケーションを保護するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Private Link、DDoS Protection、Firewall、ネットワーク セキュリティ グループ、Web Application Firewall、仮想ネットワーク エンドポイント。
-- [**アプリケーション配信サービス**](#deliver): Azure ネットワークでアプリケーションを配信するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Content Delivery Network (CDN)、Azure Front Door Service、Traffic Manager、Application Gateway、 Internet Analyzer、Load Balancer。
+- [**アプリケーション配信サービス**](#deliver): Azure ネットワークでアプリケーションを配信するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Content Delivery Network (CDN)、Azure Front Door Service、Traffic Manager、Application Gateway、Internet Analyzer、Load Balancer。
 - [**ネットワークの監視**](#monitor): ネットワーク リソースを監視するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Network Watcher、ExpressRoute Monitor、Azure Monitor、VNet ターミナル アクセス ポイント (TAP)。
 
 ## <a name="connectivity-services"></a><a name="connect"></a>接続サービス
@@ -137,14 +137,14 @@ Azure Firewall の詳細については、[Azure Firewall のドキュメント]
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>アプリケーション配信サービス
 
-このセクションでは、アプリケーションの配信を支援する Azure のネットワーク サービス (Network Watcher、ExpressRoute Monitor、Azure Monitor、VNet ターミナル アクセス ポイント (TAP)) について説明します。
+このセクションでは、アプリケーションの配信を支援する Azure のネットワーク サービス (Content Delivery Network、Azure Front Door Service、Traffic Manager、Load Balancer、Application Gateway) について説明します。
 
 |サービス|使用する理由|シナリオ|
 |---|---|---|
 |[Content Delivery Network](#cdn)|ユーザーに高帯域幅コンテンツを配信します。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。|<p>[Web アプリに CDN を追加する](../cdn/cdn-add-to-web-app.md)</p> <p>[HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[カスタム ドメインを Azure CDN エンドポイントに追加する](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
 |[Azure Front Door Service](#frontdoor)|最適化によって最大限のパフォーマンスを引き出し、瞬時のグローバルなフェールオーバーによって可用性を高めることで、Web トラフィックのグローバルなルーティングの定義、管理、監視を実現します。|<p>[Azure Front Door Service にカスタム ドメインを追加する](../frontdoor/front-door-custom-domain.md)</p> <p>[Front Door カスタム ドメインで HTTPS を構成する](../frontdoor/front-door-custom-domain-https.md)</p><p>[Web Application Firewall の geo フィルタリング ポリシーを設定する](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[Traffic Manager](#trafficmanager)|高可用性と即応性を確保しながら、全世界の Azure リージョン間で DNS に基づいてトラフィックを分散します。|<p> [トラフィックをルーティングして待ち時間を削減する](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[優先エンドポイントにトラフィックをルーティングする](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [エンドポイントに重み付けしてトラフィックを制御する](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[エンドポイントの地理的な場所に基づいてトラフィックをルーティングする](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [ユーザーのサブネットに基づくトラフィックのルーティング](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[Load Balancer](#loadbalancer)|可用性ゾーン間および VNet へのトラフィックのルーティングを行って、リージョンの負荷分散を実現します。 リソース間でトラフィックをルーティングしてリージョンのアプリケーションをビルドすることで、内部の負荷分散を実現します。|<p> [VM へのインターネット トラフィックの負荷分散](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[仮想ネットワーク内の VM 間でトラフィックの負荷を分散する](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[特定の VM の特定のポートにトラフィックをポート フォワーディングする](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [負荷分散規則とアウトバウンド規則を構成する](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Load Balancer](#loadbalancer)|可用性ゾーン間および VNet へのトラフィックのルーティングを行って、リージョンの負荷分散を実現します。 リソース間でトラフィックをルーティングしてリージョンのアプリケーションをビルドすることで、内部の負荷分散を実現します。|<p> [VM へのインターネット トラフィックの負荷分散](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[仮想ネットワーク内の VM 間でトラフィックの負荷を分散する](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[特定の VM の特定のポートにトラフィックをポート フォワーディングする](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [負荷分散規則とアウトバウンド規則を構成する](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
 |[Application Gateway](#applicationgateway)|Azure Application Gateway は、Web アプリケーションに対するトラフィックを管理できる Web トラフィック ロード バランサーです。|<p>[Azure Application Gateway を使用して Web トラフィックを転送する](../application-gateway/quick-create-portal.md)</p><p>[チュートリアル:Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する](../application-gateway/create-ssl-portal.md)</p><p>[URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する](../application-gateway/create-url-route-portal.md) </p>|
 |
 

@@ -3,12 +3,12 @@ title: 証明書の共通名を使用するようにクラスターを更新す�
 description: 証明書の拇印の使用から証明書共通名の使用へと Service Fabric クラスターを切り替える方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272629"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247916"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -20,7 +20,7 @@ ms.locfileid: "81272629"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>証明書を取得する
-最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書の共通名は、貴社が所有するカスタム ドメインを対象とし、かつドメイン レジストラーから購入したものであることが必要です。 たとえば、"azureservicefabricbestpractices.com" とします。Microsoft の従業員以外は、MS ドメインの証明書をプロビジョニングできません。そのため、ご利用の LB や Traffic Manager の DNS 名を証明書の共通名として使用することはできません。また、カスタム ドメインを Azure で解決可能にするためには、[Azure DNS ゾーン](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)をプロビジョニングする必要があります。 また、ご利用のクラスターのカスタム ドメイン エイリアスをポータルに反映したい場合は、貴社が所有するカスタム ドメインをクラスターの "managementEndpoint" として宣言する必要があります。
+最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書の共通名は、貴社が所有するカスタム ドメインを対象とし、かつドメイン レジストラーから購入したものであることが必要です。 たとえば、"azureservicefabricbestpractices.com" とします。Microsoft の従業員以外は、MS ドメインの証明書をプロビジョニングできません。そのため、ご利用の LB や Traffic Manager の DNS 名を証明書の共通名として使用することはできません。また、カスタム ドメインを Azure で解決可能にするためには、[Azure DNS ゾーン](../dns/dns-delegate-domain-azure-dns.md)をプロビジョニングする必要があります。 また、ご利用のクラスターのカスタム ドメイン エイリアスをポータルに反映したい場合は、貴社が所有するカスタム ドメインをクラスターの "managementEndpoint" として宣言する必要があります。
 
 テスト目的の場合は、無料またはオープンな証明機関から CA の署名証明書を取得できます。
 
@@ -179,7 +179,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
         ...
     ```
 
-詳細については、「[拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)」を参照してください。
+詳細については、「[拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする](./service-fabric-create-cluster-using-cert-cn.md)」を参照してください。
 
 ## <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
 変更を加えた後、更新したテンプレートを再度デプロイします。

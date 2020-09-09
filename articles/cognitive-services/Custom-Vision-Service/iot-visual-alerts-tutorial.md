@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734333"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244671"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
@@ -31,7 +31,7 @@ ms.locfileid: "82734333"
 > * アプリを使用して、Custom Vision プロジェクトをトレーニングします。
 > * アプリを使用して、新しいイメージをリアルタイムでスコア付けし、結果を Azure に送信します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,7 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
 
 次のステップに従って、お使いの PC または IoT デバイスで実行されている IoT Visual Alerts アプリを取得します。
 
-1. GitHub で [IoTVisualAlerts サンプル](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)をクローンまたはダウンロードします。
+1. GitHub で [IoTVisualAlerts サンプル](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)を複製またはダウンロードします。
 1. Visual Studio で、ソリューション _IoTVisualAlerts.sln_ を開きます
 1. Custom Vision プロジェクトを次のように統合します。
     1. _CustomVision\CustomVisionServiceWrapper.cs_ スクリプトで、トレーニング キーを使用して `ApiKey` 変数を更新します。

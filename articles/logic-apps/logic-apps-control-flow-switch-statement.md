@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2c8271f0bc33bc47e64c85846061a9b77bbe66f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74793236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066229"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps の特定の値に基づいてワークフロー アクションを実行する switch ステートメントを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "74793236"
 
 * この記事の例に従うには、Outlook.com や Office 365 の Outlook アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
-  1. 電子メールを送信するアクションを追加するときは、代わりに **[承認の電子メールを送信します]** を探して選択します。
+  1. 電子メールを送信するアクションを追加するときは、代わりに次のアクションを探して選択します。 **[承認の電子メールを送信します]**
 
      ![[承認の電子メールを送信します] を選択する](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "74793236"
 
    ステップとステップの間に switch ステートメントを追加するときは、switch ステートメントを追加する場所で矢印の上にポインターを重ねます。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
-1. 検索ボックスに、フィルターとして「switch」と入力します。 **[スイッチ - 制御]** アクションを選択します。
+1. 検索ボックスに、フィルターとして「switch」と入力します。 このアクションを選択: **[Switch - Control]\(スイッチ - 制御\)**
 
    ![switch を追加する](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
@@ -121,7 +121,7 @@ switch ステートメントを使用してロジック アプリを作成しま
 
 ## <a name="get-support"></a>サポートを受ける
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,23 +1,21 @@
 ---
 title: マスター VHD イメージに Office をインストールする - Azure
 description: Windows Virtual Desktop マスター イメージに Office をインストールして、Azure 向けにカスタマイズする方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e53d8bf8f7cb024b468983f596d3d1bd5c91ee7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127838"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007303"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
-この記事では、Office 365 ProPlus、OneDrive、およびその他の一般的なアプリケーションをマスター仮想ハード ディスク (VHD) イメージにインストールして、Azure にアップロードする方法を説明します。 ユーザーが特定の業種 (LOB) 向けアプリケーションにアクセスする必要がある場合は、この記事の手順を完了した後にそれらをインストールすることをお勧めします。
+この記事では、Microsoft 365 Apps for enterprise、OneDrive、およびその他の一般的なアプリケーションをマスター仮想ハード ディスク (VHD) イメージにインストールして、Azure にアップロードする方法を説明します。 ユーザーが特定の業種 (LOB) 向けアプリケーションにアクセスする必要がある場合は、この記事の手順を完了した後にそれらをインストールすることをお勧めします。
 
 この記事では、仮想マシンが既に作成されていることを前提としています。 そうでない場合は、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md#create-a-vm)」を参照してください
 
@@ -28,29 +26,30 @@ ms.locfileid: "79127838"
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>共有コンピューターのアクティブ化モードで Office をインストールする
 
-共有コンピューターのライセンス認証により、組織内で複数のユーザーによってアクセスされるコンピューターに Office 365 ProPlus をデプロイすることができます。 共有コンピューターのライセンス認証の詳細については、「[Office 365 ProPlus に対する共有コンピューターのライセンス認証の概要](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)」を参照してください。
+共有コンピューターのライセンス認証により、組織内で複数のユーザーによってアクセスされるコンピューターに Microsoft 365 Apps for enterprise をデプロイすることができます。 共有コンピューターのライセンス認証の詳細については、[Microsoft 365 Apps に対する共有コンピューターのライセンス認証の概要](/deployoffice/overview-shared-computer-activation)に関するページを参照してください。
 
 [Office 展開ツール](https://www.microsoft.com/download/details.aspx?id=49117)を使用して Office をインストールします。 Windows 10 Enterprise マルチセッションでは次のバージョンの Office のみがサポートされています。
-- Office 365 ProPlus
-- Microsoft 365 Business サブスクリプションに付属している Office 365 Business
+
+   - Microsoft 365 Apps for enterprise
+   - Microsoft 365 Business Premium サブスクリプションに付属している Microsoft 365 Apps for business
 
 Office 展開ツールには、構成 XML ファイルが必要です。 次のサンプルをカスタマイズするには、「[Office 展開ツールの構成オプション](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)」をご覧ください。
 
 マイクロソフトが提供しているこのサンプル構成 XML では、次の操作を行います。
 
-- 月次チャネルから Office をインストールし、その実行時に月次チャネルから更新プログラムを配信します。
-- x64 アーキテクチャを使用します。
-- 自動更新を無効にします。
-- Office の既存のインストールを削除し、その設定を移行します。
-- 共有コンピューターのライセンス認証を有効にします。
+   - 月次エンタープライズ チャネルから Office をインストールし、月次エンタープライズ チャネルから更新プログラムを配信します。
+   - x64 アーキテクチャを使用します。
+   - 自動更新を無効にします。
+   - Office の既存のインストールを削除し、その設定を移行します。
+   - 共有コンピューターのライセンス認証を有効にします。
 
 >[!NOTE]
 >Visio のステンシル検索機能が Windows Virtual Desktop で期待どおりに動作しないことがあります。
 
 このサンプル構成 XML では、以下の操作は行われません。
 
-- Skype for Business のインストール
-- ユーザーごとのモードでの OneDrive のインストール。 詳しくは、「[マシンごとのモードで OneDrive をインストールする](#install-onedrive-in-per-machine-mode)」をご覧ください。
+   - Skype for Business のインストール
+   - ユーザーごとのモードでの OneDrive のインストール。 詳しくは、「[マシンごとのモードで OneDrive をインストールする](#install-onedrive-in-per-machine-mode)」をご覧ください。
 
 >[!NOTE]
 >共有コンピューターのライセンス認証は、グループ ポリシー オブジェクト (GPO) またはレジストリ設定を使用して設定することができます。 GPO は、 **[コンピューターの構成] \\ [ポリシー] \\ [管理用テンプレート] \\ [Microsoft Office 2016 (マシン)] \\ [ライセンスの設定]** にあります
@@ -63,11 +62,11 @@ Setup.exe /configure configuration.xml
 
 #### <a name="sample-configurationxml"></a>サンプルの configuration.xml
 
-次の XML サンプルでは、月次リリースがインストールされます。
+次の XML サンプルでは、月次エンタープライズ チャネル リリースがインストールされます。
 
 ```xml
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-US" />
       <Language ID="MatchOS" />
@@ -120,8 +119,8 @@ OneDrive は、通常はユーザーごとにインストールされます。 �
 
 2. <https://aka.ms/OneDriveWVD-Installer> リンクを使用して、ステージング場所に OneDriveSetup.exe をダウンロードします。
 
-3. **\<ExcludeApp ID="OneDrive" /\>** を省略することで office を OneDrive と共にインストールした場合は、次のコマンドを実行して、管理者特権でのコマンド プロンプトから既存のユーザーごとの OneDrive インストールをアンインストールします。
-    
+3. **\<ExcludeApp ID="OneDrive" /\>** を省略することで Office を OneDrive と共にインストールした場合は、次のコマンドを実行して、管理者特権でのコマンド プロンプトから既存のユーザーごとの OneDrive インストールをアンインストールします。
+
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
@@ -156,9 +155,11 @@ OneDrive は、通常はユーザーごとにインストールされます。 �
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>Teams と Skype
+## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft Teams と Skype for Business
 
-Windows Virtual Desktop では、Skype for Business と Teams はサポートされていません。
+Windows Virtual Desktop では、Skype for Business はサポートされていません。
+
+Microsoft Teams をインストールする方法については、「[Windows Virtual Desktop で Microsoft Teams を使用する](teams-on-wvd.md)」をご覧ください。 Windows Virtual Desktop での Microsoft Teams のメディア最適化はプレビューで使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

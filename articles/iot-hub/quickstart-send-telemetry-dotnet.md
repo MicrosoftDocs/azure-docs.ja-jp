@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-ms.date: 06/21/2019
-ms.openlocfilehash: b1ee14afcf46dfbedfb9d696b6a0add22ccd39cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- 'Role: Cloud Development'
+ms.date: 06/01/2020
+ms.openlocfilehash: 98b50649b5a788270fa2b4cd8b62ca5598daa25f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769134"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320478"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (.NET)
 
@@ -33,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用コンピューター上に .NET Core SDK 2.1.0 以降が必要です。
+このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用マシン上に .NET Core SDK 3.0 以降が必要です。
 
 複数のプラットフォームに対応する .NET Core SDK を [.NET](https://www.microsoft.com/net/download/all) からダウンロードできます。
 
@@ -42,6 +43,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ```cmd/sh
 dotnet --version
 ```
+
+> [!NOTE]
+> このクイックスタートでテレメトリの読み取りに使用する Event Hubs サービス コードをコンパイルするには、.NET Core SDK 3.0 以上をお勧めします。 「[Hub からテレメトリを読み取る](#read-the-telemetry-from-your-hub)」セクションの説明に従って、サービス コードの言語バージョンを preview に設定した場合は、.NET Core SDK 2.1 を使用できます。
 
 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
@@ -125,7 +129,7 @@ az extension add --name azure-iot
 
     次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
 
-    ![シミュレートされたデバイスを実行する](media/quickstart-send-telemetry-dotnet/SimulatedDevice.png)
+    ![シミュレートされたデバイスを実行する](media/quickstart-send-telemetry-dotnet/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
@@ -135,11 +139,14 @@ az extension add --name azure-iot
 
 2. 適当なテキスト エディターで **ReadDeviceToCloudMessages.cs** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
-    | 変数 | Value |
+    | 変数 | 値 |
     | -------- | ----------- |
-    | `s_eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
-    | `s_eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
-    | `s_iotHubSasKey`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
+    | `EventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
+    | `EventHubName`                | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
+    | `IotHubSasKey`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
+
+    > [!NOTE]
+    > .NET Core SDK 2.1 を使用している場合、コードをコンパイルするには、言語バージョンを preview に設定する必要があります。 これを行うには、**read-d2c-messages.csproj** ファイルを開き、`<LangVersion>` 要素の値を `preview` に設定します。
 
 3. ローカル ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
 
@@ -155,7 +162,7 @@ az extension add --name azure-iot
 
     次のスクリーンショットは、シミュレートされたデバイスがハブに送信した利用統計情報をバックエンド アプリケーションが受信したときの出力を示しています。
 
-    ![バックエンド アプリケーションを実行する](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
+    ![バックエンド アプリケーションを実行する](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -11,12 +11,13 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 91beae69489c8ac7741b173b25fdbc87c861a9e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: 384a8ccefb5273186a24f54aced41a31f176c5be
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78270943"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934771"
 ---
 # <a name="quickstart-use-the-bing-custom-search-client-library"></a>クイック スタート:Bing Custom Search クライアント ライブラリを使用する
 

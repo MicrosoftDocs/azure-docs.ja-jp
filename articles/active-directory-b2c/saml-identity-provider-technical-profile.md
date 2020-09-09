@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 63e00f3ce971e2c21e684d743429ee1b09497393
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c30d5c072c66e04b97cae2f88e4c8ef96b32779
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116215"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
@@ -70,9 +70,9 @@ SAML 応答のアサーションを暗号化する場合:
 3. 技術プロファイル メタデータ **WantsEncryptedAssertions** を `true` に設定します。
 4. ID プロバイダーを新しい Azure AD B2C の技術プロファイル メタデータで更新します。 **use** プロパティ付きの **KeyDescriptor** が証明書の公開キーを含む `encryption` に設定されます。
 
-次の例では、メタデータの Azure AD B2C 技術プロファイル暗号化セクションを示しています。
+次の例は、暗号化に使用される SAML メタデータのキー記述子セクションを示しています。
 
-```XML
+```xml
 <KeyDescriptor use="encryption">
   <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
     <X509Data>
@@ -97,7 +97,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 SAML アサーション: 
 
-```XML
+```xml
 <saml:Subject>
   <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
     <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
@@ -109,7 +109,7 @@ SAML アサーション:
 
 出力要求：
 
-```XML
+```xml
 <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
 ```
 
@@ -120,7 +120,7 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 - **issuerUserId** 要求は、**assertionSubjectName** 要求にマップされます。
 - **givenName** 要求にマップされている **first_name** 要求。
 - **surname** 要求にマップされている **last_name** 要求。
-- どの名前にもマップされていない **displayName** 要求。
+- **displayName** 要求は、**name** 要求にマップされます。
 - どの名前にもマップされていない **email** 要求。
 
 また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。
@@ -169,6 +169,38 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 | SamlMessageSigning |はい | SAML メッセージを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、要求に署名し、ID プロバイダーに送信します。 |
 | SamlAssertionDecryption |はい | SAML メッセージを復号化するために使用する X509 証明書 (RSA キー セット)。 この証明書は、ID プロバイダーによって提供される必要があります。 Azure AD B2C では、この証明書を使用して、ID プロバイダーによって送信されるデータを復号化します。 |
 | MetadataSigning |いいえ | SAML データを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、メタデータに署名します。  |
+
+## <a name="saml-entityid-customization"></a>SAML entityID のカスタマイズ
+
+異なる entityID 値に依存する複数の SAML アプリケーションがある場合は、証明書利用者ファイルの `issueruri` 値をオーバーライドできます。 これを行うには、基本ファイルの "Saml2AssertionIssuer" ID を使用して技術プロファイルをコピーし、`issueruri` 値をオーバーライドします。
+
+> [!TIP]
+> 基本ファイルから `<ClaimsProviders>` セクションをコピーし、これらの要素を要求プロバイダー `<DisplayName>Token Issuer</DisplayName>`、`<TechnicalProfile Id="Saml2AssertionIssuer">`、および `<DisplayName>Token Issuer</DisplayName>` 内に保存します。
+ 
+例:
+
+```xml
+   <ClaimsProviders>   
+    <ClaimsProvider>
+      <DisplayName>Token Issuer</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Saml2AssertionIssuer">
+          <DisplayName>Token Issuer</DisplayName>
+          <Metadata>
+            <Item Key="IssuerUri">customURI</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpInSAML" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2" />
+      <Metadata>
+     …
+```
 
 ## <a name="next-steps"></a>次のステップ
 

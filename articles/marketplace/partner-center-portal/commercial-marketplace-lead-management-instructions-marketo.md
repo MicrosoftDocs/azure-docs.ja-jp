@@ -1,18 +1,18 @@
 ---
 title: Marketo でのリード管理 - Microsoft コマーシャル マーケットプレース
 description: Marketo CRM システムを使用して、Microsoft AppSource および Azure Marketplace からリードを管理する方法について説明します。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: be1f21f927b01d66e19dc5e97b38e5c35e6664cb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789880"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120264"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Marketo を使用してコマーシャル マーケットプレースのリードを管理する
 
@@ -65,15 +65,15 @@ ms.locfileid: "82789880"
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>リードを Marketo に送信するようにオファーを構成する
 
-発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、これらの手順に従います。 
+発行ポータル内でオファー用にリード管理情報を構成する準備ができたら、次の手順に従います。 
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 
 1. オファーを選択し、 **[Offer setup]\(オファーのセットアップ\)** タブにアクセスします。
 
-1. **[リード管理]** セクションで **[接続]** を選択します。 
+1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    ![[リード管理] セクションの [接続] ボタン](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="[潜在顧客]":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** として **[Marketo]** を選択します。
 

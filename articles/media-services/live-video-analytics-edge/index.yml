@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Live Video Analytics on IoT Edge のドキュメント
+summary: Live Video Analytics on IoT Edge の使用方法の確認
+metadata:
+  title: Live Video Analytics on IoT Edge のドキュメント
+  description: Live Video Analytics on IoT Edge の使用方法の確認
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: 
+  ms.author: 
+  ms.date: 10/12/2019
+  ms.openlocfilehash: a0d78ead74b7a49c26d25bb82c7903e3fe7096cf
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88207782"
+landingContent:
+- title: Live Video Analytics on IoT Edge (プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Live Video Analytics on IoT Edge について
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: メディア グラフ
+      url: media-graph-concept.md
+    - text: ビデオ記録
+      url: video-recording-concept.md
+    - text: ビデオ再生
+      url: video-playback-concept.md
+  - linkListType: learn
+    links:
+    - text: 継続的なビデオ記録
+      url: continuous-video-recording-concept.md
+    - text: イベントベースのビデオ記録
+      url: event-based-video-recording-concept.md
+    - text: ライブ ビデオの分析
+      url: analyze-live-video-concept.md
+- title: シナリオ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: はじめに - Live Video Analytics on IoT Edge
+      url: get-started-detect-motion-emit-events-quickstart.md
+    - text: モーションの検出、Azure Media Services へのビデオ クリップの記録
+      url: detect-motion-record-video-clips-media-services-quickstart.md
+    - text: モーションの検出とイベントの生成
+      url: detect-motion-emit-events-quickstart.md
+    - text: モーションの検出、エッジ デバイスへのビデオの記録
+      url: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - text: ご自分のモデルを使用して Live Video Analytics を実行する
+      url: use-your-model-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 継続的なビデオ記録
+      url: continuous-video-recording-tutorial.md
+    - text: イベントベースのビデオ記録
+      url: event-based-video-recording-tutorial.md
+    - text: 数日間の記録の再生
+      url: playback-multi-day-recordings-tutorial.md
+    - text: OpenVINO Model Server を使用してライブ ビデオを分析する
+      url: use-intel-openvino-tutorial.md
+- title: 開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム Azure Resource Manager ロールの作成
+      url: create-custom-azure-resource-manager-role-how-to.md
+    - text: IoT Edge デバイスへのデプロイ
+      url: deploy-iot-edge-device.md
+    - text: 監視およびログ記録
+      url: monitoring-logging.md
+    - text: 記録の再生
+      url: playback-recordings-how-to.md
+    - text: 記録ポリシーの管理
+      url: manage-recording-policy-how-to.md
+    - text: トラブルシューティング
+      url: troubleshoot-how-to.md
+  - linkListType: reference
+    links:
+    - text: ダイレクト メソッド
+      url: direct-methods.md
+    - text: モジュール ツインの構成スキーマ
+      url: module-twin-configuration-schema.md
+    - text: クォータと制限
+      url: quotas-limitations.md

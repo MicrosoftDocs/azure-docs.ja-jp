@@ -2,27 +2,27 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: automation
-author: georgewallace
+author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 12/13/2018
-ms.author: gwallace
+ms.date: 06/29/2020
+ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: d700dfcf5a7b6e9ada2a755335689ffa571e4c3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa7b997fe112be5d974d0e82597e786fa219e1f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570198"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 
-| リソース | 制限 |メモ|
+| リソース | 制限 |Notes|
 | --- | --- |---|
 | Azure Automation アカウントあたりの 30 秒ごとに送信できる新しいジョブの最大数 (スケジュールされていないジョブ) |100 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | Automation アカウントあたりのインスタンスの同じ時刻に同時実行するジョブの最大数 (スケジュールされていないジョブ) |200 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | 30 日のローリング期間におけるジョブ メタデータの最大ストレージ サイズ | 10 GB (約 400 万ジョブ)|この制限に到達すると、次のジョブ作成要求は失敗します。 |
-| 最大ジョブ ストリームの制限|1 MB|単一のストリームを 1 MB より大きくすることはできません。|
+| 最大ジョブ ストリームの制限|1 MiB|単一のストリームを 1 MB より大きくすることはできません。|
 | Automation アカウントあたりの 30 秒ごとにインポートできるモジュールの最大数 |5 ||
 | モジュールの最大サイズ |100 MB ||
 | ジョブ実行時間、Free レベル |カレンダー月あたりサブスクリプションごとに 500 分 ||
@@ -33,9 +33,9 @@ ms.locfileid: "80334915"
 | サブスクリプションでの Automation アカウントの最大数 |制限なし ||
 | Automation アカウントあたりのハイブリッド worker グループの最大数|4,000||
 |1 つの Hybrid Runbook Worker で実行できる同時実行ジョブの最大数|50 ||
-| Runbook ジョブの最大パラメーター サイズ   | 512 キロ ビット||
+| Runbook ジョブの最大パラメーター サイズ   | 512 キロバイト||
 | Runbook の最大パラメーター   | 50|パラメーターの 50 の上限に達したら、パラメーターに JSON または XML 文字列を渡し、Runbook を使用して解析することができます。|
-| Webhook のペイロードの最大サイズ |  512 キロ ビット|
+| Webhook のペイロードの最大サイズ |  512 キロバイト|
 | ジョブ データが保持される最大日数|30 日|
 | PowerShell ワークフローの最大状態サイズ |5 MB| ワークフローのチェックポイント処理を行うときに PowerShell ワークフロー Runbook に適用されます。|
 

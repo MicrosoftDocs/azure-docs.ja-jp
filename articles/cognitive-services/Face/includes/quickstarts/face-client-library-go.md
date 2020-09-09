@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: bb8f80baac5ce49db612a7d3a599d727b824bffc
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587822"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505881"
 ---
 Go 用 Face クライアント ライブラリを使ってみます。 以下の手順に従って、ライブラリをインストールし、基本タスクの例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -30,66 +30,14 @@ Go 用 Face サービス クライアント ライブラリは、次の目的で
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [Go](https://golang.org/dl/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* キーとエンドポイントを取得したら、キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FACE_SUBSCRIPTION_KEY` および `FACE_ENDPOINT` という名前を付けます。
 
-## <a name="set-up"></a>設定
-
-### <a name="create-a-face-azure-resource"></a>Face Azure リソースを作成する 
-
-Azure リソースを作成して、Face サービスの使用を開始します。 適切なリソースの種類を選択してください。
-
-* [試用版リソース](https://azure.microsoft.com/try/cognitive-services/#decision) (Azure サブスクリプションは不要):  
-    * 7 日間有効です (無料)。 試用版のキーとエンドポイントは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。 
-    * Face サービスを試してみたいものの Azure サブスクリプションをお持ちでない方に最適な方法です。
-* [Face サービス リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace): 
-    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。
-    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードします。
-* [マルチサービス リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne): 
-    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。  
-    * 複数の Cognitive Services 全体で同じキーとエンドポイントをアプリケーションに使用します。
-
-### <a name="create-an-environment-variable"></a>環境変数を作成する
-
->[!NOTE]
-> 2019 年 7 月 1 日より後に作成された非試用版リソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。 
-
-作成したリソースのキーとエンドポイントを使用して、認証用に 2 つの環境変数を作成します。
-* `FACE_SUBSCRIPTION_KEY` - 要求を認証するためのリソース キー。
-* `FACE_ENDPOINT` - API 要求を送信するためのリソース エンドポイント。 以下のようになります。 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-ご利用のオペレーティング システムの手順に従ってください。
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-環境変数を追加したら、コンソール ウィンドウを再起動します。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-次のように `.bash_profile` を編集し、環境変数を追加します。
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
-***
+## <a name="setting-up"></a>設定
 
 ### <a name="create-a-go-project-directory"></a>Go プロジェクト ディレクトリを作成する
 
@@ -301,13 +249,13 @@ touch sample-app.go
 
 ## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
 
-スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料試用版サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行することが必要になった場合などです。 スナップショット機能の広範な概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
+スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行する場合です。 スナップショット機能の広範な概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
 
 この例では、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」で作成した **PersonGroup** を移行します。 先にそのセクションを完了することも、独自の Face データ コンストラクトを使用することもできます。
 
 ### <a name="set-up-target-subscription"></a>ターゲット サブスクリプションを設定する
 
-まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#set-up)」セクションの手順を繰り返します。 
+まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#setting-up)」セクションの手順を繰り返します。 
 
 次に、**main** メソッドの先頭付近で以下の変数を作成します。 また、お使いの Azure アカウントのサブスクリプション ID と新しい (ターゲット) アカウントのキー、エンドポイント、サブスクリプション ID のための、新しい環境変数を作成する必要があります。
 

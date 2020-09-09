@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416239"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682990"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -57,7 +57,7 @@ ms.locfileid: "81416239"
 |MinReplicaSetSize|int、既定値は 0|静的|BackupRestoreService の MinReplicaSetSize |
 |PlacementConstraints|string、既定値は ""|静的|    BackupRestore サービスの PlacementConstraints |
 |SecretEncryptionCertThumbprint|string、既定値は ""|動的|シークレット暗号化 X509 証明書の拇印 |
-|SecretEncryptionCertX509StoreName|string、既定値は "My"|    動的|    これは、バックアップ復元サービスで使用されるストアの資格情報を暗号化または暗号化解除に使用される、X.509 証明書ストアの資格情報名を暗号化したり暗号化解除したりするために使用する証明書を示します。 |
+|SecretEncryptionCertX509StoreName|string、推奨値は "My" (既定値なし) |    動的|    これは、バックアップ復元サービスで使用されるストアの資格情報を暗号化または暗号化解除に使用される、X.509 証明書ストアの資格情報名を暗号化したり暗号化解除したりするために使用する証明書を示します。 |
 |TargetReplicaSetSize|int、既定値は 0|静的| BackupRestoreService の TargetReplicaSetSize |
 
 ## <a name="clustermanager"></a>ClusterManager

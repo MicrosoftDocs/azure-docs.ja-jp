@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3bf180c2b70a686879082888e45e67936cdbec67
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427647"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799232"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Synapse SQL を使用したテーブルの設計
 
@@ -45,7 +45,7 @@ ms.locfileid: "81427647"
 | [統計](#statistics)                                    | はい                | はい                     |
 | [主キーと一意キー](#primary-key-and-unique-key)    | はい                | いいえ                      |
 | [テーブルを作成するためのコマンド](#commands-for-creating-tables) | はい                | いいえ                      |
-| [ソース データをデータ ウェアハウスに配置する](#aligning-source-data-with-the-data-warehouse) | はい                | いいえ                      |
+| [ソース データをデータ ウェアハウスに配置する](#align-source-data-with-the-data-warehouse) | はい                | いいえ                      |
 | [サポートされていないテーブルの機能](#unsupported-table-features)    | はい                | いいえ                      |
 | [テーブル サイズのクエリ](#table-size-queries)                    | はい                | いいえ                      |
 
@@ -214,7 +214,7 @@ PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されて�
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | SELECT ステートメントの結果を使用して新しいテーブルに値が設定されます。 テーブルの列とデータ型は、SELECT ステートメントの結果に基づきます。 データをインポートするには、このステートメントで外部テーブルから選択できます。 |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 外部の場所に SELECT ステートメントの結果をエクスポートして、新しい外部テーブルを作成します。  その場所は Azure Blob Storage または Azure Data Lake Storage のいずれかです。 |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>ソース データをデータ ウェアハウスに配置する
+## <a name="align-source-data-with-the-data-warehouse"></a>ソース データをデータ ウェアハウスに配置する
 
 データ ウェアハウス テーブルは、別のデータ ソースからデータを読み込むことで設定されます。 読み込みを正常に完了させるには、ソース データ内の列の数とデータ型が、データ ウェアハウス内のテーブル定義と合致している必要があります。
 
@@ -360,6 +360,9 @@ SELECT *
 FROM size
 ;
 ```
+
+>[!TIP]
+> Synapse SQL のパフォーマンスを向上させるには、永続的なユーザー テーブルで、**sys.pdw_table_mappings** ではなく **sys.pdw_permanent_table_mappings** を使用することを検討してください。 詳細については、「 **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 」を参照してください。
 
 ### <a name="table-space-summary"></a>テーブル領域の概要
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970165"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052116"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード
 
@@ -45,7 +45,7 @@ Azure には、Red Hat Gold Image (`rhel-byos`) も用意されています。 �
 
 ### <a name="generation-2-images"></a>第 2 世代イメージ
 
-第 2 世代仮想マシン (VM) には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代のドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)を参照してください。 RHEL イメージの観点からの主な違いは、第 2 世代 VM では BIOS ファームウェア インターフェイスではなく UEFI を使用することです。 また、ブート時にマスター ブート レコード (MBR) ではなく、GUID パーティション テーブル (GPT) を使用します。 特に、GPT を使用することにより、2 TB を超える OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](../../mv2-series.md) は、第 2 世代イメージでのみ実行されます。
+第 2 世代仮想マシン (VM) には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代のドキュメント](../../linux/generation-2.md)を参照してください。 RHEL イメージの観点からの主な違いは、第 2 世代 VM では BIOS ファームウェア インターフェイスではなく UEFI を使用することです。 また、ブート時にマスター ブート レコード (MBR) ではなく、GUID パーティション テーブル (GPT) を使用します。 特に、GPT を使用することにより、2 TB を超える OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](../../mv2-series.md) は、第 2 世代イメージでのみ実行されます。
 
 RHEL 第 2 世代イメージは、Azure Marketplace で入手できます。 Azure CLI を使用したときに表示されるすべてのイメージの一覧で、イメージ SKU の "gen2" を探してください。 第 2 世代の VM をデプロイするには、VM デプロイ プロセスで **[詳細]** タブに移動します。
 

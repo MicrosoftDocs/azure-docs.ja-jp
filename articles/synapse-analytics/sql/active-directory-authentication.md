@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 9c1b694d3a50759dcf49222f4e6b27ac7b34f9e5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086098"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502156"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory 認証を使用して Synapse SQL での認証を行う
 
@@ -22,7 +22,7 @@ Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を�
 Azure AD 認証を使用すると、Azure Synapse にアクセスできるユーザーの ID を一元的に管理して、アクセス許可の管理を簡略化できます。 次のような利点があります。
 
 - 通常のユーザー名とパスワードによる認証の代わりに使用できます。
-- データベース サーバー全体でユーザー ID が急増するのを防ぎます。
+- サーバー全体でユーザー ID が急増するのを防ぎます
 - 1 か所でのパスワードのローテーションを許可します。
 - 顧客は、外部の (Azure AD) グループを使用してアクセス許可を管理できます。
 - 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
@@ -99,7 +99,7 @@ Synapse SQL に対して Azure AD 管理者が作成された場合にのみ、�
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-## <a name="connecting-using-azure-ad-identities"></a>Azure AD の ID を使用した接続
+## <a name="connect-using-azure-ad-identities"></a>Azure AD の ID を使用して接続する
 
 Azure Active Directory 認証では、Azure AD の ID を使用してデータベースに接続する次の方法がサポートされています。
 

@@ -1,228 +1,209 @@
 ---
-title: Synapse SQL 内で SQL オンデマンド (プレビュー) を使用してストレージ ファイルに対してクエリを実行する
+title: SQL オンデマンド (プレビュー) でストレージ上のファイルにアクセスする
 description: Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691873"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986952"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Synapse SQL (オンデマンド) で外部ストレージにアクセスする
 
-SQL オンデマンド (プレビュー) を使用すると、データ レイク内のデータに対してクエリを実行できます。 これには、半構造化と非構造化のデータのクエリに対応する T-SQL クエリ領域が用意されています。
+このドキュメントでは、ユーザーが Synapse SQL (オンデマンド) で、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
 
-クエリでは、次の T-SQL の側面がサポートされています。
+- [OPENROWSET](develop-openrowset.md) 関数。Azure Storage 内のファイルに対するアドホック クエリを有効にします。
+- [外部テーブル](develop-tables-external-tables.md)。外部ファイル セット上に構築された定義済みのデータ構造です。
 
-- 大部分の SQL 関数、演算子などを含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 領域。
-- CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) は、[外部テーブル](develop-tables-external-tables.md)を作成し、次に並行して、Transact-SQL SELECT ステートメントの結果を Azure Storage にエクスポートします。
+ユーザーは、Azure AD パススルー認証 (Azure AD プリンシパルの既定値) や SAS 認証 (SQL プリンシパルの既定値) などの[さまざまな認証方法](develop-storage-files-storage-access-control.md)を使用できます。
 
-現在サポートされているものとされていないものの詳細については、[SQL オンデマンドの概要](on-demand-workspace-overview.md)に関する記事をご覧ください。
+## <a name="query-files-using-openrowset"></a>OPENROWSET を使用してファイルに対してクエリを実行する
 
-Azure AD ユーザーがクエリを実行すると、既定では、Azure AD パススルー認証プロトコルを使用してストレージ アカウントにアクセスします。 そのため、ユーザーは偽装され、ストレージ レベルでアクセス許可がチェックされます。 ニーズに合わせて、[ストレージ アクセスを制御](develop-storage-files-storage-access-control.md)できます。
+OPENROWSET を使用すると、ユーザーはストレージにアクセスできる場合に、Azure Storage 上の外部ファイルに対してクエリを実行できます。 Synapse SQL オンデマンド エンドポイントに接続されているユーザーは、次のクエリを使用して、Azure Storage 上のファイルの内容を読み取る必要があります。
 
-## <a name="extensions"></a>拡張機能
-
-Azure Storage ファイルに格納されているデータに対するインプレース クエリのスムーズな実行をサポートするために、SQL オンデマンドでは、次の追加機能を持つ [OPENROWSET](develop-openrowset.md) 関数が使用されます。
-
-- [複数のファイルまたはフォルダーに対してクエリを実行する](#query-multiple-files-or-folders)
-- [PARQUET ファイル形式](#parquet-file-format)
-- [区切りテキストを操作するための追加オプション (フィールド ターミネータ、行ターミネータ、エスケープ文字)](#additional-options-for-working-with-delimited-text)
-- [選択した列のサブセットの読み取り](#read-a-chosen-subset-of-columns)
-- [スキーマ推論](#schema-inference)
-- [filename 関数](#filename-function)
-- [filepath 関数](#filepath-function)
-- [複合型と入れ子または繰り返しのデータ構造を操作する](#work-with-complex-types-and-nested-or-repeated-data-structures)
-
-### <a name="query-multiple-files-or-folders"></a>複数のファイルまたはフォルダーに対してクエリを実行する
-
-1 つのフォルダーまたは一連のフォルダー内にある一連のファイルを 1 つのエンティティまたは行セットとして扱いながら、それらに対して T-SQL クエリを実行するには、フォルダーのパス、または一連のファイルやフォルダーのパターン (ワイルドカードを使用) を指定します。
-
-次の規則が適用されます。
-
-- パターンは、ディレクトリ パスの一部またはファイル名に使用できます。
-- 同じディレクトリ ステップまたはファイル名に複数のパターンを使用できます。
-- 複数のワイルドカードがある場合は、一致するすべてのパス内のファイルが、結果のファイル セットに含められます。
-
-```
-N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.csv'
+```sql
+SELECT * FROM
+ OPENROWSET(BULK 'https://<storage_account>.dfs.core.windows.net/<container>/<path>/*.parquet', format= 'parquet') as rows
 ```
 
-使用例については、[フォルダーと複数のファイルに対するクエリの実行](query-folders-multiple-csv-files.md)に関する記事を参照してください。
+ユーザーは、次のアクセス ルールを使用してストレージにアクセスできます。
 
-### <a name="parquet-file-format"></a>PARQUET ファイル形式
+- Azure AD ユーザー - `OPENROWSET` は、呼び出し元の Azure AD ID を使用して、Azure Storage にアクセスするか、匿名アクセスでストレージにアクセスします。
+- SQL ユーザー - `OPENROWSET` は、匿名アクセスでストレージにアクセスするか、ワークスペースのマネージド ID または SAS トークンを使用して偽装することができます。
 
-Parquet ソース データに対してクエリを実行するには、FORMAT = 'PARQUET' を使用します。
+### <a name="impersonation"></a>[偽装](#tab/impersonation)
 
-```syntaxsql
-OPENROWSET
-(
-    { BULK 'data_file' ,
-    { FORMATFILE = 'format_file_path' [ <bulk_options>] | SINGLE_BLOB | SINGLE_CLOB | SINGLE_NCLOB } }
-)
-AS table_alias(column_alias,...n)
-<bulk_options> ::=
-...
-[ , FORMAT = {'CSV' | 'PARQUET'} ]
+SQL プリンシパルでは、OPENROWSET を使用して、ワークスペースのマネージド ID または SAS トークンで保護されたファイルに対して、直接クエリを実行することもできます。 SQL ユーザーがこの関数を実行する場合、`ALTER ANY CREDENTIAL` 権限を持つパワー ユーザーは、(ストレージ名とコンテナーを使用して) 関数内の URL に一致するサーバースコープの資格情報を作成し、この資格情報に対する REFERENCES 権限を OPENROWSET 関数の呼び出し元に付与する必要があります。
+
+```sql
+EXECUTE AS somepoweruser
+
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
+
+GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-使用例については、[Parquet ファイルに対するクエリの実行](query-parquet-files.md)に関する記事を参照してください。
+URL に一致するサーバーレベルの資格情報がない場合、または SQL ユーザーがこの資格情報に対する参照権限を持っていない場合は、エラーが返されます。 SQL プリンシパルでは、何らかの Azure AD ID を使用して偽装することはできません。
 
-### <a name="additional-options-for-working-with-delimited-text"></a>区切りテキストを操作するための追加オプション
+### <a name="direct-access"></a>[直接アクセス](#tab/direct-access)
 
-CSV (区切りテキスト) ファイルを操作するために、次の追加パラメーターが導入されています。
+特別な設定を行わなくても、Azure AD ユーザーはその ID を使用してファイルにアクセスすることができます。
+匿名アクセスを許可する Azure Storage には、すべてのユーザーがアクセスできます (特別な設定は必要ありません)。
 
-```syntaxsql
-<bulk_options> ::=
-...
-[ , FIELDTERMINATOR = 'char' ]
-[ , ROWTERMINATOR = 'char' ]
-[ , ESCAPE_CHAR = 'char' ]
-...
-```
-
-- ESCAPE_CHAR = 'char' は、ファイル内でそれ自体とすべての区切り記号の値をエスケープするために使用するファイル内の文字を指定します。 エスケープ文字の後にそれ自体以外の値またはいずれかの区切り記号の値が続く場合は、その値を読み取るときにエスケープ文字が削除されます。
-ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、Excel CSV の動作に合わせて二重引用符でエスケープされます。
-- FIELDTERMINATOR ='field_terminator' は、使用するフィールド ターミネータを指定します。 既定のフィールド ターミネータはコンマ (" **,** ") です。
-- ROWTERMINATOR ='row_terminator' は、使用する行ターミネータを指定します。 既定の行ターミネータは、改行文字  **\r\n** です。
-
-### <a name="read-a-chosen-subset-of-columns"></a>選択した列のサブセットを読み取る
-
-読み取る列を指定するには、OPENROWSET ステートメント内にオプションの WITH 句を指定できます。
-
-- CSV データ ファイルがある場合、すべての列を読み取るには、列名とそのデータ型を指定します。 列のサブセットが必要な場合は、序数を使用して、元のデータ ファイルから序数で列を選択します。 列は、序数の指定によってバインドされます。
-- Parquet データ ファイルがある場合は、元のデータ ファイル内の列名と一致する列名を指定します。 列は名前によってバインドされます。
-
-```syntaxsql
-OPENROWSET
-...
-| BULK 'data_file',
-{ FORMATFILE = 'format_file_path' [ <bulk_options>] | SINGLE_BLOB | SINGLE_CLOB | SINGLE_NCLOB } }
-) AS table_alias(column_alias,...n) | WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
-```
-
-サンプルについては、[すべての列を指定せずに CSV ファイルを読み取る](query-single-csv-file.md#returning-subset-of-columns)ことに関する記事を参照してください。
-
-### <a name="schema-inference"></a>スキーマ推論
-
-OPENROWSET ステートメントから WITH 句を省略することで、基になるファイルからスキーマを自動検出 (推論) するようにサービスに指示できます。
+---
 
 > [!NOTE]
-> これは現在、PARQUET ファイル形式でのみ機能します。
+> このバージョンの OPENROWSET は、既定の認証を使用して迅速かつ簡単にデータを探索できるように設計されています。 偽装またはマネージド ID を活用するには、次のセクションで説明されているように OPENROWSET を DATASOURCE と共に使用します。
+
+## <a name="query-data-sources-using-openrowset"></a>OPENROWSET を使用してデータ ソースのクエリを実行する
+
+OPENROWSET を使用すると、ユーザーは外部データ ソースに配置されたファイルに対してクエリを実行できます。
 
 ```sql
-OPENROWSET(
-BULK N'path_to_file(s)', FORMAT='PARQUET');
+SELECT * FROM
+ OPENROWSET(BULK 'file/path/*.parquet',
+ DATASOURCE = MyAzureInvoices,
+ FORMAT= 'parquet') as rows
 ```
 
-最適なパフォーマンスが得られる[適切な推定データ型](best-practices-sql-on-demand.md#check-inferred-data-types)が使用されていることを確認してください。 
+このクエリを実行するユーザーは、ファイルにアクセスできる必要があります。 ユーザーがその [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity) または[匿名アクセス](develop-storage-files-storage-access-control.md?tabs=public-access)を使用して直接ファイルにアクセスすることができない場合、[ワークスペースのマネージド ID](develop-storage-files-storage-access-control.md?tabs=managed-identity) または [SAS トークン](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)を使用してユーザーを偽装する必要があります。
 
-### <a name="filename-function"></a>filename 関数
+### <a name="impersonation"></a>[偽装](#tab/impersonation)
 
-この関数は、行の生成元のファイル名を返します。 
-
-特定のファイルに対してクエリを実行するには、[特定のファイルに対するクエリの実行](query-specific-files.md#filename)に関する記事の「Filename」セクションをお読みください。
-
-戻り値のデータ型は nvarchar(1024) です。 最適なパフォーマンスを確保するために、filename 関数の結果は必ず適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さが使用されていることを確認します。
-
-### <a name="filepath-function"></a>filepath 関数
-
-この関数は、完全パスまたはパスの一部を返します。
-
-- パラメーターを指定せずに呼び出された場合、行の生成元である完全なファイル パスを返します。
-- パラメーターを指定して呼び出されると、パラメーターで指定された位置にあるワイルドカードと一致するパスの一部を返します。 たとえば、パラメーター値 1 は、最初のワイルドカードと一致するパスの一部を返します。
-
-追加情報については、[特定のファイルに対するクエリの実行](query-specific-files.md#filepath)に関する記事の「Filepath」セクションをお読みください。
-
-戻り値のデータ型は nvarchar(1024) です。 最適なパフォーマンスを確保するために、filepath 関数の結果は必ず適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さが使用されていることを確認します。
-
-### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>複合型と入れ子または繰り返しのデータ構造を操作する
-
-入れ子または繰り返しのデータ型 ([Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) ファイルなど) に格納されているデータを操作する際のスムーズな実行を可能にするために、SQL オンデマンドで次の拡張機能が追加されています。
-
-#### <a name="project-nested-or-repeated-data"></a>入れ子にされたデータまたは繰り返しのデータを射影する
-
-データを射影するには、入れ子にされたデータ型の列を含む Parquet ファイルに対して SELECT ステートメントを実行します。 出力時、入れ子にされた値は JSON にシリアル化され、varchar(8000) SQL データ型として返されます。
+`DATABASE SCOPED CREDENTIAL` では、参照されるデータ ソース上のファイルへのアクセス方法 (現在は SAS およびマネージド ID) を指定します。 `CONTROL DATABASE` 権限を持つパワー ユーザーは、ストレージにアクセスするために使用される `DATABASE SCOPED CREDENTIAL`、および使用する必要がある資格情報とデータ ソースの URL を指定する `EXTERNAL DATA SOURCE` を作成する必要があります。
 
 ```sql
-    SELECT * FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+EXECUTE AS somepoweruser;
+
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
+
+CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>/' ,
+ CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-詳細については、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#project-nested-or-repeated-data)に関する記事の「入れ子または繰り返しのデータを射影する」セクションを参照してください。
+呼び出し元には、OPENROWSET 関数を実行するための次のいずれかの権限が必要です。
 
-#### <a name="access-elements-from-nested-columns"></a>入れ子にされた列から要素にアクセスする
+- OPENROWSET を実行するための次のいずれかの権限:
+  - `ADMINISTER BULK OPERATIONS` を使用すると、ログインで OPENROWSET 関数を実行できます。
+  - `ADMINISTER DATABASE BULK OPERATIONS` を使用すると、データベース スコープ ユーザーは OPENROWSET 関数を実行できます。
+- `EXTERNAL DATA SOURCE` で参照される資格情報に対する `REFERENCES DATABASE SCOPED CREDENTIAL`
 
-入れ子にされた列 (構造体など) から入れ子にされた要素にアクセスするには、"ドット表記" を使用して、フィールド名をパスに連結します。 OPENROWSET 関数の WITH 句に column_name としてパスを指定します。
+### <a name="direct-access"></a>[直接アクセス](#tab/direct-access)
 
-構文フラグメントの例を次に示します。
+ユーザーは、パブリック アクセス ストレージを参照する CREDENTIAL なしの EXTERNAL DATA SOURCE を作成するか、Azure AD パススルー認証を使用することができます。
 
-```syntaxsql
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    WITH ({'column_name' 'column_type',})
-    [AS alias]
-    'column_name' ::= '[field_name.] field_name'
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
+```
+---
+## <a name="external-table"></a>EXTERNAL TABLE
+
+テーブルを読み取る権限を持つユーザーは、Azure Storage のフォルダーとファイルのセット上に作成された EXTERNAL TABLE を使用して外部ファイルにアクセスできます。
+
+[外部テーブルを作成するための権限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) (CREATE TABLE、ALTER ANY CREDENTIAL、REFERENCES DATABASE SCOPED CREDENTIAL など) を持つユーザーは、次のスクリプトを使用して、Azure Storage データソース上にテーブルを作成できます。
+
+```sql
+CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
+( ProductKey int, ProductLabel nvarchar, ProductName nvarchar )
+WITH
+(
+LOCATION='/DimProduct/year=*/month=*' ,
+DATA_SOURCE = AzureDataLakeStore ,
+FILE_FORMAT = TextFileFormat
+) ;
 ```
 
-既定で、OPENROWSET 関数は、ソース フィールドの名前とパスを WITH 句に指定された列名と一致させます。 同じソース Parquet ファイル内異なる入れ子レベルに含まれている要素には、WITH 句を使用してアクセスできます。
+このテーブルからデータを読み取るユーザーは、ファイルにアクセスできる必要があります。 ユーザーがその [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity) または[匿名アクセス](develop-storage-files-storage-access-control.md?tabs=public-access)を使用して直接ファイルにアクセスすることができない場合、[ワークスペースのマネージド ID](develop-storage-files-storage-access-control.md?tabs=managed-identity) または [SAS トークン](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)を使用してユーザーを偽装する必要があります。
 
-**戻り値**
+### <a name="impersonation"></a>[偽装](#tab/impersonation)
 
-- 関数は、入れ子にされた型グループに含まれていないすべての Parquet の型について、指定された要素から、および指定されたパスで、int、decimal、varchar などのスカラー値を返します。
-- パスが、入れ子にされた型の要素を指している場合、関数は、指定されたパスの先頭の要素から始まる JSON フラグメントを返します。 JSON フラグメントの型は varchar(8000) です。
-- 指定された column_name でプロパティが見つからない場合、関数はエラーを返します。
-- 指定された column_path でプロパティが見つからない場合、[パス モード](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)に応じて、関数は、strict モードのときはエラーを、lax モードのときには null を返します。
+DATABASE SCOPED CREDENTIAL では、参照されるデータ ソース上のファイルへのアクセス方法を指定します。 CONTROL DATABASE 権限を持つユーザーは、ストレージにアクセスするために使用される DATABASE SCOPED CREDENTIAL、および使用する必要がある資格情報とデータ ソースの URL を指定する EXTERNAL DATA SOURCE を作成する必要があります。
 
-クエリのサンプルについては、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#access-elements-from-nested-columns)に関する記事の「入れ子にされた列から要素にアクセスする」セクションを参照してください。
+```sql
+EXECUTE AS somepoweruser;
 
-#### <a name="access-elements-from-repeated-columns"></a>繰り返される列から要素にアクセスする
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
 
-配列やマップの要素など、繰り返される列から要素にアクセスするには、射影する必要があるすべてのスカラー要素に対して [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を使用し、次を指定します。
+CREATE DATABASE SCOPED CREDENTIAL cred
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
 
-- 最初のパラメーターとして、入れ子にされた、または繰り返される列
-- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-
-繰り返される列から非スカラー要素にアクセスするには、射影する必要があるすべての非スカラー要素に対して [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を使用し、次を指定します。
-
-- 最初のパラメーターとして、入れ子にされた、または繰り返される列
-- 2 番目のパラメーターとして、アクセスする要素またはプロパティを指定する [JSON パス](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-
-次の構文フラグメントをご覧ください。
-
-```syntaxsql
-    SELECT
-       { JSON_VALUE (column_name, path_to_sub_element), }
-       { JSON_QUERY (column_name [ , path_to_sub_element ]), )
-    FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>' ,
+ CREDENTIAL = cred
+ ) ;
 ```
 
-繰り返される列から要素にアクセスするためのクエリのサンプルについては、[Parquet の入れ子にされた型に対するクエリの実行](query-parquet-nested-types.md#access-elements-from-repeated-columns)に関する記事をご覧ください。
+### <a name="direct-access"></a>[直接アクセス](#tab/direct-access)
+
+ユーザーは、パブリック アクセス ストレージを参照する CREDENTIAL なしの EXTERNAL DATA SOURCE を作成するか、Azure AD パススルー認証を使用することができます。
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
+```
+---
+
+### <a name="read-external-files-with-external-table"></a>EXTERNAL TABLE を使用して外部ファイルを読み取る
+
+EXTERNAL TABLE では、標準的な SQL SELECT ステートメントを使用して、データ ソースを介して参照されるファイルからデータを読み取ることができます。
+
+```sql
+SELECT *
+FROM dbo.DimProductsExternal
+```
+
+呼び出し元には、データを読み取るための次の権限が必要です。
+- 外部テーブルに対する `SELECT` 権限
+- `DATA SOURCE` に `CREDENTIAL` がある場合は、`REFERENCES DATABASE SCOPED CREDENTIAL` 権限
+
+## <a name="permissions"></a>アクセス許可
+
+次の表には、上に一覧表示されている操作に必要な権限が一覧表示されています。
+
+| クエリ | 必要なアクセス許可|
+| --- | --- |
+| OPENROWSET(BULK) (データソースを指定しない) | `ADMINISTER BULK OPERATIONS`、`ADMINISTER DATABASE BULK OPERATIONS`、または SQL ログインには、SAS で保護されたストレージに対する REFERENCES CREDENTIAL::\<URL> が必要です |
+| OPENROWSET (BULK) (資格情報なしのデータソースを指定) | `ADMINISTER BULK OPERATIONS` または `ADMINISTER DATABASE BULK OPERATIONS` |
+| OPENROWSET (BULK) (資格情報ありのデータソースを指定) | `REFERENCES DATABASE SCOPED CREDENTIAL` と、`ADMINISTER BULK OPERATIONS` または `ADMINISTER DATABASE BULK OPERATIONS` のいずれか |
+| CREATE EXTERNAL DATA SOURCE | `ALTER ANY EXTERNAL DATA SOURCE` および `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CREATE EXTERNAL TABLE | `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY EXTERNAL FILE FORMAT`、および `ALTER ANY EXTERNAL DATA SOURCE` |
+| SELECT FROM EXTERNAL TABLE | `SELECT TABLE` および `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CETAS | テーブルを作成する場合 - `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE`、および `ALTER ANY EXTERNAL FILE FORMAT`。 データを読み取る場合: クエリのテーブル、ビューまたは関数ごとの `ADMINISTER BULK OPERATIONS`、`REFERENCES CREDENTIAL` または `SELECT TABLE` + ストレージに対する読み取りと書き込み権限 |
 
 ## <a name="next-steps"></a>次のステップ
 
-さまざまなファイルの種類に対してクエリを実行する方法、およびビューの作成と使用の詳細については、次の記事を参照してください。
+これで、操作方法に関する次の記事に進む準備ができました。
 
-- [単一の CSV ファイルに対してクエリを実行する](query-single-csv-file.md)
+- [ストレージ上のデータに対してクエリを実行する](query-data-storage.md)
+
+- [CSV ファイルに対してクエリを実行する](query-single-csv-file.md)
+
 - [Parquet ファイルに対してクエリを実行する](query-parquet-files.md)
+
 - [JSON ファイルに対してクエリを実行する](query-json-files.md)
-- [Parquet の入れ子にされた型に対してクエリを実行する](query-parquet-nested-types.md)
-- [フォルダーと複数の CSV ファイルに対してクエリを実行する](query-folders-multiple-csv-files.md)
-- [クエリでファイルのメタデータを使用する](query-specific-files.md)
-- [ビューの作成および使用](create-use-views.md)
+
+- [フォルダーと複数のファイルに対してクエリを実行する](query-folders-multiple-csv-files.md)
+
+- [パーティション分割とメタデータ関数を使用する](query-specific-files.md)
+
+- [入れ子になっている型に対してクエリを実行する](query-parquet-nested-types.md)
+
+- [ビューの作成と使用](create-use-views.md)

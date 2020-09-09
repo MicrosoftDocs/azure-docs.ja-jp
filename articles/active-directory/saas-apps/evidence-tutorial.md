@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Evidence.com の統合 | Microsoft Docs
 description: Azure Active Directory と Evidence.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b2e04c49b05173c6eef27da30c96e2fd8b40b5d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 2c2cc76b47257682c9d9f74f5cd315556a862f5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734673"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555277"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evidencecom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Evidence.com の統合
 

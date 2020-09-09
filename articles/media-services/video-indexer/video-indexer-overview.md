@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788855"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744600"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
 
@@ -34,7 +34,7 @@ Video Indexer で分析情報の抽出を開始するには、アカウントを
 
 Video Indexer にビデオまたは画像をアップロードする前に、ビデオまたは画像を使用するための適切な権限をすべて取得している必要があります。これには、法律で義務づけられている場合において、ビデオまたは画像に含まれる人物から、Video Indexer および Azure でのデータの使用、処理、および保存について、必要なすべての同意を得ることが含まれます (このような人物が存在する場合)。 一部の法的管轄区域では、生体認証データなどの特定のカテゴリのデータの収集、オンライン処理、および保管に関して特別な法的要件が課せられる場合があります。 特別な法的要件の対象となるデータの処理と保管のために Video Indexer と Azure を使用する前に、適用される可能性のあるこのような法的要件に準拠していることを確認する必要があります。
 
-Video Indexer のコンプライアンス、プライバシー、およびセキュリティについては、Microsoft [セキュリティ センター](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いと保持の慣行 (データの削除方法など) については、Microsoft の[プライバシーに関する声明](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス規約](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 Video Indexer を使用することによって、OST、DPA およびプライバシーに関する声明に従うことに同意したものとみなされます。
+Video Indexer のコンプライアンス、プライバシー、およびセキュリティについては、Microsoft [セキュリティ センター](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)にアクセスしてください。 Microsoft のプライバシー義務、データの取り扱いと保持の慣行 (データの削除方法など) については、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス規約](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 Video Indexer を使用することによって、OST、DPA およびプライバシーに関する声明に従うことに同意したものとみなされます。
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Video Indexer を使って何ができますか?
 
@@ -70,8 +70,8 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 
 ### <a name="audio-insights"></a>オーディオの分析情報
 
-* **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、アラビア語、ロシア語、ポルトガル語 (ブラジル)、ヒンディー語、韓国語などの言語がサポートされています。
-* **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、ロシア語、ポルトガル語 (ブラジル) などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
+* **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、アラビア語、ロシア語、ポルトガル語、ヒンディー語、韓国語などの言語がサポートされています。
+* **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、ロシア語、ポルトガル語などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
 * **複数言語の音声識別と文字起こし** (プレビュー):音声から異なるセグメントにある音声言語を自動的に識別します。 書き起こされるようにメディア ファイルの各セグメントを送信した後、文字起こしが 1 つの統合された文字起こしに結合されます。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
 * **字幕**:VTT、TML、SRT という 3 つの形式で字幕を作成します。
 * **2 チャネル処理**:個別のトランスクリプトを自動検出し、1 つのタイムラインに結合します。
@@ -94,7 +94,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * **成果物**:各モデルについて、"次のレベルの詳細情報" 成果物の豊富なセットを抽出します。
 * **センチメント分析**:音声と視覚テキストから、ポジティブ、ネガティブ、ニュートラルのセンチメントを識別します。
 
-## <a name="how-can-i-get-started-with-video-indexer"></a>Video Indexer を使い始めるにはどうすればよいですか? 
+## <a name="how-can-i-get-started-with-video-indexer"></a>Video Indexer を使い始めるにはどうすればよいですか?
 
 Video Indexer の機能には、次の 3 つの方法でアクセスできます。
 

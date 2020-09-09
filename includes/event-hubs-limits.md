@@ -2,29 +2,30 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: event-hubs
-author: sethmanheim
+author: spelluru
 ms.service: event-hubs
 ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2aca4f2c236112b80e9fc985cf80ccad6d82bde3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75901788"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317676"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
-次の制限は、Basic、Standard、および Dedicated の各レベルで共通です。 
+次の制限は、Basic と Standard サービス レベルで共通です。 
 
-| 制限 | スコープ | メモ | 値 |
+| 制限 | Scope | Notes | 値 |
 | --- | --- | --- | --- |
 | サブスクリプションあたりの Event Hubs 名前空間の数 |サブスクリプション |- |100 |
 | 名前空間あたりのイベント ハブの数 |名前空間 |以後、新しいイベント ハブの作成要求は拒否されます。 |10 |
 | イベント ハブあたりのパーティションの数 |Entity |- |32 |
-| イベント ハブ名の最大サイズ |Entity |- |50 文字 |
+| イベント ハブ名の最大サイズ |Entity |- | 256 文字 |
+| コンシューマー グループ名の最大サイズ |Entity |- | 256 文字 |
 | コンシューマー グループあたりの非エポック受信者の数 |Entity |- |5 |
 | 最大スループット ユニット |名前空間 |スループット ユニットの制限を超えると、データが調整され、[サーバー ビジー例外](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)が生成されます。 Standard レベルに対してより多くのスループット ユニットを要求するには、[サポート リクエスト](/azure/azure-portal/supportability/how-to-create-azure-support-request)を申請します。 [追加スループット ユニット](../articles/event-hubs/event-hubs-auto-inflate.md)は、20 単位で購入できます。 |20 |
 | 名前空間ごとの承認規則の数 |名前空間|上限を超えると承認規則の作成要求が拒否されます。|12 |
@@ -32,7 +33,7 @@ ms.locfileid: "75901788"
 | 仮想ネットワーク (VNet) と IP 構成規則の数 | Entity | - | 128 | 
 
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs Basic と Standard - クォータと制限
-| 制限 | スコープ | メモ | Basic | Standard |
+| 制限 | Scope | Notes | Basic | Standard |
 | --- | --- | --- | -- | --- |
 | Event Hubs イベントの最大サイズ|Entity | &nbsp; | 256 KB | 1 MB |
 | イベント ハブあたりのコンシューマー グループの数 |Entity | &nbsp; |1 |20 |
@@ -52,7 +53,7 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 | Event Hubs |  名前空間あたり 1,000 |
 | イングレス イベント | Included |
 | メッセージ サイズ | 1 MB |
-| [メジャー グループ] | CU あたり 2,000 |
+| メジャー グループ | CU あたり 2,000 |
 | コンシューマー グループ | CU あたりの制限なし、イベント ハブあたり 1,000 |
 | 仲介型接続 | 100,000 (付属) |
 | メッセージのリテンション期間 | 90 日、CU あたり 10 TB を含む |

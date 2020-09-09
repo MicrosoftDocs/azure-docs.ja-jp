@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Key Vault から証明書の設定と取得を行う
+title: クイック スタート:Azure Key Vault 証明書の設定と表示 - Azure PowerShell
 description: Azure PowerShell を使用して Azure Key Vault との間で証明書の設定と取得を行う方法を紹介したクイックスタート
 services: key-vault
 author: msmbaldwin
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecb9262a96d1c9857283de00224950d9bc7a583f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: efd73907a8ca691ceb451391477c9c8e2239c250
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421026"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043896"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -61,8 +61,6 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 * **Vault URI (コンテナー URI)** :この例では、これは https://Contoso-Vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 資格情報コンテナーを作成した後は、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
-
-![キー コンテナー作成コマンドの実行後の出力](../media/quick-create-powershell/output-after-creating-keyvault.png)
 
 ## <a name="add-a-certificate-to-key-vault"></a>証明書を Key Vault に追加する
 

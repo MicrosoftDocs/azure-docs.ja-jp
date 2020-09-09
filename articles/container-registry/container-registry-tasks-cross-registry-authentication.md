@@ -2,13 +2,13 @@
 title: ACR タスクからのクロスレジストリ認証
 description: Azure リソースのマネージド ID を使用して、別のプライベート Azure コンテナー レジストリにアクセスできるように、Azure Container Registry タスク (ACR タスク) を構成します
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/06/2020
+ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842497"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057359"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR タスクでの Azure マネージド ID を使用したクロスレジストリ認証 
 
@@ -44,6 +44,7 @@ Azure リソースを作成するために、この記事では Azure CLI バー
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
+
 現在のディレクトリで、[az acr build][az-acr-build] コマンドを実行して基本イメージをビルドし、基本レジストリにプッシュします。 実際には、組織内の別のチームまたはプロセスが基本レジストリを保持することがあります。
     
 ```azurecli
@@ -85,6 +86,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>基本レジストリに対するプル アクセス許可を ID に付与する
+
+このセクションでは、基本レジストリ *mybaseregistry* からプルするためのアクセス許可をマネージド ID に付与します。
+
+[az acr show][az-acr-show] コマンドを使用して基本レジストリのリソース ID を取得し、変数に格納します。
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+[az role assignment create][az-role-assignment-create] コマンドを使用して、基本レジストリに対する `acrpull` ロールを ID に割り当てます。 このロールには、レジストリからイメージをプルするためのアクセス許可のみがあります。
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+「[ターゲット レジストリの資格情報をタスクに追加する](#add-target-registry-credentials-to-task)」に進んでください。
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>オプション 2:システム割り当て ID を使用してタスクを作成する
 
 このセクションの手順では、タスクを作成してシステム割り当て ID を有効にします。 ユーザー割り当て ID を有効にする場合は、「[オプション 1: ユーザー割り当て ID を使用してタスクを作成する](#option-1-create-task-with-user-assigned-identity)」を参照してください。 
@@ -103,7 +125,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>基本レジストリに対するプル アクセス許可を ID に付与する
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>基本レジストリに対するプル アクセス許可を ID に付与する
 
 このセクションでは、基本レジストリ *mybaseregistry* からプルするためのアクセス許可をマネージド ID に付与します。
 

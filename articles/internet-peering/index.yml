@@ -11,12 +11,12 @@ metadata:
   author: prmitiki
   ms.author: prmitiki
   ms.date: 11/27/2019
-  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: df16eb3da78608660ce9fb279f3258dc0879cdb4
+  ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75773521"
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84247089"
 landingContent:
 - title: インターネット ピアリングについて
   linkLists:
@@ -50,6 +50,8 @@ landingContent:
       url: howto-exchange-portal.md
     - text: ポータルを使用して従来の Exchange ピアリングを Azure リソースに変換する
       url: howto-legacy-exchange-portal.md
+    - text: ポータルを使用してルート サーバーとの Exchange ピアリングを作成または変更する
+      url: how-to-exchange-route-server-portal.md
 - title: Direct ピアリング
   linkLists:
   - linkListType: how-to-guide

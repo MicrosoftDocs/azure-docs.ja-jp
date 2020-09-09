@@ -41,7 +41,7 @@ ACR タスクがコミットの状態を読み取ってリポジトリに Webhoo
 
 ### <a name="yaml-file"></a>YAML ファイル
 
-マルチステップ タスクのステップは、[YAML ファイル](container-registry-tasks-reference-yaml.md)に定義します。 このチュートリアルの最初のマルチステップ タスク例は、ファイル `taskmulti.yaml` に定義されています。これは、クローンした GitHub リポジトリのルートにあります。
+マルチステップ タスクのステップは、[YAML ファイル](container-registry-tasks-reference-yaml.md)に定義します。 このチュートリアルの最初のマルチステップ タスク例は、ファイル `taskmulti.yaml` に定義されています。これは、複製した GitHub リポジトリのルートにあります。
 
 ```yml
 version: v1.0.0
@@ -286,7 +286,7 @@ cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:
 
 ### <a name="yaml-file"></a>YAML ファイル
 
-このチュートリアルの 2 番目のマルチステップ タスク例は、ファイル `taskmulti-multiregistry.yaml` に定義されています。これは、クローンした GitHub リポジトリのルートにあります。
+このチュートリアルの 2 番目のマルチステップ タスク例は、ファイル `taskmulti-multiregistry.yaml` に定義されています。これは、複製した GitHub リポジトリのルートにあります。
 
 ```yml
 version: v1.0.0

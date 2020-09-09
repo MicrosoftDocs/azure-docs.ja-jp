@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078143"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps でのワークフロー定義言語のスキーマ リファレンス ガイド
 
@@ -178,7 +178,7 @@ JSON では、デザイン時に存在するリテラル値を使用できます
 "rainbowColorsCount": 7
 ```
 
-実行時まで存在しない値を使うこともできます。 これらの値を表すには、実行時に評価される "*式*" を使うことができます。 式は、1 つまたは複数の[関数](#functions)、[演算子](#operators)、[変数](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values)、明示的な値、または定数を含むことができるシーケンスです。 ワークフローの定義では、式の前にアットマーク (\@) を付けることによって、JSON 文字列値の任意の場所で式を使うことができます。 JSON 値を表す式を評価するときは、\@ 文字を削除することによって式の本体が抽出され、常に別の JSON 値になります。
+実行時まで存在しない値を使うこともできます。 これらの値を表すには、実行時に評価される "*式*" を使うことができます。 式は、1 つまたは複数の[関数](#functions)、[演算子](#operators)、[変数](./logic-apps-create-variables-store-values.md)、明示的な値、または定数を含むことができるシーケンスです。 ワークフローの定義では、式の前にアットマーク (\@) を付けることによって、JSON 文字列値の任意の場所で式を使うことができます。 JSON 値を表す式を評価するときは、\@ 文字を削除することによって式の本体が抽出され、常に別の JSON 値になります。
 
 たとえば、前に定義した `customerName` プロパティでは、式の中で [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 関数を使ってプロパティの値を取得し、その値を `accountName` プロパティに割り当てることができます。
 
@@ -282,7 +282,7 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 | <*key-value*> | はい | <*key-type*> と同じ | 出力の戻り値 |
 |||||
 
-ワークフローの実行からの出力を取得するには、Azure portal でロジック アプリの実行履歴と詳細を確認するか、または [Workflow REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使います。 Power BI などの外部システムに出力を渡してダッシュボードを作成することもできます。
+ワークフローの実行からの出力を取得するには、Azure portal でロジック アプリの実行履歴と詳細を確認するか、または [Workflow REST API](/rest/api/logic/workflows) を使います。 Power BI などの外部システムに出力を渡してダッシュボードを作成することもできます。
 
 <a name="operators"></a>
 
@@ -307,4 +307,4 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 ## <a name="next-steps"></a>次のステップ
 
 * [ワークフロー定義言語のアクションとトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md)について学習する
-* [ワークフローの REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使用してプログラムによってロジック アプリを作成および管理する方法を学習する
+* [ワークフローの REST API](/rest/api/logic/workflows) を使用してプログラムによってロジック アプリを作成および管理する方法を学習する

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129196"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231114"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
 
@@ -165,7 +165,7 @@ ms.locfileid: "82129196"
 | ID | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
 | Level | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
 | 場所 | サインイン アクティビティの場所を指定します。 |
-| Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
+| Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](/graph/api/resources/signin?view=graph-rest-beta)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
 
 ## <a name="next-steps"></a>次のステップ
 

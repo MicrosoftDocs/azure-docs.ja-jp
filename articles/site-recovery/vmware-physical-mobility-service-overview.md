@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 19d6933497b469148687dc9c5012513ab7d0314b
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259802"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047209"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -37,6 +37,7 @@ ms.locfileid: "81259802"
 
 - プッシュ インストールのすべての[前提条件](vmware-azure-install-mobility-service.md)を満たしていることを確認します。
 - すべてのサーバー構成が、[VMware VM と物理サーバーの Azure へのディザスター リカバリーに関するサポート マトリックス](vmware-physical-azure-support-matrix.md)にある条件を満たしていることを確認します。
+- [9.36 バージョン](https://support.microsoft.com/help/4578241/)以降の SUSE Linux Enterprise Server 11 SP4 については、最新のインストーラーが[構成サーバーとスケールアウト プロセス サーバーで使用できる](#download-latest-mobility-agent-installer-for-suse-11-sp3-server)ことを確認してください
 
 プッシュ インストールのワークフローは、以降のセクションで説明されています。
 
@@ -107,7 +108,7 @@ ms.locfileid: "81259802"
 
   ```cmd
   cd C:\Temp
-  ren Microsoft-ASR_UA_version_Windows_GA_date_release.exe MobilityServiceInstaller.exe
+  ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted
   ```
@@ -186,8 +187,8 @@ ms.locfileid: "81259802"
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 仮想マシン エージェント
 
-- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](/azure/virtual-machines/extensions/features-windows#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 これにより、マシンが Azure にフェールオーバーするとき、Azure VM は確実に、VM 拡張機能を使用するためのエージェント インストールの前提条件を満たすようになります。
-- **Linux VM**:フェールオーバー後、[WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent) を Azure VM に手動インストールする必要があります。
+- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](../virtual-machines/extensions/features-windows.md#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 これにより、マシンが Azure にフェールオーバーするとき、Azure VM は確実に、VM 拡張機能を使用するためのエージェント インストールの前提条件を満たすようになります。
+- **Linux VM**:フェールオーバー後、[WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) を Azure VM に手動インストールする必要があります。
 
 ## <a name="locate-installer-files"></a>インストーラー ファイルを検索する
 
@@ -204,13 +205,27 @@ ms.locfileid: "81259802"
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> SP2 と SP3 が含まれます。
-`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+[このフォルダーに手動でダウンロードして配置します。](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6.4 </br> Oracle Enterprise Linux 6.5
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16.04 LTS サーバー
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+
+### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>SUSE 11 SP3 サーバー用の最新のモビリティ エージェント インストーラーをダウンロードする
+
+[9.36 バージョン](https://support.microsoft.com/help/4578241/)以降の **SUSE Linux Enterprise Server 11 SP3 マシンをアップデートまたは保護するための前提条件**には、以下があります。
+
+1. 最新のモビリティ エージェント インストーラーが Microsoft ダウンロード センターからダウンロードされ、構成サーバーおよびすべてのスケールアウト プロセス サーバーのプッシュ インストーラー リポジトリに配置されていることを確認します
+2. SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーを[ダウンロード](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz)します。
+3. 構成サーバーに移動し、次のパスに SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーをコピーします
+    1. INSTALL_DIR\home\svsystems\pushinstallsvc\repository
+    1.  INSTALL_DIR\home\svsystems\admin\web\sw folders
+4. 次に、関連付けられているスケールアウト プロセス サーバーに移動し、3 番目の手順に記載されている両方のパスにインストーラーをコピーします。
+5. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
+    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\admin\web\sw path
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
-title: 既存のサーバーから構成を作成する - Azure Automation
-description: Azure Automation のために既存のサーバーから構成を作成する方法について説明します。
+title: Azure Automation State Configuration のために既存のサーバーから構成を作成する
+description: この記事では、Azure Automation State Configuration のために既存のサーバーから構成を作成する方法について説明します。
 keywords: DSC, PowerShell, 構成, セットアップ
 services: automation
 ms.service: automation
@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dff9b8f52207a38cf7eaddefa178aff262ddc546
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f376fb383e50a39f0f12d45cf9b5ae47ad6fcbb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585548"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186505"
 ---
 # <a name="create-configurations-from-existing-servers"></a>既存のサーバーから構成を作成する
 
@@ -38,13 +38,13 @@ SharePoint の頃から、この分野で利用するための [ReverseDSC](http
 
 ソリューションを使用した結果、SharePointDSC 構成スクリプトで使用する[構成データ](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)が生成されます。
 
-データ ファイルが生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/overview/overview)と共に使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)ことができます。
-次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)または [Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) のいずれかからサーバーを登録して、構成をプルします。
+データ ファイルが生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/overview/overview)と共に使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation)ことができます。
+次に、[オンプレミス](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)または [Azure](./automation-dsc-onboarding.md#enable-azure-vms) のいずれかからサーバーを登録して、構成をプルします。
 
 ReverseDSC を試すには、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/ReverseDSC/)にアクセスし、ソリューションをダウンロードするか、[Project Site] をクリックして[ドキュメント](https://github.com/Microsoft/sharepointDSC.reverse)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
-- [DSC リソース](/powershell/scripting/dsc/resources/resources)
-- [ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- PowerShell DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
+- PowerShell DSC リソースについては、「[DSC リソース](/powershell/scripting/dsc/resources/resources)」をご覧ください。
+- Local Configuration Manager の構成の詳細については、「[ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)」をご覧ください。

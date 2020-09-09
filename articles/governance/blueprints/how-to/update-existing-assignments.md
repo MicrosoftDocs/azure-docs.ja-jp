@@ -3,12 +3,12 @@ title: ポータルから既存の割り当てを更新する
 description: Azure Blueprints でポータルから既存のブループリントの割り当てを更新する方法について説明します。
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381786"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969466"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 
@@ -50,18 +50,18 @@ ms.locfileid: "81381786"
   - ポリシーの割り当ての定義が変更されると、新しいポリシーの割り当てが作成されます。
     以前にデプロイされたポリシーの割り当ては、そのまま残ります。
   - ポリシーの割り当てのアーティファクトがブループリントから削除された場合、デプロイ済みのポリシーの割り当てはそのまま残ります。
-- Azure Resource Manager のテンプレート
+- Azure Resource Manager テンプレート (ARM テンプレート)
   - テンプレートは Resource Manager によって **PUT** として処理されます。 このアクションはリソースの種類ごとに異なるので、ブループリントによって実行された際のこのアクションの影響を判断するには、含まれる各リソースのドキュメントを参照してください。
 
 ## <a name="possible-errors-on-updating-assignments"></a>割り当ての更新時に考えられるエラー
 
-割り当てを更新する際に、実行時に障害を発生させるような変更を行ことがあります。 例としては、既にデプロイされているリソース グループの場所を変更する場合が挙げられます。 [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) によってサポートされている任意の変更を行うことができますが、変更によって Azure Resource Manager でエラーが発生する場合は、割り当てにおいても障害が発生します。
+割り当てを更新する際に、実行時に障害を発生させるような変更を行ことがあります。 例としては、既にデプロイされているリソース グループの場所を変更する場合が挙げられます。 [Resource Manager](../../../azure-resource-manager/management/overview.md) によってサポートされている任意の変更を行うことができますが、変更によって Resource Manager でエラーが発生する場合は、割り当てにおいても障害が発生します。
 
 割り当てを更新できる回数に制限はありません。 エラーが発生した場合は、エラーを特定して、割り当てに対して別の更新を行います。  エラー シナリオの例を次に示します。
 
 - パラメーター不良
 - オブジェクトが既に存在している
-- 変更が Azure Resource Manager でサポートされていない
+- 変更が Resource Manager でサポートされていない
 
 ## <a name="next-steps"></a>次のステップ
 

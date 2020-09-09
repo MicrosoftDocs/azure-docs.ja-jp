@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582823"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213679"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート:Azure Active Directory におけるグループの名前付けポリシー
 
-このクイックスタートでは、Azure Active Directory (Azure AD) 組織に存在するグループの並べ替えと検索がしやすいよう、ユーザーによって作成される Office 365 グループの名前付けポリシーを組織に設定します。 名前付けポリシーの使用例を次に示します。
+このクイックスタートでは、Azure Active Directory (Azure AD) 組織に存在するグループの並べ替えと検索がしやすいよう、ユーザーによって作成される Microsoft 365 グループの名前付けポリシーを組織に設定します。 名前付けポリシーの使用例を次に示します。
 
 * グループ、メンバーシップ、地理的地域の機能やグループ作成者の職務を伝える。
 * アドレス帳でグループを分類しやすいようにする。

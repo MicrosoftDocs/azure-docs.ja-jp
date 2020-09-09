@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919415"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508867"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -34,7 +34,7 @@ Azure で実行中のアプリケーションを VM の再起動とダウンタ�
 
 ## <a name="resource-health-information"></a>Resource Health の情報
 
-Azure Resource Health は個々の Azure リソースの正常性を明らかにし、問題をトラブルシューティングするために実行できる操作をアドバイスするサービスです。 サーバーやインフラストラクチャの要素に直接アクセスすることができないクラウド環境での Resource Health の目標は、ユーザーがトラブルシューティングに費やす時間を短縮することです。 特に、問題の原因がアプリケーションにあるのか、Azure プラットフォームの内部で発生したイベントにあるのかを判別するために費やされる時間を短縮することが目標となります。 詳細については、[Resource Health の概要と使用方法](../../resource-health/resource-health-overview.md)に関するページを参照してください。
+Azure Resource Health は個々の Azure リソースの正常性を明らかにし、問題をトラブルシューティングするために実行できる操作をアドバイスするサービスです。 サーバーやインフラストラクチャの要素に直接アクセスすることができないクラウド環境での Resource Health の目標は、ユーザーがトラブルシューティングに費やす時間を短縮することです。 特に、問題の原因がアプリケーションにあるのか、Azure プラットフォームの内部で発生したイベントにあるのかを判別するために費やされる時間を短縮することが目標となります。 詳細については、[Resource Health の概要と使用方法](../../service-health/resource-health-overview.md)に関するページを参照してください。
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>VM の再起動の原因となる可能性がある操作とイベント
 
@@ -46,8 +46,8 @@ Microsoft Azure は、世界各地で定期的に更新を行い、VM の基盤�
 
 Azure の計画的メンテナンスの概要と、それが Linux VM の可用性に及ぼす影響については、次の記事を参照してください。 これらの記事は、Azure の計画的メンテナンス プロセスの背景と、影響を軽減するために計画的メンテナンスのスケジュールを設定する方法を示しています。
 
-- [Azure での VM の計画的メンテナンス](../windows/planned-maintenance.md)
-- [Azure VM の計画的メンテナンスのスケジュールを設定する方法](../windows/classic/planned-maintenance-schedule.md)
+- [Azure での VM の計画的メンテナンス](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
+- [Azure VM の計画的メンテナンスのスケジュールを設定する方法](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
 
 ### <a name="memory-preserving-updates"></a>メモリ保護更新
 
@@ -72,7 +72,7 @@ VM の再起動の原因となる一般的なその他のシナリオとして�
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center と Windows の更新プログラム
 
-Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows と Linux の VM の監視を毎日行っています。 Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムの最新の更新プログラムについてもチェックしています。 VM でシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。 これらのシステムの更新プログラムの適用は、Azure Portal で Security Center を通して制御されます。 一部の更新プログラムでは、その適用後に VM の再起動が必要になります。 詳細については、「[Azure Security Center でシステムの更新プログラムを適用する](../../security-center/security-center-apply-system-updates.md)」を参照してください。
+Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows と Linux の VM の監視を毎日行っています。 Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムの最新の更新プログラムについてもチェックしています。 VM でシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。 これらのシステムの更新プログラムの適用は、Azure Portal で Security Center を通して制御されます。 一部の更新プログラムでは、その適用後に VM の再起動が必要になります。 詳細については、「[Azure Security Center でシステムの更新プログラムを適用する](../../security-center/security-center-virtual-machine-protection.md)」を参照してください。
 
 Windows VM は、オンプレミスのサーバーと同じように、ユーザーによって管理されることを想定しているため、Azure 側からそれらの VM に Windows の更新プログラムをプッシュすることはありません。 ただし、自動 Windows Update の設定は有効のままにしておくことをお勧めします。 Windows Update による更新プログラムの自動インストールでも、更新プログラムの適用後に再起動が発生する可能性があります。 詳細については、「[Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq)」を参照してください。
 
@@ -115,7 +115,7 @@ Azure の VM は、オペレーティング システムの仮想ディスクと
 
 **制限を超える IO**
 
-1 秒あたりの I/O 操作の量 (IOPS) がディスクの I/O の上限を超えているために、I/O 要求のスロットルが連続的に行われていると、VM が一時的にシャットダウンされることがあります (たとえば Standard ディスク ストレージは 500 IOPS に制限されています)。この問題を軽減するには、ワークロードに応じて、ディスク ストライピングを使用するか、ゲスト VM 内に記憶域スペースを構成します。 詳細については、「[Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)」(最適なストレージ パフォーマンスのための Azure Virtual Machines の構成) を参照してください。
+1 秒あたりの I/O 操作の量 (IOPS) がディスクの I/O の上限を超えているために、I/O 要求のスロットルが連続的に行われていると、VM が一時的にシャットダウンされることがあります (たとえば Standard ディスク ストレージは 500 IOPS に制限されています)。この問題を軽減するには、ワークロードに応じて、ディスク ストライピングを使用するか、ゲスト VM 内に記憶域スペースを構成します。 
 
 ### <a name="other-incidents"></a>その他のインシデント
 

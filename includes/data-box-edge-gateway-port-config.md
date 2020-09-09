@@ -4,15 +4,15 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71460af42b4da97a578ae5a3e23a714577e71867
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181615"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218451"
 ---
-| ポート番号| インまたはアウト | ポート範囲| 必須|   メモ |   |
-|--------|-----|-----|-----------|----------|-----------|
+| ポート番号| インまたはアウト | ポート範囲| 必須|   メモ |
+|--------|-----|-----|-----------|----------|
 | TCP 80 (HTTP)|アウト|WAN |いいえ|送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br>送信 Web プロキシは、ユーザーが構成できます。 |
 | TCP 443 (HTTPS)|アウト|WAN|はい|送信ポートは、クラウドのデータへのアクセスに使用します。<br>送信 Web プロキシは、ユーザーが構成できます。|
 | UDP 123 (NTP)|アウト|WAN|場合により必須<br>メモを参照|このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。  |   

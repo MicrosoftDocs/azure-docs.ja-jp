@@ -2,18 +2,18 @@
 title: ネットワーク リンクのパフォーマンスのトラブルシューティング:Azure
 description: このページでは、Azure ネットワーク リンクのパフォーマンスをテストする標準化された方法について説明します。
 services: expressroute
-author: tracsman
+author: duongau
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/20/2017
-ms.author: jonor
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d6dac98125827a303b8370b5a0a959ea425fb57
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74869648"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401454"
 ---
 # <a name="troubleshooting-network-performance"></a>ネットワーク パフォーマンスのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -177,9 +177,8 @@ Azure では、可能な限り詳しく問題を特定したら、[Azure ネッ�
 >
 >
 
-| | | | | | |
-|-|-|-|-|-|-|
-|ExpressRoute<br/>場所|Azure<br/>リージョン|推定<br/>距離 (km)|Latency|1 セッションの<br/>帯域幅|最大値<br/>帯域幅|
+| ExpressRoute<br/>場所|Azure<br/>リージョン | 推定<br/>距離 (km) | Latency|1 セッションの<br/>帯域幅 | 最大値<br/>帯域幅 |
+| ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | 米国西部 2        |    191 km |   5 ミリ秒 | 262.0 メガビット/秒 |  3.74 ギガビット/秒 |
 | Seattle | 米国西部          |  1,094 km |  18 ミリ秒 |  82.3 メガビット/秒 |  3.70 ギガビット/秒 |
 | Seattle | 米国中部       |  2,357 km |  40 ミリ秒 |  38.8 メガビット/秒 |  2.55 ギガビット/秒 |

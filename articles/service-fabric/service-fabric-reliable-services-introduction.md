@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77083507"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253084"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要
 
@@ -37,7 +37,7 @@ Reliable Services は、重要な機能をアプリケーションに組み込�
   * [リライアブル コレクション](service-fabric-reliable-services-reliable-collections.md)を使用する
   * その他の多くの機能にアクセスする。これらの機能はすべて、複数のプログラミング言語の非常に優れたプログラミング モデルから提供されます。
 * 他の使い慣れたプログラミング モデルに似た、独自のコードを実行するためのシンプルなモデル。 コードには、適切に定義されたエントリ ポイントと管理が簡単なライフサイクルが含まれます。
-* プラグ可能な通信モデル。 HTTP と [Web API](service-fabric-reliable-services-communication-webapi.md)、WebSocket、カスタム TCP プロトコルなど、あらゆるトランスポートを選んで使用できます。 Reliable Services には、すぐに使用できる優れたオプションも用意されていますが、独自のオプションを指定することもできます。
+* プラグ可能な通信モデル。 HTTP と [Web API](./service-fabric-reliable-services-communication-aspnetcore.md)、WebSocket、カスタム TCP プロトコルなど、あらゆるトランスポートを選んで使用できます。 Reliable Services には、すぐに使用できる優れたオプションも用意されていますが、独自のオプションを指定することもできます。
 * ステートフル サービスの場合、Reliable Services プログラミング モデルを使用すると、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) によって状態がサービス内に一貫して確実に格納されます。 Reliable Collection は、C# コレクションを使用したことがあるユーザーには馴染みのある可用性が高く信頼できる一連のコレクション クラスです。 これまでは、サービスにおいて確かな方法で状態を管理するには、外部システムが必要でした。 Reliable Collection を使用するとユーザーのコンピューターの隣に状態を格納できるようになると同時に、高可用性の外部ストアと同じレベルの高い可用性と確実性を実現できます。 このモデルでは、機能に必要な計算と状態を併置できるため、待機時間も短縮します。
 
 ## <a name="what-makes-reliable-services-different"></a>Reliable Services の特長
@@ -53,7 +53,7 @@ Service Fabric では以下の機能が提供されるため、Reliable Services
 
 サービスがステートフルかステートレスかにかかわらず、Reliable Services は、コードをすばやく追加して使用開始できるというシンプルなライフサイクルを提供します。  新しいサービスを稼働状態にするには、次の 2 つのメソッドを実装する必要があります。
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** : このメソッドでは、サービスで使用される通信スタックが定義されます。 この通信スタック ([Web API](service-fabric-reliable-services-communication-webapi.md)など) によって、サービスをリッスンするエンドポイント (クライアントによるサービスのアクセス方法) が定義されます。 また、表示されるメッセージがサービス コードの残りの部分とやり取りする方法も定義されます。
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** : このメソッドでは、サービスで使用される通信スタックが定義されます。 この通信スタック ([Web API](./service-fabric-reliable-services-communication-aspnetcore.md)など) によって、サービスをリッスンするエンドポイント (クライアントによるサービスのアクセス方法) が定義されます。 また、表示されるメッセージがサービス コードの残りの部分とやり取りする方法も定義されます。
 * **RunAsync** - このメソッドでは、サービスがそのビジネス ロジックを実行し、サービスの有効期間中に実行する必要があるすべてのバックグラウンド タスクを開始します。 ここで提供されているキャンセル トークンは、そのサービス実行を停止する信号となります。 たとえば、サービスで Reliable Queue からメッセージを取得して処理する必要がある場合は、ここでサービスが実行されます。
 
 Reliable Services をはじめて学習している場合は、読み進めてください。 Reliable Services のライフサイクルの詳細なチュートリアルを探している場合は、「[Reliable Services のライフサイクルの概要](service-fabric-reliable-services-lifecycle.md)」をご覧ください。
@@ -68,7 +68,7 @@ Reliable Services をはじめて学習している場合は、読み進めて�
 
 たとえば、メモリのない電卓が、同時に処理する必要があるすべての項と演算を受け取る場合を考えてみてください。
 
-この場合は、サービスの `RunAsync()` (C#) または `runAsync()` (Java) を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。 電卓サービスを作成すると、`ICommunicationListener` (C#) または `CommunicationListener` (Java) (たとえば [Web API](service-fabric-reliable-services-communication-webapi.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。 このリッスン エンドポイントは、電卓のパブリック API を定義するさまざまな計算メソッド (例:"Add(n1, n2)") に接続します。
+この場合は、サービスの `RunAsync()` (C#) または `runAsync()` (Java) を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。 電卓サービスを作成すると、`ICommunicationListener` (C#) または `CommunicationListener` (Java) (たとえば [Web API](./service-fabric-reliable-services-communication-aspnetcore.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。 このリッスン エンドポイントは、電卓のパブリック API を定義するさまざまな計算メソッド (例:"Add(n1, n2)") に接続します。
 
 クライアントから呼び出しが行われた場合は、適切なメソッドが呼び出され、電卓サービスは提供されたデータに対する演算を実行して、結果を返します。 この処理では、状態はまったく保存されません。
 

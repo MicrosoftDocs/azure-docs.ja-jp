@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60321833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564284"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
 
@@ -28,10 +28,10 @@ ms.locfileid: "60321833"
 ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。 この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
 
 > [!IMPORTANT]
-> StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-safety.md)を必ず確認してください。
-
+> StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-8000-safety.md)を必ず確認してください。
 
 ### <a name="safety-icon-conventions"></a>安全性アイコンの表記規則
+
 次の表で、これらのチュートリアルで使用される安全性アイコンについて説明します。 デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
 
 | アイコン | Text | 関連情報 |
@@ -47,7 +47,8 @@ ms.locfileid: "60321833"
 | ![危険情報アイコン](./media/storsimple-hardware-component-replacement/TipHazard.png) |**危険情報** | |
 
 ### <a name="before-you-begin"></a>開始する前に
-デバイスと、このチュートリアルで使用される安全性アイコンについての情報をよく理解してください。 詳細については、「 [StorSimple デバイスを安全にインストールして操作する](storsimple-safety.md) 」を参照してください。 StorSimple デバイスに触る前に、「 [安全性に関する注意事項](storsimple-safety.md#handling-precautions) 」を必ず確認してください。
+
+デバイスと、このチュートリアルで使用される安全性アイコンについての情報をよく理解してください。 詳細については、「 [StorSimple デバイスを安全にインストールして操作する](storsimple-8000-safety.md) 」を参照してください。 StorSimple デバイスに触る前に、「 [安全性に関する注意事項](storsimple-8000-safety.md#handling-precautions) 」を必ず確認してください。
 
 コンポーネントを交換する前に、次の情報を考慮してください。
 
@@ -61,6 +62,7 @@ ms.locfileid: "60321833"
 モジュールを交換するときは、 **エンクロージャの後部に空のベイを絶対に残さないでください**。 問題のある部分を取り外す前に、交換用モジュールまたは空のモジュールを用意してください。
 
 ## <a name="hardware-component-replacement-procedures"></a>ハードウェア コンポーネントの交換手順
+
 StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは EBOD エンクロージャに収納されるさまざまなプラグイン モジュールで構成されています。 8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
 
 デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。 **交換手順** の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
@@ -121,6 +123,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 | 4 |EBOD コントローラー 1 |
 
 ## <a name="field-replaceable-units"></a>現場交換可能ユニット
+
 StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を利用できます。
 
 * シャーシ (統合操作パネルを含む)
@@ -135,5 +138,5 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 これらの交換ユニットの注文については、 [Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md) 。
 
 ## <a name="next-steps"></a>次のステップ
-StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-safety.md) を確認します。
 
+StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-8000-safety.md) を確認します。

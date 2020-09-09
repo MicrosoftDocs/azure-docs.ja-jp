@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure Files を復元する
 description: この記事では、Azure Backup サービスと PowerShell を使用して Azure Files を復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201978"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826499"
 ---
 # <a name="restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files を復元する
 
@@ -17,14 +17,14 @@ ms.locfileid: "83201978"
 ファイル共有全体を復元することも、共有上の特定のファイルを復元することもできます。 元の場所に復元することも、代わりの場所に復元することもできます。
 
 > [!WARNING]
-> PS バージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 詳細については、この変更の要件の概要が記載されている[このセクション](backup-azure-afs-automation.md#important-notice-backup-item-identification)を参照してください。
+> PowerShell のバージョンが、AFS バックアップ用の "Az.RecoveryServices 2.6.0" のための最小バージョンにアップグレードされていることを確認してください。 詳細については、この変更の要件の概要が記載されている[このセクション](backup-azure-afs-automation.md#important-notice-backup-item-identification)を参照してください。
 
 >[!NOTE]
 >Azure Backup では、PowerShell を使用して、元の場所または別の場所への複数のファイルやフォルダーの復元をサポートするようになりました。 方法については、ドキュメントの[このセクション](#restore-multiple-files-or-folders-to-original-or-alternate-location)を参照してください。
 
 ## <a name="fetch-recovery-points"></a>復旧ポイントをフェッチする
 
-[Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) を使用して、バックアップされた項目のすべての復旧ポイントを一覧表示します。
+[Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) を使用して、バックアップされた項目のすべての復旧ポイントを一覧表示します。
 
 スクリプトの説明:
 
@@ -63,7 +63,7 @@ BackupManagementType : AzureStorage
 
 ## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Azure ファイル共有を代わりの場所に復元する
 
-[Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) を使用して、選択された復旧ポイントに復元します。 代わりの場所を特定するため、次のパラメーターを指定します。
+[Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) を使用して、選択された復旧ポイントに復元します。 代わりの場所を特定するため、次のパラメーターを指定します。
 
 * **TargetStorageAccountName**:バックアップされたコンテンツの復元先となるストレージ アカウント。 このストレージ アカウントは、コンテナーと同じ場所にある必要があります。
 * **TargetFileShareName**:バックアップされたコンテンツの復元先となるターゲット ストレージ アカウント内のファイル共有。
@@ -86,7 +86,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ## <a name="restore-an-azure-file-to-an-alternate-location"></a>Azure ファイルを代わりの場所に復元する
 
-[Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) を使用して、選択された復旧ポイントに復元します。 代わりの場所を特定し、復元するファイルを一意に特定するため、次のパラメーターを指定します。
+[Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) を使用して、選択された復旧ポイントに復元します。 代わりの場所を特定し、復元するファイルを一意に特定するため、次のパラメーターを指定します。
 
 * **TargetStorageAccountName**:バックアップされたコンテンツの復元先となるストレージ アカウント。 このストレージ アカウントは、コンテナーと同じ場所にある必要があります。
 * **TargetFileShareName**:バックアップされたコンテンツの復元先となるターゲット ストレージ アカウント内のファイル共有。
@@ -121,7 +121,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>複数のファイルまたはフォルダーを元の場所または別の場所に復元する
 
-復元するすべてのファイルまたはフォルダーのパスを **MultipleSourceFilePath** パラメーターの値として渡すことによって、[Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) コマンドを使用します。
+復元するすべてのファイルまたはフォルダーのパスを **MultipleSourceFilePath** パラメーターの値として渡すことによって、[Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) コマンドを使用します。
 
 ### <a name="restore-multiple-files"></a>複数のファイルを復元する
 

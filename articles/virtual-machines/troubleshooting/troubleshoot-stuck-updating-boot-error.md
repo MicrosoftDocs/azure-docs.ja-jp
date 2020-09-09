@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919432"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084020"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM の起動が Windows Update で停止する
 
@@ -48,14 +48,19 @@ ms.locfileid: "77919432"
 
 4. 管理者特権でのコマンド プロンプト インスタンス ([管理者として実行]) を開きます。 次のコマンドを実行して、接続された OS ディスク上にある更新プログラム パッケージの一覧を取得します。
 
-        dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
     たとえば、接続された OS ディスクがドライブ F の場合は、次のコマンドを実行します。
 
-        dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```
+
 5. C:\temp\Patch_level.txt ファイルを開き、下から順に読み取ります。 **インストールの保留中**または**アンインストールの保留中**状態にある更新プログラムを特定します。  更新状態のサンプルを次に示します。
 
-     ```
+    ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     State : Install Pending
     Release Type : Security Update

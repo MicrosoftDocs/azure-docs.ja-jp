@@ -4,21 +4,21 @@ description: Azure Storage では、クラウドに永続化される前にデ�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 04/10/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457945"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078199"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
-Azure Storage では、データはクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage 暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。
+Azure Storage では、データがクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage 暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。
 
 ## <a name="about-azure-storage-encryption"></a>Azure Storage 暗号化について
 
@@ -32,25 +32,72 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 Azure Storage 暗号化の基になっている暗号化モジュールについて詳しくは、「[Cryptography API: Next Generation (暗号化 API: 次世代)](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)」を参照してください。
 
+Azure マネージド ディスクの暗号化とキー管理に関する詳細については、「Azure Managed Disks のサーバー側暗号化」のページを参照してください。Windows VM の場合は[こちら](../../virtual-machines/windows/disk-encryption.md)を、Linux VM の場合は[こちら](../../virtual-machines/linux/disk-encryption.md)をご覧ください。
+
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 
-新しいストレージ アカウント内のデータは Microsoft マネージド キーで暗号化されます。 Microsoft マネージド キーを利用してデータを暗号化することも、独自のキーで暗号化を管理することもできます。 独自のキーで暗号化を管理する場合は、次の 2 つのオプションがあります。
+既定では、新しいストレージ アカウント内のデータは Microsoft マネージド キーで暗号化されます。 引き続き Microsoft マネージド キーを利用してデータを暗号化することも、独自のキーで暗号化を管理することもできます。 独自のキーで暗号化を管理する場合は、次の 2 つのオプションがあります。 どちらかの種類のキー管理またはその両方を使用できます。
 
 - Azure Key Vault では、BLOB ストレージと Azure Files でのデータの暗号化と暗号化解除に使用する "*カスタマー マネージド キー*" を指定できます。<sup>1、2</sup> カスタマー マネージド キーの詳細については、「[Azure Key Vault でカスタマー マネージド キーを使用して Azure Storage の暗号化を管理する](encryption-customer-managed-keys.md)」を参照してください。
-- BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する (プレビュー)](encryption-customer-provided-keys.md)」を参照してください。
+- BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)」を参照してください。
 
 次の表では、Azure Storage 暗号化のキー管理オプションを比較しています。
 
-|                                        |    Microsoft のマネージド キー                             |    カスタマー マネージド キー                                                                                                                        |    カスタマー指定のキー                                                          |
-|----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-|    暗号化/暗号化解除の操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    サポートされている Azure Storage サービス    |    All                                                |    BLOB ストレージ、Azure Files<sup>1、2</sup>                                                                                                               |    BLOB ストレージ                                                                  |
-|    キー記憶域                         |    Microsoft キー ストア    |    Azure Key Vault                                                                                                                              |    お客様独自のキー ストア                                                                 |
-|    キーのローテーションの責任         |    Microsoft                                          |    Customer                                                                                                                                     |    Customer                                                                      |
-|    キー コントロール                          |    Microsoft                                     |    Customer                                                                                                                    |    Customer                                                                 |
+| キー管理パラメーター | Microsoft のマネージド キー | カスタマー マネージド キー | カスタマー指定のキー |
+|--|--|--|--|
+| 暗号化/暗号化解除の操作 | Azure | Azure | Azure |
+| サポートされている Azure Storage サービス | All | BLOB ストレージ、Azure Files<sup>1、2</sup> | BLOB ストレージ |
+| キー記憶域 | Microsoft キー ストア | Azure Key Vault | お客様独自のキー ストア |
+| キーのローテーションの責任 | Microsoft | Customer | Customer |
+| キー コントロール | Microsoft | Customer | Customer |
 
 <sup>1</sup> Queue storage でのカスタマー マネージド キーの使用をサポートするアカウントの作成については、[キューのカスタマー マネージド キーをサポートするアカウントの作成](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)に関するページを参照してください。<br />
 <sup>2</sup> Table Storage でのカスタマー マネージド キーの使用をサポートするアカウントの作成については、[テーブルのカスタマー マネージド キーをサポートするアカウントの作成](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)に関するページを参照してください。
+
+> [!NOTE]
+> Microsoft マネージド キーは、コンプライアンス要件に応じて適切に交換されます。 特定のキー交換の要件がある場合は、ユーザーが自分で交換を管理および監査できるように、カスタマー マネージド キーに移行することをお勧めします。
+
+## <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB ストレージの暗号化スコープ (プレビュー)
+
+既定では、ストレージ アカウントは、そのストレージ アカウントにスコープが設定されたキーで暗号化されます。 Microsoft のマネージド キーまたは Azure Key Vault に格納されているカスタマー マネージド キーのどちらを使用するかを選択し、データを暗号化するキーへのアクセスを保護および制御できます。
+
+暗号化スコープを使用すると、必要に応じて、コンテナーまたは個々の BLOB のレベルで暗号化を管理できます。 暗号化スコープを使用すると、異なる顧客が所有する、同じストレージ アカウントに存在するデータの間にセキュリティで保護された境界を作成できます。
+
+Azure Storage リソース プロバイダーを使用して、ストレージ アカウントに 1 つ以上の暗号化スコープを作成できます。 暗号化スコープを作成するときに、Microsoft のマネージド キーまたは Azure Key Vault に格納されているカスタマー マネージド キーのどちらでスコープを保護するか指定します。 同じストレージ アカウントに対する異なる暗号化スコープで、Microsoft のマネージドまたはカスタマー マネージド キーのいずれかを使用できます。
+
+暗号化スコープを作成したら、コンテナーまたは BLOB を作成するための要求に対してその暗号化スコープを指定できます。 暗号化スコープの作成方法の詳細については、「[暗号化スコープの作成と管理 (プレビュー)](../blobs/encryption-scope-manage.md)」を参照してください。
+
+> [!NOTE]
+> プレビュー段階では、読み取りアクセスの geo 冗長ストレージ (RA-GRS) アカウントと、読み取りアクセスの geo ゾーン冗長ストレージ (RA-GZRS) アカウントを使用した暗号化スコープはサポートされていません。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
+> [!IMPORTANT]
+> 暗号化スコープのプレビューは、非運用環境での使用のみを意図しています。 運用環境のサービス レベル契約(SLA) は現在使用できません。
+>
+> 予期しないコストを回避するには、現在必要ではない暗号化スコープを必ず無効にしてください。
+
+### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>暗号化スコープを持つ BLOB またはコンテナーを作成する
+
+暗号化スコープを指定して作成された BLOB は、そのスコープに指定されたキーで暗号化されます。 BLOB を作成するときに個々の BLOB に暗号化スコープを指定するか、コンテナーを作成するときに既定の暗号化スコープを指定できます。 コンテナーのレベルで既定の暗号化スコープを指定すると、そのコンテナー内のすべての BLOB は、既定のスコープに関連付けられているキーで暗号化されます。
+
+既定の暗号化スコープを持つコンテナー内に BLOB を作成すると、既定の暗号化スコープをオーバーライドする暗号化スコープを指定できます (既定の暗号化スコープのオーバーライドを許可するようにコンテナーが構成されている場合)。 既定の暗号化スコープがオーバーライドされないようにするには、個々の BLOB のオーバーライドを拒否するようにコンテナーを構成します。
+
+暗号化スコープに属している BLOB に対する読み取り操作は、暗号化スコープが無効になっていない限り、透過的に行われます。
+
+### <a name="disable-an-encryption-scope"></a>暗号化スコープを無効にする
+
+暗号化スコープを無効にすると、暗号化スコープで実行される後続の読み取りまたは書き込み操作は、HTTP エラー コード 403 (禁止) で失敗します。 暗号化スコープを再度有効にすると、読み取りと書き込みの操作は再び正常に続行されます。
+
+暗号化スコープが無効の場合、それに対して課金されることはなくなります。 不要な料金が発生しないように、不要な暗号化スコープを無効にします。
+
+暗号化スコープが Azure Key Vault のカスタマー マネージド キーで保護されている場合は、暗号化スコープを無効にするために、キー コンテナー内の関連付けられているキーを削除することもできます。 Azure Key Vault 内のカスタマー マネージド キーは論理的な削除と消去保護によって保護されており、削除されたキーには、それらのプロパティによって定義されている動作が適用されることに注意してください。 詳細については、Azure Key Vault のドキュメントで次のトピックのいずれかを参照してください。
+
+- [PowerShell で論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)
+- [CLI で論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)
+
+> [!NOTE]
+> 暗号化スコープを削除することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

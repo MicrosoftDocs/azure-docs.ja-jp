@@ -5,19 +5,19 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ee06501134515d9369e98e724e55a66f040fffa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605048"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495127"
 ---
-# <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights のリテンション期間の構成
+# <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 のリテンション期間の構成
 
 この記事では、Azure Time Series Insights の**データ リテンション期間**と**ストレージ制限を超過したときの動作**の構成方法について説明します。
 
@@ -25,18 +25,18 @@ ms.locfileid: "81605048"
 
 各 Azure Time Series Insights 環境には、**データ リテンション期間**を構成するための設定があります。 この値は 1 から 400 日間となっています。 環境の記憶域容量に達したとき、またはリテンション期間 (1 から 400 日) が終了したときのいずれか早い方でデータが削除されます。
 
-Time Series Insights 環境ごとに、 **[ストレージ制限を超過したときの動作]** という追加設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 次の 2 つの動作の選択肢があります。
+Azure Time Series Insights 環境ごとに、 **[ストレージ制限を超過したときの動作]** という追加設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 次の 2 つの動作の選択肢があります。
 
 - **[Purge old data]\(古いデータを消去\)** (既定値)
 - **[Pause ingress]\(イングレスを一時停止\)**
 
-これらの設定の詳細については、[Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを参照してください。  
+これらの設定の詳細については、[Azure Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを確認してください。  
 
 ## <a name="configure-data-retention"></a>データ リテンション期間の構成
 
 1. [Azure portal](https://portal.azure.com) にサインインする
 
-1. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
+1. 既存の Azure Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Azure Time Series Insights 環境を選択します。
 
 1. **[設定]** の見出しで、 **[ストレージの構成]** を選択します。
 
@@ -54,8 +54,8 @@ Time Series Insights 環境ごとに、 **[ストレージ制限を超過した�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを参照してください。
+- 詳細については、[Azure Time Series Insights のリテンション期間](time-series-insights-concepts-retention.md)に関するページを確認してください。
 
-- [Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。
+- [Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。
 
 - [環境の計画](time-series-insights-environment-planning.md)について確認します。

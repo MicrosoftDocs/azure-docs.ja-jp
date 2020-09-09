@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: db7bbfecdb83e12225445905c60afe0999838813
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74805792"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918640"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 

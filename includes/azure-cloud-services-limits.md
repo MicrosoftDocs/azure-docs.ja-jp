@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: cloud-services
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 3295c7e677e4c9bf7bff27614fe5fa4fa3200570
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 390460cf6a22c164ee41a9b6679c7b7f2979d8ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85839058"
 ---
 | リソース | 制限 |
 | --- | --- |

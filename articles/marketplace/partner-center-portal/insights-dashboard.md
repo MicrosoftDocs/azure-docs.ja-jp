@@ -1,22 +1,22 @@
 ---
-title: パートナー センターでのコマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
-description: マーケットプレース Web 分析の概要にアクセスすることにより、公開元は AppSource と Azure Marketplace のネットショップでの顧客エンゲージメントを測定できます。
-author: dsindona
-ms.author: dsindona
+title: Marketplace の分析情報 - Microsoft コマーシャル マーケットプレース、Microsoft AppSource、および Azure Marketplace
+description: マーケットプレース Web 分析の概要にアクセスすることにより、Microsoft AppSource と Azure Marketplace での顧客エンゲージメントを測定できます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.topic: article
+ms.date: 07/22/2019
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251709"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607145"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>パートナー センターの [Marketplace の分析情報] ダッシュボード
 
-この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のマーケットプレースのネットショップに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: AppSource と Azure Marketplace。
+この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のコマーシャル マーケットプレースのオンライン ストアに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: Microsoft AppSource と Azure Marketplace。
 
 ## <a name="marketplace-insights-dashboard"></a>[Marketplace の分析情報] ダッシュボード
 
@@ -27,24 +27,26 @@ ms.locfileid: "81251709"
 - [Marketplace の分析情報の概要](#marketplace-insights-summary)
 - [地域別のページ アクセス](#page-visits-by-geography)  
 - [ページ アクセスとユニーク ビジターの傾向](#page-visits-versus-unique-visitors-trend)
-- [Call to Action と CTA を使用したユニーク ビジター](#call-to-action-versus-unique-visitors-with-ctas)
+- [Call to Action (CTA) と CTA を使用したユニーク ビジター](#call-to-action-versus-unique-visitors-with-ctas)
 - [オファー別のページ アクセスと Call to Action](#page-visits-and-calls-to-action-by-offers)
 - [Call to Action の割合の傾向](#call-to-action-percentage-trend)
 - [参照ドメイン別のページ アクセスと Call to Action](#page-visits-and-calls-to-action-by-referral-domains)
 - [Marketplace の分析情報の詳細テーブル](#marketplace-insights-details-table)
+
+Azure Marketplace または AppSource のオファーにユーザーがアクセスしてからパートナー センターで報告されるまでの最大待機時間は 48 時間です。
 
 >[!NOTE]
 > 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。
 
 ### <a name="insights-dashboard-layout"></a>[分析情報] ダッシュボードのレイアウト
 
-さまざまな方法でマーケットプレースのメトリックを表示できます。
+さまざまな方法でコマーシャル マーケットプレースのメトリックを表示できます。
 
-- ネットショップのタブ
+- オンライン ストアのタブ
 - ページ フィルター
 - 日付フィルター
 
-**ネットショップのタブ**: AppSource と Azure Marketplace のタブで別々にオファーのメトリックを表示できます。 右側のオファーのドロップダウン リストからオファーを選択すると、選択したオファーのメトリックが視覚的に表示されます。 既定では、すべてのオファーが選択されています。
+**オンライン ストアのタブ**: AppSource と Azure Marketplace のタブで別々にオファーのメトリックを表示できます。 右側のオファーのドロップダウン リストからオファーを選択すると、選択したオファーのメトリックが視覚的に表示されます。 既定では、すべてのオファーが選択されています。
 
 ![パートナー センターの [分析情報] ダッシュボードにあるオファーのドロップダウンリスト](./media/insights-offer-dropdown.png)
 
@@ -76,7 +78,7 @@ Marketplace の分析情報の概要セクションには、選択した日付�
 
 ### <a name="call-to-action"></a>行動への呼び掛け
 
-この数値は、オファー ページ (製品詳細ページ) で **[Call to Action]** のボタンがクリックが実行された回数を表します。 **[Calls to Action]** は、 **[今すぐ入手 (無料)]** , **[無料試用版]** 、 **[問い合わせ]** 、 **[体験版]** の各ボタンが選択されたときにカウントされます。
+この数値は、オファー ページ (製品詳細ページ) で **[Call to Action]** のボタンがクリックが実行された回数を表します。 **Calls to Action** は、ユーザーが **[今すぐ入手 (無料)]** 、 **[無料試用版]** 、 **[問い合わせ]** 、 **[体験版]** の各ボタンを選択したときにカウントされます。
 
 ![パートナー センター分析情報の Call to Action の概要](./media/insights-summary.png)
 
@@ -89,12 +91,12 @@ Marketplace の分析情報の概要セクションには、選択した日付�
 ヒートマップには以下の機能が含まれています。
 
 - ヒートマップには、特定の場所における**ページ アクセス**、**Call to Action**、**ユニーク ビジター**の詳細を表示するための補助グリッドがあり、必要に応じて特定の場所をズームできます。  
-- **[Countries spread]\(展開している国\)** は、選択した日付範囲内に顧客のページ アクセスが報告されたすべての国の数です。
+- **[Countries/regions spread]\(展開している国および地域\)** は、選択した日付範囲内に顧客のページ アクセスがレポートされたすべての国および地域の数です。
 - グリッドで国を検索して選択すると、マップ内の場所にズームできます。 マップの **[ホーム]** を選択すると、元のビューに戻ります。
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>ページ アクセスとユニーク ビジターの傾向
 
-以下の縦棒グラフは、月ごとのページ アクセスの数を表しています。これは、Y 軸 (グラフの左側の軸) に表示されます。 傾向線は、次のネットショップで公開されているオファーについて、ユニーク ビジターの月ごとの傾向を表しており、第 2 の Y 軸 (グラフの右側の軸) に表示されます: Azure Marketplace と AppSource。
+以下の縦棒グラフは、月ごとのページ アクセスの数を表しています。これは、Y 軸 (グラフの左側の軸) に表示されます。 傾向線は、次のオンライン ストアで公開されているオファーについて、ユニーク ビジターの月ごとの傾向を表しており、第 2 の Y 軸 (グラフの右側の軸) に表示されます: Azure Marketplace と AppSource。
 
 ![パートナー センター分析情報のページ アクセスとユニーク ビジターの傾向](./media/insights-page-vists-unique-visitors.png)
 
@@ -130,7 +132,7 @@ Marketplace の分析情報の概要セクションには、選択した日付�
 
 - レコード数が 1000 未満の場合、CSV ファイルにデータを抽出できます。
 - レコード数が 1000 を超える場合、エクスポートされたデータは今後 30 日間、ダウンロード ページに非同期で配置されます。
-- フィルターを適用して、関心のあるデータを表示できます。 データはオファー名とキャンペーン名によってフィルター処理できます。  
+- オファー名およびキャンペーン名でデータをフィルター処理して、関心のあるデータを表示します。
 
 ## <a name="next-steps"></a>次のステップ
 

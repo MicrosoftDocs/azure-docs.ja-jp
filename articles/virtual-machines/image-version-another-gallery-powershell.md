@@ -1,5 +1,5 @@
 ---
-title: 別のギャラリーからイメージをコピーする
+title: PowerShell を使用して別のギャラリーからイメージをコピーする
 description: Azure PowerShell を使用して別のギャラリーからイメージをコピーします。
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793943"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299951"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>別のギャラリーからイメージをコピーする
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell を使用して別のギャラリーからイメージをコピーする
 
 組織内に複数のギャラリーがある場合は、他のギャラリーに保存されているイメージからイメージを作成できます。 たとえば、新しいイメージを作成してテストするための開発およびテスト ギャラリーがあるとします。 運用環境で使用する準備ができたら、この例を使用して、それらのイメージを運用環境ギャラリーにコピーできます。 また、[Azure CLI](image-version-another-gallery-cli.md) を使用して、別のギャラリーのイメージからイメージを作成することもできます。
 
@@ -100,7 +100,7 @@ Get-AzGalleryImageDefinition `
 }
 ```
 
-[New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) コマンドレットと上記の出力の情報を使用して、対象のギャラリーに新しいイメージ定義を作成します。
+[New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) コマンドレットと上記の出力の情報を使用して、対象のギャラリーに新しいイメージ定義を作成します。
 
 
 この例では、*myDestinationGallery* というギャラリー内のイメージ定義に *myDestinationImgDef* という名前が付けられています。
@@ -114,7 +114,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
    -Name 'myDestinationImgDef' `
    -OsState specialized `
    -OsType Windows `
-   -HyperVGeneration v1
+   -HyperVGeneration v1 `
    -Publisher 'myPublisher' `
    -Offer 'myOffer' `
    -Sku 'mySKU'
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用してイメージ バージョンを作成します。 対象のギャラリーにイメージ バージョンを作成するには、`--managed-image` パラメーターでソース イメージの ID を渡す必要があります。 
+[New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用してイメージ バージョンを作成します。 対象のギャラリーにイメージ バージョンを作成するには、`--managed-image` パラメーターでソース イメージの ID を渡す必要があります。 
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
 >
-> また、イメージ バージョンを作成するときに、`-StorageAccountType Premium_LRS` を追加してイメージを Premium ストレージに格納することや、`-StorageAccountType Standard_ZRS` を追加して[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> また、イメージ バージョンを作成するときに、`-StorageAccountType Premium_LRS` を追加してイメージを Premium ストレージに格納することや、`-StorageAccountType Standard_ZRS` を追加して[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)に格納することもできます。
 >
 
 
@@ -165,3 +165,5 @@ $job.State
 [一般化された](vm-generalized-image-version-powershell.md)イメージ バージョンまたは[特殊化された](vm-specialized-image-version-powershell.md)イメージ バージョンから VM を作成します。
 
 [Azure Image Builder (プレビュー)](./linux/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
+
+購入プラン情報を提供する方法については、「[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)」を参照してください。

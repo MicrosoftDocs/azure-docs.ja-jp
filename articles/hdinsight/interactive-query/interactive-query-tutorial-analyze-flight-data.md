@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:対話型クエリによる ETL 操作 - Azure HDInsight
-description: チュートリアル - 生の CSV データセットからデータを抽出する方法について説明します。 それを HDInsight の Interactive Query を使用して変換します。 その後 Apache Sqoop を使用して、変換済みデータを Azure SQL データベースに読み込みます。
+description: チュートリアル - 生の CSV データセットからデータを抽出する方法について説明します。 それを HDInsight の Interactive Query を使用して変換します。 その後 Apache Sqoop を使用して、変換済みデータを Azure SQL Database に読み込みます。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313735"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319193"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 
-このチュートリアルでは、一般に公開されているフライト データの生の CSV データ ファイルをダウンロードします。 それを HDInsight クラスター ストレージにインポートしてから、Azure HDInsight の Interactive Query を使用してデータを変換します。 データを変換したら、[Apache Sqoop](https://sqoop.apache.org/) を使用して Azure SQL データベースにデータを読み込みます。
+このチュートリアルでは、一般に公開されているフライト データの生の CSV データ ファイルをダウンロードします。 それを HDInsight クラスター ストレージにインポートしてから、Azure HDInsight の Interactive Query を使用してデータを変換します。 データを変換したら、[Apache Sqoop](https://sqoop.apache.org/) を使用して Azure SQL Database のデータベースにデータを読み込みます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -25,14 +25,14 @@ ms.locfileid: "81313735"
 > * サンプルのフライト データをダウンロードする
 > * HDInsight クラスターにデータをアップロードする
 > * 対話型クエリを使用してデータを変換する
-> * Azure SQL データベースでテーブルを作成する
-> * Sqoop を使用して Azure SQL データベースにデータをエクスポートする
+> * Azure SQL Database のデータベースにテーブルを作成する
+> * Sqoop を使用して Azure SQL Database のデータベースにデータをエクスポートする
 
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight 上の対話型クエリ クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照して、 **[クラスターの種類]** として **[対話型クエリ]** を選択します。
 
-* Azure SQL Database。 保存先データ ストアとして Azure SQL データベースを使用します。 SQL データベースがない場合は、「[Azure Portal で Azure SQL データベースを作成する](/azure/sql-database/sql-database-single-database-get-started)」を参照してください。
+* Azure SQL Database 内のデータベース。 保存先データ ストアとしてデータベースを使用します。 Azure SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](/azure/sql-database/sql-database-single-database-get-started)に関するページを参照してください。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -46,7 +46,7 @@ ms.locfileid: "81313735"
    | --- | --- |
    | Filter Year |2019 |
    | Filter Period |January |
-   | フィールド |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay` |
+   | フィールド |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. **[Download]** を選択します。 選択したデータ フィールドを含む .zip ファイルがダウンロードされます。
 
@@ -205,7 +205,7 @@ SQL Database に接続してテーブルを作成するには、多くの方法�
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. インストールが完了したら、次のコマンドを使用して SQL Database サーバーに接続します。
+2. インストールが完了したら、次のコマンドを使用して SQL Database に接続します。
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -250,9 +250,9 @@ SQL Database に接続してテーブルを作成するには、多くの方法�
 
 4. Enter `exit` at the `1>`」と入力して、tsql ユーティリティを終了します。
 
-## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Apache Sqoop を使用して SQL データベースにデータをエクスポートする
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Apache Sqoop を使用して SQL Database にデータをエクスポートする
 
-前のセクションで、変換済みデータを `/tutorials/flightdelays/output` にコピーしました。 このセクションでは、Sqoop を使用して、`/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。
+前のセクションで、変換済みデータを `/tutorials/flightdelays/output` にコピーしました。 このセクションでは、Sqoop を使用して、`/tutorials/flightdelays/output` のデータを、Azure SQL Database に作成したテーブルにエクスポートします。
 
 1. 以下のコマンドを入力して、Sqoop で SQL データベースを認識できることを確認します。
 

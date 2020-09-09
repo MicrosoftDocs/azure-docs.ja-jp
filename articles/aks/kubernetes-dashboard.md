@@ -2,36 +2,60 @@
 title: Web ダッシュボードで Azure Kubernetes Service クラスターを管理する
 description: 組み込みの Kubernetes Web UI ダッシュボードを使用して、Azure Kubernetes Service (AKS) クラスターを管理する方法について説明します
 services: container-service
+author: mlearned
 ms.topic: article
-ms.date: 10/08/2018
-ms.openlocfilehash: 15fcf765be0a754575713eebcdaa7d68e1c299b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/03/2020
+ms.author: mlearned
+ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595350"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225990"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes Web ダッシュボードにアクセスする
 
 Kubernetes には、基本的な管理操作に使用できる Web ダッシュボードが含まれています。 このダッシュボードでは、アプリケーションの基本的な正常性状態とメトリックの表示、サービスの作成とデプロイ、既存のアプリケーションの編集を行うことができます。 この記事では、Azure CLI を使用して Kubernetes ダッシュボードにアクセスする方法と、基本的なダッシュボード操作の手順について説明します。
 
-Kubernetes ダッシュボードの詳細については、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。
+Kubernetes ダッシュボードの詳細については、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。 AKS では、バージョン2.0 以降のオープンソース ダッシュボードが使用されます。
+
+> [!WARNING]
+> **AKS ダッシュボード アドオンは廃止に設定されています。代わりに、[Azure portal の Kubernetes リソース ビュー (プレビュー)][kubernetes-portal] を使用してください。** 
+> * 1\.18 より前のバージョンの Kubernetes を実行しているクラスターでは、Kubernetes ダッシュボードは既定で有効になっています。
+> * Kubernetes 1.18 以降で作成されたすべての新しいクラスターでは、ダッシュボード アドオンは既定で無効になります。 
+ > * プレビューの Kubernetes 1.19 以降の AKS では、マネージド kube-dashboard アドオンのインストールはサポートされなくなりました。 
+ > * アドオンが有効になっている既存のクラスターは影響を受けません。 ユーザーは、ユーザーがインストールするソフトウェアとして、オープンソース ダッシュボードを引き続き手動でインストールできます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの `kubectl` 接続が確立されていることを想定しています。 AKS クラスターを作成する必要がある場合は、[AKS クイック スタート][aks-quickstart]を参照してください。
+このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの `kubectl` 接続が確立されていることを想定しています。 AKS クラスターを作成する必要がある場合は、「[クイック スタート: Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする][aks-quickstart]」を参照してください。
 
-また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、 `az --version`  を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.6.0 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version`  を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+
+## <a name="disable-the-kubernetes-dashboard"></a>Kubernetes ダッシュボードを無効にする
+
+kube-dashboard アドオンは、**K8s 1.18 より前のクラスターでは既定で有効になります**。 次のコマンドを実行することで、アドオンを無効にすることができます。
+
+``` azure-cli
+az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
+```
 
 ## <a name="start-the-kubernetes-dashboard"></a>Kubernetes ダッシュボードを起動する
 
-Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-browse] コマンドを使用します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターのダッシュボードを開きます。
+クラスターで Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-browse] コマンドを使用します。 このコマンドでは、クラスターに kube-dashboard アドオンをインストールする必要があります。これは、Kubernetes 1.18 より前のバージョンを実行しているクラスターに既定で含まれています。
+
+次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターのダッシュボードを開きます。
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
 このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。 Web ブラウザーで Kubernetes ダッシュボードを開いていない場合は、Azure CLI に記載されている URL アドレス (一般に `http://127.0.0.1:8001`) をコピーして貼り付けます。
+
+> [!NOTE]
+> `http://127.0.0.1:8001` でダッシュボードが表示されない場合は、次のアドレスに手動でルーティングできます。 1\.16 以降のクラスターでは、https を使用し、別のエンドポイントが必要です。
+> * K8s 1.16 以降: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+> * K8s 1.15 以前: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -62,22 +86,63 @@ You have the following options to sign in to your cluster's dashboard:
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 
 After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
--->
 
 > [!IMPORTANT]
-> AKS クラスターが RBAC を使用する場合は、ダッシュボードに正しくアクセスする前に *ClusterRoleBinding* を作成する必要があります。 既定では、Kubernetes ダッシュボードは、最小限の読み取りアクセス権付きでデプロイされ、RBAC アクセス エラーが表示されます。 現時点では、Kubernetes ダッシュボードは、現在のアクセスのレベルを決定するユーザー指定の資格情報はサポートしていません。それは、サービス アカウントに付与されているロールを使用します。 クラスター管理者は、*kubernetes-dashboard*サービス アカウントに追加のアクセス権を付与することを選択できます。ただし、これは、特権昇格に対するベクトルになる可能性があります。 Azure Active Directory 認証を統合して、さらに細かいレベルのアクセス権を提供することもできます。
+> If your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 > 
-> バインドを作成するには、[kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] コマンドを使用します。 次の例はサンプル バインドを作成する方法を示していますが、このサンプル バインドは、追加の認証コンポーネントを適用しないため、安全に使用できない可能性があります。 Kubernetes ダッシュボードは、URL にアクセスできるすべてのユーザーに公開されています。 Kubernetes ダッシュボードは、一般に公開しないでください。
+> To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command. The following example shows how to create a sample binding, however, this sample binding does not apply any additional authentication components and may lead to insecure use. The Kubernetes dashboard is open to anyone with access to the URL. Do not expose the Kubernetes dashboard publicly.
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> さまざまな認証方法の使用の詳細については、Kubernetes ダッシュボード wiki で[アクセス コントロール][dashboard-authentication]に関するページを参照してください。
+> For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
+-->
+
+## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>ダッシュボードにサインインする (Kubernetes 1.16 以降)
+
+> [!IMPORTANT]
+> [Kubernetes ダッシュボードの v1.10.1](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) の時点または Kubernetes v1.16 以降では、[そのリリースでのセキュリティ修正](https://github.com/kubernetes/dashboard/pull/3400)のため、リソースを取得するためにサービス アカウント "kubernetes-dashboard" を使用できなくなりました。 その結果、認証情報がない要求では、401 未承認エラーが返されます。 サービス アカウントから取得されたベアラー トークンは、この [Kubernetes ダッシュボードの例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)のようにまだ使用できますが、これは古いバージョンと比較してダッシュボード アドオンのログイン フローに影響します。
+>
+>まだ 1.16 より前のバージョンを実行している場合でも、"kubernetes-dashboard" サービス アカウントにアクセス許可を付与できますが、これは**推奨されません**。
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
+
+表示される最初の画面では、kubeconfig またはトークンが必要です。 どちらのオプションでも、これらのリソースをダッシュボードに表示するには、リソースのアクセス許可が必要です。
+
+![ログイン画面](./media/kubernetes-dashboard/login.png)
+
+**kubeconfig を使用する**
+
+クラスターで Azure AD が有効になっていても、なっていなくても、kubeconfig を渡すことができます。 アクセス トークンが有効であることを確認します。トークンの有効期限が切れている場合は、kubectl を使用してトークンを更新できます。
+
+1. `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>` で管理者の kubeconfig を設定します
+1. `Kubeconfig` を選択し、[`Choose kubeconfig file`] をクリックしてファイル セレクターを開きます
+1. kubeconfig ファイルを選択します (既定値は $HOME/.kube/config)
+1. [`Sign In`] をクリックします。
+
+**トークンを使用する**
+
+1. **Azure AD が有効ではないクラスター**では、`kubectl config view` を実行して、クラスターのユーザー アカウントに関連付けられているトークンをコピーします。
+1. サインイン時にトークン オプションに貼り付けます。    
+1. [`Sign In`] をクリックします。
+
+Azure AD が有効なクラスターの場合は、次のコマンドを使用して AAD トークンを取得します。 コマンドでリソース グループとクラスター名を置き換えたことを確認します。
+
+```
+## Update <RESOURCE_GROUP and <AKS_NAME> with your input.
+
+kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROUP>_<AKS_NAME>")].user.auth-provider.config.access-token}'
+```
+
+成功すると、次のようなページが表示されます。
 
 ![Kubernetes Web ダッシュ ボードの概要ページ](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ## <a name="create-an-application"></a>アプリケーションの作成
+
+次の手順では、ユーザーがそれぞれのリソースに対するアクセス許可を持っている必要があります。 
 
 Kubernetes ダッシュボードによって管理タスクの複雑さを軽減する方法を確認するために、アプリケーションを作成してみましょう。 Kubernetes ダッシュボードからアプリケーションを作成するには、テキスト入力、YAML ファイル、またはグラフィカル ウィザードを使用します。
 
@@ -144,3 +209,4 @@ Kubernetes ダッシュボードの詳細については、[Kubernetes Web UI �
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
+[kubernetes-portal]: ./kubernetes-portal.md

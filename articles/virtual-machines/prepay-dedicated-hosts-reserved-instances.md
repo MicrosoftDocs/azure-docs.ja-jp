@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 57123abfe7f343a75d264d43afb88f9de1409e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78207681"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825261"
 ---
-# <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>Azure Dedicated Host の予約インスタンスを使用してコストを節約する
+# <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure Dedicated Host 予約によるコスト削減
 
-Azure Dedicated Host の予約インスタンスにコミットすると、コストを削減することができます。 予約割引は、予約スコープと属性に一致する実行中の専用ホストの数に対して自動的に適用されます。 割引を取得するために、専用ホストに予約を割り当てる必要はありません。 予約インスタンスの購入では、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストも含まれます。 [仮想マシン用 Azure 専用ホストに関する概要](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)を参照してください。
+Azure Dedicated Host の予約インスタンスにコミットすると、コストを削減することができます。 予約割引は、予約スコープと属性に一致する実行中の専用ホストの数に対して自動的に適用されます。 割引を取得するために、専用ホストに予約を割り当てる必要はありません。 予約インスタンスの購入では、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストも含まれます。 [仮想マシン用 Azure 専用ホストに関する概要](./windows/dedicated-hosts.md)を参照してください。
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>購入前に適切な専用ホスト SKU を決定する
 
 
 予約を購入する前に、必要な専用ホストを決定する必要があります。 SKU は専用ホストに対して定義されており、VM シリーズと種類を表します。 
 
-まず、[Windows 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のサポートされているサイズを調べて、VM シリーズを特定します。
+まず、[Windows 仮想マシン](./sizes.md)または [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のサポートされているサイズを調べて、VM シリーズを特定します。
 
 次に、Azure Dedicated Host でそれがサポートされているかどうかを確認します。 [Azure Dedicated Host の価格](https://aka.ms/ADHPricing)ページには、専用ホスト SKU の完全な一覧、CPU 情報、およびさまざまな価格オプション (予約インスタンスを含む) があります。
 
@@ -40,7 +40,7 @@ VM シリーズをサポートする複数の SKU (異なる種類) が見つか
 
 - **クラウド** - ドイツまたは中国の各リージョンでは、予約購入を利用できません。
 
-- **クォータの不足** - 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに割り当てることのできる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば、ターゲット サブスクリプションに、DSv3 シリーズに対して 10 vCPU のクォータ制限がある場合、このシリーズをサポートする予約専用ホストを購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM と専用のホストが含まれます。  [クォータを増やす要求を作成](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) して、この問題を解決できます。
+- **クォータの不足** - 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに割り当てることのできる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば、ターゲット サブスクリプションに、DSv3 シリーズに対して 10 vCPU のクォータ制限がある場合、このシリーズをサポートする予約専用ホストを購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM と専用のホストが含まれます。  [クォータを増やす要求を作成](../azure-portal/supportability/resource-manager-core-quotas-request.md) して、この問題を解決できます。
 
 - **容量制限**- まれに、リージョンの容量が低下していることが原因で、専用ホスト SKU のサブセットに対する新しい予約の購入が Azure によって制限されることがあります。
 
@@ -48,7 +48,7 @@ VM シリーズをサポートする複数の SKU (異なる種類) が見つか
 
 Azure Dedicated Host インスタンスの予約インスタンスは、 [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) で購入できます。
 
-予約の支払いは、 [前払いまたは月払い](https://docs.microsoft.com/azure/billing/billing-monthly-payments-reservations)で行います。 Dedicated Host インスタンスの購入には、次の要件が適用されます。
+予約の支払いは、 [前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。 Dedicated Host インスタンスの購入には、次の要件が適用されます。
 
 - 少なくとも 1 つの EA サブスクリプションまたは従量課金制料金のサブスクリプションの所有者ロールである必要があります。
 
@@ -87,7 +87,7 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ
 
 使用状況データには、予約割引が適用される使用量に対する 0 の実効価格があります。 予約ごとに、予約割引を受けた VM インスタンスを確認できます。
 
-使用状況データに予約割引を表示する方法の詳細については、EA を使用している場合は、 [エンタープライズ加入契約に適用される Azure の予約の使用状況](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)に関するページを参照してください。 個別サブスクリプションを使用している場合は、 [従量課金制サブスクリプションに適用される Azure の予約の使用状況](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)に関するページを参照してください。
+使用状況データに予約割引を表示する方法の詳細については、EA を使用している場合は、 [エンタープライズ加入契約に適用される Azure の予約の使用状況](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)に関するページを参照してください。 個別サブスクリプションを使用している場合は、 [従量課金制サブスクリプションに適用される Azure の予約の使用状況](../cost-management-billing/reservations/understand-reserved-instance-usage.md)に関するページを参照してください。
 
 ## <a name="change-a-reservation-after-purchase"></a>購入後に予約を変更する
 
@@ -115,7 +115,7 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「 [Azure の予約のセルフサービスによる交換と払戻](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「 [Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
@@ -123,26 +123,24 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ
 
 ## <a name="next-steps"></a>次のステップ
 
-予約を管理する方法については、 [Azure の予約の管理](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)に関するページをご覧ください。
+予約を管理する方法については、 [Azure の予約の管理](../cost-management-billing/reservations/manage-reserved-vm-instance.md)に関するページをご覧ください。
 
 Azure の予約の詳細については、次の記事を参照してください。
 
-- [Azure の予約とは](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Azure の予約とは](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure Dedicated Host の使用](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure Dedicated Host の使用](./windows/dedicated-hosts.md)
 
 - [Dedicated Host の価格](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Azure での予約の管理](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Azure での予約の管理](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 
-- [予約割引の適用方法について](https://docs.microsoft.com/azure/billing/billing-understand-vm-reservation-charges)
+- [予約割引の適用方法について](../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
-- [従量課金制料金のサブスクリプションの予約の使用状況について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [従量課金制料金のサブスクリプションの予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
-- [エンタープライズ加入契約の予約使用量について](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [エンタープライズ加入契約の予約使用量について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 
-- [予約に含まれない Windows ソフトウェアのコスト](https://docs.microsoft.com/azure/billing/billing-reserved-instance-windows-software-costs)
+- [予約に含まれない Windows ソフトウェアのコスト](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
 
-- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)

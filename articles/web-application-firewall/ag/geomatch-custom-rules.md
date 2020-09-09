@@ -7,27 +7,27 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76960384"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744299"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Geomatch カスタム規則 (プレビュー)
 
 カスタム ルールを使うと、実際のアプリケーションのニーズとセキュリティ ポリシーに沿ってカスタマイズしたルールを作成できます。 これで、国や地域ごとに Web アプリケーションへのアクセスを制限できるようになります。 あらゆるカスタム ルールと同様、このロジックは、アプリケーションのニーズに合わせて他のルールと組み合わせることができます。
 
-geo フィルタリング カスタム ルールを作成するには、[一致の種類] として *[Geo-location]\(地理的な場所\)* を選択し、アプリケーションから許可またはブロックする 1 つまたは複数の国を選択します。 詳細については、[Powershell でカスタム ルールを作成する方法](configure-waf-custom-rules.md)とその他のカスタム ルールの例 (create-custom-waf-rules.md) を参照してください。
+geo フィルタリング カスタム ルールを作成するには、[一致の種類] として *[Geo-location]\(地理的な場所\)* を選択し、アプリケーションから許可またはブロックする 1 つまたは複数の国/地域を選択します。 詳細については、[Powershell でカスタム ルールを作成する方法](configure-waf-custom-rules.md)とその他のカスタム ルールの例 (create-custom-waf-rules.md) を参照してください。
 
 > [!IMPORTANT]
 > このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
-## <a name="country-codes"></a>国コード
+## <a name="countryregion-codes"></a>国/地域コード
 
-Geomatch 演算子を使用する場合、セレクターは次の 2 桁の国番号のいずれかになります。 
+Geomatch 演算子を使用する場合、セレクターは次の 2 桁の国または地域番号のいずれかになります。 
 
-|国番号 | 国名 |
+|国/地域コード | 国/地域名 |
 | ----- | ----- |
 | AD | アンドラ |
 | AE | アラブ首長国連邦|

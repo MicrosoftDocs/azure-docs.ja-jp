@@ -2,19 +2,19 @@
 title: ONNX を使用して Azure SQL Edge に ML モデルをデプロイする
 description: 鉄鉱石の不純物を予測する、この 3 部構成の Azure SQL Edge チュートリアルの第 3 部では、SQL Edge で ONNX 機械学習モデルを実行します。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 64594267dc51fa42dabcc3083d18d631904a9cab
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593545"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318643"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ONNX を使用して Azure SQL Edge に ML モデルをデプロイする 
 
@@ -32,7 +32,7 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
    |_フィールド_|_Value_|
    |-------|-------|
    |接続の種類| Microsoft SQL Server|
-   |Serve\(サービス\)|このデモのために作成された VM で示されているパブリック IP アドレス|
+   |サーバー|このデモのために作成された VM で示されているパブリック IP アドレス|
    |ユーザー名|sa|
    |Password|Azure SQL Edge インスタンスの作成時に使用された強力なパスワード|
    |データベース|Default|

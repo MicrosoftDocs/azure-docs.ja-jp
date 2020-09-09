@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 3976f4114df6222d34f19e2bb44fd05d53057321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f3641bf540b188ce3d2333ccd6bcf4a926ba130
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565111"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -40,7 +40,7 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-次のパートナーが近い将来のロードマップに追加されることが予定されています。128 Technologies、Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink、VMWare Velocloud。
+次のパートナーが近い将来のロードマップに追加されることが予定されています。128 Technologies、Arista、Aruba HPE、Cisco Systems (Viptela)、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink。
 
 ## <a name="locations"></a><a name="locations"></a>場所
 

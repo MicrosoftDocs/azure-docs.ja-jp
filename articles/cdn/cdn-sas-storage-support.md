@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260175"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432747"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -67,7 +67,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    
 3. キャッシュ規則を使用するか、配信元サーバーに `Cache-Control` ヘッダーを追加して、キャッシュ期間を微調整します。 Azure CDN では SAS トークンはプレーンなクエリ文字列として処理されるため、ベスト プラクティスとして、SAS の有効期限か、それより前に期限が切れるようにキャッシュ期間を設定する必要があります。 そうしないと、SAS がアクティブになっている期間よりも長くファイルがキャッシュされた場合、SAS の有効期限が過ぎた後も Azure CDN 配信元サーバーからファイルにアクセスできます。 この状況が発生した場合、キャッシュされたファイルにアクセスできないようにするには、ファイルに対し消去操作を実行して、キャッシュから削除する必要があります。 Azure CDN のキャッシュ期間の設定の詳細については、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](cdn-caching-rules.md)」を参照してください。
 
-### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>オプション 2: 書き換えルールを使用して CDN SAS トークンを非表示にする
+### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>オプション 2:書き換えルールを使用して CDN SAS トークンを非表示にする
  
 このオプションは、**Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 このオプションを使用して、配信元サーバーの BLOB ストレージをセキュリティで保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 ユーザーには知られていない SAS トークンは、配信元サーバーの指定されたコンテナー内のファイルにアクセスする人に必要です。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。
  
@@ -81,7 +81,8 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    
    ソース:   
    `(container1\/.*)`
-   
+
+
    変換先:   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
@@ -95,9 +96,9 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
-3. キャッシュ規則を使用するか、配信元サーバーに `Cache-Control` ヘッダーを追加して、キャッシュ期間を微調整します。 Azure CDN では SAS トークンはプレーンなクエリ文字列として処理されるため、ベスト プラクティスとして、SAS の有効期限か、それより前に期限が切れるようにキャッシュ期間を設定する必要があります。 そうしないと、SAS がアクティブになっている期間よりも長くファイルがキャッシュされた場合、SAS の有効期限が過ぎた後も Azure CDN 配信元サーバーからファイルにアクセスできます。 この状況が発生した場合、キャッシュされたファイルにアクセスできないようにするには、ファイルに対し消去操作を実行して、キャッシュから削除する必要があります。 Azure CDN のキャッシュ期間の設定の詳細については、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](cdn-caching-rules.md)」を参照してください。
+3. キャッシュ規則を使用するか、配信元サーバーに `Cache-Control` ヘッダーを追加して、キャッシュ期間を微調整します。 Azure CDN では SAS トークンはプレーンなクエリ文字列として処理されるため、ベスト プラクティスとして、SAS の有効期限か、それより前に期限が切れるようにキャッシュ期間を設定する必要があります。 そうしないと、SAS がアクティブになっている期間よりも長くファイルがキャッシュされた場合、SAS の有効期限が過ぎた後も Azure CDN エンドポイントからファイルにアクセスできます。 この状況が発生した場合、キャッシュされたファイルにアクセスできないようにするには、ファイルに対し消去操作を実行して、キャッシュから削除する必要があります。 Azure CDN のキャッシュ期間の設定の詳細については、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](cdn-caching-rules.md)」を参照してください。
 
-### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>オプション 3: 書き換えルールと共に CDN セキュリティ トークン認証を使用する
+### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>オプション 3:書き換えルールと共に CDN セキュリティ トークン認証を使用する
 
 Azure CDN セキュリティ トークン認証を使用するには、**Azure CDN Premium from Verizon** プロファイルが必要です。 このオプションは、最も安全かつカスタマイズ可能です。 クライアント アクセスは、セキュリティ トークンに設定されているセキュリティ パラメーターを使用して実行されます。 セキュリティ トークンを作成し、設定したら、すべての CDN エンドポイント URL で必要になります。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。 SAS トークンが後で無効になった場合、Azure CDN は配信元サーバーからのコンテンツを再検証できなくなります。
 
@@ -144,6 +145,6 @@ SAS パラメーターは Azure CDN からは認識できないため、Azure CD
 
 SAS の詳細については、次の記事を参照してください。
 - [Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+- [Shared Access Signature、パート 2: BLOB ストレージでの SAS の作成と使用](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
 
 トークン認証設定の詳細については、「[トークン認証による Azure Content Delivery Network 資産の保護](https://docs.microsoft.com/azure/cdn/cdn-token-auth)」をご覧ください。

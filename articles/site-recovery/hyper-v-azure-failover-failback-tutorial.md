@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498159"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86132458"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure にフェールオーバーする
 
@@ -27,8 +27,8 @@ ms.locfileid: "75498159"
 このチュートリアルはシリーズで 5 番目のチュートリアルです。 このチュートリアルでは、前のチュートリアルで以下のタスクが既に完了していることを前提としています。    
 
 1. [Azure を準備する](tutorial-prepare-azure.md)
-2. [オンプレミスの Hyper-V を準備する](tutorial-prepare-on-premises-hyper-v.md)
-3. [Hyper-V VM](tutorial-hyper-v-to-azure.md) または [System Center VMM クラウドで管理される Hyper-V VM](tutorial-hyper-v-vmm-to-azure.md) のディザスター リカバリーをセットアップする
+2. [オンプレミスの Hyper-V を準備する](./hyper-v-prepare-on-premises-tutorial.md)
+3. [Hyper-V VM](./hyper-v-azure-tutorial.md) または [System Center VMM クラウドで管理される Hyper-V VM](./hyper-v-vmm-azure-tutorial.md) のディザスター リカバリーをセットアップする
 4. [ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)
 
 さまざまな種類のフェールオーバーの[詳細を参照してください](failover-failback-overview.md#types-of-failover)。 1 つの復旧計画で複数の VM をフェールオーバーする場合は、[この記事](site-recovery-failover.md)を参照してください。

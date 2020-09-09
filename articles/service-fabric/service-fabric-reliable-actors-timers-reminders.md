@@ -1,16 +1,15 @@
 ---
 title: Reliable Actors のタイマーとアラーム
 description: Service Fabric Reliable Actors のタイマーとアラームについて、それぞれをいつ使用するかに関するガイダンスを含む概要です。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639617"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89016548"
 ---
 # <a name="actor-timers-and-reminders"></a>アクターのタイマーとアラーム
 アクターは、タイマーまたはアラームを登録することで、自身の定期的な作業をスケジュールできます。 ここでは、タイマーとアラームの使用方法と、これらの違いについて説明します。
@@ -122,12 +121,17 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 
 コールバックが完了すると、アクターのランタイムは、アクターの状態マネージャーに加えられた変更を保存します。 状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。
 
+[リマインダー](#actor-reminders)とは異なり、タイマーを更新することはできません。 `RegisterTimer` が再度呼び出されると、新しいタイマーが登録されます。
+
 ガベージ コレクションの一部としてアクターが非アクティブ化されると、すべてのタイマーが停止します。 その後は、タイマーのコールバックは呼び出されません。 また、アクターのランタイムは、非アクティブ化の前に実行されていたタイマーについての情報は保持しません。 その後、再アクティブ化したときに必要なタイマーを登録するかどうかはアクターによって異なります。 詳細については、「 [アクターのガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)」のセクションを参照してください。
 
 ## <a name="actor-reminders"></a>アクターのアラーム
-アラームは、指定した時間にアクターに永続的なコールバックをトリガーするメカニズムです。 タイマーと似ていますが、アラームの場合は、アクターが明示的にアラームの登録を解除するか、アクターが明示的に削除されるまで、あらゆる状況下でトリガーされます。 具体的には、アラームはアクターの無効化およびフェールオーバーによりトリガーされます。 これは、アクターのランタイムが、アクター状態プロバイダーを使用してアクターのアラームに関する情報を永続化するためです。 アラートの信頼性は、アクター状態プロバイダーが提供する状態の信頼性の保証に関連付けられている点に注意してください。 つまり、状態の永続性が "なし" に設定されているアクターの場合、フェールオーバー後にアラートが起動しません。 
+アラームは、指定した時間にアクターに永続的なコールバックをトリガーするメカニズムです。 タイマーと似ていますが、アラームの場合は、アクターが明示的にアラームの登録を解除するか、アクターが明示的に削除されるまで、あらゆる状況下でトリガーされます。 具体的には、アラームはアクターの無効化およびフェールオーバーによりトリガーされます。 これは、アクターのランタイムが、アクター状態プロバイダーを使用してアクターのアラームに関する情報を永続化するためです。 また、タイマーとは異なり、既存のアラームを更新するには、同じ *reminderName* を使用して登録メソッド (`RegisterReminderAsync`) を再度呼び出します。
 
-アラームを登録するには、次の例に示すように、アクターが基本クラスで提供される `RegisterReminderAsync` メソッドを呼び出します。
+> [!NOTE]
+> アラートの信頼性は、アクター状態プロバイダーが提供する状態の信頼性の保証に関連付けられています。 つまり、状態の永続性が "*なし*" に設定されているアクターの場合、フェールオーバー後にアラートが起動しません。
+
+アラームを登録するには、次の例に示すように、アクターが基本クラスで提供される [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) メソッドを呼び出します。
 
 ```csharp
 protected override async Task OnActivateAsync()

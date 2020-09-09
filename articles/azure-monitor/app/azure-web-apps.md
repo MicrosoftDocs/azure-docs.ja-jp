@@ -2,17 +2,18 @@
 title: Azure App Services のパフォーマンスを監視する | Microsoft Docs
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 08/06/2020
+ms.custom: devx-track-javascript, devx-track-dotnet
+ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733452"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933785"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
-[Azure App Services](https://docs.microsoft.com/azure/app-service/) 上で実行されているご利用の ASP.NET および ASP.NET Core ベースの Web アプリケーションで、これまでよりも簡単に監視を有効にすることができるようになりました。 以前は手動でサイト拡張機能をインストールする必要がありましたが、最新の拡張機能/エージェントが既定でアプリ サービス イメージに組み込まれました。 この記事では、Application Insights の監視を有効にする手順を説明し、大規模なデプロイ プロセスを自動化する準備となるガイダンスを提供します。
+[Azure App Services](../../app-service/index.yml) 上で実行されているご利用の ASP.NET および ASP.NET Core ベースの Web アプリケーションで、これまでよりも簡単に監視を有効にすることができるようになりました。 以前は手動でサイト拡張機能をインストールする必要がありましたが、最新の拡張機能/エージェントが既定でアプリ サービス イメージに組み込まれました。 この記事では、Application Insights の監視を有効にする手順を説明し、大規模なデプロイ プロセスを自動化する準備となるガイダンスを提供します。
 
 > [!NOTE]
 > **[開発ツール]**  >  **[拡張機能]** を使用して Application Insights のサイト拡張機能を手動で追加することは、非推奨になりました。 この拡張機能のインストール方法は、新しい各バージョンの手動更新が必要でした。 拡張機能の最新の安定版リリースが、App Service イメージの一部として[プレインストール](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)されるようになりました。 これらのファイルは `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` にあり、安定版リリースごとに自動的に更新されます。 以下の監視を有効にするエージェント ベースの手順を実行すると、非推奨の拡張機能は自動的に削除されます。
@@ -26,19 +27,19 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 * Application Insights SDK をインストールし、コードを介して**手動でアプリケーションをインストルメント化する方法**。
 
-    * このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
+    * このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](./asp-net.md)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
 
-    * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)を参照してください。 これは、現在、Linux ベースのワークロードで唯一サポートされているオプションでもあります。
+    * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](./api-custom-events-metrics.md)を参照してください。 これは、現在、Linux ベースのワークロードで唯一サポートされているオプションでもあります。
 
 > [!NOTE]
-> エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 この詳細については、以下の「[トラブルシューティング](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)」セクションを参照してください。
+> エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 この詳細については、以下の「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 
 ## <a name="enable-agent-based-monitoring"></a>エージェント ベースの監視を有効にする
 
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> APPINSIGHTS_JAVASCRIPT_ENABLED と urlCompression の組み合わせはサポートされていません。 詳細については、[トラブルシューティングのセクション](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)の説明を参照してください。
+> APPINSIGHTS_JAVASCRIPT_ENABLED と urlCompression の組み合わせはサポートされていません。 詳細については、[トラブルシューティングのセクション](#troubleshooting)の説明を参照してください。
 
 
 1. アプリ サービスの Azure コントロール パネルで **[Application Insights]** を選択します。
@@ -58,7 +59,7 @@ Azure App Services がホストするアプリケーションについてアプ�
  
  それぞれのルートで収集されるデータは次のとおりです。
         
-|  | .NET 基本収集 | .NET 推奨収集 |
+| Data | .NET 基本収集 | .NET 推奨収集 |
 | --- | --- | --- |
 | CPU、メモリ、および I/O の使用状況の傾向が追加されます |はい |はい |
 | 使用状況の傾向が収集され、可用性の結果からトランザクションへの相関関係が有効になります | はい |はい |
@@ -70,13 +71,13 @@ Azure App Services がホストするアプリケーションについてアプ�
 
     * たとえば、最初のサンプリング率を変更するには、`MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` と `100` の値の [アプリケーション設定] を作成できます。
 
-    * サポートされるアダプティブ サンプリング テレメトリ プロセッサ設定の一覧については、[コード](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)と[関連ドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sampling)を参照してください。
+    * サポートされるアダプティブ サンプリング テレメトリ プロセッサ設定の一覧については、[コード](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)と[関連ドキュメント](./sampling.md)を参照してください。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 次のバージョンの .NET Core がサポートされます。ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0
 
-現時点では、.NET Core の完全なフレームワーク、自己完結型のデプロイ、および Linux ベースのアプリケーションをターゲットにすることは、エージェント/拡張機能ベースの監視では**サポートされていません**。 (コードによる[手動インストルメンテーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)は、上記のすべてのシナリオで機能します)。
+現時点では、.NET Core の完全なフレームワーク、自己完結型のデプロイ、および Linux ベースのアプリケーションをターゲットにすることは、エージェント/拡張機能ベースの監視では**サポートされていません**。 (コードによる[手動インストルメンテーション](./asp-net-core.md)は、上記のすべてのシナリオで機能します)。
 
 1. アプリ サービスの Azure コントロール パネルで **[Application Insights]** を選択します。
 
@@ -99,11 +100,11 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java App Service ベースの Web アプリケーションでは、エージェント/拡張機能ベースの自動監視は現在サポートされていません。 Java アプリケーションの監視を有効にするには、[アプリケーションを手動でインストルメント化する](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)必要があります。
+Java App Service ベースの Web アプリケーションでは、エージェント/拡張機能ベースの自動監視は現在サポートされていません。 Java アプリケーションの監視を有効にするには、[アプリケーションを手動でインストルメント化する](./java-get-started.md)必要があります。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python App Service ベースの Web アプリケーションでは、エージェント/拡張機能ベースの自動監視は現在サポートされていません。 Python アプリケーションの監視を有効にするには、[アプリケーションを手動でインストルメント化する](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)必要があります。
+Python App Service ベースの Web アプリケーションでは、エージェント/拡張機能ベースの自動監視は現在サポートされていません。 Python アプリケーションの監視を有効にするには、[アプリケーションを手動でインストルメント化する](./opencensus-python.md)必要があります。
 
 ---
 
@@ -113,16 +114,14 @@ Python App Service ベースの Web アプリケーションでは、エージ�
 
 ASP.NET の場合、クライアント側の監視はオプトインです。 クライアント側の監視を有効にするには:
 
-* **[設定]** 、** **[アプリケーション設定]** ** の順に選択します
-   * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
+* **[設定]** **>** **[構成]**
+   * [アプリケーション設定] で、**新しいアプリケーション設定**を作成します。
 
      名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      値: `true`
 
    * 設定を **[保存]** し、アプリを **[再起動]** します。
-
-![アプリケーション設定 UI のスクリーンショット](./media/azure-web-apps/appinsights-javascript-enabled.png)
 
 クライアント側の監視を無効にするには、[アプリケーション設定] から関連付けられているキーと値のペアを削除するか、値を false に設定します。
 
@@ -132,8 +131,8 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
 何らかの理由でクライアント側の監視を無効にするには、次の手順を実行します。
 
-* **[設定]**  >  **[アプリケーション設定]** の順に選択します。
-   * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
+* **[設定]** **>** **[構成]**
+   * [アプリケーション設定] で、**新しいアプリケーション設定**を作成します。
 
      名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -141,19 +140,17 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
    * 設定を **[保存]** し、アプリを **[再起動]** します。
 
-![アプリケーション設定 UI のスクリーンショット](./media/azure-web-apps/appinsights-javascript-disabled.png)
-
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Node.js アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](https://docs.microsoft.com/azure/azure-monitor/app/javascript)必要があります。
+Node.js アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](./javascript.md)必要があります。
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](https://docs.microsoft.com/azure/azure-monitor/app/javascript)必要があります。
+Java アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](./javascript.md)必要があります。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](https://docs.microsoft.com/azure/azure-monitor/app/javascript)必要があります。
+Python アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](./javascript.md)必要があります。
 
 ---
 
@@ -174,7 +171,7 @@ Application Insights を使用したテレメトリの収集を有効にする�
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Azure Resource Manager を使用した App Service のアプリケーション設定
 
-App Services のアプリケーション設定は、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)を使用して管理および構成できます。 この手法は、Azure Resource Manager オートメーションで新しい App Service リソースをデプロイするとき、または既存のリソースの設定を変更するときに使用できます。
+App Services のアプリケーション設定は、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して管理および構成できます。 この手法は、Azure Resource Manager オートメーションで新しい App Service リソースをデプロイするとき、または既存のリソースの設定を変更するときに使用できます。
 
 アプリ サービスに使用されるアプリケーション設定 JSON の基本構造を次に示します。
 
@@ -339,14 +336,14 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 バージョン 2.8.9 以降では、プレインストールされたサイト拡張機能が使用されています。 以前のバージョンを使用している場合は、次の 2 つの方法のいずれかを使用して更新できます。
 
-* [ポータル経由で有効にしてアップグレードする](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights) (Azure App Service の Application Insights 拡張機能がインストールされている場合でも、UI には **[有効]** ボタンのみが表示されます。 背後では、以前のプライベート サイト拡張機能が削除されます)。
+* [ポータル経由で有効にしてアップグレードする](#enable-application-insights) (Azure App Service の Application Insights 拡張機能がインストールされている場合でも、UI には **[有効]** ボタンのみが表示されます。 背後では、以前のプライベート サイト拡張機能が削除されます)。
 
-* [PowerShell を使用してアップグレードする](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell):
+* [PowerShell を使用してアップグレードする](#enabling-through-powershell):
 
-    1. プレインストールされたサイト拡張機能 ApplicationInsightsAgent を有効にするようにアプリケーション設定を指定します。 「[PowerShell で有効にする](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)」を参照してください。
+    1. プレインストールされたサイト拡張機能 ApplicationInsightsAgent を有効にするようにアプリケーション設定を指定します。 「[PowerShell で有効にする](#enabling-through-powershell)」を参照してください。
     2. Azure App Service の Application Insights 拡張機能という名前のプライベート サイト拡張機能を手動で削除します。
 
-2\.5.1 より前のバージョンからアップグレードする場合は、ApplicationInsigths dll がアプリケーションの bin フォルダーから削除されていることを確認します。[トラブルシューティングの手順](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)を参照してください。
+2\.5.1 より前のバージョンからアップグレードする場合は、ApplicationInsigths dll がアプリケーションの bin フォルダーから削除されていることを確認します。[トラブルシューティングの手順](#troubleshooting)を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -363,7 +360,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
     ![https://yoursitename.scm.azurewebsites/applicationinsights 結果ページのスクリーンショット](./media/azure-web-apps/app-insights-sdk-status.png)
 
     * `Application Insights Extension Status` が `Pre-Installed Site Extension, version 2.8.12.1527, is running.` であることを確認します
-        * 実行中ではない場合は、[Application Insights の監視を有効にする手順](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)を実行します。
+        * 実行中ではない場合は、[Application Insights の監視を有効にする手順](#enable-application-insights)を実行します。
 
     * 状態ソースが存在し、以下のようになっていることを確認します。`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * 似た値が存在しない場合は、アプリケーションが現在実行されていないか、サポートされていないことを意味します。 アプリケーションが実行されていることを確認するには、手動でアプリケーションの URL/アプリケーション エンドポイントにアクセスしてみてください。これで、ランタイム情報を使用できるようになります。
@@ -396,19 +393,26 @@ APPINSIGHTS_JAVASCRIPT_ENABLED=true を使用する場合 (この場合、コン
 
 Application Insights エージェント/拡張機能の最新情報については、[リリース ノート](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)のページを参照してください。
 
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Web アプリでデプロイされた既定の Web サイトでは、クライアント側の自動監視はサポートされません
+
+Azure App Services で `ASP.NET` または `.NET Core` ランタイムを使用して Web アプリを作成すると、1 つの静的な HTML ページがスターター Web サイトとしてデプロイされます。 静的な Web ページには、IIS の .NET マネージド Web パーツも読み込まれます。 これにより、サーバー側のコードなし監視をテストすることはできますが、クライアント側の自動監視はサポートされません。
+
+Azure App Services Web アプリで ASP.NET または ASP.NET Core に対するクライアント側のコードなし監視をテストする場合は、[ASP.NET Core Web アプリの作成](../../app-service/quickstart-dotnetcore.md)と [ASP.NET Framework Web アプリの作成](../../app-service/quickstart-dotnet-framework.md)に関する公式のガイドに従って、この記事にある監視を有効にするための手順を使用することをお勧めします。
+
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP および WordPress はサポートされていない
 
-PHP および WordPress サイトはサポートされていません。 現時点では、これらのワークロードをサーバー側で監視するために正式にサポートされている SDK/エージェントはありません。 ただし、クライアント側の JavaScript を Web ページに追加することで PHP または WordPress サイトでクライアント側のトランザクションを手動でインストルメント化するのは、[JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript) を使用することで実行できます。
+PHP および WordPress サイトはサポートされていません。 現時点では、これらのワークロードをサーバー側で監視するために正式にサポートされている SDK/エージェントはありません。 ただし、クライアント側の JavaScript を Web ページに追加することで PHP または WordPress サイトでクライアント側のトランザクションを手動でインストルメント化するのは、[JavaScript SDK](./javascript.md) を使用することで実行できます。
 
 ### <a name="connection-string-and-instrumentation-key"></a>接続文字列とインストルメンテーション キー
 
 コード不要の監視を使用している場合は、接続文字列のみが必要です。 ただし、手動のインストルメンテーションを実行する場合は、SDK の以前のバージョンとの下位互換性を維持するためにインストルメンテーション キーを設定することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
-* [実行中のアプリに対してプロファイラーを実行](../app/profiler.md)します。
+* [実行中のアプリに対してプロファイラーを実行](./profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
 * [Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。
 * [サービスの正常性メトリックを監視](../platform/data-platform.md)して、サービスの可用性と応答性を確認します。
 * 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../platform/alerts-overview.md)ます。
 * [JavaScript のアプリや Web ページに Application Insights](javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。
+

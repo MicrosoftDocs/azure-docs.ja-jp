@@ -10,16 +10,25 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: d82445499ffa42b1e3a0e949d95eadf61dfdd4c1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67341719"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925081"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
-Bing Visual Search API は、提供された画像に関する情報を返します。 画像を提供するには、画像の URL または分析情報トークンを使用するか、画像をアップロードします。 これらのオプションについて詳しくは、「[Bing Visual Search API とは](overview.md)」をご覧ください。 この記事では、分析情報トークンの使用方法を示します。 画像をアップロードして分析情報を取得する方法の例については、クイック スタート ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)) をご覧ください。
+Bing Visual Search API は、提供された画像に関する情報を返します。 画像を提供するには、画像の URL または分析情報トークンを使用するか、画像をアップロードします。 これらのオプションについて詳しくは、「[Bing Visual Search API とは](overview.md)」をご覧ください。 この記事では、分析情報トークンの使用方法を示します。 画像をアップロードして分析情報を取得する方法の例については、以下のクイック スタートを参照してください。
+
+* ([C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [Node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md))。
 
 画像のトークンまたは URL を Bing Visual Search に送信する場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには `Content-Disposition` ヘッダーが含まれ、その `name` パラメーターが "knowledgeRequest" に設定されている必要があります。 `imageInfo` オブジェクトの詳細については、要求を参照してください。
 
@@ -58,14 +67,23 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-分析情報トークンを使用する例については、[C#](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python) をご覧ください。
+分析情報トークンを使用する例については、以下を参照してください。
+
+* [C#](#use-with-c)
+
+* [Java](#use-with-java)
+
+* [Node.js](#use-with-nodejs)
+
+* [Python](#use-with-python)
 
 ## <a name="use-with-c"></a>C# で使用する
 
 ### <a name="c-prerequisites"></a>C# の前提条件
 
-- このコードを Windows 上で実行するには、任意のバージョンの [Visual Studio 2019](https://www.visualstudio.com/downloads/) が必要です。
-- Azure サブスクリプション。 このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* このコードを Windows 上で実行するには、任意のバージョンの [Visual Studio 2019](https://www.visualstudio.com/downloads/) が必要です。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -237,8 +255,10 @@ namespace VisualSearchInsightsToken
 
 ### <a name="java-prerequisites"></a>Java の前提条件
 
-- このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) を使用する必要があります。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
-- このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* このコードをコンパイルして実行するための、[JDK 7 または 8](https://aka.ms/azure-jdks)。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+
 
 ## <a name="run-the-java-application"></a>Java アプリケーションを実行する
 
@@ -351,8 +371,9 @@ public class InsightsToken {
 
 ### <a name="nodejs-prerequisites"></a>Node.js の前提条件
 
-- このコードを実行するには、[Node.js 6](https://nodejs.org/en/download/) が必要です。
-- このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* このコードを実行するには、[Node.js 6](https://nodejs.org/en/download/) が必要です。
 
 ## <a name="run-the-javascript-application"></a>JavaScript アプリケーションを実行する
 
@@ -415,8 +436,9 @@ function requestCallback(err, res, body) {
 
 ### <a name="python-prerequisites"></a>Python の前提条件
 
-- このコードを実行するには、[Python 3](https://www.python.org/) が必要です。
-- このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* このコードを実行するには、[Python 3](https://www.python.org/) が必要です。
 
 ## <a name="run-the-python-application"></a>Python アプリケーションを実行する
 
@@ -479,5 +501,4 @@ if __name__ == '__main__':
 [Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)  
 [Bing Visual Search API とは](overview.md)  
 [Cognitive Services を試す](https://aka.ms/bingvisualsearchtryforfree)  
-[無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [画像 - Visual Search](https://aka.ms/bingvisualsearchreferencedoc)

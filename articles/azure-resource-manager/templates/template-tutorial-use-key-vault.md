@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 7fd84fc2e98578772c806f358cb8d6c400e0d994
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185015"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119278"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるために、生成されたパスワードを VM 管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
@@ -192,7 +192,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
 
-1. **[リソース グループ]**  >  **[\<*YourResourceGroupName*>]**  >  **[simpleWinVM]** の順に選択します。
+1. **[リソース グループ]**  >  **\<*YourResourceGroupName*>**  >  **[simpleWinVM]** の順に選択します。
 1. 上部の **[接続]** を選択します。
 1. **[RDP ファイルのダウンロード]** を選択します。その後、指示に従って、キー コンテナーに格納されているパスワードを使用して仮想マシンにサインインします。
 

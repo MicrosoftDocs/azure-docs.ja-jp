@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 2da0cd2ede33abe8ebbe3616192349112fb24bae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797499"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325527"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -19,7 +19,7 @@ ms.locfileid: "83797499"
 チャートやグラフなどの視覚化は、監視データを分析して問題をドリルダウンし、パターンを特定するのに役立ちます。 使用するツールによっては、組織の内外の他のユーザーと視覚化を共有するオプションもあります。
 
 ## <a name="workbooks"></a>Workbooks
-[Workbooks](../azure-monitor/platform/workbooks-overview.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
+[Workbooks](./platform/workbooks-overview.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
 
 ![Workbooks](media/visualizations/workbook.png)
 
@@ -40,6 +40,10 @@ ms.locfileid: "83797499"
 [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)は、Azure の主要なダッシュボード テクノロジです。 ダッシュボードは、重要な問題をすばやく特定できるように、Azure インフラストラクチャとサービスに関する 1 つのウィンドウを提供するという点で特に役立ちます。
 
 ![ダッシュボード](media/visualizations/dashboard.png)
+
+ダッシュボードの作成に関するビデオ チュートリアルはこちらです。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>長所
 - Azure との緊密な統合。 視覚化は、メトリックス エクスプローラー、Log Analytics、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
@@ -137,7 +141,7 @@ Azure Monitor のメトリック データとログ データには、その API
 - [Azure Monitor によって収集されたデータ](platform/data-platform.md)について学習します。
 - [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)について学習します。
 - [Azure Monitor のビュー](platform/view-designer.md)について学習します。
-- [Workbooks](../azure-monitor/platform/workbooks-overview.md) について学習します。
-- [ログ データの Power BI へのインポート](../azure-monitor/platform/powerbi.md)について学習します。
-- [Grafana Azure Monitor データ ソース プラグイン](../azure-monitor/platform/grafana-plugin.md)について学習します。
+- [Workbooks](./platform/workbooks-overview.md) について学習します。
+- [ログ データの Power BI へのインポート](./platform/powerbi.md)について学習します。
+- [Grafana Azure Monitor データ ソース プラグイン](./platform/grafana-plugin.md)について学習します。
 

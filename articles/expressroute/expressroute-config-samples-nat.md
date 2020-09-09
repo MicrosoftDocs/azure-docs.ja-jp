@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: ルーター構成のサンプル - NAT'
 description: このページでは、Cisco と Juniper のルーターのルーター構成のサンプルを示します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74072110"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397496"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>NAT をセットアップして管理するためのルーター構成のサンプル
 
@@ -30,59 +30,71 @@ ms.locfileid: "74072110"
 
 ## <a name="cisco-asa-firewalls"></a>Cisco ASA ファイアウォール
 ### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>顧客ネットワークから Microsoft へのトラフィックのための PAT 構成
-    object network MSFT-PAT
-      range <SNAT-START-IP> <SNAT-END-IP>
+
+```console
+object network MSFT-PAT
+  range <SNAT-START-IP> <SNAT-END-IP>
 
 
-    object-group network MSFT-Range
-      network-object <IP> <Subnet_Mask>
+object-group network MSFT-Range
+  network-object <IP> <Subnet_Mask>
 
-    object-group network on-prem-range-1
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-1
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem-range-2
-      network-object <IP> <Subnet-Mask>
+object-group network on-prem-range-2
+  network-object <IP> <Subnet-Mask>
 
-    object-group network on-prem
-      network-object object on-prem-range-1
-      network-object object on-prem-range-2
+object-group network on-prem
+  network-object object on-prem-range-1
+  network-object object on-prem-range-2
 
-    nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
+```
 
 ### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Microsoft から顧客ネットワークへのトラフィックのための PAT 構成
 
 **インターフェイスと方向:**
 
-    Source Interface (where the traffic enters the ASA): inside
-    Destination Interface (where the traffic exits the ASA): outside
+ソース インターフェイス (トラフィックが ASA に入る場所): 内側、ターゲット インターフェイス (トラフィックが ASA から出る場所): 外側
 
 **構成:**
 
 NAT プール:
 
-    object network outbound-PAT
-        host <NAT-IP>
+```console
+object network outbound-PAT
+    host <NAT-IP>
+```
 
 ターゲット サーバー:
 
-    object network Customer-Network
-        network-object <IP> <Subnet-Mask>
+```console
+object network Customer-Network
+    network-object <IP> <Subnet-Mask>
+```
 
-顧客 IP アドレスのオブジェクト グループ
+顧客 IP アドレスのオブジェクト グループ:
 
-    object-group network MSFT-Network-1
-        network-object <MSFT-IP> <Subnet-Mask>
+```console
+object-group network MSFT-Network-1
+    network-object <MSFT-IP> <Subnet-Mask>
 
-    object-group network MSFT-PAT-Networks
-        network-object object MSFT-Network-1
+object-group network MSFT-PAT-Networks
+    network-object object MSFT-Network-1
+```
 
 NAT コマンド:
 
-    nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```console
+nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
+```
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX シリーズ ルーター
 ### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1.クラスターの冗長イーサネット インターフェイスの作成
+
+```console
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -112,17 +124,50 @@ NAT コマンド:
             }
         }
     }
-
+```
 
 ### <a name="2-create-two-security-zones"></a>2.2 つのセキュリティ ゾーンの作成
 * 内部ネットワークには信頼ゾーンを作成し、エッジ ルーターに接続する外部ネットワークには非信頼ゾーンを作成します。
 * 適切なインターフェイスをゾーンに割り当てます。
 * インターフェイス上のサービスを許可します。
 
-    security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
+```console
+    security {
+        zones {
+            security-zone Trust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth0.100;
+                }
+            }
+            security-zone Untrust {
+                host-inbound-traffic {
+                    system-services {
+                        ping;
+                    }
+                    protocols {
+                        bgp;
+                    }
+                }
+                interfaces {
+                    reth1.100;
+                }
+            }
+        }
+    }
+```
 
 
 ### <a name="3-create-security-policies-between-zones"></a>3.ゾーン間のセキュリティ ポリシーの作成
+
+```console
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -151,12 +196,13 @@ NAT コマンド:
             }
         }
     }
-
+```
 
 ### <a name="4-configure-nat-policies"></a>4.NAT ポリシーの構成
 * 2 つの NAT プールを作成します。 1 つは Microsoft に送信される NAT トラフィックに使用され、もう 1 つは Microsoft から顧客への NAT トラフィックに使用されます。
 * それぞれのトラフィックの NAT 規則の作成
-  
+
+```console
        security {
            nat {
                source {
@@ -211,11 +257,14 @@ NAT コマンド:
                }
            }
        }
+```
 
 ### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5.各方向でプレフィックスを選択してアドバタイズする BGP の構成
 [ルーティング構成のサンプル](expressroute-config-samples-routing.md)に関するページのサンプルを参照してください。
 
 ### <a name="6-create-policies"></a>6.ポリシーの作成
+
+```console
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -309,6 +358,7 @@ NAT コマンド:
             }
         }
     }
+```
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。

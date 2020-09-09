@@ -7,24 +7,24 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584974"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344426"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
 [意図](luis-concept-intent.md)を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。
 
-インテントを管理するには、上部のナビゲーション バーの **[ビルド]** セクションに移動し、左側のパネルの **[Intents]\(意図\)** を選択します。
+LUIS ポータル上で、上部のナビゲーション バーの **[ビルド]** セクションに移動し、左側のパネルの **[意図]** から意図を管理します。
 
-## <a name="add-intent"></a>意図を追加する
+## <a name="add-an-intent-to-your-app"></a>アプリに意図を追加する
 
 1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
@@ -34,7 +34,7 @@ ms.locfileid: "83584974"
     > [!div class="mx-imgBorder"]
     > ![意図を追加する](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    意図にはサンプル発話が必要です。
+    発行された予測エンドポイントで発話を予測するために、意図には[発話例](luis-concept-utterance.md)が必要になります。
 
 ## <a name="add-an-example-utterance"></a>発話の例を追加する
 
@@ -51,16 +51,16 @@ ms.locfileid: "83584974"
 
 ## <a name="intent-prediction-errors"></a>意図予測のエラー
 
-意図に含まれている発話の例では、発話の例が現在含まれている意図とトレーニング中に決定された意図の間に意図予測のエラーが存在することがあります。
+意図に対してトレーニングされたアプリ上で発話が予測されない場合には、意図予測のエラーが判定されます。
 
-発話予測のエラーを見つけて修正するには、 **[フィルター]** オプションの [Incorrect] (正しくない) および [Unclear] (不明) を **[詳細ビュー]** の **[表示]** オプションと組み合わせて使用します。
+1. 発話予測のエラーを見つけて修正するには、[不適切] および [不明確] の **[フィルター]** オプションを使用します。
 
-![発話予測のエラーを見つけて修正するには、[フィルター] オプションを使用します。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![発話予測のエラーを見つけて修正するには、[フィルター] オプションを使用します。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-フィルターとビューが適用され、エラーを含む発話の例が存在する場合は、発話の例のリストにそれらの発話と問題が表示されます。
+1. [意図] の詳細ページ上にスコア値を表示するには、 **[ビュー]** オプション メニューから **[Show details intent scores]\(詳細な意図のスコアを表示する\)** を選択します。
 
-> [!div class="mx-imgBorder"]
-> ![フィルターとビューが適用され、エラーを含む発話の例が存在する場合は、発話の例のリストにそれらの発話と問題が表示されます。](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    フィルターとビューが適用され、エラーを含む発話の例が存在する場合は、発話の例のリストにそれらの発話と問題が表示されます。
 
 各行には、発話の例の現在のトレーニングの予測スコア、最も近いライバルのスコア、これらの 2 つのスコアの差が表示されます。
 

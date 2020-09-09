@@ -1,11 +1,19 @@
 - name: Azure Data Share のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure Data Share とは
       href: overview.md
     - name: サポートされているデータ ストア
       href: supported-data-stores.md
+- name: クイックスタート
+  items:
+    - name: データの共有 - Azure portal
+      href: share-your-data-portal.md
+    - name: データの共有 - ARM テンプレート
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: チュートリアル
   expanded: true
   items:
@@ -19,8 +27,8 @@
       href: terminology.md
     - name: ロールと要件
       href: concepts-roles-permissions.md
-    - name: 障害復旧
-      href: disaster-recovery.md
+    - name: 価格について
+      href: concepts-pricing.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -29,20 +37,33 @@
       href: samples-powershell.md
 - name: 操作方法ガイド
   items:
+    - name: ソース別にデータを共有および受信する
+      items:
+        - name: Azure Storage からの共有
+          href: how-to-share-from-storage.md
+        - name: Azure SQL Database または Synapse Analytics からの共有
+          href: how-to-share-from-sql.md
+        - name: Azure Data Explorer からの共有
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: モニター
       href: how-to-monitor.md
-    - name: データセット マッピングの構成
-      href: how-to-configure-mapping.md
     - name: トラブルシューティング
       href: data-share-troubleshoot.md
     - name: データセットの追加
       href: how-to-add-datasets.md
+    - name: データセット マッピングの構成
+      href: how-to-configure-mapping.md
     - name: 受信者の追加
       href: how-to-add-recipients.md
     - name: 招待の削除
       href: how-to-delete-invitation.md
     - name: 共有サブスクリプションの取り消し
       href: how-to-revoke-share-subscription.md
+    - name: Security
+      href: security.md
+    - name: 障害復旧
+      href: disaster-recovery.md
 - name: リファレンス
   items:
     - name: .NET
@@ -51,6 +72,8 @@
       href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
     - name: REST API
       href: /rest/api/datashare
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest'
 - name: リソース
   items:
     - name: Microsoft Q&A 質問ページ

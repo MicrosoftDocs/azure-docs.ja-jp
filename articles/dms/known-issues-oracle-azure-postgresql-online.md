@@ -3,21 +3,21 @@ title: 既知の問題:Oracle から Azure Database for PostgreSQL への移行
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用した Oracle から Azure Database for PostgreSQL 単一サーバーへのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/20/2020
-ms.openlocfilehash: fcebc7eb170239e5d7efd8a32599a6e782f630bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/20/2020
+ms.openlocfilehash: 06e96e970705801203c0469d5b87d1304d67a4f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090690"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Oracle から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -64,7 +64,7 @@ Azure Database Migration Service では、Azure Database for PostgreSQL-Single S
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
-- お客様が Oracle に接続するには SYSDBA を使用する必要があります。
+- ユーザーは、Oracle サーバーに対する DBA 権限を持っている必要があります。
 - パーティション/サブパーティションに対する操作 (ADD、DROP、EXCHANGE、および TRUNCATE) の結果のデータ変更は移行されず、次のエラーが発生する可能性があります。
   - ADD 操作で、追加されたデータを更新および削除した場合、"0 行が処理されました" の警告が返される場合があります。
   - DROP および TRUNCATE 操作で、新しい挿入によって "重複" エラーが発生する場合があります。

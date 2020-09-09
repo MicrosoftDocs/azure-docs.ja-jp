@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Microsoft Azure Attestation (プレビュー)
+summary: Azure Attestation の使用方法について説明します
+metadata:
+  title: Azure Attestation のドキュメント
+  description: Azure Attestation を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
+  services: attestation
+  ms.service: attestation
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 07/20/2020
+  ms.openlocfilehash: 218a957bfc351dd40f9b101f44d1c6e090e92027
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89398122"
+landingContent:
+- title: Microsoft Azure Attestation について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft Azure Attestation とは
+      url: overview.md
+- title: 作業開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: PowerShell のクイック スタート
+      url: quickstart-powershell.md
+    - text: ARM テンプレートのクイックスタート
+      url: quickstart-template.md
+- title: 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 基本的な概念
+      url: basic-concepts.md
+    - text: 要求規則の文法
+      url: claim-rule-grammar.md
+    - text: 要求セット
+      url: claim-sets.md
+    - text: ワークフロー
+      url: workflow.md
+- title: チュートリアル
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 構成証明ポリシーの作成と署名
+      url: author-sign-policy.md
+    - text: SGX 構成証明コード サンプル
+      url: /samples/browse/?expanded=azure&terms=attestation
+- title: References
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: よく寄せられる質問
+      url: faq.md
+    - text: REST
+      url: /rest/api/attestation/
+    - text: Azure PowerShell
+      url: /powershell/module/az.attestation/?view=azps-4.3.0#attestation

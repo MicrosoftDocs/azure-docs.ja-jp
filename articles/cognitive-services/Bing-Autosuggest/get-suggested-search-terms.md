@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: a90fa0a66fb32b2a885599f09458964188353880
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: b68bc2eca25c35395d9a31f3a80e45d1595815bf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75448831"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601974"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Autosuggest とは
 
@@ -29,9 +29,9 @@ ms.locfileid: "75448831"
 
 ## <a name="workflow"></a>ワークフロー
 
-Bing Autosuggest API は RESTful Web サービスです。HTTP 要求を実行して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 
+Bing Autosuggest API は RESTful Web サービスです。HTTP 要求を実行して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。
 
-1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。
+1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 2. アプリケーションの検索ボックスにユーザーが新しい文字を入力するたびに、この API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 

@@ -4,14 +4,15 @@ description: 要求のプロファイルを取得できるように、Applicatio
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
+ms.custom: devx-track-csharp
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aaa1d6df9faa20b1a561bfccdfea682af7645c18
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671598"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930249"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Application Insights を使用して要求を追跡するコードを記述する
 

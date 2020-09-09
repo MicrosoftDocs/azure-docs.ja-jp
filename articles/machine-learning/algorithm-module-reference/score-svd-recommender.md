@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/10/2020
-ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/10/2020
+ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455980"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189812"
 ---
 # <a name="score-svd-recommender"></a>Score SVD Recommender
 
@@ -107,9 +107,6 @@ SVD レコメンダーのスコアリングによって返されたスコア付�
 
 - 1 列目には、ユーザーの識別子が含まれます。
 - それ以降の列は、 **[Maximum number of items to recommend to a user]\(ユーザーに推奨する項目の最大数\)** で設定した値に応じて生成されます。 各列には、推奨される項目が含まれます (識別子順)。 推奨項目の順序は、ユーザーと項目のアフィニティに基づいて決まります。 アフィニティが最も高い項目が、 **[項目 1]** の列に配置されます。
-
-> [!WARNING]
-> このスコア付きデータセットを[レコメンダーの評価](evaluate-recommender.md)モジュールを使用して評価することはできません。
 
 
 ##  <a name="technical-notes"></a>テクニカル ノート

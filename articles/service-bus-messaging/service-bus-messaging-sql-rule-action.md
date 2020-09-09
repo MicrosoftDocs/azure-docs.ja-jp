@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus の SQLRuleAction 構文リファレンス
 description: この記事では、SQLRuleAction 構文のリファレンスを示します。 アクションは、ブローカー メッセージに対して実行される SQL 言語ベースの構文で記述されています。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76759630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341573"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus の SQLRuleAction 構文リファレンス
 

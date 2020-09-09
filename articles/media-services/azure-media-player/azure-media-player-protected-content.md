@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 64414d3ec31e8763b7c576af93374bf514141fd4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.custom: devx-track-javascript
+ms.openlocfilehash: da79556b466e3511845724e969c76477ad2ba0a8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727519"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423016"
 ---
 # <a name="protected-content"></a>保護されたコンテンツ #
 

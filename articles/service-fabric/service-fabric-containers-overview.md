@@ -2,13 +2,13 @@
 title: Service Fabric とコンテナーの概要
 description: Service Fabric に関する説明と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法の概要を示します。 この記事では、コンテナーの使い方と、Service Fabric で利用可能な機能の概要について説明しています。
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091659"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 
@@ -53,7 +53,7 @@ Linux ベースのチュートリアルについては、「[Linux で初めて�
 
 #### <a name="windows-server-containers"></a>Windows Server コンテナー
 
-Windows Server 2016 には、分離レベルの異なる 2 種類のコンテナーが用意されています。 Windows Server コンテナーと Docker コンテナーは、名前空間とファイル システムは分離されていますが、それが実行されているホストとカーネルを共有するという点で似ています。 Linux では、cgroups や名前空間によって分離を行うのが通例でした。Windows Server コンテナーも同様に動作します。
+Windows Server 2016 以降には、分離レベルの異なる 2 種類のコンテナーが用意されています。 Windows Server コンテナーと Docker コンテナーは、名前空間とファイル システムは分離されていますが、それが実行されているホストとカーネルを共有するという点で似ています。 Linux では、cgroups や名前空間によって分離を行うのが通例でした。Windows Server コンテナーも同様に動作します。
 
 Hyper-V をサポートする Windows コンテナーでは、各コンテナーがオペレーティング システム カーネルを他のコンテナーまたはホストと共有しないため、より多くの分離とセキュリティが提供されます。 この高度なセキュリティの分離により、Hyper-V コンテナーは、潜在的に敵対するマルチテナント シナリオで効果を発揮します。
 Windows ベースのチュートリアルについては、「[Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)」を参照してください。
@@ -65,7 +65,7 @@ Windows ベースのチュートリアルについては、「[Windows で初め
 
 コンテナーの選択が望まれる一般的な例を以下に示します。
 
-* **IIS のリフトとシフト**: 既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを ASP.NET Core に移行する代わりにコンテナー内に配置できます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
+* **IIS のリフトとシフト**: 既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを ASP.NET Core に移行する代わりにコンテナー内に配置できます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
 
 * **コンテナーと Service Fabric マイクロサービスの混在使用**: アプリケーションの一部として、既存のコンテナー イメージを使用できます。 たとえば、より多くのバックエンド計算に対応するために、アプリケーションやステートフル サービスの Web フロントエンドに [NGINX コンテナー](https://hub.docker.com/_/nginx/)を使用できます。
 
@@ -73,7 +73,10 @@ Windows ベースのチュートリアルについては、「[Windows で初め
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric によるコンテナーのサポート
 
-Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 での Windows Server コンテナーのデプロイをサポートしています。また、Hyper-V の分離モードもサポートしています。 
+Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 以降での Windows Server コンテナーのデプロイをサポートしています。また、Hyper-V の分離モードもサポートしています。
+
+> [!NOTE]
+> コンテナーは、ローカルの単一ノード Service Fabric クラスターではサポートされていません (OneBox の Linux クラスター、およびローカル Service Fabric インストールの Windows クラスターの両方でサポートされません)。
 
 Service Fabric は、[アプリケーション モデル](service-fabric-application-model.md)を提供します。このモデルでは、コンテナーは、複数のレプリカがその中に配置されるアプリケーション ホストを表わします。 Service Fabric は、[ゲスト実行可能ファイル シナリオ](service-fabric-guest-executables-introduction.md)もサポートします。このシナリオでは、組み込みの Service Fabric プログラミング モデルではなく、任意の言語またはフレームワークを使用して記述されている既存のアプリケーションをコンテナー内にパッケージ化します。 このシナリオは、コンテナーの一般的なユースケースです。
 
@@ -90,7 +93,7 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 * コンテナーにセキュリティ資格情報を設定する機能
 * コンテナーに対する異なるネットワーク モードの選択
 
-Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azure Container Registry へのプライベート Docker レジストリの作成方法など、Azure でのコンテナーのサポートの包括的な概要については、「[Azure for Containers](https://docs.microsoft.com/azure/containers/)」を参照してください。
+Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azure Container Registry へのプライベート Docker レジストリの作成方法など、Azure でのコンテナーのサポートの包括的な概要については、「[Azure for Containers](../containers/index.yml)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -98,6 +101,6 @@ Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azu
 
 [Linux で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers-linux.md)  
 [Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)  
-[Windows コンテナーの詳細](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Windows コンテナーの詳細](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

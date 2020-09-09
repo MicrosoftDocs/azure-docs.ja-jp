@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ed1c3628b33d3ed29c3af3b773f2b635e684a67
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450974"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717049"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
 
@@ -45,7 +45,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>パスワードなしの電話によるサインインの認証方法を有効にする
 
-1. [Azure ポータル](https://portal.azure.com)
+1. **全体管理者**アカウントで [Azure portal](https://portal.azure.com) にサインインします。
 1. *Azure Active Directory* を検索して選択します。 **[セキュリティ]**  >  **[認証方法]**  >  **[認証方法ポリシー (プレビュー)]** の順に選択します。
 1. **[Passwordless phone sign-in]\(パスワードなしの電話によるサインイン\)** で、次のオプションを選択します。
    1. **有効にする** - [はい] または [いいえ]
@@ -62,7 +62,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 1. **Microsoft Authenticator** で、アカウントのドロップダウン メニューから **[電話によるサインインを有効にする]** を選択します。
 1. アプリの指示に従って、パスワードなしの電話によるサインインの登録を完了します。 
 
-組織は、Microsoft Authenticator アプリでの設定と電話によるサインインの有効化をさらに支援するために、[パスワードではなく電話でサインインする方法](../user-help/microsoft-authenticator-app-phone-signin-faq.md)に関する記事をユーザーに紹介することができます。 これらの設定を適用するには、ログアウトしてからテナントに再度ログインする必要がある場合があります。 
+組織は、Microsoft Authenticator アプリでの設定と電話によるサインインの有効化をさらに支援するために、[パスワードではなく電話でサインインする方法](../user-help/user-help-auth-app-sign-in.md)に関する記事をユーザーに紹介することができます。 これらの設定を適用するには、ログアウトしてからテナントに再度ログインする必要がある場合があります。 
 
 ## <a name="sign-in-with-passwordless-credential"></a>パスワードなしの資格情報でサインインする
 
@@ -82,9 +82,9 @@ Web にユーザー名を入力し、 **[次へ]** を選択すると、ユー�
 
 ### <a name="ad-fs-integration"></a>AD FS の統合
 
-ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[代わりにパスワードを使用する] をクリックする追加の手順を行わずに、サインイン確認のために ADFS に移動されないようにします。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
+ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[代わりにパスワードを使用する] をクリックする追加の手順を行わずに、サインイン確認のために AD FS に移動されないようにします。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 
 
-ユーザーがパスワードなしの電話によるサインインの確認に回答せずに保留していて、もう一度サインインを試行した場合は、代わりにパスワードを入力するようにユーザーに ADFS を表示することができます。  
+ユーザーがパスワードなしの電話によるサインインの確認に回答せずに保留していて、もう一度サインインを試行した場合は、代わりにパスワードを入力するようにユーザーに AD FS を表示することができます。  
 
 ### <a name="azure-mfa-server"></a>Azure MFA サーバー
 
@@ -103,7 +103,7 @@ Web にユーザー名を入力し、 **[次へ]** を選択すると、ユー�
 
 ## <a name="next-steps"></a>次のステップ
 
-[パスワードなしとは](concept-authentication-passwordless.md)
+[パスワードレス認証のしくみを学習する](concept-authentication-passwordless.md)
 
 [デバイス登録の詳細](../devices/overview.md#getting-devices-in-azure-ad)
 

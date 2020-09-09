@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583108"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518132"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 
@@ -45,7 +45,6 @@ Microsoft Azure パブリック クラウドでは、ほとんどの種類のア
 - デーモン アプリケーションは Azure AD 組織でのみ使用できます。 Microsoft の個人アカウントを操作するためにデーモン アプリケーションの使用を試みる意味はありません。 管理者の同意は付与されません。
 - 統合 Windows 認証フローは、(お客様の組織または任意の組織の) 職場または学校のアカウントでのみ使用できます。 統合 Windows 認証はドメイン アカウントで動作し、マシンをドメインに参加させるか Azure AD に参加させる必要があります。 このフローは、個人の Microsoft アカウントには意味がありません。
 - [リソース所有者のパスワード資格情報付与](./v2-oauth-ropc.md) (ユーザー名/パスワード) は、個人の Microsoft アカウントでは使用できません。 個人の Microsoft アカウントでは、ユーザーがサインイン セッションごとに個人のリソースへのアクセスに同意する必要があります。 このため、この動作は非対話型フローとは互換性がありません。
-- デバイス コード フローは、個人の Microsoft アカウントでは機能しません。
 
 ## <a name="account-types-in-national-clouds"></a>各国のクラウドのアカウントの種類
 

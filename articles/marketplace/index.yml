@@ -7,15 +7,15 @@ metadata:
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: landing-page
-  author: marleva
-  ms.author: maevan
-  ms.date: 04/02/2020
-  ms.openlocfilehash: 330dd34e19189dbcd641549f1cd42bf5c5cbaacb
-  ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+  author: keferna
+  ms.author: keferna
+  ms.date: 09/02/2020
+  ms.openlocfilehash: 39d0f00bd59663da8ec5529e9a7be185d93e4de0
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/08/2020
-  ms.locfileid: "82983892"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89421681"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -31,12 +31,12 @@ landingContent:
       url: ./marketplace-faq-publisher-guide.md
     - text: リリース ノート
       url: ./marketplace-roadmap.md
+    - text: Microsoft Publisher Agreement
+      url: https://go.microsoft.com/fwlink/?LinkID=699560
 - title: 一般的なシナリオとタスク
   linkLists:
   - linkListType: overview
     links:
-    - text: 新しい SaaS オファーを作成する
-      url: ./partner-center-portal/create-new-saas-offer.md
     - text: マーケティングのベスト プラクティス
       url: ./gtm-marketing-best-practices.md
     - text: クラウド ソリューション プロバイダー
@@ -75,12 +75,12 @@ landingContent:
       url: ./partner-center-portal/downloads-dashboard.md
     - text: '[評価とレビュー] ダッシュボード'
       url: ./partner-center-portal/ratings-reviews.md
-- title: オファーを管理する
+- title: オファーの作成
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: SaaS オファー
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: plan-saas-offer.md
     - text: 仮想マシンのオファー
       url: ./marketplace-virtual-machines.md
     - text: Azure アプリケーション プラン
@@ -116,17 +116,17 @@ landingContent:
     - text: Marketplace の測定サービス API
       url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
     - text: Cloud パートナー ポータルの API リファレンス
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+      url: ./cloud-partner-portal-api-overview.md
     - text: API 前提条件
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
+      url: ./cloud-partner-portal-api-prerequisites.md
     - text: オファーを取得する
-      url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
+      url: ./cloud-partner-portal-api-retrieve-offers.md
     - text: オファーを作成または変更する
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+      url: ./cloud-partner-portal-api-creating-offer.md
     - text: 仮想マシン プランの価格
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+      url: ./cloud-partner-portal-api-setting-price.md
     - text: 公開
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+      url: ./cloud-partner-portal-api-go-live.md
 - title: サポートを受ける
   linkLists:
   - linkListType: get-started
@@ -134,6 +134,6 @@ landingContent:
     - text: サポート オプション
       url: ./partner-center-portal/support.md
     - text: 認証エラーのトラブルシューティング
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
+      url: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - text: 利用可能な地域と通貨
       url: ./marketplace-geo-availability-currencies.md

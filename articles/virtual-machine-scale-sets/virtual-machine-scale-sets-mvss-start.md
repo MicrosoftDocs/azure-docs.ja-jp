@@ -9,15 +9,15 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: af2f000b9f9a7bf64898c46b3126cf180802b445
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198121"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831500"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、基本のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md#template-deployment-process)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、基本のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。
 
 このテンプレートは単純なものにしてあります。 スケール セット テンプレートの完全な例については、[Azure クイックスタート テンプレート GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で、`vmss` という文字列を含むフォルダーを検索してください。
 
@@ -115,7 +115,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
 ## <a name="specify-scale-set-properties"></a>スケール セットのプロパティを指定する
 スケール セットには、スケール セットで VM をカスタマイズするための多くのプロパティがあります。 これらのプロパティの完全な一覧については、[テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachinescalesets)を参照してください。 このチュートリアルでは、一般的に使用されるいくつかのプロパティのみが設定されます。
 ### <a name="supply-vm-size-and-capacity"></a>VM のサイズと容量を指定する
-スケール セットは、作成する VM のサイズ ("SKU 名") と、作成する VM の数 ("SKU 容量") を把握する必要があります。 利用可能な VM サイズを確認するには、[VM サイズに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)を参照してください。
+スケール セットは、作成する VM のサイズ ("SKU 名") と、作成する VM の数 ("SKU 容量") を把握する必要があります。 利用可能な VM サイズを確認するには、[VM サイズに関するドキュメント](../virtual-machines/sizes.md)を参照してください。
 
 ```json
        "sku": {

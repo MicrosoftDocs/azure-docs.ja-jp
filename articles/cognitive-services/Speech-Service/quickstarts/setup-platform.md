@@ -10,13 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 67ade64cdb3b2da6f78f77beb4d0cdc993715c9a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+zone_pivot_groups: programming-languages-speech-services-one-nomore
+ms.openlocfilehash: d31df125e5df397f1802ff582e4e5244b6617881
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400856"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926667"
 ---
 # <a name="quickstart-setup-development-environment"></a>クイック スタート:開発環境を設定する
 
@@ -85,4 +86,26 @@ ms.locfileid: "81400856"
 
 [!INCLUDE [python](../includes/quickstarts/platform/python.md)]
 
+::: zone-end
+
+::: zone pivot="programming-language-go"
+
+[!INCLUDE [go-linux](../includes/quickstarts/platform/go-linux.md)]
+
+* * *
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+**ターゲット環境を選択してください**
+
+#### <a name="browser-based"></a>[ブラウザーベース](#tab/browser)
+
+[!INCLUDE [browser](../includes/quickstarts/platform/javascript-browser.md)]
+
+#### <a name="nodejs"></a>[NodeJS](#tab/nodejs)
+
+[!INCLUDE [node](../includes/quickstarts/platform/javascript-node.md)]
+
+* * *
 ::: zone-end

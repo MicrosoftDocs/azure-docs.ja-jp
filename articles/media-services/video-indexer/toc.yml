@@ -23,8 +23,6 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: 概念
   items:
-    - name: 概要
-      href: video-indexer-concepts.md
     - name: Video Indexer と Media Services のプリセットを比較する
       href: compare-video-indexer-with-media-services-presets.md
     - name: 複数のテナントの管理

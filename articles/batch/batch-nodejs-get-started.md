@@ -1,15 +1,14 @@
 ---
 title: チュートリアル - Node.js 向け Azure Batch クライアント ライブラリを使用する
 description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
-ms.assetid: ''
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/22/2017
-ms.openlocfilehash: ccf0778938c873a5510f1408bf31d95c9d6ee873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116861"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780173"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
@@ -346,6 +345,6 @@ var container_list = ["con1","con2","con3","con4"]
 
 ## <a name="next-steps"></a>次のステップ
 
-- このサービスを初めて扱う場合は、 [Azure Batch 機能の概要](batch-api-basics.md) に関する記事を確認することをお勧めします。
+- [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 - Batch API の詳細については、[Batch Node.js のリファレンス](/javascript/api/overview/azure/batch)を参照してください。
 

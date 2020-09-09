@@ -3,16 +3,17 @@ title: Azure EA Portal のアクセスのトラブルシューティング
 description: この記事では、Azure Enterprise Agreement (EA) に関して Azure EA Portal で発生する可能性のある一般的な問題について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
-ms.topic: conceptual
+ms.date: 08/20/2020
+ms.topic: troubleshooting
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: fdcce868cb53c0fdd6a51f2b351491e1ee998d61
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691180"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294409"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 
@@ -31,7 +32,7 @@ Azure EA Portal を使用して、さまざまな認証レベルのユーザー�
 - テナント間の職場または学校アカウント - クラウドへのフェデレーションを使用して Active Directory を設定しており、複数のテナントにアカウントが存在する組織。
 - 混在アカウント - Microsoft アカウントおよび/または職場または学校アカウントを使用してユーザーを追加できます。
 
-登録に追加された最初の職場または学校アカウントによって、"_既定_" のドメイン、つまり "_マスター_" ドメインが決まります。 職場または学校アカウントを別のテナントに追加するには、登録の認証レベルをテナント間の認証に変更する必要があります。
+登録に追加された最初の職場または学校アカウントによって、"_既定_" のドメインが決まります。 職場または学校アカウントを別のテナントに追加するには、登録の認証レベルをテナント間の認証に変更する必要があります。
 
 認証レベルを更新するには、次の手順を実行します。
 
@@ -64,15 +65,15 @@ Azure EA Portal にサインインしようとしたときにエラー メッセ
   - プライマリ エイリアスを確認する必要がある場合は、[https://account.live.com](https://account.live.com) にアクセスしてください。 次に、 **[ユーザーの情報]** をクリックし、 **[Manage how to sign in to Microsoft] (Microsoft にサインインする方法の管理)** をクリックします。 画面の指示に従って連絡用メール アドレスを確認し、機密情報にアクセスするためのコードを取得します。 セキュリティ コードを入力します。 2 要素認証を設定しない場合は、 **[後で設定する]** を選択します。
   - **[Microsoft にサインインする方法の管理]** ページが表示され、ご自分のアカウント エイリアスを確認できます。 プライマリ エイリアスが、Azure EA Portal へのサインインに使用しているエイリアスであることを確認します。 そうでない場合は、これをプライマリ エイリアスにすることができます。 また、代わりに Azure EA Portal のプライマリ エイリアスを使用することもできます。
 
-## <a name="no-activation-email-received"></a>アクティブ化メールが届かない
+## <a name="azure-ea-activation-faq"></a>Azure EA のアクティブ化に関する FAQ
+
+記事のこのセクションでは、Azure EA のアクティブ化に関する一般的な問題の解決策について説明します。
+
+### <a name="i-didnt-receive-an-activation-email"></a>アクティブ化メールが届いていません
 
 Azure EA Portal からのアクティブ化メールは、 *waep@microsoft.com* から送信されます。 アクティブ化メールが届いていない場合は、スパムまたは迷惑メール フォルダーにこのメールが入っていないか確認してください。 このメールは、_Invitation to View/Manage the Microsoft Azure service_subject_ という件名で送信されます。 これは、新しく追加されたすべての EA 管理者宛てに送信されます。
 
 EA 管理者として設定されていることがわかっている場合は、Azure EA Portal にサインインするためにアクティブ化メールが届くまで待つ必要はありません。 代わりに、電子メールアドレス (職場、学校、または Microsoft アカウント) とパスワードを使用して、 https://ea.azure.com にアクセスしてサインインできます。
-
-## <a name="azure-ea-activation-faq"></a>Azure EA のアクティブ化に関する FAQ
-
-記事のこのセクションでは、Azure EA のアクティブ化に関する一般的な問題の解決策について説明します。
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>登録に新しい EA 管理者を追加したい
 

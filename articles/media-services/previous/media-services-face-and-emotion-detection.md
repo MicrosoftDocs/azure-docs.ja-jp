@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ac27fa5773e266d546b6511a24c6a5e14c5fda7f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919313"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89257842"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > **Azure Media Face Detector** メディア プロセッサは廃止予定です。 廃止日については、[レガシ コンポーネント](legacy-components.md)に関するトピックをご参照ください。
@@ -167,8 +170,8 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 || 既定値 (秒) | 最大 (秒) | 最小 (秒) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 |0.25|
+| **AggregateEmotionWindowMs** |0.5 |2 |0.25|
+| **AggregateEmotionIntervalMs** |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 出力
 感情の集計の JSON 出力 (途中まで):

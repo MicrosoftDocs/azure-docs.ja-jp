@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154952"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116446"
 ---
 # <a name="application-types-in-v10"></a>v1.0 でのアプリケーションの種類
 
@@ -41,7 +41,7 @@ Azure AD でサポートされる 5 つの主要なアプリケーション シ�
 コードの作業を始める前に、各アプリの種類の詳細を学習し、シナリオの概要を理解するには、リンクに従ってください。 v1.0 エンドポイントまたは v2.0 エンドポイントで動作する特定のアプリの作成時に知っておく必要がある相違点について学習することもできます。
 
 > [!NOTE]
-> Azure AD のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)に関する記事を参照してください。
+> Azure AD のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用するかどうかを判断するには、[v2.0 の制限](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json)に関する記事を参照してください。
 
 さまざまな言語とプラットフォームを使用して、ここで説明されているすべてのアプリとシナリオを開発できます。 すべてはコード サンプル ガイド ([シナリオ別 v1.0 コード サンプル](sample-v1-code.md)および[シナリオ別 v2.0 コード サンプル](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)) で使用可能な完全なコード サンプルで裏付けられています。 また、対応する [GitHub サンプル リポジトリ](https://github.com/Azure-Samples?q=active-directory)からコード サンプルを直接ダウンロードすることもできます。
 

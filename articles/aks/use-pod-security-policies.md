@@ -3,23 +3,26 @@ title: Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシ�
 description: Azure Kubernetes Service (AKS) で PodSecurityPolicy を使用してポッドのアドミッションを制御する方法について学習する
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.date: 07/21/2020
+ms.openlocfilehash: 3c8ec61666942fc74dcb64c03c0e3f06986e8c37
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998353"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987275"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用してクラスターのセキュリティを保護する
 
+> [!WARNING]
+> **このドキュメントで説明される機能、ポッド セキュリティ ポリシー (プレビュー) は非推奨となる予定で、2020 年 10 月 15 日より後に使用できなくなり**、[AKS 用の Azure Policy](use-pod-security-on-azure-policy.md) が推奨されます。
+>
+> ポッド セキュリティ ポリシー (プレビュー) が非推奨となった後、今後のクラスター アップグレードを実行し、Azure サポート内に留まるには、非推奨の機能を使用する既存のクラスターでその機能を無効にする必要があります。
+>
+> AKS 用の Azure Policy を使用したテスト シナリオを開始することを強くお勧めします。これには、ポッドをセキュリティで保護するための組み込みのポリシーと、ポッド セキュリティ ポリシーにマップする組み込みのイニシアチブが用意されています。 [ポッド セキュリティ ポリシー (プレビュー) から Azure Policy への移行](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)については、ここをクリックしてください。
+
 AKS クラスターのセキュリティを向上させるには、どのポッドをスケジュールできるかを制限することができます。 許可しないリソースを要求するポッドは、AKS クラスターで実行できません。 ポッド セキュリティ ポリシーを使用してこのアクセスを定義します。 この記事では、ポッド セキュリティ ポリシーを使用して AKS でのポッドのデプロイを制限する方法について説明します。
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー][aks-support-policies]
-> * [Azure サポートに関する FAQ][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -41,10 +44,9 @@ az extension update --name aks-preview
 
 ### <a name="register-pod-security-policy-feature-provider"></a>ポッド セキュリティ ポリシー機能プロバイダーを登録する
 
-ポッド セキュリティ ポリシーを使用するために AKS クラスターを作成または更新するには、まず自分のサブスクリプションで機能フラグを有効にします。 *PodSecurityPolicyPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+**このドキュメントと機能は、2020 年 10 月 15 日に非推奨となる予定です。**
 
-> [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
+ポッド セキュリティ ポリシーを使用するために AKS クラスターを作成または更新するには、まず自分のサブスクリプションで機能フラグを有効にします。 *PodSecurityPolicyPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -109,7 +111,7 @@ privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny  
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-次の縮約された出力に示されているように、*psp:restricted* ClusterRole は、すべての *system:authenticated* ユーザーに割り当てられます。 この機能により、独自のポリシーが定義されていなくても基本レベルの制限が提供されます。
+次の縮約された出力に示されているように、*psp:privileged* ClusterRole は、すべての *system:authenticated* ユーザーに割り当てられます。 この機能により、独自のポリシーが定義されていなくても基本レベルの特権が提供されます。
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -167,7 +169,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>特権のあるポッドの作成をテストする
 
-まず、`privileged: true` のセキュリティ コンテキストを持つポッドをスケジュールしたときに何が起こるかをテストしてみましょう。 このセキュリティ コンテキストは、ポッドの特権をエスカレートします。 既定の AKS ポッド セキュリティ ポリシーを示した前のセクションでは、*restricted* ポリシーがこの要求を拒否するはずです。
+まず、`privileged: true` のセキュリティ コンテキストを持つポッドをスケジュールしたときに何が起こるかをテストしてみましょう。 このセキュリティ コンテキストは、ポッドの特権をエスカレートします。 既定の AKS ポッド セキュリティ ポリシーを示した前のセクションでは、*privilege* ポリシーがこの要求を拒否するはずです。
 
 `nginx-privileged.yaml` という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。
 
@@ -202,7 +204,7 @@ Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods
 
 ## <a name="test-creation-of-an-unprivileged-pod"></a>特権のないポッドの作成をテストする
 
-前の例で、ポッド仕様は特権のエスカレーションを要求しました。 この要求は既定の *restricted* ポッド セキュリティ ポリシーによって拒否されるため、ポッドはスケジュールできません。 次に、特権エスカレーション要求なしでその同じ NGINX ポッドを実行してみましょう。
+前の例で、ポッド仕様は特権のエスカレーションを要求しました。 この要求は既定の *privilege* ポッド セキュリティ ポリシーによって拒否されるため、ポッドはスケジュールできません。 次に、特権エスカレーション要求なしでその同じ NGINX ポッドを実行してみましょう。
 
 `nginx-unprivileged.yaml` という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。
 
@@ -235,7 +237,7 @@ Error from server (Forbidden): error when creating "nginx-unprivileged.yaml": po
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>特定のユーザー コンテキストでのポッドの作成をテストする
 
-前の例では、コンテナー イメージは、自動的に root を使用して NGINX をポート 80 にバインドしようとしました。 この要求は既定の *restricted* ポッド セキュリティ ポリシーによって拒否されたため、ポッドは開始できません。 次に、`runAsUser: 2000` などの特定のユーザー コンテキストを使用して、その同じ NGINX ポッドを実行してみましょう。
+前の例では、コンテナー イメージは、自動的に root を使用して NGINX をポート 80 にバインドしようとしました。 この要求は既定の *privilege* ポッド セキュリティ ポリシーによって拒否されたため、ポッドは開始できません。 次に、`runAsUser: 2000` などの特定のユーザー コンテキストを使用して、その同じ NGINX ポッドを実行してみましょう。
 
 `nginx-unprivileged-nonroot.yaml` という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。
 
@@ -301,7 +303,7 @@ spec:
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-使用可能なポリシーを表示するには、次の例に示すように [kubectl get psp][kubectl-get] コマンドを使用します。 *psp-deny-privileged* ポリシーを、前述のポッドを作成する例で適用されていた既定の *restricted* ポリシーと比較します。 *PRIV* エスカレーションの使用のみがポリシーによって拒否されます。 *psp-deny-privileged* ポリシーには、ユーザーまたはグループの制限はありません。
+使用可能なポリシーを表示するには、次の例に示すように [kubectl get psp][kubectl-get] コマンドを使用します。 *psp-deny-privileged* ポリシーを、前述のポッドを作成する例で適用されていた既定の *privilege* ポリシーと比較します。 *PRIV* エスカレーションの使用のみがポリシーによって拒否されます。 *psp-deny-privileged* ポリシーには、ユーザーまたはグループの制限はありません。
 
 ```console
 $ kubectl get psp
@@ -342,7 +344,7 @@ kubectl apply -f psp-deny-privileged-clusterrole.yaml
 次に、前の手順で作成した ClusterRole を使用するために ClusterRoleBinding を作成します。 `psp-deny-privileged-clusterrolebinding.yaml` という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: psp-deny-privileged-clusterrolebinding

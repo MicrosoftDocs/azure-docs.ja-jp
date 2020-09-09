@@ -1,29 +1,22 @@
 ---
 title: テンプレートを使用した Azure Service Bus の名前空間の作成
 description: Azure Resource Manager テンプレートを使用して Service Bus メッセージング名前空間を作成します。
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 06/21/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 5febdd63ab6f854ca3244f8449f6f715a75e735f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264477"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067394"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 
-Azure Resource Manager テンプレートをデプロイして Service Bus 名前空間を作成する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、「[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)」をご覧ください。
+Azure Resource Manager テンプレートをデプロイして Service Bus 名前空間を作成する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、「[Azure Resource Manager のドキュメント](../azure-resource-manager/index.yml)」をご覧ください。
 
 Service Bus 名前空間を作成するために、次のテンプレートも使用できます。
 

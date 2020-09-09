@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088599"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング 
 
@@ -290,13 +290,12 @@ NULL <br />
 
 ## <a name="next-steps"></a>次の手順
 
-[Schannel イベント](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[Schannel イベント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 
-[Schannel SSP の技術概要](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
+[Schannel SSP の技術概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786429(v=ws.11))
 
-[リモート デスクトップ セッション ホスト証明書と SSL 通信を使用するとイベント ID 1058 およびイベント 36870 で RDP が失敗する](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
+[リモート デスクトップ セッション ホスト証明書と SSL 通信を使用するとイベント ID 1058 およびイベント 36870 で RDP が失敗する](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 
-[ドメイン コントローラーでの Schannel 36872 または Schannel 36870](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
+[ドメイン コントローラーでの Schannel 36872 または Schannel 36870](/archive/blogs/instan/schannel-36872-or-schannel-36870-on-a-domain-controller)
 
-[イベント ID 1058 — リモート デスクトップ サービスの認証と暗号化](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
-
+[イベント ID 1058 — リモート デスクトップ サービスの認証と暗号化](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee890862(v=ws.10))

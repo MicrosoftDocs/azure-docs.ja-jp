@@ -5,27 +5,27 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 04/15/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2673bb70582640cda97160eb31f16f7c7f1d60e6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416994"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421183"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
-Time Series Insights Explorer のカスタム ビューを共有するために、プログラムからカスタム ビューのパラメーター化 URL を作成することができます。
+Azure Time Series Insights Explorer のカスタム ビューを共有するために、プログラムからカスタム ビューのパラメーター化 URL を作成することができます。
 
-Time Series Insights Explorer では、そのエクスペリエンスのビューを URL から直接指定する URL クエリ パラメーターがサポートされています。 たとえば、ターゲット環境や検索述語、必要な期間を URL だけで指定することができます。 そのカスタマイズした URL をユーザーが選択すると、Time Series Insights ポータル内の対応するアセットにインターフェイスから直接アクセスすることができます。 データ アクセス ポリシーが適用されます。
+Azure Time Series Insights Explorer では、そのエクスペリエンスのビューを URL から直接指定する URL クエリ パラメーターがサポートされています。 たとえば、ターゲット環境や検索述語、必要な期間を URL だけで指定することができます。 そのカスタマイズした URL をユーザーが選択すると、Azure Time Series Insights ポータル内の対応するアセットにインターフェイスから直接アクセスすることができます。 データ アクセス ポリシーが適用されます。
 
 > [!TIP]
-> * 無料の [Time Series Insights](https://insights.timeseries.azure.com/samples) のデモをご覧ください。
-> * 付属の [Time Series Insights Explorer](./time-series-insights-explorer.md) のドキュメントを参照してください。
+> * 無料の [Azure Time Series Insights のデモ](https://insights.timeseries.azure.com/samples)をご覧ください。
+> * 付属の [Azure Time Series Insights Explorer](./time-series-insights-explorer.md) のドキュメントを参照してください。
 
 ## <a name="environment-id"></a>環境 ID
 
@@ -53,7 +53,7 @@ Time Series Insights Explorer では、そのエクスペリエンスのビュ�
 
 たとえば「`&relativeMillis=3600000`」を指定した場合、直近 60 分のデータが表示されます。
 
-指定できる値は、Time Series Insights Explorer の **[quick time]\(クイック タイム\)** メニューに対応し、次のような値です。
+指定できる値は、Azure Time Series Insights Explorer の **[quick time]\(クイック タイム\)** メニューに対応し、次のような値です。
 
 * `1800000` (直近 30 分)
 * `3600000` (直近 60 分)
@@ -66,7 +66,7 @@ Time Series Insights Explorer では、そのエクスペリエンスのビュ�
 
 ### <a name="optional-parameters"></a>省略可能なパラメーター
 
-`timeSeriesDefinitions=<collection of term objects>` パラメーターは、Time Series Insights ビューに表示される述語項を指定します。
+`timeSeriesDefinitions=<collection of term objects>` パラメーターは、Azure Time Series Insights ビューに表示される述語項を指定します。
 
 | パラメーター | URL 項目 | 説明 |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Time Series Insights Explorer では、そのエクスペリエンスのビュ�
 
 ### <a name="examples"></a>例
 
-URL パラメーターとして Time Series Insights 環境に時系列定義を追加するには、以下を追加します。
+URL パラメーターとして Azure Time Series Insights 環境に時系列定義を追加するには、以下を追加します。
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -114,19 +114,20 @@ URL パラメーターとして Time Series Insights 環境に時系列定義を
 この場合、ビューのパラメーター化 URL は、次のように構築することができます。
 
 ```URL
-https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
+https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![Time Series Insights エクスプローラーのパラメーター化 URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![Azure Time Series Insights Explorer のパラメーター化 URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
-> Explorer ライブで上記の [URL の使用](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}])例についてご覧ください。
+> Explorer ライブで上記の [URL の使用](https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[%7B%22name%22:%22F1PressureId%22,%22splitBy%22:%22Id%22,%22measureName%22:%22Pressure%22,%22predicate%22:%22%27Factory1%27%22%7D,%7B%22name%22:%22F2TempStation%22,%22splitBy%22:%22Station%22,%22measureName%22:%22Temperature%22,%22predicate%22:%22%27Factory2%27%22%7D,%7B%22name%22:%22F3VibrationPL%22,%22splitBy%22:%22ProductionLine%22,%22measureName%22:%22Vibration%22,%22predicate%22:%22%27Factory3%27%22%7D]
+)例についてご覧ください。
 
-上の URL は、パラメーター化された Time Series Insights エクスプローラー ビューを記述し、表示しています。 
+上の URL は、パラメーター化された Azure Time Series Insights Explorer ビューを記述し、表示しています。 
 
 * パラメーター化された述語です。
 
-  [![Time Series Insights エクスプローラーのパラメーター化された述語。](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![Azure Time Series Insights Explorer のパラメーター化された述語。](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
 * 共有された完全なグラフ ビュー。
 
@@ -136,4 +137,4 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 * [C# を使用してデータのクエリを行う](time-series-insights-query-data-csharp.md)方法を学習します。
 
-* [Time Series Insights Explorer](./time-series-insights-explorer.md) について学習します。
+* [Azure Time Series Insights Explorer](./time-series-insights-explorer.md) について学習します。

@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d704c6026e9d007a7365a3b72649ca509585da4d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71180058"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057677"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Premium ファイル共有レベルの追加の制限
 
@@ -23,11 +23,11 @@ ms.locfileid: "71180058"
 
 #### <a name="file-level-limits"></a>ファイル レベルの制限
 
-|領域  |Premium ファイル  |Standard ファイル |
+|領域  |Standard ファイル  |Premium ファイル  |
 |---------|---------|---------|
-|Size                  |1 TiB         |1 TiB|
-|ファイルあたりの最大 IOPS     |5,000         |1,000|
-|コンカレント処理数    |2,000         |2,000|
-|エグレス  |300 MiB/秒|      Standard ファイルのスループット値を参照してください|
-|イングレス  |200 MiB/秒| Standard ファイルのスループット値を参照してください|
-|スループット| Premium ファイルのイングレスとエグレスの値を参照してください| 最大 60 MiB/秒|
+|Size     |1 TiB         |4 TiB         |
+|ファイルあたりの最大 IOPS      |1,000         |5,000         |
+|コンカレント処理数     |2,000         |2,000         |
+|エグレス     |Standard ファイルのスループット値を参照してください         |300 MiB/秒         |
+|イングレス     |Standard ファイルのスループット値を参照してください         |200 MiB/秒         |
+|スループット     |最大 60 MiB/秒         |Premium ファイルのイングレスとエグレスの値を参照してください         |

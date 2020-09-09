@@ -3,14 +3,14 @@ title: 複合エンティティをアップグレードする - LUIS
 description: LUIS ポータルでアップグレード プロセスを使用して、複合エンティティを機械学習エンティティにアップグレードします。
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 9bbb03a2009bdcb6e2fa5d20aefadd4c7c99f025
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 58b546a27c1ff1e90e1b70026f430063a47a09e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599315"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684076"
 ---
-# <a name="upgrade-composite-entity-to-machine-learned-entity"></a>複合エンティティを機械学習エンティティにアップグレードする
+# <a name="upgrade-composite-entity-to-machine-learning-entity"></a>複合エンティティを機械学習エンティティにアップグレードする
 
 複合エンティティを機械学習エンティティにアップグレードすると、エンティティをデバッグするための分解可能性が向上し、より完全な予測を受け取るエンティティが構築されます。
 

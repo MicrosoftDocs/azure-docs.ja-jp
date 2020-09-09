@@ -1,18 +1,18 @@
 ---
 title: 'Azure Bastion:仮想マシン セッションの表示: 全画面表示'
-description: この記事では、ビューを全画面表示に変更する方法について説明します。
+description: RDP または SSH 接続の Azure Bastion で、仮想マシンのビューをお使いのブラウザーで全画面表示に変更して戻す方法について説明します。
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 2e72eb9ffc3affa0bf09692ac0780f9310308521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa795d7b066733aba54f8612bbabecf264a11c70
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619288"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270293"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>VM セッションを全画面表示に変更する:Azure Bastion
 

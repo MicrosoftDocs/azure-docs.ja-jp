@@ -5,13 +5,13 @@ author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/23/2020
+ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660186"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171044"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
@@ -38,7 +38,7 @@ Azure Active Directory 認証を構成して使用するには、次の手順に
 > [!NOTE]
 > Azure AD を作成して設定し、Azure Database for PostgreSQL で Azure AD を構成する方法については、[Azure Database for PostgreSQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-aad-authentication.md)に関するページを参照してください。
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
 次の概要図は、Azure Database for PostgreSQL で Azure AD 認証を使用した場合の認証のしくみをまとめたものです。 矢印は通信経路を示します。
 
@@ -66,8 +66,11 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 - Azure Active Directory 統合
 - MFA による Azure Active Directory ユニバーサル
 - Active Directory Application 証明書またはクライアント シークレットの使用
+- [Managed Identity](howto-connect-with-managed-identity.md)
 
 Active Directory に対して認証された後、トークンを取得します。 このトークンはログイン用のパスワードです。
+
+新しいユーザーの追加などの管理操作は、現時点では Azure AD ユーザー ロールに対してのみサポートされることに注意してください。
 
 > [!NOTE]
 > Active Directory トークンを使用して接続する方法の詳細については、[Azure Database for PostgreSQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-aad-authentication.md)に関するページを参照してください。

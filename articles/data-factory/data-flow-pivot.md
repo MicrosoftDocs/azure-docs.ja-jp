@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/17/2020
+ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086661"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>マッピング データ フローでのピボット変換
 
@@ -21,13 +21,15 @@ ms.locfileid: "81686417"
 
 ピボット変換を使用して、1 つの列の一意の行値から複数の列を作成します。 ピボットは、グループ化列を選択し、[集計関数](data-flow-expression-functions.md#aggregate-functions)を使用してピボット列を生成する集計変換です。
 
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4C4YN]
+
 ## <a name="configuration"></a>構成
 
 ピボット変換には、グループ化列、ピボット キー、およびピボットされた列の生成方法という 3 つの異なる入力が必要です
 
 ### <a name="group-by"></a>グループ化
 
-![オプションでグループ化する](media/data-flow/pivot2.png "[グループ化オプション")
+![オプションでグループ化する](media/data-flow/pivot2.png "オプションでグループ化する")
 
 ピボットされた列を集計する列を選択します。 出力データは、同じグループ化の値を持つすべての行を 1 つの行にグループ化します。 ピボットされた列で行われる集計は、各グループに対して行われます。
 
@@ -73,7 +75,7 @@ ms.locfileid: "81686417"
 
 ### <a name="sinking-pivoted-columns"></a>ピボットされた列のシンク
 
-ピボットされた列は動的ですが、宛先のデータ ストアに書き込むことができます。 シンク設定で、 **[Allow Schema Drift]\(スキーマの誤差を許可\)** を有効にします。 これにより、メタデータに含まれていない列を書き込むことができます。 列のメタデータですが、[schema drift]\(スキーマの誤差\) オプションを使用すると、データを配置できます。
+ピボットされた列は動的ですが、宛先のデータ ストアに書き込むことができます。 シンク設定で、 **[Allow Schema Drift]\(スキーマの誤差を許可\)** を有効にします。 これにより、メタデータに含まれていない列を書き込むことができます。 列のメタデータ内の新しい動的な名前は表示されませんが、スキーマの誤差のオプションによってデータを取得することができます。
 
 ### <a name="rejoin-original-fields"></a>元のフィールドを再結合する
 

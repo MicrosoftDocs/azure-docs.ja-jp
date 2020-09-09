@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 02/25/2020
-  ms.openlocfilehash: ab3352dbd6631c0c86656764dac748eac10fa79b
-  ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+  ms.openlocfilehash: faf8b4813699d177eb18997778c1d2e3bf9f5858
+  ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2020
-  ms.locfileid: "82890088"
+  ms.lasthandoff: 08/26/2020
+  ms.locfileid: "88924386"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
       url: search-create-service-portal.md
     - text: インデックスを作成する
       url: search-get-started-portal.md
-    - text: アプリを作成する
+    - text: デモ アプリを作成する
       url: search-create-app-portal.md
     - text: 画像およびアプリ ファイルからテキストを抽出する
       url: cognitive-search-quickstart-blob.md
@@ -69,9 +69,9 @@ landingContent:
   - linkListType: reference
     links:
     - text: インデックスを作成する (REST)
-      url: https://docs.microsoft.com/rest/api/searchservice/create-index
+      url: /rest/api/searchservice/create-index
     - text: インデクサーを作成する (REST)
-      url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+      url: /rest/api/searchservice/create-indexer
 - title: AI によるエンリッチ
   linkLists:
   - linkListType: concept
@@ -115,7 +115,7 @@ landingContent:
     - text: OData 言語のリファレンス
       url: query-odata-filter-orderby-syntax.md
     - text: ドキュメントを検索する (REST)
-      url: https://docs.microsoft.com/rest/api/searchservice/search-documents
+      url: /rest/api/searchservice/search-documents
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76021292"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507180"
 ---
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
@@ -29,7 +29,7 @@ ms.locfileid: "76021292"
 
    2. **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。 サブスクリプションは、課金アカウントにリンクされます。 このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
 
-   3. **リソース グループ**は、**既存のグループを使用**するか、**新しいグループを作成**します。 詳細については、[Azure のリソース グループ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)に関する記事をご覧ください。
+   3. **リソース グループ**は、**既存のグループを使用**するか、**新しいグループを作成**します。 詳細については、[Azure のリソース グループ](/azure/azure-resource-manager/management/manage-resource-groups-portal)に関する記事をご覧ください。
 
    4. サービスの **[場所]** を指定します。 一般的に、デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 次の点についても考慮してください。
 

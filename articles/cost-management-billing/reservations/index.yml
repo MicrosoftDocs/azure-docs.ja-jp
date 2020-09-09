@@ -1,21 +1,22 @@
 ### YamlMime:Landing
 title: Azure の予約による節約
-summary: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。 
+summary: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
 metadata:
   title: Azure の予約による節約
-  description: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。 
+  description: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
   ms.service: cost-management-billing
+  ms.subservice: reservations
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
   ms.date: 04/30/2020
-  ms.openlocfilehash: 648ba197fd30771061f6629fb834bd3dd95cab40
-  ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+  ms.openlocfilehash: d8c7e7eee6307ce48e89cb5ade65d7dbff0f42d4
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/01/2020
-  ms.locfileid: "82628590"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88684696"
 landingContent:
 - title: 予約の購入
   linkLists:
@@ -41,7 +42,7 @@ landingContent:
       url: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
     - text: SQL Database
       url: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-    - text: " Azure Data Explorer"
+    - text: Azure Data Explorer
       url: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
     - text: Azure Databricks
       url: prepay-databricks-reserved-capacity.md
@@ -63,7 +64,7 @@ landingContent:
       url: understand-reservation-charges.md
     - text: Azure Synapse Analytics
       url: reservation-discount-azure-sql-dw.md
-    - text: " Azure Data Explorer"
+    - text: Azure Data Explorer
       url: understand-azure-data-explorer-reservation-charges.md
     - text: Azure Databricks
       url: reservation-discount-databricks.md

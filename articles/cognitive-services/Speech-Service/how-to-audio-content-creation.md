@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589654"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224589"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -23,11 +23,13 @@ ms.locfileid: "83589654"
 
 Audio Content Creation ツールは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) に基づいています。 カスタマイズとチューニングを簡単にするために、Audio Content Creation を使用して、テキスト読み上げの出力をリアルタイムで視覚的に検査することができます。
 
+Audio Content Creation の[ビデオ チュートリアル](https://www.youtube.com/watch?v=O1wIJ7mts_w)を参照してください。
+
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
 次の図に、テキスト読み上げの出力を微調整するための手順を示します。 それぞれのステップの詳細については、下のリンクを使用してください。
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![テキスト読み上げの出力を微調整するための手順を示す図。](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. 開始するには、[Azure アカウントと音声リソースを設定](#set-up-your-azure-account-and-speech-resource)します。
 2. プレーン テキストまたは SSML スクリプトを使用して、[音声チューニング ファイルを作成](#create-an-audio-tuning-file)します。

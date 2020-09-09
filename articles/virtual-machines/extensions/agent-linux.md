@@ -1,26 +1,19 @@
 ---
 title: Azure Linux VM エージェントの概要
 description: Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74073862"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279705"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 
@@ -72,7 +65,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 次のシステムがテスト済みで、Azure Linux エージェントで機能することがわかっています。
 
 > [!NOTE]
-> この一覧は、Microsoft Azure Platform でサポートされるシステムの公式の一覧とは異なる場合があります (Microsoft Azure Platform でサポートされるシステムの一覧: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216))
+> この一覧は、[サポートされているディストリビューション](../linux/endorsed-distros.md)の公式の一覧とは異なる可能性があります。
 > 
 > 
 
@@ -100,6 +93,9 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 * ネットワーク ツール: ip-route
 * UDF ファイルシステムのマウントのカーネル サポート。
 
+VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)」を参照してください。
+
+
 ## <a name="installation"></a>インストール
 使用しているディストリビューションのパッケージのリポジトリから RPM または DEB パッケージを使用してインストールする方法は、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](../linux/endorsed-distros.md)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。
 
@@ -107,8 +103,8 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 ## <a name="command-line-options"></a>コマンド ライン オプション
 ### <a name="flags"></a>Flags
-* verbose: 指定したコマンドのメッセージの詳細度を上げます。
-* force: 一部のコマンドの対話形式の確認をスキップします。
+* verbose: 指定したコマンドのメッセージの詳細度を上げます
+* force: 一部のコマンドの対話形式の確認をスキップします
 
 ### <a name="commands"></a>コマンド
 * help: サポートされているコマンドとフラグを一覧表示します。
@@ -126,44 +122,44 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 > 
 
 * deprovision+user: -deprovision の場合のすべての対象 (上記参照) を実行するほか、前回プロビジョニングされたユーザー アカウント (/var/lib/waagent から取得) および関連付けられたデータも削除します。 このパラメーターは、Azure で前回プロビジョニングされたイメージのプロビジョニングを解除するため、取得して再利用できます。
-* version: waagent のバージョンを表示します。
-* serialconsole: GRUB で ttyS0 (最初のシリアル ポート) がブート コンソールに なるように構成します。 これにより、カーネルの起動ログがシリアル ポートに送信され、デバッグに使用できるようになります。
+* version: waagent のバージョンを表示します
+* serialconsole: GRUB で ttyS0 (最初のシリアル ポート) がブート コンソールになるように構成します。 これにより、カーネルの起動ログがシリアル ポートに送信され、デバッグに使用できるようになります。
 * daemon: プラットフォームとの相互動作を管理するデーモンとして waagent を実行します。 この引数には waagent init スクリプト内で waagent が指定されます。
 * start: バックグラウンド プロセスとして waagent を実行します
 
 ## <a name="configuration"></a>構成
 構成ファイル (/etc/waagent.conf) を使用して waagent の動作を制御します。 以下は構成ファイルの例です｡
 
-    ```
-    Provisioning.Enabled=y
-    Provisioning.DeleteRootPassword=n
-    Provisioning.RegenerateSshHostKeyPair=y
-    Provisioning.SshHostKeyPairType=rsa
-    Provisioning.MonitorHostName=y
-    Provisioning.DecodeCustomData=n
-    Provisioning.ExecuteCustomData=n
-    Provisioning.AllowResetSysUser=n
-    Provisioning.PasswordCryptId=6
-    Provisioning.PasswordCryptSaltLength=10
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.MountOptions=None
-    ResourceDisk.EnableSwap=n
-    ResourceDisk.SwapSizeMB=0
-    LBProbeResponder=y
-    Logs.Verbose=n
-    OS.RootDeviceScsiTimeout=300
-    OS.OpensslPath=None
-    HttpProxy.Host=None
-    HttpProxy.Port=None
-    AutoUpdate.Enabled=y
-    ```
+```config
+Provisioning.Enabled=y
+Provisioning.DeleteRootPassword=n
+Provisioning.RegenerateSshHostKeyPair=y
+Provisioning.SshHostKeyPairType=rsa
+Provisioning.MonitorHostName=y
+Provisioning.DecodeCustomData=n
+Provisioning.ExecuteCustomData=n
+Provisioning.AllowResetSysUser=n
+Provisioning.PasswordCryptId=6
+Provisioning.PasswordCryptSaltLength=10
+ResourceDisk.Format=y
+ResourceDisk.Filesystem=ext4
+ResourceDisk.MountPoint=/mnt/resource
+ResourceDisk.MountOptions=None
+ResourceDisk.EnableSwap=n
+ResourceDisk.SwapSizeMB=0
+LBProbeResponder=y
+Logs.Verbose=n
+OS.RootDeviceScsiTimeout=300
+OS.OpensslPath=None
+HttpProxy.Host=None
+HttpProxy.Port=None
+AutoUpdate.Enabled=y
+```
 
 以下では､これらのさまざまな構成オプションについて説明します｡ 構成オプションには、ブール、文字列、整数の 3 つの型があります。 ブール型の構成オプションは "y" または "n" として指定できます。 特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
 
 **Provisioning.Enabled:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -175,14 +171,14 @@ Default: y
 > 
 
 **Provisioning.DeleteRootPassword:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 設定した場合、/etc/shadow 内の root パスワードがプロビジョニング プロセス中に消去されます。
 
 **Provisioning.RegenerateSshHostKeyPair:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -191,42 +187,42 @@ Default: y
 新しいキー ペアの暗号化の種類は Provisioning.SshHostKeyPairType オプションで構成できます。 一部ディストリビューションでは、不明な暗号化の種類があると､SSH デーモンの再起動時 (再起動プロセス後など)、そのための SSH キー ペアが作成し直されます｡
 
 **Provisioning.SshHostKeyPairType:**  
-```
+```txt
 Type: String  
 Default: rsa
 ```
 仮想マシンの SSH デーモンによってサポートされている暗号化アルゴリズムの種類を設定できます。 一般的にサポートされている値は "rsa"、"dsa"、"ecdsa" です。 Windows では､ "ecdsa" は "putty.exe" によって サポートされません｡ このため、Windows で putty.exe を使用して Linux デプロイに接続する場合は、"rsa" または "dsa" を利用します｡
 
 **Provisioning.MonitorHostName:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 設定した場合、waagent は Linux 仮想マシンでホスト名の変更があるかどうか ("hostname" コマンドによって返される値) を監視し、変更がある場合は､イメージ上のネットワーク構成を自動的に更新して反映します。 DNS サーバーに名前の変更をプッシュするため、仮想マシンでネットワークが再起動されます。 これによりインターネット接続は短時間失われます｡
 
 **Provisioning.DecodeCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 設定した場合､waagent は Base64 の CustomData をデコードします｡
 
 **Provisioning.ExecuteCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 設定した場合、waagent はプロビジョニング後に CustomData を実行します。
 
 **Provisioning.AllowResetSysUser**
-```
+```txt
 Type: Boolean
 Default: n
 ```
 このオプションでは sys ユーザーのパスワードをリセットします。既定値は無効です。
 
 **Provisioning.PasswordCryptId**  
-```
+```txt
 Type: String  
 Default: 6
 ```
@@ -237,91 +233,91 @@ Default: 6
  6 - SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
-```
+```txt
 Type: String  
 Default: 10
 ```
 パスワード ハッシュの生成時に使用されるランダム salt の長さ。
 
 **ResourceDisk.Format:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 このオプションが設定されていて､"ResourceDisk.Filesystem" でユーザーが要求したファイル システムの種類が "ntfs" 以外の場合は、プラットフォームが提供するリソース ディスクが waagent によってフォーマットされてマウントされます。 このディスクでは､Linux (83) タイプのパーティションが 1 つ使用可能になります。 正常にマウントできる場合､ディスクはフォーマットされません｡
 
 **ResourceDisk.Filesystem:**  
-```
+```txt
 Type: String  
 Default: ext4
 ```
 リソース ディスクのファイルシステムの種類を指定します。 サポートされている値は Linux ディストリビューションによって異なります。 文字列が X の場合、mkfs.X は Linux イメージ上に存在する必要があります。 SLES 11 イメージでは通常は 'ext3' を使用する必要があります。 FreeBSD イメージではここで 'ufs2' を使用する必要があります。
 
 **ResourceDisk.MountPoint:**  
-```
+```txt
 Type: String  
 Default: /mnt/resource 
 ```
 リソース ディスクがマウントされるパスを指定します。 リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空にされることがあります｡
 
 **ResourceDisk.MountOptions**  
-```
+```txt
 Type: String  
 Default: None
 ```
 mount -o コマンドに渡されるディスク マウント オプションを指定します。 これは値のコンマ区切りリストです。たとえば、 'nodev,nosuid' などです。 詳細については mount(8) を参照してください。
 
 **ResourceDisk.EnableSwap:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 設定した場合、スワップ ファイル (/swapfile) がリソース ディスク上に作成され、システムのスワップ領域に追加されます。
 
 **ResourceDisk.SwapSizeMB:**  
-```
+```txt
 Type: Integer  
 Default: 0
 ```
 スワップ ファイルのサイズを MB 単位で指定します。
 
 **Logs.Verbose:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 設定した場合、ログの詳細度が上がります。 Waagent は /var/log/waagent.log にログを記録し、システムの logrotate 機能を利用してログを交代で利用します。
 
 **OS.EnableRDMA**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 設定した場合、エージェントは、土台のハードウェアのファームウェアのバージョンに一致する RDMA カーネル ドライバーをインストールし、読み込もうとします。
 
 **OS.RootDeviceScsiTimeout:**  
-```
+```txt
 Type: Integer  
 Default: 300
 ```
 OS ディスクおよびデータ ドライブの SCSI タイムアウトを秒単位で構成します。 設定しない場合、システムの既定値が使用されます。
 
 **OS.OpensslPath:**  
-```
+```txt
 Type: String  
 Default: None
 ```
 暗号化処理に使用する openssl バイナリの代替パスを指定できます。
 
 **HttpProxy.Host、HttpProxy.Port**  
-```
+```txt
 Type: String  
 Default: None
 ```
 設定した場合、エージェントはこのプロキシ サーバーを使用して、インターネットにアクセスします。 
 
 **AutoUpdate.Enabled**
-```
+```txt
 Type: Boolean
 Default: y
 ```
@@ -343,6 +339,5 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
 * 詳しくは､プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するための次のリソースを参照してください。
   
-  * [Ubuntu Wiki: スワップ パーティションの構成に関するページ](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Azure の仮想マシンにカスタム データを挿入する](../windows/classic/inject-custom-data.md)
-
+  * [Ubuntu Wiki: スワップ パーティションの構成](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Azure の仮想マシンにカスタム データを挿入する](../windows/tutorial-automate-vm-deployment.md)

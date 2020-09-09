@@ -2,34 +2,29 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maxient Conduct Manager Software の統合 | Microsoft Docs
 description: Azure Active Directory と Maxient Conduct Manager Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1a657a7d57b3e725b0ae92b5110935c0aecf73f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75533035"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518893"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maxient Conduct Manager Software の統合
 
 このチュートリアルでは、Maxient Conduct Manager Software と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Maxient Conduct Manager Software を統合すると、次のことができます。
 
-* Maxient Conduct Manager Software にアクセスする Azure AD ユーザーを制御できます。
+* Azure AD を利用して、Maxient Conduct Manager Software のユーザーを認証します
 * ユーザーが自分の Azure AD アカウントを使用して Maxient Conduct Manager Software に自動的にサインインできるようになります。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -42,8 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
-
+このチュートリアルでは、Maxient Conduct Manager Software で使用する Azure AD を構成します。
 
 
 * Maxient Conduct Manager Software では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
@@ -65,16 +59,13 @@ Azure AD への Maxient Conduct Manager Software の統合を構成するには�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-maxient-conduct-manager-software"></a>Maxient Conduct Manager Software の Azure AD シングル サインオンの構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、Maxient Conduct Manager Software に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Maxient Conduct Manager Software の関連ユーザーとの間にリンク関係を確立する必要があります。
+Maxient Conduct Manager Software で Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD と Maxient Conduct Manager Software 間の接続を確立する必要があります。
 
 Maxient Conduct Manager Software を使用して Azure AD の SSO を構成してテストするには、次の構成要素を完了します。
 
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Maxient Conduct Manager Software SSO の構成](#configure-maxient-conduct-manager-software-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Maxient Conduct Manager Software のテスト ユーザーの作成](#create-maxient-conduct-manager-software-test-user)** - Maxient Conduct Manager Software で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
-1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD SSO を構成する](#configure-azure-ad-sso)** - ユーザーが Maxient Conduct Manager Software で使用するための認証を行えるようにします
+    1. **[Maxient を使用するようにすべてのユーザーを割り当てる](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** - 組織のすべてのユーザーが認証できるようにします
+1. **[Maxient で Azure AD セットアップをテストする](#test-with-maxient)** - 構成が機能するかどうか、正しい属性がリリースされているかどうかを確認します
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
@@ -93,27 +84,15 @@ Maxient Conduct Manager Software を使用して Azure AD の SSO を構成し�
     **[サインオン URL]** ボックスに、`https://cm.maxient.com/<SCHOOLCODE>` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Maxient Conduct Manager Software のクライアント サポート チーム](mailto:support@maxient.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 Maxient の実装およびサポート担当者と協力して値を取得します。
 
-1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
+1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。  この URL を Maxient の実装およびサポート担当者に提供する必要があります。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>Maxient Conduct Manager Software の認証を行えるようにすべてのユーザーを割り当てる
 
-このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
-
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、B.Simon に Maxient Conduct Manager Software へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Azure システムを使用して Maxient Conduct Manager Software を認証するために、すべてのアカウントにアクセス権を付与します。  Maxient が正常に機能するためには、この手順が**必須**であることに注意することが重要です。  Maxient では Azure AD システムを活用してユーザーが "*認証*" されます。 ユーザーの "*承認*" は、実行しようとしている特定の関数に対して、Maxient システム内で実行されます。 Maxient では、これらの決定を行うためにディレクトリの属性は使用されません。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Maxient Conduct Manager Software]** を選択します。
@@ -125,24 +104,12 @@ Maxient Conduct Manager Software を使用して Azure AD の SSO を構成し�
 
     ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. **[ユーザーとグループ]** ダイアログで、すべてのユーザー (または適切なグループ) を選択して、Maxient で認証できるように**割り当て**ます。
 
-## <a name="configure-maxient-conduct-manager-software-sso"></a>Maxient Conduct Manager Software の SSO の構成
+## <a name="test-with-maxient"></a>Maxient でテストする 
 
-**Maxient Conduct Manager Software** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Maxient Conduct Manager Software サポート チーム](mailto:support@maxient.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
-### <a name="create-maxient-conduct-manager-software-test-user"></a>Maxient Conduct Manager Software のテスト ユーザーの作成
-
-このセクションでは、Maxient Conduct Manager Software で Britta Simon というユーザーを作成します。  [Maxient Conduct Manager Software サポート チーム](mailto:support@maxient.com)と連携して、Maxient Conduct Manager Software プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
-
-## <a name="test-sso"></a>SSO のテスト 
-
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
-
-アクセス パネルで [Maxient Conduct Manager Software] タイルをクリックすると、SSO を設定した Maxient Conduct Manager Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
-
+Maxient の実装およびサポート担当者がまだサポート チケットを開いていない場合は、"キャンパス ベースの認証および Azure セットアップ - \<\<School Name\>\>" という件名の電子メールを [support@maxient.com](mailto:support@maxient.com) に送信してください。 電子メールの本文に、**アプリのフェデレーション メタデータ URL** を記載してください。 Maxient のスタッフから、適切な属性がリリースされていることを確認できるテスト リンクを記載した応答を受け取ります。  
+    
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)

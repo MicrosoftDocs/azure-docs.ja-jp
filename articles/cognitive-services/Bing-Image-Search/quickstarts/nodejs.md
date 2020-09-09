@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Bing Image Search REST API と Node.js を使用してイメージを検索する
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートを使用して、JavaScript を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
+description: このクイックスタートを使用して、JavaScript を使って Bing Image Search REST API に画像検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,19 +9,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 15757d606a846a2951bc5c15d8d5ef0dbfd7a2a1
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: f9737eb42552ef102a9a970c5d5ee28a781a1fea
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478598"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406114"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>クイック スタート:Bing Image Search REST API と Node.js を使用してイメージを検索する
 
-このクイック スタートでは、Bing Image Search API に検索要求を送信する基本的な方法について説明します。 この JavaScript アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイックスタートでは、Bing Image Search API に検索要求を送信する方法について説明します。 この JavaScript アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは JavaScript で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) で入手できます。
 
@@ -29,22 +29,22 @@ ms.locfileid: "80478598"
 
 * 最新バージョンの [Node.js](https://nodejs.org/en/download/)。
 
-* [JavaScript Request ライブラリ](https://github.com/request/request)  
+* [JavaScript Request ライブラリ](https://github.com/request/request)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+詳細については、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」を参照してください。
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と https の要件を設定します。
+1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と HTTPS の要件を設定します。
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。 `host` には、次のコードのグローバル エンドポイントか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -55,7 +55,7 @@ ms.locfileid: "80478598"
 
 ## <a name="construct-the-search-request-and-query"></a>検索要求とクエリを構築します。
 
-1. 最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 検索語句は、URL エンコードしたうえで API に送信する必要があります。
+1. 最後の手順の変数を使用して、API 要求の検索 URL の書式を設定します。 API に送信する前に、検索語句を URL エンコードします。
 
     ```javascript
     let request_params = {
@@ -68,7 +68,7 @@ ms.locfileid: "80478598"
     };
     ```
 
-2. 要求ライブラリを使用してクエリを API に送信します。 `response_handler` は次のセクションで定義します。
+2. 要求ライブラリを使用してクエリを API に送信します。 
     ```javascript
     let req = https.request(request_params, response_handler);
     req.end();
@@ -76,32 +76,34 @@ ms.locfileid: "80478598"
 
 ## <a name="handle-and-parse-the-response"></a>応答の処理と解析
 
-1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 この関数内で次の手順を実行します。
+1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 
 
-    1. JSON 応答の本文を含む変数を定義します。  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
-        ```
+2. この関数内で、JSON 応答の本文を含む変数を定義します。 
 
-    2. **data** フラグが呼び出されたときに応答の本文を格納する
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
 
-    3. **end** フラグが通知されたら、JSON 応答から最初の結果を取得します。 返された画像の総数と共に、最初の画像の URL を出力します。
+3. `data` フラグが呼び出されたら、応答の本文を格納します。
 
-        ```javascript
-        response.on('end', function () {
-            let firstImageResult = imageResults.value[0];
-            console.log(`Image result count: ${imageResults.value.length}`);
-            console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
-            console.log(`First image web search url: ${firstImageResult.webSearchUrl}`);
-         });
-        ```
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+4. `end` フラグが通知されたら、JSON 応答から最初の結果を取得します。 返された画像の総数と共に、最初の画像の URL を出力します。
+
+    ```javascript
+    response.on('end', function () {
+        let firstImageResult = imageResults.value[0];
+        console.log(`Image result count: ${imageResults.value.length}`);
+        console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
+        console.log(`First image web search url: ${firstImageResult.webSearchUrl}`);
+     });
+    ```
 
 ## <a name="example-json-response"></a>JSON の応答例
 
@@ -158,9 +160,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Bing Image Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [Bing Search API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

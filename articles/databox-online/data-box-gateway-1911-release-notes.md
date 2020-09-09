@@ -2,18 +2,18 @@
 title: Azure Stack Edge および Azure Data Box Gateway 1911 のリリース ノート | Microsoft Docs
 description: 1911 リリースを実行する Azure Stack Edge および Azure Data Box Gateway に関する未解決の重大な問題と解決策について説明します。
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 03/13/2020
-ms.author: v-grpr
-ms.openlocfilehash: 526f0ae21ac0c49d8c5fd984b09b7a2252afb606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: twooley
+ms.openlocfilehash: 4c5c6b423c9013719a703b5112e2a897d35454d1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129350"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783962"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Azure Stack Edge および Azure Data Box Gateway 1911 のリリース ノート
 
@@ -39,5 +39,5 @@ ms.locfileid: "82129350"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge のデプロイを準備する](data-box-edge-deploy-prep.md)
+- [Azure Stack Edge のデプロイを準備する](azure-stack-edge-deploy-prep.md)
 - [Azure Data Box Gateway のデプロイを準備する](data-box-gateway-deploy-prep.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058216"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756828"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM デバイス名の変更トラブルシューティング
 
@@ -42,7 +42,7 @@ Linux のデバイス パスは、再起動前後の一貫性が保証されて�
 
 この問題を解決するには、永続的な名前付けを使用します。 永続的な名前付けを行うには 4 つの方法があります。それは、ファイル システム ラベル、UUID、ID、パスのいずれかを利用する方法です。 Azure Linux VM には、ファイル システム ラベルまたは UUID の使用をお勧めします。
 
-ほとんどのディストリビューションでは、`fstab`**nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)に関するページをご覧ください。
+ほとんどのディストリビューションでは、`fstab`**nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#format-and-mount-the-disk)に関するページをご覧ください。
 
 Azure Linux エージェントが VM にインストールされている場合、エージェントは /dev/disk/azure パスにシンボリック リンクのセットを構築するために Udev ルールを使用します。 アプリケーションとスクリプトは、VM にアタッチされているディスクと、ディスクの種類およびディスク LUN を識別するために Udev ルールを使用します。
 
@@ -52,101 +52,115 @@ VM が起動せず、VM に SSH 接続できないように fstab を既に編�
 
 アプリケーションは、LUN を使用して、接続されているすべてのディスクを見つけ、シンボリック リンクを作成します。 Azure Linux エージェントには、LUN からデバイスへのシンボリック リンクを設定する Udev ルールが備わっています。
 
-    $ tree /dev/disk/azure
+```console
+$ tree /dev/disk/azure
 
-    /dev/disk/azure
-    ├── resource -> ../../sdb
-    ├── resource-part1 -> ../../sdb1
-    ├── root -> ../../sda
-    ├── root-part1 -> ../../sda1
-    └── scsi1
-        ├── lun0 -> ../../../sdc
-        ├── lun0-part1 -> ../../../sdc1
-        ├── lun1 -> ../../../sdd
-        ├── lun1-part1 -> ../../../sdd1
-        ├── lun1-part2 -> ../../../sdd2
-        └── lun1-part3 -> ../../../sdd3
+/dev/disk/azure
+├── resource -> ../../sdb
+├── resource-part1 -> ../../sdb1
+├── root -> ../../sda
+├── root-part1 -> ../../sda1
+└── scsi1
+    ├── lun0 -> ../../../sdc
+    ├── lun0-part1 -> ../../../sdc1
+    ├── lun1 -> ../../../sdd
+    ├── lun1-part1 -> ../../../sdd1
+    ├── lun1-part2 -> ../../../sdd2
+    └── lun1-part3 -> ../../../sdd3
+```
 
 `lsscsi` または同様のツールを使用して、Linux ゲスト アカウントから LUN 情報が取得されます。
 
-      $ sudo lsscsi
+```console
+$ sudo lsscsi
 
-      [1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
+[1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
 
-      [2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
+[2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
 
-      [3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
+[3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
 
-      [5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
+[5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
 
-      [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+[5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+```
 
 ゲスト LUN 情報は、パーティション データを含む Azure Storage の VHD を特定するために Azure サブスクリプション メタデータで使用されます。 たとえば、`az` CLI を使用できます。
 
-    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
-    [
-    {
-    "caching": "None",
-      "createOption": "empty",
-    "diskSizeGb": 1023,
-      "image": null,
-    "lun": 0,
-    "managedDisk": null,
-    "name": "testVM-20170619-114353",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-    }
-    },
-    {
-    "caching": "None",
-    "createOption": "empty",
-    "diskSizeGb": 512,
-    "image": null,
-    "lun": 1,
-    "managedDisk": null,
-    "name": "testVM-20170619-121516",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-      }
-      }
-    ]
+```azurecli
+$ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
+[
+{
+"caching": "None",
+  "createOption": "empty",
+"diskSizeGb": 1023,
+  "image": null,
+"lun": 0,
+"managedDisk": null,
+"name": "testVM-20170619-114353",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+}
+},
+{
+"caching": "None",
+"createOption": "empty",
+"diskSizeGb": 512,
+"image": null,
+"lun": 1,
+"managedDisk": null,
+"name": "testVM-20170619-121516",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+  }
+  }
+]
+```
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>blkid を使用したファイルシステム UUID の検出
 
 アプリケーションやスクリプトは `blkid` の出力や類似の情報ソースを読み取り、/dev パスにシンボリック リンクを構築します。 出力は、VM に関連付けられているすべてのディスクおよびその関連デバイス ファイルの UUID を示しています。
 
-    $ sudo blkid -s UUID
+```console
+$ sudo blkid -s UUID
 
-    /dev/sr0: UUID="120B021372645f72"
-    /dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
-    /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
-    /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+/dev/sr0: UUID="120B021372645f72"
+/dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
+/dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
+/dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+```
 
 Azure Linux エージェント Udev ルールは、/dev/disk/azure パスにシンボリック リンクのセットを構築します。
 
-    $ ls -l /dev/disk/azure
+```console
+$ ls -l /dev/disk/azure
 
-    total 0
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+total 0
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+```
 
 アプリケーションでは、リンクを使用して、ブート ディスク デバイスとリソース (短期) ディスクを識別します。 Azure では、アプリケーションが /dev/disk/azure/root-part1 または /dev/disk/azure-resource-part1 パスを参照して、これらのパーティションを検出する必要があります。
 
 `blkid` リストにあるその他のパーティションは、データ ディスク上に存在します。 アプリケーションはこれらのパーティションの UUID を維持し、実行時にパスを使用してデバイス名を検出します。
 
-    $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
+```console
+$ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
-    lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+```
 
 
 ### <a name="get-the-latest-azure-storage-rules"></a>最新の Azure Storage ルールを取得する
 
 最新の Azure Storage ルールを取得するには、次のコマンドを実行します。
 
-    # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
-    # sudo udevadm trigger --subsystem-match=block
+```console
+# sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
+# sudo udevadm trigger --subsystem-match=block
+```
 
 ## <a name="see-also"></a>関連項目
 

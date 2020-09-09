@@ -3,24 +3,23 @@ title: Azure IoT Edge デバイスを Azure IoT Central に追加する | Micros
 description: オペレーターとして、Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加します
 author: rangv
 ms.author: rangv
-ms.date: 12/09/2019
+ms.date: 05/29/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 1b90364bee42b31843ac8d84f5a692a3eeb6d3f1
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758163"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417612"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する
 
-"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
+"*この記事は、オペレーター、ソリューション ビルダー、デバイス開発者を対象としています。* "
 
-このチュートリアルでは、Azure IoT Edge デバイスを構成して、お使いの Azure IoT Central アプリケーションに追加する方法について説明します。 このチュートリアルでは、Azure Marketplace から入手した IoT Edge 対応 Linux 仮想マシン (VM) を使用して、IoT Edge デバイスをシミュレートします。 この IoT Edge デバイスは、シミュレートされた環境のテレメトリを生成するモジュールを使用します。 テレメトリは、Azure IoT Central アプリケーションのダッシュボードに表示されます。
+このチュートリアルでは、Azure IoT Edge デバイスを構成して、お使いの Azure IoT Central アプリケーションに追加する方法について説明します。 このチュートリアルでは、IoT Edge 対応 Linux 仮想マシン (VM) を使用して、IoT Edge デバイスをシミュレートします。 この IoT Edge デバイスは、シミュレートされた環境のテレメトリを生成するモジュールを使用します。 テレメトリは、Azure IoT Central アプリケーションのダッシュボードに表示されます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -41,7 +40,7 @@ GitHub から IoT Edge マニフェスト ファイルをダウンロードし�
 
 ## <a name="create-device-template"></a>デバイス テンプレートを作成する
 
-このセクションでは、IoT Central アプリケーションに接続する IoT Edge デバイス用のデバイス テンプレートを作成します。 開始するには IoT Edge マニフェストをインポートしてから、テレメトリの定義とビューを追加するようテンプレートを変更します。
+このセクションでは、IoT Edge デバイス用の IoT Central デバイス テンプレートを作成します。 開始するには IoT Edge マニフェストをインポートしてから、テレメトリの定義とビューを追加するようテンプレートを変更します。
 
 ### <a name="import-manifest-to-create-template"></a>マニフェストをインポートしてテンプレートを作成する
 
@@ -51,31 +50,29 @@ IoT Edge マニフェストからデバイス テンプレートを作成する�
 
 1. **[Select template type]\(テンプレートの種類の選択\)** ページで **[Azure IoT Edge]** タイルを選択します。 次に、 **[次のステップ: カスタマイズ]** を選択します。
 
-1. **[Upload an Azure IoT Edge deployment manifest]\(Azure IoT Edge 配置マニフェストをアップロードする\)** ページで **[参照]** を選択し、先ほどダウンロードした **EnvironmentalSensorManifest.json** をアップロードします。 次に、**次のステップ: 確認\)** をクリックします。
+1. **[Upload an Azure IoT Edge deployment manifest]\(Azure IoT Edge 配置マニフェストをアップロードする\)** ページで、デバイス テンプレート名として「*Environmental Sensor Edge Device*」を入力します。 次に、 **[参照]** を選択して、先ほどダウンロードした **EnvironmentalSensorManifest.json** をアップロードします。 次に、**次のステップ: 確認\)** をクリックします。
 
 1. **[Review]\(レビュー\)** ページで、 **[Create]\(作成\)** を選択します。
 
-1. テンプレートが作成されたら、その名前を「*Environmental Sensor Edge Device*」に変更します。
-
 1. **SimulatedTemperatureSensor** モジュールで **[管理]** インターフェイスを選択して、そのマニフェストで定義されている 2 つのプロパティを表示します。
 
-![IoT Edge マニフェストから作成されたデバイス テンプレート](./media/tutorial-add-edge-as-leaf-device/imported-manifest.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/imported-manifest.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
 
 ### <a name="add-telemetry-to-manifest"></a>マニフェストにテレメトリを追加する
 
-IoT Edge マニフェストでは、モジュールが送信するテレメトリが定義されていません。 デバイス テンプレートにテレメトリの定義を追加する必要があります。 **SimulatedTemperatureSensor** モジュールは、次の JSON のようなテレメトリ メッセージを送信します。
+IoT Edge マニフェストでは、モジュールが送信するテレメトリが定義されていません。 IoT Central で、デバイス テンプレートにテレメトリの定義を追加します。 **SimulatedTemperatureSensor** モジュールは、次の JSON のようなテレメトリ メッセージを送信します。
 
 ```json
 {
-    "machine": {
-        "temperature": 75.0,
-        "pressure": 40.2
-    },
-    "ambient": {
-        "temperature": 23.0,
-        "humidity": 30.0
-    },
-    "timeCreated": ""
+  "machine": {
+    "temperature": 75.0,
+    "pressure": 40.2
+  },
+  "ambient": {
+    "temperature": 23.0,
+    "humidity": 30.0
+  },
+  "timeCreated": ""
 }
 ```
 
@@ -99,7 +96,7 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 これで、 **[管理]** インターフェイスにテレメトリの種類として **machine**、**ambient**、および **timeCreated** が表示されるようになりました。
 
-![テレメトリの種類 machine と ambient が表示されているインターフェイス](./media/tutorial-add-edge-as-leaf-device/manage-interface.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="テレメトリの種類 machine と ambient が表示されているインターフェイス":::
 
 ### <a name="add-views-to-template"></a>ビューをテンプレートに追加する
 
@@ -115,15 +112,15 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 1. **[保存]** を選択して、**View IoT Edge device telemetry** ビューを保存します。
 
-![テレメトリ ビューが表示されたデバイス テンプレート](./media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="テレメトリ ビューが表示されたデバイス テンプレート":::
 
 ### <a name="publish-the-template"></a>テンプレートを発行する
 
 **Environmental Sensor Edge Device** テンプレートを使用するデバイスを追加できるように、テンプレートを発行しておく必要があります。
 
-**[Environmental Sensor Edge Device]** テンプレートに移動し、 **[発行]** を選択します。 次に、 **[発行]** を選択してテンプレートを発行します。
+**[Environmental Sensor Edge Device]** テンプレートに移動し、 **[発行]** を選択します。 **[このデバイス テンプレートのアプリケーションへの発行]** パネルで **[発行]** を選択し、テンプレートを発行します。
 
-![デバイス テンプレートを公開する](./media/tutorial-add-edge-as-leaf-device/publish-template.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="デバイス テンプレートを発行する":::
 
 ## <a name="add-iot-edge-device"></a>IoT Edge デバイスを追加する
 
@@ -131,11 +128,11 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 1. お使いの IoT Central アプリケーションの **[デバイス]** ページに移動し、使用可能なテンプレートの一覧で **[Environmental Sensor Edge Device]** を選択します。
 
-1. テンプレートから新しいデバイスを追加するには、 **[+]** を選択します。 **[新しいデバイスの作成]** ページで **[作成]** を選択します。
+1. テンプレートから新しいデバイスを追加するには、 **[+ 新規]** を選択します。 **[新しいデバイスの作成]** ページで **[作成]** を選択します。
 
 これで、状態が **[登録済み]** の新しいデバイスが作成されました。
 
-![デバイス テンプレートを公開する](./media/tutorial-add-edge-as-leaf-device/new-device.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="新しい登録済みのデバイス":::
 
 ### <a name="get-the-device-credentials"></a>デバイスの資格情報を取得する
 
@@ -153,38 +150,49 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 ## <a name="deploy-an-iot-edge-device"></a>IoT Edge デバイスをデプロイする
 
-このチュートリアルでは、Azure に作成された Azure IoT Edge 対応 Linux VM を使用して、IoT Edge デバイスをシミュレートします。 IoT Edge 対応 VM を作成するには、次の手順を実行します。
+このチュートリアルでは、Azure に作成された Azure IoT Edge 対応 Linux VM を使用して、IoT Edge デバイスをシミュレートします。 Azure サブスクリプションに IoT Edge 対応 VM を作成するには、次のボタンをクリックします。
 
-1. Azure Marketplace の [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) に移動します。 次に、 **[今すぐ入手する]** を選択します。
+[![iotedge-vm-deploy の [Deploy to Azure] ボタン](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
-1. **[Azure でこのアプリを作成する]** ページで、 **[続行]** を選択します。 このリンクから Azure portal に移動します。ここでは、Azure サブスクリプションへのサインインが必要になる場合があります。
+**[カスタム デプロイ]** ページで次の手順を実行します。
 
-1. Azure portal の **[Azure IoT Edge on Ubuntu]** ページで、 **[作成]** を選択します。
+1. Azure サブスクリプションを選択します。
 
-1. **[仮想マシンの作成] > [基本]** ページで:
+1. **[新規作成]** を選択して、*central-edge-rg* という新しいリソース グループを作成します。
 
-    - Azure サブスクリプションを選択します。
-    - **iot-edge-devices** という名前の新しいリソース グループを作成します。
-    - 仮想マシン名として **iotedgevm** を使用します。
-    - 最寄りのリージョンを選択します。
-    - 認証の種類を **[パスワード]** に設定します。
-    - ユーザー名とパスワードを選択します。
-    - 他のオプションは既定値のままでかまいません。
-    - **[Review + create]\(レビュー + 作成\)** を選択します。
+1. 近くのリージョンを選択します。
 
-1. 検証が完了したら、 **[作成]** を選択します。
+1. 一意の **DNS ラベル プレフィックス**を追加します (例: *contoso-central-edge*)。
 
-数分後にデプロイが完了したら、 **[リソースに移動]** を選択します。
+1. 仮想マシンの管理者ユーザー名を選択します。
 
-### <a name="provision-vm-as-an-iot-edge-device"></a>IoT Edge デバイスとして VM をプロビジョニングする 
+1. 接続文字列として「*temp*」を入力します。 その後、DPS を使用して接続するようにデバイスを構成します。
 
-IoT Edge デバイスとして VM をプロビジョニングするには:
+1. VM サイズ、Ubuntu バージョン、場所には、既定値をそのまま使用します。
 
-1. **[サポート + トラブルシューティング]** セクションで、 **[シリアル コンソール]** を選択します。
+1. 認証の種類として **[パスワード]** を選択します。
+
+1. VM のパスワードを入力します。
+
+1. 次に、 **[Review + Create]\(確認と作成\)** を選択します。
+
+1. 選択内容を確認し、 **[作成]** を選択します。
+
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge VM を作成する":::
+
+デプロイが完了するまでに数分かかります。 デプロイが完了したら、Azure portal で **central-edge-rg** リソース グループに移動します。
+
+### <a name="configure-the-iot-edge-vm"></a>IoT Edge VM を構成する
+
+DPS を使用して IoT Central アプリケーションに登録、接続するように VM の IoT Edge を構成するには、次の手順に従います。
+
+1. **contoso-edge-rg** リソース グループで、仮想マシン インスタンスを選択します。
+
+1. **[サポート + トラブルシューティング]** セクションで、 **[シリアル コンソール]** を選択します。 ブート診断を構成するように求められた場合は、ポータルの指示に従ってください。
 
 1. **Enter** キーを押して、`login:` プロンプトを表示します。 ユーザー名とパスワードを入力してサインインします。
 
-1. 次のコマンドを実行して、IoT Edge ランタイムのバージョンを確認します。 この記事の執筆時点では、バージョンは 1.0.8 です。
+1. 次のコマンドを実行して、IoT Edge ランタイムのバージョンを確認します。 この記事の執筆時点では、バージョンは 1.0.9.1 です。
 
     ```bash
     sudo iotedge --version
@@ -202,7 +210,7 @@ IoT Edge デバイスとして VM をプロビジョニングするには:
     # Manual provisioning configuration
     #provisioning:
     #  source: "manual"
-    #  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+    #  device_connection_string: "temp"
     ```
 
 1. `# DPS symmetric key provisioning configuration` が表示されるまで下にスクロールします。 次のスニペットに表示されているように、その次の 8 行をコメント解除します。
@@ -218,6 +226,9 @@ IoT Edge デバイスとして VM をプロビジョニングするには:
         registration_id: "{registration_id}"
         symmetric_key: "{symmetric_key}"
     ```
+
+    > [!TIP]
+    > `provisioning:` の前にスペースがないことを確認してください。
 
 1. `{scope_id}` を、前に書き留めておいた **ID スコープ**に置き換えます。
 
@@ -239,7 +250,7 @@ IoT Edge デバイスとして VM をプロビジョニングするには:
     iotedge list
     ```
 
-    出力は次のようになります。
+    次のサンプル出力は、実行中のモジュールを示しています。
 
     ```bash
     NAME                        STATUS           DESCRIPTION      CONFIG
@@ -248,25 +259,38 @@ IoT Edge デバイスとして VM をプロビジョニングするには:
     edgeHub                     running          Up 22 seconds    mcr.microsoft.com/azureiotedge-hub:1.0
     ```
 
+    > [!TIP]
+    > すべてのモジュールの実行が開始されるまでお待ちください。
+
 ## <a name="view-the-telemetry"></a>テレメトリを表示する
 
 シミュレートされた IoT Edge デバイスが VM で実行されるようになりました。 お使いの IoT Central アプリケーションの **[デバイス]** ページでは、デバイスの状態が **[プロビジョニング済み]** になっています。
 
-![プロビジョニング済みのデバイス](./media/tutorial-add-edge-as-leaf-device/provisioned-device.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="プロビジョニングされた IoT Edge デバイス":::
 
-テレメトリは、 **[View IoT Edge device telemetry]** ページで確認できます。
+デバイスからのテレメトリは、 **[View IoT Edge device telemetry]** ページで確認できます。
 
-![デバイス テレメトリ](./media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="デバイス テレメトリ":::
 
-**[モジュール]** ページには、IoT Edge モジュールの状態が表示されます。
+**[モジュール]** ページには、デバイス上の IoT Edge モジュールの状態が表示されます。
 
-![デバイス テレメトリ](./media/tutorial-add-edge-as-leaf-device/edge-module-status.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="デバイスのモジュールの状態":::
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+引き続き IoT Edge VM を使用する場合は、このチュートリアルで使用したリソースをそのまま再利用することができます。 それ以外の場合、追加料金が発生するのを防ぐために、このチュートリアルで作成したリソースは削除してください。
+
+* IoT Edge VM とその関連リソースを削除するには、Azure portal から **contoso-edge-rg** リソース グループを削除します。
+* IoT Central アプリケーションを削除するには、アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動して、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
 デバイス開発者として IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順として、以下をお読みください。
 
-<!-- Next how-tos in the sequence -->
+> [!div class="nextstepaction"]
+> [IoT Edge モジュールを開発する](../../iot-edge/tutorial-develop-for-linux.md)
+
+ソリューション開発者として、またはオペレーターとして、IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順として、以下のページにお進みください。
 
 > [!div class="nextstepaction"]
-> [Azure IoT Central に接続する](./concepts-get-connected.md)
+> [デバイス グループを使用してデバイス テレメトリを分析する](./tutorial-use-device-groups.md)

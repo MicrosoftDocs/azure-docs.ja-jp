@@ -1,6 +1,6 @@
 ---
 title: 証明書の作成方法
-description: Key Vault で証明書を作成する方法。
+description: Azure Key Vault で Key Vault 証明書を作成またはインポートするためのさまざまなオプションについて説明します。 Key Vault 証明書を作成するには、いくつかの方法あります。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71d8961af372f927fab909073daa715766542f87
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81866254"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606677"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 
@@ -82,7 +82,7 @@ KV 証明書の作成要求が完了すると、保留中オブジェクトの�
 
 |プロバイダー|証明書の種類|構成のセットアップ  
 |--------------|----------------------|------------------|  
-|DigiCert|Key Vault は、DigiCert による OV または EV SSL 証明書を提供します。| [統合ガイド](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|DigiCert|Key Vault は、DigiCert による OV または EV SSL 証明書を提供します。| [統合ガイド](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 |GlobalSign|Key Vault は、GlobalSign による OV または EV SSL 証明書を提供します。| [統合ガイド](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。

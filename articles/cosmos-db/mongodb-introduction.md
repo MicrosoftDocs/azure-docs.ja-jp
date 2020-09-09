@@ -7,24 +7,26 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72754976"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299849"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
-[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 既定では、SQL API を使用して Cosmos DB を操作できます。 さらに、Cosmos DB サービスは、Cassandra、MongoDB、Gremlin、Azure Table Storage など、一般的な NoSQL API 向けのワイヤ プロトコルを実装しています。 これにより、使い慣れた NoSQL クライアント ドライバーとツールを使用して、Cosmos データベースを操作できます。
+[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 Azure Cosmos DB サービスは、Cassandra、MongoDB、Gremlin、Azure Table Storage など、一般的な NoSQL API 向けのワイヤ プロトコルを実装しています。 これにより、使い慣れた NoSQL クライアント ドライバーとツールを使用して、Cosmos データベースを操作できます。
 
 ## <a name="wire-protocol-compatibility"></a>ワイヤ プロトコルの互換性
 
-Azure Cosmos DB は、Cassandra、MongoDB、Gremlin、Azure Table Storage など、一般的な NoSQL データベース向けのワイヤ プロトコルを実装しています。 Cosmos DB 内部で直接かつ効率的にワイヤ プロトコルのネイティブ実装が提供されているため、NoSQL データベースの既存のクライアント SDK、ドライバー、ツールで透過的に Cosmos DB を操作できます。 Cosmos DB では、任意の NoSQL データベース向けにワイヤ互換性のある API を提供するためにデータベースのソース コードを使用することは一切ありません。
+Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されています。 この実装により、ネイティブの MongoDB クライアント SDK、ドライバー、およびツールとの透過的な互換性が実現されます。 Azure Cosmos DB では、MongoDB データベース エンジンをホストします。 MongoDB でサポートされている機能の詳細については、次を参照してください。 
+- [Azure Cosmos DB の MongoDB エンジン用 API バージョン 3.6](mongodb-feature-support-36.md)
+- [Azure Cosmos DB の MongoDB エンジン用 API バージョン 3.2](mongodb-feature-support.md)
 
 既定では、Azure Cosmos DB の MongoDB 用 API を使用して作成された新しいアカウントは、MongoDB ワイヤ プロトコルのバージョン 3.6 と互換性があります。 これらのプロトコル バージョンを認識する MongoDB クライアント ドライバーはすべて、Cosmos DB にネイティブに接続できます。
 
-![Azure Cosmos DB の MongoDB 用 API](./media/mongodb-introduction/cosmosdb-mongodb.png)
+:::image type="content" source="./media/mongodb-introduction/cosmosdb-mongodb.png" alt-text="Azure Cosmos DB の MongoDB 用 API" border="false":::
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -53,5 +55,7 @@ Azure Cosmos DB は、Cassandra、MongoDB、Gremlin、Azure Table Storage など
 * [Azure Cosmos DB への MongoDB データのインポート](mongodb-migrate.md)に関するチュートリアルに従って、データを Cosmos データベースにインポートします。
 * [Robo 3T](mongodb-robomongo.md) を使用して Cosmos アカウントに接続します。
 * [グローバル分散アプリの読み取り設定を構成する](../cosmos-db/tutorial-global-distribution-mongodb.md)方法について学習します。
+* よく見られるエラーの解決策については、[トラブルシューティング ガイド](mongodb-troubleshoot.md)を参照してください
+
 
 <sup>注意事項: この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>

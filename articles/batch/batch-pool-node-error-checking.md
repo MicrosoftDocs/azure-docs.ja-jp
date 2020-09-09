@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
-ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723920"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979919"
 ---
 # <a name="check-for-pool-and-node-errors"></a>プールとノードのエラーのチェック
 
@@ -24,9 +24,9 @@ API、CLI、UI で直ちにエラーが返されるので、すぐに実行さ�
 
 ### <a name="resize-timeout-or-failure"></a>タイムアウトまたはエラーのサイズ変更
 
-新しいプール作成する場合、または既存のプールのサイズ変更を行う場合、ノードのターゲット数はユーザーが指定します。  作成操作またはサイズ変更操作はすぐに完了しますが、新しいノードを実際に割り当てたり既存のノードを削除したりするには数分かかる場合があります。  サイズ変更タイムアウトを[作成](https://docs.microsoft.com/rest/api/batchservice/pool/add)または[サイズ変更](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API で指定します。 サイズ変更タイムアウトの期間中に、Batch でターゲットとする数のノードを取得できない場合、プールが定常状態に移行し、サイズ変更エラーがレポートされます。
+新しいプール作成する場合、または既存のプールのサイズ変更を行う場合、ノードのターゲット数はユーザーが指定します。  作成操作またはサイズ変更操作はすぐに完了しますが、新しいノードを実際に割り当てたり既存のノードを削除したりするには数分かかる場合があります。  サイズ変更タイムアウトを[作成](/rest/api/batchservice/pool/add)または[サイズ変更](/rest/api/batchservice/pool/resize) API で指定します。 サイズ変更タイムアウトの期間中に、Batch でターゲットとする数のノードを取得できない場合、プールが定常状態に移行し、サイズ変更エラーがレポートされます。
 
-直近の評価についての [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) プロパティに、発生したエラーが列挙されます。
+直近の評価についての [ResizeError](/rest/api/batchservice/pool/get#resizeerror) プロパティに、発生したエラーが列挙されます。
 
 サイズ変更エラーの一般的な原因は次のとおりです。
 
@@ -34,31 +34,31 @@ API、CLI、UI で直ちにエラーが返されるので、すぐに実行さ�
   - ほとんどの状況では、プールのノードを割り当てまたは削除するための時間は、既定のタイムアウトである 15 分あれば十分です。
   - 割り当てるノードの数が多い場合は、サイズ変更タイムアウトを 30 分に設定することをお勧めします。 たとえば、Azure Marketplace イメージから 1,000 を超えるノードにサイズ変更したり、カスタム VM イメージから 300 を超えるノードにサイズ変更したりする場合が該当します。
 - 不十分なコア クォータ
-  - バッチアカウントでは、すべてのプール全体に割り当て可能なコア数が制限されています。 そのクォータに達すると、バッチはノードの割り当てを停止します。 バッチがさらに多くのノードを割り当てられるようにするために、コア クォータを[増やすことができます](https://docs.microsoft.com/azure/batch/batch-quota-limit)。
-- [プールが仮想ネットワーク内にある](https://docs.microsoft.com/azure/batch/batch-virtual-network)場合の不足しているサブネット IP アドレス
+  - バッチアカウントでは、すべてのプール全体に割り当て可能なコア数が制限されています。 そのクォータに達すると、バッチはノードの割り当てを停止します。 バッチがさらに多くのノードを割り当てられるようにするために、コア クォータを[増やすことができます](./batch-quota-limit.md)。
+- [プールが仮想ネットワーク内にある](./batch-virtual-network.md)場合の不足しているサブネット IP アドレス
   - 仮想ネットワーク サブネットには、要求されたすべてのプールのノードに割り当てるための未割り当ての IP アドレスが十分に存在する必要があります。 そうでない場合、ノードを作成できません。
-- [プールが仮想ネットワーク](https://docs.microsoft.com/azure/batch/batch-virtual-network)の時の不十分なリソース
+- [プールが仮想ネットワーク](./batch-virtual-network.md)の時の不十分なリソース
   - ロード バランサー、パブリック IP、ネットワーク セキュリティ グループなどのリソースを、バッチ アカウントと同じサブスクリプションに作成する場合があります。 これらのリソースのためのサブスクリプション クォータが十分であるか確認してください。
 - カスタム VM イメージを使用した大規模なプール
   - カスタム VM イメージを使用する大規模なプールは割り当てに時間がかかり、タイムアウトのサイズ変更が発生することがあります。  制限と構成に関する推奨事項については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。
 
 ### <a name="automatic-scaling-failures"></a>自動スケールの失敗
 
-プール内のノード数を自動的に拡大縮小するように Azure Batch を設定することもできます。 [プール用の自動スケールの数式](https://docs.microsoft.com/azure/batch/batch-automatic-scaling)のパラメーターを定義します。 Batch サービスは数式を使用して、プール内のノード数を定期的に評価し、新しいターゲット数を設定します。 次の種類の問題が発生する可能性があります。
+プール内のノード数を自動的に拡大縮小するように Azure Batch を設定することもできます。 [プール用の自動スケールの数式](./batch-automatic-scaling.md)のパラメーターを定義します。 Batch サービスは数式を使用して、プール内のノード数を定期的に評価し、新しいターゲット数を設定します。 次の種類の問題が発生する可能性があります。
 
 - 自動スケール評価が失敗する。
 - 結果のサイズ変更操作が失敗してタイムアウトになることがある。
 - 自動スケールの数式に問題があるため、ノードのターゲット値が正しくなくなる。 サイズ変更は動作するかタイムアウトになる。
 
-[autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) プロパティを使用して、最後の自動スケール評価に関する情報を取得することができます。 このプロパティは、評価期間、値と結果、およびパフォーマンス エラーを報告します。
+[autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) プロパティを使用して、最後の自動スケール評価に関する情報を取得することができます。 このプロパティは、評価期間、値と結果、およびパフォーマンス エラーを報告します。
 
-[プールのサイズ変更完了イベント](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event)により、すべての評価に関する情報がキャプチャされます。
+[プールのサイズ変更完了イベント](./batch-pool-resize-complete-event.md)により、すべての評価に関する情報がキャプチャされます。
 
 ### <a name="delete"></a>削除
 
 ノードを含むプールを削除するとき、Batch はまずノードを削除します。 次にプール オブジェクト自体を削除します。 プールのノードを削除するまでに数分かかります。
 
-Batch は削除プロセス中に[プールの状態](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate)を **deleting** に設定します。 プールの削除時間がかかりすぎている場合、呼び出しアプリケーションが **state** と **stateTransitionTime** プロパティを使用して検出します。
+Batch は削除プロセス中に[プールの状態](/rest/api/batchservice/pool/get#poolstate)を **deleting** に設定します。 プールの削除時間がかかりすぎている場合、呼び出しアプリケーションが **state** と **stateTransitionTime** プロパティを使用して検出します。
 
 ## <a name="pool-compute-node-errors"></a>プールのコンピューティング ノードエラー
 
@@ -131,7 +131,7 @@ Batch が原因を特定できる場合、ノードの[エラー](/rest/api/batc
 一時ドライブのサイズは、VM のサイズによって異なります。 一時ドライブの容量を十分に確保することが、VM のサイズを選ぶ際の 1 つの考慮事項となります。
 
 - Azure portal では、プールを追加する際に VM サイズの全一覧を表示でき、その中に、"リソース ディスク サイズ" という列があります。
-- すべての VM サイズについて説明した記事に、"一時ストレージ" 列を含んだ表が掲載されています ([コンピューティング最適化済み VM サイズ](/azure/virtual-machines/windows/sizes-compute)に関する記事など)。
+- すべての VM サイズについて説明した記事に、"一時ストレージ" 列を含んだ表が掲載されています ([コンピューティング最適化済み VM サイズ](../virtual-machines/sizes-compute.md)に関する記事など)。
 
 それぞれのタスクによって書き込まれるファイルについては、タスクごとに保持期間を指定できます。保持期間はタスク ファイルが保持される期間を決めるもので、その期間を経過したファイルは自動的にクリーンアップされます。 保存期間を短縮することで、ストレージの要件を軽減することができます。
 
@@ -140,17 +140,17 @@ Batch が原因を特定できる場合、ノードの[エラー](/rest/api/batc
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>ディスクがいっぱいになった場合の対処方法
 
-ディスクがいっぱいになった原因を特定します。ノード上の領域が何によって占有されているのかがわからない場合は、ノードにリモートで移動し、空き領域がなくなった場所を手動で調査することをお勧めします。 また、[Batch List Files API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) を使用して、バッチ管理フォルダー内のファイル (タスク出力など) を確認することもできます。 この API では、バッチ管理ディレクトリ内のファイルのみが一覧表示されます。タスクが他の場所でファイルを作成した場合、それらは表示されないことに注意してください。
+ディスクがいっぱいになった原因を特定します。ノード上の領域が何によって占有されているのかがわからない場合は、ノードにリモートで移動し、空き領域がなくなった場所を手動で調査することをお勧めします。 また、[Batch List Files API](/rest/api/batchservice/file/listfromcomputenode) を使用して、バッチ管理フォルダー内のファイル (タスク出力など) を確認することもできます。 この API では、バッチ管理ディレクトリ内のファイルのみが一覧表示されます。タスクが他の場所でファイルを作成した場合、それらは表示されないことに注意してください。
 
 必要なデータがノードから取得されているか、永続ストアにアップロードされていることを確認します。 ディスクの問題を軽減するには、必ずデータを削除し、領域を解放する必要があります。
 
 ### <a name="recovering-the-node"></a>ノードの復旧
 
-1. プールが [C.loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) プールの場合は、[バッチ再イメージ化 API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) を使用して、ノードを再イメージ化することができます。これを実行すると、ディスク全体が消去されます。 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) プールについては、現在、再イメージ化はサポートされていません。
+1. プールが [C.loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) プールの場合は、[バッチ再イメージ化 API](/rest/api/batchservice/computenode/reimage) を使用して、ノードを再イメージ化することができます。これを実行すると、ディスク全体が消去されます。 [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) プールについては、現在、再イメージ化はサポートされていません。
 
-2. プールが [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) の場合は、[ノード削除 API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) を使用して、プールからノードを削除することができます。 その後、もう一度プールを拡張して、不良ノードを新しいノードに置き換えることができます。
+2. プールが [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) の場合は、[ノード削除 API](/rest/api/batchservice/pool/removenodes) を使用して、プールからノードを削除することができます。 その後、もう一度プールを拡張して、不良ノードを新しいノードに置き換えることができます。
 
-3.  完了済みの古いジョブやタスクについて、タスク データがまだノード上にある場合は、それらのジョブやタスクを削除します。 どのジョブ/タスク データがノード上にあるかについてのヒントは、ノードの [RecentTasks コレクション](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation)か、[ノード上のファイル](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)で探すことができます。 ジョブを削除すると、ジョブ内のすべてのタスクが削除され、ジョブ内のタスクが削除されると、ノード上のタスク ディレクトリのデータが削除されるので、領域が解放されます。 十分な領域を解放した後、ノードを再起動すると、ノードが "使用不可" 状態から "アイドル" 状態に戻ります。
+3.  完了済みの古いジョブやタスクについて、タスク データがまだノード上にある場合は、それらのジョブやタスクを削除します。 どのジョブ/タスク データがノード上にあるかについてのヒントは、ノードの [RecentTasks コレクション](/rest/api/batchservice/computenode/get#taskinformation)か、[ノード上のファイル](/rest/api/batchservice/file/listfromcomputenode)で探すことができます。 ジョブを削除すると、ジョブ内のすべてのタスクが削除され、ジョブ内のタスクが削除されると、ノード上のタスク ディレクトリのデータが削除されるので、領域が解放されます。 十分な領域を解放した後、ノードを再起動すると、ノードが "使用不可" 状態から "アイドル" 状態に戻ります。
 
 ## <a name="next-steps"></a>次のステップ
 

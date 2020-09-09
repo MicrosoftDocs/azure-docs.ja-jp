@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063955"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 要素
 
@@ -18,7 +18,7 @@ ms.locfileid: "75649751"
 
 ## <a name="ui-sample"></a>UI サンプル
 
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+![Microsoft.Common.Section](./media/managed-application-elements/microsoft-common-section.png)
 
 ## <a name="schema"></a>スキーマ
 
@@ -49,7 +49,7 @@ ms.locfileid: "75649751"
 - この要素は `toolTip` プロパティをサポートしていません。
 
 ## <a name="sample-output"></a>サンプル出力
-`elements` 内の要素の出力値にアクセスするには、[basics()](create-uidefinition-functions.md#basics) または [steps()](create-uidefinition-functions.md#steps) 関数とドット表記を使用します。
+`elements` 内の要素の出力値にアクセスするには、[basics()](create-ui-definition-referencing-functions.md#basics) または [steps()](create-ui-definition-referencing-functions.md#steps) 関数とドット表記を使用します。
 
 ```json
 steps('configuration').section1.text1

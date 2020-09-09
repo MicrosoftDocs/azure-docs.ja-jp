@@ -1,20 +1,14 @@
 ---
 title: クイック スタート:BLOB ストレージ イベントを Web エンドポイントに送信する - ポータル
 description: クイック スタート:Azure Event Grid と Azure portal を使用して BLOB ストレージ アカウントを作成し、そのイベントをサブスクライブします。 Webhook にイベントを送信します。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605721"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421605"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする
 
@@ -56,7 +50,7 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. **[カスタム デプロイ]** ページで、次の手順を実行します。 
     1. **[リソース グループ]** で、ストレージ アカウントの作成時に作成したリソース グループを選択します。 チュートリアルの完了後は、リソース グループを削除して容易にクリーンアップすることができます。  
     2. **[サイト名]** に、Web アプリの名前を入力します。
@@ -86,12 +80,15 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 どのイベントを追跡し、どこにイベントを送信するかは、トピックを購読することによって Event Grid に伝えます。
 
 1. ポータルで、先ほど作成した Azure Storage アカウントに移動します。 左側のメニューにある **[すべてのリソース]** を選択し、自分のストレージ アカウントを選択します。 
-2. **[ストレージ アカウント]** ページの左側のメニューにある **[イベント]** を選択します。
+2. **[ストレージ アカウント]** ページの左側のメニューにある **[イベント]** を選択します。 
 1. **[その他のオプション]** を選択し、 **[webhook]** を選択します。 エンドポイントの Web hook を使用して、ビューアー アプリにイベントを送信します。 
 
    ![[webhook] を選択する](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. **[イベント サブスクリプションの作成]** ページで、次の手順を実行します。 
     1. イベント サブスクリプションの**名前**を入力します。
+    2. **システム トピック**の**名前**を入力します。 システム トピックについては、[システム トピックの概要](system-topics.md)に関するページを参照してください。
+
+       ![イベント サブスクリプションとシステム トピックの名前を入力します](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
     2. **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
 
        ![エンドポイントのタイプに Webhook を選択する](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

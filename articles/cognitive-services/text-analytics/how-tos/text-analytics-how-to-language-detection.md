@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70387784"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142386"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>例:Text Analytics を使用して言語を検出する
 
-Azure Text Analytics REST API の[言語検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)機能では、各ドキュメントのテキスト入力が評価され、言語識別子と、分析の強度を示すスコアが返されます。
+Azure Text Analytics REST API の[言語検出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)機能では、各ドキュメントのテキスト入力が評価され、言語識別子と、分析の強度を示すスコアが返されます。
 
 この機能は、言語が不明な任意のテキストを取集するコンテンツ ストアに役立ちます。 この分析の結果を解析して、入力ドキュメントでいずれの言語が使用されるかを特定できます。 応答では、モデルの信頼度が反映されたスコアも返されます。 スコアの値は 0 から 1 の間です。
 
@@ -67,16 +67,16 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 要求定義の詳細については、[Text Analytics API の呼び出し](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ POST 要求を作成します。 この要求の API ドキュメントを確認するには、[言語検出 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) に関するページを参照してください。
++ POST 要求を作成します。 この要求の API ドキュメントを確認するには、[言語検出 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) に関するページを参照してください。
 
-+ 言語検出のための HTTP エンドポイントを設定します。 Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)のいずれかを使用します。 URL に `/text/analytics/v2.1/languages` を含める必要があります (例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`)。
++ 言語検出のための HTTP エンドポイントを設定します。 Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)のいずれかを使用します。 URL に `/text/analytics/v3.0/languages` を含める必要があります (例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`)。
 
 + Text Analytics 操作用の[アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)が含まれるように要求ヘッダーを設定します。
 
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
@@ -96,68 +96,64 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 正のスコア 1.0 は、分析の可能な最も高い信頼レベルを表します。
 
 ```json
-    {
-        "documents": [
-            {
-                "id": "1",
-                "detectedLanguages": [
-                    {
-                        "name": "English",
-                        "iso6391Name": "en",
-                        "score": 1
-                    }
-                ]
+{
+    "documents": [
+        {
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "2",
-                "detectedLanguages": [
-                    {
-                        "name": "Spanish",
-                        "iso6391Name": "es",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "3",
-                "detectedLanguages": [
-                    {
-                        "name": "French",
-                        "iso6391Name": "fr",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "detectedLanguage": {
+                "name": "French",
+                "iso6391Name": "fr",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "4",
-                "detectedLanguages": [
-                    {
-                        "name": "Chinese_Simplified",
-                        "iso6391Name": "zh_chs",
-                        "score": 1
-                    }
-                ]
+            "warnings": []
+        },
+        {
+            "id": "4",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
             },
-            {
-                "id": "5",
-                "detectedLanguages": [
-                    {
-                        "name": "Russian",
-                        "iso6391Name": "ru",
-                        "score": 1
-                    }
-                ]
-            }
-        ],
-        "errors": []
-    }
+            "warnings": []
+        },
+        {
+            "id": "5",
+            "detectedLanguage": {
+                "name": "Russian",
+                "iso6391Name": "ru",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
+}
 ```
 
 ### <a name="ambiguous-content"></a>あいまいなコンテンツ
 
-場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `countryHint` パラメーターを使用して、2 文字の国番号を指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列 `countryHint = ""` に設定して、このパラメーターをリセットします。
+場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `countryHint` パラメーターを使用して、2 文字の国/地域コードを指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列 `countryHint = ""` に設定して、このパラメーターをリセットします。
 
-たとえば、英語とフランス語の両方に共通の "Impossible" が限られたコンテキストで与えられた場合、応答は "US" の国ヒントに基づきます。 テキストがフランスに由来することがわかっている場合は、それをヒントとして指定することができます。
+たとえば、英語とフランス語の両方に共通の "Impossible" が、限られたコンテキストと共に指定されている場合、応答は "US" の国/地域ヒントに基づきます。 テキストがフランスに由来することがわかっている場合は、それをヒントとして指定することができます。
 
 **入力**
 
@@ -190,7 +186,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
                     {
                         "name": "English",
                         "iso6391Name": "en",
-                        "score": 1
+                        "confidenceScore": 1
                     }
                 ]
             },
@@ -200,7 +196,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
                     {
                         "name": "French",
                         "iso6391Name": "fr",
-                        "score": 1
+                        "confidenceScore": 1
                     }
                 ]
             }
@@ -218,7 +214,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
             {
                 "name": "(Unknown)",
                 "iso6391Name": "(Unknown)",
-                "score": "NaN"
+                "confidenceScore": "NaN"
             }
         ]
     }
@@ -254,7 +250,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
             {
               "name": "Spanish",
               "iso6391Name": "es",
-              "score": 0.9375
+              "confidencescore": 0.94
             }
           ]
         }
@@ -267,17 +263,13 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 この記事では、Azure Cognitive Services の Text Analytics を使用した言語検出の概念とワークフローについて説明しました。 以下の点について説明し、例を示しました。
 
-+ [言語検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)は、さまざまな言語、異形、方言、および一部の地方言語や文化言語でも使用できます。
++ [言語検出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)は、さまざまな言語、異形、方言、および一部の地方言語や文化言語でも使用できます。
 + 要求本文内の JSON ドキュメントには、ID とテキストが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)を使用して `/languages` エンドポイントに対して行われます。
 + 応答出力は、各ドキュメント ID の言語識別子で構成されます。 出力は、JSON を受け入れる任意のアプリにストリーミングできます。 アプリの例としては、Excel や Power BI などがあります。
 
 ## <a name="see-also"></a>関連項目
 
- [Text Analytics の概要](../overview.md) [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)</br>
- [Text Analytics 製品ページ](//go.microsoft.com/fwlink/?LinkID=759712)
-
-## <a name="next-steps"></a>次のステップ
-
-> [!div class="nextstepaction"]
-> [感情を分析する](text-analytics-how-to-sentiment-analysis.md)
+* [Text Analytics の概要](../overview.md)
+* [Text Analytics クライアント ライブラリの使用](../quickstarts/text-analytics-sdk.md)
+* [新機能](../whats-new.md)

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/02/2020
-ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/15/2020
+ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233425"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683369"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>マッピング データ フローの結合変換
 
@@ -63,13 +63,19 @@ ms.locfileid: "82233425"
 
 ![結合変換](media/data-flow/join.png "Join")
 
+### <a name="non-equi-joins"></a>非等結合
+
+結合条件で等しくない (!=) またはより大きい (>) などの条件演算子を使用するには、2 つの列の間の演算子ドロップダウンを変更します。 非等結合では、 **[最適化]** タブで **[固定]** ブロードキャストを使用して、2 つのストリームのうち少なくとも 1 つをブロードキャストする必要があります。
+
+![非等結合](media/data-flow/non-equi-join.png "非等結合")
+
 ## <a name="optimizing-join-performance"></a>結合のパフォーマンスの最適化
 
 SSIS などのツールでのマージ結合とは異なり、結合変換は強制的なマージ結合操作ではありません。 結合キーを並べ替える必要はありません。 結合操作は、Spark の最適な結合操作 (ブロードキャスト結合またはマップ側の結合) に基づいて行われます。
 
 ![結合変換の最適化](media/data-flow/joinoptimize.png "結合の最適化")
 
-結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには、 **[固定]** を選択します。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
 
 **[オフ]** オプションを使用してブロードキャストを無効にすることは、結合でタイムアウト エラーが発生する場合を除いて推奨されません。
 

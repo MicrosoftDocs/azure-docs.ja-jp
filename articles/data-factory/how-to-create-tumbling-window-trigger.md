@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996688"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、タンブリング ウィンドウ トリガーを作成、起動、および監視する手順について説明します。 トリガーとサポートされる種類の全般的な情報については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事をご覧ください。
 
-タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーはパイプラインと 1 対 1 の関係を持ち、単一のパイプラインのみを参照できます。
+タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーはパイプラインと 1 対 1 の関係を持ち、単一のパイプラインのみを参照できます。 タンブリング ウィンドウ トリガーはスケジュール トリガーの代替として適しており、複雑なシナリオ ([他のタンブリング ウィンドウ トリガーに対する依存関係](#tumbling-window-trigger-dependency)、[失敗したジョブの再実行](tumbling-window-trigger-dependency.md#monitor-dependencies)、および[パイプラインに対するユーザー再試行の設定](#user-assigned-retries-of-pipelines)) のための一連の機能を提供します。 スケジュール トリガーとタンブリング ウィンドウ トリガーの違いについて詳しく理解するには、[こちら](concepts-pipeline-execution-triggers.md#trigger-type-comparison)をご覧ください。
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
@@ -146,13 +146,19 @@ ms.locfileid: "82592079"
 パイプライン定義で **WindowStart** および **WindowEnd** システム変数値を使用するには、"MyWindowStart" パラメーターと "MyWindowEnd" パラメーターを適宜使用します。
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>バックフィル シナリオでのウィンドウの実行順序
-(特にバックフィル シナリオで) 実行するウィンドウが複数ある場合、ウィンドウの実行順序は決定論的であり、最も古い間隔から最も新しい間隔の順になります。 現時点では、この動作を変更することはできません。
+
+トリガーの startTime が過去の場合、M=(CurrentTime- TriggerStartTime)/TriggerSliceSize という数式に基づき、トリガーはトリガーのコンカレンシーを考慮して、{M} 回のバックフィル (過去分) の実行を並行して生成してから、今後の実行を行います。 ウィンドウの実行順序は、最も古い間隔から最も新しい間隔までの間で決定論的となります。 現時点では、この動作を変更することはできません。
 
 ### <a name="existing-triggerresource-elements"></a>既存の TriggerResource 要素
-既存の **TriggerResource** 要素には、次の点が適用されます。
 
-* トリガーの **frequency** 要素の値 (またはウィンドウ サイズ) が変更されても、既に処理されたウィンドウの状態はリセット*されません*。 トリガーは、新しいウィンドウ サイズを使用して実行された最後のウィンドウから、ウィンドウに対して引き続き発生します。
+既存の **TriggerResource** 要素の更新には、次の点が適用されます。
+
+* トリガーが作成されると、トリガーの**頻度**要素 (またはウィンドウ サイズ) と**間隔**要素の値を変更することはできません。 このことは triggerRun の再実行と依存関係の評価を適切に機能させるために必要です
 * トリガーの **endTime** 要素の値が変更 (追加または更新) されても、既に処理されたウィンドウの状態はリセット*されません*。 トリガーは新しい **endTime** 値に従います。 新しい **endTime** 値が既に実行されたウィンドウよりも前の場合、トリガーは停止します。 それ以外の場合は、新しい **endTime** 値に達すると、トリガーは停止します。
+
+### <a name="user-assigned-retries-of-pipelines"></a>ユーザー割り当てのパイプラインの再試行
+
+パイプライン エラーが発生した場合、タンブリング ウィンドウ トリガーは、ユーザーの介入なしに、同じ入力パラメーターを使用して、参照されたパイプラインの実行を自動的に再試行することができます。 これは、トリガー定義の "retryPolicy" プロパティを使用して指定できます。
 
 ### <a name="tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係
 

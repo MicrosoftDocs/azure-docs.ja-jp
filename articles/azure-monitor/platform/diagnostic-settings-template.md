@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008100"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Azure で Resource Manager テンプレートを使用して診断設定を作成する
 Azure Monitor の[診断設定](diagnostic-settings.md)では、Azure リソースとそれらが依存している Azure プラットフォームによって収集される[プラットフォーム ログ](platform-logs-overview.md)の送信先が指定されます。 この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して、プラットフォーム ログを収集してさまざまな宛先に送信するための診断設定を作成し構成する方法について詳しく説明します。
@@ -30,7 +30,7 @@ Resource Manager テンプレートをデプロイするには、PowerShell や 
 
 
 ## <a name="resource-logs"></a>リソース ログ
-リソース ログの場合は、`<resource namespace>/providers/diagnosticSettings` 型のリソースをテンプレートに追加します。 プロパティ セクションでは、「[Diagnostic Settings - Create Or Update](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)」 (診断設定 - 作成または更新) に記載の形式に従います。 収集するリソースに対して有効な各カテゴリの `logs` セクションに `category` を指定します。 [リソースでメトリックがサポートされている](metrics-supported.md)場合は、`metrics` プロパティを追加して、リソースのメトリックを同じ送信先に収集します。
+リソース ログの場合は、`<resource namespace>/providers/diagnosticSettings` 型のリソースをテンプレートに追加します。 プロパティ セクションでは、「[Diagnostic Settings - Create Or Update](/rest/api/monitor/diagnosticsettings/createorupdate)」 (診断設定 - 作成または更新) に記載の形式に従います。 収集するリソースに対して有効な各カテゴリの `logs` セクションに `category` を指定します。 [リソースでメトリックがサポートされている](metrics-supported.md)場合は、`metrics` プロパティを追加して、リソースのメトリックを同じ送信先に収集します。
 
 次に示すのは、特定のリソースのリソース ログ カテゴリを、Log Analytics ワークスペース、ストレージ アカウント、およびイベント ハブに収集するテンプレートです。
 
@@ -144,7 +144,7 @@ Resource Manager テンプレートをデプロイするには、PowerShell や 
 ```
 
 ## <a name="activity-log"></a>アクティビティ ログ
-Azure アクティビティ ログの場合は、`Microsoft.Insights/diagnosticSettings` 型のリソースを追加します。 [アクティビティ ログのカテゴリ](activity-log-view.md#categories-in-the-activity-log)に、利用可能なカテゴリが一覧表示されます。 次に示すのは、すべてのアクティビティ ログ カテゴリを Log Analytics ワークスペース、ストレージ アカウント、およびイベント ハブに収集するテンプレートです。
+Azure アクティビティ ログの場合は、`Microsoft.Insights/diagnosticSettings` 型のリソースを追加します。 [アクティビティ ログのカテゴリ](./activity-log.md#view-the-activity-log)に、利用可能なカテゴリが一覧表示されます。 次に示すのは、すべてのアクティビティ ログ カテゴリを Log Analytics ワークスペース、ストレージ アカウント、およびイベント ハブに収集するテンプレートです。
 
 
 ```json

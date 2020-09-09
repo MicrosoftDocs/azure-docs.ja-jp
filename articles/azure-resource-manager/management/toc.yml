@@ -4,11 +4,6 @@
   items:
     - name: Azure Resource Manager とは
       href: overview.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: サブスクリプションとサービスの制限
@@ -17,14 +12,19 @@
       href: resource-name-rules.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: deployment-models.md
-    - name: Azure の一般的なセキュリティ属性
-      href: azure-resource-manager-security-controls.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
     - name: 拡張リソースの種類
       href: extension-resource-types.md
     - name: リソース インスタンスの制限
       href: resources-without-resource-group-limit.md
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Azure の一般的なセキュリティ属性
+          href: azure-resource-manager-security-controls.md
 - name: 方法
   items:
     - name: 移動 - リソース グループ/サブスクリプション
@@ -40,13 +40,15 @@
             - name: App Service
               href: ./move-limitations/app-service-move-limitations.md
             - name: Azure DevOps
-              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Automation
+              href: ../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 従来のデプロイ
               href: ./move-limitations/classic-model-move-limitations.md
             - name: ネットワーク
               href: ./move-limitations/networking-move-limitations.md
             - name: 復旧サービス
-              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Virtual Machines
               href: ./move-limitations/virtual-machines-move-limitations.md
     - name: 移動 - リージョン
@@ -57,24 +59,48 @@
           href: region-move-support.md
         - name: サービス
           items:
+            - name: Azure API Management
+              href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure App Service
+              href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Automation
+              href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
+            - name: Azure Batch
+              href: ../../batch/best-practices.md?toc=/azure/azure-resource-manager/management/toc.json#moving-batch-accounts-across-regions
+            - name: Azure Cognitive Search
+              href: ../../search/search-howto-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Dev Spaces
+              href: ../../dev-spaces/faq.md?toc=/azure/azure-resource-manager/management/toc.json#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region
+            - name: Azure Event Hubs
+              href: ../../event-hubs/move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure IoT Hub
-              href: ../../iot-hub/iot-hub-how-to-clone.md?toc=/azure/azure-resource-manager/toc.json
-            - name: Azure VM
-              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../iot-hub/iot-hub-how-to-clone.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Resource Manager
+              href: microsoft-resources-move-regions.md
             - name: Azure Storage
-              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure SQL
-              href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure VM
+              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: ロジック アプリ
-              href: ../../logic-apps/move-logic-app-resources.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../logic-apps/move-logic-app-resources.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: メンテナンス コントロール構成
-              href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: ネットワーク セキュリティ グループ (NSG)
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: パブリック IP アドレス
-              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Site Recovery (Recovery Services コンテナー)
+              href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 仮想ネットワーク
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for PostgreSQL サーバー
+              href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for MariaDB サーバー
+              href: ../../mariadb/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Database for MySQL サーバー
+              href: ../../mysql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Tags
       items:
         - name: 決定ガイド
@@ -110,9 +136,9 @@
     - name: EA サブスクリプション
       items:
         - name: 作成
-          href: programmatically-create-subscription.md
+          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: 作成のアクセス権を付与する
-          href: grant-access-to-create-subscription.md
+          href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: リソース プロバイダーと種類
       href: resource-providers-and-types.md
     - name: リソース グループとリソースの削除
@@ -141,6 +167,9 @@
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
       href: /python/api/overview/azure/resources?view=azure-python
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: この記事では、Azure Front Door の概要を示します。 実際のアプリケーションのユーザー トラフィックを負荷分散するための選択肢として適切かどうかを見極めましょう。
+title: Azure Front Door ルール エンジンの一致条件
+description: この記事では、Azure Front Door ルール エンジンで利用できるさまざまな一致条件の一覧を提供します。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 77c0d68f507e09b315c912d1d91fdf9cf63db6fa
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512165"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door のルール エンジンの一致条件
 
-[AFD ルール エンジン](front-door-rules-engine.md)では、ルールは 0 個以上の一致条件とアクションで構成されます。 この記事では、AFD ルール エンジンで使用できる一致条件について詳しく説明します。 
+[AFD ルール エンジン](front-door-rules-engine.md)では、ルールは 0 個以上の一致条件とアクションで構成されます。 この記事では、AFD ルール エンジンで使用できる一致条件について詳しく説明します。
 
-ルールの最初の部分は、単一の一致条件または一連の一致条件です。 ルールは、最大 10 個の一致条件で構成できます。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して指定されたアクションが実行されます。 複数の一致条件を使用すると、一致条件は AND ロジックを使用してグループ化されます。 複数の値をサポートするすべての一致条件 (以下、"スペース区切り" と表記します) では、"OR" 演算子が想定されます。 
+ルールの最初の部分は、単一の一致条件または一連の一致条件です。 ルールは、最大 10 個の一致条件で構成できます。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して指定されたアクションが実行されます。 複数の一致条件を使用すると、一致条件は AND ロジックを使用してグループ化されます。 複数の値をサポートするすべての一致条件 (以下、"スペース区切り" と表記します) では、"OR" 演算子が想定されます。
 
 たとえば、以下のような場合に一致条件を使用できます。
 
@@ -142,7 +142,7 @@ String | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 
 #### <a name="key-information"></a>重要な情報
 
-- このルール条件を使用する場合は、必ずプロトコル情報を含めてください。 たとえば、「 *https://www.\<yourdomain\>.com* 」のように入力します。
+- このルール条件を使用する場合は、必ずプロトコル情報を含めてください。 たとえば、 *https://www.\<yourdomain\>.com* です。
 
 ## <a name="request-file-extension"></a>要求ファイル拡張子
 

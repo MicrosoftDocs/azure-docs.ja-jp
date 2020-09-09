@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318877"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>ソース データセット列を変換先のデータセット列にマップする
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "74923868"
 > 以下の例は Azure SQL と Azure BLOB 向けですが、四角形のデータセットをサポートする任意のデータ ストアにも適用できます。 例で適切なデータ ソース内のデータを示すには、データセットとリンクされているサービスの定義を調整します。
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>例 1 – Azure SQL から Azure BLOB への列マッピング
-この例の入力テーブルには構造体が 1 つあり、Azure SQL データベース内の SQL テーブルをポイントしています。
+この例の入力テーブルには構造体が 1 つあり、Azure SQL Database 内の SQL テーブルをポイントしています。
 
 ```json
 {

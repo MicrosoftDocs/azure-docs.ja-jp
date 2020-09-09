@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685451"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930473"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -26,6 +26,10 @@ Key Vault は、パスワードやデータベース接続文字列などのシ�
 機密性の高いデータについては、クライアントで追加のデータ保護レイヤーを検討する必要があります。 たとえば、Key Vault に保存する前に別の保護キーを使用してデータを暗号化します。  
 
 Key Vault では、シークレットの contentType フィールドもサポートされています。 クライアントは、シークレットのコンテンツ タイプを指定して、取得されるときのシークレット データの解釈を支援できます。 このフィールドの最大長は 255 文字です。 定義済みの値はありません。 推奨される使用方法は、シークレット データを解釈するためのヒントです。 たとえば、実装がパスワードと証明書の両方をシークレットとして格納する場合は、このフィールドを使用して区別します。 定義済みの値はありません。  
+
+## <a name="encryption"></a>暗号化
+
+Key Vault 内のシークレットはすべて、暗号化した状態で格納されます。 この暗号化は透過的に行われ、ユーザーによる操作は必要ありません。 ユーザーによって追加されたシークレットは、Azure Key Vault サービスによって暗号化され、ユーザーが読み取るとき自動的に暗号化が解除されます。 暗号化キーは、キー コンテナーごとに一意となります。
 
 ## <a name="secret-attributes"></a>シークレットの属性
 

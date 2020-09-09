@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3667dd529ce5542be84c5e357053d8cd11eb91e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca9afda3303d828bdbb162a9e18ac817b7f8091e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360658"
 ---
 # <a name="using-single-sign-on-with-cloud-provisioning"></a>クラウド プロビジョニングでシングル サインオンを使用する
 次のドキュメントでは、クラウド プロビジョニングでシングル サインオンを使用する方法について説明します。

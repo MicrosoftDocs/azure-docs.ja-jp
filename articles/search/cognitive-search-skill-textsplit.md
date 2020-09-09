@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73479664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981950"
 ---
 # <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 
@@ -31,23 +31,23 @@ Microsoft.Skills.Text.SplitSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| textSplitMode      | "pages" または "sentences" のいずれか | 
-| maximumPageLength | textSplitMode が "pages" に設定されている場合、`String.Length` で測定されるため、これは ページの最大長を指します。 最小値は 100 です。  textSplitMode が "pages" に設定されている場合、アルゴリズムは、最大でも "maximumPageLength" のサイズであるチャンクにテキストを分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは "maximumPageLength" よりも少し小さくなることがあります。 | 
-| defaultLanguageCode   | (省略可能) 次の言語コードのいずれか: `da, de, en, es, fi, fr, it, ko, pt`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。</li><li>上記のリストに言語がない場合は、分割スキルによってテキストが文字境界で分割されます。</li><li>言語コードを指定することで、中国語、日本語、韓国語などの空白スペースのない言語で、単語が途中で分割されるのを避けることができます。</li><li>言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、既定の英語 (en) で十分です。 </li></ul>  |
+| `textSplitMode`    | "pages" または "sentences" のいずれか | 
+| `maximumPageLength` | textSplitMode が "pages" に設定されている場合、`String.Length` で測定されるため、これは ページの最大長を指します。 最小値は 300 です。  textSplitMode が "pages" に設定されている場合、アルゴリズムは、最大でも "maximumPageLength" のサイズであるチャンクにテキストを分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは "maximumPageLength" よりも少し小さくなることがあります。 | 
+| `defaultLanguageCode` | (省略可能) 次の言語コードのいずれか: `da, de, en, es, fi, fr, it, ko, pt`。 既定値は英語 (en) です。 次の考慮事項があります。<ul><li>languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。</li><li>上記のリストに言語がない場合は、分割スキルによってテキストが文字境界で分割されます。</li><li>言語コードを指定することで、中国語、日本語、韓国語などの空白スペースのない言語で、単語が途中で分割されるのを避けることができます。</li><li>言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、既定の英語 (en) で十分です。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 | パラメーター名       | 説明      |
 |----------------------|------------------|
-| text  | 部分文字列に分割するテキスト。 |
-| languageCode  | (省略可能) ドキュメントの言語コード。 言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、この入力を削除すると安全です。  |
+| `text`    | 部分文字列に分割するテキスト。 |
+| `languageCode`    | (省略可能) ドキュメントの言語コード。 言語がわからない場合 (つまり、入力用のテキストを [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) に分割する必要がある場合)、この入力を削除すると安全です。  |
 
 ## <a name="skill-outputs"></a>スキルの出力 
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| textItems | 抽出された部分文字列の配列。 |
+| `textItems`   | 抽出された部分文字列の配列。 |
 
 
 ##  <a name="sample-definition"></a>定義例
@@ -130,7 +130,7 @@ Microsoft.Skills.Text.SplitSkill
 ## <a name="error-cases"></a>エラーになる場合
 言語がサポートされていない場合、警告が生成され、テキストは文字境界で分割されます。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

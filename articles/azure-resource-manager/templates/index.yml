@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 03/09/2020
-  ms.openlocfilehash: f05b14039f5b83b4f214d7fa479a3ab809e859c6
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 07/30/2020
+  ms.openlocfilehash: 6a21841d24fcafefe25473e428e1926849f5e9cf
+  ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78943229"
+  ms.lasthandoff: 07/30/2020
+  ms.locfileid: "87446731"
 landingContent:
 - title: ARM テンプレートについて
   linkLists:
@@ -29,14 +29,18 @@ landingContent:
     links:
     - text: ベスト プラクティス
       url: template-best-practices.md
+    - text: よく寄せられる質問
+      url: frequently-asked-questions.md
+    - text: テンプレート スペック
+      url: template-specs.md
     - text: デプロイ モード
       url: deployment-modes.md
     - text: リンク済みテンプレート
       url: linked-templates.md
   - linkListType: video
     links:
-    - text: 新機能
-      url: https://youtu.be/3D-JIKShrws
+    - text: Build 2020 プレゼンテーション
+      url: https://mybuild.microsoft.com/sessions/82984db4-37a4-4ed3-bf8b-13298841ed18?source=sessions
 - title: はじめに
   linkLists:
   - linkListType: quickstart
@@ -45,24 +49,22 @@ landingContent:
       url: quickstart-create-templates-use-the-portal.md
     - text: テンプレートの作成 - VS Code
       url: quickstart-create-templates-use-visual-studio-code.md
-    - text: テンプレートの作成 - Visual Studio
-      url: create-visual-studio-deployment-project.md
   - linkListType: tutorial
     links:
     - text: 初心者向けチュートリアル
       url: template-tutorial-create-first-template.md
-    - text: 複数のインスタンスのデプロイ
-      url: template-tutorial-create-multiple-instances.md
-    - text: デプロイ順序の設定
-      url: template-tutorial-create-templates-with-dependent-resources.md
-    - text: キー コンテナーの統合
-      url: template-tutorial-use-key-vault.md
+    - text: デプロイ
+      url: deployment-tutorial-local-template.md
+  - linkListType: learn
+    links:
+    - text: 一貫したインフラストラクチャ
+      url: /learn/modules/create-azure-resource-manager-template-vs-code/
+    - text: 複数の環境
+      url: /learn/modules/modify-azure-resource-manager-template-reuse/
 - title: テンプレートの開発
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: VS Code を使用する
-      url: use-vs-code-to-create-template.md
     - text: 関数を使用する
       url: template-functions.md
     - text: パラメーターを定義する
@@ -91,6 +93,8 @@ landingContent:
       url: deploy-portal.md
     - text: REST API
       url: deploy-rest.md
+    - text: '[Azure にデプロイ] ボタン'
+      url: deploy-to-azure-button.md
     - text: what-if のデプロイ
       url: template-deploy-what-if.md
 - title: スコープ付きのデプロイ
@@ -103,6 +107,8 @@ landingContent:
       url: deploy-to-management-group.md
     - text: Tenant
       url: deploy-to-tenant.md
+    - text: スコープをまたいだデプロイ
+      url: cross-scope-deployment.md
 - title: リファレンス コンテンツの確認
   linkLists:
   - linkListType: reference
@@ -125,6 +131,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: ツールキットのテスト
+      url: test-toolkit.md
     - text: テンプレートのエクスポート
       url: export-template-portal.md
     - text: CI/CD

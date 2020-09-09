@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 23c4e18ae3e4111c179c1b98320af8c5659fa10c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2dcc018c65625825436bd1050cdf7f3b9d3131e2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673103"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375298"
 ---
 ユニバーサル Windows プラットフォーム (UWP) 開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、オーディオ キャプチャの設定、Speech SDK のインストールが必要となります。
 
@@ -66,11 +66,11 @@ ms.locfileid: "83673103"
 次に、ターゲット プラットフォーム アーキテクチャを選択します。 Visual Studio ツール バーの **[ソリューション プラットフォーム]** ドロップダウン ボックスを見つけます。 (表示されない場合は、 **[表示]**  >  **[ツール バー]**  >  **[標準]** の順に選択すると、 **[ソリューション プラットフォーム]** を含んだツール バーが表示されます。)64 ビット Windows を実行している場合は、ドロップダウン ボックスで **[x64]** を選択します。 64 ビット Windows でも 32 ビット アプリケーションを実行できるため、必要に応じて **[x86]** を選択してもかまいません。
 
 > [!NOTE]
-> Speech SDK では、Intel 互換プロセッサのみがサポートされています。 ARM プロセッサは現在サポートされていません。
+> Speech SDK は、すべての Intel 互換プロセッサをサポートしていますが、ARM プロセッサの場合は **x64 バージョンのみ**です。
 
 ### <a name="set-up-audio-capture"></a>オーディオ キャプチャを設定する
 
-次に、プロジェクトでオーディオ入力をキャプチャできるようにします。
+プロジェクトでオーディオ入力をキャプチャできるようにします。
 
 1. **ソリューション エクスプローラー**で **[Package.appxmanifest]** をダブルクリックしてパッケージ アプリケーション マニフェストを開きます。
 
@@ -104,4 +104,4 @@ ms.locfileid: "83673103"
 
 1. **[変更のプレビュー]** ダイアログ ボックスで **[OK]** を選択します。
 
-1. **[ライセンスへの同意]** ダイアログ ボックスでライセンスを確認し、 **[同意する]** を選択します。 パッケージのインストールが開始されます。インストールが完了すると、"`Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld`" と同様のメッセージが **[出力]** ウィンドウに表示されます。
+1. **[ライセンスへの同意]** ダイアログ ボックスでライセンスを確認し、 **[同意する]** を選択します。 パッケージのインストールが開始されます。インストールが完了すると、"`Successfully installed 'Microsoft.CognitiveServices.Speech 1.13.0' to helloworld`" と同様のメッセージが **[出力]** ウィンドウに表示されます。

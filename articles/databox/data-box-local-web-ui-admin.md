@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 08/10/2020
 ms.author: alkohli
-ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77560186"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206154"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
@@ -25,15 +25,17 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 
 - サポート パッケージの生成
 - デバイスのシャットダウンと再起動
-- BOM またはマニフェスト ファイルのダウンロード
+- 部品表 (BOM) またはマニフェスト ファイルのダウンロード
 - デバイスの使用可能な容量の表示
 - チェックサム検証のスキップ
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>サポート パッケージの生成
 
 デバイスの問題が発生した場合は、システム ログからサポート パッケージを作成できます。 Microsoft サポートでは、このパッケージを使用して問題のトラブルシューティングを行います。 サポート パッケージを生成するには、次の手順を実行します。
 
-1. ローカル Web UI で、 **[サポートにお問い合わせ]** に移動し、 **[サポート パッケージの作成]** をクリックします。
+1. ローカル Web UI で、 **[サポートにお問い合わせ]** に移動し、 **[サポート パッケージの作成]** を選択します。
 
     ![サポート パッケージの作成 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -41,14 +43,13 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 
     ![サポート パッケージの作成 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. サポート パッケージの作成が完了したら、 **[サポート パッケージのダウンロード]** をクリックします。 
+3. サポート パッケージの作成が完了したら、 **[サポート パッケージのダウンロード]** を選択します。
 
     ![サポート パッケージの作成 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. ダウンロードする場所を参照して選択します。 フォルダを開いて内容を表示します。
 
     ![サポート パッケージの作成 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>デバイスのシャットダウンと再起動
 
@@ -57,11 +58,11 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 デバイスをシャットダウンするには、次の手順を実行します。
 
 1. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
-2. **[シャットダウン]** をクリックします。
+2. **[シャットダウン]** を選択します。
 
     ![Data Box のシャット ダウン 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. 確認を求められたら、 **[OK]** をクリックして続行します。
+3. 確認を求められたら、 **[OK]** を選択して続行します。
 
     ![Data Box のシャット ダウン 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -70,43 +71,42 @@ Data Box および Data Box Heavy のローカル Web UI は、デバイスの�
 Data Box を再起動するには、次の手順を実行します。
 
 1. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
-2. **[Restart (再開)]** をクリックします。
+2. **[Restart]\(再起動\)** をクリックします。
 
     ![Data Box の再起動 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. 確認を求められたら、 **[OK]** をクリックして続行します。
+3. 確認を求められたら、 **[OK]** を選択して続行します。
 
    デバイスは、シャットダウンしてから再起動します。
 
 ## <a name="download-bom-or-manifest-files"></a>BOM またはマニフェスト ファイルのダウンロード
 
-部品表 (BOM) またはマニフェスト ファイルには、Data Box または Data Box Heavy にコピーされるファイルの一覧が含まれています。 これらのファイルは、発送するデバイスを準備するときに生成されます。
+BOM またはマニフェスト ファイルには、Data Box または Data Box Heavy にコピーされるファイルの一覧が含まれています。 これらのファイルは、発送するデバイスを準備するときにインポート注文用に生成されます。
 
-開始する前に、ご自分のデバイスの**発送準備**手順が完了していることを確認します。 次の手順に従って、BOM またはマニフェスト ファイルをダウンロードします。
+開始する前に、次の手順に従って、インポート注文の BOM またはマニフェスト ファイルをダウンロードします。
 
-1. ご自分のデバイスのローカル Web UI に移動します。 デバイスの発送準備が完了したことが表示されます。 デバイスの準備が完了すると、デバイスの状態が **[発送する準備ができました]** と表示されます。
+1. ご自分のデバイスのローカル Web UI に移動します。 **デバイスの発送準備**手順が完了していることを確認します。 デバイスの準備が完了すると、デバイスの状態が **[発送する準備ができました]** と表示されます。
 
-    ![デバイスの発送準備完了](media/data-box-portal-admin/ready-to-ship.png)
+    ![デバイスの発送準備完了](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
-2. **[ファイルの一覧のダウンロード]** をクリックして、自分の Data Box にコピーされたファイルの一覧をダウンロードします。
+2. **[ファイルの一覧のダウンロード]** を選択して、自分の Data Box にコピーされたファイルの一覧をダウンロードします。
 
-    ![[ファイルの一覧のダウンロード] をクリックする](media/data-box-portal-admin/download-list-of-files.png)
+    <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
 3. エクスプローラーで、デバイスへの接続に使用されているプロトコルと使用されている Azure Storage の種類に応じて別個のファイルの一覧が生成されたことを確認できます。
 
-    ![ストレージの種類と接続プロトコル別のファイル](media/data-box-portal-admin/files-storage-connection-type.png)
+    <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
+    ![ストレージの種類と接続プロトコル別のファイル](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
 
    ファイル名と Azure Storage の種類および使用されている接続プロトコルのマッピングを次の表に示します。
 
     |ファイル名  |Azure Storage の種類  |使用される接続プロトコル |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob.txt     |ブロック blob         |SMB/NFS         |
-    |databoxe2etest_PageBlob.txt     |ページ blob         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM.txt     |ページ blob         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM.txt    |ブロック blob         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |マネージド ディスク         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |マネージド ディスク         |SMB/NFS         |
+    |utSAC1_202006051000_BlockBlob-BOM.txt     |ブロック blob         |SMB/NFS         |
+    |utSAC1_202006051000_PageBlob-BOM.txt     |ページ blob         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
+    |utsac1_PageBlock_Rest-BOM.txt     |ページ blob         |REST        |
+    |utsac1_BlockBlock_Rest-BOM.txt    |ブロック blob         |REST         |
 
 この一覧を使用して、Data Box が Azure データセンターに返送された後に Azure Storage アカウントにアップロードされたファイルを確認します。 マニフェスト ファイルの例を次に示します。
 
@@ -168,6 +168,8 @@ Data Box を再起動するには、次の手順を実行します。
 
 既定では、発送の準備をするときにデータのチェックサムが生成されます。 特定のまれなケースにおいて、データ型 (小さいファイル サイズ) によっては、パフォーマンスが低下することがあります。 このような場合は、チェックサムをスキップできます。
 
+発送準備中のチェックサム計算は、エクスポート注文ではなく、インポート注文に対してのみ実行されます。 
+
 パフォーマンスに重大な影響がない限り、チェックサムを無効にしないことを強くお勧めします。
 
 1. デバイスのローカル Web UI の右上隅にある **[設定]** に移動します。
@@ -175,9 +177,51 @@ Data Box を再起動するには、次の手順を実行します。
     ![チェックサムを無効にする](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. **[無効]** をクリックしてチェックサム検証を無効にします
-3. **[Apply]** をクリックします。
+3. **[適用]** を選択します。
+
+> [!NOTE]
+> チェックサム計算のスキップ オプションは、Azure Data Box がロック解除されている場合にのみ使用できます。 デバイスがロックされている場合、このオプションは表示されません。
+
+## <a name="enable-smb-signing"></a>SMB 署名を有効にする
+
+サーバー メッセージ ブロック (SMB) 署名は、SMB を使用する通信にパケット レベルでデジタル署名できる機能です。 この署名により、転送中の SMB パケットを変更する攻撃を防ぐことができます。
+
+SMB 署名に関する詳細については、「[サーバー メッセージ ブロックの署名の概要](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing)」を参照してください。
+
+Azure デバイスで SMB 署名を有効にするには、次のようにします。
+
+1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
+
+    ![[設定] を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. SMB 署名を **[有効]** にします。
+
+    ![SMB 署名を有効にする](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. **[適用]** を選択します。
+4. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
+5. **[Restart]\(再起動\)** をクリックします。
+
+## <a name="enable-tls-11"></a>TLS 1.1 を有効にする
+
+既定の Azure Data Box では、トランスポート層セキュリティ (TLS) 1.1 より安全性が高いため、TLS 1.2 が暗号化に使用されます。 ただし、ユーザーまたはクライアントがブラウザーを使用して TLS 1.2 がサポートされていないデータにアクセスする場合は、TLS 1.1 を有効にすることができます。
+
+TLS に関する詳細については、[Azure Data Box Gateway のセキュリティ](../databox-online/data-box-gateway-security.md)に関する記事を参照してください。
+
+Azure デバイスで TLS 1.1 を有効にするには、次のようにします。
+
+1. デバイスのローカル Web UI の右上隅にある **[設定]** を選択します。
+
+    ![[設定] を開く](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. TLS 1.1 を **[有効]** にします。
+
+    ![TLS 1.1 を有効にする](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. **[適用]** を選択します。
+4. ローカル Web UI で、 **[シャット ダウンまたは再起動]** に移動します。
+5. **[Restart]\(再起動\)** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用して Data Box と Data Box Heavy を管理する](data-box-portal-admin.md)方法について学習します。
-

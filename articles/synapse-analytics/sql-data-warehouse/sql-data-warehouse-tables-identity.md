@@ -6,25 +6,27 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 04/30/2019
+ms.subservice: sql-dw
+ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742643"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121325"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Synapse SQL プールで IDENTITY を使用して代理キーを作成する
 
-IDENTITY プロパティを使用して Synapse SQL プール内のテーブルに代理キーを作成する場合のレコメンデーションと例。
+この記事では、IDENTITY プロパティを使用して Synapse SQL プール内のテーブルに代理キーを作成する場合のレコメンデーションと例を提供しています。
 
 ## <a name="what-is-a-surrogate-key"></a>代理キーとは
 
-テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。  
+テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。
+> [!NOTE]
+> Synapse SQL の IDENTITY 値は、ユーザーが明示的に "SET IDENTITY_INSERT ON" と重複する値を挿入するか IDENTITY を再シードする場合は、一意であるとは限りません。 詳細については、「[CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)」を参照してください。 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITY 列があるテーブルを作成する
 
@@ -50,7 +52,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>値の割り当て
 
-IDENTITY プロパティは、代理値が割り当てられる順序を保証しません。順序は、SQL Server と Azure SQL Database の動作を反映します。 ただし、Synapse SQL プールでは、保証が存在しないことがより顕著になります。
+IDENTITY プロパティでは、データ ウェアハウスの分散アーキテクチャにより、サロゲート値が割り当てられる順序は保証されません。 IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、Synapse SQL プール内のすべてのディストリビューションにスケールアウトするように設計されています。 
 
 次にその例を示します。
 

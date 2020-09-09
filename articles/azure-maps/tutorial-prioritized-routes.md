@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:移動モード別に複数のルートを検索する |Microsoft Azure Maps
-description: このチュートリアルでは、Microsoft Azure Maps を使用して、さまざまな移動モードでルートを検索する方法について説明します。
-author: philmea
-ms.author: philmea
+description: Azure Maps を使用し、特定の移動手段における目的地へのルートを検索する方法について説明します。 マップ上に複数のルートを表示する方法をご覧ください。
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: c7ed2421f468dfbb64c635683a7909b517105bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 7d17b9474edef245f7db16f33c72d722f356f712
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333806"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037594"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -27,7 +27,7 @@ ms.locfileid: "80333806"
 > * マップ上に複数のルートを表示する
 
 ## <a name="prerequisites"></a>前提条件
-先に進む前に、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)手順に従ってください。S1 価格レベルを選択します。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+先に進む前に、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)手順に従ってください。S1 価格レベルを選択します。 [プライマリ キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するセクションの手順に従って、アカウントのプライマリ キーを取得してください。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="create-a-new-map"></a>新しいマップの作成
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a665c3c27cca03a084896895ae51c56732ceb7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84237735"
 ---
 Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](../articles/virtual-network/virtual-networks-overview.md) (VNet) を作成するか、既存の VNet を使用する必要があります。 VNet における VM への望ましいアクセス方法を決定する必要もあります。 [リソースを作成する前に計画](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)を立て、必ず[ネットワーク リソースの制限](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)を確認することが大切です。
 
@@ -51,7 +51,7 @@ VM に接続された各 NIC は、VM と同じ場所およびサブスクリプ
 
 ## <a name="ip-addresses"></a>IP アドレス 
 
-Azure では次の種類の [IP アドレス](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md)を NIC に割り当てることができます。
+Azure では次の種類の [IP アドレス](../articles/virtual-network/public-ip-addresses.md)を NIC に割り当てることができます。
 
 - **パブリック IP アドレス** - インターネットのほか、VNet に接続されていない他の Azure リソースとの (ネットワーク アドレス変換 (NAT) を使用しない) 送受信に使用します。 NIC へのパブリック IP アドレスの割り当てはオプションです。 パブリック IP アドレスには少額の費用がかかり、サブスクリプションごとに使用できる数には上限があります。
 - **プライベート IP アドレス** - VNet、オンプレミスのネットワーク、(NAT を使用した) インターネットでの通信に使用します。 少なくとも 1 つのプライベート IP アドレスを VM に割り当てる必要があります。 Azure での NAT の詳細については、「[Azure の送信用接続の詳細](../articles/load-balancer/load-balancer-outbound-connections.md)」を参照してください。

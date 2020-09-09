@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway メトリックにアラートを設定する
-description: VPN Gateway メトリックにアラートを構成する手順
+description: Azure portal を使用し、仮想ネットワーク VPN ゲートウェイのメトリックに基づいて Azure Monitor のアラートを設定する方法について説明します。
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: 01704030ee3142cac9a328e1a3edc024651919a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127906"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033497"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway メトリックにアラートを設定する
 

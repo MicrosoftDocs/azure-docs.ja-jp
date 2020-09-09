@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659700"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,7 +29,7 @@ Azure IR は、ネイティブにデータ移動を実行したり、HDInsight �
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-ir"></a>既定の Azure IR
-既定では、個々のデータ ファクトリは、パブリック ネットワーク内のクラウド データ ストアおよびコンピューティング サービスに対する操作をサポートする Azure IR をバックエンドに備えます。 その Azure IR の場所は自動解決です。 リンクされたサービス定義で **connectVia** プロパティが指定されていない場合、既定の Azure IR が使用されます。 IR の場所を明示的に定義したい場合、または、管理上の目的から、異なる IR でのアクティビティ実行を仮想的にグループ化したい場合に限り、Azure IR を明示的に作成する必要があります。 
+既定では、個々のデータ ファクトリは、パブリック ネットワーク内のクラウド データ ストアおよびコンピューティング サービスに対する操作をサポートする Azure IR をバックエンドに備えます。 その Azure IR の場所は自動解決されます。 リンクされたサービス定義で **connectVia** プロパティが指定されていない場合、既定の Azure IR が使用されます。 IR の場所を明示的に定義したい場合、または、管理上の目的から、異なる IR でのアクティビティ実行を仮想的にグループ化したい場合に限り、Azure IR を明示的に作成する必要があります。 
 
 ## <a name="create-azure-ir"></a>Azure IR を作成する
 
@@ -48,13 +48,13 @@ Set-AzDataFactoryV2IntegrationRuntime PowerShell コマンドレットを使用�
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory UI を使用して Azure IR を作成する
 Azure Data Factory UI を使用して Azure IR を作成するには、次の手順を使用します。
 
-1. Azure Data Factory UI の **[始めましょう]** ページで、左側のウィンドウの **[作成]** タブを選択します。
+1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を選択します。
 
-   ![ホームページの [作成] ボタン](media/doc-common-process/get-started-page-author-button.png)
+   ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
 
-1. 左側のウィンドウの下部にある **[接続]** を選択し、 **[接続]** ウィンドウで **[統合ランタイム]** を選択します。 **[+新規]** を選択します。
+1. 左ペインの **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
 
-   ![統合ランタイムの作成](media/create-azure-integration-runtime/new-integration-runtime.png)
+   ![統合ランタイムの作成](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
 

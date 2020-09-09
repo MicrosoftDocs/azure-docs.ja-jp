@@ -3,12 +3,12 @@ title: Azure Batch タスク完了イベント
 description: Batch のタスク完了イベントのリファレンスです。 タスクが完了すると、終了コードに関係なく、このイベントが発生します。
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 5e3959a34b96ef4cebdbedadf736418d08cb2746
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 42860836e294780649616b0843db6ba19718dd64
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726368"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965180"
 ---
 # <a name="task-complete-event"></a>タスク完了イベント
 
@@ -50,7 +50,7 @@ ms.locfileid: "83726368"
 |`taskType`|String|タスクの型です。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。 このイベントは、ジョブ準備タスク、ジョブ リリース タスク、または開始タスクでは発生しません。|
 |`systemTaskVersion`|Int32|これは、タスクの内部再試行カウンターです。 Batch サービスは一時的問題に対応するタスクを内部で再試行できます。 これらの問題には、内部的なスケジュール エラーや、コンピューティング ノードを異常な状態から回復しようとする動作が含まれます。|
 |[`nodeInfo`](#nodeInfo)|複合型|タスクが実行されたコンピューティング ノードに関する情報が含まれます。|
-|[`multiInstanceSettings`](#multiInstanceSettings)|複合型|このタスクが複数のコンピューティング ノードが必要な複数インスタンス タスクであることを指定します。  詳細については、[`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) を参照してください。|
+|[`multiInstanceSettings`](#multiInstanceSettings)|複合型|このタスクが複数のコンピューティング ノードが必要な複数インスタンス タスクであることを指定します。  詳細については、[`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task) を参照してください。|
 |[`constraints`](#constraints)|複合型|このタスクに適用される実行の制約。|
 |[`executionInfo`](#executionInfo)|複合型|タスクの実行に関する情報が含まれます。|
 

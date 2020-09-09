@@ -5,13 +5,13 @@ ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
-ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: 9481b6d2740d27b8c3d1309e205edda6017868fa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559781"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213694"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
@@ -142,7 +142,7 @@ To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
 
 ローカル リポジトリで、_wwwroot/index.html_ を開きます。
 
-行 51 で `apiEndpoint` 変数を、デプロイされた API の URL (`http://<app_name>.azurewebsites.net`) に設定します。 _\<app_name>_ は、App Service のアプリ名に置き換えます。
+行 51 で `apiEndpoint` 変数を、デプロイされた API の URL (`http://<app_name>.azurewebsites.net`) に設定します。 _\<appname>_ は、App Service のアプリ名で置き換えます。
 
 ローカル ターミナル ウィンドウでサンプル アプリをもう一度実行します。
 
@@ -203,4 +203,4 @@ App Service CORS ではなく独自の CORS ユーティリティを使用して
 次のチュートリアルに進み、ユーザーを認証および承認する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:エンドツーエンドでのユーザーの認証と承認](app-service-web-tutorial-auth-aad.md)
+> [チュートリアル:エンドツーエンドでのユーザーの認証と承認](tutorial-auth-aad.md)

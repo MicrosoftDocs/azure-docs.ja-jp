@@ -1,21 +1,21 @@
 ---
-title: データを変換する
+title: デザイナーでデータを変換する (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナーでデータを変換して、独自のデータセットを作成する方法について説明します。
+description: Azure Machine Learning デザイナー (プレビュー) でデータを変換して、独自のデータセットを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
-ms.date: 05/04/2020
-ms.custom: designer
-ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/28/2020
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644296"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457823"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーでデータを変換する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -24,13 +24,15 @@ ms.locfileid: "83644296"
 
 サンプルの[国勢調査の成人収入に関する二項分類](sample-designer-datasets.md)データセットを使用して、2 つのデータセットを準備します。1 つのデータセットには米国のみの成人の国勢調査情報が含まれ、もう 1 つのデータセットには米国以外の成人の国勢調査情報が含まれています。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 1. データセットを変換し、トレーニング用に準備します。
 1. 結果のデータセットをデータストアにエクスポートします。
 1. 結果を表示します。
 
 この操作方法は、[デザイナーのモデルを再トレーニングする方法](how-to-retrain-designer.md)に関する記事の前提条件です。 その記事では、変換されたデータセットを使用して、パイプラインのパラメーターを使用して複数のモデルをトレーニングする方法について説明しています。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="transform-a-dataset"></a>データセットの変換
 
@@ -78,7 +80,7 @@ ms.locfileid: "83644296"
 
 パイプラインは次のようになっているはずです。
 
-![パイプラインと Split Data モジュールの構成方法を示すスクリーンショット](media/how-to-designer-transform-data/split-data.png)。
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="パイプラインと Split Data モジュールの構成方法を示すスクリーンショット":::
 
 
 ## <a name="save-the-datasets"></a>データセットの保存
@@ -110,7 +112,7 @@ ms.locfileid: "83644296"
     **ファイル形式**: csv
 
     > [!NOTE]
-    > この記事では、現在の Azure Machine Learning ワークスペースに登録されているデータストアにアクセスできることを前提としています。 データストアのセットアップ方法の手順については、「[Azure Storage サービスに接続する](how-to-access-data.md#azure-machine-learning-studio)」を参照してください。
+    > この記事では、現在の Azure Machine Learning ワークスペースに登録されているデータストアにアクセスできることを前提としています。 データストアのセットアップ方法の手順については、「[Azure Storage サービスに接続する](how-to-access-data.md#studio)」を参照してください。
 
     データストアがない場合は、ここで作成できます。 例として、この記事では、ワークスペースに関連付けられている既定の BLOB ストレージ アカウントにデータセットを保存します。 これにより、データセットは `data` という新しいフォルダーの `azureml` コンテナーに保存されます。
 

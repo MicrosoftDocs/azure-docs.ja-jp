@@ -4,15 +4,15 @@ description: Azure Virtual WAN に移行する方法について説明します�
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8aa4fe143c78d2053ce8c48e4866a5522057aa0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8dfcdd8195824cb732df2c0c70c338e69630c5cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753117"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure Virtual WAN に移行する
 
@@ -23,13 +23,13 @@ Azure Virtual WAN を使用する企業は、Microsoft の世界的なネット�
 ![ハブアンドスポーク](./media/migrate-from-hub-spoke-topology/hub-spoke.png)
 **図 1:Azure Virtual WAN**
 
-Azure 仮想データセンター (VDC) のハブアンドスポーク接続モデルは、Azure ネットワークの既定の推移的なルーティング動作を利用して、シンプルでスケーラブルなクラウド ネットワークを構築するために、数千の顧客によって採用されています。 Azure Virtual WAN はこれらの概念に基づいて構築されており、グローバルな接続が可能なトポロジが新機能として導入されています。これでは、オンプレミスの場所と Azure の間だけでなく、Microsoft ネットワークの規模を活用して、お客様の既存のグローバル ネットワークを拡張することが可能です。
+Azure のハブ アンド スポーク接続モデルは、Azure ネットワークの既定の推移的なルーティング動作を利用して、シンプルでスケーラブルなクラウド ネットワークを構築するために、何千ものお客様によって採用されています。 Azure Virtual WAN はこれらの概念に基づいて構築されており、グローバルな接続が可能なトポロジが新機能として導入されています。これでは、オンプレミスの場所と Azure の間だけでなく、Microsoft ネットワークの規模を活用して、お客様の既存のグローバル ネットワークを拡張することが可能です。
 
 この記事では、既存のハイブリッド環境を Virtual WAN に移行する方法について説明します。
 
 ## <a name="scenario"></a>シナリオ
 
-Contoso は、ヨーロッパとアジアの両方にオフィスを持つグローバルな金融機関です。 同社は既存のアプリケーションをオンプレミスのデータ センターから Azure に移行する予定であり、リージョン別にお客様が管理しているハイブリッド接続用のハブ仮想ネットワークなど、VDC アーキテクチャに基づく基礎設計を構築しています。 クラウドベース テクノロジへの移行の一環として、ネットワーク チームは、今後のビジネスの前進に対し接続が最適化されていることを確認する必要があります。
+Contoso は、ヨーロッパとアジアの両方にオフィスを持つグローバルな金融機関です。 同社は既存のアプリケーションをオンプレミスのデータ センターから Azure に移行する予定であり、リージョン別にお客様が管理しているハイブリッド接続用のハブ仮想ネットワークなど、手動ハブ アンド スポーク アーキテクチャに基づく基礎設計を構築しています。 クラウドベース テクノロジへの移行の一環として、ネットワーク チームは、今後のビジネスの前進に対し接続が最適化されていることを確認する必要があります。
 
 次の図は、複数の Azure リージョンへの接続を含む、既存のグローバル ネットワークの概要を示しています。
 
@@ -78,14 +78,14 @@ Contoso は、ヨーロッパとアジアの両方にオフィスを持つグロ
 
 このセクションでは、Azure Virtual WAN に移行するためのさまざまな手順について説明します。
 
-### <a name="step-1-vdc-hub-and-spoke-single-region"></a>手順 1:VDC ハブアンドスポークの単一リージョン
+### <a name="step-1-single-region-customer-managed-hub-and-spoke"></a>手順 1:単一リージョンのカスタマー マネージド ハブ アンド スポーク
 
-アーキテクチャを確認する 次の図は、Azure Virtual WAN をロールアウトする前の Contoso の単一リージョン トポロジを示しています。
+次の図は、Azure Virtual WAN をロールアウトする前の Contoso の単一リージョン トポロジを示しています。
 
 ![単一リージョン トポロジ](./media/migrate-from-hub-spoke-topology/figure1.png)
-**図 1:VDC ハブアンドスポークの単一リージョン**
+**図 1:単一リージョンの手動ハブ アンド スポーク**
 
-仮想データ センター (VDC) のアプローチに従い、顧客が管理するハブ仮想ネットワークにはいくつかの機能ブロックが含まれています。
+ハブ アンド スポーク アプローチに従い、カスタマー マネージド ハブ仮想ネットワークにはいくつかの機能ブロックが含まれています。
 
 - 共有サービス (複数のスポークで必要な共通の機能)。 例:Contoso が使用する、サービスとしてのインフラストラクチャ (IaaS) 仮想マシン上の Windows Server ドメイン コントローラー。
 - サードパーティのネットワーク仮想アプライアンスによって IP/ルーティング ファイアウォール サービスが提供され、スポーク間のレイヤー 3 IP ルーティングを実現します。
@@ -103,7 +103,7 @@ Contoso は、ヨーロッパとアジアの両方にオフィスを持つグロ
 > Azure Virtual WAN では、この記事で説明されているトラフィック パスの一部を有効にするために Standard SKU が使用されている必要があります。
 
 ![Virtual WAN ハブをデプロイする](./media/migrate-from-hub-spoke-topology/figure2.png)
-**図 2:VDC ハブアンドスポークから Virtual WAN への移行**
+**図 2:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 ### <a name="step-3-connect-remote-sites-expressroute-and-vpn-to-virtual-wan"></a>手順 3:リモート サイト (ExpressRoute と VPN) を Virtual WAN に接続する
 
@@ -113,38 +113,38 @@ Virtual WAN ハブを既存の ExpressRoute 回線に接続し、インターネ
 > 仮想 WAN ハブに接続するには、Express Route 回線を Premium SKU タイプにアップグレードする必要があります。
 
 ![リモート サイトを Virtual WAN に接続する](./media/migrate-from-hub-spoke-topology/figure3.png)
-**図 3:VDC ハブアンドスポークから Virtual WAN への移行**
+**図 3:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
-この時点で、オンプレミスのネットワーク機器は、Virtual WAN で管理されているハブ VNet に割り当てられた IP アドレス空間を反映したルートの受信を開始します。 この段階で、VPN 接続されたリモート ブランチは、スポーク仮想ネットワーク内の既存のアプリケーションへの 2 つのパスを認識します。 これらのデバイスは、移行フェーズ中に対称ルーティングを確保するように、引き続き VDC ハブへのトンネルを使用するように構成する必要があります。
+この時点で、オンプレミスのネットワーク機器は、Virtual WAN で管理されているハブ VNet に割り当てられた IP アドレス空間を反映したルートの受信を開始します。 この段階で、VPN 接続されたリモート ブランチは、スポーク仮想ネットワーク内の既存のアプリケーションへの 2 つのパスを認識します。 これらのデバイスは、移行フェーズ中に対称ルーティングを確保するように、引き続きカスタマー マネージド ハブへのトンネルを使用するように構成する必要があります。
 
 ### <a name="step-4-test-hybrid-connectivity-via-virtual-wan"></a>手順 4:Virtual WAN を使用してハイブリッド接続をテストする
 
 運用環境の接続にマネージド Virtual WAN ハブを利用する前に、テスト スポークの仮想ネットワークと Virtual WAN VNet 接続を設定することをお勧めします。 次の手順に進む前に、このテスト環境への接続が ExpressRoute とサイト間 VPN 経由で動作することを確認してください。
 
 ![Virtual WAN を使用してハイブリッド接続をテストする](./media/migrate-from-hub-spoke-topology/figure4.png)
-**図 4:VDC ハブアンドスポークから Virtual WAN への移行**
+**図 4:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 ### <a name="step-5-transition-connectivity-to-virtual-wan-hub"></a>手順 5:仮想 WAN ハブへの接続を移行する
 
 ![Virtual WAN ハブに接続を移行する](./media/migrate-from-hub-spoke-topology/figure5.png)
-**図 5:VDC ハブアンドスポークから Virtual WAN への移行**
+**図 5:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
-**a**。 スポーク仮想ネットワークから古い VDC ハブへの既存のピアリング接続を削除します。 スポーク仮想ネットワーク内のアプリケーションへのアクセスは、手順 a ~ c が完了するまで使用できません。
+**a**。 スポーク仮想ネットワークから古いカスタマー マネージド ハブへの既存のピアリング接続を削除します。 スポーク仮想ネットワーク内のアプリケーションへのアクセスは、手順 a ~ c が完了するまで使用できません。
 
 **b**. VNet 接続を使用して、スポーク仮想ネットワークを Virtual WAN ハブに接続します。
 
 **c**. スポーク仮想ネットワーク内で以前に使用されていたスポーク間通信用のすべてのユーザー定義ルート (UDR) を削除します。 このパスは、Virtual WAN ハブ内で使用可能な動的ルーティングによって有効になりました。
 
-**d**. VDC ハブの既存の ExpressRoute および VPN ゲートウェイは、次の手順 (e) を可能にするために使用停止になりました。
+**d**. カスタマー マネージド ハブの既存の ExpressRoute および VPN ゲートウェイは、次の手順 (e) を可能にするために使用停止になりました。
 
-**e**. 新しい VNet 接続を使用して、古い VDC ハブ (ハブ仮想ネットワーク) を Virtual WAN ハブに接続します。
+**e**. 新しい VNet 接続を使用して、古いカスタマー マネージド ハブ (ハブ仮想ネットワーク) を Virtual WAN ハブに接続します。
 
 ### <a name="step-6-old-hub-becomes-shared-services-spoke"></a>手順 6:古いハブが共有サービスのスポークになる
 
 Azure ネットワークを再設計し、Virtual WAN ハブが新しいトポロジの中心点となるようにしました。
 
 ![古いハブが共有サービスのスポークになる](./media/migrate-from-hub-spoke-topology/figure6.png)
-**図 6:VDC ハブアンドスポークから Virtual WAN への移行**
+**図 6:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 Virtual WAN ハブはマネージド エンティティであるため、仮想マシンなどのカスタム リソースのデプロイが許可されていません。そのため、共有サービス ブロックは、スポーク仮想ネットワークとして存在するようになり、Azure Application Gateway やネットワーク仮想化アプライアンスを経由したインターネット イングレスなどの機能をホストします。 共有サービス環境とバックエンド仮想マシン間のトラフィックは、Virtual WAN で管理されるハブを経由するようになりました。
 
@@ -153,7 +153,7 @@ Virtual WAN ハブはマネージド エンティティであるため、仮想�
 この段階では、Contoso は Microsoft Cloud へのビジネス アプリケーションの移行をほぼ完了し、オンプレミスの DC 内にいくつかのレガシ アプリケーションだけが残っています。
 
 ![オンプレミスの接続を最適化して Virtual WAN を完全に活用する](./media/migrate-from-hub-spoke-topology/figure7.png)
-**図 7:VDC ハブアンドスポークから Virtual WAN への移行**
+**図 7:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 Contoso は、Azure Virtual WAN の機能を十分に活用するために、レガシのオンプレミス VPN 接続の使用を停止することを決定します。 HQ ネットワークまたは DC ネットワークにアクセスし続けるすべてのブランチは、Azure Virtual WAN の組み込みのトランジット ルーティングを使用して Microsoft グローバル ネットワークを経由することができます。
 

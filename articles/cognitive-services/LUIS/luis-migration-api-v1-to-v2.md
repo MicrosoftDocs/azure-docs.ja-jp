@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68932689"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344749"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
-バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)と[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に移行する方法について説明します。 
+バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)と[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に移行する方法について説明します。
 
 ## <a name="new-azure-regions"></a>新しい Azure リージョン
 LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regions)が用意されています。 LUIS ではリージョン グループごとに異なるポータルが用意されています。 アプリケーションは、クエリを実行するリージョンと同じリージョンに作成する必要があります。 アプリケーションによって、リージョンが自動的に移行されることはありません。 アプリはリージョンからエクスポートして、新しいリージョンで使用できるようにインポートします。
@@ -112,7 +112,7 @@ v2 エンドポイントの成功応答:
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、 **[[Publish]\(公開\)](luis-how-to-azure-subscription.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。 
+Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、 **[[Publish]\(公開\)](luis-how-to-azure-subscription.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。
 
 ## <a name="new-versioning-route"></a>新しいバージョン管理ルート
 v2 モデルは、[バージョン](luis-how-to-manage-versions.md)に含まれています。 バージョン名は、ルートの 10 文字です。 既定のバージョンは "0.1" です。
@@ -153,22 +153,22 @@ LUIS では、モデルを強化する可能性がある既存の[エンドポ�
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |get|
 
 ## <a name="importing-1x-app-into-2x"></a>1\.x アプリから 2.x へのインポート
-エクスポートされた 1.x アプリの JSON には、[LUIS][LUIS] 2.0 にインポートする前に変更しなければならない領域があります。 
+エクスポートされた 1.x アプリの JSON には、[LUIS][LUIS] 2.0 にインポートする前に変更しなければならない領域があります。
 
-### <a name="prebuilt-entities"></a>事前構築済みのエンティティ 
-[事前構築済みのエンティティ](luis-prebuilt-entities.md)は変更されました。 V2 の事前構築済みのエンティティが使用されていることを確認してください。 これには、datetime の代わりの [datetimeV2](luis-reference-prebuilt-datetimev2.md) の使用も含まれます。 
+### <a name="prebuilt-entities"></a>事前構築済みのエンティティ
+[事前構築済みのエンティティ](luis-prebuilt-entities.md)は変更されました。 V2 の事前構築済みのエンティティが使用されていることを確認してください。 これには、datetime の代わりの [datetimeV2](luis-reference-prebuilt-datetimev2.md) の使用も含まれます。
 
 ### <a name="actions"></a>アクション
-アクション プロパティが有効ではなくなりました。 これは空にする必要があります 
+アクション プロパティが有効ではなくなりました。 これは空にする必要があります
 
 ### <a name="labeled-utterances"></a>ラベル付きの発話
-V1 のラベル付きの発話では、単語またはフレーズの先頭と末尾にスペースを挿入できました。 そのスペースが削除されました。 
+V1 のラベル付きの発話では、単語またはフレーズの先頭と末尾にスペースを挿入できました。 そのスペースが削除されました。
 
 ## <a name="common-reasons-for-http-response-status-codes"></a>HTTP 応答状態コードの一般的な理由
 [LUIS API の応答コード](luis-reference-response-codes.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-v2 API のドキュメントを使用して、LUIS [エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)および[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に対する既存の REST 呼び出しを更新します。 
+v2 API のドキュメントを使用して、LUIS [エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)および[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に対する既存の REST 呼び出しを更新します。
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

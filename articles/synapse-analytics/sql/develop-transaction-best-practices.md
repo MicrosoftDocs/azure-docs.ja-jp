@@ -6,18 +6,18 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5d508450d17d6e07e2c2bdb78b7934988936b9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715751"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503193"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>SQL プールでのトランザクションの最適化
+# <a name="optimize-transactions-in-sql-pool"></a>SQL プールでのトランザクションの最適化
 
 ロールバックに長時間かかるリスクを最小限に抑えながら、SQL プールでトランザクション コードのパフォーマンスを最適化する方法について説明します。
 
@@ -82,7 +82,7 @@ CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 た
 
 クラスター化インデックスを持つ空でないテーブルにデータを読み込むと、完全ログ記録の行と最小ログ記録の行が混在する場合がよくあります。 クラスター化インデックスは、ページのバランス木 (B ツリー) です。 既に書き込みが行われているページに別のトランザクションの行が含まれている場合、この書き込みは完全ログ記録になります。 一方、ページが空の場合は、そのページへの書き込みは最小ログ記録になります。
 
-## <a name="optimizing-deletes"></a>削除の最適化
+## <a name="optimize-deletes"></a>削除の最適化
 
 DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>更新の最適化
+## <a name="optimize-updates"></a>更新の最適化
 
 UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > 大きなテーブルを作成し直す場合は、SQL プールのワークロード管理機能を使用することが役立ちます。 詳細については、[「ワークロード管理用のリソース クラス](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
 
-## <a name="optimizing-with-partition-switching"></a>パーティションの切り替えを使用した最適化
+## <a name="optimize-with-partition-switching"></a>パーティション切り替えを使用した最適化
 
 [テーブル パーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理すると同じ結果を得られます。
 

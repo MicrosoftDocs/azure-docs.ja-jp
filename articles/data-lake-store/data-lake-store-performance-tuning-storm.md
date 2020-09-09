@@ -1,17 +1,17 @@
 ---
 title: パフォーマンス チューニング - Storm と Azure Data Lake Storage Gen1
-description: Azure Data Lake Storage Gen1 上の Storm クラスターのパフォーマンス チューニング ガイドラインについて説明します。
+description: 一般的な問題の解決など、Azure Storm トポロジのパフォーマンスを調整する場合に考慮すべき要素について説明します。
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691639"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192815"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight と Azure Data Lake Storage Gen1 上の Storm に対するパフォーマンス チューニング ガイダンス
 

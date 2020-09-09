@@ -5,15 +5,16 @@ description: PowerShell を使用してピア ASN を Azure サブスクリプ�
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: aed079c467139ac5819951c5895ba753ee38ae2d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75908986"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89067741"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>PowerShell を使用してピア ASN を Azure サブスクリプションに関連付ける
 

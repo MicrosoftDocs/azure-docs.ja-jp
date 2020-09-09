@@ -23,8 +23,11 @@
       href: quickstart-create-data-factory-python.md
     - name: データ ファクトリの作成 - REST
       href: quickstart-create-data-factory-rest-api.md
-    - name: データ ファクトリの作成 - Resource Manager テンプレート
+    - name: データファクトリの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
+      href: enable-customer-managed-key.md
     - name: データ フローの作成
       href: data-flow-create.md
 - name: チュートリアル
@@ -39,7 +42,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: オンプレミスの SQL Server データベースから Azure Blob Storage
+        - name: SQL Server データベースから Azure Blob Storage
           items:
             - name: データのコピー ツール
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +79,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: 複数のオンプレミス SQL Server テーブルから
+            - name: 複数の SQL Server データベース テーブルから
               items:
                 - name: ユーザー インターフェイス (UI)
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -88,10 +91,16 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: Azure SQL MI での CDC の使用
+              items:
+                - name: ユーザー インターフェイス (UI)
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: 最後に変更されたデータによる新しいファイル
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: 時間でパーティション分割されたファイル名による新しいファイル
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+        - name: マネージド VNet とプライベート エンドポイントを使用してコピー パイプラインを構築する
+          href: tutorial-copy-data-portal-private.md
     - name: データを変換する
       items:
         - name: マッピング データ フローを使用してデータを変換する
@@ -120,6 +129,8 @@
                   href: tutorial-transform-data-hive-virtual-network-portal.md
                 - name: Azure PowerShell
                   href: tutorial-transform-data-hive-virtual-network.md
+        - name: マネージド VNet とプライベート エンドポイントを使用してマッピング データフロー パイプラインを構築する
+          href: tutorial-data-flow-private.md
     - name: 制御フロー
       items:
         - name: ユーザー インターフェイス (UI)
@@ -156,6 +167,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: データ フロー
       items:
         - name: マッピング データ フローを使用してデータを変換する
@@ -172,7 +187,7 @@
               href: concepts-data-flow-monitoring.md
             - name: データ フローのパフォーマンス
               href: concepts-data-flow-performance.md
-            - name: グラフの管理
+            - name: データ フロー キャンバスの管理
               href: concepts-data-flow-manage-graph.md
             - name: 式ビルダー
               href: concepts-data-flow-expression-builder.md
@@ -194,12 +209,14 @@
       items:
         - name: データ ファクトリの視覚的な作成
           href: author-visually.md
+        - name: 反復開発とデバッグ
+          href: iterative-development-debugging.md
+        - name: 管理ハブ
+          href: author-management-hub.md
         - name: ソース管理
           href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
-        - name: 反復開発とデバッグ
-          href: iterative-development-debugging.md
     - name: Connectors
       items:
         - name: コネクタの概要
@@ -246,6 +263,8 @@
           href: format-binary.md
         - name: Cassandra
           href: connector-cassandra.md
+        - name: Common Data Model 形式
+          href: format-common-data-model.md
         - name: Common Data Service for Apps
           href: connector-dynamics-crm-office-365.md
         - name: Concur
@@ -256,6 +275,8 @@
           href: connector-db2.md
         - name: 区切りテキスト形式
           href: format-delimited-text.md
+        - name: 差分形式
+          href: format-delta.md
         - name: Drill
           href: connector-drill.md
         - name: Dynamics 365
@@ -264,10 +285,14 @@
           href: connector-dynamics-ax.md
         - name: Dynamics CRM
           href: connector-dynamics-crm-office-365.md
+        - name: Excel 形式
+          href: format-excel.md
         - name: ファイル システム
           href: connector-file-system.md
         - name: FTP
           href: connector-ftp.md
+        - name: GitHub
+          href: connector-github.md
         - name: Google AdWords
           href: connector-google-adwords.md
         - name: Google BigQuery
@@ -370,6 +395,8 @@
           href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
+        - name: Snowflake
+          href: connector-snowflake.md
         - name: Spark
           href: connector-spark.md
         - name: SQL Server
@@ -386,6 +413,8 @@
           href: connector-web-table.md
         - name: Xero
           href: connector-xero.md
+        - name: XML 形式
+          href: format-xml.md
         - name: Zoho
           href: connector-zoho.md
     - name: データの移動
@@ -447,12 +476,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight Streaming アクティビティ
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning バッチ実行アクティビティ
-          href: transform-data-using-machine-learning.md
-        - name: Machine Learning 更新リソース アクティビティ
-          href: update-machine-learning-models.md
         - name: Machine Learning パイプラインの実行アクティビティ
           href: transform-data-machine-learning-service.md
+        - name: Machine Learning Studio (classic) のバッチ実行アクティビティ
+          href: transform-data-using-machine-learning.md
+        - name: Machine Learning Studio (classic) の更新リソース アクティビティ
+          href: update-machine-learning-models.md
         - name: ストアド プロシージャ アクティビティ
           href: transform-data-using-stored-procedure.md
         - name: コンピューティングのリンクされたサービス
@@ -533,6 +562,8 @@
       items:
         - name: リンクされたサービスをパラメーター化する
           href: parameterize-linked-services.md
+        - name: グローバル パラメーター
+          href: author-global-parameters.md
         - name: 式言語
           href: control-flow-expression-language-functions.md
         - name: システム変数
@@ -556,19 +587,25 @@
         - name: Data Factory のマネージド ID
           href: data-factory-service-identity.md
         - name: カスタマー マネージド キーの暗号化
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
+        - name: マネージド仮想ネットワーク
+          href: managed-virtual-network-private-endpoint.md
+        - name: Data Factory の Azure Private Link
+          href: data-factory-private-link.md
     - name: 監視と管理
       items:
         - name: 視覚的な監視
           href: monitor-visually.md
         - name: Azure Monitor による監視
           href: monitor-using-azure-monitor.md
+        - name: Azure Monitor による SSIS の監視
+          href: monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor
         - name: SDK を使用した監視
           href: monitor-programmatically.md
         - name: 統合ランタイムの監視
           href: monitor-integration-runtime.md
         - name: Azure-SSIS 統合ランタイムの監視
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+          href: monitor-integration-runtime.md#azure-ssis-integration-runtime
         - name: Azure-SSIS 統合ランタイムの再構成
           href: manage-azure-ssis-integration-runtime.md
         - name: データ ファクトリのコピーまたは複製
@@ -585,6 +622,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: セルフホステッド統合ランタイムのオートメーション スクリプト
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: Windows コンテナーでセルフホステッド統合ランタイムを実行する
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Azure での SSIS パッケージの実行
       items:
         - name: SSDT からの Azure での SSIS パッケージの実行
@@ -605,6 +644,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure-SSIS IR の Azure AD 認証の有効化
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Windows 認証でのデータへの接続
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: ファイルの保存とファイル共有への接続
+          href: ssis-azure-files-file-shares.md
         - name: Azure-SSIS IR の Enterprise Edition のプロビジョニング
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Azure-SSIS IR の組み込みおよびプレインストール コンポーネント
@@ -623,6 +666,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSMS を使用した SSIS ジョブの移行
           href: how-to-migrate-ssis-job-ssms.md
+        - name: Azure-SSIS IR パッケージ ストアを使用したパッケージの管理
+          href: azure-ssis-integration-runtime-package-store.md
     - name: トリガーの作成
       items:
         - name: イベントベースのトリガーの作成
@@ -633,6 +678,32 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: タンブリング ウィンドウ トリガーの依存関係の作成
           href: tumbling-window-trigger-dependency.md
+    - name: シナリオ
+      items:
+        - name: データ レイクおよび EDW のデータ移行
+          items:
+            - name: Azure Data Factory を選ぶ理由
+              href: data-migration-guidance-overview.md
+            - name: データを AWS S3 から Azure に移行する
+              href: data-migration-guidance-s3-azure-storage.md
+            - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
+              href: data-migration-guidance-hdfs-azure-storage.md
+            - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
+              href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: マッピング データ フローを使用した変換
+          items:
+            - name: 固定幅のテキスト ファイルを処理する
+              href: how-to-fixed-width.md
+            - name: エラー行の処理
+              href: how-to-data-flow-error-rows.md
+            - name: Azure SQL DB から Azure Cosmos DB
+              href: how-to-sqldb-to-cosmosdb.md
+        - name: オンプレミスからの SSIS の移行
+          items:
+            - name: SSIS の移行の概要
+              href: scenario-ssis-migration-overview.md
+            - name: Azure SQL Managed Instance への SSISDB の移行
+              href: scenario-ssis-migration-ssisdb-mi.md
     - name: テンプレート
       items:
         - name: テンプレートの概要
@@ -661,44 +732,24 @@
           href: pricing-concepts.md
     - name: トラブルシューティング ガイド
       items:
+        - name: Data Factory UX
+          href: data-factory-ux-troubleshoot-guide.md
         - name: Activities
           href: data-factory-troubleshoot-guide.md
         - name: Connectors
           href: connector-troubleshoot-guide.md
         - name: データ フロー
           href: data-flow-troubleshoot-guide.md
+        - name: データのコピー ツール
+          href: copy-data-tool-troubleshoot-guide.md
         - name: セルフホステッド統合ランタイム
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 統合ランタイム
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: シナリオ
-  items:
-    - name: データ レイクおよび EDW のデータ移行
-      items:
-        - name: Azure Data Factory を選ぶ理由
-          href: data-migration-guidance-overview.md
-        - name: データを AWS S3 から Azure に移行する
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: マッピング データ フローを使用した変換
-      items:
-        - name: 固定幅のテキスト ファイルを処理する
-          href: how-to-fixed-width.md
-        - name: エラー行の処理
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB から CosmosDB へ
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: オンプレミスからの SSIS の移行
-      items:
-        - name: SSIS の移行の概要
-          href: scenario-ssis-migration-overview.md
-        - name: Azure SQL Managed Instance への SSISDB の移行
-          href: scenario-ssis-migration-ssisdb-mi.md
+        - name: Azure-SSIS IR での接続性の診断
+          href: ssis-integration-runtime-diagnose-connectivity-faq.md
 - name: リファレンス
   items:
     - name: データ フローのスクリプト

@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/20/2018
-ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/10/2020
+ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419274"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251150"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Server にある複数のテーブルから Azure SQL Database のデータベースにデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
+このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。    
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -68,12 +68,12 @@ ms.locfileid: "81419274"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースをソース データ ストアとして使用します。 
-* **Azure SQL データベース**。 シンク データ ストアとして SQL データベースを使用します。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。 
+* **SQL Server**。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
+* **Azure SQL データベース**。 シンク データ ストアとして Azure SQL Database のデータベースを使用します。 SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
-1. SQL Server Management Studio を開き、オンプレミスの SQL Server データベースに接続します。
+1. SQL Server Management Studio を開き、SQL Server データベースに接続します。
 
 1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
@@ -111,12 +111,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL データベースにターゲット テーブルを作成する
-1. SQL Server Management Studio を開き、Azure SQL データベースに接続します。
+### <a name="create-destination-tables-in-your-database"></a>データベースにターゲット テーブルを作成する
+
+1. SQL Server Management Studio を開き、Azure SQL Database のデータベースに接続します。
 
 1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
-1. Azure SQL データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。  
+1. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。  
     
     ```sql
     create table customer_table
@@ -134,8 +135,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを Azure SQL データベースに作成する
-1. Azure SQL データベースに対して次の SQL コマンドを実行し、`watermarktable` という名前のテーブルを作成して、基準値を格納します。 
+### <a name="create-another-table-in-your-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルをデータベースに作成する
+
+1. データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。 
     
     ```sql
     create table watermarktable
@@ -156,9 +158,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Azure SQL データベースにストアド プロシージャを作成する 
+### <a name="create-a-stored-procedure-in-your-database"></a>データベースにストアド プロシージャを作成する
 
-次のコマンドを実行して、Azure SQL データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
+次のコマンドを実行して、データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -174,8 +176,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL データベースにデータ型と新たなストアド プロシージャを作成する
-次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型を Azure SQL データベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。
+### <a name="create-data-types-and-additional-stored-procedures-in-your-database"></a>データベースにデータ型と新たなストアド プロシージャを作成する
+
+次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型をデータベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。
 
 作業工程を簡単に始められるように、差分データをテーブル変数を介して渡すこのようなストアド プロシージャを直接使用し、それらを宛先ストアにマージします。 テーブル変数には、"多数" の差分行 (100 を超える行) が格納されることが想定されていない点に注意してください。  
 
@@ -260,9 +263,13 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成する
 プライベート ネットワーク (オンプレミス) のデータ ストアから Azure データ ストアにデータを移動するときに、セルフホステッド統合ランタイム (IR) をオンプレミス環境にインストールします。 セルフホステッド IR を使用すると、プライベート ネットワークと Azure との間でデータを移動できます。 
 
-1. 左ウィンドウの下部にある **[接続]** をクリックし、 **[接続]** ウィンドウの **[Integration Runtimes]\(統合ランタイム\)** に切り替えます。 
+1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を選択します。
 
-1. **[Integration Runtimes]\(統合ランタイム\)** タブで、 **[+ 新規]** をクリックします。 
+   ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
+
+1. 左ペインの **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
+
+   ![統合ランタイムの作成](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. **[Integration Runtime Setup]\(統合ランタイムの設定\)** ウィンドウで、 **[Perform data movement and dispatch activities to external computes]\(データの移動を実行し、アクティビティを外部コンピューティングにディスパッチする\)** を選択し、 **[続行]** をクリックします。 
 
@@ -281,13 +288,14 @@ END
 1. 統合ランタイムの一覧に **MySelfHostedIR** が含まれていることを確認します。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、オンプレミスの SQL Server データベースと Azure SQL データベースに対するリンクされたサービスを作成します。 
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、SQL Server データベースと、Azure SQL Database のデータベースに対するリンクされたサービスを作成します。 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server のリンクされたサービスを作成する
-この手順では、オンプレミス SQL Server データベースをデータ ファクトリにリンクします。
+この手順では、SQL Server データベースをデータ ファクトリにリンクします。
 
 1. **[接続]** ウィンドウで、 **[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、 **[+ 新規]** をクリックします。
 
+   ![新規のリンクされたサービス](./media/doc-common-process/new-linked-service.png)
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[SQL Server]** を選択し、 **[続行]** をクリックします。 
 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
@@ -303,16 +311,16 @@ END
     1. リンクされたサービスを保存するために、 **[完了]** をクリックします。
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
-最後の手順では、ソース SQL Server データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 この手順では、ターゲット/シンク Azure SQL データベースをデータ ファクトリにリンクします。 
+最後の手順では、ソース SQL Server データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 この手順では、ターゲット/シンク データベースをデータ ファクトリにリンクします。 
 
 1. **[接続]** ウィンドウで、 **[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、 **[+ 新規]** をクリックします。
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。 
-    1. **[サーバー名]** で、ドロップダウン リストから Azure SQL サーバーの名前を選択します。 
-    1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成した Azure SQL データベースを選択します。 
-    1. **[ユーザー名]** に、Azure SQL データベースにアクセスできるユーザーの名前を入力します。 
+    1. **[サーバー名]** で、ドロップダウン リストからサーバーの名前を選択します。 
+    1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成したデータベースを選択します。 
+    1. **[ユーザー名]** に、データベースにアクセスするユーザーの名前を入力します。 
     1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
     1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、 **[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
     1. リンクされたサービスを保存するために、 **[完了]** をクリックします。
@@ -349,7 +357,7 @@ END
     1. **[Create/update parameters]\(パラメーターの作成/更新\)** セクションで、 **[新規]** をクリックします。 
     1. **[名前]** に「**SinkTableName**」と入力し、 **[type]\(型\)** として **[文字列]** を指定します。 このデータセットは、**SinkTableName** をパラメーターとして受け取ります。 SinkTableName パラメーターは、実行時にパイプラインによって動的に設定されます。 パイプライン内の ForEach アクティビティは、一連のテーブル名を反復処理しながら、各イテレーションの中でこのデータセットにテーブル名を渡します。
    
-    ![シンク データセット - プロパティ](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+        ![シンク データセット - プロパティ](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
 1. プロパティ ウィンドウの **[接続]** タブに切り替えて、 **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 **[テーブル]** プロパティで、 **[動的なコンテンツの追加]** をクリックします。   
     
 1. **[動的なコンテンツの追加]** ウィンドウの **[パラメーター]** セクションで **[SinkTableName]** を選択します。 
@@ -371,7 +379,7 @@ END
     1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
     1. **[テーブル]** で **[dbo].[watermarktable]** を選択します。
 
-    ![基準値データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
+        ![基準値データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 このパイプラインは、一連のテーブル名をパラメーターとして受け取ります。 ForEach アクティビティは、一連のテーブル名を反復処理しながら、次の操作を実行します。 
@@ -388,7 +396,7 @@ END
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
-1. **[全般]** タブの **[名前]** に「**IncrementalCopyPipeline**」と入力します。 
+1. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。  
 
 1. **[パラメーター]** タブで、次の手順を実行します。 
 
@@ -398,7 +406,7 @@ END
 
 1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
 
-1. **[設定]** タブに切り替えて、`@pipeline().parameters.tableList`[項目] **に「** 」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
+1. **[設定]** タブに切り替えて、 **[項目]** に「`@pipeline().parameters.tableList`」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
 
     ![ForEach アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
@@ -455,7 +463,7 @@ END
     1. **[テーブルの種類]** プロパティに「`@{item().TableType}`」と入力します。
     1. **[Table type parameter name]\(テーブルの種類のパラメーター名\)** に「`@{item().TABLE_NAME}`」と入力します。
 
-    ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを**ストアド プロシージャ** アクティビティに接続します。 
 
 1. パイプラインの **ストアド プロシージャ** アクティビティを選択します。**プロパティ** ウィンドウの **[全般]** タブで、 **[名前]** に「**StoredProceduretoWriteWatermarkActivity**」と入力します。 
@@ -469,7 +477,7 @@ END
     1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     1. 各パラメーターの値を次のように指定します。 
 
-        | Name | 種類 | 値 | 
+        | 名前 | Type | 値 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -507,10 +515,12 @@ END
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 
-1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
+1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-    ![パイプライン実行](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-1. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 選択したパイプラインの実行に関連付けられているすべてのアクティビティの実行が表示されます。 
+1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列のリンクを選択します。 アクティビティの実行の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 
+
+1. 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
+
 
 ## <a name="review-the-results"></a>結果の確認
 SQL Server Management Studio からターゲット SQL データベースに対して次のクエリを実行し、ソース テーブルからターゲット テーブルにデータがコピーされていることを確かめます。 
@@ -605,9 +615,11 @@ VALUES
 
 ## <a name="monitor-the-pipeline-again"></a>パイプラインを再度監視する
 
-1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
+1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-1. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 選択したパイプラインの実行に関連付けられているすべてのアクティビティの実行が表示されます。 
+1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列のリンクを選択します。 アクティビティの実行の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 
+
+1. 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
 
 ## <a name="review-the-final-results"></a>最終結果を確認する
 SQL Server Management Studio からターゲット SQL データベースに対して次のクエリを実行し、更新されたデータや新しいデータがソース テーブルからターゲット テーブルにコピーされていることを確かめます。 

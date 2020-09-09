@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803485"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005314"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
 
@@ -35,7 +35,7 @@ AKS クラスター内のコンピューティング リソースを管理する
     * Kubernetes スケジューラがノードにポッドを配置しようとすると、ポッド要求を使用して、スケジュール設定に使用できるリソースが十分にあるノードが特定されます。
     * ポッド要求を設定しないと、既定で、定義済みの制限に設定されます。
     * アプリケーションのパフォーマンスを監視して、これらの要求を調整することが非常に重要です。 不十分な要求が行われると、ノードの過剰なスケジュール設定が原因でアプリケーションのパフォーマンスが低下する可能性があります。 要求を過大に見積もると、アプリケーションのスケジュール設定がより困難になる可能性があります。
-* **ポッドの CPU/メモリの制限**は、ポッドが使用できる CPU とメモリの最大量です。 これらの制限は、リソース不足によりノードが不安定になった場合にどのポッドを強制終了すべきかを定義するのに役立ちます。 適切な制限が設定されていないと、リソース不足が解消されるまでポッドの強制終了が行われます。
+* **ポッドの CPU/メモリの制限**は、ポッドが使用できる CPU とメモリの最大量です。 メモリの制限は、リソース不足によりノードが不安定になった場合にどのポッドを強制終了すべきかを定義するのに役立ちます。 適切な制限が設定されていないと、リソース不足が解消されるまでポッドの強制終了が行われます。 ポッドは、一定の期間 CPU の制限を超えることができる場合とできない場合がありますが、CPU の制限を超えてもポッドは強制終了されません。 
     * ポッド制限は、ポッドがいつリソース消費の制御を失うかを定義するのに役立ちます。 制限を超えると、ノードの正常性を維持し、ノードを共有するポッドへの影響を最小限に抑えるために、強制終了に対してポッドの優先順位が付けられます。
     * ポッド制限を設定しないと、既定で、特定のノードで使用可能な最大値に設定されます。
     * ポッドの制限を、ノードでサポートできる制限より高く設定しないようにします。 各 AKS ノードでは、主要な Kubernetes コンポーネント用に一定量の CPU とメモリが予約されます。 アプリケーションでは、ノードで他のポッドを正常に実行するのに過剰なリソースの使用が試行される場合があります。
@@ -74,11 +74,9 @@ spec:
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>AKS クラスターに対するアプリケーションの開発とデバッグを行う
 
-**ベスト プラクティス ガイダンス** - 開発チームでは、Dev Spaces を使用して AKS クラスターに対するデプロイおよびデバッグを行う必要があります。 この開発モデルを使用することで、アプリが運用環境にデプロイされる前に、ロールベースのアクセス制御、ネットワーク、またはストレージのニーズが確実に実装されるようになります。
+**ベスト プラクティス ガイダンス** - 開発チームでは、Dev Spaces を使用して AKS クラスターに対するデプロイおよびデバッグを行う必要があります。 この開発モデルを使用することで、アプリが運用環境にデプロイされる前に、ロールベースのアクセス制御 (RBAC)、ネットワーク、またはストレージのニーズが確実に実装されるようになります。
 
 Azure Dev Spaces を使用して、AKS クラスターに対して直接アプリケーションを開発、デバッグ、テストします。 チーム内の開発者は連携して、アプリケーション ライフサイクル全体を通してビルドとテストを行います。 Visual Studio または Visual Studio Code などの既存のツールを引き続き使用することができます。 Dev Spaces 用に拡張機能がインストールされ、AKS クラスターでのアプリケーションの実行およびデバッグのオプションが提供されます。
-
-![AKS クラスターで Dev Spaces を使用してアプリケーションをデバッグする](media/developer-best-practices-resource-management/dev-spaces-debug.png)
 
 Dev Spaces を使用するこの統合開発およびテスト プロセスにより、[minikube][minikube] などのローカル テスト環境の必要性が軽減されます。 代わりに、AKS クラスターに対する開発およびテストを行います。 クラスターを論理的に分離するための名前空間の使用に関する前のセクションで説明したように、このクラスターをセキュリティで保護し、分離することができます。 アプリを運用環境にデプロイする準備ができたら、開発は実際の AKS クラスターに対してすべて行われているため、自信を持ってデプロイできます。
 
@@ -119,7 +117,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

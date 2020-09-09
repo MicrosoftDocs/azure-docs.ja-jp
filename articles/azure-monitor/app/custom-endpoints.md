@@ -3,19 +3,20 @@ title: Azure Application Insights による既定の SDK エンドポイント�
 description: Azure Government などのリージョンの既定の Azure Monitor Application Insights SDK エンドポイントを変更します。
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: f5bf5b07f7c058b4778e7695f150fdc71e048182
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.custom: references_regions, devx-track-javascript
+ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629186"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373132"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>既定のエンドポイントをオーバーライドする Application Insights
 
 Application Insights から特定のリージョンにデータを送信するには、既定のエンドポイント アドレスをオーバーライドする必要があります。 SDK ごとに必要な変更点は若干異なります。そのすべてについてこの記事で説明します。 これらの変更には、サンプル コードを調整し、`QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address`、および `Profile_Query_Endpoint_address` のプレースホルダー値をお客様の特定のリージョンに対応する実際のエンドポイント アドレスに置き換える必要があります。 この記事の末尾には、この構成が必要なリージョンのエンドポイント アドレスのリンクを記載しています。
 
 > [!NOTE]
-> Application Insights 内にカスタム エンドポイントを設定する方法として、新たに[接続文字列](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)が推奨されています。
+> Application Insights 内にカスタム エンドポイントを設定する方法として、新たに[接続文字列](./sdk-connection-string.md?tabs=net)が推奨されています。
 
 ---
 
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-Azure Functions では、関数のアプリケーション設定で設定された[接続文字列](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)を使用することをお勧めします。 関数のアプリケーション設定にアクセスするには、関数ペインから **[設定]**  >  **[構成]**  >  **[アプリケーション設定]** の順に選択します。 
+Azure Functions では、関数のアプリケーション設定で設定された[接続文字列](./sdk-connection-string.md?tabs=net)を使用することをお勧めします。 関数のアプリケーション設定にアクセスするには、関数ペインから **[設定]**  >  **[構成]**  >  **[アプリケーション設定]** の順に選択します。 
 
 名前:`APPLICATIONINSIGHTS_CONNECTION_STRING`値:`Connection String Value`
 
@@ -155,7 +156,7 @@ opencensus-python SDK のインジェスト エンドポイントの変更に関
 
 ## <a name="regions-that-require-endpoint-modification"></a>エンドポイントの変更が必要なリージョン
 
-現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみです。
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) と [Azure China](/azure/china/resources-developer-guide) のみです。
 
 |リージョン |  エンドポイント名 | 値 |
 |-----------------|:------------|:-------------|
@@ -179,5 +180,5 @@ opencensus-python SDK のインジェスト エンドポイントの変更に関
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Government のカスタム変更の詳細については、[Azure の監視と管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)の詳細なガイダンスを参照してください。
-- Azure China の詳細については、[Azure China プレイブック](https://docs.microsoft.com/azure/china/)のページを参照してください。
+- Azure Government のカスタム変更の詳細については、[Azure の監視と管理](../../azure-government/compare-azure-government-global-azure.md#application-insights)の詳細なガイダンスを参照してください。
+- Azure China の詳細については、[Azure China プレイブック](/azure/china/)のページを参照してください。

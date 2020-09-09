@@ -7,20 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202215"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760951"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
 Azure Private Link サービスは、Azure Private Link を使用する独自のサービスに対する参照です。 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) の背後で実行されている自分のサービスで Private Link アクセスを有効にすると、自分のサービスのコンシューマーがそのサービスに対して独自の VNet からプライベートにアクセスできるようになります。 顧客は、自分の VNet 内にプライベート エンドポイントを作成し、それをこのサービスにマッピングすることができます。 この記事では、サービス プロバイダー側に関連する概念について説明します。 
 
+:::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Private Link サービスのワークフロー" border="true":::
+
+*図:Azure Private Link サービス。*
+
 ## <a name="workflow"></a>ワークフロー
 
 ![Private Link サービスのワークフロー](media/private-link-service-overview/private-link-service-workflow.png)
+
+
+*図:Azure Private Link サービスのワークフロー。*
 
 ### <a name="create-your-private-link-service"></a>Private Link サービスを作成する
 
@@ -82,9 +89,9 @@ Private Link サービスでは、次のプロパティを指定します。
 
 - プレフィックスはサービス名です。 独自のプレフィックスを選択できます。 "別名" は、作成後に変更することはできないため、適切なプレフィックスを選択してください。  
 - GUID は、プラットフォームによって提供されます。 これは、名前をグローバルに一意なものにするのに役立ちます。 
-- サフィックスは、Azure によって追加されます: *<リージョン>* .azure.privatelinkservice 
+- サフィックスは、Azure によって追加されます: *<リージョン>*.azure.privatelinkservice 
 
-完全な別名: *<プレフィックス>* . {GUID}. *<リージョン>* .azure.privatelinkservice  
+完全な別名: *<プレフィックス>* . {GUID}.*<リージョン>*.azure.privatelinkservice  
 
 ## <a name="control-service-exposure"></a>サービスの公開を制御する
 

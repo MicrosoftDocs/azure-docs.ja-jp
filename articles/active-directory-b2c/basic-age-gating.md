@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386133"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で年齢制限を有効にする
 
@@ -71,7 +71,7 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 | TD | チャド | なし | 21 |
 | TH | タイ | なし | 20 |
 | TW | 台湾 | なし | 20 |
-| US | United States | 13 | 18 |
+| US | 米国 | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年齢制限のオプション
 

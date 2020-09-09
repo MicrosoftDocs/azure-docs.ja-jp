@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d18258d62267c931a39947611dda038ff6e65205
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84718701"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Azure Security Center を使用してセキュリティ体制を強化する
 この記事は、セキュリティ体制を強化するために役立ちます。 リソースのセキュリティを可能な限り厳密にしたり、ポリシーへの準拠を監視したりするには、Azure Security Center の監視機能を使用します。
@@ -34,7 +34,7 @@ ms.locfileid: "77603775"
 - 仮想マシン、ネットワーク セキュリティ グループ、エンドポイントなど、ネットワーク リソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)」を参照してください。 
 - SQL サーバーやストレージ アカウントなど、データとストレージ リソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center での Azure SQL サービスとデータの保護](security-center-sql-service-recommendations.md)」を参照してください。 
 - MFA やアカウント アクセス許可など、ID やアクセスのリソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)」を参照してください。 
-- リソースへの Just-In-Time アクセスを監視する方法については、「[Just-In-Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。 
+- リソースへの Just-In-Time アクセスを監視する方法については、「[Just-In-Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。
 
 
 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。

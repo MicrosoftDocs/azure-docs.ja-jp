@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188588"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279501"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -55,7 +55,7 @@ Azure の登録ポータルで、管理者の連絡先情報にセキュリテ�
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Azure サブスクリプションを管理グループに整理する
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](/azure/governance/management-groups/create)では、サブスクリプションを上回る範囲のレベルが提供されます。 管理グループと呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用された条件を自動的に継承します。
 
-管理グループとサブスクリプションの柔軟な構造をディレクトリに構築することができます。 各ディレクトリには、ルート管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。
+管理グループとサブスクリプションの柔軟な構造をディレクトリに構築することができます。 各ディレクトリには、ルート管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループを使用すると、グローバル ポリシーと Azure ロールの割り当てをディレクトリ レベルで適用できます。
 
 管理グループの使用に関するベスト プラクティスを次にいくつか示します。
 
@@ -116,7 +116,7 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 **詳細**: 最も優先順位が高い項目から、Security Center の[セキュリティに関する推奨事項](../../security-center/security-center-recommendations.md)に従います。
 
 **ベスト プラクティス**: Security Center のアラートを、セキュリティ情報およびイベント管理 (SIEM) ソリューションに統合します。   
-**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[セキュリティ アラートと推奨事項のエクスポート](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
+**詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[セキュリティ アラートと推奨事項のエクスポート](../../security-center/continuous-export.md#configure-siem-integration-via-azure-event-hubs)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
 
 **ベスト プラクティス**: Azure ログを SIEM に統合します。   
 **詳細**: [データの収集とエクスポートに Azure Monitor](/azure/azure-monitor/overview#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
@@ -182,7 +182,7 @@ DDoS に対する回復性を設計しビルドするときは、さまざまな
 
 Azure Cloud Services の場合は、[複数インスタンス](../../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。
 
-[Azure Virtual Machines](/azure/virtual-machines/windows/overview) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](/azure/virtual-machines/virtual-machines-windows-manage-availability)に各 VM が含まれていることを確認してください。 自動スケーリング機能には仮想マシン スケール セットを使うことをお勧めします。
+[Azure Virtual Machines](../../virtual-machines/windows/overview.md) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](../../virtual-machines/windows/tutorial-availability-sets.md)に各 VM が含まれていることを確認してください。 自動スケーリング機能には仮想マシン スケール セットを使うことをお勧めします。
 
 **ベスト プラクティス**: アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装します。  
 **詳細**: 攻撃のリスクは、アプリケーションの規模 (攻撃対象領域) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) と [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) を用いて不要にリスニングしているポートを閉じることで、攻撃対象領域を減らすことができます。
@@ -215,8 +215,8 @@ Azure Policy の採用後に従うセキュリティのベストプラクティ�
 **ベスト プラクティス**: ポリシー違反の監視を担当するロールを特定し、適切な修復アクションが確実に迅速に行われるようにします。   
 **詳細**: 割り当てられたロールに、[Azure portal](../../governance/policy/how-to/get-compliance-data.md#portal) または[コマンド ライン](../../governance/policy/how-to/get-compliance-data.md#command-line)を使用してコンプライアンスを監視させます。
 
-**ベスト プラクティス**: Azure Policy は、組織の明文化されたポリシーを技術的に表したものです。 混乱を減らし、一貫性を高めるため、すべての Azure ポリシーを組織のポリシーにマッピングします。   
-**詳細**: [Azure Policy の定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または [Azure Policy イニシアティブ](../../governance/policy/concepts/definition-structure.md#initiatives)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure Policy の定義自体にマッピングをドキュメント化します。
+**ベスト プラクティス**: Azure Policy は、組織の明文化されたポリシーを技術的に表したものです。 混乱を減らし、一貫性を高めるため、すべての Azure Policy 定義を組織のポリシーにマッピングします。   
+**詳細**: [ポリシーの定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または [イニシアティブ定義](../../governance/policy/concepts/initiative-definition-structure.md#metadata)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure Policy の定義自体にマッピングをドキュメント化します。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD のリスク レポートの監視
 ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、[リスク検出](../../active-directory/reports-monitoring/concept-risk-events.md)と呼ばれるレコードに格納されます。 リスク検出は、Azure AD のセキュリティ レポートに記録されます。 詳細については、[危険な状態のユーザー セキュリティ レポート](../../active-directory/reports-monitoring/concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)に関する記事をご覧ください。

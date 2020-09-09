@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 85f14329359eaf051b992f657ac0e4e634d504cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792211"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020832"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Cognitive Search でコンカレンシーを管理する方法
 
@@ -28,8 +29,8 @@ ms.locfileid: "72792211"
 
 すべてのリソースには、オブジェクトのバージョン情報を提供する[*エンティティ タグ (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag) があります。 最初に ETag をチェックして、リソースの ETag がローカル コピーと一致することを確認することにより、典型的なワークフロー (取得、ローカル変更、更新) における同時更新を回避できます。
 
-+ REST API では、要求ヘッダーで [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) を使用します。
-+ .NET SDK では、accessCondition オブジェクトを通じて ETag を設定し、リソースの [If-Match | If-Match-None ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)を設定します。 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) を継承するすべてのオブジェクトは、accessCondition オブジェクトを持ちます。
++ REST API では、要求ヘッダーで [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) を使用します。
++ .NET SDK では、accessCondition オブジェクトを通じて ETag を設定し、リソースの [If-Match | If-Match-None ヘッダー](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)を設定します。 [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) を継承するすべてのオブジェクトは、accessCondition オブジェクトを持ちます。
 
 リソースを更新するたびに、その ETag が自動的に変化します。 コンカレンシー管理を実装するときに行うのは、リモート リソースの ETag が、クライアントで変更したリソースのコピーの ETag と同じであることを要求する前提条件を更新要求に課すことだけです。 同時実行プロセスがリモート リソースを既に変更している場合、ETag は前提条件に一致せず、要求は HTTP 412 で失敗します。 .NET SDK を使用している場合、これは (`IsAccessConditionFailed()` 拡張メソッドが true を返す) `CloudException` として明示されます。
 
@@ -46,7 +47,7 @@ ms.locfileid: "72792211"
 
 ### <a name="sample-code-from-dotnetetagsexplainer-program"></a>[DotNetETagsExplainer プログラム](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)からのサンプル コード
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
@@ -173,6 +174,7 @@ ms.locfileid: "72792211"
 
 スニペットでは "hotels" インデックスを取得し、更新操作時にオブジェクトのバージョンをチェックし、条件に適合しない場合は例外をスローした後、操作を (最大 3 回) 再試行します。この際、最新バージョンを取得するために、まずサーバーからインデックスを取得します。
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -203,7 +205,7 @@ ms.locfileid: "72792211"
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -216,6 +218,6 @@ ms.locfileid: "72792211"
 
 ## <a name="see-also"></a>参照
 
-[一般的な HTTP 要求ヘッダーと応答ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP 状態コード](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[インデックス操作 (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[一般的な HTTP 要求ヘッダーと応答ヘッダー](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP 状態コード](/rest/api/searchservice/http-status-codes)
+[インデックス操作 (REST API)](/rest/api/searchservice/index-operations)

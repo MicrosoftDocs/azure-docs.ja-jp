@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Boxcryptor の統合 | Microsoft Docs'
 description: Azure Active Directory と Boxcryptor の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c46aa523-b58c-4a95-a800-db2e5e01c542
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1017eb02783e2d0d970804fc1a20fd2bdb525637
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01f666d683961781e6f45b18d6fe6f7a618483bb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158792"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル: Azure Active Directory と Boxcryptor の統合
 

@@ -5,15 +5,15 @@ description: Peering Service パートナーのチュートリアル
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d626d98613bd5d988b599d0980c885d7f73bb958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75ec1a4ededfea4f9b40461d69b6e16d947e6919
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720250"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712481"
 ---
 # <a name="peering-service-partner-walkthrough"></a>Peering Service パートナーのチュートリアル
 

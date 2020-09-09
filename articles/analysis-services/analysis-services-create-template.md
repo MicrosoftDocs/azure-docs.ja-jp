@@ -4,39 +4,41 @@ description: Azure Resource Manager テンプレートを使用して Azure Anal
 author: minewiskan
 ms.author: owend
 tags: azure-resource-manager
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/14/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 6f0d5f084c5cd48abf399e351c627d64951ce719
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 08/31/2020
+ms.custom: subject-armqs, references_regions
+ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697446"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230791"
 ---
-# <a name="quickstart-create-a-server---azure-resource-manager-template"></a>クイック スタート:サーバーを作成する - Azure Resource Manager テンプレート
+# <a name="quickstart-create-a-server---arm-template"></a>クイック スタート:サーバーの作成 - ARM テンプレート
 
-このクイックスタートでは、Resource Manager テンプレートを使って、Azure サブスクリプションに Analysis Services サーバー リソースを作成する方法について説明します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure サブスクリプションに Analysis Services サーバー リソースを作成する方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**:[Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)にアクセスしてアカウントを作成します。
 * **Azure Active Directory**: お使いのサブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。 また、その Azure Active Directory でアカウントを使用して Azure にサインインしている必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
-## <a name="create-a-server"></a>サーバーの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)からのものです。
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)からのものです。
+:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
+このテンプレートには、1 つの [Microsoft.AnalysisServices/servers](/azure/templates/microsoft.analysisservices/servers) リソースがファイアウォール規則と共に定義されています。
 
-このテンプレートには、1 つの [Microsoft.AnalysisServices/servers](https://docs.microsoft.com/azure/templates/microsoft.analysisservices/2017-08-01/servers) リソースがファイアウォール規則と共に定義されています。 
-
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインして、テンプレートを開くには、次の [Azure へのデプロイ] リンクを選択します。 このテンプレートを使用して、Analysis Services サーバー リソースを作成し、必須のプロパティと省略可能なプロパティを指定します。
 
@@ -52,7 +54,7 @@ ms.locfileid: "83697446"
     * **[サーバー名]** : サーバー リソースの名前を入力します。 
     * **[場所]** :Analysis Services の場合は無視してください。 場所は、[Server Location]\(サーバーの場所\) で指定します。
     * **[Server location]\(サーバーの場所\)** : Analysis Services サーバーの場所を入力します。 通常は、リソース グループに対して指定した既定の場所と同じリージョンになりますが、必須ではありません。 たとえば、「**米国中北部**」を入力します。 サポートされているリージョンについては、[リージョンごとの Analysis Services の利用の可否](analysis-services-overview.md#availability-by-region)を参照してください。
-    * **[SKU 名]** : 作成する Analysis Services サーバーの SKU 名を入力します。 B1、B2、D1、S0、S1、S2、S3、S4、S8v2、S9v2 の中から選択します。 SKU の利用の可否は、リージョンによって異なります。 評価とテストには、S0 または D1 をお勧めします。
+    * **[SKU 名]** : 作成する Analysis Services サーバーの SKU 名を入力します。 次の中から選択します。B1、B2、D1、S0、S1、S2、S3、S4、S8v2、S9v2。 SKU の利用の可否は、リージョンによって異なります。 評価とテストには、S0 または D1 をお勧めします。
     * **Capacity**:クエリ レプリカのスケールアウト インスタンスの総数を入力します。 複数インスタンスのスケールアウトは、一部のリージョンに限りサポートされます。
     * **[ファイアウォール設定]** : サーバー用に定義するインバウンド ファイアウォール規則を入力します。 指定しなかった場合、ファイアウォールは無効になります。
     * **[Backup Blob Container Uri]\(バックアップ BLOB コンテナー URI\)** : 読み取り、書き込み、リストの各アクセス許可を持つプライベート Azure Blob Storage コンテナーの SAS URI を入力します。 [バックアップと復元](analysis-services-backup.md)を使用する場合のみ必須です。
@@ -60,7 +62,7 @@ ms.locfileid: "83697446"
 
 3. **[購入]** を選択します。 サーバーが正常にデプロイされると、次の通知が表示されます。
 
-   ![Resource Manager テンプレートでデプロイする場合のポータルの通知](./media/analysis-services-create-template/notification.png)
+   ![ARM テンプレート、デプロイのポータル通知](./media/analysis-services-create-template/notification.png)
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
@@ -101,7 +103,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して、新しいリソース グループと Azure Analysis Services サーバー リソースを作成しました。 テンプレートを使用してサーバー リソースを作成したら、以下のことを検討してください。
-- [クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)
-- [ポータルからサンプル モデルを追加する](analysis-services-create-sample-model.md)
-- [サーバー管理者とユーザー ロールを構成する](tutorials/analysis-services-tutorial-roles.md)
+このクイックスタートでは、ARM テンプレートを使用して、新しいリソース グループと Azure Analysis Services サーバー リソースを作成しました。 テンプレートを使用してサーバー リソースを作成したら、以下のことを検討してください。
+
+> [!div class="nextstepaction"]
+> [クイック スタート: サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)   

@@ -3,12 +3,12 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656784"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874080"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -25,7 +25,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 各関数アプリには、1 つの着信 IP アドレスがあります。 この IP アドレスを確認するには、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[プラットフォーム機能]** を選択します。
 4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
@@ -49,12 +49,13 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> [従量課金プラン](functions-scale.md#consumption-plan)で実行されている関数アプリをスケーリングすると、新しい送信 IP アドレスの範囲が割り当てられる場合があります。 従量課金プランで実行する場合は、データセンター全体のホワイトリストへの登録が必要になる可能性があります。
+> [従量課金プラン](functions-scale.md#consumption-plan)で実行されている関数アプリをスケーリングすると、新しい送信 IP アドレスの範囲が割り当てられる場合があります。 従量課金プランで実行する場合は、データセンター全体を許可リストに追加することが必要になる可能性があります。
 
 ## <a name="data-center-outbound-ip-addresses"></a>データ センターの送信 IP アドレス
 
-関数アプリが使用する送信 IP アドレスをホワイトリストに登録する必要がある場合、別の選択肢として、関数アプリのデータ センター (Azure リージョン) をホワイトリストに登録するという方法があります。 [すべての Azure データ センターの IP アドレスが記述された JSON ファイルをダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=56519)してください。 次に、関数アプリを実行するリージョンに適用される JSON 要素を検索します。
+関数アプリで使用する送信 IP アドレスを許可リストに登録する必要がある場合、別の選択肢となるのは、関数アプリのデータ センター (Azure リージョン) を許可リストに登録することです。 [すべての Azure データ センターの IP アドレスが記述された JSON ファイルをダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=56519)してください。 次に、関数アプリを実行するリージョンに適用される JSON 要素を検索します。
 
 たとえば、西ヨーロッパの JSON 要素は、次のようになっています。
 
@@ -115,7 +116,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
 4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。

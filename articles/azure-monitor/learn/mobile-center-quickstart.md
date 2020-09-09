@@ -8,16 +8,16 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: c31083c5e0591d5a49f878ba24a7fd2f0ef6c84d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731953"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322144"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
-このクイックスタート ガイドでは、アプリの App Center インスタンスを Application Insights に接続する手順を説明します。 Application Insights を使用すると、App Center の [Analytics](https://docs.microsoft.com/mobile-center/analytics/) サービスで提供されているツールよりも強力なツールを利用して、テレメトリのクエリ、セグメント化、フィルター、分析を実行できます。
+このクイックスタート ガイドでは、アプリの App Center インスタンスを Application Insights に接続する手順を説明します。 Application Insights を使用すると、App Center の [Analytics](/mobile-center/analytics/) サービスで提供されているツールよりも強力なツールを利用して、テレメトリのクエリ、セグメント化、フィルター、分析を実行できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,27 +33,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="onboard-to-app-center"></a>App Center へのオンボード
 
-モバイル アプリで Application Insights を使用する前に、アプリを [App Center](https://docs.microsoft.com/mobile-center/) にオンボードする必要があります。 Application Insights は、モバイル アプリから直接テレメトリを受信しません。 その代わりに、アプリが App Center にカスタム イベント テレメトリを送信します。 App Center は、イベントを受信すると、これらのカスタム イベントのコピーを Application Insights に継続的にエクスポートします。 (このことは、テレメトリが Application Insights に直接送信される [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) または [React Native プラグイン](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native)には適用されません)。
+モバイル アプリで Application Insights を使用する前に、アプリを [App Center](/mobile-center/) にオンボードする必要があります。 Application Insights は、モバイル アプリから直接テレメトリを受信しません。 その代わりに、アプリが App Center にカスタム イベント テレメトリを送信します。 App Center は、イベントを受信すると、これらのカスタム イベントのコピーを Application Insights に継続的にエクスポートします。 (このことは、テレメトリが Application Insights に直接送信される [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS) または [React Native プラグイン](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native)には適用されません)。
 
 アプリをオンボードするには、アプリでサポートされている各プラットフォームの App Center クイックスタートに従ってください。 プラットフォームごとに個別の App Center インスタンスを作成します。
 
-* [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios)
-* [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android)
-* [Xamarin](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin)
-* [ユニバーサル Windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp)
-* [React Native](https://docs.microsoft.com/mobile-center/sdk/getting-started/react-native)
+* [iOS](/mobile-center/sdk/getting-started/ios)
+* [Android](/mobile-center/sdk/getting-started/android)
+* [Xamarin](/mobile-center/sdk/getting-started/xamarin)
+* [ユニバーサル Windows](/mobile-center/sdk/getting-started/uwp)
+* [React Native](/mobile-center/sdk/getting-started/react-native)
 
 ## <a name="track-events-in-your-app"></a>アプリでのイベントの追跡
 
 アプリを App Center にオンボードしたら、App Center SDK を使用して、カスタム イベント テレメトリを送信するようにアプリを変更する必要があります。 カスタム イベントは、Application Insights にエクスポートされる唯一の種類の App Center テレメトリです。
 
-iOS アプリからカスタム イベントを送信するには、App Center SDK の `trackEvent` または `trackEvent:withProperties` メソッドを使用します。 詳しくは、[iOS アプリからのイベントの追跡](https://docs.microsoft.com/mobile-center/sdk/analytics/ios)に関するページをご覧ください。
+iOS アプリからカスタム イベントを送信するには、App Center SDK の `trackEvent` または `trackEvent:withProperties` メソッドを使用します。 詳しくは、[iOS アプリからのイベントの追跡](/mobile-center/sdk/analytics/ios)に関するページをご覧ください。
 
 ```Swift
 MSAnalytics.trackEvent("Video clicked")
 ```
 
-Android アプリからカスタム イベントを送信するには、App Center SDK の `trackEvent` メソッドを使用します。 詳しくは、[Android アプリからのイベントの追跡](https://docs.microsoft.com/mobile-center/sdk/analytics/android)に関するページをご覧ください。
+Android アプリからカスタム イベントを送信するには、App Center SDK の `trackEvent` メソッドを使用します。 詳しくは、[Android アプリからのイベントの追跡](/mobile-center/sdk/analytics/android)に関するページをご覧ください。
 
 ```Java
 Analytics.trackEvent("Video clicked")
@@ -67,11 +67,11 @@ Analytics.trackEvent("Video clicked")
 
 アプリからカスタム イベントが送信され、App Center で受信されるようになったら、Azure Portal で App Center 型の Application Insights リソースを作成する必要があります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
     > [!NOTE]
-    > Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)」のドキュメントにアクセスして詳細を確認できます。
+    > Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](../app/create-new-resource.md)」のドキュメントにアクセスして詳細を確認できます。
 
     構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
@@ -79,7 +79,7 @@ Analytics.trackEvent("Video clicked")
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 (例: "myApp-iOS") | 監視しているアプリを識別する名前 |
      | **リソース グループ**     | 新しいリソース グループ、またはメニューから選択した既存のリソース グループ | 新しい Application Insights リソースの作成先のリソース グループ |
-   | **Location** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **場所** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 3. **Create** をクリックしてください。
 
@@ -98,7 +98,7 @@ Analytics.trackEvent("Video clicked")
 
 アプリがサポートしているプラットフォームごとに、このプロセスを繰り返します。
 
-[エクスポート](https://docs.microsoft.com/mobile-center/analytics/export)の設定が完了すると、App Center が受信した各カスタム イベントが Application Insights にコピーされるようになります。 イベントが Application Insights に到達するまでに数分かかるため、すぐに表示されない場合は、少し待ってから詳細な診断を行ってください。
+[エクスポート](/mobile-center/analytics/export)の設定が完了すると、App Center が受信した各カスタム イベントが Application Insights にコピーされるようになります。 イベントが Application Insights に到達するまでに数分かかるため、すぐに表示されない場合は、少し待ってから詳細な診断を行ってください。
 
 最初の接続時は、より多くのデータが得られるように、App Center 内の過去 48 時間のカスタム イベントが Application Insights に自動的にエクスポートされます。
 
@@ -124,7 +124,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    1. テキスト エディターでクエリの任意の場所をクリックして、クエリを選択します。
    2. **[実行]** をクリックしてクエリを実行します。 
 
-   詳しくは、[Application Insights Analytics](../../azure-monitor/app/analytics.md)に関するページおよび [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)に関するページをご覧ください。
+   詳しくは、[Application Insights Analytics](../log-query/log-query-overview.md)に関するページおよび [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)に関するページをご覧ください。
 
 
 2. **カスタム イベント テレメトリのセグメント化とフィルター。** Application Insights の **[概要]** ページで、目次の **[ユーザー]** を選択します。
@@ -167,4 +167,5 @@ Application Insights リソースを削除するには、次の手順に従い�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [どのようにお客様がアプリを使用しているかを理解します](../../azure-monitor/app/usage-overview.md)
+> [どのようにお客様がアプリを使用しているかを理解します](../app/usage-overview.md)
+

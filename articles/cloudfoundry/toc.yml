@@ -10,9 +10,9 @@
     - name: Azure での CF の作成
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: CF アプリを Azure にデプロイする
-      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
     - name: Azure での Cloud Foundry
-      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+      href: /azure/cloudfoundry/cloudfoundry-get-started
     - name: CF OMS Nozzle のデプロイ
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
     - name: Cloud Foundry と Azure を統合する

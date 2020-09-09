@@ -4,6 +4,8 @@
   items:
     - name: Data Lake Analytics とは
       href: data-lake-analytics-overview.md
+    - name: Data Lake Analytics の新機能
+      href: data-lake-analytics-whats-new.md
 - name: はじめに
   items:
     - name: Azure portal
@@ -16,12 +18,16 @@
       href: data-lake-analytics-get-started-powershell.md
     - name: Azure CLI
       href: data-lake-analytics-get-started-cli.md
-- name: サンプル
+- name: 概念
   items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
-- name: 方法
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
+          href: security-baseline.md
+- name: 操作方法ガイド
   items:
     - name: Data Lake Analytics の管理
       items:
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: ジョブの参照と表示
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: 'カスタム C# コードのデバッグ'
+            - name: カスタム C# コードのデバッグ
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: 定期的なジョブのトラブルシューティング
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md
@@ -151,8 +157,11 @@
       href: /rest/api/datalakeanalytics/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.datalakeanalytics/allversions
-    - name: CLI
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dla'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure Data Lake のブログ

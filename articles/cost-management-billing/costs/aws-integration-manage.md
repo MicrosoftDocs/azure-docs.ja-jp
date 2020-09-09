@@ -3,17 +3,18 @@ title: Azure Cost Management での AWS のコストと使用状況の管理
 description: この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
-ms.topic: conceptual
+ms.date: 08/28/2020
+ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: fd4d4a16642e764276d49dd732a785be48197d01
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200029"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266210"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
@@ -35,17 +36,18 @@ AWS のコストは、次のスコープのコストの分析で使用できま�
 
 ### <a name="view-aws-linked-accounts-under-a-management-group"></a>管理グループ下の AWS のリンクされたアカウントの表示
 
-さまざまなサブスクリプションおよびリンクされたアカウントから集計されたコストを確認する唯一の方法は、管理グループのスコープを使用してコストを表示することです。 管理グループを使用して、クラウド間のビューを提供します。
+さまざまな Azure サブスクリプションおよび AWS のリンクされたアカウントから集計されたコストを確認する唯一の方法は、管理グループのスコープを使用してコストを表示することです。 管理グループを使用すると、Azure と AWS のコストをまとめて表示するためのクラウド間ビューが提供されます。
 
 コスト分析で、スコープ ピッカーを開き、AWS のリンクされたアカウントを保持する管理グループを選択します。 Azure portal での画像の例を示します。
 
-![[スコープの選択] ビューの例](./media/aws-integration-manage/select-scope01.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope01.png" alt-text="管理グループの下のリンクされたアカウントを示す [スコープの選択] ビューの例" :::
 
 プロバイダー (Azure と AWS) でグループ化された、コスト分析での管理グループのコストを示す例を次に示します。
 
-![コスト分析での四半期の Azure と AWS のコストを示す例](./media/aws-integration-manage/cost-analysis-aws-azure.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="コスト分析での四半期の Azure と AWS のコストを示す例" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+
+> [!NOTE]
+> 管理グループは、Microsoft 顧客契約 (MCA) のお客様に対して現在サポートされていません。 MCA のお客様は、コネクタを作成し、ご自身の AWS データを表示できます。 ただし、MCA のお客様は、管理グループの下の Azure のコストと AWS のコストをまとめて表示することはできません。
 
 ### <a name="view-aws-linked-account-costs"></a>AWS のリンクされたアカウントのコストの表示
 
@@ -53,21 +55,17 @@ AWS のリンクされたアカウントのコストを表示するには、ス�
 
 AWS のリンクされたアカウントのスコープを選択する例を次に示します。
 
-![[スコープの選択] ビューの例](./media/aws-integration-manage/select-scope02.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="AWS のリンクされたアカウントを表示する [スコープの選択] ビューの例" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>AWS 統合アカウントのコストの表示
 
 AWS 統合アカウントのコストを表示するには、スコープ ピッカーを開き、AWS 統合アカウントを選択します。 AWS 統合アカウントのスコープを選択する例を示します。
 
-![[スコープの選択] ビューの例](./media/aws-integration-manage/select-scope03.png)
-
-
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="統合アカウントを示す [スコープの選択] ビューの例" :::
 
 このスコープは、AWS 統合アカウントに関連付けられているすべての AWS のリンクされたアカウントの集計ビューを提供します。 サービス名別にグループ化された AWS 統合アカウントのコストの例を次に示します。
 
-![コスト分析で AWS 統合コストを示す例](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="コスト分析で AWS 統合コストを示す例" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>フィルター処理やグループ化に使用できるディメンション
 
@@ -78,17 +76,17 @@ AWS 統合アカウントのコストを表示するには、スコープ ピッ
 | 可用性ゾーン | lineitem/AvailabilityZone | All |   |
 | 場所 | product/Region | All |   |
 | 測定 |   | All |   |
-| Meter category | lineItem/ProductCode | All |   |
+| メーター カテゴリ | lineItem/ProductCode | All |   |
 | Meter subcategory | lineitem/UsageType | All |   |
 | Operation | lineItem/Operation | All |   |
 | リソース | lineItem/ResourceId | All |   |
 | リソースの種類 | product/instanceType | All | product/instanceType が null の場合は、UsageType が使用されます。 |
 | ResourceGuid | 該当なし | All | Azure メーターの GUID。 |
 | [サービス名] | product/ProductName | All | product/ProductName が null の場合は、lineItem/ProductCode が使用されます。 |
-| サービス階層 |   |   |   |
+| サービス レベル |   |   |   |
 | サブスクリプション ID | lineItem/UsageAccountId | 統合アカウントおよび管理グループ |   |
 | サブスクリプション名 | 該当なし | 統合アカウントおよび管理グループ | アカウント名は、AWS 組織 API を使用して収集されます。 |
-| タグ | resourceTags/\* | All | _user:_ プレフィックスは、クラウドの間のタグを許可するユーザー定義タグから削除されます。 _aws:_ プレフィックスはそのまま残されます。 |
+| タグ | resourceTags | All | _user:_ プレフィックスは、クラウドの間のタグを許可するユーザー定義タグから削除されます。 _aws:_ プレフィックスはそのまま残されます。 |
 | 請求先アカウント ID | bill/PayerAccountId | 管理グループ |   |
 | 請求先アカウント名 | 該当なし | 管理グループ | アカウント名は、AWS 組織 API を使用して収集されます。 |
 | プロバイダー | 該当なし | 管理グループ | AWS または Azure のいずれか。 |
@@ -97,7 +95,7 @@ AWS 統合アカウントのコストを表示するには、スコープ ピッ
 
 予算を使用して、組織において積極的にコストを管理し、説明責任を推進します。 予算は、AWS 統合アカウントとAWS のリンクされたアカウントのスコープに対して設定されます。 Cost Management で示される、AWS 統合アカウントの予算の例を次に示します。
 
-![AWS 統合アカウントの予算を示す例](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="AWS 統合アカウントの予算を示す例" :::
 
 ## <a name="aws-data-collection-process"></a>AWS データ コレクション処理
 
@@ -109,17 +107,17 @@ AWS コネクタの設定後、データ収集と探索のプロセスを開始�
 
 ## <a name="aws-integration-pricing"></a>AWS の統合の価格
 
-AWS の各コネクタには、90 日間の無料試用期間があります。 パブリック プレビューの期間中は無料です。
+AWS の各コネクタには、90 日間の無料試用期間があります。
 
 定額は、AWS の月額の 1% です。 各月の課金は、前の月の請求コストに基づいています。
 
-AWS API にアクセスすると、追加のコストが発生する場合があります。
+AWS API にアクセスすると、AWS で追加のコストが発生する場合があります。
 
 ## <a name="aws-integration-limitations"></a>AWS 統合の制限事項
 
-- Cost Management では、複数の種類の通貨が含まれるコスト レポートはサポートしていません。 複数の通貨を持つスコープを選択した場合には、エラー メッセージが表示されます。
+- Cost Management の予算では、複数の通貨を持つ管理グループはサポートされていません。 複数の通貨を持つ管理グループには、予算評価が表示されません。 予算を作成するときに、複数の通貨を持つ管理グループを選択すると、エラー メッセージが表示されます。
 - クラウド コネクタは、AWS GovCloud (US)、AWS Gov、または AWS China はサポートしていません。
-- Cost Management は、AWS _使用状況コスト_ のみを示します。 税、サポート、返金、RI、クレジット、その他の料金タイプはまだサポートされていません。
+- Cost Management は、AWS _使用状況コスト_のみを示します。 税、サポート、返金、RI、クレジット、その他の料金タイプはまだサポートされていません。
 
 ## <a name="troubleshooting-aws-integration"></a>AWS 統合のトラブルシューティング
 

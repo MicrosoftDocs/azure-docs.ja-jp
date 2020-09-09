@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee8d05a542c6906d4ebe70f7e2a461752c6e3f3
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68881299"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609454"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Search API v5 から v7 へのアップグレード
 
@@ -81,7 +81,7 @@ Blocked|InvalidRequest.Blocked
 
 - [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) クエリ パラメーターが追加されました。 応答に含める回答の数を指定するには、このパラメーターを使用します。 回答は、ランキングに基づいて選択されます。 たとえば、このパラメーターを 3 に設定すると、上位の 3 つの回答が応答に含まれます。  
 
-- [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) クエリ パラメーターが追加されました。 ランキングに関係なく 1 つ以上の回答タイプを明示的に含めるには、このパラメーターを `answerCount` と共に使用します。 たとえば、ビデオと画像を応答に昇格させるには、promote を *videos,images* に設定します。 昇格させる回答の一覧は、`answerCount` の制限にはカウントされません。 たとえば、`answerCount` が 2、`promote` が *videos,images* に設定されている場合、応答には Web ページ、ニュース、ビデオ、および画像が含まれます。
+- [promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) クエリ パラメーターが追加されました。 ランキングに関係なく 1 つ以上の回答タイプを明示的に含めるには、このパラメーターを `answerCount` と共に使用します。 たとえば、ビデオと画像を応答に昇格させるには、promote を *videos, images* に設定します。 昇格させる回答の一覧は、`answerCount` の制限にはカウントされません。 たとえば、`answerCount` が 2、`promote` が *videos, images* に設定されている場合、応答には Web ページ、ニュース、ビデオ、および画像が含まれる可能性があります。
 
 ### <a name="object-changes"></a>オブジェクトの変更
 

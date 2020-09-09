@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920163"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526743"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制トンネリングを使用したライセンス認証の問題
 
@@ -53,9 +53,9 @@ Azure Global クラウドの KMS サーバーの IP アドレスは、23.102.135
  
 
 > [!NOTE] 
-> アクティブ化ではパブリック IP アドレスが使用され、Standard SKU の Load Balancer の構成による影響を受けます。 要件については、「[Azure の送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)」を慎重に確認してください。
+> アクティブ化ではパブリック IP アドレスが使用され、Standard SKU の Load Balancer の構成による影響を受けます。 要件については、「[Azure の送信接続](../../load-balancer/load-balancer-outbound-connections.md)」を慎重に確認してください。
 
-1. Azure PowerShell を開き、[Azure サブスクリプションにサインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
+1. Azure PowerShell を開き、[Azure サブスクリプションにサインイン](/powershell/azure/authenticate-azureps)します。
 2. 次のコマンドを実行します。
 
     ```powershell
@@ -77,9 +77,11 @@ Azure Global クラウドの KMS サーバーの IP アドレスは、23.102.135
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. ライセンス認証の問題がある VM に移動します。 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) を使用して、KMS サーバーにアクセスできるかどうかをテストします。
+3. ライセンス認証の問題がある VM に移動します。 [PsPing](/sysinternals/downloads/psping) を使用して、KMS サーバーにアクセスできるかどうかをテストします。
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Windows のライセンス認証を試してみて、問題が解決されるかどうかを確認します。
 
@@ -87,7 +89,7 @@ Azure Global クラウドの KMS サーバーの IP アドレスは、23.102.135
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Azure PowerShell を開き、[Azure サブスクリプションにサインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
+1. Azure PowerShell を開き、[Azure サブスクリプションにサインイン](/powershell/azure/authenticate-azureps)します。
 2. 次のコマンドを実行します。
 
     ```powershell
@@ -105,15 +107,15 @@ Azure Global クラウドの KMS サーバーの IP アドレスは、23.102.135
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. ライセンス認証の問題がある VM に移動します。 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) を使用して、KMS サーバーにアクセスできるかどうかをテストします。
+3. ライセンス認証の問題がある VM に移動します。 [PsPing](/sysinternals/downloads/psping) を使用して、KMS サーバーにアクセスできるかどうかをテストします。
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Windows のライセンス認証を試してみて、問題が解決されるかどうかを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [KMS クライアントのセットアップ キー](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [ライセンス認証の方法の確認と選択](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [KMS クライアントのセットアップ キー](/windows-server/get-started/kmsclientkeys)
+- [ライセンス認証の方法の確認と選択](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

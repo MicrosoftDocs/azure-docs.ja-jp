@@ -1,32 +1,32 @@
 ---
-title: トレーニング データをインポートする
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): トレーニング データをインポートする - Azure'
 description: さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にデータをインポートする方法。 サポートされているデータ型とデータ形式に関する説明
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: cee49124a7547399889e425008a8580b9b25945a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c13c394f518482853762a3a5bf9a1a2a42ca658a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217994"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432417"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 Machine Learning Studio (クラシック) で独自のデータを使用して予測分析ソリューションを開発し、トレーニングする場合、次の場所のデータを使用できます。 
 
 * **ローカル ファイル** - 事前にハード ドライブからローカル データを読み込み、ワークスペースにデータセット モジュールを作成します
 * **オンライン データ ソース** - [データのインポート][import-data] モジュールを使用して、実験を実行している間に、いずれかのオンライン ソースのデータにアクセスします
 * **Machine Learning Studio (クラシック) の実験** - Machine Learning Studio (クラシック) にデータセットとして保存されたデータを使用します
-* [**オンプレミスの SQL Server データベース**](use-data-from-an-on-premises-sql-server.md) - 手動でデータをコピーする必要なく、オンプレミスの SQL Server データベースのデータを使用します
+* [**SQL Server データベース**](use-data-from-an-on-premises-sql-server.md) - 手動でデータをコピーせずに、SQL Server データベースのデータを使用します
 
 > [!NOTE]
 > Machine Learning Studio (クラシック) には、トレーニング データで使用できるさまざまなサンプル データセットが用意されています。 詳細については、「[Azure Machine Learning Studio (クラシック) におけるサンプル データセットの使用](use-sample-datasets.md)」を参照してください。
@@ -95,7 +95,7 @@ Machine Learning Studio (クラシック) のモジュールは、一般的に�
 
 * 推奨モジュール
 * Synthetic Minority Oversampling Technique (SMOTE) モジュール
-* スクリプト モジュール: R、Python、SQL
+* スクリプト モジュール:R、Python、SQL
 * 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)
 * イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス
 
@@ -136,8 +136,7 @@ Machine Learning Studio (クラシック) のモジュールは、一般的に�
 * HiveQL を使用した Hadoop
 * Azure BLOB ストレージ
 * Azure テーブル
-* Azure SQL データベースまたは Azure VM の SQL Server
-* オンプレミス SQL Server データベース
+* Azure SQL Database。 SQL Managed Instance、または SQL Server
 * データ フィード プロバイダー (現在は OData)
 * Azure Cosmos DB
 
@@ -153,19 +152,19 @@ Studio (クラシック) の実験でオンライン データ ソースにア�
 > 一般的に、このサービス オプションが利用可能になる前に作成された可能性のある Azure ストレージ アカウントに、影響が及ぶことはありません。
 > 新しいアカウントを作成する必要がある場合は、デプロイメント モデルとして **[クラシック]** を選択するか、Resource Manager を使用して、 **[アカウントの種類]** に **[Blob ストレージ]** ではなく **[General (汎用)]** を選択します。
 >
-> 詳細については、「 [Azure Blob Storage: ホット層とクール層](../../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
+> 詳細については、[Azure Blob Storage のホット ストレージ層とクール ストレージ層](../../storage/blobs/storage-blob-storage-tiers.md)に関するページを参照してください。
 
 ### <a name="supported-online-data-sources"></a>サポートされるオンライン データ ソース
 Azure Machine Learning Studio (クラシック) の **Import Data** モジュールでは、次のデータ ソースがサポートされています。
 
 | Data Source | 説明 | パラメーター |
 | --- | --- | --- |
-| HTTP を使用する Web URL |コンマ区切り (CSV)、タブ区切り (TSV)、ARFF (Attribute-Relation File Format)、サポート ベクター マシン (SVM-Light) の各形式のデータを HTTP を使用する任意の Web URL から読み取ります。 |<b>URL</b>: サイトの URL とファイル名、拡張子を含むファイルの完全名を指定します。 <br/><br/><b>データ形式</b>: サポートされているいずれかのデータ形式 (CSV、TSV、ARFF、SVM-light) を指定します。 データにヘッダー行がある場合、その行が列名の割り当てに使用されます。 |
-| Hadoop/HDFS |Hadoop の分散ストレージからデータを読み取ります。 必要なデータは、HiveQL という SQL に似たクエリ言語で指定します。 Studio (クラシック) にデータを追加する前に、HiveQL を使用してデータを集計したり、データのフィルタリングを実行したりすることもできます。 |<b>Hive データベース クエリ</b>: データを生成するために使用する Hive クエリを指定します。<br/><br/><b>HCatalog サーバー URI</b>: *&lt;your cluster name&gt;.azurehdinsight.net* 形式でクラスターの名前を指定します。<br/><br/><b>Hadoop ユーザー アカウント名</b>: クラスターをプロビジョニングするために使用する Hadoop ユーザー アカウント名を指定します。<br/><br/><b>Hadoop ユーザー アカウントのパスワード</b>: クラスターをプロビジョニングするために使用する資格情報を指定します。 詳細については、[HDInsight での Hadoop クラスターの作成](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に関する記事をご覧ください。<br/><br/><b>出力データの場所</b>: データを Hadoop 分散ファイル システム (HDFS) に保存するか、Azure に保存するかを指定します。 <br/><ul>出力データを HDFS に保存する場合、HDFS サーバーの URI を指定します (必ず、HTTPS:// プレフィックスなしの HDInsight クラスター名を使用してください)。 <br/><br/>出力データを Azure に保存する場合は、Azure ストレージ アカウント名、ストレージ アクセス キー、ストレージ コンテナー名を指定する必要があります。</ul> |
-| SQL データベース |Azure 仮想マシン上で動作する SQL Server データベースに保存されているデータまたは Azure SQL データベースに保存されているデータを読み取ります。 |<b>データベース サーバー名</b>: データベースが実行されているサーバーの名前を指定します。<br/><ul>Azure SQL Database の場合は、生成されたサーバー名を入力してください。 通常、 *&lt;generated_identifier&gt;.database.windows.net.* 形式となります。 <br/><br/>Azure 仮想マシン上でホストされる SQL Server の場合は、*tcp:&lt;Virtual Machine DNS Name&gt;, 1433* という形式で入力します。</ul><br/><b>データベース名</b>: サーバー上のデータベースの名前を指定します。 <br/><br/><b>サーバー ユーザー アカウント名</b>: データベースへのアクセス権限を持つアカウントのユーザー名を指定します。 <br/><br/><b>サーバー ユーザー アカウントのパスワード</b>: ユーザー アカウントのパスワードを指定します。<br/><br/><b>データベース クエリ</b>: 読み取るデータを記述した SQL ステートメントを入力します。 |
-| オンプレミス SQL データベース |オンプレミス SQL データベースに格納されているデータを読み取ります。 |<b>データ ゲートウェイ</b>: SQL Server データベースにアクセスできるコンピューターにインストールされている Data Management Gateway の名前を指定します。 ゲートウェイの設定については、[オンプレミス SQL Server のデータを使用した Azure Machine Learning Studio (クラシック) での高度な分析の実行](use-data-from-an-on-premises-sql-server.md)に関する記事をご覧ください。<br/><br/><b>データベース サーバー名</b>: データベースが実行されているサーバーの名前を指定します。<br/><br/><b>データベース名</b>: サーバー上のデータベースの名前を指定します。 <br/><br/><b>サーバー ユーザー アカウント名</b>: データベースへのアクセス権限を持つアカウントのユーザー名を指定します。 <br/><br/><b>ユーザー名とパスワード</b>: <b>[Enter values (値の入力)]</b> をクリックして、データベース資格情報を入力します。 オンプレミス SQL Server の構成方法に応じて、Windows 統合認証または SQL Server 認証を使用することができます。<br/><br/><b>データベース クエリ</b>: 読み取るデータを記述した SQL ステートメントを入力します。 |
-| Azure テーブル |Azure Storage の Table service からデータを読み取ります。<br/><br/>大量のデータを低頻度で読み取る場合、Azure Table service を使用してください。 高い柔軟性、非リレーショナル (NoSQL)、圧倒的なスケーラビリティ、低コスト、高い可用性を特徴とするストレージ ソリューションです。 |アクセスの対象がパブリックな情報であるか、ログイン資格情報を必要とするプライベートなストレージ アカウントであるかによって**データのインポート**のオプションは変化します。 その点を決めるのが、<b>認証の種類</b>です。"PublicOrSAS" と "Account" のいずれかの値になります。その値によって、一連のパラメーターが異なります。 <br/><br/><b>パブリックな URI または Shared Access Signature (SAS) の URI</b>: パラメーターは次のとおりです。<br/><br/><ul><b>テーブルの URI</b>: テーブルのパブリック URL または SAS URL を指定します。<br/><br/><b>プロパティ名のスキャン対象となる行を指定します</b>: 指定した行数をスキャンする場合は <i>TopN</i> を、テーブル内のすべての行を取得する場合は <i>ScanAll</i> を値として指定します。 <br/><br/>データが均一で予測可能である場合は、*TopN* を選択し、N の値を入力することをお勧めします。大きなテーブルでは、その方が読み取り時間が短くなります。<br/><br/>データを構成する一連のプロパティが、テーブルの深さと位置によって異なる場合は、*ScanAll* オプションを選択してすべての行をスキャンしてください。 これによって、プロパティとメタデータの変換結果に整合性を確保することができます。<br/><br/></ul><b>プライベート ストレージ アカウント</b>: パラメーターは次のとおりです。 <br/><br/><ul><b>アカウント名</b>: 読み取るテーブルを含んだアカウントの名前を指定します。<br/><br/><b>アカウント キー</b>: アカウントに関連付けられているストレージ キーを指定します。<br/><br/><b>テーブル名</b>: 読み取るデータを含んだテーブルの名前を指定します。<br/><br/><b>プロパティ名のスキャン対象となる行</b>: 指定した行数をスキャンする場合は <i>TopN</i> を、テーブル内のすべての行を取得する場合は <i>ScanAll</i> を値として指定します。<br/><br/>データが均一で予測可能である場合は、*TopN* を選択し、N の値を入力することをお勧めします。大きなテーブルでは、その方が読み取り時間が短くなります。<br/><br/>データを構成する一連のプロパティが、テーブルの深さと位置によって異なる場合は、*ScanAll* オプションを選択してすべての行をスキャンしてください。 これによって、プロパティとメタデータの変換結果に整合性を確保することができます。<br/><br/> |
-| Azure Blob Storage |画像、非構造化テキスト、バイナリ データなど、Azure Storage の Blob service に保存されているデータを読み取ります。<br/><br/>Blob service を使用して、データをパブリックに公開したり、アプリケーション データをプライベートに保存したりすることができます。 HTTP または HTTPS 接続を使用してどこからでもデータにアクセスできます。 |アクセスの対象がパブリックな情報であるか、ログイン資格情報を必要とするプライベートなストレージ アカウントであるかによって**データのインポート** モジュールのオプションは変化します。 その点を決めるのが<b>認証の種類</b>です。"PublicOrSAS" と "Account" のいずれかの値になります。<br/><br/><b>パブリックな URI または Shared Access Signature (SAS) の URI</b>: パラメーターは次のとおりです。<br/><br/><ul><b>URI</b>: Storage BLOB のパブリック URL または SAS URL を指定します。<br/><br/><b>ファイル形式</b>: Blob service のデータの形式を指定します。 サポートされている形式は、CSV、TSV、ARFF です。<br/><br/></ul><b>プライベート ストレージ アカウント</b>: パラメーターは次のとおりです。 <br/><br/><ul><b>アカウント名</b>: 読み取る BLOB を含んだアカウントの名前を指定します。<br/><br/><b>アカウント キー</b>: アカウントに関連付けられているストレージ キーを指定します。<br/><br/><b>コンテナー、ディレクトリ、BLOB のパス</b>: 読み取るデータを含んだ BLOB の名前を指定します。<br/><br/><b>BLOB ファイル形式</b>: Blob service のデータの形式を指定します。 サポートされているデータ形式は CSV、TSV、ARFF、CSV (エンコーディング指定付き)、Excel です。 <br/><br/><ul>形式が CSV または TSV である場合は、ファイルにヘッダー行が含まれているかどうかを必ず指定してください。<br/><br/>Excel を選択すると、Excel ブックからデータを読み取ることができます。 <i>[Excel データ形式]</i> オプションで、データの保存先が Excel ワークシートの範囲か Excel テーブルかを指定してください。 <i>[Excel sheet or embedded table (Excel シートまたは埋め込みテーブル)]</i> オプションで、読み取りの対象となるシートまたはテーブルの名前を指定します。</ul><br/> |
+| HTTP を使用する Web URL |コンマ区切り (CSV)、タブ区切り (TSV)、ARFF (Attribute-Relation File Format)、サポート ベクター マシン (SVM-Light) の各形式のデータを HTTP を使用する任意の Web URL から読み取ります。 |<b>URL</b>: サイトの URL とファイル名、拡張子を含むファイルの完全名を指定します。 <br/><br/><b>Data format</b>:サポートされているデータ形式: CSV、TSV、ARFF、または SVM-light のいずれかを指定します。 データにヘッダー行がある場合、その行が列名の割り当てに使用されます。 |
+| Hadoop/HDFS |Hadoop の分散ストレージからデータを読み取ります。 必要なデータは、HiveQL という SQL に似たクエリ言語で指定します。 Studio (クラシック) にデータを追加する前に、HiveQL を使用してデータを集計したり、データのフィルタリングを実行したりすることもできます。 |<b>Hive データベース クエリ</b>: データを生成するために使用する Hive クエリを指定します。<br/><br/><b>HCatalog サーバー URI</b>: *&lt;your cluster name&gt;.azurehdinsight.net* 形式でクラスターの名前を指定します。<br/><br/><b>Hadoop ユーザーのアカウント名</b>:クラスターをプロビジョニングするために使用する Hadoop ユーザー アカウント名を指定します。<br/><br/><b>Hadoop ユーザー アカウントのパスワード</b>: クラスターをプロビジョニングするために使用する資格情報を指定します。 詳細については、[HDInsight での Hadoop クラスターの作成](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に関する記事をご覧ください。<br/><br/><b>出力データの場所</b>:データを Hadoop 分散ファイル システム (HDFS) に保存するか、Azure に保存するかを指定します。 <br/><ul>出力データを HDFS に保存する場合、HDFS サーバーの URI を指定します (必ず、HTTPS:// プレフィックスなしの HDInsight クラスター名を使用してください)。 <br/><br/>出力データを Azure に保存する場合は、Azure ストレージ アカウント名、ストレージ アクセス キー、ストレージ コンテナー名を指定する必要があります。</ul> |
+| SQL データベース |Azure SQL Database または SQL Managed Instance に格納されているデータ、または Azure 仮想マシン上で実行されている SQL Server データベースに格納されているデータを読み取ります。 |<b>データベース サーバー名</b>: データベースが実行されているサーバーの名前を指定します。<br/><ul>Azure SQL Database の場合は、生成されたサーバー名を入力してください。 通常、 *&lt;generated_identifier&gt;.database.windows.net.* 形式となります。 <br/><br/>Azure 仮想マシン上でホストされる SQL Server の場合は、*tcp:&lt;Virtual Machine DNS Name&gt;, 1433* という形式で入力します。</ul><br/><b>データベース名</b>: サーバー上のデータベースの名前を指定します。 <br/><br/><b>サーバー ユーザー アカウント名</b>: データベースへのアクセス権限を持つアカウントのユーザー名を指定します。 <br/><br/><b>Server ユーザー アカウントのパスワード</b>: ユーザー アカウントのパスワードを指定します。<br/><br/><b>データベース クエリ</b>: 読み取るデータを記述した SQL ステートメントを入力します。 |
+| オンプレミス SQL データベース |SQL データベースに格納されているデータを読み取ります。 |<b>データ ゲートウェイ</b>: SQL Server データベースにアクセスできるコンピューターにインストールされている Data Management Gateway の名前を指定します。 ゲートウェイの設定については、[SQL Server のデータを使用する Azure Machine Learning Studio (クラシック) での高度な分析の実行](use-data-from-an-on-premises-sql-server.md)に関する記事をご覧ください。<br/><br/><b>データベース サーバー名</b>: データベースが実行されているサーバーの名前を指定します。<br/><br/><b>データベース名</b>: サーバー上のデータベースの名前を指定します。 <br/><br/><b>サーバー ユーザー アカウント名</b>: データベースへのアクセス権限を持つアカウントのユーザー名を指定します。 <br/><br/><b>ユーザー名とパスワード</b>: <b>[Enter values]\(値の入力\)</b> をクリックして、データベース資格情報を入力します。 SQL Server の構成方法に応じて、Windows 統合認証または SQL Server 認証を使用できます。<br/><br/><b>データベース クエリ</b>: 読み取るデータを記述した SQL ステートメントを入力します。 |
+| Azure テーブル |Azure Storage の Table service からデータを読み取ります。<br/><br/>大量のデータを低頻度で読み取る場合、Azure Table service を使用してください。 高い柔軟性、非リレーショナル (NoSQL)、圧倒的なスケーラビリティ、低コスト、高い可用性を特徴とするストレージ ソリューションです。 |アクセスの対象がパブリックな情報であるか、ログイン資格情報を必要とするプライベートなストレージ アカウントであるかによって**データのインポート**のオプションは変化します。 その点を決めるのが、<b>認証の種類</b>です。"PublicOrSAS" と "Account" のいずれかの値になります。その値によって、一連のパラメーターが異なります。 <br/><br/><b>パブリックな URI または Shared Access Signature (SAS) の URI</b>: パラメーターは、次のとおりです。<br/><br/><ul><b>テーブルの URI</b>: テーブルのパブリック URL または SAS URL を指定します。<br/><br/><b>プロパティ名のスキャン対象となる行を指定します</b>: 指定した行数をスキャンする場合は <i>TopN</i> を、テーブル内のすべての行を取得する場合は <i>ScanAll</i> を値として指定します。 <br/><br/>データが均一で予測可能である場合は、*TopN* を選択し、N の値を入力することをお勧めします。大きなテーブルでは、その方が読み取り時間が短くなります。<br/><br/>データを構成する一連のプロパティが、テーブルの深さと位置によって異なる場合は、*ScanAll* オプションを選択してすべての行をスキャンしてください。 これによって、プロパティとメタデータの変換結果に整合性を確保することができます。<br/><br/></ul><b>プライベート ストレージ アカウント</b>: パラメーターは、次のとおりです。 <br/><br/><ul><b>アカウント名</b>:読み取るテーブルを含んだアカウントの名前を指定します。<br/><br/><b>アカウント キー</b>: アカウントに関連付けられているストレージ キーを指定します。<br/><br/><b>テーブル名</b>: 読み取るデータを含んだテーブルの名前を指定します。<br/><br/><b>プロパティ名のスキャン対象となる行</b>: 指定した行数をスキャンする場合は <i>TopN</i> を、テーブル内のすべての行を取得する場合は <i>ScanAll</i> を値として指定します。<br/><br/>データが均一で予測可能である場合は、*TopN* を選択し、N の値を入力することをお勧めします。大きなテーブルでは、その方が読み取り時間が短くなります。<br/><br/>データを構成する一連のプロパティが、テーブルの深さと位置によって異なる場合は、*ScanAll* オプションを選択してすべての行をスキャンしてください。 これによって、プロパティとメタデータの変換結果に整合性を確保することができます。<br/><br/> |
+| Azure Blob Storage |画像、非構造化テキスト、バイナリ データなど、Azure Storage の Blob service に保存されているデータを読み取ります。<br/><br/>Blob service を使用して、データをパブリックに公開したり、アプリケーション データをプライベートに保存したりすることができます。 HTTP または HTTPS 接続を使用してどこからでもデータにアクセスできます。 |アクセスの対象がパブリックな情報であるか、ログイン資格情報を必要とするプライベートなストレージ アカウントであるかによって**データのインポート** モジュールのオプションは変化します。 その点を決めるのが<b>認証の種類</b>です。"PublicOrSAS" と "Account" のいずれかの値になります。<br/><br/><b>パブリックな URI または Shared Access Signature (SAS) の URI</b>: パラメーターは、次のとおりです。<br/><br/><ul><b>URI</b>: Storage BLOB のパブリック URL または SAS URL を指定します。<br/><br/><b>ファイル形式</b>: BLOB サービスのデータの形式を指定します。 サポートされている形式は、CSV、TSV、ARFF です。<br/><br/></ul><b>プライベート ストレージ アカウント</b>: パラメーターは、次のとおりです。 <br/><br/><ul><b>アカウント名</b>:読み取る BLOB を含んだアカウントの名前を指定します。<br/><br/><b>アカウント キー</b>: アカウントに関連付けられているストレージ キーを指定します。<br/><br/><b>コンテナー、ディレクトリ、BLOB のパス</b>: 読み取るデータを含んだ BLOB の名前を指定します。<br/><br/><b>BLOB ファイル形式</b>: BLOB サービスのデータの形式を指定します。 サポートされているデータ形式は CSV、TSV、ARFF、CSV (エンコーディング指定付き)、Excel です。 <br/><br/><ul>形式が CSV または TSV である場合は、ファイルにヘッダー行が含まれているかどうかを必ず指定してください。<br/><br/>Excel を選択すると、Excel ブックからデータを読み取ることができます。 <i>[Excel データ形式]</i> オプションで、データの保存先が Excel ワークシートの範囲か Excel テーブルかを指定してください。 <i>[Excel sheet or embedded table (Excel シートまたは埋め込みテーブル)]</i> オプションで、読み取りの対象となるシートまたはテーブルの名前を指定します。</ul><br/> |
 | データ フィード プロバイダー |サポートされているフィード プロバイダーからデータを読み取ります。 現在サポートされているのは Open Data Protocol (OData) 形式だけです。 |<b>データ コンテンツの種類</b>: OData 形式を指定します。<br/><br/><b>ソース URL</b>: データ フィードに使用する完全 URL を指定します。 <br/>たとえば、 https://services.odata.org/northwind/northwind.svc/ という URL の場合、Northwind のサンプル データベースから読み取ります。 |
 
 ## <a name="import-from-another-experiment"></a>別の実験からインポートする

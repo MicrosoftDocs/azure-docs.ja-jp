@@ -1,3 +1,5 @@
+- name: サーバーのサイズ
+  href: vm-sizes.md
 - name: モデル形式の素材マッピング
   href: material-mapping.md
 - name: リージョン
@@ -10,5 +12,7 @@
   href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure Mixed Reality Resource Management REST API
   href: 'https://docs.microsoft.com/rest/api/mixedreality/'
-- name: 'C# API のドキュメント'
+- name: C# API のドキュメント
   href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.RemoteRendering'
+- name: C++ API のドキュメント
+  href: 'https://docs.microsoft.com/cpp/api/remote-rendering'

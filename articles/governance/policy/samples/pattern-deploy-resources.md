@@ -1,22 +1,22 @@
 ---
 title: パターン:ポリシー定義を使用してリソースをデプロイする
 description: この Azure Policy パターンでは、ポリシー定義を使用してリソースをデプロイする方法の例を示します。
-ms.date: 01/31/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 705c751183a0b71c8628a505f08ef112bca1cbb7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77169990"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545609"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy パターン: リソースをデプロイする
 
-[deployIfNotExists](../concepts/effects.md#deployifnotexists) 効果を使用すると、準拠していないリソースを作成または更新する場合に、[Azure Resource Manager テンプレート](../../../azure-resource-manager/templates/overview.md)をデプロイすることができます。 このアプローチは、[deny](../concepts/effects.md#deny) 効果を使用するよりも好ましい場合があります。リソースの作成を継続できる一方で、準拠したものになるように確実にリソースを変更することができるからです。
+[deployIfNotExists](../concepts/effects.md#deployifnotexists) 効果を使用すると、準拠していないリソースを作成または更新する場合に、[Azure Resource Manager テンプレート](../../../azure-resource-manager/templates/overview.md) (ARM テンプレート) をデプロイすることができます。 このアプローチは、[deny](../concepts/effects.md#deny) 効果を使用するよりも好ましい場合があります。リソースの作成を継続できる一方で、準拠したものになるように確実にリソースを変更することができるからです。
 
 ## <a name="sample-policy-definition"></a>ポリシー定義の例
 
-このポリシー定義では、**field** 演算子を使用して、作成または更新するリソースの `type` を評価します。 このリソースが _Microsoft.Network/virtualNetworks_ である場合、ポリシーは新しいリソースまたは更新するリソースの場所で Network Watcher を検索します。 一致する Network Watcher が見つからない場合は、Resource Manager テンプレートがデプロイされ、不足しているリソースが作成されます。
+このポリシー定義では、**field** 演算子を使用して、作成または更新するリソースの `type` を評価します。 このリソースが _Microsoft.Network/virtualNetworks_ である場合、ポリシーは新しいリソースまたは更新するリソースの場所で Network Watcher を検索します。 一致する Network Watcher が見つからない場合は、ARM テンプレートがデプロイされ、不足しているリソースが作成されます。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 

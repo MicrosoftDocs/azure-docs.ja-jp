@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/5/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642080"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117738"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -59,10 +59,10 @@ Azure AD で、中間層サービスとクライアント アプリケーショ�
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 1. リダイレクト URI をベース URL に設定します。
 1. **[登録]** を選択して、アプリケーションを作成します。
-1. Azure portal を終了する前に、クライアント シークレットを生成します。
 1. Azure portal でアプリケーションを選択して、 **[証明書とシークレット]** を選択します。
 1. **[New client secret]\(新しいクライアント シークレット\)** を選択し、有効期間が 1 年または 2 年のシークレットを追加します。
 1. このページを保存すると、Azure portal にシークレット値が表示されます。 シークレット値をコピーして安全な場所に保存します。
+1. アプリの **[API の公開]** ページで [スコープの追加] をクリックして、アプリケーションにスコープを作成します。  ポータルでは、アプリケーション ID URI の作成も必要になる場合があります。 
 
 > [!IMPORTANT]
 > 実装でアプリケーション設定を構成するには、このシークレットが必要です。 このシークレット値は二度と表示されず、他の方法で取得することはできません。 Azure portal で表示されたら、すぐに記録してください。
@@ -79,7 +79,7 @@ Azure AD で、中間層サービスとクライアント アプリケーショ�
 1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリケーション用にアクセス許可を構成します。 **[API のアクセス許可]** で、 **[アクセス許可の追加]** を選択し、 **[自分の API]** を選択します。
 1. テキスト フィールドに中間層サービスの名前を入力します。
-1. **[アクセス許可の選択]** 、 **[\<サービス名> にアクセス]** の順に選択します。
+1. **[アクセス許可の選択]** を選択して、中間層の登録の最後の手順で作成したスコープを選択します。
 
 ### <a name="configure-known-client-applications"></a>既知のクライアント アプリケーションの構成
 
@@ -105,14 +105,14 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 OBO 要求は JSON Web トークン (JWT) を使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるアクセス トークンの値。 |
 | client_id |required | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_secret |required | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
-| resource |required | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
-| requested_token_use |required | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
+| requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | scope |required | トークン要求のスコープのスペース区切りリスト。 OpenID Connect の場合、スコープの **openid** を指定する必要があります。|
 
 #### <a name="example"></a>例
@@ -139,15 +139,15 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 OBO 要求は JWT アクセス トークンを使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
-| assertion |required | 要求で使用されるトークンの値。 |
+| assertion |必須 | 要求で使用されるトークンの値。 |
 | client_id |required | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_assertion_type |required |値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります |
 | client_assertion |required | アプリケーションの資格情報として登録した証明書で作成し署名する JSON Web トークンです。 アサーションの形式と証明書の登録方法との詳細については、[証明書資格情報](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)に関する記事を参照してください。|
-| resource |required | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
-| requested_token_use |required | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
+| requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | scope |required | トークン要求のスコープのスペース区切りリスト。 OpenID Connect の場合、スコープの **openid** を指定する必要があります。|
 
 これらのパラメーターは、`client_secret parameter` が 2 つのパラメーター (`client_assertion_type` と `client_assertion`) に置き換えられる点を除けば、共有シークレットによる要求とほぼ同じです。
@@ -249,14 +249,14 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 サービス間の SAML アサーション要求には、次のパラメーターが含まれています。
 
-| パラメーター |  | 説明 |
+| パラメーター | Type | 説明 |
 | --- | --- | --- |
 | grant_type |required | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |required | 要求で使用されるアクセス トークンの値。|
 | client_id |required | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_secret |required | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
-| resource |required | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
-| requested_token_use |required | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
+| requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | requested_token_type | required | 要求するトークンの種類を指定します。 アクセス先のリソースの要件に応じて、値は **urn:ietf:params:oauth:token-type:saml2** または **urn:ietf:params:oauth:token-type:saml1** のいずれかです。 |
 
 応答には、UTF8 および Base64url でエンコードされた SAML トークンが含まれています。
@@ -264,7 +264,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 - **OBO 呼び出しから提供される SAML アサーションの SubjectConfirmationData**:ターゲット アプリケーションで **SubjectConfirmationData** の受信者の値が必要な場合、その値はリソース アプリケーション構成内の非ワイルドカードの応答 URL である必要があります。
 - **SubjectConfirmationData ノード**:このノードは SAML 応答の一部ではないため、**InResponseTo** 属性を含めることはできません。 SAML トークンを受け取るアプリケーションは、**InResponseTo** 属性なしで SAML アサーションを受け入れることができる必要があります。
 
-- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)」を参照してください。
+- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](./v1-permissions-consent.md)」を参照してください。
 
 ### <a name="response-with-saml-assertion"></a>SAML アサーションの応答
 
@@ -283,9 +283,9 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 - ext_expires_in:0
 - expires_on:1529627844
 - resource: `https://api.contoso.com`
-- access_token:\<SAML assertion\>
+- access_token: \<SAML assertion\>
 - issued_token_type: urn:ietf:params:oauth:token-type:saml2
-- refresh_token:\<更新トークン\>
+- refresh_token: \<Refresh token\>
 
 ## <a name="client-limitations"></a>クライアントの制限事項
 

@@ -2,25 +2,22 @@
 title: テナント制限を使用して SaaS アプリへのアクセスを管理する - Azure AD
 description: テナント制限を使用して、どのユーザーが自分の Azure AD テナントに基づいてアプリにアクセスできるかを管理する方法。
 services: active-directory
-documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: mimart
-ms.reviewer: richagi
+ms.author: kenwith
+ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680141"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285902"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -72,9 +69,14 @@ ms.locfileid: "83680141"
 
 login.microsoftonline.com、login.microsoft.com、login.windows.net への各受信要求で、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の 2 つの HTTP ヘッダーを挿入します。
 
+> [!NOTE]
+> SSL インターセプトとヘッダー挿入を構成する場合、 https://device.login.microsoftonline.com へのトラフィックが除外されていることを確認してください。 この URL はデバイス認証に使用され、TLS の中断と検査を実行すると、クライアント証明書の認証が妨げられる可能性があり、それにより、デバイスの登録とデバイスベースの条件付きアクセスの問題が発生する可能性があります。
+
+
+
 これらのヘッダーには、次の要素を含める必要があります。
 
-- *Restrict-Access-To-Tenants* には、ユーザーにアクセスを許可するテナントのコンマ区切りリストである、\<許可されているテナントのリスト\>の値を使用します。 テナントに登録されているドメインを使用して、このリストのテナントを識別できます。 たとえば、Contoso と Fabrikam の両方のテナントへのアクセスを許可する場合、名前と値のペアは  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` のようになります。
+- *Restrict-Access-To-Tenants* には、ユーザーにアクセスを許可するテナントのコンマ区切りリストである、\<permitted tenant list\> の値を使用します。 テナントに登録されているドメインを使用して、このリストのテナントを識別できます。 たとえば、Contoso と Fabrikam の両方のテナントへのアクセスを許可する場合、名前と値のペアは  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` のようになります。
 
 - *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは  `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  
 
@@ -84,6 +86,9 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各受
 ユーザーが未承認のテナントを含む独自の HTTP ヘッダーを挿入できないようにするために、受信要求に *Restrict-Access-To-Tenants* ヘッダーが既に存在する場合、プロキシはそのヘッダーを置き換える必要があります。
 
 login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべての要求にプロキシを使用することをクライアントに強制する必要があります。 たとえば、クライアントにプロキシの使用を指示するために PAC ファイルが使用されている場合は、エンド ユーザーがその PAC ファイルを編集したり無効にしたりできないようにする必要があります。
+
+> [!NOTE]
+> プロキシ構成で、*.login.microsoftonline.com の下にサブドメインを含めないでください。 そうすると、device.login.microsoftonline.com が含まれ、デバイスの登録とデバイスベースの条件付きアクセスのシナリオで使用されるクライアント証明書の認証が妨げられる可能性があります。 TLS の中断と検査およびヘッダーの挿入から device.login.microsoftonline.com を除外するようにプロキシ サーバーを構成します。
 
 ## <a name="the-user-experience"></a>ユーザー エクスペリエンス
 
@@ -101,7 +106,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 2. 左ウィンドウで、 **[Azure Active Directory]** を選択します。 [Azure Active Directory] 概要ページが表示されます。
 
-3. **[その他の機能]** 見出しで、 **[テナント制限]** を選択します。
+3. [概要] ページで、 **[テナントの制限]** を選択します。
 
 Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーのためにブロックされたサインイン (使用された ID やターゲット ディレクトリ ID を含む) を確認できます。 制限を設定するテナントがサインインのユーザー テナントまたはリソース テナントのいずれかである場合は、サインインが含まれます。
 

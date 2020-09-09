@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 14706b623c6973c09b499e4fcd905e3eed430898
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 03e9f99301444032d867bc1c2f854c807380844e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593380"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797736"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>チュートリアル:Gatsby サイトを Azure Static Web Apps プレビューに発行する
 
@@ -51,7 +52,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
    cd static-web-app
    ```
 
-1. git リポジトリを初期化します。
+1. Git リポジトリを初期化します
 
    ```bash
    git init
@@ -84,10 +85,10 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 ### <a name="create-the-application"></a>アプリケーションを作成する
 
 1. [Azure Portal](https://portal.azure.com) に移動します
-1. **[リソースの作成]** をクリックします。
-1. **Static Web Apps** を検索します。
-1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします。
-1. **[作成]**
+1. **[リソースの作成]** をクリックします
+1. **Static Web Apps** を検索します
+1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
+1. **[作成]** をクリックします。
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 
@@ -95,7 +96,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. _[リソース グループ]_ で、 **[新規]** を選択します。 _[新しいリソース グループ名]_ に「**gatsby-static-web-app**」と入力し、 **[OK]** を選択します。
 
-1. 次に、アプリのグローバルに一意の名前を **[名前]** ボックスに入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。 この値は、静的 Web アプリの URL プレフィックスとして `https://<YOUR_APP_NAME>.azurestaticapps.net` の形式で使用されます。
+1. 次に、 **[名前]** ボックスにアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
 
 1. _[リージョン]_ で、近くの使用可能なリージョンを選択します。
 

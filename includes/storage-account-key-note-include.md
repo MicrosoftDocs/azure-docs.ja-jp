@@ -5,18 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 95639caddfa627290f4e7153d50f9f7799a1f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba715d510dc296ffa8f9c0ee58841f284416a118
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75460563"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027335"
 ---
 ## <a name="protect-your-access-keys"></a>アクセス キーの保護
 
 ストレージ アカウントのアクセス キーは、ストレージ アカウントの root パスワードに似ています。 アクセス キーは常に慎重に保護してください。 キーを安全に管理およびローテーションするには、Azure Key Vault を使用します。 アクセス キーを他のユーザーに配布したり、ハードコーディングしたり、他のユーザーがアクセスできるプレーンテキストで保存したりしないでください。 キーが侵害された可能性があると思われる場合は、キーをローテーションしてください。
 
-可能であれば、Blob Storage および Queue storage に対する要求の承認には、共有キーではなく Azure Active Directory (Azure AD) を使用します。 Azure AD では、共有キーよりも優れたセキュリティと使いやすさが実現されます。 Azure AD を使用したデータへのアクセスの承認の詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../articles/storage/common/storage-auth-aad.md)」を参照してください。
+> [!NOTE]
+> BLOB およびキューのデータに対する要求を承認するには、共有キーではなく、可能であれば Azure Active Directory (Azure AD) を使用することをお勧めします。 Azure AD では、共有キーよりも優れたセキュリティと使いやすさが実現されます。 Azure AD を使用したデータへのアクセスの承認の詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../articles/storage/common/storage-auth-aad.md)」を参照してください。

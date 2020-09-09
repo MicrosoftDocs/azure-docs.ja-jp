@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 5afd54c54254ad515a99690f9fcc0c0faf66c1dc
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.author: trbye
+ms.openlocfilehash: c9fcbd341212fa8abfff40de4e25312eabaf6605
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979682"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85838858"
 ---
 ## <a name="prerequisites"></a>前提条件
 

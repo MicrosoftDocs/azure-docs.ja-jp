@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628284"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509124"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -31,7 +31,11 @@ Azure での仮想マシン (VM) のデプロイに関する問題のトラブ�
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>クラスターが要求された VM サイズをサポートできない
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - VM サイズを小さくして要求を再試行します。
 - 要求した VM のサイズを変更できない場合は、次の手順を実行します。
     - 可用性セットのすべての VM を停止します。 **[リソース グループ]** > 対象とするリソース グループ > **[リソース]** > 対象とする可用性セット > **[仮想マシン]** > 対象とする仮想マシン > **[停止]** の順にクリックします。
@@ -40,7 +44,11 @@ Azure での仮想マシン (VM) のデプロイに関する問題のトラブ�
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>クラスターに空きリソースがない
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - 後で要求を再試行してください。
 - 新しい VM を別の可用性セットに含めることができる場合
     - VM を (同じリージョンの) 別の可用性セットに作成します。
@@ -70,7 +78,7 @@ Enterprise Agreement の場合:
 
  - [Windows Server および Windows クライアント向け Azure Hybrid Use Benefit](../windows/hybrid-use-benefit-licensing.md)
 
- - [Hybrid Use Benefit の使用方法](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
+ - [Hybrid Use Benefit の使用方法](/archive/blogs/azureedu/how-can-i-use-the-hybrid-use-benefit-in-azure)
 
 ## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Visual Studio Enterprise (BizSpark) 向けの月単位のクレジットを有効にするには、どうすればよいですか?
 

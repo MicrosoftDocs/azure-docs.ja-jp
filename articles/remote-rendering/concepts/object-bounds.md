@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9f970d08318d7dec685d3021c72b7f80de90049
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 099b0175b906e48034e663b575517e49bce7e753
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758879"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021852"
 ---
 # <a name="object-bounds"></a>オブジェクトの境界
 
@@ -48,10 +49,10 @@ void GetBounds(ApiHandle<Entity> entity)
     ApiHandle<BoundsQueryAsync> boundsQuery = *entity->QueryWorldBoundsAsync();
     boundsQuery->Completed([](ApiHandle<BoundsQueryAsync> bounds)
     {
-        if (bounds->IsRanToCompletion())
+        if (bounds->GetIsRanToCompletion())
         {
-            Double3 aabbMin = bounds->Result()->min;
-            Double3 aabbMax = bounds->Result()->max;
+            Double3 aabbMin = bounds->GetResult().min;
+            Double3 aabbMax = bounds->GetResult().max;
             // ...
         }
     });

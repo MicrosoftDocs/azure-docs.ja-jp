@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370646"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730307"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Speech Devices SDK とは
 
@@ -37,7 +37,11 @@ Speech Devices SDK を使用すると、[音声アシスタント](https://aka.m
 
 ### <a name="android"></a>Android
 
-Android の場合、デバイスでは [Android Speech Devices SDK](https://aka.ms/sdsdk-download-android) の最新バージョンがダウンロードされます。
+Android 用の Speech Devices SDK は、[Roobo v1](speech-devices-sdk-roobo-v1.md) と同等のデバイスをサポートしています。使用するには、[Android Speech Devices SDK](https://aka.ms/sdsdk-download-android) の最新バージョンをダウンロードします。
+
+
+別の Android デバイス (電話やモバイルなど) がある場合は、[Android Speech SDK](speech-sdk.md) から開始します
+
 
 ### <a name="windows"></a>Windows
 
@@ -49,7 +53,7 @@ Windows の場合、サンプル アプリケーションは、クロスプラ�
 Linux の場合、サンプル アプリケーションは、クロスプラットフォーム Java アプリケーションとして提供されます。 [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードします。
 アプリケーションは、Speech SDK パッケージと、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8) 上の Eclipse Java IDE (v4) によって構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
-今後公開されるデバイス ([Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)、[Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)、および [GGEC Speaker](https://aka.ms/sdsdk-download-speaker)) をサポートするために、追加のバイナリが提供されます。
+今後公開されるデバイス ([Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)、[Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)、および [GGEC Speaker](https://aka.ms/sdsdk-download-speaker)、[Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32)、[Linux ARM64](https://aka.ms/sdsdk-download-linux-arm64)) をサポートするために、追加のバイナリが提供されます。
 
 ## <a name="next-steps"></a>次のステップ
 

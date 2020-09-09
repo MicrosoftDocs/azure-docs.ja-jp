@@ -5,17 +5,18 @@ author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75463174"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013114"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できる分散サービスのコードを記述できます。 信頼性の低いインフラストラクチャ上に強固な分散サービスを作成するために、開発者は、基になる信頼性の低いインフラストラクチャで障害のために複雑な状態遷移が発生している状態で、サービスの安定性をテストできる必要があります。
 
-[フォールト挿入とクラスター分析サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (別名 Fault Analysis Service) によって、開発者が、障害アクションを誘発してサービスをテストできます。 [パーティションの再起動](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)などのこれらのシミュレーション対象のエラーは、最も一般的な状態遷移の練習に役立ちます。 ただし、シミュレートされた対象のエラーは、定義でバイアスがかけられ、そのため予測が難しい、長くて複雑な状態のシーケンスでのみ発生し、バグに記録されない場合があります。 バイアスをかけないテストのために、混乱を使用することができます。
+[フォールト挿入とクラスター分析サービス](./service-fabric-testability-overview.md) (別名 Fault Analysis Service) によって、開発者が、障害アクションを誘発してサービスをテストできます。 [パーティションの再起動](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)などのこれらのシミュレーション対象のエラーは、最も一般的な状態遷移の練習に役立ちます。 ただし、シミュレートされた対象のエラーは、定義でバイアスがかけられ、そのため予測が難しい、長くて複雑な状態のシーケンスでのみ発生し、バグに記録されない場合があります。 バイアスをかけないテストのために、混乱を使用することができます。
 
 混乱により、長時間にわたり、クラスター全体で、交互に配置された (グレースフルと非グレースフル) 定期的な障害がシミュレートされます。 グレースフル障害は、一連の Service Fabric API の呼び出しで構成されます。たとえば、レプリカの再起動障害は、レプリカを閉じる操作に続いて開く操作が発生するため、グレースフル障害です。 レプリカの削除、プライマリ レプリカの移動、およびセカンダリ レプリカの移動は、混乱によって実行されるその他のグレースフル障害です。 非グレースフル障害はプロセスの終了であり、ノードの再起動やコード パッケージの再起動などがあります。 
 
@@ -25,7 +26,7 @@ ms.locfileid: "75463174"
 > 最新の形式では、混乱は、安全な障害のみを発生させ、外部障害がなければ、クォーラム損失またはデータの損失は起こりません。
 >
 
-混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[リライアブル ディクショナリ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)内に永続化されます。それには、次の 2 つの構成によって決定される切り捨てポリシーがあります。**MaxStoredChaosEventCount** (既定値は 25,000) と **StoredActionCleanupIntervalInSeconds** (既定値は 3,600)。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
+混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[リライアブル ディクショナリ](./service-fabric-reliable-services-reliable-collections.md)内に永続化されます。それには、次の 2 つの構成によって決定される切り捨てポリシーがあります。**MaxStoredChaosEventCount** (既定値は 25,000) と **StoredActionCleanupIntervalInSeconds** (既定値は 3,600)。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
 
 ## <a name="faults-induced-in-chaos"></a>混乱で誘発される障害
 混乱により、Service Fabric クラスター全体で数か月または数年の間に発生する障害が、数時間に圧縮され生成されます。 障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。 この混乱を実施することで、サービスのコードの品質が大幅に向上します。

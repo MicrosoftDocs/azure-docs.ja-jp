@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290083"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 
@@ -26,7 +26,6 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 |[Altoros Development LLC](https://www.altoros.com/)  |  IoT、パーソナル化小売り (在庫目録)、サーバーレス アーキテクチャ NoSQL 移行、アプリ開発|   米国 |
 |[Avanade](https://www.avanade.com/) | IoT、小売り (在庫目録)、サーバーレス アーキテクチャ、アプリ開発 | オーストリア、ドイツ、スイス、イタリア、ノルウェー、スペイン、英国、カナダ |
 |[Accenture](https://www.accenture.com/) | IoT、小売り (在庫目録)、サーバーレス アーキテクチャ、アプリ開発 |グローバル|
-|[Bluemetal](https://www.bluemetal.com/)     |  IoT、パーソナル化小売り (在庫目録)、企業と SMC 向けの運用分析、AI イメージ注釈、資産管理、NoSQL 移行、アプリ開発     |    北米、アジア太平洋     |
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT、パーソナル化、小売り (在庫目録)、運用分析 (Spark)、サーバーレス アーキテクチャ、アプリ開発|    米国     |  
 | [Capgemini](https://www.capgemini.com/) | 小売り (在庫目録)、IoT、運用分析 (Spark)、アプリ開発 | 米国、フランス、英国、オランダ、フィンランド  |
 | [Cognizant](https://www.cognizant.com/) | IoT、パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発 |米国、カナダ、英国、デンマーク、オランダ、スイス、オーストラリア、日本 |
@@ -51,13 +50,12 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 
 ## <a name="next-steps"></a>次のステップ
 
-Microsoft の他のパートナーの詳細については、[Microsoft パートナー サイト](https://partner.microsoft.com/en-US/)を参照してください。
+Microsoft の他のパートナーの詳細については、[Microsoft パートナー サイト](https://partner.microsoft.com/)を参照してください。
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png
-[5]: ./media/partners-migration-cosmosdb/bluemetal_logo.png
 [6]: ./media/partners-migration-cosmosdb/capaxglobal_logo.png
 [7]: ./media/partners-migration-cosmosdb/coeo_logo.png
 [8]: ./media/partners-migration-cosmosdb/infosys_logo.png

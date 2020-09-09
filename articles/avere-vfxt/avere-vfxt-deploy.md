@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT for Azure をデプロイする
-description: Azure で Avere vFXT クラスターをデプロイする手順
+description: Azure Marketplace から入手できるデプロイ ウィザードを使用して Avere vFXT for Azure でクラスターをデプロイする方法について説明します。
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227507"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272775"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 

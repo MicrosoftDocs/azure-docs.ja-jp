@@ -9,12 +9,12 @@ metadata:
   author: IngridAtMicrosoft
   ms.author: inhenkel
   ms.date: 04/20/2020
-  ms.openlocfilehash: 522821be3b5921ba6cb9c8b25643a5337e502b43
-  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+  ms.openlocfilehash: 0e9514367736ec8116a17820a16ddca4795b2445
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "81873224"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87039057"
 landingContent:
 - title: Azure Media Player
   linkLists:
@@ -63,7 +63,7 @@ landingContent:
     - text: サンプル
       url: https://github.com/Azure-Samples/azure-media-player-samples
     - text: API
-      url: https://docs.microsoft.com/javascript/api/azuremediaplayer/?view=azure-node-latest
+      url: /javascript/api/azuremediaplayer/?view=azure-node-latest
     - text: API メソッド
       url: azure-media-player-api-methods.md
     - text: Options

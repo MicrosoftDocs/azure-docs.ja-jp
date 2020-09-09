@@ -5,21 +5,21 @@ author: ashishthaps
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006452"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
 HDInsight は柔軟性を備えており、クラスター内のワーカー ノード数をスケールアップおよびスケールダウンするオプションがあります。 この柔軟性により、数時間後や週末にクラスターを縮小することができます。 また、ビジネス需要のピーク時に拡張できます。
 
-定期的なバッチ プロセスの前には、クラスターをスケールアップしてクラスターに十分なリソースを確保するようにします。  プロセスが完了し、使用量が減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードを減らします。
+定期的なバッチ プロセスの前には、クラスターをスケールアップしてクラスターに十分なリソースを確保するようにします。   プロセスが完了し、使用量が減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードを減らします。
 
 次に示す方法のいずれかを使用して、クラスターを手動でスケーリングできます。 また、[自動スケーリング](hdinsight-autoscale-clusters.md) オプションを使用して、特定のメトリックに応じて自動的にスケールアップおよびスケールダウンすることもできます。
 
@@ -106,6 +106,14 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 * Kafka
 
     スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 詳しくは、「[HDInsight 上の Apache Kafka によるデータの高可用性](./kafka/apache-kafka-high-availability.md)」をご覧ください。
+
+* Apache Hive LLAP
+
+    `N` 個のワーカー ノードにスケーリングした後、HDInsight は自動的に次の構成を設定し、Hive を再起動します。
+
+  * 同時実行クエリの最大合計数: `hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Hive の LLAP で使用されるノードの数: `num_llap_nodes  = N`
+  * Hive LLAP デーモンを実行するためのノードの数: `num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>クラスターを安全にスケールする方法
 

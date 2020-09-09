@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318999"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights エージェント API リファレンス
 
@@ -119,7 +119,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 - **MachineFilter** は、コンピューターまたは VM 名に必要な C# の正規表現です。
     - ".*" はすべてに一致します
     - "ComputerName" は、名前が指定されたものと完全に同じコンピューターとのみ一致します。
-- **AppFilter** は、IIS サイト名に必要な C# の正規表現です。 [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite) コマンドを実行することで、ご利用のサーバー上でサイトのリストを入手できます。
+- **AppFilter** は、IIS サイト名に必要な C# の正規表現です。 [get-iissite](/powershell/module/iisadministration/get-iissite) コマンドを実行することで、ご利用のサーバー上でサイトのリストを入手できます。
     - ".*" はすべてに一致します
     - "SiteName" は、指定されたものと完全に同じ名前を持つ IIS サイトとのみ一致します。
 - **InstrumentationKey** は上記の 2 つのフィルターに一致するアプリの監視を有効にするために必要です。
@@ -135,7 +135,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 **省略可。** ヘッドレス インストールでライセンスおよびプライバシーに関する声明に同意する場合は、このスイッチを使用します。
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-Web サーバーのクラスターがある場合、[共有構成](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)を使用している可能性があります。
+Web サーバーのクラスターがある場合、[共有構成](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)を使用している可能性があります。
 HttpModule をこの共有構成に挿入することはできません。
 このスクリプトは失敗し、追加のインストール手順が必要であることを示すメッセージが表示されます。
 このチェックを無視し、前提条件のインストールを続行するには、このスイッチを使用します。 詳細については、[IIS 共有構成との既知の競合](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)に関するページをご覧ください。
@@ -447,8 +447,8 @@ Application Insights SDK を含む任意の DLL のバージョンを特定す�
 
 何らかの理由でこのプロセスが失敗した場合は、次のコマンドを手動で実行できます。
 - iisreset.exe /status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
+- [handle64.exe](/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
+- [listdlls64.exe](/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -552,7 +552,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 
 ## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
 
-コードなしの接続ランタイムから [ETW イベント](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal)を収集します。 このコマンドレットは、[PerfView](https://github.com/microsoft/perfview) を実行する代わりの手段です。
+コードなしの接続ランタイムから [ETW イベント](/windows/desktop/etw/event-tracing-portal)を収集します。 このコマンドレットは、[PerfView](https://github.com/microsoft/perfview) を実行する代わりの手段です。
 
 収集されたイベントは、リアルタイムでコンソールに出力され、ETL ファイルに保存されます。 出力 ETL ファイルは、さらに調査するために、[PerfView](https://github.com/microsoft/perfview) で開くことができます。
 
@@ -637,21 +637,16 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>次のステップ
 
   テレメトリの表示:
- - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。
-- 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
-- より高度なクエリのために[分析](../../azure-monitor/app/analytics.md)を使用します。
-- [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
+ - パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+- 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
+- より高度なクエリのために[分析](../log-query/log-query-overview.md)を使用します。
+- [ダッシュボードを作成](./overview-dashboard.md)します。
  
  テレメトリの追加:
  - サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
-- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
-- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
+- Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](./javascript.md)を追加します。
+- トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](./asp-net.md)します。
  
  Application Insights エージェントをさらに活用する:
  - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
-
-
-
-
-
 

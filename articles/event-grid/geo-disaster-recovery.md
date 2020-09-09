@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid での geo ディザスター リカバリー | Microsoft Docs
 description: Azure Event Grid で geo ディザスター リカバリー (GeoDR) が自動的にサポートされる方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: spelluru
-ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/07/2020
+ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66307568"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105848"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure Event Grid でのサーバー側 geo ディザスター リカバリー
 Event Grid には、新規だけでなく既存のすべてのドメイン、トピック、およびイベント サブスクリプション用のメタ データの自動 geo ディザスター リカバリー (GeoDR) が追加されました。 Azure リージョン全体が停止しても、ご利用のイベント関連のインフラストラクチャ メタデータはすべて、Event Grid によって既にペアのリージョンに同期されています。 ご利用の新しいイベントは、ご自分が介入しなくても再び流れ始めます。 

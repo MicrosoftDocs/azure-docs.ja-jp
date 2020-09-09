@@ -1,19 +1,19 @@
 ---
-title: ポータルで Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
+title: チュートリアル:ポータルで Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
 description: このチュートリアルでは、Azure portal を使用して Azure Firewall DNAT をデプロイして構成する方法を学習します。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 03/02/2020
+ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251498"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069274"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>チュートリアル:Azure portal で Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
 
@@ -28,12 +28,11 @@ ms.locfileid: "78251498"
 > * DNAT ルールを構成する
 > * ファイアウォールをテストする
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルでは、2 つのピアリングされた VNet を作成します。
 
-- **VN-Hub** - ファイアウォールはこの VNet 内にあります。
-- **VN-Spoke** - ワークロード サーバーはこの VNet 内にあります。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -45,6 +44,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 6. **［作成］** を選択します
 
 ## <a name="set-up-the-network-environment"></a>ネットワーク環境を設定する
+
+このチュートリアルでは、2 つのピアリングされた VNet を作成します。
+
+- **VN-Hub** - ファイアウォールはこの VNet 内にあります。
+- **VN-Spoke** - ワークロード サーバーはこの VNet 内にあります。
 
 最初に VNet を作成し、次にそれらをピアリングします。
 
@@ -141,13 +145,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[ファイアウォール]** を選択し、 **[作成]** を選択します。 
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
    |名前     |FW-DNAT-test|
-   |サブスクリプション     |\<該当するサブスクリプション\>|
-   |Resource group     |**[Use Existing]\(既存の使用\)** : RG-DNAT-Test |
+   |サブスクリプション     |\<your subscription\>|
+   |Resource group     |**既存のものを使用**: RG-DNAT-Test |
    |場所     |以前使用したのと同じ場所を選択します|
-   |仮想ネットワークの選択     |**[Use Existing]\(既存の使用\)** : VN-Hub|
+   |仮想ネットワークの選択     |**既存のものを使用**: VN-Hub|
    |パブリック IP アドレス     |**新規作成**。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
 
 5. **[Review + create]\(レビュー + 作成\)** を選択します。
@@ -166,13 +170,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[追加]** を選択します。
 4. **[名前]** に「**RT-FWroute**」と入力します。
 5. **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
-6. **[リソース グループ]** で **[既存のものを使用]** を選択し、 **[RG-DNAT-Test]** を選択します。
+6. **[リソース グループ]** で **[既存のものを使用]** を選択し、**[RG-DNAT-Test]** を選択します。
 7. **[場所]** で、以前使用したのと同じ場所を選択します。
 8. **［作成］** を選択します
 9. **[更新]** を選択し、 **[RT-FWroute]** ルート テーブルを選択します。
 10. **[サブネット]** を選択し、 **[関連付け]** を選択します。
 11. **[仮想ネットワーク]** を選択し、 **[VN-Spoke]** を選択します。
-12. **[サブネット]** で、 **[SN-Workload]** を選択します。
+12. **[サブネット]** で、**[SN-Workload]** を選択します。
 13. **[OK]** を選択します。
 14. **[ルート]** 、 **[追加]** の順に選択します。
 15. **[ルート名]** に「**FW-DG**」と入力します。
@@ -204,7 +208,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. リモート デスクトップをファイアウォールのパブリック IP アドレスに接続します。 **Srv-Workload** 仮想マシンに接続する必要があります。
 2. リモート デスクトップを閉じます。
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 次のチュートリアルのためにファイアウォール リソースを残しておくことができます。不要であれば、**RG-DNAT-Test** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除します。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CDN SDK for Node.js の概要 | Microsoft Docs
-description: Azure CDN を管理するための Node.js アプリケーションを記述する方法について説明します。
+description: Azure CDN のプロファイルとエンドポイントの作成と管理を自動化する方法を示すシンプルな Node.js コンソール アプリケーションを作成する方法について説明します。
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -11,15 +11,16 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594123"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190697"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
@@ -44,7 +45,9 @@ CDN プロファイルとエンドポイントの作成と管理は、 [Azure CD
 
 アプリケーションの保存先となるフォルダーを作成します。  Node.js のツールが置かれているパスのコンソールから、この新しいフォルダーに移動して次のコマンドを実行し、プロジェクトを初期化します。
 
-    npm init
+```console
+npm init
+```
 
 プロジェクトを初期化するための一連の指定項目が表示されます。  このチュートリアルでは、 **entry point**に *app.js*を使用します。  その他の項目については、次のスクリーンショットを参照してください。
 
@@ -52,8 +55,10 @@ CDN プロファイルとエンドポイントの作成と管理は、 [Azure CD
 
 プロジェクトが *packages.json* ファイルで初期化されました。  このプロジェクトでは、NPM パッケージに含まれているいくつかの Azure ライブラリを使用します。  使用するのは、Azure Client Runtime for Node.js (ms-rest-azure) と Azure CDN Client Library for Node.js (azure-arm-cd) です。  それらを依存関係としてプロジェクトに追加しましょう。
 
-    npm install --save ms-rest-azure
-    npm install --save azure-arm-cdn
+```console
+npm install --save ms-rest-azure
+npm install --save azure-arm-cdn
+```
 
 パッケージのインストールが完了した後の *package.json* ファイルは次のようになります (バージョン番号は異なる場合があります)。
 

@@ -2,25 +2,21 @@
 title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/10/2020
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156414"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809257"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
-この記事では、ご自身の Azure Resource Manager (ARM) テンプレートを作成する方法に関する推奨事項について説明します。 これらの推奨事項は、ARM テンプレートを使用したソリューションのデプロイに関する一般的な問題を回避するうえで役立ちます。
-
-Azure サブスクリプションを管理する方法に関する推奨事項については、「[Azure エンタープライズ スキャフォールディング:規範的なサブスクリプション ガバナンス](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)」を参照してください。
-
-すべての Azure クラウド環境で動作するテンプレートを作成する方法に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」を参照してください。
+この記事では、ARM テンプレートを構築するときに推奨される方法を使用する方法について説明します。 これらの推奨事項は、ARM テンプレートを使用したソリューションのデプロイに関する一般的な問題を回避するうえで役立ちます。
 
 ## <a name="template-limits"></a>テンプレートの制限
 
-テンプレートのサイズを 4 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 4 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 
+テンプレートのサイズを 4 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 4 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。
 
 また、以下のように制限されます。
 
@@ -164,7 +160,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 どのような[依存関係](define-resource-dependency.md)を設定するかを決めるときは、次のガイドラインを使用してください。
 
-* プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定するには、**reference** 関数を使用して、リソース名を渡します。 暗黙的な依存関係を既に定義してある場合は、明示的な `dependsOn` 要素を追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。
+* プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定するには、**reference** 関数を使用して、リソース名を渡します。 暗黙的な依存関係を既に定義してある場合は、明示的な `dependsOn` 要素を追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。 暗黙の依存関係を設定する例については、[暗黙の依存関係](define-resource-dependency.md#reference-and-list-functions)に関するページを参照してください。
 
 * 子リソースは、その親リソースに依存するように設定します。
 
@@ -230,11 +226,11 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
    
      仮想マシンへの接続の詳細については、以下の記事を参照してください。
    
-   * [Azure で N 層アーキテクチャの VM を実行する](../../guidance/guidance-compute-n-tier-vm.md)
+   * [Azure で N 層アーキテクチャの VM を実行する](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [Azure Resource Manager の VM の WinRM アクセスを設定する](../../virtual-machines/windows/winrm.md)
    * [Azure Portal を使用して VM への外部アクセスを許可する](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [PowerShell を使用して VM への外部アクセスを許可する](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Azure CLI を使用して Linux VM への外部アクセスを許可する](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Azure CLI を使用して Linux VM への外部アクセスを許可する](../../virtual-machines/linux/nsg-quickstart.md)
 
 * パブリック IP アドレスの **domainNameLabel** プロパティは一意である必要があります。 **domainNameLabel** の値は、3 文字以上 63 文字以下で、正規表現 `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` で指定された規則に従う必要があります。 **uniqueString** 関数は 13 文字の文字列を生成するため、**dnsPrefixString** パラメーターは 50 文字に制限されます。
 
@@ -275,7 +271,12 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
    > [!NOTE]
    > シークレット情報を VM と拡張機能にパラメーターとして渡すときに暗号化されるように、関連する拡張機能の **protectedSettings** プロパティを使用する必要があります。
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>テスト ツールキットの使用
+
+ARM テンプレート テスト ツールキットは、推奨される方法がテンプレートで使用されているかどうかを確認するスクリプトです。 テンプレートが推奨されるプラクティスに準拠していない場合は、推奨される変更を含む警告の一覧が返されます。 テスト ツールキットは、テンプレートにベストプラクティスを実装する方法を理解するのに役立ちます。
+
+テンプレートが完成したら、テスト ツールキットを実行して、実装を改善する方法があるかどうかを確認します。 詳細については、[ARM テンプレート テスト ツールキット](test-toolkit.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

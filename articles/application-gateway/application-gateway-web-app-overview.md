@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628688"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service などのマルチテナント バックエンドに対する Application Gateway のサポート
 
@@ -42,7 +42,7 @@ Web サーバー内がマルチテナント アーキテクチャ設計の場合
 
 ### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>マルチテナント サービスでの TLS 終端およびエンド ツー エンド TLS
 
-マルチテナント サービスでは、TLS 終端とエンド ツー エンド TLS 暗号化の両方がサポートされます。 アプリケーション ゲートウェイで TLS 終端を行う場合、TLS 証明書を引き続きアプリケーション ゲートウェイのリスナーに追加する必要があります。 ただし、エンド ツー エンド TLS の場合、信頼されている Azure サービス (Azure App Service の Web アプリなど) では、アプリケーション ゲートウェイ内でバックエンドをホワイト リスト登録する必要はありません。 したがって、どの認証証明書も追加する必要はありません。 
+マルチテナント サービスでは、TLS 終端とエンド ツー エンド TLS 暗号化の両方がサポートされます。 アプリケーション ゲートウェイで TLS 終端を行う場合、TLS 証明書を引き続きアプリケーション ゲートウェイのリスナーに追加する必要があります。 ただし、エンド ツー エンド TLS の場合、信頼されている Azure サービス (Azure App Service Web Apps など) では、アプリケーション ゲートウェイ内でバックエンドを許可する必要はありません。 したがって、どの認証証明書も追加する必要はありません。 
 
 ![エンド ツー エンド TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 

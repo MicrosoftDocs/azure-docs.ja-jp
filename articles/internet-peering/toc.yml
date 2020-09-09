@@ -56,6 +56,10 @@
           href: howto-legacy-exchange-portal.md
         - name: Azure PowerShell
           href: howto-legacy-exchange-powershell.md
+    - name: ルート サーバーとの Exchange ピアリングを作成または変更する
+      items:
+        - name: ポータル
+          href: how-to-exchange-route-server-portal.md
 - name: リファレンス
   items:
     - name: Azure CLI

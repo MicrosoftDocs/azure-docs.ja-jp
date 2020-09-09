@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus トピック フィルター | Microsoft Docs
 description: この記事では、どのメッセージをトピックから受信するかを、フィルターを指定することによってサブスクライバーが定義する方法について説明します。
-services: service-bus-messaging
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125759"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066748"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -64,13 +55,11 @@ SQL フィルター条件を使用すると、プロパティとその値を追�
 
 
 > [!NOTE]
-> 現在、Azure portal では、サブスクリプションのフィルター規則を指定することはできません。 サポートされている任意の SDK または Azure Resource Manager テンプレートを使用して、サブスクリプションの規則を定義できます。 
+> Azure portal で Service Bus Explorer の機能がサポートされるようになったため、サブスクリプション フィルターをポータルから作成したり編集したりすることができます。 
 
 ## <a name="next-steps"></a>次のステップ
 次のサンプルを参照してください。 
 
 - [.NET - フィルターを使用した基本的な送信と受信のチュートリアル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET - トピック フィルター](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
-
-
+- [Azure Resource Manager テンプレート](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

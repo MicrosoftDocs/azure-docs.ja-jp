@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76512251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554922"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
@@ -29,9 +29,9 @@ ms.locfileid: "76512251"
 
 環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory に参加し、Azure Active Directory に登録されているデバイスです。
 
-|   | Hybrid Azure AD Join |
+| Hybrid Azure AD Join | 説明 |
 | --- | --- |
-| **[定義]** | デバイスにサインインするために組織アカウントを必要とする、オンプレミスの AD と Azure AD に参加します |
+| **定義** | デバイスにサインインするために組織アカウントを必要とする、オンプレミスの AD と Azure AD に参加します |
 | **主な対象** | 既存のオンプレミス AD インフラストラクチャがあるハイブリッド組織に適しています |
 |   | 組織内のすべてのユーザーに適用できます |
 | **デバイスの所有権** | Organization |

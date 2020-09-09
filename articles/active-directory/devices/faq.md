@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497520"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266784"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
 ## <a name="general-faq"></a>一般的な FAQ
 
-### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか?  または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
+### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
 
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、 **[ユーザー デバイス]** には表示されません。
 Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
@@ -62,7 +62,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
 - Hybrid Azure AD 参加済みのみ:管理者が同期スコープからデバイス OU を削除し、その結果デバイスが Azure AD から削除される
-- Azure AD Connect のバージョン 1.4.xx.x へのアップグレード。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](/azure/active-directory/hybrid/reference-connect-device-disappearance)」を参照してください。
+- Azure AD Connect のバージョン 1.4.xx.x へのアップグレード。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](../hybrid/reference-connect-device-disappearance.md)」を参照してください。
 
 
 これらのアクションを修正する方法については、以下を参照してください。
@@ -176,6 +176,8 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 **A:** 現在、Azure AD 参加済みデバイスでの UPN の変更は完全にはサポートされていません。 そのため、UPN の変更後に Azure AD での認証が失敗します。 その結果、ユーザーのデバイスで SSO と条件付きアクセスの問題が生じます。 現時点では、この問題を解決するために、ユーザーは新しい UPN を使用して [他のユーザー] タイルから Windows にサインインする必要があります。 現在、この問題の対策に取り組んでいます。 なお、この問題は Windows Hello for Business でサインインしているユーザーには影響しません。 
 
+Windows 10 2004 更新プログラムでは、UPN の変更がサポートされています。 この更新プログラムがインストールされたデバイスのユーザーには、UPN の変更後も問題は発生しません
+
 ---
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>Q:ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。 どうすればそれらのデバイスからの印刷を有効にできますか?
@@ -267,6 +269,8 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 
 **A:** 現在、ハイブリッド Azure AD 参加済みデバイスでの UPN の変更は完全にはサポートされていません。 UPN の変更後、ユーザーはデバイスにサインインして、オンプレミス アプリケーションにアクセスできますが、Azure AD での認証は失敗します。 その結果、ユーザーのデバイスで SSO と条件付きアクセスの問題が生じます。 現時点では、この問題を解決するには、Azure AD からデバイスの参加を解除 (昇格された特権を使用して "dsregcmd /leave" を実行) し、再度参加する (自動的に行われる) 必要があります。 現在、この問題の対策に取り組んでいます。 なお、この問題は Windows Hello for Business でサインインしているユーザーには影響しません。 
 
+Windows 10 2004 更新プログラムでは、UPN の変更がサポートされています。 この更新プログラムがインストールされたデバイスのユーザーには、UPN の変更後も問題は発生しません
+
 ---
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>Q:Windows 10 のハイブリッド Azure AD 参加済みデバイスには、クラウド リソースにアクセスするためのドメイン コントローラーへの通信経路が必要ですか?
@@ -308,7 +312,7 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 **A:** 次の手順を実行します。
 
 1.    [コンプライアンス ポリシーを作成する](/intune/compliance-policy-create-mac-os)
-1.    [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
+1.    [macOS デバイスの条件付きアクセス ポリシーを定義する](../conditional-access/overview.md) 
 
 **備考:**
 

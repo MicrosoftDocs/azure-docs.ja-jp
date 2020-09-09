@@ -11,81 +11,81 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 02/14/2020
-  ms.openlocfilehash: 04321e19787c6cfee2315be77a47025636a016dc
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: eb7d7c911fc099a5f3b5456d7fb77688e0b06af5
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77918123"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816475"
 highlightedContent:
   items:
   - title: Azure CLI を使用して Linux 仮想マシンを作成する
     itemType: quickstart
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli
+    url: ./linux/quick-create-cli.md
   - title: PowerShell で Windows 仮想マシンを作成する
     itemType: quickstart
-    url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+    url: ./windows/quick-create-powershell.md
   - title: ポータル内で仮想マシン スケール セットを作成する
     itemType: quickstart
-    url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal
+    url: ../virtual-machine-scale-sets/quick-create-portal.md
   - title: スポット VM - 非常に低コストで未使用の容量を利用できます。
     itemType: concept
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms
+    url: ./spot-vms.md
   - title: 専用ホスト - 1 つまたは複数の仮想マシンをホストする物理サーバー。
     itemType: concept
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/dedicated-hosts
+    url: ./linux/dedicated-hosts.md
   - title: 近接配置グループ - 待ち時間を短くするために、VM をできるだけ近くに配置します。
     itemType: how-to-guide
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups
+    url: ./linux/proximity-placement-groups.md
 conceptualContent:
   items:
   - title: Linux Virtual Machines
     links:
-    - url: https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros
+    - url: ./linux/endorsed-distros.md
       itemType: concept
       text: 動作保証済みディストリビューション
-    - url: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks
+    - url: ./linux/tutorial-manage-disks.md
       itemType: tutorial
       text: ディスクの作成および管理
-    - url: https://docs.microsoft.com/azure/virtual-machines/linux/image-builder
+    - url: ./linux/image-builder.md
       itemType: how-to-guide
       text: Azure Image Builder
-    - url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/linux-index
+    - url: ./troubleshooting/linux-index.yml
       itemType: how-to-guide
       text: Linux 仮想マシンのトラブルシューティング
     footerLink:
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/
+      url: ./linux/index.yml
       text: 詳細情報
   - title: Windows Virtual Machines
     links:
-    - url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+    - url: ./windows/quick-create-powershell.md
       itemType: how-to-guide
       text: PowerShell を使用した VM の作成
-    - url: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-data-disk
+    - url: ./windows/tutorial-manage-data-disk.md
       itemType: tutorial
       text: ディスクの作成および管理
-    - url: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - url: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=azure/virtual-machines/windows/context/windows-vm-context
       itemType: how-to-guide
       text: マネージド ID の構成
-    - url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/index
+    - url: ./troubleshooting/index.yml
       itemType: how-to-guide
       text: Windows 仮想マシンのトラブルシューティング
     footerLink:
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/
+      url: ./windows/index.yml
       text: 詳細情報
   - title: 仮想マシン スケール セット
     links:
-    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-powershell
+    - url: ../virtual-machine-scale-sets/quick-create-powershell.md
       itemType: how-to-guide
       text: PowerShell を使用してスケール セットを作成する
-    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/orchestration-modes
+    - url: ../virtual-machine-scale-sets/orchestration-modes.md
       itemType: concept
       text: オーケストレーション モード
-    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot
+    - url: ../virtual-machine-scale-sets/use-spot.md
       itemType: how-to-guide
       text: スポット インスタンスを使用する
     footerLink:
-      url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/
+      url: ../virtual-machine-scale-sets/index.yml
       text: 詳細情報
 tools:
   title: ツール
@@ -93,13 +93,13 @@ tools:
   items:
   - title: Azure CLI
     imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-    url: https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest
+    url: /cli/azure/vm?view=azure-cli-latest
   - title: Azure PowerShell
     imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
-    url: https://docs.microsoft.com/powershell/module/az.compute#virtual_machines
+    url: /powershell/module/az.compute#virtual_machines
   - title: REST API
     imageSrc: https://docs.microsoft.com/azure/media/index/azure_dev-6.svg
-    url: https://docs.microsoft.com/rest/api/compute/virtualmachines
+    url: /rest/api/compute/virtualmachines
 additionalContent:
   sections:
   - title: その他のリソース
@@ -108,12 +108,12 @@ additionalContent:
     - title: 学習する
       links:
       - text: 学習モジュールを参照する
-        url: https://docs.microsoft.com/learn/browse/?products=azure-virtual-machines
+        url: /learn/browse/?products=azure-virtual-machines
     - title: テンプレート ギャラリー
       links:
       - text: クイックスタート テンプレート ギャラリーを参照する
         url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
-    - title: '[トラブルシューティング]'
+    - title: トラブルシューティング
       links:
       - text: エラーのトラブルシューティングに関する情報
-        url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/
+        url: ./troubleshooting/index.yml

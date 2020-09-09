@@ -3,19 +3,17 @@ title: QnA Maker サービスの新機能
 titleSuffix: Azure Cognitive Services
 description: この記事には、QnA Maker に関するニュースが含まれています。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 02/14/2020
-ms.author: diberry
-ms.openlocfilehash: c0ee1abcb99e10d57d05945f45595e5bfd76fa28
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 07/16/2020
+ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155989"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836877"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -24,6 +22,21 @@ ms.locfileid: "80155989"
 ## <a name="release-notes"></a>リリース ノート
 
 QnA Maker の新機能について説明します。
+
+### <a name="july-2020"></a>2020 年 7 月
+
+* [メタデータ: `OR` による複数のメタデータ ペアの論理の組み合わせ](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* Cognitive Search エンドポイントをプライベートにしたうえで引き続き QnA Maker にアクセスできるように構成する[手順](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet)。
+* Free レベルの Cognitive Search リソースは、[90 日間非アクティブな期間](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)が経過すると削除されます。
+
+### <a name="june-2020"></a>2020 年 6 月
+
+* すばやく簡単に手順に取り組めるよう、[Power Virtual Agent](tutorials/integrate-with-power-virtual-assistant-fallback-topic.md) のチュートリアルを更新
+
+### <a name="may-2020"></a>2020 年 5 月
+
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](concepts/role-based-access-control.md)
+* 回答の[リッチテキスト編集](how-to/edit-knowledge-base.md#rich-text-editing-for-answer)
 
 ### <a name="march-2020"></a>2020 年 3 月
 
@@ -64,6 +77,6 @@ QnA Maker の新機能について説明します。
 > [!div class="nextstepaction"]
 > [QnA Maker サービスを作成する](how-to/set-up-qnamaker-service-azure.md)
 
-## <a name="cognitive-service-updates"></a>コグニティブ サービスの更新プログラム
+## <a name="cognitive-service-updates"></a>Cognitive Services の更新プログラム
 
 [Cognitive Services に対する Azure 更新プログラムのお知らせ](https://azure.microsoft.com/updates/?product=cognitive-services)

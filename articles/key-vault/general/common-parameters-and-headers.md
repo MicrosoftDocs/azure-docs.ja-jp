@@ -10,17 +10,18 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427339"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005811"
 ---
 # <a name="common-parameters-and-headers"></a>一般的なパラメーターとヘッダー
 
 次の情報は、Key Vault リソースに関連するすべての操作に共通しています。
 
+- HTTP `Host` ヘッダーは常に存在する必要があり、また、コンテナーのホスト名がこのヘッダーによって指定される必要があります。 例: `Host: contoso.vault.azure.net`. ほとんどのクライアント技術では、URI から `Host` ヘッダーが入力されることにご留意ください。 たとえば、`GET https://contoso.vault.azure.net/secrets/mysecret{...}` では `Host` が `contoso.vault.azure.net` として設定されます。 つまり、`GET https://10.0.0.23/secrets/mysecret{...}` のような生 IP アドレスを利用してキー コンテナーにアクセスする場合、`Host` ヘッダーの自動値を間違えるため、`Host` ヘッダーにコンテナーのホスト名が含まれるよう、手動で必ず確認する必要があります。
 - `{api-version}` は、URI の api-version に置き換えます。
 - `{subscription-id}` は、URI のサブスクリプション識別子に置き換えます
 - `{resource-group-name}` は、リソース グループに置き換えます。 詳細については、リソース グループを使用した Azure リソースの管理に関するページを参照してください。
@@ -40,9 +41,9 @@ ms.locfileid: "81427339"
    }  
 ```
 
-|要素名 | 種類 | 説明 |
+|要素名 | Type | 説明 |
 |---|---|---|
-| コード | string | 発生したエラーの種類。|
+| code | string | 発生したエラーの種類。|
 | message | string | エラーの原因の説明。 |
 
 

@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448354"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849622"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>クイック スタート:Bing Video Search REST API と PHP を使用して動画を検索する
 
-このクイック スタートを使用すると、Bing Video Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな JavaScript アプリケーションは、HTTP 動画検索クエリを API に送信してその応答を表示します。 このアプリケーションは JavaScript で記述され、Node.js を使用しますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
-コード例は、PHP 5.6 で動作するように作成されています。
+このクイックスタートを使用して、Bing Video Search API を呼び出してみましょう。 このシンプルな PHP アプリケーションでは、HTTP 動画検索クエリを API に送信して、その JSON 応答を表示します。 コード例は、PHP 5.6 で動作するように記述されています。
 
-API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)を参照してください。
+このアプリケーションは PHP で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,10 +33,10 @@ API の技術的な詳細については、[API リファレンス](https://docs
 
 [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) は、Bing 検索エンジンから動画の結果を返します。
 
-1. コードのコメントで説明されているように、`php.ini` でセキュリティ保護された HTTP のサポートが有効になっていることを確認します。
+1. 次のコードで説明されているように、`;extension=php_openssl.dll` 行をコメント解除して、`php.ini` ファイルでセキュリティで保護された HTTP サポートを有効にします。
 2. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。
 3. 次に示すコードを追加します。
-4. `$accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。 `$endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+4. `$accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。 `$endpoint` 値には、次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、お使いのリソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 5. プログラムを実行します。
 
 ```php

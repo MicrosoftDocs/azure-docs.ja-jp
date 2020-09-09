@@ -6,20 +6,21 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976576"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>IoT Hub でのカスタマー マネージド キーを使用した保存データの暗号化
 
-IoT Hub では、Azure IoT Hub 向けのサポートである Bring Your Own Key (BYOK) とも呼ばれているカスタマー マネージド キー (CMK) を使用した保存データの暗号化がサポートされています。 Azure IoT Hub は、保存データと転送中のデータの暗号化を提供します。 既定では、IoT Hub は Microsoft マネージド キーを使用してデータを暗号化します。 CMK のサポートにより、お客様は [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用して、お客様が管理するキー暗号化キーで保存データを暗号化することを選択できるようになりました。
+IoT Hub では、Bring Your Own Key (BYOK) とも呼ばれているカスタマー マネージド キー (CMK) を使用した保存データの暗号化がサポートされています。 Azure IoT Hub によって、データセンターに書き込まれる際の保存データおよび転送中データが暗号化され、アクセス時に復号化されます。 既定では、IoT Hub は Microsoft マネージド キーを使用して保存データを暗号化します。 CMK を使用することで、既定の暗号化に加えて別の暗号化レイヤーを設けることができます。また、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理されるキー暗号化キーを使用して保存データを暗号化することもできます。 これにより、アクセスの制御を柔軟に作成、ローテーション、無効化、取り消しできます。 BYOK が IoT Hub 用に構成されている場合は、Azure Key Vault で暗号化キーを制御しながら、2 つ目の保護レイヤーを提供する二重暗号化も利用できます。
 
-この機能を利用するには、次のいずれかのリージョンで新しい IoT Hub (Basic または Standard レベル) を作成する必要があります:米国東部、米国西部 2、米国中南部、US Gov。 この機能を試用するには、[Microsoft サポート](https://azure.microsoft.com/support/create-ticket/)経由でお問い合わせください。 Microsoft サポートへのお問い合わせの際は、お客様の会社名とサブスクリプション ID をお知らせください。
+この機能を利用するには、新しい IoT Hub (Basic または Standard レベル) を作成する必要があります。 この機能を試用するには、[Microsoft サポート](https://azure.microsoft.com/support/create-ticket/)経由でお問い合わせください。 Microsoft サポートへのお問い合わせの際は、お客様の会社名とサブスクリプション ID をお知らせください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

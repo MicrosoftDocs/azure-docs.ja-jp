@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9470e9af38fdd814f5059538656e6a3dbb8e3a7
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60245494"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279314"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: ユーザー、グループ、および連絡先について
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
@@ -39,9 +39,9 @@ Active Directory から Azure AD へグループを同期する場合に留意�
 
 * Azure AD Connect は、組み込みのセキュリティ グループをディレクトリ同期から除外します。
 
-* Azure AD Connect では、[プライマリ グループ メンバーシップ](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx)の Azure AD への同期をサポートしていません。
+* Azure AD Connect では、[プライマリ グループ メンバーシップ](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771489(v=ws.11))の Azure AD への同期をサポートしていません。
 
-* Azure AD Connect では、[動的配布グループ メンバーシップ](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx)の Azure AD への同期をサポートしていません。
+* Azure AD Connect では、[動的配布グループ メンバーシップ](/Exchange/recipients/dynamic-distribution-groups/dynamic-distribution-groups?view=exchserver-2019)の Azure AD への同期をサポートしていません。
 
 * Active Directory グループをメール対応のグループとして Azure AD に同期するには、次の条件に従います。
 
@@ -76,4 +76,3 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
-

@@ -1,22 +1,20 @@
 ---
-title: Azure Firewall Manager プレビューのポリシーの概要
+title: Azure Firewall Manager ポリシーの概要
 description: Azure Firewall Manager のポリシーについて説明します
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: overview
-ms.date: 02/18/2020
+ms.topic: conceptual
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 1308f4ba3335f2fd2633f6e39a679cd6477a4b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 34134f2c790851d34db7b5327aa76350d54d137d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77444952"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075465"
 ---
-# <a name="azure-firewall-manager-preview-policy-overview"></a>Azure Firewall Manager プレビューのポリシーの概要
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="azure-firewall-manager-policy-overview"></a>Azure Firewall Manager ポリシーの概要
 
 ファイアウォール ポリシーは、NAT、ネットワーク、アプリケーションの各ルール コレクションのほか、脅威インテリジェンスの設定を含んだ Azure リソースです。 セキュリティ保護付き仮想ハブ内およびハブ仮想ネットワーク内の複数の Azure Firewall インスタンスにわたって使用できるグローバル リソースです。 ポリシーは、複数のリージョンおよび複数のサブスクリプションにわたって作用します。
 
@@ -26,7 +24,7 @@ ms.locfileid: "77444952"
 
 ポリシーは、Azure portal、REST API、テンプレート、Azure PowerShell、CLI など、さまざまな方法で作成、管理できます。
 
-ポータルまたは Azure PowerShell を使用し、Azure Firewall から既存のルールを移行して、ポリシーを作成することもできます。 詳細については、[Azure Firewall 構成を Azure Firewall ポリシー (プレビュー) に移行する方法](migrate-to-policy.md)に関するページを参照してください。 
+ポータルまたは Azure PowerShell を使用し、Azure Firewall から既存のルールを移行して、ポリシーを作成することもできます。 詳細については、[Azure Firewall 構成を Azure Firewall ポリシーに移行する方法](migrate-to-policy.md)に関するページを参照してください。 
 
 ポリシーは、1 つ以上の仮想ハブまたは VNet に関連付けることができます。 ファイアウォールは、リージョンにかかわらず、ご利用のアカウントに関連付けられた任意のサブスクリプションに置くことができます。
 
@@ -38,6 +36,8 @@ ms.locfileid: "77444952"
 
 親ポリシーからは、脅威インテリジェンス モードも継承されます。 この動作は、脅威インテリジェンス モードを別の値に設定することでオーバーライドすることはできますが、オフにすることはできません。 より厳密な値でオーバーライドすることのみできます。 たとえば、親ポリシーが **[警告のみ]** に設定されている場合、このローカル ポリシーを **[警告して拒否]** に構成することができます。
 
+脅威インテリジェンス モードと同様に、脅威インテリジェンスの許可リストは親ポリシーから継承されます。 子ポリシーによって、許可リストに IP アドレスを追加できます。
+
 NAT ルール コレクションは、特定のファイアウォールに固有のものであるため継承されません。
 
 継承では、親ポリシーに対するすべての変更が、対応する子のファイアウォール ポリシーに自動的に適用されます。
@@ -47,15 +47,14 @@ NAT ルール コレクションは、特定のファイアウォールに固有
 Azure Firewall では、従来のルールとポリシーの両方がサポートされます。 ポリシーとルールを比較した表を次に示します。
 
 
-|         |ポリシー  |ルール  |
-|---------|---------|---------|
-|Contains     |NAT、ネットワーク、アプリケーション ルール、脅威インテリジェンスの設定|NAT、ネットワーク、アプリケーション ルール |
+| サブジェクト | ポリシー  | ルール |
+| ------- | ------- | ----- |
+|Contains     |NAT、ネットワーク、アプリケーションの規則、カスタム DNS と DNS プロキシ設定、IP グループ、脅威インテリジェンスの設定 (許可リストを含む)|NAT、ネットワーク、アプリケーションの規則、カスタム DNS と DNS プロキシ設定、IP グループ、脅威インテリジェンスの設定 (許可リストを含む)|
 |保護     |仮想ハブと仮想ネットワーク|仮想ネットワークのみ|
 |ポータルでの操作     |Firewall Manager を使用した一元管理|スタンドアロンのファイアウォール エクスペリエンス|
 |複数のファイアウォールのサポート     |ファイアウォール ポリシーは、複数のファイアウォールにまたがって使用できる個別のリソース|ルールのエクスポートとインポートを手動で行うか、サードパーティの管理ソリューションを使用 |
 |価格     |ファイアウォールの関連付けに基づいて課金されます。 「[価格](#pricing)」を参照してください。|Free|
 |サポートされるデプロイ メカニズム     |ポータル、REST API、テンプレート、Azure PowerShell、CLI|ポータル、REST API、テンプレート、PowerShell、CLI |
-|リリースの状態     |パブリック プレビュー|一般公開|
 
 ## <a name="pricing"></a>価格
 
@@ -63,4 +62,4 @@ Azure Firewall では、従来のルールとポリシーの両方がサポー�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure ファイアーウォールのデプロイ方法については、「[Tutorial: Azure portal を使用して Azure Firewall Manager Preview でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)」を参照してください。
+Azure ファイアーウォールのデプロイ方法については、「[Tutorial: Azure portal を使用して Azure Firewall Manager でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)を参照してください。

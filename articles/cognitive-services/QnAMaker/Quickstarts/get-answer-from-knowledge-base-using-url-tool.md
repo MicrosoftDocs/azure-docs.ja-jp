@@ -3,20 +3,18 @@ title: クイック スタート:URL ツールを使用してナレッジ ベー
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、cURL や Postman などの URL テスト ツールを使用して、ナレッジ ベースから回答を取得する手順について説明します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.author: diberry
-ms.openlocfilehash: 1f19337aea8b39bbc8c7dc11fba683bee3c2955a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 07/16/2020
+ms.openlocfilehash: 6d03870a24e25327b43c14e57715cdaea23e700d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203967"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132894"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base"></a>クイック スタート:ナレッジ ベースから回答を取得する
 
@@ -38,3 +36,7 @@ ms.locfileid: "82203967"
 
 > [!div class="nextstepaction"]
 > [バッチ ファイルを使用してナレッジ ベースをテストする](batch-testing.md)
+
+メタデータの詳細:
+* [作成 - QnA ペアにメタデータを追加する](../How-To/edit-knowledge-base.md#add-metadata)
+* [クエリ予測 - メタデータを使用して回答のフィルター処理を行う](../How-To/metadata-generateanswer-usage.md#use-metadata-to-filter-answers-by-custom-metadata-tags)

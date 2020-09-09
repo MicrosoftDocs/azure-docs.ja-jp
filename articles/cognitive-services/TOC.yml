@@ -4,13 +4,13 @@
   expanded: true
   items:
     - name: Cognitive Services とは
-      href: Welcome.md
+      href: what-are-cognitive-services.md
+    - name: Cognitive Services ドキュメントの新着情報
+      href: whats-new-docs.md
     - name: Cognitive Services と機械学習
       href: cognitive-services-and-machine-learning.md
     - name: Cognitive Services のカスタム サブドメイン
       href: cognitive-services-custom-subdomains.md
-    - name: Cognitive Services のゲート プロセス
-      href: cognitive-services-gating-process.md
     - name: 言語のサポート
       href: language-support.md
 - name: クイックスタート
@@ -19,6 +19,11 @@
       href: cognitive-services-apis-create-account.md
     - name: Azure CLI を使用して新しいリソースを作成する
       href: cognitive-services-apis-create-account-cli.md
+    - name: クライアント ライブラリを使用して新しいリソースを作成する
+      href: cognitive-services-apis-create-account-client-library.md
+    - name: ARM テンプレートを使用して新しいリソースを作成する
+      displayName: Resource Manager
+      href: resource-manager-template.md
     - name: 診断ログ
       href: diagnostic-logging.md
 - name: Security
@@ -31,6 +36,8 @@
       href: ./encryption/cognitive-services-encryption-keys-portal.md
     - name: Cognitive Services に対する要求の認証
       href: authentication.md
+    - name: セキュリティ ベースライン
+      href: security-baseline.md
 - name: コンテナー サポート
   items:
     - name: コンテナー サポート
@@ -57,6 +64,29 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: ビッグ データ
+  items:
+    - name: ビッグ データの Cognitive Services
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: 作業の開始
+      href: ./big-data/getting-started.md
+    - name: サンプル
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: レシピ
+      items:
+        - name: 'レシピ:Anomaly Detector'
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 'レシピ:アート エクスプローラー'
+          href: ./big-data/recipes/art-explorer.md
+- name: リファレンス
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

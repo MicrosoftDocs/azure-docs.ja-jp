@@ -11,16 +11,19 @@ ms.date: 06/21/2019
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- devx-track-javascript
+ms.openlocfilehash: f3dad81a5cba9dd817e0d4e75590d374fe059358
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81767813"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424105"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
-# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>チュートリアル: バックエンド サービスからデバイスを構成する
+# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>チュートリアル:バックエンド サービスからデバイスを構成する
 
 場合によっては、デバイスからテレメトリを受信するだけでなく、バックエンド サービスからデバイスを構成する必要があります。 デバイスに必要な構成を送信するときに、それらのデバイスから状態とコンプライアンスの更新を受信したい場合もあります。 たとえば、デバイスの目標動作温度範囲を設定する場合や、デバイスからファームウェアのバージョン情報を収集する場合などです。
 

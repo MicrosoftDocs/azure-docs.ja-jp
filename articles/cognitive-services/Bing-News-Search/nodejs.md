@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: d0ed69aecf03e5c8e3a65e3ac532c02c89b65ba8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383134"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406607"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>クイック スタート:Node.js と Bing News Search REST API を使用してニュース検索を実行する
 
-このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな JavaScript アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
+このクイックスタートを使用して、Bing News Search API を呼び出してみましょう。 このシンプルな JavaScript アプリケーションは、検索クエリを API に送信し、JSON 応答を表示します。
 
 このアプリケーションは JavaScript で記述され、Node.js で動作しますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
@@ -29,21 +29,20 @@ ms.locfileid: "75383134"
 ## <a name="prerequisites"></a>前提条件
 
 * 最新バージョンの [Node.js](https://nodejs.org/en/download/)。
-
-* [JavaScript Request ライブラリ](https://github.com/request/request)
+* [JavaScript Request ライブラリ](https://github.com/request/request)。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と https の要件を設定します。
+1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度と HTTPS の要件を設定します。
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。 
+2. API エンドポイント、ニュース API 検索パス、サブスクリプション キー、検索語句の変数を作成します。 次のコードのグローバル エンドポイントを使用するか、Azure portal に表示される、対象のリソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することができます。 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -54,38 +53,42 @@ ms.locfileid: "75383134"
 
 ## <a name="handle-and-parse-the-response"></a>応答の処理と解析
 
-1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 この関数内で、次の手順を実行します。
+1. HTTP 呼び出し `response` をパラメーターとして受け取る `response_handler` という名前の関数を定義します。 
 
-    1. JSON 応答の本文を含む変数を定義します。  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
-        ```
+   次の手順で、この関数にコードを追加します。
 
-    2. **data** フラグが呼び出されたときに応答の本文を格納する
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+2. JSON 応答の本文を含む変数を定義します。  
 
-    3. **end** フラグが通知されたら、JSON とヘッダーを表示することができます。
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
 
-        ```javascript
-        response.on('end', function () {
-            console.log('\nRelevant Headers:\n');
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            console.log('\nJSON Response:\n');
-            console.log(body);
-         });
-        ```
+3. `data` フラグが呼び出されたら、応答の本文を格納します。
 
-## <a name="json-response"></a>JSON 応答
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+3. `end` フラグが通知されたら、JSON とヘッダーを表示することができます。
+
+    ```javascript
+    response.on('end', function () {
+        console.log('\nRelevant Headers:\n');
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log('\nJSON Response:\n');
+        console.log(body);
+     });
+    ```
+
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
 

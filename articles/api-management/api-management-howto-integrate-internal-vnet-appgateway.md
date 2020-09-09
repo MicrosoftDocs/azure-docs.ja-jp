@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811177"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025117"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
@@ -88,6 +88,11 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 
 > [!WARNING]
 > Application Gateway WAF が開発者ポータルで OpenAPI 仕様のダウンロードを中断しないようにするには、ファイアウォール規則 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` を無効にする必要があります。
+> 
+> 以下の Application Gateway WAF ルールは、ポータルの機能を破損する可能性があります。
+> 
+> - 管理モード用: `920330`、`931130`、`942100`、`942110`、`942180`、`942200`、`942260`、`942370`、`949110`、および `980130`
+> - 発行されたポータル用: `942200`、`942260`、`942370`、`942430`、および `942440`
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>リソース マネージャーのリソース グループの作成
 
@@ -330,7 +335,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 
 ### <a name="step-11"></a>手順 11.
 
-Application Gateway のインスタンス数とサイズを構成します。 この例では、API Management リソースのセキュリティを強化するために、[WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) を使用しています。
+Application Gateway のインスタンス数とサイズを構成します。 この例では、API Management リソースのセキュリティを強化するために、[WAF SKU](../web-application-firewall/ag/ag-overview.md) を使用しています。
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -368,9 +373,9 @@ VNET で構成された Azure API Management は、ホスト先がオンプレ�
 
 ## <a name="next-steps"></a><a name="next-steps"> </a> 次のステップ
 * Azure Application Gateway の詳細を確認する
-  * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
-  * [Application Gateway の Web アプリケーション ファイアウォール](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [パスベースのルーティングを使用して Application Gateway を作成する](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+  * [Application Gateway の概要](../application-gateway/overview.md)
+  * [Application Gateway の Web アプリケーション ファイアウォール](../web-application-firewall/ag/ag-overview.md)
+  * [パスベースのルーティングを使用して Application Gateway を作成する](../application-gateway/tutorial-url-route-powershell.md)
 * API Management と VNET の詳細を確認する
   * [内部仮想ネットワークでの Azure API Management サービスの使用](api-management-using-with-internal-vnet.md)
   * [VNET での API Management の使用](api-management-using-with-vnet.md)

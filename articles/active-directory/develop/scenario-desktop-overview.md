@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出すデスクトップ アプリを構築する - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出すデスクトップ アプリの構築 | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すデスクトップ アプリを構築する方法について説明します (概要)
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883003"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771861"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデスクトップ アプリ
 
@@ -50,7 +51,7 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
   - または、.NET Core アプリケーションであり、システム ブラウザーで Azure Active Directory (Azure AD) との認証のやり取りが発生することに同意している場合。
 
 - Windows でホストされているアプリケーションの場合、Windows ドメインに参加しているコンピューター、または Azure AD に参加しているコンピューターで実行されているアプリケーションが、統合 Windows 認証を使用して自動的にトークンを取得することも可能です。
-- 最後に、推奨されていませんが、パブリック クライアント アプリケーションではユーザー名とパスワードを使用することができます。 DevOps などの一部のシナリオではまだこれが必要になります。 これを使用すると、アプリケーションに制約が発生します。 たとえば、多要素認証 (条件付きアクセス) を実行する必要があるユーザーはサインインさせることができません。 また、アプリケーションはシングル サインオン (SSO) のメリットを受けられません。
+- 最後に、推奨されていませんが、パブリック クライアント アプリケーションではユーザー名とパスワードを使用することができます。 DevOps などの一部のシナリオではまだこれが必要になります。 これを使用すると、アプリケーションに制約が発生します。 たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md) (条件付きアクセス) を実行する必要があるユーザーはサインインさせることができません。 また、アプリケーションはシングル サインオン (SSO) のメリットを受けられません。
 
   さらに、先進認証の原則に反しており、これはレガシの理由のためにのみ提供されています。
 

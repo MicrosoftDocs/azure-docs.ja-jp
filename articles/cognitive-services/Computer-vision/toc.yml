@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Computer Vision とは
-      href: Home.md
+      href: overview.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
@@ -29,13 +29,13 @@
               href: QuickStarts/python-analyze.md
         - name: ローカル画像の分析
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-analyze.md
             - name: Python
               href: QuickStarts/python-disk.md
         - name: サムネイルの生成
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-thumb.md
             - name: cURL
               href: QuickStarts/curl-thumb.md
@@ -49,9 +49,9 @@
               href: QuickStarts/node-thumb.md
             - name: Python
               href: QuickStarts/python-thumb.md
-        - name: テキストの抽出 (Computer Vision - Read API)
+        - name: テキストの抽出 (Read API)
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-hand-text.md
             - name: Java
               href: QuickStarts/java-hand-text.md
@@ -59,9 +59,9 @@
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
-        - name: 印刷されたテキストの抽出 (OCR)
+        - name: テキストの抽出 (OCR API)
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp-print-text.md
             - name: cURL
               href: QuickStarts/curl-print-text.md
@@ -105,15 +105,13 @@
       href: concept-detecting-color-schemes.md
     - name: スマート トリミングされたサムネイル
       href: concept-generating-thumbnails.md
-    - name: 印刷されたテキストと手書きのテキストの認識
+    - name: 光学式文字認識 (OCR)
       href: concept-recognizing-text.md
     - name: 成人向けコンテンツの検出
       href: concept-detecting-adult-content.md
-- name: 操作方法ガイド
+- name: Containers
   items:
-    - name: Computer Vision API を呼び出す
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: コンテナーの使用
+    - name: API コンテナーの読み取り
       items:
         - name: コンテナーのインストールと実行
           href: computer-vision-how-to-install-containers.md
@@ -127,6 +125,10 @@
         - name: Container Instances の使用
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
+- name: 操作方法ガイド
+  items:
+    - name: Computer Vision API を呼び出す
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: リアルタイムでビデオを分析する
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: リファレンス
@@ -135,10 +137,10 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Computer Vision API v3.1 プレビュー
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005'
     - name: Computer Vision API v3.0
       href: 'https://aka.ms/computer-vision-v3-ref'
-    - name: Computer Vision API v3.0 プレビュー
-      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6'
     - name: Computer Vision API v2.1
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
     - name: Computer Vision API v2.0
@@ -183,3 +185,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: v2.0 または 2.1 から 3.0 へのアップグレード
+      href: upgrade-api-versions.md

@@ -1,25 +1,18 @@
 ---
 title: Node.js で azure/service-bus のトピックとサブスクリプションを使用する
 description: クイック スタート:Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/16/2020
-ms.author: aschhab
-ms.openlocfilehash: 6088b4c54ed16c5ef46d2c0671e619884cad29d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.custom: devx-track-javascript
+ms.openlocfilehash: bbb0f530d95c78b8b5da178ee1544830ac3f7132
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330619"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660598"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>クイック スタート:Service Bus のトピックとサブスクリプションを Node.js および azure/service-bus パッケージで使用する方法
 このチュートリアルでは、新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して Service Bus トピックにメッセージを送り、Service Bus サブスクリプションからメッセージを受け取る Node.js プログラムの記述方法を学習します。 このパッケージではより高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)が使用されます。一方、以前の [azure-sb](https://www.npmjs.com/package/azure-sb) パッケージでは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) が使用されていました。 サンプルは JavaScript で記述されています。
@@ -29,7 +22,7 @@ ms.locfileid: "78330619"
 - 操作するトピックとサブスクリプションがない場合は、[Azure portal を使用する Service Bus トピックおよびサブスクリプションの作成](service-bus-quickstart-topics-subscriptions-portal.md)に関する記事にある手順に従って、それらを作成します。 Service Bus インスタンスの接続文字列と、作成したトピックおよびサブスクリプションの名前をメモしておいてください。 サンプルでこれらの値を使用します。
 
 > [!NOTE]
-> - このチュートリアルでは、コピーして [Nodejs](https://nodejs.org/) を使用して実行できるサンプルを扱います。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ](../app-service/app-service-web-get-started-nodejs.md)に関するページ、または [Windows PowerShell を使用する Node.js クラウド サービス](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)に関するページを参照してください。
+> - このチュートリアルでは、コピーして [Nodejs](https://nodejs.org/) を使用して実行できるサンプルを扱います。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ](../app-service/quickstart-nodejs.md)に関するページ、または [Windows PowerShell を使用する Node.js クラウド サービス](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)に関するページを参照してください。
 > - 新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージでは、トピックとサブスクリプションの作成がまだサポートされません。 ブログラムでそれらを作成する場合は、[@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) パッケージを使用してください。
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>ノード パッケージ マネージャー (NPM) を使用してパッケージをインストールする
@@ -40,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>メッセージをトピックに送信する
-Service Bus トピックとのやりとりは、[ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) クラスをインスタンス化し、それを使用して [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) クラスをインスタンス化することから始まります。 トピック クライアントを取得したら、送信側を作成し、その上で [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) または [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) メソッドを使用してメッセージを送信できます。
+Service Bus トピックとのやりとりは、[ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) クラスをインスタンス化し、それを使用して [TopicClient](/javascript/api/@azure/service-bus/topicclient) クラスをインスタンス化することから始まります。 トピック クライアントを取得したら、送信側を作成し、その上で [send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-) または [sendBatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) メソッドを使用してメッセージを送信できます。
 
 1. [Visual Studio Code](https://code.visualstudio.com/) など、お好みのエディターを開きます
 2. `send.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードでは、トピックに 10 件のメッセージが送信されます。
@@ -90,10 +83,10 @@ Service Bus トピックとのやりとりは、[ServiceBusClient](https://docs.
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ](service-bus-quotas.md)」を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
-Service Bus サブスクリプションとのやりとりは、[ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) クラスをインスタンス化し、それを使用して [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) クラスをインスタンス化することから始まります。 サブスクリプション クライアントを取得したら、受信側を作成し、[receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) または [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) メソッドを使用して、メッセージを受信できます。
+Service Bus サブスクリプションとのやりとりは、[ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) クラスをインスタンス化し、それを使用して [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient) クラスをインスタンス化することから始まります。 サブスクリプション クライアントを取得したら、受信側を作成し、[receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) または [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) メソッドを使用して、メッセージを受信できます。
 
 1. [Visual Studio Code](https://code.visualstudio.com/) など、お好みのエディターを開きます
-2. `recieve.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードでは、サブスクリプションから 10 件のメッセージを受信してみます。 受信する実際の数は、サブスクリプションのメッセージの数とネットワーク待機時間によって異なります。
+2. `receive.js` というファイルを作成し、そこに以下のコードを貼り付けます。 このコードでは、サブスクリプションから 10 件のメッセージを受信してみます。 受信する実際の数は、サブスクリプションのメッセージの数とネットワーク待機時間によって異なります。
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -124,11 +117,11 @@ Service Bus サブスクリプションとのやりとりは、[ServiceBusClient
     });
     ```
 3. 上記のコードで、接続文字列と、トピックおよびサブスクリプションの名前を入力します。
-4. その後、コマンド プロンプトで `node receiveMessages.js` コマンドを実行して、このファイルを実行します。
+4. その後、コマンド プロンプトで `node receive.js` コマンドを実行して、このファイルを実行します。
 
 お疲れさまでした。 これで、Service Bus サブスクリプションからメッセージが受信されました。
 
-[createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) メソッドでは `ReceiveMode` を取り込みます。これは、[ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) および [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) という値を持つ列挙型です。 メッセージで `complete()`、`abandon()`、`defer()`、または `deadletter()` メソッドのいずれかを使って `PeekLock` モードを使用する場合は、必ず、[メッセージを解決](message-transfers-locks-settlement.md#settling-receive-operations)してください。
+[createReceiver](/javascript/api/@azure/service-bus/subscriptionclient#createreceiver-receivemode-) メソッドでは `ReceiveMode` を取り込みます。これは、[ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) および [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) という値を持つ列挙型です。 メッセージで `complete()`、`abandon()`、`defer()`、または `deadletter()` メソッドのいずれかを使って `PeekLock` モードを使用する場合は、必ず、[メッセージを解決](message-transfers-locks-settlement.md#settling-receive-operations)してください。
 
 ## <a name="subscription-filters-and-actions"></a>サブスクリプションのフィルターとアクション
 Service Bus では、[サブスクリプションのフィルターとアクション](topic-filters.md)がサポートされます。これにより、サブスクリプションへの受信メッセージをフィルター処理し、それらのプロパティを編集できます。
@@ -150,5 +143,3 @@ Service Bus では、[サブスクリプションのフィルターとアクシ�
 - [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 - [GitHub で Service Bus の Nodejsサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)を確認する
 - [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)
-
-

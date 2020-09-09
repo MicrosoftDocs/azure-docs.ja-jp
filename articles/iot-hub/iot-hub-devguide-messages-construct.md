@@ -6,14 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 07/22/2019
 ms.author: asrastog
-ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69872481"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336720"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -58,6 +61,8 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 | iothub-connection-module-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **moduleId** が含まれます。 | いいえ | connectionModuleId |
 | iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **connectionDeviceGenerationId** (「[デバイス ID のプロパティ](iot-hub-devguide-identity-registry.md#device-identity-properties)」を参照) が含まれています。 | いいえ |connectionDeviceGenerationId |
 | iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。| いいえ | connectionAuthMethod |
+| dt-dataschema | この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 | いいえ | N/A |
+| dt-subject | device-to-cloud メッセージを送信しているコンポーネントの名前。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 | はい | 該当なし |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub メッセージのシステム プロパティ
 
@@ -70,6 +75,25 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 | correlation-id |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 |はい|
 | user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 |はい|
 | iothub-ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 |はい|
+
+### <a name="system-property-names"></a>システム プロパティ名
+
+システム プロパティ名は、メッセージがルーティングされるエンドポイントによって異なります。 これらの名前の詳細については、次の表を参照してください。
+
+|システム プロパティ名|Event Hubs|Azure Storage|Service Bus|Event Grid|
+|--------------------|----------|-------------|-----------|----------|
+|メッセージ ID|message-id|messageId|MessageId|message-id|
+|User id|user-id|userId|UserId|user-id|
+|Connection device id|iothub-connection-device-id| connectionDeviceId|iothub-connection-device-id|iothub-connection-device-id|
+|Connection module id|iothub-connection-module-id|connectionModuleId|iothub-connection-module-id|iothub-connection-module-id|
+|Connection auth generation id|iothub-connection-auth-generation-id|connectionDeviceGenerationId| iothub-connection-auth-generation-id|iothub-connection-auth-generation-id|
+|Connection auth method|iothub-connection-auth-method|connectionAuthMethod|iothub-connection-auth-method|iothub-connection-auth-method|
+|contentType|content-type|contentType|ContentType|iothub-content-type|
+|contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
+|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| 該当なし |iothub-enqueuedtime|
+|CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
+|dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|
+|dt-subject|dt-subject|dt-subject|dt-subject|dt-subject|
 
 ## <a name="message-size"></a>メッセージ サイズ
 

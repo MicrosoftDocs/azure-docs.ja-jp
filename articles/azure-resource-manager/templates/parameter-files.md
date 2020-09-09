@@ -2,13 +2,13 @@
 title: パラメーター ファイルを作成する
 description: Azure Resource Manager テンプレートのデプロイ中に値を渡すためのパラメーター ファイルを作成します
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a1a1f703594f8eaa572ea38ecef88b4cd6ba5a4b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 06/19/2020
+ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682891"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082938"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
@@ -182,22 +182,29 @@ ms.locfileid: "81682891"
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>パラメーター ファイルを使用したテンプレートのデプロイ
+
+参照:
+
+- [ARM テンプレートと Azure CLI でリソースをデプロイする](./deploy-cli.md#parameters)
+- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-powershell.md#pass-parameter-values)
+
 ## <a name="file-name"></a>ファイル名
 
 パラメーター ファイルに名前を付けるための一般的な規則は、テンプレート名に **.parameters** を追加することです。 たとえば、テンプレートの名前が **azuredeploy.json** の場合、パラメーター ファイルには **azuredeploy.parameters.json** という名前を付けます。 この名前付け規則により、テンプレートとパラメーターの関連がわかります。
 
 異なる環境にデプロイする場合は、複数のパラメーター ファイルを作成します。 パラメーター ファイルに名前を付けるときは、その用途を識別する方法を追加します。 たとえば、 **azuredeploy.parameters-dev.json** や **azuredeploy.parameters-prod.json** を使用します。
 
-
 ## <a name="parameter-precedence"></a>パラメーターの優先順位
 
 同じデプロイ操作で、インライン パラメーターとローカル パラメーター ファイルを使用することができます。 たとえば、一部の値をローカル パラメーター ファイルで指定し、その他の値をデプロイ中にインラインで追加します。 ローカル パラメーター ファイルとインラインの両方でパラメーターの値を指定すると、インラインの値が優先されます。
 
-ただし、外部パラメーター ファイルを使用する場合、他の値をインラインまたはローカル ファイルから渡すことはできません。 すべてのインライン パラメーターは無視されます。 すべてのパラメーター値を外部ファイル内で指定します。
+ファイルへの URI を提供することにより、外部パラメーター ファイルを使用することができます。 その場合、他の値をインラインまたはローカル ファイルから渡すことはできません。 すべてのインライン パラメーターは無視されます。 すべてのパラメーター値を外部ファイル内で指定します。
 
 ## <a name="parameter-name-conflicts"></a>パラメーター名の競合
 
 PowerShell コマンドのパラメーターのいずれかと名前が同じであるパラメーターがテンプレートに含まれている場合、PowerShell ではテンプレート内のパラメーター名の後ろに **FromTemplate** という文字を付加します。 たとえば、テンプレート内の **ResourceGroupName** という名前のパラメーターは、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合します。 **ResourceGroupNameFromTemplate** の値を指定するように求められます。 デプロイ コマンドに使用されていないパラメーター名を使用すると、このような混乱を回避できます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

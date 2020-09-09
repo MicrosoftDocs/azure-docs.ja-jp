@@ -3,16 +3,16 @@ title: Rest API を使用して Azure ファイル共有のバックアップを
 description: Rest API を使用して、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184913"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892849"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>REST API を使用して Azure ファイル共有のバックアップを管理する
 
-この記事では、[Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) によってバックアップされた Azure ファイル共有を管理および監視するためのタスクを実行する方法について説明します。
+この記事では、[Azure Backup](./backup-overview.md) によってバックアップされた Azure ファイル共有を管理および監視するためのタスクを実行する方法について説明します。
 
 ## <a name="monitor-jobs"></a>ジョブの監視
 
@@ -38,7 +38,7 @@ Azure Backup サービスにより、バックグラウンドで実行される�
 }
 ```
 
-Azure ファイル共有のバックアップ ジョブは **jobId** フィールドによって識別され、[こちら](https://docs.microsoft.com/rest/api/backup/jobdetails/)で説明されているように GET 要求を使用して追跡できます。
+Azure ファイル共有のバックアップ ジョブは **jobId** フィールドによって識別され、[こちら](/rest/api/backup/jobdetails/)で説明されているように GET 要求を使用して追跡できます。
 
 ### <a name="tracking-the-job"></a>ジョブの追跡
 
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>保護を停止してデータを削除する
 
-保護されたファイル共有の保護を停止し、バックアップ データも削除するには、[こちら](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)で詳しく説明されている削除操作を実行します。
+保護されたファイル共有の保護を停止し、バックアップ データも削除するには、[こちら](/rest/api/backup/protecteditems/delete)で詳しく説明されている削除操作を実行します。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

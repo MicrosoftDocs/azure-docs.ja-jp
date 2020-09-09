@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: dbace6b93e07571693b221bb3d2a947010b1e476
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799997"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505824"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -32,7 +32,7 @@ Azure Monitor でできることの例を次に示します。
 
 ## <a name="overview"></a>概要
 
-次の図は、Azure Monitor の概要を示します。 図の中央には、Azure Monitor が使用するデータの 2 つの基本的な型であるメトリックとログを格納するデータ ストアがあります。 左側には、これらの[データ ストア](platform/data-platform.md)に投入される[監視データのソース](platform/data-sources.md)があります。 右側には、Azure Monitor が収集したデータを使って実行するさまざまな機能があります。たとえば、分析、アラート、および外部システムへのストリーミングなどです。
+次の図は、Azure Monitor の概要を示します。 図の中央にあるデータ ストアには、Azure Monitor で使用される 2 つの基本的なデータの種類であるメトリックとログを格納します。 左側には、これらの[データ ストア](platform/data-platform.md)に投入される[監視データのソース](platform/data-sources.md)があります。 右側には、Azure Monitor が収集したデータを使って実行するさまざまな機能があります。たとえば、分析、アラート、および外部システムへのストリーミングなどです。
 
 ![Azure Monitor の概要](media/overview/overview.png)
 
@@ -44,7 +44,7 @@ Azure Monitor が収集した多くの Azure リソースのデータは、Azure
 
 ![メトリック](media/overview/metrics.png)
 
-Azure Monitor が収集したログ データは、収集されたデータをすばやく検索、統合、分析する[クエリ](log-query/log-query-overview.md)を使用して分析できます。  Azure portal で [Log Analytics](log-query/portals.md) を使用してクエリを作成およびテストした後、これらのツールを使用してデータを直接分析できるほか、クエリを保存して[視覚化](visualizations.md)または[アラート ルール](platform/alerts-overview.md)に利用することができます。
+Azure Monitor が収集したログ データは、収集されたデータをすばやく検索、統合、分析する[クエリ](log-query/log-query-overview.md)を使用して分析できます。  Azure portal で [Log Analytics](./log-query/log-query-overview.md) を使用してクエリを作成してテストした後、別のツールを使用してデータを直接分析するか、クエリを保存して[視覚化](visualizations.md)または[アラート ルール](platform/alerts-overview.md)で利用できます。
 
 Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ言語](/azure/kusto/query/)のバージョンを使用します。それは、単純なログ検索に適していますが、集計、結合、スマート分析などの高度な機能も備えています。 [さまざまなレッスン](log-query/get-started-queries.md)を利用すれば、クエリ言語はすぐに覚えることができます。  既に [SQL](log-query/sql-cheatsheet.md) や [Splunk](log-query/splunk-cheatsheet.md) に習熟しているユーザーには、別途ガイダンスが用意されています。
 
@@ -90,7 +90,7 @@ Azure Monitor では、[Data Collector API](platform/data-collector-api.md) を�
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>監視ソリューション
-Azure Monitor の[監視ソリューション](insights/solutions.md)は、特定のアプリケーションまたはサービスに関する洞察を提供するロジックを 1 つにまとめたものです。 アプリケーションまたはサービスの監視データを収集するためのロジック、そのデータを分析するための[クエリ](log-query/log-query-overview.md)、視覚化のための[ビュー](../log-analytics/log-analytics-view-designer.md)が含まれています。 Azure サービスおよび他のアプリケーションを監視するさまざまな監視ソリューションが [Microsoft とパートナーから提供](insights/solutions-inventory.md)されています。
+Azure Monitor の[監視ソリューション](insights/solutions.md)は、特定のアプリケーションまたはサービスに関する洞察を提供するロジックを 1 つにまとめたものです。 アプリケーションまたはサービスの監視データを収集するためのロジック、そのデータを分析するための[クエリ](log-query/log-query-overview.md)、視覚化のための[ビュー](./platform/view-designer.md)が含まれています。 Azure サービスおよび他のアプリケーションを監視するさまざまな監視ソリューションが [Microsoft とパートナーから提供](./monitor-reference.md)されています。
 
 ![監視ソリューション](media/overview/solutions-overview.png)
 
@@ -119,12 +119,12 @@ Azure Monitor のアラート ルールは、受信者の一意なセットと�
 ![ダッシュボード](media/overview/dashboard.png)
 
 ### <a name="views"></a>ビュー
-[ビュー](../log-analytics/log-analytics-view-designer.md)は Azure Monitor でログ データを視覚的に表現します。  それぞれのビューには単一のタイルが含まれており、ドリルダウンすることで重要なデータを集約したリストのほか、棒グラフや折れ線グラフなど、さまざまな視覚化要素を表示できます。  監視ソリューションには、特定の用途向けにデータを集計したビューが含まれているほか、ログ クエリから得たデータを表示する独自のビューを作成することもできます。 ビューは、Azure Monitor での他の要素と同様に、Azure ダッシュ ボードに追加できます。
+[ビュー](./platform/view-designer.md)は Azure Monitor でログ データを視覚的に表現します。  それぞれのビューには単一のタイルが含まれており、ドリルダウンすることで重要なデータを集約したリストのほか、棒グラフや折れ線グラフなど、さまざまな視覚化要素を表示できます。  監視ソリューションには、特定の用途向けにデータを集計したビューが含まれているほか、ログ クエリから得たデータを表示する独自のビューを作成することもできます。 ビューは、Azure Monitor での他の要素と同様に、Azure ダッシュ ボードに追加できます。
 
 ![表示](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com)は、さまざまなデータ ソースを対話操作で視覚化するビジネス分析サービスで、データを組織内外のユーザーと効果的に共有することができます。 [Azure Monitor からログ データを自動的にインポート](../log-analytics/log-analytics-powerbi.md)するように Power BI を構成すると、そのデータも追加で視覚化することができます。
+[Power BI](https://powerbi.microsoft.com)は、さまざまなデータ ソースを対話操作で視覚化するビジネス分析サービスで、データを組織内外のユーザーと効果的に共有することができます。 [Azure Monitor からログ データを自動的にインポート](./platform/powerbi.md)するように Power BI を構成すると、そのデータも追加で視覚化することができます。
 
 
 ![Power BI](media/overview/power-bi.png)
@@ -134,7 +134,7 @@ Azure Monitor のアラート ルールは、受信者の一意なセットと�
 多くの場合、監視データを使用するカスタム ソリューションを構築するために、Azure Monitor と他のシステムを統合したいという要件があります。 このような統合を実現するには、他の Azure サービスと Azure Monitor を連携させます。
 
 ### <a name="event-hub"></a>イベント ハブ
-ストリーミング プラットフォームおよびイベント取り込みサービスである [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) は、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、データの変換と格納を行います。 Event Hubs を使用すると、パートナー SIEM および監視ツールに対して [Azure Monitor データをストリーム配信](platform/stream-monitoring-data-event-hubs.md)できます。
+ストリーミング プラットフォームおよびイベント取り込みサービスである [Azure Event Hubs](../event-hubs/index.yml) は、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、データの変換と格納を行います。 Event Hubs を使用すると、パートナー SIEM および監視ツールに対して [Azure Monitor データをストリーム配信](platform/stream-monitoring-data-event-hubs.md)できます。
 
 
 ### <a name="logic-apps"></a>Logic Apps
@@ -150,4 +150,4 @@ Azure Monitor のメトリックとログの読み取りや書き込み、生成
 * [メトリックとログ](platform/data-platform.md) Azure Monitor によって収集されたデータについては、こちらをご覧ください。
 * [データ ソース](platform/data-sources.md) アプリケーションのさまざまなコンポーネントでテレメトリを送信する方法については、こちらをご覧ください。
 * [ログ クエリ](log-query/log-query-overview.md) 収集したデータを分析する場合は、こちらをご覧ください。
-* クラウドのアプリケーションとサービスを監視するための[ベスト プラクティス](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。
+* クラウドのアプリケーションとサービスを監視するための[ベスト プラクティス](/azure/architecture/best-practices/monitoring)。

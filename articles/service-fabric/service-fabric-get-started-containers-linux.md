@@ -3,19 +3,20 @@ title: Linux で Azure Service Fabric コンテナー アプリケーション�
 description: Azure Service Fabric で初めての Linux コンテナー アプリケーションを作成します。 アプリケーションの Docker イメージをビルドして、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-python
+ms.openlocfilehash: 35e96f1039dc71427a1a3d2745245eff5d012aaf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457957"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847535"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-既存のアプリケーションを Service Fabric クラスター上の Linux コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
+既存のアプリケーションを Service Fabric クラスター上の Linux コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](../container-registry/index.yml) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
 
 > [!NOTE]
 > この記事は Linux 開発環境に適用されます。  Service Fabric クラスター ランタイムと Docker ランタイムが同じ OS で実行されている必要があります。  Windows クラスターで Linux コンテナーを実行することはできません。
@@ -25,6 +26,8 @@ ms.locfileid: "75457957"
   * [Service Fabric SDK およびツール](service-fabric-get-started-linux.md)。
   * [Docker CE for Linux](https://docs.docker.com/engine/installation/#prior-releases)。 
   * [Service Fabric CLI](service-fabric-cli.md)
+
+* 3 つ以上のノードを持つ Linux クラスター。
 
 * Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -174,7 +177,7 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 コンテナー イメージのダウンロード用にさまざまな種類の認証を構成する方法については、[コンテナー リポジトリの認証](configure-container-repository-credentials.md)に関する記事を参照してください。
 
 ## <a name="configure-isolation-mode"></a>分離モードの構成
-6\.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と Hyper-V の 2 つの分離モードがサポートされています。 Hyper-V 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 Hyper-V 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+6.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と Hyper-V の 2 つの分離モードがサポートされています。 Hyper-V 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 Hyper-V 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
 ```xml
 <ServiceManifestImport>
@@ -240,7 +243,7 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
-## <a name="deploy-the-application"></a>アプリケーションの配置
+## <a name="deploy-the-application"></a>アプリケーションをデプロイする
 アプリケーションがビルドされたら、Service Fabric CLI を使用してローカル クラスターにデプロイできます。
 
 ローカルの Service Fabric クラスターに接続します。
@@ -249,7 +252,7 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-[https://github.com/Azure-Samples/service-fabric-containers/](https://github.com/Azure-Samples/service-fabric-containers/ ) にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
+https://github.com/Azure-Samples/service-fabric-containers/ にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
 
 ```bash
@@ -465,7 +468,7 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。

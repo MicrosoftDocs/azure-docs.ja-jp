@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus に関する Resource Manager の例外 | Microsoft Docs
 description: Azure Resource Manager によって表示される Service Bus の例外と推奨されるアクションの一覧。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: darosa
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/26/2019
-ms.author: aschhab
-ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: a0b0338da0f002c7b667748ffd2bf5a40c91c580
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978270"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336975"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus に関する Resource Manager での例外
 

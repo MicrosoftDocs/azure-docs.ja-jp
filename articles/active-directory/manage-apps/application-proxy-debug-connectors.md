@@ -2,21 +2,21 @@
 title: アプリケーション プロキシ コネクタのデバッグ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) アプリケーション プロキシ コネクタを使用して、問題をデバッグします。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e7a1de24e5032b2dade2f325560fd6964c892d5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72311855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145681"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>アプリケーション プロキシ コネクタの問題をデバッグする 
 
@@ -40,11 +40,11 @@ ms.locfileid: "72311855"
 
 ![コネクタをデバッグする手順を示すフローチャート](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | アクション | 説明 | 
+| 手順 | アクション | 説明 |
 |---------|---------|---------|
 |1 | アプリに割り当てられたコネクタ グループを検索する | 複数のサーバーにインストールされているコネクタがある場合があります。その場合、コネクタは[コネクタ グループに割り当てられている](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)必要があります。 コネクタ グループの詳細については、「[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)」をご覧ください。 |
 |2 | コネクタをインストールして、グループを割り当てる | コネクタをインストールしていない場合は、「[コネクタのインストールと登録](application-proxy-add-on-premises-application.md#install-and-register-a-connector)」を参照してください。<br></br> コネクタをインストールできない場合、[コネクタのインストール問題](application-proxy-connector-installation-problem.md)ページを参照してください。<br></br> コネクタがグループに割り当てられていない場合は、[コネクタをグループに割り当てる](application-proxy-connector-groups.md#create-connector-groups)に関するセクションを参照してください。<br></br>アプリケーションがコネクタ グループに割り当てられていない場合は、「[コネクタ グループにアプリケーションを割り当てる](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups)」を参照してください。|
-|3 | コネクタ サーバーでポートのテストを実行する | [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) またはその他のポート テスト ツールを使用して、コネクタ サーバーでポートのテストを実行して、ポート 443 と 80 が開いているかどうかを確認します。|
+|3 | コネクタ サーバーでポートのテストを実行する | [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) またはその他のポート テスト ツールを使用して、コネクタ サーバーでポートのテストを実行して、[ポート 443 と 80 が開いている](application-proxy-add-on-premises-application.md#open-ports)かどうかを確認します。|
 |4 | ドメインとポートを構成する | [ドメインとポートが正しく構成されていることを確認](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)します。コネクタが正常に機能するには、特定のポートが開いている必要があり、サーバーが URL にアクセスできる必要があります。 |
 |5 | バックエンド プロキシが使用されているかどうかを確認する | コネクタがバックエンド プロキシ サーバーを使用しているか、またはそれらをバイパスしているかどうかを確認します。 詳細については、「[コネクタのプロキシの問題とサービスの接続の問題のトラブルシューティング](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues)」を参照してください。 |
 |6 | バックエンド プロキシを使用するようにコネクタとアップデーターを更新する | バックエンド プロキシが使用されている場合は、コネクタで同じプロキシが使用されていることを確認します。 コネクタをプロキシ サーバーと連携させるためのトラブルシューティングと構成の詳細については、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」を参照してください。 |

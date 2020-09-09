@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426404"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020610"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブでのチェックポイントと再生の概念
 この記事では、Azure Stream Analytics の内部チェックポイントおよび再生の概念と、これらがジョブの回復に与える影響について説明します。 Stream Analytics ジョブが実行されるたびに、状態情報が内部的に維持されます。 状態情報は、チェックポイントに定期的に保存されます。 一部のシナリオでは、ジョブ エラーまたはアップグレードが発生した場合にチェックポイント情報がジョブの回復に使用されます。 その他の状況では、チェックポイントを回復に使用できず、再生が必要です。
@@ -58,7 +58,7 @@ Stream Analytics ジョブが実行されるたびに、そのジョブが複数
 
 3. 開始時刻から最初の出力が生成される時点までの時間を測定します。 この時間は、サービスのアップグレード中にジョブで発生するおおよその遅延です。
 
-4. 遅延が長すぎる場合は、ジョブをパーティション分割し、SU の数を増やして、負荷がより多くのノードに分散されるようにしてみます。 または、クエリのウィンドウ サイズを小さくし、(たとえば、Azure SQL データベースを使用して) ダウンストリームのシンク内の Stream Analytics ジョブによって生成される出力に対して集計またはその他のステートフル処理をさらに実行することを検討します。
+4. 遅延が長すぎる場合は、ジョブをパーティション分割し、SU の数を増やして、負荷がより多くのノードに分散されるようにしてみます。 または、クエリのウィンドウ サイズを小さくし、(たとえば、Azure SQL Database を使用して) ダウンストリームのシンク内の Stream Analytics ジョブによって生成される出力に対して、集計またはその他のステートフル処理をさらに実行することを検討します。
 
 ミッション クリティカルなジョブのアップグレード中のサービスの安定性に関する一般的な懸念事項がある場合は、ペアになる Azure リージョン内での重複ジョブの実行を検討してください。 詳しくは、「[サービス更新中における Stream Analytics ジョブの信頼性を保証する](stream-analytics-job-reliability.md)」をご覧ください。
 

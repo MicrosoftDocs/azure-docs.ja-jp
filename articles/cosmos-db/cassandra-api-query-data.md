@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する'
+title: チュートリアル:Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する
 description: このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB の Cassandra API アカウントに対するユーザー データのクエリを実行する方法について説明します。
 ms.service: cosmos-db
 author: kanshiG
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 05/06/2020
 ms.locfileid: "82853039"
 ---
-# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル: Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する
 
 開発者は、キー/値ペアを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の Cassandra API アカウントを使用して、キー/値データを格納してクエリを実行できます。 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB の Cassandra API アカウントに対するユーザー データのクエリを実行する方法について説明します。 この Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザー所在地などのユーザー データのクエリを実行します。 
 
@@ -35,7 +35,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 以下の手順を使用して、Cassandra API アカウントのデータに対するクエリを実行します。
 
-1. `UserRepository.java` フォルダーにある `src\main\java\com\azure\cosmosdb\cassandra` ファイルを開きます。 次のコード ブロックを末尾に追加します。 このコードは、次の 3 つの方法を提供します。 
+1. `src\main\java\com\azure\cosmosdb\cassandra` フォルダーにある `UserRepository.java` ファイルを開きます。 次のコード ブロックを末尾に追加します。 このコードは、次の 3 つの方法を提供します。 
 
    * データベース内のすべてのユーザーを照会する
    * ユーザー ID でフィルター処理された特定のユーザーを照会する
@@ -76,7 +76,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    }
    ```
 
-2. `UserProfile.java` フォルダーにある `src\main\java\com\azure\cosmosdb\cassandra` ファイルを開きます。 このクラスには、createKeyspace および createTable (以前に定義したデータの挿入メソッド) を呼び出す main メソッドが含まれています。 すべてのユーザーまたは特定のユーザーに対してクエリを実行する次のコードを末尾に追加します。
+2. `src\main\java\com\azure\cosmosdb\cassandra` フォルダーにある `UserProfile.java` ファイルを開きます。 このクラスには、createKeyspace および createTable (以前に定義したデータの挿入メソッド) を呼び出す main メソッドが含まれています。 すべてのユーザーまたは特定のユーザーに対してクエリを実行する次のコードを末尾に追加します。
 
    ```java
    LOGGER.info("Select all users");

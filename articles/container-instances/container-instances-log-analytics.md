@@ -2,14 +2,14 @@
 title: リソース ログの収集と分析
 description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 07/13/2020
 ms.author: danlep
-ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892395"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524014"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
@@ -29,7 +29,7 @@ Log Analytics ワークスペースは、Azure リソースからだけでなく
 コンテナー インスタンスでログ記録を有効にするには、次のものが必要です。
 
 * [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](/azure/cloud-shell/overview))
+* [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics の資格情報を取得する
 
@@ -38,11 +38,10 @@ Azure Container Instances が Log Analytics ワークスペースにデータを
 ログ分析ワークスペースの ID とプライマリ キーを取得するには:
 
 1. Azure portal で Log Analytics ワークスペースに移動します
-1. **[設定]** で **[詳細設定]** を選択します
-1. **[接続されたソース]**  >  **[Windows サーバー]** (または **[Linux サーバー]** -- ID とキーはどちらの場合も同じです) を選択します
+1. **[設定]** で **[Agents management]\(エージェント管理\)** を選択します
 1. 次の値を書き留めておきます。
    * **ワークスペース ID**
-   * **プライマリ キー**
+   * **主キー**
 
 ## <a name="create-container-group"></a>コンテナー グループを作成する
 
@@ -68,7 +67,7 @@ az container create \
 YAML でコンテナー グループをデプロイしたい場合にはこの方法を使用します。 次の YAML は、1 つのコンテナーが含まれたコンテナー グループを定義します。 YAML を新しいファイルにコピーしてから、`LOG_ANALYTICS_WORKSPACE_ID` と `LOG_ANALYTICS_WORKSPACE_KEY` を前の手順で取得した値に置き換えます。 ファイルを **deploy-aci.yaml** として保存します。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: mycontainergroup001
 properties:
@@ -102,7 +101,9 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 ## <a name="view-logs"></a>ログを表示する
 
-コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 `ContainerInstanceLog_CL` テーブル内のコンテナー グループのログを表示するには、次の手順を実行します。
+コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 
+
+`ContainerInstanceLog_CL` テーブル内のコンテナー グループのログを表示するには、次の手順を実行します。
 
 1. Azure portal で Log Analytics ワークスペースに移動します
 1. **[全般]** で **[ログ]** を選択します  
@@ -153,7 +154,7 @@ ContainerInstanceLog_CL
 
 Azure Monitor ログでのログのクエリとアラートの構成について詳しくは、以下をご覧ください。
 
-* [Azure Monitor ログでのログ検索について](../log-analytics/log-analytics-log-search.md)
+* [Azure Monitor ログでのログ検索について](../azure-monitor/log-query/log-query-overview.md)
 * [Azure Monitor での統合アラート](../azure-monitor/platform/alerts-overview.md)
 
 

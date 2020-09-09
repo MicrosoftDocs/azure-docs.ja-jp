@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049656"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612471"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 
@@ -86,15 +86,7 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10.デバイスの登録を許可するグループ ポリシーを構成する
 
-* Active Directory でグループ ポリシー オブジェクトを作成します (まだ作成されていない場合)。
-* グループ ポリシーの名前を設定します (例: ハイブリッド Azure AD 参加)。
-* 編集と移動:[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [デバイス登録]
-* 有効にする:ドメインに参加しているコンピューターをデバイスとして登録します
-* 適用して [OK] をクリックします。
-* GPO を任意の場所 (組織単位、セキュリティ グループ、またはすべてのデバイスのドメイン) にリンクします。
-
->[!NOTE]
->2012R2 の場合、ポリシーの設定は **[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [社内参加] > [Automatically workplace join client computers]\(クライアント コンピューターを自動的に社内参加させる\)** にあります。
+個別のデバイスにハイブリッド Azure AD への参加を許可する方法の詳細については、「[ハイブリッド Azure AD 参加の検証を制御する](../devices/hybrid-azuread-join-control.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 [デバイス ライトバックの構成](how-to-connect-device-writeback.md)

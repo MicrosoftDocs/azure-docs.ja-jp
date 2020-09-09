@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236911"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002795"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
 
@@ -63,7 +64,7 @@ ms.locfileid: "79236911"
 
 ### <a name="query-basics"></a>クエリの基本
 
-Azure Cognitive Search では、要求は 1 以上のクエリ パラメーターで指定されます (個々の説明については、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)に関するページを参照してください)。 どのクエリ パラメーターも必須ではありませんが、クエリが有効であるためには少なくとも 1 つのクエリ パラメーターが必要です。
+Azure Cognitive Search では、要求は 1 以上のクエリ パラメーターで指定されます (個々の説明については、[ドキュメントの検索](/rest/api/searchservice/Search-Documents)に関するページを参照してください)。 どのクエリ パラメーターも必須ではありませんが、クエリが有効であるためには少なくとも 1 つのクエリ パラメーターが必要です。
 
 関係のないヒットを除外する能力として理解される正確さは、以下の式の一方または両方によって実現されます。
 
@@ -230,7 +231,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`interval:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。 値リストは、範囲を設定するときに数値データに対してサポートされます。 使用方法の詳細については、[ドキュメントの検索 (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) に関するページを参照してください。
+ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`interval:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。 値リストは、範囲を設定するときに数値データに対してサポートされます。 使用方法の詳細については、[ドキュメントの検索 (Azure Cognitive Search API)](/rest/api/searchservice/Search-Documents) に関するページを参照してください。
 
 アプリケーションで作成する要求では、ファセットだけでなく、ファセット値の選択に基づいて候補ドキュメントのセットを絞り込むフィルターも作成する必要があります。 自転車ストアの場合、ファセット ナビゲーションでは「*どのような色、製造元、および種類の自転車が手にはいるか*」のような質問への手掛かりが提供されます。 フィルター処理は、「*赤、マウンテン バイク、特定の価格範囲という条件を満たす自転車*」のような質問に回答します。 ユーザーが [Red] をクリックして赤い商品だけを表示するように指示すると、アプリケーションが送信する次のクエリには `$filter=Color eq 'Red'` が含まれます。
 
@@ -284,10 +285,12 @@ if (businessTitleFacet != "")
 
 ファセットの結果は、ファセット語句に一致する検索結果で見つかったドキュメントです。 *cloud computing* の検索結果を示す次の例では、254 個の項目は Content type も *Internal specification* で一致しています。 項目は必ずしも相互に排他的ではありません。 1 つの項目が両方のフィルターの条件を満たしている場合、その項目はそれぞれにカウントされます。 この重複は、ドキュメントのタグ付けを実装するために使用されることの多い `Collection(Edm.String)` フィールドのファセット処理で発生する可能性があります。
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 一般に、ファセットの結果がなかなか小さくならない場合は、フィルターを増やして、検索をさらに絞り込むためのオプションをユーザーに提供することをお勧めします。
 
@@ -317,11 +320,11 @@ if (businessTitleFacet != "")
 
 **ファセットの数が正確に取得されたかどうかの確認**
 
-特定の状況では、ファセットの数が結果セットと一致しないことがあります ([Azure Cognitive Search でのファセット ナビゲーションに関するフォーラムの投稿](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)に関する記事を参照)。
+特定の状況では、ファセットの数が結果セットと一致しないことがあります ([Azure Cognitive Search でのファセット ナビゲーション (Microsoft Q&A 質問ページ)](/answers/topics/azure-cognitive-search.html) に関する記事を参照)。
 
 シャーディング アーキテクチャのために、ファセットの数が正しくなくなる可能性があります。 すべての検索インデックスに複数のシャードがあり、それぞれのシャードがドキュメント数によって上位 N ファセットを報告すると、単一の結果に結合されます。 一部のシャードの一致値が多く、他のシャードは少ない場合、一部のファセットの値が結果に含まれないか、または数が少なくなる可能性があります。
 
-この動作はいつでも変わる可能性がありますが、現在発生している場合は、カウント:\<数> の値を意図的に増やして各シャードから強制的に完全レポートすることによって回避できます。 count: の値がフィールドの固有の値の数と等しいかそれより大きい場合、正確な結果が保証されます。 ただし、ドキュメントの数が大きい場合はパフォーマンスが低下するので、このオプションは注意して使用する必要があります。
+この動作はいつでも変わる可能性がありますが、現在発生している場合は、count:\<number> を意図的に大きい値に増やして各シャードから強制的に完全にレポートすることによって回避できます。 count: の値がフィールドの固有の値の数と等しいかそれより大きい場合、正確な結果が保証されます。 ただし、ドキュメントの数が大きい場合はパフォーマンスが低下するので、このオプションは注意して使用する必要があります。
 
 ### <a name="user-interface-tips"></a>ユーザー インターフェイスのヒント
 **ファセット ナビゲーションの各フィールドのラベルを追加する**
@@ -331,7 +334,7 @@ if (businessTitleFacet != "")
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>範囲に基づくフィルター
-検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 範囲は、数値データおよび日時値に対してサポートされています。 各方法の詳細については、[ドキュメントの検索 (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) に関するページを参照してください。
+検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 範囲は、数値データおよび日時値に対してサポートされています。 各方法の詳細については、[ドキュメントの検索 (Azure Cognitive Search API)](/rest/api/searchservice/Search-Documents) に関するページを参照してください。
 
 Azure Cognitive Search には、範囲を計算する方法が 2 つあり、簡単に範囲を作成できます。 いずれの方法でも、Azure Cognitive Search は、ユーザーが指定した入力に基づいて適切な範囲を作成します。 たとえば、範囲の値として 10|20|30 を指定すると、自動的に 0-10、10-20、20-30 という範囲が作成されます。 アプリケーションでは、空の間隔が必要に応じて削除されます。 
 
@@ -345,7 +348,7 @@ $10 刻みの価格ファセットを設定するには、`&facet=price,interval
 
 上記のスクリーンショットのようなファセットの範囲を指定するには、値のリストを使用します。
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 各範囲は始点として 0 を、終点としてリストの値を使用して作成され、前の範囲を除くことによって個別の間隔が作成されます。 Azure Cognitive Search は、ファセット ナビゲーションの一部としてこれらのことを行います。 各間隔を作成するためのコードを記述する必要はありません。
 
@@ -402,4 +405,3 @@ Azure Cognitive Search には、**geo.distance** および **geo.intersects** �
 
 * [設計パターン:ファセット ナビゲーション](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [ファセット検索の実装時のフロントエンドの問題 – その 1](https://articles.uie.com/faceted_search2/)
-

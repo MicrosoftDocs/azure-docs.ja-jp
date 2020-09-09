@@ -8,13 +8,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.custom: mqtt
-ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: Technical Support'
+ms.openlocfilehash: b22573fc98d4647c2b05763d9b67c37f6f023f98
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759617"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322722"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断に関する監視、診断、およびトラブルシューティング
 
@@ -28,7 +32,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 デバイス接続のイベントとエラーをログに記録するには、IoT Hub の診断を有効にします。 診断ログが有効になっていない場合、デバイスの接続が切断された場合に問題のトラブルシューティングを行うための情報がないため、できるだけ早い段階でこれらのログを有効にすることをお勧めします。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. IoT ハブに移動します。
 
@@ -48,7 +52,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 デバイスが切断されたときにアラートを受け取るには、**接続されているデバイス (プレビュー)** のメトリックに関するアラートを構成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. IoT ハブに移動します。
 
@@ -70,7 +74,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 接続されたデバイスの診断ログとアラートを有効にすると、エラーが発生したときにアラートを受け取ります。 このセクションでは、アラートを受け取った場合の一般的な問題を探す方法について説明します。 実際の診断ログに合わせて Azure Monitor ログを設定済みであることを前提として、以下の手順を説明します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. IoT ハブに移動します。
 
@@ -105,7 +109,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 * デバイスで MQTT プロトコルを使用している場合は、ポート 8883 が開いていることを確認します。 詳細については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-* [Azure IoT Hub フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)、または [Azure サポート](https://azure.microsoft.com/support/options/)で相談します。
+* [Azure IoT Hub に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)、または [Azure サポート](https://azure.microsoft.com/support/options/)から支援を受けてください。
 
 このガイドが役に立たなかった場合は、すべてのお客様のためにこのドキュメントを改善できるように、以下のフィードバック セクションでコメントを残してください。
 

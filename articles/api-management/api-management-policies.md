@@ -1,6 +1,6 @@
 ---
 title: Azure API Management のポリシー | Microsoft Docs
-description: Azure API Management で使用できるポリシーについて説明します。
+description: Azure API Management で使用できるポリシーについて説明します。 ポリシーを使用すると、発行者は構成を通じて API の動作を変更できます。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cdd9b7ace107d09ec14b23e02c56d2b13f264e6
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128732"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905671"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。  
@@ -50,12 +50,12 @@ ms.locfileid: "82128732"
     -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付きコンテキスト変数の値を、後でアクセスできるように保持します。  
     -   [要求メソッドを設定する](api-management-advanced-policies.md#SetRequestMethod) - 要求の HTTP メソッドを変更できます。  
     -   [状態コードを設定する](api-management-advanced-policies.md#SetStatus) - HTTP 状態コードを指定された値に変更します。  
-    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、およびリソース ログにカスタム トレースを追加します。  
+    -   [トレース](api-management-advanced-policies.md#Trace) - [API Inspector](./api-management-howto-api-inspector.md) 出力、Application Insights テレメトリ、およびリソース ログにカスタム トレースを追加します。  
     -   [待機](api-management-advanced-policies.md#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。  
 -   [認証ポリシー](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [基本認証](api-management-authentication-policies.md#Basic) -基本認証を使用してバックエンド サービスで認証します。  
     -   [クライアント証明書による認証](api-management-authentication-policies.md#ClientCertificate) -クライアント証明書を使用してバックエンド サービスで認証します。  
-    -   [マネージド ID による認証](api-management-authentication-policies.md#ManagedIdentity) - [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用してバックエンド サービスで認証します。  
+    -   [マネージド ID による認証](api-management-authentication-policies.md#ManagedIdentity) - [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用してバックエンド サービスで認証します。  
 -   [キャッシュ ポリシー](api-management-caching-policies.md#CachingPolicies)  
     -   [キャッシュから取得](api-management-caching-policies.md#GetFromCache) - キャッシュを検索して、キャッシュに格納された有効な応答があればそれを返します。  
     -   [キャッシュに格納](api-management-caching-policies.md#StoreToCache) - 指定されたキャッシュ制御の構成に従って応答をキャッシュに格納します。  

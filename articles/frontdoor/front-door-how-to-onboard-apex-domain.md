@@ -2,17 +2,17 @@
 title: 既存のフロント ドアにルート ドメインまたは頂点ドメインをオンボードする - Azure portal
 description: Azure portal を使用して既存のフロント ドアにルート ドメインまたは頂点ドメインをオンボードする方法を説明します。
 services: front-door
-author: sharad4u
+author: duongau
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
-ms.author: sharadag
-ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.author: duau
+ms.openlocfilehash: 05267ad43f6e7f89ec50b1765d2475a02fae1702
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878886"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399582"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>フロント ドアにルート ドメインまたは頂点ドメインをオンボードする
 Azure Front Door では、CNAME レコードを使用して、カスタム ドメインのオンボードに対するドメインの所有権が検証されます。 また、Front Door では、Front Door プロファイルに関連付けられているフロントエンド IP アドレスが公開されないため、Azure Front Door にオンボードすることが目的である場合、頂点ドメインを IP アドレスにマップできません。

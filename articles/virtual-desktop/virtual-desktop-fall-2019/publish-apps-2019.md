@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop で組み込みアプリを発行する - Azure
-description: Windows Virtual Desktop で組み込みアプリを発行する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) で組み込みアプリを発行する - Azure
+description: Windows Virtual Desktop (クラシック) で組み込みアプリを発行する方法。
 author: Heidilohr
-ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a02bf514ff76f5528bc46f0a60642163c9278ebf
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 80cd1a4c92441fb17ce0a66814ff0a39a92fb287
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614180"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005569"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows Virtual Desktop で組み込みアプリを発行する
+# <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で組み込みアプリを発行する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../publish-apps.md)をご覧ください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../publish-apps.md)を参照してください。
 
 この記事では、Windows Virtual Desktop 環境でアプリを発行する方法について説明します。
 
@@ -29,7 +27,7 @@ ms.locfileid: "82614180"
 1. ホスト プール内のいずれかの仮想マシンに接続します。
 2. [この記事](/powershell/module/appx/get-appxpackage?view=win10-ps/)の手順に従って、発行するアプリの **PackageFamilyName** を取得します。
 3. 最後に、`<PackageFamilyName>` を前の手順で確認した **PackageFamilyName** に置き換えて、次のコマンドレットを実行します。
-   
+
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:appsFolder\<PackageFamilyName>!App"
    ```
@@ -46,7 +44,7 @@ ms.locfileid: "82614180"
 Microsoft Edge の発行に使用するプロセスは、他のアプリの発行プロセスとは少し異なります。 既定のホーム ページを使用して Microsoft Edge を発行するには、次のコマンドレットを実行します。
 
 ```powershell
-New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
+New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge"
 ```
 
 ## <a name="next-steps"></a>次のステップ

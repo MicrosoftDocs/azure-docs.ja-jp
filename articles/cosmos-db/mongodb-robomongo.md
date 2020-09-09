@@ -3,16 +3,16 @@ title: Robo 3T を使用して Azure Cosmos DB に接続する
 description: Robo 3T と Azure Cosmos DB の MongoDB 用 API を使用して Azure Cosmos DB に接続する方法について説明します
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 627849acb902a721c80b98adbd16103b4729591b
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 657f3cf204411bd51541437f05ff13a3f9b929c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263043"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API と共に Robo 3T を使用する
 
@@ -30,21 +30,21 @@ Robo 3T 接続マネージャーに Cosmos DB アカウントを追加するに�
 
 1. [こちら](connect-mongodb-account.md)の手順を使用して、Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントの接続情報を取得します。
 
-    ![[接続文字列] ブレードのスクリーンショット](./media/mongodb-robomongo/connectionstringblade.png)
+    :::image type="content" source="./media/mongodb-robomongo/connectionstringblade.png" alt-text="[接続文字列] ブレードのスクリーンショット":::
 2. *Robomongo* アプリケーションを実行します。
 
 3. **[ファイル]** の接続ボタンをクリックして、接続を管理します。 次に、 **[MongoDB Connections (MongoDB 接続)]** ウィンドウで **[作成]** をクリックし、 **[接続の設定]** ウィンドウを開きます。
 
 4. **[接続の設定]** ウィンドウで、名前を選択します。 次に、手順 1. の接続情報の **[ホスト]** と **[ポート]** に示されている**アドレス**と**ポート**をそれぞれ入力します。
 
-    ![Robomongo 管理接続のスクリーンショット](./media/mongodb-robomongo/manageconnections.png)
+    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Robomongo 管理接続のスクリーンショット":::
 5. **[認証]** タブで **[Perform authentication (認証の実行)]** をクリックします。 次に、データベース (既定値は*Admin*)、**ユーザー名**、**パスワード**を入力します。
 この**ユーザー名**と**パスワード**は両方とも、手順 1 の接続情報に示されています。
 
-    ![Robomongo の [認証] タブのスクリーンショット](./media/mongodb-robomongo/authentication.png)
+    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Robomongo の [認証] タブのスクリーンショット":::
 6. **[SSL]** タブで、 **[Use SSL protocol (SSL プロトコルを使用する)]** をオンにして、 **[認証方法]** に **[自己署名証明書]** を指定します。
 
-    ![Robomongo の [SSL] タブのスクリーンショット](./media/mongodb-robomongo/SSL.png)
+    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Robomongo の [SSL] タブのスクリーンショット":::
 7. 最後に、 **[テスト]** をクリックして接続できることを確認し、 **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ

@@ -4,6 +4,8 @@
   items:
     - name: Azure App Configuration について
       href: overview.md
+    - name: ベスト プラクティス
+      href: howto-best-practices.md
     - name: よく寄せられる質問
       href: faq.md
 - name: クイックスタート
@@ -34,47 +36,54 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: チュートリアル
   items:
-    - name: ASP.NET Core で動的な構成を有効にする
-      href: enable-dynamic-configuration-aspnet-core.md
-    - name: .NET Core アプリで動的な構成を有効にする
-      href: enable-dynamic-configuration-dotnet-core.md
-    - name: .NET Framework で動的な構成を有効にする
-      href: enable-dynamic-configuration-dotnet.md
-    - name: Azure Functions で動的な構成を有効にする
-      href: enable-dynamic-configuration-azure-functions-csharp.md
-    - name: Spring Boot で動的な構成を有効にする
-      href: enable-dynamic-configuration-java-spring-app.md
-    - name: .NET Core アプリ内で機能フラグを使用する
-      href: use-feature-flags-dotnet-core.md
-    - name: Spring Boot アプリ内で機能フラグを使用する
-      href: use-feature-flags-spring-boot.md
+    - name: 動的な構成の有効化
+      items:
+        - name: ASP.NET Core
+          href: enable-dynamic-configuration-aspnet-core.md
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core.md
+        - name: .NET Framework
+          href: enable-dynamic-configuration-dotnet.md
+        - name: Azure Functions
+          href: enable-dynamic-configuration-azure-functions-csharp.md
+        - name: Spring Boot
+          href: enable-dynamic-configuration-java-spring-app.md
+    - name: 機能フラグの使用
+      items:
+        - name: .NET Core
+          href: use-feature-flags-dotnet-core.md
+        - name: Spring Boot
+          href: use-feature-flags-spring-boot.md
     - name: 機能フラグを管理する
       href: manage-feature-flags.md
-    - name: ASP.NET Core で Key Vault 参照を使用する
-      href: use-key-vault-references-dotnet-core.md
-    - name: Spring Boot で Key Vault 参照を使用する
-      href: use-key-vault-references-spring-boot.md
-    - name: CI/CD パイプラインとの統合
-      href: integrate-ci-cd-pipeline.md
+    - name: Key Vault 参照を使用する
+      items:
+        - name: ASP.NET Core
+          href: use-key-vault-references-dotnet-core.md
+        - name: Spring Boot
+          href: use-key-vault-references-spring-boot.md
+    - name: CI/CD パイプラインの統合
+      items:
+        - name: Azure Pipelines を使用したプッシュ
+          href: push-kv-devops-pipeline.md
+        - name: GitHub Actions を使用したプッシュ
+          href: concept-github-action.md
+        - name: エクスポートした構成を使用したプロジェクトのビルド
+          href: integrate-ci-cd-pipeline.md
     - name: Helm を使用して Kubernetes デプロイと統合する
       href: integrate-kubernetes-deployment-helm.md
 - name: サンプル
   items:
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: キー値ストア
+    - name: キーと値
       href: concept-key-value.md
     - name: ポイントインタイム スナップショット
       href: concept-point-time-snapshot.md
     - name: 機能の管理
       href: concept-feature-management.md
-    - name: GitHub Actions を使用した同期
-      href: concept-github-action.md
     - name: イベント処理
       href: concept-app-configuration-event.md
     - name: Security
@@ -83,8 +92,6 @@
           href: concept-customer-managed-keys.md
         - name: プライベート エンドポイントを使用した構成ストアのセキュリティ保護
           href: concept-private-endpoint.md
-        - name: Azure マネージド ID と統合する
-          href: howto-integrate-azure-managed-service-identity.md
         - name: Azure Active Directory を使用してアクセスを有効にする
           href: concept-enable-rbac.md
         - name: Azure マネージド ID を割り当てる
@@ -101,10 +108,14 @@
       href: howto-labels-aspnet-core.md
     - name: 構成データのインポートまたはエクスポート
       href: howto-import-export-data.md
+    - name: キー値に JSON コンテンツ タイプを使用する
+      href: howto-leverage-json-content-type.md
     - name: カスタム エンドポイントへのイベントのルーティング
       href: howto-app-configuration-event.md
-    - name: ベスト プラクティス
-      href: howto-best-practices.md
+    - name: 構成ストアの自動バックアップ
+      href: howto-backup-config-store.md
+    - name: マネージド ID を使用して App Configuration にアクセスする
+      href: howto-integrate-azure-managed-service-identity.md
 - name: リファレンス
   items:
     - name: 構成
@@ -118,7 +129,7 @@
         - name: Azure SDK for .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring プロバイダー
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
+          href: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
         - name: Azure SDK for Java
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
         - name: Azure SDK for Python
@@ -137,13 +148,20 @@
       items:
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+        - name: PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.appconfiguration/'
+        - name: Terraform
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
     - name: ビデオ
       items:
-        - name: 作業の開始
+        - name: App Configuration の概要
           href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
         - name: 機能の管理
           href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
@@ -151,5 +169,7 @@
           href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
         - name: Cloud Native Show の Azure App Configuration
           href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
+        - name: 新機能のロールアウト
+          href: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
     - name: 製品フィードバックの提供
       href: 'https://github.com/Azure/AppConfiguration/issues'

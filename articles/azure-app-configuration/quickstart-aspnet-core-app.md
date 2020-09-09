@@ -1,19 +1,20 @@
 ---
 title: ASP.NET Core による Azure App Configuration のクイック スタート | Microsoft Docs
-description: ASP.NET Core アプリで Azure App Configuration を使用するためのクイックスタートです
+description: Azure App Configuration を使用して ASP.NET Core アプリを作成し、ASP.NET Core アプリケーションのアプリケーション設定のストレージと管理を一元化します。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 537dabe09c41012b9e15998ce3af8198dcfb62d3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 41675eb1911eede750b5a9cdc19cfe49e4699bac
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245776"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590304"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -187,7 +188,7 @@ dotnet new mvc --no-https
         }
         h1 {
             color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"];
+            font-size: @Configuration["TestApp:Settings:FontSize"]px;
         }
     </style>
 
@@ -242,6 +243,8 @@ Azure Cloud Shell で作業している場合は、 *[Web プレビュー]* 、 
 ![[Web プレビュー] ボタンを見つける](./media/quickstarts/cloud-shell-web-preview.png)
 
 プレビュー用のポートを構成するよう求めるメッセージが表示されたら、「5000」と入力し、 *[開いて参照する]* を選択します。  Web ページには、"Data from Azure App Configuration" と表示されます。
+
+![クイックスタート アプリを起動する](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

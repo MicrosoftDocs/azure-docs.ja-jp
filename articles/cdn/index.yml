@@ -3,18 +3,18 @@ title: Azure CDN のドキュメント
 summary: Azure Content Delivery Network (CDN) は、高帯域幅コンテンツを配信するためのグローバル CDN ソリューションです。 これは、Azure またはその他の場所でホストできます。 Azure CDN では、最も近いポイント オブ プレゼンス (POP) サーバーを使用して、Azure Blob Storage、Web アプリケーション、またはパブリックにアクセスできる Web サーバーから読み込まれた静的オブジェクトをキャッシュすることができます。 さらに Azure CDN では、各種のネットワーク最適化とルーティング最適化を利用して、キャッシュできない動的なコンテンツも高速化できます。
 metadata:
   title: Azure CDN のドキュメント - チュートリアル、API リファレンス
-  description: Azure Content Delivery Network (CDN) は、高帯域幅コンテンツを配信するためのグローバル CDN ソリューションです。 これは、Azure またはその他の場所でホストできます。 Azure CDN では、最も近いポイント オブ プレゼンス (POP) サーバーを使用して、Azure Blob Storage、Web アプリケーション、またはパブリックにアクセスできる Web サーバーから読み込まれた静的オブジェクトをキャッシュすることができます。 さらに Azure CDN では、各種のネットワーク最適化とルーティング最適化を利用して、キャッシュできない動的なコンテンツも高速化できます。
+  description: Azure または他の任意の場所にホストできる、高帯域幅コンテンツを配信するためのソリューションである Azure Content Delivery Network について説明します。
   ms.service: azure-cdn
   ms.topic: landing-page
   author: asudbring
   ms.author: allensu
   ms.date: 02/24/2020
-  ms.openlocfilehash: e181f5cb94dc33765b6fceb81cc98832a3b800ce
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: ed3c4f1794407ccdb841ea3c6ca35ff4d8e1a808
+  ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79479775"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88192462"
 landingContent:
 - title: Azure CDN について
   linkLists:
@@ -68,3 +68,13 @@ landingContent:
       url: cdn-verizon-custom-reports.md
     - text: Azure CDN の詳細な HTTP レポートを使用した利用統計の分析
       url: cdn-advanced-http-reports.md
+- title: Verizon Premium
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Verizon Premium ルール エンジン
+      url: cdn-verizon-premium-rules-engine-reference.md
+    - text: ルール エンジンの条件式
+      url: cdn-verizon-premium-rules-engine-reference-conditional-expressions.md
+    - text: ルール エンジンの機能
+      url: cdn-verizon-premium-rules-engine-reference-features.md

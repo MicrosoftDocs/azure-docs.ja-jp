@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 3/18/2020
-ms.openlocfilehash: d10d5b4885e826da9b6efd95dfc02940e1a9644a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f73fd033f299ffe1656ea1f131bcd78181c026b0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79529970"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502207"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure CLI サンプル 
 次の表には、Azure Database for MariaDB 用の Azure CLI スクリプトのサンプルへのリンクが含まれています。
 
-| |  |
+| サンプル リンク | 説明  |
 |---|---|
 |**サーバーの作成**||
 | [サーバーとファイアウォール規則の作成](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | 単一の Azure Database for MariaDB サーバーを作成して、サーバー レベルのファイアウォール規則を構成する Azure CLI スクリプトです。 |

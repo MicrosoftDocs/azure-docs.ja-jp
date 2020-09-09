@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989399bcc86547b914deb442fa9793f6d79d0606
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325323"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -57,7 +57,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 3. **[OMS ワークスペース]** セクションで、ソリューションをインストールする Azure Log Analytics ワークスペースを選択します。
    >[!NOTE]
    > * Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
-   > * ITSM Connector は、以下のリージョンの Log Analytics ワークスペースにのみインストールできます。米国東部、米国西部 2、米国中南部、米国中西部、カナダ中部、西ヨーロッパ、英国南部、東南アジア、東日本、インド中部、オーストラリア南東部。
+   > * ITSM Connector は、以下のリージョンの Log Analytics ワークスペースにのみインストールできます。米国東部、米国西部 2、米国中南部、米国中西部、Fairfax、カナダ中部、西ヨーロッパ、英国南部、東南アジア、東日本、インド中部、オーストラリア南東部。
 
 4. **[OMS ワークスペースの設定]** セクションで、ソリューション リソースを作成する ResourceGroup を選択します。
 
@@ -78,10 +78,10 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 接続先の ITSM 製品に応じて、次の手順を使用します。
 
-- [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Provance](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Provance](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 ITSM ツールの準備が完了したら、次の手順に従って接続を作成します。
 
@@ -94,7 +94,7 @@ ITSM ツールの準備が完了したら、次の手順に従って接続を作
 
    ![ITSM 接続の追加](media/itsmc-overview/add-new-itsm-connection.png)
 
-4. [ITSM 製品/サービスとの ITSMC 接続の構成](../../azure-monitor/platform/itsmc-connections.md)に関する記事の説明に従って、接続の設定を指定します。
+4. [ITSM 製品/サービスとの ITSMC 接続の構成](./itsmc-connections.md)に関する記事の説明に従って、接続の設定を指定します。
 
    > [!NOTE]
    >
@@ -151,13 +151,13 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 Service Map ソリューション内で、影響を受けるコンピューターに対して同期されたインシデントを視覚化することもできます。
 
-サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細については、こちらを参照してください](../../azure-monitor/insights/service-map.md)。
+サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細については、こちらを参照してください](../insights/service-map.md)。
 
 Service Map ソリューションを使用する場合は、ITSM ソリューションで作成されたサービス デスク項目が次の例のように表示されます。
 
 ![Log Analytics 画面](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-詳細情報: [サービス マップ](../../azure-monitor/insights/service-map.md)
+詳細情報: [サービス マップ](../insights/service-map.md)
 
 
 ## <a name="additional-information"></a>関連情報
@@ -285,7 +285,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
    - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。  
    - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。  
    - Service Manager 接続の場合  
-   - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager マシンとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)の構成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。  
+   - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager マシンとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](./itsmc-connections.md#configure-the-hybrid-connection)の構成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。  
 
 2. ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。
 3. Log Analytics アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。
@@ -295,7 +295,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
 1.  Web アプリのデプロイに関する問題が発生した場合は、該当するサブスクリプションでリソースを作成/デプロイするための十分なアクセス許可があることを確認します。
 2.  [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生した場合は、 **[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
-3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal で Service Bus Relay 名前空間を手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
+3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal で Service Bus Relay 名前空間を手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](./itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
 
 
 ## <a name="contact-us"></a>お問い合わせ
@@ -303,4 +303,5 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 IT Service Management Connector に関するご質問やフィードバックは、[omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) にお寄せください。
 
 ## <a name="next-steps"></a>次のステップ
-[ITSM 製品/サービスを IT Service Management Connector に追加する](../../azure-monitor/platform/itsmc-connections.md)。
+[ITSM 製品/サービスを IT Service Management Connector に追加する](./itsmc-connections.md)。
+

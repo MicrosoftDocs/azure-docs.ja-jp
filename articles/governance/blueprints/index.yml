@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Blueprints のドキュメント
-summary: Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
+summary: Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
 metadata:
   title: Azure Blueprints のドキュメント
-  description: Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
+  description: Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
   ms.service: blueprints
   ms.topic: landing-page
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/01/2019
-  ms.openlocfilehash: d80b82b9e8e41e9bfdc7b9ac180ccc8916481acb
-  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.date: 08/27/2020
+  ms.openlocfilehash: 1ec5453abd9d33b475b732a853294933cda02117
+  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84116113"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89051374"
 landingContent:
 - title: Azure Blueprints について
   linkLists:
@@ -37,9 +37,11 @@ landingContent:
     links:
     - text: 新しいブループリントを作成する (ポータル)
       url: ./create-blueprint-portal.md
-    - text: 新しいブループリントを作成する (PowerShell)
+    - text: 新しいブループリントを作成する (Azure CLI)
+      url: ./create-blueprint-azurecli.md
+    - text: 新しいブループリントを作成する (Azure PowerShell)
       url: ./create-blueprint-powershell.md
-    - text: 新しいブループリントを作成する (REST API)
+    - text: 新しいブループリントを作成する (REST)
       url: ./create-blueprint-rest-api.md
   - linkListType: tutorial
     links:
@@ -82,7 +84,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Azure Blueprints 用の Microsoft Q&A
-      url: /answers/topics/azure-blueprints.html.html
+      url: /answers/topics/azure-blueprints.html
     - text: Azure のガバナンスに関する YouTube チャンネル
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 製品機能のリクエスト
@@ -97,9 +99,11 @@ landingContent:
       url: ./reference/blueprint-functions.md
     - text: PowerShell モジュール (PSGallery)
       url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure CLI
+      url: /cli/azure/ext/blueprint/blueprint
     - text: Azure PowerShell
       url: /powershell/module/az.blueprint/#blueprint
-    - text: REST API
-      url: /rest/api/blueprints/
-    - text: .NET
+    - text: Azure SDK for .NET
       url: /dotnet/api/overview/azure/blueprints/management
+    - text: REST
+      url: /rest/api/blueprints/

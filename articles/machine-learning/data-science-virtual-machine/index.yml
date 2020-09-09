@@ -11,12 +11,12 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: 5e1aa239d375b6985d7c2a58086d416f745098b8
-  ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+  ms.openlocfilehash: 816a82095c84c7991d5d68b08d479c629d10f07a
+  ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80755093"
+  ms.lasthandoff: 07/30/2020
+  ms.locfileid: "87431905"
 landingContent:
 - title: Data Science Virtual Machine を使ってみる
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
     links:
     - text: Data Science Virtual Machine とは
       url: overview.md
-    - text: Geo AI Data Science Virtual Machine とは
-      url: geo-ai-dsvm-overview.md
     - text: Data Science Virtual Machine に含まれるツール
       url: tools-included.md
     - text: リリース ノート
@@ -36,8 +34,6 @@ landingContent:
       url: provision-vm.md
     - text: Ubuntu Data Science Virtual Machine を作成する
       url: dsvm-ubuntu-intro.md
-    - text: Geo AI Data Science Virtual Machine を作成する
-      url: provision-geo-ai-dsvm.md
 - title: Data Science Virtual Machine を管理する
   linkLists:
   - linkListType: architecture
@@ -56,7 +52,7 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: Azure Machine Learning
-      url: /azure/machine-learning/
+    - text: Azure Machine Learning コンピューティング インスタンス
+      url: /azure/machine-learning/concept-compute-instance
     - text: Microsoft の ML 製品の比較
       url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75500028"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261785"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Azure Cosmos DB Gremlin API で保存されたグラフ データをデータ視覚化ソリューションを使用して視覚化する
 
@@ -20,17 +20,17 @@ Azure Cosmos DB Gremlin API で保存されたデータを、さまざまなデ�
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
-![Linkurious ロゴ](./media/graph-visualization/linkurious-logo.jpg)
+:::image type="content" source="./media/graph-visualization/linkurious-logo.jpg" alt-text="Linkurious ロゴ" border="false":::
 
 [Linkurious Enterprise](https://linkurio.us/product/) では、グラフのテクノロジとデータ視覚化を使用することで、複雑なデータセットがインタラクティブなビジュアル ネットワークに変換されます。 そのプラットフォームによってデータ ソースに接続することで、調査担当者は、何十億ものエンティティとリレーションシップ間をシームレスに移動できます。 その結果は、クエリやテーブルを操作することなく疑わしい関係を検出する新しい機能です。
 
 Linkurious Enterprise のインタラクティブなインターフェイスによって、複雑なデータを調査するための簡単な方法が提供されます。 特定のエンティティを検索し、接続を展開して隠れたリレーションシップを明らかにし、選択したレイアウトを適用して複雑なネットワークを解決できます。 Linkurious Enterprise は、Azure Cosmos DB Gremlin API 互換になりました。 これはエンドツーエンドのグラフ視覚化シナリオに適しており、ユーザー インターフェイスからの読み取りと書き込みの機能がサポートされています。 [Azure Cosmos DB を使用した Linkurious のデモ](https://linkurio.us/contact/)を要求できます。
 
-![Linkurious のデモ](./media/graph-visualization/linkurious-demo.gif)
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious のデモ" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-![Cambridge Intelligence ロゴ](./media/graph-visualization/ci-logo.png)
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence ロゴ" border="false":::
 
 [Cambridge Intelligence](https://cambridge-intelligence.com/products/) のグラフ視覚化ツールキットで Azure Cosmos DB がサポートされるようになりました。 次の 2 つの視覚化ツールキットが Azure Cosmos DB でサポートされています。
 
@@ -38,11 +38,11 @@ Linkurious Enterprise のインタラクティブなインターフェイスに�
 
 - [React 開発者向けの Re-Graph](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge Intelligence のデモ](./media/graph-visualization/ci-demo-2.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Cambridge Intelligence のデモ" border="false":::
 
 これらのツールキットを使用すると、ご自身のユース ケースに合わせてハイ パフォーマンスなグラフ視覚化および分析アプリケーションを設計できます。 強力な Web Graphics Library (WebGL) 描画と注意深く作成されたコードを利用して、高速で洞察に富んだ視覚化エクスペリエンスがユーザーに提供されます。 これらのツールはあらゆるブラウザー、デバイス、サーバー、データベースと互換性があり、ステップバイステップのチュートリアル、完全にドキュメント化された API、インタラクティブなデモが用意されています。
 
-![Cambridge Intelligence のデモ](./media/graph-visualization/ci-demo-1.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Cambridge Intelligence のデモ" border="false":::
 
 
 ## <a name="next-steps"></a>次のステップ

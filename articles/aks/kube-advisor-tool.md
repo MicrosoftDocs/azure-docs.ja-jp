@@ -7,12 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773798"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255253"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>クラスターでの Kubernetes のベスト プラクティスを確認する
 
@@ -29,7 +29,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 ## <a name="running-kube-advisor"></a>kube-advisor の実行
 
-[ロールベースのアクセス制御 (RBAC)](azure-ad-integration.md) 用に構成されたクラスターでこのツールを実行するには、次のコマンドを使用します。 最初のコマンドにより、Kubernetes サービス アカウントが作成されます。 2 番目のコマンドでは、そのサービス アカウントを使用して、ツールがポッドで実行されます。また、そのポッドは、終了後に削除されるように構成されます。 
+[ロールベースのアクセス制御 (RBAC)](./azure-ad-integration-cli.md) 用に構成されたクラスターでこのツールを実行するには、次のコマンドを使用します。 最初のコマンドにより、Kubernetes サービス アカウントが作成されます。 2 番目のコマンドでは、そのサービス アカウントを使用して、ツールがポッドで実行されます。また、そのポッドは、終了後に削除されるように構成されます。 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

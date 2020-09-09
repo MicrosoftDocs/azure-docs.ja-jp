@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663234"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498680"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Monitor での監視ソリューションのターゲット設定 (プレビュー)
 サブスクリプションに監視ソリューションを追加すると、ソリューションは、既定では Log Analytics ワークスペースに接続されているすべての Windows エージェントと Linux エージェントに自動的にデプロイされます。  ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。  この記事では、**ソリューションのターゲット設定**を使用する方法について説明します。この機能を使用すると、ソリューションにスコープを適用することができます。
@@ -59,7 +59,7 @@ ms.locfileid: "77663234"
 ソリューションのターゲット設定で使用できないエージェントとソリューションの条件を次に示します。
 
 - ソリューションのターゲット設定は、エージェントにデプロイされたソリューションにのみ適用されます。
-- ソリューションのターゲット設定は、Microsoft 提供のソリューションにのみ適用されます。  [自作の、またはパートナーが作成した](solutions-creating.md)ソリューションには適用されません。
+- ソリューションのターゲット設定は、Microsoft 提供のソリューションにのみ適用されます。  [自作の、またはパートナーが作成した](./solutions.md)ソリューションには適用されません。
 - Azure Monitor に直接接続するエージェントのみをフィルターで除外できます。  ソリューションは、スコープ構成に含まれているかどうかに関係なく、接続されている Operations Manager 管理グループのすべてのエージェントに自動的にデプロイされます。
 
 ### <a name="exceptions"></a>例外

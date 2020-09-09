@@ -3,17 +3,18 @@ title: Azure Application Insights を使用してライブ ASP.NET Web アプリ
 description: Web サイトを再デプロイせずにそのパフォーマンスを監視します。 オンプレミスまたは VM でホストされた ASP.NET Web アプリが対象です。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536830"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923825"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
 > [!IMPORTANT]
-> Status Monitor の使用は推奨されなくなりました。 これは Azure Monitor Application Insights エージェント (旧称 Status Monitor v2) に置き換えられました。 [オンプレミス サーバーのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)または [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)に関するドキュメントを参照してください。
+> Status Monitor の使用は推奨されなくなり、**2021 年 6 月 1 日以降**、このバージョンの Status Monitor はサポートされません。 これは Azure Monitor Application Insights エージェント (旧称 Status Monitor v2) に置き換えられました。 [オンプレミス サーバーのデプロイ](./status-monitor-v2-overview.md)または [Azure 仮想マシンと仮想マシン スケール セットのデプロイ](./azure-vm-vmss-apps.md)に関するドキュメントを参照してください。
 
 Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 [Microsoft Azure](https://azure.com) サブスクリプションが必要です。
 
@@ -22,7 +23,7 @@ Status Monitor は、オンプレミスまたは VM の IIS でホストされ�
 - お客様のアプリが Azure VM または Azure 仮想マシン スケール セットにデプロイされている場合、[こちらの手順](azure-vm-vmss-apps.md)に従ってください。
 - お客様のアプリが Azure のアプリ サービスにデプロイされている場合、[こちらの手順](azure-web-apps.md)に従ってください。
 - お客様のアプリが Azure VM にデプロイされている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます
-- ([Azure Cloud Services](../../azure-monitor/app/cloudservices.md) のインストルメント化については、個別の記事もあります)。
+- ([Azure Cloud Services](./cloudservices.md) のインストルメント化については、個別の記事もあります)。
 
 
 ![App Insights の概要グラフ (失敗した要求、サーバー応答時間、サーバー要求に関する情報) のスクリーンショット](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -39,14 +40,14 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
 |  | ビルド時 | 実行時 |
 | --- | --- | --- |
-| 要求と例外 |はい |はい |
-| [より詳細な例外](../../azure-monitor/app/asp-net-exceptions.md) | |はい |
-| [依存関係の診断](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
-| [システム パフォーマンス カウンター](../../azure-monitor/app/performance-counters.md) |はい |はい |
-| [カスタム テレメトリの API][api] |はい |いいえ |
-| [トレース ログ統合](../../azure-monitor/app/asp-net-trace-logs.md) |はい |いいえ |
-| [ページ ビューとユーザー データ](../../azure-monitor/app/javascript.md) |はい |いいえ |
-| コードのリビルドが必要 |はい | いいえ |
+| **要求と例外** |はい |はい |
+| **[より詳細な例外](./asp-net-exceptions.md)** | |はい |
+| **[依存関係の診断](./asp-net-dependencies.md)** |.NET 4.6 以降 (詳細レベルは低い) |はい。全詳細: 結果コード、SQL コマンド テキスト、HTTP 動詞|
+| **[システム パフォーマンス カウンター](./performance-counters.md)** |はい |はい |
+| **[カスタム テレメトリの API][api]** |はい |いいえ |
+| **[トレース ログ統合](./asp-net-trace-logs.md)** |はい |いいえ |
+| **[ページ ビューとユーザー データ](./javascript.md)** |はい |いいえ |
+| **コードのリビルドが必要** |はい | いいえ |
 
 
 
@@ -70,7 +71,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
 ## <a name="customize-monitoring-options"></a>監視オプションのカスタマイズ
 
-Application Insights を有効にすると、Web アプリに DLL と ApplicationInsights.config が追加されます。 [この .config ファイルを編集](../../azure-monitor/app/configuration-with-applicationinsights-config.md)して、一部のオプションを変更できます。
+Application Insights を有効にすると、Web アプリに DLL と ApplicationInsights.config が追加されます。 [この .config ファイルを編集](./configuration-with-applicationinsights-config.md)して、一部のオプションを変更できます。
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>アプリを再発行するときに、Application Insights を再度有効にしてください。
 
@@ -92,24 +93,25 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 
 - applicationInsights.config ファイルがターゲット アプリ ディレクトリ内に存在し、お客様の ikey を含んでいることを確認します。
 
-- データがないと思われる場合は、[Analytics](../log-query/get-started-portal.md) で単純なクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
+- データがないと思われる場合は、[Analytics](../log-query/get-started-portal.md) でクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Application Insights が正常にアタッチされたことを確認する必要がある場合は、コマンド ウィンドウで [Sysinternals の Handle](https://docs.microsoft.com/sysinternals/downloads/handle) を実行して、applicationinsights.dll が IIS によって読み込まれたことを確認できます。
-  ```cmd
+- Application Insights が正常にアタッチされたことを確認する必要がある場合は、コマンド ウィンドウで [Sysinternals の Handle](/sysinternals/downloads/handle) を実行して、applicationinsights.dll が IIS によって読み込まれたことを確認できます。
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
 
 ### <a name="cant-connect-no-telemetry"></a>接続できない テレメトリが見つかりませんか?
 
-* Status Monitor が動作するように、サーバーのファイアウォールで、[必要ないくつかの送信ポート](../../azure-monitor/app/ip-addresses.md#outgoing-ports)を開きます。
+* Status Monitor が動作するように、サーバーのファイアウォールで、[必要ないくつかの送信ポート](./ip-addresses.md#outgoing-ports)を開きます。
 
 ### <a name="unable-to-login"></a>ログインできない
 
-* Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。
+Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -144,7 +146,7 @@ Application Insights を有効にした後にこのエラーが発生する場�
 * 詳細ログを出力するには、構成ファイル `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` を修正し、`<add key="TraceLevel" value="All" />` を `appsettings` に追加します。
 次に、Status Monitor を再起動します。
 
-* Status Monitor は .NET アプリケーションであるため、[適切な診断を構成ファイルに追加することによる .net トレース](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)の有効化も実行できます。 たとえば、いくつかのシナリオでは、[ネットワーク トレースを構成する](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)ことで、ネットワーク レベルで何が起こるかを確認するのに役立つ可能性があります。
+* Status Monitor は .NET アプリケーションであるため、[適切な診断を構成ファイルに追加することによる .net トレース](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)の有効化も実行できます。 たとえば、いくつかのシナリオでは、[ネットワーク トレースを構成する](/dotnet/framework/network-programming/how-to-configure-network-tracing)ことで、ネットワーク レベルで何が起こるかを確認するのに役立つ可能性があります。
 
 ### <a name="insufficient-permissions"></a>アクセス許可が不十分である
   
@@ -192,7 +194,9 @@ IIS のサポート:IIS 7、7.5、8、8.5 (IIS は必須)。
 
 最初に Application Insights モジュールをインポートします。
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 監視されているアプリを特定します。
 
@@ -221,12 +225,14 @@ IIS のサポート:IIS 7、7.5、8、8.5 (IIS は必須)。
     最新バージョンをダウンロードするには、Update-ApplicationInsightsVersion を使用してください。
 * 成功すると `ApplicationInsightsApplication` が返されます。 失敗した場合、トレースが stderr に出力されます。
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 
@@ -256,7 +262,7 @@ IIS Web サーバーにインストールするデスクトップ アプリケ�
 ### <a name="when-do-i-use-status-monitor"></a>どのような場合に Status Monitor を使うのですか?
 
 * IIS サーバーで実行される任意の Web アプリをインストルメント化する場合。既に実行中の場合でも、インストルメント化が可能です。
-* コンパイル時に [Application Insights SDK でビルドされた](../../azure-monitor/app/asp-net.md) Web アプリ用の追加のテレメトリを有効にする場合。 
+* コンパイル時に [Application Insights SDK でビルドされた](./asp-net.md) Web アプリ用の追加のテレメトリを有効にする場合。 
 
 ### <a name="can-i-close-it-after-it-runs"></a>実行後に閉じることはできますか?
 
@@ -298,7 +304,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
  * 依存関係の呼び出し (.NET 4.5) と、依存関係の呼び出しの戻り値 (.NET 4.6)。
  * 例外スタック トレースの値。
 
-[詳細情報](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[詳細情報](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>ビデオ
 
@@ -306,7 +312,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 ## <a name="download-status-monitor"></a><a name="download"></a>Status Monitor のダウンロード
 
-- 新しい[PowerShell モジュール](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)を使用します
+- 新しい[PowerShell モジュール](./status-monitor-v2-overview.md)を使用します
 - [Status Monitor インストーラー](https://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
 - または、[Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、その中で Application Insights Status Monitor を検索します。
 
@@ -314,9 +320,9 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 テレメトリの表示:
 
-* パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/platform/metrics-charts.md)します
+* パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します
 * 問題を診断するために[イベントとログを検索][diagnostic]します
-* より高度なクエリのために [Analytics](../../azure-monitor/app/analytics.md) を使用します
+* より高度なクエリのために [Analytics](../log-query/log-query-overview.md) を使用します
 
 テレメトリの追加:
 
@@ -326,11 +332,12 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
+[api]: ./api-custom-events-metrics.md
 [availability]: monitor-web-app-availability.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
-[usage]: ../../azure-monitor/app/javascript.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
+[qna]: ../faq.md
+[roles]: ./resources-roles-access-control.md
+[usage]: ./javascript.md
+

@@ -12,8 +12,6 @@
       href: tutorial-hybrid-portal.md
     - name: DNAT で受信トラフィックをフィルター処理する
       href: tutorial-firewall-dnat.md
-    - name: 診断ログの監視
-      href: tutorial-diagnostics.md
 - name: クイックスタート
   expanded: true
   items:
@@ -34,6 +32,8 @@
       href: log-analytics-samples.md
 - name: 概念
   items:
+    - name: Azure Firewall の機能
+      href: features.md
     - name: FQDN のタグ
       href: fqdn-tags.md
     - name: インフラストラクチャ FQDN
@@ -56,6 +56,10 @@
       href: central-management.md
     - name: リモート作業のサポート
       href: remote-work-support.md
+    - name: ネットワーク規則内の FQDN
+      href: fqdn-filtering-network-rules.md
+    - name: セキュリティ ベースライン
+      href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ
@@ -78,6 +82,12 @@
       href: create-ip-group.md
     - name: Windows Virtual Desktop の保護
       href: protect-windows-virtual-desktop.md
+    - name: Azure Kubernetes Service (AKS) の保護
+      href: protect-azure-kubernetes-service.md
+    - name: DNS の設定
+      href: dns-settings.md
+    - name: 診断ログの監視
+      href: firewall-diagnostics.md
 - name: リファレンス
   items:
     - name: Azure CLI

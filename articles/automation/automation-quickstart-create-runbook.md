@@ -1,17 +1,17 @@
 ---
 title: Azure クイックスタート - Azure Automation Runbook を作成する | Microsoft Docs
-description: Azure Automation Runbook の作成方法について説明します
+description: この記事では、Azure Automation Runbook を作成する方法について説明します。
 services: automation
 ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0717a7ac3cc663ff68ba96864aa5d37732337ca5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537000"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836738"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
@@ -98,4 +98,4 @@ Runbook が公開されると、概要ページが表示されます。
 このクイックスタートでは、Runbook を作成、編集、テスト、および公開し、Runbook ジョブを開始しました。 Automation Runbook の詳細については、Automation で作成および使用できるさまざまな Runbook の種類に関する記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Automation の方法 - Runbook の種類](./automation-runbook-types.md)
+> [Azure Automation の Runbook の種類](./automation-runbook-types.md)

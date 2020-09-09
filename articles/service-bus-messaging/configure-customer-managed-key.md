@@ -1,19 +1,14 @@
 ---
 title: Azure Service Bus 保存データの暗号化用に独自のキーを構成する
 description: この記事では、Azure Service Bus の保存データを暗号化するための独自のキーを構成する方法について説明します。
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: aschhab
-ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: e3da167fcdd3bac53de86dae07242cf8bccb621c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459068"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400587"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
 Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -26,7 +21,7 @@ BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ
 > [!NOTE]
 > カスタマー マネージド キーには、サービス側の暗号化に関するいくつかの注意事項があります。 
 >   * この機能は [Azure Service Bus Premium](service-bus-premium-messaging.md) レベルでサポートされます。 これは、Standard レベルの Service Bus 名前空間に対して有効にすることはできません。
->   * 暗号化は、新規または空の名前空間に対してのみ有効にすることができます。 名前空間にデータが含まれている場合、暗号化操作は失敗します。
+>   * 暗号化は、新規または空の名前空間に対してのみ有効にすることができます。 名前空間にキューまたはトピックが含まれている場合、暗号化操作は失敗します。
 
 キーの管理およびキーの使用状況の監査には、Azure Key Vault を使用できます。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../key-vault/general/overview.md)
 
@@ -49,7 +44,7 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 
 カスタマー マネージド キーを有効にした後、カスタマー マネージド キーを Azure Service Bus 名前空間に関連付ける必要があります。 Service Bus では Azure Key Vault のみがサポートされます。 前のセクションで**カスタマー マネージド キーによる暗号化**のオプションを有効にした場合は、キーが Azure Key Vault にインポートされている必要があります。 また、キーに対して **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** が構成されている必要があります。 これらの設定は、[PowerShell](../key-vault/general/soft-delete-powershell.md) または [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) を使用して構成できます。
 
-1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/about-keys-secrets-and-certificates.md)」を参照してください。
+1. 新しいキー コンテナーを作成するには、Azure Key Vault の[クイック スタート](../key-vault/general/overview.md)に従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../key-vault/general/about-keys-secrets-certificates.md)」を参照してください。
 1. コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
 
     ```azurecli-interactive
@@ -87,18 +82,18 @@ Azure portal でカスタマー マネージド キーを有効にするには�
     > 
     >   * Service Bus 名前空間に対して [geo ディザスター リカバリー](service-bus-geo-dr.md)が既に有効になっているときに、カスタマー マネージド キーを有効化する場合は、以下を行います。 
     >     * ペアリングを解除します。
-    >     * キー コンテナーに対して、プライマリとセカンダリの名前空間の両方のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/general/managed-identity.md)します。
+    >     * キー コンテナーに対して、プライマリとセカンダリの名前空間の両方のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/general/assign-access-policy-portal.md)します。
     >     * プライマリ名前空間に暗号化を設定します。
     >     * プライマリとセカンダリの名前空間を再びペアリングします。
     > 
     >   * カスタマー マネージド キーが既に設定されている Service Bus 名前空間で Geo DR を有効にする場合は、以下を実行します。
-    >     * キー コンテナーに対して、セカンダリ名前空間のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/general/managed-identity.md)します。
+    >     * キー コンテナーに対して、セカンダリ名前空間のマネージド ID を対象とする[アクセス ポリシー を設定](../key-vault/general/assign-access-policy-portal.md)します。
     >     * プライマリとセカンダリの名前空間をペアリングします。
 
 
 ## <a name="rotate-your-encryption-keys"></a>暗号化キーのローテーション
 
-Azure Key Vault のローテーション メカニズムを使用して、キー コンテナー内のキーをローテーションできます。 詳細については、[キー ローテーションと監査を設定する](../key-vault/secrets/key-rotation-log-monitoring.md)方法に関するページを参照してください。 アクティブ化と有効期限の日付を設定してキー ローテーションを自動化することもできます。 Service Bus サービスによって新しいキーのバージョンが検出され、それらの使用が自動的に開始されます。
+Azure Key Vault のローテーション メカニズムを使用して、キー コンテナー内のキーをローテーションできます。 アクティブ化と有効期限の日付を設定してキー ローテーションを自動化することもできます。 Service Bus サービスによって新しいキーのバージョンが検出され、それらの使用が自動的に開始されます。
 
 ## <a name="revoke-access-to-keys"></a>キーへのアクセスの取り消し
 
@@ -328,5 +323,3 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
 次の記事をご覧ください。
 - [Service Bus の概要](service-bus-messaging-overview.md)
 - [Key Vault の概要](../key-vault/general/overview.md)
-
-

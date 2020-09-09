@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c6537ace2caeb2f5dc25848a04aa2e0e65b31d6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233535"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815982"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
@@ -27,9 +27,9 @@ ms.locfileid: "82233535"
 
 > [!TIP]
 > この記事全体で、次のようなマークが項目に付けられています。
-> 
+>
 > :heavy_check_mark:**Microsoft のお勧め**
-> 
+>
 > これらは一般的な推奨事項であり、特定の企業のニーズに該当する場合にのみ実装する必要があります。
 
 ## <a name="learn-about-privileged-identity-management"></a>Privileged Identity Management について
@@ -52,7 +52,8 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+- Microsoft 365 Education A5
+- Microsoft 365 Enterprise E5
 
 詳細については、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
 
@@ -81,7 +82,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 **Azure AD ロール** – これらのロールは、(グローバル管理者、Exchange 管理者、セキュリティ管理者など) Azure Active Directory 内にあるすべてです。 ロールおよびそれらの機能の詳細については、「[Azure Active Directory の管理者ロール アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。 管理者を割り当てるロールを判断する際に役立つ[タスク別の最小特権ロール](../users-groups-roles/roles-delegate-by-task.md)に関するページも参照してください。
 
-**Azure リソース ロール** – これらのロールは、Azure リソース、リソース グループ、サブスクリプション、または管理グループにリンクされています。 Privileged Identity Management では、所有者、ユーザー アクセス管理者、共同作成者などの組み込みロールと、[カスタム ロール](../../role-based-access-control/custom-roles.md)の両方に対する Just-In-Time アクセスが提供されます。 Azure リソース ロールの詳細については、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
+**Azure リソース ロール** – これらのロールは、Azure リソース、リソース グループ、サブスクリプション、または管理グループにリンクされています。 Privileged Identity Management では、所有者、ユーザー アクセス管理者、共同作成者などの組み込みロールと、[カスタム ロール](../../role-based-access-control/custom-roles.md)の両方に対する Just-In-Time アクセスが提供されます。 Azure リソース ロールの詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
 
 詳細については、「[Privileged Identity Management で管理できないロール](pim-roles.md)」を参照してください。
 
@@ -114,11 +115,11 @@ Privileged Identity Management を使用するには、お客様のディレク�
 | 名前とメール | **サブスクリプション / リソース所有者**<br/>Privileged Identity Management をデプロイする必要がある各サブスクリプションまたはリソースの IT 所有者の代表 | SO/R/I |
 | 名前とメール | **セキュリティ所有者**<br/>計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。 | SO/R |
 | 名前とメール | **IT サポート マネージャー / ヘルプデスク**<br/>ヘルプデスクの観点から、この変更のサポート可能性に関する情報を提供できる、IT サポート組織の代表。 | R/I |
-| パイロット ユーザーの名前とメール | **RBAC ロール ユーザー**<br/>特権 ID 管理が実装されるユーザーのグループ。 Privileged Identity Management が実装されてからそのロールをアクティブ化する方法を把握する必要があります。 | I |
+| パイロット ユーザーの名前とメール | **Azure ロール ユーザー**<br/>特権 ID 管理が実装されるユーザーのグループ。 Privileged Identity Management が実装されてからそのロールをアクティブ化する方法を把握する必要があります。 | I |
 
-### <a name="enable-privileged-identity-management"></a>Privileged Identity Management を有効にする
+### <a name="start-using-privileged-identity-management"></a>Privileged Identity Management の使用開始
 
-計画プロセスの一環として、まず、Privileged Identity Management に同意し、「[Privileged Identity Management の使用を開始する](pim-getting-started.md)」の記事に従って、Privileged Identity Management を有効にする必要があります。 Privileged Identity Management を有効にすると、特にデプロイに役立つように設計されているいくつかの機能にアクセスできます。
+計画プロセスの一環として、「[Privileged Identity Management の使用開始](pim-getting-started.md)」の記事に従って、Privileged Identity Management を準備する必要があります。 Privileged Identity Management を使用すると、特にデプロイに役立つように設計されているいくつかの機能にアクセスできます。
 
 Azure リソース用の Privileged Identity Management をデプロイするのが目的の場合は、[Privileged Identity Management で管理する Azure リソースの検出](pim-resource-roles-discover-resources.md)に関する記事に従う必要があります。 サブスクリプションと管理グループの所有者だけが、これらのリソースを検出して Privileged Identity Management にオンボードできます。 オンボードが完了すると、管理グループ、サブスクリプション、リソース グループ、リソースなど、すべてのレベルの所有者が PIM 機能を利用できるようになります。 Azure リソース用に Privileged Identity Management をデプロイしようとしているグローバル管理者である場合、[すべての Azure サブスクリプションを管理するためにアクセス権を昇格](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)し、検出のためにディレクトリのすべての Azure リソースへのアクセス権を自分自身に与えることができます。 しかし、Privileged Identity Management でリソースを管理する前に、各サブスクリプション所有者から承認を得ることをお勧めします。
 
@@ -141,9 +142,9 @@ Azure AD ロールの場合、組織では、ほとんどの管理者が 1 つ�
 
 1. [使用可能な Azure AD 管理者ロール](../users-groups-roles/directory-assign-admin-roles.md#available-roles)に関するページをお読みになり、理解して、ロールの細分性を把握してください。 お客様とそのチームは、特定のタスクの最小特権ロールについて説明されている、[Azure AD の ID タスクごとの管理者ロール](../users-groups-roles/roles-delegate-by-task.md)に関するページを参照する必要もあります。
 
-1. 組織内の特権ロールを持つユーザーのリスト。 [Privileged Identity Management ウィザード](pim-security-wizard.md#run-the-wizard)を使用して、以下のようなページを表示することができます。
+1. 組織内の特権ロールを持つユーザーのリスト。 Privileged Identity Management の[検出と分析情報 (プレビュー)](pim-security-wizard.md) を使用して、次のようなページを表示することができます。
 
-    ![特権ロールがあるユーザーを示す [特権ロールの検出] ウィンドウ](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![特権ロール経由の露出を減らすための検出と分析情報 (プレビュー) ページ](./media/pim-deployment-plan/new-preview-page.png)
 
 1. 組織内のすべてのグローバル管理者の場合、ロールが必要である理由を確認します。 前のドキュメントの内容に従って、ユーザーのジョブが 1 つ以上の詳細な管理者ロールによって実行できる場合は、グローバル管理者ロールから削除し、Azure Active Directory 内で適宜、割り当てを行う必要があります (参照:Microsoft には、現在、グローバル管理者ロールを持つ約 10 人の管理者のみが存在します。 詳細については、[Microsoft での Privileged Identity Management の使用方法](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)に関するページを参照してください)。
 
@@ -290,7 +291,7 @@ Privileged Identity Management ソリューションを実装する前に、組�
 
 ### <a name="test-implementation"></a>実装をテストする
 
-これでテスト ユーザーを特定できたので、以下の手順を使用して、テスト ユーザー用に Privileged Identity Management を構成します。 組織で、Azure portal 内の Privileged Identity Management を使用するのではなく、Privileged Identity Management ワークフローをユーザー独自の内部アプリケーションに組み込む必要がある場合、Privileged Identity Management のすべての操作も[グラフ API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root) を介してサポートされます。
+これでテスト ユーザーを特定できたので、以下の手順を使用して、テスト ユーザー用に Privileged Identity Management を構成します。 組織で、Azure portal 内の Privileged Identity Management を使用するのではなく、Privileged Identity Management ワークフローをユーザー独自の内部アプリケーションに組み込む必要がある場合、Privileged Identity Management のすべての操作も[グラフ API](/graph/api/resources/privilegedidentitymanagement-root) を介してサポートされます。
 
 #### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>Azure AD ロール用に Privileged Identity Management を構成する
 

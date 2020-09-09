@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 09/04/2019
-ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/19/2020
+ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78204737"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105939"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -48,7 +48,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 1. **Ranger 管理 UI** を開きます。
 
-2. **[Kafka]** で **[\<ClusterName>_kafka]** を選択します。 構成済みポリシーが 1 つリストされる場合があります。
+2. **[Kafka]** にある **\<ClusterName>_kafka** を選択します。 構成済みポリシーが 1 つリストされる場合があります。
 
 3. **[Add New Policy]\(新しいポリシーの追加\)** を選択し、次の値を入力します。
 
@@ -117,8 +117,8 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 1. 次のコマンドを実行します。
 
    ```bash
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
 ## <a name="test-the-ranger-policies"></a>Ranger ポリシーのテスト
@@ -131,13 +131,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. たとえば、次のコマンドを実行します。
-
-   ```bash
-   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
-   ```
-
-3. 前のセクションのブローカーの名前を使用して、次の環境変数を設定します。
+2. 前のセクションのブローカーの名前を使用して、次の環境変数を設定します。
 
    ```bash
    export KAFKABROKERS=<brokerlist>:9092
@@ -145,47 +139,80 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
    例: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. 「**例を構築してデプロイする**」の手順 3. (「[チュートリアル: Apache Kafka Producer および Consumer API の使用](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)」) に従って、`kafka-producer-consumer.jar` を **sales_user** が利用できるようにします。
+3. 「**例を構築してデプロイする**」の手順 3. (「[チュートリアル: Apache Kafka Producer および Consumer API の使用](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)」) に従って、`kafka-producer-consumer.jar` を **sales_user** が利用できるようにします。
 
-**注意事項: このチュートリアルでは、"DomainJoined-Producer-Consumer" プロジェクトの下にある kafka-producer-consumer.jar を使用してください (Producer-Consumer プロジェクトではありません。これはドメインに参加しないシナリオ用です)。**
+   > [!NOTE]  
+   > このチュートリアルでは、"DomainJoined-Producer-Consumer" プロジェクトの下にある kafka-producer-consumer.jar を使用してください (Producer-Consumer プロジェクトではありません。これはドメインに参加しないシナリオ用です)。
 
-5. **sales_user1** は、次のコマンドを実行することによってトピック `salesevents` を生成できます。
+4. **sales_user1** は、次のコマンドを実行することによってトピック `salesevents` を生成できます。
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. 次のコマンドを実行して、`salesevents` トピックからコンシュームします。
+5. 次のコマンドを実行して、`salesevents` トピックからコンシュームします。
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    メッセージの読み取りができることを確認します。
 
-7. 同じ ssh ウィンドウで次のコマンドを実行して、**sales_user1** では `marketingspend` トピックにプロデュースできないことを確認します。
+6. 同じ ssh ウィンドウで次のコマンドを実行して、**sales_user1** では `marketingspend` トピックにプロデュースできないことを確認します。
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
    承認エラーが発生しますが、これは無視してかまいません。
 
-8. **marketing_user1** では `salesevents` トピックからコンシュームできないことに注目してください。
+7. **marketing_user1** では `salesevents` トピックからコンシュームできないことに注目してください。
 
-   上記の手順 1. から 4. を繰り返しますが、今回は **marketing_user1** として行います。
+   上記の手順 1 から 3 を繰り返しますが、今回は **marketing_user1** として行います。
 
    次のコマンドを実行して、`salesevents` トピックからコンシュームします。
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    前のメッセージは表示されません。
 
-9. Ranger UI から監査アクセス イベントを表示します。
+8. Ranger UI から監査アクセス イベントを表示します。
 
    ![Ranger UI ポリシーの監査アクセス イベント ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   
+## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>コンソールを使用して ESP Kafka でトピックをプロデュースおよびコンシュームする
+
+> [!NOTE]
+> コンソール コマンドを使用してトピックを作成することはできません。 代わりに、前のセクションで説明した Java コードを使用する必要があります。 詳細については、「[ESP を使用する Kafka クラスターでのトピックの作成](#create-topics-in-a-kafka-cluster-with-esp)」を参照してください。
+
+コンソールを使用して ESP Kafka でトピックをプロデュースおよびコンシュームするには、次の手順に従います。
+
+1. `kinit` をユーザーのユーザー名と共に使用します。 パスワードの入力を求められたら、入力します。
+
+   ```bash
+   kinit sales_user1
+   ```
+
+2. 環境変数を設定します。
+
+   ```bash
+   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf"
+   export KAFKABROKERS=<brokerlist>:9092
+   ```
+
+3. トピック `salesevents` にメッセージをプロデュースします。
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --topic salesevents --broker-list $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
+
+4. トピック `salesevents` からのメッセージをコンシュームします。
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --topic salesevents --from-beginning --bootstrap-server $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

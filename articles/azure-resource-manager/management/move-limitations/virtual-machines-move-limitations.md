@@ -2,13 +2,13 @@
 title: 新しいサブスクリプションまたはリソース グループへ Azure VM を移動する
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 08/26/2020
+ms.openlocfilehash: d522eb4a6496bc2cc65b4937a19b9ac5228e7f2b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744634"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933241"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -18,12 +18,23 @@ ms.locfileid: "82744634"
 
 次のシナリオはまだサポートされていません。
 
-* 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません。
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません。
-* プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションでの仮想マシンをプロビジョニング解除し、新しいサブスクリプションに再デプロイしてください。
+* プランが添付された Marketplace リソースから作成された仮想マシンは、サブスクリプションの間で移動できません。 現在のサブスクリプションでの仮想マシンをプロビジョニング解除し、新しいサブスクリプションに再デプロイしてください。
 * 仮想ネットワーク内のすべてのリソースを移動しない場合、既存の仮想ネットワーク内の仮想マシンを新しいサブスクリプションに移動することはできません。
 * 低優先度の仮想マシンと低優先度の仮想マシン スケール セットは、リソース グループまたはサブスクリプション間で移動することはできません。
 * 可用性セット内の仮想マシンを個別に移動することはできません。
+
+## <a name="azure-disk-encryption"></a>Azure Disk Encryption
+
+キー コンテナーに統合されている仮想マシンを移動して、[Linux VM の Azure Disk Encryption](../../../virtual-machines/linux/disk-encryption-overview.md) または [Windows VM の Azure Disk Encryption](../../../virtual-machines/windows/disk-encryption-overview.md) を実装することはできません。 VM を移動するには、暗号化を無効にする必要があります。
+
+```azurecli-interactive
+az vm encryption disable --resource-group demoRG --name myVm1
+```
+
+```azurepowershell-interactive
+Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
+```
 
 ## <a name="virtual-machines-with-azure-backup"></a>Azure Backup を利用した仮想マシン
 

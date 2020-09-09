@@ -3,24 +3,24 @@ title: Azure Media Services のストリーミング ポリシー | Microsoft Do
 description: この記事では、ストリーミング ポリシーとは何か、および Azure Media Services でそれらを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/28/2019
-ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.author: inhenkel
+ms.openlocfilehash: 9ecb4e0b8a74a163632967781c84d1a110ab3a9a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582769"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297214"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
-Azure Media Services v3 では、[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使用して、[ストリーミング ロケーター](streaming-locators-concept.md)のためのストリーミング プロトコルと暗号化オプションを定義できます。 Media Services v3 には、試用または運用環境で直接使用できるように、いくつかの定義済みのストリーミングポリシーが用意されています。 
+Azure Media Services v3 では、[ストリーミング ポリシー](/rest/api/media/streamingpolicies)を使用して、[ストリーミング ロケーター](streaming-locators-concept.md)のためのストリーミング プロトコルと暗号化オプションを定義できます。 Media Services v3 には、試用または運用環境で直接使用できるように、いくつかの定義済みのストリーミングポリシーが用意されています。 
 
 現在利用できる定義済みのストリーミング ポリシー:<br/>
 * 'Predefined_DownloadOnly'
@@ -40,15 +40,15 @@ Azure Media Services v3 では、[ストリーミング ポリシー](https://do
 
 画像をクリックすると、フル サイズで表示されます。  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![シナリオに対して定義済みのストリーミング ポリシーを選択できるように設計されたデシジョン ツリーを示す図。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 コンテンツを暗号化する場合、[コンテンツ キー ポリシー](content-key-policy-concept.md)を作成する必要がありますが、**コンテンツ キー ポリシー**はクリアなストリーミングまたはダウンロードには必要ありません。 
 
-特別な要件がある (例: 異なるプロトコルを指定したい、カスタム キー配信サービスを使用する必要がある、クリアなオーディオ トラックを使用する必要がある) 場合は、カスタム ストリーミング ポリシーを[作成](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)できます。 
+特別な要件がある (例: 異なるプロトコルを指定したい、カスタム キー配信サービスを使用する必要がある、クリアなオーディオ トラックを使用する必要がある) 場合は、カスタム ストリーミング ポリシーを[作成](/rest/api/media/streamingpolicies/create)できます。 
 
 ## <a name="get-a-streaming-policy-definition"></a>ストリーミング ポリシー定義を取得する  
 
-ストリーミング ポリシーの定義を表示する場合は、[Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) を使用し、ポリシー名を指定します。 次に例を示します。
+ストリーミング ポリシーの定義を表示する場合は、[Get](/rest/api/media/streamingpolicies/get) を使用し、ポリシー名を指定します。 次に例を示します。
 
 ### <a name="rest"></a>REST
 

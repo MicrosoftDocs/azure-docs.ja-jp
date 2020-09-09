@@ -1,19 +1,14 @@
 ---
 title: Apache Kafka Connect との統合 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Kafka 用 Azure Event Hubs で Apache Spark を使用する方法について取り上げます。
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 60c6207b1c90ca40f02097a1c82d2811a50f664d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 06/23/2020
+ms.openlocfilehash: 4c63d27549df40120a90b2594ab54337c11168b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079102"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs で Apache Kafka Connect のサポートを統合する (プレビュー)
 ビジネス ニーズに応じたインジェストが増えるにつれて、外部のさまざまなソースとシンクの取り込み要件も増してきています。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) は、Kafka クラスターを通じて、MySQL や HDFS、ファイル システムなどの外部システムに接続し、それらとの間でデータをインポート/エクスポートするためのフレームワークとなります。 このチュートリアルでは、Event Hubs と共に Kafka Connect フレームワークを使用する方法について説明します。
@@ -39,7 +34,7 @@ ms.locfileid: "80632830"
 - [Git](https://www.git-scm.com/downloads)
 - Linux/MacOS
 - Kafka リリース (バージョン 1.1.1、Scala バージョン 2.11)。[kafka.apache.org](https://kafka.apache.org/downloads#1.1.1) から入手できます。
-- [Apache Kafka 用 Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview) の概要に関する記事を読む。
+- [Apache Kafka 用 Event Hubs](./event-hubs-for-kafka-ecosystem-overview.md) の概要に関する記事を読む。
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 

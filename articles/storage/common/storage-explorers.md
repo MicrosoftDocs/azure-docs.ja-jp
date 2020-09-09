@@ -23,7 +23,7 @@ Microsoft では、Azure Storage アカウントのデータを操作するた�
 | Azure Storage クライアント ツール                 | サポートされているプラットフォーム | ブロック BLOB | ページ BLOB | Append Blob | テーブル | キュー | ファイル |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
 | [Azure Portal](https://portal.azure.com)                    | Web                 | はい          | はい         | はい           | はい      | はい      | はい     |
-| [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)          | Windows、OSX        | はい          | はい         | はい           | はい      | はい      | はい     |
+| [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)          | Windows、OSX        | はい          | はい         | はい           | はい      | はい      | はい     |
 | [Microsoft Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | はい          | はい         | はい           | はい      | はい      | いいえ      |
 
 Azure Storage データを操作するために使用できるサード パーティ製のツールも多数あります。

@@ -38,9 +38,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB とサーバー
@@ -57,7 +54,7 @@
           href: concepts-pricing-tiers.md
         - name: 予約容量の前払い
           href: concept-reserved-pricing.md
-        - name: 制限
+        - name: 制限事項
           href: concepts-limits.md
     - name: データ アクセスとセキュリティ
       items:
@@ -75,6 +72,9 @@
           href: concepts-data-access-security-private-link.md
         - name: 高度な脅威保護
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: ビジネス継続性
@@ -98,6 +98,8 @@
           href: concepts-query-performance-insight.md
         - name: パフォーマンスに関する推奨事項
           href: concepts-performance-recommendations.md
+        - name: サーバー パラメーター
+          href: concepts-server-parameters.md
     - name: 開発
       items:
         - name: ドライバーとツールの互換性
@@ -110,6 +112,10 @@
           href: concepts-data-in-replication.md
         - name: 読み取りレプリカ
           href: concepts-read-replicas.md
+    - name: リージョン間の移動
+      items:
+        - name: Azure portal
+          href: howto-move-regions-portal.md
 - name: 操作方法ガイド
   items:
     - name: サーバーを管理する
@@ -139,9 +145,17 @@
         - name: ユーザーの作成
           href: howto-create-users.md
         - name: Connection strings
-          href: howto-connection-string.md
+          items:
+            - name: アプリケーションの接続
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: SSL の構成
           href: howto-configure-ssl.md
+        - name: TLS の構成
+          href: howto-tls-configurations.md
+        - name: リダイレクトによる接続
+          href: howto-redirection.md
     - name: サーバー パラメーターの構成
       items:
         - name: Azure portal
@@ -230,6 +244,9 @@
       href: /azure/templates/microsoft.dbformariadb/allversions
     - name: 管理ストアド プロシージャ
       href: reference-stored-procedures.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

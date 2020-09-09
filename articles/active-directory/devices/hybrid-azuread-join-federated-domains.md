@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3a37353615e35cd75c126c268de71d10077a9071
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222969"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268436"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "79222969"
 - ハイブリッド Azure AD 参加
 - Azure AD の登録
 
-Azure AD に自分のデバイスを取り込んで、クラウドとオンプレミスのリソースでのシングル サインオン (SSO) を実現することで、ユーザーの生産性を最大化できます。 同時に、[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使用して、クラウドとオンプレミスのリソースへのアクセスを保護できます。
+Azure AD に自分のデバイスを取り込んで、クラウドとオンプレミスのリソースでのシングル サインオン (SSO) を実現することで、ユーザーの生産性を最大化できます。 同時に、[条件付きアクセス](../conditional-access/howto-conditional-access-policy-compliant-device.md)を使用して、クラウドとオンプレミスのリソースへのアクセスを保護できます。
 
 フェデレーション環境には、以下の要件をサポートする ID プロバイダーが必要です。 Active Directory フェデレーション サービス (AD FS) を使用しているフェデレーション環境がある場合は、以下の要件は既にサポートされています。
 
@@ -81,11 +81,14 @@ Azure AD に自分のデバイスを取り込んで、クラウドとオンプ�
 - 組織のセキュリティ トークン サービス (STS) (フェデレーション ドメインの場合)
 - `https://autologon.microsoftazuread-sso.com` (シームレス SSO を使用しているか、使用する予定の場合)
 
+> [!WARNING]
+> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合は、'https://device.login.microsoftonline.com ' へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 'https://device.login.microsoftonline.com ' を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
+
 Windows 10 1803 以降で、AD FS を使用したフェデレーション環境の即時的なハイブリッド Azure AD 参加が失敗した場合は、Azure AD Connect を利用して Azure AD のコンピューター オブジェクトを同期させます。これは後で、ハイブリッド Azure AD 参加のデバイス登録を完了するために使用されます。 Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバイスのコンピュータ オブジェクトを Azure AD に対して同期済みであることを確認します。 コンピューター オブジェクトが特定の組織単位 (OU) に属している場合、これらの OU も、Azure AD Connect で同期するよう構成する必要があります。 Azure AD Connect を使用してコンピューター オブジェクトを同期する方法の詳細については、[Azure AD Connect を使用したフィルタリングの構成](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)に関する記事を参照してください。
 
 組織が送信プロキシ経由でのインターネットへのアクセスを必要とする場合、Microsoft では、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することを推奨しています。 WPAD の構成と管理で問題が発生した場合は、[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))に関する記事を参照してください。 
 
-WPAD を使用せずに自分のコンピューター上でプロキシ設定を構成する場合は、Windows 10 1709 以降で実行できます。 詳細については、[グループ ポリシー オブジェクト (GPO) を使用した WinHTTP 設定の構成](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)に関する記事を参照してください。
+WPAD を使用せずに自分のコンピューター上でプロキシ設定を構成する場合は、Windows 10 1709 以降で実行できます。 詳細については、[グループ ポリシー オブジェクト (GPO) を使用した WinHTTP 設定の構成](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo)に関する記事を参照してください。
 
 > [!NOTE]
 > WinHTTP 設定を使用して自分のコンピューター上でプロキシ設定を構成すると、構成されたプロキシに接続できないコンピューターは、インターネットに接続できなくなります。
@@ -178,25 +181,69 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 ## <a name="verify-the-registration"></a>登録の確認
 
-Azure テナントでのデバイス登録状態を確認するために、[Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)の **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** コマンドレットを使用できます。
+デバイスの状態を特定して確認するには、次の 3 つの方法があります。
+
+### <a name="locally-on-the-device"></a>デバイス上でローカルに
+
+1. Windows PowerShell を開きます。
+2. 「`dsregcmd /status`」と入力します。
+3. **AzureAdJoined** と **DomainJoined** の両方が **YES** に設定されていることを確認します。
+4. **DeviceId** を使用すると、Azure portal または PowerShell のいずれかで、サービスの状態を比較できます。
+
+### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+
+1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
+2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](./device-management-azure-portal.md)に関するページをご覧ください。
+3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。 フェデレーション環境では、登録に失敗し、デバイスを同期するように AAD Connect が構成されている場合にのみ、この問題が発生する可能性があります。
+4. **[登録済み]** 列に**日付/時刻**が含まれている場合、Hybrid Azure AD Join は完了しています。
+
+### <a name="using-powershell"></a>PowerShell の使用
+
+**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** を使用して、Azure テナントのデバイス登録状態を確認します。 このコマンドレットは、[Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)内にあります。
 
 **Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
 
 - Windows クライアントの ID と一致する**デバイス ID** を備えたオブジェクトが存在する必要があります。
-- **DeviceTrustType** の値は **[ドメイン参加済み]** でなければなりません。 この設定は、Azure AD ポータルの **[デバイス]** の下の **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
-- 条件付きアクセスで使用されるデバイスの場合、**Enabled** の値は **True**、**DeviceTrustLevel** の値は **Managed** でなければなりません。
-
-**サービスの詳細を確認するには**:
+- **DeviceTrustType** の値は **[ドメイン参加済み]** です。 この設定は、Azure AD ポータルの **[デバイス]** ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
+- 条件付きアクセスで使用されるデバイスの場合、**Enabled** の値は **True**、**DeviceTrustLevel** の値は **Managed** です。
 
 1. Windows PowerShell を管理者として開きます。
-1. 「`Connect-MsolService`」と入力して Azure テナントに接続します。  
-1. 「`get-msoldevice -deviceId <deviceId>`」と入力します。
-1. **[有効]** が **[True]** に設定されていることを確認します。
+2. 「`Connect-MsolService`」と入力して Azure テナントに接続します。
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>すべての Hybrid Azure AD 参加済みデバイスをカウントする ( **[保留中]** 状態を除く)
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**[保留中]** 状態を含むすべての Hybrid Azure AD 参加済みデバイスをカウントする
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>すべての Hybrid Azure AD 参加済みデバイスを一覧表示する
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>**[保留中]** 状態を含むすべての Hybrid Azure AD 参加済みデバイスを一覧表示する
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>1 つのデバイスの詳細情報を表示するには、次のようにします。
+
+1. 「`get-msoldevice -deviceId <deviceId>`」と入力します (これは、デバイスでローカルに取得された **DeviceId** です)。
+2. **[有効]** が **[True]** に設定されていることを確認します。
 
 ## <a name="troubleshoot-your-implementation"></a>実装のトラブルシューティング
 
 ドメイン参加済み Windows デバイスのハイブリッド Azure AD 参加を行うときに問題が発生した場合は、以下を参照してください。
 
+- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](./troubleshoot-device-dsregcmd.md)
 - [最新の Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
 - [ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加のトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 

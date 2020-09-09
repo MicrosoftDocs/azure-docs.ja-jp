@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844524"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683183"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -75,7 +76,12 @@ _<sup>**4**</sup>クレジットベースの前払い制サブスクリプショ
 | **サポート プラン** | Azure Government Pro-Direct サポート | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **サポート プラン** | Azure Government Developer サポート  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>オファーの種類を決定する
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>無料試用版から従量課金制へのアップグレード
+
+無料試用版から従量課金制の価格にアップグレードした後の Free レベル サービスの可用性の詳細については、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。
+
+### <a name="determine-your-offer-type"></a>オファーの種類を決定する
+
 サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを確認するには、[Azure portal](https://portal.azure.com) にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、確認するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン**と**プラン ID** を確認できます。 次に例を示します。
 
 ![プランとプラン ID が表示された、サブスクリプションの [概要] タブの例](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -106,7 +112,7 @@ Azure Cost Management は、個々のサービスによって送信される各�
 - リソース タグは、リソース グループにデプロイされたリソースでのみサポートされます。
 - デプロイされたリソースの中には、タグをサポートしていないものや、使用状況データにタグが含まれていないものもあります。「[Azure リソースでのタグのサポート](../../azure-resource-manager/tag-support.md)」を参照してください。
 - リソース タグは、タグの適用時に使用状況データにのみ含まれます。タグは履歴データには適用されません。
-- リソース タグは、データが更新された後に Cost Management でのみ使用できます。「[使用状況データの更新頻度は一定ではない](#usage-data-update-frequency-varies)」を参照してください。
+- リソース タグは、データが更新された後に Cost Management でのみ使用できます。「[コストと使用状況データの更新と保持](#cost-and-usage-data-updates-and-retention)」を参照してください。
 - リソース タグは、リソースがアクティブまたは実行中であり、使用状況レコードが生成されている場合 (たとえば、VM が割り当て解除されていない場合) に Cost Management でのみ使用できます。
 - タグを管理するには、各リソースに対する共同作成者のアクセス権が必要です。
 - タグ ポリシーを管理するには、管理グループ、サブスクリプション、またはリソース グループに対する所有者またはポリシーの共同作成者のアクセス権が必要です。
@@ -114,9 +120,10 @@ Azure Cost Management は、個々のサービスによって送信される各�
 Cost Management に特定のタグが表示されない場合は、次の点を考慮してください。
 
 - タグがリソースに直接適用されたか。
-- タグが 24 時間以上前に適用されたか。 「[使用状況データの更新頻度は一定ではない](#usage-data-update-frequency-varies)」を参照してください
+- タグが 24 時間以上前に適用されたか。 「[コストと使用状況データの更新と保持](#cost-and-usage-data-updates-and-retention)」を参照してください。
 - リソースの種類でタグがサポートされているか。 2019 年 12 月 1 日の時点で、次のリソースの種類では、使用状況データのタグはサポートされていません。 サポート対象の完全な一覧については、「[Azure リソースでのタグのサポート](../../azure-resource-manager/tag-support.md)」を参照してください。
     - Azure Active Directory B2C ディレクトリ
+    - Azure Bastion
     - Azure ファイアウォール
     - Azure NetApp Files
     - Data Factory
@@ -134,14 +141,11 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 - Tags API を Query または UsageDetails と共に使用して、現在のタグに基づいてすべてのコストを取得します。
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>無料試用版から従量課金制へのアップグレード
+## <a name="cost-and-usage-data-updates-and-retention"></a>コストと使用状況データの更新と保持
 
-無料試用版から従量課金制の価格にアップグレードした後の Free レベル サービスの可用性の詳細については、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。
+コストと使用状況データは通常、Azure portal の [コストの管理と請求] および[サポートする API](../index.yml) で、8 から 24 時間以内に利用できます。 コストを確認するときは、次の点に留意してください。
 
-## <a name="rated-usage-data-refresh-schedule"></a>評価済み使用状況データの更新スケジュール
-
-コストと使用状況データは、Azure portal の [コストの管理と請求] および[サポートする API](../index.yml) から利用できます。 コストを確認するときは、次の点に留意してください。
-
+- 各 Azure サービス (Storage、Compute、SQL など) では、異なる間隔で使用量が生成されます。一部のサービスのデータは、他のサービスよりも早く表示される場合があります。
 - 現在の請求期間の見積もり料金は、1 日に 6 回更新されます。
 - 現在の請求期間の見積もり料金は、使用量の増加に伴い変更される可能性があります。
 - 各更新は累積的であるため、すべての明細項目と、以前の更新からの情報が含まれます。
@@ -149,9 +153,10 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 
 次の例は、請求期間が終了するタイミングを示しています。
 
-Enterprise Agreement (EA) サブスクリプション – 請求月が 3 月 31 日に終了する場合、料金の見積もりが更新されるのは最大で 72 時間後になります。 この例では、4 月 4 日午前 0 時 (UTC) です。
+* Enterprise Agreement (EA) サブスクリプション – 請求月が 3 月 31 日に終了する場合、料金の見積もりが更新されるのは最大で 72 時間後になります。 この例では、4 月 4 日午前 0 時 (UTC) です。
+* 従量課金制サブスクリプション – 請求月が 5 月 15 日に終了する場合、料金の見積もりが更新されるのは最大で 72 時間後になる可能性があります。 この例では、5 月 19 日午前 0 時 (UTC) です。
 
-従量課金制サブスクリプション – 請求月が 5 月 15 日に終了する場合、料金の見積もりが更新されるのは最大で 72 時間後になる可能性があります。 この例では、5 月 19 日午前 0 時 (UTC) です。
+コストと使用状況データが [コストの管理と請求] で利用可能になると、少なくとも 7 年間保持されます。
 
 ### <a name="rerated-data"></a>データの再評価
 
@@ -166,16 +171,6 @@ Cost Management に表示されるコストは丸められます。 クエリ AP
   - 料金 2: $0.004
   -    表示される集計料金: 0.004 + 0.004 = 0.008。 表示される料金は $0.01 です。
 - クエリ API - 料金は小数点以下 8 桁で表示され、丸めは行われません。
-
-
-## <a name="usage-data-update-frequency-varies"></a>使用状況データの更新頻度は一定ではない
-
-Cost Management に使用状況データが表示されるタイミングは、次のような複数の要因によって決まります。
-
-- Azure サービス (Storage、Compute、CDN、SQL など) から使用状況が送信される頻度。
-- 評価エンジンとコスト管理パイプラインを通じて使用状況データが処理されるまでの時間。
-
-一部のサービスは、他よりも頻繁に使用状況を送信します。 そのため、一部のサービスのデータは、データの送信頻度が少ない他のサービスよりも早く Cost Management に表示されることがあります。 通常、サービスの使用状況が Cost Management に表示されるまでに 8-24 時間かかります。 更新は累積的であるため、使用量の増加に伴い、その月のデータが更新されることに注意してください。
 
 ## <a name="historical-data-might-not-match-invoice"></a>履歴データが請求書と一致しない場合がある
 

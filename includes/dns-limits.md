@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 2/14/2020
 ms.author: rohink
-ms.openlocfilehash: 3fbbb9d491eef202309c9e64f9a5a839a5d4516d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f7187300ec96ce417866c4fb8fa02783c1da63a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335066"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515882"
 ---
 **パブリック DNS ゾーン**
 
@@ -19,6 +19,13 @@ ms.locfileid: "80335066"
 | パブリック DNS ゾーンあたりのレコード セット数 |10,000 <sup>1</sup> |
 | パブリック DNS ゾーン内のレコード セットあたりのレコード数 |20 |
 | 1 つの Azure リソースのエイリアス レコードの数 |20|
+
+<sup>1</sup>これらの制限値を引き上げる必要がある場合は、Azure サポートにお問い合せください。
+
+**プライベート DNS ゾーン**
+
+| リソース | 制限 |
+| --- | --- |
 | サブスクリプションあたりのプライベート DNS ゾーン数 |1000|
 | プライベート DNS ゾーンあたりのレコード セット数 |25000|
 | プライベート DNS ゾーン用のレコード セットあたりのレコード数 |20|
@@ -26,9 +33,7 @@ ms.locfileid: "80335066"
 | 自動登録が有効なプライベート DNS ゾーンあたりの仮想ネットワーク リンク数 |100|
 | 自動登録が有効な状態で仮想ネットワークがリンクできるプライベート DNS ゾーンの数 |1|
 | 仮想ネットワークがリンクできるプライベート DNS ゾーンの数 |1000|
-| 1 秒あたりに仮想マシンから Azure DNS リゾルバーに送信される DNS クエリの数 |500 <sup>2</sup> |
-| 仮想マシンごとのキューに登録された (保留中の応答) DNS クエリの最大数 |200 <sup>2</sup> |
+| 1 秒あたりに仮想マシンから Azure DNS リゾルバーに送信される DNS クエリの数 |500 <sup>1</sup> |
+| 仮想マシンごとのキューに登録された (保留中の応答) DNS クエリの最大数 |200 <sup>1</sup> |
 
-<sup>1</sup>これらの制限値を引き上げる必要がある場合は、Azure サポートにお問い合せください。
-
-<sup>2</sup>これらの制限は、仮想ネットワーク レベルではなく、個々の仮想マシンごとに適用されます。 これらの制限を超える DNS クエリは削除されます。
+<sup>1</sup>これらの制限は、仮想ネットワーク レベルではなく、個々の仮想マシンごとに適用されます。 これらの制限を超える DNS クエリは削除されます。

@@ -3,19 +3,19 @@ title: ISE のパブリック発信 IP アドレスを設定する
 description: Azure Logic Apps で統合サービス環境 (ISE) に対して単一のパブリック発信 IP アドレスを設定する方法について学習します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 05/06/2020
+ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066390"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps で 1 つまたは複数の統合サービス環境に対して単一の IP アドレスを設定する
 
-Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内のリソースにアクセスする必要があるロジック アプリをホストするために、[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を設定できます。 IP 制限がある他のエンドポイントへのアクセスを必要とする ISE インスタンスが複数ある場合は、[Azure Firewall](../firewall/overview.md) または[ネットワーク仮想アプライアンス](../virtual-network/virtual-networks-overview.md#filter-network-traffic)を仮想ネットワークにデプロイし、そのファイアウォールまたはネットワーク仮想アプライアンスを経由して送信トラフィックをルーティングします。 その後、仮想ネットワーク内のすべての ISE インスタンスで、1 つの予測可能な静的パブリック IP アドレスを使用して、送信先システムとの通信を行うことができます。 このようにすると、それらの送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
+Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内のリソースにアクセスする必要があるロジック アプリをホストするために、[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を設定できます。 IP 制限がある他のエンドポイントへのアクセスを必要とする ISE インスタンスが複数ある場合は、[Azure Firewall](../firewall/overview.md) または[ネットワーク仮想アプライアンス](../virtual-network/virtual-networks-overview.md#filter-network-traffic)を仮想ネットワークにデプロイし、そのファイアウォールまたはネットワーク仮想アプライアンスを経由して送信トラフィックをルーティングします。 その後、仮想ネットワーク内のすべての ISE インスタンスで、1 つの予測可能な静的パブリック IP アドレスを使用して、目的の送信先システムとの通信を行うことができます。 このようにすると、送信先システムで ISE ごとに追加のファイアウォールを設定する必要はありません。
 
 このトピックでは Azure Firewall 経由で送信トラフィックをルーティングする方法について説明しますが、Azure Marketplace からのサードパーティのファイアウォールなどのネットワーク仮想アプライアンスにも、同様の概念を適用できます。 このトピックでは、複数の ISE インスタンスの設定に焦点を当てていますが、アクセスする必要がある IP アドレスの数をシナリオで制限する必要がある場合は、1 つの ISE に対してこの方法を使用することもできます。 ファイアウォールまたは仮想ネットワーク アプライアンスの追加コストが、シナリオにとって妥当かどうかを検討してください。 詳細については、「[Azure Firewall の価格](https://azure.microsoft.com/pricing/details/azure-firewall/)」を参照してください。
 
@@ -52,10 +52,12 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **ルート名** | <*一意のルート名*> | ルート テーブル内のルートの一意の名前 |
-   | **アドレス プレフィックス** | <*送信先アドレス*> | トラフィックを送る送信先システムのアドレス。 このアドレスに必ず、[クラスレス ドメイン間ルーティング (CIDR) 表記](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)を使用してください。 |
+   | **アドレス プレフィックス** | <*送信先アドレス*> | 送信トラフィックの送信先システムのアドレス プレフィックス。 このアドレスに必ず、[クラスレス ドメイン間ルーティング (CIDR) 表記](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)を使用してください。 この例では、このアドレス プレフィックスは SFTP サーバー用です。これについては、「[ネットワーク ルールを設定する](#set-up-network-rule)」セクションで説明しています。 |
    | **次ホップの種類** | **仮想アプライアンス** | 送信トラフィックで使用される [ホップの種類](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) |
    | **次ホップ アドレス** | <*ファイアウォール プライベート IP アドレス*> | ファイアウォールのプライベート IP アドレス |
    |||
+
+<a name="set-up-network-rule"></a>
 
 ## <a name="set-up-network-rule"></a>ネットワーク ルールを設定する
 
@@ -65,7 +67,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
 1. コレクションで、送信先システムへのトラフィックを許可するルールを追加します。
 
-   たとえば、ISE で実行され、SFTP システムと通信する必要があるロジックアプリがあるとします。 `ISE_SFTP_Outbound` という名前のネットワーク ルールが含まれた、`LogicApp_ISE_SFTP_Outbound` という名前のネットワーク ルール コレクションを作成します。 このルールは、トラフィックが仮想ネットワークで ISE が実行されているサブネットの IP アドレスから、ファイアウォールのプライベート IP アドレスを使用して送信先 SFTP システムへ送られることを許可します。
+   たとえば、ISE で実行され、SFTP サーバーと通信する必要があるロジック アプリがあるとします。 `ISE_SFTP_Outbound` という名前のネットワーク ルールが含まれた、`LogicApp_ISE_SFTP_Outbound` という名前のネットワーク ルール コレクションを作成します。 このルールは、トラフィックが仮想ネットワークで ISE が実行されているサブネットの IP アドレスから、ファイアウォールのプライベート IP アドレスを使用して送信先 SFTP サーバーへ送られることを許可します。
 
    ![ファイアウォールのネットワーク ルールを設定する](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -85,7 +87,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
    | **名前** | <*ネットワーク ルール名*> | ネットワーク ルールの名前 |
    | **プロトコル** | <*接続プロトコル*> | 使用する接続プロトコル。 たとえば、NSG ルールを使用している場合は、 **[TCP]** だけではなく、 **[TCP]** と **[UDP]** の両方を選択します。 |
    | **ソース アドレス** | <*ISE サブネット アドレス*> | ISE が実行されているサブネットの IP アドレスと、ロジック アプリからのトラフィックの発生元 |
-   | **送信先アドレス** | <*送信先 IP アドレス*> | トラフィックを送る送信先システムの IP アドレス |
+   | **送信先アドレス** | <*送信先 IP アドレス*> | 送信トラフィックの送信先システムの IP アドレス。 この例では、この IP アドレスは SFTP サーバー用です。 |
    | **送信先ポート** | <*送信先ポート*> | 送信先システムが受信通信に使用するポート |
    |||
 
@@ -94,8 +96,8 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
    * [ネットワーク ルールを構成する](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Azure Firewall ルール処理ロジック](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Azure Firewall に関する FAQ](../firewall/firewall-faq.md)
-   * [Azure PowerShell: New-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI: az network firewall network-rule](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
+   * [Azure CLI: az network firewall network-rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
 ## <a name="next-steps"></a>次のステップ
 

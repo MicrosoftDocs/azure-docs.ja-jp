@@ -4,7 +4,7 @@ description: Azure Virtual Network のデプロイに使用できるさまざま
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: 5971b3251812ea4193e71173943ffc0d48207567
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6e759fa75e1957e726dc9f6f3d0035869f35e3f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75975363"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707822"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>仮想ネットワーク用の Azure Resource Manager テンプレート サンプル
 
@@ -36,4 +36,4 @@ ms.locfileid: "75975363"
 |[Azure Storage の仮想ネットワーク サービス エンドポイントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-2subnets-service-endpoints-storage-integration)|それぞれネットワーク インターフェイスを 1 つ含んだ 2 つのサブネットから成る新しい仮想ネットワークを作成します。 いずれか 1 つのサブネットについて、Azure Storage へのサービス エンドポイントを有効にし、そのサブネットに新しいストレージ アカウントを結び付けます。|
 |[2 つの仮想ネットワークの接続](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-to-vnet-peering)| 2 つの仮想ネットワークを作成し、両者の間に仮想ネットワーク ピアリングを作成します。|
 |[複数の IP アドレスを持つ仮想マシンの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-ipconfig)| 複数の IP アドレスを持つ Windows VM または Linux VM の作成|
-|[IPv4 と IPv6 のデュアル スタック仮想ネットワークの構成](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|2 つの VM と IPv4 および IPv6 のパブリック IP アドレスを使用した Azure Basic Load Balancer によるデュアル スタック (IPv4+IPv6) の仮想ネットワークをデプロイします。 |
+|[IPv4 と IPv6 のデュアル スタック仮想ネットワークの構成](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|2 つの VM と IPv4 および IPv6 のパブリック IP アドレスを使用した Azure Basic Load Balancer によるデュアル スタック (IPv4+IPv6) の仮想ネットワークを展開します。 |

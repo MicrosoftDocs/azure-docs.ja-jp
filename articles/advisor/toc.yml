@@ -4,28 +4,39 @@
   items:
     - name: Azure Advisor とは
       href: advisor-overview.md
+- name: クイックスタート
+  items:
+    - name: 新しい推奨事項のアラートの構成
+      items:
+        - name: Azure portal
+          href: advisor-alerts-portal.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: advisor-alerts-arm.md
 - name: チュートリアル
   items:
     - name: Advisor の使用を開始する
       href: advisor-get-started.md
 - name: 操作方法ガイド
   items:
-    - name: Azure アプリケーションの可用性の向上
+    - name: '[信頼性]'
       href: advisor-high-availability-recommendations.md
-    - name: リソースのセキュリティを強化する
+    - name: セキュリティ
       href: advisor-security-recommendations.md
-    - name: Azure アプリケーションのパフォーマンスの向上
+    - name: パフォーマンス効率
       href: advisor-performance-recommendations.md
-    - name: サービス コストの削減
+    - name: コストの最適化
       href: advisor-cost-recommendations.md
-    - name: オペレーショナル エクセレンスの実現
+    - name: オペレーショナル エクセレンス
       href: advisor-operational-excellence-recommendations.md
     - name: 推奨事項の構成
       href: view-recommendations.md
     - name: アクセス許可とブロックされるアクション
       href: permissions.md
     - name: 推奨事項のアラートの構成
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
+    - name: 推奨事項の概要を構成する
+      href: advisor-recommendations-digest.md
     - name: 推奨事項の一括修復
       href: advisor-quick-fix.md
     - name: Azure Resource Graph の Advisor データ
@@ -35,15 +46,15 @@
     - name: Security Center
       href: 'https://azure.microsoft.com/services/security-center/'
     - name: '[SQL Database Advisor]'
-      href: 'https://azure.microsoft.com/documentation/articles/sql-database-advisor/'
+      href: ../azure-sql/database/database-advisor-implement-performance-recommendations.md
     - name: App Service
-      href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'
+      href: ../app-service/app-service-best-practices.md
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/advisor/'
-    - name: CLI
-      href: 'https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest'
+      href: /rest/api/advisor/
+    - name: Azure CLI
+      href: /cli/azure/advisor?view=azure-cli-latest
     - name: PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0'
+      href: /powershell/module/az.advisor/?view=azps-1.2.0
 - name: リソース
   items:
     - name: Azure のロードマップ

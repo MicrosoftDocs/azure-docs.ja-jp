@@ -8,11 +8,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701815"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service 環境のネットワーク アーキテクチャの概要
 App Service 環境は、常に[仮想ネットワーク][virtualnetwork]のサブネット内に作成され、App Service 環境内で実行されるアプリは、同じ仮想ネットワーク トポロジ内に配置されたプライベート エンドポイントと通信できます。  顧客が仮想ネットワーク インフラストラクチャの一部をロックダウンする場合があるため、App Service 環境で発生するネットワーク通信フローの種類を理解しておくことが重要です。

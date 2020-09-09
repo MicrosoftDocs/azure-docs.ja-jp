@@ -11,12 +11,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 09/25/2019
-  ms.openlocfilehash: 1503cad9c85f60b930f520cf24e0d772d7ffe1e7
-  ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+  ms.openlocfilehash: 6de3e2dfb84ecd705f5faa1cfdd905c429671e27
+  ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/01/2020
-  ms.locfileid: "82628931"
+  ms.lasthandoff: 07/29/2020
+  ms.locfileid: "87415773"
 landingContent:
 - title: Azure Container Instances について
   linkLists:
@@ -38,6 +38,8 @@ landingContent:
       url: container-instances-quickstart-portal.md
     - text: コンテナー インスタンスのデプロイ - Resource Manager テンプレート
       url: container-instances-quickstart-template.md
+    - text: コンテナー インスタンスのデプロイ - Docker CLI
+      url: container-instances-quickstart-docker-cli.md
   - linkListType: learn
     links:
     - text: Azure Container Instances での Docker コンテナーの実行

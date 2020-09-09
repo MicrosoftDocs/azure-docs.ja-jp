@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931002"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279518"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>ユーザー プライバシーと Azure Active Directory パススルー認証
 
@@ -67,7 +67,7 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-event-logs"></a>認証エージェントのイベント ログを削除する
 
-この製品では、**Windows イベント ログ**が作成されることもあります。 詳細については、[こちらの記事](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx)をご覧ください。
+この製品では、**Windows イベント ログ**が作成されることもあります。 詳細については、[こちらの記事](/windows/win32/wes/windows-event-log)をご覧ください。
 
 パススルー認証エージェントに関するログを表示するには、サーバーで**イベント ビューアー** アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
 
@@ -103,7 +103,7 @@ Foreach ($file in $files) {
  
 ### <a name="note-about-domain-controller-logs"></a>ドメイン コントローラー ログに関する注意事項
 
-監査ログが有効になっている場合、この製品では、お使いのドメイン コント ローラーのセキュリティ ログを生成できます。 監査ポリシーの構成に関する詳細については、[こちらの記事](https://technet.microsoft.com/library/dd277403.aspx)をご覧ください。
+監査ログが有効になっている場合、この製品では、お使いのドメイン コント ローラーのセキュリティ ログを生成できます。 監査ポリシーの構成に関する詳細については、[こちらの記事](/previous-versions/tn-archive/dd277403(v=technet.10))をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [セキュリティ センターで Microsoft のプライバシー ポリシーを確認する](https://www.microsoft.com/trustcenter)

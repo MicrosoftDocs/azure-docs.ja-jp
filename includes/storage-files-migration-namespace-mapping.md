@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143563"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425107"
 ---
 この手順では、必要な Azure ファイル共有の数を評価します。 1 つの Windows Server インスタンス (またはクラスター) では、最大 30 個の Azure ファイル共有を同期できます。
 
@@ -58,7 +58,7 @@ Azure File Sync と、そのバランスの取れたパフォーマンスおよ�
 > [!IMPORTANT]
 > Azure File Sync の最も重要なスケール ベクターは、同期が必要な項目 (ファイルとフォルダー) の数です。
 
-Azure File Sync は、1つの Azure ファイル共有に対して最大 100,000 項目の同期をサポートしています。 ただし、Azure File Sync チームが定期的に行うテスト内容の表示に限っては、この制限を超えることができます。
+Azure File Sync では、1つの Azure ファイル共有に対して最大 1 億項目の同期がサポートされています。 ただし、Azure File Sync チームが定期的に行うテスト内容の表示に限っては、この制限を超えることができます。
 
 ここでのベストプラクティスは、同期スコープあたりの項目数を少なくしておくことです。 これは、フォルダーを Azure ファイル共有にマッピングする際に考慮する必要がある重要な要素です。
 
@@ -68,7 +68,7 @@ Azure File Sync は、1つの Azure ファイル共有に対して最大 100,000
 
 :::row:::
     :::column:::
-        [![](media/storage-files-migration-namespace-mapping/namespace-mapping.png "An example of a mapping table. Download the file below to experience and use the content of this image.")](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
+        [![マッピング テーブルの例です。以下のファイルをダウンロードして、このイメージのコンテンツを実際に使用してみます。](media/storage-files-migration-namespace-mapping/namespace-mapping.png)](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
     :::column-end:::
     :::column:::
         上記のコンセプトを組み合わせて使用すると、必要とする Azure ファイル共有の数を決定し、既存のデータのどの部分がどの Azure ファイル共有に格納されるかを判断する際の役に立ちます。

@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と MongoDB Cloud の統合 | Microsoft Docs
 description: Azure Active Directory と MongoDB Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ef392044-235b-4d80-8a33-eeba9b142849
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef8094464b428f1f46017b0d4abaac5aeb1fa428
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 6a59df062adf9b5c2e511db29cb8601d4a4df70e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024521"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と MongoDB Cloud の統合
 
@@ -101,11 +97,11 @@ MongoDB Cloud に対する Azure AD SSO を構成してテストするには、�
 
 1. 上記の属性に加えて、MongoDB Cloud アプリケーションでは、その他にいくつかの属性が SAML 応答で返されることが想定されています。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
-    | 名前 | |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | email | | user.userprincipalname |
-    | firstName | | User.givenname |
-    | lastName | | User.surname |
+    | 名前 | ソース属性|
+    | ---------------| --------- |
+    | email | user.userprincipalname |
+    | firstName | User.givenname |
+    | lastName | User.surname |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を見つけます。 **[ダウンロード]** を選択して証明書をダウンロードし、コンピューターに保存します。
 
@@ -166,7 +162,7 @@ MongoDB Cloud では、Just-In-Time ユーザー プロビジョニングがサ�
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [MongoDB Atlas on Azure にサインアップする](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
+- [MongoDB Atlas on Azure にサインアップする](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
 
 - [Azure AD で MongoDB Cloud を試す](https://aad.portal.azure.com/)
 

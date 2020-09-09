@@ -4,19 +4,19 @@ description: Azure Active Directory Identity Protection で危険なユーザー
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 12/13/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463945"
 ---
 # <a name="how-to-investigate-risk"></a>方法:リスクの調査
 
@@ -74,6 +74,9 @@ Identity Protection を使用すると、お使いの環境のリスクを調査
 
 - サインインを侵害ありと確認
 - サインインを安全と確認
+
+> [!NOTE] 
+> Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 ただし、サインイン レポートには、対話型のサインインだけが表示されます。非対話型サインインで発生した危険なサインインが表示されることがありますが、Azure AD サインイン レポートにはそのサインインは表示されません。
 
 ## <a name="risk-detections"></a>リスク検出
 

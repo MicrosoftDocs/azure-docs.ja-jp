@@ -7,22 +7,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfcb00f56a3cc6f71729fbeaf317ce9447e120ed
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 243bc48f7e84951c78ecab3e7f5ee47a85a538bf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582611"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798824"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Azure Active Directory で PowerShell を使用してリソース スコープのカスタム ロールを割り当てる
 
-この記事では、Azure Active Directory (Azure AD) でロールの割り当てを組織全体のスコープで作成する方法について説明します。 組織全体のスコープでロールを割り当てると、Azure AD 組織全体のアクセス権が付与されます。 1 つの Azure AD リソースのスコープでロールの割り当てを作成する場合は、[カスタム ロールを作成してリソース スコープで割り当てる方法](roles-create-custom.md)に関する記事を参照してください。この記事では、[Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使用します。
+この記事では、Azure Active Directory (Azure AD) でロールの割り当てを組織全体のスコープで作成する方法について説明します。 組織全体のスコープでロールを割り当てると、Azure AD 組織全体のアクセス権が付与されます。 1 つの Azure AD リソースのスコープでロールの割り当てを作成する場合は、[カスタム ロールを作成してリソース スコープで割り当てる方法](roles-create-custom.md)に関する記事を参照してください。この記事では、[Azure Active Directory PowerShell Version 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使用します。
 
 Azure AD 管理者ロールについて詳しくは、 [Azure Active Directory での管理者ロールの割り当て](directory-assign-admin-roles.md)に関する記事をご覧ください。
 
@@ -69,7 +69,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-ユーザーではなくサービス プリンシパルにロールを割り当てるには、[Get-AzureADMSServicePrincipal cmdlet](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) コマンドレットを使用します。
+ユーザーではなくサービス プリンシパルにロールを割り当てるには、[Get-AzureADMSServicePrincipal cmdlet](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) コマンドレットを使用します。
 
 ## <a name="operations-on-roledefinition"></a>RoleDefinition に対する操作
 

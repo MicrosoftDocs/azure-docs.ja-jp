@@ -3,7 +3,7 @@ title: QnA Maker のドキュメント
 summary: QnA Maker サービスと、このサービスのナレッジ ベースでの質問と回答の確認方法について説明します。
 metadata:
   ms.topic: landing-page
-  ms.date: 09/18/2019
+  ms.date: 06/08/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker のドキュメント
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジにある Q&A から回答となる可能性が最も高いものが提示されます。
-  ms.openlocfilehash: 189782ca4e8d9c6a098f6080a62be4da0f2be853
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
+  ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83651160"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84628028"
 landingContent:
 - title: QnA Maker について
   linkLists:
@@ -66,8 +66,8 @@ landingContent:
     links:
     - text: クイック スタート:Postman または cURL の使用
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - text: クイック スタート:REST と C# の使用
-      url: quickstarts/get-answer-from-knowledge-base-csharp.md
+    - text: クイック スタート:REST と cURL の使用
+      url: quickstarts/quickstart-rest-curl.md
     - text: クイック スタート:SDK の使用
       url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
@@ -94,8 +94,12 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: 'ポータル: QnA ボットの作成'
+    - text: 'ポータル: Azure Bot Service のボットを作成する'
       url: tutorials/create-qna-bot.md
+    - text: Power Apps:QnA Maker を使ったボットを作成する
+      url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - text: Bot Framework:LUIS アプリと QnA Maker アプリの間をディスパッチする
+      url: https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs
     - text: その他のボットのサンプル
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: リファレンス

@@ -27,6 +27,8 @@
       href: roles.md
     - name: 高度なマルチステージ攻撃の検出
       href: fusion.md
+    - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
+      href: extend-sentinel-across-workspaces-tenants.md
 - name: 操作方法ガイド
   items:
     - name: データ ソースの接続
@@ -36,9 +38,9 @@
           items:
             - name: AWS CloudTrail
               href: connect-aws.md
-            - name: Azure AD
+            - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Office 365
+            - name: Office 365 (Teams も対象)
               href: connect-office-365.md
             - name: Cloud App Security
               href: connect-cloud-app-security.md
@@ -52,20 +54,26 @@
               href: connect-microsoft-defender-advanced-threat-protection.md
             - name: Azure ATP
               href: connect-azure-atp.md
+            - name: Azure DDoS Protection
+              href: connect-azure-ddos-protection.md
+            - name: Azure Firewall
+              href: connect-azure-firewall.md
             - name: Azure Security Center
               href: connect-azure-security-center.md
             - name: Azure Security Center for IoT
               href: connect-asc-iot.md
+            - name: Azure Web アプリケーション ファイアウォール (WAF)
+              href: connect-azure-waf.md
             - name: ドメイン ネーム サーバー
               href: connect-dns.md
-            - name: Microsoft Web アプリケーション ファイアウォール
-              href: connect-microsoft-waf.md
             - name: Windows ファイアウォール
               href: connect-windows-firewall.md
             - name: Windows セキュリティ イベント
               href: connect-windows-security-events.md
         - name: 外部ソリューションの接続
           items:
+            - name: Alcide kAudit
+              href: connect-alcide-kaudit.md
             - name: Barracuda WAF
               href: connect-barracuda.md
             - name: Barracuda CloudGen Firewall
@@ -76,12 +84,34 @@
               href: connect-f5-big-ip.md
             - name: Forcepoint DLP
               href: connect-forcepoint-dlp.md
+            - name: Infoblox NIOS
+              href: connect-infoblox.md
+            - name: Okta SSO
+              href: connect-okta-single-sign-on.md
+            - name: Orca Security
+              href: connect-orca-security-alerts.md
+            - name: Perimeter 81
+              href: connect-perimeter-81-logs.md
+            - name: Proofpoint TAP
+              href: connect-proofpoint-tap.md
+            - name: Pulse Connect Secure
+              href: connect-pulse-connect-secure.md
+            - name: Qualys VM
+              href: connect-qualys-vm.md
+            - name: Sophos XG Firewall
+              href: connect-sophos-xg-firewall.md
             - name: Squadra Technologies secRMM
               href: connect-squadra-secrmm.md
             - name: Symantec ICDX
               href: connect-symantec.md
+            - name: Symantec Proxy SG
+              href: connect-symantec-proxy-sg.md
+            - name: Symantec VIP
+              href: connect-symantec-vip.md
             - name: syslog
               href: connect-syslog.md
+            - name: VMware Carbon Black Cloud Endpoint Standard
+              href: connect-vmware-carbon-black.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
             - name: CEF ベースのソリューション
@@ -92,6 +122,8 @@
                 - name: 手順 2 セキュリティ ソリューションを構成する
                   href: connect-cef-solution-config.md
                   items:
+                    - name: AI Vectra 検出
+                      href: connect-ai-vectra-detect.md
                     - name: Check Point
                       href: connect-checkpoint.md
                     - name: Cisco ASA
@@ -104,6 +136,8 @@
                       href: connect-forcepoint-casb-ngfw.md
                     - name: Fortinet
                       href: connect-fortinet.md
+                    - name: Illusive Networks AMS
+                      href: connect-illusive-attack-management-system.md
                     - name: One Identity Safeguard
                       href: connect-one-identity.md
                     - name: Palo Alto Networks
@@ -126,6 +160,8 @@
       href: customer-managed-keys.md
     - name: アラートからのインシデントの作成
       href: create-incidents-from-alerts.md
+    - name: インシデント メトリックを使用して SOC をより適切に管理する
+      href: manage-soc-with-incident-metrics.md
     - name: 検出
       href: hunting.md
       items:
@@ -137,15 +173,19 @@
           href: livestream.md
     - name: Azure Sentinel の削除
       href: offboard.md
+- name: リファレンス (新規)
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/securityinsights/'
 - name: リソース
   items:
     - name: 有用なリソース
       href: resources.md
     - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 価格
-      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'
+      href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'

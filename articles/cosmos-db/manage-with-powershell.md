@@ -3,23 +3,23 @@ title: PowerShell を使用して Azure Cosmos DB を作成および管理する
 description: Azure PowerShell を使用して Azure Cosmos アカウント、データベース、コンテナー、およびスループットを管理します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 04/29/2020
+ms.topic: how-to
+ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: d4473bbfe10fa2d0fc87eed7889a3e06af650b5b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592147"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486478"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
 
 以下のガイドでは、PowerShell を使用して、アカウント、データベース、コンテナー、スループットなど、Azure Cosmos DB リソースの管理をスクリプト処理および自動化する方法について説明します。
 
 > [!NOTE]
-> この記事のサンプルでは、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 これらのコマンドレットはまだプレビュー段階であり、一般提供までに変更される可能性があります。 コマンドの最新情報については、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API リファレンス ページを参照してください。
+> この記事のサンプルでは、[Az.CosmosDB](/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 最新の変更については、[Az.CosmosDB](/powershell/module/az.cosmosdb) API リファレンス ページを参照してください。
 
 クロスプラットフォームの Azure Cosmos DB の管理には、[クロスプラットフォームの PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) での `Az` コマンドレットと `Az.CosmosDB` コマンドレットのほか、[Azure CLI](manage-with-cli.md)、[REST API][rp-rest-api]、[Azure portal](create-sql-api-dotnet.md#create-account) を使用できます。
 
@@ -44,6 +44,7 @@ ms.locfileid: "82592147"
 * [Azure Cosmos アカウントの接続文字列を一覧表示する](#list-connection-strings)
 * [Azure Cosmos アカウントのフェールオーバーの優先順位を変更する](#modify-failover-priority)
 * [Azure Cosmos アカウントの手動フェールオーバーをトリガーする](#trigger-manual-failover)
+* [Azure Cosmos DB アカウントのリソース ロックを一覧表示する](#list-account-locks)
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a> Azure Cosmos アカウントを作成する
 
@@ -327,6 +328,21 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a> Azure Cosmos DB アカウントのリソース ロックを一覧表示する
+
+リソース ロックは、データベースやコレクションなどの Azure Cosmos DB リソースに設定できます。 次の例は、Azure Cosmos DB アカウントのすべての Azure リソース ロックを一覧表示する方法を示しています。
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceTypeAccount = "Microsoft.DocumentDB/databaseAccounts"
+$accountName = "mycosmosaccount"
+
+Get-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceTypeAccount `
+    -ResourceName $accountName
+```
+
 ## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB データベース
 
 以下のセクションでは、Azure Cosmos DB データベースの管理方法について説明します。
@@ -337,6 +353,8 @@ Update-AzCosmosDBAccountFailoverPriority `
 * [アカウント内のすべての Azure Cosmos DB データベースを一覧表示する](#list-db)
 * [単一の Azure Cosmos DB データベースを取得する](#get-db)
 * [Azure Cosmos DB データベースを削除する](#delete-db)
+* [Azure Cosmos DB データベースにリソース ロックを作成して削除を防ぐ](#create-db-lock)
+* [Azure Cosmos DB データベースのリソース ロックを削除する](#remove-db-lock)
 
 ### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>Azure Cosmos DB データベースを作成する
 
@@ -345,7 +363,7 @@ $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 
-Set-AzCosmosDBSqlDatabase `
+New-AzCosmosDBSqlDatabase `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
@@ -359,7 +377,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $databaseRUs = 400
 
-Set-AzCosmosDBSqlDatabase `
+New-AzCosmosDBSqlDatabase `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName `
@@ -416,11 +434,48 @@ Remove-AzCosmosDBSqlDatabase `
     -Name $databaseName
 ```
 
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a><a id="create-db-lock"></a>Azure Cosmos DB データベースにリソース ロックを作成して削除を防ぐ
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a><a id="remove-db-lock"></a>Azure Cosmos DB データベースのリソース ロックを削除する
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
+
 ## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB コンテナー
 
 以下のセクションでは、Azure Cosmos DB コンテナーの管理方法について説明します。
 
 * [Azure Cosmos DB コンテナーを作成する](#create-container)
+* [自動スケーリングを使用して Azure Cosmos DB コンテナーを作成する](#create-container-autoscale)
 * [大きいパーティション キーで Azure Cosmos DB コンテナーを作成する](#create-container-big-pk)
 * [Azure Cosmos DB コンテナーのスループットを取得する](#get-container-ru)
 * [カスタム インデックス作成を使用して Azure Cosmos DB コンテナーを作成する](#create-container-custom-index)
@@ -430,6 +485,8 @@ Remove-AzCosmosDBSqlDatabase `
 * [データベース内のすべての Azure Cosmos DB コンテナーを一覧表示する](#list-containers)
 * [データベース内の 1 つの Azure Cosmos DB コンテナーを取得する](#get-container)
 * [Azure Cosmos DB コンテナーを削除する](#delete-container)
+* [Azure Cosmos DB コンテナーにリソース ロックを作成して削除を防ぐ](#create-container-lock)
+* [Azure Cosmos DB コンテナーのリソース ロックを削除する](#remove-container-lock)
 
 ### <a name="create-an-azure-cosmos-db-container"></a><a id="create-container"></a>Azure Cosmos DB コンテナーを作成する
 
@@ -440,14 +497,37 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a><a id="create-container-autoscale"></a>自動スケーリングを使用して Azure Cosmos DB コンテナーを作成する
+
+```azurepowershell-interactive
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>大きいパーティション キー サイズで Azure Cosmos DB コンテナーを作成する
@@ -460,7 +540,7 @@ $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -506,7 +586,7 @@ $indexingPolicy = New-AzCosmosDBSqlIndexingPolicy `
     -IndexingMode Consistent `
     -Automatic $true
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -529,7 +609,7 @@ $partitionKeyPath = "/myPartitionKey"
 $indexingPolicy = New-AzCosmosDBSqlIndexingPolicy `
     -IndexingMode None
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -557,7 +637,7 @@ $uniqueKey = New-AzCosmosDBSqlUniqueKey `
 $uniqueKeyPolicy = New-AzCosmosDBSqlUniqueKeyPolicy `
     -UniqueKey $uniqueKey
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -585,7 +665,7 @@ $conflictResolutionPolicy = New-AzCosmosDBSqlConflictResolutionPolicy `
     -Type LastWriterWins `
     -Path $conflictResolutionPath
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -612,7 +692,7 @@ $conflictResolutionPolicy = New-AzCosmosDBSqlConflictResolutionPolicy `
     -Type Custom `
     -ConflictResolutionProcedure $conflictResolutionSproc
 
-Set-AzCosmosDBSqlContainer `
+New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -DatabaseName $databaseName `
@@ -668,6 +748,43 @@ Remove-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName
 ```
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a><a id="create-container-lock"></a>Azure Cosmos DB コンテナーにリソース ロックを作成して削除を防ぐ
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a><a id="remove-container-lock"></a>Azure Cosmos DB コンテナーのリソース ロックを削除する
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -683,4 +800,4 @@ Remove-AzCosmosDBSqlContainer `
 [distribute-data-globally]: distribute-data-globally.md
 [azure-resource-groups]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups
 [azure-resource-tags]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-[rp-rest-api]: https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/
+[rp-rest-api]: /rest/api/cosmos-db-resource-provider/

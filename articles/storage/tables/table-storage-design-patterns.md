@@ -1,6 +1,6 @@
 ---
 title: Azure ストレージ テーブルの設計パターン | Microsoft Docs
-description: Azure Table service ソリューションのパターンを使用します。
+description: Azure の Table service ソリューションで使用するのに適した設計パターンを確認します。 他の記事で説明されている問題とトレードオフに対処します。
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,13 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529341"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006348"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -197,11 +198,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員エンティティと同じパーティションにインデックス エンティティを作成する。  
 * 別のパーティションまたはテーブルにインデックス エンティティを作成する。  
 
-<u>オプション 1: BLOB ストレージの使用</u>  
+<u>オプション 1:Blob ストレージを使用する</u>  
 
 最初のオプションでは、すべての一意の姓について Blob を作成し、その姓の従業員用の各 Blob には **PartitionKey** (部署) と **RowKey** (従業員 ID) 値が格納されます。 従業員を追加または削除した場合は、関連する BLOB の内容と従業員エンティティの一貫性が最終的に確保されていることを確認する必要があります。  
 
-<u>オプション 2:</u> 同じパーティション内のインデックス エンティティの作成  
+<u>オプション 2:</u> 同じパーティション内でインデックス エンティティを作成する  
 
 2 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -223,7 +224,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 2. EmployeeIDs フィールドで従業員 ID の一覧を解析します。  
 3. 各従業員に関する追加情報 (電子メール アドレスなど) が必要な場合は、手順 2 で取得した従業員リストから **PartitionKey** 値 "Sales" と **RowKey** 値を使用して各従業員のエンティティを取得します。  
 
-<u>オプション 3:</u> 別のパーティションまたはテーブルにインデックス エンティティを作成する  
+<u>オプション 3:</u>別のパーティションまたはテーブルにインデックス エンティティを作成する  
 
 3 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -310,7 +311,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 
 次の例では、Sales 部署の従業員 000123 など、特定の従業員のすべての評価データを取得する方法を示しています。  
 
-$filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'empid_000124')&$select=RowKey,Manager Rating,Peer Rating,Comments  
+$filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt '000123_2012')&$select=RowKey,Manager Rating,Peer Rating,Comments  
 
 ### <a name="issues-and-considerations"></a>問題と注意事項
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
@@ -539,7 +540,7 @@ Table service を使用すると、複数のエンティティを格納して、
 
 Storage Analytics では、ログ メッセージを一定の形式で区切ったものを、複数の BLOB に格納します。 区切りに使用する形式は、クライアント アプリケーション側でログ メッセージのデータ解析を円滑に完了できるものになっています。  
 
-Storage Analytics が BLOB に対して使用している名前付け規則は、検索対象のログ メッセージが含まれる BLOB の場所を特定できるようなものになっています。 たとえば、"queue/2014/07/31/1800/000001.log" という名前の BLOB であれば、2014 年 7 月 31 日の 18:00 から始まる時間の Queue サービスと関係があるログ メッセージが格納されています。 "000001" という部分は、この期間の最初のログ ファイルであることを示しています。 このほか、Storage Analytics では BLOB のメタデータの一環として、ファイルに保存されている最初と最後のログ メッセージのタイムスタンプを記録します。 BLOB ストレージの API では、一定の名前プレフィックスに基づいてコンテナー内の BLOB の場所を特定できるようになっています。18:00 から始まる時間についてキューのログ データを格納している BLOB をすべて検索する場合には、"queue/2014/07/31/1800" というプレフィックスを使用します。  
+Storage Analytics が BLOB に対して使用している名前付け規則は、検索対象のログ メッセージが含まれる BLOB の場所を特定できるようなものになっています。 たとえば、"queue/2014/07/31/1800/000001.log" という名前の BLOB であれば、2014 年 7 月 31 日の 18:00 から始まる時間の Queue サービスと関係があるログ メッセージが格納されています。 "000001" という部分は、この期間の最初のログ ファイルであることを示しています。 このほか、Storage Analytics では BLOB のメタデータの一環として、ファイルに保存されている最初と最後のログ メッセージのタイムスタンプを記録します。 BLOB ストレージの API では、一定の名前プレフィックスに基づいてコンテナー内の BLOB の場所を特定できるようになっています。18:00 に始まる時間についてキューのログ データを格納している BLOB をすべて検索する場合には、"queue/2014/07/31/1800" というプレフィックスを使用できます。  
 
 Storage Analytics は内部のバッファーにログ メッセージを保管したうえで、ログ エントリのバッチの最新版を使って定期的に BLOB を更新したり、新しい BLOB を作成したりします。 これによって、BLOB サービスに書き込みを実行する回数が少なくなります。  
 

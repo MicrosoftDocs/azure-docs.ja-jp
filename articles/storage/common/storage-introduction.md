@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133792"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653802"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>コア Azure Storage サービスの概要
 
@@ -33,7 +33,7 @@ Azure Storage プラットフォームには、次のデータ サービスが�
 - [Azure ファイル](../files/storage-files-introduction.md):クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
 - [Azure キュー](../queues/storage-queues-introduction.md):アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。
 - [Azure テーブル](../tables/table-storage-overview.md):構造化データのスキーマレス ストレージのための NoSQL ストア。
-- [Azure ディスク](../../virtual-machines/windows/managed-disks-overview.md): Azure VM のためのブロック レベルのストレージ ボリューム。
+- [Azure ディスク](../../virtual-machines/managed-disks-overview.md): Azure VM のためのブロック レベルのストレージ ボリューム。
 
 それぞれのサービスには、ストレージ アカウントを通じてアクセスします。 作業を開始するには、「[ストレージ アカウントの作成](storage-account-create.md)」を参照してください。
 
@@ -101,7 +101,7 @@ Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azu
 
 Azure マネージド ディスクは仮想ハード ディスク (VHD) です。 オンプレミス サーバーの物理ディスクと似ていますが、仮想化されたディスクと考えることができます。 Azure マネージド ディスクは、Azure 内のランダムな IO ストレージ オブジェクトであるページ BLOB として格納されます。 マネージド ディスクを "マネージド" と呼ぶ理由は、ページ BLOB、BLOB コンテナー、および Azure ストレージ アカウントを抽象化したものであるためです。 マネージド ディスクでは、ディスクをプロビジョニングするだけで、後の管理は Azure が実行します。
 
-マネージド ディスクの詳細については、「[Azure マネージド ディスクの概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
+マネージド ディスクの詳細については、「[Azure マネージド ディスクの概要](../../virtual-machines/managed-disks-overview.md)」をご覧ください。
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 

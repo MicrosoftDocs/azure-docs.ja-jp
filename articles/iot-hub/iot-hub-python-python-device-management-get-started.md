@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: mqtt, devx-track-python
+ms.openlocfilehash: d4c514042b89341b90b0bb9c939ef4b463741916
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759759"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872720"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 
@@ -68,7 +68,7 @@ ms.locfileid: "81759759"
 
 2. テキスト エディターを使用して、**dmpatterns_getstarted_device.py** というファイルを作業ディレクトリに作成します。
 
-3. `import`dmpatterns_getstarted_device.py**ファイルの先頭に、次の** ステートメントを追加します。
+3. **dmpatterns_getstarted_device.py** ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```python
     import threading
@@ -161,7 +161,7 @@ ms.locfileid: "81759759"
 
 2. テキスト エディターを使用して、**dmpatterns_getstarted_service.py** というファイルを作業ディレクトリに作成します。
 
-3. `import`dmpatterns_getstarted_service.py**ファイルの先頭に、次の** ステートメントを追加します。
+3. **dmpatterns_getstarted_service.py** ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```python
     import sys, time

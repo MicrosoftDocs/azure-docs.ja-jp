@@ -12,15 +12,15 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083156"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073127"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -91,7 +91,7 @@ BLOB の `Cache-Control` ヘッダーを設定するための推奨される方�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。 `Get-AzStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
+[Azure PowerShell](/powershell/azure/) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。 `Get-AzStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
 
 次に例を示します。
 
@@ -152,7 +152,7 @@ class Program
 
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>他の方法を使った Cache-Control ヘッダーの設定
 
-### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+### <a name="azure-storage-explorer"></a>Azure Storage Explorer
 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使うと、*CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
 
 Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新するには、以下の操作を行います。

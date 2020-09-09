@@ -7,15 +7,15 @@ metadata:
   services: expressroute
   ms.service: expressroute
   ms.topic: landing-page
-  author: cherylmc
-  ms.author: cherylmc
+  author: duongau
+  ms.author: duau
   ms.date: 08/27/2019
-  ms.openlocfilehash: 262043a70bb155c57c9e8ed1f9c0ba614fe0ecdc
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: b26699e31b5c633e4d04651f6057826426f6c2f0
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74561781"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89393107"
 landingContent:
 - title: ExpressRoute について
   linkLists:

@@ -2,7 +2,7 @@
 title: アーキテクチャの概要 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory テナントの概要、および Azure Active Directory を使用して Azure を管理する方法を説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368070"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319153"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
 
@@ -123,4 +123,4 @@ Azure AD では、すべてのデータが毎日バックアップされるの�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop)
+[Azure Active Directory 開発者ガイド](../develop/index.yml)

@@ -4,15 +4,15 @@ description: この記事では、アプリケーション ゲートウェイで
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: adacd805e736524fd7956c4bbc0ad402980b4cd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3af2705fedbb9c19d4f128e8e997d3fa73f8b5a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73795992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807965"
 ---
 # <a name="enable-cookie-based-affinity-with-an-application-gateway"></a>アプリケーション ゲートウェイで Cookie ベースのアフィニティを有効にする
 [Azure Application Gateway のドキュメント](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#http-settings)に示されているように、Application Gateway では Cookie ベースのアフィニティがサポートされています。これは、あるユーザー セッションからの後続のトラフィックを同じサーバーに送信して処理できるということです。

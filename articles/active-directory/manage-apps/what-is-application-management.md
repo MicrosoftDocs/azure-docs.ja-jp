@@ -1,33 +1,57 @@
 ---
-title: Azure Active Directory を使ったアプリケーションの管理 | Microsoft Docs
-description: この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。
+title: Azure Active Directory でのアプリケーション管理とは
+description: クラウドとオンプレミス アプリケーションの Identity and Access Management (IAM) システムとして Azure Active Directory (AD) を使用する方法の概要です。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
-ms.date: 06/05/2019
-ms.author: mimart
+ms.date: 07/01/2020
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739755"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299883"
 ---
-# <a name="application-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションの管理
+# <a name="what-is-application-management"></a>アプリケーション管理とは
 
-Azure Active Directory (Azure AD) は、クラウドおよびオンプレミスのアプリのために単一の ID システムを提供することで、アプリケーションを管理する方法を簡素化します。 サービスとしてのソフトウェア (SaaS) アプリケーション、オンプレミス アプリケーション、および基幹業務アプリ (LOB) を Azure AD に追加できます。 その後ユーザーは 1 回サインインすることで、Office 365 や他の Microsoft のビジネス アプリケーションとともに、これらのアプリケーションに安全かつシームレスにアクセスできます。 [ユーザー プロビジョニングを自動化する](../app-provisioning/user-provisioning.md)ことで、管理コストを削減できます。 多要素認証と条件付きアクセス ポリシーを使用して、安全なアプリケーション アクセスを提供することもできます。
+Azure AD は Identity and Access Management (IAM) システムです。 デジタル ID に関する情報を格納するための 1 つの場所を提供します。 ユーザー情報が格納される場所として Azure AD を使用するようにソフトウェア アプリケーションを構成できます。 
 
-![Azure AD を通じてフェデレーションされているアプリを示す図](media/what-is-application-management/app-management-overview.png)
+Azure AD は、アプリケーションと統合するように構成する必要があります。 つまり、ID システムとして使用されているアプリケーションを把握している必要があります。 これらのアプリケーションを Azure AD が認識するプロセスと、それをどのように処理するかが、アプリケーション管理と呼ばれます。
+
+アプリケーションを管理するには、Azure Active Directory ポータルの [管理] セクションにある **[エンタープライズ アプリケーション]** ブレードを使用します。
+
+![Azure AD ポータルの [管理] セクションの下にある [エンタープライズ アプリケーション] オプション。](media/what-is-application-management/enterprise-applications-in-nav.png)
+
+## <a name="what-is-an-identity-and-access-management-iam-system"></a>Identity and Access Management (IAM) システムとは
+アプリケーションとは、何らかの目的で使用されるソフトウェアのことです。 ほとんどのアプリケーションでは、アプリケーションが特定のユーザーに対してカスタマイズされたエクスペリエンスを提供できるように、ユーザーがサインインする必要があります。 言い換えると、アプリケーションは、アプリケーションを使用しているユーザーの ID を把握している必要があります。 そのユーザーに対してどの機能を提供し、削除するかを認識しているためです。
+
+各アプリケーションでユーザーを個別に追跡すると、アプリケーションごとにユーザー名とログインが異なるサイロになります。 アプリケーションは、他のアプリケーションのユーザーについて何も知りません。
+
+集中型 ID システムは、すべてのアプリケーションで使用できるユーザー情報を格納するための 1 つの場所を提供することで、この問題を解決します。 このようなシステムが、Identity and Access Management (IAM) システムとして知られています。 Azure Active AD は、Microsoft クラウドの IAM システムです。
+
+>[!TIP]
+>IAM システムは、ユーザー ID を追跡するための 1 つの場所を提供します。 Azure AD は、Microsoft クラウドの IAM システムです。
+
 
 ## <a name="why-manage-applications-with-a-cloud-solution"></a>クラウド ソリューションを使用してアプリケーションを管理する理由
 
 組織には通常、ユーザーが業務を遂行するために使用している何百ものアプリケーションがあります。 ユーザーは、多数のデバイスおよび場所から、これらのアプリケーションにアクセスします。 毎日、新しいアプリケーションが追加、開発され、また、廃止されます。 非常に多くのアプリケーションとアクセス ポイントがあるため、クラウドベース ソリューションを使用してすべてのアプリケーションへのユーザー アクセスを管理することが、これまでよりも重要になります。
+
+>[!TIP]
+>Azure AD アプリケーション ギャラリーには、ID プロバイダーとして Azure AD で動作するようにあらかじめ構成されている多くの一般的なアプリケーションが含まれています。
+
+## <a name="how-does-azure-ad-work-with-applications"></a>Azure AD がアプリケーションでどのように動作するか
+
+Azure AD は、クラウドおよびオンプレミスのアプリのために単一の ID システムを提供することで、アプリケーションを管理する方法を簡素化します。 サービスとしてのソフトウェア (SaaS) アプリケーション、オンプレミス アプリケーション、および基幹業務アプリ (LOB) を Azure AD に追加できます。 その後ユーザーは 1 回サインインすることで、Office 365 や他の Microsoft のビジネス アプリケーションとともに、これらのアプリケーションに安全かつシームレスにアクセスできます。 [ユーザー プロビジョニングを自動化する](../app-provisioning/user-provisioning.md)ことで、管理コストを削減できます。 多要素認証と条件付きアクセス ポリシーを使用して、安全なアプリケーション アクセスを提供することもできます。
+
+![Azure AD を通じてフェデレーションされているアプリを示す図](media/what-is-application-management/app-management-overview.png)
 
 ## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Azure AD と統合できるアプリケーションの種類
 
@@ -35,11 +59,17 @@ Azure Active Directory (Azure AD) は、クラウドおよびオンプレミス�
 
 - **Azure AD ギャラリー アプリケーション** – Azure AD には、Azure AD によるシングル サインオンのために事前に統合されている数千ものアプリケーションを含むギャラリーが用意されています。 組織で使用しているアプリケーションのいくつかは、おそらくギャラリーにあります。 [アプリの統合の計画に関する説明を参照](plan-an-application-integration.md)するか、[SaaS アプリケーションのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/)で個別のアプリの詳細な統合手順を確認してください。
 
-- **アプリケーション プロキシを使用するオンプレミスのアプリケーション** – Azure AD アプリケーション プロキシを使用すると、オンプレミスの Web アプリと Azure AD を統合してシングル サインオンをサポートできます。 その後ユーザーは、Office 365 や他の SaaS アプリをアクセスするのと同じ方法でオンプレミスのアプリにアクセスできます。 [アプリケーション プロキシを使用する理由とその動作のしくみ](what-is-application-proxy.md)をご覧ください。
+- **アプリケーション プロキシを使用するオンプレミスのアプリケーション** – Azure AD アプリケーション プロキシを使用すると、オンプレミスの Web アプリと Azure AD を統合してシングル サインオンをサポートできます。 エンド ユーザーは、Office 365 やその他の SaaS アプリにアクセスするのと同じ方法で、オンプレミスの Web アプリにアクセスできます。[Azure AD のアプリケーション プロキシを使用したオンプレミス アプリケーションへのリモート アクセスの提供](application-proxy.md)に関する記事を参照してください。
 
 - **カスタム開発アプリケーション** – 独自の基幹業務アプリケーションを構築するときに、それらを Azure AD と統合してシングル サインオンをサポートできます。 アプリケーションを Azure AD と統合すると、アプリケーションの認証ポリシーを管理できます。 詳細については、[開発者向けのガイダンス](developer-guidance-for-integrating-applications.md)を参照してください。
 
-- **非ギャラリー アプリケーション** – ユーザー独自のアプリケーションを持ち込みます。 他のアプリを Azure AD に追加することで、それらのシングル サインオンをサポートします。 必要な Web リンク、またはユーザー名とパスワードのフィールドを表示するアプリケーションは、SAML または OpenID Connect プロトコルをサポートするアプリケーション、または SCIM をサポートするアプリケーションを統合できます。 詳しくは、[非ギャラリー アプリのシングル サインオンの構成](configure-single-sign-on-non-gallery-applications.md)に関する記事を参照してください。
+- **非ギャラリー アプリケーション** – ユーザー独自のアプリケーションを持ち込みます。 他のアプリを Azure AD に追加することで、それらのシングル サインオンをサポートします。 アプリケーションを統合する方法は複数あります。そのいくつかを次に示します。 詳細については、[SAML シングル サインオンの構成](configure-saml-single-sign-on.md)に関する記事を参照してください。
+
+>[!TIP]
+>アプリケーションが事前に構成されていなかったり、アプリケーション ギャラリーにない場合でも、Azure AD と統合することができます。 以下のいずれかと **Azure AD を統合する**ことができます
+> - **ユーザー名とパスワードのフィールド**をレンダリングする Web リンクまたはアプリケーション。
+> - **SAML または OpenID Connect プロトコル**をサポートするアプリケーション。
+> - **クロスドメイン ID 管理システム (SCIM)** の標準をサポートするアプリケーション。
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>条件付きアクセス ポリシーによるリスクの管理
 
@@ -59,7 +89,10 @@ Azure AD では、セキュリティ情報とイベント管理 (SIEM) ツール
 
 Azure AD に移行することで、コストを節約し、オンプレミス インフラストラクチャの管理における負担を除去できます。 また、Azure AD はアプリケーションにセルフ サービス アクセスを提供し、管理者とユーザーの両者が時間を節約できます。 シングル サインオンにより、アプリケーション固有のパスワードはなくなります。 この 1 回限りのサインオンにより、アプリケーションのパスワード リセットと、パスワードの取得時の生産性低下に関連するコストを削減できます。
 
+人事管理に重点を置いたアプリケーションや、多数のユーザーがいるアプリケーションについては、アプリのプロビジョニングを利用してユーザーのプロビジョニングとプロビジョニング解除のプロセスを自動化できます。[アプリケーションのプロビジョニング](../app-provisioning/user-provisioning.md)に関する記事を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-- [アプリケーション プロキシとは](what-is-application-proxy.md)
-- [クイック スタート: Azure AD テナントにギャラリー アプリケーションを追加する](add-application-portal.md)
+- [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
+- [アプリケーション統合の概要](plan-an-application-integration.md)
+- [プロビジョニングを自動化する方法](../app-provisioning/user-provisioning.md)

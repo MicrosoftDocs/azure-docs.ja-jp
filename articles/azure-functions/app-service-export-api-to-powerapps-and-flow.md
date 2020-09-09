@@ -2,20 +2,20 @@
 title: Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 description: App Service でホストされる API を PowerApps および Microsoft Flow に公開する方法の概要について説明します
 ms.topic: conceptual
-ms.date: 12/15/2017
+ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74233073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015087"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
 [PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) は、ユーザーのデータに接続して異なるプラットフォーム間で動作するカスタム ビジネス アプリを作成して使うためのサービスです。 [Microsoft Flow](/learn/modules/get-started-with-flow/index) は、ユーザーが好むアプリとサービスの間でワークフローとビジネス プロセスを簡単に自動化できるようにします。 PowerApps と Microsoft Flow のどちらにも、Office 365、Dynamics 365、Salesforce などのデータ ソースへのさまざまな組み込みコネクタが付属しています。 状況によっては、アプリとフローのビルダーから、組織でビルドされたデータソースと API に接続したい場合もあります。
 
-同様に、組織内での API の利用範囲を広げるには、アプリとフローのビルダーで API を使用できるようにする必要があります。 このトピックでは、[Azure Functions](../azure-functions/functions-overview.md) または [Azure App Service](../app-service/overview.md) を使って構築した API をエクスポートする方法を示します。 エクスポートされた API は、PowerApps や Microsoft Flow で組み込みのコネクタのように使用される*カスタム コネクタ*になります。
+同様に、組織内での API の利用範囲を広げるには、アプリとフローのビルダーで API を使用できるようにする必要があります。 この記事では、[Azure Functions](../azure-functions/functions-overview.md) または [Azure App Service](../app-service/overview.md) を使って構築した API をエクスポートする方法を示します。 エクスポートされた API は、PowerApps や Microsoft Flow で組み込みのコネクタのように使用される*カスタム コネクタ*になります。
 
 > [!IMPORTANT]
 > この記事に示されている API 定義機能は、[Azure Functions ランタイムのバージョン 1.x](functions-versions.md#creating-1x-apps) と App Services アプリでのみサポートされます。 Functions のバージョン 2.x は、OpenAPI 定義を作成して維持するために API Management と統合されます。 詳細については、[Azure API Management を使用した関数の OpenAPI 定義の作成](functions-openapi-definition.md)に関するページを参照してください。 
@@ -28,25 +28,21 @@ API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](http
 
 API 定義をエクスポートするには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) で、Azure Functions または別の App Service アプリケーションに移動します。
+1. [Azure portal](https://portal.azure.com) で、関数アプリまたは App Service アプリケーションに移動します。
 
-    Azure Functions を使用している場合、関数アプリを選択して、 **[プラットフォーム機能]** 、 **[API 定義]** の順に選択します。
+    左側のメニューの **[API]** の下で、 **[API 定義]** を選択します。
 
-    ![Azure Functions API の定義](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
+    :::image type="content" source="media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png" alt-text="Azure Functions の API 定義":::
 
-    Azure App Service を使う場合は、設定一覧の **[API 定義]** を選びます。
-
-    ![App Service API の定義](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
-
-2. **[PowerApps + Microsoft Flow にエクスポート]** ボタンが利用可能になっている必要があります (利用可能ではない場合、まず OpenAPI 定義を作成する必要があります)。 このボタンをクリックして、エクスポート プロセスを開始します。
+2. **[PowerApps + Microsoft Flow にエクスポート]** ボタンが利用可能になっている必要があります (利用可能ではない場合、まず OpenAPI 定義を作成する必要があります)。 このボタンを選択して、エクスポート プロセスを開始します。
 
     ![[PowerApps + Microsoft Flow にエクスポート] ボタン](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
 
 3. **[エクスポート モード]** を選択します。
 
-    **[簡易]** では Azure Portal 内でカスタム コネクタを作成できます。 PowerApps または Microsoft Flow にサインインし、ターゲット環境でコネクタを作成する権限を持っていることが要件です。 これは、これら 2 つの要件が満たされる場合に推奨される方法です。 このモードを使用する場合は、以下に示す「[簡易エクスポートを使用する](#express)」の手順に従ってください。
+    **[簡易]** では Azure Portal 内でカスタム コネクタを作成できます。 PowerApps または Microsoft Flow にサインインし、ターゲット環境でコネクタを作成する権限を持っていることが要件です。 この方法は、これら 2 つの要件が満たされる場合に推奨されます。 このモードを使用する場合は、以下に示す「[簡易エクスポートを使用する](#express)」の手順に従ってください。
 
-    **手動** では、PowerApps または Microsoft Flow のポータルを使用してインポートする API 定義をエクスポートできます。 これは、Azure ユーザーとコネクタを作成するためのアクセス許可を持つユーザーが異なる場合や、コネクタを別の Azure テナントで作成する必要がある場合に推奨される方法です。 このモードを使用する場合は、以下に示す「[手動エクスポートを使用する](#manual)」の手順に従ってください。
+    **手動** では、PowerApps または Microsoft Flow のポータルを使用してインポートする API 定義をエクスポートできます。 この方法は、Azure ユーザーとコネクタを作成するためのアクセス許可を持つユーザーが異なる場合や、コネクタを別の Azure テナントで作成する必要がある場合に推奨されます。 このモードを使用する場合は、以下に示す「[手動エクスポートを使用する](#manual)」の手順に従ってください。
 
     ![エクスポート モード](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
@@ -81,7 +77,7 @@ API 定義をエクスポートするには、次の手順を実行します。
  
     ![PowerApps および Microsoft Flow への手動エクスポート](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
  
-2. API 定義にセキュリティ定義が含まれる場合は、手順 2 で適用されます。 インポート中に、PowerApps と Microsoft Flow はセキュリティ定義を検出し、セキュリティ情報を要求します。 次のセクションで使うために、各定義に関連する資格情報を収集します。 詳細については、下の「[認証の種類を指定する](#auth)」をご覧ください。
+2. API 定義にセキュリティ定義が含まれる場合、これらの定義は手順 2 で適用されます。 インポート中に、PowerApps と Microsoft Flow はこれらの定義を検出し、セキュリティ情報を要求します。 次のセクションで使うために、各定義に関連する資格情報を収集します。 詳細については、下の「[認証の種類を指定する](#auth)」をご覧ください。
 
     ![手動エクスポートのセキュリティ](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
 
@@ -107,7 +103,7 @@ PowerApps と Microsoft Flow に API 定義をインポートするには、次�
 
 4. **[全般]** タブで、OpenAPI 定義から取得される情報を確認します。
 
-5. **[セキュリティ]** タブで、認証の種類に適した値を入力します。 **[続行]** をクリックします。
+5. **[セキュリティ]** タブで、認証の種類に適した値を入力します。 **[Continue]** をクリックします。
 
     ![[セキュリティ] タブ](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 
@@ -150,22 +146,22 @@ Azure AD を使用する場合、API 自体に対して、または、カスタ�
 
 - API の登録を構成するには、[App Service の認証と承認の構成](../app-service/configure-authentication-provider-aad.md)機能を使用してください。
 
-- コネクタの登録を構成するには、[Azure AD アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)ための手順に従います。 登録には、API および `https://msmanaged-na.consent.azure-apim.net/redirect` の応答 URL への委任アクセス許可が含まれている必要があります。 
+- コネクタの登録を構成するには、[Azure AD アプリケーションを追加する](../active-directory/develop/quickstart-register-app.md)ための手順に従います。 登録には、API および `https://msmanaged-na.consent.azure-apim.net/redirect` の応答 URL への委任アクセス許可が含まれている必要があります。 
 
-詳細については、[PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) および [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication) の Azure AD 登録の例をご覧ください。 これらの例では、API として Azure Resource Manager を使用しています。手順に従う場合は、API を置き換えてください。
+詳細については、[PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) および [Microsoft Flow](/connectors/custom-connectors/azure-active-directory-authentication) の Azure AD 登録の例をご覧ください。 これらの例では、API として Azure Resource Manager を使用しています。手順に従う場合は、API を置き換えてください。
 
 次の構成値が必要です。
 - **クライアント ID** - コネクタの Azure AD 登録のクライアント ID
 - **クライアント シークレット** - コネクタの Azure AD 登録のクライアント シークレット
-- **ログイン URL** - Azure AD のベース URL。 Azure では、これは通常 `https://login.windows.net`になります。
-- **テナント ID** - ログインに使用するテナントの ID。 これは、"common" またはコネクタが作成されるテナントの ID である必要があります。
+- **ログイン URL** - Azure AD のベース URL。 Azure では、通常は `https://login.windows.net` です。
+- **テナント ID** - ログインに使用するテナントの ID。 この ID は、"common" またはコネクタが作成されるテナントの ID である必要があります。
 - **リソース URL** - お使いの API の Azure AD 登録のリソース URL
 
 > [!IMPORTANT]
 > 別のユーザーが API 定義を手動フローの一部として PowerApps および Microsoft Flow にインポートする場合は、*コネクタ登録*のクライアント ID とクライアント シークレット、および API のリソース URL を提供する必要があります。 これらのシークレットが安全に管理されていることを確認します。 **API 自体のセキュリティ資格情報は共有しないでください。**
 
 ### <a name="generic-oauth-20"></a>汎用 OAuth 2.0
-汎用 OAuth 2.0 を使用すると、任意の OAuth 2.0 プロバイダーと統合できます。 これにより、ネイティブにサポートされていないカスタム プロバイダーと連携できます。
+汎用 OAuth 2.0 を使用すると、任意の OAuth 2.0 プロバイダーと統合できます。 こうすることにより、ネイティブにサポートされていないカスタム プロバイダーと連携できます。
 
 次の構成値が必要です。
 - **クライアント ID** - OAuth 2.0 のクライアント ID
@@ -173,5 +169,3 @@ Azure AD を使用する場合、API 自体に対して、または、カスタ�
 - **承認 URL** - OAuth 2.0 の承認 URL
 - **トークン URL** - OAuth 2.0 のトークン URL
 - **更新 URL** - OAuth 2.0 の更新 URL
-
-

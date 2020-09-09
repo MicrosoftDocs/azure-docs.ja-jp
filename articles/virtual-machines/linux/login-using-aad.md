@@ -1,18 +1,18 @@
 ---
 title: Azure Active Directory の資格情報を使用して Linux VM にログインする
 description: Azure Active Directory 認証を使用してサインインするために、Linux VM を作成して構成する方法について説明します。
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.author: sandeo
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366496"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002327"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -35,7 +35,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
   - Azure 仮想マシンへのログイン セキュリティをさらに強化するために、多要素認証を設定することができます。
   - Azure Active Directory を使用して Linux VM にログインする機能は、[フェデレーション サービス](../../active-directory/hybrid/how-to-connect-fed-whatis.md)を使用するお客様も使用できます。
 
-- **シームレスな コラボレーション:** ロールベースのアクセス制御 (RBAC) を使用することで、どのユーザーが、正規のユーザーまたは管理者権限を持つユーザーとして特定の VM にサインインできるかを指定できます。 ユーザーがチームに参加またはチームから脱退する場合は、適切なアクセス権が付与されるよう VM の RBAC ポリシーを更新できます。 この操作は、不要な SSH 公開キーを削除して VM をスクラブするよりも簡単です。 従業員が退職し、そのユーザー アカウントが無効化または Azure AD から削除されると、リソースにアクセスできなくなります。
+- **シームレスな コラボレーション:** Azure ロールベースのアクセス制御 (Azure RBAC) を使用することで、どのユーザーが、正規のユーザーまたは管理者権限を持つユーザーとして特定の VM にサインインできるかを指定できます。 ユーザーがチームに参加またはチームから脱退する場合は、適切なアクセス権が付与されるよう VM の Azure RBAC ポリシーを更新できます。 この操作は、不要な SSH 公開キーを削除して VM をスクラブするよりも簡単です。 従業員が退職し、そのユーザー アカウントが無効化または Azure AD から削除されると、リソースにアクセスできなくなります。
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>サポートされている Azure リージョンと Linux ディストリビューション
 
@@ -109,11 +109,11 @@ az vm extension set \
     --vm-name myVM
 ```
 
-VM に拡張機能が正常にインストールされると、*provisioningState* に *Succeeded* が表示されます。 拡張機能をインストールするには、VM には実行中の VM エージェントが必要です。 詳細については、[VM エージェントの概要](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)に関する記事をご覧ください。
+VM に拡張機能が正常にインストールされると、*provisioningState* に *Succeeded* が表示されます。 拡張機能をインストールするには、VM には実行中の VM エージェントが必要です。 詳細については、[VM エージェントの概要](../extensions/agent-windows.md)に関する記事をご覧ください。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>仮想マシン ロールの割り当てを構成する
 
-Azure のロールベース アクセス制御 (RBAC) ポリシーは、VM にログオンできるユーザーを規定します。 VM へのログインを承認するには、次の 2 つの RBAC ロールが使用されます。
+Azure のロールベース アクセス制御 (Azure RBAC) ポリシーは、VM にログオンできるユーザーを規定します。 VM へのログインを承認するには、次の 2 つの Azure ロールが使用されます。
 
 - **仮想マシンの管理者ログイン**:このロールが割り当てられたユーザーは Windows 管理者または Linux のルート ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
 - **仮想マシンのユーザー ログイン**:このロールが割り当てられたユーザーは正規ユーザーの権限を持つユーザーとして Azure 仮想マシンにログインできます。
@@ -121,7 +121,7 @@ Azure のロールベース アクセス制御 (RBAC) ポリシーは、VM に�
 > [!NOTE]
 > SSH 経由でユーザーが VM にログインできるようにするには、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかを割り当てる必要があります。 VM の*所有者*または*共同作成者*ロールが割り当てられた Azure ユーザーに、SSH 経由で VM にログインする権限は自動的には付与されません。
 
-次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用して、VM に対する*仮想マシンの管理者ログイン* ロールを現在の Azure ユーザーに割り当てます。 [az account show](/cli/azure/account#az-account-show) を使用して、アクティブな Azure アカウントのユーザー名を取得し、[az vm show](/cli/azure/vm#az-vm-show) を使用して前の手順で作成された VM に*スコープ*が設定されています。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、通常の RBAC 継承のアクセス許可が適用されます。 詳細については、「[Azure のロールベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。
+次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用して、VM に対する*仮想マシンの管理者ログイン* ロールを現在の Azure ユーザーに割り当てます。 [az account show](/cli/azure/account#az-account-show) を使用して、アクティブな Azure アカウントのユーザー名を取得し、[az vm show](/cli/azure/vm#az-vm-show) を使用して前の手順で作成された VM に*スコープ*が設定されています。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、Azure RBAC における通常の継承アクセス許可が適用されます。 詳細については、[Azure RBAC](../../role-based-access-control/overview.md) に関するページを参照してください
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,9 +136,9 @@ az role assignment create \
 > [!NOTE]
 > AAD ドメインとログオン ユーザー名ドメインが一致しない場合は、 *--assignee* のユーザー名だけでなく、 *--assignee-object-id* を使用してユーザー アカウントのオブジェクト ID を指定する必要があります。 ユーザー アカウントのオブジェクト ID は、[az ad user list](/cli/azure/ad/user#az-ad-user-list)を使用して取得できます。
 
-RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure portal](../../role-based-access-control/role-assignments-portal.md)、または [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) の使用に関する記事を参照してください。
+Azure RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure portal](../../role-based-access-control/role-assignments-portal.md)、または [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) の使用に関するページを参照してください。
 
-Linux 仮想マシンにサインインする特定のユーザーに対して多要素認証を要求するように Azure AD を構成することもできます。 詳細については、「[クラウドでの Azure Multi-Factor Authentication の概要](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
+Linux 仮想マシンにサインインする特定のユーザーに対して多要素認証を要求するように Azure AD を構成することもできます。 詳細については、「[クラウドでの Azure Multi-Factor Authentication の概要](../../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Linux 仮想マシンにログインする
 
@@ -181,11 +181,11 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ## <a name="troubleshoot-sign-in-issues"></a>サインアップに関する問題のトラブルシューティング
 
-Azure AD の資格情報を使用して SSH 経由でログインしようとしたときによく発生する問題は、RBAC ロールが割り当てられていないために、サインインを求める画面が繰り返し表示されることです。 次のセクションを使用してこの問題を解決してください。
+Azure AD の資格情報を使用して SSH 経由でログインしようとしたときによく発生する問題は、Azure ロールが割り当てられていないために、サインインを求める画面が繰り返し表示されることです。 次のセクションを使用してこの問題を解決してください。
 
-### <a name="access-denied-rbac-role-not-assigned"></a>アクセスが拒否されました:RBAC の役割が割り当てられていません
+### <a name="access-denied-azure-role-not-assigned"></a>アクセスが拒否されました:Azure ロールが割り当てられていません
 
-SSH プロンプトで次のエラーが表示された場合は、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する RBAC ポリシーが VM に設定されていることを確認してください。
+SSH プロンプトで次のエラーが表示された場合は、対象の VM に対して、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する Azure RBAC ポリシーが構成済みであることを確認してください。
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

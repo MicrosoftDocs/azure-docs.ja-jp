@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401043"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921420"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>マルチデバイスの会話とは (プレビュー)
 
@@ -60,7 +60,7 @@ ms.locfileid: "81401043"
 画面上と対象ユーザーの所有デバイスの両方に、プレゼンテーションと講義のキャプションを提供することができます。 対象ユーザーが会話コードを使用して参加すると、自分のデバイスに希望の言語でトランスクリプトを表示できます。
 
 > [!NOTE]
-> 例を確認するには、マルチデバイスの会話サービスを使用する PowerPoint アドインである、[プレゼンテーション翻訳ツール](https://www.microsoft.com/translator/apps/presentation-translator/)を参照してください。 [こちら](https://www.microsoft.com/download/details.aspx?id=55024)からダウンロードできます。
+> 例を確認するには、マルチデバイスの会話サービスを使用する PowerPoint アドインである、[プレゼンテーション翻訳ツール](https://www.microsoft.com/translator/apps/presentation-translator/)を参照してください。 ダウンロードするには[こちら](https://download.cnet.com/s/powerpoint-add-in/)をクリックしてください。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -123,7 +123,7 @@ ms.locfileid: "81401043"
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [リアルタイムで会話を翻訳する](quickstarts/multi-device-conversation.md)

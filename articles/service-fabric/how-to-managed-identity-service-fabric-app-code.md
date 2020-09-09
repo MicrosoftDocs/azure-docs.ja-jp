@@ -3,12 +3,12 @@ title: アプリケーションでマネージド ID を使用する
 description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461567"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253645"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric アプリケーションのマネージド ID を活用して Azure サービスにアクセスする方法
 
@@ -371,7 +371,7 @@ HTTP 応答ヘッダーの "状態コード" フィールドは、要求の成�
 | 5 | 16 秒待ってから再試行する |
 
 ## <a name="resource-ids-for-azure-services"></a>Azure サービスのリソース ID
-Azure AD をサポートするサービスの一覧と、それぞれのリソース ID については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md)」を参照してください。
+Azure AD をサポートするサービスの一覧と、それぞれのリソース ID については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

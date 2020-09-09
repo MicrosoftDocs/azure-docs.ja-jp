@@ -3,12 +3,12 @@ title: Web アプリのパフォーマンスの監視 - Azure Application Insigh
 description: 開発運用サイクルへの Application Insights の組み込み
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669694"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324490"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -69,7 +69,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 * ビジネス イベントを追跡するために使用できるカスタム イベント。
 * デバッグに使用するログ トレース。
 
-## <a name="case-study-real-madrid-fc"></a>ケース スタディ: レアル・マドリード F.C.
+## <a name="case-study-real-madrid-fc"></a>ケース スタディ:Real Madrid F.C.
 [レアル・マドリード フットボール クラブ](https://www.realmadrid.com/) の Web サービスは、世界各地の約 4 億 5,000 万人のファンにサービスを提供しています。 ファンは、Web ブラウザーとクラブのモバイル アプリの両方からここにアクセスします。 ファンはチケットを予約できるだけでなく、試合結果、選手、今後の試合に関する情報やビデオ クリップにもアクセスできます。 フィルターを使用して、得点数などを検索できます。 ソーシャル メディアへのリンクもあります。 ユーザー エクスペリエンスは高度にパーソナライズされており、ファンとの交流のための双方向コミュニケーションとして設計されています。
 
 このソリューションは、[Microsoft Azure でのサービスとアプリケーションのシステム](https://www.microsoft.com/inculture/sports/real-madrid/)です。 スケーラビリティは重要な要件です。これは、トラフィックが変わりやすく、試合の前後と試合中は、トラフィック量が大幅に増える場合があるためです。
@@ -85,7 +85,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 ![Power BI view of Application Insights telemetry](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>スマート検出
-[プロアクティブ診断](../../azure-monitor/app/proactive-diagnostics.md)は最新の機能です。 特別な構成なしで、Application Insights はアプリの障害発生率の異常な増加を自動的に検出してアラートを生成します。 この機能は、偶発的なエラーの背景と、要求の数に比例して単純に増加したエラーを無視できるほどスマートです。 そのため、たとえば、依存するサービスのいずれかで障害が発生した場合や、デプロイしたばかりの新しいビルドがうまく動作していない場合、電子メールを確認してすぐにそれを把握できます (他のアプリをトリガーできるように webhook も用意されています)。
+[プロアクティブ診断](./proactive-diagnostics.md)は最新の機能です。 特別な構成なしで、Application Insights はアプリの障害発生率の異常な増加を自動的に検出してアラートを生成します。 この機能は、偶発的なエラーの背景と、要求の数に比例して単純に増加したエラーを無視できるほどスマートです。 そのため、たとえば、依存するサービスのいずれかで障害が発生した場合や、デプロイしたばかりの新しいビルドがうまく動作していない場合、電子メールを確認してすぐにそれを把握できます (他のアプリをトリガーできるように webhook も用意されています)。
 
 テレメトリの詳細な分析を毎日実行し、検出が困難なパフォーマンスの異常なパターンを検出するのが、この機能のもう 1 つの側面です。 たとえば、特定の地理的領域または特定のブラウザーのバージョンに関連付けられたパフォーマンスの低下を検出できます。
 
@@ -93,7 +93,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 
 ![Email from proactive diagnostics](./media/devops/030.png)
 
-お客様である Samtec は次のように語っています。「私たちは、先日の機能のカット オーバーの際、リソースの限界に達し、タイムアウトを発生させている小規模なデータベースに気づきました。 私たちが問題をトリアージしているとき、広告のとおり、まさにほぼリアルタイムでプロアクティブな検出アラートが生成されました。 このアラートと Azure プラットフォームのアラートによって、ほぼ瞬時に問題を修正することができました。 ダウンタイムは合計で 10 分未満でした。」
+お客様である Samtec は次のように語っています。「私たちは、先日の機能のカット オーバーの際、リソースの限界に達し、タイムアウトを発生させている小規模なデータベースに気付きました。 私たちが問題をトリアージしているとき、広告のとおり、まさにほぼリアルタイムでプロアクティブな検出アラートが生成されました。 このアラートと Azure プラットフォームのアラートによって、ほぼ瞬時に問題を修正することができました。 ダウンタイムは合計で 10 分未満でした。」
 
 ## <a name="live-metrics-stream"></a>ライブ メトリック ストリーム
 最新のビルドを展開することは、気がかりな体験となる場合があります。 何らかの問題がある場合、必要に応じて取り消すことができるように、すぐに問題を把握する必要があります。 ライブ メトリック ストリームを使用すると、約 1 秒の待機時間で重要なメトリックが提供されます。
@@ -110,7 +110,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 ![アプリケーション マップ](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
-[Analytics](../../azure-monitor/app/analytics.md)を使用すれば、強力な SQL に似た言語で任意のクエリを記述することができます。  さまざまなパースペクティブが接続されるため、アプリ スタック全体を診断するのが簡単で、ビジネス メトリックおよび顧客満足度とサービスのパフォーマンスを関連付ける適切な質問をすることができます。 
+[Analytics](../log-query/log-query-overview.md)を使用すれば、強力な SQL に似た言語で任意のクエリを記述することができます。  さまざまなパースペクティブが接続されるため、アプリ スタック全体を診断するのが簡単で、ビジネス メトリックおよび顧客満足度とサービスのパフォーマンスを関連付ける適切な質問をすることができます。 
 
 ポータルに格納されているすべてのテレメトリ インスタンスとメトリックの生データを照会できます。 言語には、フィルター、結合、集計などの操作が含まれています。 フィールドを計算し、統計的な分析を実行できます。 テーブルとグラフ両方の視覚エフェクトがあります。
 
@@ -124,7 +124,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 * 特定のユーザーのセッションと応答時間を追跡し、サポートおよび運用チームがすぐに顧客サポートを提供できるようにします。
 * 頻繁に使用されるアプリ機能を判別し、機能の優先順位付けに関する質問に回答します。
 
-お客様である DNN は次のように語っています。「Application Insights は、必要に応じてデータの結合、並べ替え、クエリ、およびフィルター処理を実現するための均衡の欠落部分を補ってくれました。 当社のチームが独自のアイデアと経験を活用し、強力なクエリ言語でデータを検索できることで、当社は洞察を検索して、今まで知りもしなかった問題を解決することができます。 *"...だろうか"* で終わる質問から、多くの興味深い回答が生まれます。」
+お客様である DNN は次のように語っています。「Application Insights は、必要に応じてデータの結合、並べ替え、クエリ、フィルター処理を実現するための均衡の欠落部分を補ってくれました。 当社のチームが独自のアイデアと経験を活用し、強力なクエリ言語でデータを検索できることで、当社は洞察を検索して、今まで知りもしなかった問題を解決することができます。 *"...だろうか"* で終わる質問から、多くの興味深い回答が生まれます。」
 
 ## <a name="development-tools-integration"></a>開発ツールの統合
 ### <a name="configuring-application-insights"></a>Application Insights の構成
@@ -145,9 +145,9 @@ Log4N、NLog、System.Diagnostics.Trace などのトレース ログ記録フレ
 Application Insights では、アラートが発生したときに、作業項目追跡システムに自動的に作業項目を作成できます。
 
 ## <a name="but-what-about"></a>詳細について
-* [プライバシーと記憶域](../../azure-monitor/app/data-retention-privacy.md) - テレメトリは Azure のセキュリティで保護されたサーバー上に保持されます。
+* [プライバシーと記憶域](./data-retention-privacy.md) - テレメトリは Azure のセキュリティで保護されたサーバー上に保持されます。
 * パフォーマンス - 影響は非常に低いです。 テレメトリはバッチ処理されます。
-* [価格](../../azure-monitor/app/pricing.md) - 無料で開始することができ、容量が少ない間は無料期間を継続できます。
+* [価格](./pricing.md) - 無料で開始することができ、容量が少ない間は無料期間を継続できます。
 
 
 ## <a name="video"></a>ビデオ
@@ -157,7 +157,7 @@ Application Insights では、アラートが発生したときに、作業項�
 ## <a name="next-steps"></a>次のステップ
 Application Insights の操作は簡単です。 主なオプションは次のとおりです。
 
-* [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)、および [Azure App Service](../../azure-monitor/app/app-insights-overview.md) 用。
-* 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](../../azure-monitor/app/asp-net.md) または [Java](../../azure-monitor/app/java-get-started.md) アプリだけでなく、[Node.js](../../azure-monitor/app/nodejs.md) や[他の種類](../../azure-monitor/app/platforms.md)のホストでも実行できます。 
-* 短いコード スニペットを追加して、 [任意の Web ページ](../../azure-monitor/app/javascript.md) をインストルメント化します。
+* [IIS サーバー](./monitor-performance-live-website-now.md)、および [Azure App Service](./app-insights-overview.md) 用。
+* 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](./asp-net.md) または [Java](./java-get-started.md) アプリだけでなく、[Node.js](./nodejs.md) や[他の種類](./platforms.md)のホストでも実行できます。 
+* 短いコード スニペットを追加して、 [任意の Web ページ](./javascript.md) をインストルメント化します。
 

@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254888"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050524"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>クイック スタート:SignalR Service を使用してチャット ルームを作成する
 
@@ -33,9 +34,13 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows) のインストール。
 * GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。 
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
+
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR リソースの作成
 
 [!INCLUDE [azure-signalr-create](../../includes/signalr-create.md)]
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
@@ -45,8 +50,11 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 2. 新しいフォルダーで、次のコマンドを実行してプロジェクトを作成します。
 
-        dotnet new mvc
+    ```dotnetcli
+    dotnet new mvc
+    ```
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-secret-manager-to-the-project"></a>プロジェクトにシークレット マネージャーを追加します
 
@@ -69,16 +77,22 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     </ItemGroup>
     </Project>    
     ```
+    
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Web アプリに Azure SignalR を追加する
 
 1. 次のコマンドを実行して、`Microsoft.Azure.SignalR` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.SignalR
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.SignalR
+    ```
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. シークレット マネージャーに、*Azure:SignalR:ConnectionString* という名前のシークレットを追加します。 
 
@@ -86,7 +100,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
     このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
-    ```
+    ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
@@ -219,30 +233,37 @@ connection.start()
     }
     ```
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 2. ビルドが正常に完了したら、次のコマンドを実行して Web アプリをローカルで実行します。
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     このアプリは、開発ランタイム プロファイルの構成に従って、ポート 5000 上でローカルにホストされます。
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Development
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Development
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+    Application started. Press Ctrl+C to shut down.    
+    ```
 
 3. 2 つのブラウザー ウィンドウを開きます。 各ブラウザーで、`http://localhost:5000` に移動します。 名前を入力するよう求められます。 両方のクライアントのクライアント名を入力し、 **[Send]** ボタンを使用して、両方のクライアント間でのメッセージ コンテンツのプッシュをテストします。
 
     ![Azure SignalR グループ チャットの例](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
-
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -267,7 +288,7 @@ connection.start()
    
 しばらくすると、リソース グループとそのリソースのすべてが削除されます。
 
-
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -276,4 +297,5 @@ connection.start()
 > [!div class="nextstepaction"]
 > [Azure SignalR Service の認証](./signalr-concept-authenticate-oauth.md)
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnetcore)
 

@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーからオンプレミスのデ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77062151"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438964"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
@@ -44,11 +44,11 @@ Azure Analysis Services とゲートウェイの連動に関する詳細につ�
 * ゲートウェイを登録するサブスクリプションと同じ[テナント](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant)の Azure AD アカウントを使用して Azure にサインインします。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
 * データ ソースが Azure Virtual Network (VNet) 上にある場合は、[AlwaysUseGateway](analysis-services-vnet-gateway.md) サーバー プロパティを構成する必要があります。
 
-## <a name="download"></a><a name="download"></a>ダウンロード
+## <a name="download"></a>ダウンロード
 
  [ゲートウェイをダウンロードする](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
-## <a name="install"></a><a name="install"></a>インストール
+## <a name="install"></a>インストール
 
 1. セットアップを実行します。
 
@@ -67,7 +67,7 @@ Azure Analysis Services とゲートウェイの連動に関する詳細につ�
    > [!NOTE]
    > ドメイン アカウントでサインインした場合は、Azure AD 内の組織アカウントにマップされます。 組織アカウントがゲートウェイ管理者として使用されます。
 
-## <a name="register"></a><a name="register"></a>登録
+## <a name="register"></a>[登録]
 
 Azure 内にゲートウェイ リソースを作成するためには、ゲートウェイ クラウド サービスを使用してインストールしたローカル インスタンスを登録する必要があります。 
 
@@ -83,7 +83,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
    ![[登録]](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>Azure ゲートウェイ リソースを作成する
+## <a name="create-an-azure-gateway-resource"></a>Azure ゲートウェイ リソースを作成する
 
 ゲートウェイをインストールして登録した後、Azure でゲートウェイ リソースを作成する必要があります。 ゲートウェイを登録するときに使用したのと同じアカウントを使用して Azure にサインインします。
 
@@ -107,7 +107,12 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
      完了したら、 **[作成]** をクリックします。
 
-## <a name="connect-servers-to-the-gateway-resource"></a><a name="connect-servers"></a>サーバーをゲートウェイ リソースに接続する
+## <a name="connect-gateway-resource-to-server"></a>ゲートウェイ リソースをサーバーに接続する
+
+> [!NOTE]
+> ポータルではサーバーとは異なるサブスクリプションのゲートウェイ リソースには接続できませんが、PowerShell を利用すれば接続できます。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure Analysis Services サーバーの概要で、 **[オンプレミスのデータ ゲートウェイ]** をクリックします。
 
@@ -124,6 +129,27 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 
     ![成功したゲートウェイ リソースへのサーバーの接続](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) を使用し、ゲートウェイ ResourceID を取得します。 次に [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) または [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) で **-GatewayResourceID** を指定することで既存または新規サーバーにゲートウェイを接続します。
+
+ゲートウェイ リソース ID を取得するには:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforGateway -Environment "AzureCloud"
+$GatewayResourceId = $(Get-AzResource -ResourceType "Microsoft.Web/connectionGateways" -Name $gatewayName).ResourceId  
+
+```
+
+既存のサーバーを構成するには:
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforAzureAS -Environment "AzureCloud"
+Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -GatewayResourceId $GatewayResourceId
+
+```
+---
 
 これで終了です。 ポートを開くか、トラブルシューティングを実行する必要がある場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を必ず確認してください。
 

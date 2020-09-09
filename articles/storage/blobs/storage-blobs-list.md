@@ -4,26 +4,36 @@ description: .NET クライアント ライブラリを使用して、Azure Stor
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 76142838d1ec138b75fb6c594414b2ff5d8cd939
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883296"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009544"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 
-BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 各結果セットで返す結果の数を指定し、後続のセットを取得できます。 名前がその文字または文字列から始まる BLOB を返すようにプレフィックスを指定できます。 また、フラット リスト構造 (階層) で BLOB を一覧表示できます。 階層リストでは、フォルダーに整理されたかのように BLOB が返されます。 
+BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 各結果セットで返す結果の数を指定し、後続のセットを取得できます。 名前がその文字または文字列から始まる BLOB を返すようにプレフィックスを指定できます。 また、フラット リスト構造 (階層) で BLOB を一覧表示できます。 階層リストでは、フォルダーに整理されたかのように BLOB が返されます。
 
 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して BLOB を一覧表示する方法について説明します。  
 
 ## <a name="understand-blob-listing-options"></a>BLOB の一覧表示オプションについて
 
 ストレージ アカウント内の BLOB を一覧表示するには、次のいずれかのメソッドを呼び出します。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+- [BlobContainerClient.GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 - [CloudBlobClient.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
 - [CloudBlobClient.ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
@@ -37,11 +47,13 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 これらのメソッドのオーバーロードを使用すると、一覧表示操作によって BLOB がどのように返されるかを管理するための、追加のオプションを指定できます。 以降のセクションでは、これらのオプションについて説明します。
 
+---
+
 ### <a name="manage-how-many-results-are-returned"></a>返される結果の数を管理する
 
-既定では、一覧表示操作では一度に最大 5000 の結果が返されます。 返される結果セットを減らすには、いずれかの `maxresults`ListBlobs **メソッドを呼び出すときに、** パラメーターに 0 以外の値を指定します。
+既定では、一覧表示操作から一度に最大 5,000 件の結果が返されますが、各一覧表示操作で返される結果の数は指定できます。 この記事の例ではその方法を示します。
 
-一覧表示操作が 5000 を超える BLOB を返す場合、または一覧表示操作によってストレージ アカウント内のコンテナーのサブセットが返されるように `maxresults` の値を指定した場合、Azure Storage は BLOB の一覧と共に*継続トークン*を返します。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
+一覧表示操作で 5,000 個を超える BLOB が返される場合、または使用できる BLOB の数が指定した数を超える場合、Azure Storage からは BLOB の一覧と共に "*継続トークン*" が返されます。 継続トークンは、Azure Storage から次の結果セットを取得するために使用できる非透過の値です。
 
 コードでは、継続トークンの値をチェックして、それが null かどうかを確認します。 継続トークンが null の場合、結果セットは完了しています。 継続トークンが null でない場合は、一覧表示操作をもう一度呼び出し、継続トークンを渡して次の結果セットを取得し、継続トークンが null になるまでそれを繰り返します。
 
@@ -51,7 +63,11 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="return-metadata"></a>メタデータを返す
 
-結果と共に BLOB のメタデータを返すには、**BlobListingDetails** 列挙型の [Metadata](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
+結果と共に BLOB メタデータを返すことができます。 
+
+- .NET v12 SDK を使用している場合は、[BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) 列挙型の **Metadata** 値を指定します。
+
+- .NET v11 SDK を使用している場合は、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>フラットな一覧表示と階層的な一覧表示
 
@@ -66,6 +82,14 @@ BLOB を仮想ディレクトリに組織化するには、BLOB 名に区切り�
 既定では、一覧表示操作はフラットな一覧表示で BLOB を返します。 フラットな一覧表示では、BLOB は仮想ディレクトリによって整理されません。
 
 次の例では、フラットな一覧表示を使用し、オプションのセグメント サイズを指定して、指定されたコンテナー内の BLOB を一覧表示し、BLOB 名をコンソール ウィンドウに出力します。
+
+アカウントで階層型名前空間の機能を有効にしている場合、ディレクトリは仮想ではありません。 そうではなく、具象の独立したオブジェクトです。 そのため、ディレクトリは長さが 0 の BLOB として一覧に表示されます。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -85,7 +109,6 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 
             foreach (var blobItem in resultSegment.Results)
             {
-                // A flat listing operation returns only blobs, not virtual directories.
                 blob = (CloudBlob)blobItem;
 
                 // Write out some blob properties.
@@ -108,6 +131,8 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 出力例は次のようになります。
 
 ```
@@ -125,6 +150,16 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ## <a name="use-a-hierarchical-listing"></a>階層的な一覧表示を使用する
 
 一覧表示操作を階層的に呼び出すと、Azure Storage は、階層の最初のレベルに仮想ディレクトリと BLOB を返します。 各仮想ディレクトリの [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) プロパティは、再帰呼び出しでプレフィックスを渡して次のディレクトリを取得できるように設定されます。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+BLOB を階層的に一覧表示するには、[BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet) メソッドまたは [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) メソッドを呼び出します。
+
+次の例では、階層型の一覧表示を使用し、オプションのセグメント サイズを指定して、指定したコンテナー内の BLOB を一覧表示し、BLOB 名をコンソール ウィンドウに出力します。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 BLOB を階層的に一覧表示するには、一覧表示メソッドの `useFlatBlobListing` パラメーターを **false** に設定します。
 
@@ -182,6 +217,8 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
     }
 }
 ```
+
+---
 
 出力例は次のようになります。
 

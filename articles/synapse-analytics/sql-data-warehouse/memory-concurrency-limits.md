@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210663"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics のメモリと同時実行の制限
 
@@ -36,7 +36,7 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 | DW200c            | 1             | 60                             |   120                          |
 | DW300c            | 1             | 60                             |   180                          |
 | DW400c            | 1             | 60                             |   240                          |
-| DW500c            | 1             | 60                             |   300                          |
+| DW500c            | 1             | 60                             |   該当なし                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -77,7 +77,7 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>リソース クラスのコンカレンシーの最大値
 
-各クエリに効率的に実行するために十分なリソースを確保するために、Azure Synapse の SQL Analytics では、各クエリに同時実行スロットを割り当てることで、リソースの使用率が追跡されます。 システムは、重要度とコンカレンシー スロットに基づいて、クエリをキューに入れます。 十分な数のコンカレンシー スロットが利用できるようになるまで、クエリはキュー内で待機します。 [重要度](sql-data-warehouse-workload-importance.md)とコンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
+各クエリを効率的に実行するために十分なリソースが提供されるよう、Synapse SQL は各クエリにコンカレンシー スロットを割り当てることで、リソース使用率を追跡します。 システムは、重要度とコンカレンシー スロットに基づいて、クエリをキューに入れます。 十分な数のコンカレンシー スロットが利用できるようになるまで、クエリはキュー内で待機します。 [重要度](sql-data-warehouse-workload-importance.md)とコンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
 
 **静的リソース クラス**
 
@@ -97,7 +97,7 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 | DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
 | DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW7500c       | 128                        |  該当なし                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW10000c      | 128                        |  400                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW15000c      | 128                        |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 | DW30000c      | 128                        | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
@@ -120,7 +120,7 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 | DW3000c       | 32                         |  120                        | 3                     | 12                     |  26                   |  84                    |
 | DW5000c       | 32                         |  200                        | 6                     | 20                     |  44                   | 140                    |
 | DW6000c       | 32                         |  240                        | 7                     | 24                     |  52                   | 168                    |
-| DW7500c       | 32                         |  300                        | 9                     | 30                     |  66                   | 210                    |
+| DW7500c       | 32                         |  該当なし                        | 9                     | 30                     |  66                   | 210                    |
 | DW10000c      | 32                         |  400                        | 12                    | 40                     |  88                   | 280                    |
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |

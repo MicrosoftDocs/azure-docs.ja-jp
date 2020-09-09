@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: 2f2049f710dcdbb210594331fa69e6743f5e431e
-  ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+  ms.openlocfilehash: d6f78b4494a16a0522f93658b063d157819c519e
+  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "81869307"
+  ms.lasthandoff: 08/06/2020
+  ms.locfileid: "87826145"
 highlightedContent:
   items:
   - title: Azure Media Services v3 について
@@ -33,15 +33,18 @@ highlightedContent:
   - title: Media Services v3 プリセットと Video Indexer の比較
     itemType: concept
     url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+  - title: Live Video Analytics on IoT Edge (プレビュー)
+    itemType: overview
+    url: ./live-video-analytics-edge/overview.md
+  - title: Azure Media Player
+    itemType: overview
+    url: ./azure-media-player/azure-media-player-overview.md
   - title: Azure Media Services v2 について (レガシ)
     itemType: overview
     url: ./previous/media-services-overview.md
   - title: Media Services v2 を v3 に移行する
     itemType: concept
     url: ./latest/migrate-from-v2-to-v3.md
-  - title: Azure Media Player
-    itemType: overview
-    url: azure-media-player/azure-media-player-overview.md
 conceptualContent:
   items:
   - title: Media Services v3 API を使用した開発
@@ -49,7 +52,7 @@ conceptualContent:
     - url: ./latest/media-services-apis-overview.md
       itemType: concept
       text: Media Services v3 を使用した開発
-    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+    - url: /samples/browse/?products=azure-media-services
       itemType: sample
       text: コード サンプル
     - url: ./latest/release-notes.md
@@ -110,15 +113,23 @@ conceptualContent:
     - url: media-services-fmp4-live-ingest-overview.md
       itemType: concept
       text: Smooth Streaming 取り込みプロトコル
+  - title: Live Video Analytics on IoT Edge (プレビュー)
+    links:
+    - url: ./live-video-analytics-edge/overview.md
+      itemType: overview
+      text: 概要
+    - url: ./live-video-analytics-edge/use-your-model-quickstart.md
+      itemType: quickstart
+      text: ご自分のモデルを使用して Live Video Analytics を実行する
 additionalContent:
   sections:
   - items:
     - title: Azure Storage
       summary: ブロック BLOB とコンテナーについて学習する
-      url: https://docs.microsoft.com/azure/storage/
+      url: ../storage/index.yml
     - title: CDN
       summary: Azure CDN の機能を使用すると、Akamai および Verizon のサービスを利用してコンテンツを大規模にストリーム配信したり、複数のコンテンツ配信ネットワークに負荷を分散したりできます
-      url: https://docs.microsoft.com/azure/cdn
+      url: ../cdn/index.yml
     - title: Event Grid
       summary: Azure Event Grid を使用して関連するイベントに対応する方法について説明します
-      url: https://docs.microsoft.com/azure/event-grid/
+      url: ../event-grid/index.yml

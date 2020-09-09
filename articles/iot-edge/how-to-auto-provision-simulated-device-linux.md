@@ -4,27 +4,27 @@ description: Linux VM 上のシミュレートされた TPM を使用して Azur
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 3/2/2020
+ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 82bdc71a123a263fffd842a04f4837b34aaa8685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131077"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684458"
 ---
-# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイスを作成し、プロビジョニングする
+# <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
-Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](../iot-dps/concepts-auto-provisioning.md)」を読んでから先に進んでください。
+この記事では、トラステッド プラットフォーム モジュール (TPM) を使用して Linux IoT Edge デバイスに対して自動プロビジョニングをテストする方法について説明します。 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](../iot-dps/concepts-auto-provisioning.md)」を読んでから先に進んでください。
 
-この記事では、シミュレートされた IoT Edge デバイスの自動プロビジョニングを次の手順でテストする方法を示します。
+タスクは次のとおりです。
 
-* ハードウェアのセキュリティ用のシミュレートされたトラステッド プラットフォーム モジュール (TPM) がある Hyper-V 内に Linux 仮想マシン (VM) を作成する。
-* IoT Hub Device Provisioning Service (DPS) のインスタンスを作成する。
-* デバイスの個別登録を作成する。
-* IoT Edge ランタイムをインストールし、デバイスを IoT Hub に接続する。
+1. ハードウェアのセキュリティ用のシミュレートされたトラステッド プラットフォーム モジュール (TPM) がある Hyper-V 内に Linux 仮想マシン (VM) を作成する。
+1. IoT Hub Device Provisioning Service (DPS) のインスタンスを作成する。
+1. デバイスの個別登録を作成する。
+1. IoT Edge ランタイムをインストールし、デバイスを IoT Hub に接続する。
 
 > [!TIP]
 > この記事では、TPM シミュレーターを使用して DPS プロビジョニングをテストする方法について説明しますが、その多くは、Azure Certified for IoT デバイスである [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board) などの物理 TPM ハードウェアに適用されます。
@@ -35,14 +35,13 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
 * [Hyper-V 対応の](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) Windows 開発マシン。 この記事では、Ubuntu Server VM を実行中の Windows 10 を使用します。
 * アクティブな IoT Hub。
-* シミュレートされた TPM を使用している場合、["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 
 > [!NOTE]
 > DPS で TPM 構成証明を使用する場合は、TPM 2.0 が必要です。これは、グループではなく個別の登録を作成する場合にのみ使用できます。
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>仮想 TPM がある Linux 仮想マシンを作成する
 
-このセクションでは、Hyper-V で新しい Linux 仮想マシンを作成します。 シミュレートされた TPM でこの仮想マシンを構成して、それを使用して IoT Edge の自動プロビジョニングがどのように機能するかをテストできるようにしました。
+このセクションでは、Hyper-V で新しい Linux 仮想マシンを作成します。 IoT Edge で自動プロビジョニングがどのように機能するかをテストするために、シミュレートされた TPM を使用してこの仮想マシンを構成します。
 
 ### <a name="create-a-virtual-switch"></a>仮想スイッチを作成する
 
@@ -62,9 +61,9 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
 ### <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. 仮想マシンで使用するディスク イメージ ファイルをダウンロードし、ローカルに保存します。 例: [Ubuntu server](https://www.ubuntu.com/download/server)
+1. 仮想マシンで使用するディスク イメージ ファイルをダウンロードし、ローカルに保存します。 たとえば、[Ubuntu Server 18.04](http://releases.ubuntu.com/18.04/) をダウンロードします。 IoT Edge デバイスでサポートされているオペレーティング システムの詳細については、「[Azure IoT Edge のサポートされるシステム](support.md)」を参照してください。
 
-2. 再び Hyper-V マネージャーで、 **[操作]** メニューの **[新規]**  >  **[仮想マシン]** を選択します。
+2. 再度 Hyper-V マネージャーの **[操作]** メニューで、 **[操作]**  >  **[新規]**  >  **[仮想マシン]** の順に選択します。
 
 3. **新しい仮想マシン ウィザード**を、次の構成で完了します。
 
@@ -80,7 +79,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
 VM が作成されたら、その設定を開いて、デバイスの自動プロビジョニングに使用する仮想トラステッド プラットフォーム モジュール (TPM) を有効化します。
 
-1. 仮想マシンを選択し、その **[設定]** を開きます。
+1. Hyper-V マネージャーで、VM を右クリックし、 **[設定]** を選択します。
 
 2. **[セキュリティ]** に移動します。
 
@@ -94,42 +93,32 @@ VM が作成されたら、その設定を開いて、デバイスの自動プ�
 
 仮想マシンで、デバイスの**登録 ID** と**保証キー**を取得するために使用できるツールをビルドします。
 
-1. 仮想マシンを起動して接続します。
+1. Hyper-V マネージャーで、VM を起動して接続します。
 
 1. 仮想マシン内のプロンプトに従ってインストール プロセスを実行し、コンピューターを再起動します。
 
 1. VM にサインインし、[Linux 開発環境の設定](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)に関するセクションの手順に従って、Azure IoT device SDK for C をインストールしてビルドします。
 
    >[!TIP]
-   >この記事の過程では、仮想マシンとの間でコピー/貼り付けを行います。Hyper-V Manager 接続アプリケーション経由でこの操作を行うことは容易ではありません。 Hyper-V Manager 経由でいったん仮想マシンに接続して、その IP アドレス: `ifconfig` を取得することをお勧めします。 その後、この IP アドレスを使用して、SSH 経由で接続できます: `ssh <username>@<ipaddress>`。
+   >この記事の過程では、仮想マシン上でコピーと貼り付けを行います。Hyper-V マネージャー接続アプリケーション経由でこの操作を行うことは容易ではありません。 Hyper-V マネージャー経由でいったん仮想マシンに接続して、その IP アドレスを取得することをお勧めします。 まず `sudo apt install net-tools` を実行し、次に `hostname -I` を実行します。 その後、この IP アドレスを使用して、SSH 経由で接続できます: `ssh <username>@<ipaddress>`。
 
-1. 次のコマンドを実行して、TPM シミュレーターからデバイスのプロビジョニング情報を取得する SDK ツールをビルドします。
+1. 次のコマンドを実行して、TPM からデバイスのプロビジョニング情報を取得する SDK ツールをビルドします。
 
    ```bash
    cd azure-iot-sdk-c/cmake
-   cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
+   cmake -Duse_prov_client:BOOL=ON ..
    cd provisioning_client/tools/tpm_device_provision
    make
    sudo ./tpm_device_provision
    ```
 
-1. コマンド ウィンドウから、`azure-iot-sdk-c` ディレクトリに移動して、TPM シミュレーターを実行します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このコマンド ウィンドウは閉じないでください。このシミュレーターを実行状態にしておく必要があります。
+1. 出力ウィンドウに、デバイスの**登録 ID** と**保障キー**が表示されます。 後でデバイスの個別登録を作成する際に使用できるように、これらの値をコピーします。
 
-   `azure-iot-sdk-c` ディレクトリで次のコマンドを実行して、シミュレーターを起動します。
-
-   ```bash
-   ./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe
-   ```
-
-1. Visual Studio を使用して、`cmake` ディレクトリに生成された `azure_iot_sdks.sln` という名前のソリューションを開き、 **[ビルド]** メニューの **[ソリューションのビルド]** コマンドを使用してビルドします。
-
-1. Visual Studio の "**ソリューション エクスプローラー**" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
-
-1. **[デバッグ]** メニューのいずれかの **[開始]** コマンドを使用してソリューションを実行します。 出力ウィンドウには TPM シミュレーターの**登録 ID** と**保証キー**が表示されます。後でデバイスの個別登録を作成するときに使用するため、これをコピーする必要があります。この (登録 ID と保証キーが表示されている) ウィンドウは閉じることができますが、TPM シミュレーター ウィンドウは実行状態にしておく必要があります。
+登録 ID と保証キーを取得したら、「[Azure IoT Hub Device Provisioning Service を設定する](#set-up-the-iot-hub-device-provisioning-service)」セクションに進みます
 
 ## <a name="retrieve-provisioning-information-from-a-physical-device"></a>物理デバイスからプロビジョニング情報を取得する
 
-デバイスで、デバイスのプロビジョニング情報を取得するために使用できるツールをビルドします。
+VM ではなく物理 IoT Edge デバイスを使用している場合は、デバイスのプロビジョニング情報を取得するために使用できるツールを構築します。
 
 1. [Linux 開発環境の設定](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)に関するセクションの手順に従って、Azure IoT device SDK for C をインストールしてビルドします。
 
@@ -158,7 +147,7 @@ Device Provisioning Service を実行した後、概要ページから **[ID ス
 DPS 内に登録を作成するときに、**デバイス ツインの初期状態**を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
 
 > [!TIP]
-> Azure CLI では、[登録](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)または[登録グループ](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応**フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
+> Azure CLI では、[登録](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)を作成し、**Edge 対応**フラグを使用して、デバイスが IoT Edge デバイスであることを指定できます。
 
 1. [Azure portal](https://portal.azure.com) で、IoT Hub Device Provisioning Service のインスタンスに移動します。
 
@@ -173,24 +162,13 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
       > [!TIP]
       > 物理 TPM デバイスを使用している場合は、各 TPM チップに固有であり、それに関連付けられている TPM チップの製造元から取得される**保証キー**を判断する必要があります。 たとえば保証キーの SHA-256 ハッシュを作成することによって、TPM デバイスの一意の**登録 ID** を派生させることができます。
 
-   3. **[True]** を選択して、この仮想マシンが IoT Edge デバイスであることを宣言します。
+   3. 必要に応じて、デバイス ID を指定します。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
 
-   4. デバイスの接続先になるリンクされた **IoT Hub** を選択します。 複数のハブを選択でき、デバイスは、選択した割り当てポリシーに従ってそれらのハブの 1 つに割り当てられます。
+   4. **[True]** を選択して、この仮想マシンが IoT Edge デバイスであることを宣言します。
 
-   5. 必要に応じて、デバイス ID を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
+   5. デバイスの接続先になるリンクされた IoT ハブを選択するか、 **[Link to new IoT Hub]\(新しい IoT ハブへのリンク\)** を選択します。 複数のハブを選択でき、デバイスは、選択した割り当てポリシーに従ってそれらのハブの 1 つに割り当てられます。
 
-   6. 必要に応じて、 **[デバイス ツインの初期状態]** にタグ値を追加します。 タグを使用して、デバイス グループをモジュール展開のターゲットにすることができます。 次に例を示します。
-
-      ```json
-      {
-         "tags": {
-            "environment": "test"
-         },
-         "properties": {
-            "desired": {}
-         }
-      }
-      ```
+   6. 必要に応じて、 **[デバイス ツインの初期状態]** にタグ値を追加します。 タグを使用して、デバイス グループをモジュール展開のターゲットにすることができます。 詳細については、[大規模な IoT Edge モジュールの展開](how-to-deploy-at-scale.md)に関する記事を参照してください。
 
    7. **[保存]** を選択します。
 
@@ -202,11 +180,13 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 デバイスの種類に合った記事を参照する前に、DPS の **ID スコープ**とデバイスの**登録 ID** を確認してください。 Ubuntu サーバーの例をインストールした場合は、**x64** の手順を使用してください。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
 
+セキュリティ デーモンを構成する手順まで進んだら、[オプション 2 の自動プロビジョニング](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning)を選択し、TPM 構成証明用に構成してください。
+
 [Linux に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-linux.md)
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge に TPM へのアクセス権を付与する
 
-IoT Edge ランタイムがデバイスを自動的にプロビジョニングするには、TPM アクセスにアクセスする必要があります。
+デバイスを自動的にプロビジョニングするには、IoT Edge ランタイムが TPM にアクセスする必要があります。
 
 IoT Edge ランタイムに TPM へのアクセス権を付与するには、systemd 設定をオーバーライドして、`iotedge` サービスに root 特権を付与します。 サービス権限を昇格したくない場合は、次の手順を使用して、TPM へのアクセス権を手動で付与することもできます。
 
@@ -232,7 +212,7 @@ IoT Edge ランタイムに TPM へのアクセス権を付与するには、sys
 
    ```input
    # allow iotedge access to tpm0
-   KERNEL=="tpm0", SUBSYSTEM=="tpm", GROUP="iotedge", MODE="0660"
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="iotedge", MODE="0600"
    ```
 
 5. ファイルを保存して終了します。
@@ -249,7 +229,7 @@ IoT Edge ランタイムに TPM へのアクセス権を付与するには、sys
    ls -l /dev/tpm0
    ```
 
-   成功の出力は次のようになります。
+   成功した場合の出力は、次のようになります。
 
    ```output
    crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
@@ -305,4 +285,4 @@ Device Provisioning Service で作成した個々の登録が使用されたこ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Device Provisioning Service の登録プロセスでは、新しいデバイスをプロビジョニングするときに、デバイス ID とデバイス ツイン タグを同時に設定できます。 これらの値を使用して、個々のデバイスまたはデバイス グループをデバイスの自動管理で使用できます。 使用方法については、「[Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視](how-to-deploy-at-scale.md)」または「[Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視](how-to-deploy-cli-at-scale.md)」を参照してください。
+DPS の登録プロセスを使用すると、新しいデバイスをプロビジョニングするときに、デバイス ID とデバイス ツイン タグを同時に設定できます。 これらの値を使用して、個々のデバイスまたはデバイス グループをデバイスの自動管理で使用できます。 使用方法については、「[Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視](how-to-deploy-at-scale.md)」または「[Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視](how-to-deploy-cli-at-scale.md)」を参照してください。

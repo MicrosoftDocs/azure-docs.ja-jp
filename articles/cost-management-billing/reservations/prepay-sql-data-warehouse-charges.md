@@ -4,15 +4,16 @@ description: 予約容量を使用したコスト削減によって Azure Synaps
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.subservice: reservations
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 3706493f0132cd4cc57af589e0d2935c31d6657e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629152"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686141"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics 料金のコストを節約する
 
