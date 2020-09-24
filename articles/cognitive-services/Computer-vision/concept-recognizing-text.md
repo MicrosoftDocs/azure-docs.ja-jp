@@ -189,5 +189,5 @@ Cognitive Services 全般に言えることですが、読み取り/OCR サー�
 ## <a name="next-steps"></a>次のステップ
 
 - [Read 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) について学習します。
-- 簡体字中国語のサポートが追加された [Read 3.1 パブリック プレビュー REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) について学習します。
+- 簡体字中国語のサポートが追加された [Read 3.1 パブリック プレビュー REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) について学習します。
 - [テキストの抽出](./QuickStarts/CSharp-hand-text.md)に関するクイックスタートに従い、C#、Java、JavaScript、または Python と REST API を使用して、OCR を実装します。
