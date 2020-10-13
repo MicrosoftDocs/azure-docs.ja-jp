@@ -216,56 +216,6 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
-
-スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行する場合です。 スナップショット機能の概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
-
-この例では、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」で作成した **PersonGroup** を移行します。 先にそのセクションを完了しても、移行する独自の Face データ コンストラクトを作成してもかまいません。
-
-### <a name="set-up-target-subscription"></a>ターゲット サブスクリプションを設定する
-
-まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#setting-up)」セクションの手順に従います。 
-
-その後、プログラムの `Main` メソッドに次の変数を定義します。 お使いの Azure アカウントのサブスクリプション ID と新しい (ターゲット) アカウントのキー、エンドポイント、サブスクリプション ID のための、新しい環境変数を作成する必要があります。 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-この例では、ターゲット **PersonGroup** (データのコピー先となる、新しいサブスクリプションに属するオブジェクト) の ID に使用する変数を宣言します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-### <a name="authenticate-target-client"></a>ターゲット クライアントを認証する
-
-次に、2 つ目の Face サブスクリプションを認証するためのコードを追加します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_client)]
-
-### <a name="use-a-snapshot"></a>スナップショットを使用する
-
-スナップショット操作の残りは、非同期メソッド内で実行する必要があります。 
-
-1. 最初のステップは、スナップショットを**取得する**ことです。これにより、元のサブスクリプションの顔データが一時的なクラウドの場所に保存されます。 このメソッドは、操作の状態を照会するために使用する ID を返します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take)]
-
-1. 次に、操作が完了するまでに ID を照会します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take_wait)]
-
-1. その後、**apply** 操作を使用して、顔データをターゲット サブスクリプションに書き込みます。 このメソッドも、ID 値を返します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. 操作が完了するまでにもう一度新しい ID を照会します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. 最後に、try/catch ブロックを実行してメソッドを終了します。
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_trycatch)]
-
-この時点で、新しい **PersonGroup** オブジェクトには、元のオブジェクトと同じデータが保持されており、新しい (ターゲット) Azure Face サブスクリプションからアクセスすることができます。
-
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
